@@ -1,0 +1,85 @@
+Questão 1
+==================================================
+Para resolver o problema, vamos encontrar os valores reais \(a\) e \(b\) tais que, ao dividir o polinômio
+\[ p(x) = x^{57} + ax^{14} + bx^{7} + 1 \]
+por \( x^2 - x + 1 \), o resto é \( 2x + 1 \).
+
+**Passo 1:**
+Identificamos que \( x^2 - x + 1 \) possui raízes complexas, pois seu discriminante é negativo:
+\[ \Delta = (-1)^2 - 4 \cdot 1 \cdot 1 = -3 \]
+Então, as raízes são:
+\[ x = \frac{1 \pm i\sqrt{3}}{2} \]
+Mas, em vez de trabalhar diretamente com as raízes complexas, podemos usar aritmética modular para polinômios.
+
+**Passo 2:**
+Observamos que o polinômio \( x^2 - x + 1 \) nos permite reduzir potências de \( x \) maiores que 1:
+\[ x^2 = x - 1 \]
+Podemos usar essa relação para expressar potências de \( x \) maiores que 1 em termos de \( x \) e constantes.
+
+**Passo 3:**
+Calculamos os restos de \( x^n \) módulo \( x^2 - x + 1 \) e descobrimos que as potências de \( x \) são periódicas com período 6:
+\[
+\begin{align*}
+x^0 \mod (x^2 - x + 1) &= 1 \\
+x^1 \mod (x^2 - x + 1) &= x \\
+x^2 \mod (x^2 - x + 1) &= x - 1 \\
+x^3 \mod (x^2 - x + 1) &= -1 \\
+x^4 \mod (x^2 - x + 1) &= -x \\
+x^5 \mod (x^2 - x + 1) &= -x + 1 \\
+x^6 \mod (x^2 - x + 1) &= 1 \\
+\end{align*}
+\]
+Assim, para qualquer inteiro \( n \):
+\[ x^n \mod (x^2 - x + 1) = x^{n \mod 6} \mod (x^2 - x + 1) \]
+
+**Passo 4:**
+Aplicamos essa propriedade aos expoentes do polinômio \( p(x) \):
+\[
+\begin{align*}
+x^{57} &\equiv x^{57 \mod 6} \mod (x^2 - x + 1) \\
+57 \mod 6 &= 3 \\
+x^{57} &\equiv x^3 \equiv -1 \mod (x^2 - x + 1) \\
+x^{14} &\equiv x^{14 \mod 6} \mod (x^2 - x + 1) \\
+14 \mod 6 &= 2 \\
+x^{14} &\equiv x^2 \equiv x - 1 \mod (x^2 - x + 1) \\
+x^7 &\equiv x^{7 \mod 6} \mod (x^2 - x + 1) \\
+7 \mod 6 &= 1 \\
+x^7 &\equiv x \mod (x^2 - x + 1) \\
+\end{align*}
+\]
+
+**Passo 5:**
+Substituímos essas equivalências no polinômio \( p(x) \) módulo \( x^2 - x + 1 \):
+\[
+p(x) \equiv (-1) + a(x - 1) + b x + 1 = (a + b)x - a
+\]
+
+**Passo 6:**
+Sabemos que o resto da divisão é \( 2x + 1 \), então:
+\[
+(a + b)x - a = 2x + 1
+\]
+
+**Passo 7:**
+Igualamos os coeficientes correspondentes:
+\[
+\begin{cases}
+(a + b) = 2 \\
+-a = 1 \\
+\end{cases}
+\]
+
+**Passo 8:**
+Resolvemos o sistema:
+\[
+\begin{cases}
+a = -1 \\
+(-1) + b = 2 \implies b = 3 \\
+\end{cases}
+\]
+
+**Resposta Final:**
+\[
+\boxed{\begin{cases} a = -1 \\ b = 3 \end{cases}}
+\]
+
