@@ -1,9 +1,9 @@
 # gpt-resolve
 Can GPT solve Brazilian university entrance exams?
 
-This project is a simple implementation of how to use LLMs to solve challenging Brazilian university entrance exams. 
+This project is a simple implementation of how to use LLMs to solve challenging Brazilian university entrance exams.
 
-Particularly, we'll use `o1-preview`, which is the best OpenAI model so far with reasoning capabilities, and `gpt-4o` to describe the exam images so that `o1-preview` can solve them (as it does not have image capabilities yet).
+We'll use `o1-preview`, which is the best OpenAI model so far with reasoning capabilities, and `gpt-4o` to describe the exam images so that `o1-preview` can solve them (as it does not have image capabilities yet). Results are saved as txt files with LaTeX formatting, and you can optionally convert them to a nice PDF or using some LaTeX editor.
 
 The first exam to be solved is the ITA (Instituto Tecnológico de Aeronáutica) exam for admissions in 2025, which is considered one of the most challenging exams in Brazil. This exam currently has two phases: the first one is a multiple choice test and a second one with a 4-hour essay test with 10 questions. The project will start by solving the second phase of the Math section, which is the essay test. This is particularly interesting because (i) the exam happened very recently on the 5th of November 2024 and (ii) the essay test requires a deep understanding of the subjects and the ability to write the answer step by step, which we'll evaluate as well.
 
@@ -14,6 +14,12 @@ Table of exams to be solved:
 | Exam | Phase | Section | Type | Model | Status |
 |------|-------|---------|------|-------|--------|
 | ITA  | 2025  | Math    | Essay | o1-preview | 🚧 In Progress |
+
+## How to use
+So far, with just one exam, you just need to run `python src/resolve.py`. It will process a `exam_path` and it will save the results in the subfolder `solutions` as `.txt` files, one for each question. Make sure to set your env var `OPENAI_API_KEY` in the `.env` file. See section [Convert to LaTeX PDF](#convert-to-latex-pdf) to see how to convert the `.txt` files to a PDF.
+
+## Convert to LaTeX PDF
+🚧 In Progress...
 
 ## Contributing
 
