@@ -1,41 +1,27 @@
-from dotenv import load_dotenv
 import os
-import glob
 import base64
-
+from dotenv import load_dotenv
 from openai import OpenAI
 
+from utils import get_exam_images_paths, save_answer_and_description
+
 # Load environment variables from .env file
-load_dotenv()
-
-# Access the API key
+load_dotenv(override=True)
 api_key = os.getenv("OPENAI_API_KEY")
-
-# Initialize the OpenAI client with the API key
 client = OpenAI(api_key=api_key)
+
 MAX_TOKENS_QUESTION_DESCRIPTION = 400
 MAX_TOKENS_ANSWER = 5000
 
 
-def encode_image(image_path):
+def encode_image(image_path: str) -> str:
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
 
 
-def get_exam_images_paths(path: str):
-    """
-    Returns the paths of the images of the exam.
-    The 'convencoes.jpg' file is the conventions of the exam and will be included in every question.
-    """
-    conventions_path = glob.glob(path + "/conventions.jpg")[0]
-    questions_paths = [
-        p for p in glob.glob(path + "/*.jpg") if "conventions" not in p.lower()
-    ]
-
-    return conventions_path, questions_paths
-
-
-def extract_question_description(question_image: str, conventions_image: str):
+def extract_question_description(
+    question_image: str, conventions_image: str
+) -> tuple[str, int]:
     """Extracts the question description from the given question image."""
     response = client.chat.completions.create(
         model="gpt-4o",
@@ -48,7 +34,9 @@ def extract_question_description(question_image: str, conventions_image: str):
                         "text": (
                             "Extraia o enunciado da questão e as alternativas, se existirem."
                             "Caso haja imagens, descreva-as de forma clara e objetiva de forma que seja possível entender o problema sem a necessidade de ver a imagem."
-                            "Use a notação LaTeX para toda a sua resposta."
+                            "Use apenas notação LaTeX, inclusive para fórmulas, equações ou destacar palavras em negrito ou itálico."
+                            "Sua resposta deve compreender apenas uma seção na sintaxe do LaTeX, começando com \section*{Questão N}, sem nada antes ou depois."
+                            "Exemplo de enunciado: \section*{Questão 1}\n\nEnunciado da questão 1."
                         ),
                     },
                     {
@@ -76,7 +64,7 @@ def extract_question_description(question_image: str, conventions_image: str):
 
 def resolve_question(
     question_description: str, max_tokens_answer: int = MAX_TOKENS_ANSWER
-):
+) -> tuple[str, int]:
     """Resolves the given question with an OpenAI pipeline using gpt-4o to describe the question and o1-preview to solve it."""
 
     response = client.chat.completions.create(
@@ -91,9 +79,10 @@ def resolve_question(
                             "Você é um especialista de exames de admissão universitária."
                             "Resolva o problema indicado entre os delimitadores ```."
                             "Responda à questão de forma clara e objetiva, explicando o raciocínio passo a passo, mas seja objetivo."
-                            "Use a notação LaTeX para toda a sua resposta, inclusive para separar as partes da solução ou destacar palavras e títulos."
+                            "Use a notação LaTeX para sua resposta, inclusive para fórmulas, equações ou destacar palavras em negrito ou itálico."
+                            "Sua resposta deve compreender apenas uma seção na sintaxe do LaTeX, começando com \section*{Solução}."
                             "Indique a solução final com um 'ANSWER:' seguido do resultado."
-                            f"O enunciado da questão é:\n\n```{question_description}```"
+                            f"O enunciado da questão é:```{question_description}```"
                         ),
                     },
                 ],
@@ -107,47 +96,39 @@ def resolve_question(
     return answer, total_tokens
 
 
-def resolve_exam(exam_path: str):
-    """Resolves the given exam with GPT."""
+def resolve_exam(exam_path: str, questions_to_solve: list[int] = None) -> None:
+    """
+    Resolves the given exam with GPT up to `questions_to_solve` questions.
+    If `questions_to_solve` is not provided, all questions will be solved.
+    """
 
     conventions_path, questions_paths = get_exam_images_paths(exam_path)
+    if questions_to_solve:
+        questions_paths = [
+            (q, p) for q, p in questions_paths if q in questions_to_solve
+        ]
 
     # Encode the images
-    conventions_image = encode_image(conventions_path)
-    questions_images = [encode_image(p) for p in questions_paths]
-
-    # Store all responses and question descriptions in text
-    answers = []
-    question_descriptions = []
+    conventions_image: str = encode_image(conventions_path)
+    questions_images: list[tuple[int, str]] = [
+        (i, encode_image(question_path)) for i, question_path in questions_paths
+    ]
 
     # Process each question
-    for i, question_image in enumerate(questions_images, 1):
+    for i, question_image in questions_images:
         print(f"Generating description for question {i}...", end="")
         question_description, total_tokens = extract_question_description(
             question_image, conventions_image
         )
-        print(f"Total tokens: {total_tokens}")
-        question_descriptions.append(question_description)
+        print(f"total tokens: {total_tokens}")
 
-        # Additionally, generate a text version of the question to use with o1-preview
         print(f"\tSolving question {i}...", end="")
         answer, total_tokens = resolve_question(question_description)
-        print(f"Total tokens: {total_tokens}")
-        answers.append(answer)
+        print(f"total tokens: {total_tokens}")
 
-    # Save responses to file
-    with open(f"{exam_path}/solutions.txt", "w", encoding="utf-8") as f:
-        for i, answer in enumerate(answers, 1):
-            f.write(f"\\section*{{Questão {i}}}\n")
-            f.write("=" * 50 + "\n")
-            f.write(answer + "\n\n")
-
-    with open(f"{exam_path}/descriptions.txt", "w", encoding="utf-8") as f:
-        for i, description in enumerate(question_descriptions, 1):
-            f.write(f"\\section*{{Questão {i}}}\n")
-            f.write("=" * 50 + "\n")
-            f.write(description + "\n\n")
+        # Save responses to file
+        save_answer_and_description(answer, question_description, exam_path, i)
 
 
 if __name__ == "__main__":
-    resolve_exam("exams/ita_2025/math/essays")
+    resolve_exam("exams/ita_2025/math/essays", questions_to_solve=[1])
