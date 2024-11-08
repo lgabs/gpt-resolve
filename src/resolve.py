@@ -1,17 +1,19 @@
 import os
 import base64
+
 from dotenv import load_dotenv
 from openai import OpenAI
+from tqdm import tqdm
 
-from utils import get_exam_images_paths, save_answer_and_description
+from src.utils import get_exam_images_paths, save_answer_and_description
 
 # Load environment variables from .env file
 load_dotenv(override=True)
 api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=api_key)
 
-MAX_TOKENS_QUESTION_DESCRIPTION = 400
-MAX_TOKENS_ANSWER = 5000
+MAX_TOKENS_QUESTION_DESCRIPTION = 400 # for gpt-4o
+MAX_COMPLETION_TOKENS = 5000 # for o1-preview, much higher tokens are needed
 
 
 def encode_image(image_path: str) -> str:
@@ -63,7 +65,7 @@ def extract_question_description(
 
 
 def resolve_question(
-    question_description: str, max_tokens_answer: int = MAX_TOKENS_ANSWER
+    question_description: str, max_completion_tokens: int = MAX_COMPLETION_TOKENS
 ) -> tuple[str, int]:
     """Resolves the given question with an OpenAI pipeline using gpt-4o to describe the question and o1-preview to solve it."""
 
@@ -88,7 +90,7 @@ def resolve_question(
                 ],
             }
         ],
-        max_completion_tokens=max_tokens_answer,
+        max_completion_tokens=max_completion_tokens,
     )
     answer = response.choices[0].message.content
     total_tokens = response.usage.total_tokens
@@ -114,17 +116,26 @@ def resolve_exam(exam_path: str, questions_to_solve: list[int] = None) -> None:
         (i, encode_image(question_path)) for i, question_path in questions_paths
     ]
 
-    # Process each question
-    for i, question_image in questions_images:
-        print(f"Generating description for question {i}...", end="")
+    questions_images = questions_images + questions_images
+
+    for i, question_image in tqdm(
+        enumerate(questions_images, start=1),
+        total=len(questions_images),
+        desc="Processing Questions",
+        unit="question",
+    ):
+        # Generate description
+        tqdm.write(f"[Question {i}]\n├─ Generating description...")
+        question_description, total_tokens = "teste", 100
         question_description, total_tokens = extract_question_description(
             question_image, conventions_image
         )
-        print(f"total tokens: {total_tokens}")
+        tqdm.write(f"├─ Description generated ({total_tokens} tokens)")
 
-        print(f"\tSolving question {i}...", end="")
+        # Solve question
+        tqdm.write(f"└─ Solving question...")
         answer, total_tokens = resolve_question(question_description)
-        print(f"total tokens: {total_tokens}")
+        tqdm.write(f"└─ Solution found ({total_tokens} tokens)\n")
 
         # Save responses to file
         save_answer_and_description(answer, question_description, exam_path, i)
