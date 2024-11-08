@@ -38,3 +38,13 @@ To contribute, simply fork the repository, create a new branch for your changes,
 
 Feel free to open an issue first to discuss major changes or new ideas!
 
+## Sponsors
+
+<p align="center">
+  <a href="https://www.buser.com.br">
+    <img src="assets/sponsors/buser-logo.png" alt="Buser Logo" width="100"/>
+  </a>
+</p>
+
+This project is proudly sponsored by [Buser](https://www.buser.com.br), Brazil's leading bus travel platform.
+
