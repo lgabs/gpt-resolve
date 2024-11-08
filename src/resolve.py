@@ -1,15 +1,25 @@
+from dotenv import load_dotenv
+import os
 import glob
 import base64
 
 from openai import OpenAI
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the API key
+api_key = os.getenv("OPENAI_API_KEY")
+
+# Initialize the OpenAI client with the API key
+client = OpenAI(api_key=api_key)
+MAX_TOKENS_QUESTION_DESCRIPTION = 400
+MAX_TOKENS_ANSWER = 5000
+
 
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
-
-
-client = OpenAI()
 
 
 def get_exam_images_paths(path: str):
@@ -37,7 +47,7 @@ def extract_question_description(question_image: str, conventions_image: str):
                         "type": "text",
                         "text": (
                             "Extraia o enunciado da questão e as alternativas, se existirem."
-                            "Caso haja imagens, descreva-as de forma clara e objetiva de forma que seja possível entender o problema."
+                            "Caso haja imagens, descreva-as de forma clara e objetiva de forma que seja possível entender o problema sem a necessidade de ver a imagem."
                             "Use a notação LaTeX para toda a sua resposta."
                         ),
                     },
@@ -56,12 +66,19 @@ def extract_question_description(question_image: str, conventions_image: str):
                 ],
             }
         ],
-        max_tokens=400,
+        max_tokens=MAX_TOKENS_QUESTION_DESCRIPTION,
     )
-    return response.choices[0]
+    description = response.choices[0].message.content
+    total_tokens = response.usage.total_tokens
+
+    return description, total_tokens
 
 
-def resolve_question(question_description: str):
+def resolve_question(
+    question_description: str, max_tokens_answer: int = MAX_TOKENS_ANSWER
+):
+    """Resolves the given question with an OpenAI pipeline using gpt-4o to describe the question and o1-preview to solve it."""
+
     response = client.chat.completions.create(
         model="o1-preview",
         messages=[
@@ -71,20 +88,23 @@ def resolve_question(question_description: str):
                     {
                         "type": "text",
                         "text": (
-                            "Você é um especialista em matemática resolvendo questões de admissão universitária do ITA. "
-                            "Responda à questão de forma clara e objetiva, explicando o raciocínio passo a passo, mas mantenha o foco na solução."
-                            "Use a notação LaTeX para toda a sua resposta, inclusive para separar as partes da solução."
+                            "Você é um especialista de exames de admissão universitária."
+                            "Resolva o problema indicado entre os delimitadores ```."
+                            "Responda à questão de forma clara e objetiva, explicando o raciocínio passo a passo, mas seja objetivo."
+                            "Use a notação LaTeX para toda a sua resposta, inclusive para separar as partes da solução ou destacar palavras e títulos."
                             "Indique a solução final com um 'ANSWER:' seguido do resultado."
-                            f"O enunciado da questão é:\n\n{question_description.message.content}"
+                            f"O enunciado da questão é:\n\n```{question_description}```"
                         ),
                     },
                 ],
             }
         ],
-        max_completion_tokens=5000,
+        max_completion_tokens=max_tokens_answer,
     )
+    answer = response.choices[0].message.content
+    total_tokens = response.usage.total_tokens
 
-    return response.choices[0]
+    return answer, total_tokens
 
 
 def resolve_exam(exam_path: str):
@@ -102,15 +122,18 @@ def resolve_exam(exam_path: str):
 
     # Process each question
     for i, question_image in enumerate(questions_images, 1):
-        print(f"Gerando a descrição da questão {i}...")
-        question_description = extract_question_description(question_image, conventions_image)
+        print(f"Generating description for question {i}...", end="")
+        question_description, total_tokens = extract_question_description(
+            question_image, conventions_image
+        )
+        print(f"Total tokens: {total_tokens}")
         question_descriptions.append(question_description)
 
         # Additionally, generate a text version of the question to use with o1-preview
-        print(f"\tResolvendo a questão {i}...")
-        answer = resolve_question(question_description)
-
-        answers.append(answer.message.content)
+        print(f"\tSolving question {i}...", end="")
+        answer, total_tokens = resolve_question(question_description)
+        print(f"Total tokens: {total_tokens}")
+        answers.append(answer)
 
     # Save responses to file
     with open(f"{exam_path}/solutions.txt", "w", encoding="utf-8") as f:
@@ -123,7 +146,7 @@ def resolve_exam(exam_path: str):
         for i, description in enumerate(question_descriptions, 1):
             f.write(f"\\section*{{Questão {i}}}\n")
             f.write("=" * 50 + "\n")
-            f.write(description.message.content + "\n\n")
+            f.write(description + "\n\n")
 
 
 if __name__ == "__main__":
