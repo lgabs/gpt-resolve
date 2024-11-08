@@ -26,13 +26,14 @@ def get_exam_images_paths(path: str) -> tuple[str, list[tuple[int, str]]]:
                 question_number = int(filename[1:].split(".")[0])
                 questions_with_numbers.append((question_number, path))
             except ValueError as e:
-                print(
+                raise ValueError(
                     f"Error extracting question number from {filename}: {e}. Questions should be named like 'q1.jpg', 'q2.jpg', etc."
                 )
 
     questions_with_numbers.sort(key=lambda x: x[0])
 
     return conventions_path, questions_with_numbers
+
 
 def save_answer_and_description(
     answer: str, question_description: str, exam_path: str, question_number: int
