@@ -15,3 +15,20 @@ Table of exams to be solved:
 |------|-------|---------|------|-------|--------|
 | ITA  | 2025  | Math    | Essay | o1-preview | 🚧 In Progress |
 
+## Contributing
+
+There are several ways you can contribute to this project:
+
+- Add solutions for new exams or sections
+- Improve existing solutions or model prompts
+- Add automatic evaluation metrics for answers
+- Create documentations for exams
+- Report issues or suggest improvements
+
+To contribute, simply fork the repository, create a new branch for your changes, and submit a pull request. Please ensure your PR includes:
+- Clear description of the changes
+- Updated table entry (if adding new exam solutions)
+- Any relevant documentation
+
+Feel free to open an issue first to discuss major changes or new ideas!
+
