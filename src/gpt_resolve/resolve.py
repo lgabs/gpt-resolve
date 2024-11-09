@@ -1,13 +1,16 @@
 import os
 import time
 import base64
-import argparse
+
 from dotenv import load_dotenv
+import typer
+from typing import Optional, List
 
 from openai import OpenAI
 from tqdm import tqdm
 
 from gpt_resolve.utils import get_exam_images_paths, save_answer_and_description
+from gpt_resolve.pdf_generator import generate_solutions_pdf
 
 MAX_TOKENS_QUESTION_DESCRIPTION = 400  # for gpt-4o
 MAX_COMPLETION_TOKENS = 5000  # for o1-preview, much higher tokens are needed
@@ -26,7 +29,11 @@ def encode_image(image_path: str) -> str:
 
 
 def extract_question_description(
-    client: OpenAI, question_image: str, conventions_image: str, dry_run: bool = False
+    client: OpenAI,
+    question_image: str,
+    conventions_image: str,
+    max_tokens: int = 400,
+    dry_run: bool = False,
 ) -> tuple[str, int]:
     """Extracts the question description from the given question image."""
     if dry_run:
@@ -67,7 +74,7 @@ def extract_question_description(
                 ],
             }
         ],
-        max_tokens=MAX_TOKENS_QUESTION_DESCRIPTION,
+        max_tokens=max_tokens,
     )
     description = response.choices[0].message.content
     total_tokens = response.usage.total_tokens
@@ -78,7 +85,7 @@ def extract_question_description(
 def resolve_question(
     client: OpenAI,
     question_description: str,
-    max_completion_tokens: int = MAX_COMPLETION_TOKENS,
+    max_tokens_question_answer: int = 5000,
     dry_run: bool = False,
 ) -> tuple[str, int]:
     """Resolves the given question with an OpenAI pipeline using gpt-4o to describe the question and o1-preview to solve it."""
@@ -102,6 +109,7 @@ def resolve_question(
                             "Responda à questão de forma clara e objetiva, explicando o raciocínio passo a passo, mas seja objetivo."
                             "Use a notação LaTeX para sua resposta, inclusive para fórmulas, equações ou destacar palavras em negrito ou itálico."
                             "Sua resposta deve compreender apenas uma seção na sintaxe do LaTeX, começando com \section*{Solução}."
+                            "Evite aninhar ambientes matemáticos, como colocar align* dentro de \[...\]."
                             "Indique a solução final com um 'ANSWER:' seguido do resultado."
                             f"O enunciado da questão é:```{question_description}```"
                         ),
@@ -109,7 +117,7 @@ def resolve_question(
                 ],
             }
         ],
-        max_completion_tokens=max_completion_tokens,
+        max_completion_tokens=max_tokens_question_answer,
     )
     answer = response.choices[0].message.content
     total_tokens = response.usage.total_tokens
@@ -121,11 +129,16 @@ def process_questions(
     questions_images: list[tuple[int, str]],
     conventions_image: str,
     exam_path: str,
-    dry_run: bool = False,
+    dry_run: bool,
+    max_tokens_question_description: int,
+    max_tokens_question_answer: int,
 ) -> None:
     """Processes the given questions using the OpenAI client."""
     client = get_openai_client()
     total_questions = len(questions_images)
+    print(
+        f"Starting to process {total_questions} questions. Each question can take a while to process when using reasoning models."
+    )
     for idx, (question_num, question_image) in enumerate(questions_images):
         pbar = tqdm(
             total=total_questions,
@@ -137,11 +150,18 @@ def process_questions(
         )
         # Process the question
         question_description, total_tokens_desc = extract_question_description(
-            client, question_image, conventions_image, dry_run=dry_run
+            client,
+            question_image,
+            conventions_image,
+            dry_run=dry_run,
+            max_tokens=max_tokens_question_description,
         )
 
         answer, total_tokens_ans = resolve_question(
-            client, question_description, dry_run=dry_run
+            client,
+            question_description,
+            dry_run=dry_run,
+            max_tokens_question_answer=max_tokens_question_answer,
         )
         pbar.set_postfix(
             {"Desc Tokens": total_tokens_desc, "Ans Tokens": total_tokens_ans}
@@ -155,7 +175,11 @@ def process_questions(
 
 
 def resolve_exam(
-    exam_path: str, questions_to_solve: list[int] = None, dry_run: bool = False
+    exam_path: str,
+    questions_to_solve: list[int] = None,
+    dry_run: bool = False,
+    max_tokens_question_description: int = 500,
+    max_tokens_question_answer: int = 5000,
 ) -> None:
     """
     Resolves the given exam with GPT up to `questions_to_solve` questions.
@@ -180,46 +204,65 @@ def resolve_exam(
         conventions_image=conventions_image,
         exam_path=exam_path,
         dry_run=dry_run,
+        max_tokens_question_description=max_tokens_question_description,
+        max_tokens_question_answer=max_tokens_question_answer,
     )
+
+
+# Create Typer app
+app = typer.Typer()
+
+
+@app.command()
+def resolve(
+    path: str = typer.Option(..., "-p", "--path", help="Path to the exam directory"),
+    questions: Optional[str] = typer.Option(
+        None,
+        "-q",
+        "--questions",
+        help="Question numbers to solve separated by commas (e.g., 1,2,3)",
+    ),
+    dry_run: bool = typer.Option(
+        False, help="Run in dry-run mode without making actual API calls"
+    ),
+    max_tokens_question_description: int = typer.Option(
+        400, help="Maximum tokens for question description"
+    ),
+    max_tokens_question_answer: int = typer.Option(
+        5000, help="Maximum completion tokens"
+    ),
+):
+    """Resolve exam questions using GPT."""
+    questions_list = [int(q) for q in questions.split(",")] if questions else None
+    resolve_exam(
+        exam_path=path,
+        questions_to_solve=questions_list,
+        dry_run=dry_run,
+        max_tokens_question_description=max_tokens_question_description,
+        max_tokens_question_answer=max_tokens_question_answer,
+    )
+
+
+@app.command()
+def compile_solutions(
+    path: str = typer.Option(
+        ...,
+        "-p",
+        "--path",
+        help="Path to the exam directory containing a solutions folder",
+    ),
+    title: str = typer.Option(
+        "Solutions", "-t", "--title", help="Title for the PDF document"
+    ),
+):
+    """Compile all solutions from an exam directory into a single PDF document."""
+    generate_solutions_pdf(path, title=title)
+    typer.echo(f"Successfully generated PDF at {path}/solutions_compiled.pdf")
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Resolve exam questions using GPT-4o to describe the question (which may include images) and o1-preview to solve it.",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=(
-            "Examples:\n"
-            "> gpt-resolve -p exams/ita_2025/math/essays\n"
-            "> gpt-resolve -p exams/ita_2025/math/essays -q 1 2 3\n"
-            "> gpt-resolve -p exams/ita_2025/math/essays --dry-run\n"
-            "> gpt-resolve -p exams/ita_2025/math/essays -q 1 2 3 --dry-run\n"
-        ),
-    )
-    parser.add_argument(
-        "-p",
-        "--path",
-        type=str,
-        required=True,
-        help="Path to the exam directory (e.g., 'exams/ita_2025/math/essays'). Each question should be in a separate image file and named as 'q{question_number}.jpg'.",
-    )
-    parser.add_argument(
-        "-q",
-        "--questions",
-        type=lambda x: [int(i) for i in x.split(",")],
-        help="Question numbers to solve separated by commas (e.g., 1 or 1,2,3). If not provided, all questions will be solved",
-    )
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Run in dry-run mode without making actual API calls, only for testing purposes and to show the progress bar.",
-    )
-
-    args = parser.parse_args()
-
-    resolve_exam(
-        exam_path=args.path, questions_to_solve=args.questions, dry_run=args.dry_run
-    )
+    app()
 
 
 if __name__ == "__main__":
-    main()
+    app()
