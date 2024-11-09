@@ -66,3 +66,16 @@ def mock_answer_client(mock_answer_response):
     with patch("gpt_resolve.resolve.client") as mock:
         mock.chat.completions.create.return_value = mock_answer_response
         yield mock
+
+
+@pytest.fixture
+def mock_openai_client():
+    """Mock the OpenAI client with basic functionality."""
+    with patch("gpt_resolve.resolve.OpenAI") as mock_openai:
+        mock_client = Mock()
+        mock_openai.return_value = mock_client
+        
+        # Mock the chat completions create method
+        mock_client.chat.completions.create = Mock()
+        
+        yield mock_client
