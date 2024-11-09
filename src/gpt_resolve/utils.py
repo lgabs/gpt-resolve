@@ -52,6 +52,5 @@ def save_answer_and_description(
     with open(
         f"{solutions_path}/q{question_number}_solution.txt", "w", encoding="utf-8"
     ) as f:
-        f.write(f"\\section*{{Questão {question_number}}}\n")
         f.write(question_description + "\n\n")
         f.write(answer)

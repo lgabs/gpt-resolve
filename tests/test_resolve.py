@@ -59,7 +59,7 @@ def test_resolve_question_success(mock_answer_client):
     expected_tokens = 100
 
     # Act
-    answer, tokens = resolve_question(mock_answer_client,question_description)
+    answer, tokens = resolve_question(mock_answer_client, question_description)
 
     # Assert
     assert answer == expected_answer
