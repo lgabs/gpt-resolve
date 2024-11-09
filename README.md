@@ -11,9 +11,9 @@ After the first exam is solved, the project will try to solve the multiple choic
 
 Table of exams to be solved:
 
-| Exam | Phase | Section | Type | Model | Status |
-|------|-------|---------|------|-------|--------|
-| ITA  | 2025  | Math    | Essay | o1-preview | 🚧 In Progress |
+| Exam | Phase | Section | Type | Model | Status | Score |
+|------|-------|---------|------|-------|--------|-------|
+| ITA  | 2025  | Math    | Essay | o1-preview | 🚧 In Progress | - |
 
 ## How to use
 So far, with just one exam, you just need to run `python src/resolve.py`. It will process a `exam_path` and it will save the results in the subfolder `solutions` as `.txt` files, one for each question. Make sure to set your env var `OPENAI_API_KEY` in the `.env` file. See section [Convert to LaTeX PDF](#convert-to-latex-pdf) to see how to convert the `.txt` files to a PDF.
