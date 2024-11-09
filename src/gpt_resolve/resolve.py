@@ -9,13 +9,15 @@ from tqdm import tqdm
 
 from gpt_resolve.utils import get_exam_images_paths, save_answer_and_description
 
-# Load environment variables from .env file
-load_dotenv(override=True)
-api_key = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=api_key)
-
 MAX_TOKENS_QUESTION_DESCRIPTION = 400  # for gpt-4o
 MAX_COMPLETION_TOKENS = 5000  # for o1-preview, much higher tokens are needed
+
+
+def get_openai_client():
+    """Initialize OpenAI client with API key from environment variables."""
+    load_dotenv(override=True)
+    api_key = os.getenv("OPENAI_API_KEY")
+    return OpenAI(api_key=api_key)
 
 
 def encode_image(image_path: str) -> str:
@@ -24,7 +26,7 @@ def encode_image(image_path: str) -> str:
 
 
 def extract_question_description(
-    question_image: str, conventions_image: str, dry_run: bool = False
+    client: OpenAI, question_image: str, conventions_image: str, dry_run: bool = False
 ) -> tuple[str, int]:
     """Extracts the question description from the given question image."""
     if dry_run:
@@ -74,6 +76,7 @@ def extract_question_description(
 
 
 def resolve_question(
+    client: OpenAI,
     question_description: str,
     max_completion_tokens: int = MAX_COMPLETION_TOKENS,
     dry_run: bool = False,
@@ -120,6 +123,8 @@ def process_questions(
     exam_path: str,
     dry_run: bool = False,
 ) -> None:
+    """Processes the given questions using the OpenAI client."""
+    client = get_openai_client()
     total_questions = len(questions_images)
     for idx, (question_num, question_image) in enumerate(questions_images):
         pbar = tqdm(
@@ -132,11 +137,11 @@ def process_questions(
         )
         # Process the question
         question_description, total_tokens_desc = extract_question_description(
-            question_image, conventions_image, dry_run=dry_run
+            client, question_image, conventions_image, dry_run=dry_run
         )
 
         answer, total_tokens_ans = resolve_question(
-            question_description, dry_run=dry_run
+            client, question_description, dry_run=dry_run
         )
         pbar.set_postfix(
             {"Desc Tokens": total_tokens_desc, "Ans Tokens": total_tokens_ans}

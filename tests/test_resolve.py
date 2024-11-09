@@ -43,7 +43,7 @@ def test_extract_question_description_success(mock_question_description_client):
 
     # Act
     description, tokens = extract_question_description(
-        question_image, conventions_image
+        mock_question_description_client, question_image, conventions_image
     )
 
     # Assert
@@ -59,7 +59,7 @@ def test_resolve_question_success(mock_answer_client):
     expected_tokens = 100
 
     # Act
-    answer, tokens = resolve_question(question_description)
+    answer, tokens = resolve_question(mock_answer_client,question_description)
 
     # Assert
     assert answer == expected_answer
