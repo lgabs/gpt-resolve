@@ -13,7 +13,7 @@ MAX_TOKENS_QUESTION_DESCRIPTION = 400  # for gpt-4o
 MAX_COMPLETION_TOKENS = 5000  # for o1-preview, much higher tokens are needed
 
 
-def get_openai_client():
+def get_openai_client() -> OpenAI:
     """Initialize OpenAI client with API key from environment variables."""
     load_dotenv(override=True)
     api_key = os.getenv("OPENAI_API_KEY")
@@ -185,32 +185,33 @@ def resolve_exam(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Resolve exam questions using GPT-4o and o1-preview",
+        description="Resolve exam questions using GPT-4o to describe the question (which may include images) and o1-preview to solve it.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-            Examples:
-                gpt-resolve -p exams/ita_2025/math/essays
-                gpt-resolve -p exams/ita_2025/math/essays -q 1 2 3
-                gpt-resolve -p exams/ita_2025/math/essays --dry-run
-        """,
+        epilog=(
+            "Examples:\n"
+            "> gpt-resolve -p exams/ita_2025/math/essays\n"
+            "> gpt-resolve -p exams/ita_2025/math/essays -q 1 2 3\n"
+            "> gpt-resolve -p exams/ita_2025/math/essays --dry-run\n"
+            "> gpt-resolve -p exams/ita_2025/math/essays -q 1 2 3 --dry-run\n"
+        ),
     )
     parser.add_argument(
         "-p",
         "--path",
         type=str,
         required=True,
-        help="Path to the exam directory (e.g., 'exams/ita_2025/math/essays')",
+        help="Path to the exam directory (e.g., 'exams/ita_2025/math/essays'). Each question should be in a separate image file and named as 'q{question_number}.jpg'.",
     )
     parser.add_argument(
         "-q",
         "--questions",
         type=lambda x: [int(i) for i in x.split(",")],
-        help="Question numbers to solve (e.g., 1 or 1,2,3). If not provided, all questions will be solved",
+        help="Question numbers to solve separated by commas (e.g., 1 or 1,2,3). If not provided, all questions will be solved",
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Run in dry-run mode without making actual API calls",
+        help="Run in dry-run mode without making actual API calls, only for testing purposes and to show the progress bar.",
     )
 
     args = parser.parse_args()
