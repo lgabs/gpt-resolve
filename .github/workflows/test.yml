@@ -24,8 +24,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install .[test]
+        pip install poetry
+        poetry install --with dev
         
     - name: Run tests
       run: |
-        pytest tests/ -v 
+        poetry run pytest -v --cov=gpt_resolve --cov-report=xml
