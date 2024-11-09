@@ -1,19 +1,21 @@
 import os
+import time
 import base64
-
+import argparse
 from dotenv import load_dotenv
+
 from openai import OpenAI
 from tqdm import tqdm
 
-from src.utils import get_exam_images_paths, save_answer_and_description
+from gpt_resolve.utils import get_exam_images_paths, save_answer_and_description
 
 # Load environment variables from .env file
 load_dotenv(override=True)
 api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=api_key)
 
-MAX_TOKENS_QUESTION_DESCRIPTION = 400 # for gpt-4o
-MAX_COMPLETION_TOKENS = 5000 # for o1-preview, much higher tokens are needed
+MAX_TOKENS_QUESTION_DESCRIPTION = 400  # for gpt-4o
+MAX_COMPLETION_TOKENS = 5000  # for o1-preview, much higher tokens are needed
 
 
 def encode_image(image_path: str) -> str:
@@ -22,9 +24,16 @@ def encode_image(image_path: str) -> str:
 
 
 def extract_question_description(
-    question_image: str, conventions_image: str
+    question_image: str, conventions_image: str, dry_run: bool = False
 ) -> tuple[str, int]:
     """Extracts the question description from the given question image."""
+    if dry_run:
+        time.sleep(5)
+        return (
+            "\\section*{Questão 1}\\n\\nMock question description for testing purposes.",
+            100,
+        )
+
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
@@ -65,9 +74,16 @@ def extract_question_description(
 
 
 def resolve_question(
-    question_description: str, max_completion_tokens: int = MAX_COMPLETION_TOKENS
+    question_description: str,
+    max_completion_tokens: int = MAX_COMPLETION_TOKENS,
+    dry_run: bool = False,
 ) -> tuple[str, int]:
     """Resolves the given question with an OpenAI pipeline using gpt-4o to describe the question and o1-preview to solve it."""
+    if dry_run:
+        return (
+            "\\section*{Solução}\\n\\nMock solution for testing purposes.\\n\\nANSWER: 42",
+            200,
+        )
 
     response = client.chat.completions.create(
         model="o1-preview",
@@ -98,7 +114,44 @@ def resolve_question(
     return answer, total_tokens
 
 
-def resolve_exam(exam_path: str, questions_to_solve: list[int] = None) -> None:
+def process_questions(
+    questions_images: list[tuple[int, str]],
+    conventions_image: str,
+    exam_path: str,
+    dry_run: bool = False,
+) -> None:
+    total_questions = len(questions_images)
+    for idx, (question_num, question_image) in enumerate(questions_images):
+        pbar = tqdm(
+            total=total_questions,
+            desc=f"Processing Question {question_num}",
+            position=idx,
+            leave=True,
+            unit="question",
+            initial=idx,
+        )
+        # Process the question
+        question_description, total_tokens_desc = extract_question_description(
+            question_image, conventions_image, dry_run=dry_run
+        )
+
+        answer, total_tokens_ans = resolve_question(
+            question_description, dry_run=dry_run
+        )
+        pbar.set_postfix(
+            {"Desc Tokens": total_tokens_desc, "Ans Tokens": total_tokens_ans}
+        )
+        save_answer_and_description(
+            answer, question_description, exam_path, question_num, dry_run=dry_run
+        )
+        pbar.update(1)
+        pbar.close()
+    print("All questions processed successfully.")
+
+
+def resolve_exam(
+    exam_path: str, questions_to_solve: list[int] = None, dry_run: bool = False
+) -> None:
     """
     Resolves the given exam with GPT up to `questions_to_solve` questions.
     If `questions_to_solve` is not provided, all questions will be solved.
@@ -116,30 +169,51 @@ def resolve_exam(exam_path: str, questions_to_solve: list[int] = None) -> None:
         (i, encode_image(question_path)) for i, question_path in questions_paths
     ]
 
-    questions_images = questions_images + questions_images
+    # Process the questions using the encapsulated function
+    process_questions(
+        questions_images=questions_images,
+        conventions_image=conventions_image,
+        exam_path=exam_path,
+        dry_run=dry_run,
+    )
 
-    for i, question_image in tqdm(
-        enumerate(questions_images, start=1),
-        total=len(questions_images),
-        desc="Processing Questions",
-        unit="question",
-    ):
-        # Generate description
-        tqdm.write(f"[Question {i}]\n├─ Generating description...")
-        question_description, total_tokens = "teste", 100
-        question_description, total_tokens = extract_question_description(
-            question_image, conventions_image
-        )
-        tqdm.write(f"├─ Description generated ({total_tokens} tokens)")
 
-        # Solve question
-        tqdm.write(f"└─ Solving question...")
-        answer, total_tokens = resolve_question(question_description)
-        tqdm.write(f"└─ Solution found ({total_tokens} tokens)\n")
+def main():
+    parser = argparse.ArgumentParser(
+        description="Resolve exam questions using GPT-4o and o1-preview",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+            Examples:
+                gpt-resolve -p exams/ita_2025/math/essays
+                gpt-resolve -p exams/ita_2025/math/essays -q 1 2 3
+                gpt-resolve -p exams/ita_2025/math/essays --dry-run
+        """,
+    )
+    parser.add_argument(
+        "-p",
+        "--path",
+        type=str,
+        required=True,
+        help="Path to the exam directory (e.g., 'exams/ita_2025/math/essays')",
+    )
+    parser.add_argument(
+        "-q",
+        "--questions",
+        type=lambda x: [int(i) for i in x.split(",")],
+        help="Question numbers to solve (e.g., 1 or 1,2,3). If not provided, all questions will be solved",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Run in dry-run mode without making actual API calls",
+    )
 
-        # Save responses to file
-        save_answer_and_description(answer, question_description, exam_path, i)
+    args = parser.parse_args()
+
+    resolve_exam(
+        exam_path=args.path, questions_to_solve=args.questions, dry_run=args.dry_run
+    )
 
 
 if __name__ == "__main__":
-    resolve_exam("exams/ita_2025/math/essays", questions_to_solve=[1])
+    main()

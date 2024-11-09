@@ -36,11 +36,17 @@ def get_exam_images_paths(path: str) -> tuple[str, list[tuple[int, str]]]:
 
 
 def save_answer_and_description(
-    answer: str, question_description: str, exam_path: str, question_number: int
+    answer: str,
+    question_description: str,
+    exam_path: str,
+    question_number: int,
+    dry_run: bool = False,
 ) -> None:
     """Saves the answer and question description to files."""
 
-    solutions_path = f"{exam_path}/solutions"
+    solutions_path = (
+        f"{exam_path}/solutions" if not dry_run else f"{exam_path}/solutions_dry_run"
+    )
     os.makedirs(solutions_path, exist_ok=True)
 
     with open(
@@ -48,6 +54,4 @@ def save_answer_and_description(
     ) as f:
         f.write(f"\\section*{{Questão {question_number}}}\n")
         f.write(question_description + "\n\n")
-        # f.write("\\section*{Solução}\n\n")
         f.write(answer)
-    print(f"\tSolution and description for question {question_number} saved.")
