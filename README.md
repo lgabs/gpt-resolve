@@ -5,7 +5,7 @@ This project is an implementation of how to use LLMs to solve challenging Brazil
 
 We'll use `o1-preview`, which is the best OpenAI model so far with reasoning capabilities, and `gpt-4o` to describe the exam images so that `o1-preview` can solve them on question at a time (as it does not have image capabilities yet). Results are saved as txt files with LaTeX formatting, and you can optionally convert them to a nice PDF or using some LaTeX editor.
 
-The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md).
+The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md) documentation. **Spoiler: o1-preview scored 90% in the Math essay exam.**
 
 After the first ITA 2025 exam is fully solved, the project will try to expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams! 
 
