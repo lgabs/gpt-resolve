@@ -19,6 +19,8 @@ See more details in the [official exam announcemnt](https://vestibular.ita.br/in
 
 ## Results
 
+Preliminary solutions can be found in the [Poliedro School website](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2025/ita-2-fase-dia-1-matematica-05-11-2024-ita-2-fase-dia-1/dissertacao-1-matematica-ita-2-fase-dia-1-ita-2025#questao). Official solutions will be released soon.
+
 | Exam | Phase | Section | Type | Model | Status | Score | PDF Compiled |
 |------|-------|---------|------|-------|--------|-------|--------------|
 | ITA  | 2025  | Math    | Essay | o1-preview | ✅ Completed | 90%| [PDF](math/essays/solutions/solutions_compiled.pdf) |
