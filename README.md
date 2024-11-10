@@ -15,15 +15,15 @@ Table of exams to be solved:
 |------|------|-------|--------|-------|--------|
 | ITA  | 2025 | o1-preview | 🚧 In Progress | - | [Report](exams/ita_2025/report.md) |
 
-### Installation and How to use
-
+# Installation and How to use
+gpt-resolve is distributed in pypi:
 ```bash
 pip install gpt-resolve
 ```
 
-`gpt-resolve` provides a simple CLI with two main commands: `resolve` for solving exam questions and `compile-solutions` for generating PDFs from the solutions. 
+`gpt-resolve` provides a simple CLI with two main commands: `resolve` for solving exam questions and `compile-solutions` for generating PDFs from the solutions:
 
-### Solve exams
+### Solve exams with `resolve`
 
 To generate solutions for an exam:
 - save the exam images in the exam folder `exam_path`, one question per image file
@@ -33,18 +33,18 @@ To generate solutions for an exam:
 If you want to test the process without making real API calls, you can use the `--dry-run` flag. See `gpt-resolve resolve --help` for more details about solving only a subset of questions or controlling token usage.
 
 
-### Compile solutions into a single PDF
+### Compile solutions with `compile-solutions`
 
 Once you have the solutions in your exam folder `exam_path`, you can compile them into a single PDF:
 - run `gpt-resolve compile-solutions -p exam_path --title "Your Exam Title"`
 
 For that command to work, you'll need a LaTeX distribution in your system. See some guidelines [here](https://www.tug.org/texlive/) (MacTeX for MacOS was used to start this project).
 
-## Troubleshooting
+# Troubleshooting
 
 Sometimes, it was observed that the output from `o1-preview` produced invalid LaTeX code when nesting display math environments (such as `\[...\]` and `\begin{align*} ... \end{align*}` together). The current prompt for `o1-preview` adds an instruction to avoid this, which works most of the time. If that happens, you can try to solve the question again by running `gpt-resolve resolve -p exam_path -q <question_number>`, or making more adjustments to the prompt, or fixing the output LaTeX code manually.
 
-## Costs
+# Costs
 
 The `o1-preview` model is so far [available only for Tiers 3, 4 and 5](https://help.openai.com/en/articles/9824962-openai-o1-preview-and-o1-mini-usage-limits-on-chatgpt-and-the-api). It is [6x more expensive](https://openai.com/api/pricing/) than `gpt-4o`, and also consumes much more tokens to "reason" (see more [here](https://platform.openai.com/docs/guides/reasoning/controlling-costs#controlling-costs)), so be mindful about the number of questions you are solving and how many max tokens you're allowing gpt-resolve to use (see `gpt-resolve resolve --help` to control `max-tokens-question-answer`, which drives the cost). You can roughly estimate an upper bound for costs of solving an exam by 
 ```
@@ -52,7 +52,7 @@ The `o1-preview` model is so far [available only for Tiers 3, 4 and 5](https://h
 ```
 For the current price for o1-preview of $15/$60 per 1M tokens for input/output tokens, an 10 question exam with 10000 max tokens per question would cost less than $6.
 
-## Contributing
+# Contributing
 
 There are several ways you can contribute to this project:
 
