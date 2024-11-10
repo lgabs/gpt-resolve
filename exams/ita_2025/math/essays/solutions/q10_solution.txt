@@ -1,0 +1,105 @@
+\section*{Questão 10}
+
+Calcule a área da projeção ortogonal de um cubo de aresta 2 sobre um plano perpendicular a uma das diagonais do cubo.
+
+\section*{Solução}
+
+Para calcular a área da projeção ortogonal de um cubo de aresta $2$ sobre um plano perpendicular a uma de suas diagonais, vamos seguir os seguintes passos:
+
+\textbf{1. Considerações iniciais:}
+
+A diagonal do cubo em questão é a \emph{diagonal espacial}, que une dois vértices opostos do cubo. Para facilitar os cálculos, posicionaremos o cubo no sistema de coordenadas de forma que seu centro coincida com a origem e suas arestas estejam alinhadas com os eixos coordenados.
+
+Assim, os vértices do cubo terão coordenadas $(\pm1, \pm1, \pm1)$, já que a aresta do cubo é $2$ (então metade da aresta é $1$).
+
+\textbf{2. Equação do plano perpendicular à diagonal:}
+
+A diagonal espacial do cubo pode ser representada pelo vetor $\vec{d} = (1,1,1)$. O plano perpendicular a essa diagonal e que passa pela origem tem como vetor normal $\vec{n} = (1,1,1)$ e sua equação é dada por:
+\[
+x + y + z = 0.
+\]
+
+\textbf{3. Determinação dos pontos de interseção:}
+
+Vamos encontrar os pontos onde as arestas do cubo interceptam o plano $x + y + z = 0$. Consideramos as arestas que conectam os vértices cujas somas de coordenadas têm sinais opostos, pois essas são as que interceptam o plano.
+
+Calculamos a soma das coordenadas de cada vértice:
+\begin{align*}
+V1: (1,1,1) &\Rightarrow x + y + z = 3 \\
+V2: (1,1,-1) &\Rightarrow x + y + z = 1 \\
+V3: (1,-1,1) &\Rightarrow x + y + z = 1 \\
+V4: (1,-1,-1) &\Rightarrow x + y + z = -1 \\
+V5: (-1,1,1) &\Rightarrow x + y + z = 1 \\
+V6: (-1,1,-1) &\Rightarrow x + y + z = -1 \\
+V7: (-1,-1,1) &\Rightarrow x + y + z = -1 \\
+V8: (-1,-1,-1) &\Rightarrow x + y + z = -3.
+\end{align*}
+
+As arestas que interceptam o plano são aquelas entre os vértices cujas somas de coordenadas são $1$ e $-1$.
+
+\textbf{4. Cálculo dos pontos de interseção nas arestas:}
+
+Vamos encontrar os pontos de interseção em cada aresta relevante:
+
+\emph{Exemplo para a aresta entre $V2$ e $V4$:}
+
+Parâmetro $t \in [0,1]$:
+\[
+\vec{r}(t) = \vec{V2} + t(\vec{V4} - \vec{V2}) = (1,1,-1) + t(0, -2, 0).
+\]
+As equações paramétricas são:
+\[
+\begin{cases}
+x(t) = 1 \\
+y(t) = 1 - 2t \\
+z(t) = -1.
+\end{cases}
+\]
+Encontramos $t$ tal que $x(t) + y(t) + z(t) = 0$:
+\[
+1 + (1 - 2t) + (-1) = 0 \Rightarrow 1 + 1 - 2t - 1 = 0 \Rightarrow 2 - 2t = 0 \Rightarrow t = 1.
+\]
+Portanto, o ponto de interseção é:
+\[
+(1, y(1), -1) = (1, -1, -1).
+\]
+Procedendo de forma similar para as outras arestas, encontramos os seis pontos de interseção:
+\[
+\begin{cases}
+P1: (1, 0, -1) \\
+P2: (0, 1, -1) \\
+P3: (-1, 1, 0) \\
+P4: (-1, 0, 1) \\
+P5: (0, -1, 1) \\
+P6: (1, -1, 0).
+\end{cases}
+\]
+
+\textbf{5. Formação do hexágono regular:}
+
+Os pontos $P1$ a $P6$ formam um hexágono regular no plano $x + y + z = 0$. Para calcular a área desse hexágono, precisamos determinar o comprimento de seus lados.
+
+\textbf{6. Cálculo do lado do hexágono:}
+
+Calculamos a distância entre dois pontos adjacentes:
+
+\emph{Entre $P1$ e $P2$:}
+\[
+\text{Distância } d = \sqrt{(1 - 0)^2 + (0 - 1)^2 + (-1 - (-1))^2} = \sqrt{1^2 + (-1)^2 + 0^2} = \sqrt{1 + 1} = \sqrt{2}.
+\]
+Os demais lados também têm comprimento $\sqrt{2}$, confirmando que o hexágono é regular com lado $s = \sqrt{2}$.
+
+\textbf{7. Cálculo da área do hexágono:}
+
+A área de um hexágono regular é dada por:
+\[
+A = \frac{3\sqrt{3}}{2} s^2.
+\]
+Substituindo $s = \sqrt{2}$:
+\[
+A = \frac{3\sqrt{3}}{2} (\sqrt{2})^2 = \frac{3\sqrt{3}}{2} \times 2 = 3\sqrt{3}.
+\]
+
+\textbf{Resposta final:}
+
+\textbf{ANSWER:} $3\sqrt{3}$

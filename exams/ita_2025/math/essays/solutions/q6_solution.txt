@@ -1,0 +1,72 @@
+\section*{Questão 6}
+
+Uma moeda não viciada é lançada \( n \) vezes. Encontre os valores de \( n \) que maximizam a probabilidade de sair cara pela quarta vez exatamente no enésimo lançamento.
+
+\section*{Solução}
+
+Para encontrar os valores de \( n \) que maximizam a probabilidade de obter a quarta cara exatamente no enésimo lançamento de uma moeda não viciada, vamos modelar o problema usando a distribuição binomial negativa.
+
+A probabilidade de obter a \( k \)-ésima cara no \( n \)-ésimo lançamento é dada por:
+
+\[
+P(N = n) = \binom{n-1}{k-1} p^k (1 - p)^{n - k}
+\]
+
+Onde:
+- \( p = 0,5 \) é a probabilidade de obter cara em um lançamento.
+- \( k = 4 \) é o número de caras que desejamos.
+- \( n \geq k \) é o número total de lançamentos.
+
+Substituindo os valores:
+
+\[
+P(N = n) = \binom{n-1}{3} (0{,}5)^4 (0{,}5)^{n - 4} = \binom{n-1}{3} (0{,}5)^n
+\]
+
+Simplificando a expressão:
+
+\[
+P(N = n) = \frac{(n - 1)(n - 2)(n - 3)}{6} \left( \dfrac{1}{2} \right)^n
+\]
+
+Nosso objetivo é encontrar os valores de \( n \) que maximizam \( P(N = n) \). Vamos analisar a função:
+
+\[
+f(n) = \frac{(n - 1)(n - 2)(n - 3)}{6} \left( \dfrac{1}{2} \right)^n
+\]
+
+Para facilitar, calcularemos o logaritmo natural da função:
+
+\[
+L(n) = \ln f(n) = \ln\left( (n - 1)(n - 2)(n - 3) \right) - n \ln 2 - \ln 6
+\]
+
+Derivando \( L(n) \) em relação a \( n \):
+
+\[
+L'(n) = \frac{1}{n - 1} + \frac{1}{n - 2} + \frac{1}{n - 3} - \ln 2
+\]
+
+Para encontrar os valores críticos, igualamos a derivada a zero:
+
+\[
+\frac{1}{n - 1} + \frac{1}{n - 2} + \frac{1}{n - 3} = \ln 2
+\]
+
+Como a equação acima não possui solução exata em \( n \), vamos calcular os valores de \( P(N = n) \) para \( n \) inteiros a partir de 4:
+
+\begin{align*}
+P(4) &= \binom{3}{3} \left( \dfrac{1}{2} \right)^4 = 1 \times \dfrac{1}{16} = 0{,}0625 \\
+P(5) &= \binom{4}{3} \left( \dfrac{1}{2} \right)^5 = 4 \times \dfrac{1}{32} = 0{,}125 \\
+P(6) &= \binom{5}{3} \left( \dfrac{1}{2} \right)^6 = 10 \times \dfrac{1}{64} = 0{,}15625 \\
+P(7) &= \binom{6}{3} \left( \dfrac{1}{2} \right)^7 = 20 \times \dfrac{1}{128} = 0{,}15625 \\
+P(8) &= \binom{7}{3} \left( \dfrac{1}{2} \right)^8 = 35 \times \dfrac{1}{256} \approx 0{,}1367 \\
+P(9) &= \binom{8}{3} \left( \dfrac{1}{2} \right)^9 = 56 \times \dfrac{1}{512} \approx 0{,}1094 \\
+P(10) &= \binom{9}{3} \left( \dfrac{1}{2} \right)^{10} = 84 \times \dfrac{1}{1024} \approx 0{,}0820 \\
+\end{align*}
+
+Observamos que \( P(N = n) \) aumenta de \( n = 4 \) até \( n = 6 \), atinge seu valor máximo em \( n = 6 \) e \( n = 7 \), e depois diminui para \( n > 7 \).
+
+Portanto, os valores de \( n \) que maximizam a probabilidade são \( n = 6 \) e \( n = 7 \).
+
+\textbf{ANSWER:} \( n = 6 \) e \( n = 7 \).

@@ -1,0 +1,105 @@
+\section*{Questão 8}
+
+Seja \( A_k = (a_{ij}) \) uma matriz quadrada de ordem \( k \), em que \( a_{ij} = \max \{i, j\} \) para todo \( i, j \) em \(\{1, 2, \ldots, k\}\). Determine \(\sum_{k=1}^{2025} \det(A_k)\).
+
+\section*{Solução}
+
+Temos a matriz \( A_k = (a_{ij}) \) de ordem \( k \) definida por \( a_{ij} = \max\{i, j\} \) para todos \( i, j \).
+
+Vamos calcular \( \det(A_k) \) para alguns valores de \( k \) e encontrar um padrão.
+
+Para \( k = 1 \):
+
+\[
+A_1 = [1], \quad \det(A_1) = 1
+\]
+
+Para \( k = 2 \):
+
+\[
+A_2 = \begin{bmatrix}
+1 & 2 \\
+2 & 2
+\end{bmatrix}, \quad
+\det(A_2) = (1)(2) - (2)(2) = -2
+\]
+
+Para \( k = 3 \):
+
+\[
+A_3 = \begin{bmatrix}
+1 & 2 & 3 \\
+2 & 2 & 3 \\
+3 & 3 & 3
+\end{bmatrix}
+\]
+
+Calculando o determinante:
+
+\begin{align*}
+\det(A_3) &= 1 \cdot \begin{vmatrix} 2 & 3 \\ 3 & 3 \end{vmatrix}
+- 2 \cdot \begin{vmatrix} 2 & 3 \\ 3 & 3 \end{vmatrix}
++ 3 \cdot \begin{vmatrix} 2 & 2 \\ 3 & 3 \end{vmatrix} \\
+&= 1 \cdot (2 \cdot 3 - 3 \cdot 3)
+- 2 \cdot (2 \cdot 3 - 3 \cdot 3)
++ 3 \cdot (2 \cdot 3 - 2 \cdot 3) \\
+&= 1(-3) - 2(-3) + 3(0) \\
+&= -3 + 6 + 0 \\
+&= 3
+\end{align*}
+
+Observamos que:
+
+\[
+\det(A_1) = 1, \quad \det(A_2) = -2, \quad \det(A_3) = 3
+\]
+
+Percebemos que o determinante alterna de sinal e é igual em magnitude a \( k \):
+
+\[
+\det(A_k) = (-1)^{k+1} \cdot k
+\]
+
+Assim, a soma requerida é:
+
+\[
+\sum_{k=1}^{2025} \det(A_k) = \sum_{k=1}^{2025} (-1)^{k+1} \cdot k
+\]
+
+Separando a soma em termos ímpares e pares:
+
+\[
+\sum_{k=1}^{2025} \det(A_k) = \sum_{\substack{k=1 \\ k\, \text{ímpar}}}^{2025} k - \sum_{\substack{k=2 \\ k\, \text{par}}}^{2024} k
+\]
+
+O número de termos ímpares é:
+
+\[
+n_{\text{ímpar}} = \frac{2025 + 1}{2} = 1013
+\]
+
+O número de termos pares é:
+
+\[
+n_{\text{par}} = \frac{2025 - 1}{2} = 1012
+\]
+
+A soma dos números ímpares de 1 a 2025 é:
+
+\[
+S_{\text{ímpar}} = n_{\text{ímpar}}^2 = (1013)^2 = 1\,026\,169
+\]
+
+A soma dos números pares de 2 a 2024 é:
+
+\[
+S_{\text{par}} = n_{\text{par}} \cdot (n_{\text{par}} + 1) = 1012 \times 1013 = 1\,025\,156
+\]
+
+Portanto, a soma total é:
+
+\[
+\sum_{k=1}^{2025} \det(A_k) = S_{\text{ímpar}} - S_{\text{par}} = 1\,026\,169 - 1\,025\,156 = 1\,013
+\]
+
+\textbf{ANSWER:} \( \sum_{k=1}^{2025} \det(A_k) = 1\,013 \)

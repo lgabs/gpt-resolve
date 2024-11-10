@@ -1,107 +1,114 @@
 \section*{Questão 1}
 
-Encontre os valores reais $a$ e $b$ tais que o polinômio $p(x) = x^{57} + ax^{14} + bx^7 + 1$, ao ser dividido por $x^2 - x + 1$, deixe resto $2x + 1$.
+Encontre os valores reais \(a\) e \(b\) tais que o polinômio \(p(x) = x^{57} + ax^{14} + bx^7 + 1\), ao ser dividido por \(x^2 - x + 1\), deixe resto \(2x + 1\).
 
 \section*{Solução}
 
-Para encontrar os valores reais de $a$ e $b$ tais que o polinômio $p(x) = x^{57} + a x^{14} + b x^7 + 1$ deixa resto $2x + 1$ quando dividido por $x^2 - x + 1$, utilizamos o fato de que:
+Queremos encontrar os valores reais \(a\) e \(b\) tais que, ao dividir o polinômio \(p(x) = x^{57} + ax^{14} + bx^7 + 1\) por \(x^2 - x + 1\), obtenhamos o resto \(2x + 1\).
 
-$$
-p(x) = (x^2 - x + 1) \cdot q(x) + (2x + 1)
-$$
+Para resolver o problema, utilizaremos o conceito de congruência polinomial módulo \(x^2 - x + 1\). Isto é, encontraremos a expressão de \(p(x)\) reduzida módulo \(x^2 - x + 1\), que será de grau menor que 2, ou seja, um polinômio de grau no máximo 1.
 
-onde $q(x)$ é o quociente da divisão.
+Primeiramente, observamos que, módulo \(x^2 - x + 1\), temos:
 
-Seja $\omega$ uma raiz complexa de $x^2 - x + 1 = 0$. Então, temos:
+\[
+x^2 \equiv x - 1
+\]
 
-$$
-\omega^2 - \omega + 1 = 0 \implies \omega^2 = \omega - 1
-$$
+Podemos usar esta relação para expressar potências superiores de \(x\) em termos de \(x\) de grau menor que 2. Notemos que as potências de \(x\) se repetirão a cada 6 termos devido ao ciclo que surge ao aplicar repetidamente a relação acima. Vamos determinar o padrão:
 
-Também sabemos que $\omega^6 = 1$, pois $\omega$ é uma raiz sexta da unidade.
+\begin{align*}
+x^0 &\equiv 1 \\
+x^1 &\equiv x \\
+x^2 &\equiv x - 1 \\
+x^3 &\equiv x \cdot (x - 1) \equiv x^2 - x \equiv (x - 1) - x \equiv -1 \\
+x^4 &\equiv x \cdot (-1) \equiv -x \\
+x^5 &\equiv x \cdot (-x) \equiv -x^2 \equiv -(x - 1) \equiv -x + 1 \\
+x^6 &\equiv x \cdot (-x + 1) \equiv -x^2 + x \equiv -(x - 1) + x \equiv -x + 1 + x \equiv 1 \\
+\end{align*}
 
-Vamos simplificar as potências de $\omega$:
+Observamos que:
 
-1. $\omega^{57}$:
+\[
+x^{6} \equiv 1, \quad x^{7} \equiv x, \quad x^{8} \equiv x - 1, \quad \text{e assim por diante.}
+\]
 
-   Como $57 \div 6 = 9$ resto $3$, temos:
+Portanto, para qualquer potência de \(x\), podemos escrever:
 
-   $$
-   \omega^{57} = \omega^{6 \cdot 9 + 3} = (\omega^6)^9 \cdot \omega^3 = 1^9 \cdot \omega^3 = \omega^3
-   $$
+\[
+x^{n} \equiv x^{n \bmod 6}
+\]
 
-2. $\omega^{14}$:
+Agora, calculamos:
 
-   Como $14 \div 6 = 2$ resto $2$, temos:
+1. \(x^{57}\):
 
-   $$
-   \omega^{14} = \omega^{6 \cdot 2 + 2} = (\omega^6)^2 \cdot \omega^2 = 1^2 \cdot \omega^2 = \omega^2
-   $$
+\[
+57 \bmod 6 = 3, \quad \text{pois } 6 \times 9 = 54 \text{ e } 57 - 54 = 3.
+\]
+\[
+\therefore x^{57} \equiv x^{3} \equiv -1
+\]
 
-3. $\omega^7$:
+2. \(x^{14}\):
 
-   Como $7 \div 6 = 1$ resto $1$, temos:
+\[
+14 \bmod 6 = 2, \quad \text{pois } 6 \times 2 = 12 \text{ e } 14 - 12 = 2.
+\]
+\[
+\therefore x^{14} \equiv x^{2} \equiv x - 1
+\]
 
-   $$
-   \omega^7 = \omega^{6 \cdot 1 + 1} = (\omega^6)^1 \cdot \omega^1 = 1^1 \cdot \omega = \omega
-   $$
+3. \(x^{7}\):
 
-Sabendo que:
+\[
+7 \bmod 6 = 1, \quad \text{pois } 6 \times 1 = 6 \text{ e } 7 - 6 = 1.
+\]
+\[
+\therefore x^{7} \equiv x^{1} \equiv x
+\]
 
-$$
-\omega^3 = \omega^{2} \cdot \omega = (\omega - 1) \cdot \omega = \omega^2 - \omega = (\omega - 1) - \omega = -1
-$$
+Substituindo essas equivalências em \(p(x)\), obtemos:
 
-Substituindo as potências simplificadas em $p(\omega)$:
+\begin{align*}
+p(x) &\equiv x^{57} + a x^{14} + b x^{7} + 1 \\
+&\equiv (-1) + a (x - 1) + b x + 1 \\
+&= -1 + a x - a + b x + 1 \\
+&= (a x + b x) + (-1 + 1 - a) \\
+&= (a + b) x - a
+\end{align*}
 
-$$
-p(\omega) = \omega^{57} + a \omega^{14} + b \omega^7 + 1 = \omega^3 + a \omega^2 + b \omega + 1
-$$
+Sabemos que o resto da divisão de \(p(x)\) por \(x^2 - x + 1\) é \(2x + 1\). Portanto, devemos ter:
 
-Substituindo os valores encontrados:
+\[
+(a + b) x - a = 2x + 1
+\]
 
-$$
-p(\omega) = (-1) + a (\omega - 1) + b \omega + 1 = a \omega - a + b \omega
-$$
+Igualando os coeficientes dos polinômios:
 
-Simplificando:
+1. Coeficientes de \(x\):
 
-$$
-p(\omega) = (a + b)\omega - a
-$$
-
-Sabemos que $p(\omega) = 2\omega + 1$, logo:
-
-$$
-(a + b)\omega - a = 2\omega + 1
-$$
-
-Igualando os coeficientes dos termos semelhantes:
-
-1. Coeficientes de $\omega$:
-
-   $$
-   a + b = 2
-   $$
+\[
+a + b = 2
+\]
 
 2. Termos constantes:
 
-   $$
-   -a = 1
-   $$
+\[
+- a = 1
+\]
 
-Resolvendo o sistema:
+Resolvendo o sistema de equações:
 
-Da equação $-a = 1$, obtemos:
+Da segunda equação, temos:
 
-$$
-a = -1
-$$
+\[
+- a = 1 \implies a = -1
+\]
 
-Substituindo em $a + b = 2$:
+Substituindo \(a = -1\) na primeira equação:
 
-$$
--1 + b = 2 \implies b = 3
-$$
+\[
+-1 + b = 2 \implies b = 2 + 1 \implies b = 3
+\]
 
-\textbf{ANSWER:} $a = -1$ e $b = 3$
+\textbf{ANSWER:} \(a = -1\) e \(b = 3\).
