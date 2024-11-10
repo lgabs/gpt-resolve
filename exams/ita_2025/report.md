@@ -4,7 +4,6 @@
 The Instituto Tecnológico de Aeronáutica (ITA) entrance exam for 2025 consists of two phases:
 
 - **Phase 1**: 
-  - Written exams covering the subjects listed in the Examination Program found in ANNEX D and available on the ITA Vestibular website.
   - The exam includes 48 multiple-choice questions, divided into:
     - 12 questions in Mathematics
     - 12 questions in Physics
@@ -15,6 +14,8 @@ The Instituto Tecnológico de Aeronáutica (ITA) entrance exam for 2025 consists
   - Essay exams in Mathematics, Physics, and Chemistry, each consisting of 10 questions.
   - An argumentative essay.
   - 15 objective questions in Portuguese.
+
+See more details in the [official exam announcemnt](https://vestibular.ita.br/instrucoes/edital_2025.pdf).
 
 ## Results
 
