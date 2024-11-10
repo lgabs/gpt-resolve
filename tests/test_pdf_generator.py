@@ -9,12 +9,7 @@ def test_generate_solutions_pdf(tmp_path):
 
     # Create mock solution file
     solution_file = solutions_dir / "q1_solution.txt"
-    solution_file.write_text(
-        r"""
-    \section*{Question 1}
-    This is a test solution.
-    """
-    )
+    solution_file.write_text(r"\section*{Question 1}This is a test solution.")
 
     # Generate PDF
     generate_solutions_pdf(tmp_path, "Test Exam")
