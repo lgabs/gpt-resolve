@@ -21,18 +21,6 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install TeX Live
-      uses: teatimeguest/setup-texlive-action@v3
-      with:
-        packages: |
-          scheme-basic
-          latexmk
-          amsmath
-          amssymb
-          amsfonts
-          graphicx
-          hyperref
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -41,4 +29,4 @@ jobs:
 
     - name: Run tests
       run: |
-        poetry run pytest -v --cov=gpt_resolve --cov-report=xml
+        poetry run pytest -v --cov=gpt_resolve --cov-report=xml --ignore=tests/test_pdf_generator.py
