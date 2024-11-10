@@ -22,10 +22,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install TeX Live
-      uses: zauguin/install-texlive@v3
-      with:
-        packages: >
-            amsmath amssymb amsfonts graphicx hyperref
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-latex-recommended
+        sudo tlmgr install amsmath amssymb amsfonts graphicx hyperref
 
     - name: Install dependencies
       run: |
