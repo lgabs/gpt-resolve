@@ -26,17 +26,24 @@ pip install gpt-resolve
 ### Solve exams with `resolve`
 
 To generate solutions for an exam:
-- save the exam images in the exam folder `exam_path`, one question per image file
+- save the exam images in the exam folder `exam_path`, one question per image file. File names should follow the pattern `q<question_number>.jpg`, e.g. `q1.jpg`, `q2.jpg`, etc.
 - add `OPENAI_API_KEY` to your global environment variables or to a `.env` file in the current directory
-- run `gpt-resolve resolve -p exam_path` and grab a coffee while it runs.
+
+then, run
+```bash
+gpt-resolve resolve -p exam_path
+```
+and grab a coffee while it runs.
 
 If you want to test the process without making real API calls, you can use the `--dry-run` flag. See `gpt-resolve resolve --help` for more details about solving only a subset of questions or controlling token usage.
 
 
 ### Compile solutions with `compile-solutions`
 
-Once you have the solutions in your exam folder `exam_path`, you can compile them into a single PDF:
-- run `gpt-resolve compile-solutions -p exam_path --title "Your Exam Title"`
+Once you have the solutions in your exam folder `exam_path`, you can compile them into a single PDF running:
+```bash
+gpt-resolve compile-solutions -p exam_path --title "Your Exam Title"
+```
 
 For that command to work, you'll need a LaTeX distribution in your system. See some guidelines [here](https://www.tug.org/texlive/) (MacTeX for MacOS was used to start this project).
 
