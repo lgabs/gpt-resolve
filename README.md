@@ -29,7 +29,7 @@ To generate solutions for an exam:
 - save the exam images in the exam folder `exam_path`, one question per image file
 - run `gpt-resolve resolve -p exam_path` and grab a coffee while it runs.
 
-See `gpt-resolve resolve --help` for more details about solving only a subset of questions or controlling token usage.
+If you want to test the process without making real api calls, you can use the `--dry-run` flag. See `gpt-resolve resolve --help` for more details about solving only a subset of questions or controlling token usage.
 
 
 ### Compile solutions into a single PDF
