@@ -27,6 +27,9 @@ jobs:
         pip install poetry
         poetry install --with dev
         
-    - name: Run tests
-      run: |
-        poetry run pytest -v --cov=gpt_resolve --cov-report=xml
+    - name: Run tests with TeX Live configured
+      uses: xu-cheng/texlive-action@v2
+      with:
+        scheme: small
+        run: |
+            poetry run pytest -v --cov=gpt_resolve --cov-report=xml
