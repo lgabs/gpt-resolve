@@ -1,11 +1,12 @@
 from pathlib import Path
-from pylatex import Document, Section, Command
+from typing import Union
+from pylatex import Document, Command
 from pylatex.utils import NoEscape
 import datetime
 
 
 def generate_solutions_pdf(
-    exam_path: str | Path, title: str, author="o1-preview (OpenAI)"
+    exam_path: Union[str, Path], title: str, author="o1-preview (OpenAI)"
 ) -> None:
     """
     Generate a PDF document containing all solutions from an exam directory.
@@ -32,7 +33,7 @@ def generate_solutions_pdf(
         Command(
             "title",
             NoEscape(
-                f"{title}\\thanks{{Made with gpt-resolve: \\url{{https://github.com/lgabs/gpt-resolve}}}}"
+                f"{title}\\thanks{{This exam was solved and automatically generated with gpt-resolve: \\url{{https://github.com/lgabs/gpt-resolve}}}}"
             ),
         )
     )
@@ -41,13 +42,15 @@ def generate_solutions_pdf(
     doc.append(NoEscape(r"\maketitle"))
 
     # Get all solution files sorted
-    solution_files = sorted(solutions_dir.glob("*_solution.txt"))
+    solution_files = sorted(
+        solutions_dir.glob("*_solution.txt"),
+        key=lambda x: int(x.stem.split("_")[0][1:]),
+    )
 
     # Add each solution to document
     for sol_file in solution_files:
         content = sol_file.read_text(encoding="utf-8")
         doc.append(NoEscape(content))
-
         doc.append(NoEscape(r"\newpage"))
 
     # Generate PDF in the exam directory

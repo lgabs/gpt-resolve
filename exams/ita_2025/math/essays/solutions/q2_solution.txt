@@ -1,0 +1,120 @@
+\section*{Questão 2}
+
+Seja \( E \) uma elipse com eixo focal no eixo \( O_x \) do sistema de coordenadas cartesianas. O centro de \( E \) é o ponto \( (r, 0) \), com \( r > 0 \), sua excentricidade é \( \frac{\sqrt{2}}{2} \), e seu semieixo maior mede \(\sqrt{2}\). Considerando os pontos \( (x, y) \in E \), determine o valor de \( r \) para que \(\frac{y}{x}\) tenha valor máximo igual a 1.
+
+\section*{Solução}
+
+Dada a elipse \( E \) com centro em \( (r, 0) \) e eixo focal ao longo do eixo \( O_x \), com excentricidade \( e = \dfrac{\sqrt{2}}{2} \) e semieixo maior \( a = \sqrt{2} \).
+
+Primeiramente, calculamos o semieixo menor \( b \):
+
+\[
+b = a \sqrt{1 - e^2} = \sqrt{2} \sqrt{1 - \left( \dfrac{\sqrt{2}}{2} \right)^2} = \sqrt{2} \sqrt{1 - \dfrac{2}{4}} = \sqrt{2} \sqrt{\dfrac{2}{4}} = \sqrt{2} \cdot \dfrac{\sqrt{2}}{2} = 1.
+\]
+
+A distância focal é:
+
+\[
+c = a e = \sqrt{2} \cdot \dfrac{\sqrt{2}}{2} = 1.
+\]
+
+A equação da elipse é:
+
+\[
+\frac{(x - r)^2}{a^2} + \frac{y^2}{b^2} = 1 \Rightarrow \frac{(x - r)^2}{2} + y^2 = 1.
+\]
+
+Queremos encontrar \( r \) tal que o valor máximo de \( \dfrac{y}{x} \) seja igual a 1. Para isso, parametrize a elipse:
+
+\[
+\begin{cases}
+x = r + a \cos \theta = r + \sqrt{2} \cos \theta, \\
+y = b \sin \theta = \sin \theta.
+\end{cases}
+\]
+
+Assim, temos:
+
+\[
+\frac{y}{x} = \frac{\sin \theta}{r + \sqrt{2} \cos \theta}.
+\]
+
+Para encontrar o valor máximo de \( \dfrac{y}{x} \), consideramos a função:
+
+\[
+\lambda(\theta) = \frac{\sin \theta}{r + \sqrt{2} \cos \theta}.
+\]
+
+Calculamos a derivada em relação a \( \theta \):
+
+\[
+\lambda'(\theta) = \frac{\cos \theta (r + \sqrt{2} \cos \theta) - \sin \theta (-\sqrt{2} \sin \theta)}{(r + \sqrt{2} \cos \theta)^2} = \frac{r \cos \theta + \sqrt{2}}{(r + \sqrt{2} \cos \theta)^2}.
+\]
+
+Para os pontos críticos, igualamos a derivada a zero:
+
+\[
+r \cos \theta + \sqrt{2} = 0 \Rightarrow \cos \theta = -\dfrac{\sqrt{2}}{r}.
+\]
+
+Para que \( \cos \theta \) seja válido, é necessário que \( \left| \cos \theta \right| \leq 1 \):
+
+\[
+\left| -\dfrac{\sqrt{2}}{r} \right| \leq 1 \Rightarrow r \geq \sqrt{2}.
+\]
+
+Calculamos \( \sin \theta \):
+
+\[
+\sin^2 \theta = 1 - \cos^2 \theta = 1 - \left( \dfrac{\sqrt{2}}{r} \right)^2 = 1 - \dfrac{2}{r^2} = \dfrac{r^2 - 2}{r^2}.
+\]
+
+Como \( \sin \theta \geq 0 \) no quadrante correspondente, temos:
+
+\[
+\sin \theta = \dfrac{\sqrt{r^2 - 2}}{r}.
+\]
+
+Substituindo na expressão de \( \lambda(\theta) \):
+
+\[
+\lambda_{\text{máx}} = \frac{\sin \theta}{r + \sqrt{2} \cos \theta} = \frac{\dfrac{\sqrt{r^2 - 2}}{r}}{r - \dfrac{2}{r}} = \frac{\sqrt{r^2 - 2}}{r^2 - 2}.
+\]
+
+Igualamos \( \lambda_{\text{máx}} \) a 1:
+
+\[
+\frac{\sqrt{r^2 - 2}}{r^2 - 2} = 1 \Rightarrow \sqrt{r^2 - 2} = r^2 - 2.
+\]
+
+Elevando ambos os lados ao quadrado:
+
+\[
+r^2 - 2 = (r^2 - 2)^2 \Rightarrow (r^2 - 2)^2 - (r^2 - 2) = 0 \Rightarrow (r^2 - 2)(r^2 - 3) = 0.
+\]
+
+Portanto, as soluções são:
+
+\[
+r^2 - 2 = 0 \Rightarrow r = \sqrt{2}, \quad r^2 - 3 = 0 \Rightarrow r = \sqrt{3}.
+\]
+
+Como \( r > 0 \) e \( r \geq \sqrt{2} \), analisamos as soluções:
+
+- Para \( r = \sqrt{2} \):
+
+  \[
+  \lambda_{\text{máx}} = \frac{\sqrt{(\sqrt{2})^2 - 2}}{(\sqrt{2})^2 - 2} = \frac{0}{0}, \text{ indeterminado}.
+  \]
+
+  Nesse caso, analisando a função, concluímos que \( \lambda_{\text{máx}} = 0 \), o que não satisfaz a condição requerida.
+
+- Para \( r = \sqrt{3} \):
+
+  \[
+  \lambda_{\text{máx}} = \frac{\sqrt{(\sqrt{3})^2 - 2}}{(\sqrt{3})^2 - 2} = \frac{\sqrt{3 - 2}}{3 - 2} = \frac{1}{1} = 1.
+  \]
+
+Assim, o valor de \( r \) que satisfaz a condição é \( r = \sqrt{3} \).
+
+\textbf{ANSWER:} \( r = \sqrt{3} \)

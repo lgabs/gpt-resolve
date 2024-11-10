@@ -1,0 +1,74 @@
+\section*{Questão 5}
+
+Usando as aproximações \(\log_{10} 2 = 0{,}3010\), \(\log_{10} 3 = 0{,}4771\) e \(\log_{10} 7 = 0{,}8450\), determine o primeiro algarismo (da esquerda para a direita) do resultado de \(3^{100}\).
+
+\section*{Solução}
+
+Para determinar o primeiro algarismo de \(3^{100}\), vamos usar logaritmos para encontrar a parte decimal de \(\log_{10} 3^{100}\) e então calcular \(10\) elevado a essa parte decimal para encontrar o valor inicial de \(3^{100}\).
+
+Primeiramente, calculamos \(\log_{10} 3^{100}\):
+
+\begin{align*}
+\log_{10} 3^{100} &= 100 \times \log_{10} 3 \\
+&= 100 \times 0{,}4771 \\
+&= 47{,}71
+\end{align*}
+
+Então, temos:
+
+\[
+\log_{10} 3^{100} = 47{,}71
+\]
+
+A parte inteira é \(47\) e a parte decimal é \(0{,}71\).
+
+Isso significa que:
+
+\[
+3^{100} = 10^{47{,}71} = 10^{47} \times 10^{0{,}71}
+\]
+
+Nosso objetivo é calcular \(N = 10^{0{,}71}\).
+
+Para aproximar \(N\), usaremos interpolação linear entre valores conhecidos de logaritmos.
+
+Sabemos que:
+
+\begin{align*}
+\log_{10} 5 &= 0{,}6990 \\
+\log_{10} 6 &= 0{,}7781
+\end{align*}
+
+Entre \(5\) e \(6\), o aumento da função logarítmica é:
+
+\[
+\Delta \log_{10} N = 0{,}7781 - 0{,}6990 = 0{,}0791
+\]
+
+A diferença entre \(0{,}71\) e \(0{,}6990\) é:
+
+\[
+\delta = 0{,}71 - 0{,}6990 = 0{,}0110
+\]
+
+Usando interpolação linear:
+
+\[
+N = 5 + \left(6 - 5\right) \times \dfrac{0{,}0110}{0{,}0791} = 5 + \dfrac{0{,}0110}{0{,}0791} = 5 + 0{,}1391 = 5{,}1391
+\]
+
+Portanto:
+
+\[
+10^{0{,}71} \approx 5{,}1391
+\]
+
+Assim, temos:
+
+\[
+3^{100} \approx 10^{47} \times 5{,}1391 = 5{,}1391 \times 10^{47}
+\]
+
+O primeiro algarismo de \(3^{100}\) é, portanto, \(5\).
+
+\textbf{RESPOSTA:} 5
