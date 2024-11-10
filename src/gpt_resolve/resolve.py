@@ -235,7 +235,7 @@ def resolve(
         False, help="Run in dry-run mode without making actual API calls"
     ),
     max_tokens_question_description: int = typer.Option(
-        400, help="Maximum tokens for question description"
+        400, help="Maximum tokens for question description from image"
     ),
     max_tokens_question_answer: int = typer.Option(
         5000, help="Maximum completion tokens"
