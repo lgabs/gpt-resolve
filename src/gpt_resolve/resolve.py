@@ -55,6 +55,7 @@ def extract_question_description(
                             "Extraia o enunciado da questão e as alternativas, se existirem."
                             "Caso haja imagens, descreva-as de forma clara e objetiva de forma que seja possível entender o problema sem a necessidade de ver a imagem."
                             "Use apenas notação LaTeX, inclusive para fórmulas, equações ou destacar palavras em negrito ou itálico."
+                            "No caso de expressões em português como `seno`, `cosseno`, `tangente`, etc, use a notação em inglês `sin`, `cos`, `tan`, etc. na notação LaTeX."
                             "Sua resposta deve compreender apenas uma seção na sintaxe do LaTeX, começando com \section*{Questão N}, sem nada antes ou depois."
                             "Exemplo de enunciado: \section*{Questão 1}\n\nEnunciado da questão 1."
                         ),
@@ -109,7 +110,7 @@ def resolve_question(
                             "Responda à questão de forma clara e objetiva, explicando o raciocínio passo a passo, mas seja objetivo."
                             "Use a notação LaTeX para sua resposta, inclusive para fórmulas, equações ou destacar palavras em negrito ou itálico."
                             "Sua resposta deve compreender apenas uma seção na sintaxe do LaTeX, começando com \section*{Solução}."
-                            "Evite aninhar ambientes matemáticos, como colocar align* dentro de \[...\]."
+                            "Quando usar `align*`, não coloque-o dentro dos delimitadores `\[` e `\]`. Exemplo de uso: \begin{align*}x^2+1\end{align*}"
                             "Indique a solução final com um 'ANSWER:' seguido do resultado."
                             f"O enunciado da questão é:```{question_description}```"
                         ),
@@ -139,6 +140,9 @@ def process_questions(
     print(
         f"Starting to process {total_questions} questions. Each question can take a while to process when using reasoning models."
     )
+
+    start_time = time.perf_counter()
+
     for idx, (question_num, question_image) in enumerate(questions_images):
         pbar = tqdm(
             total=total_questions,
@@ -171,7 +175,12 @@ def process_questions(
         )
         pbar.update(1)
         pbar.close()
-    print("All questions processed successfully.")
+
+    end_time = time.perf_counter()
+    total_time = end_time - start_time
+
+    total_minutes = total_time / 60
+    print(f"All questions processed successfully in {total_minutes:.2f} minutes.")
 
 
 def resolve_exam(
