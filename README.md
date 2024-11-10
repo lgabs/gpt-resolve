@@ -5,9 +5,9 @@ This project is an implementation of how to use LLMs to solve challenging Brazil
 
 We'll use `o1-preview`, which is the best OpenAI model so far with reasoning capabilities, and `gpt-4o` to describe the exam images so that `o1-preview` can solve them on question at a time (as it does not have image capabilities yet). Results are saved as txt files with LaTeX formatting, and you can optionally convert them to a nice PDF or using some LaTeX editor.
 
-The first exam to be solved is the ITA (Instituto Tecnológico de Aeronáutica) exam for admissions in 2025, which is considered one of the most challenging exams in Brazil. The project will start by solving the second phase of the Math section, which is the essay test. This is particularly interesting because (i) the exam happened very recently on the 5th of November 2024 and (ii) the essay test requires a deep understanding of the subjects and the ability to write the answer step by step, which we'll evaluate as well. See more details in the in-progress [report](exams/ita_2025/report.md).
+The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md).
 
-After the first exam is solved, the project will try to solve the multiple choice test for Math and expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams! 
+After the first ITA 2025 exam is fully solved, the project will try to expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams! 
 
 Table of exams to be solved:
 
@@ -27,9 +27,10 @@ pip install gpt-resolve
 
 To generate solutions for an exam:
 - save the exam images in the exam folder `exam_path`, one question per image file
+- add `OPENAI_API_KEY` to your global environment variables or to a `.env` file in the current directory
 - run `gpt-resolve resolve -p exam_path` and grab a coffee while it runs.
 
-If you want to test the process without making real api calls, you can use the `--dry-run` flag. See `gpt-resolve resolve --help` for more details about solving only a subset of questions or controlling token usage.
+If you want to test the process without making real API calls, you can use the `--dry-run` flag. See `gpt-resolve resolve --help` for more details about solving only a subset of questions or controlling token usage.
 
 
 ### Compile solutions into a single PDF
@@ -42,6 +43,14 @@ For that command to work, you'll need a LaTeX distribution in your system. See s
 ## Troubleshooting
 
 Sometimes, it was observed that the output from `o1-preview` produced invalid LaTeX code when nesting display math environments (such as `\[...\]` and `\begin{align*} ... \end{align*}` together). The current prompt for `o1-preview` adds an instruction to avoid this, which works most of the time. If that happens, you can try to solve the question again by running `gpt-resolve resolve -p exam_path -q <question_number>`, or making more adjustments to the prompt, or fixing the output LaTeX code manually.
+
+## Costs
+
+The `o1-preview` model is so far [available only for Tiers 3, 4 and 5](https://help.openai.com/en/articles/9824962-openai-o1-preview-and-o1-mini-usage-limits-on-chatgpt-and-the-api). It is [6x more expensive](https://openai.com/api/pricing/) than `gpt-4o`, and also consumes much more tokens to "reason" (see more [here](https://platform.openai.com/docs/guides/reasoning/controlling-costs#controlling-costs)), so be mindful about the number of questions you are solving and how many max tokens you're allowing gpt-resolve to use (see `gpt-resolve resolve --help` to control `max-tokens-question-answer`, which drives the cost). You can roughly estimate an upper bound for costs of solving an exam by 
+```
+(number of questions) * (max_tokens_question_answer / 1_000_000) * (price per 1M tokens)
+```
+For the current price for o1-preview of $15/$60 per 1M tokens for input/output tokens, an 10 question exam with 10000 max tokens per question would cost less than $6.
 
 ## Contributing
 
