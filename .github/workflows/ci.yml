@@ -22,10 +22,14 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install TeX Live
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-latex-recommended
-        sudo tlmgr install amsmath amssymb amsfonts graphicx hyperref
+      uses: teatimeguest/setup-texlive-action@v3
+      with:
+        packages: |
+          amsmath
+          amssymb
+          amsfonts
+          graphicx
+          hyperref
 
     - name: Install dependencies
       run: |
