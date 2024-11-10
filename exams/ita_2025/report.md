@@ -19,13 +19,13 @@ See more details in the [official exam announcemnt](https://vestibular.ita.br/in
 
 ## Results
 
-| Exam | Phase | Section | Type | Model | Status | Score |
-|------|-------|---------|------|-------|--------|-------|
-| ITA  | 2025  | Math    | Essay | o1-preview | ✅ Completed | 90%|
-| ITA  | 2025  | Physics | Essay | o1-preview | 🚧 TODO | - |
-| ITA  | 2025  | Chemistry | Essay | o1-preview | 🚧 TODO | - |
-| ITA  | 2025  | Portuguese | Essay | o1-preview | 🚧 TODO | - |
-| ITA  | 2025  | Math    | Multiple Choice | o1-preview | 🚧 TODO | - |
+| Exam | Phase | Section | Type | Model | Status | Score | PDF Compiled |
+|------|-------|---------|------|-------|--------|-------|--------------|
+| ITA  | 2025  | Math    | Essay | o1-preview | ✅ Completed | 90%| [PDF](exams/ita_2025/math/essays/solutions/solutions_compiled.pdf) |
+| ITA  | 2025  | Physics | Essay | o1-preview | 🚧 TODO | - | - |
+| ITA  | 2025  | Chemistry | Essay | o1-preview | 🚧 TODO | - | - |
+| ITA  | 2025  | Portuguese | Essay | o1-preview | 🚧 TODO | - | - |
+| ITA  | 2025  | Math    | Multiple Choice | o1-preview | 🚧 TODO | - | - |
 
 ## Comments
 
