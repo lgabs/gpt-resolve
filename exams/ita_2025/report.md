@@ -31,4 +31,7 @@ Preliminary solutions can be found in the [Poliedro School website](https://poli
 
 ## Comments
 
+### Math Essay
 `o1-preview` almost got all questions correct in the Math essay exam. The only question it got wrong was question 10, which is a question about spacial geometry, which is a known area of weakness for LLMs. After running that question several times, it can get it correct sometimes, but not always. Since it did not got it correct in the first try, it was considered wrong. Check one of these correct answers [here](math/essays/solutions/q10_solution_rerun.txt).
+
+For almost of all questions, `max_tokens_question_description=400` and `max_tokens_question_answer=5000` used in `gpt-resolve` was enough, but for some questions (4,5,7,8) it was necessary to run them again since the answer on the first try were not complete due to the limit of max completion tokens processed. In these cases, `max_tokens_question_answer=10000` was used.
