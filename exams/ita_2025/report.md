@@ -1,4 +1,4 @@
-# ITA 2025 Math Essay Exam Report
+# ITA 2025 Exam Report
 
 ## Overview
 The Instituto Tecnológico de Aeronáutica (ITA) entrance exam for 2025 consists of two phases:
@@ -19,7 +19,7 @@ See more details in the [official exam announcemnt](https://vestibular.ita.br/in
 
 ## Results
 
-Preliminary solutions can be found by widely known high schools like [Poliedro](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2025/ita-2-fase-dia-1-matematica-05-11-2024-ita-2-fase-dia-1/dissertacao-1-matematica-ita-2-fase-dia-1-ita-2025#questao). Official solutions will be released soon.
+Preliminary solutions can be found by widely known high schools like [Poliedro](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita?year=2025). Official solutions will be released soon.
 
 | Exam | Phase | Section | Type | Model | Status | Score | PDF Compiled |
 |------|-------|---------|------|-------|--------|-------|--------------|
