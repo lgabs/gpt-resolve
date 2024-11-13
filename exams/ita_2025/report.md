@@ -25,7 +25,7 @@ Preliminary solutions can be found in the [Poliedro School website](https://poli
 |------|-------|---------|------|-------|--------|-------|--------------|
 | ITA  | 2025  | Math    | Essay | o1-preview | ✅ Completed | 90%| [PDF](math/essays/solutions/solutions_compiled.pdf) |
 | ITA  | 2025  | Physics | Essay | o1-preview | 🚧 TODO | - | - |
-| ITA  | 2025  | Chemistry | Essay | o1-preview | 🚧 TODO | - | - |
+| ITA  | 2025  | Chemistry | Essay | o1-preview | ✅ Completed | 90% | [PDF](chemistry/essays/solutions/solutions_compiled.pdf) |
 | ITA  | 2025  | Portuguese | Essay | o1-preview | 🚧 TODO | - | - |
 | ITA  | 2025  | Math    | Multiple Choice | o1-preview | 🚧 TODO | - | - |
 
