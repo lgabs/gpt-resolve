@@ -39,3 +39,5 @@ For almost of all questions, `max_tokens_question_description=400` and `max_toke
 ### Chemistry Essay
 
 Again, `o1-preview` got all questions correct in the Chemistry essay exam. The only wrong question was question 3, where it got parts (a) and (b) correct, but (c) and (d) wrong. This is probably because parts (c) and (d) involved reasoning about what was represented in the picture of the question, which again is hard for LLMs to do, so gpt-4o did some limited description of the image but it was not enough for o1-preview. This is why, for this question, we considered 0.5 points for the score (2 parts out of 4).
+
+`max_tokens_question_answer=5000` worked for most questions; only question 8 could not and so `10000` was used. Also, for some questions the confusion about how to use decimal separators or thousands separators in portuguese or english induced some errors, even when the development was clearly correct. To fix that, we updated the o1-preview prompt to use `,` for decimal separators and avoid thousands separators..
