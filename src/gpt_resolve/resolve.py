@@ -53,7 +53,7 @@ def extract_question_description(
                         "type": "text",
                         "text": (
                             "Extraia o enunciado da questão e as alternativas, se existirem."
-                            "Caso haja imagens, descreva-as de forma clara e objetiva de forma que seja possível entender o problema sem a necessidade de ver a imagem."
+                            "Caso haja imagens, descreva-as de forma clara e objetiva de forma que seja possível entender ao máximo o problema sem a necessidade de ver a imagem, e também inclua ao final uma descrição completa da imagem."
                             "Use apenas notação LaTeX, inclusive para fórmulas, equações ou destacar palavras em negrito ou itálico."
                             "No caso de expressões em português como `seno`, `cosseno`, `tangente`, etc, use a notação em inglês `sin`, `cos`, `tan`, etc. na notação LaTeX."
                             "Sua resposta deve compreender apenas uma seção na sintaxe do LaTeX, começando com \section*{Questão N}, sem nada antes ou depois."
@@ -111,6 +111,7 @@ def resolve_question(
                             "Use a notação LaTeX para sua resposta, inclusive para fórmulas, equações ou destacar palavras em negrito ou itálico."
                             "Sua resposta deve compreender apenas uma seção na sintaxe do LaTeX, começando com \section*{Solução}."
                             "Quando usar `align*`, não coloque-o dentro dos delimitadores `\[` e `\]`. Exemplo de uso: \begin{align*}x^2+1\end{align*}"
+                            "Use vírgulas para separação decimal e não use pontos para separação de milhares."
                             "Indique a solução final com um 'ANSWER:' seguido do resultado."
                             f"O enunciado da questão é:```{question_description}```"
                         ),

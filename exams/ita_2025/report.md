@@ -25,7 +25,7 @@ Preliminary solutions can be found by widely known high schools like [Poliedro](
 |------|-------|---------|------|-------|--------|-------|--------------|
 | ITA  | 2025  | Math    | Essay | o1-preview | ✅ Completed | 90%| [PDF](math/essays/solutions/solutions_compiled.pdf) |
 | ITA  | 2025  | Physics | Essay | o1-preview | 🚧 TODO | - | - |
-| ITA  | 2025  | Chemistry | Essay | o1-preview | 🚧 TODO | - | - |
+| ITA  | 2025  | Chemistry | Essay | o1-preview | ✅ Completed | 95% | [PDF](chemistry/essays/solutions/solutions_compiled.pdf) |
 | ITA  | 2025  | Portuguese | Essay | o1-preview | 🚧 TODO | - | - |
 | ITA  | 2025  | Math    | Multiple Choice | o1-preview | 🚧 TODO | - | - |
 
@@ -35,3 +35,9 @@ Preliminary solutions can be found by widely known high schools like [Poliedro](
 `o1-preview` almost got all questions correct in the Math essay exam. The only question it got wrong was question 10, which is a question about spacial geometry, which is a known area of weakness for LLMs. After running that question several times, it can get it correct sometimes, but not always. Since it did not got it correct in the first try, it was considered wrong. Check one of these correct answers [here](math/essays/solutions/q10_solution_rerun.txt).
 
 For almost of all questions, `max_tokens_question_description=400` and `max_tokens_question_answer=5000` used in `gpt-resolve` was enough, but for some questions (4,5,7,8) it was necessary to run them again since the answer on the first try were not complete due to the limit of max completion tokens processed. In these cases, `max_tokens_question_answer=10000` was used.
+
+### Chemistry Essay
+
+Again, `o1-preview` got all questions correct in the Chemistry essay exam. The only wrong question was question 3, where it got parts (a) and (b) correct, but (c) and (d) wrong. This is probably because parts (c) and (d) involved reasoning about what was represented in the picture of the question, which is hard for LLMs to do, so gpt-4o did some limited description of the image but it was not enough for o1-preview. This is why, for this question, we considered 0.5 points for the score (2 parts out of 4).
+
+`max_tokens_question_answer=5000` worked for most questions; only question 8 could not and so `10000` was used. Also, for some questions the confusion about how to use decimal separators or thousands separators in portuguese or english induced some errors, even when the development was clearly correct. To fix that, we updated the o1-preview prompt to use `,` for decimal separators and avoid thousands separators.
