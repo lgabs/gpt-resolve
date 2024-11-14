@@ -7,15 +7,20 @@ We'll use `o1-preview`, which is the best OpenAI model so far with reasoning cap
 
 The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md) documentation. 
 
-**Spoiler: o1-preview scored 90% in the Math essay exam.**
+**Spoiler: o1-preview scored 90% in the ITA 2025 Math Essay Exam.**
 
 After the first ITA 2025 exam is fully solved, the project will try to expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams! 
 
-Table of exams to be solved:
+Table of some exams to be solved:
 
 | Exam | Year | Model | Status | Score | Report |
 |------|------|-------|--------|-------|--------|
 | ITA  | 2025 | o1-preview | 🚧 In Progress | - | [Report](exams/ita_2025/report.md) |
+| IME  | 2025 | o1-preview | 📅 Todo | - | - |
+| Escola Naval   | 2025 | o1-preview | 📅 Todo | - | - |
+| Fuvest/USP | 2025 | o1-preview | 📅 Todo | - | - |
+| AFA  | 2025 | o1-preview | 📅 Todo | - | - |
+| UNICAMP | 2025 | o1-preview | 📅 Todo | - | - |
 
 # Installation and How to use
 gpt-resolve is distributed in pypi:
