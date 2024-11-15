@@ -19,7 +19,7 @@ See more details in the [official exam announcemnt](https://vestibular.ita.br/in
 
 ## Results
 
-Preliminary solutions can be found by widely known high schools like [Poliedro](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita?year=2025). Official solutions will be released soon.
+Preliminary solutions can be found by widely known high schools like [Poliedro](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita?year=2025) or [Elite](https://www.colegioecursoelite.com.br/confira-o-gabarito-extraoficial-da-2a-fase-do-ita-2024-2025/). Official solutions will be released soon.
 
 | Exam | Phase | Section | Type | Model | Status | Score | PDF Compiled |
 |------|-------|---------|------|-------|--------|-------|--------------|
