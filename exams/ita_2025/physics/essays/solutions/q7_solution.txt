@@ -146,6 +146,53 @@ Os gráficos de \(I_{D1}\) e \(I_{D2}\) em função de \(\phi\) para o intervalo
 - \(I_{D1} = I_0 \cos^2\left( \dfrac{\phi}{2} \right)\)
 - \(I_{D2} = I_0 \sin^2\left( \dfrac{\phi}{2} \right)\)
 
+Plots for these equations:\footnote{o1-preview did not produced the plots when solution was generated. However, asking the model separately to produce the plots from equations above worked, and we included for educational purposes and to also show its capabilities for building plots with tikz.}
+
+\begin{center}
+\begin{tikzpicture}
+    \tikzmath{
+        real \Izero;
+        \Izero = 1; % Set the value of I0
+    }
+    \begin{axis}[
+        title={Plot of $I_{D1} = I_0 \cos^2\left( \dfrac{\phi}{2} \right)$},
+        xlabel={$\phi$ (radians)},
+        ylabel={$I_{D1}$},
+        domain=0:2*pi,
+        samples=200,
+        grid=both,
+        minor tick num=1,
+        width=12cm,
+        height=7cm,
+        ]
+    \addplot[blue, thick] {\Izero * cos(deg(x/2))^2};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\bigskip % Adds some vertical space between the plots
+
+\begin{center}
+\begin{tikzpicture}
+    \tikzmath{
+        real \Izero;
+        \Izero = 1; % Set the value of I0
+    }
+    \begin{axis}[
+        title={Plot of $I_{D2} = I_0 \sin^2\left( \dfrac{\phi}{2} \right)$},
+        xlabel={$\phi$ (radians)},
+        ylabel={$I_{D2}$},
+        domain=0:2*pi,
+        samples=200,
+        grid=both,
+        minor tick num=1,
+        width=12cm,
+        height=7cm,
+        ]
+    \addplot[red, thick] {\Izero * sin(deg(x/2))^2};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
 
 ---
 
