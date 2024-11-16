@@ -61,8 +61,7 @@ def generate_solutions_pdf(
     )
 
     # Add each solution to document
-    idx = 7
-    for sol_file in solution_files[idx-1:idx]:
+    for sol_file in solution_files:
         content = sol_file.read_text(encoding="utf-8")
         doc.append(NoEscape(content))
         doc.append(NoEscape(r"\newpage"))
