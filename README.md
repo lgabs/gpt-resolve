@@ -7,7 +7,7 @@ We'll use `o1-preview`, which is the best OpenAI model so far with reasoning cap
 
 The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md) documentation. 
 
-**Spoiler: o1-preview scored 90% in the ITA 2025 Math Essay Exam.**
+**Spoiler: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay.**
 
 After the first ITA 2025 exam is fully solved, the project will try to expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams! 
 

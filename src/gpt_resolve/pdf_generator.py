@@ -24,11 +24,24 @@ def generate_solutions_pdf(
     doc = Document()
 
     # Add preamble
-    doc.preamble.append(Command("usepackage", "amsmath"))
-    doc.preamble.append(Command("usepackage", "amssymb"))
-    doc.preamble.append(Command("usepackage", "amsfonts"))
-    doc.preamble.append(Command("usepackage", "graphicx"))
-    doc.preamble.append(Command("usepackage", "hyperref"))
+    packages = [
+        "amsmath",
+        "amssymb",
+        "amsfonts",
+        "graphicx",
+        "hyperref",
+        "tikz",
+        "pgfplots",
+    ]
+    for pkg in packages:
+        doc.preamble.append(Command("usepackage", pkg))
+        
+    tikz_libraries = [
+        "math",
+    ]
+    for lib in tikz_libraries:
+        doc.preamble.append(Command("usetikzlibrary", lib))
+
     doc.preamble.append(
         Command(
             "title",

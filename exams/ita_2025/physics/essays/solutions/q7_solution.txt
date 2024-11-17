@@ -1,0 +1,209 @@
+\section*{Questão 7}
+
+**Enunciado:** O interferômetro de Mach-Zehnder é um dispositivo óptico que, através do uso de espelhos semirrefletores, divide um feixe de luz em duas partes, uma refletida e uma transmitida, de igual intensidade. Essas duas partes percorrem dois caminhos distintos, C1 e C2, e depois são recombinadas, permitindo observar padrões de interferência. O interferômetro possui como componentes dois detectores, D1 e D2, dois espelhos semirrefletores, S1 e S2, e dois espelhos de reflexão total E, conforme ilustra a figura. A cada reflexão, ocorre um avanço de \(1/4\) de comprimento de onda, \(\lambda/4\). Por outro lado, a onda transmitida não sofre defasagem. Sabendo que o feixe incidente é uma onda senoidal de intensidade \(I_0\), faça o que se pede nos itens a seguir.
+
+a) Determine a intensidade medida por cada um dos detectores. Justifique.
+
+b) Considere agora que um material \(M\), que causa um deslocamento de fase de \(\phi\) na onda transmitida, seja inserido no caminho entre E e S2. Esboce os gráficos de intensidade versus deslocamento de fase \(\phi\), correspondentes à detecção de fótons em \(D1\) e \(D2\), para \(\phi = [0, 2\pi]\).
+
+c) Se o feixe incidente fosse composto por apenas um fóton, discuta se ele iria percorrer um caminho específico até um dos detectores.
+
+**Descrição da Imagem:**
+
+A imagem mostra um diagrama do interferômetro de Mach-Zehnder. No centro, há um quadrado rotulado como \(M\), onde se insere o material que causa um deslocamento de fase. O feixe de luz incidente entra pelo canto inferior esquerdo, passa pelo primeiro espelho semirrefletor \(S1\), onde se divide em duas partes. Uma parte reflete para o caminho \(C1\) e a outra é transmitida para o caminho \(C2\). Ambos os caminhos se encontram novamente em espelhos de reflexão total \(E\) e se dirigem para o segundo espelho semirrefletor \(S2\). Após \(S2\), as ondas se propagam até os detectores \(D1\) e \(D2\).
+
+\section*{Solução}
+
+\textbf{a) Determinação das intensidades em \(D1\) e \(D2\):}
+
+Vamos analisar os caminhos percorridos pelas ondas e calcular as amplitudes resultantes nos detectores \(D1\) e \(D2\), considerando a fase acumulada em cada percurso devido às reflexões e transmissões.
+
+Considere que a amplitude da onda incidente seja \(A_0\), de modo que a intensidade seja \(I_0 \propto |A_0|^2\).
+
+No espelho semirrefletor \(S1\):
+
+- A onda refletida tem amplitude \(\displaystyle A_{R1} = A_0 \cdot r\), onde \(r = \dfrac{1}{\sqrt{2}} \, e^{i\phi_r}\).
+- A onda transmitida tem amplitude \(\displaystyle A_{T1} = A_0 \cdot t\), onde \(t = \dfrac{1}{\sqrt{2}} \, e^{i\phi_t}\).
+
+Sabendo que cada reflexão causa um avanço de fase de \(\dfrac{\lambda}{4}\) (\(\dfrac{\pi}{2}\) radianos), e que nas transmissões não há mudança de fase (\(\phi_t = 0\)), temos que:
+
+- \(\phi_r = \dfrac{\pi}{2}\) (avançado em \(\dfrac{\pi}{2}\) devido à reflexão em \(S1\)).
+
+Percurso \(C1\) (Reflexão em \(S1\) e em \(E\)):
+
+- A onda sofre duas reflexões: em \(S1\) e em \(E\), acumulando uma fase total de \(\phi_{C1} = \phi_r + \phi_E = \dfrac{\pi}{2} + \dfrac{\pi}{2} = \pi\).
+- Amplitude que chega em \(S2\) pelo caminho \(C1\): \(\displaystyle A_{C1} = A_0 \cdot r \cdot r_E = A_0 \cdot \dfrac{1}{\sqrt{2}} \, e^{i\frac{\pi}{2}} \cdot e^{i\frac{\pi}{2}} = -\dfrac{A_0}{\sqrt{2}}\).
+
+Percurso \(C2\) (Transmissão em \(S1\) e reflexão em \(E\)):
+
+- A onda sofre uma reflexão: em \(E\), acumulando uma fase total de \(\phi_{C2} = 0 + \phi_E = 0 + \dfrac{\pi}{2} = \dfrac{\pi}{2}\).
+- Amplitude que chega em \(S2\) pelo caminho \(C2\): \(\displaystyle A_{C2} = A_0 \cdot t \cdot r_E = A_0 \cdot \dfrac{1}{\sqrt{2}} \cdot e^{i\frac{\pi}{2}} = \dfrac{A_0}{\sqrt{2}} \, e^{i\frac{\pi}{2}}\).
+
+No espelho semirrefletor \(S2\), as ondas se combinam e são divididas novamente entre os detectores \(D1\) e \(D2\):
+
+- Coeficientes de transmissão e reflexão em \(S2\): \(t'\) e \(r'\), com magnitudes \(\dfrac{1}{\sqrt{2}}\) e fases \(\phi_{t'} = 0\) e \(\phi_{r'} = \dfrac{\pi}{2}\).
+
+Amplitude em \(D1\):
+
+
+\begin{align*}
+A_{D1} &= (A_{C1} \cdot t') + (A_{C2} \cdot r') \\
+&= \left( -\dfrac{A_0}{\sqrt{2}} \cdot \dfrac{1}{\sqrt{2}} \right) + \left( \dfrac{A_0}{\sqrt{2}} \, e^{i\frac{\pi}{2}} \cdot \dfrac{1}{\sqrt{2}} \, e^{i\frac{\pi}{2}} \right) \\
+&= -\dfrac{A_0}{2} + \dfrac{A_0}{2} \, e^{i\pi} \\
+&= -\dfrac{A_0}{2} - \dfrac{A_0}{2} = -A_0
+\end{align*}
+
+
+Portanto, a intensidade em \(D1\) é:
+
+\[
+I_{D1} \propto |A_{D1}|^2 = | -A_0 |^2 = A_0^2
+\]
+
+Amplitude em \(D2\):
+
+
+\begin{align*}
+A_{D2} &= (A_{C1} \cdot r') + (A_{C2} \cdot t') \\
+&= \left( -\dfrac{A_0}{\sqrt{2}} \cdot \dfrac{1}{\sqrt{2}} \, e^{i\frac{\pi}{2}} \right) + \left( \dfrac{A_0}{\sqrt{2}} \, e^{i\frac{\pi}{2}} \cdot \dfrac{1}{\sqrt{2}} \right) \\
+&= -\dfrac{A_0}{2} \, e^{i\frac{\pi}{2}} + \dfrac{A_0}{2} \, e^{i\frac{\pi}{2}} = 0
+\end{align*}
+
+
+Logo, a intensidade em \(D2\) é:
+
+\[
+I_{D2} \propto |A_{D2}|^2 = 0
+\]
+
+\textbf{Resposta do item a):}
+
+\textbf{ANSWER:} A intensidade medida em \(D1\) é \(I_{D1} = I_0\), e em \(D2\) é \(I_{D2} = 0\).
+
+---
+
+\textbf{b) Gráficos de intensidade versus deslocamento de fase \(\phi\):}
+
+Com a inserção do material \(M\), que introduz um deslocamento de fase \(\phi\) no caminho \(C2\), precisamos recalcular as amplitudes nos detectores considerando esse adicional.
+
+Nova amplitude que chega em \(S2\) pelo caminho \(C2\):
+
+\[
+A_{C2} = A_0 \cdot t \cdot r_E \cdot e^{i\phi} = \dfrac{A_0}{\sqrt{2}} \, e^{i\left( \frac{\pi}{2} + \phi \right)}
+\]
+
+Amplitude em \(D1\):
+
+
+\begin{align*}
+A_{D1} &= (A_{C1} \cdot t') + (A_{C2} \cdot r') \\
+&= \left( -\dfrac{A_0}{\sqrt{2}} \cdot \dfrac{1}{\sqrt{2}} \right) + \left( \dfrac{A_0}{\sqrt{2}} \, e^{i\left( \frac{\pi}{2} + \phi \right)} \cdot \dfrac{1}{\sqrt{2}} \, e^{i\frac{\pi}{2}} \right) \\
+&= -\dfrac{A_0}{2} + \dfrac{A_0}{2} \, e^{i\left( \pi + \phi \right)} \\
+&= -\dfrac{A_0}{2} - \dfrac{A_0}{2} \, e^{i\phi}
+\end{align*}
+
+
+Intensidade em \(D1\):
+
+
+\begin{align*}
+I_{D1} &\propto |A_{D1}|^2 = \left| -\dfrac{A_0}{2} - \dfrac{A_0}{2} \, e^{i\phi} \right|^2 \\
+&= \left( \dfrac{A_0}{2} \right)^2 \left| 1 + e^{i\phi} \right|^2 \\
+&= \left( \dfrac{A_0}{2} \right)^2 \left[ (1 + \cos\phi) + i \sin\phi \right]^2 \\
+&= \left( \dfrac{A_0}{2} \right)^2 \left( 2 + 2\cos\phi \right) \\
+&= A_0^2 \cos^2\left( \dfrac{\phi}{2} \right)
+\end{align*}
+
+
+Amplitude em \(D2\):
+
+
+\begin{align*}
+A_{D2} &= (A_{C1} \cdot r') + (A_{C2} \cdot t') \\
+&= \left( -\dfrac{A_0}{\sqrt{2}} \cdot \dfrac{1}{\sqrt{2}} \, e^{i\frac{\pi}{2}} \right) + \left( \dfrac{A_0}{\sqrt{2}} \, e^{i\left( \frac{\pi}{2} + \phi \right)} \cdot \dfrac{1}{\sqrt{2}} \right) \\
+&= -\dfrac{A_0}{2} \, e^{i\frac{\pi}{2}} + \dfrac{A_0}{2} \, e^{i\left( \frac{\pi}{2} + \phi \right)} \\
+&= \dfrac{A_0}{2} \, e^{i\frac{\pi}{2}} \left( e^{i\phi} - 1 \right)
+\end{align*}
+
+
+Intensidade em \(D2\):
+
+
+\begin{align*}
+I_{D2} &\propto |A_{D2}|^2 = \left| \dfrac{A_0}{2} \, e^{i\frac{\pi}{2}} \left( e^{i\phi} - 1 \right) \right|^2 \\
+&= \left( \dfrac{A_0}{2} \right)^2 \left| e^{i\phi} - 1 \right|^2 \\
+&= \left( \dfrac{A_0}{2} \right)^2 \left[ 2 - 2\cos\phi \right] \\
+&= A_0^2 \sin^2\left( \dfrac{\phi}{2} \right)
+\end{align*}
+
+
+Os gráficos de \(I_{D1}\) e \(I_{D2}\) em função de \(\phi\) para o intervalo \([0, 2\pi]\) são funções cossenoidal e senoide ao quadrado, respectivamente, que variam entre \(0\) e \(I_0\).
+
+\textbf{Resposta do item b):}
+
+\textbf{ANSWER:} Os gráficos de intensidade em função de \(\phi\) são:
+
+- \(I_{D1} = I_0 \cos^2\left( \dfrac{\phi}{2} \right)\)
+- \(I_{D2} = I_0 \sin^2\left( \dfrac{\phi}{2} \right)\)
+
+Plots for these equations:\footnote{o1-preview did not produced the plots when solution was generated. However, asking the model separately to produce the plots from equations above worked, and we included for educational purposes and to also show its capabilities for building plots with tikz.}
+
+\begin{center}
+\begin{tikzpicture}
+    \tikzmath{
+        real \Izero;
+        \Izero = 1; % Set the value of I0
+    }
+    \begin{axis}[
+        title={Plot of $I_{D1} = I_0 \cos^2\left( \dfrac{\phi}{2} \right)$},
+        xlabel={$\phi$ (radians)},
+        ylabel={$I_{D1}$},
+        domain=0:2*pi,
+        samples=200,
+        grid=both,
+        minor tick num=1,
+        width=12cm,
+        height=7cm,
+        ]
+    \addplot[blue, thick] {\Izero * cos(deg(x/2))^2};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\bigskip % Adds some vertical space between the plots
+
+\begin{center}
+\begin{tikzpicture}
+    \tikzmath{
+        real \Izero;
+        \Izero = 1; % Set the value of I0
+    }
+    \begin{axis}[
+        title={Plot of $I_{D2} = I_0 \sin^2\left( \dfrac{\phi}{2} \right)$},
+        xlabel={$\phi$ (radians)},
+        ylabel={$I_{D2}$},
+        domain=0:2*pi,
+        samples=200,
+        grid=both,
+        minor tick num=1,
+        width=12cm,
+        height=7cm,
+        ]
+    \addplot[red, thick] {\Izero * sin(deg(x/2))^2};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+---
+
+\textbf{c) Comportamento de um único fóton no interferômetro:}
+
+Quando o feixe incidente é composto por apenas um fóton, a natureza quântica da luz se torna relevante. O fóton não percorre um caminho específico (nem \(C1\) nem \(C2\)), mas sim uma superposição de ambos os caminhos.
+
+No interferômetro de Mach-Zehnder, a função de onda do fóton se divide nos dois caminhos, e os efeitos de interferência ocorrem devido à sobreposição das amplitudes associadas a cada caminho. A probabilidade de detecção em \(D1\) ou \(D2\) é determinada pelas amplitudes de probabilidade calculadas nos itens anteriores.
+
+Portanto, o fóton não segue um caminho específico até um dos detectores. Em vez disso, existe uma probabilidade determinada pelas interferências quânticas de ele ser detectado em \(D1\) ou \(D2\).
+
+\textbf{Resposta do item c):}
+
+\textbf{ANSWER:} Não; o fóton não percorre um caminho específico até um dos detectores, mas sim existe em superposição de estados, e a probabilidade de detecção em \(D1\) ou \(D2\) é determinada pela interferência quântica entre os caminhos.

@@ -1,0 +1,149 @@
+\section*{Questão 2}
+
+Considere uma barra homogênea de comprimento \( L \) e massa \( M \), suspensa horizontalmente por uma corda vertical que tem um nó fixo no teto e outro numa das extremidades da barra (\( x = 0 \)). Uma massa \( m \) está pendurada na outra extremidade (\( x = L \)), e uma distribuição de forças é aplicada ao longo da barra, de forma que o sistema se encontra em equilíbrio estático. Essa distribuição pode ser descrita por \( N \) forças, que obedecem à relação de recorrência \(\vec{F}_n = \frac{\vec{F}_{n-1}}{2}\) (\( n = 0, 1, \ldots, N-1 \)), aplicadas nos pontos \( x_n = 2^{-n}L \). Calcule, em termos de \( M, m, g, L \) e \( N \):
+
+\begin{itemize}
+    \item **a)** a força \( F_0 \);
+    \item **b)** a força de tração da corda.
+\end{itemize}
+
+\section*{Solução}
+
+Para resolver o problema, vamos aplicar as condições de equilíbrio estático à barra. 
+
+**Equilíbrio de momentos:**
+
+Escolhemos o ponto \( x = 0 \) (onde a corda está presa) como eixo de rotação. A condição de equilíbrio de momentos é:
+
+\[
+\sum \tau = 0
+\]
+
+Os momentos atuantes são:
+
+1. Momento do peso da barra (\( M g \)) aplicado em seu centro de massa, em \( x = \dfrac{L}{2} \):
+\[
+\tau_{\text{barra}} = M g \cdot \dfrac{L}{2}
+\]
+
+2. Momento do peso da massa \( m \) pendurada em \( x = L \):
+\[
+\tau_{\text{massa}} = m g \cdot L
+\]
+
+3. Momentos das forças \( \vec{F}_n \) aplicadas em \( x_n = 2^{-n} L \):
+\[
+\tau_{\vec{F}} = -\sum_{n=0}^{N-1} F_n x_n
+\]
+(o sinal negativo indica que as forças \( \vec{F}_n \) produzem momento no sentido anti-horário, contrário aos pesos)
+
+Aplicando a condição de equilíbrio de momentos:
+\[
+M g \cdot \dfrac{L}{2} + m g \cdot L - \sum_{n=0}^{N-1} F_n x_n = 0
+\]
+
+**Cálculo da soma \( \sum_{n=0}^{N-1} F_n x_n \):**
+
+Sabemos que:
+\[
+F_n = \dfrac{F_{n-1}}{2} = F_0 \left( \dfrac{1}{2} \right)^{n}
+\]
+\[
+x_n = 2^{-n} L = L \left( \dfrac{1}{2} \right)^{n}
+\]
+
+Então:
+\[
+F_n x_n = F_0 \left( \dfrac{1}{2} \right)^{n} \cdot L \left( \dfrac{1}{2} \right)^{n} = F_0 L \left( \dfrac{1}{4} \right)^{n}
+\]
+
+A soma é uma série geométrica:
+\begin{align*}
+\sum_{n=0}^{N-1} F_n x_n &= F_0 L \sum_{n=0}^{N-1} \left( \dfrac{1}{4} \right)^{n} \\
+&= F_0 L \left[ \dfrac{1 - \left( \dfrac{1}{4} \right)^{N}}{1 - \dfrac{1}{4}} \right] \\
+&= F_0 L \left( \dfrac{1 - 4^{-N}}{\dfrac{3}{4}} \right) \\
+&= \dfrac{4}{3} F_0 L \left( 1 - 4^{-N} \right)
+\end{align*}
+
+Substituindo na equação de equilíbrio de momentos:
+\[
+M g \cdot \dfrac{L}{2} + m g \cdot L - \dfrac{4}{3} F_0 L \left( 1 - 4^{-N} \right) = 0
+\]
+
+Simplificando:
+\[
+\left( \dfrac{M g}{2} + m g \right) L = \dfrac{4}{3} F_0 L \left( 1 - 4^{-N} \right)
+\]
+
+Cancelando \( L \) dos dois lados:
+\[
+\dfrac{M g}{2} + m g = \dfrac{4}{3} F_0 \left( 1 - 4^{-N} \right)
+\]
+
+**Resposta para a letra a):**
+
+Isolando \( F_0 \):
+\begin{align*}
+F_0 &= \left( \dfrac{M g}{2} + m g \right) \cdot \dfrac{3}{4} \cdot \dfrac{1}{1 - 4^{-N}} \\
+&= \left( \dfrac{3}{4} \left( \dfrac{M g}{2} + m g \right) \right) \cdot \dfrac{1}{1 - 4^{-N}}
+\end{align*}
+
+**ANSWER:**
+\[
+F_0 = \dfrac{3}{4} \left( \dfrac{M g}{2} + m g \right) \cdot \dfrac{1}{1 - 4^{-N}}
+\]
+
+---
+
+**Equilíbrio de forças verticais:**
+
+A condição de equilíbrio de forças na direção vertical é:
+\[
+T + \sum_{n=0}^{N-1} F_n = M g + m g
+\]
+onde \( T \) é a tensão na corda.
+
+Calculando \( \sum_{n=0}^{N-1} F_n \):
+\begin{align*}
+\sum_{n=0}^{N-1} F_n &= F_0 \sum_{n=0}^{N-1} \left( \dfrac{1}{2} \right)^{n} \\
+&= F_0 \left[ \dfrac{1 - \left( \dfrac{1}{2} \right)^{N}}{1 - \dfrac{1}{2}} \right] \\
+&= F_0 \left( \dfrac{1 - 2^{-N}}{\dfrac{1}{2}} \right) \\
+&= 2 F_0 \left( 1 - 2^{-N} \right)
+\end{align*}
+
+Substituindo na equação de equilíbrio de forças:
+\[
+T + 2 F_0 \left( 1 - 2^{-N} \right) = M g + m g
+\]
+
+Isolando \( T \):
+
+\begin{align*}
+T &= M g + m g - 2 F_0 \left( 1 - 2^{-N} \right)
+\end{align*}
+
+Substituindo \( F_0 \) encontrado anteriormente:
+
+\begin{align*}
+T &= M g + m g - 2 \left[ \dfrac{3}{4} \left( \dfrac{M g}{2} + m g \right) \cdot \dfrac{1}{1 - 4^{-N}} \right] \left( 1 - 2^{-N} \right) \\
+&= M g + m g - \dfrac{3}{2} \left( \dfrac{M g}{2} + m g \right) \cdot \dfrac{1 - 2^{-N}}{1 - 4^{-N}}
+\end{align*}
+
+Para simplificar, reconhecemos que \( 4^{-N} = \left( 2^{-2} \right)^{N} = 2^{-2N} \), então \( 4^{-N} = \left( 2^{-N} \right)^{2} \). Porém, a simplificação pode variar dependendo do valor de \( N \).
+
+**Resposta para a letra b):**
+
+\[
+T = M g + m g - 2 F_0 \left( 1 - 2^{-N} \right)
+\]
+
+Substituindo o valor de \( F_0 \):
+
+\[
+T = M g + m g - \dfrac{3}{2} \left( \dfrac{M g}{2} + m g \right) \cdot \dfrac{1 - 2^{-N}}{1 - 4^{-N}}
+\]
+
+**ANSWER:**
+\[
+T = M g + m g - 2 F_0 \left( 1 - 2^{-N} \right)
+\]

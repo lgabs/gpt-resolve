@@ -1,0 +1,147 @@
+\section*{Questão 6}
+
+Uma sonda tripulada foi projetada para resistir ao calor da atmosfera de mercúrio, que pode atingir uma temperatura \( T_0 = 430 \, ^\circ\text{C} \). A sonda tem uma estrutura semelhante à de uma casca esférica composta por duas camadas, como mostra a figura. A camada externa, de espessura \( d_1 \), é composta por um material rígido de condutividade térmica \( K_1 \). A camada interna, de espessura \( d_2 \), é composta por um material termorresistente e isolante térmico de condutividade térmica \( K_2 \). O raio externo da estrutura é igual a \( R \).
+
+\begin{itemize}
+    \item[a)] Expresse a condutividade térmica efetiva da sonda em função de \( R, K_1, K_2 \) e \( d \), em que \( d = d_1 = d_2 \) e \( R \gg d \).
+    \item[b)] Estime a potência, em kW, que um refrigerador deve ter para manter a temperatura interna da sonda em \( T_i = 23 \, ^\circ\text{C} \), assumindo que \( R = 20 \, \text{m}, d_1 = d_2 = 30 \, \text{cm}, K_1 = 50 \, \text{W/(m} \, ^\circ\text{C}), K_2 = 0{,}020 \, \text{W/(m} \, ^\circ\text{C}) \) e que a máquina refrigeradora tem um coeficiente de performance ideal.
+\end{itemize}
+
+**Descrição da Imagem:**
+
+A imagem mostra uma representação esquemática da estrutura esférica da sonda. A figura é composta de duas camadas concêntricas circulares: 
+
+- A camada externa tem a espessura \( d_1 \).
+- A camada interna tem a espessura \( d_2 \).
+- O raio externo total do sistema é \( R \).
+
+A imagem ilustra as camadas com uma linha negra separando a parte interna e externa das camadas, ambas com o mesmo centro e em equilíbrio sobre uma superfície plana.
+
+\section*{Solução}
+
+\textbf{a)} Para determinar a condutividade térmica efetiva \( K_{\text{ef}} \) da sonda, considerando que as duas camadas têm espessura \( d \) e que \( R \gg d \), podemos calcular a resistência térmica de cada camada e combinar essas resistências em série.
+
+A resistência térmica para condução radial em uma casca esférica entre os raios \( r_1 \) e \( r_2 \) é dada por:
+\[
+R_{\text{t}} = \frac{1}{4\pi K} \left( \frac{1}{r_1} - \frac{1}{r_2} \right)
+\]
+
+Para a camada externa (com condutividade \( K_1 \)):
+\[
+R_{\text{t1}} = \frac{1}{4\pi K_1} \left( \frac{1}{R - d} - \frac{1}{R} \right)
+\]
+
+Para a camada interna (com condutividade \( K_2 \)):
+\[
+R_{\text{t2}} = \frac{1}{4\pi K_2} \left( \frac{1}{R - 2d} - \frac{1}{R - d} \right)
+\]
+
+Como \( d \ll R \), podemos aproximar:
+\[
+\frac{1}{R - d} \approx \frac{1}{R}\left(1 + \frac{d}{R}\right)
+\]
+\[
+\frac{1}{R - 2d} \approx \frac{1}{R}\left(1 + \frac{2d}{R}\right)
+\]
+
+Dessa forma, as resistências térmicas aproximadas são:
+\[
+R_{\text{t1}} \approx \frac{1}{4\pi K_1} \left( \frac{1}{R} \left(1 + \frac{d}{R}\right) - \frac{1}{R} \right) = \frac{d}{4\pi K_1 R^2}
+\]
+\[
+R_{\text{t2}} \approx \frac{1}{4\pi K_2} \left( \frac{1}{R} \left(1 + \frac{2d}{R}\right) - \frac{1}{R} \left(1 + \frac{d}{R}\right) \right) = \frac{d}{4\pi K_2 R^2}
+\]
+
+A resistência térmica total é a soma das resistências individuais:
+\[
+R_{\text{t}} = R_{\text{t1}} + R_{\text{t2}} = \frac{d}{4\pi R^2} \left( \frac{1}{K_1} + \frac{1}{K_2} \right)
+\]
+
+Considerando uma única camada com espessura total \( 2d \) e condutividade térmica efetiva \( K_{\text{ef}} \), a resistência térmica seria:
+\[
+R_{\text{t}} = \frac{2d}{4\pi K_{\text{ef}} R^2}
+\]
+
+Igualando as duas expressões de resistência térmica:
+\[
+\frac{2d}{4\pi K_{\text{ef}} R^2} = \frac{d}{4\pi R^2} \left( \frac{1}{K_1} + \frac{1}{K_2} \right)
+\]
+
+Simplificando:
+\[
+\frac{2}{K_{\text{ef}}} = \frac{1}{K_1} + \frac{1}{K_2}
+\]
+
+Portanto, a condutividade térmica efetiva é:
+\[
+K_{\text{ef}} = \frac{2 K_1 K_2}{K_1 + K_2}
+\]
+
+\textbf{b)} Primeiro, calculamos \( K_{\text{ef}} \) com os valores fornecidos:
+\[
+K_{\text{ef}} = \frac{2 \times 50 \times 0{,}020}{50 + 0{,}020} \approx \frac{2 \times 1}{50{,}020} \approx \frac{2}{50{,}020}
+\]
+\[
+K_{\text{ef}} \approx 0{,}03998 \, \text{W/(m} \, ^\circ\text{C}) \approx 0{,}040 \, \text{W/(m} \, ^\circ\text{C})
+\]
+
+A área da superfície esférica externa é:
+\[
+A = 4\pi R^2 = 4\pi \times (20\,\text{m})^2 = 1600\pi \, \text{m}^2
+\]
+
+A resistência térmica total é:
+\[
+R_{\text{t}} = \frac{2d}{K_{\text{ef}} A} = \frac{2 \times 0{,}30\,\text{m}}{0{,}040 \, \text{W/(m} \, ^\circ\text{C}) \times 1600\pi \, \text{m}^2}
+\]
+\[
+R_{\text{t}} = \frac{0{,}60\,\text{m}}{0{,}040 \times 1600\pi \, \text{W/}^\circ\text{C}} = \frac{0{,}60}{64\pi} \, \frac{^\circ\text{C}}{\text{W}}
+\]
+\[
+R_{\text{t}} \approx \frac{0{,}60}{201{,}06} \, \frac{^\circ\text{C}}{\text{W}} \approx 0{,}002984 \, \frac{^\circ\text{C}}{\text{W}}
+\]
+
+A diferença de temperatura é:
+\[
+\Delta T = T_0 - T_i = 430^\circ\text{C} - 23^\circ\text{C} = 407^\circ\text{C}
+\]
+
+O fluxo de calor através da casca esférica é:
+\[
+\dot{Q} = \frac{\Delta T}{R_{\text{t}}} = \frac{407}{0{,}002984} \, \text{W} \approx 136\,398 \, \text{W}
+\]
+
+Convertendo para kW:
+\[
+\dot{Q} \approx 136{,}4 \, \text{kW}
+\]
+
+O coeficiente de performance (COP) ideal de uma máquina refrigeradora é dado por:
+\[
+\text{COP}_{\text{máx}} = \frac{T_{\text{frio}}}{T_{\text{quente}} - T_{\text{frio}}}
+\]
+
+Convertendo as temperaturas para Kelvin:
+\[
+T_{\text{frio}} = 23^\circ\text{C} + 273{,}15 = 296{,}15\, \text{K}
+\]
+\[
+T_{\text{quente}} = 430^\circ\text{C} + 273{,}15 = 703{,}15\, \text{K}
+\]
+
+Calculando o COP:
+\[
+\text{COP}_{\text{máx}} = \frac{296{,}15}{703{,}15 - 296{,}15} = \frac{296{,}15}{407} \approx 0{,}7276
+\]
+
+A potência necessária do refrigerador é:
+\[
+W = \frac{\dot{Q}}{\text{COP}_{\text{máx}}} = \frac{136\,398}{0{,}7276} \, \text{W} \approx 187\,447 \, \text{W}
+\]
+
+Convertendo para kW:
+\[
+W \approx 187{,}4 \, \text{kW}
+\]
+
+\textbf{ANSWER:} A potência que o refrigerador deve ter é aproximadamente \( 187{,}4 \, \text{kW} \).
