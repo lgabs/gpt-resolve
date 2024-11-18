@@ -21,6 +21,7 @@ Table of some exams to be solved:
 | Fuvest/USP | 2025 | o1-preview | 📅 Todo | - | - |
 | AFA  | 2025 | o1-preview | 📅 Todo | - | - |
 | UNICAMP | 2025 | o1-preview | 📅 Todo | - | - |
+| ENEM | 2025 | o1-preview | 📅 Todo | - | - |
 
 # Installation and How to use
 gpt-resolve is distributed in pypi:
