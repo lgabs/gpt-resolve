@@ -6,9 +6,9 @@ import datetime
 import tempfile
 import subprocess
 
-def compile_solution(content: str) -> bool:
+def validate_latex_content(content: str) -> bool:
     """
-    Compile a LaTeX document to check if the content has valid LaTeX syntax.
+    Validate a LaTeX document by attempting to compile it, checking for syntax validity.
 
     Args:
         content (str): The LaTeX content to check.
@@ -17,17 +17,14 @@ def compile_solution(content: str) -> bool:
         bool: True if compilation is successful, False otherwise.
     """
     with tempfile.TemporaryDirectory() as temp_dir:
-        tex_file = Path(temp_dir) / "temp_solution.tex"
+        tex_file = Path(temp_dir) / "temp_solution"
         doc = Document()
         doc.append(NoEscape(content))
-        doc.generate_tex(str(tex_file))
         try:
-            result = subprocess.run(
-                ["pdflatex", "-output-directory", temp_dir, tex_file],
-                capture_output=True, text=True
-            )
-            return result.returncode == 0
-        except subprocess.CalledProcessError as e:
+            # Attempt to compile the LaTeX document to PDF
+            doc.generate_pdf(str(tex_file), clean_tex=True)
+            return True
+        except Exception as e:
             print(f"Error compiling LaTeX content: {e}")
             return False
 
@@ -92,20 +89,16 @@ def generate_solutions_pdf(
         key=lambda x: int(x.stem.split("_")[0][1:])
     )
 
-    # Validate each solution before adding to the document
+    sol_files_with_issues = []
+    # Add each solution to document
     for sol_file in solution_files:
         print(f"Validating solution: {sol_file.name}")
         content = sol_file.read_text(encoding="utf-8")
-        
-        if not compile_solution(content):
+
+        if not validate_latex_content(content):
             print(f"Error: Solution '{sol_file.name}' has LaTeX syntax errors. Please fix it.")
-            return 
-
-    print("All solutions are valid. Generating the final PDF...")
-
-    # Add each solution to document
-    for sol_file in solution_files:
-        content = sol_file.read_text(encoding="utf-8")
+            sol_files_with_issues.append(sol_file)
+            continue
         doc.append(NoEscape(content))
         doc.append(NoEscape(r"\newpage"))
 
