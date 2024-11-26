@@ -92,15 +92,19 @@ def generate_solutions_pdf(
     sol_files_with_issues = []
     # Add each solution to document
     for sol_file in solution_files:
-        print(f"Validating solution: {sol_file.name}")
         content = sol_file.read_text(encoding="utf-8")
-
         if not validate_latex_content(content):
-            print(f"Error: Solution '{sol_file.name}' has LaTeX syntax errors. Please fix it.")
-            sol_files_with_issues.append(sol_file)
+            sol_files_with_issues.append(str(sol_file))
             continue
         doc.append(NoEscape(content))
         doc.append(NoEscape(r"\newpage"))
+
+    if sol_files_with_issues:
+        raise ValueError(
+            "Errors in one or more solutions:\n"
+            + "\n".join(sol_files_with_issues)
+            + "\n\nPlease check for syntax errors."
+        )
 
     # Generate PDF in the exam directory
     doc.generate_pdf(str(exam_path / "solutions/solutions_compiled"), clean_tex=True)
