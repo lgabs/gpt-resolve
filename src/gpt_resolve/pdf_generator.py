@@ -3,6 +3,30 @@ from typing import Union
 from pylatex import Document, Command
 from pylatex.utils import NoEscape
 import datetime
+import tempfile
+import subprocess
+
+def validate_latex_content(content: str) -> bool:
+    """
+    Validate a LaTeX document by attempting to compile it, checking for syntax validity.
+
+    Args:
+        content (str): The LaTeX content to check.
+
+    Returns:
+        bool: True if compilation is successful, False otherwise.
+    """
+    with tempfile.TemporaryDirectory() as temp_dir:
+        tex_file = Path(temp_dir) / "temp_solution"
+        doc = Document()
+        doc.append(NoEscape(content))
+        try:
+            # Attempt to compile the LaTeX document to PDF
+            doc.generate_pdf(str(tex_file), clean_tex=True)
+            return True
+        except Exception as e:
+            print(f"Error compiling LaTeX content: {e}")
+            return False
 
 
 def generate_solutions_pdf(
@@ -59,12 +83,28 @@ def generate_solutions_pdf(
         solutions_dir.glob("*_solution.txt"),
         key=lambda x: int(x.stem.split("_")[0][1:]),
     )
+        # Get all solution files sorted
+    solution_files = sorted(
+        solutions_dir.glob("*_solution.txt"),
+        key=lambda x: int(x.stem.split("_")[0][1:])
+    )
 
+    sol_files_with_issues = []
     # Add each solution to document
     for sol_file in solution_files:
         content = sol_file.read_text(encoding="utf-8")
+        if not validate_latex_content(content):
+            sol_files_with_issues.append(str(sol_file))
+            continue
         doc.append(NoEscape(content))
         doc.append(NoEscape(r"\newpage"))
+
+    if sol_files_with_issues:
+        raise ValueError(
+            "Errors in one or more solutions:\n"
+            + "\n".join(sol_files_with_issues)
+            + "\n\nPlease check for syntax errors."
+        )
 
     # Generate PDF in the exam directory
     doc.generate_pdf(str(exam_path / "solutions/solutions_compiled"), clean_tex=True)
