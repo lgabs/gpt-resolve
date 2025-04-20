@@ -3,25 +3,25 @@ Can GPT solve Brazilian university entrance exams?
 
 This project is an implementation of how to use LLMs to solve challenging Brazilian university entrance exams.
 
-We'll use `o1-preview`, which is the best OpenAI model so far with reasoning capabilities, and `gpt-4o` to describe the exam images so that `o1-preview` can solve them on question at a time (as it does not have image capabilities yet). Results are saved as txt files with LaTeX formatting, and you can optionally convert them to a nice PDF with this package or using some LaTeX editor.
+We started with `o1-preview`, and `gpt-4o` to describe the exam images so that `o1-preview` could solve them, because it did not have image capabilities yet. Now that reasoning models are processing images as well, we've updated the code to process them directly. Also, we've started solutions with `o1` and hope to add other models as well. Results are saved as txt files with LaTeX formatting, and you can optionally convert them to a nice PDF with this package or using some LaTeX editor.
 
 The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md) documentation.
 
-**Spoiler: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay.**
+**Spoilers: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay. o1 scored 95% in the same Math exam.**
 
 After the first ITA 2025 exam is fully solved, the project will try to expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams!
 
 Table of some exams to be solved:
 
-| Exam         | Year | Model      | Status        | Score | Report                             |
-| ------------ | ---- | ---------- | ------------- | ----- | ---------------------------------- |
-| ITA          | 2025 | o1-preview | 🚧 In Progress | -     | [Report](exams/ita_2025/report.md) |
-| IME          | 2025 | o1-preview | 📅 Todo        | -     | -                                  |
-| Escola Naval | 2025 | o1-preview | 📅 Todo        | -     | -                                  |
-| Fuvest/USP   | 2025 | o1-preview | 📅 Todo        | -     | -                                  |
-| AFA          | 2025 | o1-preview | 📅 Todo        | -     | -                                  |
-| UNICAMP      | 2025 | o1-preview | 📅 Todo        | -     | -                                  |
-| ENEM         | 2025 | o1-preview | 📅 Todo        | -     | -                                  |
+| Exam         | Year | Status        | Score | Report                             |
+| ------------ | ---- | ------------- | ----- | ---------------------------------- |
+| ITA          | 2025 | 🚧 In Progress | -     | [Report](exams/ita_2025/report.md) |
+| IME          | 2025 | 📅 Todo        | -     | -                                  |
+| Escola Naval | 2025 | 📅 Todo        | -     | -                                  |
+| Fuvest/USP   | 2025 | 📅 Todo        | -     | -                                  |
+| AFA          | 2025 | 📅 Todo        | -     | -                                  |
+| UNICAMP      | 2025 | 📅 Todo        | -     | -                                  |
+| ENEM         | 2025 | 📅 Todo        | -     | -                                  |
 
 # Installation and How to use
 gpt-resolve is distributed in pypi:
@@ -43,21 +43,21 @@ gpt-resolve resolve -p exam_path
 ```
 and grab a coffee while it runs.
 
-If you want to test the process without making real API calls, you can use the `--dry-run` flag. See `gpt-resolve resolve --help` for more details about solving only a subset of questions or controlling token usage.
+If you want to test the process without making real API calls, you can use the `--dry-run` flag. See `gpt-resolve resolve --help` for more details about solving only a subset of questions or controlling token usage or changing the model.
 
 
 ### Compile solutions with `compile-solutions`
 
 Once you have the solutions in your exam folder `exam_path`, you can compile them into a single PDF running:
 ```bash
-gpt-resolve compile-solutions -p exam_path --title "Your Exam Title"
+gpt-resolve compile-solutions -p exam_path --title "Your Exam Title --author 'o1 (OpenAI)'"
 ```
 
 For that command to work, you'll need a LaTeX distribution in your system. See some guidelines [here](https://www.tug.org/texlive/) (MacTeX for MacOS was used to start this project). This project was developed with [MacTeX](https://www.tug.org/mactex/) distribution.
 
 # Troubleshooting
 
-Sometimes, it was observed that the output from `o1-preview` produced invalid LaTeX code when nesting display math environments (such as `\[...\]` and `\begin{align*} ... \end{align*}` together). The current prompt for `o1-preview` adds an instruction to avoid this, which works most of the time. If that happens, you can try to solve the question again by running `gpt-resolve resolve -p exam_path -q <question_number>`, or making more adjustments to the prompt, or fixing the output LaTeX code manually.
+Sometimes, it was observed that the output from `o1-preview` produced invalid LaTeX code when nesting display math environments (such as `\[...\]` and `\begin{align*} ... \end{align*}` together). The current prompt for `o1-preview` adds an instruction to avoid this, which works most of the time. If that happens, you can try to solve the question again by running `gpt-resolve resolve -p exam_path -q <question_number>`, or making more adjustments to the prompt, or fixing the output LaTeX code manually. Experiments with `o1` did not show any similar errors so far.
 
 # Costs
 
