@@ -4,6 +4,7 @@ import unittest.mock as mock
 from gpt_resolve.resolve import (
     encode_image,
     resolve_question,
+    process_questions,
 )
 
 
@@ -73,3 +74,53 @@ def test_resolve_question_dry_run():
 
     assert "Mock solution for testing purposes" in answer
     assert tokens == 200
+
+
+def test_process_questions(tmp_path, monkeypatch):
+    # Mock data
+    question_images = [(1, "encoded_q1"), (2, "encoded_q2")]
+    conventions_image = "encoded_conventions"
+    exam_path = str(tmp_path)
+
+    # Mock resolve_question to avoid actual API calls
+    mock_answer = "\section*{Solução}\nTest answer\nANSWER: 42"
+    mock_tokens = 100
+
+    # Create a mock for save_answer_and_description
+    with mock.patch('gpt_resolve.resolve.save_answer_and_description') as mock_save:
+        with mock.patch('gpt_resolve.resolve.resolve_question',
+                      return_value=(mock_answer, mock_tokens)) as mock_resolve:
+
+            # Call the function
+            process_questions(
+                questions_images=question_images,
+                conventions_image=conventions_image,
+                exam_path=exam_path,
+                dry_run=True,
+                max_tokens_output=1000,
+                model="test-model"
+            )
+
+            # Verify the mocks were called correctly
+            assert mock_resolve.call_count == 2
+            assert mock_save.call_count == 2
+
+            # Check the arguments for the first question
+            mock_resolve.assert_any_call(
+                question_image="encoded_q1",
+                conventions_image="encoded_conventions",
+                model="test-model",
+                dry_run=True,
+                max_tokens_output=1000,
+                client=mock.ANY
+            )
+
+            # Check save was called with correct arguments
+            mock_save.assert_any_call(
+                mock_answer,
+                mock.ANY,  # question_description
+                exam_path,
+                1,
+                "test-model",
+                dry_run=True
+            )

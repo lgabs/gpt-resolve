@@ -2,6 +2,23 @@ import pytest
 from unittest.mock import Mock, patch
 
 
+# Add a global mock for the OpenAI client to avoid requiring an API key
+@pytest.fixture(autouse=True, scope="session")
+def mock_openai_client():
+    with patch('gpt_resolve.resolve.OpenAI') as mock_openai:
+        # Configure the mock client
+        mock_instance = Mock()
+        mock_openai.return_value = mock_instance
+
+        # Set up response for any API calls
+        mock_response = Mock()
+        mock_response.output_text = "\section*{Solução}\nMock solution\nANSWER: 42"
+        mock_response.usage.total_tokens = 100
+        mock_instance.responses.create.return_value = mock_response
+
+        yield mock_openai
+
+
 @pytest.fixture
 def temp_exam_dir(tmp_path):
     """Create a temporary exam directory with test files."""
