@@ -1,12 +1,15 @@
 import time
 import base64
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
 
 from dotenv import load_dotenv
 import typer
-from typing import Optional, List
+from typing import Optional, List, Tuple, Coroutine, Any
 
 from openai import OpenAI
 from tqdm import tqdm
+import tqdm.asyncio
 
 from gpt_resolve.utils import get_exam_images_paths, save_answer_and_description
 from gpt_resolve.pdf_generator import generate_solutions_pdf
@@ -14,13 +17,9 @@ from gpt_resolve.pdf_generator import generate_solutions_pdf
 MAX_COMPLETION_TOKENS = 10_000
 DEFAULT_MODEL = "o1"
 
-# Load environment variables
+# Initialize OpenAI client as a global variable
 load_dotenv(override=True)
-
-# Define a function to get the OpenAI client
-def get_openai_client():
-    """Get or create the OpenAI client."""
-    return OpenAI()
+OPENAI_CLIENT = OpenAI()
 
 def encode_image(image_path: str) -> str:
     with open(image_path, "rb") as image_file:
@@ -33,7 +32,7 @@ def resolve_question(
     model: str = DEFAULT_MODEL,
     max_tokens_output: int = MAX_COMPLETION_TOKENS,
     dry_run: bool = False,
-    client: OpenAI = None,
+    client: OpenAI = OPENAI_CLIENT,
 ) -> tuple[str, int]:
     """Resolves the given question with an OpenAI pipeline directly passing images to the specified model."""
     if dry_run:
@@ -41,10 +40,6 @@ def resolve_question(
             "\\section*{Solução}\\n\\nMock solution for testing purposes.\\n\\nANSWER: 42",
             200,
         )
-
-    # Use the passed client or get a new one
-    if client is None:
-        client = get_openai_client()
 
     response = client.responses.create(
         model=model,
@@ -86,7 +81,38 @@ def resolve_question(
     return answer, total_tokens
 
 
-def process_questions(
+async def process_question(
+    question_num: int,
+    question_image: str,
+    conventions_image: str,
+    exam_path: str,
+    model: str,
+    dry_run: bool,
+    max_tokens_output: int,
+    client: OpenAI = OPENAI_CLIENT,
+) -> Tuple[int, int]:
+    """Process a single question asynchronously."""
+    # Process the question directly with specified model
+    answer, total_tokens = resolve_question(
+        question_image=question_image,
+        conventions_image=conventions_image,
+        model=model,
+        dry_run=dry_run,
+        max_tokens_output=max_tokens_output,
+        client=client,
+    )
+
+    # Generate an empty placeholder for question_description
+    question_description = f"\\section*{{Questão {question_num}}}"
+
+    save_answer_and_description(
+        answer, question_description, exam_path, question_num, model, dry_run=dry_run
+    )
+
+    return question_num, total_tokens
+
+
+async def process_questions(
     questions_images: list[tuple[int, str]],
     conventions_image: str,
     exam_path: str,
@@ -94,48 +120,39 @@ def process_questions(
     max_tokens_output: int,
     model: str = DEFAULT_MODEL,
 ) -> None:
-    """Processes the given questions using the OpenAI client by directly passing images to the specified model."""
+    """Processes the given questions asynchronously using the OpenAI client by directly passing images to the specified model."""
     total_questions = len(questions_images)
     print(
-        f"Starting to process {total_questions} questions. Each question can take a while to process when using reasoning models."
+        f"Starting to process {total_questions} questions asynchronously. Each question can take a while to process when using reasoning models."
     )
 
     start_time = time.perf_counter()
 
-    # Create a single client instance to reuse
-    client = None if dry_run else get_openai_client()
+    # Create a shared progress bar
+    main_progress = tqdm.tqdm(total=total_questions, desc="Processing Questions", unit="question")
 
-    for idx, (question_num, question_image) in enumerate(questions_images):
-        pbar = tqdm(
-            total=total_questions,
-            desc=f"Processing Question {question_num}",
-            position=idx,
-            leave=True,
-            unit="question",
-            initial=idx,
-        )
-
-        # Process the question directly with specified model
-        answer, total_tokens = resolve_question(
+    # Create tasks for all questions
+    tasks = []
+    for question_num, question_image in questions_images:
+        task = process_question(
+            question_num=question_num,
             question_image=question_image,
             conventions_image=conventions_image,
+            exam_path=exam_path,
             model=model,
             dry_run=dry_run,
             max_tokens_output=max_tokens_output,
-            client=client,
+            client=OPENAI_CLIENT,
         )
+        tasks.append(task)
 
-        pbar.set_postfix({"Total Tokens": total_tokens})
+    # Process questions concurrently and update progress bar as they complete
+    for completed_task in asyncio.as_completed(tasks):
+        question_num, total_tokens = await completed_task
+        main_progress.set_postfix({"Last Completed": f"Q{question_num}", "Tokens": total_tokens})
+        main_progress.update(1)
 
-        # Generate an empty placeholder for question_description since we're no longer extracting it
-        # but the save function still expects it
-        question_description = f"\\section*{{Questão {question_num}}}"
-
-        save_answer_and_description(
-            answer, question_description, exam_path, question_num, model, dry_run=dry_run
-        )
-        pbar.update(1)
-        pbar.close()
+    main_progress.close()
 
     end_time = time.perf_counter()
     total_time = end_time - start_time
@@ -168,15 +185,15 @@ def resolve_exam(
         (i, encode_image(question_path)) for i, question_path in questions_paths
     ]
 
-    # Process the questions using the encapsulated function
-    process_questions(
+    # Process the questions using the encapsulated function asynchronously
+    asyncio.run(process_questions(
         questions_images=questions_images,
         conventions_image=conventions_image,
         exam_path=exam_path,
         dry_run=dry_run,
         max_tokens_output=max_tokens_output,
         model=model,
-    )
+    ))
 
 
 # Create Typer app
