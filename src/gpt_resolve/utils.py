@@ -47,9 +47,9 @@ def save_answer_and_description(
 
     normalized_model_name = model.replace("-", "_").lower()
     solutions_path = (
-        f"{exam_path}/{normalized_model_name}/solutions"
+        f"{exam_path}/solutions/{normalized_model_name}/"
         if not dry_run
-        else f"{exam_path}/{normalized_model_name}/solutions_dry_run"
+        else f"{exam_path}/solutions_dry_run/{normalized_model_name}/"
     )
     os.makedirs(solutions_path, exist_ok=True)
 
