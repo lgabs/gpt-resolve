@@ -19,6 +19,24 @@ def validate_latex_content(content: str) -> bool:
     with tempfile.TemporaryDirectory() as temp_dir:
         tex_file = Path(temp_dir) / "temp_solution"
         doc = Document()
+
+        # Add required packages for validation
+        packages = [
+            "amsmath",
+            "amssymb",
+            "amsfonts",
+            "graphicx",
+            "hyperref",
+            "tikz",
+            "pgfplots",
+        ]
+        for pkg in packages:
+            doc.preamble.append(Command("usepackage", pkg))
+
+        tikz_libraries = ["math"]
+        for lib in tikz_libraries:
+            doc.preamble.append(Command("usetikzlibrary", lib))
+
         doc.append(NoEscape(content))
         try:
             # Attempt to compile the LaTeX document to PDF
@@ -39,7 +57,7 @@ def generate_solutions_pdf(
         exam_path: Path to the exam directory containing a solutions folder
     """
     exam_path = Path(exam_path)
-    solutions_dir = exam_path / "solutions"
+    solutions_dir = exam_path
 
     if not solutions_dir.exists():
         raise FileNotFoundError(f"Solutions directory not found at {solutions_dir}")
@@ -59,7 +77,7 @@ def generate_solutions_pdf(
     ]
     for pkg in packages:
         doc.preamble.append(Command("usepackage", pkg))
-        
+
     tikz_libraries = [
         "math",
     ]
@@ -107,4 +125,4 @@ def generate_solutions_pdf(
         )
 
     # Generate PDF in the exam directory
-    doc.generate_pdf(str(exam_path / "solutions/solutions_compiled"), clean_tex=True)
+    doc.generate_pdf(str(exam_path / "solutions_compiled"), clean_tex=True)

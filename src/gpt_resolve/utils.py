@@ -40,12 +40,16 @@ def save_answer_and_description(
     question_description: str,
     exam_path: str,
     question_number: int,
+    model: str,
     dry_run: bool = False,
 ) -> None:
     """Saves the answer and question description to files."""
 
+    normalized_model_name = model.replace("-", "_").lower()
     solutions_path = (
-        f"{exam_path}/solutions" if not dry_run else f"{exam_path}/solutions_dry_run"
+        f"{exam_path}/solutions/{normalized_model_name}/"
+        if not dry_run
+        else f"{exam_path}/solutions_dry_run/{normalized_model_name}/"
     )
     os.makedirs(solutions_path, exist_ok=True)
 
