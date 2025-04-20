@@ -1,8 +1,8 @@
 import pytest
 import base64
+import unittest.mock as mock
 from gpt_resolve.resolve import (
     encode_image,
-    extract_question_description,
     resolve_question,
 )
 
@@ -34,34 +34,42 @@ def test_encode_image_invalid_path():
         encode_image("")
 
 
-def test_extract_question_description_success(mock_question_description_client):
+def test_resolve_question_success():
     # Arrange
     question_image = "base64_encoded_image"
     conventions_image = "base64_encoded_conventions"
-    expected_description = "\section*{Questão 1}\n\nEnunciado teste"
-    expected_tokens = 100
-
-    # Act
-    description, tokens = extract_question_description(
-        mock_question_description_client, question_image, conventions_image
-    )
-
-    # Assert
-    assert description == expected_description
-    assert tokens == expected_tokens
-    mock_question_description_client.chat.completions.create.assert_called_once()
-
-
-def test_resolve_question_success(mock_answer_client):
-    # Arrange
-    question_description = "\section*{Questão 1}\n\nEnunciado teste"
     expected_answer = "\section*{Solução}\nResposta teste\nANSWER: 42"
     expected_tokens = 100
 
+    # Mock the OpenAI client's responses.create method
+    mock_response = mock.Mock()
+    mock_response.output_text = expected_answer
+    mock_response.usage.total_tokens = expected_tokens
+
+    mock_client = mock.Mock()
+    mock_client.responses.create.return_value = mock_response
+
     # Act
-    answer, tokens = resolve_question(mock_answer_client, question_description)
+    answer, tokens = resolve_question(
+        question_image=question_image,
+        conventions_image=conventions_image,
+        client=mock_client,
+        dry_run=False
+    )
 
     # Assert
     assert answer == expected_answer
     assert tokens == expected_tokens
-    mock_answer_client.chat.completions.create.assert_called_once()
+    mock_client.responses.create.assert_called_once()
+
+
+def test_resolve_question_dry_run():
+    # Test that dry_run returns expected mock response
+    answer, tokens = resolve_question(
+        question_image="dummy",
+        conventions_image="dummy",
+        dry_run=True
+    )
+
+    assert "Mock solution for testing purposes" in answer
+    assert tokens == 200

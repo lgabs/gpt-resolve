@@ -32,37 +32,3 @@ def temp_exam_dir_invalid(tmp_path):
         f.touch()
 
     return tmp_path
-
-
-@pytest.fixture
-def mock_question_description_response():
-    mock_response = Mock()
-    mock_response.choices = [
-        Mock(message=Mock(content="\section*{Questão 1}\n\nEnunciado teste"))
-    ]
-    mock_response.usage = Mock(total_tokens=100)
-    return mock_response
-
-
-@pytest.fixture
-def mock_answer_response():
-    mock_response = Mock()
-    mock_response.choices = [
-        Mock(message=Mock(content="\section*{Solução}\nResposta teste\nANSWER: 42"))
-    ]
-    mock_response.usage = Mock(total_tokens=100)
-    return mock_response
-
-
-@pytest.fixture
-def mock_question_description_client(mock_question_description_response):
-    with patch("gpt_resolve.resolve.get_openai_client") as mock:
-        mock.chat.completions.create.return_value = mock_question_description_response
-        yield mock
-
-
-@pytest.fixture
-def mock_answer_client(mock_answer_response):
-    with patch("gpt_resolve.resolve.get_openai_client") as mock:
-        mock.chat.completions.create.return_value = mock_answer_response
-        yield mock
