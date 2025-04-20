@@ -40,7 +40,7 @@ For multiple-choice exams, the score is straightforward. For essays, each questi
 
 For almost of all questions, `max_tokens_question_description=400` and `max_tokens_question_answer=5000` used in `gpt-resolve` was enough, but for some questions (4,5,7,8) it was necessary to run them again since the answer on the first try were not complete due to the limit of max completion tokens processed. In these cases, `max_tokens_question_answer=10000` was used.
 
-The `o1` model, in the other hand, got question 10 correctly with analytic geometry, but in question 7 it failed partially, achieving 95% at the exam. We expect that `o3` and `o4-mini` may achieve 100%. An interesting thing is that this model is much more objetive than the previous version.
+The `o1` model, in the other hand, got question 10 correctly with analytic geometry, but in question 7 it failed partially, achieving 95% at the exam. An interesting thing is that this model is much more objetive than the previous version. We expect that `o3` and `o4-mini` may achieve 100%.
 
 ### Chemistry Essay
 
