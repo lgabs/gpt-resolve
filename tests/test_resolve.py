@@ -112,7 +112,7 @@ def test_process_questions(tmp_path, monkeypatch):
                 model="test-model",
                 dry_run=True,
                 max_tokens_output=1000,
-                client=mock.ANY
+                client=None
             )
 
             # Check save was called with correct arguments
