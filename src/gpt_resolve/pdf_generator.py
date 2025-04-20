@@ -57,7 +57,7 @@ def generate_solutions_pdf(
         exam_path: Path to the exam directory containing a solutions folder
     """
     exam_path = Path(exam_path)
-    solutions_dir = exam_path / "solutions"
+    solutions_dir = exam_path
 
     if not solutions_dir.exists():
         raise FileNotFoundError(f"Solutions directory not found at {solutions_dir}")
@@ -125,4 +125,4 @@ def generate_solutions_pdf(
         )
 
     # Generate PDF in the exam directory
-    doc.generate_pdf(str(exam_path / "solutions/solutions_compiled"), clean_tex=True)
+    doc.generate_pdf(str(exam_path / "solutions_compiled"), clean_tex=True)
