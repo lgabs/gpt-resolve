@@ -19,6 +19,24 @@ def validate_latex_content(content: str) -> bool:
     with tempfile.TemporaryDirectory() as temp_dir:
         tex_file = Path(temp_dir) / "temp_solution"
         doc = Document()
+
+        # Add required packages for validation
+        packages = [
+            "amsmath",
+            "amssymb",
+            "amsfonts",
+            "graphicx",
+            "hyperref",
+            "tikz",
+            "pgfplots",
+        ]
+        for pkg in packages:
+            doc.preamble.append(Command("usepackage", pkg))
+
+        tikz_libraries = ["math"]
+        for lib in tikz_libraries:
+            doc.preamble.append(Command("usetikzlibrary", lib))
+
         doc.append(NoEscape(content))
         try:
             # Attempt to compile the LaTeX document to PDF
@@ -59,7 +77,7 @@ def generate_solutions_pdf(
     ]
     for pkg in packages:
         doc.preamble.append(Command("usepackage", pkg))
-        
+
     tikz_libraries = [
         "math",
     ]
