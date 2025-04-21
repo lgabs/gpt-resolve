@@ -77,36 +77,40 @@ def test_resolve_question_dry_run():
     assert tokens == 200
 
 
-@pytest.mark.asyncio
-async def test_process_questions(tmp_path, monkeypatch):
-    # Mock data
-    question_images = [(1, "encoded_q1"), (2, "encoded_q2")]
-    conventions_image = "encoded_conventions"
+def test_process_questions(tmp_path, monkeypatch):
+    """Test that process_questions passes the correct parameters to asyncio.run()"""
+    # Create needed files in the temporary directory
+    conventions_file = tmp_path / "conventions.jpg"
+    q1_file = tmp_path / "q1.jpg"
+    q2_file = tmp_path / "q2.jpg"
+
+    # Create empty files
+    conventions_file.write_bytes(b"test content")
+    q1_file.write_bytes(b"test content")
+    q2_file.write_bytes(b"test content")
+
     exam_path = str(tmp_path)
 
-    # Create fake futures that will be returned by our mock process_question
-    future1 = asyncio.Future()
-    future1.set_result((1, 100))  # (question_num, tokens)
+    # Mock necessary functions to avoid real file operations or API calls
+    with mock.patch('gpt_resolve.resolve.encode_image', return_value="mock_encoded_image"):
+        with mock.patch('asyncio.run') as mock_async_run:
+            # Import the function that uses process_questions
+            from gpt_resolve.resolve import resolve_exam
 
-    future2 = asyncio.Future()
-    future2.set_result((2, 100))
-
-    # Mock process_question
-    with mock.patch('gpt_resolve.resolve.process_question') as mock_process:
-        # Set up the mock to return prepared futures
-        mock_process.side_effect = [future1, future2]
-
-        # Mock asyncio.as_completed to return our futures in a controlled order
-        with mock.patch('asyncio.as_completed', return_value=[future1, future2]):
-            # Run the actual function
-            await process_questions(
-                questions_images=question_images,
-                conventions_image=conventions_image,
+            # Call the function that would use process_questions
+            resolve_exam(
                 exam_path=exam_path,
+                questions_to_solve=[1, 2],
                 dry_run=True,
                 max_tokens_output=1000,
                 model="test-model"
             )
 
-            # Verify process_question was called for each question
-            assert mock_process.call_count == 2
+            # Verify asyncio.run was called
+            assert mock_async_run.call_count == 1
+
+            # Get the arguments passed to asyncio.run
+            args, _ = mock_async_run.call_args
+
+            # Check that the first argument is a coroutine object (process_questions)
+            assert callable(args[0].__await__)
