@@ -1,0 +1,59 @@
+\section*{Questão 8}
+
+\section*{Solução}
+Seja \(A_k=(a_{ij})_{1\le i,j\le k}\) com \(a_{ij}=\max\{i,j\}\).
+\\[4pt]
+1.\hspace{4pt}\textbf{Determinante de \(A_k\).}  
+Para \(r=k,k-1,\dots,2\), substitua a linha \(r\) por \(L_r-L_{r-1}\).  
+Essas operações não alteram o determinante e produzem a matriz \(B_k\):
+
+\[
+B_k=
+\begin{pmatrix}
+1 & 2 & 3 & \dots & k\\
+1 & 0 & 0 & \dots & 0\\
+1 & 1 & 0 & \dots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+1 & 1 & 1 & \dots & 0
+\end{pmatrix}.
+\]
+
+Na última coluna de \(B_k\) há apenas o elemento \(k\) na primeira linha, os demais são zeros.  
+Expandindo o determinante pela última coluna:
+
+\begin{align*}
+\det(A_k)=\det(B_k)&=(-1)^{1+k}\,k\,\det(C_{k-1}),
+\end{align*}
+onde \(C_{k-1}\) é a sub‑matriz \( (k-1)\times(k-1) \)
+
+\[
+C_{k-1}=
+\begin{pmatrix}
+1 & 0 & \dots & 0\\
+1 & 1 & \dots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+1 & 1 & \dots & 1
+\end{pmatrix},
+\]
+
+claramente triangular com diagonal principal igual a \(1\). Logo \(\det(C_{k-1})=1\) e
+
+\[
+\boxed{\det(A_k)=(-1)^{k+1}\,k.}
+\]
+
+2.\hspace{4pt}\textbf{Soma solicitada.}  
+\[
+S=\sum_{k=1}^{2025}\det(A_k)=\sum_{k=1}^{2025}(-1)^{k+1}k.
+\]
+
+Agrupando em pares \((2n-1,\,2n)\) para \(n=1,\dots,1012\):
+
+\begin{align*}
+S&=\sum_{n=1}^{1012}\big[(2n-1)-2n\big]+2025\\
+  &=\sum_{n=1}^{1012}(-1)+2025\\
+  &=-1012+2025\\
+  &=1013.
+\end{align*}
+
+\textbf{ANSWER: 1013}
