@@ -17,9 +17,12 @@ from gpt_resolve.pdf_generator import generate_solutions_pdf
 MAX_COMPLETION_TOKENS = 10_000
 DEFAULT_MODEL = "o1"
 
-# Initialize OpenAI client as a global variable
+# Load environment variables
 load_dotenv(override=True)
-OPENAI_CLIENT = OpenAI()
+
+def get_openai_client() -> OpenAI:
+    """Create and return an OpenAI client instance."""
+    return OpenAI()
 
 def encode_image(image_path: str) -> str:
     with open(image_path, "rb") as image_file:
@@ -32,7 +35,7 @@ def resolve_question(
     model: str = DEFAULT_MODEL,
     max_tokens_output: int = MAX_COMPLETION_TOKENS,
     dry_run: bool = False,
-    client: OpenAI = OPENAI_CLIENT,
+    client: Optional[OpenAI] = None,
 ) -> tuple[str, int]:
     """Resolves the given question with an OpenAI pipeline directly passing images to the specified model."""
     if dry_run:
@@ -40,6 +43,9 @@ def resolve_question(
             "\\section*{Solução}\\n\\nMock solution for testing purposes.\\n\\nANSWER: 42",
             200,
         )
+
+    if client is None:
+        client = get_openai_client()
 
     response = client.responses.create(
         model=model,
@@ -89,7 +95,7 @@ async def process_question(
     model: str,
     dry_run: bool,
     max_tokens_output: int,
-    client: OpenAI = OPENAI_CLIENT,
+    client: Optional[OpenAI] = None,
 ) -> Tuple[int, int]:
     """Process a single question asynchronously."""
     # Process the question directly with specified model
@@ -131,6 +137,9 @@ async def process_questions(
     # Create a shared progress bar
     main_progress = tqdm.tqdm(total=total_questions, desc="Processing Questions", unit="question")
 
+    # Create a single client to be reused
+    client = get_openai_client()
+
     # Create tasks for all questions
     tasks = []
     for question_num, question_image in questions_images:
@@ -142,7 +151,7 @@ async def process_questions(
             model=model,
             dry_run=dry_run,
             max_tokens_output=max_tokens_output,
-            client=OPENAI_CLIENT,
+            client=client,
         )
         tasks.append(task)
 
