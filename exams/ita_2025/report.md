@@ -29,6 +29,8 @@ Preliminary solutions can be found by widely known high schools like [Poliedro](
 | ITA  | 2025  | Portuguese | Essay           | o1-preview | 🚧 TODO      | -     | -                                                        |
 | ITA  | 2025  | Math       | Multiple Choice | o1-preview | 🚧 TODO      | -     | -                                                        |
 | ITA  | 2025  | Math       | Essay           | o1         | ✅ Completed | 95%   | [PDF](math/essays/solutions/o1/solutions_compiled.pdf)   |
+| ITA  | 2025  | Math       | Essay           | o3         | ✅ Completed | 98%  | [PDF](math/essays/solutions/o3/solutions_compiled.pdf)   |
+| ITA  | 2025  | Math       | Essay           | o4-mini    | ✅ Completed | 98%  | [PDF](math/essays/solutions/o4_mini/solutions_compiled.pdf)   |
 
 ## Score calculation
 For multiple-choice exams, the score is straightforward. For essays, each question is valued at 10.0 points. For questions with more than one part, we considered each part equally weighted. Since it's an essay, in some cases, the LLM provided almost correct reasoning but made some mistakes, so we had to assign partial points when reviewing each question (essay exams are inherently more subjective).
@@ -40,7 +42,9 @@ For multiple-choice exams, the score is straightforward. For essays, each questi
 
 For almost of all questions, `max_tokens_question_description=400` and `max_tokens_question_answer=5000` used in `gpt-resolve` was enough, but for some questions (4,5,7,8) it was necessary to run them again since the answer on the first try were not complete due to the limit of max completion tokens processed. In these cases, `max_tokens_question_answer=10000` was used.
 
-The `o1` model, in the other hand, got question 10 correctly with analytic geometry, but in question 7 it failed partially, achieving 95% at the exam. An interesting thing is that this model is much more objetive than the previous version. We expect that `o3` and `o4-mini` may achieve 100%.
+The `o1` model, in the other hand, got question 10 correctly with analytic geometry, but in question 7 it failed partially, achieving 95% at the exam. An interesting thing is that this model is much more objetive than the previous version.
+
+New models `o3` and `o4-mini` scored almost 100%, but they failed a bit in question 7 again, but with less errors than `o1`.
 
 ### Chemistry Essay
 
