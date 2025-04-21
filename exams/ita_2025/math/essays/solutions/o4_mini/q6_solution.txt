@@ -1,0 +1,30 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+A probabilidade de obter a 4ª cara exatamente no $n$‑ésimo lançamento é dada pela distribuição binomial negativa:
+\[
+P(n)=\binom{n-1}{3}\Bigl(\tfrac12\Bigr)^4\Bigl(\tfrac12\Bigr)^{n-4}
+=\binom{n-1}{3}2^{-n},\qquad n\ge4.
+\]
+Para encontrar o(s) $n$ que maximizam $P(n)$, calculamos
+\begin{align*}
+\frac{P(n+1)}{P(n)}
+&=\frac{\binom{n}{3}2^{-(n+1)}}{\binom{n-1}{3}2^{-n}}
+=\frac{\binom{n}{3}}{\binom{n-1}{3}}\cdot\frac12
+=\frac{n}{2(n-3)}.
+\end{align*}
+Logo,
+\[
+\frac{P(n+1)}{P(n)}\ge1\iff n\le6,
+\quad
+\frac{P(n+1)}{P(n)}\le1\iff n\ge6.
+\]
+Isso mostra que $P(n)$ cresce até $n=6$ e decresce a partir de $n=6$, com
+\[
+P(6)=\binom{5}{3}2^{-6}=\frac{10}{64},\quad
+P(7)=\binom{6}{3}2^{-7}=\frac{20}{128}=\frac{10}{64},
+\]
+logo atinge o valor máximo em $n=6$ e $n=7$.
+
+ANSWER: $n=6,\,7$.

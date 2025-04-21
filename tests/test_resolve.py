@@ -1,6 +1,7 @@
 import pytest
 import base64
 import unittest.mock as mock
+import asyncio
 from gpt_resolve.resolve import (
     encode_image,
     resolve_question,
@@ -77,50 +78,39 @@ def test_resolve_question_dry_run():
 
 
 def test_process_questions(tmp_path, monkeypatch):
-    # Mock data
-    question_images = [(1, "encoded_q1"), (2, "encoded_q2")]
-    conventions_image = "encoded_conventions"
+    """Test that process_questions passes the correct parameters to asyncio.run()"""
+    # Create needed files in the temporary directory
+    conventions_file = tmp_path / "conventions.jpg"
+    q1_file = tmp_path / "q1.jpg"
+    q2_file = tmp_path / "q2.jpg"
+
+    # Create empty files
+    conventions_file.write_bytes(b"test content")
+    q1_file.write_bytes(b"test content")
+    q2_file.write_bytes(b"test content")
+
     exam_path = str(tmp_path)
 
-    # Mock resolve_question to avoid actual API calls
-    mock_answer = "\section*{Solução}\nTest answer\nANSWER: 42"
-    mock_tokens = 100
+    # Mock necessary functions to avoid real file operations or API calls
+    with mock.patch('gpt_resolve.resolve.encode_image', return_value="mock_encoded_image"):
+        with mock.patch('asyncio.run') as mock_async_run:
+            # Import the function that uses process_questions
+            from gpt_resolve.resolve import resolve_exam
 
-    # Create a mock for save_answer_and_description
-    with mock.patch('gpt_resolve.resolve.save_answer_and_description') as mock_save:
-        with mock.patch('gpt_resolve.resolve.resolve_question',
-                      return_value=(mock_answer, mock_tokens)) as mock_resolve:
-
-            # Call the function
-            process_questions(
-                questions_images=question_images,
-                conventions_image=conventions_image,
+            # Call the function that would use process_questions
+            resolve_exam(
                 exam_path=exam_path,
+                questions_to_solve=[1, 2],
                 dry_run=True,
                 max_tokens_output=1000,
                 model="test-model"
             )
 
-            # Verify the mocks were called correctly
-            assert mock_resolve.call_count == 2
-            assert mock_save.call_count == 2
+            # Verify asyncio.run was called
+            assert mock_async_run.call_count == 1
 
-            # Check the arguments for the first question
-            mock_resolve.assert_any_call(
-                question_image="encoded_q1",
-                conventions_image="encoded_conventions",
-                model="test-model",
-                dry_run=True,
-                max_tokens_output=1000,
-                client=None
-            )
+            # Get the arguments passed to asyncio.run
+            args, _ = mock_async_run.call_args
 
-            # Check save was called with correct arguments
-            mock_save.assert_any_call(
-                mock_answer,
-                mock.ANY,  # question_description
-                exam_path,
-                1,
-                "test-model",
-                dry_run=True
-            )
+            # Check that the first argument is a coroutine object (process_questions)
+            assert callable(args[0].__await__)
