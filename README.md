@@ -61,11 +61,11 @@ Sometimes, it was observed that the output from `o1-preview` produced invalid La
 
 # Costs
 
-The `o1-preview` model is so far [available only for Tiers 3, 4 and 5](https://help.openai.com/en/articles/9824962-openai-o1-preview-and-o1-mini-usage-limits-on-chatgpt-and-the-api). It is [6x more expensive](https://openai.com/api/pricing/) than `gpt-4o`, and also consumes much more tokens to "reason" (see more [here](https://platform.openai.com/docs/guides/reasoning/controlling-costs#controlling-costs)), so be mindful about the number of questions you are solving and how many max tokens you're allowing gpt-resolve to use (see `gpt-resolve resolve --help` to control `max-tokens-question-answer`, which drives the cost). You can roughly estimate an upper bound for costs of solving an exam by
+Reasoning models like `o1-preview` are much more expensive than non-reasoning models like `gpt-4o`, consuming much more tokens to "reason" (see more [here](https://platform.openai.com/docs/guides/reasoning/controlling-costs#controlling-costs)), so be mindful about the number of questions you are solving and how many max tokens you're allowing gpt-resolve to use (see `gpt-resolve resolve --help` to control `max-tokens-question-answer`, which drives the cost). You can roughly estimate an upper bound for costs of solving an exam by
 ```
 (number of questions) * (max_tokens_question_answer / 1_000_000) * (price per 1M tokens)
 ```
-For the current price for o1-preview of $15/$60 per 1M tokens for input/output tokens, an 10 question exam with 10000 max tokens per question would cost less than $6.
+For the current price for o1 of $15/$60 per 1M tokens for input/output tokens, an 10 question exam with 10000 max tokens per question would cost less than $6. For `o3`, for which the price is $10/$40 per 1M tokens for input/output tokens, the cost would be less than $4.
 
 # Contributing
 
