@@ -61,7 +61,7 @@ Sometimes, it was observed that the output from `o1-preview` produced invalid La
 
 # Costs
 
-Reasoning models like `o1-preview` are much more expensive than non-reasoning models like `gpt-4o`, consuming much more tokens to "reason" (see more [here](https://platform.openai.com/docs/guides/reasoning/controlling-costs#controlling-costs)), so be mindful about the number of questions you are solving and how many max tokens you're allowing gpt-resolve to use (see `gpt-resolve resolve --help` to control `max-tokens-question-answer`, which drives the cost). You can roughly estimate an upper bound for costs of solving an exam by
+Reasoning models like `o1` are much more expensive than non-reasoning models like `gpt-4o`, consuming much more tokens to "reason" (see more [here](https://platform.openai.com/docs/guides/reasoning/controlling-costs#controlling-costs)), so be mindful about the number of questions you are solving and how many max tokens you're allowing gpt-resolve to use (see `gpt-resolve resolve --help` to control `max-tokens-question-answer`, which drives the cost). You can roughly estimate an upper bound for costs of solving an exam by
 ```
 (number of questions) * (max_tokens_question_answer / 1_000_000) * (price per 1M tokens)
 ```
