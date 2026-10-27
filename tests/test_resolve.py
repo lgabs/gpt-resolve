@@ -43,8 +43,11 @@ def test_judge_loop_revises_until_pass_score(tmp_path):
 
     assert [a.score for a in result.attempts] == [6, 8.5, 9.2]
     assert result.approved
+    # The judge solves blind once per question and reuses it across revisions
+    assert provider.calls.count("blind") == 1
     report = json.loads((tmp_path / "out" / "q1_judge.json").read_text(encoding="utf-8"))
     assert report["approved"] and report["best_round"] == 3
+    assert report["judge_reference"]["final_answer"] == "42"
 
 
 def test_judge_loop_stops_at_max_rounds_and_keeps_best(tmp_path):

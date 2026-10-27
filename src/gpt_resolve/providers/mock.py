@@ -33,6 +33,11 @@ class MockProvider(Provider):
                 for n in range(1, self.num_questions + 1)
             ]
             return AgentResult("", {"instructions": "", "questions": questions})
+        if "reference_solution" in props:
+            self.calls.append("blind")
+            return AgentResult(
+                "", {"reference_solution": "Mock reference.", "final_answer": "42", "pitfalls": []}
+            )
         if "score" in props:
             self.calls.append("judge")
             score = self.judge_scores.pop(0) if len(self.judge_scores) > 1 else self.judge_scores[0]
@@ -41,6 +46,7 @@ class MockProvider(Provider):
                 {
                     "score": score,
                     "answer_correct": True,
+                    "agrees_with_reference": True,
                     "issues": [] if score >= 9 else [{"severity": "major", "description": "Passo sem justificativa."}],
                     "summary": f"Mock review, nota {score}.",
                 },

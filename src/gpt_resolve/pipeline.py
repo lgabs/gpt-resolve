@@ -129,6 +129,18 @@ async def solve_question(
         instructions=exam.instructions or "(nenhuma)",
         statement=question.statement,
     )
+    # The judge first solves the question blind, so its review is not anchored on the candidate.
+    # The blind reference runs alongside the first solver round and is reused in every revision.
+    reference_task = asyncio.create_task(
+        provider.run(
+            prompt=prompts.BLIND_PROMPT.format(**common),
+            system_prompt=prompts.BLIND_SYSTEM,
+            model=settings.judge_model,
+            workdir=workdir / "judge_blind",
+            schema=prompts.BLIND_SCHEMA,
+            effort=settings.effort,
+        )
+    )
     attempts: list[Attempt] = []
     for round_ in range(1, settings.max_rounds + 1):
         revision = ""
@@ -146,8 +158,15 @@ async def solve_question(
             effort=settings.effort,
         )
         solution = solved.structured["solution_latex"]
+        reference = (await reference_task).structured
         judged = await provider.run(
-            prompt=prompts.JUDGE_PROMPT.format(**common, solution=solution),
+            prompt=prompts.JUDGE_PROMPT.format(
+                **common,
+                solution=solution,
+                reference=reference["reference_solution"],
+                reference_answer=reference["final_answer"],
+                pitfalls="\n".join(f"- {p}" for p in reference["pitfalls"]) or "(nenhuma)",
+            ),
             system_prompt=prompts.JUDGE_SYSTEM,
             model=settings.judge_model,
             workdir=workdir / "judge",
@@ -161,11 +180,13 @@ async def solve_question(
             break
 
     result = QuestionResult(question.number, attempts, settings.pass_score)
-    save_result(result, output_dir)
+    save_result(result, output_dir, reference)
     return result
 
 
-def save_result(result: QuestionResult, output_dir: Path) -> None:
+def save_result(
+    result: QuestionResult, output_dir: Path, reference: Optional[dict[str, Any]] = None
+) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     best = result.best
     header = f"\\section*{{Questão {result.number}}}"
@@ -179,6 +200,7 @@ def save_result(result: QuestionResult, output_dir: Path) -> None:
         "best_round": best.round,
         "score": best.score,
         "final_answer": best.final_answer,
+        "judge_reference": reference,
         "rounds": [
             {"round": a.round, "score": a.score, "final_answer": a.final_answer, "review": a.review}
             for a in result.attempts

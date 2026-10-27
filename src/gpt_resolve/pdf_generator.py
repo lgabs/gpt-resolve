@@ -154,6 +154,15 @@ def append_judge_appendix(doc: Document, judge_reports: list[Path]) -> None:
                 f"rodada {report['best_round']} de {len(report['rounds'])})}}"
             )
         )
+        reference = report.get("judge_reference")
+        if reference:
+            doc.append(
+                NoEscape(
+                    r"\textbf{Resposta da resolução às cegas do avaliador:} "
+                    + escape_text(reference.get("final_answer", ""))
+                    + r"\par "
+                )
+            )
         doc.append(NoEscape(escape_text(review.get("summary", ""))))
         issues = review.get("issues", [])
         if issues:

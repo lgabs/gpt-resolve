@@ -79,16 +79,15 @@ SOLVER_SCHEMA = {
     "required": ["solution_latex", "final_answer"],
 }
 
-JUDGE_SYSTEM = (
-    "Você é um corretor adversarial de provas discursivas do IME/ITA. Seu trabalho é encontrar falhas "
-    "na resolução: erros de conta, de física/matemática, hipóteses não justificadas, casos esquecidos, "
-    "itens não respondidos, saltos lógicos, unidades e notação. Resolva a questão você mesmo de forma "
-    "independente antes de julgar. Você pode usar Read para ver a prova original e Bash com python3 para "
-    "conferir contas. Seja exigente: nota 9 ou mais significa uma resolução que um professor publicaria "
-    "como gabarito comentado."
+BLIND_SYSTEM = (
+    "Você é um professor especialista em vestibulares militares (IME, ITA) que vai corrigir esta questão. "
+    "Antes de ver qualquer resolução de candidato, resolva a questão você mesmo, com todo o cuidado, para "
+    "ter sua própria referência. Use a ferramenta Read para ver a prova original (figuras inclusive) e Bash "
+    "com python3 para conferir contas. Destaque as armadilhas da questão: casos particulares, hipóteses "
+    "necessárias, condições de validade e erros comuns."
 )
 
-JUDGE_PROMPT = """Avalie a resolução da questão {number}.
+BLIND_PROMPT = """Resolva a questão {number} da prova para servir de referência de correção.
 
 Prova original: {sources}{pages_hint}
 Instruções gerais da prova:
@@ -97,16 +96,56 @@ Instruções gerais da prova:
 Transcrição do enunciado (confira com o original, que prevalece):
 {statement}
 
-Resolução a avaliar:
+Devolva `reference_solution` (sua resolução completa, item por item), `final_answer` (resumo das respostas finais) e `pitfalls` (as armadilhas e pontos que uma boa resolução precisa tratar)."""
+
+BLIND_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "reference_solution": {"type": "string"},
+        "final_answer": {"type": "string"},
+        "pitfalls": {"type": "array", "items": {"type": "string"}},
+    },
+    "required": ["reference_solution", "final_answer", "pitfalls"],
+}
+
+JUDGE_SYSTEM = (
+    "Você é um corretor adversarial de provas discursivas do IME/ITA. Seu trabalho é encontrar falhas "
+    "na resolução do candidato: erros de conta, de física/matemática, hipóteses não justificadas, casos esquecidos, "
+    "itens não respondidos, saltos lógicos, unidades e notação. Você já resolveu a questão às cegas antes e "
+    "tem sua própria resolução de referência, mas ela também pode estar errada: onde as duas divergirem, "
+    "descubra qual está certa refazendo o trecho com cuidado (use Bash com python3 para conferir contas e "
+    "Read para reler o enunciado original), sem presumir que nenhuma das duas está certa. Não concorde por "
+    "concordar. Seja exigente: nota 9 ou mais significa uma resolução que um professor publicaria como "
+    "gabarito comentado."
+)
+
+JUDGE_PROMPT = """Avalie a resolução do candidato para a questão {number}.
+
+Prova original: {sources}{pages_hint}
+Instruções gerais da prova:
+{instructions}
+
+Transcrição do enunciado (confira com o original, que prevalece):
+{statement}
+
+Sua resolução de referência, feita às cegas antes de ver a do candidato:
+{reference}
+
+Resposta final da sua referência: {reference_answer}
+Armadilhas que você identificou:
+{pitfalls}
+
+Resolução do candidato a avaliar:
 {solution}
 
-Dê uma nota de 0 a 10 para a qualidade da resolução como um todo (correção, completude, rigor, clareza), não apenas para a resposta final. Uma resposta final certa com justificativa fraca não passa de 7. Liste cada problema encontrado com sua gravidade (critical, major, minor) e o que deveria ser feito."""
+Compare as respostas finais item por item. Se divergirem, determine qual está correta e diga isso em `answer_correct` e no parecer. Depois avalie a resolução como um todo (correção, completude, rigor, clareza) e dê uma nota de 0 a 10, não apenas para a resposta final. Uma resposta final certa com justificativa fraca não passa de 7. Verifique se cada armadilha foi tratada. Liste cada problema encontrado com sua gravidade (critical, major, minor) e o que deveria ser feito."""
 
 JUDGE_SCHEMA = {
     "type": "object",
     "properties": {
         "score": {"type": "number", "minimum": 0, "maximum": 10},
         "answer_correct": {"type": "boolean"},
+        "agrees_with_reference": {"type": "boolean"},
         "issues": {
             "type": "array",
             "items": {
@@ -120,5 +159,5 @@ JUDGE_SCHEMA = {
         },
         "summary": {"type": "string"},
     },
-    "required": ["score", "answer_correct", "issues", "summary"],
+    "required": ["score", "answer_correct", "agrees_with_reference", "issues", "summary"],
 }
