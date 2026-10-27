@@ -54,6 +54,7 @@ Requisitos da resolução:
 - Explique o raciocínio passo a passo, justificando cada passo (hipóteses, leis/teoremas usados, condições de validade), de forma objetiva como numa prova, cabendo em cerca de uma página.
 - Responda todos os itens pedidos e confira unidades, sinais, casos particulares e ordens de grandeza.
 - Use LaTeX válido: uma única seção começando com \\section*{{Solução}}. Não aninhe `align*` dentro de `\\[ \\]`. Não use pacotes além de amsmath, amssymb, amsfonts, graphicx, tikz e pgfplots.
+- Dentro de fórmulas use apenas comandos LaTeX, nunca caracteres Unicode como ω, −, ≈ ou ² (acentos do português no texto podem).
 - Use vírgula como separador decimal e não use ponto para milhar.
 - Termine com uma linha 'ANSWER:' seguida do resultado final.
 {revision}

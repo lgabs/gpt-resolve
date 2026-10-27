@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Union
 from pylatex import Document, Command
-from pylatex.utils import NoEscape
+from pylatex.utils import NoEscape, escape_latex
 import datetime
 import tempfile
 import subprocess
@@ -122,8 +122,15 @@ def generate_solutions_pdf(
     if judge_reports:
         append_judge_appendix(doc, judge_reports)
 
-    # Generate PDF in the exam directory
-    doc.generate_pdf(str(exam_path / "solutions_compiled"), clean_tex=True)
+    # Generate PDF in the exam directory. pdflatex runs in nonstop mode, so a PDF is usually
+    # produced even when it reports errors; only fail if there is no PDF at all.
+    output = exam_path / "solutions_compiled"
+    try:
+        doc.generate_pdf(str(output), clean_tex=False)
+    except Exception as e:
+        if not output.with_suffix(".pdf").exists():
+            raise
+        print(f"Warning: LaTeX reported errors, check {output}.log ({type(e).__name__})")
 
     if sol_files_with_issues:
         print(
@@ -147,9 +154,42 @@ def append_judge_appendix(doc: Document, judge_reports: list[Path]) -> None:
                 f"rodada {report['best_round']} de {len(report['rounds'])})}}"
             )
         )
-        doc.append(review.get("summary", ""))
+        doc.append(NoEscape(escape_text(review.get("summary", ""))))
         issues = review.get("issues", [])
         if issues:
             with doc.create(Itemize()) as itemize:
                 for issue in issues:
-                    itemize.add_item(f"[{issue['severity']}] {issue['description']}")
+                    itemize.add_item(
+                        NoEscape(escape_text(f"[{issue['severity']}] {issue['description']}"))
+                    )
+
+
+# Unicode symbols the judge tends to write in plain text, which pdflatex can't typeset as-is
+UNICODE_TO_LATEX = {
+    "−": "-", "–": "--", "—": "---", "≈": r"$\approx$", "≤": r"$\leq$", "≥": r"$\geq$",
+    "≠": r"$\neq$", "→": r"$\to$", "⇒": r"$\Rightarrow$", "⇔": r"$\Leftrightarrow$",
+    "×": r"$\times$", "·": r"$\cdot$", "√": r"$\sqrt{}$", "∞": r"$\infty$", "∈": r"$\in$",
+    "±": r"$\pm$", "°": r"$^\circ$", "²": r"$^2$", "³": r"$^3$", "½": r"$\frac12$",
+    "Δ": r"$\Delta$", "∆": r"$\Delta$", "Ω": r"$\Omega$", "Σ": r"$\Sigma$", "Π": r"$\Pi$",
+    "∫": r"$\int$", "∑": r"$\sum$", "∂": r"$\partial$", "∠": r"$\angle$", "≡": r"$\equiv$",
+    "ℝ": r"$\mathbb{R}$", "ℂ": r"$\mathbb{C}$", "ℕ": r"$\mathbb{N}$", "ℤ": r"$\mathbb{Z}$",
+}
+GREEK = "αβγδεζηθικλμνξπρστυφχψω"
+GREEK_NAMES = ["alpha", "beta", "gamma", "delta", "varepsilon", "zeta", "eta", "theta", "iota",
+               "kappa", "lambda", "mu", "nu", "xi", "pi", "rho", "sigma", "tau", "upsilon",
+               "varphi", "chi", "psi", "omega"]
+UNICODE_TO_LATEX.update({c: f"$\\{n}$" for c, n in zip(GREEK, GREEK_NAMES)})
+
+
+def escape_text(text: str) -> str:
+    """Escape plain text for LaTeX, mapping common math symbols and dropping other non-Latin-1 chars."""
+    escaped = escape_latex(text)
+    out = []
+    for ch in escaped:
+        if ch in UNICODE_TO_LATEX:
+            out.append(UNICODE_TO_LATEX[ch])
+        elif ord(ch) > 255:
+            out.append("?")
+        else:
+            out.append(ch)
+    return "".join(out)
