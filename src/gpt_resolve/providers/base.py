@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, Callable, Optional
 
 
 @dataclass
@@ -31,5 +31,8 @@ class Provider(ABC):
         schema: Optional[dict[str, Any]] = None,
         effort: Optional[str] = None,
         max_turns: Optional[int] = None,
+        on_event: Optional[Callable[[str], None]] = None,
+        allowed_files: Optional[list[str]] = None,
     ) -> AgentResult:
-        """Run one agent task. When `schema` is given, `AgentResult.structured` must follow it."""
+        """Run one agent task. `on_event` receives short progress lines (e.g. tool calls).
+        When `allowed_files` is given, the agent may only read those files and its workdir, with no network. When `schema` is given, `AgentResult.structured` must follow it."""

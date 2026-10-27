@@ -81,3 +81,21 @@ def test_default_output_dir(tmp_path):
 def test_get_provider():
     assert get_provider("mock").name == "mock"
     assert get_provider("claude").name == "claude"
+
+
+class FlakyProvider(MockProvider):
+    """Fails every solver call for question 2."""
+
+    async def run(self, *, prompt, **kwargs):
+        if "questão 2" in prompt and "Resolva a questão 2 da prova." in prompt:
+            raise RuntimeError("rate limited")
+        return await super().run(prompt=prompt, **kwargs)
+
+
+def test_failing_question_does_not_stop_the_exam(tmp_path):
+    pdf = tmp_path / "prova.pdf"
+    pdf.touch()
+
+    results = run(pdf, tmp_path / "out", FlakyProvider(num_questions=2), Settings(retries=0))
+
+    assert [r.number for r in results] == [1]

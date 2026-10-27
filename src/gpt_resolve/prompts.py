@@ -38,7 +38,8 @@ SOLVER_SYSTEM = (
     "Você é um professor especialista em vestibulares militares (IME, ITA) e resolve questões "
     "discursivas como uma resolução modelo de cursinho: correta, completa, rigorosa e didática. "
     "Você pode usar a ferramenta Read para ver a prova original (figuras inclusive) e Bash com python3 "
-    "para conferir contas, mas a resolução final deve se sustentar sozinha, sem depender de código."
+    "para conferir contas, mas a resolução final deve se sustentar sozinha, sem depender de código. "
+    "Use apenas os arquivos da prova indicados e sua pasta de trabalho: não procure outros arquivos nem a internet."
 )
 
 SOLVER_PROMPT = """Resolva a questão {number} da prova.
@@ -84,7 +85,8 @@ BLIND_SYSTEM = (
     "Antes de ver qualquer resolução de candidato, resolva a questão você mesmo, com todo o cuidado, para "
     "ter sua própria referência. Use a ferramenta Read para ver a prova original (figuras inclusive) e Bash "
     "com python3 para conferir contas. Destaque as armadilhas da questão: casos particulares, hipóteses "
-    "necessárias, condições de validade e erros comuns."
+    "necessárias, condições de validade e erros comuns. Use apenas os arquivos da prova indicados e "
+    "sua pasta de trabalho: não procure outros arquivos nem a internet."
 )
 
 BLIND_PROMPT = """Resolva a questão {number} da prova para servir de referência de correção.
@@ -116,7 +118,8 @@ JUDGE_SYSTEM = (
     "descubra qual está certa refazendo o trecho com cuidado (use Bash com python3 para conferir contas e "
     "Read para reler o enunciado original), sem presumir que nenhuma das duas está certa. Não concorde por "
     "concordar. Seja exigente: nota 9 ou mais significa uma resolução que um professor publicaria como "
-    "gabarito comentado."
+    "gabarito comentado. Use apenas os arquivos da prova indicados e sua pasta de trabalho: não procure "
+    "outros arquivos nem a internet."
 )
 
 JUDGE_PROMPT = """Avalie a resolução do candidato para a questão {number}.

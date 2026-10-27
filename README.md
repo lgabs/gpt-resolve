@@ -39,6 +39,7 @@ How it works:
 1. **Extract** (PDF only): an agent reads the exam PDF and lists the questions (number, pages, transcription). Cached in `questions.json`, so re-runs skip it.
 2. **Solve**: each question runs in its own agent (default `claude-opus-5-5`), which can read the original pages/figures and use Python to check its work.
 3. **Judge**: an adversarial agent (default `claude-opus-5-5`) solves the question independently and scores the *whole resolution* (correctness, completeness, rigor, clarity) from 0 to 10. Below `--pass-score` (default 9), the solver revises using the critique, up to `--max-rounds` (default 3). The best attempt is kept and flagged as approved or not.
+   The judge works in two phases: it first solves the question blind (without seeing the candidate) and lists its pitfalls, then reviews the candidate against that reference, resolving any disagreement instead of anchoring on it.
 4. **Compile**: a PDF with all solutions plus an appendix with each judge score and review (needs `pdflatex`).
 
 ```bash
@@ -48,6 +49,8 @@ gpt-resolve resolve -p "IME 2027 Matematica.pdf" -q 1,2 -t "IME 2027 - Matemáti
 ```
 
 Outputs go to `<pdf name>_solutions/<model>/`: `q<n>_solution.txt` (LaTeX), `q<n>_judge.json` (scores and reviews of every round) and `solutions_compiled.pdf`. The old layout of one image per question (`q1.jpg`, ..., optional `conventions.jpg`) still works by passing the folder to `-p`.
+
+Agents are sandboxed by a `PreToolUse` hook: they can only read the exam files and their own work folder, and Bash is limited to local computation (no network, no files elsewhere), so answer keys on the machine can't leak in. The terminal shows each agent's tool calls and the judge scores live (`--quiet` hides tool calls); a failing agent is retried, and a question that still fails doesn't stop the others.
 
 Useful options (see `gpt-resolve resolve --help`): `--model`, `--judge-model`, `--pass-score`, `--max-rounds`, `--effort`, `--concurrency`, `--no-compile`, `--dry-run` (offline mock).
 

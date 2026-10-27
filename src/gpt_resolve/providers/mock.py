@@ -24,6 +24,8 @@ class MockProvider(Provider):
         schema: Optional[dict[str, Any]] = None,
         effort: Optional[str] = None,
         max_turns: Optional[int] = None,
+        on_event=None,
+        allowed_files=None,
     ) -> AgentResult:
         props = (schema or {}).get("properties", {})
         if "questions" in props:

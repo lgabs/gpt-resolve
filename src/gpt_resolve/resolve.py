@@ -61,8 +61,9 @@ def resolve(
     judge_model: str = typer.Option(DEFAULT_JUDGE_MODEL, help="Model for the judge agents"),
     pass_score: float = typer.Option(PASS_SCORE, help="Minimum judge score (0-10) to approve"),
     max_rounds: int = typer.Option(MAX_ROUNDS, help="Max solve/judge rounds per question"),
-    effort: str = typer.Option("high", help="Reasoning effort: low, medium, high, xhigh, max"),
+    effort: str = typer.Option("xhigh", help="Reasoning effort: low, medium, high, xhigh, max"),
     concurrency: int = typer.Option(4, help="Questions solved in parallel"),
+    quiet: bool = typer.Option(False, help="Hide each agent's tool calls (keep phase progress)"),
     compile_pdf: bool = typer.Option(True, "--compile/--no-compile", help="Compile a PDF at the end"),
     title: str = typer.Option("Soluções", "-t", "--title", help="Title for the compiled PDF"),
     dry_run: bool = typer.Option(False, help="Use the offline mock provider"),
@@ -76,11 +77,12 @@ def resolve(
         max_rounds=max_rounds,
         effort=effort,
         concurrency=concurrency,
+        show_tools=not quiet,
     )
-    _, output_dir = resolve_exam(
+    results, output_dir = resolve_exam(
         path, output, questions_list, "mock" if dry_run else provider, settings
     )
-    if compile_pdf:
+    if compile_pdf and results:
         generate_solutions_pdf(output_dir, title=title, author=f"{model} (solver) + {judge_model} (judge)")
         typer.echo(f"PDF: {output_dir}/solutions_compiled.pdf")
 

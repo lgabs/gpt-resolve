@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 from gpt_resolve import prompts
-from gpt_resolve.providers import Provider
+from gpt_resolve.providers import AgentResult, Provider
 from gpt_resolve.utils import get_exam_images_paths
 
 DEFAULT_MODEL = "claude-opus-5-5"
@@ -64,15 +64,37 @@ class Settings:
     judge_model: str = DEFAULT_JUDGE_MODEL
     pass_score: float = PASS_SCORE
     max_rounds: int = MAX_ROUNDS
-    effort: Optional[str] = "high"
+    effort: Optional[str] = "xhigh"
     concurrency: int = 4
+    show_tools: bool = True
+    retries: int = 2
+
+
+async def run_agent(
+    provider: Provider, settings: Settings, label: str, log, **kwargs
+) -> AgentResult:
+    """Run one agent with progress logging, retrying transient failures (rate limits, timeouts)."""
+    on_event = (lambda e: log(f"[{label}] {e}")) if settings.show_tools else None
+    for attempt in range(settings.retries + 1):
+        log(f"[{label}] iniciando" + (f" (tentativa {attempt + 1})" if attempt else ""))
+        try:
+            result = await provider.run(on_event=on_event, **kwargs)
+            log(f"[{label}] concluído em {result.duration_s / 60:.1f} min")
+            return result
+        except Exception as e:
+            log(f"[{label}] erro: {type(e).__name__}: {str(e)[:200]}")
+            if attempt == settings.retries:
+                raise
+            await asyncio.sleep(30 * (attempt + 1))
 
 
 def _pages_hint(question: Question) -> str:
     return f" (páginas {', '.join(map(str, question.pages))})" if question.pages else ""
 
 
-async def load_exam(source: Path, provider: Provider, settings: Settings, output_dir: Path) -> Exam:
+async def load_exam(
+    source: Path, provider: Provider, settings: Settings, output_dir: Path, log=print
+) -> Exam:
     """Build the exam from a PDF (extracted by an agent, cached in questions.json) or an image folder."""
     if source.is_dir():
         conventions, questions = get_exam_images_paths(str(source))
@@ -89,8 +111,13 @@ async def load_exam(source: Path, provider: Provider, settings: Settings, output
     if cache.exists():
         data = json.loads(cache.read_text(encoding="utf-8"))
     else:
-        result = await provider.run(
+        result = await run_agent(
+            provider,
+            settings,
+            "extração",
+            log,
             prompt=prompts.EXTRACT_PROMPT.format(sources=source.resolve()),
+            allowed_files=[str(source.resolve())],
             system_prompt=prompts.EXTRACT_SYSTEM,
             model=settings.model,
             workdir=output_dir / ".work" / "extract",
@@ -132,8 +159,13 @@ async def solve_question(
     # The judge first solves the question blind, so its review is not anchored on the candidate.
     # The blind reference runs alongside the first solver round and is reused in every revision.
     reference_task = asyncio.create_task(
-        provider.run(
+        run_agent(
+            provider,
+            settings,
+            f"Q{question.number} judge às cegas",
+            log,
             prompt=prompts.BLIND_PROMPT.format(**common),
+            allowed_files=question.sources,
             system_prompt=prompts.BLIND_SYSTEM,
             model=settings.judge_model,
             workdir=workdir / "judge_blind",
@@ -149,8 +181,13 @@ async def solve_question(
             revision = prompts.REVISION_BLOCK.format(
                 score=last.score, previous=last.solution, feedback=_format_feedback(last.review)
             )
-        solved = await provider.run(
+        solved = await run_agent(
+            provider,
+            settings,
+            f"Q{question.number} solver r{round_}",
+            log,
             prompt=prompts.SOLVER_PROMPT.format(**common, revision=revision),
+            allowed_files=question.sources,
             system_prompt=prompts.SOLVER_SYSTEM,
             model=settings.model,
             workdir=workdir / "solver",
@@ -159,7 +196,11 @@ async def solve_question(
         )
         solution = solved.structured["solution_latex"]
         reference = (await reference_task).structured
-        judged = await provider.run(
+        judged = await run_agent(
+            provider,
+            settings,
+            f"Q{question.number} judge r{round_}",
+            log,
             prompt=prompts.JUDGE_PROMPT.format(
                 **common,
                 solution=solution,
@@ -171,11 +212,16 @@ async def solve_question(
             model=settings.judge_model,
             workdir=workdir / "judge",
             schema=prompts.JUDGE_SCHEMA,
+            allowed_files=question.sources,
             effort=settings.effort,
         )
         attempt = Attempt(round_, solution, solved.structured.get("final_answer", ""), judged.structured)
         attempts.append(attempt)
-        log(f"Q{question.number} rodada {round_}: nota {attempt.score:g}")
+        issues = attempt.review.get("issues", [])
+        counts = ", ".join(
+            f"{sum(i['severity'] == sev for i in issues)} {sev}" for sev in ("critical", "major", "minor")
+        )
+        log(f"★ Q{question.number} rodada {round_}: nota {attempt.score:g} ({counts})")
         if attempt.score >= settings.pass_score:
             break
 
@@ -225,17 +271,32 @@ async def resolve_exam_async(
     log=print,
 ) -> list[QuestionResult]:
     start = time.perf_counter()
-    exam = await load_exam(source, provider, settings, output_dir)
+    base_log = log
+
+    def log(msg: str) -> None:
+        elapsed = int(time.perf_counter() - start)
+        base_log(f"[{elapsed // 60:02d}:{elapsed % 60:02d}] {msg}")
+
+    exam = await load_exam(source, provider, settings, output_dir, log)
     questions = [q for q in exam.questions if not questions_to_solve or q.number in questions_to_solve]
+    if not questions:
+        log(f"Nenhuma questão encontrada em {source} (filtro: {questions_to_solve})")
+        return []
     log(f"{len(questions)} questão(ões) para resolver: {[q.number for q in questions]}")
 
     semaphore = asyncio.Semaphore(settings.concurrency)
 
-    async def run(q: Question) -> QuestionResult:
+    async def run(q: Question) -> Optional[QuestionResult]:
         async with semaphore:
-            return await solve_question(q, exam, provider, settings, output_dir, log)
+            try:
+                return await solve_question(q, exam, provider, settings, output_dir, log)
+            except Exception as e:
+                # One failing question must not take down the rest of the exam
+                log(f"✗ Q{q.number} falhou: {type(e).__name__}: {str(e)[:200]} (rode de novo com -q {q.number})")
+                return None
 
-    results = sorted(await asyncio.gather(*(run(q) for q in questions)), key=lambda r: r.number)
+    results = await asyncio.gather(*(run(q) for q in questions))
+    results = sorted((r for r in results if r), key=lambda r: r.number)
     for r in results:
         status = "aprovada" if r.approved else "NÃO aprovada"
         log(f"Q{r.number}: nota {r.best.score:g} ({status}, {len(r.attempts)} rodada(s))")
