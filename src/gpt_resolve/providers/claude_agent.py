@@ -72,6 +72,8 @@ class ClaudeAgentProvider(Provider):
             effort=effort,
             output_format={"type": "json_schema", "schema": schema} if schema else None,
             cli_path=self.cli_path,
+            # Reading PDF pages returns large image payloads; the 1 MB default is too small
+            max_buffer_size=64 * 1024 * 1024,
         )
 
         start = time.perf_counter()
