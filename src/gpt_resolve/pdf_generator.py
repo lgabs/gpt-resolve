@@ -5,6 +5,8 @@ from pylatex.utils import NoEscape
 import datetime
 import tempfile
 import subprocess
+import json
+from pylatex import Itemize
 
 def validate_latex_content(content: str) -> bool:
     """
@@ -48,7 +50,7 @@ def validate_latex_content(content: str) -> bool:
 
 
 def generate_solutions_pdf(
-    exam_path: Union[str, Path], title: str, author="o1-preview (OpenAI)"
+    exam_path: Union[str, Path], title: str, author="gpt-resolve"
 ) -> None:
     """
     Generate a PDF document containing all solutions from an exam directory.
@@ -101,28 +103,53 @@ def generate_solutions_pdf(
         solutions_dir.glob("*_solution.txt"),
         key=lambda x: int(x.stem.split("_")[0][1:]),
     )
-        # Get all solution files sorted
-    solution_files = sorted(
-        solutions_dir.glob("*_solution.txt"),
-        key=lambda x: int(x.stem.split("_")[0][1:])
-    )
 
     sol_files_with_issues = []
-    # Add each solution to document
+    # Add each solution to document; a solution with broken LaTeX is reported, not fatal
     for sol_file in solution_files:
         content = sol_file.read_text(encoding="utf-8")
         if not validate_latex_content(content):
             sol_files_with_issues.append(str(sol_file))
-            continue
-        doc.append(NoEscape(content))
+            doc.append(NoEscape(f"\\section*{{{sol_file.stem}}}"))
+            doc.append(f"Solution has invalid LaTeX, see {sol_file.name}.")
+        else:
+            doc.append(NoEscape(content))
         doc.append(NoEscape(r"\newpage"))
 
-    if sol_files_with_issues:
-        raise ValueError(
-            "Errors in one or more solutions:\n"
-            + "\n".join(sol_files_with_issues)
-            + "\n\nPlease check for syntax errors."
-        )
+    judge_reports = sorted(
+        solutions_dir.glob("q*_judge.json"), key=lambda x: int(x.stem.split("_")[0][1:])
+    )
+    if judge_reports:
+        append_judge_appendix(doc, judge_reports)
 
     # Generate PDF in the exam directory
     doc.generate_pdf(str(exam_path / "solutions_compiled"), clean_tex=True)
+
+    if sol_files_with_issues:
+        print(
+            "Warning: invalid LaTeX in:\n"
+            + "\n".join(sol_files_with_issues)
+            + "\nRe-run those questions with -q or fix them manually."
+        )
+
+
+def append_judge_appendix(doc: Document, judge_reports: list[Path]) -> None:
+    """Add the judge's score and review for each question as an appendix."""
+    doc.append(NoEscape(r"\section*{Apêndice: parecer do avaliador}"))
+    for report_file in judge_reports:
+        report = json.loads(report_file.read_text(encoding="utf-8"))
+        status = "aprovada" if report["approved"] else "não aprovada"
+        review = report["rounds"][report["best_round"] - 1]["review"]
+        doc.append(
+            NoEscape(
+                f"\\subsection*{{Questão {report['question']}: nota "
+                f"{str(report['score']).replace('.', ',')} ({status}, "
+                f"rodada {report['best_round']} de {len(report['rounds'])})}}"
+            )
+        )
+        doc.append(review.get("summary", ""))
+        issues = review.get("issues", [])
+        if issues:
+            with doc.create(Itemize()) as itemize:
+                for issue in issues:
+                    itemize.add_item(f"[{issue['severity']}] {issue['description']}")

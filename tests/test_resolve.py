@@ -1,116 +1,80 @@
-import pytest
-import base64
-import unittest.mock as mock
 import asyncio
-from gpt_resolve.resolve import (
-    encode_image,
-    resolve_question,
-    process_questions,
-)
+import json
+
+from gpt_resolve.pipeline import Settings, resolve_exam_async
+from gpt_resolve.providers import get_provider
+from gpt_resolve.providers.mock import MockProvider
+from gpt_resolve.resolve import default_output_dir
 
 
-def test_encode_image_success(tmp_path):
-    # Create a temporary test image
-    test_image = tmp_path / "test_image.jpg"
-    test_content = b"test image content"
-    test_image.write_bytes(test_content)
-
-    # Test encoding
-    result = encode_image(str(test_image))
-
-    # Verify the result is a valid base64 string
-    assert isinstance(result, str)
-    # Verify we can decode it back to the original content
-    assert base64.b64decode(result) == test_content
-
-
-def test_encode_image_file_not_found():
-    # Test with non-existent file
-    with pytest.raises(FileNotFoundError):
-        encode_image("nonexistent_image.jpg")
-
-
-def test_encode_image_invalid_path():
-    # Test with invalid path
-    with pytest.raises(OSError):
-        encode_image("")
-
-
-def test_resolve_question_success():
-    # Arrange
-    question_image = "base64_encoded_image"
-    conventions_image = "base64_encoded_conventions"
-    expected_answer = "\section*{Solução}\nResposta teste\nANSWER: 42"
-    expected_tokens = 100
-
-    # Mock the OpenAI client's responses.create method
-    mock_response = mock.Mock()
-    mock_response.output_text = expected_answer
-    mock_response.usage.total_tokens = expected_tokens
-
-    mock_client = mock.Mock()
-    mock_client.responses.create.return_value = mock_response
-
-    # Act
-    answer, tokens = resolve_question(
-        question_image=question_image,
-        conventions_image=conventions_image,
-        client=mock_client,
-        dry_run=False
+def run(source, output_dir, provider, settings=None, questions=None):
+    return asyncio.run(
+        resolve_exam_async(
+            source, output_dir, provider, settings or Settings(), questions, log=lambda *_: None
+        )
     )
 
-    # Assert
-    assert answer == expected_answer
-    assert tokens == expected_tokens
-    mock_client.responses.create.assert_called_once()
+
+def test_pdf_exam_extracts_and_caches_questions(tmp_path):
+    pdf = tmp_path / "prova.pdf"
+    pdf.touch()
+    out = tmp_path / "out"
+    provider = MockProvider(num_questions=3)
+
+    results = run(pdf, out, provider, questions=[1, 3])
+
+    assert [r.number for r in results] == [1, 3]
+    assert provider.calls.count("extract") == 1
+    assert (out / "questions.json").exists()
+    assert (out / "q1_solution.txt").read_text(encoding="utf-8").startswith("\\section*{Questão 1}")
+    assert not (out / "q2_solution.txt").exists()
+
+    # Second run reuses the cached extraction
+    run(pdf, out, provider, questions=[2])
+    assert provider.calls.count("extract") == 1
 
 
-def test_resolve_question_dry_run():
-    # Test that dry_run returns expected mock response
-    answer, tokens = resolve_question(
-        question_image="dummy",
-        conventions_image="dummy",
-        dry_run=True
-    )
+def test_judge_loop_revises_until_pass_score(tmp_path):
+    pdf = tmp_path / "prova.pdf"
+    pdf.touch()
+    provider = MockProvider(judge_scores=[6, 8.5, 9.2], num_questions=1)
 
-    assert "Mock solution for testing purposes" in answer
-    assert tokens == 200
+    (result,) = run(pdf, tmp_path / "out", provider)
+
+    assert [a.score for a in result.attempts] == [6, 8.5, 9.2]
+    assert result.approved
+    report = json.loads((tmp_path / "out" / "q1_judge.json").read_text(encoding="utf-8"))
+    assert report["approved"] and report["best_round"] == 3
 
 
-def test_process_questions(tmp_path, monkeypatch):
-    """Test that process_questions passes the correct parameters to asyncio.run()"""
-    # Create needed files in the temporary directory
-    conventions_file = tmp_path / "conventions.jpg"
-    q1_file = tmp_path / "q1.jpg"
-    q2_file = tmp_path / "q2.jpg"
+def test_judge_loop_stops_at_max_rounds_and_keeps_best(tmp_path):
+    pdf = tmp_path / "prova.pdf"
+    pdf.touch()
+    provider = MockProvider(judge_scores=[7, 8.5, 5], num_questions=1)
 
-    # Create empty files
-    conventions_file.write_bytes(b"test content")
-    q1_file.write_bytes(b"test content")
-    q2_file.write_bytes(b"test content")
+    (result,) = run(pdf, tmp_path / "out", provider, Settings(max_rounds=3))
 
-    exam_path = str(tmp_path)
+    assert len(result.attempts) == 3
+    assert not result.approved
+    assert result.best.round == 2
 
-    # Mock necessary functions to avoid real file operations or API calls
-    with mock.patch('gpt_resolve.resolve.encode_image', return_value="mock_encoded_image"):
-        with mock.patch('asyncio.run') as mock_async_run:
-            # Import the function that uses process_questions
-            from gpt_resolve.resolve import resolve_exam
 
-            # Call the function that would use process_questions
-            resolve_exam(
-                exam_path=exam_path,
-                questions_to_solve=[1, 2],
-                dry_run=True,
-                max_tokens_output=1000,
-                model="test-model"
-            )
+def test_image_folder_exam_skips_extraction(temp_exam_dir, tmp_path):
+    provider = MockProvider()
 
-            # Verify asyncio.run was called
-            assert mock_async_run.call_count == 1
+    results = run(temp_exam_dir, tmp_path / "out", provider, questions=[2])
 
-            # Get the arguments passed to asyncio.run
-            args, _ = mock_async_run.call_args
+    assert [r.number for r in results] == [2]
+    assert "extract" not in provider.calls
 
-            # Check that the first argument is a coroutine object (process_questions)
-            assert callable(args[0].__await__)
+
+def test_default_output_dir(tmp_path):
+    pdf = tmp_path / "prova.pdf"
+    pdf.touch()
+    assert default_output_dir(pdf, "claude-opus-5-5") == tmp_path / "prova_solutions" / "claude_opus_5_5"
+    assert default_output_dir(tmp_path, "x") == tmp_path / "solutions" / "x"
+
+
+def test_get_provider():
+    assert get_provider("mock").name == "mock"
+    assert get_provider("claude").name == "claude"

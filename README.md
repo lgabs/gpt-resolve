@@ -33,17 +33,25 @@ pip install gpt-resolve
 
 ### Solve exams with `resolve`
 
-To generate solutions for an exam:
-- save the exam images in the exam folder `exam_path`, one question per image file. File names should follow the pattern `q<question_number>.jpg`, e.g. `q1.jpg`, `q2.jpg`, etc.
-- add `OPENAI_API_KEY` to your global environment variables or to a `.env` file in the current directory
+Since v0.5, `gpt-resolve` runs on the [Claude Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview), which drives the local `claude` CLI. That means it uses whatever auth your Claude Code has: your Claude subscription (after `claude login`) or `ANTHROPIC_API_KEY`.
 
-then, run
+How it works:
+1. **Extract** (PDF only): an agent reads the exam PDF and lists the questions (number, pages, transcription). Cached in `questions.json`, so re-runs skip it.
+2. **Solve**: each question runs in its own agent (default `claude-opus-5-5`), which can read the original pages/figures and use Python to check its work.
+3. **Judge**: an adversarial agent (default `claude-opus-5-5`) solves the question independently and scores the *whole resolution* (correctness, completeness, rigor, clarity) from 0 to 10. Below `--pass-score` (default 9), the solver revises using the critique, up to `--max-rounds` (default 3). The best attempt is kept and flagged as approved or not.
+4. **Compile**: a PDF with all solutions plus an appendix with each judge score and review (needs `pdflatex`).
+
 ```bash
-gpt-resolve resolve -p exam_path
+claude login            # once, if using your subscription
+pip install -e .
+gpt-resolve resolve -p "IME 2027 Matematica.pdf" -q 1,2 -t "IME 2027 - Matemática"
 ```
-and grab a coffee while it runs.
 
-If you want to test the process without making real API calls, you can use the `--dry-run` flag. See `gpt-resolve resolve --help` for more details about solving only a subset of questions or controlling token usage or changing the model.
+Outputs go to `<pdf name>_solutions/<model>/`: `q<n>_solution.txt` (LaTeX), `q<n>_judge.json` (scores and reviews of every round) and `solutions_compiled.pdf`. The old layout of one image per question (`q1.jpg`, ..., optional `conventions.jpg`) still works by passing the folder to `-p`.
+
+Useful options (see `gpt-resolve resolve --help`): `--model`, `--judge-model`, `--pass-score`, `--max-rounds`, `--effort`, `--concurrency`, `--no-compile`, `--dry-run` (offline mock).
+
+Providers live in `src/gpt_resolve/providers/`: implement `Provider.run` and register it in `get_provider` to use another backend (`--provider`).
 
 
 ### Compile solutions with `compile-solutions`

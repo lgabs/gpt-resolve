@@ -1,8 +1,9 @@
 import glob
 import os
+from typing import Optional
 
 
-def get_exam_images_paths(path: str) -> tuple[str, list[tuple[int, str]]]:
+def get_exam_images_paths(path: str) -> tuple[Optional[str], list[tuple[int, str]]]:
     """
     Returns the paths of the images of the exam.
     The 'conventions.jpg' file is the conventions of the exam and will be included in every question.
@@ -10,7 +11,8 @@ def get_exam_images_paths(path: str) -> tuple[str, list[tuple[int, str]]]:
         tuple: (conventions_path, [(question_number, question_path), ...])
         The questions list is sorted by question number.
     """
-    conventions_path = glob.glob(path + "/conventions.jpg")[0]
+    conventions = glob.glob(path + "/conventions.jpg")
+    conventions_path = conventions[0] if conventions else None
 
     # Get all jpg files except conventions
     question_files = [
