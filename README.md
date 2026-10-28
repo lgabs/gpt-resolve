@@ -9,7 +9,7 @@ Since v0.5, the project runs on agents: the [Claude Agent SDK](https://docs.clau
 
 The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md) documentation.
 
-**Spoilers: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay. o1 scored 95% in the same Math exam. On the IME 2027 Physics essay, Claude Opus 5.5 had all 10 questions approved by its judge (scores 9.0–9.5) in 6 minutes; the comparison with the answer keys is pending ([report](exams/ime_2027/report.md)).**
+**Spoilers: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay. o1 scored 95% in the same Math exam. On the IME 2027 Physics essay, Claude Opus 5.5 had all 10 questions approved by its judge (scores 9.0–9.5) in 6 minutes and matched the Poliedro answer key on all 30 items (100%, [report](exams/ime_2027/report.md)).**
 
 After the first ITA 2025 exam is fully solved, the project will try to expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams!
 
@@ -18,7 +18,7 @@ Table of some exams to be solved:
 | Exam         | Year | Status        | Score | Report                             |
 | ------------ | ---- | ------------- | ----- | ---------------------------------- |
 | ITA          | 2025 | 🚧 In Progress | -     | [Report](exams/ita_2025/report.md) |
-| IME          | 2027 | 🚧 In Progress | -     | [Report](exams/ime_2027/report.md) |
+| IME          | 2027 | 🚧 In Progress | Physics: 100% | [Report](exams/ime_2027/report.md) |
 | Escola Naval | 2025 | 📅 Todo        | -     | -                                  |
 | Fuvest/USP   | 2025 | 📅 Todo        | -     | -                                  |
 | AFA          | 2025 | 📅 Todo        | -     | -                                  |

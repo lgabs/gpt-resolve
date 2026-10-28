@@ -1,0 +1,43 @@
+{
+  "question": 2,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-2-fisica-2-fase-dia-2-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "A: 200 kN, vertical, para cima; B: 100 kN, vertical, para baixo (apoio ancorado); A_x = B_x = 0",
+      "key_answer": "A = 200 kN vertical para cima; B = 100 kN vertical para baixo (A_x = B_x = 0)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz a conta. Em B chega só a barra vertical BE, então B_x = 0, e pelo equilíbrio horizontal global A_x = 0. Momentos em A: P·3 + B_y·3 = 0, logo B_y = −100 kN (para baixo). Daí A_y = 200 kN (para cima). Resolvi também o sistema completo de 12 equações em python e ele confirma esses valores."
+    },
+    {
+      "item": "b",
+      "solution_answer": "CD = 75 kN (C), CF = 125 kN (T), DF = 200 kN (C), AD = 200 kN (C), AE = 0, DE = 75 kN (C), BE = 100 kN (T), EF = 125 kN (T)",
+      "key_answer": "N_CD = 75 kN (C); N_CF = 125 kN (T); N_DF = 200 kN (C); N_AD = 200 kN (C); N_AE = 0; N_DE = 75 kN (C); N_BE = 100 kN (T); N_EF = 125 kN (T)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Todos os valores e naturezas coincidem. Resolvi a treliça por matriz (método dos nós, 12 equações, posto 12) e obtive CD = −75, CF = +125, DF = −200, AD = −200, AE = 0, DE = −75, BE = +100 e EF = +125 (kN), com sinal positivo para tração. A resolução ainda confere as reações no nó A e no nó B."
+    },
+    {
+      "item": "c",
+      "solution_answer": "AE é barra de contraventamento: tem esforço nulo sob esta carga vertical, mas triangula o painel ADEB. Sem ela, ADEB seria um paralelogramo articulado (mecanismo com 1 grau de liberdade). Assim, AE dá rigidez e estabilidade lateral e resiste a cargas horizontais.",
+      "key_answer": "N_AE = 0 só para este carregamento; AE é necessária para outras distribuições de carga e garante a rigidez (sem ela ADEB vira paralelogramo articulado e o guindaste balança lateralmente)",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "O conteúdo conceitual é o mesmo: esforço nulo neste carregamento, função de garantir rigidez e evitar o mecanismo de paralelogramo, e utilidade para outras cargas, como as horizontais. A resolução ainda justifica com a contagem m + r = 11 < 2j = 12 sem AE."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "description": "Os dois apoios estão desenhados como articulações simples. A resposta, porém, exige que B puxe a estrutura para baixo (100 kN), ou seja, que o apoio esteja ancorado e resista a tração. A resolução declara isso, e o gabarito apenas dá o sentido para baixo. Vale confirmar se a banca espera essa observação explícita."
+    },
+    {
+      "about": "key",
+      "description": "A resolução do gabarito está resumida e tem atalhos, como 'A_y + B_y = 100' (em kN, sem unidade) e 'N_BE = (4/5)N_EF'. Esta última vale porque N_AE = 0. As contas estão corretas, mas a fundamentação do item c) aparece só como 'ver item'."
+    }
+  ],
+  "summary": "A resolução concorda com o gabarito Poliedro nos três itens. Em a), as reações são A = 200 kN para cima e B = 100 kN para baixo, sem componentes horizontais. Em b), os oito esforços normais têm os mesmos valores e a mesma natureza, e AE = 0. Em c), as duas respostas dão a mesma explicação: AE é a barra que impede o mecanismo de paralelogramo em ADEB. Conferi com python, resolvendo o sistema completo de 12 equações. A figura do PDF bate com a transcrição. Não encontrei erro nem na resolução nem no gabarito."
+}

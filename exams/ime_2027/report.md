@@ -32,7 +32,28 @@ All 10 questions were approved by the judge in the first round. For every questi
 
 An independent run on a Mac (same parameters, user's Claude subscription) also approved all 10 questions in the first round (scores 9.0 – 9.5) with the same final answers.
 
-**Validation:** the answers were checked during the exam day against a physics teacher who solved the exam independently. The comparison with the official/preliminary answer keys (e.g. Poliedro) is still pending and will be added here, together with a final score.
+**Validation:** the answers were checked during the exam day against a physics teacher who solved the exam independently.
+
+### Comparison with the Poliedro answer key
+
+Graded with `gpt-resolve grade` against the [Poliedro Resolve](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-1-fisica-2-fase-dia-2-ime-2027) solutions (one grader agent per question, 10 in parallel, 1.1 min). Full report: [grade_report.md](physics/essays/solutions/claude_opus_5_5/grade_report.md), per question in `q<n>_grade.json`.
+
+**Final score: 100% (30 of 30 items match the key).** No wrong result was found on either side; every disagreement was redone by the grader.
+
+| Question | Items | Score | Notes |
+| -------- | ----- | ----- | ----- |
+| 1  | 3 | 10 | |
+| 2  | 3 | 10 | c) same argument (AE braces ADEB), ours more detailed |
+| 3  | 3 | 10 | |
+| 4  | 3 | 10 | b) 1.5 s read from the fuse curve (checked by hand) |
+| 5  | 3 | 10 | c) same conclusion; Poliedro frames it as "does not violate the 2nd law" at the feasible 71.7 kW point, ours as the claim violating the 1st law |
+| 6  | 4 | 10 | |
+| 7  | 3 | 10 | b) Poliedro gives −1.6 (signed ΔU_g), our final line gives the magnitude 29/18 ≈ 1.6; the statement doesn't say which |
+| 8  | 4 | 10 | |
+| 9  | 2 | 10 | |
+| 10 | 2 | 10 | |
+
+The open points (hypotheses not stated in the statement, graph readings, sign conventions) are listed at the end of the grade report.
 
 ## Math essay
 
