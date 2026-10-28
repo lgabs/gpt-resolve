@@ -9,7 +9,7 @@ Since v0.5, the project runs on agents: the [Claude Agent SDK](https://docs.clau
 
 The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md) documentation.
 
-**Spoilers: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay. o1 scored 95% in the same Math exam. On the IME 2027 Physics essay, Claude Opus 5.5 had all 10 questions approved by its judge (scores 9.0–9.5) in 6 minutes; the comparison with the answer keys is pending ([report](exams/ime_2027/report.md)).**
+**Spoilers: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay. o1 scored 95% in the same Math exam. On the IME 2027 Physics essay, Claude Opus 5.5 had all 10 questions approved by its judge (scores 9.0–9.5) in 6 minutes and matched the Poliedro answer key on all 30 items (100%); on the Math essay, all 10 approved (9.5) in 3.5 minutes and 12/12 items matched the key (100%, [report](exams/ime_2027/report.md)).**
 
 After the first ITA 2025 exam is fully solved, the project will try to expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams!
 
@@ -18,12 +18,19 @@ Table of some exams to be solved:
 | Exam         | Year | Status        | Score | Report                             |
 | ------------ | ---- | ------------- | ----- | ---------------------------------- |
 | ITA          | 2025 | 🚧 In Progress | -     | [Report](exams/ita_2025/report.md) |
-| IME          | 2027 | 🚧 In Progress | -     | [Report](exams/ime_2027/report.md) |
+| IME          | 2027 | ✅ Done        | Math: 100%, Physics: 100% | [Report](exams/ime_2027/report.md) |
 | Escola Naval | 2025 | 📅 Todo        | -     | -                                  |
 | Fuvest/USP   | 2025 | 📅 Todo        | -     | -                                  |
 | AFA          | 2025 | 📅 Todo        | -     | -                                  |
 | UNICAMP      | 2025 | 📅 Todo        | -     | -                                  |
 | ENEM         | 2025 | 📅 Todo        | -     | -                                  |
+
+# New in v0.6
+
+v0.6 has no breaking changes: everything from v0.5 works as before.
+
+- **New command `grade`**: compares the solutions with an answer key (one grader agent per question, in parallel), and writes `q<n>_grade.json`, `grade_report.md` and `grade_report.pdf` with scores and the doubts to review. See [Compare with an answer key](#compare-with-an-answer-key-with-grade).
+- `click` is pinned below 8.2, since `typer` 0.13 crashes on `--help` with newer versions when installed with pip.
 
 # Breaking changes in v0.5
 
@@ -43,7 +50,7 @@ gpt-resolve is distributed in pypi (v0.5 is installed from this repository until
 pip install gpt-resolve
 ```
 
-`gpt-resolve` provides a simple CLI with two main commands: `resolve` for solving exam questions and `compile-solutions` for generating PDFs from the solutions, as you can check below. During development, install locally with `pip install -e .`.
+`gpt-resolve` provides a simple CLI with three main commands: `resolve` for solving exam questions, `grade` for comparing the solutions with an answer key, and `compile-solutions` for generating PDFs from the solutions, as you can check below. During development, install locally with `pip install -e .`.
 
 ### Solve exams with `resolve`
 
@@ -70,6 +77,28 @@ Useful options (see `gpt-resolve resolve --help`): `--model`, `--judge-model`, `
 
 Providers live in `src/gpt_resolve/providers/`: implement `Provider.run` and register it in `get_provider` to use another backend (`--provider`).
 
+
+### Compare with an answer key with `grade`
+
+Once a cursinho (or the official board) publishes its answer key, `grade` compares it with your solutions. Each question runs in its own grader agent (same Claude Agent SDK setup and sandbox as the solver, `--concurrency` in parallel), which compares the final answers item by item, redoes the work where they disagree (the key can be wrong too) and lists the points worth checking with a teacher.
+
+```bash
+gpt-resolve grade -p exams/ime_2027/physics/essays/solutions/claude_opus_5_5 \
+  -k poliedro_key.json -e exams/ime_2027/physics/essays/exam.pdf
+```
+
+The answer key is a JSON file; `answer` is a string or an object with one answer per item, and `resolution` (the key's worked solution) is optional but helps the grader:
+
+```json
+{
+  "source": "Poliedro",
+  "questions": [
+    {"number": 1, "answer": {"a": "v0 = 250 m/s", "b": "T = 4000 K"}, "resolution": "...", "url": "https://..."}
+  ]
+}
+```
+
+Outputs go to the solutions folder: `q<n>_grade.json` (per item: both answers, verdict, who is right and why; plus the doubts), `grade_report.md` and `grade_report.pdf` (LaTeX, compiled at the end unless `--no-compile`; scores, item verdicts and all doubts). The score of a question is the share of its items where the solution is right. Doubts that could change an item's grade or reveal an error are marked important and listed first. The grader only sees the key through its prompt, and `-e` lets it read the exam pages listed in `questions.json`.
 
 ### Compile solutions with `compile-solutions`
 

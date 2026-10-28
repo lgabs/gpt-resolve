@@ -35,6 +35,19 @@ class MockProvider(Provider):
                 for n in range(1, self.num_questions + 1)
             ]
             return AgentResult("", {"instructions": "", "questions": questions})
+        if "doubts" in props:
+            self.calls.append("grade")
+            return AgentResult(
+                "",
+                {
+                    "items": [
+                        {"item": "a", "solution_answer": "42", "key_answer": "42", "verdict": "match", "correct": "both", "comment": ""},
+                        {"item": "b", "solution_answer": "1", "key_answer": "2", "verdict": "differs", "correct": "key", "comment": "Erro de sinal."},
+                    ],
+                    "doubts": [{"about": "key", "importance": "high", "description": "Mock doubt."}],
+                    "summary": "Mock grade.",
+                },
+            )
         if "reference_solution" in props:
             self.calls.append("blind")
             return AgentResult(

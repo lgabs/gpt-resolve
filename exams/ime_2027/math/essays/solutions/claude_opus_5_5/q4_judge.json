@@ -1,0 +1,44 @@
+{
+  "question": 4,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "O produto vale 1345. Para cada raiz x de x² − 7x − 3 = 0, vale (y_1+x)(y_2+x)(y_3+x) = −P(−x) = x³ − 4x + 2, com P(y) = y³ − 4y − 2. Como x² = 7x + 3, essa expressão se reduz a 48x + 23. Com x_1 + x_2 = 7 e x_1 x_2 = −3, temos (48x_1+23)(48x_2+23) = 2304·(−3) + 1104·7 + 529 = 1345. O cálculo numérico com as raízes das duas equações também dá 1345.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** Li a prova original (página 1, 4ª questão). A transcrição está correta: pede-se P = (y1+x1)(y1+x2)(y2+x1)(y2+x2)(y3+x1)(y3+x2), em que y1, y2, y3 são as raízes de f(y) = y³ − 4y − 2 = 0 e x1, x2 são as raízes de g(x) = x² − 7x − 3 = 0.\n\n**Dados de Vieta**\n- Para g: x1 + x2 = 7 e x1·x2 = −3.\n- Para f: y1 + y2 + y3 = 0, Σ yi·yj = −4 e y1·y2·y3 = 2.\n\n**Passo 1 – Agrupar por x_j e trocar o produto em y por um valor de polinômio.**\nComo f(t) = (t − y1)(t − y2)(t − y3), para cada j vale:\n∏_i (x_j + y_i) = ∏_i (x_j − (−y_i)).\nOs números −y1, −y2, −y3 são as raízes de −f(−t) = t³ − 4t + 2 =: h(t). Esse polinômio é mônico, então h(t) = ∏_i (t + y_i). Conferindo de outro jeito: ∏_i (x + y_i) = (−1)³·∏_i(−x − y_i) = −f(−x) = −(−x³ + 4x − 2) = x³ − 4x + 2.\nLogo P = h(x1)·h(x2) = (x1³ − 4x1 + 2)(x2³ − 4x2 + 2).\n\n**Passo 2 – Reduzir o grau usando g(x_j) = 0.**\nDe x² = 7x + 3 vem x³ = 7x² + 3x = 7(7x + 3) + 3x = 52x + 21.\nEntão h(x_j) = 52x_j + 21 − 4x_j + 2 = 48x_j + 23.\n\n**Passo 3 – Aplicar Vieta.**\nP = (48x1 + 23)(48x2 + 23) = 48²·x1x2 + 48·23·(x1 + x2) + 23²\nP = 2304·(−3) + 1104·7 + 529 = −6912 + 7728 + 529 = **1345**.\n\n**Caminho alternativo (confirma o resultado).** Agrupando por y_i: (y + x1)(y + x2) = g(−y) = y² + 7y − 3. Assim P = ∏_i (y_i² + 7y_i − 3) = ∏_i (y_i − a)(y_i − b), em que a = −x1 e b = −x2 são as raízes de t² + 7t − 3. Então a + b = −7 e ab = −3. Como ∏_i (y_i − a) = (−1)³·f(a), temos P = f(a)·f(b), pois os sinais se cancelam.\nDe a² = −7a + 3 vem a³ = 52a − 21. Logo f(a) = 48a − 23 e\nP = 2304·ab − 1104·(a + b) + 529 = −6912 + 7728 + 529 = 1345.\n\n**Verificação numérica.** As raízes são y ≈ 2,21432, −1,67513, −0,53919 e x ≈ 7,40512, −0,40512. O produto direto dos seis fatores dá 1345,0000 (conferido com python3). Em linguagem de resultantes, P = Res(f(y), g(−y)) = 1345.",
+    "final_answer": "O produto vale 1345.\n\nJustificativa: P = ∏_j (x_j³ − 4x_j + 2) = ∏_j (48x_j + 23) = 2304·(−3) + 1104·7 + 529 = 1345.",
+    "pitfalls": [
+      "Sinal dos fatores: os fatores são somas (y_i + x_j), não diferenças. Para cada y, (y + x1)(y + x2) = g(−y) = y² + 7y − 3, e não g(y). Quem calcula ∏ g(y_i) ou ∏ f(x_j) está calculando ∏(y_i − x_j), que dá −167. Esse é o erro típico.",
+      "Ao escrever ∏_i (x + y_i) é preciso cuidar do fator (−1)³: ∏_i (x + y_i) = −f(−x) = x³ − 4x + 2. Aqui o erro de sinal se cancela porque há dois valores de x_j, (−1)² = 1, mas a resolução deve tratar o sinal corretamente e não acertar por acaso.",
+      "Redução de grau: x³ = 52x + 21, que vem de x² = 7x + 3. Erros aritméticos nessa etapa são comuns (por exemplo, x³ = 49x + 21, esquecendo o termo 3x).",
+      "Vieta com sinais corretos: x1 + x2 = +7 e x1·x2 = −3. Para o cúbico: soma das raízes 0, soma dos produtos dois a dois −4, produto +2.",
+      "Não é necessário calcular raízes explícitas. Quem tenta usar x = (7 ± √61)/2 e as raízes do cúbico, que não têm forma fechada simples, se perde. O caminho esperado é o produto simétrico, ou seja, a resultante.",
+      "Conferir a conta final: −6912 + 7728 + 529 = 1345. Os dois caminhos de agrupamento (por x_j ou por y_i) devem dar o mesmo valor, o que serve de autoverificação.",
+      "Hipóteses: não há raízes múltiplas nem raízes comuns que causem problema. O cúbico tem discriminante 148 > 0 (três raízes reais distintas) e o quadrático tem discriminante 61 > 0. Isso, porém, não afeta o resultado, que é polinomial simétrico nas raízes."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "O produto vale 1345. Para cada raiz x de x² − 7x − 3 = 0, vale (y_1+x)(y_2+x)(y_3+x) = −P(−x) = x³ − 4x + 2, com P(y) = y³ − 4y − 2. Como x² = 7x + 3, essa expressão se reduz a 48x + 23. Com x_1 + x_2 = 7 e x_1 x_2 = −3, temos (48x_1+23)(48x_2+23) = 2304·(−3) + 1104·7 + 529 = 1345. O cálculo numérico com as raízes das duas equações também dá 1345.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na observação final, o candidato diz que E é inteiro porque é simétrico nas raízes de equações com coeficientes inteiros. O que garante a integralidade é os polinômios serem mônicos com coeficientes inteiros; sem a condição de mônico, só se garante que E é racional. Deveria escrever 'mônicos com coeficientes inteiros'. Isso não afeta a solução, que é algébrica e completa."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato afirma que o produto direto dos seis fatores 'também dá 1345', mas não mostra nenhum valor intermediário, então esse trecho da conferência não pode ser verificado pelo leitor. Como é só verificação complementar, não pesa na nota. Conferi com python3 e o produto dá 1345,000."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 1 da prova original e a transcrição está correta.\n\nA resposta do candidato, 1345, coincide com a minha referência e está certa. Pelas raízes numéricas, o produto direto dos seis fatores dá 1345,0000. Os fatores 48x_j + 23 valem cerca de 378,446 e 3,554, como o candidato indicou.\n\nO caminho é o mesmo da referência, passo a passo:\n- **Fatoração:** P(y) = ∏(y − y_i), com o sinal (−1)³ tratado explicitamente. Daí ∏_i(x + y_i) = −P(−x) = x³ − 4x + 2. O candidato acerta o sinal de forma legítima, e não só porque (−1)² = 1 cancela o erro no fim.\n- **Agrupamento:** os fatores são agrupados por x_j, sem confundir somas com diferenças, que é o erro que levaria a −167.\n- **Redução de grau:** x³ = 52x + 21, incluindo corretamente o termo 3x, o que dá 48x_j + 23.\n- **Girard:** usa x1 + x2 = 7 e x1x2 = −3, com sinais certos, e conclui −6912 + 7728 + 529 = 1345.\n\nTodas as armadilhas que eu tinha identificado foram evitadas. Faltou só o caminho alternativo por y_i como autoverificação, mas a conferência numérica cumpre esse papel.\n\nA redação é limpa, justificada e no nível de um gabarito comentado. Os únicos problemas são detalhes: a observação sobre a integralidade não menciona que os polinômios são mônicos, e a conferência pelo produto direto aparece sem valores intermediários."
+      }
+    }
+  ]
+}

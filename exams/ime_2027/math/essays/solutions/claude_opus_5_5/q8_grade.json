@@ -1,0 +1,29 @@
+{
+  "question": 8,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-8-matematica-2-fase-dia-1-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q8 (demonstração da identidade S_n)",
+      "solution_answer": "Pela prostaférese, cos α + cos(2k+1)α = 2cos(kα)cos((k+1)α). Como tg((k+1)α) − tg(kα) = sen α/(cos(kα)cos((k+1)α)), a soma telescopa: S_n = [tg((n+1)α) − tg α]/(2 sen α) = sen(nα)/(sen(2α)cos((n+1)α)).",
+      "key_answer": "Demonstração: prostaférese, depois tg x − tg y = sen(x−y)/(cos x cos y) e soma telescópica: sen α·S_n = (1/2)(tg((n+1)α) − tg α), logo S_n = sen(nα)/(sen 2α·cos((n+1)α)).",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "O enunciado transcrito confere com a página 2 da prova. A resolução segue o mesmo caminho do gabarito: prostaférese, diferença de tangentes e soma telescópica. Refiz cada passo. A prostaférese está certa: (p+q)/2 = (k+1)α e (p−q)/2 = kα. O numerador da diferença de tangentes é sen((k+1)α − kα) = sen α. Na simplificação final, sen((n+1)α − α) = sen(nα), e sen 2α = 2 sen α cos α. A resolução também diz onde entra cada hipótese: cos(jα) ≠ 0 para j = 1, …, n+1 garante que os denominadores e as tangentes existem, e sen α ≠ 0 permite dividir por sen α. Ela é até mais completa que o gabarito nesse ponto. O caso n = 1 confere. Uma checagem numérica com cerca de 20 mil pares (n, α) aleatórios deu erro relativo máximo de cerca de 4·10⁻¹⁰, tanto para a forma final quanto para a forma com tangentes."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "No fim do passo 4, a frase \"Esse valor é não nulo, pois sen α ≠ 0 e cos α ≠ 0\" pretende falar de sen(2α), que está no denominador. Mas a redação também pode ser lida como se S_n fosse não nulo, o que é falso em geral. Exemplo: com n = 3 e α = π/3 as hipóteses valem, e as parcelas −2, 1 e 1 somam S_3 = 0. Isso não afeta a demonstração; basta escrever \"sen(2α) ≠ 0\" de forma explícita."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Escorregão de nome: no passo 4 a resolução diz \"subtração de senos\", mas a fórmula usada é a do seno da diferença, sen(a−b). Não afeta o conteúdo."
+    }
+  ],
+  "summary": "A resolução está correta e completa, e bate com o gabarito do Poliedro: é o mesmo método (prostaférese, diferença de tangentes, soma telescópica) e chega à mesma identidade. Ela também mostra explicitamente onde cada hipótese é usada, o que o gabarito só resume. Conferi a álgebra e fiz uma verificação numérica em cerca de 20 mil casos aleatórios, sem divergência. Só há dois detalhes de redação, sem impacto na nota."
+}

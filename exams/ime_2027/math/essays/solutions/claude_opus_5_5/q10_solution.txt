@@ -1,0 +1,49 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Notação.} Seja $O$ o centro de $\mathcal{S}$ e $R=6\,\text{cm}$. Como a bola é convexa, o prisma está contido nela se e somente se seus $8$ vértices satisfazem $\overline{OP}\le R$. Tomamos o eixo $z$ passando por $O$ e paralelo às arestas laterais. Como o prisma é reto, as bases ficam nos planos $z=z_1$ e $z=z_2$, com $z_1<z_2$ e altura $h=z_2-z_1$. As duas bases são translações uma da outra ao longo de $z$, logo têm a mesma projeção $Q=ABCD$ no plano $xy$, de área $S$, e o volume é $V=S\,h$.
+
+\textbf{1) Restrições.} Seja $m=\max\{|z_1|,|z_2|\}$. Todo vértice $(x,y,z_i)$ satisfaz $x^2+y^2+z_i^2\le 36$, portanto
+\[
+x^2+y^2\le 36-m^2=:\rho^2 .
+\]
+Assim, os vértices de $Q$ estão no disco de centro na origem e raio $\rho$ (com $0<m<6$, pois $m=6$ daria $\rho=0$, um prisma degenerado). Além disso, $h=z_2-z_1\le |z_1|+|z_2|\le 2m$.
+
+\textbf{2) Lema (área do quadrilátero).} Pela fórmula do produto vetorial (ou de Gauss), para qualquer quadrilátero simples $ABCD$, convexo ou não, vale
+\[
+S=\tfrac12\,\bigl|\overrightarrow{AC}\times\overrightarrow{BD}\bigr|=\tfrac12\,d_1d_2\operatorname{sen}\theta\le\tfrac12\,d_1d_2 .
+\]
+As diagonais $d_1$ e $d_2$ ligam pontos do disco, logo $d_1,d_2\le 2\rho$. Portanto $S\le 2\rho^2$. A igualdade vale se e somente se as diagonais são diâmetros perpendiculares, isto é, se $Q$ é um quadrado inscrito na circunferência de raio $\rho$.
+
+\textbf{3) Otimização.} Pelos itens 1 e 2,
+\[
+V=S\,h\le 2\rho^2\cdot 2m=4m\,(36-m^2)=:f(m),\qquad 0<m<6 .
+\]
+Aplicamos MA--MG aos três números positivos $2m^2$, $36-m^2$ e $36-m^2$, cuja soma é $72$:
+\[
+2m^2(36-m^2)^2\le\left(\frac{72}{3}\right)^3=24^3
+\;\Longrightarrow\;
+f(m)^2=16\,m^2(36-m^2)^2\le 8\cdot 24^3=110592=\left(192\sqrt3\right)^2 .
+\]
+A igualdade ocorre se e somente se $2m^2=36-m^2$, ou seja, $m=2\sqrt3$. O mesmo resultado sai de $f'(m)=4(36-3m^2)=0$. Logo, todo prisma nas condições do enunciado tem $V\le 192\sqrt3\ \text{cm}^3$.
+
+\textbf{4) O máximo é atingido e respeita a hipótese.} Todas as desigualdades usadas viram igualdades simultaneamente quando:
+\begin{itemize}
+\item $m=2\sqrt3$;
+\item $h=2m=4\sqrt3$, o que exige $z_1=-2\sqrt3$ e $z_2=2\sqrt3$;
+\item $\rho^2=36-12=24$, ou seja, $\rho=2\sqrt6$;
+\item $Q$ é um quadrado inscrito na circunferência de raio $\rho$, com lado $\rho\sqrt2=2\sqrt6\cdot\sqrt2=4\sqrt3$.
+\end{itemize}
+O sólido obtido é um cubo de aresta $4\sqrt3\,\text{cm}$. Cada vértice satisfaz $x^2+y^2+z^2=24+12=36$, logo os oito vértices estão sobre $\mathcal{S}$. O cubo está, portanto, contido na esfera, e em particular os quatro vértices de uma face (de qualquer face) pertencem à superfície: a hipótese do enunciado é satisfeita.
+
+\textbf{Conferência.} A diagonal do cubo vale $4\sqrt3\cdot\sqrt3=12=2R$, como deve ser. Numericamente, $V=192\sqrt3\approx 332{,}6\ \text{cm}^3$, cerca de $37\%$ do volume da esfera ($288\pi\approx 904{,}8\ \text{cm}^3$), uma ordem de grandeza coerente.
+
+\textbf{Respostas.}
+
+(a) $V_{\max}=192\sqrt3\ \text{cm}^3\approx 332{,}6\ \text{cm}^3$.
+
+(b) Altura $h=4\sqrt3\ \text{cm}$; base quadrada de lados $4\sqrt3\ \text{cm}\times 4\sqrt3\ \text{cm}$. O prisma é um cubo inscrito em $\mathcal{S}$.
+
+\medskip
+ANSWER: (a) $V_{\max}=192\sqrt{3}\ \text{cm}^3$; (b) altura $4\sqrt{3}\ \text{cm}$ e base quadrada de lado $4\sqrt{3}\ \text{cm}$ (cubo de aresta $4\sqrt{3}\ \text{cm}$).

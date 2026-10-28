@@ -1,0 +1,59 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{1. As raízes.} As soluções de $z^{12}=1$ são
+\[
+z_k=\operatorname{cis}\!\left(\frac{k\pi}{6}\right)=\cos\frac{k\pi}{6}+i\,\sin\frac{k\pi}{6},\qquad k=0,1,\ldots,11,
+\]
+ou seja, os vértices de um dodecágono regular inscrito na circunferência unitária, separados de $30^\circ$.
+Assim, $\mathcal{P}$ tem vértices nos argumentos $0^\circ,60^\circ,\ldots,300^\circ$ e $\mathcal{I}$ nos argumentos
+$30^\circ,90^\circ,\ldots,330^\circ$. São dois hexágonos regulares de circunraio $R=1$, e cada um é obtido do outro por uma rotação de $30^\circ$ em torno da origem. Logo, os dois têm a mesma área.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.6]
+\draw[thin,gray] (0,0) circle (1);
+\draw[thick,blue] (0:1)--(60:1)--(120:1)--(180:1)--(240:1)--(300:1)--cycle;
+\draw[thick,red] (30:1)--(90:1)--(150:1)--(210:1)--(270:1)--(330:1)--cycle;
+\draw[dashed] (0,0)--(30:1);
+\fill (0,0) circle (0.02) node[below left] {$O$};
+\node[right] at (0:1) {$z_0$};
+\node[above right] at (30:1) {$z_1$};
+\node[above] at (60:1) {$z_2$};
+\node[above] at (90:1) {$z_3$};
+\node[left] at (180:1) {$z_6$};
+\node[below right] at (330:1) {$z_{11}$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2. Área de cada hexágono.} Um hexágono regular de circunraio $R=1$ é formado por $6$ triângulos equiláteros de lado $1$:
+\[
+S_{\mathcal{P}}=S_{\mathcal{I}}=6\cdot\frac{\sqrt3}{4}=\frac{3\sqrt3}{2}.
+\]
+O apótema (distância do centro a cada lado) é $a=\cos 30^\circ=\dfrac{\sqrt3}{2}$.
+
+\textbf{3. A interseção $\mathcal{P}\cap\mathcal{I}$.} Um polígono regular convexo é a interseção dos semiplanos que são limitados pelas retas de seus lados e contêm o centro. Os lados de $\mathcal{P}$ (por exemplo, $z_0z_2$, cujo ponto médio tem argumento $30^\circ$) têm normais nas direções $30^\circ+60^\circ j$. Os de $\mathcal{I}$ (por exemplo, $z_{11}z_1$, cujo ponto médio tem argumento $0^\circ$) têm normais nas direções $60^\circ j$. Todos estão a distância $\frac{\sqrt3}{2}$ de $O$. Portanto,
+\[
+\mathcal{P}\cap\mathcal{I}=\bigcap_{m=0}^{11}\left\{z:\ \operatorname{Re}\!\left(z\,e^{-i m\pi/6}\right)\le \tfrac{\sqrt3}{2}\right\},
+\]
+que é um \emph{dodecágono regular} de apótema $a=\frac{\sqrt3}{2}$. Dividindo-o em $24$ triângulos retângulos de cateto $a$ e ângulo central $15^\circ$ (cateto oposto $a\tan15^\circ$):
+\[
+S_{\mathcal{P}\cap\mathcal{I}}=24\cdot\frac12\,a\cdot a\tan 15^\circ=12a^2\tan15^\circ
+=12\cdot\frac34\,(2-\sqrt3)=18-9\sqrt3,
+\]
+usando $\tan15^\circ=\tan(45^\circ-30^\circ)=\dfrac{1-\frac{\sqrt3}{3}}{1+\frac{\sqrt3}{3}}=2-\sqrt3$.
+
+\textbf{4. Área da união.} Pelo princípio da inclusão--exclusão para áreas,
+\[
+S_{\mathcal{P}\cup\mathcal{I}}=S_{\mathcal{P}}+S_{\mathcal{I}}-S_{\mathcal{P}\cap\mathcal{I}}
+=3\sqrt3-(18-9\sqrt3)=12\sqrt3-18 .
+\]
+
+\textbf{Verificação.} A união é o hexágono $\mathcal{P}$ acrescido de $6$ ``pontas'' triangulares de $\mathcal{I}$. A ponta em $z_1$ tem altura $h=1-\frac{\sqrt3}{2}$ (de $z_1$ até o lado $z_0z_2$). Seu ângulo no vértice é $120^\circ$ (ângulo interno do hexágono). Logo, a base mede $2h\tan60^\circ=2\sqrt3\,h$ e a área é $\sqrt3\,h^2=\sqrt3\left(\frac74-\sqrt3\right)=\frac{7\sqrt3}{4}-3$. Então
+\[
+S_{\mathcal{P}\cup\mathcal{I}}=\frac{3\sqrt3}{2}+6\left(\frac{7\sqrt3}{4}-3\right)=12\sqrt3-18,
+\]
+o que confirma o resultado. Quanto à ordem de grandeza, $12\sqrt3-18\approx 2{,}785$. Esse valor está entre a área de um hexágono ($\approx 2{,}598$) e a do círculo unitário ($\pi\approx 3{,}142$), como deve ser.
+
+\medskip
+ANSWER: $12\sqrt3-18=6\left(2\sqrt3-3\right)\approx 2{,}78$ (unidades de área).

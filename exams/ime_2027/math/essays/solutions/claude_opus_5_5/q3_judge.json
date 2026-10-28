@@ -1,0 +1,45 @@
+{
+  "question": 3,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "O menor inteiro é x = 7. Para x = k ≥ 1, f(k) + f(−1/k) = 1 − 1/(2·3^(k−1)), e isso é ≥ 0,999 exatamente quando 3^(k−1) ≥ 500, ou seja, k ≥ 7. Para todo inteiro negativo a soma vale 1/2, e x = 0 fica fora do domínio, porque −1/x não está definido.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (pág. 1, 3ª questão): g_n(x) = 0 se x ≤ −1/n e g_n(x) = 1 se x > −1/n, com desigualdade estrita no segundo ramo. f(x) = Σ_{n≥1} (g_n(x)/3)^n. Pede-se o menor inteiro x com f(x) + f(−1/x) ≥ 0,999.\n\n**1) Como fica f.** Como g_n(x) ∈ {0,1} e n ≥ 1, cada parcela (g_n(x)/3)^n vale (1/3)^n quando g_n(x) = 1 e 0^n = 0 quando g_n(x) = 0. Então\nf(x) = Σ_{n ∈ A(x)} 3^{−n}, com A(x) = {n ∈ ℕ* : x > −1/n}.\n\n- **x ≥ 0:** x ≥ 0 > −1/n vale para todo n, então A(x) = ℕ* e f(x) = Σ_{n≥1} 3^{−n} = (1/3)/(1 − 1/3) = 1/2.\n- **x < 0:** x > −1/n ⇔ |x| < 1/n ⇔ n < 1/|x|. Logo A(x) = {1, 2, …, N}, onde N = N(x) é a quantidade de inteiros positivos estritamente menores que 1/|x|. Pela soma da PG finita, f(x) = Σ_{n=1}^{N} 3^{−n} = (1/2)(1 − 3^{−N}).\n  - Em particular, se x ≤ −1, então 1/|x| ≤ 1 e nenhum n ≥ 1 satisfaz n < 1/|x|. Logo N = 0 e f(x) = 0. Exemplo: f(−1) = 0, porque −1 ≤ −1/1 dá g_1(−1) = 0.\n\n**2) Domínio.** A expressão f(−1/x) exige x ≠ 0. Logo x = 0 está excluído.\n\n**3) Inteiros negativos (x ≤ −1).**\n- f(x) = 0, pelo item 1.\n- −1/x = 1/|x| > 0, então f(−1/x) = 1/2.\n- Soma = 1/2 < 0,999. Nenhum inteiro negativo serve.\n\n**4) Inteiros positivos (x = k ≥ 1).**\n- f(k) = 1/2.\n- O argumento −1/k é negativo, com |−1/k| = 1/k. A condição n < 1/(1/k) = k dá n ∈ {1, …, k−1}, ou seja, N = k − 1.\n- No caso n = k temos −1/k ≤ −1/k, então g_k(−1/k) = 0: a fronteira não entra.\n- Logo f(−1/k) = (1/2)(1 − 3^{−(k−1)}).\n\nDaí S(k) = f(k) + f(−1/k) = 1/2 + 1/2 − (1/2)·3^{1−k} = 1 − 3^{1−k}/2.\n\nA condição S(k) ≥ 0,999 equivale a 3^{1−k}/2 ≤ 1/1000, ou seja, 3^{k−1} ≥ 500. Como 3^5 = 243 < 500 < 729 = 3^6 e 3^m é crescente, isso vale se e só se k − 1 ≥ 6, isto é, k ≥ 7.\n\n**Verificação dos casos de fronteira:**\n- k = 6: S = 1 − 1/486 ≈ 0,99794 < 0,999. Não serve.\n- k = 7: S = 1 − 1/1458 ≈ 0,999314 ≥ 0,999. Serve.\n\nOs valores de S para k = 1, …, 9 foram conferidos numericamente com frações exatas: 0,5; 0,833; 0,944; 0,981; 0,9938; 0,99794; 0,99931; …\n\n**5) Conclusão.** Os inteiros que satisfazem a desigualdade são exatamente x ≥ 7. Os negativos e o 0 estão excluídos, pelos itens 2 e 3. Logo o menor valor inteiro é **x = 7**.",
+    "final_answer": "x = 7. O conjunto solução nos inteiros é {x ∈ ℤ : x ≥ 7}.\n- Para k ≥ 1 inteiro, f(k) + f(−1/k) = 1 − 3^{1−k}/2. A condição ≥ 0,999 equivale a 3^{k−1} ≥ 500, logo k ≥ 7.\n- Para x inteiro negativo, a soma vale 0 + 1/2 = 1/2 < 0,999, então nenhum serve.\n- x = 0 não está no domínio de −1/x.",
+    "pitfalls": [
+      "Desigualdade estrita em g_n: g_n(x) = 1 só quando x > −1/n. Para x = k, em −1/k os termos não nulos são n = 1, …, k−1 (o termo n = k é zero, porque −1/k ≤ −1/k). Quem conta n = 1, …, k chega a 3^k ≥ 500 e responde 6, que está errado: S(6) = 1 − 1/486 ≈ 0,99794 < 0,999.",
+      "'Menor valor inteiro' obriga a analisar os inteiros negativos. É preciso mostrar que, para x ≤ −1, f(x) = 0 (nenhum n satisfaz x > −1/n, nem mesmo n = 1 quando x = −1) e f(−1/x) = 1/2, de modo que a soma 1/2 nunca atinge 0,999. Sem isso, o 'menor' não fica justificado.",
+      "Excluir x = 0 explicitamente, porque −1/x não está definido.",
+      "Tratar corretamente os termos com g_n = 0: (0/3)^n = 0 para n ≥ 1. A série é então uma PG truncada, e não a série inteira (que daria 1/2 sempre).",
+      "Para x ≥ 0, todos os g_n valem 1 e f = Σ 3^{−n} = 1/2. Não confundir com a soma iniciando em n = 0, que daria 3/2.",
+      "Para x < 0, o número de termos é a quantidade de inteiros n < 1/|x| (estritamente). Para x = −1/k, isso dá k − 1; para x ≤ −1, dá 0.",
+      "Resolver 3^{k−1} ≥ 500 com cuidado: 3^5 = 243 < 500 ≤ 729 = 3^6. Arredondar logaritmos de forma errada leva a k = 6 ou k = 8.",
+      "Uma boa resolução verifica as fronteiras: S(6) ≈ 0,99794 não serve e S(7) = 1 − 1/1458 ≈ 0,99931 serve. Também deve argumentar a monotonicidade de S(k) em k, ou a equivalência com 3^{k−1} ≥ 500, para garantir que todo k ≥ 7 satisfaz a desigualdade e que nenhum k < 7 a satisfaz."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "O menor inteiro é x = 7. Para x = k ≥ 1, f(k) + f(−1/k) = 1 − 1/(2·3^(k−1)), e isso é ≥ 0,999 exatamente quando 3^(k−1) ≥ 500, ou seja, k ≥ 7. Para todo inteiro negativo a soma vale 1/2, e x = 0 fica fora do domínio, porque −1/x não está definido.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato só calcula f em x ≥ 0, em x ≤ −1 e em x = −1/k; não dá a forma geral de f para −1 < x < 0 fora desses pontos. Isso não faz falta, porque com x inteiro os argumentos x e −1/x sempre caem nesses casos, mas uma frase dizendo isso deixaria claro que a análise cobre tudo o que é usado."
+          },
+          {
+            "severity": "minor",
+            "description": "Ele afirma que o termo vale 0 quando g_n(x) = 0 sem dizer que isso vem de 0^n = 0 para n ≥ 1. É trivial, mas vale citar, já que a série começa em n = 1 e por isso não aparece 0^0."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (pág. 1, 3ª questão) e a transcrição está correta: a desigualdade é estrita no ramo g_n = 1 (−1/n < x). O candidato e a minha referência chegam à mesma resposta, x = 7, e ela está correta. Refiz as somas com frações exatas em Python: S(6) ≈ 0,99794 não serve, S(7) ≈ 0,99931 serve, e todo inteiro negativo dá soma 1/2.\n\nRevisei a resolução passo a passo:\n1. A convergência da série está justificada por comparação com a PG.\n2. A fórmula f(x) = Σ_{n : x > −1/n} 3^{−n} está correta.\n3. Para x ≥ 0, f = 1/2, sem o erro de começar a soma em n = 0.\n4. Para x ≤ −1, f = 0, com a justificativa −1 ≤ −1/n.\n5. Para x = −1/k, a fronteira está bem tratada: a equivalência −1/k > −1/n ⇔ n < k leva aos termos n = 1, …, k−1 e a f(−1/k) = (1/2)(1 − 3^{1−k}). Ele também confere k = 1, onde a soma é vazia.\n\nTodas as armadilhas foram tratadas:\n- x = 0 é excluído porque −1/x não existe.\n- Os inteiros negativos são eliminados, já que a soma vale 0 + 1/2 < 0,999.\n- A desigualdade é reduzida a 3^{k−1} ≥ 500 com uma cadeia de equivalências, usando 3^5 = 243 < 500 < 729 = 3^6 e o fato de 3^{k−1} ser crescente. Isso prova tanto que todo k ≥ 7 serve quanto que nenhum k ≤ 6 serve.\n- As fronteiras k = 6 e k = 7 são verificadas numericamente.\n- A conclusão junta todos os casos para justificar que 7 é o \"menor\".\n\nA resolução é clara, completa e rigorosa, publicável como gabarito comentado. As únicas ressalvas são de redação e não afetam a correção."
+      }
+    }
+  ]
+}

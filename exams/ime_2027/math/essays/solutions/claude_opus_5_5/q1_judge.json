@@ -1,0 +1,53 @@
+{
+  "question": 1,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A área da união é 12√3 − 18 = 6(2√3 − 3) ≈ 2,78 unidades de área. Ela vem de 2·(3√3/2) − (18 − 9√3): cada hexágono tem área 3√3/2, e a interseção dos dois é um dodecágono regular de apótema √3/2, com área 18 − 9√3.",
+  "judge_reference": {
+    "reference_solution": "**Configuração.** As raízes de z^12 = 1 são z_k = cis(kπ/6) = e^{ikπ/6}, k = 0, 1, …, 11 (indexação usual, pelo argumento crescente). Todas estão na circunferência unitária, espaçadas de 30°.\n- 𝒫 (k par): argumentos 0°, 60°, …, 300°. É o hexágono regular inscrito no círculo de raio 1, com lado ℓ = R = 1 e apótema a = √3/2.\n- ℐ (k ímpar): argumentos 30°, 90°, …, 330°. É o mesmo hexágono girado de 30° em torno da origem.\n\n(Observação: o resultado não depende da indexação. Seis pontos entre os 12 que formam um hexágono regular precisam estar espaçados de 60°, então os únicos hexágonos possíveis são esses dois.)\n\nÁrea de cada hexágono: S_hex = 6·(√3/4)·1² = 3√3/2.\n\n**Interseção 𝒫 ∩ ℐ.** Cada hexágono é a interseção de 6 semiplanos limitados por retas à distância √3/2 da origem. Em 𝒫 as normais desses lados estão nas direções 30°, 90°, …, 330°. Em ℐ estão em 0°, 60°, …, 300°. Logo 𝒫 ∩ ℐ é limitada por 12 retas à distância √3/2 da origem, com normais espaçadas de 30°: é um dodecágono regular de **apótema** a = √3/2. O raio dele é a/cos 15°, e não √3/2.\nS_∩ = 12·a²·tg 15° = 12·(3/4)·(2 − √3) = 18 − 9√3.\n\n**União (inclusão–exclusão).**\nS_∪ = 2·(3√3/2) − (18 − 9√3) = 3√3 − 18 + 9√3 = **12√3 − 18 = 6(2√3 − 3) ≈ 2,785 u.a.**\n\n**Verificação 1 (triângulos a partir de O).** O lado z_0z_2 de 𝒫 está na reta x·cos30° + y·sen30° = √3/2. O lado z_11z_1 de ℐ está na reta x = √3/2. Elas se cortam em Q = (√3/2, √3 − 3/2), de argumento 15° e |OQ| = (√3/2)/cos15° = (3√2 − √6)/2 ≈ 0,897.\n\nPara θ ∈ [0°, 15°], a função radial de 𝒫, (√3/2)/cos(θ−30°), é maior ou igual à de ℐ, (√3/2)/cos θ. Então a fronteira da união nesse setor é o segmento z_0Q.\n\nA união é uma estrela de 12 pontas, com 24 vértices alternados: os z_k (raio 1) e os pontos de cruzamento (raio ≈ 0,897). Por simetria ela se divide em 24 triângulos congruentes a O z_0 Q:\nárea(O z_0 Q) = ½·1·(√3 − 3/2), logo S_∪ = 24·½·(√3 − 3/2) = 12√3 − 18. ✓\n\n**Verificação 2 (hexágono + pontas).** S_∪ = S(𝒫) + 6 pontas de ℐ para fora de 𝒫. Cada ponta é um triângulo isósceles com vértice z_1 (ângulo de 120°) e base sobre o lado z_0z_2:\n- altura h = 1 − √3/2;\n- base = 2·(√3/2)·tg15° = √3(2 − √3) = 2√3 − 3.\n\nÁrea de uma ponta: ½(2√3 − 3)(1 − √3/2) = 7√3/4 − 3. Então S_∪ = 3√3/2 + 6(7√3/4 − 3) = 12√3 − 18. ✓\n\n**Conferência numérica (Python).** Fórmula da área de polígono (shoelace) com os 24 vértices da estrela, e integral radial ∫½·max(ρ_𝒫, ρ_ℐ)²dθ: ambas dão 2,7846097 = 12√3 − 18. Plausibilidade: 3√3/2 ≈ 2,598 < 2,785 < 3 (dodecágono convexo das raízes) < π.",
+    "final_answer": "Área de 𝒫 ∪ ℐ = 12√3 − 18 = 6(2√3 − 3) ≈ 2,785 unidades de área.\n\n(Cada hexágono tem área 3√3/2. A interseção é um dodecágono regular de apótema √3/2, com área 18 − 9√3.)",
+    "pitfalls": [
+      "Confundir a união com o fecho convexo. O dodecágono regular com vértices nas 12 raízes tem área 3, mas a união é uma estrela de 12 pontas, não convexa. Responder 3 está errado.",
+      "Somar as duas áreas sem subtrair a interseção: 3√3 ≈ 5,196 está errado (é maior até que a área do círculo, π).",
+      "A interseção é um dodecágono regular cujo APÓTEMA vale √3/2, que é o apótema dos hexágonos. Usar √3/2 como circunraio dá área 3·(√3/2)² = 9/4 e união 3√3 − 9/4 ≈ 2,946, errado. O circunraio correto é (√3/2)/cos15° = (3√2 − √6)/2 ≈ 0,897.",
+      "Erro na área do dodecágono: a fórmula correta, em função do apótema a, é 12·a²·tg15°, com tg15° = 2 − √3. Trocar por sen ou cos de 15°, ou por ângulos de 30°, é erro comum.",
+      "Hexágono inscrito no círculo unitário: lado = circunraio = 1, área 3√3/2. Não confundir com apótema 1.",
+      "É preciso justificar a geometria. Os hexágonos estão girados de 30° um em relação ao outro, e cada vértice de um fica fora do outro (1 > √3/2). Os cruzamentos dos lados ficam nos argumentos 15° + k·30°.",
+      "Hipótese de indexação z_k = cis(2πk/12). O resultado não depende dela, porque os únicos hexágonos regulares com vértices entre as 12 raízes são os dois de passo 60°. Uma boa resolução declara a indexação ou observa isso.",
+      "Forma final: 12√3 − 18 = 6(2√3 − 3) ≈ 2,785, entre a área do hexágono (≈ 2,598) e 3. Simplificações erradas, como 12√3 − 9 ou 6√3 − 9, não passam nesse teste de plausibilidade."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A área da união é 12√3 − 18 = 6(2√3 − 3) ≈ 2,78 unidades de área. Ela vem de 2·(3√3/2) − (18 − 9√3): cada hexágono tem área 3√3/2, e a interseção dos dois é um dodecágono regular de apótema √3/2, com área 18 − 9√3.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato adota z_k = cis(kπ/6) sem dizer que essa indexação é uma hipótese. O enunciado não fixa a ordem das raízes. O resultado não muda, porque os únicos hexágonos regulares com vértices entre as 12 raízes são os dois de passo 60°, mas convinha declarar a hipótese ou fazer essa observação em uma linha."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que a interseção dos 12 semiplanos é um dodecágono regular de apótema √3/2 está correta, mas a justificativa é curta. Bastaria uma frase: as 12 retas são tangentes à circunferência de raio √3/2, com normais espaçadas de 30°, e a figura é invariante pela rotação de 30°, então cada reta contribui com um lado de comprimento 2a·tg15°. Em todo caso, é um fato padrão."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação, o candidato supõe sem comentar que a parte de ℐ fora de 𝒫 perto de z_1 é um único triângulo. Isso exige que os lados de ℐ cortem z_0z_2 dentro do segmento. Vale, porque a base 2√3h = 2√3 − 3 ≈ 0,464 < 1, mas não foi checado. Como é só verificação, isso não afeta o argumento principal."
+          },
+          {
+            "severity": "minor",
+            "description": "O teste de plausibilidade usa o círculo (π) como cota superior. A cota natural e mais apertada é a do dodecágono convexo das raízes (área 3), que também afastaria a armadilha de confundir a união com o fecho convexo. A resposta continua correta."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original: ele bate com a transcrição. A resposta final do candidato, 12√3 − 18 = 6(2√3 − 3) ≈ 2,785, é igual à da referência. Também conferi numericamente, integrando ½·max(ρ_𝒫, ρ_ℐ)² dθ, que dá 2,7846097.\n\nO argumento principal está correto e é elegante:\n- **Hexágonos:** cada um tem área 3√3/2 e apótema √3/2.\n- **Interseção:** é a interseção de 12 semiplanos com normais espaçadas de 30°, todas à distância √3/2 da origem. Logo é um dodecágono regular cujo APÓTEMA vale √3/2, evitando a armadilha de tratar √3/2 como circunraio. A área é 12a²·tg15° = 18 − 9√3, com tg15° = 2 − √3 deduzida corretamente.\n- **União:** por inclusão–exclusão, 3√3 − (18 − 9√3) = 12√3 − 18. Isso dispensa conhecer a forma da união.\n\nA verificação independente soma ao hexágono 6 pontas triangulares, cada uma com altura 1 − √3/2, ângulo de 120° e área 7√3/4 − 3, e chega ao mesmo valor. Revi todas as contas e não há erros.\n\nArmadilhas:\n- Fecho convexo, soma sem subtrair a interseção, apótema confundido com raio, tg15° e lado do hexágono: todas evitadas.\n- Indexação das raízes: o candidato assume a usual sem comentar.\n- Plausibilidade: está presente, mas usa π em vez da cota 3.\n\nOs problemas são todos menores: a indexação implícita, a justificativa curta de que a interseção é um dodecágono regular e a forma das pontas não checada na verificação. A redação é clara, tem figura, e serve como gabarito comentado."
+      }
+    }
+  ]
+}

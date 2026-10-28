@@ -1,0 +1,29 @@
+{
+  "question": 3,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-3-matematica-2-fase-dia-1-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q3 — menor inteiro x com f(x) + f(−1/x) ≥ 0,999",
+      "solution_answer": "x = 7",
+      "key_answer": "x = 7",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi com o enunciado original (p. 1), que bate com a transcrição. A conta está certa. Para x ≥ 0 todos os termos entram, e f(x) = Σ(1/3)^n = 1/2. Para x = −1/k, g_n vale 1 só quando n < k, então f(−1/k) = (1/2)(1 − 3^{1−k}). A soma dá 1 − 1/(2·3^{k−1}) ≥ 0,999, o que equivale a 3^{k−1} ≥ 500. Como 3^5 = 243 < 500 ≤ 729 = 3^6, isso dá k ≥ 7. Para todo inteiro x ≤ −1, f(x) = 0 e f(−1/x) = 1/2, logo a soma é 1/2. Fiz a verificação exata em Python, com frações, para x de −5 a 9: x = 6 dá 0,99794 (não serve) e x = 7 dá 0,99931 (serve). A resolução descarta os inteiros negativos e x = 0 de forma explícita, e o gabarito apenas supõe x positivo sem justificar."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito parte de x ∈ ℤ+ sem justificar. O mais rigoroso é mostrar que todo inteiro negativo dá soma 1/2 < 0,999 e que x = 0 fica fora porque −1/x não está definido. Isso é necessário para afirmar que 7 é o menor inteiro, e não apenas o menor inteiro positivo. A resolução faz essa verificação, e um corretor rigoroso poderia cobrar esse passo."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado não diz explicitamente que x ≠ 0, mas f(−1/x) exige isso. As duas resoluções adotam essa hipótese, que é a única leitura razoável."
+    }
+  ],
+  "summary": "A resolução e o gabarito Poliedro chegam à mesma resposta, x = 7, e os dois estão certos. Conferi a resolução passo a passo: as expressões f(x) = 1/2 para x ≥ 0 e f(−1/k) = (1/2)(1 − 3^{1−k}), a condição 3^{k−1} ≥ 500 e os valores em x = 6 e x = 7. Também confirmei os resultados com cálculo exato em Python. A resolução é até mais completa que o gabarito, porque elimina os inteiros negativos e x = 0. Não há erros a apontar."
+}

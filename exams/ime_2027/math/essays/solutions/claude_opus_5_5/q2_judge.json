@@ -1,0 +1,44 @@
+{
+  "question": 2,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "P = 2/5 (40%). As raízes são z = cis(kπ/3), k = 1, ..., 5. Só z = 1/2 ± (√3/2)i satisfazem a inequação, e com igualdade.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição coincide com o original (página 1, 2ª questão, valor 1,0): equação $1+z+z^2+z^3+z^4+z^5=0$ com $z\\in\\mathbb{C}$ e inequação $\\left|z-\\tfrac32\\right|\\le\\tfrac{\\sqrt7}{2}$. A questão não tem figura.\n\n**1) Raízes da equação**\n\nA soma é uma progressão geométrica de razão $z$. Para $z\\ne1$:\n$$1+z+\\dots+z^5=\\frac{z^6-1}{z-1}=0 \\iff z^6=1,\\ z\\ne 1.$$\n$z=1$ não é raiz, porque nesse ponto a soma vale $6\\neq0$. As raízes são, portanto, as raízes sextas da unidade exceto $1$:\n$$z_k=\\operatorname{cis}\\frac{k\\pi}{3},\\quad k=1,2,3,4,5,$$\nisto é,\n$$z\\in\\left\\{\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i,\\ -\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i,\\ -1\\right\\}.$$\n\nA fatoração confirma o resultado: $1+z+\\dots+z^5=(1+z)(1+z^2+z^4)=(z+1)(z^2+z+1)(z^2-z+1)$. As raízes são $-1$, depois $-\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i$ e por fim $\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i$.\n\nSão 5 raízes distintas, todas simples, porque as raízes sextas da unidade são distintas entre si. O espaço amostral tem então 5 resultados igualmente prováveis.\n\n**2) A inequação sobre essas raízes**\n\nTodas as raízes têm $|z|=1$. Escrevendo $z=x+iy$:\n$$\\left|z-\\tfrac32\\right|^2=|z|^2-3\\,\\mathrm{Re}(z)+\\tfrac94=1-3x+\\tfrac94=\\tfrac{13}{4}-3x.$$\nA condição $\\left|z-\\tfrac32\\right|\\le\\tfrac{\\sqrt7}{2}$ equivale a $\\tfrac{13}{4}-3x\\le\\tfrac74$, ou seja, a $x\\ge\\tfrac12$.\n\nGeometricamente, o disco tem centro $\\tfrac32$ e raio $\\tfrac{\\sqrt7}{2}$. Ele corta a circunferência unitária exatamente nos pontos $\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i$, já que $1+\\tfrac34=\\tfrac74$.\n\nVerificação raiz a raiz:\n- $z=\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i$: $|z-\\tfrac32|^2=(-1)^2+\\tfrac34=\\tfrac74$. Vale a igualdade, logo **satisfaz**, pois a desigualdade é $\\le$.\n- $z=-\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i$: $|z-\\tfrac32|^2=(-2)^2+\\tfrac34=\\tfrac{19}{4}>\\tfrac74$. **Não satisfaz.**\n- $z=-1$: $|z-\\tfrac32|^2=\\tfrac{25}{4}>\\tfrac74$. **Não satisfaz.**\n\nUm cálculo numérico em Python confirmou os valores $1{,}75$; $4{,}75$; $6{,}25$.\n\n**3) Probabilidade**\n\nCasos favoráveis: 2, que são $\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i = \\operatorname{cis}(\\pm\\pi/3)$. Casos possíveis: 5.\n$$P=\\frac{2}{5}.$$",
+    "final_answer": "$P = \\dfrac{2}{5}$. As raízes são $\\operatorname{cis}(k\\pi/3)$ com $k=1,\\dots,5$: as raízes sextas da unidade, exceto $z=1$. Somente $\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i$ satisfazem a inequação, e ambas ficam exatamente na fronteira, com $|z-\\tfrac32|=\\tfrac{\\sqrt7}{2}$.",
+    "pitfalls": [
+      "Incluir $z=1$ entre as raízes. A equação equivale a $z^6=1$ com $z\\ne1$, pois $(z^6-1)/(z-1)$ não se anula em $z=1$, onde a soma vale 6. Quem inclui $z=1$ conta 3 favoráveis em 6 casos e chega ao erro típico $P=1/2$.",
+      "Caso de igualdade: as duas raízes favoráveis $\\tfrac12\\pm\\tfrac{\\sqrt3}{2}i$ ficam exatamente na fronteira, com $|z-3/2|^2=7/4$. Como a desigualdade é $\\le$ (não estrita), elas contam. Quem tratar a desigualdade como estrita, ou errar a conta, chega a $P=0$.",
+      "Contas numéricas em ponto flutuante dão $1{,}7500000000000013>1{,}75$ e podem excluir indevidamente as raízes da fronteira. A verificação deve ser feita em aritmética exata.",
+      "Para justificar a equiprobabilidade, é preciso mostrar que as 5 raízes são distintas (simples), de modo que o espaço amostral tem 5 elementos.",
+      "Atalho útil: com $|z|=1$, a condição $|z-3/2|^2\\le 7/4$ equivale a $\\mathrm{Re}(z)\\ge 1/2$. Uma boa resolução deve deduzir isso ou verificar cada raiz explicitamente.",
+      "Erro de conta comum: confundir $(1/2-3/2)^2=1$ com $(-1/2-3/2)^2=4$, ou avaliar mal o sinal da parte real das raízes $\\operatorname{cis}(2\\pi/3)$ e $\\operatorname{cis}(4\\pi/3)$.",
+      "Fatoração de conferência: $(z+1)(z^2+z+1)(z^2-z+1)$. Fatorar errado, por exemplo trocando os fatores $z^2\\pm z+1$, troca as raízes de $\\mathrm{Re}=\\pm1/2$ e muda a contagem."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "P = 2/5 (40%). As raízes são z = cis(kπ/3), k = 1, ..., 5. Só z = 1/2 ± (√3/2)i satisfazem a inequação, e com igualdade.",
+      "review": {
+        "agrees_with_reference": true,
+        "answer_correct": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A frase sobre o arco −π/3 ≤ θ ≤ π/3 não diz que θ ∈ (−π, π]. Sem essa convenção, cos θ ≥ 1/2 dá os arcos módulo 2π, e isso não afeta a contagem. Seria bom fixar o intervalo de θ ou apenas dizer 'Re z ≥ 1/2'."
+          },
+          {
+            "severity": "minor",
+            "description": "A equiprobabilidade entre as 5 raízes distintas é tomada como interpretação de 'ao acaso'. É a leitura padrão e a distinção das raízes foi provada, mas valeria uma frase dizendo que cada raiz distinta tem probabilidade 1/5. É detalhe de redação."
+          }
+        ],
+        "score": 9.5,
+        "summary": "Conferi o enunciado com o PDF original (página 1, 2ª questão) e a transcrição está fiel. A resposta final do candidato é P = 2/5, a mesma da minha referência. Refiz as contas em aritmética exata: |z−3/2|² vale 7/4 para ½±(√3/2)i, que satisfazem, porque a desigualdade admite igualdade. Vale 19/4 para −½±(√3/2)i e 25/4 para −1, e essas três não satisfazem.\n\nA resolução trata todas as armadilhas:\n- Exclui z=1 com justificativa: a soma vale 6 nesse ponto.\n- Prova que as raízes são distintas: z⁶−1 e 6z⁵ não têm raiz comum. Assim o espaço amostral tem 5 elementos.\n- Justifica elevar a inequação ao quadrado, já que os dois lados são não negativos.\n- Deduz o atalho |z|=1 ⇒ a condição equivale a cos θ ≥ 1/2.\n- Trata a fronteira corretamente, porque a desigualdade não é estrita.\n- Confere cada raiz em aritmética exata, sem erro de sinal nas partes reais.\n- Comenta que, com desigualdade estrita, a probabilidade seria 0.\n\nA exposição é clara, organizada e completa, no nível de um gabarito comentado. Só há ressalvas mínimas de redação: o intervalo de θ na frase sobre o arco e a explicitação de que cada raiz tem probabilidade 1/5."
+      }
+    }
+  ]
+}

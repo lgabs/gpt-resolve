@@ -177,12 +177,16 @@ def append_judge_appendix(doc: Document, judge_reports: list[Path]) -> None:
 UNICODE_TO_LATEX = {
     "−": "-", "–": "--", "—": "---", "≈": r"$\approx$", "≤": r"$\leq$", "≥": r"$\geq$",
     "≠": r"$\neq$", "→": r"$\to$", "⇒": r"$\Rightarrow$", "⇔": r"$\Leftrightarrow$",
-    "×": r"$\times$", "·": r"$\cdot$", "√": r"$\sqrt{}$", "∞": r"$\infty$", "∈": r"$\in$",
+    "×": r"$\times$", "·": r"$\cdot$", "√": r"$\surd$", "∞": r"$\infty$", "∈": r"$\in$",
     "±": r"$\pm$", "°": r"$^\circ$", "²": r"$^2$", "³": r"$^3$", "½": r"$\frac12$",
     "Δ": r"$\Delta$", "∆": r"$\Delta$", "Ω": r"$\Omega$", "Σ": r"$\Sigma$", "Π": r"$\Pi$",
     "∫": r"$\int$", "∑": r"$\sum$", "∂": r"$\partial$", "∠": r"$\angle$", "≡": r"$\equiv$",
     "ℝ": r"$\mathbb{R}$", "ℂ": r"$\mathbb{C}$", "ℕ": r"$\mathbb{N}$", "ℤ": r"$\mathbb{Z}$",
+    "≅": r"$\cong$", "∝": r"$\propto$", "∓": r"$\mp$", "…": r"\ldots{}", "Ṡ": r"$\dot S$",
+    "Ẇ": r"$\dot W$", "ẑ": r"$\hat z$", "ŷ": r"$\hat y$", "\u0307": "",
 }
+UNICODE_TO_LATEX.update({c: f"$^{{{d}}}$" for c, d in zip("⁰¹⁴⁵⁶⁷⁸⁹⁻", "01456789-")})
+UNICODE_TO_LATEX.update({c: f"$_{{{d}}}$" for c, d in zip("₀₁₂₃₄₅₆₇₈₉", "0123456789")})
 GREEK = "αβγδεζηθικλμνξπρστυφχψω"
 GREEK_NAMES = ["alpha", "beta", "gamma", "delta", "varepsilon", "zeta", "eta", "theta", "iota",
                "kappa", "lambda", "mu", "nu", "xi", "pi", "rho", "sigma", "tau", "upsilon",
@@ -202,3 +206,100 @@ def escape_text(text: str) -> str:
         else:
             out.append(ch)
     return "".join(out)
+
+
+VERDICTS = {"match": "igual", "equivalent": "equivalente", "differs": "diferente", "not_answered": "não respondido"}
+CORRECT_LABELS = {"solution": "resolução", "key": "gabarito", "both": "ambos", "neither": "nenhum", "unclear": "indefinido"}
+
+
+def generate_grade_pdf(solutions_dir: Union[str, Path], title: str) -> Path:
+    """Compile the q<n>_grade.json files into grade_report.pdf: scores, item verdicts and doubts."""
+    solutions_dir = Path(solutions_dir)
+    grades = [
+        json.loads(f.read_text(encoding="utf-8"))
+        for f in sorted(solutions_dir.glob("q*_grade.json"), key=lambda x: int(x.stem.split("_")[0][1:]))
+    ]
+    if not grades:
+        raise FileNotFoundError(f"No q<n>_grade.json files in {solutions_dir}")
+    key_source = escape_text(grades[0].get("key_source", ""))
+    total = sum(g["score"] for g in grades) / len(grades)
+    items = [i for g in grades for i in g["items"]]
+    right = sum(i["correct"] in ("solution", "both") for i in items)
+
+    doc = Document(geometry_options={"margin": "2.2cm"})
+    for pkg in ["amsmath", "amssymb", "booktabs", "longtable", "array", "hyperref"]:
+        doc.preamble.append(Command("usepackage", pkg))
+    doc.preamble.append(Command("hypersetup", "hidelinks"))
+    doc.preamble.append(
+        Command(
+            "title",
+            NoEscape(
+                f"{escape_text(title)}\\\\[4pt]\\large Comparação com o gabarito {key_source}"
+                "\\thanks{Gerado com gpt-resolve: \\url{https://github.com/lgabs/gpt-resolve}}"
+            ),
+        )
+    )
+    doc.preamble.append(Command("date", datetime.datetime.now().strftime("%d/%m/%Y")))
+    doc.append(NoEscape(r"\maketitle"))
+    def num(x: float) -> str:
+        return f"{x:.1f}".replace(".", ",")
+
+    doc.append(
+        NoEscape(
+            f"\\section*{{Resumo}}\\textbf{{Nota média: {num(total)}/10}} ({right} de {len(items)} itens com a resolução "
+            "correta; cada item vale o mesmo dentro da questão).\\par\\medskip"
+        )
+    )
+    rows = [
+        f"{g['question']} & {num(g['score'])} & {escape_text(g.get('summary', ''))} \\\\"
+        for g in grades
+    ]
+    doc.append(
+        NoEscape(
+            "\\begin{longtable}{@{}c c p{0.78\\textwidth}@{}}\\toprule Questão & Nota & Resumo \\\\ \\midrule\n"
+            + "\n".join(rows)
+            + "\n\\bottomrule\\end{longtable}"
+        )
+    )
+    main_doubts = [(g["question"], d) for g in grades for d in g.get("doubts", []) if d.get("importance") == "high"]
+    if main_doubts:
+        doc.append(NoEscape(r"\section*{Principais pontos de dúvida}"))
+        with doc.create(Itemize()) as itemize:
+            for n, d in main_doubts:
+                itemize.add_item(NoEscape(f"\\textbf{{Q{n}}} \\textit{{({escape_text(d['about'])})}} " + escape_text(d["description"])))
+    for g in grades:
+        doc.append(NoEscape(f"\\section*{{Questão {g['question']}}}"))
+        if g.get("key_url"):
+            doc.append(NoEscape(f"\\href{{{g['key_url']}}}{{Resolução do gabarito}}\\par\\smallskip"))
+        rows = [
+            f"{escape_text(i['item'])} & {escape_text(i['solution_answer'])} & {escape_text(i['key_answer'])} & "
+            f"{VERDICTS.get(i['verdict'], i['verdict'])} & {CORRECT_LABELS.get(i['correct'], i['correct'])} \\\\"
+            for i in g["items"]
+        ]
+        doc.append(
+            NoEscape(
+                "\\begin{longtable}{@{}p{0.06\\textwidth} p{0.33\\textwidth} p{0.33\\textwidth} p{0.1\\textwidth} p{0.08\\textwidth}@{}}"
+                "\\toprule Item & Resolução & Gabarito & Veredito & Certo \\\\ \\midrule\n"
+                + "\n".join(rows)
+                + "\n\\bottomrule\\end{longtable}"
+            )
+        )
+        comments = [i for i in g["items"] if i.get("comment")]
+        if comments:
+            with doc.create(Itemize()) as itemize:
+                for i in comments:
+                    itemize.add_item(NoEscape(f"\\textbf{{{escape_text(i['item'])})}} " + escape_text(i["comment"])))
+        if g.get("doubts"):
+            doc.append(NoEscape(r"\paragraph{Pontos de dúvida}"))
+            with doc.create(Itemize()) as itemize:
+                for d in g["doubts"]:
+                    itemize.add_item(NoEscape(f"\\textit{{({escape_text(d['about'])})}} " + escape_text(d["description"])))
+
+    output = solutions_dir / "grade_report"
+    try:
+        doc.generate_pdf(str(output), clean_tex=False)
+    except Exception as e:
+        if not output.with_suffix(".pdf").exists():
+            raise
+        print(f"Warning: LaTeX reported errors, check {output}.log ({type(e).__name__})")
+    return output.with_suffix(".pdf")

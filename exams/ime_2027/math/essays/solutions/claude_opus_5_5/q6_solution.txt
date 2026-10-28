@@ -1,0 +1,41 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Espaço amostral.} As funções bijetoras $f:\mathcal{S}\to\mathcal{S}$ são as permutações de $\mathcal{S}$, num total de $9! = 362880$, todas igualmente prováveis (escolha ao acaso).
+
+\textbf{1) Ciclo que contém o 1.} Considere a sequência $1, f(1), f^{(2)}(1), \dots$. Como $\mathcal{S}$ é finito, existem $i<j$ com $f^{(i)}(1)=f^{(j)}(1)$. Como $f$ é injetora, podemos cancelar $f$ $i$ vezes e obtemos $f^{(j-i)}(1)=1$. Então existe um menor inteiro $k\geq 1$ com $f^{(k)}(1)=1$. Os elementos $1, f(1), \dots, f^{(k-1)}(1)$ são distintos (pela minimalidade de $k$) e formam o \emph{ciclo de $1$}, de comprimento $k\in\{1,2,\dots,9\}$.
+
+\textbf{2) Quando vale $f^{(m)}(1)=1$.} Divida $m$ por $k$: $m=qk+r$, com $0\leq r<k$. Como $f^{(qk)}(1)=1$, temos
+\[
+f^{(m)}(1)=f^{(r)}\big(f^{(qk)}(1)\big)=f^{(r)}(1),
+\]
+e isso vale $1$ se e só se $r=0$, pela minimalidade de $k$. Logo
+\[
+f^{(9)}(1)=1 \iff k \mid 9 \iff k\in\{1,3,9\}.
+\]
+
+\textbf{3) Contagem para cada comprimento $k$.} Fixado $k$, uma permutação em que o ciclo de $1$ tem comprimento $k$ fica determinada por:
+\begin{itemize}
+\item a sequência ordenada $a_1=f(1),\, a_2=f(a_1),\,\dots,\,a_{k-1}$ de elementos distintos de $\mathcal{S}\setminus\{1\}$, com $f(a_{k-1})=1$. Há $8\cdot 7\cdots(9-k+1)=\dfrac{8!}{(9-k)!}$ escolhas;
+\item uma permutação qualquer dos $9-k$ elementos restantes, que é um conjunto invariante por $f$. Há $(9-k)!$ escolhas.
+\end{itemize}
+Pelo princípio multiplicativo, o número de permutações em que o ciclo de $1$ tem comprimento $k$ é
+\[
+N_k=\frac{8!}{(9-k)!}\cdot(9-k)! = 8!,
+\]
+que não depende de $k$. Conferência: $\sum_{k=1}^{9} N_k = 9\cdot 8! = 9!$, o total de permutações. Portanto o comprimento do ciclo de $1$ é uniformemente distribuído em $\{1,\dots,9\}$.
+
+\textbf{4) Probabilidade.} Os casos favoráveis são $k\in\{1,3,9\}$:
+\[
+P=\frac{N_1+N_3+N_9}{9!}=\frac{3\cdot 8!}{9!}=\frac{3}{9}=\frac{1}{3}.
+\]
+Em números, são $120960$ permutações favoráveis entre $362880$.
+
+\textbf{Verificação de um caso particular.} Para $k=1$ ($f(1)=1$), a probabilidade é $\frac{8!}{9!}=\frac19$, o valor esperado. Os casos $k=3$ e $k=9$ acrescentam $\frac19$ cada um. O resultado está entre $0$ e $1$, como deve.
+
+\[
+\boxed{P=\dfrac{1}{3}}
+\]
+
+ANSWER: $\dfrac{1}{3}$

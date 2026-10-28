@@ -1,0 +1,29 @@
+{
+  "question": 7,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-7-matematica-2-fase-dia-1-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "7 (demonstração)",
+      "solution_answer": "tr(AB) = C(m+n+2, n+1). Para m = 1024 e n = 1000 isso dá C(2026, 1001). Como 1001·C(2026,1001) = 2·1013·C(2025,1000) e mdc(1001,1013) = 1, segue que 1013 | tr(AB). A resolução confere ainda pela fórmula de Legendre: o expoente de 1013 é 1.",
+      "key_answer": "tr(AB) = C(m+n+2, n+1) = C(2026, 1001) = 2026!/(1025!·1001!), divisível por 1013.",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "O enunciado confere com o original (pág. 2). A fórmula do traço é a mesma nas duas, obtida por Vandermonde em c11, c22 e c33 e depois Stifel duas vezes. Conferi em Python: tr(AB) = C(m+n+2, n+1) para todo 1 ≤ n < m ≤ 24, e também direto da definição para m = 1024 e n = 1000, com resultado igual a C(2026,1001) ≡ 0 (mod 1013) e expoente de 1013 igual a 1. O caso de teste m = 2, n = 1 dá 10, como a resolução diz. O argumento da resolução está certo: 1001·C(2026,1001) = 2026·C(2025,1000) = 1013·2·C(2025,1000), e o lema de Gauss se aplica porque mdc(1001,1013) = mdc(1001,12) = 1. Já a justificativa escrita no gabarito diz que '1013 não divide 1025!·1001!', o que é falso, já que 1013 ≤ 1025 e portanto 1013 | 1025!. O certo é: 1013 aparece duas vezes em 2026! (pelos fatores 1013 e 2026) e só uma vez em 1025!·1001!, então sobra um fator 1013. A conclusão do gabarito está certa, mas esse passo, do jeito que está escrito, não."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "high",
+      "description": "A resolução do gabarito afirma que 'o primo 1013 não divide 1025!·1001!'. Isso é falso: 1013 ≤ 1025, então 1013 | 1025!. O argumento correto conta a multiplicidade: v_1013(2026!) = 2 e v_1013(1025!·1001!) = 1, logo v_1013 de C(2026,1001) é 1. Pode ser só um resumo malfeito, mas um corretor que siga o gabarito ao pé da letra aceitaria um argumento errado. Também poderia estranhar uma solução correta que use multiplicidade ou o lema de Gauss."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "No item T3, a observação 'n+1 ≤ m porque m>n' é desnecessária. Com a convenção C(a,c) = 0 para c > a, a identidade de Vandermonde vale de qualquer jeito. A observação não está errada e não prejudica a solução."
+    }
+  ],
+  "summary": "A resolução e o gabarito batem: os dois chegam a tr(AB) = C(m+n+2, n+1) = C(2026, 1001) e concluem que o traço é divisível por 1013. Conferi numericamente a fórmula e a divisibilidade. A demonstração da resolução é completa e rigorosa: usa Vandermonde, Stifel e a relação 1001·C(2026,1001) = 2·1013·C(2025,1000) com mdc(1001,1013) = 1, e ainda confere por Legendre. O único problema está no gabarito: a frase '1013 não divide 1025!·1001!' é falsa, porque 1013 divide 1025!. A conclusão continua certa porque 1013 aparece duas vezes em 2026! e uma só vez no denominador. A resolução merece a nota integral."
+}
