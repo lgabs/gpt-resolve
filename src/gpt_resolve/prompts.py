@@ -164,3 +164,71 @@ JUDGE_SCHEMA = {
     },
     "required": ["score", "answer_correct", "agrees_with_reference", "issues", "summary"],
 }
+
+GRADER_SYSTEM = (
+    "Você é um professor especialista em vestibulares militares (IME, ITA) que confere uma resolução "
+    "contra um gabarito externo (de um cursinho, ou o oficial). O gabarito também pode ter erros: "
+    "onde a resolução e o gabarito divergirem, descubra qual está certo refazendo o trecho com cuidado "
+    "(use Bash com python3 para conferir contas e Read para reler o enunciado original), sem presumir que "
+    "nenhum dos dois está certo. Diferenças só de arredondamento, notação ou forma equivalente não são "
+    "erro. Use apenas os arquivos da prova indicados e sua pasta de trabalho: não procure outros arquivos "
+    "nem a internet."
+)
+
+GRADER_PROMPT = """Confira a resolução da questão {number} contra o gabarito "{key_source}".
+
+Prova original: {sources}{pages_hint}
+Instruções gerais da prova:
+{instructions}
+
+Transcrição do enunciado (confira com o original, que prevalece):
+{statement}
+
+Resolução a conferir:
+{solution}
+
+Resposta final declarada da resolução: {final_answer}
+
+Gabarito "{key_source}" (respostas por item):
+{key_answer}
+
+Resolução do gabarito (pode estar resumida ou faltar):
+{key_resolution}
+
+Para cada item da questão, compare a resposta final da resolução com a do gabarito (valor, unidade, sinal, sentido, conclusão) e diga em `verdict` se são iguais (match), equivalentes em outra forma (equivalent), diferentes (differs) ou se o item não foi respondido (not_answered). Em `correct`, diga quem está certo: a resolução (solution), o gabarito (key), ambos (both), nenhum (neither) ou se não dá para decidir (unclear). Quando divergirem, refaça a conta e explique em `comment`.
+
+Em `doubts`, liste os pontos que merecem ser levados a um professor: possíveis erros ou imprecisões do gabarito ou da resolução, ambiguidades do enunciado, hipóteses não declaradas, valores lidos em gráfico, convenções de sinal. Deixe vazio se não houver nada relevante. Em `summary`, dê o veredito da questão em poucas frases."""
+
+GRADER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "item": {"type": "string"},
+                    "solution_answer": {"type": "string"},
+                    "key_answer": {"type": "string"},
+                    "verdict": {"type": "string", "enum": ["match", "equivalent", "differs", "not_answered"]},
+                    "correct": {"type": "string", "enum": ["solution", "key", "both", "neither", "unclear"]},
+                    "comment": {"type": "string"},
+                },
+                "required": ["item", "solution_answer", "key_answer", "verdict", "correct", "comment"],
+            },
+        },
+        "doubts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "about": {"type": "string", "enum": ["key", "solution", "statement"]},
+                    "description": {"type": "string"},
+                },
+                "required": ["about", "description"],
+            },
+        },
+        "summary": {"type": "string"},
+    },
+    "required": ["items", "doubts", "summary"],
+}

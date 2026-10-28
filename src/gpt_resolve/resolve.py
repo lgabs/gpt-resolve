@@ -5,6 +5,7 @@ from typing import Optional
 import typer
 from dotenv import load_dotenv
 
+from gpt_resolve.grading import grade_exam_async
 from gpt_resolve.pdf_generator import generate_solutions_pdf
 from gpt_resolve.pipeline import (
     DEFAULT_JUDGE_MODEL,
@@ -85,6 +86,31 @@ def resolve(
     if compile_pdf and results:
         generate_solutions_pdf(output_dir, title=title, author=f"{model} (solver) + {judge_model} (judge)")
         typer.echo(f"PDF: {output_dir}/solutions_compiled.pdf")
+
+
+@app.command()
+def grade(
+    path: Path = typer.Option(..., "-p", "--path", help="Folder with the q<n>_solution.txt files"),
+    key: Path = typer.Option(..., "-k", "--key", help="Answer key JSON (see README)"),
+    exam: Optional[Path] = typer.Option(None, "-e", "--exam", help="Exam PDF, so the agents can read the original"),
+    questions: Optional[str] = typer.Option(
+        None, "-q", "--questions", help="Question numbers to grade separated by commas (e.g., 1,2,3)"
+    ),
+    provider: str = typer.Option("claude", help="Agent provider (claude, mock)"),
+    model: str = typer.Option(DEFAULT_JUDGE_MODEL, "-m", "--model", help="Model for the grader agents"),
+    effort: str = typer.Option("xhigh", help="Reasoning effort: low, medium, high, xhigh, max"),
+    concurrency: int = typer.Option(4, help="Questions graded in parallel"),
+    quiet: bool = typer.Option(False, help="Hide each agent's tool calls (keep phase progress)"),
+    dry_run: bool = typer.Option(False, help="Use the offline mock provider"),
+):
+    """Compare solutions with an answer key, one agent per question, and list the doubts to review."""
+    questions_list = [int(q) for q in questions.split(",")] if questions else None
+    settings = Settings(judge_model=model, effort=effort, concurrency=concurrency, show_tools=not quiet)
+    asyncio.run(
+        grade_exam_async(
+            path, key, get_provider("mock" if dry_run else provider), settings, exam, questions_list
+        )
+    )
 
 
 @app.command()

@@ -43,7 +43,7 @@ gpt-resolve is distributed in pypi (v0.5 is installed from this repository until
 pip install gpt-resolve
 ```
 
-`gpt-resolve` provides a simple CLI with two main commands: `resolve` for solving exam questions and `compile-solutions` for generating PDFs from the solutions, as you can check below. During development, install locally with `pip install -e .`.
+`gpt-resolve` provides a simple CLI with three main commands: `resolve` for solving exam questions, `grade` for comparing the solutions with an answer key, and `compile-solutions` for generating PDFs from the solutions, as you can check below. During development, install locally with `pip install -e .`.
 
 ### Solve exams with `resolve`
 
@@ -70,6 +70,28 @@ Useful options (see `gpt-resolve resolve --help`): `--model`, `--judge-model`, `
 
 Providers live in `src/gpt_resolve/providers/`: implement `Provider.run` and register it in `get_provider` to use another backend (`--provider`).
 
+
+### Compare with an answer key with `grade`
+
+Once a cursinho (or the official board) publishes its answer key, `grade` compares it with your solutions. Each question runs in its own grader agent (same Claude Agent SDK setup and sandbox as the solver, `--concurrency` in parallel), which compares the final answers item by item, redoes the work where they disagree (the key can be wrong too) and lists the points worth checking with a teacher.
+
+```bash
+gpt-resolve grade -p exams/ime_2027/physics/essays/solutions/claude_opus_5_5 \
+  -k poliedro_key.json -e exams/ime_2027/physics/essays/exam.pdf
+```
+
+The answer key is a JSON file; `answer` is a string or an object with one answer per item, and `resolution` (the key's worked solution) is optional but helps the grader:
+
+```json
+{
+  "source": "Poliedro",
+  "questions": [
+    {"number": 1, "answer": {"a": "v0 = 250 m/s", "b": "T = 4000 K"}, "resolution": "...", "url": "https://..."}
+  ]
+}
+```
+
+Outputs go to the solutions folder: `q<n>_grade.json` (per item: both answers, verdict, who is right and why; plus the doubts) and `grade_report.md` (scores and all doubts). The score of a question is the share of its items where the solution is right. The grader only sees the key through its prompt, and `-e` lets it read the exam pages listed in `questions.json`.
 
 ### Compile solutions with `compile-solutions`
 
