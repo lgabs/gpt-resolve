@@ -8,7 +8,7 @@ The IME 2027 2nd phase took place on October 26 (Math) and October 27, 2026 (Phy
 | ---- | ----- | ------- | ----- | ----------------- | ----------------- | -------- | ------------ | ------------ |
 | IME  | 2nd   | Physics | Essay | `claude-opus-5-5` | `claude-opus-5-5` | ✅ Solved | 9.0 – 9.5    | [PDF](physics/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) |
 
-Parameters: `--effort xhigh`, `--pass-score 9`, `--max-rounds 3`, `--concurrency 4`, input given as the exam PDF ([exam.pdf](physics/essays/exam.pdf)). The whole exam (extraction + 10 questions) took 6.3 minutes.
+Parameters: `--effort xhigh`, `--pass-score 9`, `--max-rounds 3`, `--concurrency 4`, input given as the exam PDF ([exam.pdf](physics/essays/exam.pdf), identical by SHA-256 to the official `FISÍCA_-_DISCURSIVA.pdf` at [inscricoes.ime.eb.br/cfg](https://inscricoes.ime.eb.br/cfg/)). The whole exam (extraction + 10 questions) took 6.3 minutes.
 
 ```bash
 gpt-resolve resolve -p exams/ime_2027/physics/essays/exam.pdf -t "IME 2027 - Física" \
@@ -57,4 +57,38 @@ The open points (hypotheses not stated in the statement, graph readings, sign co
 
 ## Math essay
 
-Only questions 1 and 2 were run as a pipeline test (judge scores 9.0 and 9.5). Full exam pending.
+| Exam | Phase | Section | Type  | Solver            | Judge             | Status   | Judge scores | PDF Compiled |
+| ---- | ----- | ------- | ----- | ----------------- | ----------------- | -------- | ------------ | ------------ |
+| IME  | 2nd   | Math    | Essay | `claude-opus-5-5` | `claude-opus-5-5` | ✅ Solved | 9.5 (all)    | [PDF](math/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) |
+
+Same parameters as the physics run (`--effort xhigh`, `--pass-score 9`, `--max-rounds 3`), with `--concurrency 10`. The whole exam (extraction + 10 questions) took 3.5 minutes in a cloud container, and all 10 questions were approved by the judge in the first round (9.5 each, only minor issues).
+
+```bash
+gpt-resolve resolve -p exams/ime_2027/math/essays/exam.pdf -t "IME 2027 - Matemática" \
+  -o exams/ime_2027/math/essays/solutions/claude_opus_5_5 --concurrency 10
+```
+
+The exam PDF ([exam.pdf](math/essays/exam.pdf)) is the official one: same SHA-256 (`a4888009…cfbb3`) as `MATEMÁTICA_-_DISCURSIVA.pdf` published at [inscricoes.ime.eb.br/cfg](https://inscricoes.ime.eb.br/cfg/), section "Informações ao candidato" → "PROVAS - 2ª FASE 2026/2027" (direct link: `https://inscricoes.ime.eb.br/documentos/MATEM%C3%81TICA_-_DISCURSIVA.pdf`; physics is `FIS%C3%8DCA_-_DISCURSIVA.pdf` in the same folder). The IME does not publish an answer key for the essays.
+
+| Question | Judge score | Final answer (summary) |
+| -------- | ----------- | ---------------------- |
+| 1  | 9.5 | area of P ∪ I = 12√3 − 18 |
+| 2  | 9.5 | P = 2/5 |
+| 3  | 9.5 | x = 7 |
+| 4  | 9.5 | 1345 |
+| 5  | 9.5 | with the printed 5540: S ≈ 11196.5 (irrational); flags a likely typo, with 5440: S = 10912 |
+| 6  | 9.5 | P = 1/3 |
+| 7  | 9.5 | proof: tr(AB) = C(2026, 1001), divisible by 1013 |
+| 8  | 9.5 | proof of S_n = sen(nα)/(sen 2α · cos((n+1)α)) |
+| 9  | 9.5 | locus 4x²/49 + y² = 1; points (±2√3, ±1/7) |
+| 10 | 9.5 | a) 192√3 cm³; b) cube of edge 4√3 cm |
+
+### Comparison with the Poliedro answer key
+
+Graded with `gpt-resolve grade` against the [Poliedro Resolve](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-1-matematica-2-fase-dia-1-ime-2027) solutions (10 grader agents in parallel, 0.8 min). Full report: [PDF](math/essays/solutions/claude_opus_5_5/grade_report.pdf) ([LaTeX](math/essays/solutions/claude_opus_5_5/grade_report.tex), [Markdown](math/essays/solutions/claude_opus_5_5/grade_report.md)).
+
+**Final score: 100% (12 of 12 items match the key).** Notes:
+
+- **Q5:** the official statement prints x2 + x4 + x6 + x8 = 5540, which has no rational answer; Poliedro assumes a typo (5440 → 10912) and suggests annulling the question. Our solution gives both the literal answer (≈ 11196.5) and the 5440 one, so it holds whatever the board decides.
+- **Q7:** the final result matches, but the grader found a false step in Poliedro's proof ("1013 does not divide 1025!·1001!"; it does divide 1025!). The correct argument counts the multiplicity of 1013, as our solution does.
+- Q3 and Q10: Poliedro skips justifications (x ∈ ℤ+, rectangular base) that our solutions include.

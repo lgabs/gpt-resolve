@@ -1,0 +1,57 @@
+{
+  "question": 6,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A probabilidade é 1/3. Temos f^(9)(1) = 1 exatamente quando o comprimento k do ciclo que contém o 1 divide 9, isto é, k = 1, 3 ou 9. Para cada k há 8! permutações, então a probabilidade é 3·8!/9! = 1/3 (120960 casos favoráveis entre 362880).",
+  "judge_reference": {
+    "reference_solution": "**Questão 6 (IME 2027, Matemática, discursiva): resolução de referência**\n\nConferi o enunciado no PDF original (página 2). A transcrição está fiel: S = {1,…,9}, f: S → S é uma bijeção escolhida ao acaso, f^(9) é f composta consigo mesma 9 vezes, e pede-se P(f^(9)(1) = 1).\n\n**1. Espaço amostral**\nAs bijeções de S em S são as permutações de 9 elementos. São 9! = 362 880, e \"escolher ao acaso\" significa que todas são igualmente prováveis.\n\n**2. A órbita de 1 é um ciclo**\nConsidere a sequência 1, f(1), f²(1), f³(1), … (com f⁰ = id), cujos termos estão todos em S.\n- Como S é finito, algum valor se repete: existem 0 ≤ i < j com f^i(1) = f^j(1).\n- Como f é injetora, podemos cancelar um f de cada lado repetidamente. Chega-se a 1 = f^(j−i)(1).\n- Logo existe k ≥ 1 com f^k(1) = 1. Seja k o menor desses valores, que é o comprimento do ciclo de f que contém o 1.\n- Pela minimalidade de k, os elementos 1, f(1), …, f^(k−1)(1) são distintos dois a dois. Portanto 1 ≤ k ≤ 9.\n\n**3. Quando f^n(1) = 1**\nEscreva n = qk + r, com 0 ≤ r < k. Então f^n(1) = f^r((f^k)^q(1)) = f^r(1).\n- Se r = 0, temos f^n(1) = 1.\n- Se 0 < r < k, temos f^r(1) ≠ 1, pela minimalidade de k.\n\nLogo f^n(1) = 1 se e somente se k divide n. Com n = 9, a condição é k ∈ {1, 3, 9}, os divisores de 9.\n\n**4. Quantas permutações têm o 1 num ciclo de comprimento k**\n- Escolhem-se, em ordem, os valores distintos f(1), f²(1), …, f^(k−1)(1) dentre {2,…,9}: são 8·7·…·(10−k) = 8!/(9−k)! modos.\n- Fecha-se o ciclo com f^k(1) = 1. Isso não dá escolha nova.\n- Os 9−k elementos restantes formam uma permutação qualquer entre si: (9−k)! modos.\n- Total: [8!/(9−k)!]·(9−k)! = 8! = 40 320, o mesmo valor para todo k de 1 a 9.\n\nPortanto o comprimento do ciclo do 1 é uniforme em {1,…,9}: P(k) = 8!/9! = 1/9 para cada k.\n\nConferindo caso a caso:\n- k = 1 (1 é ponto fixo): 8! permutações.\n- k = 3: 8·7 = 56 ciclos (1 a b), vezes 6! para os demais: 56·720 = 40 320 = 8!.\n- k = 9 (ciclo de 9): 8! = 40 320.\n\n**5. Probabilidade**\nCasos favoráveis: 3·8! = 120 960. Logo\n\nP = 3·8!/9! = 3/9 = **1/3**.\n\n**Caminho alternativo, sequencial**\n- P(k = 1) = P(f(1) = 1) = 1/9.\n- Se f(1) ≠ 1, o valor f²(1) é igualmente provável entre os 8 elementos ainda não usados como imagem: ele não pode ser f(1), senão f(1) = 1.\n- Assim P(k = 2) = (8/9)(1/8) = 1/9, e em geral P(k = m) = (8/9)(7/8)…((10−m)/(11−m))·(1/(10−m)) = 1/9.\n\n**Verificação computacional**\nPercorri as 9! permutações em Python:\n- cada valor de k de 1 a 9 aparece exatamente 40 320 vezes;\n- há 120 960 casos com f⁹(1) = 1;\n- a razão é exatamente 1/3.",
+    "final_answer": "P(f^(9)(1) = 1) = 1/3. Isso ocorre quando o ciclo de f que contém o 1 tem comprimento 1, 3 ou 9 (os divisores de 9). São 3·8! = 120 960 permutações favoráveis em 9! = 362 880.",
+    "pitfalls": [
+      "Ler f^(9) como potência ou derivada. É a composição de f consigo mesma 9 vezes.",
+      "Achar que f^9(1) = 1 obriga f(1) = 1 (resposta 1/9), ou considerar só o ciclo de comprimento 9 (também 1/9). Os três casos k = 1, 3, 9 contam.",
+      "Esquecer um dos divisores, por exemplo o ciclo de comprimento 3, e responder 2/9. Também não se pode incluir comprimentos que não dividem 9.",
+      "Confundir o evento pedido, que é só f^9(1) = 1, com f^9 = identidade (todos os ciclos com comprimento 1, 3 ou 9). Esse outro evento tem 46 089 casos e probabilidade 569/4480, que não é a resposta.",
+      "Não justificar que f^9(1) = 1 se e somente se o comprimento k do ciclo do 1 divide 9. É preciso definir k como o menor inteiro positivo com f^k(1) = 1 (a existência vem da finitude de S e da injetividade de f) e usar a divisão euclidiana.",
+      "Erros na contagem de ciclos. Para k = 3 o certo é C(8,2)·2·6! = 8!, e C(8,2)·6! esquece as 2 orientações do ciclo. Para k = 9 há 8! ciclos, e não 9!.",
+      "Usar um espaço amostral errado, como 9^9 funções quaisquer em vez de 9! bijeções, ou não assumir as permutações equiprováveis.",
+      "Afirmar sem justificar que o comprimento do ciclo do 1 é uniforme. A conta [8!/(9−k)!]·(9−k)! = 8! ou o argumento sequencial deve aparecer."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A probabilidade é 1/3. Temos f^(9)(1) = 1 exatamente quando o comprimento k do ciclo que contém o 1 divide 9, isto é, k = 1, 3 ou 9. Para cada k há 8! permutações, então a probabilidade é 3·8!/9! = 1/3 (120960 casos favoráveis entre 362880).",
+      "review": {
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "score": 9.5,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A sequência começa em 1 = f^(0)(1), mas f^(0) = id não é definido. Isso importa porque o caso i = 0 é possível no argumento i < j. Basta declarar f^(0) = id."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que 1, f(1), …, f^(k−1)(1) são distintos é justificada só 'pela minimalidade de k'. Também é preciso cancelar por injetividade: se f^a(1) = f^b(1) com 0 ≤ a < b < k, então f^(b−a)(1) = 1 com 0 < b−a < k, o que contradiz a minimalidade. Esse passo deveria estar escrito."
+          },
+          {
+            "severity": "minor",
+            "description": "O produto '8·7···(9−k+1)' fica degenerado para k = 1: é um produto vazio, mas a notação sugere que vai até 9. A forma 8!/(9−k)! = 1 resolve isso, então convém citar o caso k = 1 explicitamente (sequência vazia, f(1) = 1)."
+          },
+          {
+            "severity": "minor",
+            "description": "A contagem diz que a permutação 'fica determinada por' a sequência e pela permutação do restante, mas não diz explicitamente a recíproca: toda escolha gera uma bijeção cujo ciclo de 1 tem comprimento exatamente k. Faltou uma frase para que a correspondência seja bijetiva."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'Verificação de um caso particular' é circular. Ela repete que cada k contribui com 1/9 e acrescenta que o resultado está entre 0 e 1, o que é trivial. Uma conferência útil seria calcular k = 3 diretamente: C(8,2)·2·6! = 56·720 = 40 320 = 8!. Isso também afastaria o erro de esquecer as 2 orientações do 3-ciclo."
+          }
+        ],
+        "summary": "A resposta do candidato está certa: P = 1/3. É a mesma da minha referência, e confirmei por força bruta nas 9! permutações (120 960 favoráveis em 362 880). A transcrição do enunciado confere com o PDF. A resolução é completa e rigorosa:\n- usa o espaço amostral certo, as 9! bijeções equiprováveis;\n- prova a existência do comprimento mínimo k do ciclo de 1 a partir da finitude de S e da injetividade de f;\n- mostra por divisão euclidiana que f^(9)(1) = 1 se e somente se k divide 9, ou seja, k ∈ {1, 3, 9};\n- prova em geral que N_k = [8!/(9−k)!]·(9−k)! = 8!, e confere com a soma 9·8! = 9!;\n- conclui que P = 3·8!/9! = 1/3.\n\nTodas as armadilhas foram evitadas. f^(9) é lido como composição, os três divisores entram, o evento não é confundido com f^9 = id, a uniformidade de k é demonstrada e não só afirmada, e não há erro na contagem dos ciclos. Os problemas são todos menores, de redação: f^(0) não definido, o uso da injetividade omitido no argumento de distinção, a notação do produto para k = 1, a recíproca da correspondência não dita e uma 'verificação' final circular. Com esses ajustes, o texto serve como gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{1) Expressão de $f$.} Como $0\le g_n(x)\le 1$, cada termo satisfaz $0\le \left(\frac{g_n(x)}{3}\right)^n\le \left(\frac13\right)^n$, logo a série converge para todo $x$ (comparação com uma série geométrica de razão $\frac13$). O termo de ordem $n$ vale $\left(\frac13\right)^n$ quando $g_n(x)=1$, isto é, quando $x>-\frac1n$, e vale $0$ caso contrário. Portanto
+\[
+f(x)=\sum_{n\,:\,x>-1/n}\left(\frac13\right)^n .
+\]
+
+\begin{itemize}
+\item \textbf{$x\ge 0$:} $x>-\frac1n$ para todo $n\ge 1$, logo
+$f(x)=\sum_{n=1}^{\infty}\left(\frac13\right)^n=\dfrac{1/3}{1-1/3}=\dfrac12$.
+\item \textbf{$x\le -1$:} $x\le -1\le -\frac1n$ para todo $n$, logo $f(x)=0$.
+\item \textbf{$x=-\frac1k$, com $k$ inteiro positivo:} $-\frac1k>-\frac1n \iff \frac1n>\frac1k \iff n<k$. Assim só contribuem os termos $n=1,\dots,k-1$:
+\[
+f\!\left(-\frac1k\right)=\sum_{n=1}^{k-1}\left(\frac13\right)^n=\frac{\frac13\left(1-3^{-(k-1)}\right)}{1-\frac13}=\frac12\left(1-3^{1-k}\right).
+\]
+(Para $k=1$ a soma é vazia e dá $0$, o que concorda com o caso $x\le -1$.)
+\end{itemize}
+
+\textbf{2) Valores inteiros de $x$.} Temos $x\neq 0$, pois $-\frac1x$ precisa estar definido.
+
+\emph{Caso $x\le -1$ (inteiro negativo):} $f(x)=0$. Além disso, $-\frac1x=\frac1{|x|}>0$, logo $f\!\left(-\frac1x\right)=\frac12$. A soma vale $\frac12<0{,}999$. Nenhum inteiro negativo serve.
+
+\emph{Caso $x=k\ge 1$ (inteiro positivo):} $f(k)=\frac12$ e, pelo item 1, $f\!\left(-\frac1k\right)=\frac12\left(1-3^{1-k}\right)$. Então
+\[
+f(k)+f\!\left(-\frac1k\right)=1-\frac12\cdot 3^{1-k}.
+\]
+A condição fica
+\[
+1-\frac{1}{2\cdot 3^{k-1}}\ge 0{,}999
+\iff \frac{1}{2\cdot 3^{k-1}}\le \frac{1}{1000}
+\iff 3^{k-1}\ge 500 .
+\]
+Como $3^5=243<500<729=3^6$ e $3^{k-1}$ é crescente em $k$, a condição equivale a $k-1\ge 6$, ou seja, $k\ge 7$.
+
+\textbf{3) Verificação.}
+\begin{itemize}
+\item $x=6$: $1-\dfrac{1}{2\cdot 243}=1-\dfrac{1}{486}\approx 0{,}99794<0{,}999$ (não serve);
+\item $x=7$: $1-\dfrac{1}{2\cdot 729}=1-\dfrac{1}{1458}\approx 0{,}99931\ge 0{,}999$ (serve).
+\end{itemize}
+Como nenhum inteiro negativo satisfaz a desigualdade, $x=0$ não pertence ao domínio e os inteiros de $1$ a $6$ também não a satisfazem, o menor inteiro procurado é $x=7$.
+
+\medskip
+ANSWER: $x=7$

@@ -1,0 +1,56 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{1. O traço.} Como $\mathbf{A}$ é $3\times(n+2)$ e $\mathbf{B}$ é $(n+2)\times 3$, o produto $\mathbf{A}\mathbf{B}$ é $3\times 3$ e
+\[
+\operatorname{tr}(\mathbf{A}\mathbf{B})=\sum_{k=1}^{3}(\mathbf{A}\mathbf{B})_{kk}=\sum_{k=1}^{3}\sum_{j=1}^{n+2}a_{kj}\,b_{jk}=T_1+T_2+T_3,
+\]
+com
+\[
+T_1=\sum_{j=1}^{n+2}\binom{m}{j-3}\binom{n}{n+2-j},\qquad
+T_2=\sum_{j=1}^{n+2}\binom{m}{j-2}\binom{n}{n+2-j},\qquad
+T_3=\sum_{j=1}^{n+2}\binom{m}{j-1}\binom{n+1}{n+2-j}.
+\]
+
+\textbf{2. Identidade de Vandermonde.} Comparando o coeficiente de $x^r$ nos dois lados de $(1+x)^p(1+x)^q=(1+x)^{p+q}$, obtemos
+\[
+\sum_{k}\binom{p}{k}\binom{q}{r-k}=\binom{p+q}{r},
+\]
+em que a soma percorre todos os inteiros $k$. Pela convenção do enunciado, os termos com índice fora de $[0,p]$ ou de $[0,q]$ são nulos. Basta então conferir que cada $T_i$ contém todos os termos não nulos.
+
+\begin{itemize}
+\item $T_1$: com $k=j-3$, os índices somam $k+(n-1-k)=n-1$ e $k$ varia de $-2$ a $n-1$. Um termo é não nulo só se $0\le k$ e $n-1-k\ge 0$, isto é, $0\le k\le n-1$. Todos estão na soma, logo $T_1=\binom{m+n}{n-1}$.
+\item $T_2$: com $k=j-2$, os índices somam $n$ e $k$ varia de $-1$ a $n$. Os termos não nulos ($0\le k\le n$) estão todos na soma, logo $T_2=\binom{m+n}{n}$.
+\item $T_3$: com $k=j-1$, os índices somam $n+1$ e $k$ varia de $0$ a $n+1$. Os termos não nulos exigem $0\le k\le n+1$, e $n+1\le m$ porque $m>n$. Todos estão na soma, logo $T_3=\binom{m+n+1}{n+1}$.
+\end{itemize}
+
+\textbf{3. Relação de Stifel.} Aplicando duas vezes $\binom{N}{r-1}+\binom{N}{r}=\binom{N+1}{r}$:
+\[
+\operatorname{tr}(\mathbf{A}\mathbf{B})
+=\underbrace{\binom{m+n}{n-1}+\binom{m+n}{n}}_{\binom{m+n+1}{n}}+\binom{m+n+1}{n+1}
+=\binom{m+n+1}{n}+\binom{m+n+1}{n+1}=\binom{m+n+2}{n+1}.
+\]
+Teste para $m=2$, $n=1$: $T_1=1$, $T_2=3$, $T_3=6$, com soma $10=\binom{5}{2}$. Confere.
+
+\textbf{4. Caso $m=2^{10}=1024$ e $n=10^3=1000$.} Aqui $m>n$, e
+\[
+\operatorname{tr}(\mathbf{A}\mathbf{B})=\binom{2026}{1001}.
+\]
+Pela propriedade $\binom{N}{r}=\dfrac{N}{r}\binom{N-1}{r-1}$, temos $1001\binom{2026}{1001}=2026\binom{2025}{1000}$. Como $2026=2\cdot 1013$, segue que
+\[
+1001\cdot\binom{2026}{1001}=1013\cdot 2\binom{2025}{1000},
+\]
+e o lado direito é múltiplo inteiro de $1013$.
+
+Falta ver que $\operatorname{mdc}(1001,1013)=1$. Temos $1013-1001=12$, logo $\operatorname{mdc}(1001,1013)=\operatorname{mdc}(1001,12)$. Como $1001=7\cdot 11\cdot 13$ não tem os fatores $2$ nem $3$, esse mdc vale $1$.
+
+Assim, $1013$ divide o produto $1001\cdot\binom{2026}{1001}$ e é primo com $1001$. Pelo lema de Euclides (Gauss), $1013$ divide $\binom{2026}{1001}$.
+
+\emph{Verificação por Legendre:} $1013$ é primo (não é divisível por nenhum primo $\le 31$). A maior potência de $1013$ que divide $\binom{2026}{1001}=\dfrac{2026!}{1001!\,1025!}$ tem expoente $\lfloor 2026/1013\rfloor-\lfloor 1001/1013\rfloor-\lfloor 1025/1013\rfloor=2-0-1=1$. Confere.
+
+\[
+\boxed{\operatorname{tr}(\mathbf{A}\mathbf{B})=\binom{m+n+2}{n+1}=\binom{2026}{1001},\ \text{que é divisível por } 1013.}
+\]
+
+ANSWER: $\operatorname{tr}(\mathbf{A}\mathbf{B})=\binom{m+n+2}{n+1}=\binom{2026}{1001}$; como $1001\binom{2026}{1001}=2\cdot 1013\binom{2025}{1000}$ e $\operatorname{mdc}(1001,1013)=1$, o traço é divisível por $1013$.

@@ -1,0 +1,45 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{1) Estrutura da sequência.} Seja $\log_2 x_k = a+(k-1)r$, com $r>0$, $k=1,\dots,9$. Tomando $q=2^r>1$, temos $x_k = 2^{a}q^{\,k-1}$. Os $x_k$ formam, portanto, uma PG de razão $q>1$.
+
+\textbf{2) Uso do produto.} Como $\log_2$ transforma produto em soma,
+\[
+\log_2(x_1x_3x_5x_7x_9)=5a+(0+2+4+6+8)r=5a+20r=45 \;\Longrightarrow\; a+4r=9 .
+\]
+Logo $\log_2 x_5=9$, ou seja, $x_5=2^9=512$, e $x_k=512\,q^{\,k-5}$.
+
+\textbf{3) Redução a uma variável.} Seja $t=q+q^{-1}$. Por MA--MG, $t>2$ (a desigualdade é estrita porque $q\neq 1$). Além disso, $q\mapsto q+q^{-1}$ é estritamente crescente para $q>1$, de modo que cada $t>2$ corresponde a um único $q>1$. Temos
+\[
+q^2+q^{-2}=t^2-2,\qquad q^3+q^{-3}=t^3-3t,\qquad q^4+q^{-4}=(t^2-2)^2-2 .
+\]
+Daí vêm
+\[
+x_2+x_4+x_6+x_8=512\left(q^{-3}+q^{-1}+q+q^{3}\right)=512\,(t^3-2t),
+\]
+\[
+S=x_1+x_3+x_5+x_7+x_9=512\left(q^{-4}+q^{-2}+1+q^{2}+q^{4}\right)=512\,(t^4-3t^2+1).
+\]
+
+\textbf{4) Uso da soma dada.} Temos $512(t^3-2t)=5540$, isto é,
+\[
+128t^3-256t-1385=0. \qquad (\star)
+\]
+\emph{Existência e unicidade:} seja $g(t)=t^3-2t$. Então $g'(t)=3t^2-2>0$ para $t\ge 2$, $g(2)=4<\tfrac{1385}{128}$ e $g(t)\to\infty$. Logo $(\star)$ tem exatamente uma raiz $t>2$, e portanto existe uma única sequência que satisfaz as hipóteses.
+
+\emph{Natureza da raiz:} com $u=8t$, a equação $(\star)$ fica $u^3-128u-5540=0$. Esse polinômio é mônico com coeficientes inteiros, então qualquer raiz racional seria um inteiro divisor de $5540$. Como $h(u)=u^3-128u-5540$ satisfaz $h(20)=-100<0<h(21)=1033$, a raiz fica em $]20;21[$. Ela não é inteira, logo $t$ é irracional. Pela fórmula de Cardano, com $\Delta=2770^2-\left(\tfrac{128}{3}\right)^3=\tfrac{205071148}{27}>0$ (há uma única raiz real),
+\[
+u=\sqrt[3]{2770+\tfrac{2}{9}\sqrt{153803361}}+\sqrt[3]{2770-\tfrac{2}{9}\sqrt{153803361}}\approx 20{,}0928,
+\qquad t=\frac{u}{8}\approx 2{,}51160 .
+\]
+
+\textbf{5) Cálculo de $S$.} Por $(\star)$, $t^3=2t+\tfrac{1385}{128}$, logo $t^4=2t^2+\tfrac{1385}{128}t$. Então
+\[
+S=512\left(-t^2+\tfrac{1385}{128}t+1\right)=512+5540\,t-512\,t^2=512+\tfrac{1385}{2}\,u-8u^2\approx 11196{,}5 .
+\]
+\emph{Verificação:} $q=\tfrac{t+\sqrt{t^2-4}}{2}\approx 2{,}0154$ e $r=\log_2 q\approx 1{,}011>0$. Os termos ímpares valem $x_1\approx 31{,}03$, $x_3\approx 126{,}05$, $x_5=512$, $x_7\approx 2079{,}72$ e $x_9\approx 8447{,}70$, com soma $\approx 11196{,}50$. Os termos pares valem $x_2\approx 62{,}54$, $x_4\approx 254{,}04$, $x_6\approx 1031{,}90$ e $x_8\approx 2079{,}72\cdot q\approx 4191{,}52$, com soma $5540$, como exigido.
+
+\textbf{Observação (provável erro de digitação no dado).} A raiz irracional sugere que o valor pretendido era $5440$. Nesse caso, $512(t^3-2t)=5440$ dá $8t^3-16t-85=(2t-5)(4t^2+10t+17)=0$. O fator quadrático tem discriminante $100-272<0$, logo a única raiz real é $t=\tfrac52$. Assim $q=2$, $r=1$ e $x_k=2^{k+4}$, o que dá $S=32+128+512+2048+8192=10912$; pela fórmula, $512\left(\tfrac{625}{16}-\tfrac{75}{4}+1\right)=10912$, confirmando.
+
+ANSWER: Com os dados do enunciado ($5540$): $S=512+5540\,t-512\,t^2\approx 11196{,}5$, onde $t\approx 2{,}5116$ é a raiz real de $128t^3-256t-1385=0$. Se o dado fosse $5440$ (razão $r=1$, $x_k=2^{k+4}$), então $S=10912$.

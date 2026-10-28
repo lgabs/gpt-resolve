@@ -1,0 +1,54 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Ideia.} Transformar cada denominador em produto (prostaférese) e depois escrever cada termo como diferença de tangentes, para que a soma seja telescópica.
+
+\medskip
+\textbf{1) Denominador como produto.} Pela fórmula $\cos p+\cos q = 2\cos\frac{p+q}{2}\cos\frac{p-q}{2}$, com $p=(2k+1)\alpha$ e $q=\alpha$, temos $\frac{p+q}{2}=(k+1)\alpha$ e $\frac{p-q}{2}=k\alpha$. Logo
+\[
+\cos\alpha+\cos(2k+1)\alpha = 2\cos(k\alpha)\cos\big((k+1)\alpha\big).
+\]
+Para $k=1,\dots,n$, os índices $k$ e $k+1$ ficam em $\{1,\dots,n+1\}$. Pela hipótese $\cos(j\alpha)\neq 0$, esse produto não se anula, de modo que todas as parcelas de $S_n$ estão bem definidas.
+
+\medskip
+\textbf{2) Diferença de tangentes.} Como $\cos(k\alpha)\neq0$ e $\cos((k+1)\alpha)\neq0$, as tangentes abaixo existem e
+\[
+\tan\big((k+1)\alpha\big)-\tan(k\alpha)
+=\frac{\operatorname{sen}((k+1)\alpha)\cos(k\alpha)-\cos((k+1)\alpha)\operatorname{sen}(k\alpha)}{\cos(k\alpha)\cos((k+1)\alpha)}
+=\frac{\operatorname{sen}\alpha}{\cos(k\alpha)\cos((k+1)\alpha)},
+\]
+pois o numerador é $\operatorname{sen}\big((k+1)\alpha-k\alpha\big)$. Como $\operatorname{sen}\alpha\neq0$, podemos dividir por ele:
+\[
+\frac{1}{\cos\alpha+\cos(2k+1)\alpha}=\frac{1}{2\cos(k\alpha)\cos((k+1)\alpha)}
+=\frac{\tan((k+1)\alpha)-\tan(k\alpha)}{2\operatorname{sen}\alpha}.
+\]
+
+\medskip
+\textbf{3) Soma telescópica.} Somando de $k=1$ a $n$, os termos intermediários se cancelam:
+\[
+S_n=\frac{1}{2\operatorname{sen}\alpha}\sum_{k=1}^{n}\Big[\tan((k+1)\alpha)-\tan(k\alpha)\Big]
+=\frac{\tan((n+1)\alpha)-\tan\alpha}{2\operatorname{sen}\alpha}.
+\]
+
+\medskip
+\textbf{4) Simplificação.} Usando de novo a subtração de senos (as tangentes existem, pois $\cos\alpha\neq0$ e $\cos((n+1)\alpha)\neq0$):
+\[
+\tan((n+1)\alpha)-\tan\alpha=\frac{\operatorname{sen}((n+1)\alpha)\cos\alpha-\cos((n+1)\alpha)\operatorname{sen}\alpha}{\cos((n+1)\alpha)\cos\alpha}
+=\frac{\operatorname{sen}(n\alpha)}{\cos\alpha\,\cos((n+1)\alpha)}.
+\]
+Portanto
+\[
+S_n=\frac{\operatorname{sen}(n\alpha)}{2\operatorname{sen}\alpha\cos\alpha\,\cos((n+1)\alpha)}
+=\frac{\operatorname{sen}(n\alpha)}{\operatorname{sen}(2\alpha)\cos((n+1)\alpha)},
+\]
+onde usamos $\operatorname{sen}(2\alpha)=2\operatorname{sen}\alpha\cos\alpha$. Esse valor é não nulo, pois $\operatorname{sen}\alpha\neq0$ e $\cos\alpha\neq0$ (caso $j=1$ da hipótese). $\blacksquare$
+
+\medskip
+\textbf{Verificação ($n=1$).} O lado esquerdo vale $\dfrac{1}{\cos\alpha+\cos3\alpha}=\dfrac{1}{2\cos2\alpha\cos\alpha}$. O lado direito vale $\dfrac{\operatorname{sen}\alpha}{2\operatorname{sen}\alpha\cos\alpha\cos2\alpha}=\dfrac{1}{2\cos\alpha\cos2\alpha}$. Os dois lados coincidem.
+
+\medskip
+\textbf{Papel das hipóteses.} A condição $\cos(j\alpha)\neq0$ para $j=1,\dots,n+1$ garante que os denominadores e as tangentes usadas existem. A condição $\operatorname{sen}\alpha\neq0$ permite dividir por $\operatorname{sen}\alpha$ e garante $\operatorname{sen}2\alpha\neq0$.
+
+\medskip
+ANSWER: $S_n=\displaystyle\sum_{k=1}^{n}\frac{1}{\cos\alpha+\cos(2k+1)\alpha}=\frac{\tan((n+1)\alpha)-\tan\alpha}{2\operatorname{sen}\alpha}=\frac{\operatorname{sen}(n\alpha)}{\operatorname{sen}(2\alpha)\cos((n+1)\alpha)}$, como queríamos demonstrar.

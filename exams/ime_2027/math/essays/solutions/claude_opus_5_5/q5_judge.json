@@ -1,0 +1,49 @@
+{
+  "question": 5,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Com os dados do enunciado (soma dos pares igual a 5540): x_5 = 512 e S = 512 + 5540t − 512t² ≈ 11196,5, onde t = q + 1/q ≈ 2,5116 é a única raiz real de 128t³ − 256t − 1385 = 0. Essa raiz é irracional, o que indica um provável erro de digitação no enunciado. Se o dado fosse 5440, a razão seria r = 1, os termos seriam x_k = 2^(k+4) e a soma pedida seria S = 10912.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** Conferi com o PDF (pág. 2) e a transcrição bate: o produto x1·x3·x5·x7·x9 vale 2^45 e a soma x2+x4+x6+x8 vale **5540**.\n\n**1) Modelagem.** Os x_i são positivos, então os logaritmos existem. Escrevo log2 x_k = a + (k−1)r, com r > 0. Daí x_k = 2^a·q^(k−1), com q = 2^r > 1. Ou seja, (x_k) é uma PG de razão q > 1.\n\n**2) Produto dos termos ímpares.** Temos log2(x1x3x5x7x9) = 5a + (0+2+4+6+8)r = 5(a+4r) = 45, logo a + 4r = 9. Portanto **x5 = 2^9 = 512** e x_k = 512·q^(k−5).\n\n**3) Soma dos termos pares.** 512(q^−3 + q^−1 + q + q^3) = 5540, isto é, q^3 + q^−3 + q + q^−1 = 1385/128.\nPonho t = q + 1/q. Como q > 1, temos t > 2. Como q^3 + q^−3 = t^3 − 3t, fica:\n  t^3 − 2t = 1385/128, ou seja, 128t^3 − 256t − 1385 = 0. (*)\n\n**4) A soma pedida em função de t.**\nS = 512(q^4 + q^2 + 1 + q^−2 + q^−4). Com s = q^2 + q^−2 = t^2 − 2, temos q^4 + q^−4 = s^2 − 2. Então\n  S = 512(s^2 + s − 1) = 512(t^4 − 3t^2 + 1).\nOutro caminho: t·S_par = S + 512(t^2 − 1), de onde S = t·S_par − 512t^2 + 512. Usando (*), t^4 = 2t^2 + (1385/128)t, e os dois caminhos dão:\n  **S = 5540·t − 512·t^2 + 512.**\n\n**5) Existência e unicidade de t.** Seja g(t) = t^3 − 2t. Ela é estritamente crescente para t > √(2/3). Além disso, g(2) = 4 < 1385/128 ≈ 10,82 e g → ∞. Logo existe um único t > 2 que satisfaz (*). Esse t dá um único q > 1, e portanto r = log2 q > 0 é único.\nA cúbica (*) não tem raiz racional. Com u = 4t ela vira 2u^3 − 64u − 1385 = 0, e testando os candidatos ±1, ±5, ±277, ±1385 e suas metades, nenhum serve. Então t precisa ser obtido por Cardano. Com u = 4t, a equação é u^3 − 32u − 1385/2 = 0, e:\n  Δ = (1385/4)^2 − (32/3)^3 = 51267787/432 > 0, logo há uma única raiz real;\n  u = ∛(1385/4 + √153803361/36) + ∛(1385/4 − √153803361/36) ≈ 10,046400;\n  t = u/4 ≈ 2,5116001.\nConferência por limites: g(2,5) = 10,625 < 10,8203 < g(2,52) ≈ 10,963.\n\n**6) Resultado.** Em termos de u: **S = 512 + 1385u − 32u^2**. Eliminando u, S é a única raiz real de\n  2S^3 + 1024S^2 + 60858912·S − 3616999189281 = 0.\nNumericamente: q ≈ 2,015427, r ≈ 1,011086. Os termos ímpares são x1 ≈ 31,03; x3 ≈ 126,05; x5 = 512; x7 ≈ 2079,72; x9 ≈ 8447,70. Os pares são x2 ≈ 62,54; x4 ≈ 254,04; x6 ≈ 1031,90; x8 ≈ 4191,52, com soma 5540 ✓. O produto dos ímpares é 2^45 ✓.\n  **S = x1 + x3 + x5 + x7 + x9 ≈ 11196,50** (11196,4994…).\n\n**7) Observação: provável erro de digitação.** Com x2+x4+x6+x8 = **5440** o problema fica \"redondo\". Nesse caso t = 5/2, q = 2 e r = 1. Os ímpares seriam 32, 128, 512, 2048, 8192 e os pares 64, 256, 1024, 4096 (soma 5440). A resposta seria **10912**. Pela fórmula: 5440·(5/2) − 512·(25/4) + 512 = 10912 ✓. Com o número que está na prova (5540), q = 2 **não** serve, porque dá 5440 ≠ 5540. A resposta correta para o enunciado como está é a irracional ≈ 11196,5.",
+    "final_answer": "Sai que x5 = 2^9 = 512 e que a razão da PG é q = 2^r. Fazendo t = q + 1/q, a condição 5540 dá 128t^3 − 256t − 1385 = 0, com uma única raiz t > 2 (t ≈ 2,5116, irracional). A soma pedida é S = 5540t − 512t^2 + 512. Com u = 4t = ∛(1385/4 + √153803361/36) + ∛(1385/4 − √153803361/36), fica S = 512 + 1385u − 32u^2 ≈ 11196,50. Essa é a única raiz real de 2S^3 + 1024S^2 + 60858912S − 3616999189281 = 0.\n\nObservação: o enunciado provavelmente tem erro de digitação. Com x2+x4+x6+x8 = 5440, teríamos q = 2 e a resposta exata seria 10912 (32+128+512+2048+8192).",
+    "pitfalls": [
+      "Usar o produto dos termos ímpares para obter o termo central: 5(a+4r) = 45 ⇒ x5 = 2^9 = 512. Errar a soma dos índices 0+2+4+6+8 = 20 leva a um x5 errado.",
+      "Lembrar que log2 x_k em PA quer dizer que x_k está em PG de razão q = 2^r > 1. Confundir PA dos logs com PA dos x_k é erro grave.",
+      "Simetrizar com t = q + 1/q: q^3+q^−3 = t^3−3t e q^4+q^−4 = (t^2−2)^2−2. Resulta 128t^3 − 256t − 1385 = 0 e S = 512(t^4−3t^2+1) = 5540t − 512t^2 + 512.",
+      "Justificar que a solução é única: q > 1 ⇒ t > 2, e t^3−2t é estritamente crescente aí. Notar também que S é simétrica em q ↔ 1/q, então o sinal da razão não muda S.",
+      "ARMADILHA PRINCIPAL: com 5540 a cúbica não tem raiz racional (nenhum candidato ±1, ±5, ±277, ±1385, nem suas metades, serve). Logo q não é 2 nem outro número 'bonito'. Quem 'chuta' q = 2 (r = 1) e responde 10912 está errado para o enunciado como está, porque q = 2 dá x2+x4+x6+x8 = 5440 ≠ 5540.",
+      "O valor 5540 é muito provavelmente erro de digitação de 5440 (que dá q = 2 e S = 10912). Uma boa resolução resolve o que está escrito (S ≈ 11196,5, com forma exata via Cardano ou a cúbica 2S^3+1024S^2+60858912S−3616999189281 = 0) e pode apontar a inconsistência e o valor 10912 da versão provável.",
+      "Conferir a resposta numérica: q ≈ 2,01543, x1 ≈ 31,03, x3 ≈ 126,05, x5 = 512, x7 ≈ 2079,72, x9 ≈ 8447,70; a soma dos pares dá 5540 e o produto dos ímpares dá 2^45. Respostas como 10912, 10.9xx ou qualquer inteiro são incompatíveis com 5540.",
+      "Erro algébrico comum: escrever S = 512(s^2 + s + 1) esquecendo o −2 de q^4+q^−4 = s^2 − 2. O correto é 512(s^2 + s − 1)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Com os dados do enunciado (soma dos pares igual a 5540): x_5 = 512 e S = 512 + 5540t − 512t² ≈ 11196,5, onde t = q + 1/q ≈ 2,5116 é a única raiz real de 128t³ − 256t − 1385 = 0. Essa raiz é irracional, o que indica um provável erro de digitação no enunciado. Se o dado fosse 5440, a razão seria r = 1, os termos seriam x_k = 2^(k+4) e a soma pedida seria S = 10912.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A linha ANSWER dá S em função de t e define t só como a raiz real de 128t^3−256t−1385=0. A forma fechada de Cardano (u = ∛(2770+(2/9)√153803361) + ∛(2770−(2/9)√153803361), S = 512 + (1385/2)u − 8u^2) está no corpo da resolução, mas não na resposta final. Valeria repeti-la ali, ou dar a cúbica inteira de que S é raiz (2S^3+1024S^2+60858912S−3616999189281=0), para a resposta exata ficar completa sozinha."
+          },
+          {
+            "severity": "minor",
+            "description": "O valor numérico vem só como ≈ 11196,5. Seria melhor dar mais casas (11196,4994…), já que a resposta é irracional e o arredondamento esconde a diferença em relação a 11196,5."
+          },
+          {
+            "severity": "minor",
+            "description": "Detalhe de redação: a verificação escreve x8 ≈ 2079,72·q em vez de dar o valor direto. Também não diz explicitamente que a = 9 − 4r fica determinado depois que se acha r, o que fecharia a unicidade da sequência inteira, e não só de t e q. Os dois pontos são triviais."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF, pág. 2: o dado é mesmo 5540. A resposta final do candidato, S = 512 + 5540t − 512t^2 ≈ 11196,5 com t ≈ 2,5116 raiz de 128t^3 − 256t − 1385 = 0, coincide com a minha referência. Conferi tudo numericamente em Python:\n- u = 8t ≈ 20,0928 satisfaz u^3 − 128u − 5540 = 0, com h(20) = −100 e h(21) = 1033.\n- Δ = 2770^2 − (128/3)^3 = 205071148/27 = ((2/9)√153803361)^2.\n- q ≈ 2,015427 e r ≈ 1,01109.\n- Os termos x_k batem, a soma dos pares dá 5540 e o produto dos ímpares dá 2^45.\n- S = 11196,4994…, igual pelas três fórmulas: 512(t^4−3t^2+1), 512+5540t−512t^2 e 512+(1385/2)u−8u^2.\n\nA resolução é correta e rigorosa:\n- Modela a PA dos logaritmos como PG de razão q = 2^r > 1.\n- Tira x5 = 512 do produto, com a soma dos índices 0+2+4+6+8 = 20 feita certo.\n- Simetriza com t = q+1/q usando as identidades certas. Não comete o erro do −2 em q^4+q^−4.\n- Prova existência e unicidade: t > 2 por MA–MG, g' > 0, g(2) = 4 < 1385/128, e a bijeção entre t e q.\n- Prova a irracionalidade de forma elegante: com u = 8t o polinômio fica mônico inteiro e a raiz está em (20,21).\n- Dá a forma exata por Cardano, reduz t^4 usando a cúbica e verifica tudo numericamente.\n\nTodas as armadilhas foram tratadas. A principal era não chutar q = 2. O candidato a evitou: resolve o enunciado como está escrito, aponta o provável erro de digitação (5540 no lugar de 5440) e mostra que nesse caso a resposta seria 10912. Essa conta também está certa: fatorou (2t−5)(4t^2+10t+17) e mostrou que o fator quadrático tem discriminante negativo. A resposta para o enunciado oficial está separada sem ambiguidade da resposta hipotética.\n\nSó restam detalhes de apresentação: a forma exata não aparece na linha final e a aproximação tem poucas casas. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

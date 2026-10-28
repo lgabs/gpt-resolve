@@ -1,0 +1,50 @@
+{
+  "question": 8,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A identidade fica provada em três passos.\n\n1. **Produto:** pela prostaférese, cos α + cos(2k+1)α = 2 cos(kα) cos((k+1)α), que não se anula pela hipótese cos(jα) ≠ 0.\n2. **Diferença de tangentes:** como tan((k+1)α) − tan(kα) = sen α / (cos(kα) cos((k+1)α)) e sen α ≠ 0, cada termo vale [tan((k+1)α) − tan(kα)] / (2 sen α).\n3. **Soma telescópica:** os termos intermediários se cancelam e sobra S_n = [tan((n+1)α) − tan α] / (2 sen α) = sen(nα) / (2 sen α cos α cos((n+1)α)) = sen(nα) / (sen(2α) cos((n+1)α)).\n\nO caso n = 1 confere, e uma checagem numérica rápida em Python também bateu.",
+  "judge_reference": {
+    "reference_solution": "**Questão 8. Referência de correção**\n\nConferi a transcrição com a prova original (pág. 2) e ela está fiel. Há uma única identidade a provar, sem subitens.\n\n**1. Hipóteses e o que elas garantem**\n- Como cos(jα) ≠ 0 para j = 1, …, n+1, as tangentes tg(jα) existem para esses j, e cos((n+1)α) ≠ 0 no lado direito.\n- Como sen α ≠ 0 e cos α ≠ 0 (é o caso j = 1), temos sen 2α = 2 sen α cos α ≠ 0. Então o lado direito está bem definido.\n\n**2. Fatorar o denominador (soma em produto)**\nPela fórmula cos A + cos B = 2 cos((A+B)/2) cos((A−B)/2), com A = (2k+1)α e B = α:\n\ncos α + cos(2k+1)α = 2 cos((k+1)α) cos(kα).\n\nPara k = 1, …, n, os índices kα e (k+1)α percorrem j = 1, …, n+1. Pela hipótese, todo denominador é não nulo, e a soma S_n está bem definida.\n\nLogo S_n = Σ_{k=1}^{n} 1 / [2 cos(kα) cos((k+1)α)].\n\n**3. Escrever cada termo como diferença (telescopagem)**\nUsando sen α = sen((k+1)α − kα) = sen((k+1)α) cos(kα) − cos((k+1)α) sen(kα), e dividindo por cos(kα) cos((k+1)α), que é não nulo:\n\nsen α / [cos(kα) cos((k+1)α)] = tg((k+1)α) − tg(kα).\n\nComo sen α ≠ 0, podemos dividir por ele:\n\n1 / [2 cos(kα) cos((k+1)α)] = [tg((k+1)α) − tg(kα)] / (2 sen α).\n\n**4. Somar**\nA soma é telescópica:\n\nS_n = (1/(2 sen α)) Σ_{k=1}^{n} [tg((k+1)α) − tg(kα)] = [tg((n+1)α) − tg α] / (2 sen α).\n\nAlém disso:\n\ntg((n+1)α) − tg α = [sen((n+1)α) cos α − cos((n+1)α) sen α] / [cos((n+1)α) cos α] = sen(nα) / [cos α cos((n+1)α)].\n\nPortanto:\n\nS_n = sen(nα) / [2 sen α cos α cos((n+1)α)] = sen(nα) / [sen(2α) cos((n+1)α)]. ∎\n\n**5. Rota alternativa: indução em n**\n- Base (n = 1): S_1 = 1/(cos α + cos 3α) = 1/(2 cos α cos 2α). O lado direito vale sen α / (sen 2α cos 2α) = 1/(2 cos α cos 2α). Os dois coincidem.\n- Passo: suponha a fórmula válida para n e as hipóteses válidas até j = n+2. Então\n\n  S_{n+1} = sen(nα)/[sen 2α cos((n+1)α)] + 1/[2 cos((n+1)α) cos((n+2)α)]\n         = [sen(nα) cos((n+2)α) + sen α cos α] / [sen 2α cos((n+1)α) cos((n+2)α)].\n\n  Pela fórmula de produto em soma, sen(nα) cos((n+2)α) = [sen(2(n+1)α) − sen 2α]/2. Somando sen α cos α = sen(2α)/2, o numerador vale sen(2(n+1)α)/2 = sen((n+1)α) cos((n+1)α). Cancelando cos((n+1)α), que é ≠ 0:\n\n  S_{n+1} = sen((n+1)α) / [sen 2α cos((n+2)α)]. ∎\n\n  Na indução, as hipóteses usadas para n são as de n+1 restritas a j ≤ n+1, o que é legítimo.\n\n**6. Conferência numérica (python3)**\n- Testei cerca de 19 800 pares (n, α) aleatórios, com n ≤ 30, que satisfazem as hipóteses. O erro relativo máximo foi cerca de 1e−8; esse valor vem apenas de casos quase singulares.\n- Com α = mπ, onde sen α = 0, o lado esquerdo vale ±n/2 (deu −2,5 ou 2,5 para n = 5), enquanto o lado direito vira 0/0. A hipótese sen α ≠ 0 é, portanto, necessária para o enunciado fazer sentido.",
+    "final_answer": "A identidade está provada:\n\nS_n = Σ_{k=1}^{n} 1/(cos α + cos(2k+1)α) = sen(nα)/(sen 2α · cos((n+1)α)).\n\n1. Soma em produto: cos α + cos(2k+1)α = 2 cos(kα) cos((k+1)α).\n2. Cada termo vira uma diferença de tangentes: 1/(2 cos kα cos(k+1)α) = [tg((k+1)α) − tg(kα)]/(2 sen α).\n3. A soma telescópica dá S_n = [tg((n+1)α) − tg α]/(2 sen α).\n4. Como tg((n+1)α) − tg α = sen(nα)/(cos α cos((n+1)α)) e 2 sen α cos α = sen 2α, chega-se ao resultado.\n\nA hipótese cos(jα) ≠ 0 (j = 1, …, n+1) garante os denominadores e as tangentes. A hipótese sen α ≠ 0 permite dividir por sen α e garante sen 2α ≠ 0. Uma indução em n também é uma prova válida.",
+    "pitfalls": [
+      "Fatoração errada na soma em produto. O correto é cos α + cos(2k+1)α = 2cos((k+1)α)cos(kα). Trocar (A+B)/2 por (A−B)/2 de forma inconsistente, ou esquecer o fator 2, faz a fórmula final perder ou ganhar um fator 2.",
+      "Dizer que 'a soma telescopa' sem mostrar a decomposição explícita. É preciso justificar que sen α/(cos kα cos(k+1)α) = tg((k+1)α) − tg(kα), usando sen((k+1)α − kα).",
+      "Não usar ou não justificar as hipóteses. cos(jα) ≠ 0 para j = 1..n+1 é exatamente o que torna não nulos os denominadores cos kα·cos(k+1)α (k = 1..n) e define as tangentes. sen α ≠ 0 é necessário para dividir por sen α. Uma boa resolução diz onde cada hipótese entra.",
+      "Esquecer de verificar que sen 2α ≠ 0. Segue de sen α ≠ 0 junto com cos α ≠ 0, que é o caso j = 1. Sem isso o lado direito não estaria definido.",
+      "Erro de índice na telescopagem. O resultado correto é tg((n+1)α) − tg(α), não tg(nα) − tg(0) nem tg((n+1)α) − tg(0).",
+      "Na passagem final, errar a subtração de tangentes. O correto é tg((n+1)α) − tg α = sen(nα)/(cos α cos((n+1)α)), e depois 2 sen α cos α = sen 2α.",
+      "Na indução: verificar só a base ou só o passo. A base n = 1 deve conferir: 1/(2cos α cos 2α) dos dois lados. No passo, a identidade sen(nα)cos((n+2)α) + sen α cos α = sen((n+1)α)cos((n+1)α) precisa ser demonstrada, não apenas afirmada.",
+      "Verificar apenas numericamente ou para alguns valores de n. Isso não é demonstração.",
+      "Observação sobre o caso sen α = 0: o lado esquerdo vale ±n/2, mas o lado direito fica 0/0. A hipótese não é supérflua. Se n = 0 for considerado em ℕ, os dois lados valem 0, o que é trivialmente consistente."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A identidade fica provada em três passos.\n\n1. **Produto:** pela prostaférese, cos α + cos(2k+1)α = 2 cos(kα) cos((k+1)α), que não se anula pela hipótese cos(jα) ≠ 0.\n2. **Diferença de tangentes:** como tan((k+1)α) − tan(kα) = sen α / (cos(kα) cos((k+1)α)) e sen α ≠ 0, cada termo vale [tan((k+1)α) − tan(kα)] / (2 sen α).\n3. **Soma telescópica:** os termos intermediários se cancelam e sobra S_n = [tan((n+1)α) − tan α] / (2 sen α) = sen(nα) / (2 sen α cos α cos((n+1)α)) = sen(nα) / (sen(2α) cos((n+1)α)).\n\nO caso n = 1 confere, e uma checagem numérica rápida em Python também bateu.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Ambiguidade no passo 4: logo depois de S_n = sen(nα)/(sen 2α·cos((n+1)α)) e de 'sen(2α)=2 sen α cos α', o candidato escreve 'Esse valor é não nulo'. A intenção é dizer que sen 2α ≠ 0, e isso está certo. Lida ao pé da letra, porém, a frase parece afirmar que S_n ≠ 0, o que é falso: com n = 3 e α = π/3 (hipóteses satisfeitas), S_3 = −2 + 1 + 1 = 0. Deveria estar escrito explicitamente 'sen 2α ≠ 0, logo o lado direito está definido'."
+          },
+          {
+            "severity": "minor",
+            "description": "Não comenta o caso n = 0, caso se considere 0 ∈ ℕ. A soma vazia vale 0 e o lado direito vale sen 0/(sen 2α cos α) = 0, então a identidade continua valendo. Uma frase bastaria. É omissão de acabamento e não compromete a prova, que já cobre n ≥ 1 (e a fórmula telescópica também vale para n = 0)."
+          },
+          {
+            "severity": "minor",
+            "description": "Detalhe de redação: 'Usando de novo a subtração de senos' se refere, na verdade, à fórmula do seno da diferença, sen(a−b). Também 'os termos intermediários se cancelam' poderia mostrar a soma aberta (tg 2α − tg α + tg 3α − tg 2α + …). Mesmo assim, a decomposição de cada termo foi feita explicitamente, e isso é o que importa."
+          }
+        ],
+        "summary": "Conferi a transcrição com a prova original (pág. 2) e ela está fiel. A resolução do candidato segue a mesma rota da minha referência e está correta do início ao fim.\n\n1. **Soma em produto.** A fatoração cos α + cos(2k+1)α = 2cos(kα)cos((k+1)α) está certa. Ele também justifica que os índices percorrem {1, …, n+1}, então os denominadores não se anulam.\n2. **Diferença de tangentes.** A decomposição está explícita: tg((k+1)α) − tg(kα) = sen α/(cos kα cos(k+1)α), com o numerador identificado como sen((k+1)α − kα). Ele usa sen α ≠ 0 para dividir.\n3. **Telescopagem.** Os índices estão certos: tg((n+1)α) − tg α.\n4. **Simplificação.** A passagem tg((n+1)α) − tg α = sen(nα)/(cos α cos((n+1)α)) está correta, assim como 2 sen α cos α = sen 2α. Ele justifica sen 2α ≠ 0 pelo caso j = 1.\n5. **Extras.** Verifica o caso n = 1 e explica onde entra cada hipótese.\n\n**Conferência numérica.** Testei a identidade e a forma intermediária (tg((n+1)α) − tg α)/(2 sen α) em cerca de 20 000 pares (n, α) que satisfazem as hipóteses. O erro relativo máximo foi cerca de 2e−8, só em casos quase singulares.\n\n**Armadilhas.** Todas foram tratadas: fator 2, decomposição explícita, papel de cada hipótese, sen 2α ≠ 0, índices da telescopagem e subtração de tangentes. A conferência de n = 1 aparece só como checagem, não como prova.\n\n**Problemas.** Os problemas são só de redação, e nenhum é de matemática. O mais visível é a frase ambígua 'Esse valor é não nulo', que parece dizer que S_n ≠ 0, o que é falso (S_3(π/3) = 0), quando a intenção é sen 2α ≠ 0. Falta também uma menção ao caso n = 0.\n\n**Nota: 9,5.** É uma resolução publicável como gabarito comentado."
+      }
+    }
+  ]
+}

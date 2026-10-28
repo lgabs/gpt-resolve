@@ -1,0 +1,49 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Ideia.} Primeiro agrupamos os fatores pela raiz $x_j$. O produto em $i$ vira o valor de um polinômio no ponto $-x_j$. Depois reduzimos esse valor usando a equação do 2º grau e terminamos com as relações de Girard.
+
+\medskip
+\textbf{1) Fatoração do polinômio cúbico.} Seja $P(y)=y^3-4y-2$. Ele é mônico e tem raízes $y_1,y_2,y_3$ (contadas com multiplicidade, em $\mathbb{C}$). Pelo Teorema Fundamental da Álgebra,
+\[
+P(y)=(y-y_1)(y-y_2)(y-y_3)\quad\text{para todo } y\in\mathbb{C}.
+\]
+Tomando $y=-x$:
+\[
+P(-x)=(-x-y_1)(-x-y_2)(-x-y_3)=(-1)^3(x+y_1)(x+y_2)(x+y_3).
+\]
+Logo
+\[
+(y_1+x)(y_2+x)(y_3+x)=-P(-x)=-\left(-x^3+4x-2\right)=x^3-4x+2 .
+\]
+
+\textbf{2) Reagrupamento do produto.} O produto pedido tem os seis fatores $y_i+x_j$. Agrupando-os por $x_j$:
+\[
+E=\prod_{j=1}^{2}\,\prod_{i=1}^{3}(y_i+x_j)=\left(x_1^3-4x_1+2\right)\left(x_2^3-4x_2+2\right).
+\]
+
+\textbf{3) Redução de grau.} Como $x_j$ é raiz de $x^2-7x-3=0$, vale $x_j^2=7x_j+3$. Então
+\[
+x_j^3=x_j\cdot x_j^2=7x_j^2+3x_j=7(7x_j+3)+3x_j=52x_j+21,
+\]
+e portanto
+\[
+x_j^3-4x_j+2=52x_j+21-4x_j+2=48x_j+23 .
+\]
+
+\textbf{4) Relações de Girard.} Para $x^2-7x-3=0$ temos $x_1+x_2=7$ e $x_1x_2=-3$. Assim
+\begin{align*}
+E&=(48x_1+23)(48x_2+23)=48^2\,x_1x_2+48\cdot 23\,(x_1+x_2)+23^2\\
+&=2304\cdot(-3)+1104\cdot 7+529=-6912+7728+529=1345 .
+\end{align*}
+
+\textbf{Conferência.} Numericamente, $x_{1,2}=\dfrac{7\pm\sqrt{61}}{2}$, ou seja, $x_1\approx 7{,}405$ e $x_2\approx -0{,}405$.
+\begin{itemize}
+\item $48x_1+23\approx 378{,}4$ e $48x_2+23\approx 3{,}555$, cujo produto é $\approx 1345$.
+\item O produto direto dos seis fatores, calculado com as raízes numéricas das duas equações, também dá $1345$.
+\end{itemize}
+O resultado é real e inteiro, como deve ser: $E$ é uma expressão simétrica nas raízes de cada equação, e as duas equações têm coeficientes inteiros.
+
+\medskip
+ANSWER: $1345$

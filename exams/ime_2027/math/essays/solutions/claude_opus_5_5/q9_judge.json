@@ -1,0 +1,46 @@
+{
+  "question": 9,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Com c = 2√3, o lugar de M é a elipse 4x²/49 + y² = 1, ou seja, 4x² + 49y² = 49. Ela intersecta as retas x = ±2√3 nos pontos (2√3, ±1/7) e (−2√3, ±1/7).",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** Conferi a transcrição com a página 2 da prova (9ª questão, valor 1,0) e ela está correta. A questão não tem figura.\n\n**1) Elementos da elipse.**\nx² + 4y² = 16 ⇔ x²/16 + y²/4 = 1. Então a = 4 (eixo maior sobre Ox), b = 2 e c² = a² − b² = 12, logo c = 2√3. Os focos são (±2√3, 0) e as retas pedidas são x = ±2√3.\n\n**2) Normal em P e ponto Q.**\nSeja P = (x₀, y₀) na elipse. O gradiente de F(x, y) = x² + 4y² − 16 é ∇F = (2x₀, 8y₀). A normal em P tem portanto a direção (x₀, 4y₀):\n  N: (x, y) = (x₀, y₀) + s·(x₀, 4y₀), s ∈ ℝ.\nA forma vetorial dispensa casos separados para o coeficiente angular. Em particular, quando x₀ = 0 a normal é vertical e a fórmula continua valendo.\n- Se y₀ ≠ 0, fazendo y = 0: y₀(1 + 4s) = 0 ⇒ s = −1/4 ⇒ x = x₀ − x₀/4 = 3x₀/4. Logo Q = (3x₀/4, 0).\n  O mesmo resultado sai da forma clássica a²x/x₀ − b²y/y₀ = a² − b², que dá 16x/x₀ − 4y/y₀ = 12; com y = 0, x = (c²/a²)x₀ = 3x₀/4.\n- Se y₀ = 0, isto é, P = (±4, 0): a normal é o próprio eixo x. Ela não \"intercepta\" o eixo num único ponto, então Q não fica determinado. Esses dois pontos ficam fora da construção. (Por continuidade, Q → (±3, 0) e M → (±7/2, 0).)\n- Se P = (0, ±2): Q = (0, 0) e M = (0, ±1). A fórmula geral cobre esse caso.\n\n**3) Lugar geométrico de M.**\nM = ((x₀ + 3x₀/4)/2, (y₀ + 0)/2) = (7x₀/8, y₀/2).\nEscrevendo M = (X, Y), temos x₀ = 8X/7 e y₀ = 2Y. Substituindo na equação da elipse:\n  64X²/49 + 16Y² = 16 ⇔ 4X²/49 + Y² = 1 ⇔ X²/(7/2)² + Y²/1² = 1.\nO lugar de M é a elipse de centro na origem, com semieixos 7/2 (em x) e 1 (em y). Em rigor, sem os pontos (±7/2, 0), que correspondem a P = (±4, 0).\nUma parametrização equivalente: P = (4cos θ, 2sen θ) ⇒ M = ((7/2)cos θ, sen θ).\n\n**4) Interseção com x = ±c = ±2√3.**\nTemos 2√3 ≈ 3,464 < 7/2 = 3,5, então as retas cortam o lugar em dois pontos cada uma. Também não passam pelos pontos excluídos (±7/2, 0).\n  4·(2√3)²/49 + Y² = 1 ⇒ 48/49 + Y² = 1 ⇒ Y² = 1/49 ⇒ Y = ±1/7.\nA simetria do lugar em relação aos dois eixos dá o mesmo resultado para x = −2√3.\n\n**Verificação.** Para M = (2√3, 1/7), temos P = (8X/7, 2Y) = (16√3/7, 2/7).\n- P está na elipse: 768/49 + 4·4/49 = 784/49 = 16 ✓.\n- Q = (3x₀/4, 0) = (12√3/7, 0) e o ponto médio de PQ é ((16√3 + 12√3)/14, 1/7) = (2√3, 1/7) ✓.\n\nTambém conferi numericamente (python3), para θ aleatórios, que Q = 3x₀/4 e que 4X²/49 + Y² = 1.\n\n**Resposta.** Os pontos são (2√3, 1/7), (2√3, −1/7), (−2√3, 1/7) e (−2√3, −1/7).",
+    "final_answer": "O lugar de M é a elipse 4x²/49 + y² = 1, isto é, x²/(7/2)² + y² = 1, sem os pontos (±7/2, 0), que vêm de P = (±4, 0). Como c = 2√3, há quatro pontos de interseção com as retas x = ±2√3: (2√3, 1/7), (2√3, −1/7), (−2√3, 1/7) e (−2√3, −1/7).",
+    "pitfalls": [
+      "Usar c = 2√3 (c² = a² − b² = 16 − 4 = 12) e não c = √(a² + b²), nem c² = 12 como abscissa. As retas são x = ±2√3, ou seja, passam pelos focos (são as retas do latus rectum).",
+      "Normal e tangente: a direção da normal em (x₀, y₀) é (x₀, 4y₀), com coeficiente angular 4y₀/x₀, e não −x₀/(4y₀), que é o da tangente. Com a tangente no lugar da normal, Q = (16/x₀, 0) e o lugar sai errado.",
+      "O resultado correto é Q = (3x₀/4, 0) = ((c²/a²)x₀, 0). Um erro comum é tomar Q = (x₀/4, 0) ou trocar a² por b² na equação a²x/x₀ − b²y/y₀ = a² − b².",
+      "Ponto médio: M = ((x₀ + 3x₀/4)/2, y₀/2) = (7x₀/8, y₀/2). Não confundir com Q, nem esquecer de dividir y₀ por 2. Lugar correto: 4x²/49 + y² = 1 (semieixos 7/2 e 1).",
+      "Caso particular P = (±4, 0), com y₀ = 0: a normal coincide com o eixo x e Q fica indeterminado. Uma boa resolução exclui esses pontos (ou comenta o limite M → (±7/2, 0)). Isso não afeta a resposta, porque x = ±2√3 não passa por (±7/2, 0).",
+      "Caso x₀ = 0, com P = (0, ±2): a normal é vertical (x = 0) e o coeficiente angular 4y₀/x₀ não existe. Quem usa a forma y − y₀ = m(x − x₀) precisa tratar esse caso à parte, ou usar a forma vetorial/paramétrica. Aqui Q = (0, 0) e M = (0, ±1) seguem a fórmula geral.",
+      "Conferir que as retas de fato cortam o lugar: 2√3 ≈ 3,464 < 7/2. Do contrário, não haveria interseção real.",
+      "A resposta tem quatro pontos, dois em cada reta, por causa do sinal ± de y = ±1/7. Responder só (±2√3, 1/7), ou só a reta x = +c, deixa a resposta incompleta.",
+      "Erro de conta comum: 4·12/49 = 48/49 ⇒ y² = 1/49 ⇒ y = ±1/7. Não confundir com y = ±1/49 nem com y = ±√(1/7)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Com c = 2√3, o lugar de M é a elipse 4x²/49 + y² = 1, ou seja, 4x² + 49y² = 49. Ela intersecta as retas x = ±2√3 nos pontos (2√3, ±1/7) e (−2√3, ±1/7).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato não diz que ∇F(P) ≠ 0 em todo ponto da elipse, condição para que (x₀, 4y₀) seja de fato a direção normal. O gradiente só se anula na origem, que não pertence à curva, então o argumento vale. Basta uma frase para fechá-lo."
+          },
+          {
+            "severity": "minor",
+            "description": "Ele deduz a equação do lugar só por substituição, mostrando que todo M está na elipse 4x²/49 + y² = 1. Não diz explicitamente que todo ponto dessa elipse, fora os vértices (±7/2, 0), é atingido. A recíproca vale porque (x₀, y₀) ↦ (7x₀/8, y₀/2) é uma bijeção entre as duas elipses, e convém registrar isso numa linha. Não afeta a resposta."
+          }
+        ],
+        "summary": "Conferi a transcrição com a página 2 da prova (9ª questão) e ela está fiel.\n\n**Resposta final.** Coincide com a minha referência item por item:\n- c = 2√3, então as retas são x = ±2√3;\n- Q = (3x₀/4, 0);\n- M = (7x₀/8, y₀/2);\n- o lugar de M é a elipse 4x²/49 + y² = 1, sem os vértices (±7/2, 0);\n- as interseções são os quatro pontos (±2√3, ±1/7).\n\nConferi as contas numericamente em Python:\n- Q dá 3x₀/4 e o lugar satisfaz 4X²/49 + Y² = 1 para θ aleatórios;\n- y² = 1 − 48/49 = 1/49;\n- P = (16√3/7, 2/7) está na elipse (soma 16), Q = (12√3/7, 0) e o ponto médio de PQ é (2√3, 1/7).\n\n**Armadilhas.** Todas foram tratadas:\n- c foi calculado como √(a² − b²);\n- a direção usada é a da normal (x₀, 4y₀), não a da tangente;\n- a equação da normal está na forma implícita, o que dispensa coeficiente angular e cobre P = (0, ±2) sem caso à parte (o candidato verifica explicitamente que ali a normal é o eixo y e Q = (0, 0));\n- o caso P = (±4, 0) foi excluído com justificativa, pois a normal coincide com o eixo x e Q fica indeterminado;\n- ele confere que 2√3 < 7/2, de modo que cada reta corta o lugar em dois pontos;\n- ele confere que nenhum dos pontos encontrados é um vértice excluído;\n- os quatro pontos estão na resposta, com y = ±1/7 sem erro de conta;\n- há uma verificação independente no final.\n\n**Pequenas lacunas de rigor:**\n- não menciona que ∇F ≠ 0 sobre a elipse;\n- não argumenta a recíproca da equação do lugar, isto é, que todo ponto dela é atingido (decorre da bijeção entre as duas elipses).\n\n**Avaliação.** A resolução é clara, completa e publicável como gabarito comentado. Nota 9,5."
+      }
+    }
+  ]
+}
