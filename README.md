@@ -25,6 +25,13 @@ Table of some exams to be solved:
 | UNICAMP      | 2025 | 📅 Todo        | -     | -                                  |
 | ENEM         | 2025 | 📅 Todo        | -     | -                                  |
 
+# New in v0.6
+
+v0.6 has no breaking changes: everything from v0.5 works as before.
+
+- **New command `grade`**: compares the solutions with an answer key (one grader agent per question, in parallel), and writes `q<n>_grade.json`, `grade_report.md` and `grade_report.pdf` with scores and the doubts to review. See [Compare with an answer key](#compare-with-an-answer-key-with-grade).
+- `click` is pinned below 8.2, since `typer` 0.13 crashes on `--help` with newer versions when installed with pip.
+
 # Breaking changes in v0.5
 
 v0.5 replaces the OpenAI pipeline with the Claude Agent SDK. If you used v0.4:
