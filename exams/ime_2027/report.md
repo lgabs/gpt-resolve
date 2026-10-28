@@ -36,7 +36,7 @@ An independent run on a Mac (same parameters, user's Claude subscription) also a
 
 ### Comparison with the Poliedro answer key
 
-Graded with `gpt-resolve grade` against the [Poliedro Resolve](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-1-fisica-2-fase-dia-2-ime-2027) solutions (one grader agent per question, 10 in parallel, 1.1 min). Full report: [grade_report.md](physics/essays/solutions/claude_opus_5_5/grade_report.md), per question in `q<n>_grade.json`.
+Graded with `gpt-resolve grade` against the [Poliedro Resolve](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-1-fisica-2-fase-dia-2-ime-2027) solutions (one grader agent per question, 10 in parallel, 1.1 min). Full report: [PDF](physics/essays/solutions/claude_opus_5_5/grade_report.pdf) ([LaTeX](physics/essays/solutions/claude_opus_5_5/grade_report.tex), [Markdown](physics/essays/solutions/claude_opus_5_5/grade_report.md)), per question in `q<n>_grade.json`.
 
 **Final score: 100% (30 of 30 items match the key).** No wrong result was found on either side; every disagreement was redone by the grader.
 

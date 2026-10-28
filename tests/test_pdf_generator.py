@@ -1,3 +1,4 @@
+import json
 import pytest
 import os
 from unittest import mock
@@ -39,3 +40,18 @@ def test_generate_solutions_pdf(tmp_path):
 def test_generate_solutions_pdf_no_dir():
     with pytest.raises(FileNotFoundError):
         generate_solutions_pdf("nonexistent_path", "Test Exam")
+
+
+def test_generate_grade_pdf(tmp_path):
+    from gpt_resolve.pdf_generator import generate_grade_pdf
+
+    grade = {
+        "question": 1, "key_source": "Cursinho", "key_url": "https://example.com/q1", "score": 10.0,
+        "items": [{"item": "a", "solution_answer": "v ≈ 5√2 m/s", "key_answer": "7,07 m/s",
+                   "verdict": "equivalent", "correct": "both", "comment": "Mesma resposta, Δ = 0."}],
+        "doubts": [{"about": "statement", "description": "Sinal não definido."}],
+        "summary": "Correta.",
+    }
+    (tmp_path / "q1_grade.json").write_text(json.dumps(grade, ensure_ascii=False), encoding="utf-8")
+
+    assert generate_grade_pdf(tmp_path, title="Prova").exists()

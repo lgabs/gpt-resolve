@@ -91,7 +91,7 @@ The answer key is a JSON file; `answer` is a string or an object with one answer
 }
 ```
 
-Outputs go to the solutions folder: `q<n>_grade.json` (per item: both answers, verdict, who is right and why; plus the doubts) and `grade_report.md` (scores and all doubts). The score of a question is the share of its items where the solution is right. The grader only sees the key through its prompt, and `-e` lets it read the exam pages listed in `questions.json`.
+Outputs go to the solutions folder: `q<n>_grade.json` (per item: both answers, verdict, who is right and why; plus the doubts) `grade_report.md` and `grade_report.pdf` (LaTeX, compiled at the end unless `--no-compile`; scores, item verdicts and all doubts). The score of a question is the share of its items where the solution is right. The grader only sees the key through its prompt, and `-e` lets it read the exam pages listed in `questions.json`.
 
 ### Compile solutions with `compile-solutions`
 
