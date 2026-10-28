@@ -39,4 +39,4 @@ def test_grade_writes_reports_for_solved_questions(tmp_path):
     assert grade["score"] == 5 and grade["key_source"] == "Cursinho"
     report = (out / "grade_report.md").read_text(encoding="utf-8")
     assert "Nota média: **5.0/10**" in report
-    assert "Mock doubt." in report
+    assert "**Q1** (key, importante): Mock doubt." in report

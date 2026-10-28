@@ -44,7 +44,7 @@ class MockProvider(Provider):
                         {"item": "a", "solution_answer": "42", "key_answer": "42", "verdict": "match", "correct": "both", "comment": ""},
                         {"item": "b", "solution_answer": "1", "key_answer": "2", "verdict": "differs", "correct": "key", "comment": "Erro de sinal."},
                     ],
-                    "doubts": [{"about": "key", "description": "Mock doubt."}],
+                    "doubts": [{"about": "key", "importance": "high", "description": "Mock doubt."}],
                     "summary": "Mock grade.",
                 },
             )

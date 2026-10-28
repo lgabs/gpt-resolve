@@ -197,7 +197,7 @@ Resolução do gabarito (pode estar resumida ou faltar):
 
 Para cada item da questão, compare a resposta final da resolução com a do gabarito (valor, unidade, sinal, sentido, conclusão) e diga em `verdict` se são iguais (match), equivalentes em outra forma (equivalent), diferentes (differs) ou se o item não foi respondido (not_answered). Em `correct`, diga quem está certo: a resolução (solution), o gabarito (key), ambos (both), nenhum (neither) ou se não dá para decidir (unclear). Quando divergirem, refaça a conta e explique em `comment`.
 
-Em `doubts`, liste os pontos que merecem ser levados a um professor: possíveis erros ou imprecisões do gabarito ou da resolução, ambiguidades do enunciado, hipóteses não declaradas, valores lidos em gráfico, convenções de sinal. Deixe vazio se não houver nada relevante. Em `summary`, dê o veredito da questão em poucas frases."""
+Em `doubts`, liste os pontos que merecem ser levados a um professor: possíveis erros ou imprecisões do gabarito ou da resolução, ambiguidades do enunciado, hipóteses não declaradas, valores lidos em gráfico, convenções de sinal. Marque `importance` como high quando o ponto pode mudar a nota de um item ou revela um erro (de conta, de física/matemática ou de digitação que muda o sentido), e low para hipóteses implícitas razoáveis, arredondamentos e redação. Deixe vazio se não houver nada relevante. Em `summary`, dê o veredito da questão em poucas frases."""
 
 GRADER_SCHEMA = {
     "type": "object",
@@ -223,9 +223,10 @@ GRADER_SCHEMA = {
                 "type": "object",
                 "properties": {
                     "about": {"type": "string", "enum": ["key", "solution", "statement"]},
+                    "importance": {"type": "string", "enum": ["high", "low"]},
                     "description": {"type": "string"},
                 },
-                "required": ["about", "description"],
+                "required": ["about", "importance", "description"],
             },
         },
         "summary": {"type": "string"},

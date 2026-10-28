@@ -147,8 +147,13 @@ def write_grade_report(results: list[GradeResult], key: AnswerKey, solutions_dir
             )
         lines.append("")
     doubts = [(r.number, d) for r in results for d in r.grade.get("doubts", [])]
+    # Doubts that may change an item's grade or reveal an error come first
+    doubts.sort(key=lambda nd: nd[1].get("importance") != "high")
     lines += ["## Pontos de dúvida", ""]
-    lines += [f"- **Q{n}** ({d['about']}): {_cell(d['description'])}" for n, d in doubts] or ["Nenhum."]
+    lines += [
+        f"- **Q{n}** ({d['about']}{', importante' if d.get('importance') == 'high' else ''}): {_cell(d['description'])}"
+        for n, d in doubts
+    ] or ["Nenhum."]
     path = solutions_dir / "grade_report.md"
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return path

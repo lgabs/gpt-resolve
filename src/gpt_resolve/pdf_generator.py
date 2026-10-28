@@ -261,6 +261,12 @@ def generate_grade_pdf(solutions_dir: Union[str, Path], title: str) -> Path:
             + "\n\\bottomrule\\end{longtable}"
         )
     )
+    main_doubts = [(g["question"], d) for g in grades for d in g.get("doubts", []) if d.get("importance") == "high"]
+    if main_doubts:
+        doc.append(NoEscape(r"\section*{Principais pontos de dúvida}"))
+        with doc.create(Itemize()) as itemize:
+            for n, d in main_doubts:
+                itemize.add_item(NoEscape(f"\\textbf{{Q{n}}} \\textit{{({escape_text(d['about'])})}} " + escape_text(d["description"])))
     for g in grades:
         doc.append(NoEscape(f"\\section*{{Questão {g['question']}}}"))
         if g.get("key_url"):
