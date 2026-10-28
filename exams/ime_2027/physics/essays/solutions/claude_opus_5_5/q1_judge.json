@@ -1,0 +1,47 @@
+{
+  "question": 1,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Questão 1:\n\na) A velocidade de lançamento é v = 250 m/s. Pela trajetória a 45°, y = x − g·x²/v². Com x = 2000 m e y = 1360 m (1000 m + 360 m), vem 1360 = 2000 − 4·10⁷/v², logo v² = 62500 m²/s². O resultado é coerente com o enunciado: no alvo, a velocidade vertical é v_y = 45√2 ≈ 63,6 m/s, ainda para cima.\n\nb) A temperatura atingida é T = 4000 K. Como a temperatura é proporcional a v², T = 2560·(250/200)² = 4000 K.\n\nc) O trabalho realizado pelo gás é W = 864 kJ. A pressão constante, o calor recebido é Q = m·c_p·ΔT = 2,0 · 1,0 · 1440 = 2880 kJ. Pela 1ª Lei da Termodinâmica, W = Q − ΔU = 2880 − 2016 = 864 kJ. O sinal é positivo porque o gás se expande.",
+  "judge_reference": {
+    "reference_solution": "Conferi a transcrição com o original (página 1 do caderno). Ela está fiel. A questão não tem figura.\n\nReferencial: origem na plataforma de lançamento, x na horizontal, y na vertical para cima. Distâncias em metros: alvo em (2000 m; 1000 m).\n\n**Verificação do projeto (dados coerentes)**\nCom v0 = 200 m/s e θ = 45°, as componentes são v0x = v0y = 100√2 m/s.\n- Tempo de subida: t = v0y/g = 10√2 s.\n- Alcance horizontal até o ápice: x = v0x·t = 100√2·10√2 = 2000 m.\n- Altura máxima: H = v0y²/(2g) = 20000/20 = 1000 m.\nO ápice coincide com o centro do alvo, como diz o enunciado. Também dá para tirar a constante de proporcionalidade: k = T/v² = 2560/200² = 0,064 K·s²/m².\n\n**a) Velocidade de lançamento na falha**\nO ângulo continua 45°, e o módulo v da velocidade é a incógnita. Equação da trajetória:\ny = x·tgθ − g·x²/(2v²cos²θ).\nCom tg45° = 1 e cos²45° = 1/2:\ny = x − g·x²/v².\n\nNa vertical do alvo, x = 2000 m. O foguete está 360 m acima do alvo, e o alvo está 1000 m acima da plataforma. Então y = 1000 + 360 = 1360 m:\n1360 = 2000 − 10·(2000)²/v²\n⇒ 4·10⁷/v² = 640\n⇒ v² = 62 500 m²/s²\n⇒ **v = 250 m/s**.\nAs componentes valem vx = vy = 125√2 ≈ 176,8 m/s.\n\nMesmo resultado pelas equações horárias: t = 2000/vx e y = vy·t − 5t² = 2000 − 5·(2000/vx)² = 1360. Daí vx² = 31 250 e v = vx√2 = 250 m/s.\n\nVerificação de que o foguete ainda sobe:\n- O foguete chega a x = 2000 m em t = 2000/(125√2) = 8√2 ≈ 11,3 s.\n- O ápice ocorre em t = vy/g = 12,5√2 ≈ 17,7 s.\n- Nesse instante, vy = 125√2 − 10·8√2 = 45√2 ≈ 63,6 m/s > 0. Equivalentemente, o ápice fica em x = v²/(2g) = 3125 m > 2000 m.\nO resultado é coerente com \"ainda em movimento ascendente\". Com o ângulo fixo, y(2000) cresce com v, então a solução é única, e essa condição serve só como confirmação.\n\n**b) Temperatura atingida**\nComo T ∝ v²:\nT_f/T_0 = (v/v0)² = (250/200)² = 25/16\n⇒ T_f = 2560·25/16 = **4000 K**.\nA variação é ΔT = 4000 − 2560 = 1440 K.\n\n**c) Trabalho realizado durante o aquecimento (a pressão constante)**\nCalor recebido a pressão constante:\nQ = m·cp·ΔT = 2,0·1,0·1440 = 2880 kJ.\n\nPrimeira lei da termodinâmica, com ΔU = 2016 kJ (dado):\nW = Q − ΔU = 2880 − 2016 = **864 kJ**.\nEsse é o trabalho realizado pelos gases, que se expandem, por isso W > 0. Pela convenção oposta, o trabalho realizado sobre os gases é −864 kJ.\n\nVerificação de consistência:\n- W = p·ΔV = m·R_esp·ΔT ⇒ R_esp = 864/(2·1440) = 0,30 kJ/(kg·K) = cp − cv.\n- Daí cv = 0,70 kJ/(kg·K) e ΔU = m·cv·ΔT = 2·0,7·1440 = 2016 kJ, que confere com o dado.\n- γ = cp/cv = 10/7 ≈ 1,43.",
+    "final_answer": "a) v = 250 m/s (a 45°, com componentes de 125√2 ≈ 176,8 m/s cada).\nb) T = 4000 K (ΔT = 1440 K).\nc) Q = m·cp·ΔT = 2880 kJ, e daí W = Q − ΔU = 2880 − 2016 = 864 kJ, trabalho realizado pelos gases na expansão (sobre os gases: −864 kJ).",
+    "pitfalls": [
+      "Altura na condição de falha: os 360 m são medidos acima do alvo. Logo y = 1000 + 360 = 1360 m em relação à plataforma, e não y = 360 m. Usar 360 m leva a v² = 4·10⁷/1640 e v ≈ 156 m/s, menor que a de projeto, o que é absurdo para uma falha que aumentou a temperatura.",
+      "Na falha, o ponto de passagem não é mais o ápice. Não vale usar H = v²sen²θ/(2g) = 1360 m, o que daria v = √54400 ≈ 233 m/s, nem o alcance do ápice. É preciso usar a equação da trajetória em x = 2000 m.",
+      "O ângulo continua 45°. Só muda o módulo da velocidade de lançamento, e a pergunta é o módulo (250 m/s), não uma componente (≈176,8 m/s).",
+      "A condição 'ainda em movimento ascendente' deve ser verificada: vy = 45√2 ≈ 63,6 m/s > 0 em x = 2000 m, ou ápice em x = 3125 m > 2000 m. Com o ângulo fixo, a solução é única, então a condição só confirma o resultado e não serve para escolher entre raízes.",
+      "Vale checar que os dados de projeto são coerentes (ápice em x = 2000 m e H = 1000 m com v0 = 200 m/s), o que também fornece a constante k = 0,064 K·s²/m².",
+      "A proporção é T ∝ v², não T ∝ v. Com T ∝ v, o resultado seria 3200 K, errado. As temperaturas devem ser absolutas, em kelvin.",
+      "No aquecimento isobárico, o calor é Q = m·cp·ΔT. Não se deve usar cv para Q nem calcular ΔU como m·cp·ΔT. O ΔU já é dado (2016 kJ).",
+      "Não se deve supor gás diatômico (γ = 1,4, cv/cp = 5/7). Isso daria W = Q·(2/7) ≈ 823 kJ, incompatível com o ΔU fornecido. Os dados implicam cv = 0,7 kJ/(kg·K), R_esp = 0,3 kJ/(kg·K) e γ = 10/7.",
+      "Convenção de sinal na primeira lei: com Q = ΔU + W, o trabalho realizado pelo gás é +864 kJ (expansão). Uma resposta que dê −864 kJ precisa deixar claro que se trata do trabalho sobre o gás.",
+      "Conversão de unidades: as distâncias vêm em km (2,0 km e 1,0 km) e precisam ser passadas para metros. As energias ficam coerentes em kJ, porque cp está em kJ/(kg·K)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Questão 1:\n\na) A velocidade de lançamento é v = 250 m/s. Pela trajetória a 45°, y = x − g·x²/v². Com x = 2000 m e y = 1360 m (1000 m + 360 m), vem 1360 = 2000 − 4·10⁷/v², logo v² = 62500 m²/s². O resultado é coerente com o enunciado: no alvo, a velocidade vertical é v_y = 45√2 ≈ 63,6 m/s, ainda para cima.\n\nb) A temperatura atingida é T = 4000 K. Como a temperatura é proporcional a v², T = 2560·(250/200)² = 4000 K.\n\nc) O trabalho realizado pelo gás é W = 864 kJ. A pressão constante, o calor recebido é Q = m·c_p·ΔT = 2,0 · 1,0 · 1440 = 2880 kJ. Pela 1ª Lei da Termodinâmica, W = Q − ΔU = 2880 − 2016 = 864 kJ. O sinal é positivo porque o gás se expande.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na verificação do item a), o candidato usa v_x = v_y = 125√2 m/s sem dizer de onde vem (250·cos45° = 125√2). O passo é trivial, mas deveria estar escrito, porque é a única vez que as componentes da nova velocidade aparecem."
+          },
+          {
+            "severity": "minor",
+            "description": "Na seção 'Coerência', o candidato chama γ = 10/7 ≈ 1,43 de 'valor típico de gás diatômico (≈1,4)'. A frase é imprecisa: os dados implicam exatamente c_v = 0,70 kJ/(kg·K), R_esp = 0,30 kJ/(kg·K) e γ = 10/7, que não é o 7/5 do diatômico ideal. Seria melhor tirar c_v = ΔU/(mΔT) = 0,7 e mostrar que c_p − c_v = 0,3 = W/(mΔT), o que fecha a consistência sem apelar para o 'típico'. A conta n ≈ 72 mol, M ≈ 27,7 g/mol está correta. Isso não afeta a resposta."
+          }
+        ],
+        "summary": "Conferi a transcrição com a página 1 do caderno: está fiel. As três respostas finais coincidem com a minha referência: a) v = 250 m/s; b) T = 4000 K; c) W = 864 kJ, trabalho realizado pelo gás. Refiz as contas e todas estão certas: 1360 = 2000 − 4·10⁷/v² dá v² = 62 500; 2560·25/16 = 4000; Q = 2·1·1440 = 2880 kJ; W = 2880 − 2016 = 864 kJ. Também conferi as contas de coerência: n = 864000/(8,314·1440) ≈ 72,2 mol e M ≈ 27,7 g/mol.\n\nO candidato tratou todas as armadilhas:\n- confere os dados de projeto (ápice em (2000; 1000));\n- usa y = 1000 + 360 = 1360 m, e não 360 m;\n- usa a equação da trajetória em x = 2000 m, e não a fórmula da altura máxima;\n- responde o módulo da velocidade, não uma componente;\n- justifica que a solução é única (y cresce com v² para x fixo);\n- verifica que o foguete ainda sobe (v_y = 45√2 > 0 e ápice em x = 3125 m);\n- usa T ∝ v² com temperaturas absolutas;\n- calcula o calor isobárico com c_p e usa o ΔU dado, sem supor gás diatômico para obter W;\n- explicita a convenção Q = ΔU + W e justifica o sinal positivo pela expansão isobárica (V ∝ T).\n\nA exposição é clara, organizada e com hipóteses declaradas. Os únicos reparos são de redação: o passo 125√2 aparece sem justificativa na verificação, e a menção a 'gás diatômico típico' é imprecisa, já que os dados dão γ = 10/7 exatamente. Com isso, a resolução fica no nível de gabarito comentado."
+      }
+    }
+  ]
+}

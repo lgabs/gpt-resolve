@@ -1,0 +1,58 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Referencial e hipóteses.} Tomamos o eixo $y$ na linha central e o eixo $x$ horizontal no plano dos fios, que ficam em $x=-d/2$ (esquerdo) e $x=+d/2$ (direito). O eixo $\hat z$ sai do papel. Desprezamos o peso, já que o enunciado dá a velocidade escalar $v$ como constante. Assim, a única força é a magnética, $\vec F=q\,\vec v\times\vec B$. Ela não realiza trabalho, logo $|\vec v|=v$ se conserva.
+
+Um fio infinito cria $B=\dfrac{\mu_0 i}{2\pi r}$, com o sentido dado pela regra da mão direita. No plano dos fios, $\vec B$ é perpendicular ao plano, ou seja, $\vec B=B_z(x)\,\hat z$. Para $\vec v=v_y\hat y$, vale $\vec v\times\hat z=v_y\,\hat x$, e portanto
+\[
+F_x=q\,v_y\,B_z(x).
+\]
+Para que haja restauração, precisamos de $F_x(0)=0$ (equilíbrio na linha central) e de $F_x$ com sinal oposto ao de $x$.
+
+\textbf{a)} \emph{Correntes antiparalelas (situações 1 e 4).} Entre os fios, os dois campos têm o mesmo sentido ($-\hat z$) e se somam:
+\[
+B_z=-\frac{\mu_0 i}{2\pi}\left[\frac{1}{d/2+x}+\frac{1}{d/2-x}\right],\qquad |B_z|\ge \frac{2\mu_0 i}{\pi d}>0 .
+\]
+Assim, já em $x=0$ existe uma força horizontal não nula: para a direita na situação 1 ($v_y=-v$) e para a esquerda na situação 4 ($v_y=+v$). Não há posição de equilíbrio, e a partícula é desviada para um dos fios. \textbf{As situações 1 e 4 não servem.}
+
+\emph{Correntes paralelas para cima (situações 2 e 3).} Agora os campos se opõem:
+\[
+B_z=\frac{\mu_0 i}{2\pi}\left[\frac{1}{d/2-x}-\frac{1}{d/2+x}\right].
+\]
+Esse campo se anula em $x=0$. Para $|x|\ll d$, usando $1/(1+u)\approx 1-u$, temos $\dfrac{1}{d/2\mp x}\approx\dfrac{2}{d}\left(1\pm\dfrac{2x}{d}\right)$. Logo
+\[
+B_z\approx\frac{\mu_0 i}{2\pi}\cdot\frac{8x}{d^2}=\frac{4\mu_0 i}{\pi d^2}\,x .
+\]
+\begin{itemize}
+\item Situação 3 ($v_y=+v$): $F_x=+\dfrac{4\mu_0 q v i}{\pi d^2}\,x$. A força tem o sinal de $x$ e afasta a partícula da linha central; o equilíbrio é instável. \textbf{Não serve.}
+\item Situação 2 ($v_y=-v$): $F_x=-\dfrac{4\mu_0 q v i}{\pi d^2}\,x$. A força é restauradora e linear em $x$. \textbf{Serve.}
+\end{itemize}
+Interpretação física: a carga positiva em movimento equivale a uma corrente no sentido de $\vec v$. Correntes paralelas se atraem e antiparalelas se repelem. Na situação 2, a partícula é repelida pelos dois fios, e com mais intensidade pelo fio mais próximo, o que a devolve ao centro. Na situação 3, ela é atraída pelo fio mais próximo. Nas situações 1 e 4, é atraída por um fio e repelida pelo outro, de modo que as forças se somam no mesmo sentido.
+
+\textbf{Resposta do item a): somente a situação 2.}
+
+\textbf{b)} Na situação 2, com $\vec v=(v_x,v_y)$ e $|v_x|\ll v$, a velocidade vertical é $v_y=-\sqrt{v^2-v_x^2}\approx -v$, com erro de 2ª ordem. A componente vertical da força, $F_y=-q\,v_xB_z$, é produto de duas grandezas pequenas, isto é, também de 2ª ordem. Em 1ª ordem, o movimento vertical é então uniforme com velocidade $v$, e o horizontal obedece a
+\[
+m\ddot x=-\frac{4\mu_0 q v i}{\pi d^2}\,x
+\quad\Longrightarrow\quad
+\omega^2=\frac{4\mu_0 q v i}{\pi m d^2}.
+\]
+Trata-se de um MHS em $x$, com período
+\[
+T=\frac{2\pi}{\omega}=\pi d\sqrt{\frac{\pi m}{\mu_0 q v i}}.
+\]
+Num MHS, a partícula passa por $x=0$ duas vezes por período, ou seja, a cada $T/2$, como indicado na figura. Nesse intervalo ela percorre verticalmente
+\[
+p=v\,\frac{T}{2}=\frac{\pi d}{2}\sqrt{\frac{\pi m v}{\mu_0 q i}} .
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Dimensão: $[\mu_0 i]=\mathrm{T\cdot m}$ e $\mathrm{T}=\mathrm{kg/(C\cdot s)}$. Assim, $\dfrac{m v}{\mu_0 q i}$ tem unidade $\dfrac{\mathrm{kg\cdot m/s}}{\mathrm{T\cdot m\cdot C}}$, que é adimensional, e $p$ tem dimensão de comprimento.
+\item Tendências: $p$ cresce com $m$ e $v$ (maior inércia) e diminui com $i$ e $q$ (força restauradora maior). Observe que $p\propto\sqrt v$, porque a própria força restauradora é proporcional a $v$.
+\item Ordem de grandeza: para um próton com $v=10^5\ \mathrm{m/s}$, $i=10\ \mathrm{A}$ e $d=1\ \mathrm{cm}$, obtém-se $p\approx 0{,}25\ \mathrm{m}$, um valor razoável.
+\item Validade: o resultado vale para amplitudes $A\ll d$.
+\end{itemize}
+
+ANSWER: a) Apenas a situação 2. Nas situações 1 e 4, o campo resultante não se anula no centro e não há equilíbrio. Na situação 3, o equilíbrio em $x=0$ é instável. Na situação 2, $F_x\approx-\dfrac{4\mu_0 q v i}{\pi d^2}x$, que é restauradora. b) $p=\dfrac{vT}{2}=\dfrac{\pi d}{2}\sqrt{\dfrac{\pi m v}{\mu_0 q i}}$.

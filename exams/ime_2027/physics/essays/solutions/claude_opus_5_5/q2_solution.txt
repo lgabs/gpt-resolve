@@ -1,0 +1,61 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Treliça ideal: barras sem peso, ligadas por articulações, com carga só nos nós. Assim, cada barra fica submetida apenas a esforço normal $N$ ao longo do seu eixo. Convenção: $N>0$ é tração (a barra puxa o nó) e $N<0$ é compressão. Origem em $A$, com $x$ para a direita e $y$ para cima:
+\[
+A(0,0),\; B(3,0),\; C(-3,4),\; D(0,4),\; E(3,4),\; F(0,8)\ \text{(m)}.
+\]
+As barras $CF$, $EF$ e $AE$ medem $5$ m (triângulo $3$-$4$-$5$). Seus cossenos diretores são, portanto, $\tfrac35$ na horizontal e $\tfrac45$ na vertical.
+
+\textbf{Isostaticidade.} Há $j=6$ nós, $m=8$ barras e $r=4$ reações (dois apoios articulados). Como $m+r=12=2j$ e a estrutura é triangulada, ela é isostática.
+
+\textbf{a) Reações.} No nó $B$ chega uma única barra, $BE$, que é vertical. O equilíbrio horizontal desse nó dá $B_x=0$. Pelo equilíbrio horizontal global, $\sum F_x=0$, logo $A_x=0$. Tomando momentos em relação a $A$ (anti-horário positivo):
+\[
+\textstyle\sum M_A=0:\quad P\cdot 3+B_y\cdot 3=0\ \Rightarrow\ B_y=-P=-100\ \text{kN},
+\]
+\[
+\textstyle\sum F_y=0:\quad A_y+B_y-P=0\ \Rightarrow\ A_y=2P=200\ \text{kN}.
+\]
+Resultado: em $A$, a reação é de $200$ kN, vertical, para cima. Em $B$, é de $100$ kN, vertical, para baixo. Portanto, o apoio $B$ precisa ser ancorado ao solo, porque segura o guindaste contra o tombamento em torno de $A$.
+
+\textbf{b) Esforços normais (método dos nós).}
+
+\emph{Nó $C$} (barras $CD$ e $CF$, mais a carga $P$):
+\begin{align*}
+\textstyle\sum F_y&=0: \tfrac45 N_{CF}-P=0 &&\Rightarrow N_{CF}=\tfrac54P=125\ \text{kN},\\
+\textstyle\sum F_x&=0: N_{CD}+\tfrac35N_{CF}=0 &&\Rightarrow N_{CD}=-75\ \text{kN}.
+\end{align*}
+\emph{Nó $F$} (barras $FC$, $FD$ e $FE$):
+\begin{align*}
+\textstyle\sum F_x&=0: -\tfrac35N_{CF}+\tfrac35N_{EF}=0 &&\Rightarrow N_{EF}=125\ \text{kN},\\
+\textstyle\sum F_y&=0: -\tfrac45N_{CF}-N_{DF}-\tfrac45N_{EF}=0 &&\Rightarrow N_{DF}=-200\ \text{kN}.
+\end{align*}
+\emph{Nó $D$}: as barras são colineares duas a duas ($CD$ com $DE$; $DF$ com $AD$). Logo,
+\[
+N_{DE}=N_{CD}=-75\ \text{kN},\qquad N_{AD}=N_{DF}=-200\ \text{kN}.
+\]
+\emph{Nó $E$} (barras $ED$, $EF$, $EA$ e $EB$):
+\begin{align*}
+\textstyle\sum F_x&=0: -N_{DE}-\tfrac35N_{EF}-\tfrac35N_{AE}=0\ \Rightarrow\ 75-75-\tfrac35N_{AE}=0 &&\Rightarrow N_{AE}=0,\\
+\textstyle\sum F_y&=0: \tfrac45N_{EF}-\tfrac45N_{AE}-N_{BE}=0 &&\Rightarrow N_{BE}=100\ \text{kN}.
+\end{align*}
+\emph{Verificações.} No nó $A$: $A_y+N_{AD}+\tfrac45N_{AE}=200-200+0=0$ e $A_x+\tfrac35 N_{AE}=0$. No nó $B$: $B_y+N_{BE}=-100+100=0$. Os resultados conferem com o item a).
+
+\begin{center}
+\begin{tabular}{c|c|c}
+Barra & $|N|$ (kN) & Natureza\\ \hline
+$CD$ & $75$ & compressão\\
+$CF$ & $125$ & tração\\
+$DF$ & $200$ & compressão\\
+$AD$ & $200$ & compressão\\
+$AE$ & $0$ & barra sem esforço\\
+$DE$ & $75$ & compressão\\
+$BE$ & $100$ & tração\\
+$EF$ & $125$ & tração
+\end{tabular}
+\end{center}
+
+\textbf{c) Função da barra $AE$.} Para esta carga vertical, $AE$ é uma barra sem esforço ($N_{AE}=0$), mas é indispensável. Sem ela, o painel $ADEB$ seria um retângulo articulado. A parte superior $CDEF$ é rígida, porque é formada pelos triângulos $CDF$ e $DEF$. Ela ficaria apoiada só em duas barras verticais paralelas, $AD$ e $BE$, articuladas nas duas extremidades. Isso forma um mecanismo de paralelogramo: haveria $m+r=11<2j=12$, ou seja, um grau de liberdade. A estrutura poderia oscilar lateralmente, girando $AD$ e $BE$ em torno de $A$ e $B$. O equilíbrio sob $P$ perfeitamente vertical seria instável: qualquer componente horizontal, como vento, um leve desvio do cabo ou a oscilação da carga, provocaria o colapso. A diagonal $AE$ divide o painel em dois triângulos ($ADE$ e $ABE$), torna a treliça geometricamente rígida e isostática, e absorve os esforços horizontais quando eles aparecem. Ela é uma barra de contraventamento: garante a estabilidade, e não a transmissão da carga vertical.
+
+ANSWER: a) Em $A$: $200$ kN, vertical, para cima. Em $B$: $100$ kN, vertical, para baixo. As reações horizontais são nulas. b) $CD=75$ kN (compressão), $CF=125$ kN (tração), $DF=200$ kN (compressão), $AD=200$ kN (compressão), $AE=0$, $DE=75$ kN (compressão), $BE=100$ kN (tração), $EF=125$ kN (tração). c) $AE$ é uma barra de contraventamento: não tem esforço sob esta carga, mas triangula o painel $ADEB$ e impede o mecanismo de paralelogramo, dando rigidez e estabilidade lateral.

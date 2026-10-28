@@ -3,11 +3,13 @@ Can GPT solve Brazilian university entrance exams?
 
 This project is an implementation of how to use LLMs to solve challenging Brazilian university entrance exams.
 
-We started with `o1-preview`, and `gpt-4o` to describe the exam images so that `o1-preview` could solve them, because it did not have image capabilities yet. Now that reasoning models are processing images as well, we've updated the code to process them directly. Also, we've started solutions with `o1` and hope to add other models as well. Results are saved as txt files with LaTeX formatting, and you can optionally convert them to a nice PDF with this package or using some LaTeX editor.
+We started with `o1-preview`, and `gpt-4o` to describe the exam images so that `o1-preview` could solve them, because it did not have image capabilities yet. Later versions passed images directly to `o1`, `o3` and `o4-mini`.
+
+Since v0.5, the project runs on agents: the [Claude Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview) reads the exam PDF, solves each question in its own agent, and an adversarial judge agent (which first solves the question blind) scores each resolution and asks for revisions until it is good enough. Results are saved as LaTeX files plus the judge reviews, and compiled into a PDF.
 
 The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md) documentation.
 
-**Spoilers: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay. o1 scored 95% in the same Math exam.**
+**Spoilers: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay. o1 scored 95% in the same Math exam. On the IME 2027 Physics essay, Claude Opus 5.5 had all 10 questions approved by its judge (scores 9.0–9.5) in 6 minutes; the comparison with the answer keys is pending ([report](exams/ime_2027/report.md)).**
 
 After the first ITA 2025 exam is fully solved, the project will try to expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams!
 
@@ -16,15 +18,27 @@ Table of some exams to be solved:
 | Exam         | Year | Status        | Score | Report                             |
 | ------------ | ---- | ------------- | ----- | ---------------------------------- |
 | ITA          | 2025 | 🚧 In Progress | -     | [Report](exams/ita_2025/report.md) |
-| IME          | 2025 | 📅 Todo        | -     | -                                  |
+| IME          | 2027 | 🚧 In Progress | -     | [Report](exams/ime_2027/report.md) |
 | Escola Naval | 2025 | 📅 Todo        | -     | -                                  |
 | Fuvest/USP   | 2025 | 📅 Todo        | -     | -                                  |
 | AFA          | 2025 | 📅 Todo        | -     | -                                  |
 | UNICAMP      | 2025 | 📅 Todo        | -     | -                                  |
 | ENEM         | 2025 | 📅 Todo        | -     | -                                  |
 
+# Breaking changes in v0.5
+
+v0.5 replaces the OpenAI pipeline with the Claude Agent SDK. If you used v0.4:
+
+- **Backend**: OpenAI is no longer used and `OPENAI_API_KEY` is ignored. You need the `claude` CLI ([Claude Code](https://docs.claude.com/en/docs/claude-code)) installed and logged in (`claude login` for a Claude subscription, or `ANTHROPIC_API_KEY`). New backends can be added as providers (`src/gpt_resolve/providers/`).
+- **Python 3.10+** is required (Claude Agent SDK requirement).
+- **Input**: `-p` now also accepts an exam PDF. The image folder layout still works, and `conventions.jpg` is now optional.
+- **CLI options**: `--max-tokens-output` was removed; use `--effort`. `--model` now takes Claude model ids (default `claude-opus-5-5`). New: `--judge-model`, `--pass-score`, `--max-rounds`, `--concurrency`, `--provider`, `--quiet`, `-o/--output`, `--compile/--no-compile`, `-t/--title`.
+- **Output**: for a PDF, solutions go to `<pdf name>_solutions/<model>/` by default. Each question also gets a `q<n>_judge.json`, and `resolve` compiles `solutions_compiled.pdf` at the end (with a judge appendix).
+- **`compile-solutions`** no longer aborts on a solution with invalid LaTeX: it puts a placeholder in the PDF and prints a warning.
+- **`--dry-run`** now uses an offline mock agent.
+
 # Installation and How to use
-gpt-resolve is distributed in pypi:
+gpt-resolve is distributed in pypi (v0.5 is installed from this repository until it is published):
 ```bash
 pip install gpt-resolve
 ```
@@ -72,11 +86,9 @@ Sometimes, it was observed that the output from `o1-preview` produced invalid La
 
 # Costs
 
-Reasoning models like `o1` are much more expensive than non-reasoning models like `gpt-4o`, consuming much more tokens to "reason" (see more [here](https://platform.openai.com/docs/guides/reasoning/controlling-costs#controlling-costs)), so be mindful about the number of questions you are solving and how many max tokens you're allowing gpt-resolve to use (see `gpt-resolve resolve --help` to control `max-tokens-question-answer`, which drives the cost). You can roughly estimate an upper bound for costs of solving an exam by
-```
-(number of questions) * (max_tokens_question_answer / 1_000_000) * (price per 1M tokens)
-```
-For the current price for o1 of $15/$60 per 1M tokens for input/output tokens, an 10 question exam with 10000 max tokens per question would cost less than $6. For `o3`, for which the price is $10/$40 per 1M tokens for input/output tokens, the cost would be less than $4.
+With a Claude subscription, runs count against your plan's usage limits instead of being billed per token. With `ANTHROPIC_API_KEY`, each question costs at least three agent sessions (blind judge solution, solver, judge review), plus one solver + judge pair per revision round, and one extraction per PDF. Lower `--effort`, `--max-rounds` or `--concurrency` to spend less. For reference, the IME 2027 Physics essay (10 questions, all approved in the first round) ran in about 6 minutes at `--effort xhigh`.
+
+Earlier OpenAI versions (v0.4 and before) were billed per token: for `o1` ($15/$60 per 1M input/output tokens), a 10-question exam with 10000 max tokens per question cost less than $6.
 
 # Contributing
 

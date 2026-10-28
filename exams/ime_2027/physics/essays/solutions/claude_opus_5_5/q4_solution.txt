@@ -1,0 +1,53 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Modelos.} Seja $U=V_A-V_B$. Para o gerador vale $U=\varepsilon-rI$. Para um receptor vale $U=\varepsilon'+r'i$. Um receptor só recebe corrente (de $A$ para $B$) quando $U>\varepsilon'$. O fusível F está no ramo do gerador, então a corrente que passa por ele é $I$, a corrente do gerador.
+
+\subsection*{a) Correntes logo após o fechamento de S}
+
+Supondo que os dois receptores conduzam, a lei dos nós em $A$ fica
+\[
+\frac{1000-U}{2}=\frac{U-850}{1}+\frac{U-900}{2}
+\;\Rightarrow\; 1000-U=2U-1700+U-900
+\;\Rightarrow\; U=900\ \text{V}.
+\]
+Pelo teorema de Millman o resultado é o mesmo: $U=\dfrac{1000/2+850/1+900/2}{1/2+1/1+1/2}=900$ V. Daí:
+\[
+i_1=\frac{900-850}{1}=50\ \text{A},\qquad
+i_2=\frac{900-900}{2}=0,\qquad
+I=\frac{1000-900}{2}=50\ \text{A}=i_1+i_2 .
+\]
+O Rec$_2$ fica exatamente no limiar, porque $U_{AB}$ é igual à sua f.c.e.m. Então ele não recebe corrente e também não devolve corrente. Isso é coerente: considerando só o Rec$_1$, $I=\dfrac{1000-850}{2+1}=50$ A e $U=1000-2\cdot 50=900$ V.
+
+Balanço de potências: o gerador fornece $1000\cdot 50=50$ kW. Dissipam-se $2\cdot 50^2=5$ kW na resistência interna, e o Rec$_1$ absorve $850\cdot 50+1\cdot 50^2=45$ kW. O total confere.
+
+\subsection*{b) Rompimento do fusível}
+
+Pelo fusível passa $I=50$ A, então $\dfrac{I}{I_{\text{FUS}}}=\dfrac{50}{20}=2{,}5$. Adotamos a hipótese de que as f.c.e.m. ficam constantes, de modo que a corrente se mantém em 50 A desde $t=0$.
+
+No gráfico, para $I/I_{\text{FUS}}\lesssim 1{,}1$ o tempo de rompimento tende ao infinito (trecho vertical), e o fusível não abre. Como $2{,}5>1{,}1$, o fusível abre. O valor $2{,}5$ cai no trecho retilíneo que liga $(1{,}1;\,3{,}8\ \text{s})$ a $(3{,}4;\,0{,}1\ \text{s})$, cujos extremos foram lidos no gráfico. Por interpolação linear:
+\[
+t_r = 3{,}8-\frac{3{,}8-0{,}1}{3{,}4-1{,}1}\,(2{,}5-1{,}1)=3{,}8-1{,}61\cdot 1{,}4\approx 1{,}5\ \text{s}.
+\]
+Portanto o fusível se rompe cerca de $1{,}5$ s depois do fechamento de S. A imprecisão da leitura gráfica é de aproximadamente $\pm 0{,}1$ s. A partir daí todas as correntes se anulam.
+
+\subsection*{c) Curto-circuito entre A e B}
+
+Com $A$ e $B$ curto-circuitados, $U_{AB}=0$.
+\begin{itemize}
+\item Como $U_{AB}=0<\varepsilon'$, os receptores não recebem corrente.
+\item Mesmo que um receptor devolvesse corrente, ela se fecharia pelo curto, de resistência nula, e não passaria por F.
+\end{itemize}
+A corrente no fusível é então a corrente de curto do gerador:
+\[
+I_{cc}=\frac{\varepsilon}{r}=\frac{1000}{2}=500\ \text{A},\qquad \frac{I_{cc}}{I_{\text{FUS}}}=\frac{500}{20}=25 .
+\]
+Para $I/I_{\text{FUS}}\geq 3{,}4$ a curva é horizontal e mostra o tempo mínimo de atuação, $0{,}1$ s. Esse patamar é estendido além de 5, porque o tempo de rompimento não aumenta quando a corrente aumenta. Assim:
+\[
+t_r=0{,}1\ \text{s}=100\ \text{ms}>50\ \text{ms}.
+\]
+O gerador ficaria em curto durante 100 ms, o dobro do tempo que suporta (com $500$ A circulando e dissipando $rI_{cc}^2=500$ kW na resistência interna). Logo, \textbf{o fusível não protege a fonte}. Seria preciso um fusível mais rápido, com tempo de atuação menor que 50 ms para 500 A.
+
+\medskip
+ANSWER: a) $i_1=50$ A (Rec$_1$) e $i_2=0$ (Rec$_2$), com $U_{AB}=900$ V e $I=50$ A no gerador. b) Como $I/I_{\text{FUS}}=2{,}5$, o fusível se rompe em $t\approx 1{,}5$ s após o fechamento de S. c) $I_{cc}=500$ A ($25\,I_{\text{FUS}}$) e o tempo de rompimento é $0{,}1$ s $=100$ ms $>50$ ms; o fusível não protege o gerador.

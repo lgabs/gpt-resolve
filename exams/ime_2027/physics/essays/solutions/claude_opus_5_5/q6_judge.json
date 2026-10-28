@@ -1,0 +1,55 @@
+{
+  "question": 6,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) A velocidade do objeto é v = 68 m/s.\nb) O raio da trajetória é R = 5√3 m ≈ 8,66 m. Nessa posição o fio forma 60° com a vertical, e o ponto de fixação fica a 5 m de profundidade.\nc) A tração no fio é T = 1,6·(34²/√3) ≈ 1067,8 N.\nd) O volume submerso é V ≈ 5,51×10⁻² m³ (cerca de 55 L). Ele vem de E = mg + T·cos60° ≈ 551,2 N.",
+  "judge_reference": {
+    "final_answer": "a) u = 68 m/s, porque em A: 340/(340 − u) = 5/4.\nb) R = 5√3 m ≈ 8,66 m. Em B, u·cos α = 34 m/s, então cos α = 1/2 e √(d² + 4R²) = 2d.\nc) Pela geometria, sen θ = R/L = √3/2 (θ = 60° com a vertical) e a profundidade é 5 m. T·sen θ = m·u²/R = 924,8 N, logo T = 8·34²/(5√3) = 1,6 × 667,4 ≈ 1067,8 N (≈ 1,07 × 10³ N).\nd) E = mg + T·cos θ = 17,32 + 533,92 ≈ 551,2 N. V_sub = E/(ρg) ≈ 5,51 × 10⁻² m³ (≈ 55,1 L).",
+    "pitfalls": [
+      "Ler o sentido anti-horário na vista superior: em A (embaixo) a velocidade aponta para a direita, ou seja, direto para O (a fonte se aproxima e f sobe). Em B (em cima) aponta para a esquerda (a fonte se afasta e f cai). Os valores 5/4 > 1 e 10/11 < 1 precisam bater com isso.",
+      "Em A, AO é tangente ao círculo, então a velocidade inteira está na linha de visada (cos = 1). Em B só entra a componente u·cos α ao longo de BO, com cos α = d/√(d² + 4R²). Usar a velocidade inteira em B dá u = 34 m/s, que contradiz o resultado de A. É justamente essa diferença que permite achar R.",
+      "No Doppler, a posição e a velocidade que contam são as do instante da emissão (A ou B), não as da recepção. O observador está parado e o ar também, logo f = f0·v/(v ∓ u·cos α). Não se aplica fórmula de observador em movimento.",
+      "Usar a velocidade do som no ar (340 m/s), não na água: a fonte está na superfície e o observador também.",
+      "Geometria do fio: o ponto de fixação fica no fundo, no eixo vertical que passa pelo centro do círculo. Então R = L·sen θ, com θ medido da vertical. Aqui sen θ = √3/2 (θ = 60°) e a profundidade é h = L·cos θ = 5 m. Trocar seno por cosseno dá T = 1849,6 N, que está errado.",
+      "A força centrípeta vem só da componente horizontal da tração (T·sen θ = m·u²/R). O empuxo e o peso são verticais. A resistência da água foi desprezada, então a força do motor é nula em regime (ou tangencial) e não entra no balanço radial nem no vertical.",
+      "No equilíbrio vertical, o fio puxa o objeto para baixo, em direção ao fundo: E = mg + T·cos θ. Escrever E = mg − T·cos θ dá empuxo negativo, o que é absurdo.",
+      "O item d pede o volume SUBMERSO, que sai do empuxo (V = E/(ρg)). O volume total da casca não pode ser determinado, e o fato de ser 'casca esférica' só explica por que o objeto flutua.",
+      "Usar os dados numéricos fornecidos: T = (8/5)·(34²/√3) = 1,6 × 667,4 = 1067,84 N e mg = 10√3 ≈ 17,32 N. A diferença em relação ao valor exato (≈ 1067,87 N) é só de arredondamento.",
+      "Conferir que a solução é coerente: R = 5√3 ≈ 8,66 m < L = 10 m, e u = 68 m/s = 0,2·v_som, ou seja, a fonte é subsônica e a fórmula de Doppler vale."
+    ],
+    "reference_solution": "Conferi o enunciado com o original (pág. 6). Na vista lateral, o fio sai de um ponto do fundo que fica no eixo vertical do centro do círculo. Na vista superior, A está embaixo, B em cima e O sobre a tangente em A, à direita, com AO = d = 10 m.\n\n**Convenções.** Uso v = 340 m/s para o som e u para a velocidade escalar do objeto. Em A, o raio é vertical e a tangente é horizontal. No sentido anti-horário, a velocidade em A aponta para a direita, ou seja, ao longo de AO e em direção a O. Em B ela aponta para a esquerda, afastando-se de O.\n\n**a) Velocidade escalar**\nEm A, a fonte se move direto para o observador, que está parado no ar parado:\nf_A = f0·v/(v − u) = 5f0/4 ⇒ v − u = 4v/5 ⇒ u = v/5 = 340/5 = **68 m/s**.\nO resultado é coerente: f_A > f0, como deve ser numa aproximação. Além disso, u < v.\n\n**b) Raio da trajetória**\nEm B, a velocidade (para a esquerda) faz um ângulo α com a reta BO. Só conta a componente de afastamento u·cos α. Tomando A = (0, 0), B = (0, 2R) e O = (d, 0):\ncos α = d/√(d² + 4R²).\nf_B = f0·v/(v + u·cos α) = 10f0/11 ⇒ v + u·cos α = 11v/10 ⇒ u·cos α = v/10 = 34 m/s.\nDaí cos α = 34/68 = 1/2, logo α = 60°. Então √(d² + 4R²) = 2d, ou seja, 4R² = 3d², e\n**R = d√3/2 = 5√3 m ≈ 8,66 m.**\nObservação: se alguém usar a velocidade inteira em B, obtém u = 34 m/s, o que contradiz o item a. É a componente na linha de visada que fixa R.\n\n**c) Tração no fio**\nCom θ o ângulo do fio com a vertical: sen θ = R/L = 5√3/10 = √3/2, logo θ = 60° e cos θ = 1/2. A profundidade da piscina é h = L·cos θ = 5 m.\nAs forças sobre o objeto são o peso mg (para baixo), o empuxo E (vertical, para cima) e a tração T (ao longo do fio, para baixo e para o eixo). Como a resistência da água foi desprezada, o motor não exerce força radial nem vertical em regime.\nNa direção radial: T·sen θ = m·u²/R = √3·68²/(5√3) = 68²/5 = 924,8 N.\nT = 924,8/(√3/2) = 2·68²/(5√3) = (8/5)·(34²/√3) = 1,6 × 667,4 ⇒ **T ≈ 1067,8 N ≈ 1,07 × 10³ N**.\nO valor exato é 9248√3/15 N ≈ 1067,87 N; a diferença vem só do arredondamento dos dados.\n\n**d) Volume submerso**\nNa vertical não há aceleração, pois o movimento é circular e horizontal na superfície:\nE = mg + T·cos θ = 10√3 + 1067,84 × 0,5 = 17,32 + 533,92 ≈ 551,2 N.\nComo E = ρ·g·V_sub:\nV_sub = 551,24/(1000 × 10) ≈ **5,51 × 10⁻² m³ ≈ 55,1 L**.\nEm forma exata: V_sub = 4774√3/150000 m³.\n\n**Verificação numérica (python):**\n- v/(v − u) = 1,25 e v/(v + u·cos α) = 0,909 = 10/11.\n- R = 8,660 m, θ = 60°, h = 5 m.\n- T = 1067,87 N, E = 551,25 N, V = 0,05513 m³."
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) A velocidade do objeto é v = 68 m/s.\nb) O raio da trajetória é R = 5√3 m ≈ 8,66 m. Nessa posição o fio forma 60° com a vertical, e o ponto de fixação fica a 5 m de profundidade.\nc) A tração no fio é T = 1,6·(34²/√3) ≈ 1067,8 N.\nd) O volume submerso é V ≈ 5,51×10⁻² m³ (cerca de 55 L). Ele vem de E = mg + T·cos60° ≈ 551,2 N.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Não diz explicitamente que a força do motor fica fora do balanço radial e do vertical. Como a resistência foi desprezada, essa força é nula ou tangencial em regime de MCU. O candidato só afirma que 'não há resistência' e que peso e empuxo são verticais. Uma frase dizendo que a propulsão, se existir, é tangencial e nula em regime uniforme deixaria o argumento fechado."
+          },
+          {
+            "severity": "minor",
+            "description": "Usa sen α = R/L a partir da figura sem justificar que o ponto de fixação fica no eixo vertical que passa pelo centro do círculo. A figura mostra isso, mas valeria citar a vista lateral, onde o fio parte do eixo tracejado central."
+          },
+          {
+            "severity": "minor",
+            "description": "A notação pode confundir. Usa v para a velocidade do objeto, ao lado de v_som, e θ para o ângulo do Doppler, enquanto o ângulo do fio é α. Nada disso causa erro, mas trocar v por u ou v_obj deixaria o texto mais limpo."
+          },
+          {
+            "severity": "minor",
+            "description": "O valor final de d é dado como '≈ 55 L', enquanto a conta dá 55,1 L. A diferença de arredondamento é irrelevante, porque o valor em m³ (5,51×10⁻² m³) está correto."
+          }
+        ],
+        "summary": "Comparei a transcrição com o original (pág. 6) e ela confere. As respostas finais do candidato coincidem item a item com a minha referência, e as contas foram refeitas em python.\na) u = 68 m/s: 340/(340 − u) = 5/4.\nb) R = 5√3 ≈ 8,66 m: em B, u·cos θ = 34 m/s, logo cos θ = 1/2 e 4R² = 3d². A conferência dá f_B/f0 = 0,90909 = 10/11.\nc) T = (8/5)(34²/√3) = 1,6 × 667,4 ≈ 1067,8 N. O valor exato é 1067,87 N.\nd) E = 17,32 + 533,92 ≈ 551,2 N e V_sub ≈ 5,51×10⁻² m³.\n\nA resolução trata todas as armadilhas:\n- Lê o sentido anti-horário corretamente: em A a fonte vai direto para O; em B ela se afasta.\n- Em A usa cos = 1. Em B usa só a componente na linha de visada, com cos θ = d/√(d²+4R²), e é isso que determina R.\n- Usa a fonte em movimento no instante da emissão e a velocidade do som no ar.\n- Usa sen α = R/L, e não o cosseno, com profundidade de 5 m.\n- Faz a componente horizontal da tração ser a resultante centrípeta e escreve E = mg + T cos α com o sinal certo.\n- Calcula o volume submerso pelo empuxo e aproveita os dados numéricos do enunciado.\n- Confere sinais, unidades, R < L e regime subsônico.\n\nA exposição é clara e organizada, com hipóteses explícitas e um sistema de coordenadas bem definido. Faltam apenas detalhes: dizer explicitamente que a força do motor fica fora dos balanços, justificar que o fio está fixado no eixo e escolher uma notação um pouco mais limpa. A resolução tem nível de gabarito comentado."
+      }
+    }
+  ]
+}
