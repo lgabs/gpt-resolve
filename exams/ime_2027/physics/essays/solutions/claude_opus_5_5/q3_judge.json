@@ -1,0 +1,52 @@
+{
+  "question": 3,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) 300 N, vertical para cima (o peso é 600 N, com m = 50 kg e g = 12 m/s²); b) ΔT = 100 °C; c) a haste rompe às 37,5% do dia, 10^4 s depois do amanhecer.",
+  "judge_reference": {
+    "reference_solution": "**Dados preliminares**\n- Área de cima (face horizontal, que absorve a irradiância): A = 2 m × 0,25 m = 0,5 m². A altura da barra é 5 cm, a mesma da argola na Figura 1.\n- Volume: V = 2 × 0,25 × 0,05 = 0,025 m³. Massa: m = ρV = 2000 × 0,025 = 50 kg. A massa não muda com o aquecimento; o que diminui é a densidade.\n- g = GM/R² = 12 m/s², então o peso é P = mg = 600 N. Os símbolos G, M e R só servem para dizer que g = 12 m/s² na superfície.\n- c = 1,0 J/(g·°C) = 1,0·10³ J/(kg·°C).\n\n**a) Reação no apoio esquerdo ao amanhecer**\nA barra é homogênea e tem comprimento L. O centro de massa fica em L/2. As forças são:\n- o peso P, aplicado em L/2;\n- a reação N do apoio articulado, em x = 0;\n- a tração T₀ da haste, aplicada pela argola em x = L, porque a ponta direita está exatamente abaixo da haste.\n\nNão há força horizontal: a haste é vertical e a argola não tem atrito. Logo a reação do apoio é só vertical.\n\nMomentos em torno do apoio: T₀·L = P·L/2, então T₀ = P/2 = 300 N.\nEquilíbrio vertical: N = P − T₀ = 300 N.\n\n**N = 300 N, vertical e para cima, sem componente horizontal.** Ao amanhecer a tração também vale T₀ = 300 N.\n\n**b) Variação de temperatura até o rompimento**\nCom o aquecimento, a ponta esquerda fica presa no apoio e a barra cresce para a direita, deslizando pela argola. O ponto de sustentação continua em x = L. O novo comprimento é L' = L(1 + αΔT), e o centro de massa vai para L'/2, à direita do ponto médio original. O peso continua 600 N.\n\nMomentos em torno do apoio: T·L = P·L'/2, então T = (P/2)(1 + αΔT) = T₀(1 + αΔT).\n\nA haste se rompe quando T = 1,001·T₀:\n- αΔT = 10⁻³\n- ΔT = 10⁻³ / 10⁻⁵ = **100 °C**\n\nNesse instante, T = 300,3 N e N = 299,7 N. O alongamento é ΔL = LαΔT = 2 mm.\n\n**c) Horário do rompimento**\nCalor necessário: Q = mcΔT = 50 × 10³ × 100 = 5,0·10⁶ J. Supõe-se que toda a energia absorvida aquece a barra, sem perdas e com temperatura uniforme.\n\nA irradiância vem do gráfico. O nascer do sol é em 25% do dia, ou t = 2·10⁴ s. O pico é em 50% do dia, ou t = 4·10⁴ s. Nesse intervalo de 2·10⁴ s, a irradiância sobe de 0 a 4000 W/m², então:\n- I(τ) = kτ, com k = 4000 / (2·10⁴) = 0,2 W/(m²·s);\n- τ é o tempo desde o nascer do sol.\n\nEnergia absorvida:\nE(τ) = A·∫₀^τ kτ' dτ' = A k τ²/2 = 0,05 τ² (J), isto é, a área do triângulo sob o gráfico vezes A.\n\nAntes, é preciso saber em qual trecho do gráfico o rompimento acontece. Até o pico (τ = 2·10⁴ s), a energia é E = 0,05 × 4·10⁸ = 2·10⁷ J. Esse valor é maior que 5·10⁶ J, então o rompimento ocorre no trecho de subida. No dia inteiro a barra absorveria 4·10⁷ J (ΔT = 800 °C), o que confirma que a haste se rompe.\n\nResolvendo 0,05 τ² = 5·10⁶:\n- τ² = 10⁸, então τ = 10⁴ s;\n- em fração do dia: 10⁴ / (8·10⁴) = 12,5%.\n\nConferência: nesse instante I = 2000 W/m². A área do triângulo é ½ · 10⁴ · 2000 · 0,5 = 5·10⁶ J. ✓\n\nHorário do rompimento: 25% + 12,5% = **37,5% do dia**, ou t = 3,0·10⁴ s depois do início do dia.\n\nObservação: se a dilatação da face de cima for levada em conta, A ≈ A₀(1 + 2αΔT). O resultado muda para cerca de 37,494%, uma diferença de aproximadamente 0,05% em τ. Na prática dá 37,5%.",
+    "final_answer": "a) A reação no apoio esquerdo é N = 300 N, vertical e para cima, sem componente horizontal. Vem de m = 50 kg, P = 600 N e T₀ = P/2.\n\nb) A variação de temperatura é ΔT = 100 °C. Vem de T = T₀(1 + αΔT) = 1,001·T₀, que dá αΔT = 10⁻³.\n\nc) O rompimento ocorre em 37,5% do dia. A barra precisa absorver Q = mcΔT = 5·10⁶ J. Com E(τ) = 0,05τ² (J), isso dá τ = 10⁴ s depois do nascer do sol, que corresponde a 12,5% do dia. Somando: 25% + 12,5% = 37,5%, ou t = 3·10⁴ s.",
+    "pitfalls": [
+      "Escolher a face errada: a irradiância é absorvida na face de cima, A = 2 m × 0,25 m = 0,5 m². A altura de 5 cm é a da argola e da barra. Quem usa 0,1 m² (2 m × 5 cm) cai no trecho de descida do gráfico e erra o horário.",
+      "Massa: m = 2000 × (2 × 0,25 × 0,05) = 50 kg. Usar g = 12 m/s² (dado como GM/R²), e não 9,8 ou 10. Os símbolos G, M e R são só distratores.",
+      "Item a: a reação é só vertical, porque a haste é vertical e a argola não tem atrito. A resposta esperada é 300 N para cima. A boa resolução justifica que não há componente horizontal.",
+      "Item b: o peso não muda, porque a massa é constante (a densidade cai, mas a massa não). O que muda é o braço de alavanca do peso, que passa de L/2 para L(1 + αΔT)/2, enquanto a tração continua aplicada em x = L. O resultado é T/T₀ = 1 + αΔT. Erro comum: achar que a tração não varia, ou pôr o ponto de sustentação na nova ponta da barra.",
+      "Interpretar '0,1% a mais de tração' como T_max = 1,001·T₀, que leva a αΔT = 10⁻³ e ΔT = 100 °C. Não confundir com dilatação superficial ou volumétrica (2α ou 3α): o que importa é o comprimento.",
+      "Converter o calor específico: 1,0 J/(g·°C) = 1000 J/(kg·°C). Esquecer a conversão erra a energia por um fator 1000.",
+      "A irradiância é função linear do tempo. A energia é a área sob a curva I(t) vezes A (E = A k τ²/2), e não I_max·A·t nem a irradiância média do dia inteiro.",
+      "Converter o eixo do gráfico: 25% do dia = 2·10⁴ s, então a inclinação é 0,2 W/(m²·s). A resposta final deve somar o horário do nascer: 25% + 12,5% = 37,5%, e não 12,5%.",
+      "Conferir em qual trecho do gráfico ocorre o rompimento: até o pico entram 2·10⁷ J, mais que os 5·10⁶ J necessários, então é no trecho de subida. Também confirmar que o rompimento acontece de fato (no dia inteiro entrariam 4·10⁷ J).",
+      "Hipóteses implícitas que a resolução deve declarar: toda a energia absorvida vira calor sensível, sem perdas por radiação, convecção ou condução para os apoios; a temperatura da barra é uniforme; a irradiância do gráfico já é a incidente na barra, sem fator de inclinação do Sol.",
+      "A dilatação da área absorvedora (2αΔT ≈ 0,2%) e da espessura da barra são desprezíveis. Considerar a área variável dá cerca de 37,49%, que é praticamente o mesmo resultado; não é erro."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) 300 N, vertical para cima (o peso é 600 N, com m = 50 kg e g = 12 m/s²); b) ΔT = 100 °C; c) a haste rompe às 37,5% do dia, 10^4 s depois do amanhecer.",
+      "review": {
+        "agrees_with_reference": true,
+        "answer_correct": true,
+        "score": 9.5,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não diz que a temperatura da barra é uniforme. Essa hipótese é necessária para usar Q = mcΔθ com um único ΔT e um único L' = L(1+αΔθ). Basta uma frase em 'Hipóteses'."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não diz que a haste e a argola têm massa desprezível. É isso que garante que a tração que rompe a haste é igual à força vertical que a argola aplica na barra. É uma idealização padrão, mas deveria constar entre as hipóteses."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese chama a barra de 'rígida', mas ela dilata. O sentido pretendido é que a barra não se deforma por flexão. O termo é impreciso, mas não afeta nada."
+          }
+        ],
+        "summary": "Conferi o enunciado na p. 3 do PDF e a transcrição está fiel. As três respostas finais coincidem com a minha referência: a) N = 300 N, vertical e para cima; b) ΔT = 100 °C; c) 37,5% do dia. Refiz as contas em python. Q = 5·10⁶ J e τ = 10⁴ s, o que dá 37,5%. Considerando a área variável, o resultado é 37,494%, o que confirma o ≈37,49% citado pelo candidato.\n\nSituação de cada armadilha:\n- **Face e massa:** usa a face correta (A = 0,5 m²), calcula m = 50 kg e usa g = GM/R² = 12 m/s².\n- **Reação no item a:** justifica que a reação é só vertical, porque a argola não tem atrito e a haste é vertical.\n- **Tração no item b:** diz que a massa não muda, mesmo com a densidade caindo. Mantém o ponto de sustentação em x = L e desloca o centro de massa para L'/2, chegando a T = T₀(1+αΔθ) e a 1,001·T₀. Usa dilatação linear, não superficial nem volumétrica.\n- **Item c:** converte c para 1000 J/(kg·°C). Calcula a energia como a integral de I(t) vezes A. Converte 25% do dia em 2·10⁴ s e soma o horário do nascer do sol na resposta final.\n- **Trecho do gráfico:** verifica que o rompimento ocorre na rampa de subida, porque até o pico entram 2·10⁷ J, mais que Q. Isso também prova que o rompimento acontece.\n\nEntre as verificações finais, o alongamento de 2 mm está correto e a correção pela área variável é discutida. Faltam só duas hipóteses a declarar: temperatura uniforme e haste/argola de massa desprezível. São omissões pequenas. A resolução é clara, completa e rigorosa, no nível de um gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,10 +1,12 @@
 from pathlib import Path
 from typing import Union
 from pylatex import Document, Command
-from pylatex.utils import NoEscape
+from pylatex.utils import NoEscape, escape_latex
 import datetime
 import tempfile
 import subprocess
+import json
+from pylatex import Itemize
 
 def validate_latex_content(content: str) -> bool:
     """
@@ -48,7 +50,7 @@ def validate_latex_content(content: str) -> bool:
 
 
 def generate_solutions_pdf(
-    exam_path: Union[str, Path], title: str, author="o1-preview (OpenAI)"
+    exam_path: Union[str, Path], title: str, author="gpt-resolve"
 ) -> None:
     """
     Generate a PDF document containing all solutions from an exam directory.
@@ -101,28 +103,102 @@ def generate_solutions_pdf(
         solutions_dir.glob("*_solution.txt"),
         key=lambda x: int(x.stem.split("_")[0][1:]),
     )
-        # Get all solution files sorted
-    solution_files = sorted(
-        solutions_dir.glob("*_solution.txt"),
-        key=lambda x: int(x.stem.split("_")[0][1:])
-    )
 
     sol_files_with_issues = []
-    # Add each solution to document
+    # Add each solution to document; a solution with broken LaTeX is reported, not fatal
     for sol_file in solution_files:
         content = sol_file.read_text(encoding="utf-8")
         if not validate_latex_content(content):
             sol_files_with_issues.append(str(sol_file))
-            continue
-        doc.append(NoEscape(content))
+            doc.append(NoEscape(f"\\section*{{{sol_file.stem}}}"))
+            doc.append(f"Solution has invalid LaTeX, see {sol_file.name}.")
+        else:
+            doc.append(NoEscape(content))
         doc.append(NoEscape(r"\newpage"))
 
+    judge_reports = sorted(
+        solutions_dir.glob("q*_judge.json"), key=lambda x: int(x.stem.split("_")[0][1:])
+    )
+    if judge_reports:
+        append_judge_appendix(doc, judge_reports)
+
+    # Generate PDF in the exam directory. pdflatex runs in nonstop mode, so a PDF is usually
+    # produced even when it reports errors; only fail if there is no PDF at all.
+    output = exam_path / "solutions_compiled"
+    try:
+        doc.generate_pdf(str(output), clean_tex=False)
+    except Exception as e:
+        if not output.with_suffix(".pdf").exists():
+            raise
+        print(f"Warning: LaTeX reported errors, check {output}.log ({type(e).__name__})")
+
     if sol_files_with_issues:
-        raise ValueError(
-            "Errors in one or more solutions:\n"
+        print(
+            "Warning: invalid LaTeX in:\n"
             + "\n".join(sol_files_with_issues)
-            + "\n\nPlease check for syntax errors."
+            + "\nRe-run those questions with -q or fix them manually."
         )
 
-    # Generate PDF in the exam directory
-    doc.generate_pdf(str(exam_path / "solutions_compiled"), clean_tex=True)
+
+def append_judge_appendix(doc: Document, judge_reports: list[Path]) -> None:
+    """Add the judge's score and review for each question as an appendix."""
+    doc.append(NoEscape(r"\section*{Apêndice: parecer do avaliador}"))
+    for report_file in judge_reports:
+        report = json.loads(report_file.read_text(encoding="utf-8"))
+        status = "aprovada" if report["approved"] else "não aprovada"
+        review = report["rounds"][report["best_round"] - 1]["review"]
+        doc.append(
+            NoEscape(
+                f"\\subsection*{{Questão {report['question']}: nota "
+                f"{str(report['score']).replace('.', ',')} ({status}, "
+                f"rodada {report['best_round']} de {len(report['rounds'])})}}"
+            )
+        )
+        reference = report.get("judge_reference")
+        if reference:
+            doc.append(
+                NoEscape(
+                    r"\textbf{Resposta da resolução às cegas do avaliador:} "
+                    + escape_text(reference.get("final_answer", ""))
+                    + r"\par "
+                )
+            )
+        doc.append(NoEscape(escape_text(review.get("summary", ""))))
+        issues = review.get("issues", [])
+        if issues:
+            with doc.create(Itemize()) as itemize:
+                for issue in issues:
+                    itemize.add_item(
+                        NoEscape(escape_text(f"[{issue['severity']}] {issue['description']}"))
+                    )
+
+
+# Unicode symbols the judge tends to write in plain text, which pdflatex can't typeset as-is
+UNICODE_TO_LATEX = {
+    "−": "-", "–": "--", "—": "---", "≈": r"$\approx$", "≤": r"$\leq$", "≥": r"$\geq$",
+    "≠": r"$\neq$", "→": r"$\to$", "⇒": r"$\Rightarrow$", "⇔": r"$\Leftrightarrow$",
+    "×": r"$\times$", "·": r"$\cdot$", "√": r"$\sqrt{}$", "∞": r"$\infty$", "∈": r"$\in$",
+    "±": r"$\pm$", "°": r"$^\circ$", "²": r"$^2$", "³": r"$^3$", "½": r"$\frac12$",
+    "Δ": r"$\Delta$", "∆": r"$\Delta$", "Ω": r"$\Omega$", "Σ": r"$\Sigma$", "Π": r"$\Pi$",
+    "∫": r"$\int$", "∑": r"$\sum$", "∂": r"$\partial$", "∠": r"$\angle$", "≡": r"$\equiv$",
+    "ℝ": r"$\mathbb{R}$", "ℂ": r"$\mathbb{C}$", "ℕ": r"$\mathbb{N}$", "ℤ": r"$\mathbb{Z}$",
+}
+GREEK = "αβγδεζηθικλμνξπρστυφχψω"
+GREEK_NAMES = ["alpha", "beta", "gamma", "delta", "varepsilon", "zeta", "eta", "theta", "iota",
+               "kappa", "lambda", "mu", "nu", "xi", "pi", "rho", "sigma", "tau", "upsilon",
+               "varphi", "chi", "psi", "omega"]
+UNICODE_TO_LATEX.update({c: f"$\\{n}$" for c, n in zip(GREEK, GREEK_NAMES)})
+
+
+def escape_text(text: str) -> str:
+    """Escape plain text for LaTeX, mapping common math symbols and dropping other non-Latin-1 chars."""
+    escaped = escape_latex(text)
+    out = []
+    for ch in escaped:
+        if ch in UNICODE_TO_LATEX:
+            out.append(UNICODE_TO_LATEX[ch])
+        elif ord(ch) > 255:
+            out.append("?")
+        else:
+            out.append(ch)
+    return "".join(out)

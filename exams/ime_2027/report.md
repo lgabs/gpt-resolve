@@ -1,0 +1,39 @@
+# IME 2027 (2nd phase)
+
+The IME 2027 2nd phase took place on October 26 (Math) and October 27, 2026 (Physics). This is the first exam solved with the Claude Agent SDK pipeline (v0.5).
+
+## Physics essay
+
+| Exam | Phase | Section | Type  | Solver            | Judge             | Status   | Judge scores | PDF Compiled |
+| ---- | ----- | ------- | ----- | ----------------- | ----------------- | -------- | ------------ | ------------ |
+| IME  | 2nd   | Physics | Essay | `claude-opus-5-5` | `claude-opus-5-5` | ✅ Solved | 9.0 – 9.5    | [PDF](physics/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) |
+
+Parameters: `--effort xhigh`, `--pass-score 9`, `--max-rounds 3`, `--concurrency 4`, input given as the exam PDF ([exam.pdf](physics/essays/exam.pdf)). The whole exam (extraction + 10 questions) took 6.3 minutes.
+
+```bash
+gpt-resolve resolve -p exams/ime_2027/physics/essays/exam.pdf -t "IME 2027 - Física" \
+  -o exams/ime_2027/physics/essays/solutions/claude_opus_5_5
+```
+
+All 10 questions were approved by the judge in the first round. For every question, the judge's blind solution (done before seeing the candidate) reached the same final answers as the solver, and the judge raised no critical or major issue, only minor ones (missing explicit hypotheses, steps worth expanding).
+
+| Question | Judge score | Final answer (summary) |
+| -------- | ----------- | ---------------------- |
+| 1  | 9.5 | a) 250 m/s; b) 4000 K; c) 864 kJ done by the gases |
+| 2  | 9.5 | a) A = 200 kN up, B = 100 kN down; b) member forces (AE = 0); c) AE braces panel ADEB |
+| 3  | 9.5 | a) 300 N up; b) ΔT = 100 °C; c) breaks at 37.5% of the day (10⁴ s) |
+| 4  | 9.2 | a) 900 V, 50 A; b) fuse blows ≈ 1.5 s; c) doesn't protect the generator |
+| 5  | 9.5 | a) 450 K; b) 90 kW; c) proposal B violates the 1st and 2nd laws |
+| 6  | 9.5 | a) 68 m/s; b) 5√3 m; c) ≈ 1068 N; d) ≈ 55.1 L |
+| 7  | 9.2 | a) 0.45 m; b) 29/18; c) P2 arrives first, √2 m/s |
+| 8  | 9.5 | a) screen moves away; b) 0.2√7 m; c) ≈ 0.25 m/s; d) ≈ 1.79 m |
+| 9  | 9.0 | a) u = c(√3h − L)/(√3L − h); b) L/√3 < h < L |
+| 10 | 9.5 | a) only situation 2; b) SHM with ω = (2/d)√(μ₀qiv/(πm)) |
+
+An independent run on a Mac (same parameters, user's Claude subscription) also approved all 10 questions in the first round (scores 9.0 – 9.5) with the same final answers.
+
+**Validation:** the answers were checked during the exam day against a physics teacher who solved the exam independently. The comparison with the official/preliminary answer keys (e.g. Poliedro) is still pending and will be added here, together with a final score.
+
+## Math essay
+
+Only questions 1 and 2 were run as a pipeline test (judge scores 9.0 and 9.5). Full exam pending.

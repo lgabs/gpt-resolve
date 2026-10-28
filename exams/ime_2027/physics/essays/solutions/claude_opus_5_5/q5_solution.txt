@@ -1,0 +1,65 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} As duas máquinas operam em ciclos, em regime permanente: a energia interna do fluido não varia em um ciclo, e todas as grandezas são taxas (potências). Vamos supor que toda a potência útil vira energia elétrica sem perdas, o que é uma hipótese favorável à empresa B. Notação: $\dot Q_H=150$ kW é o calor recebido da fonte de $T_H=900$ K.
+
+\medskip
+\textbf{a) Temperatura da fonte fria de A.}
+
+A potência útil de A é $\dot W_A=80\ \text{HP}=80\cdot\tfrac34=60$ kW. O rendimento real é
+\[
+\eta_A=\frac{\dot W_A}{\dot Q_H}=\frac{60}{150}=0{,}40 .
+\]
+O máximo admissível entre $T_H$ e $T$ é o rendimento de Carnot, dado pelo teorema de Carnot (2.ª lei): $\eta_C=1-T/T_H$. Como $\eta_A=0{,}8\,\eta_C$, temos
+\[
+\eta_C=\frac{0{,}40}{0{,}80}=0{,}50\ \Rightarrow\ 1-\frac{T}{900}=0{,}5\ \Rightarrow\ \boxed{T=450\ \text{K}} .
+\]
+
+\textbf{b) Calor rejeitado por A.}
+
+Pela 1.ª lei aplicada ao ciclo:
+\[
+\dot Q=\dot Q_H-\dot W_A=150-60\ \Rightarrow\ \boxed{\dot Q=90\ \text{kW}} .
+\]
+Verificação pela 2.ª lei: $\dot S_{ger}=-\tfrac{150}{900}+\tfrac{90}{450}=\tfrac{1}{30}\ \text{kW/K}>0$. O resultado é coerente, pois a máquina é irreversível.
+
+\medskip
+\textbf{c) Análise da proposta B.}
+
+\emph{Taxas exigidas pela proposta.}
+\begin{itemize}
+\item Aquecimento de água: $\dot m=50\ \text{L/min}=\tfrac{5}{6}$ kg/s. Logo
+\[
+\dot Q_2=\dot m\,c\,\Delta T=\tfrac56\cdot 4000\cdot 10\ \text{W}=\tfrac{100}{3}\ \text{kW}\approx 33{,}3\ \text{kW}.
+\]
+Esse calor precisa ser rejeitado para a fonte de 300 K.
+\item Demanda elétrica: cada residência consome $\tfrac{240\ \text{kW}\cdot\text{h}}{720\ \text{h}}=\tfrac13$ kW. Para 350 residências,
+\[
+\dot W_{nec}=350\cdot\tfrac13=\tfrac{350}{3}\ \text{kW}\approx 116{,}7\ \text{kW}.
+\]
+\end{itemize}
+
+\emph{1.ª lei para MT 2.} A máquina recebe $150$ kW e rejeita $\dot Q/2=45$ kW para a fonte de 450 K e $\dot Q_2$ para a fonte de 300 K. Então
+\[
+\dot W_B=150-45-\dot Q_2=105-\dot Q_2\le 105-\tfrac{100}{3}=\tfrac{215}{3}\approx 71{,}7\ \text{kW}.
+\]
+Isso basta para apenas $71{,}7/(1/3)=215$ residências, e não 350. A proposta exigiria
+\[
+\dot W_{nec}+\dot Q_2+45=116{,}7+33{,}3+45=195\ \text{kW}>150\ \text{kW},
+\]
+ou seja, um déficit de 45 kW: a proposta \emph{viola a conservação de energia}. Mesmo sem aquecer água, teríamos $\dot W_B<105\ \text{kW}<116{,}7$ kW.
+
+\emph{2.ª lei (desigualdade de Clausius) para MT 2.}
+\[
+\dot S_{ger}=-\frac{150}{900}+\frac{45}{450}+\frac{\dot Q_2}{300}\ge 0\ \Rightarrow\ \dot Q_2\ge 20\ \text{kW}.
+\]
+\begin{itemize}
+\item Mesmo com uma máquina reversível, a potência máxima seria $\dot W_{max}=105-20=85$ kW, o que atende só 255 residências.
+\item Com $\dot Q_2=\tfrac{100}{3}$ kW, obtemos $\dot S_{ger}=-\tfrac16+\tfrac1{10}+\tfrac19=\tfrac{2}{45}\ \text{kW/K}>0$. Logo o aquecimento de água, isoladamente, é possível. Nesse caso $\eta_B=71{,}7/150\approx 47{,}8\%$, abaixo do limite reversível $85/150\approx 56{,}7\%$ dessa configuração.
+\end{itemize}
+
+\emph{Conclusão.} O ativo adicional (água a 50 L/min com $\Delta T=10$ K) é termodinamicamente viável. Porém, junto com ele, a máquina B fornece no máximo cerca de $71{,}7$ kW, suficientes para cerca de 215 residências. A alegação de abastecer 350 residências ao mesmo tempo (116,7 kW) \textbf{não é realista}: ela viola a 1.ª lei (faltam 45 kW) e superaria até o limite reversível da 2.ª lei (85 kW). Ainda assim, B seria melhor que A, que fornece 60 kW, ou seja, 180 residências.
+
+\medskip
+ANSWER: a) $T=450$ K; b) $\dot Q=90$ kW; c) não é realista. Com aquecimento de $\dot Q_2\approx 33{,}3$ kW (viável pela 2.ª lei, $\dot Q_2\ge 20$ kW), a 1.ª lei dá $\dot W_B=150-45-33{,}3\approx 71{,}7$ kW, o que atende só cerca de 215 residências. As 350 residências exigem $116{,}7$ kW, o que demandaria 195 kW de entrada (faltam 45 kW) e excede até o máximo reversível de 85 kW.
