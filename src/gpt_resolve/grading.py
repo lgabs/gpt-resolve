@@ -164,6 +164,12 @@ async def grade_exam_async(
     log=print,
 ) -> list[GradeResult]:
     start = time.perf_counter()
+    base_log = log
+
+    def log(msg: str) -> None:
+        elapsed = int(time.perf_counter() - start)
+        base_log(f"[{elapsed // 60:02d}:{elapsed % 60:02d}] {msg}")
+
     key = load_answer_key(key_path)
     instructions, questions = _load_questions(solutions_dir)
     numbers = sorted(
