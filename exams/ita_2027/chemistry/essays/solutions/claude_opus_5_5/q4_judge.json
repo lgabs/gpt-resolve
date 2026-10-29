@@ -1,0 +1,49 @@
+{
+  "question": 4,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) m = 40 g; b) P = 75%; c) MM = 180 g/mol; d) [X⁻] = 3,0 mol/L",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com o original (p. 6 da prova, Questão 4). Não há figura.\n\n**Hipóteses (usuais e necessárias):**\n1. Os três sais são eletrólitos fortes e se dissociam totalmente: QX → Q⁺ + X⁻; RX₂ → R²⁺ + 2X⁻; TX₃ → T³⁺ + 3X⁻.\n2. As impurezas são inertes: não contêm Q, R, T nem X⁻ e não reagem.\n3. Não há hidrólise, precipitação nem complexação, e o volume final da solução é 500 mL.\n4. \"Concentração total de cátions\" é a soma das concentrações em quantidade de matéria: [Q⁺] + [R²⁺] + [T³⁺] = 2 mol·L⁻¹. Não se trata de concentração de carga nem de equivalentes.\n\n**Quantidade de cátions**\nn(cátions) = 2 mol·L⁻¹ × 0,500 L = 1,0 mol.\nProporção Q:R:T = 6:3:1, total de 10 partes, então:\n- n(Q⁺) = 0,6 mol\n- n(R²⁺) = 0,3 mol\n- n(T³⁺) = 0,1 mol\n\nCada fórmula dos sais tem um único cátion, logo n(QX) = 0,6 mol, n(RX₂) = 0,3 mol e n(TX₃) = 0,1 mol (substância pura).\n\n**a) Massa m do sal QX**\n- Massa de QX puro = 0,6 mol × 60 g·mol⁻¹ = 36 g.\n- Com pureza de 90%: 0,90·m = 36 g, logo **m = 40 g**.\n\n**b) Pureza P do sal RX₂**\n- Massa de RX₂ puro necessária = 0,3 mol × 150 g·mol⁻¹ = 45 g.\n- Foram usados 60 g de amostra, então P = 45/60 = 0,75. Logo **P = 75%**.\n\n**c) Massa molar MM do sal TX₃**\n- Massa de TX₃ puro = 0,90 × 20 g = 18 g, e isso corresponde a 0,1 mol.\n- MM = 18 g / 0,1 mol, logo **MM = 180 g·mol⁻¹**.\n\n**d) Concentração de X⁻**\n- n(X⁻) = 1·n(QX) + 2·n(RX₂) + 3·n(TX₃) = 0,6 + 0,6 + 0,3 = 1,5 mol.\n- [X⁻] = 1,5 mol / 0,500 L, logo **[X⁻] = 3,0 mol·L⁻¹**.\n\n**Verificação pela eletroneutralidade:**\n- Carga positiva por litro = 1·[Q⁺] + 2·[R²⁺] + 3·[T³⁺] = 1·1,2 + 2·0,6 + 3·0,2 = 3,0 mol·L⁻¹.\n- Como X⁻ é o único ânion (desprezando OH⁻ da água), [X⁻] = 3,0 mol·L⁻¹. O resultado confere.\n\n**Conferência numérica (python):** n = 0,6/0,3/0,1 mol; m = 40,0 g; P = 75,0%; MM = 180,0 g·mol⁻¹; [X⁻] = 3,0 mol·L⁻¹.",
+    "final_answer": "a) m = 40 g de QX (0,6 mol puro, ou seja, 36 g, dividido por 0,90).\nb) P = 75% (são necessários 45 g de RX₂ puro em 60 g de amostra).\nc) MM = 180 g·mol⁻¹ (18 g puros de TX₃ correspondem a 0,1 mol).\nd) [X⁻] = 3,0 mol·L⁻¹ (1,5 mol de X⁻ em 0,5 L, valor confirmado pela eletroneutralidade).",
+    "pitfalls": [
+      "Volume: usar 500 mL = 0,5 L. Quem usa 1 L obtém 2 mol de cátions e todas as respostas saem erradas por um fator 2 (m = 80 g, P = 150%, que é absurdo, MM = 90 g/mol).",
+      "Interpretar 'concentração total de cátions' como soma das concentrações em mol·L⁻¹ ([Q⁺]+[R²⁺]+[T³⁺] = 2), e não como concentração de carga ou de equivalentes. A leitura por carga daria um total de cátions diferente e quebraria a proporção 6:3:1.",
+      "A proporção 6:3:1 é molar, não em massa. As frações são 6/10, 3/10 e 1/10 de 1 mol, ou seja, 0,6, 0,3 e 0,1 mol.",
+      "Pureza em sentidos opostos: em (a), a massa de amostra é a massa pura dividida pela pureza (36/0,9 = 40 g). Em (c), a massa pura é a massa de amostra multiplicada pela pureza (20 × 0,9 = 18 g). Erro comum: multiplicar em (a), obtendo 32,4 g, ou dividir em (c), obtendo 222 g/mol.",
+      "Em (b), a pureza é a massa pura dividida pela massa da amostra (45/60 = 75%). Inverter a razão dá 133%, valor fisicamente impossível que deveria alertar o candidato.",
+      "Em (d), contar os X⁻ pela estequiometria de cada sal (1, 2 e 3 por fórmula): 0,6 + 2(0,3) + 3(0,1) = 1,5 mol. Erros típicos: responder [X⁻] = 2 mol/L (igual à concentração de cátions), usar 1,0 mol de X⁻, ou esquecer de dividir por 0,5 L (respondendo 1,5 mol/L).",
+      "Hipóteses que uma boa resolução deve explicitar: dissociação completa dos sais, impurezas inertes (sem Q, R, T ou X⁻), ausência de hidrólise/precipitação (sobretudo de T³⁺) e volume final igual a 500 mL. Sem elas, (b)–(d) não ficam determinados.",
+      "A conferência de [X⁻] pela eletroneutralidade (1·1,2 + 2·0,6 + 3·0,2 = 3,0 mol/L) é um bom sinal de rigor. Valores intermediários (0,6/0,3/0,1 mol; 36 g; 45 g; 18 g) devem aparecer para a correção dar crédito parcial."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) m = 40 g; b) P = 75%; c) MM = 180 g/mol; d) [X⁻] = 3,0 mol/L",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução usa a leitura de que \"concentração total de cátions\" é [Q⁺]+[R²⁺]+[T³⁺] = 2 mol/L, que é a leitura correta, mas não a explicita. Não diz que a grandeza é soma de concentrações em quantidade de matéria, e não de carga ou de equivalentes. Bastava uma frase para fechar essa ambiguidade."
+          },
+          {
+            "severity": "minor",
+            "description": "Faltou incluir nas hipóteses a ausência de hidrólise, precipitação ou complexação, sobretudo do T³⁺, que é o íon mais suscetível a hidrolisar. Ela está implícita em \"dissociam totalmente\", mas uma resolução de gabarito deveria escrevê-la."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação por eletroneutralidade iguala a carga positiva a [X⁻] desprezando H⁺/OH⁻ da água e eventuais ânions das impurezas, sem dizer isso. O efeito é irrelevante, mas vale registrar que X⁻ é tratado como o único ânion relevante."
+          }
+        ],
+        "summary": "Conferi a transcrição com o original (p. 6 do PDF) e ela está correta. As quatro respostas finais coincidem com a minha referência, e refiz as contas em python: a) m = 40 g; b) P = 75%; c) MM = 180 g/mol; d) [X⁻] = 3,0 mol/L.\n\nA resolução está correta, completa e clara. Ela declara as hipóteses principais: dissociação total com as equações escritas, impurezas inertes sem Q, R, T nem X, e volume final de 0,500 L. Calcula 1,0 mol de cátions e reparte esse total pela proporção molar 6:3:1, chegando a 0,60, 0,30 e 0,10 mol. Também justifica que n(sal) = n(cátion).\n\nTodas as armadilhas foram evitadas:\n- A pureza foi aplicada no sentido certo em cada item: em (a) dividiu (36/0,9 = 40 g), em (c) multiplicou (20 × 0,9 = 18 g), e em (b) usou a razão massa pura/amostra (45/60 = 75%).\n- Os X⁻ foram contados pela estequiometria de cada sal: 0,6 + 0,6 + 0,3 = 1,5 mol, dividido por 0,5 L, o que dá 3,0 mol/L.\n- O resultado foi conferido pela eletroneutralidade.\n- Os testes de plausibilidade estão certos: pureza abaixo de 100% e massa impura maior que a pura.\n- Todos os valores intermediários aparecem (36 g, 45 g, 18 g), o que permite dar crédito parcial.\n\nEncontrei só omissões menores de rigor expositivo:\n- Não justifica explicitamente a leitura de \\\"concentração total de cátions\\\" como soma de concentrações em mol/L.\n- Não cita a ausência de hidrólise ou precipitação do T³⁺.\n- Não diz que despreza os íons da água na eletroneutralidade.\n\nNenhuma delas afeta o resultado. A resolução pode ser publicada como gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "question": 4,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 3 - Física)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-3-22-10-2026-2-fase-dia-3/dissertativa-4-fisica-2-fase-dia-3-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "h_f = h_i·((m+M)/m)^{3/5} (adiabática reversível, γ = 5/3)",
+      "key_answer": "h_f = (1 + M/m)^{3/5}·h_i (adiabática reversível, γ = 5/3)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Mesma resposta, já que (m+M)/m = 1 + M/m. Usa-se p_iV_i^γ = p_fV_f^γ com p_i = (m+M)g/A, p_f = mg/A e γ = 5/3. O enunciado (pág. 5 do PDF) confere com a transcrição."
+    },
+    {
+      "item": "b",
+      "solution_answer": "m(h_max − h_i) = (3/2)(m+M)h_i[1 − (h_i/h_max)^{2/3}]. Na forma polinomial, com y = (h_max/h_i)^{1/3}: 2y⁴+2y³+2y² = 3(1+M/m)(y+1), com raiz única y > 1. Para M = m, h_max ≈ 2,26 h_i.",
+      "key_answer": "Forma geral (1ª lei): h_max = (3M+5m)g h_i/(3p_fA + 2mg), com p_f indeterminado. Supondo adiabática reversível: 3(M+m)(h_i/h_max)^{5/3}h_max + 2m h_max = (3M+5m)h_i. Alternativa (repouso final após amortecimento): h_eq = (1 + 3M/(5m))h_i.",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "A equação da resolução é algebricamente idêntica à interpretação 1 do Poliedro. Multiplicando por 2 e rearranjando, vem 2m·h_max + 3(m+M)h_i^{5/3}h_max^{-2/3} = (3M+5m)h_i, que é a equação do gabarito. Testei com valores aleatórios e a diferença deu zero. Conferi também a parte numérica. Para M = m, a raiz da quártica dá h_max/h_i = 2,2559, e uma integração RK4 da equação de movimento do pistão, m·ḧ = p_i(h_i/h)^{5/3}A − mg, dá o mesmo primeiro ponto de retorno. A redução a 2y⁴+2y³+2y² − 3k(y+1) = 0, a convexidade (f'' > 0, f(1) = −6M/m < 0) e o limite M ≪ m (h_max ≈ h_i(1 + 1,2M/m), contra 1,012 exato para M/m = 0,01) estão corretos. A forma geral do gabarito é válida, mas deixa p_f solto, e o próprio gabarito admite isso. A alternativa 2 (h_eq = 1,6h_i para M = m) é a altura de repouso final após dissipação, não a altura máxima. Como o item pede 'a equação que relaciona h_max e m, M e h_i', a leitura isentrópica, adotada pela resolução, é a mais natural."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "high",
+      "description": "No item b, o enunciado não diz se o gás evolui de forma reversível durante o movimento rápido do pistão, e o próprio Poliedro apresenta duas leituras. A resolução adota a isentrópica (pistão lento comparado com a velocidade do som), que coincide com a interpretação 1 do gabarito. Se a banca do ITA esperasse outra leitura, por exemplo a do repouso final h_eq = (1+3M/5m)h_i, a nota mudaria. A expressão 'altura máxima' e o pedido de 'uma equação que relaciona' (resposta implícita, transcendente) favorecem a leitura da resolução."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "A resposta principal do gabarito no item b, h_max = (3M+5m)g h_i/(3p_fA+2mg), depende de p_f, que não está entre as variáveis pedidas (m, M, h_i). Só fica completa com uma hipótese adicional. A alternativa 2 (h_eq) responde outra pergunta: altura de equilíbrio final, não altura máxima."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "A transcrição do gabarito traz 'p_i = (M + mg)/A' e '(3M + 5mg)', em vez de (M+m)g/A e (3M+5m)g. São erros de extração ou digitação sem efeito no resultado."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A estimativa h_max ≈ (3/2)(M/m)h_i para M ≫ m vale só em primeira ordem. Para M = 100m, o valor exato é ≈ 147h_i, contra 150h_i da aproximação, ou 151,5h_i se for usado 1,5(1+M/m). Isso não afeta a resposta final."
+    }
+  ],
+  "summary": "Questão 4 correta. No item a, resolução e gabarito coincidem: h_f = h_i(1+M/m)^{3/5}. No item b, a equação da resolução, m(h_max−h_i) = (3/2)(m+M)h_i[1−(h_i/h_max)^{2/3}], é algebricamente equivalente à interpretação adiabática reversível do Poliedro. Conferi a equivalência simbolicamente e por simulação numérica (M = m dá h_max ≈ 2,256h_i). O único ponto em aberto é a ambiguidade do enunciado sobre a reversibilidade do gás no item b, que o próprio gabarito reconhece. A resolução declara explicitamente a hipótese que adota, e essa é a leitura mais natural de 'altura máxima'."
+}

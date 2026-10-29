@@ -1,0 +1,46 @@
+{
+  "question": 4,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a = -2 e p(x) = (x+1)^2 (x-2)(x^2+1)(x^2-6x+1). Raízes: -1 (dupla), 2, i, -i, 3+2\\sqrt{2} e 3-2\\sqrt{2}.",
+  "judge_reference": {
+    "reference_solution": "**Questão 04: resolução de referência**\n\n**1. Fatorar o divisor.**\nq(x) = x³ − 3x − 2. Temos q(−1) = −1 + 3 − 2 = 0 e q(2) = 8 − 6 − 2 = 0. Pelo dispositivo de Briot-Ruffini:\nx³ − 3x − 2 = (x + 1)(x² − x − 2) = (x + 1)²(x − 2).\nAs raízes de q são −1 (dupla) e 2 (simples).\n\n**2. Condições de divisibilidade.**\nq | p equivale a (x + 1)² | p e (x − 2) | p, pois esses fatores são primos entre si. Isso dá três condições: p(2) = 0, p(−1) = 0 e p′(−1) = 0 (a última vale porque −1 tem multiplicidade ≥ 2).\n\n- p(2) = 128 + 192a − 32 − 80a + 56 − 28a + 18 + a = 170 + 85a = 0 ⇒ **a = −2**.\n- p(−1) = −1 + 3a + 1 − 5a − 7 − 7a − 9 + a = −16 − 8a = 0 ⇒ a = −2 (compatível).\n- p′(x) = 7x⁶ + 18a x⁵ − 5x⁴ − 20a x³ + 21x² − 14a x + 9, então p′(−1) = 7 − 18a − 5 + 20a + 21 + 14a + 9 = 32 + 16a = 0 ⇒ a = −2 (compatível).\n\nAs três condições valem para o mesmo a. Logo a = −2 é o único valor real que torna p divisível por q.\n\n(Verificação alternativa: pela divisão euclidiana de p por q com a genérico, o resto é R(x) = (a + 2)(5x² + 26x + 13), que é identicamente nulo se e somente se a = −2. O quociente genérico é x⁴ + 3a x³ + 2x² + (4a + 2)x + (6a + 13).)\n\n**3. Polinômio e quociente com a = −2.**\np(x) = x⁷ − 6x⁶ − x⁵ + 10x⁴ + 7x³ + 14x² + 9x − 2.\nA divisão por x³ − 3x − 2 (que tem coeficiente nulo em x²) dá resto 0 e quociente\nQ(x) = x⁴ − 6x³ + 2x² − 6x + 1,\nou seja, p(x) = (x + 1)²(x − 2)·Q(x).\n\n**4. Raízes do quociente (equação recíproca).**\nQ tem coeficientes simétricos (1, −6, 2, −6, 1), então é uma equação recíproca de 1ª espécie e grau par. Como Q(0) = 1 ≠ 0, podemos dividir por x²:\nx² + 1/x² − 6(x + 1/x) + 2 = 0.\nCom t = x + 1/x, temos x² + 1/x² = t² − 2, e a equação fica t² − 6t = 0, isto é, t = 0 ou t = 6.\n- t = 0: x + 1/x = 0 ⇒ x² + 1 = 0 ⇒ x = ± i.\n- t = 6: x + 1/x = 6 ⇒ x² − 6x + 1 = 0 ⇒ x = 3 ± 2√2.\n\nConferindo a fatoração: Q(x) = (x² + 1)(x² − 6x + 1) = x⁴ − 6x³ + 2x² − 6x + 1. ✓\n\n**5. Multiplicidades.**\nQ(−1) = 1 + 6 + 2 + 6 + 1 = 16 ≠ 0 e Q(2) = 16 − 48 + 8 − 12 + 1 = −35 ≠ 0. Portanto −1 tem multiplicidade exatamente 2 e 2 é raiz simples. As quatro raízes de Q são distintas entre si e diferentes de −1 e 2.\n\nFatoração completa:\np(x) = (x + 1)²(x − 2)(x² + 1)(x² − 6x + 1).\n\n**6. Conferências.**\n- Soma das raízes, contando multiplicidade: −1 − 1 + 2 + i − i + (3 + 2√2) + (3 − 2√2) = 6, igual a −(coeficiente de x⁶) = 6. ✓\n- Produto das raízes: (−1)²·2·(i)(−i)·(3 + 2√2)(3 − 2√2) = 2·1·1 = 2. Por Girard, o produto vale (−1)⁷·(−2) = 2. ✓\n- Expandindo numericamente o produto dos fatores (conferido em Python), obtêm-se os coeficientes 1, −6, −1, 10, 7, 14, 9, −2. ✓\n\n**Resposta:** com a = −2, as raízes de p são −1 (dupla), 2, i, −i, 3 + 2√2 e 3 − 2√2.",
+    "final_answer": "a = −2. Fatoração: p(x) = (x + 1)²(x − 2)(x² + 1)(x² − 6x + 1). Raízes: −1 (multiplicidade 2), 2, i, −i, 3 + 2√2 e 3 − 2√2. São 7 raízes contando multiplicidade (6 distintas).",
+    "pitfalls": [
+      "Fatorar q corretamente: x³ − 3x − 2 = (x + 1)²(x − 2). Como −1 é raiz DUPLA de q, impor só p(−1) = 0 e p(2) = 0 não garante a divisibilidade. É preciso também p′(−1) = 0, ou então fazer a divisão e mostrar que o resto é nulo.",
+      "Conferir a compatibilidade: as três condições (p(2) = 0 ⇒ 170 + 85a = 0; p(−1) = 0 ⇒ −16 − 8a = 0; p′(−1) = 0 ⇒ 32 + 16a = 0) precisam dar o mesmo a = −2. Uma resolução que usa uma só condição para achar a deve confirmar a divisibilidade, por exemplo dividindo p por q e obtendo resto zero. O resto genérico é (a + 2)(5x² + 26x + 13).",
+      "Erros de sinal ao calcular p(2) e p(−1) com o parâmetro a são comuns: 3a·64 = 192a, −5a·16 = −80a, −7a·4 = −28a; em x = −1: 3a, −5a, −7a, +a.",
+      "Divisão longa por x³ − 3x − 2: não esquecer o coeficiente 0 de x². O quociente certo é x⁴ − 6x³ + 2x² − 6x + 1 e o resto deve ser 0.",
+      "Reconhecer que o quociente é recíproco (coeficientes 1, −6, 2, −6, 1). A substituição t = x + 1/x leva a t² − 6t = 0, ou seja, t = 0 ou t = 6. Cuidado: x² + 1/x² = t² − 2, e esse −2 cancela com o +2.",
+      "Incluir as raízes complexas ±i. O enunciado pede TODAS as raízes de p, e o fato de a ser real não restringe as raízes a ℝ. Dar só as raízes reais deixa a resposta incompleta.",
+      "Informar a multiplicidade: −1 é raiz dupla (de multiplicidade exatamente 2, pois Q(−1) = 16 ≠ 0) e 2 é simples (Q(2) = −35 ≠ 0). Listar −1 uma vez só sem dizer que é dupla, ou atribuir multiplicidade errada, é uma imprecisão.",
+      "As raízes de x² − 6x + 1 = 0 são 3 ± 2√2, e não 3 ± √2 nem 3 ± √8 deixado sem simplificar como erro. (√8 = 2√2 é aceitável.)",
+      "Conferências úteis para detectar erro de conta: a soma das raízes contando multiplicidade é 6 e o produto é 2, segundo as relações de Girard."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a = -2 e p(x) = (x+1)^2 (x-2)(x^2+1)(x^2-6x+1). Raízes: -1 (dupla), 2, i, -i, 3+2\\sqrt{2} e 3-2\\sqrt{2}.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No passo 3, a divisão pelo método da chave aparece só como a lista de quocientes parciais, sem as linhas intermediárias nem o resto de cada etapa. Isso é aceitável aqui por dois motivos: a divisibilidade já tinha sido provada pelas três condições, e o produto (x³−3x−2)(x⁴−6x³+2x²−6x+1) pode ser conferido direto. Mesmo assim, num gabarito comentado seria melhor mostrar a divisão ou dizer explicitamente que o quociente foi conferido por multiplicação."
+          },
+          {
+            "severity": "minor",
+            "description": "A multiplicidade exata (−1 dupla, 2 simples) vem da fatoração final sem que se verifique explicitamente que Q(−1) ≠ 0 e Q(2) ≠ 0. A conclusão está certa, porque as raízes de Q (±i e 3±2√2) são visivelmente diferentes de −1 e de 2, mas uma frase dizendo isso tornaria o texto mais rigoroso."
+          }
+        ],
+        "summary": "Conferi o enunciado na página do PDF e ele coincide com a transcrição. As respostas finais do candidato e da referência são iguais em tudo: a = −2, p(x) = (x+1)²(x−2)(x²+1)(x²−6x+1) e raízes −1 (dupla), 2, ±i e 3±2√2. Refiz as contas em Python e todas batem: p(−1) = −16−8a, p(2) = 170+85a e p′(−1) = 32+16a, as três se anulando em a = −2. O produto dos fatores e o produto q·Q dão os coeficientes [1, −6, −1, 10, 7, 14, 9, −2].\n\nO candidato tratou todas as armadilhas:\n- Fatorou q como (x+1)²(x−2).\n- Justificou que, como (x+1)² e (x−2) são primos entre si, q | p equivale a p(2) = 0, p(−1) = 0 e p′(−1) = 0, e usou a derivada por causa da raiz dupla.\n- Conferiu que as três condições são compatíveis e dão o mesmo a.\n- Calculou p(2), p(−1) e p′(−1) com os sinais certos.\n- Obteve o quociente correto, x⁴−6x³+2x²−6x+1, com resto zero.\n- Reconheceu que o quociente é recíproco e usou t = x + 1/x com t²−2, chegando a t(t−6) = 0.\n- Incluiu as raízes complexas ±i.\n- Simplificou para 3±2√2.\n- Indicou as multiplicidades e conferiu o total de 7 raízes contra o grau.\n\nEncontrei só duas imprecisões de apresentação, sem impacto no resultado: a divisão longa aparece resumida e as multiplicidades exatas não são verificadas explicitamente. A resolução é limpa, rigorosa e serve como gabarito comentado."
+      }
+    }
+  ]
+}

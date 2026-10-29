@@ -1,0 +1,42 @@
+{
+  "question": 10,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 3 - Física)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-3-22-10-2026-2-fase-dia-3/dissertativa-10-fisica-2-fase-dia-3-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "ν' = ν / [1 + (hν/(m_e c²))(1 − cos θ)] (Compton), obtida pela conservação da energia relativística e do momento, com a lei dos cossenos.",
+      "key_answer": "ν' = ν/(1 + (hν/(m_e c²))(1 − cosθ)) (Compton)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "As duas fórmulas são idênticas e as deduções seguem o mesmo caminho: conservação da energia, triângulo de momentos com a lei dos cossenos e E² = p²c² + m²c⁴, chegando a m_e c²(ν − ν') = hνν'(1 − cos θ). A resolução ainda confere os casos limite (θ = 0 e hν ≪ m_e c²). Conferi a transcrição contra o PDF original e ela está fiel."
+    },
+    {
+      "item": "b",
+      "solution_answer": "V = c(ν² − ν'²)/(ν² + ν'²) = c·k(2+k)/(2+2k+k²), com k = hν(1−cosθ)/(m_e c²). Explicitamente, V = c{[m_e c² + hν(1−cosθ)]² − (m_e c²)²}/{[m_e c² + hν(1−cosθ)]² + (m_e c²)²}. O observador se move na direção do fóton espalhado, em sentido oposto ao de sua propagação (indo ao encontro dele).",
+      "key_answer": "O observador se move na direção do fóton espalhado, em sentido oposto ao de sua propagação (aproximando-se), com β = (ν² − ν'²)/(ν² + ν'²), ou seja, V = c·[(1 + hν(1−cosθ)/(m_e c²))² − 1]/[(1 + hν(1−cosθ)/(m_e c²))² + 1]",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "O sentido é o mesmo nas duas: ao encontro do fóton, porque ν > ν' exige desvio Doppler para o azul. As expressões de V são algebricamente iguais. Com k = hν(1−cosθ)/(m_e c²), vale k(2+k)/(2+2k+k²) = [(1+k)²−1]/[(1+k)²+1], e a forma explícita da resolução é essa mesma fração multiplicada por (m_e c²)² no numerador e no denominador. Testei em Python com valores aleatórios de k e com valores físicos: a diferença entre as formas é nula até o erro de arredondamento. Também conferi que √((1+β)/(1−β)) = 1+k = ν/ν'. A resolução chega ao resultado pela transformação de Lorentz do quadrivetor (E, p), com β com sinal, que dá β_u < 0. O gabarito usa direto a fórmula do Doppler relativístico para aproximação. As duas abordagens são válidas."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Na resolução detalhada do gabarito, os parênteses estão errados na passagem final: aparece '(1 + hν/(m_ec^2)(1-cosθ)^2 - 1)', quando o correto é '(1 + hν(1−cosθ)/(m_e c²))² − 1', com o quadrado aplicado a (1+k) inteiro. O mesmo vale para o denominador. A resposta final do gabarito, listada por item, está correta, então o problema é só de formatação."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Também na lei dos cossenos do gabarito aparece 'p_e^2 = hν/c^2 + (hν')/c^2 − ...', quando o correto é (hν/c)² + (hν'/c)² − ... A conta seguinte, multiplicada por c², está certa, então é só erro de digitação."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado diz apenas que o observador se move 'na mesma direção do fóton espalhado', sem dizer o sentido. Como ν' < ν, a única solução física é o observador ir ao encontro do fóton (sentido oposto ao de propagação). A resolução e o gabarito interpretam assim e respondem com V em módulo e o sentido indicado. Um aluno que tomasse 'mesma direção' como 'mesmo sentido' não acharia solução real, mas isso não afeta a correção desta resolução."
+    }
+  ],
+  "summary": "A resolução está correta nos dois itens e concorda com o gabarito do Poliedro. No item a, as duas dão a fórmula de Compton ν' = ν/[1 + (hν/(m_e c²))(1−cosθ)]. No item b, as duas dão o mesmo sentido: o observador vai ao encontro do fóton espalhado. As expressões de V têm formas diferentes, mas são algebricamente iguais, o que conferi numericamente; todas equivalem a V = c[(1+k)²−1]/[(1+k)²+1], com k = hν(1−cosθ)/(m_e c²). O gabarito tem dois erros de digitação na resolução detalhada (parênteses e quadrado fora do lugar), mas sua resposta final está correta. Não há divergência de mérito."
+}

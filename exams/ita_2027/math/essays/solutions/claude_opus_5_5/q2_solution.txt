@@ -1,0 +1,43 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{1. Sinal do primeiro membro.} Para todo $x\in\mathbb{R}$ vale $2^x>0$, logo $2^x+2>2$. Como $\log_2$ é crescente,
+\[
+\log_2(2^x+2)>\log_2 2=1>0 .
+\]
+Assim, $\left|\log_2(2^x+2)\right|=\log_2(2^x+2)$, e a inequação fica
+\[
+\log_2(2^x+2)>|2x| \iff -\log_2(2^x+2)<2x<\log_2(2^x+2),
+\]
+pois $|a|<b \iff -b<a<b$. Seja $t=2^x>0$. A função $x\mapsto 2^x$ é crescente e bijetora de $\mathbb{R}$ em $]0,+\infty[$, então basta resolver em $t>0$ e depois voltar para $x$.
+
+\textbf{2. Desigualdade da direita: $2x<\log_2(2^x+2)$.} Como $\log_2$ é crescente, $2x<\log_2(t+2)\iff 2^{2x}<t+2$, isto é,
+\[
+t^2<t+2 \iff t^2-t-2<0 \iff (t-2)(t+1)<0 .
+\]
+Como $t+1>0$, isso equivale a $t<2$, ou seja, $2^x<2\iff x<1$.
+
+\textbf{3. Desigualdade da esquerda: $-\log_2(2^x+2)<2x$.} Ela equivale a $\log_2(t+2)>-2x$, isto é, $t+2>2^{-2x}=\dfrac{1}{t^2}$. Multiplicando por $t^2>0$ (o sentido se mantém):
+\[
+t^3+2t^2-1>0 \iff (t+1)(t^2+t-1)>0 ,
+\]
+pois $(t+1)(t^2+t-1)=t^3+2t^2-1$ (note que $t=-1$ é raiz). Como $t+1>0$, temos $t^2+t-1>0$. As raízes de $t^2+t-1$ são $\dfrac{-1\pm\sqrt5}{2}$. Com $t>0$, a condição fica
+\[
+t>\frac{\sqrt5-1}{2}\iff 2^x>\frac{\sqrt5-1}{2}\iff x>\log_2\frac{\sqrt5-1}{2}.
+\]
+
+\textbf{4. Interseção.} Como $0<\frac{\sqrt5-1}{2}<1$, temos $\log_2\frac{\sqrt5-1}{2}<0<1$, e o intervalo é não vazio:
+\[
+\log_2\frac{\sqrt5-1}{2}<x<1 .
+\]
+Como $\frac{\sqrt5-1}{2}=\left(\frac{1+\sqrt5}{2}\right)^{-1}$, o extremo esquerdo também se escreve $-\log_2\frac{1+\sqrt5}{2}\approx-0{,}694$.
+
+\textbf{Verificação.}
+\begin{itemize}
+\item Em $x=1$: $\log_2 4=2=|2\cdot1|$. Há igualdade, logo $x=1$ fica excluído.
+\item Em $x_0=\log_2\frac{\sqrt5-1}{2}$: $2^{x_0}+2=\frac{3+\sqrt5}{2}=\left(\frac{1+\sqrt5}{2}\right)^2$. Então $\log_2(2^{x_0}+2)=2\log_2\frac{1+\sqrt5}{2}=-2x_0=|2x_0|$. Há igualdade, logo $x_0$ fica excluído.
+\item Em $x=0$, ponto interior: $\log_2 3>0$. A desigualdade vale.
+\end{itemize}
+
+ANSWER: $S=\left\{x\in\mathbb{R}:\ \log_2\dfrac{\sqrt5-1}{2}<x<1\right\}=\left]\log_2\dfrac{\sqrt5-1}{2},\,1\right[$

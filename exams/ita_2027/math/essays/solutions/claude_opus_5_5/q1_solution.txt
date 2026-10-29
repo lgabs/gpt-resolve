@@ -1,0 +1,48 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+Seja $(a_1,a_2,\dots,a_{10})$ a PA, com primeiro termo $a_1$ e razão $r$, de modo que $a_k=a_1+(k-1)r$.
+
+\textbf{1. A razão é inteira.} Como $a_1,a_2\in\mathbb{N}$, temos $r=a_2-a_1\in\mathbb{Z}$. A razão pode ser positiva, negativa ou nula; não há outra restrição a priori.
+
+\textbf{2. Condição da soma.} Pela fórmula da soma de uma PA,
+\[
+S_{10}=\frac{(a_1+a_{10})\cdot 10}{2}=5\,(2a_1+9r)=435
+\quad\Longrightarrow\quad 2a_1+9r=87 .
+\]
+
+\textbf{3. Paridade.} Como $87$ é ímpar e $2a_1$ é par, $9r$ é ímpar, logo $r$ é ímpar. Em particular $r\neq 0$ (não há PA constante: $2a_1=87$ não tem solução inteira). Assim
+\[
+a_1=\frac{87-9r}{2}\in\mathbb{Z}.
+\]
+
+\textbf{4. Todos os termos naturais.} Numa PA, o menor termo é $a_1$ (se $r>0$) ou $a_{10}$ (se $r<0$). Logo todos os termos são naturais se, e somente se, $a_1\ge 1$ e $a_{10}\ge 1$:
+\[
+a_1=\frac{87-9r}{2}\ge 1 \iff 9r\le 85 \iff r\le 9,
+\qquad
+a_{10}=a_1+9r=\frac{87+9r}{2}\ge 1 \iff 9r\ge -85 \iff r\ge -9 .
+\]
+Portanto $r\in\{-9,-7,-5,-3,-1,1,3,5,7,9\}$, e cada um desses valores fornece de fato uma PA válida (os passos acima são equivalências).
+
+\textbf{5. As PAs.} Com $a_1=\dfrac{87-9r}{2}$:
+
+\begin{center}
+\begin{tabular}{c|c|l}
+$r$ & $a_1$ & PA \\ \hline
+$1$ & $39$ & $39,40,41,42,43,44,45,46,47,48$ \\
+$3$ & $30$ & $30,33,36,39,42,45,48,51,54,57$ \\
+$5$ & $21$ & $21,26,31,36,41,46,51,56,61,66$ \\
+$7$ & $12$ & $12,19,26,33,40,47,54,61,68,75$ \\
+$9$ & $3$ & $3,12,21,30,39,48,57,66,75,84$
+\end{tabular}
+\end{center}
+
+e, para $r=-1,-3,-5,-7,-9$ (com $a_1=48,57,66,75,84$, respectivamente), obtêm-se as mesmas sequências escritas em ordem decrescente. De fato, invertendo a PA de primeiro termo $a_1$ e razão $r$ obtém-se a de primeiro termo $a_{10}=\frac{87+9r}{2}$ e razão $-r$, que é exatamente o que a fórmula fornece para $-r$.
+
+\textbf{Verificação.} Por exemplo, para $r=9$: $5\,(2\cdot 3+9\cdot 9)=5\cdot 87=435$. Em todas elas $a_5+a_6=87$, e a soma é $5\cdot 87=435$.
+
+\textbf{Conclusão.} As PAs procuradas são exatamente aquelas com razão $r$ ímpar, $-9\le r\le 9$, e primeiro termo $a_1=\dfrac{87-9r}{2}$: são $10$ sequências no total (as $5$ crescentes da tabela e suas $5$ inversas decrescentes), isto é, $5$ se a ordem dos termos não for levada em conta.
+
+\medskip
+ANSWER: $a_1=\dfrac{87-9r}{2}$ com $r\in\{\pm1,\pm3,\pm5,\pm7,\pm9\}$. As crescentes são $(a_1,r)=(39,1),(30,3),(21,5),(12,7),(3,9)$, e as outras 5 são essas mesmas sequências em ordem decrescente, com $(a_1,r)=(48,-1),(57,-3),(66,-5),(75,-7),(84,-9)$. São 10 PAs no total.

@@ -1,0 +1,55 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Campo gravitacional uniforme $g$, sem resistência do ar, partícula pontual. O solo é horizontal e \emph{liso}, então no choque a força do solo é só normal (vertical). Assim, a componente horizontal da velocidade se conserva e só a componente vertical muda, de acordo com o coeficiente de restituição:
+\[
+v_y' = e\,v_y ,\qquad e = 0{,}7 .
+\]
+Componentes iniciais:
+\[
+v_x = V\cos 30^\circ = \frac{\sqrt{3}}{2}V,\qquad v_{y0} = V\,\mathrm{sen}\,30^\circ = \frac{V}{2}.
+\]
+Entre dois choques o movimento é um lançamento oblíquo comum. Como o solo é o nível de partida, a partícula volta a ele com componente vertical de mesmo módulo que a de saída.
+
+\textbf{a) Altura máxima após $n$ choques.}
+Logo após o $k$-ésimo choque, o módulo da componente vertical vale $v_{y0}$ multiplicado por $e$ a cada choque:
+\[
+v_{y,n} = e^{n}\,\frac{V}{2}.
+\]
+No ponto mais alto do voo seguinte, $v_y=0$. A conservação da energia no movimento vertical, ou a equação de Torricelli, dá:
+\[
+H_n = \frac{v_{y,n}^2}{2g} = \frac{e^{2n}V^2}{8g}
+\quad\Longrightarrow\quad
+\boxed{H_n = \frac{(0{,}49)^n\,V^2}{8g}}
+\]
+Verificação: para $n=0$, obtém-se $H_0 = V^2/(8g) = (V\,\mathrm{sen}\,30^\circ)^2/(2g)$, que é a altura máxima do lançamento sem choques. A dimensão $[V^2/g]$ é de comprimento. Cada altura vale $0{,}49$ da anterior.
+
+\textbf{b) Tempo até a energia mínima.}
+A energia mecânica só varia nos choques. Tomando o solo como nível zero de energia potencial, a energia logo após o $n$-ésimo choque é
+\[
+E_n = \frac{m v_x^2}{2} + \frac{m v_{y,n}^2}{2} = \frac{3mV^2}{8} + e^{2n}\frac{mV^2}{8}.
+\]
+Essa sequência é estritamente decrescente. Ela tende ao valor mínimo
+\[
+E_{\min} = \frac{3mV^2}{8},
+\]
+que é atingido quando a componente vertical se anula. Daí em diante, a massa desliza no solo liso com velocidade constante $\frac{\sqrt{3}}{2}V$. A energia não pode cair abaixo desse valor, porque o solo não exerce impulso horizontal.
+
+Duração de cada voo, entre a saída do solo com $v_y$ e o retorno a ele:
+\[
+T_k = \frac{2v_{y,k}}{g} = \frac{2}{g}\,e^{k}\frac{V}{2} = e^{k}\frac{V}{g},\qquad k=0,1,2,\dots
+\]
+Os choques são infinitos, mas os tempos de voo formam uma progressão geométrica de razão $e<1$. A soma é, portanto, finita. O instante do $n$-ésimo choque é
+\[
+t_n = \frac{V}{g}\,\frac{1-e^{n}}{1-e},
+\]
+e, fazendo $n\to\infty$, obtém-se
+\[
+\Delta t = \sum_{k=0}^{\infty} e^{k}\frac{V}{g} = \frac{V}{g(1-e)} = \frac{V}{0{,}3\,g}
+\quad\Longrightarrow\quad
+\boxed{\Delta t = \frac{10V}{3g}\approx 3{,}3\,\frac{V}{g}}
+\]
+Verificação: a dimensão $[V/g]$ é de tempo. O resultado é maior que o primeiro voo, $V/g$. No caso limite $e\to 0$, $\Delta t\to V/g$: a massa para de quicar já no primeiro choque, como esperado. Nesse instante a massa está a $x=\frac{\sqrt{3}}{2}V\,\Delta t=\frac{5\sqrt{3}\,V^2}{3g}$ da origem.
+
+ANSWER: a) $H_n=\dfrac{(0{,}49)^n V^2}{8g}$; b) $\Delta t=\dfrac{V}{g(1-0{,}7)}=\dfrac{10V}{3g}$ (instante em que a energia atinge o mínimo $E_{\min}=\tfrac{3}{8}mV^2$)

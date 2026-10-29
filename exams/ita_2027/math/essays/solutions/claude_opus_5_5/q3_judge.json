@@ -1,0 +1,50 @@
+{
+  "question": 3,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "As raízes de r + iz^8 = 0 satisfazem z^8 = ri. Elas formam um octógono regular inscrito numa circunferência de raio R = r^(1/8). A área do octógono é 2√2·R² = √2, logo R² = 1/2. Assim, cada lado mede √((2−√2)/2) = √(4−2√2)/2 ≈ 0,54, e r = (1/2)^4 = 1/16.",
+  "judge_reference": {
+    "reference_solution": "**1. As raízes da equação.**\n$r + iz^8 = 0 \\iff z^8 = -\\dfrac{r}{i}$. Como $\\dfrac{1}{i} = -i$, temos $-\\dfrac{r}{i} = ri$, e portanto\n$$z^8 = ri = r\\,e^{i\\pi/2}\\qquad (r>0).$$\nPela fórmula de De Moivre, as oito raízes são distintas e valem\n$$z_k = r^{1/8}\\, e^{\\,i\\left(\\frac{\\pi}{16} + \\frac{k\\pi}{4}\\right)},\\qquad k = 0,1,\\dots,7.$$\nTodas têm o mesmo módulo $R = r^{1/8}$. Seus argumentos formam uma progressão aritmética de razão $2\\pi/8 = \\pi/4$. Logo as raízes ficam igualmente espaçadas na circunferência de centro $0$ e raio $R$, e são os vértices de um **octógono regular** inscrito nessa circunferência.\n\nObservação sobre a boa definição: os oito pontos estão sobre uma circunferência, ou seja, em posição convexa. O único polígono simples (sem autointerseções) com esses vértices é o convexo, que liga as raízes na ordem dos argumentos. Por isso \"o polígono\" é exatamente o octógono regular.\n\n**2. Área em função de $R$.**\nLigando o centro $O$ aos vértices, o octógono fica dividido em 8 triângulos isósceles congruentes. Cada um tem dois lados iguais a $R$ e ângulo central de $2\\pi/8 = \\pi/4$. Então\n$$S = 8\\cdot \\tfrac12 R^2 \\sin\\tfrac{\\pi}{4} = 8\\cdot\\tfrac12 R^2\\cdot\\tfrac{\\sqrt2}{2} = 2\\sqrt2\\,R^2.$$\n\n**3. Cálculo de $R$ e de $r$.**\n$S = \\sqrt2 \\Rightarrow 2\\sqrt2\\,R^2 = \\sqrt2 \\Rightarrow R^2 = \\tfrac12 \\Rightarrow R = \\tfrac{1}{\\sqrt2} = 2^{-1/2}$.\nComo $R = r^{1/8}$, vem $r = R^8 = (R^2)^4 = \\left(\\tfrac12\\right)^4 = \\dfrac{1}{16}$. Esse valor é positivo, como exige o enunciado.\n\n**4. Comprimento do lado.**\nPela lei dos cossenos em um dos triângulos centrais:\n$$L^2 = R^2 + R^2 - 2R^2\\cos\\tfrac{\\pi}{4} = 2R^2\\left(1 - \\tfrac{\\sqrt2}{2}\\right) = 1 - \\tfrac{\\sqrt2}{2} = \\frac{2-\\sqrt2}{2}.$$\nLogo\n$$L = \\sqrt{\\frac{2-\\sqrt2}{2}} = \\frac{\\sqrt{4-2\\sqrt2}}{2} = \\frac{\\sqrt{2-\\sqrt2}}{\\sqrt2} = \\sqrt2\\,\\sin\\frac{\\pi}{8} \\approx 0{,}5412.$$\nA mesma conta sai de $L = 2R\\sin(\\pi/8)$, usando $\\sin(\\pi/8) = \\tfrac{\\sqrt{2-\\sqrt2}}{2}$.\n\n**5. Verificação.**\n- A área do octógono regular de lado $L$ é $2(1+\\sqrt2)L^2 = (1+\\sqrt2)(2-\\sqrt2) = 2 - \\sqrt2 + 2\\sqrt2 - 2 = \\sqrt2$. ✓\n- Conferência numérica: com $r = 1/16$, as raízes $z_k$ satisfazem $|r + iz_k^8| \\approx 10^{-16}$. A área pela fórmula do cadarço dá $1{,}41421\\ldots = \\sqrt2$, e o lado dá $0{,}541196\\ldots$ ✓\n\n**Resposta:** o lado mede $L = \\sqrt{\\dfrac{2-\\sqrt2}{2}} = \\dfrac{\\sqrt{4-2\\sqrt2}}{2}\\approx 0{,}541$, e $r = \\dfrac{1}{16}$.",
+    "final_answer": "Lado: L = √((2−√2)/2) = √(4−2√2)/2 = √2·sen(π/8) ≈ 0,541. Valor de r = 1/16. (O polígono é um octógono regular de circunraio R = r^{1/8} = 1/√2.)",
+    "pitfalls": [
+      "Isolar z^8 corretamente: z^8 = −r/i = ri (pois 1/i = −i). Um erro de sinal (z^8 = −ri) só gira o octógono e não muda a resposta, mas é um erro de conta e deve ser apontado.",
+      "O raio da circunferência circunscrita é R = |z| = r^{1/8}, e não r. Confundir os dois leva a r = 1/√2 em vez de r = 1/16, o erro mais comum.",
+      "Depois de achar R² = 1/2, a conta certa é r = R^8 = (1/2)^4 = 1/16. Erros de expoente (por exemplo r = R^4 = 1/4, ou r = (1/√2)^8 calculado errado) são frequentes.",
+      "É preciso justificar que o polígono é um octógono REGULAR: os módulos são iguais e os argumentos (π/16 + kπ/4) estão igualmente espaçados de π/4. Uma boa resolução deve dizer isso explicitamente.",
+      "Boa definição do polígono: os pontos estão sobre uma circunferência (posição convexa), então o único polígono simples com esses vértices é o octógono convexo. Ligações em estrela não fazem sentido para 'o polígono'.",
+      "Área do octógono regular: S = 2√2·R² em função do circunraio, ou S = 2(1+√2)L² em função do lado. Trocar circunraio por apótema, ou usar sen(π/8) no lugar de sen(π/4) no triângulo central, dá resultado errado.",
+      "Lado: L = 2R·sen(π/8) = R√(2−√2). Com R = 1/√2, L = √(2−√2)/√2 = √((2−√2)/2) = √(4−2√2)/2 = √(1−√2/2) ≈ 0,5412. Todas essas formas são equivalentes e devem ser aceitas.",
+      "A questão pede DUAS respostas, o lado e r. Omitir qualquer uma deixa a resolução incompleta.",
+      "Erro de arredondamento ou simplificação de radicais: √(2−√2)/2 ≈ 0,383 é sen(π/8), não o lado, porque falta o fator √2. Já 2 − √2 ≈ 0,586 é o lado ao quadrado multiplicado por 2, não o lado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "As raízes de r + iz^8 = 0 satisfazem z^8 = ri. Elas formam um octógono regular inscrito numa circunferência de raio R = r^(1/8). A área do octógono é 2√2·R² = √2, logo R² = 1/2. Assim, cada lado mede √((2−√2)/2) = √(4−2√2)/2 ≈ 0,54, e r = (1/2)^4 = 1/16.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato não mostra que 'o polígono' do enunciado está bem definido. Ele só escreve 'ligados em ordem crescente de argumento' e não explica por que essa é a ligação certa. Faltou uma frase dizendo que os pontos estão sobre uma circunferência, em posição convexa, e que por isso o único polígono simples com esses vértices é o octógono convexo. Ligações em estrela ficam excluídas."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'São oito números distintos' aparece sem justificativa. Bastava observar que os argumentos π/16 + kπ/4, para k = 0,…,7, ficam dentro de um intervalo de comprimento menor que 2π e por isso são distintos módulo 2π."
+          },
+          {
+            "severity": "minor",
+            "description": "A segunda verificação não testa nada: a razão ℓ/R = 2·sen(π/8) é consequência direta da mesma lei dos cossenos usada para achar ℓ, então não confere o resultado de forma independente. A primeira verificação, que usa S = 2(1+√2)ℓ², é a que tem valor de verdade. Seria melhor tirar a segunda ou trocá-la por uma conferência independente, por exemplo calcular |z₁ − z₀| diretamente."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (página 3, Questão 03) e ele coincide com a transcrição. As respostas finais do candidato e da referência são iguais nos dois itens. Lado: ℓ = √((2−√2)/2) = √(4−2√2)/2 ≈ 0,5412. Valor de r: 1/16. Refiz as contas em Python: com r = 1/16, |r + i·z_k⁸| ≈ 10⁻¹⁶ para as oito raízes, a fórmula do cadarço dá área 1,41421… = √2 e o lado sai 0,541196…, então as duas respostas estão corretas.\n\nA resolução trata bem todas as armadilhas principais. Isola corretamente z⁸ = −r/i = ri, sem erro de sinal. Distingue o módulo R = r^{1/8} do próprio r, que é o erro mais comum. Calcula r = R⁸ = (R²)⁴ = (1/2)⁴ = 1/16 sem erro de expoente. Justifica que o octógono é regular: os módulos são iguais e os argumentos estão espaçados de π/4. Usa corretamente a área S = 2√2·R², com sen(π/4) no triângulo central. Obtém o lado pela lei dos cossenos e confere o resultado de forma independente com S = 2(1+√2)ℓ². Responde aos dois itens pedidos.\n\nO texto é limpo, sem saltos lógicos e com notação adequada. Não há erro de conteúdo, só três detalhes de rigor ou apresentação. Primeiro, falta a frase que mostra que 'o polígono' é o octógono convexo. Segundo, a distinção das oito raízes é afirmada sem justificativa. Terceiro, uma das duas verificações repete a conta original e não confere nada. Funciona como gabarito comentado. Nota 9,5."
+      }
+    }
+  ]
+}

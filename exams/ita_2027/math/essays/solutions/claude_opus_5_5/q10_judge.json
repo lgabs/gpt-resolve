@@ -1,0 +1,53 @@
+{
+  "question": 10,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "O único inteiro é k = 3. Vale f(x) = √2|cos x| + √2|sen x| − sen x − cos x. No 1º quadrante, f(x) pertence a ]√2−1; 2−√2] ≈ ]0,414; 0,586], que não contém inteiros. No 3º quadrante, f(x) pertence a ]√2+1; 2+√2] ≈ ]2,414; 3,414]. O valor 3 é atingido, por exemplo, em x = π + ½·arcsen(26 − 18√2).",
+  "judge_reference": {
+    "reference_solution": "**1. Simplificar f (atenção aos módulos)**\n\nTemos 1 + cos 2x = 2cos²x e 1 − cos 2x = 2sen²x. Como √(a²) = |a|:\n\nf(x) = √2·|cos x| + √2·|sen x| − sen x − cos x, para todo x real.\n\nA função tem período 2π. O \"quadrante do círculo trigonométrico\" se refere à extremidade do arco x tomada módulo 2π. Na convenção usual os quadrantes são abertos:\n- 1º quadrante: x ∈ (2nπ, 2nπ + π/2);\n- 3º quadrante: x ∈ (2nπ + π, 2nπ + 3π/2).\n\n**2. Primeiro quadrante (sen x > 0, cos x > 0)**\n\nf(x) = (√2 − 1)(sen x + cos x).\n\nTemos sen x + cos x = √2·sen(x + π/4). Com x + π/4 ∈ (π/4, 3π/4), vale sen(x + π/4) ∈ (√2/2, 1]. Logo sen x + cos x ∈ (1, √2], com o máximo √2 em x = π/4.\n\nEntão f(x) ∈ (√2 − 1, √2(√2 − 1)] = (√2 − 1, 2 − √2] ≈ (0,414; 0,586].\n\nEsse intervalo não contém nenhum inteiro. Isso continua valendo se os eixos forem incluídos, pois o intervalo fechado [√2 − 1, 2 − √2] também não contém inteiros.\n\n**3. Terceiro quadrante (sen x < 0, cos x < 0)**\n\n|sen x| = −sen x e |cos x| = −cos x, então:\n\nf(x) = −√2(sen x + cos x) − (sen x + cos x) = −(√2 + 1)(sen x + cos x).\n\nCom x + π/4 ∈ (5π/4, 7π/4), vale sen(x + π/4) ∈ [−1, −√2/2). Logo sen x + cos x ∈ [−√2, −1), com o mínimo −√2 em x = 5π/4.\n\nEntão f(x) ∈ ((√2 + 1)·1, (√2 + 1)·√2] = (√2 + 1, 2 + √2] ≈ (2,414; 3,414].\n\nComo f é contínua no intervalo (π, 3π/2), ela atinge todos os valores desse intervalo. O único inteiro nele é **k = 3**:\n- 2 < √2 + 1, porque √2 > 1;\n- 3 ≤ 2 + √2, porque √2 ≥ 1;\n- 4 > 2 + √2, porque √2 < 2.\n\nMesmo com os eixos incluídos (intervalo [√2 + 1, 2 + √2]), o único inteiro continua sendo 3.\n\n**4. Verificação explícita de que k = 3 tem solução no 3º quadrante**\n\n−(√2 + 1)(sen x + cos x) = 3 ⇒ sen x + cos x = −3/(√2 + 1) = 3 − 3√2 ≈ −1,243.\n\nEsse valor está em [−√2, −1), como exigido.\n\nAssim √2·sen(x + π/4) = 3 − 3√2, ou seja, sen(x + π/4) = −3(2 − √2)/2 ≈ −0,879.\n\nSeja α = arccos(3(2 − √2)/2) ≈ 0,498 rad. Como α < π/4, as soluções x = 5π/4 ± α (≈ 3,429 e ≈ 4,425) estão ambas em (π, 3π/2).\n\nOutra forma: sen x e cos x são as raízes de t² − (3 − 3√2)t + (13 − 9√2) = 0, ou seja, t = [3 − 3√2 ± √(18√2 − 25)]/2 ≈ −0,284 e −0,959. As duas são negativas, o que confirma o 3º quadrante. A soma dos quadrados é 1, e de fato (3 − 3√2)² − 2(13 − 9√2) = 1. Conferi numericamente que f(x) = 3 nesses pontos.\n\n**5. Observação: imagem global de f**\n\nNo 2º e no 4º quadrantes, f = (√2 − 1)sen x − (√2 + 1)cos x (e a expressão simétrica no 4º). A imagem nesses quadrantes é (√2 − 1, √6].\n\nA imagem global de f é [√2 − 1, 2 + √2], que contém os inteiros 1, 2 e 3. Porém 1 e 2 só são atingidos com x no 2º ou no 4º quadrante. Por isso eles não servem.\n\n**Resposta:** k = 3.",
+    "final_answer": "Só existe um valor: k = 3.\n\nJustificativa: f(x) = √2(|sen x| + |cos x|) − sen x − cos x.\n- No 1º quadrante, f(x) ∈ (√2 − 1, 2 − √2] ≈ (0,41; 0,59], que não contém inteiros.\n- No 3º quadrante, f(x) ∈ (√2 + 1, 2 + √2] ≈ (2,41; 3,41], cujo único inteiro é 3.\n\nPara k = 3 as soluções são x = 5π/4 ± arccos(3(2 − √2)/2) + 2nπ, ambas no 3º quadrante.",
+    "pitfalls": [
+      "Esquecer o módulo: √(1+cos2x)=√2|cos x| e √(1−cos2x)=√2|sen x|. Quem escreve √2·cos x + √2·sen x obtém f=(√2−1)(sen x+cos x) em toda parte. Com isso o 3º quadrante dá valores negativos em (−(2−√2), −(√2−1)), e a resposta sai errada: 'nenhum k' ou k=0.",
+      "Trocar o sinal dos módulos no 3º quadrante: lá |sen x|=−sen x e |cos x|=−cos x, o que dá f=−(√2+1)(sen x+cos x). Não é (√2−1)(...) nem (√2+1)(...).",
+      "Calcular a imagem global de f, que é [√2−1, 2+√2], e responder k ∈ {1,2,3}. Os valores 1 e 2 só são atingidos no 2º e no 4º quadrantes, onde o máximo é √6 ≈ 2,449. É preciso restringir o domínio aos quadrantes pedidos.",
+      "Errar a imagem de sen x+cos x=√2 sen(x+π/4) nos quadrantes. No 1º ela é (1,√2], não [−√2,√2]. No 3º é [−√2,−1). O extremo √2 em módulo é atingido no meio do quadrante (π/4 ou 5π/4), e o valor 1 em módulo só nos eixos.",
+      "Extremos e eixos: o quadrante aberto exclui os eixos. Nos eixos f vale √2−1 ou √2+1, que não são inteiros, então a convenção não muda a resposta. Uma boa resolução justifica isso ou trata os intervalos com cuidado.",
+      "Justificar a existência da solução para k=3: usar a continuidade (teorema do valor intermediário) ou resolver explicitamente sen x+cos x=3−3√2 ≈ −1,243 ∈ [−√2,−1). Também é preciso conferir que a solução cai de fato no 3º quadrante, e não só que sen(x+π/4) tem solução.",
+      "Comparações numéricas: o único inteiro em (1+√2, 2+√2] é 3. Isso exige 1+√2>2 e 2+√2<4, ou seja, 1<√2<2. Uma resolução precisa não deve apenas 'chutar' com decimais.",
+      "Lembrar que x é qualquer real (periodicidade 2π). Os quadrantes valem módulo 2π, e x negativo também conta."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "O único inteiro é k = 3. Vale f(x) = √2|cos x| + √2|sen x| − sen x − cos x. No 1º quadrante, f(x) pertence a ]√2−1; 2−√2] ≈ ]0,414; 0,586], que não contém inteiros. No 3º quadrante, f(x) pertence a ]√2+1; 2+√2] ≈ ]2,414; 3,414]. O valor 3 é atingido, por exemplo, em x = π + ½·arcsen(26 − 18√2).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Para dizer que (√2+1, 2+√2] contém só o inteiro 3 e que [√2−1, 2−√2] ⊂ ]0,1[, o candidato usa apenas os decimais 2,414, 3,414, 0,414 e 0,586. Nenhuma das duas conclusões está errada, mas falta uma justificativa exata, que é só 1 < √2 < 2: daí 1+√2 > 2, 2+√2 ∈ [3,4[, √2−1 > 0 e 2−√2 < 1. Bastava uma linha. (Na etapa 5, ao contrário, ele faz a comparação exata 25² < 648 < 26², o que mostra que sabia fazer.)"
+          },
+          {
+            "severity": "minor",
+            "description": "Os quadrantes são tratados só como 0<x<π/2 e π<x<3π/2. Não se diz que x percorre todo ℝ, que f tem período 2π e que, por isso, os quadrantes valem módulo 2π (x + 2nπ, inclusive x negativo). A resposta não muda, mas faltou uma frase dizendo isso."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação: em 'Fechando o intervalo, ele passa a ser [2,414; 3,414]', os extremos são aproximações e não o intervalo exato [√2+1, 2+√2]. O certo é escrever o intervalo exato e pôr a aproximação entre parênteses."
+          },
+          {
+            "severity": "minor",
+            "description": "Na etapa 2, o uso do TVI está um pouco torto. O limite g(t)→1 quando t→0⁺ não é o que garante a imagem ]1,√2]. O que a garante é sen(t+π/4) percorrer ]√2/2,1] quando t+π/4 percorre ]π/4,3π/4[ (contínua e sobrejetora nesse arco). O argumento está correto, só que a ordem de exposição atrapalha a leitura."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (pág. 10): é igual à transcrição. A resposta final do candidato, k = 3, é igual à da minha referência, e conferi numericamente que está certa. Nos quadrantes abertos, a imagem de f no 1º é ]0,41421; 0,58579] e no 3º é ]2,41421; 3,41421]. No ponto x = π + ½·arcsin(26−18√2) ≈ 3,4293, f vale 3,000000.\n\nA resolução trata corretamente as armadilhas principais:\n- Usa os módulos √(2cos²x) = √2|cos x| e √(2sen²x) = √2|sen x|.\n- No 3º quadrante, a substituição x = π + t evita o erro de sinal e dá f = (√2+1)·g(t). Isso equivale ao meu −(√2+1)(sen x + cos x).\n- Restringe o domínio aos quadrantes pedidos, sem cair na imagem global [√2−1, 2+√2], que levaria a {1, 2, 3}.\n- A imagem de g = sen + cos em ]0, π/2[ está correta: ]1, √2].\n- Discute os eixos (intervalos fechados) e mostra que a resposta não muda.\n\nA verificação explícita de k = 3 está bem feita:\n- 1 + sen 2t = 27 − 18√2, logo sen 2t = 26 − 18√2.\n- A comparação exata 25² < 648 < 26² garante que 0 < 26 − 18√2 < 1.\n- Como t ∈ ]0, π/4[, g(t) > 0, o que afasta raiz espúria ao elevar ao quadrado.\n- Fica confirmado que a solução cai no 3º quadrante.\n\nOs defeitos são todos menores e não comprometem a resposta:\n- Os extremos dos intervalos são comparados com inteiros só por decimais (falta dizer 1 < √2 < 2).\n- Não menciona a periodicidade 2π nem que x pode ser qualquer real.\n- Escreve um intervalo com extremos aproximados.\n- A ordem de exposição na justificativa da imagem de g é um pouco confusa.\n\nA resolução serve como gabarito comentado."
+      }
+    }
+  ]
+}

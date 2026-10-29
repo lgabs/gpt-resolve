@@ -1,0 +1,81 @@
+{
+  "question": 4,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "a) Retirada lenta (adiabática reversível, γ = 5/3): h_f = h_i·((m+M)/m)^{3/5}.\nb) Retirada instantânea: m(h_max − h_i) = (3/2)(m+M)·h_i·[1 − (h_i/h_max)^{2/3}].\nCom y = (h_max/h_i)^{1/3} > 1, isso equivale a 2y⁴ + 2y³ + 2y² = 3(1 + M/m)(y + 1), que tem uma única raiz y > 1.\nExemplo: para M = m, h_max ≈ 2,26·h_i.",
+  "judge_reference": {
+    "reference_solution": "**Estado inicial.** Acima do pistão há vácuo. O equilíbrio do conjunto pistão + areia dá\nP_i·A = (m+M)g  ⇒  P_i = (m+M)g/A,  V_i = A·h_i,  T_i = P_iV_i/(nR) = (m+M)g·h_i/(nR).\nO gás é ideal e monoatômico: C_v = (3/2)R, γ = C_p/C_v = 5/3.\n\n---\n**a) Retirada lenta (quase estática)**\n- As paredes e o pistão são adiabáticos, então Q = 0.\n- Não há atrito e o processo é quase estático, logo a transformação é adiabática reversível: P·V^γ = constante, ou seja, P·h^{5/3} = constante, já que V = A·h.\n- No estado final só o pistão está apoiado no gás e há vácuo acima dele: P_f = mg/A.\n\nDaí:\n(m+M)g/A · h_i^{5/3} = (mg/A) · h_f^{5/3}\n\n**h_f = h_i·[(m+M)/m]^{3/5} = h_i·(1 + M/m)^{3/5}**\n\nComo conferência, a temperatura final é T_f = T_i·(h_i/h_f)^{2/3} = T_i·[m/(m+M)]^{2/5} < T_i. O gás esfria porque realiza trabalho sem receber calor.\n\n---\n**b) Retirada instantânea de toda a areia**\n\n1. Logo após a retirada, a força resultante no pistão é P_iA − mg = Mg > 0, para cima. O pistão acelera para cima, passa pela posição de equilíbrio e sobe além dela até parar momentaneamente em h_max, onde v = 0.\n\n2. Modelo para o gás:\n   - não troca calor (Q = 0);\n   - não há atrito nem dissipação;\n   - a velocidade do pistão é muito menor que a velocidade das moléculas (a do som). Assim o gás passa por estados de equilíbrio e segue a mesma adiabática do item a): P = P_i·(h_i/h)^{5/3}.\n\n   A irreversibilidade está só na mudança brusca da carga. Depois dela o movimento é conservativo: o pistão oscila entre h_i e h_max em torno de h_f, o equilíbrio do item a).\n\n3. Teorema trabalho–energia no pistão, de h_i (v = 0) até h_max (v = 0):\nW_gás − mg(h_max − h_i) = 0.\nA areia sai no instante inicial e não entra no balanço.\n\n4. Trabalho do gás na expansão adiabática:\nW_gás = ∫ P·A dh = P_i·A·h_i^{5/3} ∫_{h_i}^{h_max} h^{−5/3} dh = (3/2)·P_i·A·h_i·[1 − (h_i/h_max)^{2/3}].\nEsse valor é o mesmo que −ΔU = (3/2)nR(T_i − T_max), com T_max = T_i(h_i/h_max)^{2/3}. Como P_i·A·h_i = (m+M)g·h_i:\n\n**m·(h_max − h_i) = (3/2)·(m+M)·h_i·[1 − (h_i/h_max)^{2/3}]**\n\nForma equivalente: 2m(h_max − h_i) = 3(m+M)h_i[1 − (h_i/h_max)^{2/3}]. As grandezas g, A, n e R se cancelam.\n\n5. **Raiz trivial.** A equação admite h_max = h_i, que é o ponto de partida (o outro ponto de retorno). Faça u = (h_max/h_i)^{1/3} e divida por (u − 1):\n\n2u⁴ + 2u³ + 2u² − 3(1 + M/m)(u + 1) = 0,  ou seja,  2m·u²(u² + u + 1) = 3(m+M)(u + 1).\n\nO lado esquerdo menos o direito, como função de u, é convexo para u > 0. Vale −3(1+M/m) em u = 0 e −6M/m < 0 em u = 1. Portanto há uma única raiz positiva, e ela satisfaz u > 1. Essa raiz dá h_max = h_i·u³, e vale h_max > h_f.\n\n**Conferências**\n- M → 0 ⇒ h_max → h_i.\n- M ≪ m (oscilação aproximadamente harmônica): h_max − h_i ≈ 2(h_f − h_i) ≈ (6/5)(M/m)h_i.\n- Numericamente:\n\n| M/m | h_max/h_i | h_f/h_i |\n|---|---|---|\n| 0,05 | 1,0602 | 1,0297 |\n| 1 | 1,6164 | 1,2754 |\n| 5 | 7,690 | 2,930 |\n\nEsses valores coincidem com a integração numérica (RK4) da equação de movimento m·ḧ = P_i·A·(h_i/h)^{5/3} − mg.",
+    "final_answer": "a) A transformação é adiabática reversível com γ = 5/3, e a pressão final é mg/A. Logo h_f = h_i·[(m+M)/m]^{3/5} = h_i·(1 + M/m)^{3/5}.\n\nb) O gás segue a adiabática P·h^{5/3} = constante. Na altura máxima a velocidade do pistão é zero, e o trabalho do gás é igual ao ganho de energia potencial do pistão:\nm·(h_max − h_i) = (3/2)·(m+M)·h_i·[1 − (h_i/h_max)^{2/3}].\nDeve-se descartar a raiz trivial h_max = h_i. Com u = (h_max/h_i)^{1/3}, a equação fica 2m·u²(u² + u + 1) = 3(m+M)(u + 1), que tem uma única raiz u > 1. Por exemplo, M = m dá h_max ≈ 1,616·h_i.",
+    "pitfalls": [
+      "Usar a isoterma PV = constante, que dá h_f = h_i(1+M/m). Está errado: as paredes e o pistão são adiabáticos, então vale PV^γ = constante com γ = 5/3 (gás monoatômico).",
+      "Errar o expoente ou o γ: usar γ = 7/5 (diatômico), ou escrever (1+M/m)^{5/3} ou ^{2/3} no lugar de ^{3/5}.",
+      "Errar a pressão final: há vácuo acima do pistão, então P_f = mg/A. Não se deve incluir pressão atmosférica nem esquecer o peso do pistão. Também é erro usar só M ou só m na pressão inicial, que é (m+M)g/A.",
+      "No item b), confundir altura máxima com posição de equilíbrio. Em h_max a velocidade é zero, mas a aceleração não: aponta para baixo e P < mg/A. Impor P = mg/A em h_max está errado.",
+      "Usar o modelo irreversível de expansão contra pressão externa constante mg/A, com ΔU = −mgΔh e equilíbrio final. Isso dá h = h_i(1 + 3M/(5m)), que é a altura de repouso final caso as oscilações sejam amortecidas, não a altura máxima. Também é erro responder h_max = h_f do item a), pois o pistão ultrapassa esse ponto.",
+      "Para usar a adiabática no item b) é preciso justificar: Q = 0, ausência de dissipação e gás quase em equilíbrio (pistão lento em comparação com a velocidade do som). A brusquidão está só na retirada da carga; depois dela o movimento é conservativo. Uma boa resolução explicita essa hipótese.",
+      "Errar o trabalho adiabático: W = (P_iV_i − PV)/(γ−1) = (3/2)(P_iV_i − PV) para gás monoatômico. Erros comuns são o sinal ou o fator γ/(γ−1).",
+      "Incluir a energia da areia no balanço. Ela é retirada instantaneamente no início e não participa.",
+      "A equação do item b) tem a raiz trivial h_max = h_i (ponto de partida), que deve ser descartada. A raiz física é a única com u = (h_max/h_i)^{1/3} > 1 e satisfaz h_max > h_f.",
+      "A resposta deve depender só de m, M e h_i. É preciso eliminar g, A, n, R e T_i usando P_iAh_i = (m+M)gh_i = nRT_i. Deixar a resposta em função de T ou de n não atende ao pedido.",
+      "Hipótese implícita: o cilindro é alto o bastante para o pistão não sair. Conferências úteis: M → 0 dá h_max → h_i, e para M ≪ m vale h_max − h_i ≈ 2(h_f − h_i)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) h_f = h_i·((m+M)/m)^{3/5}, por uma expansão adiabática quase estática com γ = 5/3. b) Pela conservação de energia, considerando a expansão adiabática do gás sem dissipação e o pistão em repouso em h_i e em h_max: m(h_max − h_i) = (3/2)(m+M)·h_i·[1 − (h_i/h_max)^{2/3}]. Com y = (h_max/h_i)^{1/3}, isso equivale a 2y⁴+2y³+2y² = 3(1+M/m)(y+1). Exemplo: para M = m, h_max ≈ 2,26 h_i.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O argumento de unicidade da raiz está errado. O candidato afirma que 2y⁴+2y³+2y² − 3(1+M/m)(y+1) é crescente para y ≥ 1, mas a derivada em y = 1 vale 18 − 3(1+M/m), que é negativa para M > 5m (com M = 10m dá −15). A conclusão continua verdadeira: a função é convexa para y > 0, porque a segunda derivada é 24y² + 12y + 4 > 0, e é negativa em y = 1. Logo há uma única raiz y > 1. Correção: justificar a unicidade pela convexidade, ou pelos valores em y = 0 e y = 1, em vez da monotonia."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'O lado esquerdo menos 3(1+M/m)(y+1)' é ambígua, porque o termo −3(1+M/m)(y+1) já faz parte do lado esquerdo da equação escrita. O candidato quis dizer 2y⁴+2y³+2y² menos 3(1+M/m)(y+1). No item a), 'o resultado é adimensional' também é impreciso: h_f tem dimensão de comprimento, e só a razão h_f/h_i é adimensional."
+          },
+          {
+            "severity": "minor",
+            "description": "A desigualdade h_max > h_f só é verificada no exemplo M = m e nos limites. Ela não é mostrada em geral, por exemplo observando que o pistão oscila em torno de h_f entre os pontos de retorno h_i e h_max. Também não aparece a hipótese implícita de que o cilindro é alto o bastante para o pistão não sair. Nenhum dos dois pontos afeta a resposta."
+          }
+        ],
+        "summary": "Conferi a transcrição com o PDF (pág. 5 do arquivo) e ela está fiel.\n\n**Item a).** A resposta h_f = h_i·((m+M)/m)^{3/5} coincide com a da referência. O candidato justifica tudo o que precisa: adiabática reversível (paredes e pistão isolantes, sem atrito, processo quase estático), γ = 5/3, P_i = (m+M)g/A e P_f = mg/A, com vácuo acima do pistão. Assim evita as armadilhas da isoterma, do γ errado e da pressão atmosférica.\n\n**Item b).** A equação m(h_max − h_i) = (3/2)(m+M)h_i[1 − (h_i/h_max)^{2/3}] é idêntica à da referência. As hipóteses estão explícitas: pistão lento em comparação com a velocidade do som, gás em equilíbrio interno, sem dissipação. O teorema da energia cinética é aplicado ao pistão com v = 0 nos dois extremos, a areia fica fora do balanço e o trabalho adiabático, −ΔU = (3/2)(p_iV_i − pV), está correto. A resposta depende só de m, M e h_i. O candidato não confunde h_max com equilíbrio nem usa o modelo de pressão externa constante. A forma polinomial com y = (h_max/h_i)^{1/3} está correta e a raiz trivial y = 1 é descartada.\n\n**Conferências numéricas** (bisseção e integração RK4 da equação m·ḧ = (m+M)g(h_i/h)^{5/3} − mg):\n- Os limites estão certos: para M ≪ m, ε ≈ 0,4M/m e h_max ≈ h_i(1 + 1,2M/m), o dobro de h_f − h_i; para M ≫ m, h_max ≈ 1,5(M/m)h_i.\n- O exemplo M = m do candidato está correto: h_max ≈ 2,256h_i e h_f = 2^{3/5}h_i ≈ 1,516h_i.\n- **A minha referência errou esse exemplo.** Na tabela dela, a linha M/m = 1 e a resposta final dão 1,616 e 1,275; os valores certos são 2,256 e 1,516. As linhas M/m = 0,05 e M/m = 5 da referência estão certas, e as equações simbólicas das duas resoluções são idênticas.\n\n**Falha encontrada.** O único erro de raciocínio está no argumento auxiliar de unicidade da raiz. Dizer que a função é crescente para y ≥ 1 é falso quando M > 5m. A conclusão vale mesmo assim, por convexidade. Há ainda pequenas imprecisões de redação.\n\n**Nota: 8,5.** A resolução é excelente e quase de nível de gabarito, mas a afirmação falsa de monotonia teria de ser corrigida antes de publicar."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "a) Retirada lenta (adiabática reversível, γ = 5/3): h_f = h_i·((m+M)/m)^{3/5}.\nb) Retirada instantânea: m(h_max − h_i) = (3/2)(m+M)·h_i·[1 − (h_i/h_max)^{2/3}].\nCom y = (h_max/h_i)^{1/3} > 1, isso equivale a 2y⁴ + 2y³ + 2y² = 3(1 + M/m)(y + 1), que tem uma única raiz y > 1.\nExemplo: para M = m, h_max ≈ 2,26·h_i.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O argumento de unicidade só olha y > 1 (convexidade, f(1) = −6M/m < 0 e f → +∞). Não comenta o intervalo 0 < y < 1. Como f(0) = −3k < 0 e f(1) < 0, a convexidade garante f < 0 em [0,1], e de qualquer modo h_max > h_i por razão física. Uma frase bastaria para fechar o argumento."
+          },
+          {
+            "severity": "minor",
+            "description": "A passagem para 2y²(y³−1) = 3k(y²−1) omite o passo intermediário de multiplicar por y² (com x = y³, x^{-2/3} = y^{-2}). Está correta, mas é um salto pequeno de álgebra."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese adiabática no item b) está bem enunciada: pistão lento frente ao som, gás em equilíbrio interno, sem dissipação. Faltou dizer de forma explícita que a única irreversibilidade é a retirada brusca da carga e que, depois dela, o movimento é conservativo. O texto diz isso implicitamente ao falar em oscilação entre h_i e h_max."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação para M ≫ m, a aproximação h_max ≈ (3/2)(M/m)h_i é só de ordem dominante. Para M/m = 5 o valor exato é 7,69h_i e a aproximação dá 7,5h_i. O texto não erra, mas poderia apresentar a expressão como assintótica, por exemplo h_max ≈ (3/2)(1+M/m)h_i a menos de correções."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (Questão 4, página 5). Ele coincide com a transcrição.\n\n**Item a)** O candidato tratou o processo como adiabático reversível, com γ = 5/3, pressão inicial (m+M)g/A e pressão final mg/A, já que há vácuo acima do pistão. Chegou a h_f = h_i[(m+M)/m]^{3/5}, igual à minha referência.\n\n**Item b)** Ele justificou a hipótese adiabática quase estática: gás em equilíbrio interno porque o pistão é lento frente ao som, e sem dissipação. Aplicou o teorema da energia cinética entre os dois pontos de repouso, sem incluir a areia, e calculou o trabalho do gás como −ΔU = (3/2)(p_iV_i − pV). Obteve m(h_max − h_i) = (3/2)(m+M)h_i[1 − (h_i/h_max)^{2/3}], idêntica à minha referência, sem g, A, n nem R.\n\nTambém fez o seguinte:\n- passou para a forma polinomial em y = (h_max/h_i)^{1/3} e cancelou a raiz trivial y = 1;\n- provou que só há uma raiz com y > 1, usando convexidade;\n- mostrou que h_max > h_f;\n- conferiu os limites M ≪ m (h_max − h_i ≈ 2(h_f − h_i)) e M ≫ m.\n\nConferi as contas com bisseção e com integração RK4 da equação de movimento m·ḧ = p_iA(h_i/h)^{5/3} − mg. Para M = m, h_max = 2,2559h_i e h_f = 2^{0,6}h_i = 1,5157h_i. **Os valores numéricos do candidato (2,26h_i e 1,52h_i) estão corretos.** Os da minha tabela de referência para M/m = 1 (1,6164 e 1,2754) estavam errados: substituir 1,6164 na equação deixa resíduo de −0,205. As linhas M/m = 0,05 e M/m = 5 da referência estão corretas. A divergência foi só nesse exemplo numérico da referência; as equações finais coincidem.\n\nTodas as armadilhas foram evitadas: isoterma, γ errado, atmosfera, P = mg/A em h_max, modelo de pressão externa constante, h_max = h_f, areia no balanço, raiz trivial e dependência em T ou n.\n\nRestam apenas imperfeições menores de rigor e exposição, listadas nos problemas. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}
