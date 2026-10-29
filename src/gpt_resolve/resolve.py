@@ -59,6 +59,9 @@ def resolve(
     output: Optional[Path] = typer.Option(None, "-o", "--output", help="Output folder for solutions"),
     provider: str = typer.Option("claude", help="Agent provider (claude, mock)"),
     model: str = typer.Option(DEFAULT_MODEL, "-m", "--model", help="Model for the solver agents"),
+    judge: bool = typer.Option(
+        True, "--judge/--no-judge", help="Review each solution with the adversarial judge (--no-judge: one solver pass only)"
+    ),
     judge_model: str = typer.Option(DEFAULT_JUDGE_MODEL, help="Model for the judge agents"),
     pass_score: float = typer.Option(PASS_SCORE, help="Minimum judge score (0-10) to approve"),
     max_rounds: int = typer.Option(MAX_ROUNDS, help="Max solve/judge rounds per question"),
@@ -79,12 +82,14 @@ def resolve(
         effort=effort,
         concurrency=concurrency,
         show_tools=not quiet,
+        judge=judge,
     )
     results, output_dir = resolve_exam(
         path, output, questions_list, "mock" if dry_run else provider, settings
     )
     if compile_pdf and results:
-        generate_solutions_pdf(output_dir, title=title, author=f"{model} (solver) + {judge_model} (judge)")
+        author = f"{model} (solver) + {judge_model} (judge)" if judge else model
+        generate_solutions_pdf(output_dir, title=title, author=author)
         typer.echo(f"PDF: {output_dir}/solutions_compiled.pdf")
 
 
