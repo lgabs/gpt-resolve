@@ -1,0 +1,47 @@
+{
+  "question": 10,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "A resposta é a (E): a coluna de (~n → ~m) é V, F, V, V. As linhas seguem a ordem usual (m,n) = (V,V), (V,F), (F,V), (F,F). A sentença só é falsa quando m é verdadeira e n é falsa. Essa coluna coincide com a de m → n, o que confirma a equivalência da contrapositiva.",
+  "judge_reference": {
+    "final_answer": "Alternativa (E): V, F, V, V. É a coluna de ~n → ~m na ordem usual das linhas (m, n) = (V,V), (V,F), (F,V), (F,F). Essa coluna é igual à de m → n.",
+    "reference_solution": "Conferi o enunciado com a prova original (Questão 10, pág. 4/12 do caderno). A transcrição está correta. As alternativas são: (A) V,V,V,F; (B) V,F,V,F; (C) V,F,F,V; (D) V,V,F,F; (E) V,F,V,V.\n\n**1) Regra usada.** O condicional p → q só é falso no caso p = V e q = F. Nos outros três casos, ele é verdadeiro.\n\n**2) Tabela-verdade.** Usei a ordem padrão: m = V,V,F,F e n = V,F,V,F.\n\n| m | n | ~m | ~n | m → n | ~n → ~m |\n|---|---|----|----|-------|---------|\n| V | V | F  | F  | V     | F → F = V |\n| V | F | F  | V  | F     | V → F = F |\n| F | V | V  | F  | V     | F → V = V |\n| F | F | V  | V  | V     | V → V = V |\n\nA coluna de ~n → ~m é **V, F, V, V**. Ela é igual à coluna de m → n, linha por linha. Isso confirma a equivalência dada no enunciado: (m → n) ⇔ (~n → ~m), ou seja, a contrapositiva equivale ao condicional original. Por isso, basta escrever a tabela do condicional m → n.\n\nOutra forma de ver: ~n → ~m ≡ ~(~n) ∨ ~m ≡ n ∨ ~m ≡ ~m ∨ n ≡ m → n. Essa expressão só é falsa quando m = V e n = F, que é a 2ª linha.\n\n**3) Conferência com as alternativas.**\n- (A) V,V,V,F é a disjunção m ∨ n.\n- (B) V,F,V,F é apenas a coluna de n.\n- (C) V,F,F,V é o bicondicional m ↔ n.\n- (D) V,V,F,F é apenas a coluna de m.\n- (E) V,F,V,V é o condicional m → n, que é igual a ~n → ~m.\n\n**4) Ordem das linhas.** O enunciado não diz a ordem das linhas. Vale a convenção usual: a primeira proposição (m) é V,V,F,F e a segunda (n) é V,F,V,F. Montar a tabela a partir de ~n, ~m na ordem usual também dá V,F,V,V. Já com a ordem (n, m) a sequência seria V,V,F,V, que não está entre as opções. Assim, a única leitura compatível com as alternativas é a convencional.\n\nConferi as tabelas com um script em Python.\n\n**Resposta: (E).**",
+    "pitfalls": [
+      "Confundir contrapositiva com recíproca (n → m) ou com inversa (~m → ~n). As duas têm a coluna V,V,F,V na ordem usual, que não está entre as opções. Quem calcula uma delas costuma marcar uma alternativa errada por aproximação.",
+      "Errar o condicional: ele só é falso em V → F. Na 2ª linha (m=V, n=F), ~n = V e ~m = F, então ~n → ~m é F. Nas linhas 3 e 4 (m=F), o antecedente ~n... é preciso olhar: na 3ª linha ~n = F, logo vale V; na 4ª linha ~n = V e ~m = V, logo vale V.",
+      "Confundir o condicional com o bicondicional e marcar (C) V,F,F,V. Na linha m=F, n=V o condicional é V, e não F.",
+      "Confundir com a disjunção m ∨ n e marcar (A) V,V,V,F, ou copiar a coluna de m (D) ou a de n (B).",
+      "Ordem das linhas: a resposta só fica determinada com a convenção usual (m: V,V,F,F; n: V,F,V,F). Uma boa resolução deve dizer qual ordem usou. Com a ordem (n, m), a sequência sai V,V,F,V, que não está nas opções.",
+      "Usar a equivalência dada sem verificá-la: o mais correto é mostrar que a coluna de ~n → ~m coincide com a de m → n, pela tabela ou pela álgebra ~n → ~m ≡ n ∨ ~m ≡ m → n."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "A resposta é a (E): a coluna de (~n → ~m) é V, F, V, V. As linhas seguem a ordem usual (m,n) = (V,V), (V,F), (F,V), (F,F). A sentença só é falsa quando m é verdadeira e n é falsa. Essa coluna coincide com a de m → n, o que confirma a equivalência da contrapositiva.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução declara a ordem usual das linhas (m,n) = VV, VF, FV, FF, mas não explica que essa convenção é necessária. Com a ordem (n,m) a coluna seria V,V,F,V, que não aparece entre as opções. Bastava uma frase dizendo isso para fechar a questão da ordem das linhas, que o enunciado não fixa."
+          },
+          {
+            "severity": "minor",
+            "description": "O descarte de (A)-(D) é genérico: diz só que elas 'erram a posição ou a quantidade de valores falsos'. Seria mais didático dizer o que cada uma representa: (A) é m∨n, (B) é a coluna de n, (C) é o bicondicional m↔n, (D) é a coluna de m. Também ajudaria lembrar que a recíproca e a inversa dão V,V,F,V. Não é obrigatório numa questão objetiva."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta a verificação algébrica, que é curta: ~n→~m ≡ n∨~m ≡ m→n. Ela deixaria a equivalência demonstrada sem depender só da tabela. A tabela já basta, então isso é opcional."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 4/12 da prova original. A transcrição e as alternativas estão corretas.\n\nA resposta do candidato é (E) V, F, V, V, igual à minha referência. Refiz a tabela com um script em Python: ~n→~m dá VFVV na ordem (m,n) usual. Na ordem (n,m) daria VVFV, que não está entre as opções.\n\n**Pontos fortes da resolução:**\n- Enuncia a regra do condicional: só é falso quando vai de V para F.\n- Declara a ordem das linhas que usa.\n- Monta a tabela completa com ~m, ~n, ~n→~m e m→n.\n- Justifica cada linha corretamente: antecedente falso nas linhas 1 e 3; V→F na linha 2; consequente verdadeiro na linha 4.\n- Verifica que as colunas de ~n→~m e de m→n coincidem, o que confirma a equivalência dada no enunciado. Não se limita a supor que ela vale.\n- Identifica corretamente a contrapositiva, sem confundi-la com a recíproca ou com a inversa.\n\n**Armadilhas:**\n- A confusão entre condicional e bicondicional, a que leva a (C), foi evitada.\n- A confusão com a recíproca ou com a inversa também foi evitada.\n- A ordem das linhas foi declarada, mas não se mostrou que outra ordem não bate com nenhuma opção.\n\n**Lacunas, todas menores:**\n- Não discute a ordem alternativa das linhas.\n- Não diz o que representam as alternativas erradas.\n- Não traz a prova algébrica da equivalência.\n\nÉ uma resolução limpa, correta e no nível de um gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "question": 28,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "(B) E = -(π² M k² q⁴ / T²)^{1/3}",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** Conferi a transcrição com a p. 12/18 do PDF (questão 28) e ela está correta: massas iguais M, q_A = +q, q_B = −2q, MCU em torno do centro de massa comum com distância fixa, U(∞) = 0. As alternativas também conferem.\n\n**1) Geometria.** Seja d a distância entre A e B. Como as massas são iguais, o centro de massa fica no ponto médio do segmento AB. As cargas não influem na posição do CM. Cada partícula descreve, portanto, uma circunferência de raio r = d/2. As duas giram com a mesma velocidade angular ω = 2π/T, porque ficam sempre diametralmente opostas em relação ao CM. O sistema é isolado, então o CM fica em repouso (referencial do CM).\n\n**2) Dinâmica (força central).** A força elétrica é atrativa e tem módulo\nF = k·|q_A·q_B|/d² = k·q·2q/d² = 2kq²/d².\nEla é a resultante centrípeta de cada partícula:\nM·ω²·(d/2) = 2kq²/d² ⟹ ω² = 4kq²/(M d³).\nCom ω = 2π/T:\nd³ = 4kq²/(Mω²) = 4kq²T²/(4π²M) = kq²T²/(π²M), logo d = (kq²T²/(π²M))^{1/3}.\n\n**3) Energias.**\n- Energia cinética, somando as duas partículas: K = 2·(1/2)·M·(ω d/2)² = Mω²d²/4. Usando Mω² = 4kq²/d³, obtém-se K = kq²/d.\n- Energia potencial, com referência no infinito: U = k·q_A·q_B/d = −2kq²/d.\n- Energia mecânica: E = K + U = kq²/d − 2kq²/d = −kq²/d.\n\nIsso concorda com o teorema do virial para forças do tipo 1/r²: E = U/2 = −K.\n\n**4) Em função de T.**\nE = −kq²/d = −kq²·(π²M/(kq²T²))^{1/3} = −(k³q⁶·π²M/(kq²T²))^{1/3}\n**E = −(π² M k² q⁴ / T²)^{1/3}**\n\n**5) Verificação.**\n- Análise dimensional: k²q⁴ tem dimensão [F²·L⁴], M/T² tem dimensão [M/T²] e F = M·L/T². Assim, M k²q⁴/T² tem dimensão F²L⁴·(F/L) = F³L³ = (energia)³. A raiz cúbica dá energia, o que confirma B. As alternativas A, C e E não têm dimensão de energia.\n- Teste numérico em python, com valores arbitrários: resolvi d pela equação de força, calculei E = K + U e comparei com cada alternativa. A razão alternativa/E vale exatamente 1 para B. Para D vale 4^{1/3} ≈ 1,587, e as demais nem têm a dimensão correta.\n\n**Alternativa correta: (B).**",
+    "final_answer": "A energia mecânica do sistema é E = −kq²/d, com d³ = kq²T²/(π²M). Em função do período, E = −(π² M k² q⁴/T²)^{1/3}, que é a alternativa (B).",
+    "pitfalls": [
+      "O raio da órbita de cada partícula é d/2, e não d. Como as massas são iguais, o CM fica no ponto médio. Quem trata uma das partículas como fixa (órbita de raio d) erra a relação entre d e T e obtém algo como −(2π²Mk²q⁴/T²)^{1/3}, que não está entre as alternativas.",
+      "O módulo da força usa |q_A·q_B| = 2q², e não q². Esquecer o fator 2 da carga −2q altera a relação d(T) e a energia potencial.",
+      "As duas partículas se movem, então a energia cinética é a soma das duas: K = 2·(1/2)M v², com v = ω d/2. Contar só a de uma delas dá E errado.",
+      "As duas partículas têm o mesmo período T (mesmo ω), porque ficam sempre em lados opostos do CM. As cargas diferentes não alteram a posição do CM, que depende só das massas.",
+      "Sinal da energia potencial: U = k·q_A·q_B/d = −2kq²/d (negativa, sistema ligado). A energia total resulta negativa: E = U/2 = −K, pelo teorema do virial para forças 1/r².",
+      "Eliminar d corretamente: d³ = kq²T²/(π²M), donde E = −kq²/d = −(π²Mk²q⁴/T²)^{1/3}. A alternativa D difere de B por um fator 4^{1/3} e é a armadilha numérica típica de quem erra o fator 4 em d³ (raio ou força).",
+      "Análise dimensional elimina A, C e E de imediato, porque não têm dimensão de energia. Só B e D são dimensionalmente consistentes, e é preciso fazer a conta para decidir entre elas."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "(B) E = -(π² M k² q⁴ / T²)^{1/3}",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A última verificação afirma que a alternativa (D) sai de usar o raio d em vez de d/2 no movimento de cada partícula. Isso é falso, e conferi numericamente. Com raio d, só uma partícula se movendo e F = 2kq²/d², vem d³ = kq²T²/(2π²M) e E = −(2π²Mk²q⁴/T²)^{1/3}, que difere de (B) por um fator 2^{1/3} e não está entre as alternativas. Com raio d e as duas partículas se movendo, E = 0. Chega-se a (D) com dois erros juntos: raio d e esquecer o fator 2 da carga (F = kq²/d², d³ = kq²T²/(4π²M) e E = −kq²/d). Num gabarito comentado, essa frase precisa ser corrigida ou retirada. Não afeta a resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução diz que as duas partículas têm a mesma velocidade angular sem explicar por quê. Bastaria uma frase: com a distância fixa e o CM fixo no ponto médio, as partículas ficam sempre diametralmente opostas, então giram com o mesmo ω. A ideia está implícita no texto, mas falta dizê-la."
+          }
+        ],
+        "summary": "Conferi o enunciado na p. 12/18 do PDF (questão 28) e a transcrição está fiel. O candidato marcou (B), E = −(π²Mk²q⁴/T²)^{1/3}, a mesma resposta da minha referência, e confirmei por conta numérica que E/B = 1. O núcleo da resolução está correto e completo. O CM fica no ponto médio, com raio d/2. A força é F = 2kq²/d², com o fator 2 da carga −2q. A relação d³ = kq²T²/(π²M) está certa. A energia cinética soma as duas partículas e dá kq²/d. A potencial tem o sinal certo: U = −2kq²/d. Daí E = −kq²/d = U/2 = −K, de acordo com o virial. A eliminação de d está correta. A análise de unidades está certa ([kq²] = J·m e [M/T²] = J/m², logo o produto tem unidade J³) e descarta A, C e E. Todas as armadilhas da minha lista foram tratadas. O único defeito real está na verificação final: o candidato diz que (D) resulta de usar o raio d em vez de d/2, mas esse erro sozinho dá o fator 2^{1/3}, e não 4^{1/3}. Para chegar a (D) é preciso errar também o fator 2 da carga. Essa afirmação falsa sobre o distrator e a falta de justificativa explícita para o ω comum são falhas menores e não afetam a resposta. Com essa frase sobre (D) corrigida, a resolução serve como gabarito comentado. Nota 9,0."
+      }
+    }
+  ]
+}

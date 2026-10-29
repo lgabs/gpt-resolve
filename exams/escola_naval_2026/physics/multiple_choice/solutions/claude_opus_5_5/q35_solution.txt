@@ -1,0 +1,51 @@
+\section*{Questão 35}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Água incompressível, escoamento ideal (sem viscosidade) e permanente, tubo cheio e de seção uniforme. O reservatório é grande, então a velocidade da superfície livre é desprezível. A pressão atmosférica $p_0$ atua sobre a superfície livre e no jato que sai em $C$. Também é a pressão externa sobre o trecho do tubo que fica fora da água. Medimos as alturas $y$ a partir do solo.
+
+\textbf{1) Velocidade no tubo.} Aplicamos Bernoulli entre a superfície livre ($y=H$, $v\approx 0$, $p=p_0$) e a saída $C$ ($y=h$, $p=p_0$):
+\[
+p_0+\rho g H = p_0+\rho g h+\tfrac12\rho v^2
+\quad\Longrightarrow\quad
+\tfrac12\rho v^2=\rho g\,(H-h).
+\]
+Pela continuidade, como a seção é uniforme, essa velocidade $v$ é a mesma em todo o tubo.
+
+\textbf{2) Pressão interna ao longo do tubo.} Em um ponto qualquer do tubo, de altura $y$, a velocidade é $v$. Então Bernoulli entre esse ponto e $C$ dá
+\[
+p(y)+\rho g y=p_0+\rho g h \quad\Longrightarrow\quad p(y)=p_0-\rho g\,(y-h).
+\]
+A pressão interna diminui com a altura. Ela é mínima no ponto mais alto, $B$, onde $y_B=H+a$:
+\[
+p_B=p_0-\rho g\,(H+a-h).
+\]
+
+\textbf{3) Ponto crítico.} No trecho fora da água, a diferença entre a pressão externa e a interna vale $p_0-p(y)=\rho g(y-h)$. O maior valor dessa diferença ocorre em $B$. No trecho submerso, a pressão externa é $p_0+\rho g(H-y)$, e a diferença fica constante:
+\[
+p_0+\rho g(H-y)-p(y)=\rho g(H-h),
+\]
+que é menor que $\rho g(H+a-h)$. Portanto o colapso, se ocorrer, começa em $B$.
+
+\textbf{4) Condição de não colapso.}
+\[
+p_0-p_B=\rho g\,(H+a-h)\le \Delta p_{\max}=25{,}0\ \text{kPa}
+\quad\Longrightarrow\quad
+h\ \ge\ H+a-\frac{\Delta p_{\max}}{\rho g}.
+\]
+Numericamente, $\dfrac{\Delta p_{\max}}{\rho g}=\dfrac{25\,000\ \text{Pa}}{1000\cdot 10\ \text{N/m}^3}=2{,}5\ \text{m}$, e então
+\[
+h_{\min}=3{,}0+1{,}5-2{,}5=2{,}0\ \text{m}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item As unidades estão corretas: $\text{Pa}/(\text{N/m}^3)=\text{m}$.
+\item Vale $h_{\min}=2{,}0\ \text{m}<H=3{,}0\ \text{m}$, como exige o enunciado. A velocidade é $v=\sqrt{2g(H-h)}=\sqrt{20}\approx 4{,}5\ \text{m/s}$, um valor razoável.
+\item Com $p_0\approx 100\ \text{kPa}$, temos $p_B\approx 75\ \text{kPa}$, muito acima da pressão de vapor da água. Portanto não há cavitação.
+\item Se $h$ diminuir, $v$ aumenta e $p_B$ cai, o que aumenta a diferença de pressão em $B$. Por isso a condição fixa um valor \emph{mínimo} de $h$.
+\end{itemize}
+
+\textbf{Alternativas.} Para $h=0{,}9$, $1{,}5$ ou $1{,}9$ m, a diferença em $B$ seria $36$, $30$ ou $26\ \text{kPa}$, todas acima de $25\ \text{kPa}$, e o tubo colapsaria. Para $h=2{,}5$ m não há colapso, mas esse não é o menor valor possível. O mínimo é $h=2{,}0$ m, que corresponde à alternativa (D).
+
+ANSWER: (D) 2,0 m

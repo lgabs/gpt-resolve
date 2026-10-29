@@ -1,0 +1,1174 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{AFA 2027 - Matemática\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}opus{-}5{-}5 (solver) + claude{-}opus{-}5{-}5 (judge)}%
+\date{October 29, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 17}
+
+\section*{Solução}
+
+\textbf{Leitura do gráfico.} Do desenho (bolinha aberta indica ponto excluído, bolinha fechada indica ponto incluído):
+\begin{itemize}
+\item em $]-5b,\,-2b]$: poligonal com $f(-5b)$ não definido (bolinha aberta), subindo de $k$ a $2k$ em $[-5b,-4b]$, descendo de $2k$ a $k$ em $[-4b,-3b]$ e subindo de $k$ a $2k$ em $[-3b,-2b]$, com $f(-2b)=2k$ (bolinha fechada);
+\item em $]-2b,\,-a[$: curva decrescente que começa em $(-2b,3k)$ (bolinha aberta, ponto excluído) e tende a $-\infty$ quando $x\to -a^{-}$. Logo os valores dessa parte formam o intervalo $]-\infty,\,3k[$;
+\item em $[-a,\,a]$: segmento horizontal $f(x)=\tfrac{5k}{2}$, com $f(-a)=\tfrac{5k}{2}$ (bolinha fechada);
+\item em $[a,\,6a[$: a curva decresce de $\tfrac{5k}{2}$ até o mínimo $-k$ em $x=\tfrac{5a}{2}$ e depois cresce, passando por $(4a,\tfrac k2)$, tendendo a $+\infty$ quando $x\to 6a^{-}$. Os valores dessa parte formam o intervalo $[-k,\,+\infty[$.
+\end{itemize}
+
+\textbf{(I) Falsa.} O ponto $x=-a$ pertence ao domínio, pois $f(-a)=\tfrac{5k}{2}$ (bolinha fechada). Portanto $A=\,]-5b,\,6a[$, e não $]-5b,\,6a[\,-\{-a\}$.
+
+\textbf{(II) Verdadeira.} Vamos procurar os pontos em que $f(x)=3k$ em cada trecho:
+\begin{itemize}
+\item na poligonal, $f(x)\le 2k<3k$; no segmento, $f(x)=\tfrac{5k}{2}<3k$; em $[a,\tfrac{5a}{2}]$, $f(x)\le\tfrac{5k}{2}<3k$;
+\item em $]-2b,-a[$, temos $f(x)<3k$, porque o ponto $(-2b,3k)$ está excluído e $f(-2b)=2k$;
+\item em $[\tfrac{5a}{2},\,6a[$, $f$ é contínua e estritamente crescente, de $-k$ até $+\infty$. Pelo teorema do valor intermediário, existe $x$ com $f(x)=3k$, e a monotonia estrita garante que ele é único.
+\end{itemize}
+Logo existe um único $x\in A$ com $f(x)=3k$.
+
+\textbf{(III) Falsa.} Como $f(x)\to+\infty$ quando $x\to 6a^{-}$, $f$ não é limitada superiormente e não tem valor máximo. (O valor $3k$ nem sequer é um limitante: $f$ assume valores maiores que $3k$ perto de $6a$.)
+
+\textbf{(IV) Falsa.} Juntando os trechos,
+\[
+\operatorname{Im}(f)\supset\,]-\infty,\,3k[\;\cup\;[-k,\,+\infty[\;=\mathbb{R},
+\]
+e portanto $\operatorname{Im}(f)=\mathbb{R}\neq[-k,\,3k[$.
+
+\textbf{(V) Falsa.} Em $[-4b,\,-3b]\subset\,]-5b,\,-2b]$ a função decresce de $2k$ para $k$. Por exemplo, $-4b<-3b$ mas $f(-4b)=2k>f(-3b)=k$. Então $f$ não é crescente nesse intervalo.
+
+\textbf{(VI) Falsa.} Para existir $f^{-1}$, $f$ precisaria ser bijetora. Porém $f$ não é injetora: $f(-4b)=f(-2b)=2k$, e todos os pontos de $[-a,a]$ têm imagem $\tfrac{5k}{2}$. Logo $f$ não admite inversa, e não faz sentido falar em assíntotas de $f^{-1}$. (Só por reflexão em torno de $y=x$ é que as retas $x=-a$ e $x=6a$ passariam a $y=-a$ e $y=6a$, mas isso não define uma função inversa.)
+
+\textbf{Conclusão.} Somente a afirmativa (II) é verdadeira. Portanto a alternativa correta é a (b), \emph{apenas uma afirmativa é verdadeira}. As alternativas (a), (c) e (d) contradizem essa contagem de exatamente uma afirmativa verdadeira.
+
+ANSWER: (B) apenas uma afirmativa é verdadeira (somente a II)%
+\newpage%
+\section*{Questão 18}
+
+\section*{Solução}
+
+\textbf{1) Condição de existência de $f$.} Para que $\log_b a$ esteja definido em $\mathbb{R}$, é preciso ter $a>0$, $b>0$ e $b\neq 1$. Aqui $a=|2x-5|$ e $b=|x-3|$:
+\[
+|2x-5|>0 \iff x\neq \tfrac{5}{2}, \qquad |x-3|>0 \iff x\neq 3, \qquad |x-3|\neq 1 \iff x\neq 2 \ \text{e}\ x\neq 4 .
+\]
+Logo, $D_f=\mathbb{R}-\left\{2,\tfrac{5}{2},3,4\right\}$.
+
+\textbf{2) Inequação $f(x)>0$.} Como $\log_b a=\dfrac{\ln a}{\ln b}$, temos $\log_b a>0$ se, e somente se, $\ln a$ e $\ln b$ têm o mesmo sinal. Ou seja, base e logaritmando ficam do mesmo lado de $1$: ou ($b>1$ e $a>1$), ou ($0<b<1$ e $0<a<1$).
+
+\emph{Caso I: $|x-3|>1$ e $|2x-5|>1$.}
+\[
+|x-3|>1 \iff x<2 \ \text{ou}\ x>4; \qquad |2x-5|>1 \iff x<2 \ \text{ou}\ x>3 .
+\]
+A interseção é $x<2$ ou $x>4$.
+
+\emph{Caso II: $0<|x-3|<1$ e $0<|2x-5|<1$.}
+\[
+0<|x-3|<1 \iff 2<x<4,\ x\neq 3; \qquad 0<|2x-5|<1 \iff 2<x<3,\ x\neq \tfrac{5}{2}.
+\]
+A interseção é $\left]2,3\right[-\left\{\tfrac{5}{2}\right\}$.
+
+Portanto,
+\[
+f(x)>0 \iff x\in \left]-\infty,2\right[\ \cup\ \left]2,\tfrac{5}{2}\right[\ \cup\ \left]\tfrac{5}{2},3\right[\ \cup\ \left]4,+\infty\right[ .
+\]
+Teste: $f(0)=\log_3 5>0$; $f(2{,}8)=\log_{0{,}2}0{,}6>0$, porque base e logaritmando são ambos menores que $1$.
+
+\textbf{3) Inequação $g(x)\le 0$.} Dividindo por $-3<0$, o sentido da desigualdade se inverte:
+\[
+-3x^2-6x+24\le 0 \iff x^2+2x-8\ge 0 \iff (x+4)(x-2)\ge 0 \iff x\le -4 \ \text{ou}\ x\ge 2 .
+\]
+
+\textbf{4) Conjunto solução $S$.} Intersectamos os resultados de 2) e 3):
+\begin{itemize}
+\item para $x\le -4$, vale $x<2$ e, portanto, $f(x)>0$; isso dá $\left]-\infty,-4\right]$;
+\item para $x\ge 2$, sobram $\left]2,\tfrac{5}{2}\right[\cup\left]\tfrac{5}{2},3\right[\cup\left]4,+\infty\right[$, porque $x=2$ anula $g$ mas está fora de $D_f$.
+\end{itemize}
+\[
+S=\left]-\infty,-4\right]\ \cup\ \left]2,\tfrac{5}{2}\right[\ \cup\ \left]\tfrac{5}{2},3\right[\ \cup\ \left]4,+\infty\right[ .
+\]
+
+\textbf{5) Complementar.} Tirando $S$ de $\mathbb{R}$:
+\[
+A=\complement_{\mathbb{R}}^{S}=\left]-4,2\right]\ \cup\ \left[3,4\right]\ \cup\ \left\{\tfrac{5}{2}\right\}.
+\]
+\emph{Conferência das extremidades.} O ponto $x=-4$ satisfaz as duas condições do sistema, pois $f(-4)=\log_7 13>0$ e $g(-4)=-48+24+24=0\le 0$. Logo $-4\in S$ e $-4\notin A$, e o intervalo de $A$ é aberto em $-4$. Os pontos $2$, $\tfrac{5}{2}$, $3$ e $4$ estão fora de $D_f$, então não pertencem a $S$ e pertencem a $A$. Um ponto interior também confere: em $x=-2$, $g(-2)=24>0$, logo $-2\notin S$ e $-2\in A$.
+
+\textbf{Alternativas.}
+\begin{itemize}
+\item (a) é falsa: contém $-10$, que está em $S$ (pois $f(-10)=\log_{13}25>0$ e $g(-10)=-216\le 0$).
+\item (b) é falsa: contém $2{,}8\in S$ e exclui $2$, $\tfrac{5}{2}$ e $-3$, que estão em $A$.
+\item (c) é falsa: contém $2{,}8\in S$ e exclui $-3{,}5$, $-2$, $2$ e $4$, que estão em $A$.
+\item (d) coincide exatamente com o conjunto $A$ obtido.
+\end{itemize}
+
+ANSWER: (D) $A=\left]-4,2\right]\cup\left[3,4\right]\cup\left\{\tfrac{5}{2}\right\}$%
+\newpage%
+\section*{Questão 19}
+
+\section*{Solução}
+
+Como o enunciado não especifica $M$, ele é o domínio natural de $g$: o conjunto dos $x$ reais para os quais as duas raízes quadradas existem em $\mathbb{R}$. Isso exige três condições:
+\begin{itemize}
+\item[(I)] $\operatorname{sen} x \neq 0$ e $\dfrac{1-\cos x}{\operatorname{sen} x}\ge 0$;
+\item[(II)] $\cos x \neq \dfrac12$ e $\dfrac{\operatorname{sen} x}{\cos x-\frac12}\ge 0$.
+\end{itemize}
+
+\textbf{Condição (I).} Para todo $x$ vale $1-\cos x\ge 0$. A igualdade $1-\cos x=0$ só ocorre quando $\cos x=1$, e aí $\operatorname{sen} x=0$, valor que está excluído. Logo, no domínio, o numerador é estritamente positivo, e o quociente só é $\ge 0$ se
+\[
+\operatorname{sen} x>0 .
+\]
+
+\textbf{Condição (II).} Pela condição (I), $\operatorname{sen} x>0$. Então o quociente $\dfrac{\operatorname{sen} x}{\cos x-\frac12}$ não se anula e só é $\ge 0$ se o denominador for positivo:
+\[
+\cos x>\frac12 .
+\]
+
+\textbf{Domínio.} Basta resolver $\operatorname{sen} x>0$ e $\cos x>\frac12$ simultaneamente. No ciclo trigonométrico, $\cos x>\frac12$ vale para $x\in\left]-\frac{\pi}{3}+2k\pi,\ \frac{\pi}{3}+2k\pi\right[$. Somando $\operatorname{sen} x>0$, sobra apenas o arco do $1^\circ$ quadrante:
+\[
+M=\bigcup_{k\in\mathbb{Z}}\left]2k\pi,\ \frac{\pi}{3}+2k\pi\right[ .
+\]
+Para os intervalos das alternativas, todos contidos em $[0,\pi/2]$, a pergunta é então se eles cabem em $\left]0,\frac{\pi}{3}\right[$.
+
+\textbf{Análise das alternativas.}
+\begin{itemize}
+\item[a)] $\left[\frac{\pi}{6},\frac{\pi}{4}\right]\subset\left]0,\frac{\pi}{3}\right[$, porque $0<\frac{\pi}{6}$ e $\frac{\pi}{4}<\frac{\pi}{3}$. Conferindo os extremos: em $x=\frac{\pi}{6}$, $\operatorname{sen} x=\frac12>0$ e $\cos x=\frac{\sqrt3}{2}>\frac12$; em $x=\frac{\pi}{4}$, $\operatorname{sen} x=\frac{\sqrt2}{2}>0$ e $\cos x=\frac{\sqrt2}{2}>\frac12$. Portanto o intervalo está \textbf{contido} em $M$.
+\item[b)] O intervalo contém $x=\frac{\pi}{2}$. Nesse ponto $\dfrac{\operatorname{sen} x}{\cos x-\frac12}=\dfrac{1}{-\frac12}=-2<0$, e a primeira raiz não existe. Não está contido.
+\item[c)] O intervalo contém $x=\frac{\pi}{3}$, ponto em que $\cos x-\frac12=0$ anula o denominador. Não está contido.
+\item[d)] Em todo o intervalo $\left]\frac{\pi}{3},\frac{\pi}{2}\right[$ temos $\operatorname{sen} x>0$ e $\cos x<\frac12$. Assim a primeira radicanda é negativa e nenhum ponto do intervalo está em $M$.
+\end{itemize}
+
+A única alternativa cujo intervalo está inteiramente contido em $M$ é a (a).
+
+ANSWER: (A) $\left[\frac{\pi}{6},\frac{\pi}{4}\right]$%
+\newpage%
+\section*{Questão 20}
+
+\section*{Solução}
+
+\textbf{Caixa.} Considerando as paredes com espessura desprezível (caixa idealizada), o interior é um paralelepípedo de $50\times 20\times 33$ (em cm). A abertura do topo mede
+\[
+(50-17-17)\times(20-2-2)=16\times 16\ \text{cm}^2 .
+\]
+
+\textbf{Critério da esfera inscrita.} Suponha que o sólido contenha uma esfera (bola) de raio $\rho$. Então:
+\begin{itemize}
+\item[(i)] para o sólido caber na caixa, é preciso que $2\rho\le 20$, pois a bola tem de caber entre duas faces opostas que distam 20 cm;
+\item[(ii)] para o sólido entrar pela abertura, é preciso que $2\rho\le 16$. De fato, o centro da bola começa fora da caixa e termina dentro dela. Como as paredes são rígidas, esse centro não pode passar por um ponto de parede (se passasse, a bola conteria pontos da parede). Logo, ele atravessa a superfície da caixa por um ponto da abertura. Nesse instante, a bola corta o plano do topo num disco de raio $\rho$, que precisa estar contido no quadrado $16\times16$. O maior disco contido nesse quadrado tem diâmetro $16$.
+\end{itemize}
+
+\textbf{a)} $4\pi R^2=1024\pi\Rightarrow R^2=256\Rightarrow R=16$. O diâmetro é $32>20$, portanto a esfera nem cabe na caixa. Falsa.
+
+\textbf{b)} No cone equilátero, a seção meridiana é um triângulo equilátero de lado $2r=g=18\sqrt3$, e a altura do cone é $h=\dfrac{g\sqrt3}{2}=27$. A esfera inscrita no cone tem como raio o inraio desse triângulo:
+\[
+\rho=\frac{h}{3}=9\ \Rightarrow\ 2\rho=18>16 .
+\]
+Por (ii), o cone não passa pela abertura. Falsa.
+
+\textbf{c)} O octaedro regular de aresta $a$ é formado por duas pirâmides quadrangulares regulares unidas pela base, um quadrado de lado $a$. As faces são triângulos equiláteros, logo o apótema lateral vale
+\[
+\frac{a\sqrt3}{2}=20\sqrt3\ \Rightarrow\ a=40 .
+\]
+Seja $O$ o centro do octaedro, $V$ um vértice da pirâmide e $M$ o ponto médio de uma aresta da base. A altura de cada pirâmide é $OV=\sqrt{VM^2-OM^2}=\sqrt{(20\sqrt3)^2-20^2}=20\sqrt2$, o que confere com o enunciado (a ``altura'' citada é a de cada pirâmide). O raio da esfera inscrita é a distância de $O$ à face, ou seja, a altura relativa à hipotenusa do triângulo retângulo $OMV$:
+\[
+\rho=\frac{OM\cdot OV}{VM}=\frac{20\cdot 20\sqrt2}{20\sqrt3}=\frac{20\sqrt6}{3}\approx 16{,}3
+\ \Rightarrow\ 2\rho\approx 32{,}7>20 .
+\]
+Por (i), o octaedro não cabe na caixa. Falsa. Mesmo que se lesse $20\sqrt2$ como a distância entre vértices opostos, teríamos $a=20$, o que contradiz o apótema dado. Ainda assim, $2\rho=\frac{20\sqrt6}{3}\approx16{,}3>16$, e o sólido não passaria pela abertura.
+
+\textbf{d)} Num prisma quadrangular regular de aresta da base $11$ e altura $h$, a diagonal satisfaz $D^2=11^2+11^2+h^2$. Logo
+\[
+(11\sqrt{11})^2=1331=242+h^2\ \Rightarrow\ h^2=1089\ \Rightarrow\ h=33\ \text{cm}.
+\]
+Conferindo: $\sqrt{1331}\approx 36{,}5$. O prisma mede $11\times 11\times 33$. Mantenha-o na vertical, com a base $11\times 11$ alinhada à abertura $16\times 16$ (folga de $2{,}5$ cm de cada lado), e baixe-o até tocar o fundo. Como $11<16$, ele passa pela abertura; como $11<20$, $11<50$ e $h=33$ é igual à altura interna, ele fica inteiramente dentro da caixa, com a face superior rente ao plano do topo. Esta é a única alternativa possível.
+
+ANSWER: (D) O prisma quadrangular regular de diagonal $11\sqrt{11}$ cm e aresta da base 11 cm.%
+\newpage%
+\section*{Questão 21}
+
+\section*{Solução}
+
+\textbf{1) Identificação da curva.} Dividindo $12x^2-63y^2=5040$ por $5040$:
+\[
+\frac{x^2}{420}-\frac{y^2}{80}=1 \qquad\left(\frac{5040}{12}=420,\ \frac{5040}{63}=80\right).
+\]
+Trata-se de uma hipérbole de centro $O=(0,0)$ com eixo real sobre o eixo $Ox$, em que $a^2=420$ e $b^2=80$. Na hipérbole vale $c^2=a^2+b^2$, logo
+\[
+c^2=420+80=500 \;\Rightarrow\; c=10\sqrt{5}.
+\]
+Os focos são $F_1=(-10\sqrt5,\,0)$ e $F_2=(10\sqrt5,\,0)$, e portanto $F_1O=c=10\sqrt5$ e $F_1F_2=2c=20\sqrt5$.
+
+\textbf{2) Posição de $D$ e $E$.} Como $D$ e $E$ são simétricos em relação a $O$, o ponto $O$ é o ponto médio de $\overline{DE}$; logo a reta $\overleftrightarrow{DE}$ passa por $O$. Por ser perpendicular a $\overleftrightarrow{F_1F_2}$ (o eixo $Ox$), essa reta é o eixo $Oy$. Assim $D=(0,k)$ e $E=(0,-k)$, com
+\[
+DE=2k=4\cdot F_1O=4c=40\sqrt5 \;\Rightarrow\; k=20\sqrt5 .
+\]
+(Os pontos $D$ e $E$ não precisam pertencer à curva; de fato a hipérbole nem corta o eixo $Oy$.)
+
+\textbf{3) Área do quadrilátero.} As diagonais $\overline{F_1F_2}$ e $\overline{DE}$ do quadrilátero $F_1DF_2E$ cortam-se ao meio em $O$ e são perpendiculares, logo $F_1DF_2E$ é um losango. Sua área é o semiproduto das diagonais:
+\[
+S=\frac{F_1F_2\cdot DE}{2}=\frac{2c\cdot 4c}{2}=4c^2=4\cdot 500=2000 .
+\]
+Conferência pela soma dos triângulos $F_1F_2D$ e $F_1F_2E$, cada um com base $20\sqrt5$ e altura $20\sqrt5$:
+\[
+S=2\cdot\frac{20\sqrt5\cdot 20\sqrt5}{2}=400\cdot 5=2000.
+\]
+
+\textbf{Conclusão.} A área vale $2000$ unidades de área, o que corresponde à alternativa b). As demais opções estão descartadas: $1000$ é a área de apenas um dos triângulos (ou o produto das diagonais dividido por $4$), $500$ é $c^2$ e $2500$ é $5c^2$.
+
+ANSWER: (B) 2000%
+\newpage%
+\section*{Questão 22}
+
+\section*{Solução}
+
+\textbf{1. Raízes de $P$.} Colocando 3 em evidência,
+\[
+P(x)=3\,(x^4-x^3+23x^2-25x-50).
+\]
+Pelo teorema das raízes racionais, testamos os divisores de $50$:
+\[
+Q(2)=16-8+92-50-50=0,\qquad Q(-1)=1+1+23+25-50=0,
+\]
+em que $Q(x)=x^4-x^3+23x^2-25x-50$. Logo $(x-2)(x+1)=x^2-x-2$ divide $Q$, e a divisão dá
+\[
+Q(x)=(x^2-x-2)(x^2+25).
+\]
+Conferindo: $(x^2-x-2)(x^2+25)=x^4-x^3+23x^2-25x-50$. Portanto as raízes são
+\[
+2,\quad -1,\quad 5i,\quad -5i,
+\]
+e seus afixos são $(2,0)$, $(-1,0)$, $(0,5)$ e $(0,-5)$.
+
+\textbf{2. Afirmativa (I).} Na convenção $\theta\in[0,2\pi[$, os argumentos principais são
+\[
+\arg 2=0,\quad \arg(5i)=\tfrac{\pi}{2},\quad \arg(-1)=\pi,\quad \arg(-5i)=\tfrac{3\pi}{2}.
+\]
+Nessa ordem, $0,\ \tfrac{\pi}{2},\ \pi,\ \tfrac{3\pi}{2}$ formam uma PA de razão $\tfrac{\pi}{2}$. Na convenção $]-\pi,\pi]$, obtemos $-\tfrac{\pi}{2},\ 0,\ \tfrac{\pi}{2},\ \pi$, que também é uma PA de razão $\tfrac{\pi}{2}$. Em qualquer das convenções, (I) é \textbf{verdadeira}.
+
+\textbf{3. Afirmativa (II).} A afirmativa só pede a \emph{existência} de um polígono com vértices nesses afixos. Considere o triângulo de vértices $(-1,0)$, $(0,5)$ e $(0,-5)$:
+\begin{itemize}
+\item o lado sobre o eixo imaginário tem comprimento $5-(-5)=10$;
+\item a altura relativa a esse lado é a distância de $(-1,0)$ ao eixo $y$, ou seja, $1$.
+\end{itemize}
+Logo
+\[
+S=\frac{10\cdot 1}{2}=5,
+\]
+e $5$ é divisor de $5$. Portanto (II) é \textbf{verdadeira}.
+
+Para comparação, as outras áreas possíveis são:
+\begin{itemize}
+\item o quadrilátero convexo, cujas diagonais perpendiculares medem $3$ e $10$: área $\tfrac{3\cdot 10}{2}=15$;
+\item os triângulos com base no eixo real (base $3$, altura $5$): área $7{,}5$;
+\item o triângulo $(2,0)$, $(0,\pm 5)$: área $10$.
+\end{itemize}
+Nenhuma delas divide $5$, mas basta um polígono para que a afirmativa seja verdadeira.
+
+\textbf{4. Afirmativa (III).} Pelas relações de Girard para $ax^4+bx^3+cx^2+dx+e$,
+\[
+\sigma_2=\sum_{i<j}x_ix_j=\frac{c}{a}=\frac{69}{3}=23.
+\]
+Conferindo com as raízes:
+\[
+2(-1)+2(5i)+2(-5i)+(-1)(5i)+(-1)(-5i)+(5i)(-5i)=-2+0+0+25=23.
+\]
+Como $23$ é primo, (III) é \textbf{verdadeira}.
+
+\textbf{Conclusão.} As três afirmativas são verdadeiras. A alternativa correta é, portanto, a (b): ``todas as afirmativas são verdadeiras''.
+
+ANSWER: (B) todas as afirmativas são verdadeiras%
+\newpage%
+\section*{Questão 23}
+
+\section*{Solução}
+
+\textbf{1) Horas voadas por aeronave.} Na primeira tabela, as linhas são as rotas e as colunas são as aeronaves. Sejam
+\[
+A=\begin{pmatrix} 6 & 12 & 1\\ 14 & 4 & 8\\ 5 & 2 & 18\end{pmatrix}
+\quad(\text{rotas}\times\text{aeronaves}),
+\qquad
+d=\begin{pmatrix}1{,}5\\ 2\\ 3\end{pmatrix}\ (\text{h por voo em cada rota}).
+\]
+Em cada rota, as horas de uma aeronave são o número de voos multiplicado pela duração de um voo. Somando sobre as três rotas, o vetor de horas total (na ordem Caravan, Phenon, Eurocopter) é $H=A^{T}d$:
+\[
+H=\begin{pmatrix} 6 & 14 & 5\\ 12 & 4 & 2\\ 1 & 8 & 18\end{pmatrix}
+\begin{pmatrix}1{,}5\\ 2\\ 3\end{pmatrix}.
+\]
+Logo:
+\begin{align*}
+\text{Caravan:}&\quad 6\cdot 1{,}5+14\cdot 2+5\cdot 3=9+28+15=52\ \text{h},\\
+\text{Phenon:}&\quad 12\cdot 1{,}5+4\cdot 2+2\cdot 3=18+8+6=32\ \text{h},\\
+\text{Eurocopter:}&\quad 1\cdot 1{,}5+8\cdot 2+18\cdot 3=1{,}5+16+54=71{,}5\ \text{h}.
+\end{align*}
+
+\textbf{2) Faixa de cada aeronave na terceira tabela.} Cuidado: na terceira tabela as colunas estão em outra ordem (Phenon, Eurocopter, Caravan). Por isso, o custo de cada aeronave deve ser lido pelo nome, e não pela posição da coluna.
+\begin{itemize}
+\item Caravan: $40<52<60$, ou seja, faixa ``entre 40 h e 60 h''. Custo: $4$ mil dólares.
+\item Phenon: $32<40$, ou seja, faixa ``abaixo de 40 h''. Custo: $3$ mil dólares.
+\item Eurocopter: $71{,}5>60$, ou seja, faixa ``acima de 60 h''. Custo: $4$ mil dólares.
+\end{itemize}
+Nenhum total coincide com os limites $40$ h ou $60$ h. Assim, não há ambiguidade de faixa.
+
+\textbf{3) Gasto total.}
+\[
+x=4+3+4=11 \ \text{(milhares de dólares)}.
+\]
+
+\textbf{Conferência.} No total, a frota voou $52+32+71{,}5=155{,}5$ h. Pelas linhas, isso também é $19\cdot 1{,}5+26\cdot 2+25\cdot 3=28{,}5+52+75=155{,}5$ h, o que confirma as contas. Além disso, $x=11$ fica entre o menor gasto possível ($3+1+2=6$) e o maior ($6+4+8=18$), como era de se esperar.
+
+Como $9\le 11<13$, a alternativa correta é a \textbf{b)}. As demais não servem: a) exige $x<9$, c) exige $x\ge 13$ e d) exige $x\ge 17$.
+
+\medskip
+ANSWER: (B) $9 \le x < 13$ \quad ($x = 11$ mil dólares)%
+\newpage%
+\section*{Questão 24}
+
+\section*{Solução}
+
+\textbf{1) Teclas disponíveis (contadas na figura).} As letras ocupam três fileiras QWERTY, com $10+9+7=26$ teclas. Os símbolos formam 3 linhas de 7 teclas, ou seja, $21$. Os algarismos são $3+3+3+1=10$ (de 0 a 9). Os três tipos de tecla formam conjuntos \emph{disjuntos}, e isso será usado no passo 4.
+
+\textbf{2) Princípio aditivo.} O dispositivo reconhece \emph{ou} a biometria facial, \emph{ou} a digital do indicador direito, \emph{ou} um código digitado. São três modos de entrar que se excluem mutuamente, então as quantidades \emph{se somam}. A face é um único reconhecimento, o que dá $1$ possibilidade. A digital é a de um único dedo, especificado no enunciado, o que dá mais $1$. Sendo $N_c$ o número de códigos,
+\[
+N = 1+1+N_c = 2+N_c .
+\]
+Isso já descarta c) e d), que \emph{multiplicam} por 2 em vez de somar.
+
+\textbf{3) Conteúdo de cada bloco (princípio multiplicativo).}
+\begin{itemize}
+\item \emph{Letras:} 3 letras distintas entre 26, ``não importando sua ordem''. Basta escolher o conjunto: $C_{26,3}=\dfrac{26\cdot25\cdot24}{3!}=2600$.
+\item \emph{Algarismos:} o plural ``pares ordenados'' nomeia o tipo de objeto, e o bloco é \emph{um} par, como confirmam todas as alternativas, que trazem $A_{10,2}$. Como o par é ordenado, $C_{10,2}=45$ está excluído. Como os algarismos são distintos, $10^2=100$ também está excluído. Fica $A_{10,2}=10\cdot 9=90$.
+\item \emph{Símbolo:} 1 entre 21, ou seja, $C_{21,1}=A_{21,1}=21$.
+\end{itemize}
+
+\textbf{4) Posição dos blocos (o passo que decide entre a) e b)).} O texto admite duas leituras.
+\begin{itemize}
+\item \emph{Formato fixo} (letras, depois algarismos, depois símbolo, como numa placa de carro). Essa leitura dá $N_c=C_{26,3}\cdot A_{10,2}\cdot 21$, que é a alternativa b). Ela é plausível, mas depende de uma hipótese que o enunciado não faz: não aparece ``nessa ordem'' nem ``seguido de''.
+\item \emph{Leitura literal.} O código é uma sequência digitada, e numa sequência a posição importa, salvo exceção declarada. O enunciado declara uma única exceção, a ordem \emph{interna} das letras. Ele exige apenas que o código \emph{contenha} os três blocos. Então os 3 blocos podem aparecer em qualquer das $P_3=3!=6$ ordens.
+\end{itemize}
+Adotamos a leitura literal, que não acrescenta hipóteses. Ela também não gera dupla contagem. Como letras, algarismos e símbolos são teclas de conjuntos disjuntos, basta olhar um código válido para identificar, sem ambiguidade, o tipo de cada tecla digitada. Disso se lê, de modo único, a ordem dos blocos, o conjunto de letras, o par ordenado e o símbolo. Por exemplo, $\text{ABC}\,12\,\#$ e $\#\,\text{ABC}\,12$ são códigos diferentes. Assim, os códigos correspondem bijetivamente às quádruplas (ordem dos blocos, conjunto de letras, par, símbolo), e
+\[
+N_c=P_3\cdot C_{26,3}\cdot A_{10,2}\cdot C_{21,1}=6\cdot2600\cdot90\cdot21=29484000 .
+\]
+\emph{Observação lateral (não é demonstração):} a notação $P_m$ é definida no enunciado e só aparece em a). Além disso, a banca usa $A_{26,3}$ em c) e d), mas em a) escreve $P_3$ separado de $C_{26,3}$. Isso é coerente com $P_3$ representar a permutação dos blocos.
+
+\textbf{5) Resultado.}
+\[
+N=2+P_3\cdot C_{26,3}\cdot A_{10,2}\cdot C_{21,1}=29484002\approx 3\cdot10^{7}.
+\]
+A ordem de grandeza é coerente: as 2 formas biométricas são desprezíveis diante do número de códigos.
+
+\textbf{Conferência das alternativas.}
+\begin{itemize}
+\item a) É exatamente a expressão obtida.
+\item b) Vale $2+C_{26,3}\cdot A_{10,2}\cdot A_{21,1}=4914002$. Corresponde à hipótese não declarada de formato fixo, pois omite $P_3$.
+\item c) e d) Como $P_3\cdot C_{26,3}=\dfrac{3!\cdot 26!}{3!\,23!}=A_{26,3}$, ambas valem $2\cdot A_{26,3}\cdot A_{10,2}\cdot21=2N_c=58968000$. Elas contam os mesmos códigos, mas trocam a soma dos casos exclusivos por um produto. Além disso, como $A_{21,1}=C_{21,1}$, c) e d) são numericamente iguais, então nenhuma delas poderia ser a única correta.
+\end{itemize}
+Portanto, a alternativa correta é a).
+
+ANSWER: (A) $2 + P_3\cdot C_{26,3}\cdot A_{10,2}\cdot C_{21,1}$%
+\newpage%
+\section*{Questão 25}
+
+\section*{Solução}
+
+\textbf{1) Raízes de $P$.} Os coeficientes de $P$ são reais. Então, se $1-i\sqrt{3}$ é raiz, a conjugada $1+i\sqrt{3}$ também é. Logo $P$ é divisível por
+\[
+\bigl(x-1+i\sqrt{3}\bigr)\bigl(x-1-i\sqrt{3}\bigr)=(x-1)^2+3=x^2-2x+4 .
+\]
+Escrevemos $P(x)=-(x^4+10x^2-12x+40)$ e dividimos:
+\[
+x^4+10x^2-12x+40=(x^2-2x+4)(x^2+2x+10).
+\]
+(Conferência: $x^4+2x^3+10x^2-2x^3-4x^2-20x+4x^2+8x+40=x^4+10x^2-12x+40$.)
+
+As raízes de $x^2+2x+10=0$ são $x=\dfrac{-2\pm\sqrt{4-40}}{2}=-1\pm 3i$.
+
+\textbf{2) O polígono.} Os afixos das raízes são
+\[
+A(1,\sqrt{3}),\quad B(1,-\sqrt{3}),\quad C(-1,-3),\quad D(-1,3).
+\]
+Os lados $AB$ (sobre a reta $x=1$) e $DC$ (sobre a reta $x=-1$) são verticais, portanto paralelos. Seus comprimentos são $AB=2\sqrt{3}$ e $DC=6$. A distância entre eles é $h=2$. O quadrilátero $ABCD$ é, assim, um trapézio isósceles, simétrico em relação ao eixo real. O menor lado paralelo é $AB$, e o eixo de rotação é a reta $x=1$.
+
+\textbf{3) O sólido.} Considere o retângulo $[-1,1]\times[-3,3]$. Ele é formado pelo trapézio mais dois triângulos retângulos congruentes. O triângulo superior tem vértices $(1,\sqrt{3})$, $(1,3)$ e $(-1,3)$: um cateto fica sobre o eixo e mede $3-\sqrt{3}$; o outro é horizontal e mede $2$. O triângulo inferior é simétrico a ele.
+
+Ao girar em torno da reta $x=1$:
+\begin{itemize}
+\item o retângulo gera um cilindro de raio $R=2$ (distância do eixo a $DC$) e altura $6$;
+\item cada triângulo gera um cone de raio $2$ e altura $3-\sqrt{3}$, com vértice em $A$ (ou em $B$).
+\end{itemize}
+O sólido pedido é, portanto, o cilindro menos dois cones:
+\[
+V=\pi\cdot 2^2\cdot 6-2\cdot\frac{1}{3}\pi\cdot 2^2\,(3-\sqrt{3})
+=24\pi-8\pi+\frac{8\pi\sqrt{3}}{3}
+=16\pi+\frac{8\pi\sqrt{3}}{3}.
+\]
+\[
+\boxed{V=8\pi\left(2+\frac{\sqrt{3}}{3}\right)\approx 64{,}8\ \text{u.v.}}
+\]
+
+\textbf{4) Verificação por Pappus--Guldin.} A área do trapézio é $S=\dfrac{(6+2\sqrt{3})\cdot 2}{2}=6+2\sqrt{3}$. Num trapézio de bases $a$ e $b$ e altura $h$, a distância do centroide à base $a$ é $d=\dfrac{h(a+2b)}{3(a+b)}$. Com $a=2\sqrt{3}$ (a base sobre o eixo) e $b=6$:
+\[
+d=\frac{2(2\sqrt{3}+12)}{3(6+2\sqrt{3})}.
+\]
+Pelo teorema de Pappus--Guldin,
+\[
+V=2\pi d\,S=\frac{4\pi(12+2\sqrt{3})}{3}=16\pi+\frac{8\pi\sqrt{3}}{3}.
+\]
+O resultado coincide com o do item 3.
+
+\textbf{5) Ordem de grandeza e alternativas.} O volume deve ser menor que o do cilindro, $24\pi\approx 75{,}4$, e maior que $16\pi\approx 50{,}3$. De fato, $V\approx 64{,}8$. As outras alternativas valem aproximadamente $31{,}9$ (b), $29{,}0$ (c) e $13{,}7$ (d), e nenhuma é igual a $V$. Portanto a correta é a alternativa a).
+
+ANSWER: (A) $8\pi\left(2+\frac{\sqrt{3}}{3}\right)$%
+\newpage%
+\section*{Questão 26}
+
+\section*{Solução}
+
+\textbf{1. Propriedades da curva logística.} Seja $f(t)=\dfrac{L}{1+e^{-k(t-t_0)}}$, com $L>0$ e $k>0$.
+
+\emph{(i) Imagem e assíntotas.} Como $e^{-k(t-t_0)}>0$ para todo $t$, o denominador é maior que $1$. Logo
+\[
+0<f(t)<L,\qquad \lim_{t\to-\infty}f(t)=0,\qquad \lim_{t\to+\infty}f(t)=L .
+\]
+A imagem é $]0,L[$ e a amplitude da variação é $L$. É isso que mostra o exemplo: $L=6$, $t_0=0$, $f(0)=3$, com a curva entre $0$ e $6$. O enunciado escreve $]-L,L[$, mas isso contradiz a própria lei e o exemplo. Em particular, $f$ tem sempre o sinal de $L$ e \textbf{nunca muda de sinal}.
+
+\emph{(ii) Inflexão e simetria.} Com $u=e^{-k(t-t_0)}>0$:
+\[
+f'(t)=\frac{Lk\,u}{(1+u)^2}>0,\qquad f''(t)=\frac{Lk^2\,u\,(u-1)}{(1+u)^3}.
+\]
+$f''$ só muda de sinal em $u=1$, isto é, em $t=t_0$, onde $f(t_0)=\dfrac{L}{2}$. Além disso, para todo $h$,
+\[
+f(t_0+h)+f(t_0-h)=\frac{L}{1+e^{-kh}}+\frac{L}{1+e^{kh}}=L .
+\]
+Portanto a curva é simétrica em relação ao ponto $\left(t_0,\tfrac{L}{2}\right)$. Nesse ponto $|f'|$ é máximo e, depois dele, $|f'|$ diminui até $0$. Por isso, a partir de $t_0$ a curva \emph{tende a se estabilizar}.
+
+\emph{(iii) Decrescimento.} Para descrever um decrescimento com taxa $k>0$, basta trocar o sinal do expoente:
+\[
+g(t)=\frac{L}{1+e^{k(t-t_0)}}=L-f(t).
+\]
+$g$ é decrescente, vale $L$ quando $t\to-\infty$ e $0$ quando $t\to+\infty$. A imagem continua sendo $]0,L[$ e a inflexão continua em $\left(t_0,\tfrac{L}{2}\right)$.
+
+\textbf{2. Tradução dos dados.}
+\begin{itemize}
+\item ``observada a partir de seu decrescimento'': a curva é decrescente, do tipo $g$.
+\item ``amplitude de $70000$ indivíduos'': a imagem $]0,L[$ tem amplitude $L$, logo $L=70000$, ou seja, $70$ milhares. A população fica entre $0$ e $70$ mil, portanto nunca é negativa, como deve ser.
+\item ``tendência à estabilização a partir de $10$ anos'': o ponto de inflexão é $t_0=10$, com $g(10)=\dfrac{70}{2}=35$ mil.
+\end{itemize}
+Modelo (em milhares):
+\[
+P(t)=\frac{70}{1+e^{k(t-10)}},\quad k>0.
+\]
+Conferência: $P(0)=\dfrac{70}{1+e^{-10k}}\in\,]35,70[$, de modo que a curva corta o eixo vertical entre $35$ e $70$.
+
+\textbf{3. Análise das alternativas.}
+\begin{itemize}
+\item[a)] É decrescente, mas varia de $35$ a $-35$ e anula-se em $t=10$. Isso é impossível para uma logística, que não muda de sinal e tem $f(t_0)=L/2\neq 0$. Também não faz sentido para uma população, que não pode ter valor negativo.
+\item[b)] Tem os mesmos defeitos de (a) e, além disso, é crescente.
+\item[c)] Tem a forma correta (de $0$ a $70$, com inflexão à meia altura em $t=10$), mas é \emph{crescente}, o que contradiz o decrescimento.
+\item[d)] É decrescente, vai da assíntota $70$ até valores próximos de $0$ e tem inflexão em $(10,\,35)$, à meia altura. É exatamente o gráfico de $P(t)$.
+\end{itemize}
+
+Portanto, o gráfico que representa a suposição é o da alternativa (d).
+
+ANSWER: (D)%
+\newpage%
+\section*{Questão 27}
+
+\section*{Solução}
+
+Em cada caso calculamos a área cinza da figura de cima ($N$) e a da figura de baixo ($D$), e fazemos $Q=N/D$.
+
+\subsection*{Cálculo de $Q_1$ (retângulos)}
+Em cima há 2 fileiras de 4 círculos de diâmetro $2r$, tangentes entre si e aos lados. Logo o retângulo mede $8r\times 4r$. Embaixo, os 2 círculos de diâmetro $4r$ ocupam o mesmo retângulo $8r\times 4r$. Então
+\[
+N_1=32r^2-8\pi r^2,\qquad D_1=32r^2-2\pi(2r)^2=32r^2-8\pi r^2
+\quad\Longrightarrow\quad Q_1=1 .
+\]
+
+\subsection*{Cálculo de $Q_2$ (triângulos equiláteros de lado $\ell$)}
+A área do triângulo é $A=\frac{\sqrt3}{4}\ell^2$ e o raio do círculo inscrito é $R=\frac{\ell\sqrt3}{6}$, de modo que $\pi R^2=\frac{\pi\ell^2}{12}$.
+
+\emph{Raio $\rho$ dos círculos dos vértices.} Sejam $V$ um vértice e $I$ o incentro. A bissetriz $VI$ forma $30^\circ$ com os lados, e a distância de $I$ aos lados vale $R$. Então $R=VI\,\sin 30^\circ$, ou seja, $VI=2R$. O círculo pequeno também é tangente aos dois lados que saem de $V$, logo seu centro $J$ está sobre $VI$, com $VJ=2\rho$. Como ele é tangente externamente ao círculo inscrito,
+\[
+IJ=R+\rho \quad\text{e}\quad IJ=VI-VJ=2R-2\rho\;\Longrightarrow\;\rho=\frac{R}{3}.
+\]
+Na figura de baixo, o círculo inscrito também é cinza; só os três círculos pequenos são brancos. Assim:
+\[
+N_2=A-\pi R^2=\frac{\ell^2(3\sqrt3-\pi)}{12},\qquad
+D_2=A-3\pi\frac{R^2}{9}=\frac{\sqrt3\,\ell^2}{4}-\frac{\pi\ell^2}{36}=\frac{\ell^2(9\sqrt3-\pi)}{36},
+\]
+\[
+Q_2=\frac{3(3\sqrt3-\pi)}{9\sqrt3-\pi}\approx\frac{3\cdot 2{,}0546}{12{,}4469}\approx 0{,}495 .
+\]
+
+\subsection*{Cálculo de $Q_3$ (hexágonos regulares de lado $m$)}
+A área do hexágono é $H=6\cdot\frac{\sqrt3}{4}m^2=\frac{3\sqrt3}{2}m^2$ e o apótema é $a=\frac{m\sqrt3}{2}$. O círculo inscrito tem área $\pi a^2=\frac{3\pi m^2}{4}$. Logo
+\[
+N_3=\frac{3\sqrt3}{2}m^2-\frac{3\pi}{4}m^2 .
+\]
+\emph{Raio $\rho'$ dos 6 círculos do anel.} Por simetria, o centro de cada círculo fica sobre o apótema do lado ao qual ele é tangente, a uma distância $d=a-\rho'$ do centro $O$. Os centros $C_1$ e $C_2$ de dois círculos vizinhos satisfazem $OC_1=OC_2=d$ e $C_1\hat{O}C_2=60^\circ$. Portanto o triângulo $OC_1C_2$ é equilátero e $C_1C_2=d$. A tangência entre vizinhos exige $C_1C_2=2\rho'$. Assim,
+\[
+a-\rho'=2\rho'\;\Longrightarrow\;\rho'=\frac a3=\frac{m\sqrt3}{6},\qquad 6\pi\rho'^2=6\pi\frac{m^2}{12}=\frac{\pi m^2}{2}.
+\]
+Os círculos ficam de fato dentro do hexágono: a distância de cada centro a um lado adjacente é $a-2\rho'\cos 60^\circ=2\rho'>\rho'$. Então
+\[
+D_3=\frac{3\sqrt3}{2}m^2-\frac{\pi}{2}m^2,\qquad
+Q_3=\frac{6\sqrt3-3\pi}{6\sqrt3-2\pi}\approx\frac{10{,}3923-9{,}4248}{10{,}3923-6{,}2832}=\frac{0{,}9675}{4{,}1091}\approx 0{,}235 .
+\]
+
+\subsection*{Comparação}
+\[
+Q_3\approx 0{,}235\;<\;Q_2\approx 0{,}495\;<\;Q_1=1 .
+\]
+Verificação de coerência: em $Q_2$ e $Q_3$ a figura de baixo tem menos área branca do que a de cima. Seu denominador é, portanto, maior que o numerador, e por isso $Q_2<1$ e $Q_3<1$. Em $Q_1$, as áreas brancas são iguais ($8\pi r^2$), o que dá $Q_1=1$.
+
+Exame das alternativas:
+\begin{itemize}
+\item a) é falsa, pois $Q_1\neq Q_3$;
+\item c) é falsa, pois $Q_3<Q_1$;
+\item d) é falsa, pois $Q_3<Q_2$;
+\item b) é a única compatível com os valores obtidos.
+\end{itemize}
+
+ANSWER: (B) $Q_3<Q_2<Q_1$%
+\newpage%
+\section*{Questão 28}
+
+\section*{Solução}
+
+\textbf{Variáveis.} Seja $x$ o número de caixas de cápsulas .38 e $y$ o número de caixas de cápsulas 9 mm Luger, com $x, y \in \mathbb{N}$ (logo $x \ge 0$ e $y \ge 0$).
+
+\textbf{1) Restrição de quantidade de tiros.} Cada caixa .38 tem 165 cápsulas e cada caixa 9 mm tem 231. Como são necessários \emph{ao menos} 3003 tiros,
+\[
+165x + 231y \ge 3003 .
+\]
+Note que $165 = 33 \cdot 5$, $231 = 33 \cdot 7$ e $3003 = 33 \cdot 91$. Dividindo por $33 > 0$ (o sentido da desigualdade se mantém):
+\[
+5x + 7y \ge 91 \quad\Longleftrightarrow\quad 5x + 7y - 91 \ge 0 .
+\]
+
+\textbf{2) Restrição de custo.} Cada caixa .38 custa R\$ 660,00 e cada caixa 9 mm custa R\$ 4840,00. Como o gasto \emph{não pode ultrapassar} R\$ 26000,00,
+\[
+660x + 4840y \le 26000 .
+\]
+Como $660 = 20 \cdot 33$, $4840 = 20 \cdot 242$ e $26000 = 20 \cdot 1300$, dividindo por $20 > 0$:
+\[
+33x + 242y \le 1300 \quad\Longleftrightarrow\quad 33x + 242y - 1300 \le 0 .
+\]
+
+\textbf{3) Sistema.} Todo par $(x, y)$ que atende às necessidades do teste satisfaz simultaneamente
+\[
+\begin{cases}
+33x + 242y - 1300 \le 0 \\
+5x + 7y - 91 \ge 0
+\end{cases}
+\]
+que é exatamente o sistema da alternativa (a). Ele traduz as duas exigências: a primeira inequação é a do orçamento e a segunda é a do número mínimo de tiros. Esse conjunto não é vazio. Por exemplo, $(x, y) = (19, 0)$ dá $165 \cdot 19 = 3135 \ge 3003$ tiros e custa $660 \cdot 19 = 12540 \le 26000$ reais.
+
+\textbf{Análise das demais alternativas.}
+\begin{itemize}
+\item (c) inverte os dois sentidos: exigiria gasto de pelo menos R\$ 26000,00 e no máximo 3003 tiros. O par viável $(19, 0)$ não a satisfaz, pois $33 \cdot 19 - 1300 = -673 < 0$.
+\item (d) exige $5x + 7y \ge 1300$. Para um par viável, porém, $5x + 7y \le 33x + 242y \le 1300$ e $33x + 242y \ge 6{,}6\,(5x + 7y) \ge 6{,}6 \cdot 91 > 91$. Assim, $33x + 242y - 91 \le 0$ falha sempre e nenhum par viável satisfaz (d).
+\item (b) troca os coeficientes entre as restrições e não traduz as condições do problema. Pelas mesmas desigualdades do item anterior, todo par viável satisfaz (b). Porém (b) é muito mais fraca: o par $(0, 1)$ satisfaz (b), já que $242 - 91 \ge 0$ e $7 - 1300 \le 0$, mas fornece só 231 tiros. Portanto (b) não descreve as necessidades do teste.
+\end{itemize}
+
+Assim, o sistema que modela as condições do teste (mínimo de 3003 tiros e gasto de no máximo R\$ 26000,00) é o da alternativa (a).
+
+ANSWER: (A) $\begin{cases} 33x + 242y - 1300 \le 0 \\ 5x + 7y - 91 \ge 0 \end{cases}$%
+\newpage%
+\section*{Questão 29}
+
+\section*{Solução}
+
+\textbf{1) Valores de $m$ e $|t|$.} Como $-1 \le \operatorname{sen}(p+qx) \le 1$ e $f$ não é constante (logo $t \neq 0$), a imagem de $f$ é $[m-|t|,\, m+|t|]$. Pelo gráfico, o mínimo é $1$ (em $x=-\tfrac{3}{4}$) e o máximo é $5$ (em $x=\tfrac{9}{4}$). Então
+\[
+m-|t| = 1,\qquad m+|t| = 5 \;\Longrightarrow\; m = 3,\quad |t| = 2 .
+\]
+Assim, $m = 3$ é o valor da linha média e devemos calcular $f(m)-m = f(3)-3$.
+
+\textbf{2) Período e $|q|$.} A figura mostra um período completo, de $x=-\tfrac{9}{4}$ a $x=\tfrac{15}{4}$:
+\[
+P = \frac{15}{4}-\left(-\frac{9}{4}\right) = 6 = \frac{2\pi}{|q|} \;\Longrightarrow\; |q| = \frac{\pi}{3}.
+\]
+(Confere com o gráfico: do mínimo, em $-\tfrac34$, ao máximo, em $\tfrac94$, passa meio período, $3$.)
+
+\textbf{3) Lei de $f$ escrita a partir do máximo.} Usando $\operatorname{sen}\theta=\cos\!\left(\theta-\tfrac{\pi}{2}\right)$, $-\cos\alpha=\cos(\alpha+\pi)$ e a paridade do cosseno, qualquer que seja o sinal de $t$ e de $q$ podemos escrever
+\[
+t\,\operatorname{sen}(p+qx) = 2\cos\!\left(\frac{\pi}{3}x+\varphi\right)
+\]
+para algum $\varphi\in\mathbb{R}$. O máximo $f=5$ ocorre em $x=\tfrac{9}{4}$, logo $\cos\!\left(\tfrac{\pi}{3}\cdot\tfrac{9}{4}+\varphi\right)=1$, isto é, $\varphi=-\tfrac{3\pi}{4}+2k\pi$. Portanto
+\[
+f(x) = 3 + 2\cos\!\left(\frac{\pi}{3}\left(x-\frac{9}{4}\right)\right).
+\]
+Verificação com a figura: $f\!\left(-\tfrac94\right)=3+2\cos\!\left(-\tfrac{3\pi}{2}\right)=3$; $f\!\left(-\tfrac34\right)=3+2\cos(-\pi)=1$; $f\!\left(\tfrac{15}{4}\right)=3+2\cos\!\left(\tfrac{\pi}{2}\right)=3$. Todos conferem.
+
+\textbf{4) Cálculo de $f(m)-m$.} Com $m=3$:
+\[
+f(3) = 3 + 2\cos\!\left(\frac{\pi}{3}\cdot\frac{3}{4}\right) = 3 + 2\cos\frac{\pi}{4} = 3 + 2\cdot\frac{\sqrt{2}}{2} = 3+\sqrt{2}.
+\]
+Logo
+\[
+f(m) - m = \sqrt{2} \approx 1{,}41 .
+\]
+É coerente com o gráfico: $x=3$ está no trecho descendente entre o máximo ($x=\tfrac94$) e o ponto $\left(\tfrac{15}{4},3\right)$, então $3<f(3)<5$.
+
+\textbf{5) Escolha da alternativa.} Como $1 \le 2 < \tfrac{9}{4}$, temos $1 \le \sqrt{2} < \tfrac{3}{2}$, ou seja, $\sqrt{2}\in\left[1,\tfrac{3}{2}\right[$. Isso exclui (a) e (b), cujos limites superiores são menores que $1$, e também (d), porque $\sqrt{2}<\tfrac32$. A alternativa correta é a (c).
+
+ANSWER: (C) $f(m)-m=\sqrt{2}\in\left[1,\tfrac{3}{2}\right[$%
+\newpage%
+\section*{Questão 30}
+
+\section*{Solução}
+
+\textbf{Dados de $f$.} Como $f$ é do 2º grau com raízes $x_1<x_2$ e concavidade para baixo,
+\[
+f(x)=a(x-x_1)(x-x_2),\qquad a<0,
+\]
+com vértice $V=(x_v,y_v)$, $x_v<0$, $y_v>0$, e $f(0)=c>1$. Como $y_v$ é o valor máximo de $f$ e $0\neq x_v$, temos $c=f(0)<y_v$, ou seja, $y_v-c>0$.
+
+\textbf{1) $g(x)=-c\cdot f(x)$.} Multiplicar por $-c$ (com $c>1$) reflete o gráfico em relação ao eixo $x$ e o dilata verticalmente pelo fator $c$:
+\begin{itemize}
+\item $g(x)=0 \iff f(x)=0$. Então as raízes continuam sendo $x_1$ e $x_2$, e o eixo de simetria continua sendo $x=x_v<0$;
+\item o coeficiente líder é $-ca>0$, logo a concavidade é para cima;
+\item o vértice é $(x_v,-c\,y_v)$, no 3º quadrante, e $g(0)=-c^2<0$.
+\end{itemize}
+Entre os seis gráficos, o único com concavidade para cima, raízes $x_1$ e $x_2$ e vértice de abscissa $x_v<0$ abaixo do eixo $x$ é o \textbf{(4)}. Os gráficos (1), (2), (5) e (6) têm concavidade para baixo. O (3) tem raízes $-x_2$ e $-x_1$ e vértice de abscissa $-x_v>0$; ele representa $-f(-x)$.
+
+\emph{Observação:} as cotas escritas em (4), $-y_v$ e $-c$, seriam exatas para $-f(x)$. Para $g$, essas ordenadas ficam multiplicadas por $c$: vértice em $-c\,y_v$ e intercepto em $-c^2$. A ordem relativa se mantém, pois $-c^2>-c\,y_v$. Como as raízes, o eixo de simetria e a concavidade não mudam, a correspondência é $g\leftrightarrow(4)$.
+
+\textbf{2) $h(x)=-c+f(x)$.} É uma translação vertical de $c$ unidades para baixo:
+\begin{itemize}
+\item o vértice é $(x_v,\,y_v-c)$, com $y_v-c>0$, ou seja, ainda acima do eixo $x$;
+\item a concavidade continua para baixo;
+\item $h(0)=f(0)-c=0$, logo o gráfico passa pela origem;
+\item pela simetria em torno de $x=x_v$, as raízes são $0$ e $2x_v$. Elas ficam entre $x_1$ e $x_2$, pois são as soluções de $f(x)=c>0$, e $f>0$ só em $]x_1,x_2[$.
+\end{itemize}
+Isso corresponde ao gráfico \textbf{(6)}: vértice $(x_v,y_v-c)$ pouco acima do eixo, passando pela origem, com raízes entre $x_1$ e $x_2$. O gráfico (5) não serve, porque tem vértice sobre o eixo $x$ e intercepto $-c$, enquanto $h(0)=0$.
+
+\textbf{3) $j(x)=f(x-c)$.} Substituir $x$ por $x-c$ translada o gráfico horizontalmente $c$ unidades para a direita ($c>0$):
+\[
+V_j=(x_v+c,\;y_v),\qquad \text{raízes } x_1+c \text{ e } x_2+c,
+\]
+com a mesma concavidade (para baixo) e a mesma ordenada máxima $y_v$. Isso é exatamente o gráfico \textbf{(1)}. O gráfico (2) tem vértice de abscissa $-x_v$, que corresponde a uma reflexão em relação ao eixo $y$, e não a uma translação.
+
+\textbf{Conclusão.}
+\[
+g\leftrightarrow(4),\qquad h\leftrightarrow(6),\qquad j\leftrightarrow(1)
+\quad\Longrightarrow\quad 4+6+1=11.
+\]
+A soma é $11$, que corresponde à alternativa c). As demais alternativas exigiriam associar $g$ a (2), (3) ou (5). Isso é impossível, pois esses gráficos têm concavidade para baixo ou raízes diferentes de $x_1$ e $x_2$.
+
+ANSWER: (C) 11%
+\newpage%
+\section*{Questão 31}
+
+\section*{Solução}
+
+\textbf{Leitura do gráfico.} As horas voadas pelas aeronaves 1 a 8 são, respectivamente,
+\[
+7,\quad 10,\quad 8,\quad 5,\quad 3,\quad 5,\quad 8,\quad 2 \ \text{(em horas)}.
+\]
+
+\textbf{1) Média aritmética.}
+\[
+\bar{x}=\frac{7+10+8+5+3+5+8+2}{8}=\frac{48}{8}=6\ \text{h}.
+\]
+
+\textbf{2) Desvios e seus quadrados.} Os desvios $x_i-\bar{x}$ são
+\[
+1,\quad 4,\quad 2,\quad -1,\quad -3,\quad -1,\quad 2,\quad -4 .
+\]
+A soma deles é $0$, o que confere a média. Os quadrados dos desvios são
+\[
+1,\quad 16,\quad 4,\quad 1,\quad 9,\quad 1,\quad 4,\quad 16,
+\qquad
+\sum_{i=1}^{8}(x_i-\bar{x})^2=52 .
+\]
+
+\textbf{3) Variância e desvio padrão.} Os dados abrangem todas as 8 aeronaves do esquadrão, ou seja, toda a população. Usamos então a variância populacional:
+\[
+\sigma^2=\frac{52}{8}=6{,}5\ \text{h}^2,
+\qquad
+\sigma=\sqrt{6{,}5}\ \text{h}.
+\]
+
+\textbf{4) Estimativa de $\sigma$.} Como $2^2=4<6{,}5<9=3^2$, temos $2<\sigma<3$. Logo os valores dos dados mais próximos de $\sigma$ só podem ser $2$ h (aeronave 8) ou $3$ h (aeronave 5). O valor $\sigma$ fica mais perto de $3$ do que de $2$ exatamente quando $\sigma>2{,}5$, isto é, quando $\sigma^2>6{,}25$. Isso vale, pois $6{,}5>6{,}25$. Numericamente, $\sigma\approx 2{,}55$ h e
+\[
+|3-2{,}55|\approx 0{,}45 \;<\; |2-2{,}55|\approx 0{,}55 .
+\]
+Os demais valores (5, 7, 8 e 10 h) estão a mais de $2$ h de $\sigma$.
+
+\textbf{Verificação.} Se usássemos o desvio padrão amostral, teríamos $s=\sqrt{52/7}\approx 2{,}73$ h. O valor mais próximo continuaria sendo $3$ h, então a conclusão não depende da convenção adotada.
+
+\textbf{Conclusão.} A aeronave cujas horas voadas mais se aproximam do desvio padrão ($\approx 2{,}55$ h) é a de número 5, com 3 h. Isso corresponde à alternativa c). As outras alternativas falham: a aeronave 1 tem 7 h, as aeronaves 3 e 7 têm 8 h, e as aeronaves 4 e 6 têm 5 h. Todos esses valores estão muito mais distantes de $\sigma$.
+
+ANSWER: (C) aeronave 5%
+\newpage%
+\section*{Questão 32}
+
+\section*{Solução}
+
+\textbf{Modelo.} Nascem 2 machos para cada 3 fêmeas, ou seja, de cada 5 nascimentos, 3 são fêmeas. Se um animal do rebanho é escolhido ao acaso,
+\[
+P(\text{fêmea})=\frac{3}{5},\qquad P(\text{macho})=\frac{2}{5}.
+\]
+Consideramos o rebanho grande. Assim, os sexos dos $n$ animais da amostra são tratados como independentes, e cada um tem as probabilidades acima (é a hipótese implícita no enunciado, já que os logaritmos dados envolvem $\tfrac{2}{5}$).
+
+\textbf{Evento complementar.} ``Pelo menos uma fêmea'' é o complementar de ``todos os $n$ animais são machos''. Pela independência,
+\[
+P(\text{pelo menos uma fêmea}) = 1-\left(\frac{2}{5}\right)^{n}.
+\]
+Queremos
+\[
+1-\left(\frac{2}{5}\right)^{n} > 0{,}95 \iff \left(\frac{2}{5}\right)^{n} < 0{,}05=\frac{1}{20}.
+\]
+
+\textbf{Uso dos logaritmos.} A função $\log$ (base 10) é crescente. Aplicando-a aos dois membros, positivos, a desigualdade se mantém:
+\[
+n\log\frac{2}{5} < \log\frac{1}{20} \iff -0{,}4\,n < -1{,}3 .
+\]
+Ao dividir por $-0{,}4<0$, o sentido da desigualdade se inverte:
+\[
+n > \frac{1{,}3}{0{,}4} = 3{,}25 .
+\]
+Como $n\in\mathbb{N}^*$, o menor valor possível é $n=4$.
+
+\textbf{Verificação direta.}
+\[
+n=3:\ \left(\tfrac{2}{5}\right)^{3}=\tfrac{8}{125}=0{,}064>0{,}05 \ \Rightarrow\ P=0{,}936<95\% \quad(\text{não serve});
+\]
+\[
+n=4:\ \left(\tfrac{2}{5}\right)^{4}=\tfrac{16}{625}=0{,}0256<0{,}05 \ \Rightarrow\ P=0{,}9744>95\% \quad(\text{serve}).
+\]
+Com $n=4$ a probabilidade passa de $95\%$, e com $n=3$ ainda não passa. Portanto o tamanho mínimo da amostra é $4$, o que corresponde à alternativa c). As alternativas a) e b) dão probabilidades de no máximo $93{,}6\%$. A alternativa d) também cumpre a condição, mas não é a mínima.
+
+ANSWER: (C) 4%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 17: nota 9,3 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Só a afirmativa (II) é verdadeira; as outras são falsas.\newline%
+{-} (I) F: -a $\in$ A, pois f(-a) = 5k/2. Logo A = {]}-5b, 6a{[}.\newline%
+{-} (II) V: o valor 3k é atingido exatamente uma vez, em x$_{0}$ $\in$ {]}4a, 6a{[}, no ramo crescente que tende a +$\infty$.\newline%
+{-} (III) F: f não tem máximo.\newline%
+{-} (IV) F: Im = $\mathbb{R}$.\newline%
+{-} (V) F: f decresce em {[}-4b, -3b{]}.\newline%
+{-} (VI) F: f não é injetora, então f$^{-}$$^{1}$ não existe.\newline%
+\newline%
+Alternativa **b) apenas uma afirmativa é verdadeira**.\par %
+Conferi o enunciado e a figura no PDF original, inclusive com ampliação a 400 dpi. A transcrição está fiel. Bolinhas abertas em (-5b,k) e (-2b,3k). Bolinhas fechadas em (-2b,2k) e (-a,5k/2). Há um mínimo em (5a/2,-k), o gráfico passa por (4a,k/2) e as assíntotas são x=-a, com f$\to$-$\infty$, e x=6a, com f$\to$+$\infty$.\newline%
+\newline%
+A resposta do candidato coincide com a minha referência item por item:\newline%
+{-} (I) F: f(-a)=5k/2, logo A={]}-5b,6a{[}.\newline%
+{-} (II) V: 3k é atingido uma única vez no último ramo, que é contínuo, estritamente crescente e vai de -k a +$\infty$. Os demais ramos ficam abaixo de 3k.\newline%
+{-} (III) F: f não tem máximo.\newline%
+{-} (IV) F: Im=$\mathbb{R}$.\newline%
+{-} (V) F: o contraexemplo f(-4b)=2k>f(-3b)=k mostra que f não é crescente no intervalo.\newline%
+{-} (VI) F: f não é injetora, pois f(-4b)=f(-2b) e f é constante em {[}-a,a{]}, então f$^{-}$$^{1}$ não existe.\newline%
+\newline%
+Alternativa b. As duas resoluções estão corretas.\newline%
+\newline%
+Todas as armadilhas foram tratadas:\newline%
+{-} a bolinha aberta em 3k frente ao Teorema do Valor Intermediário (TVI) com monotonia no último ramo;\newline%
+{-} a unicidade em (II), verificada ramo a ramo;\newline%
+{-} assíntota não é exclusão do domínio;\newline%
+{-} supremo não é máximo, e f é ilimitada;\newline%
+{-} os ramos que vão a $\pm$$\infty$ na imagem;\newline%
+{-} o zigue{-}zague não é monótono;\newline%
+{-} a inversa não existe.\newline%
+\newline%
+A redação é clara e organizada. Os problemas são pequenos:\newline%
+{-} a notação {[}-5b,-4b{]} contradiz a bolinha aberta;\newline%
+{-} em (II), a justificativa de f<3k no ramo {]}-2b,-a{[} deveria usar a monotonia estrita e não apenas a exclusão do ponto;\newline%
+{-} faltam detalhes opcionais, como localizar x$_{0}$$\in${]}4a,6a{[}, usar k>0 explicitamente e dizer como interpretou 'assíntotas à direita'.\newline%
+\newline%
+A resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na leitura do gráfico, o candidato primeiro diz que f(-5b) não está definido (bolinha aberta) e logo depois escreve que a função sobe 'em {[}-5b,-4b{]}', com intervalo fechado. A notação se contradiz e deveria ser {]}-5b,-4b{]}.%
+\item%
+{[}minor{]} Em (II), a justificativa de f(x) < 3k em {]}-2b,-a{[} ('porque o ponto (-2b,3k) está excluído e f(-2b)=2k') não basta: excluir o ponto inicial não impede, sozinho, que o valor 3k apareça em outro ponto do ramo. O argumento correto é que f é estritamente decrescente em {]}-2b,-a{[} e 3k é o limite quando x$\to$-2b?. Assim 3k é o supremo do ramo e não é atingido. A monotonia foi citada na leitura do gráfico, mas não foi usada explicitamente nesse passo.%
+\item%
+{[}minor{]} O candidato não localiza o ponto x$_{0}$ em que f(x$_{0}$)=3k; poderia dizer que x$_{0}$ $\in$ {]}4a,6a{[}, já que f(4a)=k/2<3k. Também não deixa explícito que as comparações 2k<3k e 5k/2<3k usam k>0, o que se lê na figura. Nada disso afeta a conclusão.%
+\item%
+{[}minor{]} O candidato não comenta como interpretou 'assíntotas à direita do traçado em cada intervalo', isto é, que x=-a e x=6a limitam pela direita os ramos {]}-2b,-a{[} e {[}5a/2,6a{[}. Também não comenta a ordem das marcas no eixo x (por exemplo, -2b<-a), que a leitura usa sem dizer. O efeito é só na completude da exposição.%
+\end{itemize}%
+\subsection*{Questão 18: nota 9,5 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A resposta é a **alternativa d)**: A = {]}-4, 2{]} ? {[}3, 4{]} ? \{5/2\}.\newline%
+\newline%
+O conjunto solução do sistema é S = {]}-$\infty$, -4{]} ? {]}2, 5/2{[} ? {]}5/2, 3{[} ? {]}4, +$\infty${[}, e A é o complementar dele em $\mathbb{R}$.\par %
+Conferi o enunciado no PDF original (pág. 1, questão 18) e ele bate com a transcrição. A resposta do candidato é a alternativa (D), A = {]}-4,2{]} ? {[}3,4{]} ? \{5/2\}, igual à minha referência. Testei numericamente com python3, em passo de 0,001 em {[}-20,20{]} e nos pontos de fronteira, e nenhum ponto destoa. Também conferi as contas citadas: f(-4)=log$_{7}$13, g(-4)=0, f(2,8)=log$_{0}$,$_{2}$0,6$\approx$0,317>0, g(-10)=-216, g(-2)=24, f(0)=log$_{3}$5. Todas estão certas.\newline%
+\newline%
+O candidato trata todas as armadilhas:\newline%
+{-} domínio com base $\neq$ 1, o que exclui 2 e 4;\newline%
+{-} base > 0 (x $\neq$ 3) e logaritmando > 0 (x $\neq$ 5/2);\newline%
+{-} divisão em dois casos para a base variável, com a equivalência justificada via ln a / ln b;\newline%
+{-} inversão do sentido da desigualdade ao dividir por -3;\newline%
+{-} x=2 zera g, mas fica fora de D\_f;\newline%
+{-} -4 $\in$ S, por isso A é aberto em -4;\newline%
+{-} a pergunta pede o complementar de S.\newline%
+\newline%
+A refutação das alternativas é feita com contraexemplos concretos e corretos, e é até mais limpa que a da minha referência, que tinha uma frase confusa sobre b) e c). Só achei detalhes de exposição: falta uma linha explicando que f<0 em {]}3,4{[}, e as exclusões nas extremidades poderiam vir com o motivo de cada ponto. Daria para publicar como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} No passo 4 não se diz explicitamente por que {]}3,4{[} fica fora de S. Isso decorre do conjunto obtido para f>0, mas uma linha ajudaria: em {]}3,4{[} a base fica entre 0 e 1 e o logaritmando é maior que 1, então f<0. Assim o fechamento de {[}3,4{]} em A ficaria visível também pelo interior, e não só pelas extremidades.%
+\item%
+{[}minor{]} Na conferência das extremidades, os pontos 2, 5/2, 3 e 4 aparecem todos juntos como 'fora de D\_f'. Seria mais didático lembrar o motivo de cada um: x=2 e x=4 dão base 1, x=3 dá base 0 e x=5/2 dá logaritmando 0. Isso já está no passo 1, então é só uma questão de estilo.%
+\end{itemize}%
+\subsection*{Questão 19: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} M = ?\_\{k$\in$$\mathbb{Z}$\} {]}2k$\pi$, $\pi$/3 + 2k$\pi${[}, que na primeira volta é {]}0, $\pi$/3{[}. Entre as opções, só {[}$\pi$/6, $\pi$/4{]} está contido em M. Resposta: alternativa a).\par %
+Conferi o enunciado no PDF (pág. 2) e a transcrição está correta. O candidato responde a), a mesma resposta da referência. Testei 20001 pontos em cada intervalo: a) passa inteiro; b), c) e d) falham, e em d) nenhum ponto vale.\newline%
+\newline%
+**A resolução está certa e rigorosa.**\newline%
+{-} Interpreta M como o domínio natural de g.\newline%
+{-} Da segunda raiz tira sen x > 0, com desigualdade estrita: o caso cos x = 1 levaria a sen x = 0, que está excluído.\newline%
+{-} Usa sen x > 0 na primeira raiz e chega a cos x > 1/2, também estrita.\newline%
+{-} Obtém M = ?{]}2k$\pi$, $\pi$/3 + 2k$\pi${[} e justifica a redução a {]}0, $\pi$/3{[} observando que as alternativas estão em {[}0, $\pi$/2{]}.\newline%
+\newline%
+**Armadilhas: todas tratadas.**\newline%
+{-} As desigualdades estritas foram justificadas.\newline%
+{-} A interseção com sen x > 0 é feita antes de analisar a primeira raiz, o que afasta os pontos espúrios com sen x $\leq$ 0 e cos x < 1/2.\newline%
+{-} Os extremos fechados de a) foram conferidos.\newline%
+{-} Em b) usou o contraexemplo $\pi$/2, onde a radicanda vale -2.\newline%
+{-} Em c) usou $\pi$/3, onde o denominador se anula.\newline%
+{-} Em d) mostrou que a radicanda é negativa em todo o intervalo.\newline%
+\newline%
+**Ressalvas, ambas menores.**\newline%
+{-} O texto diz "três condições" e lista duas.\newline%
+{-} Em c), poderia citar também o trecho onde a radicanda é negativa.\newline%
+\newline%
+A resolução serve como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Inconsistência no texto: a resolução diz "Isso exige três condições", mas lista só duas, (I) e (II), cada uma com duas subcondições. Corrigir para "duas condições" ou separar em quatro (sen x $\neq$ 0, quociente $\geq$ 0, cos x $\neq$ 1/2, quociente $\geq$ 0).%
+\item%
+{[}minor{]} Na alternativa c), a resolução aponta só o zero do denominador em $\pi$/3. Esse contraexemplo basta para descartar a alternativa. Ainda assim, um gabarito comentado ficaria mais completo se dissesse também que em {]}$\pi$/3, $\pi$/2{[} a radicanda é negativa, para mostrar que retirar $\pi$/3 não salvaria c) (é o mesmo motivo que derruba b)).%
+\end{itemize}%
+\subsection*{Questão 20: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa d): o prisma tem altura h = $\surd$(1331 - 242) = 33 cm e base de 11 $\times$ 11. Ele passa em pé pela abertura de 16 $\times$ 16 cm e fica exatamente na altura interna da caixa, 33 cm. As alternativas a), b) e c) não servem: a esfera tem diâmetro 32; o cone tem base de diâmetro 18$\surd$3 $\approx$ 31,2 e menor largura 27; o octaedro tem aresta 40 e menor largura $\approx$ 32,7. Os três ultrapassam a profundidade de 20 cm da caixa e a abertura.\par %
+Conferi a figura no PDF original: a caixa mede 50$\times$20$\times$33 e a abertura no topo é um quadrado de 16$\times$16, com margens de 17 e 2 cm, como o candidato usou. A resposta dele é d), a mesma da minha referência, e está correta.\newline%
+\newline%
+O candidato não compara larguras mínimas como eu fiz. Ele usa o critério da esfera inscrita, que é elegante e rigoroso:\newline%
+{-} Para caber na caixa, uma bola contida no sólido precisa ter 2$\rho$ $\leq$ 20.\newline%
+{-} Para entrar pela abertura, precisa ter 2$\rho$ $\leq$ 16. O argumento é que o centro da bola tem de atravessar o plano do topo por um ponto da abertura, e nesse instante a bola corta o plano num disco de raio $\rho$.\newline%
+\newline%
+Conferi as contas de cada item em Python:\newline%
+{-} **a)** R = 16, então o diâmetro é 32 > 20. Não cabe na caixa.\newline%
+{-} **b)** g = 2r = 18$\surd$3, h = 27 e o raio da esfera inscrita é h/3 = 9. Como 2$\rho$ = 18 > 16, o cone não passa pela abertura. É um argumento válido e diferente do meu, que usava a largura mínima 27 > 20.\newline%
+{-} **c)** O apótema dá a = 40. Pela altura de cada pirâmide, OV = 20$\surd$2, o que confere com o enunciado. A esfera inscrita tem raio OM$\cdot$OV/VM = 20$\surd$6/3, logo 2$\rho$ $\approx$ 32,7 > 20. O candidato também trata a leitura alternativa (a = 20), mostra que ela contradiz o apótema e que, mesmo assim, 2$\rho$ $\approx$ 16,33 > 16.\newline%
+{-} **d)** D$^2$ = 2$\cdot$11$^2$ + h$^2$ dá h = 33. O prisma desce em pé pela abertura, com folga de 2,5 cm de cada lado, e fica com a face superior rente ao topo.\newline%
+\newline%
+O candidato tratou todas as armadilhas que listei: o tamanho da abertura, r = 16 e não 32 na esfera, g = 2r no cone, a consistência dos dados do octaedro, a diagonal espacial do prisma e a igualdade 33 = 33. Ele não discute se o prisma poderia tombar, mas isso não é necessário, porque basta mostrar uma colocação que funcione.\newline%
+\newline%
+Restam só três detalhes pequenos: a justificativa do disco contido no quadrado ficou implícita, faltou comentar o caso{-}limite 33 = 33 e há uma conferência numérica sem utilidade. Está no nível de um gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Em (ii) falta um passo explícito: o candidato não diz por que o disco de raio $\rho$ tem de estar contido no quadrado 16$\times$16. O argumento é o seguinte: o disco é convexo e seu centro está na abertura; se o disco saísse do quadrado, o segmento que liga o centro a um ponto de fora cruzaria a borda da abertura e entraria na moldura do topo, que tem largura $\geq$ 2 cm e é parede. O raciocínio está certo, mas ficou só implícito no parêntese "a bola conteria pontos da parede".%
+\item%
+{[}minor{]} Em d), o candidato aceita sem comentar que a face superior do prisma fique rente ao plano do topo (33 = 33). Ele já tinha suposto paredes de espessura desprezível, mas valeria uma frase dizendo que esse caso{-}limite conta como "totalmente dentro" e que, com qualquer espessura positiva, nenhuma alternativa serviria.%
+\item%
+{[}minor{]} A linha "Conferindo: $\surd$1331 $\approx$ 36,5" não acrescenta nada à resolução. Seria melhor tirá{-}la ou trocá{-}la por uma verificação útil, como 33$^2$ + 2$\cdot$11$^2$ = 1331.%
+\end{itemize}%
+\subsection*{Questão 21: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A área é 2000 u.a., **alternativa b)**. A cônica é a hipérbole x$^2$/420 - y$^2$/80 = 1, com c$^2$ = 420 + 80 = 500. F$_{1}$DF$_{2}$E é um losango de diagonais 2c e 4c, então a área é 4c$^2$ = 2000.\par %
+Conferi o enunciado no PDF (questão 21, pág. 8) e a transcrição está correta. O candidato chegou a 2000, alternativa b), a mesma resposta da minha referência, e o resultado está certo.\newline%
+\newline%
+Passo a passo, todos corretos:\newline%
+{-} **Equação reduzida:** dividindo por 5040, obtém x$^2$/420 - y$^2$/80 = 1 (5040/12 = 420 e 5040/63 = 80, contas conferidas).\newline%
+{-} **Foco:** usa a relação da hipérbole c$^2$ = a$^2$ + b$^2$ = 500, de modo que c = 10$\surd$5.\newline%
+{-} **Reta DE:** justifica que ela passa por O porque O é o ponto médio de DE. Como é perpendicular ao eixo focal, é o eixo Oy.\newline%
+{-} **Comprimento:** usa DE = 4$\cdot$F$_{1}$O = 4c, e não 4$\cdot$F$_{1}$F$_{2}$.\newline%
+{-} **Área:** identifica o losango e calcula pelo semiproduto das diagonais, 2c$\cdot$4c/2 = 4c$^2$ = 2000.\newline%
+{-} **Conferência:** refaz a área somando os triângulos F$_{1}$F$_{2}$D e F$_{1}$F$_{2}$E, cada um com base e altura 20$\surd$5, e chega aos mesmos 2000.\newline%
+\newline%
+Armadilhas tratadas:\newline%
+{-} relação c$^2$ = a$^2$ + b$^2$, e não a$^2$ - b$^2$;\newline%
+{-} foco no lugar do vértice;\newline%
+{-} 4$\cdot$F$_{1}$O em vez de 4$\cdot$F$_{1}$F$_{2}$;\newline%
+{-} o fator 1/2 na área;\newline%
+{-} D e E não precisam estar na curva.\newline%
+\newline%
+Faltaram apenas detalhes de rigor:\newline%
+{-} a justificativa em uma linha de que a hipérbole não corta Oy (y$^2$ = -80);\newline%
+{-} a observação explícita de que F$_{1}$F$_{2}$ e DE são as diagonais do quadrilátero.\newline%
+\newline%
+A resolução é clara e enxuta e pode ser publicada como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Diz que a hipérbole não corta o eixo Oy, mas não mostra por quê. Bastaria uma linha: com x = 0, -63y$^2$ = 5040, logo y$^2$ = -80, sem solução real. Como o argumento não depende disso, a falha é só de completude.%
+\item%
+{[}minor{]} Chama o quadrilátero F$_{1}$DF$_{2}$E de losango porque as diagonais se cortam ao meio e são perpendiculares. Está certo, mas não diz que a ordem F$_{1}$$\to$D$\to$F$_{2}$$\to$E percorre o contorno sem que os lados se cruzem, ou seja, que F$_{1}$F$_{2}$ e DE são de fato as diagonais. Fica subentendido pela posição dos pontos nos eixos, e o rigor é suficiente para uma questão objetiva.%
+\item%
+{[}minor{]} Os comentários sobre os distratores (2500 = 5c$^2$, 1000 = área de um triângulo) estão certos, mas são só uma leitura numérica. Dizer que 2500 = 5c$^2$ não aponta nenhum erro plausível do aluno. Não pesa na nota.%
+\end{itemize}%
+\subsection*{Questão 22: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} As raízes são 2, -1, 5i e -5i.\newline%
+{-} **(I) Verdadeira:** os argumentos principais 0, $\pi$/2, $\pi$ e 3$\pi$/2 formam uma PA de razão $\pi$/2. Na convenção {]}-$\pi$, $\pi${]}, a sequência -$\pi$/2, 0, $\pi$/2, $\pi$ também é PA.\newline%
+{-} **(II) Verdadeira:** o triângulo de vértices -1, 5i e -5i tem área 5, que é divisor de 5. O quadrilátero tem área 15, que não serve.\newline%
+{-} **(III) Verdadeira:** $\sigma$$_{2}$ = 69/3 = 23, que é primo.\newline%
+\newline%
+Todas as afirmativas são verdadeiras: **alternativa b**.\par %
+Conferi a transcrição com o PDF (questão 22, folha numerada 9, página 3 do arquivo) e ela está fiel. A resposta final do candidato coincide com a minha referência: alternativa (b), todas as afirmativas verdadeiras. Refiz as contas em Python:\newline%
+{-} P se anula em 2, -1, 5i e -5i.\newline%
+{-} Pela fórmula do cadarço, os triângulos têm áreas 7,5, 7,5, 10 e 5. O quadrilátero tem área 15.\newline%
+{-} $\sigma$$_{2}$ = 69/3 = 23.\newline%
+\newline%
+Avaliação por item:\newline%
+{-} **Fatoração:** feita pelo teorema das raízes racionais, com divisão e verificação por expansão. Está correta.\newline%
+{-} **(I):** o candidato trata as duas convenções de argumento principal, {[}0, 2$\pi${[} e {]}-$\pi$, $\pi${]}. Nas duas os argumentos formam PA de razão $\pi$/2. Ele atribui corretamente arg(-1) = $\pi$.\newline%
+{-} **(II):** ele percebe que basta existir um polígono e exibe o triângulo (-1, 5i, -5i), de área 5. Também lista as demais áreas (15, 7,5 e 10) e com isso evita a armadilha de olhar só o quadrilátero.\newline%
+{-} **(III):** usa Girard dividindo pelo coeficiente líder, o que evita o erro de tomar 69 por $\sigma$$_{2}$. Confere o valor 23 pela soma explícita dos produtos dois a dois.\newline%
+\newline%
+Todas as armadilhas que listei foram evitadas. Restam três detalhes de redação, todos menores:\newline%
+{-} não diz explicitamente que os divisores de 5 são só 1 e 5;\newline%
+{-} não justifica que o quadrilátero é convexo;\newline%
+{-} não deixa explícita a reordenação das raízes em (I).\newline%
+\newline%
+A resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Em (II), o candidato não diz explicitamente que os divisores positivos de 5 são só 1 e 5. Isso deixaria evidente por que 15 (múltiplo de 5), 10 e 7,5 não servem. A conclusão está certa, mas faltou uma linha de justificativa.%
+\item%
+{[}minor{]} Em (II), o candidato chama o quadrilátero de 'o quadrilátero convexo' sem justificar que os quatro afixos estão em posição convexa. Também não diz que a única ordem simples é 2, 5i, -1, -5i. Bastaria observar que cada eixo separa os outros dois pontos, o que deixa as diagonais sobre os eixos. Como a área do quadrilátero só aparece para comparação, o problema é pequeno.%
+\item%
+{[}minor{]} Em (I), o candidato escreve 'Nessa ordem' sem dizer que a ordem que forma a PA (2, 5i, -1, -5i) é diferente da ordem em que as raízes foram listadas (2, -1, 5i, -5i), e o enunciado pede justamente 'em alguma ordem'. A mudança fica implícita na ordenação dos argumentos, mas convinha deixá{-}la explícita.%
+\end{itemize}%
+\subsection*{Questão 23: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} As horas voadas em junho foram: Caravan 52 h (faixa 40--60 h, custo 4), Phenon 32 h (abaixo de 40 h, custo 3) e Eurocopter 71,5 h (acima de 60 h, custo 4). Logo x = 4 + 3 + 4 = 11 mil dólares e 9 $\leq$ x < 13. Alternativa **b**.\par %
+Conferi o enunciado no PDF original (pág. 3, questão 23) e a transcrição está fiel. Na Tabela 1 as colunas estão na ordem Caravan, Phenon, Eurocopter; na Tabela 3, na ordem Phenon, Eurocopter, Caravan.\newline%
+\newline%
+A resposta do candidato é a mesma da minha referência: x = 11 mil dólares, alternativa b.\newline%
+\newline%
+Refiz as contas em python3 com frações exatas e confirmei tudo:\newline%
+{-} O produto montado está certo: H = A?d, que equivale ao meu D\^{}T$\cdot$A. Ele dá Caravan 52 h, Phenon 32 h e Eurocopter 71,5 h.\newline%
+{-} As somas por linha estão certas (19, 26 e 25 voos), e o total de 155,5 h bate.\newline%
+\newline%
+Situação de cada armadilha:\newline%
+{-} **Troca de ordem das colunas** (a principal): o candidato aponta a troca explicitamente e lê cada custo pelo nome da aeronave. Os custos lidos são Caravan 4, Phenon 3 e Eurocopter 4, todos corretos.\newline%
+{-} **Ordem do produto matricial:** está certa, e os cálculos aparecem aeronave por aeronave.\newline%
+{-} **Contas com 1,5 h:** estão certas.\newline%
+{-} **Somar as horas da frota inteira antes de escolher a faixa:** foi evitado; a faixa é escolhida aeronave por aeronave.\newline%
+{-} **Fronteiras das faixas:** o candidato observa que nenhum total cai exatamente em 40 h ou 60 h, então a ambiguidade não afeta o resultado.\newline%
+{-} **Unidade:** está correta, em milhares de dólares.\newline%
+\newline%
+A resolução também descarta as demais alternativas. Ficam só duas ressalvas menores: a hipótese de uma aeronave de cada tipo não é dita explicitamente, e a checagem pelos extremos 6 $\leq$ x $\leq$ 18 é quase vazia. A resolução é clara, rigorosa e completa, no nível de um gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A resolução não diz explicitamente que trata a frota como uma aeronave de cada tipo, nem que o valor da Tabela 3 é o custo mensal de cada aeronave. O próprio enunciado dá base a essa leitura ("cada uma das aeronaves de sua propriedade"), e é ela que permite somar 4 + 3 + 4. Bastava uma frase deixando essa hipótese clara.%
+\item%
+{[}minor{]} A checagem final de que 6 $\leq$ 11 $\leq$ 18 é quase vazia: qualquer combinação de uma célula por coluna cai nesse intervalo. Ela não protege contra a troca de colunas, que é a armadilha principal (a leitura errada dá 13, também dentro do intervalo). Não é erro, mas não tem valor como verificação. A checagem pelas linhas (19$\cdot$1,5 + 26$\cdot$2 + 25$\cdot$3 = 155,5) é útil, porque confirma a soma das horas.%
+\end{itemize}%
+\subsection*{Questão 24: nota 9,0 (aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa B: 2 + C\_\{26,3\}$\cdot$A\_\{10,2\}$\cdot$A\_\{21,1\} = 2 + 2600$\cdot$90$\cdot$21 = 4.914.002 possibilidades. Biometria facial e digital do indicador direito contam 1 cada. O código é formado por 3 letras sem ordem (C\_\{26,3\}), um par ordenado de algarismos distintos (A\_\{10,2\}) e um símbolo (21). Como as três formas de entrada são alternativas ("ou"), as quantidades se somam. Confiança alta: a única leitura que levaria à alternativa A seria permutar os blocos entre si, e o enunciado não dá base para isso.\par %
+As respostas finais divergem: o candidato marcou A e minha referência marcou B. Refiz a análise e concluo que a correta é A. Minha referência estava errada: ela supôs, sem base no texto, que os blocos vêm numa ordem fixa (letras, depois algarismos, depois símbolo), e eu mesmo tinha listado essa hipótese como armadilha. Conferi o enunciado no PDF: ele diz apenas que o código 'deve ter' um bloco de 3 letras ('não importando sua ordem'), um bloco de pares ordenados de algarismos e 'ainda, um símbolo'. Nada fixa a ordem dos blocos. Como o código é digitado, ele é uma sequência, e nela a posição importa, salvo exceção declarada. A única exceção declarada é a ordem interna das letras. O uso de 'bloco' remete à permutação de blocos, um tema clássico. Além disso, a alternativa A escreve P\_3 separado de C\_\{26,3\}, enquanto C e D usam A\_\{26,3\} para letras ordenadas, o que sugere que P\_3 permuta os 3 blocos. Ainda assim, há um risco residual de o gabarito oficial ser B por causa da ambiguidade, e o gabarito oficial não foi consultado.\newline%
+\newline%
+Contas conferidas em Python: C\_\{26,3\}=2600, A\_\{10,2\}=90, A\_\{26,3\}=15600. As alternativas valem a) 29.484.002, b) 4.914.002, c) e d) 58.968.000 cada.\newline%
+\newline%
+A resolução do candidato trata todas as armadilhas:\newline%
+{-} contagem das teclas (26, 21 e 10);\newline%
+{-} princípio aditivo, com 1+1 para as duas biometrias, o que elimina C e D por multiplicarem por 2;\newline%
+{-} C\_\{26,3\} para as letras, sem ordem;\newline%
+{-} A\_\{10,2\} para os algarismos, com exclusão explícita de 45 e de 100;\newline%
+{-} A\_\{21,1\}=C\_\{21,1\}, o que torna C e D numericamente iguais;\newline%
+{-} a identidade P\_3$\cdot$C\_\{26,3\}=A\_\{26,3\};\newline%
+{-} a hipótese decisiva sobre a ordem dos blocos, discutida com as duas leituras.\newline%
+\newline%
+O argumento de bijeção é rigoroso: como letras, algarismos e símbolos são conjuntos de teclas disjuntos, não há dupla contagem. Os problemas são todos menores: hipóteses implícitas não declaradas (contiguidade dos blocos, ausência de teclas extras, códigos com letras em outra ordem contados como iguais), o apoio nas alternativas para ler 'pares' como um único par e um rebate pouco direto à leitura de formato fixo. A resolução é clara, completa e publicável como gabarito comentado, com a ressalva de que o enunciado é ambíguo.%
+\begin{itemize}%
+\item%
+{[}minor{]} A frase 'leitura literal, que não acrescenta hipóteses' exagera um pouco. A resolução ainda supõe, sem dizer, três coisas: (i) o código tem só os três blocos, sem teclas extras ('devem ter, obrigatoriamente' poderia ser lido como 'conter pelo menos'); (ii) cada bloco é contíguo, de modo que o símbolo não pode ficar dentro do bloco de letras ou do par de algarismos; (iii) duas sequências que diferem só na ordem das letras contam como o mesmo código. Faltou declarar essas hipóteses, que são comuns às duas leituras.%
+\item%
+{[}minor{]} Ao ler 'pares ordenados' (no plural) como um único par, a resolução se apoia nas alternativas ('como confirmam todas as alternativas'). Isso é aceitável numa prova de múltipla escolha, mas não sai do texto do enunciado. Bastaria registrar que essa é uma escolha interpretativa.%
+\item%
+{[}minor{]} O enunciado é genuinamente ambíguo quanto à ordem dos blocos. A resolução trata bem essa ambiguidade: apresenta as duas leituras e justifica a escolha. Ainda assim, poderia rebater de forma mais direta o argumento mais forte da leitura de formato fixo, que é a enumeração 'letras, algarismos, símbolo'. Bastaria uma frase dizendo que enumerar componentes ('devem ter') não é o mesmo que fixar a ordem ('seguido de'). A observação lateral sobre a notação foi corretamente apresentada como indício, não como prova.%
+\end{itemize}%
+\subsection*{Questão 25: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa a). O volume é 8$\pi$(2 + $\surd$3/3) = 16$\pi$ + 8$\pi$$\surd$3/3 $\approx$ 64,78 u.v.\newline%
+\newline%
+As raízes são 1 $\pm$ i$\surd$3 e -1 $\pm$ 3i, e o polígono é um trapézio isósceles. Seus lados paralelos são verticais: o menor mede 2$\surd$3 (sobre x = 1) e o maior mede 6 (sobre x = -1); a altura é 2. Girando em torno do lado menor, o sólido é um cilindro de raio 2 e altura 6 menos dois cones de raio 2 e altura 3 - $\surd$3.\par %
+Conferi o enunciado no original (pág. 10, Versão A) e ele coincide com a transcrição. A resposta do candidato bate com a referência: alternativa a), V = 8$\pi$(2 + $\surd$3/3) = 16$\pi$ + 8$\pi$$\surd$3/3 $\approx$ 64,78. Refiz as contas em Python. As quatro raízes 1 $\pm$ i$\surd$3 e -1 $\pm$ 3i anulam P. Pelo cilindro menos os cones e por Pappus, o volume dá 64,77588. Os distratores valem b $\approx$ 31,87, c $\approx$ 29,02 e d $\approx$ 13,73.\newline%
+\newline%
+O candidato tratou todas as armadilhas:\newline%
+{-} usou as raízes conjugadas e justificou com os coeficientes reais;\newline%
+{-} fatorou com o coeficiente líder -1 e conferiu a fatoração por expansão;\newline%
+{-} ligou os vértices na ordem certa (ABCD);\newline%
+{-} percebeu que os lados paralelos são os verticais;\newline%
+{-} escolheu o menor lado (2$\surd$3, sobre x = 1) como eixo;\newline%
+{-} montou o sólido como cilindro de raio 2 e altura 6 menos dois cones de raio 2 e altura 3 - $\surd$3, com o fator 1/3 presente;\newline%
+{-} conferiu por Pappus usando a fórmula do centroide com a e b na ordem certa.\newline%
+\newline%
+A resolução está clara, completa e confere o resultado por dois métodos independentes. Só faltam detalhes menores de rigor: a conferência da raiz dada, a justificativa de que Pappus se aplica e a da cota inferior 16$\pi$. Serve como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} O candidato não confere que 1 - i$\surd$3 é de fato raiz de P. Como o enunciado garante isso, não é obrigatório, mas uma linha de conferência (x$^2$ = -2 - 2i$\surd$3, x$^{4}$ = -8 + 8i$\surd$3) protegeria contra erro de transcrição. O resultado não muda, porque a fatoração foi conferida por expansão.%
+\item%
+{[}minor{]} Na verificação por Pappus--Guldin, a fórmula do centroide do trapézio, d = h(a+2b)/{[}3(a+b){]}, é usada sem dedução. O candidato também não diz que o teorema vale porque o eixo não atravessa o interior do polígono, já que é um de seus lados. Como é só uma verificação, a falta é pequena. Bastaria uma frase sobre a aplicabilidade.%
+\item%
+{[}minor{]} A cota inferior V > 16$\pi$, usada no item 5, não é justificada. Ela sai de os cones terem altura 3 - $\surd$3 < 3: com altura 3, o volume seria 24$\pi$ - 16$\pi$/3$\cdot$... = 16$\pi$. Bastaria uma frase, ou então tirar a afirmação, que é só heurística.%
+\end{itemize}%
+\subsection*{Questão 26: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa d). O modelo é f(t) = 70/(1 + e\^{}\{k(t-10)\}) mil indivíduos, com k > 0. A curva é decrescente, vai de cerca de 70 mil até perto de 0 (amplitude de 70 mil) e tem inflexão em t$_{0}$ = 10, onde f(10) = 35 mil, na meia altura. Ressalva: se o item "{]}-L, L{[}" do enunciado for lido ao pé da letra, chega{-}se em a). Esse item está errado, porque a imagem real da função é {]}0, L{[}. Por isso o gabarito oficial pode divergir ou a questão pode ter sido anulada.\par %
+Conferi a figura no PDF original (p. 5) e ela bate com a transcrição. A resposta do candidato, d), coincide com a minha referência e está correta. A lei dada tem imagem {]}0, L{[} para L>0, nunca muda de sinal e tem inflexão em (t$_{0}$, L/2). Com decrescimento, amplitude L = 70 mil e t$_{0}$ = 10, o modelo é P(t) = 70/(1+e\^{}\{k(t-10)\}), que é exatamente o gráfico d). As contas do candidato estão todas certas, e eu refiz cada uma: f' = Lku/(1+u)$^2$, f'' = Lk$^2$u(u-1)/(1+u)$^3$, simetria f(t$_{0}$+h)+f(t$_{0}$-h) = L, g = L - f e P(0) $\in$ {]}35, 70{[}. Ele também tratou as armadilhas principais. Apontou que {]}-L, L{[} contradiz a lei e o exemplo, que tem L = 6, t$_{0}$ = 0 e f(0) = 3. Trocou o sinal do expoente para obter o decrescimento. Leu a amplitude como L, e não como 2L. Justificou 'estabilização a partir de 10 anos' como o ponto de inflexão, onde |f'| é máximo e depois diminui até 0. E descartou a) e b) porque a função não muda de sinal e porque não existe população negativa. Há duas falhas, ambas menores. Na alternativa c), o candidato diz que o ponto em t=10 está na meia altura, mas ele está em $\approx$47 mil, contra $\approx$33--35 mil em d). E falta uma nota de que ler {]}-L, L{[} ao pé da letra leva a a), o que pode afetar o gabarito oficial. Com essas ressalvas, a resolução está no nível de um gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na análise da alternativa c), o candidato diz que ela tem 'inflexão à meia altura em t=10'. Na figura original não é isso: o ponto marcado em t=10 fica a cerca de 2/3 da altura. Medi os pixels e deu $\approx$47 mil, não 35 mil. A curva de c) nem chega a ser uma logística simétrica em torno de t=10. Como c) é descartada pelo motivo certo (é crescente), o erro não muda a resposta. Mesmo assim, um gabarito comentado não pode descrever a figura errado. O certo seria dizer que c) é crescente e que, além disso, o ponto marcado em t=10 não fica na meia altura.%
+\item%
+{[}minor{]} O candidato aponta que o enunciado se contradiz ao escrever {]}-L, L{[}, mas não diz que ler esse trecho ao pé da letra (2L = 70000, L = 35000) leva justamente à alternativa a). Também não comenta que, por isso, o gabarito oficial pode divergir ou a questão pode ser anulada. Uma nota curta sobre isso deixaria o comentário mais completo, já que a) e b) foram montadas exatamente sobre essa leitura.%
+\end{itemize}%
+\subsection*{Questão 27: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa b): Q3 < Q2 < Q1. Os valores são Q1 = 1, Q2 = 3(3$\surd$3 - $\pi$)/(9$\surd$3 - $\pi$) $\approx$ 0,495 e Q3 = 3(2$\surd$3 - $\pi$)/{[}2(3$\surd$3 - $\pi$){]} $\approx$ 0,235.\par %
+A resposta é a alternativa b) (Q3 < Q2 < Q1), a mesma da minha referência. Conferi a leitura das figuras no original, na página 6 da prova, e refiz todas as contas em python.\newline%
+\newline%
+**Q1.** O candidato identificou que os dois retângulos medem 8r $\times$ 4r e que a área branca é 8$\pi$r$^2$ nos dois, logo Q1 = 1.\newline%
+\newline%
+**Q2.** Leu corretamente que, na figura de baixo, o círculo inscrito é cinza e só os 3 círculos pequenos são brancos. O raio dos círculos dos vértices, $\rho$ = R/3, foi deduzido com rigor:\newline%
+{-} VI = 2R, pelo ângulo de 30$^\circ$ entre a bissetriz e os lados;\newline%
+{-} VJ = 2$\rho$, pelo mesmo motivo;\newline%
+{-} tangência externa: 2R - 2$\rho$ = R + $\rho$.\newline%
+\newline%
+Com isso, Q2 = 3(3$\surd$3 - $\pi$)/(9$\surd$3 - $\pi$) $\approx$ 0,4952, o que confere.\newline%
+\newline%
+**Q3.** Os centros ficam sobre os apótemas e formam um triângulo equilátero OC1C2, de onde vêm d = 2$\rho$' e a - $\rho$' = 2$\rho$'. Logo $\rho$' = a/3 = m$\surd$3/6 e a área dos 6 círculos é $\pi$m$^2$/2. O candidato ainda verificou que os círculos ficam dentro do hexágono: a distância de cada centro ao lado adjacente é 2$\rho$' > $\rho$'. Q3 $\approx$ 0,2355, o que confere.\newline%
+\newline%
+**Ordem da razão.** A ordem "figura de cima / figura de baixo" foi respeitada. A verificação de coerência sobre as áreas brancas (menores embaixo em Q2 e Q3, iguais em Q1) é correta e mostra de forma exata que Q2 < 1 e Q3 < 1.\newline%
+\newline%
+**Armadilhas.** Todas as armadilhas listadas foram tratadas: ordem da razão, Q1 = 1, incírculo cinza em Q2, $\rho$ = R/3, $\rho$' = a/3 com apótema e lado corretos, e a alternativa a) descartada.\newline%
+\newline%
+**Ressalvas.** Há só ressalvas menores: a comparação Q3 < Q2 é feita apenas numericamente, embora com folga ampla, e falta uma frase justificando que J está entre V e I.\newline%
+\newline%
+A resolução é clara e completa, publicável como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Para comparar Q3 e Q2, a resolução usa apenas os valores aproximados (0,235 < 0,495). A folga é grande e as aproximações com 4 casas estão corretas, então a conclusão vale. Ainda assim, um gabarito comentado ficaria mais elegante com a comparação exata: Q3 < Q2 $\Leftrightarrow$ (2$\surd$3 - $\pi$)(9$\surd$3 - $\pi$) < 2(3$\surd$3 - $\pi$)$^2$ $\Leftrightarrow$ $\pi$($\pi$ - $\surd$3) > 0. O argumento de que Q2 < 1 = Q1, por haver menos área branca embaixo, já é exato.%
+\item%
+{[}minor{]} Na relação IJ = VI - VJ fica implícito que o centro J do círculo pequeno está entre V e I, sobre a bissetriz. É evidente pela figura e pela tangência externa, mas caberia uma frase para justificar.%
+\end{itemize}%
+\subsection*{Questão 28: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa a): \{33x + 242y - 1300 $\leq$ 0 ; 5x + 7y - 91 $\geq$ 0\}. Ela vem de 165x + 231y $\geq$ 3003 dividido por 33 e de 660x + 4840y $\leq$ 26000 dividido por 20.\par %
+Conferi o enunciado com o original (p. 7 do PDF, numerada 13 na prova) e a transcrição está correta. A resposta do candidato é a alternativa (a), a mesma da minha referência, e ela está correta.\newline%
+\newline%
+**Modelagem.** As duas restrições estão certas:\newline%
+{-} tiros: 165x + 231y $\geq$ 3003, que dividida por 33 dá 5x + 7y $\geq$ 91;\newline%
+{-} custo: 660x + 4840y $\leq$ 26000, que dividida por 20 dá 33x + 242y $\leq$ 1300.\newline%
+\newline%
+As fatorações estão explícitas e o candidato justifica que dividir por um número positivo mantém o sentido da desigualdade.\newline%
+\newline%
+**Viabilidade.** Ele mostra que o conjunto não é vazio com o par (19, 0): são 3135 tiros por R\$ 12540.\newline%
+\newline%
+**Eliminação das alternativas.**\newline%
+{-} (c) é descartada testando o par (19, 0).\newline%
+{-} (d) é descartada com um argumento geral correto: 33x + 242y $\geq$ 6,6$\cdot$91 > 91, logo a inequação 33x + 242y - 91 $\leq$ 0 nunca vale para um par viável.\newline%
+{-} (b): ele percebe a sutileza do 'necessariamente'. Todo par viável também satisfaz (b), mas (b) é muito mais fraca: o contraexemplo (0, 1), com só 231 tiros, satisfaz (b) sem atender ao teste. Por isso (b) não traduz as condições do enunciado. É o mesmo tratamento da minha referência.\newline%
+\newline%
+**Conferência numérica.** Refiz as contas com python. Há 50 pares inteiros viáveis; todos satisfazem (a) e (b) e nenhum satisfaz (d). Os valores -673, 3135 e 12540 conferem.\newline%
+\newline%
+Todas as armadilhas foram tratadas: os sentidos das desigualdades, a associação de cada constante à restrição certa, as divisões, a hipótese x, y $\geq$ 0, a sutileza da alternativa (b) e a viabilidade do conjunto.\newline%
+\newline%
+Encontrei só duas imprecisões menores de redação:\newline%
+{-} o candidato diz que (b) 'troca os coeficientes', quando o que se troca são as constantes;\newline%
+{-} na análise de (d), o uso de y $\geq$ 0 não é citado no passo em que é necessário.\newline%
+\newline%
+É uma resolução no nível de um gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na alternativa (b), o candidato diz que ela 'troca os coeficientes entre as restrições'. Na verdade, os coeficientes 33/242 e 5/7 continuam nas mesmas linhas; o que se troca são as constantes 91 e 1300, além dos sentidos. A frase deveria dizer que (b) troca as constantes.%
+\item%
+{[}minor{]} Na análise de (d), a desigualdade 33x + 242y $\geq$ 6,6(5x + 7y) só vale porque y $\geq$ 0 (242 $\geq$ 46,2). A hipótese foi declarada no início (x, y $\in$ $\mathbb{N}$), mas não é citada nesse passo. Além disso, o item abre com '(d) exige 5x + 7y $\geq$ 1300' e depois refuta a outra inequação, o que deixa a exposição um pouco truncada. Seria melhor dizer explicitamente qual das duas inequações falha e por quê.%
+\end{itemize}%
+\subsection*{Questão 29: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} m = 3, |t| = 2, período 6 (|q| = $\pi$/3), e f(3) = 3 + $\surd$2. Logo f(m) - m = $\surd$2 $\approx$ 1,414, que pertence a {[}1, 3/2{[}. Alternativa c).\par %
+Conferi o enunciado na p. 7 do PDF (página impressa 13): figura com início em (-9/4, 3), mínimo em (-3/4, 1), máximo em (9/4, 5) e fim em (15/4, 3). A transcrição está correta.\newline%
+\newline%
+A resposta do candidato coincide com a minha referência: m = 3, |t| = 2, período 6 (|q| = $\pi$/3), f(3) = 3 + $\surd$2, logo f(m) - m = $\surd$2 $\in$ {[}1, 3/2{[}. **Alternativa (c).** Conferi numericamente em python. A forma f(x) = 3 + 2cos($\pi$(x - 9/4)/3) do candidato e a minha f(x) = 3 - 2sen($\pi$x/3 + 3$\pi$/4) dão a mesma função: coincidem em todos os pontos marcados e em pontos genéricos, e f(3) - 3 = 1,41421\ldots{}\newline%
+\newline%
+**Pontos fortes:**\newline%
+{-} Obtém m e |t| a partir da imagem {[}m-|t|, m+|t|{]}, com a justificativa de que f não é constante.\newline%
+{-} Tira o período do intervalo completo indicado e confere que do mínimo ao máximo há meio período.\newline%
+{-} Trata a armadilha de sinal e fase de forma limpa: põe t$\cdot$sen(p+qx) na forma canônica 2cos($\pi$x/3+$\varphi$), o que elimina a ambiguidade de (t, p, q). Em seguida fixa $\varphi$ pelo máximo e verifica os três pontos marcados restantes.\newline%
+{-} Calcula f(3) exatamente pela fase $\pi$/4 a partir do pico, com checagem de plausibilidade (3 < f(3) < 5).\newline%
+{-} Decide a fronteira entre (c) e (d) com rigor: 2 < 9/4 $\Rightarrow$ $\surd$2 < 3/2.\newline%
+\newline%
+**Armadilhas:** todas tratadas.\newline%
+{-} m é tomado como linha média e usado como argumento x = 3.\newline%
+{-} Período 6, e não 3 ou 12.\newline%
+{-} Sinal: a forma canônica evita o -$\surd$2.\newline%
+{-} Não unicidade da terna (t, p, q): resolvida pela reescrita.\newline%
+{-} Não usa aproximação linear nem medidas da figura.\newline%
+\newline%
+**Ressalvas:** apenas duas, ambas menores.\newline%
+{-} A frase de que (a) e (b) têm limites superiores 'menores que 1' é imprecisa para (b), cujo limite é 1, aberto.\newline%
+{-} A conversão para a forma em cosseno é afirmada, sem os casos escritos.\newline%
+\newline%
+A resolução tem qualidade para ser publicada como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na etapa 5, a resolução diz que (a) e (b) têm 'limites superiores menores que 1'. Em (b) = {[}1/2, 1{[}, porém, o limite superior é o próprio 1, aberto. A conclusão continua certa, pois $\surd$2 $\geq$ 1 > todo elemento de (b), mas a frase está imprecisa. Deveria dizer que ambos os intervalos estão contidos em {[}0, 1{[} e que $\surd$2 $\geq$ 1.%
+\item%
+{[}minor{]} A resolução afirma que t$\cdot$sen(p+qx) = 2cos($\pi$x/3+$\varphi$) para quaisquer sinais de t e q e cita as identidades usadas, mas não escreve os casos (q<0 por paridade, t<0 somando $\pi$). Para múltipla escolha isso basta; num gabarito comentado, uma linha mostrando a conversão no caso t<0, q>0 deixaria o passo explícito.%
+\end{itemize}%
+\subsection*{Questão 30: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} g $\to$ gráfico (4), h $\to$ gráfico (6), j $\to$ gráfico (1). Soma = 4 + 6 + 1 = 11. Alternativa c).\par %
+A resposta final está correta e coincide com a minha referência: g $\to$ (4), h $\to$ (6), j $\to$ (1), soma 11, alternativa c). Conferi a figura no PDF original (página 8) e as contas com um exemplo numérico (f(x) = -(x+1)$^2$ + 2,5, que dá c = 1,5): g tem os mesmos zeros de f, vértice em -c$\cdot$y\_v e g(0) = -c$^2$; h tem zeros 2x\_v e 0; j tem zeros x$_{1}$+c e x$_{2}$+c. Tudo confere com o que o candidato escreveu.\newline%
+\newline%
+A resolução trata todas as armadilhas que eu tinha identificado:\newline%
+{-} **Sinal de -c:** mostra que multiplicar por -c inverte a concavidade, porque o coeficiente líder vira -ca > 0.\newline%
+{-} **Descarte do (3):** usa os zeros e o eixo de simetria, e reconhece corretamente que o (3) é o gráfico de -f(-x).\newline%
+{-} **Rótulos do (4):** observa de forma explícita e correta que as marcas -c e -y\_v seriam as de -f, enquanto para g os valores são -c$^2$ e -c$\cdot$y\_v. Acrescenta, com razão, que a ordem relativa se mantém (-c$^2$ > -c$\cdot$y\_v porque c < y\_v).\newline%
+{-} **c < y\_v:** justifica a desigualdade estrita (0 $\neq$ x\_v e y\_v é o máximo de f), o que dá y\_v - c > 0.\newline%
+{-} **Gráfico de h:** prova que passa pela origem (h(0) = 0). Mostra que as raízes 0 e 2x\_v ficam em {]}x$_{1}$, x$_{2}${[} com um argumento elegante: são as soluções de f(x) = c > 0, e f só é positiva nesse intervalo.\newline%
+{-} **Descarte do (5):** usa o intercepto -c e o vértice sobre o eixo x.\newline%
+{-} **Translação de j:** identifica corretamente que é para a direita, e distingue o (2) como reflexão em torno do eixo y, não translação.\newline%
+\newline%
+O texto é claro, rigoroso e bem organizado. As ressalvas são de detalhe: a eliminação das outras alternativas depende de h e j já estarem fixados, o que poderia ficar explícito, e faltou mencionar a inconsistência dos rótulos no (2). A resolução tem nível de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na frase final, a afirmação de que 'as demais alternativas exigiriam associar g a (2), (3) ou (5)' vale apenas porque h $\to$ (6) e j $\to$ (1) já foram demonstrados. O raciocínio está certo, mas valeria deixar explícita essa condição: com h e j fixos, a soma é g + 7, e as somas 9, 10 e 12 exigiriam g = 2, 3 e 5, respectivamente.%
+\item%
+{[}minor{]} Ao descartar o gráfico (2), o candidato não comenta que os rótulos -x$_{1}$ e -x$_{2}$ aparecem em posições trocadas. Como -x$_{1}$ > 0 > -x$_{2}$, a figura é inconsistente até como gráfico de f(-x). Isso não afeta a resposta, mas reforçaria o descarte.%
+\end{itemize}%
+\subsection*{Questão 31: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Média = 6 h; $\Sigma$(x? - x?)$^2$ = 52; $\sigma$$^2$ = 52/8 = 6,5; $\sigma$ = $\surd$6,5 $\approx$ 2,55 h. O valor mais próximo é 3 h, da aeronave 5. Alternativa c).\par %
+Comparei com o PDF original (p. 9) e a leitura do gráfico está certa: 7, 10, 8, 5, 3, 5, 8, 2. Conferi em Python os valores do candidato, e todos batem com a minha referência: média 6, $\Sigma$(x? - x?)$^2$ = 52, $\sigma$$^2$ = 6,5 h$^2$, $\sigma$ $\approx$ 2,55 h. A ordenação das distâncias a $\sigma$ dá a aeronave 5 (0,45), depois a 8 (0,55) e em seguida as 4 e 6 (2,45). A resposta é c) 5, a mesma da referência.\newline%
+\newline%
+O passo crítico tem justificativa rigorosa e sem arredondamento:\newline%
+{-} 2 < $\sigma$ < 3, porque 4 < 6,5 < 9. Não há dado entre 2 e 3, então só 2 h e 3 h podem ser os mais próximos.\newline%
+{-} $\sigma$ fica mais perto de 3 se e somente se $\sigma$$^2$ > 6,25. Isso vale, porque 6,5 > 6,25.\newline%
+\newline%
+As demais armadilhas também foram tratadas:\newline%
+{-} Tirou a raiz em vez de comparar com a variância.\newline%
+{-} Justificou o uso da variância populacional, pois os 8 dados são o esquadrão inteiro.\newline%
+{-} Checou que a convenção amostral (s $\approx$ 2,73) não muda a resposta.\newline%
+{-} Conferiu a média pela soma dos desvios.\newline%
+{-} Usou unidade correta (h$^2$).\newline%
+{-} Distinguiu o número da aeronave (5) das horas voadas (3).\newline%
+\newline%
+Restam duas ressalvas pequenas: a verificação amostral não mostra as distâncias, e o distrator variância$\to$aeronave 1 não é citado. A resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na verificação com o desvio padrão amostral, o candidato só afirma que 'o valor mais próximo continuaria sendo 3 h' e não mostra por quê. Bastaria uma linha: s $\approx$ 2,73 > 2,5, ou as distâncias 0,27 contra 0,73. A afirmação está certa, mas falta a justificativa.%
+\item%
+{[}minor{]} A resolução não aponta de forma explícita o distrator da alternativa a): a variância 6,5 fica mais perto de 7 h, que é a aeronave 1. O cálculo trata a armadilha implicitamente, porque tira a raiz corretamente, mas um gabarito comentado ganharia em dizer de onde vem cada alternativa errada.%
+\end{itemize}%
+\subsection*{Questão 32: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} O tamanho mínimo da amostra é 4, alternativa **c**. Com P(macho) = 2/5, a condição é 1 - (2/5)\^{}n > 0,95, ou seja, (2/5)\^{}n < 1/20. Aplicando log: -0,4n < -1,3, logo n > 3,25 e n\_mín = 4. Conferência: com n = 3, P = 0,936; com n = 4, P = 0,9744.\par %
+Conferi o enunciado na p. 9 do PDF (p. 15 do caderno) e a transcrição está correta. A resposta do candidato é c) 4, a mesma da minha referência, e está certa. O modelo é adequado: P(macho) = 2/5, P(fêmea) = 3/5, com a hipótese de independência dita explicitamente e justificada. O candidato usa o complementar correto, 'todos machos', e chega a 1 - (2/5)\^{}n > 0,95 ? (2/5)\^{}n < 1/20. Ao aplicar o log, justifica que a função é crescente e que os dois membros são positivos. Ao dividir por -0,4, inverte o sentido da desigualdade e obtém n > 3,25, logo n\_mín = 4. A verificação direta também está certa: 8/125 = 0,064 dá P = 0,936, e 16/625 = 0,0256 dá P = 0,9744. Conferi em Python, inclusive a observação de que a) e b) dão no máximo 93,6\% e de que d) também serve, mas não é o mínimo. A resolução trata todas as armadilhas que listei: razão 2/5 e não 2/3, complementar correto, inversão da desigualdade, arredondamento para o inteiro seguinte, desigualdade estrita e hipótese de independência. Só falta dizer que os logs dados são aproximados, o que a verificação exata já resolve. A resolução é clara e rigorosa e serve como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Os valores log(2/5) = -0,4 e log(1/20) = -1,3 são aproximações. Os exatos são $\approx$ -0,398 e $\approx$ -1,301, e a razão dá $\approx$ 3,269. A resolução não comenta isso. A verificação direta com n = 3 e n = 4 já torna a resposta independente dessas aproximações, então basta uma frase dizendo que a conferência exata confirma o resultado.%
+\item%
+{[}minor{]} Passar da razão de nascimentos (2:3) para a composição do rebanho supõe que não há mortalidade diferente entre os sexos nem vendas anteriores, e que a amostragem dispensa a correção da hipergeométrica. A resolução cobre isso com 'consideramos o rebanho grande' e com o argumento de que os logs dados envolvem 2/5, o que é suficiente para a leitura pretendida. Poderia dizer de forma explícita que a proporção de nascimentos é tomada como probabilidade de cada animal ser macho ou fêmea.%
+\end{itemize}%
+\end{document}

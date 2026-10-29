@@ -1,0 +1,43 @@
+{
+  "question": 23,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A resposta é a alternativa (B): 9 ≤ x < 13, com x = 11 mil dólares. As horas voadas em junho foram: Caravan 52 h (faixa de 40 a 60 h, custo 4), Phenon 32 h (abaixo de 40 h, custo 3) e Eurocopter 71,5 h (acima de 60 h, custo 4). Atenção: na terceira tabela as colunas das aeronaves vêm em outra ordem.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com o original (pág. 3 do PDF, questão 23). Um detalhe que importa: na Tabela 1 as colunas estão na ordem Caravan, Phenon, Eurocopter. Na Tabela 3 a ordem muda para Phenon, Eurocopter, Caravan.\n\n**1) Horas voadas por aeronave (Tabelas 1 e 2)**\nEm cada aeronave (coluna da Tabela 1), multiplica-se o número de voos de cada rota pela duração dessa rota e soma-se. Em forma matricial, é o produto D^T·A, com D = (1,5; 2; 3) e A a matriz 3×3 rotas × aeronaves.\n\n- Caravan: 6·1,5 + 14·2 + 5·3 = 9 + 28 + 15 = **52 h**\n- Phenon: 12·1,5 + 4·2 + 2·3 = 18 + 8 + 6 = **32 h**\n- Eurocopter: 1·1,5 + 8·2 + 18·3 = 1,5 + 16 + 54 = **71,5 h**\n\n(Total: 155,5 h. Esse número não é usado.)\n\n**2) Faixa de cada aeronave**\n- Caravan: 52 h está entre 40 h e 60 h.\n- Phenon: 32 h está abaixo de 40 h.\n- Eurocopter: 71,5 h está acima de 60 h.\n\nNenhum valor cai exatamente em 40 h ou em 60 h. Por isso não importa se as fronteiras das faixas são abertas ou fechadas.\n\n**3) Custo de manutenção (Tabela 3, procurando cada aeronave pelo nome da coluna)**\n- Caravan (3ª coluna), linha \"Entre 40 h e 60 h\": 4\n- Phenon (1ª coluna), linha \"Abaixo de 40 h\": 3\n- Eurocopter (2ª coluna), linha \"Acima de 60 h\": 4\n\nx = 4 + 3 + 4 = **11** milhares de dólares.\n\n**4) Alternativa**\nComo 9 ≤ 11 < 13, a resposta é a **alternativa b**.\n\nAs contas foram conferidas em python3 com frações exatas: horas = (52; 32; 71,5) e x = 11.",
+    "final_answer": "As horas voadas em junho foram: Caravan 52 h (faixa 40–60 h, custo 4), Phenon 32 h (abaixo de 40 h, custo 3) e Eurocopter 71,5 h (acima de 60 h, custo 4). Logo x = 4 + 3 + 4 = 11 mil dólares e 9 ≤ x < 13. Alternativa **b**.",
+    "pitfalls": [
+      "Principal armadilha: a ordem das colunas muda entre as tabelas. Na Tabela 1 é Caravan, Phenon, Eurocopter; na Tabela 3 é Phenon, Eurocopter, Caravan. Quem mantém a ordem da Tabela 1 lê 4 (coluna Phenon, para 52 h), 1 (coluna Eurocopter, para 32 h) e 8 (coluna Caravan, para 71,5 h). Isso dá x = 13 e leva à alternativa c, que é errada. É preciso procurar cada aeronave pelo nome da coluna.",
+      "Produto matricial na ordem errada: as horas por aeronave vêm de D^T·A, combinando cada coluna da Tabela 1 com as durações das rotas. A conta A·D dá (36; 53; 65,5), números sem sentido físico, porque misturam aeronaves com durações de rotas. Por coincidência, esse erro com a ordem de colunas certa dá 10, que cai na mesma alternativa b. Uma boa resolução precisa mostrar o cálculo correto (52; 32; 71,5), não só acertar a letra.",
+      "Errar a conta com 1,5 h: 6·1,5 = 9, 12·1,5 = 18 e 1·1,5 = 1,5. Um erro aqui pode mudar a faixa, principalmente perto de 40 h ou 60 h.",
+      "Somar as horas de todas as aeronaves (155,5 h) e aplicar a faixa 'acima de 60 h' a todas dá 6 + 4 + 8 = 18 e leva à alternativa d. O errado é isso: a faixa é decidida aeronave por aeronave.",
+      "Fronteiras das faixas: 'Entre 40 h e 60 h' não diz se os extremos estão incluídos. Uma boa resolução observa que nenhum valor (52; 32; 71,5) cai exatamente em 40 h ou 60 h, então a ambiguidade não afeta o resultado.",
+      "Hipótese implícita: há uma aeronave de cada tipo, e o custo da Tabela 3 é por aeronave, para o mês. O valor já vem em milhares de dólares, então x = 11, e não 11 000."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A resposta é a alternativa (B): 9 ≤ x < 13, com x = 11 mil dólares. As horas voadas em junho foram: Caravan 52 h (faixa de 40 a 60 h, custo 4), Phenon 32 h (abaixo de 40 h, custo 3) e Eurocopter 71,5 h (acima de 60 h, custo 4). Atenção: na terceira tabela as colunas das aeronaves vêm em outra ordem.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não diz explicitamente que trata a frota como uma aeronave de cada tipo, nem que o valor da Tabela 3 é o custo mensal de cada aeronave. O próprio enunciado dá base a essa leitura (\"cada uma das aeronaves de sua propriedade\"), e é ela que permite somar 4 + 3 + 4. Bastava uma frase deixando essa hipótese clara."
+          },
+          {
+            "severity": "minor",
+            "description": "A checagem final de que 6 ≤ 11 ≤ 18 é quase vazia: qualquer combinação de uma célula por coluna cai nesse intervalo. Ela não protege contra a troca de colunas, que é a armadilha principal (a leitura errada dá 13, também dentro do intervalo). Não é erro, mas não tem valor como verificação. A checagem pelas linhas (19·1,5 + 26·2 + 25·3 = 155,5) é útil, porque confirma a soma das horas."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (pág. 3, questão 23) e a transcrição está fiel. Na Tabela 1 as colunas estão na ordem Caravan, Phenon, Eurocopter; na Tabela 3, na ordem Phenon, Eurocopter, Caravan.\n\nA resposta do candidato é a mesma da minha referência: x = 11 mil dólares, alternativa b.\n\nRefiz as contas em python3 com frações exatas e confirmei tudo:\n- O produto montado está certo: H = Aᵀd, que equivale ao meu D^T·A. Ele dá Caravan 52 h, Phenon 32 h e Eurocopter 71,5 h.\n- As somas por linha estão certas (19, 26 e 25 voos), e o total de 155,5 h bate.\n\nSituação de cada armadilha:\n- **Troca de ordem das colunas** (a principal): o candidato aponta a troca explicitamente e lê cada custo pelo nome da aeronave. Os custos lidos são Caravan 4, Phenon 3 e Eurocopter 4, todos corretos.\n- **Ordem do produto matricial:** está certa, e os cálculos aparecem aeronave por aeronave.\n- **Contas com 1,5 h:** estão certas.\n- **Somar as horas da frota inteira antes de escolher a faixa:** foi evitado; a faixa é escolhida aeronave por aeronave.\n- **Fronteiras das faixas:** o candidato observa que nenhum total cai exatamente em 40 h ou 60 h, então a ambiguidade não afeta o resultado.\n- **Unidade:** está correta, em milhares de dólares.\n\nA resolução também descarta as demais alternativas. Ficam só duas ressalvas menores: a hipótese de uma aeronave de cada tipo não é dita explicitamente, e a checagem pelos extremos 6 ≤ x ≤ 18 é quase vazia. A resolução é clara, rigorosa e completa, no nível de um gabarito comentado."
+      }
+    }
+  ]
+}

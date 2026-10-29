@@ -1,0 +1,50 @@
+{
+  "question": 25,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "As raízes de P são 1 ± i√3 e −1 ± 3i. Seus afixos formam um trapézio isósceles com bases verticais 2√3 (sobre x = 1) e 6 (sobre x = −1) e altura 2. Girando em torno de x = 1, o sólido é um cilindro de raio 2 e altura 6 menos dois cones de raio 2 e altura 3 − √3. V = 24π − (8π/3)(3 − √3) = 8π(2 + √3/3) ≈ 64,8 u.v., confirmado por Pappus–Guldin. Alternativa (A).",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (pág. 10 da prova, Versão A): P(x) = −x⁴ − 10x² + 12x − 40, raiz dada x = 1 − i√3. A questão não tem figura.\n\n**1) Conferir a raiz dada.** Para x = 1 − i√3:\n- x² = 1 − 2i√3 − 3 = −2 − 2i√3\n- x⁴ = (−2 − 2i√3)² = 4 + 8i√3 − 12 = −8 + 8i√3\n- P(x) = −(−8 + 8i√3) − 10(−2 − 2i√3) + 12(1 − i√3) − 40\n- Parte real: 8 + 20 + 12 − 40 = 0. Parte imaginária: (−8 + 20 − 12)√3 = 0.\n\nEntão P(1 − i√3) = 0.\n\n**2) Achar as outras raízes.** P tem coeficientes reais, então o conjugado 1 + i√3 também é raiz. Esse par gera o fator (x − 1)² + 3 = x² − 2x + 4.\n\nComo P(x) = −(x⁴ + 10x² − 12x + 40), a divisão dá:\nx⁴ + 10x² − 12x + 40 = (x² − 2x + 4)(x² + 2x + 10).\nConferência: x⁴ + 2x³ + 10x² − 2x³ − 4x² − 20x + 4x² + 8x + 40 = x⁴ + 10x² − 12x + 40.\n\nAs raízes de x² + 2x + 10 = 0 são x = −1 ± 3i. As quatro raízes são 1 ± i√3 e −1 ± 3i. O sinal negativo do coeficiente líder não muda as raízes.\n\n**3) O polígono.** Os afixos das raízes são A(1, √3), B(1, −√3), C(−1, −3) e D(−1, 3).\n- O polígono ABCD é um trapézio isósceles, simétrico em relação ao eixo real.\n- Os lados paralelos são verticais. AB fica sobre a reta Re z = 1 e mede 2√3 ≈ 3,46. CD fica sobre a reta Re z = −1 e mede 6.\n- A altura do trapézio é 2, a distância entre as retas x = 1 e x = −1.\n- Os lados oblíquos medem √(4 + (3 − √3)²) = √(16 − 6√3).\n- O menor lado paralelo é AB, sobre a reta x = 1. Esse é o eixo de rotação.\n\n**4) O sólido de revolução.** O eixo x = 1 é um lado do trapézio, então todo o polígono fica de um lado só do eixo.\n- Seja r = 1 − x a distância ao eixo, com r variando de 0 a 2.\n- A esta distância, o trapézio ocupa |y| ≤ h(r), com h(r) = √3 + (3 − √3)·r/2. Assim h vai de √3 (sobre o eixo) até 3 (no lado maior).\n- Girando o trapézio, obtém-se um cilindro de raio 2 e altura 6, gerado pelo retângulo [−1, 1] × [−3, 3], do qual se retiram dois cones congruentes.\n- Esses cones são gerados pelos triângulos que sobram entre o trapézio e o retângulo: (1, √3), (1, 3), (−1, 3) e o seu simétrico.\n- Cada cone tem vértice no eixo (em y = ±√3), raio da base 2 (base em y = ±3) e altura 3 − √3.\n\n**5) Cálculo do volume.**\n- V(cilindro) = π·2²·6 = 24π\n- V(cada cone) = (1/3)π·2²·(3 − √3) = (4π/3)(3 − √3)\n- V = 24π − 2·(4π/3)(3 − √3) = 24π − 8π + 8π√3/3 = 16π + 8π√3/3 = 8π(2 + √3/3)\n\n**Conferência pelo teorema de Pappus–Guldin.**\n- Área do trapézio: A = (6 + 2√3)/2 · 2 = 6 + 2√3.\n- Distância do centroide ao lado menor a = 2√3 (o outro lado é b = 6, altura h = 2): d = h(a + 2b)/[3(a + b)] = 2(2√3 + 12)/[3(6 + 2√3)].\n- V = 2π·d·A = 4π(12 + 2√3)/3 = 16π + 8π√3/3. Mesmo resultado.\n\n**Conferência numérica (Python).**\n- As quatro raízes dão |P| = 0.\n- A integral por cascas cilíndricas V = ∫₀² 2πr·2h(r) dr dá 64,77588.\n- A alternativa a) vale 8π(2 + √3/3) ≈ 64,77588.\n- As demais valem: b) ≈ 31,87, c) ≈ 29,02, d) ≈ 13,73.\n\n**Resposta: alternativa a) 8π(2 + √3/3).**",
+    "final_answer": "Alternativa a). O volume é 8π(2 + √3/3) = 16π + 8π√3/3 ≈ 64,78 u.v.\n\nAs raízes são 1 ± i√3 e −1 ± 3i, e o polígono é um trapézio isósceles. Seus lados paralelos são verticais: o menor mede 2√3 (sobre x = 1) e o maior mede 6 (sobre x = −1); a altura é 2. Girando em torno do lado menor, o sólido é um cilindro de raio 2 e altura 6 menos dois cones de raio 2 e altura 3 − √3.",
+    "pitfalls": [
+      "As outras raízes vêm do teorema das raízes conjugadas, que só vale porque P tem coeficientes reais. O conjugado 1 + i√3 gera o fator x² − 2x + 4. O quociente é −(x² + 2x + 10), cujas raízes são −1 ± 3i.",
+      "O coeficiente líder é −1. Uma resolução descuidada pode errar sinais na divisão polinomial (por exemplo, obter x² + 2x − 10 ou raízes −1 ± i√... erradas). Convém conferir com o produto (x² − 2x + 4)(x² + 2x + 10) = x⁴ + 10x² − 12x + 40.",
+      "Os vértices precisam ser ligados na ordem certa (A(1,√3), B(1,−√3), C(−1,−3), D(−1,3)) para formar um trapézio isósceles convexo, e não um quadrilátero que se cruza.",
+      "É preciso saber quais lados são paralelos. São os verticais (Re z = 1 e Re z = −1), e não os horizontais.",
+      "O menor lado paralelo mede 2√3 ≈ 3,46 e fica sobre x = 1. Ele é menor que o lado de medida 6. Girar em torno do lado maior (x = −1) daria 8π + 16π√3/3 ≈ 54,15, valor que não está entre as alternativas.",
+      "O sólido não é um tronco de cone. É um cilindro (raio = altura do trapézio = 2, altura = lado maior = 6) com duas cavidades cônicas, cada uma de raio 2 e altura 3 − √3. Os cones são subtraídos, não somados.",
+      "Um erro comum é esquecer o fator 1/3 no volume do cone ou confundir raio com altura. A altura de cada cone é 3 − √3, metade da diferença entre os lados paralelos, e o raio é 2.",
+      "O teorema de Pappus só se aplica diretamente porque o eixo não corta o interior do polígono, pois o eixo é um lado dele. A distância do centroide ao lado menor é h(a + 2b)/[3(a + b)], e não a fórmula com a e b trocados.",
+      "Dica de checagem: 8π(2 + √3/3) = 16π + 8π√3/3 ≈ 64,78. Os distratores valem b ≈ 31,87, c ≈ 29,02 e d ≈ 13,73, todos bem diferentes do valor correto."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "As raízes de P são 1 ± i√3 e −1 ± 3i. Seus afixos formam um trapézio isósceles com bases verticais 2√3 (sobre x = 1) e 6 (sobre x = −1) e altura 2. Girando em torno de x = 1, o sólido é um cilindro de raio 2 e altura 6 menos dois cones de raio 2 e altura 3 − √3. V = 24π − (8π/3)(3 − √3) = 8π(2 + √3/3) ≈ 64,8 u.v., confirmado por Pappus–Guldin. Alternativa (A).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato não confere que 1 − i√3 é de fato raiz de P. Como o enunciado garante isso, não é obrigatório, mas uma linha de conferência (x² = −2 − 2i√3, x⁴ = −8 + 8i√3) protegeria contra erro de transcrição. O resultado não muda, porque a fatoração foi conferida por expansão."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação por Pappus–Guldin, a fórmula do centroide do trapézio, d = h(a+2b)/[3(a+b)], é usada sem dedução. O candidato também não diz que o teorema vale porque o eixo não atravessa o interior do polígono, já que é um de seus lados. Como é só uma verificação, a falta é pequena. Bastaria uma frase sobre a aplicabilidade."
+          },
+          {
+            "severity": "minor",
+            "description": "A cota inferior V > 16π, usada no item 5, não é justificada. Ela sai de os cones terem altura 3 − √3 < 3: com altura 3, o volume seria 24π − 16π/3·... = 16π. Bastaria uma frase, ou então tirar a afirmação, que é só heurística."
+          }
+        ],
+        "summary": "Conferi o enunciado no original (pág. 10, Versão A) e ele coincide com a transcrição. A resposta do candidato bate com a referência: alternativa a), V = 8π(2 + √3/3) = 16π + 8π√3/3 ≈ 64,78. Refiz as contas em Python. As quatro raízes 1 ± i√3 e −1 ± 3i anulam P. Pelo cilindro menos os cones e por Pappus, o volume dá 64,77588. Os distratores valem b ≈ 31,87, c ≈ 29,02 e d ≈ 13,73.\n\nO candidato tratou todas as armadilhas:\n- usou as raízes conjugadas e justificou com os coeficientes reais;\n- fatorou com o coeficiente líder −1 e conferiu a fatoração por expansão;\n- ligou os vértices na ordem certa (ABCD);\n- percebeu que os lados paralelos são os verticais;\n- escolheu o menor lado (2√3, sobre x = 1) como eixo;\n- montou o sólido como cilindro de raio 2 e altura 6 menos dois cones de raio 2 e altura 3 − √3, com o fator 1/3 presente;\n- conferiu por Pappus usando a fórmula do centroide com a e b na ordem certa.\n\nA resolução está clara, completa e confere o resultado por dois métodos independentes. Só faltam detalhes menores de rigor: a conferência da raiz dada, a justificativa de que Pappus se aplica e a da cota inferior 16π. Serve como gabarito comentado."
+      }
+    }
+  ]
+}

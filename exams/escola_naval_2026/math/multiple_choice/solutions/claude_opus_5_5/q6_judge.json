@@ -1,0 +1,48 @@
+{
+  "question": 6,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(B) 5π/3: f(x) = π/2 é constante no domínio [-1/3, 3], então a área é (10/3)·(π/2) = 5π/3.",
+  "judge_reference": {
+    "final_answer": "Domínio: [−1/3, 3], de comprimento 10/3. Nele, f(x) = π/2 (constante). Área = (π/2)·(10/3) = 5π/3. Alternativa (B).",
+    "reference_solution": "Confirmei o enunciado na prova original (página 3/12, Questão 6). A transcrição está correta.\n\n**1) Domínio de f**\nSeja u(x) = (2x − 1)/(x + 2), com x ≠ −2. O arcsen e o arccos só estão definidos para −1 ≤ u ≤ 1. Por isso, as duas inequações abaixo precisam valer ao mesmo tempo.\n\n(i) u ≤ 1 ⟺ (2x − 1)/(x + 2) − 1 ≤ 0 ⟺ (x − 3)/(x + 2) ≤ 0 ⟺ −2 < x ≤ 3.\n\n(ii) u ≥ −1 ⟺ (2x − 1)/(x + 2) + 1 ≥ 0 ⟺ (3x + 1)/(x + 2) ≥ 0 ⟺ x < −2 ou x ≥ −1/3.\n\nA interseção de (i) e (ii) é D(f) = [−1/3, 3].\nVerificação: u(−1/3) = (−5/3)/(5/3) = −1 e u(3) = 5/5 = 1. Os dois extremos pertencem ao domínio.\n\n**2) Lei de f**\nPara todo t ∈ [−1, 1], vale arcsen t + arccos t = π/2.\nProva: tome θ = arcsen t ∈ [−π/2, π/2]. Então π/2 − θ ∈ [0, π] e cos(π/2 − θ) = sen θ = t. Logo arccos t = π/2 − θ.\nPortanto f(x) = π/2 para todo x ∈ [−1/3, 3]. O gráfico de f é um segmento horizontal na altura π/2.\n\n**3) Área**\nAs retas verticais que delimitam o domínio são x = −1/3 e x = 3. A região limitada por elas, pelo gráfico de f e pelo eixo x é um retângulo:\n- base: 3 − (−1/3) = 10/3;\n- altura: π/2.\n\nÁrea = (10/3)·(π/2) = 5π/3 ≈ 5,236.\n\nA conta foi conferida numericamente em Python (domínio ≈ [−0,3333; 3] e f ≡ 1,5708).\n\n**Resposta: (B) 5π/3.**",
+    "pitfalls": [
+      "Não basta notar que f(x) = π/2. A questão pede a área, e para isso é preciso achar o domínio, que é a base do retângulo.",
+      "Erro clássico na inequação racional: multiplicar os dois lados por (x + 2) sem estudar o sinal desse fator. O correto é passar tudo para um lado e estudar o sinal: (x − 3)/(x + 2) ≤ 0 e (3x + 1)/(x + 2) ≥ 0.",
+      "x = −2 deve ser excluído, porque anula o denominador. Os ramos x < −2 de (ii) e −2 < x ≤ 3 de (i) não se juntam: a interseção é só [−1/3, 3].",
+      "Conferir os extremos: u(−1/3) = −1 e u(3) = 1 pertencem ao domínio de arcsen e arccos. Por isso o intervalo é fechado, embora isso não altere a área.",
+      "Para usar a identidade arcsen t + arccos t = π/2 é preciso ter t ∈ [−1, 1], o que vale exatamente no domínio encontrado. Uma boa resolução cita ou justifica essa identidade.",
+      "Erros de sinal ou de conta no comprimento: 3 − (−1/3) = 10/3, e não 8/3 nem 3. Os erros levam a alternativas falsas. Com comprimento 3 a área seria 3π/2 = (A); com π/2 = (E), alguém tomou 'altura' como área ou usou comprimento 1.",
+      "O gráfico é uma reta horizontal acima do eixo x (π/2 > 0). A região é um retângulo; não há área com sinal nem parte abaixo do eixo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(B) 5π/3: f(x) = π/2 é constante no domínio [-1/3, 3], então a área é (10/3)·(π/2) = 5π/3.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na etapa 1, o candidato escreve f(x) = π/2 'em todo o domínio' antes de determinar esse domínio. A lógica fica correta, porque a identidade vale para u ∈ [−1,1] e o domínio é justamente o conjunto onde u ∈ [−1,1]. Ainda assim, a ordem domínio → identidade seria mais limpa ou deveria trazer uma remissão explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "Na desigualdade da esquerda, o resultado 'x < −2 ou x ≥ −1/3' aparece sem o quadro de sinais de (3x+1)/(x+2). Está correto, mas em uma prova discursiva caberia uma linha indicando os zeros (−1/3 e −2) e o sinal de cada fator. O mesmo vale para (x−3)/(x+2) ≤ 0."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conclusão, a frase 'as outras alternativas dão bases diferentes de 10/3' só é verificada para (A) e (E). Para (C) a base seria 7 e para (D) seria 18/5. Isso é irrelevante para a correção, porque a resposta já está provada diretamente."
+          }
+        ],
+        "summary": "Conferi o enunciado na prova original (Questão 6, página 3/12) e a transcrição está fiel. O candidato marcou (B) 5π/3, a mesma resposta da minha referência, e a resposta está correta. Também conferi numericamente: u(−1/3) = −1, u(3) = 1, e (10/3)(π/2) = 5π/3 ≈ 5,236.\n\nA resolução está completa e correta:\n- **Identidade:** arcsen u + arccos u = π/2 vem com justificativa própria, incluindo a verificação de que π/2 − θ ∈ [0, π].\n- **Domínio:** as duas inequações racionais são resolvidas passando tudo para um lado (x−3)/(x+2) ≤ 0 e (3x+1)/(x+2) ≥ 0, sem multiplicar pelo denominador de sinal variável. O ponto x = −2 é excluído.\n- **Extremos:** a interseção [−1/3, 3] é obtida corretamente e os extremos são conferidos.\n- **Área:** o retângulo tem base 10/3 e altura π/2. O resultado é confirmado por integral e por ordem de grandeza.\n\nTodas as armadilhas que listei foram tratadas:\n- o domínio como base do retângulo;\n- o estudo de sinal sem multiplicar pelo denominador;\n- a exclusão de x = −2;\n- a conferência dos extremos;\n- a condição de validade da identidade;\n- o comprimento 10/3, sem erro de sinal;\n- o gráfico acima do eixo x.\n\nO candidato ainda explica a origem dos distratores (A) e (E). Restam só pequenos ajustes de redação: a identidade é aplicada 'no domínio' antes de o domínio ser obtido, e falta o quadro de sinais explícito. Nada disso afeta a correção. É uma resolução publicável como gabarito comentado."
+      }
+    }
+  ]
+}

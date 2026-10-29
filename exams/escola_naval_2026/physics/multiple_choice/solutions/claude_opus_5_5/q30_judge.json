@@ -1,0 +1,48 @@
+{
+  "question": 30,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "(D) 6,0 × 10^-7 m. Com franjas claras em y_n = nλL/d, temos y_3 = 3λL/d. Pelo gráfico, ΔL = 500d produz Δy_3 = 9,0 × 10^-4 m, então 1500λ = 9,0 × 10^-4 e λ = 6,0 × 10^-7 m.",
+  "judge_reference": {
+    "final_answer": "λ = 6,0×10⁻⁷ m, alternativa (D).",
+    "reference_solution": "**Conferência com o original (pág. 13/18 do PDF).** A transcrição está correta. Na figura 1, as franjas claras A, B, C e D estão em ordem, de baixo para cima, e y₃ é a distância de A (franja central) até D. A figura 2 mostra um segmento de reta crescente. O eixo vertical é y₃ em 10⁻⁴ m e o horizontal é L em unidades de \"×1000·d m\". Nas cotas, uma variação de 0,5 no eixo horizontal corresponde a uma variação de 9,0 no eixo vertical.\n\n**1) Posição das franjas claras (Young, com d ≪ L).**\n- Há interferência construtiva quando a diferença de caminho é d·sen θ = mλ, com m = 0, 1, 2, …\n- Como d ≪ L, os ângulos são pequenos e vale sen θ ≈ tg θ = y/L.\n- Assim, a franja clara de ordem m fica em y_m = mλL/d, e as franjas claras vizinhas estão separadas por Δy = λL/d.\n- A é a franja central (m = 0). B, C e D são as 1ª, 2ª e 3ª franjas claras (m = 1, 2, 3). Portanto:\n\n  y₃ = 3λL/d.\n\n**2) Mudança de variável do eixo horizontal.**\n- O eixo mede L em múltiplos de 1000·d. Chamando de x o número lido no eixo, temos L = 1000·d·x, com d fixo.\n- Substituindo: y₃ = 3λ(1000·d·x)/d = 3000·λ·x.\n- A separação d se cancela, e o gráfico y₃ × x é uma reta de inclinação 3000·λ.\n\n**3) Inclinação a partir do gráfico.**\n- Pelas cotas, Δy₃ = 9,0×10⁻⁴ m quando Δx = 0,5.\n- Inclinação: Δy₃/Δx = 9,0×10⁻⁴ / 0,5 = 1,8×10⁻³ m.\n- Usar diferenças evita depender de valores absolutos, que o gráfico não informa.\n\n**4) Comprimento de onda.**\n- 3000·λ = 1,8×10⁻³ m, logo λ = 1,8×10⁻³ / 3000 = 6,0×10⁻⁷ m (600 nm, luz visível laranja, o que confirma o resultado).\n\n**Conferência numérica (python).**\n- Com y₃ = 3λL/d: λ = 6,0×10⁻⁷ m.\n- Com outros fatores n: n = 1 dá 1,8×10⁻⁶; n = 2 dá 9×10⁻⁷; n = 6 dá 3×10⁻⁷ (alternativa C).\n- Esquecendo o fator 10⁻⁴: 6×10⁻³ (alternativa B).\n\n**Resposta: (D) 6,0×10⁻⁷ m.**",
+    "pitfalls": [
+      "Contar as franjas: y₃ vai da franja central A (m = 0) até D, a 3ª franja clara (m = 3). São 3 espaçamentos, então y₃ = 3λL/d. Usar 1 espaçamento dá 1,8×10⁻⁶, usar 2 dá 9×10⁻⁷, usar 4 dá 4,5×10⁻⁷. Nenhum desses está entre as alternativas.",
+      "Escala do eixo L: o eixo mede L em múltiplos de 1000·d, ou seja, L = 1000·d·x. A separação d se cancela e a inclinação vale 3000λ. Esquecer o fator 1000, ou tratar o eixo como metros, dá um resultado errado.",
+      "Escala do eixo y₃: os valores estão em 10⁻⁴ m. Esquecer esse fator dá 9,0/0,5/3000 = 6×10⁻³, que é exatamente o distrator (B).",
+      "Fator 2 indevido: confundir franjas claras com escuras, ou usar Δy = λL/(2d), dá 3,0×10⁻⁷, que é o distrator (C).",
+      "Usar a inclinação (Δy₃/ΔL = 9,0/0,5), e não a razão entre valores absolutos de um ponto: o gráfico só traz as variações cotadas, e o segmento desenhado não começa na origem.",
+      "Hipóteses de validade: d ≪ L justifica a aproximação de ângulos pequenos (sen θ ≈ tg θ = y/L), que torna y₃ linear em L. Além disso, d deve ficar fixo ao longo do gráfico, condição implícita para que L/(1000d) seja uma variável proporcional a L.",
+      "Teste de plausibilidade: λ = 600 nm está na faixa visível. As alternativas A (1,2×10⁻²), B (6×10⁻³) e E (1,2×10⁻⁸) estão fisicamente fora da faixa de luz visível e só sairiam de erros de potência de 10."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "(D) 6,0 × 10^-7 m. Com franjas claras em y_n = nλL/d, temos y_3 = 3λL/d. Pelo gráfico, ΔL = 500d produz Δy_3 = 9,0 × 10^-4 m, então 1500λ = 9,0 × 10^-4 e λ = 6,0 × 10^-7 m.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na verificação final, o candidato diz que a alternativa (C), 3,0×10⁻⁷ m, \"seria obtida contando errado o número de franjas entre A e D\". Isso não procede. Contando 2 espaçamentos sai 9×10⁻⁷ m e contando 4 sai 4,5×10⁻⁷ m. Para chegar a 3,0×10⁻⁷ m seria preciso usar 6 espaçamentos, o que não é um erro de contagem plausível. Esse valor vem de um fator 2 indevido: confundir franjas claras com escuras ou usar Δy = λL/(2d). O erro não afeta a resposta, mas o comentário sobre o distrator deveria ser corrigido."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato escreve que \"a reta não precisa passar pela origem do gráfico\" sem dizer por quê, e isso fica em tensão com o próprio modelo y₃ = 3λL/d, que prevê proporcionalidade direta (reta pela origem). A justificativa correta seria: o gráfico não informa onde ficam os zeros dos eixos nem valores absolutos, só as variações cotadas. Por isso só a inclinação é confiável, e ela basta, porque não depende do intercepto."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato afirma que F₁ e F₂ estão \"em fase\" só porque são iluminadas pela mesma fenda F₃. Faltou dizer que isso pressupõe F₃ equidistante de F₁ e F₂, como sugere a franja central A no eixo. É uma hipótese implícita. Não muda o resultado, já que a diferença y₃ entre duas franjas não depende de uma fase constante."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (página 6 do arquivo, impressa como 13/18): a transcrição está correta. O candidato e a minha referência chegam à mesma resposta, (D) λ = 6,0×10⁻⁷ m. Refiz a conta em python: 9,0×10⁻⁴/(0,5·3000) = 6,0×10⁻⁷ m.\n\nA resolução está correta e bem organizada:\n- Deduz y_n = nλL/d a partir da diferença de caminho, com a aproximação de ângulos pequenos justificada por d ≪ L e y ≪ L.\n- Identifica corretamente A como n = 0 e D como n = 3, logo y₃ = 3λL/d.\n- Converte a escala do eixo horizontal, L = 1000·d·x, e o d se cancela.\n- Usa o fator 10⁻⁴ m do eixo vertical.\n- Trabalha com variações (ΔL = 500d, Δy₃ = 9,0×10⁻⁴ m), e não com valores absolutos.\n- Confere unidades e a ordem de grandeza: 600 nm é luz visível.\n- Deixa explícito que d fica fixo ao longo do gráfico.\n\nTodas as armadilhas que listei foram tratadas: a contagem das franjas, a escala em múltiplos de 1000d, o fator 10⁻⁴, o uso da inclinação e as hipóteses de validade.\n\nHá só três ressalvas menores:\n- Atribuição errada da origem do distrator (C): ele vem de um fator 2, não de um erro de contagem.\n- Falta explicar por que a reta \"não precisa\" passar pela origem: o gráfico não mostra os zeros dos eixos.\n- A afirmação \"em fase\" pressupõe, sem dizer, que F₃ é simétrica em relação a F₁ e F₂.\n\nCom pequenos ajustes, seria publicável como gabarito comentado."
+      }
+    }
+  ]
+}

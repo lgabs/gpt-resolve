@@ -1,0 +1,39 @@
+\section*{Questão 32}
+
+\section*{Solução}
+
+\textbf{Modelo.} Nascem 2 machos para cada 3 fêmeas, ou seja, de cada 5 nascimentos, 3 são fêmeas. Se um animal do rebanho é escolhido ao acaso,
+\[
+P(\text{fêmea})=\frac{3}{5},\qquad P(\text{macho})=\frac{2}{5}.
+\]
+Consideramos o rebanho grande. Assim, os sexos dos $n$ animais da amostra são tratados como independentes, e cada um tem as probabilidades acima (é a hipótese implícita no enunciado, já que os logaritmos dados envolvem $\tfrac{2}{5}$).
+
+\textbf{Evento complementar.} ``Pelo menos uma fêmea'' é o complementar de ``todos os $n$ animais são machos''. Pela independência,
+\[
+P(\text{pelo menos uma fêmea}) = 1-\left(\frac{2}{5}\right)^{n}.
+\]
+Queremos
+\[
+1-\left(\frac{2}{5}\right)^{n} > 0{,}95 \iff \left(\frac{2}{5}\right)^{n} < 0{,}05=\frac{1}{20}.
+\]
+
+\textbf{Uso dos logaritmos.} A função $\log$ (base 10) é crescente. Aplicando-a aos dois membros, positivos, a desigualdade se mantém:
+\[
+n\log\frac{2}{5} < \log\frac{1}{20} \iff -0{,}4\,n < -1{,}3 .
+\]
+Ao dividir por $-0{,}4<0$, o sentido da desigualdade se inverte:
+\[
+n > \frac{1{,}3}{0{,}4} = 3{,}25 .
+\]
+Como $n\in\mathbb{N}^*$, o menor valor possível é $n=4$.
+
+\textbf{Verificação direta.}
+\[
+n=3:\ \left(\tfrac{2}{5}\right)^{3}=\tfrac{8}{125}=0{,}064>0{,}05 \ \Rightarrow\ P=0{,}936<95\% \quad(\text{não serve});
+\]
+\[
+n=4:\ \left(\tfrac{2}{5}\right)^{4}=\tfrac{16}{625}=0{,}0256<0{,}05 \ \Rightarrow\ P=0{,}9744>95\% \quad(\text{serve}).
+\]
+Com $n=4$ a probabilidade passa de $95\%$, e com $n=3$ ainda não passa. Portanto o tamanho mínimo da amostra é $4$, o que corresponde à alternativa c). As alternativas a) e b) dão probabilidades de no máximo $93{,}6\%$. A alternativa d) também cumpre a condição, mas não é a mínima.
+
+ANSWER: (C) 4

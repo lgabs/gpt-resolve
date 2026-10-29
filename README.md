@@ -20,9 +20,9 @@ Table of some exams to be solved:
 | ITA          | 2025 | 🚧 In Progress | -     | [Report](exams/ita_2025/report.md) |
 | IME          | 2027 | ✅ Done        | Math: 100%, Physics: 100%, Chemistry: 100% | [Report](exams/ime_2027/report.md) |
 | ITA          | 2027 | ✅ Done        | Math: 100%, Chemistry: 99%, Physics: 100% | [Report](exams/ita_2027/report.md) |
-| Escola Naval | 2025 | 📅 Todo        | -     | -                                  |
+| Escola Naval | 2026 | ✅ Done        | Math: 100%, Physics: 95% (21/22) | [Report](exams/escola_naval_2026/report.md) |
 | Fuvest/USP   | 2025 | 📅 Todo        | -     | -                                  |
-| AFA          | 2025 | 📅 Todo        | -     | -                                  |
+| AFA          | 2027 | ✅ Done        | Math: 94% (15/16), Physics: 100% | [Report](exams/afa_2027/report.md) |
 | UNICAMP      | 2025 | 📅 Todo        | -     | -                                  |
 | ENEM         | 2025 | 📅 Todo        | -     | -                                  |
 

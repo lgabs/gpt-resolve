@@ -1,0 +1,43 @@
+\section*{Questão 28}
+
+\section*{Solução}
+
+\textbf{Variáveis.} Seja $x$ o número de caixas de cápsulas .38 e $y$ o número de caixas de cápsulas 9 mm Luger, com $x, y \in \mathbb{N}$ (logo $x \ge 0$ e $y \ge 0$).
+
+\textbf{1) Restrição de quantidade de tiros.} Cada caixa .38 tem 165 cápsulas e cada caixa 9 mm tem 231. Como são necessários \emph{ao menos} 3003 tiros,
+\[
+165x + 231y \ge 3003 .
+\]
+Note que $165 = 33 \cdot 5$, $231 = 33 \cdot 7$ e $3003 = 33 \cdot 91$. Dividindo por $33 > 0$ (o sentido da desigualdade se mantém):
+\[
+5x + 7y \ge 91 \quad\Longleftrightarrow\quad 5x + 7y - 91 \ge 0 .
+\]
+
+\textbf{2) Restrição de custo.} Cada caixa .38 custa R\$ 660,00 e cada caixa 9 mm custa R\$ 4840,00. Como o gasto \emph{não pode ultrapassar} R\$ 26000,00,
+\[
+660x + 4840y \le 26000 .
+\]
+Como $660 = 20 \cdot 33$, $4840 = 20 \cdot 242$ e $26000 = 20 \cdot 1300$, dividindo por $20 > 0$:
+\[
+33x + 242y \le 1300 \quad\Longleftrightarrow\quad 33x + 242y - 1300 \le 0 .
+\]
+
+\textbf{3) Sistema.} Todo par $(x, y)$ que atende às necessidades do teste satisfaz simultaneamente
+\[
+\begin{cases}
+33x + 242y - 1300 \le 0 \\
+5x + 7y - 91 \ge 0
+\end{cases}
+\]
+que é exatamente o sistema da alternativa (a). Ele traduz as duas exigências: a primeira inequação é a do orçamento e a segunda é a do número mínimo de tiros. Esse conjunto não é vazio. Por exemplo, $(x, y) = (19, 0)$ dá $165 \cdot 19 = 3135 \ge 3003$ tiros e custa $660 \cdot 19 = 12540 \le 26000$ reais.
+
+\textbf{Análise das demais alternativas.}
+\begin{itemize}
+\item (c) inverte os dois sentidos: exigiria gasto de pelo menos R\$ 26000,00 e no máximo 3003 tiros. O par viável $(19, 0)$ não a satisfaz, pois $33 \cdot 19 - 1300 = -673 < 0$.
+\item (d) exige $5x + 7y \ge 1300$. Para um par viável, porém, $5x + 7y \le 33x + 242y \le 1300$ e $33x + 242y \ge 6{,}6\,(5x + 7y) \ge 6{,}6 \cdot 91 > 91$. Assim, $33x + 242y - 91 \le 0$ falha sempre e nenhum par viável satisfaz (d).
+\item (b) troca os coeficientes entre as restrições e não traduz as condições do problema. Pelas mesmas desigualdades do item anterior, todo par viável satisfaz (b). Porém (b) é muito mais fraca: o par $(0, 1)$ satisfaz (b), já que $242 - 91 \ge 0$ e $7 - 1300 \le 0$, mas fornece só 231 tiros. Portanto (b) não descreve as necessidades do teste.
+\end{itemize}
+
+Assim, o sistema que modela as condições do teste (mínimo de 3003 tiros e gasto de no máximo R\$ 26000,00) é o da alternativa (a).
+
+ANSWER: (A) $\begin{cases} 33x + 242y - 1300 \le 0 \\ 5x + 7y - 91 \ge 0 \end{cases}$

@@ -1,0 +1,63 @@
+\section*{Questão 19}
+
+\section*{Solução}
+
+\textbf{1) Simplificação do integrando.} No intervalo $\left[\frac{\pi}{4},\frac{\pi}{2}\right]$ temos $\sin x \ge \frac{\sqrt{2}}{2} > 0$. Assim, o integrando é contínuo e não há singularidade. Pela identidade $1+\cot^2 x=\csc^2 x$:
+\[
+x\cot^2 x = x\csc^2 x - x .
+\]
+Portanto
+\[
+I=\int_{\pi/4}^{\pi/2} x\cot^2 x\,dx=\int_{\pi/4}^{\pi/2} x\csc^2 x\,dx-\int_{\pi/4}^{\pi/2} x\,dx .
+\]
+
+\textbf{2) Integração por partes.} Tomamos $u=x$ e $dv=\csc^2 x\,dx$. Então $du=dx$ e $v=-\cot x$, pois $(\cot x)'=-\csc^2 x$. Daí
+\[
+\int x\csc^2 x\,dx=-x\cot x+\int \cot x\,dx=-x\cot x+\ln(\sin x)+C .
+\]
+Aqui usamos $\int \cot x\,dx=\ln|\sin x|+C$, com $\sin x>0$ no intervalo.
+
+Uma primitiva do integrando original é, então,
+\[
+F(x)=-x\cot x+\ln(\sin x)-\frac{x^2}{2}.
+\]
+Conferência: $F'(x)=-\cot x+x\csc^2 x+\cot x-x=x(\csc^2 x-1)=x\cot^2 x$.
+
+\textbf{3) Teorema Fundamental do Cálculo.} Avaliamos $F$ nos extremos.
+
+Em $x=\frac{\pi}{2}$: $\cot\frac{\pi}{2}=0$ e $\sin\frac{\pi}{2}=1$, logo
+\[
+F\!\left(\tfrac{\pi}{2}\right)=0+\ln 1-\frac{\pi^2}{8}=-\frac{\pi^2}{8}.
+\]
+
+Em $x=\frac{\pi}{4}$: $\cot\frac{\pi}{4}=1$ e $\sin\frac{\pi}{4}=\frac{\sqrt2}{2}$, logo
+\[
+F\!\left(\tfrac{\pi}{4}\right)=-\frac{\pi}{4}+\ln\!\left(\frac{\sqrt2}{2}\right)-\frac{\pi^2}{32}.
+\]
+
+Subtraindo:
+\[
+I=F\!\left(\tfrac{\pi}{2}\right)-F\!\left(\tfrac{\pi}{4}\right)
+=-\frac{\pi^2}{8}+\frac{\pi}{4}-\ln\!\left(\frac{\sqrt2}{2}\right)+\frac{\pi^2}{32}.
+\]
+Como $-\frac{\pi^2}{8}+\frac{\pi^2}{32}=-\frac{4\pi^2}{32}+\frac{\pi^2}{32}=-\frac{3\pi^2}{32}$, obtemos
+\[
+\boxed{I=-\ln\!\left(\frac{\sqrt2}{2}\right)+\frac{\pi}{4}-\frac{3\pi^2}{32}}
+\]
+Equivalentemente, $I=\frac{\ln 2}{2}+\frac{\pi}{4}-\frac{3\pi^2}{32}$.
+
+\textbf{4) Verificação de sinal e ordem de grandeza.} Numericamente,
+\[
+I\approx 0{,}3466+0{,}7854-0{,}9253\approx 0{,}207 .
+\]
+Esse valor é coerente com o integrando. No intervalo, $0\le \cot^2 x\le 1$, e o integrando vale $\frac{\pi}{4}\approx 0{,}785$ em $x=\frac{\pi}{4}$ e decresce até $0$ em $x=\frac{\pi}{2}$. A integral é, portanto, positiva e menor que $\frac{\pi}{4}\cdot\frac{\pi}{4}\approx 0{,}62$. Uma integração numérica (regra de Simpson) confirma $I\approx 0{,}2067$.
+
+\textbf{5) Análise das alternativas.} As outras opções têm valores incompatíveis:
+\begin{itemize}
+\item (B) $\approx -1{,}80$: negativa, o que é impossível, pois o integrando é não negativo.
+\item (C) $\approx 4{,}08$ e (D) $\approx 3{,}52$: excedem a cota $0{,}62$.
+\item (E) $\approx 0{,}82$: tem o coeficiente errado em $\pi^2$, pois o correto é $-\frac{3\pi^2}{32}$, e não $-\frac{\pi^2}{32}$.
+\end{itemize}
+A alternativa (A) coincide exatamente com o valor obtido.
+
+ANSWER: (A) $-\ln\left(\frac{\sqrt{2}}{2}\right)+\frac{\pi}{4}-\frac{3\pi^2}{32}$

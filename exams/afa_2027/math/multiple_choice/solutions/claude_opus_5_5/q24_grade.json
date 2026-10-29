@@ -1,0 +1,34 @@
+{
+  "question": 24,
+  "key_source": "Gabarito oficial AFA 2027, Versão A",
+  "key_url": "",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "24",
+      "solution_answer": "(A) 2 + P_3·C_{26,3}·A_{10,2}·C_{21,1} = 29 484 002",
+      "key_answer": "A",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "A transcrição confere com a página 10 do PDF (página 4 do arquivo). O teclado tem 26 letras, 21 símbolos e 10 algarismos. Refiz as contas em python. C_{26,3}=2600 e A_{10,2}=90. A alternativa a) vale 6·2600·90·21+2 = 29 484 002, e b) vale 4 914 002. As alternativas c) e d) valem ambas 58 968 000, porque P_3·C_{26,3}=A_{26,3} e A_{21,1}=C_{21,1}. O raciocínio está correto. Os três modos de entrar se excluem, então somam-se 1+1+N_c, o que elimina c) e d). Escolher as letras é uma combinação, o par de algarismos distintos é um arranjo e há 21 símbolos. O fator P_3 vem da ordem dos três blocos, e não há dupla contagem porque os tipos de tecla são disjuntos. Essa é a leitura que bate com a) e com o gabarito oficial."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado não diz se os três blocos (letras, algarismos, símbolo) têm posição fixa ou livre no código. O fator P_3 da alternativa a) só se justifica se a ordem dos blocos for livre. Com formato fixo, a resposta seria b). O gabarito oficial (A) confirma a leitura de ordem livre adotada na resolução, mas um aluno poderia contestar a questão com base nessa ambiguidade."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A redação \"um bloco de pares ordenados de algarismos distintos\" está no plural, o que é ambíguo. A resolução lê como um único par, apoiada no fato de todas as alternativas trazerem A_{10,2}. É razoável, mas é uma hipótese de interpretação."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução supõe implicitamente que cada bloco é contíguo, isto é, que os tipos de tecla não se intercalam no código. Também supõe que o sistema aceita qualquer ordem de digitação das 3 letras, já que elas contam como conjunto. As duas hipóteses são necessárias para chegar exatamente a P_3·C_{26,3}, mas a resolução não as declara. Também conta 1 possibilidade para a face e 1 para a digital, que é a leitura padrão."
+    }
+  ],
+  "summary": "A resolução e o gabarito oficial coincidem na alternativa A, 2 + P_3·C_{26,3}·A_{10,2}·C_{21,1} = 29 484 002. Conferi o enunciado no PDF e as contas em python, e está tudo correto. A soma (e não o produto) dos três modos exclusivos de entrar elimina c) e d), que além disso têm o mesmo valor numérico entre si. O fator P_3, que separa a) de b), vem da ordem livre dos blocos, e essa leitura é a confirmada pelo gabarito. As únicas ressalvas são ambiguidades de redação do enunciado (ordem dos blocos, \\\"pares ordenados\\\" no plural), que não mudam a nota."
+}

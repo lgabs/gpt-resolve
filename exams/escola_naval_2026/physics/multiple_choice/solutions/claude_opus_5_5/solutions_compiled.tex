@@ -1,0 +1,1487 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{Escola Naval 2026 (CPAEN) - Física\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}opus{-}5{-}5 (solver) + claude{-}opus{-}5{-}5 (judge)}%
+\date{October 29, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 19}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Os anéis são finos, então cada um se comporta como um fio circular cujo raio sofre dilatação linear:
+\[
+r(T)=r_0\,[1+\alpha\,(T-T_0)],
+\]
+com $r_0$ medido à temperatura inicial $T_0$ (aproximação válida porque $\alpha\,\Delta T\ll 1$ em cada parcela). No equilíbrio, os dois anéis atingem a mesma temperatura final $T_f$. Esse valor é desconhecido, já que também há troca de calor com o meio externo, e veremos que ele não é necessário.
+
+\textbf{Geometria.} No início, o anel 1 (raio $0{,}8R$) está encaixado perpendicularmente no anel 2 (raio $R$). Seu diâmetro $1{,}6R$ é uma corda do anel 2, situada a uma distância
+\[
+d=\sqrt{R^2-(0{,}8R)^2}=0{,}6R
+\]
+abaixo de $C_2$. Por isso $C_1$ fica abaixo de $C_2$. Os centros só coincidem quando essa corda passa a ser um diâmetro do anel 2, isto é, quando os raios finais são iguais: $r_{1,f}=r_{2,f}$.
+
+\textbf{Condição de equilíbrio.} Com $r_{1}=0{,}8R$ a $T_{i,1}$ e $r_{2}=R$ a $T_{i,2}$, e usando $\alpha_2=0{,}8\,\alpha_1$:
+\[
+0{,}8R\,[1+\alpha_1(T_f-T_{i,1})]=R\,[1+0{,}8\,\alpha_1(T_f-T_{i,2})].
+\]
+Expandindo os dois membros:
+\[
+0{,}8+0{,}8\,\alpha_1T_f-0{,}8\,\alpha_1T_{i,1}=1+0{,}8\,\alpha_1T_f-0{,}8\,\alpha_1T_{i,2}.
+\]
+O termo $0{,}8\,\alpha_1T_f$ aparece nos dois lados e se cancela. A razão é física: $r_{1}\alpha_1=0{,}8R\,\alpha_1=R\,\alpha_2=r_{2}\alpha_2$, ou seja, os dois raios variam igualmente, $\Delta r/\Delta T$, para a mesma variação de temperatura. Assim, a diferença entre os raios depende apenas das temperaturas iniciais, e não de $T_f$:
+\[
+0{,}8\,\alpha_1\,(T_{i,2}-T_{i,1})=1-0{,}8=0{,}2
+\quad\Longrightarrow\quad
+T_{i,2}-T_{i,1}=\frac{0{,}2}{0{,}8\,\alpha_1}=\frac{1}{4\,\alpha_1}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item \emph{Unidades:} $[\alpha_1]=\mathrm{K^{-1}}$, logo $1/(4\alpha_1)$ tem unidade de temperatura.
+\item \emph{Sinal:} o resultado é positivo, de acordo com $T_{i,2}>T_{i,1}$. Isso faz sentido: o anel 1, mais frio, precisa ganhar raio em relação ao anel 2, e isso acontece quando ele se aquece enquanto o anel 2 esfria.
+\item \emph{Conferência:} com $T_{i,1}=0$, $T_{i,2}=1/(4\alpha_1)$ e qualquer $T_f$, temos $r_{1,f}=0{,}8R(1+\alpha_1T_f)$ e $r_{2,f}=R\,[1+0{,}8\alpha_1T_f-0{,}2]=0{,}8R(1+\alpha_1T_f)$. Os raios são iguais.
+\item \emph{Ordem de grandeza:} para metais, $\alpha_1\sim10^{-5}\ \mathrm{K^{-1}}$, o que daria $\Delta T\sim2{,}5\cdot10^{4}\ \mathrm{K}$. A variação relativa de $20\%$ no raio é, portanto, uma idealização do enunciado. Mesmo assim, o resultado literal do modelo linear é $1/(4\alpha_1)$.
+\end{itemize}
+
+\textbf{Alternativas.} Só a (D), $1/(4\alpha_1)$, satisfaz $0{,}8\,\alpha_1\,\Delta T=0{,}2$. As outras dariam $0{,}8\,\alpha_1\,\Delta T$ igual a $3{,}2$ (A), $0{,}8$ (B), $3{,}6$ (C) e $0{,}4$ (E), e nesses casos os raios finais não seriam iguais.
+
+ANSWER: (D) $1/(4\cdot\alpha_1)$%
+\newpage%
+\section*{Questão 20}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Fio ideal (massa desprezível), corpo pequeno (partícula), sem resistência do ar, $F$ constante e aplicada \emph{somente} à cabine, $g$ uniforme. Adotamos o eixo vertical orientado para cima, num referencial inercial (Terra).
+
+\textbf{1) Situação no instante do rompimento.} Antes do rompimento o corpo está em repouso em relação à cabine, logo ambos têm a mesma velocidade $v_0$ (e a mesma aceleração $a_0=\dfrac{F}{M+m}-g$, que não será necessária). No instante $t=0$ do rompimento:
+\[
+v_{\text{rel}}(0)=0, \qquad y_{\text{rel}}(0)=H,
+\]
+em que $y_{\text{rel}}$ é a altura do corpo acima do piso. A velocidade não muda bruscamente, pois as forças são finitas.
+
+\textbf{2) Acelerações após o rompimento (2ª lei de Newton).} Com o fio rompido, a tração deixa de agir sobre ambos.
+\begin{itemize}
+\item Corpo: sobre ele atua só o peso $\Rightarrow a_{\text{corpo}}=-g$ (queda livre).
+\item Cabine: sobre ela atuam $F$ (para cima) e $Mg$ (para baixo):
+\[
+M\,a_{\text{cab}}=F-Mg \;\Rightarrow\; a_{\text{cab}}=\frac{F}{M}-g .
+\]
+\end{itemize}
+
+\textbf{3) Movimento relativo.} A aceleração do piso em relação ao corpo é
+\[
+a_{\text{rel}}=a_{\text{cab}}-a_{\text{corpo}}=\left(\frac{F}{M}-g\right)-(-g)=\frac{F}{M}.
+\]
+Ela é constante e positiva: o piso se aproxima do corpo em MUV relativo, partindo do repouso relativo. (No referencial da cabine, que não é inercial, isso equivale a uma ``gravidade efetiva'' $g_{\text{ef}}=g+a_{\text{cab}}=F/M$.) Portanto, a distância $H$ é percorrida em
+\[
+H=\frac{1}{2}\,\frac{F}{M}\,t^{2}\quad\Longrightarrow\quad t=\sqrt{\frac{2HM}{F}} .
+\]
+Note que o resultado não depende de $v_0$ nem de $m$: a velocidade inicial comum se cancela no movimento relativo.
+
+\textbf{4) Verificações.}
+\begin{itemize}
+\item Unidades: $\left[\dfrac{HM}{F}\right]=\dfrac{\text{m}\cdot\text{kg}}{\text{kg}\cdot\text{m/s}^2}=\text{s}^2$, logo $t$ é dado em segundos.
+\item Caso particular $F=Mg$: após o rompimento a cabine se move com velocidade constante (referencial inercial), e o corpo cai livremente: $t=\sqrt{2H/g}$, que coincide com $\sqrt{2HM/F}$ para $F=Mg$.
+\item Ordem de grandeza: para $H=2$ m e $F/M=12$ m/s$^2$, temos $t=\sqrt{4/12}\approx 0{,}58$ s, valor razoável.
+\end{itemize}
+
+\textbf{5) Por que as outras alternativas falham.} (A) só valeria se a cabine não tivesse aceleração após o rompimento ($F=Mg$). (B) usa apenas a aceleração da cabine, $\dfrac{F-Mg}{M}$, e esquece que o corpo também acelera ($-g$). Ela poderia até dar raiz de número negativo se $F<Mg$. (C) e (D) somam ou subtraem $g$ e $F/M$ de forma incorreta; (D) também pode dar raiz de número negativo. Só (E) corresponde a $a_{\text{rel}}=F/M$.
+
+ANSWER: (E) $\sqrt{\dfrac{2HM}{F}}$%
+\newpage%
+\section*{Questão 21}
+
+\section*{Solução}
+
+\textbf{Sentidos das correntes (lidos na figura).} A corrente chega pelo trecho retilíneo da esquerda e entra na espira externa pelo topo. Ali ela circula no sentido \emph{horário*}: as setas apontam para baixo e para a direita no arco superior direito, para a esquerda embaixo e para cima e para a direita no arco superior esquerdo. Em seguida desce pelo trecho radial da esquerda e percorre a espira interna no sentido \emph{anti-horário}, pois a seta na parte de baixo aponta para a direita. Depois sobe pelo trecho radial da direita (seta para cima) e sai pelo trecho retilíneo da direita. Portanto, \textbf{as duas espiras são percorridas em sentidos opostos}.
+
+\textbf{Hipóteses.} Fio fino. As pequenas aberturas onde entram os trechos radiais são desprezadas, de modo que cada espira é tratada como uma circunferência completa. Nos trechos radiais, $d\vec{\ell}$ é paralelo ao vetor que liga o elemento de fio a $O$, logo $d\vec{\ell}\times\hat{u}=\vec 0$ e esses trechos não contribuem (Biot--Savart), como diz o enunciado. Adotamos como positivo o sentido \emph{entrando} no plano do papel.
+
+\textbf{Contribuições em $O$ (Biot--Savart).}
+\begin{itemize}
+\item Espira externa (sentido horário): $B_R=\dfrac{\mu_0 I}{2R}$, entrando.
+\item Espira interna (sentido anti-horário): $B_r=\dfrac{\mu_0 I}{2r}$, saindo.
+\item Trecho retilíneo: são dois fios semi-infinitos que terminam no ponto de tangência $T$, que é o pé da perpendicular traçada de $O$ até a reta, com $OT=R$. Cada fio contribui com $\dfrac{\mu_0 I}{4\pi R}$, e o total é $B_{\text{fio}}=\dfrac{\mu_0 I}{2\pi R}$. O sentido é entrando: a corrente vai para a direita e $O$ está abaixo do fio (regra da mão direita), como no topo de uma espira horária.
+\end{itemize}
+O campo resultante é
+\[
+B_O=\frac{\mu_0 I}{2R}\left(1+\frac{1}{\pi}\right)-\frac{\mu_0 I}{2r}.
+\]
+A unidade está correta: $\mu_0 I/\text{comprimento}$ resulta em T.
+
+\textbf{I --- Verdadeira.} Impondo $B_O=0$:
+\[
+\frac{1}{r}=\frac{1}{R}\cdot\frac{\pi+1}{\pi}\;\Longrightarrow\; r^{*}=\frac{\pi}{\pi+1}\,R\approx 0{,}76\,R .
+\]
+Como $\pi/(\pi+1)<1$, temos $0<r^{*}<R$. A solução é única porque $dB_O/dr=\mu_0 I/(2r^2)>0$, ou seja, $B_O$ é estritamente crescente em $r$. Os limites confirmam: quando $r\to 0^+$, $B_O\to-\infty$ (campo saindo); quando $r\to R^-$, $B_O\to \mu_0 I/(2\pi R)>0$ (campo entrando).
+
+\textbf{II --- Verdadeira.} A razão entre a contribuição da espira interna e as demais é
+\[
+\frac{B_r}{B_R+B_{\text{fio}}}=\frac{\pi R}{(\pi+1)\,r}=\frac{r^{*}}{r}\xrightarrow[r\to0]{}\infty .
+\]
+Logo, para $r\ll r^{*}$, o campo em $O$ é dominado pela espira interna e aponta para fora do papel.
+
+\textbf{III --- Falsa.} $B_{\text{fio}}=\mu_0 I/(2\pi R)$ depende apenas de $I$ e da distância $R$ entre o fio e $O$. O fato de o fio ser único garante somente que a corrente $I$ é a mesma em todos os trechos; isso não cria nenhuma dependência em $r$.
+
+\textbf{IV --- Falsa.} O sentido do campo de cada espira em seu centro depende do sentido em que a corrente circula, e não de as espiras serem concêntricas ou de a corrente ter o mesmo valor. Aqui a espira externa é horária (campo entrando) e a interna é anti-horária (campo saindo), logo os sentidos são opostos. Além disso, se os sentidos fossem iguais, as três contribuições se somariam e $B_O$ nunca se anularia, o que contradiz I.
+
+\textbf{Conclusão.} Apenas as afirmativas I e II são verdadeiras, o que corresponde à alternativa (A).
+
+ANSWER: (A) Apenas as afirmativas I e II são verdadeiras.%
+\newpage%
+\section*{Questão 22}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Os centros $C_A$ e $C_B$ são fixos e não há deslizamento no ponto de contato, de modo que os pontos das duas bordas percorrem arcos de mesmo comprimento. Os raios são dados em metros: $R_A=\sqrt{3}\,\pi$ m e $R_B=\dfrac{\sqrt{3}\,\pi}{2}$ m. Tomamos os ângulos a partir da direção horizontal para a direita, no sentido anti-horário. Na figura 1, a seta de $A$ aponta para $0^\circ$, o ponto $P$ está em $180^\circ$ e a seta de $B$ aponta para $180^\circ$.
+
+\textbf{1) Movimento do disco $A$ (figura 2).} O gráfico $v_P\times t$ é uma reta que parte da origem. Logo, o movimento de $P$ é circular uniformemente variado, com aceleração tangencial igual à inclinação da reta:
+\[
+a_t=\tan 30^\circ=\frac{\sqrt3}{3}\ \text{m/s}^2,\qquad V=a_t\,(3\pi)=\sqrt3\,\pi\ \text{m/s}.
+\]
+O deslocamento angular é a área sob o gráfico (o arco percorrido por $P$) dividida pelo raio:
+\[
+s_A=\frac{1}{2}\,(3\pi)\,(\sqrt3\,\pi)=\frac{3\sqrt3\,\pi^2}{2}\ \text{m}
+\quad\Rightarrow\quad
+\Delta\theta_A=\frac{s_A}{R_A}=\frac{3\sqrt3\,\pi^2/2}{\sqrt3\,\pi}=\frac{3\pi}{2}\ \text{rad}.
+\]
+Verificação: $\alpha_A=a_t/R_A=\dfrac{1}{3\pi}\ \text{rad/s}^2$ e $\Delta\theta_A=\tfrac12\alpha_A t^2=\tfrac12\cdot\dfrac{1}{3\pi}\cdot 9\pi^2=\dfrac{3\pi}{2}$ rad, ou seja, $270^\circ$ no sentido anti-horário.
+
+\begin{itemize}
+\item Seta de $A$: $0^\circ+270^\circ=270^\circ$, isto é, aponta \textbf{para baixo}.
+\item Ponto $P$: $180^\circ+270^\circ=450^\circ\equiv 90^\circ$, isto é, $P$ fica no \textbf{topo} do disco $A$.
+\end{itemize}
+
+\textbf{2) Movimento do disco $B$.} Como não há deslizamento, as bordas têm a mesma velocidade linear no contato e percorrem o mesmo arco $s_B=s_A$. Assim,
+\[
+\Delta\theta_B=\frac{s_A}{R_B}=\frac{R_A}{R_B}\,\Delta\theta_A=2\cdot\frac{3\pi}{2}=3\pi\ \text{rad}=540^\circ .
+\]
+Em contato externo, os discos giram em sentidos opostos. Como $A$ gira no sentido anti-horário, $B$ gira no sentido \textbf{horário}. Uma rotação de $540^\circ=360^\circ+180^\circ$ equivale a meia volta. A seta de $B$, que apontava para a esquerda ($180^\circ$), passa a apontar para $180^\circ-540^\circ=-360^\circ\equiv 0^\circ$, isto é, \textbf{para a direita}. Uma meia volta leva ao mesmo resultado em qualquer sentido de giro, portanto a conclusão não depende do sentido.
+
+\textbf{3) Escolha da alternativa.} Em $t=3\pi$ s:
+\begin{itemize}
+\item $P$ está no topo de $A$;
+\item a seta de $A$ aponta para baixo;
+\item a seta de $B$ aponta para a direita, ou seja, para longe do ponto de contato.
+\end{itemize}
+As alternativas (B) e (D) têm a seta de $A$ para cima, e (C) tem $P$ junto ao contato, então estão erradas. Já (E) tem a seta de $B$ para baixo, o que corresponderia a $\Delta\theta_B=\pi/2$ (mod $2\pi$), e não a $3\pi$. Somente a alternativa (A) reúne as três condições.
+
+ANSWER: (A)%
+\newpage%
+\section*{Questão 23}
+
+\section*{Solução}
+
+\textbf{Modelo do circuito.} A fonte real (fem $\varepsilon$, resistência interna $R_0$) alimenta o resistor externo $R$ em série. Pela lei de Ohm generalizada (lei das malhas),
+\[
+i=\frac{\varepsilon}{R+R_0},\qquad P(R)=R\,i^2=\frac{\varepsilon^2 R}{(R+R_0)^2}.
+\]
+
+\textbf{Leitura do gráfico.} O máximo da curva ocorre em $R=10\ \Omega$, com $P_{\max}=0{,}025\ \text{W}$. Como o enunciado garante que o máximo ocorre para $R=R_0$ (teorema da máxima transferência de potência), temos
+\[
+R_0=10\ \Omega .
+\]
+
+\textbf{Tensão em $R$ na condição de potência máxima.} Para um resistor ôhmico, $P=\dfrac{U^2}{R}$. Logo, no ponto de máximo:
+\[
+U^2=P_{\max}\,R=0{,}025\cdot 10=0{,}25\ \text{V}^2
+\quad\Longrightarrow\quad
+U=0{,}50\ \text{V}.
+\]
+
+\textbf{Interpretação e verificação.} Com $R=R_0$, a corrente é $i=\varepsilon/(2R_0)$ e a tensão em $R$ vale $U=R_0\,i=\varepsilon/2$: metade da fem cai na resistência interna e metade no resistor externo. Daí $\varepsilon=2U=1{,}0\ \text{V}$, e de fato
+\[
+P_{\max}=\frac{\varepsilon^2}{4R_0}=\frac{(1{,}0)^2}{4\cdot 10}=0{,}025\ \text{W},
+\]
+coerente com o gráfico. Outro ponto de controle: para $R=50\ \Omega$,
+\[
+P=\frac{(1{,}0)^2\cdot 50}{(50+10)^2}=\frac{50}{3600}\approx 0{,}014\ \text{W},
+\]
+exatamente o valor lido na extremidade direita da curva. As unidades conferem ($\text{W}\cdot\Omega=\text{V}^2$), e a corrente nesse ponto é $i=U/R=0{,}050\ \text{A}$, uma ordem de grandeza razoável para potências de centésimos de watt.
+
+\textbf{Conclusão.} A diferença de potencial no resistor quando a potência dissipada nele é máxima vale $0{,}50\ \text{V}$, o que corresponde à alternativa (B). As demais alternativas não satisfazem $U^2=P_{\max}R$: por exemplo, $1{,}0\ \text{V}$ é a fem $\varepsilon$, e não a tensão em $R$.
+
+ANSWER: (B) 0,50%
+\newpage%
+\section*{Questão 24}
+
+\section*{Solução}
+
+\textbf{Hipóteses e dados.} A barra é rígida e tem massa desprezível. O contato com o topo da estaca é liso (apoio simples), então a estaca exerce sobre a barra uma força normal $\vec N$ perpendicular à barra. O fio é vertical e o bloco está em equilíbrio, logo a tração vale $T = Mg = 2{,}0\cdot 10 = 20\ \text{N}$. Seja $\theta$ o ângulo entre a barra e a horizontal. Pela figura, $\theta \approx 35^\circ$ a $40^\circ$, bem abaixo de $60^\circ$.
+
+\textbf{Forças sobre a barra} (origem em A, eixos da figura 2):
+\begin{itemize}
+\item tração na extremidade livre (a uma distância $L$ de A): $\vec T = (0,\,-Mg)$;
+\item normal da estaca (a $L/4$ de A, ao longo da barra): $\vec N = N(-\sin\theta,\ \cos\theta)$, com $N>0$;
+\item força da articulação: $\vec F = (F_x,\ F_y)$.
+\end{itemize}
+
+\textbf{1) Momentos em relação a A.} Tomando os momentos em A, $\vec F$ sai da equação. O braço de $\vec N$ é $L/4$, porque $\vec N$ é perpendicular à barra. O braço de $\vec T$ é a distância horizontal $L\cos\theta$. Então
+\[
+N\,\frac{L}{4} = Mg\,L\cos\theta \quad\Longrightarrow\quad N = 4Mg\cos\theta .
+\]
+
+\textbf{2) Resultante nula.} De $\vec F + \vec N + \vec T = \vec 0$ vem
+\[
+F_x = N\sin\theta = 4Mg\sin\theta\cos\theta > 0, \qquad
+F_y = Mg - N\cos\theta = Mg\,(1-4\cos^2\theta).
+\]
+A componente $F_x$ é positiva para qualquer $0<\theta<90^\circ$. Além disso, $F_y<0 \iff \cos^2\theta>\tfrac14 \iff \theta<60^\circ$, que é o caso da figura. Logo $\vec F$ aponta para a direita e para baixo. Sua linha de ação passa por A e vai de cima/esquerda para baixo/direita: é a \textbf{linha 1}, com $F_{(y)}$ no sentido \textbf{negativo} de $y$.
+
+\textbf{Interpretação física.} A barra funciona como uma alavanca apoiada no topo da estaca. O peso na ponta tende a girá-la em torno desse apoio e a levantar a extremidade A. Por isso a articulação precisa \emph{puxar} A para baixo. Equivalentemente, a componente vertical da normal vale $N\cos\theta = 4Mg\cos^2\theta$ e supera o peso $Mg$.
+
+\textbf{Conferência pelo teorema das três forças.} Três forças coplanares não paralelas em equilíbrio são concorrentes. A vertical pela extremidade e a normal pelo ponto de apoio se cruzam em
+\[
+Q=\left(L\cos\theta,\ \frac{L\,(\sin^2\theta-3\cos^2\theta)}{4\sin\theta}\right).
+\]
+Para $\theta<60^\circ$, o ponto $Q$ fica à direita de A e abaixo do nível de A. A direção $\overrightarrow{AQ}$ é proporcional a $(4\sin\theta\cos\theta,\ 1-4\cos^2\theta)$, igual à obtida acima.
+
+\textbf{Eliminação das outras alternativas.}
+\begin{itemize}
+\item Linha 2 (vertical), alternativa (C): exigiria $F_x=0$. Mas $\vec N$ tem componente horizontal $N\sin\theta\neq 0$, que precisa ser equilibrada por $F_x$.
+\item Linha 3 (ao longo da barra), alternativas (A) e (B): tome os momentos em relação ao ponto de apoio P. Uma força ao longo da barra teria momento nulo em relação a P, enquanto $\vec T$ tem momento $Mg\cdot\tfrac{3L}{4}\cos\theta\neq 0$. Isso é absurdo: a barra não é um elemento de duas forças.
+\item Linha 1 com $F_{(y)}>0$, alternativa (D): exigiria $F_x<0$, o que contradiz $F_x>0$.
+\end{itemize}
+
+\textbf{Ordem de grandeza.} Com $\theta\approx 37^\circ$ ($\sin\theta\approx 0{,}6$ e $\cos\theta\approx 0{,}8$):
+\begin{itemize}
+\item $N\approx 64\ \text{N}$;
+\item $F_x\approx 38\ \text{N}$ e $F_y\approx -31\ \text{N}$;
+\item $|\vec F| = Mg\sqrt{1+8\cos^2\theta}\approx 49\ \text{N}$, a cerca de $39^\circ$ abaixo da horizontal.
+\end{itemize}
+São valores coerentes com uma carga de $20\ \text{N}$ amplificada pela alavanca. Casos particulares: com $\theta=60^\circ$, $\vec F$ seria horizontal; com $\theta>60^\circ$, teríamos $F_y>0$. Nenhum desses casos corresponde à figura.
+
+\textbf{Conclusão.} A linha de ação de $\vec F$ é a linha 1, e $F_{(y)}$ aponta no sentido negativo de $y$. Por isso a alternativa correta é a (E).
+
+ANSWER: (E) Linha 1; $\mathbf{F}_{(y)}$ está no sentido negativo de $y$.%
+\newpage%
+\section*{Questão 25}
+
+\section*{Solução}
+
+\textbf{1) Identificação dos processos pelo gráfico.} Para $n$ mols de gás ideal aquecidos num processo de capacidade calorífica molar constante $C$, o calor absorvido a partir do estado 1 é
+\[
+Q = nC\,(T - T_1),
+\]
+ou seja, no gráfico $Q\times T$ temos retas que partem de $(T_1,0)$, com inclinação $nC$. Ora, pela relação de Mayer, válida para qualquer gás ideal,
+\[
+C_p = C_v + R \quad\Longrightarrow\quad C_p > C_v .
+\]
+Logo a reta mais inclinada corresponde ao processo isobárico e a menos inclinada ao isovolumétrico:
+\[
+\text{A: isobárico } (p=\text{cte}), \qquad \text{B: isovolumétrico } (V=\text{cte}).
+\]
+Fisicamente: para a mesma $\Delta T$, o processo isobárico exige mais calor, pois parte dele vira trabalho de expansão.
+
+\textbf{2) Estados finais.} Pela equação de Clapeyron, $pV = nRT$, com $T_2 = T_3 > T_1$:
+\begin{itemize}
+\item estado 2 (A, isobárico): $p_2 = p_1$ e $V_2 = V_1\,\dfrac{T_2}{T_1} > V_1$;
+\item estado 3 (B, isovolumétrico): $V_3 = V_1$ e $p_3 = p_1\,\dfrac{T_2}{T_1} > p_1$.
+\end{itemize}
+
+\textbf{3) Análise das alternativas.}
+
+\textbf{(A) Falsa.} $p_2 = p_1 < p_3$. A pressão no estado 2 é \emph{menor} que no estado 3.
+
+\textbf{(B) Falsa.} Pela 1ª lei, $Q = \Delta U + W$. Em B, $W = 0$ e, de fato, $Q_B = \Delta U$. Mas em A o gás se expande ($V_2 > V_1$) e realiza $W = p_1(V_2 - V_1) > 0$, de modo que $Q_A = \Delta U + W > \Delta U$.
+
+\textbf{(C) Falsa.} Em B, $\Delta U = Q_B = nC_v(T_2 - T_1)$, e $C_v$ depende da atomicidade: $C_v = \tfrac{3}{2}R$ (monoatômico), $\tfrac{5}{2}R$ (diatômico, temperaturas usuais) etc. A expressão $\tfrac{3}{2}nR(T_2-T_1)$ vale apenas para gás monoatômico.
+
+\textbf{(D) Verdadeira.} Em A a pressão é constante e vale $p_1$, logo
+\[
+W_A = p_1(V_2 - V_1) = p_1V_2 - p_1V_1 = nRT_2 - nRT_1 = nR(T_2 - T_1) > 0 .
+\]
+Esse resultado vem apenas da equação de estado do gás ideal e não envolve $C_v$ nem $C_p$. Portanto vale para gás monoatômico, diatômico ou poliatômico. Conferência: $Q_A - \Delta U = n(C_p - C_v)(T_2-T_1) = nR(T_2-T_1)$, o que é coerente com a relação de Mayer. Unidades: $[nR\,\Delta T] = \text{mol}\cdot\text{J}/(\text{mol}\cdot\text{K})\cdot\text{K} = \text{J}$. O sinal é positivo porque $T_2 > T_1$: o gás se expande e realiza trabalho.
+
+\textbf{(E) Falsa.} A energia interna de um gás ideal depende apenas de $n$ e de $T$: $U = nC_vT$. Como $n$ é o mesmo e $T_2 = T_3$, temos $U_2 = U_3$. Note que $\Delta U_A = \Delta U_B$, embora $Q_A > Q_B$; a diferença $Q_A - Q_B$ é exatamente o trabalho do item (D).
+
+\textbf{Conclusão.} A única afirmação correta é a (D): no processo A (isobárico) o trabalho do gás é $nR(T_2-T_1) > 0$, qualquer que seja a atomicidade do gás.
+
+ANSWER: (D) No processo isobárico A, $W = nR(T_2 - T_1) > 0$, independentemente da atomicidade do gás.%
+\newpage%
+\section*{Questão 26}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} O gás é ideal e diatômico (graus de liberdade de translação e rotação), logo
+\[
+C_V=\tfrac{5}{2}R,\qquad C_P=\tfrac{7}{2}R,\qquad \gamma=\frac{C_P}{C_V}=\frac{7}{5},\qquad \gamma-1=\frac{2}{5}.
+\]
+A temperatura é $T_A=T_B=500$ K, porque $AB$ é isotérmica, e $T_C=400$ K.
+
+\textbf{1) Processo $AB$ (isotérmico, expansão).} Para um gás ideal, $U$ depende só de $T$. Logo $\Delta U_{AB}=0$ e, pela 1.\textsuperscript{a} lei, $Q_{AB}=W_{AB}$. Esse trabalho é a área sob a curva $AB$, dada no enunciado:
+\[
+Q_{AB}=W_{AB}=\frac{500\,nR\ln(5/4)}{\gamma-1}=\frac{500\,nR\ln(5/4)}{2/5}=1250\,nR\ln\frac{5}{4}>0 .
+\]
+Verificação de consistência: na adiabática $CA$, $T_C V_B^{\gamma-1}=T_A V_A^{\gamma-1}$, logo $(V_B/V_A)^{\gamma-1}=5/4$. Então $W_{AB}=nRT_A\ln(V_B/V_A)=500\,nR\ln(5/4)/(\gamma-1)$, que é exatamente a expressão dada.
+
+\textbf{2) Processo $BC$ (isovolumétrico).} Como $W_{BC}=0$:
+\[
+Q_{BC}=\Delta U_{BC}=nC_V(T_C-T_B)=n\cdot\tfrac{5}{2}R\,(400-500)=-250\,nR<0 .
+\]
+O sinal negativo indica que o gás cede calor nessa etapa.
+
+\textbf{3) Processo $CA$ (adiabático).} $Q_{CA}=0$ e $W_{CA}=-\Delta U_{CA}=-nC_V(T_A-T_C)=-250\,nR$. O sinal é negativo, como deve ser numa compressão.
+
+\textbf{4) Rendimento da máquina $M$.} O único calor recebido é $Q_{AB}$. Num ciclo $\Delta U=0$, então
+\[
+W_{\text{ciclo}}=Q_{AB}+Q_{BC}=1250\,nR\ln\tfrac54-250\,nR .
+\]
+Conferindo pelos trabalhos: $W_{AB}+W_{BC}+W_{CA}=1250\,nR\ln\tfrac54+0-250\,nR$, o mesmo valor. Assim,
+\[
+\eta_M=\frac{W_{\text{ciclo}}}{Q_{AB}}=1-\frac{250}{1250\ln(5/4)}=1-\frac{1}{5\ln(5/4)}\approx 1-0{,}90=0{,}10 .
+\]
+
+\textbf{5) Rendimento máximo (Carnot) entre $T_A$ e $T_C$.}
+\[
+\eta_{\text{máx}}=1-\frac{T_C}{T_A}=1-\frac{400}{500}=0{,}20 .
+\]
+
+\textbf{6) Razão pedida.}
+\[
+\frac{\eta_M}{\eta_{\text{máx}}}\approx\frac{0{,}10}{0{,}20}=0{,}5 .
+\]
+
+\textbf{Conferências.} A razão é adimensional e obedece $0<\eta_M<\eta_{\text{máx}}$, como exige o teorema de Carnot: o calor é rejeitado na etapa $BC$ a temperaturas variáveis entre 500 K e 400 K, de modo que o ciclo é menos eficiente que o de Carnot. Com $\ln(5/4)\approx0{,}2231$ obtém-se $\eta_M\approx0{,}104$ e uma razão $\approx0{,}52$, compatível com $0{,}5$. As demais alternativas estão erradas: $0{,}1$ é o próprio $\eta_M$, $0{,}2$ é $\eta_{\text{máx}}$, $0{,}9$ é $1/(5\ln(5/4))$ e $1{,}0$ só valeria para um ciclo de Carnot. A alternativa correta é, portanto, a (C).
+
+ANSWER: (C) 0,5%
+\newpage%
+\section*{Questão 27}
+
+\section*{Solução}
+
+\textbf{1) Hipóteses e lei usada.} O sistema é formado por A, B e a mola, considerada ideal e sem massa. As forças externas são:
+\begin{itemize}
+\item o peso de cada partícula, vertical;
+\item a normal do plano, também vertical.
+\end{itemize}
+Como o plano é horizontal e não há atrito, essas forças se anulam. Não há, portanto, força externa resultante no plano $xy$. A força elástica é \emph{interna*}: pela 3ª lei de Newton, ela age sobre A e sobre B com mesmo módulo e sentidos opostos e se cancela na soma. Assim,
+\[
+M_{\text{tot}}\,\vec a_{CM}=\sum \vec F_{\text{ext}}=\vec 0 \quad\Longrightarrow\quad \vec v_{CM}=\text{constante}.
+\]
+Logo, o centro de massa descreve um movimento retilíneo uniforme, quaisquer que sejam $k$ e as oscilações da mola. O valor $k=2\times10^{-3}$ N/m não interfere no resultado.
+
+\textbf{2) Condições iniciais do CM.} As massas são iguais ($m_A=m_B=4$ kg), então o CM é a média simples das posições e das velocidades:
+\[
+\vec r_{CM}(0)=\frac{(0,\,3)+(4,\,0)}{2}=(2;\;1{,}5)\ \text{m},
+\]
+\[
+\vec v_{CM}=\frac{1\,\hat i+3\,\hat j}{2}=\left(0{,}5\,\hat i+1{,}5\,\hat j\right)\ \text{m/s}.
+\]
+
+\textbf{3) Equações horárias e trajetória.} Para $t\geq 0$ (em segundos):
+\[
+x(t)=2+0{,}5\,t,\qquad y(t)=1{,}5+1{,}5\,t .
+\]
+Da primeira equação, $t=2(x-2)=2x-4$. Substituindo na segunda:
+\[
+y=1{,}5+1{,}5\,(2x-4)=3x-4{,}5
+\quad\Longrightarrow\quad
+y(x)=3x-\frac{9}{2},
+\]
+válida para $x\geq 2$ m, já que o movimento começa em $t=0$.
+
+\textbf{4) Verificações.}
+\begin{itemize}
+\item Em $x=2$ m, temos $y=6-4{,}5=1{,}5$ m, que é a posição inicial do CM.
+\item A inclinação é $\dfrac{dy}{dx}=\dfrac{v_{CM,y}}{v_{CM,x}}=\dfrac{1{,}5}{0{,}5}=3$, coerente com a reta obtida.
+\item Unidades: $3x$ está em metros e o coeficiente $3$ é adimensional (razão entre velocidades).
+\end{itemize}
+
+\textbf{5) Análise das alternativas.}
+\begin{itemize}
+\item (C) e (E) são parábolas. Elas exigiriam uma força externa resultante não nula sobre o sistema, o que não ocorre.
+\item (B) e (D) têm um termo oscilatório $10^{-3}\,\text{sen}(x)$, que viria das oscilações da mola. A força elástica, porém, é interna: ela altera os movimentos de A e de B em relação ao CM, mas não o movimento do CM.
+\item (B) ainda tem termo quadrático, e a reta de (D) não passa exatamente por $(2;\,1{,}5)$ (há a parcela $10^{-3}\,\text{sen}\,2\neq0$).
+\end{itemize}
+Resta apenas a reta (A), que coincide com o resultado obtido.
+
+ANSWER: (A) $y(x)=3x-\dfrac{9}{2}$%
+\newpage%
+\section*{Questão 28}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} O sistema é isolado e só há a força elétrica interna, então o centro de massa (CM) fica em repouso num referencial inercial. Como as massas são iguais, o CM está no ponto médio do segmento $AB$. Seja $d$ a distância fixa entre as partículas. Cada partícula descreve um MCU de raio $r=d/2$ em torno do CM, com a mesma velocidade angular $\omega = 2\pi/T$.
+
+\textbf{1) Dinâmica (a força de Coulomb faz o papel de resultante centrípeta).} As cargas têm sinais opostos, logo a força é atrativa e aponta para o CM:
+\[
+F=\frac{k\,|q_A q_B|}{d^2}=\frac{2kq^2}{d^2}.
+\]
+Pela 2.ª lei de Newton aplicada a uma das partículas:
+\[
+M\omega^2\,\frac{d}{2}=\frac{2kq^2}{d^2}
+\;\Longrightarrow\;
+d^3=\frac{4kq^2}{M\omega^2}=\frac{4kq^2}{M}\cdot\frac{T^2}{4\pi^2}=\frac{kq^2T^2}{\pi^2 M}.
+\]
+
+\textbf{2) Energias.} A energia cinética total, com $v=\omega d/2$ para cada partícula, é
+\[
+E_c=2\cdot\frac{1}{2}M\left(\frac{\omega d}{2}\right)^2=\frac{M\omega^2 d^2}{4}
+=\frac{d^2}{4}\cdot\frac{4kq^2}{d^3}=\frac{kq^2}{d}.
+\]
+A energia potencial elétrica, nula no infinito, é
+\[
+E_p=\frac{k\,q_A q_B}{d}=-\frac{2kq^2}{d}.
+\]
+Assim,
+\[
+E=E_c+E_p=-\frac{kq^2}{d}=\frac{E_p}{2}=-E_c ,
+\]
+que é o resultado esperado para uma órbita circular sob força do tipo $1/r^2$ (teorema do virial). O sinal negativo indica que o sistema está ligado.
+
+\textbf{3) Energia em função de $T$.} Substituindo $d=\left(\dfrac{kq^2T^2}{\pi^2M}\right)^{1/3}$:
+\[
+E=-kq^2\left(\frac{\pi^2 M}{kq^2T^2}\right)^{1/3}
+=-\left(\frac{k^3q^6\,\pi^2 M}{kq^2T^2}\right)^{1/3}
+=-\left(\frac{\pi^2 M k^2 q^4}{T^2}\right)^{1/3}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item \emph{Unidades:} $kq^2$ tem unidade de J$\cdot$m e $M/T^2$ tem unidade de J/m$^2$. Logo $\left[\dfrac{k^2q^4M}{T^2}\right]=\text{J}^2\text{m}^2\cdot\dfrac{\text{J}}{\text{m}^2}=\text{J}^3$, e a raiz cúbica dá J, como deve ser. As alternativas (A), (C) e (E) não têm dimensão de energia, então estão descartadas.
+\item \emph{Comportamento:} quando $T$ cresce, $|E|\propto T^{-2/3}$ diminui. Isso é coerente: órbita mais lenta corresponde a partículas mais afastadas e menos ligadas. É o análogo da 3.ª lei de Kepler ($d^3\propto T^2$).
+\item A alternativa (D) difere de (B) pelo fator $4^{1/3}$. Ela é o que se obtém usando erradamente o raio $d$ em vez de $d/2$ para o movimento de cada partícula.
+\end{itemize}
+
+Portanto, a energia mecânica total é $E=-\left(\pi^2Mk^2q^4/T^2\right)^{1/3}$, que é a alternativa (B).
+
+ANSWER: (B) $E=-\left(\dfrac{\pi^2 M k^2 q^4}{T^2}\right)^{1/3}$%
+\newpage%
+\section*{Questão 29}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} A esfera é homogênea (densidade $\rho$ constante) e a partícula está fora dela ($r = 2R > R$). Pelo princípio da superposição, a esfera com cavidade equivale a uma esfera maciça completa (massa $M$, centro $O$) somada a uma esfera de massa ``negativa'' $-M'$ que ocupa a cavidade. A partícula também está fora da cavidade. Então o teorema das cascas vale para as duas esferas, e cada uma age como massa puntiforme no seu centro.
+
+\textbf{1) Massa retirada.} Como a densidade é a mesma, a massa é proporcional ao volume:
+\[
+M' = M\left(\frac{R/2}{R}\right)^{3} = \frac{M}{8}.
+\]
+
+\textbf{2) Geometria.} A cavidade tem raio $R/2$, passa por $O$ e tangencia a superfície externa à esquerda. Logo, seu centro $C$ fica sobre a reta dos centros, a uma distância $R/2$ à esquerda de $O$. A partícula está à direita de $O$, a $2R$ dele, e portanto
+\[
+d_C = 2R + \frac{R}{2} = \frac{5R}{2}.
+\]
+
+\textbf{3) Superposição.} As duas forças estão sobre a mesma reta, o que permite somá-las algebricamente. A esfera completa atrai a partícula para $O$ (sentido negativo, para a esquerda). A massa negativa produz uma força de sentido oposto. Em módulo:
+\[
+F = \frac{GMm}{(2R)^2} - \frac{G\,(M/8)\,m}{(5R/2)^2}
+  = \frac{GMm}{R^2}\left(\frac{1}{4} - \frac{1}{8}\cdot\frac{4}{25}\right)
+  = \frac{GMm}{R^2}\left(\frac{1}{4} - \frac{1}{50}\right)
+  = \frac{23}{100}\,\frac{GMm}{R^2}.
+\]
+Esse resultado é positivo, então a força resultante continua apontando para a esfera, isto é, é atrativa, como deve ser.
+
+\textbf{4) Substituindo $m = \dfrac{10M}{23}$:}
+\[
+F = \frac{23}{100}\cdot\frac{10}{23}\,\frac{GM^2}{R^2} = \frac{1}{10}\,\frac{GM^2}{R^2}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item \emph{Dimensão:} $GM^2/R^2$ é dimensão de força, compatível com $GMm/r^2$.
+\item \emph{Ordem de grandeza:} sem a cavidade, a força seria $\dfrac{GMm}{4R^2} = \dfrac{10}{92}\dfrac{GM^2}{R^2} \approx 0{,}109\,\dfrac{GM^2}{R^2}$. Com a cavidade, a força cai um pouco, para $0{,}100\,\dfrac{GM^2}{R^2}$. A redução é pequena, o que é coerente: retirou-se apenas $1/8$ da massa, e essa massa estava no lado mais distante da partícula.
+\end{itemize}
+
+\textbf{Conclusão.} O módulo da força é $\dfrac{1}{10}\dfrac{GM^2}{R^2}$, que é exatamente a alternativa (A). As alternativas (D) e (E) mantêm o fator $23$, que se cancela com o valor dado de $m$. Já (B) e (C) não correspondem à combinação $\tfrac{1}{4} - \tfrac{1}{50}$.
+
+ANSWER: (A) $\dfrac{1}{10}\dfrac{GM^2}{R^2}$%
+\newpage%
+\section*{Questão 30}
+
+\section*{Solução}
+
+\textbf{1) Posição das franjas claras (experimento de Young).}
+As fendas $F_1$ e $F_2$ são iluminadas pela mesma fenda $F_3$, então funcionam como fontes coerentes e em fase. Um ponto do anteparo está a uma altura $y$ acima do centro, numa direção que faz ângulo $\theta$ com o eixo. A diferença de caminho entre as ondas que chegam de $F_1$ e de $F_2$ é
+\[
+\Delta r \approx d\,\operatorname{sen}\theta .
+\]
+Como $d \ll L$ e as franjas observadas ficam perto do centro ($y \ll L$), os ângulos são pequenos. Vale então $\operatorname{sen}\theta \approx \operatorname{tg}\theta = y/L$, e portanto
+\[
+\Delta r \approx \frac{d\,y}{L}.
+\]
+Há interferência construtiva (franja clara) quando $\Delta r = n\lambda$, com $n = 0, 1, 2, \dots$:
+\[
+y_n = \frac{n\,\lambda\,L}{d}.
+\]
+A franja central A corresponde a $n=0$, B a $n=1$, C a $n=2$ e D a $n=3$. Pela figura 1, $y_3$ é a distância de A até D. Logo
+\[
+y_3 = \frac{3\,\lambda\,L}{d}.
+\]
+Para $d$ fixo, $y_3$ é diretamente proporcional a $L$, o que concorda com a reta crescente da figura 2.
+
+\textbf{2) Leitura do gráfico.}
+O eixo horizontal mede $L$ em unidades de $1000\,d$, isto é, $L = x\cdot 1000\,d$. Entre os extremos do segmento indicado, temos:
+\[
+\Delta x = 0{,}5 \;\Rightarrow\; \Delta L = 0{,}5\cdot 1000\,d = 500\,d,
+\qquad
+\Delta y_3 = 9{,}0\times10^{-4}\ \text{m}.
+\]
+A reta não precisa passar pela origem do gráfico, e por isso usamos variações. Como a relação é linear,
+\[
+\Delta y_3 = \frac{3\lambda}{d}\,\Delta L .
+\]
+
+\textbf{3) Cálculo de $\lambda$.}
+Substituindo os valores:
+\[
+9{,}0\times10^{-4} = \frac{3\lambda}{d}\cdot 500\,d = 1500\,\lambda
+\quad\Longrightarrow\quad
+\lambda = \frac{9{,}0\times10^{-4}}{1{,}5\times10^{3}} = 6{,}0\times10^{-7}\ \text{m}.
+\]
+A distância $d$ se cancela. Por isso o valor de $d$ não foi informado: a escala do gráfico já está em múltiplos de $d$.
+
+\textbf{4) Verificações.}
+\begin{itemize}
+\item Unidades: $\Delta L/d$ não tem dimensão, então $\lambda$ sai em metros, a mesma unidade de $\Delta y_3$.
+\item Ordem de grandeza: $\lambda = 600$ nm está no espectro visível (luz alaranjada), como se espera de uma lâmpada usada em laboratório.
+\item As alternativas (A) e (B), da ordem de milímetros ou centímetros, não são luz visível. A (E), $12$ nm, está no ultravioleta extremo. A (C) seria obtida contando errado o número de franjas entre A e D.
+\end{itemize}
+
+Portanto, a alternativa correta é a (D).
+
+ANSWER: (D) $6{,}0\times10^{-7}$ m%
+\newpage%
+\section*{Questão 31}
+
+\section*{Solução}
+
+\textbf{Hipóteses e lei utilizada.} O circuito é a espira retangular formada pela tira fixa ($x=0$), pelos dois trilhos ($y=0$ e $y=L=0{,}10$ m) e pela barra móvel. Como os trilhos e a tira têm resistência desprezível e não há autoindutância, a única resistência é a da barra, $R=4{,}0\ \Omega$, e vale $I=|\varepsilon|/R$. A f.e.m. induzida vem da lei de Faraday:
+\[
+|\varepsilon| = \left|\frac{d\Phi}{dt}\right|, \qquad \Phi = \vec B\cdot \vec A .
+\]
+Aqui o fluxo varia por dois motivos: o campo varia no tempo \emph{e} a área da espira aumenta.
+
+\textbf{Área da espira.} Com velocidade constante e $x(0)=0{,}20$ m,
+\[
+x(t)=0{,}20+vt \quad\Rightarrow\quad A(t)=L\,x(t)=0{,}10\,(0{,}20+vt)\ \text{m}^2 .
+\]
+
+\textbf{Fluxo.} O campo $\vec B=-(2{,}0\,t)\hat k$ é uniforme e perpendicular ao plano $xy$, com módulo $B(t)=2{,}0\,t$ (em T, entrando no plano). Tomando a normal da espira em $-\hat k$:
+\[
+\Phi(t)=B(t)\,A(t)=(2{,}0\,t)\cdot 0{,}10\,(0{,}20+vt)=0{,}040\,t+0{,}20\,v\,t^{2}\quad(\text{Wb}).
+\]
+
+\textbf{F.e.m.}
+\[
+\varepsilon(t)=\frac{d\Phi}{dt}=0{,}040+0{,}40\,v\,t .
+\]
+Os dois termos têm o mesmo sinal: tanto o aumento de $B$ quanto o aumento da área fazem crescer o fluxo (que entra no plano), então as contribuições se somam. Equivalentemente, $\varepsilon=A\,\dfrac{dB}{dt}+B\,L\,v$, ou seja, a parcela devida à variação do campo mais a parcela de movimento da barra. Pela lei de Lenz, a corrente circula no sentido anti-horário (visto de $+z$).
+
+\textbf{Condição em $t=2{,}0$ s.}
+\[
+\varepsilon(2{,}0)=R\,I=4{,}0\cdot 0{,}050=0{,}20\ \text{V},
+\]
+\[
+0{,}040+0{,}40\,v\,(2{,}0)=0{,}20 \;\Rightarrow\; 0{,}80\,v=0{,}16 \;\Rightarrow\; v=0{,}20\ \text{m/s}.
+\]
+
+\textbf{Verificação.} Para $v=0{,}20$ m/s e $t=2{,}0$ s, temos $x=0{,}60$ m, $A=0{,}060\ \text{m}^2$ e $B=4{,}0$ T:
+\[
+A\,\frac{dB}{dt}=0{,}060\cdot 2{,}0=0{,}12\ \text{V},\qquad B\,L\,v=4{,}0\cdot 0{,}10\cdot 0{,}20=0{,}080\ \text{V}.
+\]
+A soma é $0{,}20$ V, o que dá $I=0{,}20/4{,}0=0{,}050$ A, como no enunciado. As unidades também conferem: $(\text{T/s})\cdot\text{m}^2=\text{V}$ e $\text{T}\cdot\text{m}\cdot\text{m/s}=\text{V}$.
+
+Considerar só um dos efeitos levaria a valores fora das opções: só o termo de movimento daria $v=0{,}50$ m/s, e esquecer que a área cresce no termo $A\,dB/dt$ daria $v=0{,}40$ m/s. Portanto, a alternativa correta é a (C).
+
+ANSWER: (C) 0,20 m/s%
+\newpage%
+\section*{Questão 32}
+
+\section*{Solução}
+
+\textbf{1. Período de cada curva (leitura do gráfico).} Todas as curvas têm máximo em $t=0$. Contamos os ciclos completos no intervalo $0\le t\le 2t'$:
+
+\begin{itemize}
+\item \textbf{A} (contínua grossa): máximo em $0$, mínimo em $t'$, máximo em $2t'$. Logo há 1 ciclo e $T_A=2t'$.
+\item \textbf{B} (pontilhada): máximos em $0,\ \tfrac{2}{3}t',\ \tfrac{4}{3}t',\ 2t'$ e mínimo em $t'$. Logo há 3 ciclos e $T_B=\tfrac{2t'}{3}$.
+\item \textbf{C} (tracejada): máximos em $0;\ 0{,}4t';\ 0{,}8t';\ 1{,}2t';\ 1{,}6t';\ 2t'$ e mínimo em $t'$. Logo há 5 ciclos e $T_C=\tfrac{2t'}{5}$.
+\item \textbf{R}: máximos absolutos em $t=0$ e em $t=2t'$ e mínimo profundo em $t'$, ou seja, $T_R=2t'$.
+\end{itemize}
+
+\textbf{2. Identificação do fundamental.} O enunciado diz que $f_R=f_0$. Portanto o fundamental tem o mesmo período de $R$, $T_0=2t'$, e é também a componente de menor frequência. Isso identifica a curva \textbf{A}:
+\[
+f_0=f_A=\frac{1}{2t'},\qquad f_B=\frac{3}{2t'}=3f_0,\qquad f_C=\frac{5}{2t'}=5f_0 .
+\]
+Assim, $B$ é o 3º harmônico e $C$ é o 5º harmônico.
+
+\emph{Verificação:} com $R=A+B+C$, em $t=0$ e em $t=2t'$ todas as componentes estão em máximo (cristas somadas). Em $t=t'$ temos $\cos\pi=\cos 3\pi=\cos 5\pi=-1$, e todas estão em mínimo, o que explica o vale profundo de $R$. Em $t=t'/2$ todas se anulam, pois $\cos\frac{n\pi}{2}=0$ para $n$ ímpar, e de fato todas as curvas cruzam o eixo nesse ponto. O resultado é coerente com a figura.
+
+\textbf{3. Velocidade na corda.} A corda está fixa nas duas extremidades. No modo fundamental, $L=\lambda_0/2$, logo $\lambda_0=2L=1{,}20\ \text{m}$. A frequência da onda na corda é a mesma do som que ela produz, então:
+\[
+v=\lambda_0 f_0=1{,}20\cdot\frac{1}{2t'}=\frac{0{,}60}{t'}\ \ (\text{m/s, com } t' \text{ em s}).
+\]
+Pela relação de Taylor, $v=\sqrt{T/\mu}$, e portanto
+\[
+\frac{T}{\mu}=v^2=\left(\frac{0{,}60}{t'}\right)^2 .
+\]
+\emph{Unidades:} $\text{N}/(\text{kg/m})=\text{m}^2/\text{s}^2$, a mesma unidade de $(\text{m}/\text{s})^2$. \emph{Ordem de grandeza:} para $f_0\sim 100$ a $300\ \text{Hz}$, temos $v=2Lf_0\sim 10^2\ \text{m/s}$, valor típico de uma corda de violão.
+
+\textbf{4. Análise das alternativas.}
+\begin{itemize}
+\item[(A)] Falsa: $R$ é formada pelos harmônicos $n=1,3,5$, e não por $n=1,4,6$.
+\item[(B)] Falsa: o fundamental é a curva $A$. A curva $C$ é o 5º harmônico.
+\item[(C)] Falsa: $f_0=\dfrac{1}{T_0}=\dfrac{1}{2t'}\neq\dfrac{1}{t'}$.
+\item[(D)] Falsa: $\dfrac{f_B}{f_C}=\dfrac{3f_0}{5f_0}=\dfrac{3}{5}\neq\dfrac{2}{5}$.
+\item[(E)] Verdadeira: pelo item 3, $T/\mu=v^2=(2Lf_0)^2=(0{,}60/t')^2$.
+\end{itemize}
+
+ANSWER: (E) $T/\mu=(0{,}60/t')^2$%
+\newpage%
+\section*{Questão 33}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} As fontes são pontuais, emitem em fase em $t_0=0$ e as amplitudes são iguais a $A$ e constantes. Usamos o princípio da superposição e $v=340$ m/s. Para $t>(d_1+d_2)/v$ as duas ondas já chegaram a qualquer ponto O entre as fontes, porque $d_1,d_2<d_1+d_2$. Assim, em O:
+\[
+y_1=A\sin\!\Big[2\pi f_1\Big(t-\frac{d_1}{v}\Big)\Big],\qquad
+y_2=A\sin\!\Big[2\pi f_2\Big(t-\frac{d_2}{v}\Big)\Big].
+\]
+Usando $\sin a+\sin b=2\sin\frac{a+b}{2}\cos\frac{a-b}{2}$:
+\[
+y=y_1+y_2=2A\cos\!\big(\pi\,\Delta f\,t-\varphi_-\big)\,\sin\!\big(\pi(f_1+f_2)\,t-\varphi_+\big),
+\]
+com $\Delta f=f_1-f_2$, $\varphi_-=\pi(f_1d_1-f_2d_2)/v$ e $\varphi_+=\pi(f_1d_1+f_2d_2)/v$. As fases $\varphi_\pm$ são constantes que só dependem da posição.
+
+\textbf{Caso $f_1=f_2=f$ (alternativas A e B).} Com $\lambda=v/f$, temos $\Delta f=0$ e
+\[
+y=2A\cos\!\Big(\frac{\pi(d_2-d_1)}{\lambda}\Big)\sin\!\Big(2\pi f t-\varphi_+\Big).
+\]
+\begin{itemize}
+\item A amplitude em O vale $2A\left|\cos\!\big(\pi(d_2-d_1)/\lambda\big)\right|$ e depende da posição: forma-se uma onda estacionária.
+\item Nos pontos com $d_2-d_1=(2n+1)\lambda/2$ (nós) a interferência é destrutiva e não há som. Esses pontos existem, pois $d_2-d_1$ varia em $(-(d_1+d_2),\,d_1+d_2)$ e $\lambda/2<d_1+d_2$.
+\item Nos demais pontos há som, máximo onde $d_2-d_1=n\lambda$ (amplitude $2A$).
+\item Em qualquer ponto, o fator temporal é $\sin(2\pi f t-\varphi_+)$: a frequência ouvida é $f_1$, e não $2f_1$.
+\end{itemize}
+Logo (A) é falsa (há som fora dos nós) e (B) é falsa (a frequência é $f_1$).
+
+\textbf{Caso $f_1=f_2+40$ Hz (alternativas C, D e E).} Agora $\Delta f=40$ Hz.
+\begin{itemize}
+\item \emph{Som ouvido:} o fator rápido $\sin\!\big(\pi(f_1+f_2)t-\varphi_+\big)$ tem frequência
+\[
+f_{\text{som}}=\frac{f_1+f_2}{2}=\frac{(f_2+40)+f_2}{2}=f_2+20\ \text{Hz}.
+\]
+\item \emph{Envoltória:} a amplitude é $2A\left|\cos(\pi\,\Delta f\,t-\varphi_-)\right|$. A função $|\cos|$ tem período $\pi$, então a envoltória se repete com período $1/\Delta f$. A intensidade, proporcional a $\cos^2$, oscila entre $0$ e o máximo com frequência
+\[
+f_{\text{bat}}=|f_1-f_2|=40\ \text{Hz}.
+\]
+\item \emph{Posição:} a posição de O só entra na fase constante $\varphi_-$. Ela apenas desloca no tempo os instantes de máximo e de mínimo, sem alterar a profundidade nem a frequência da modulação. Os batimentos aparecem, portanto, em \emph{todos} os pontos entre as fontes.
+\end{itemize}
+
+\textbf{Análise das alternativas.}
+\begin{itemize}
+\item (C) Verdadeira: há batimentos e o som percebido tem frequência $f_2+20$ Hz, qualquer que seja a posição de O.
+\item (D) Falsa: $f_2+20$ Hz é a frequência do som, não a dos batimentos. Além disso, os batimentos ocorrem em todas as posições.
+\item (E) Falsa: a frequência de batimento é $40$ Hz. O valor $20$ Hz é a frequência do fator $\cos$, mas a intensidade depende de $\cos^2$, cuja frequência é o dobro. Os batimentos também não se restringem a algumas posições.
+\end{itemize}
+
+\textbf{Verificação.} No limite $\Delta f\to 0$, a frequência de batimento tende a zero e recaímos no caso estacionário, como esperado. Ordem de grandeza: para $f=340$ Hz, $\lambda=1$ m e os nós ficam separados de $\lambda/2=0{,}5$ m.
+
+ANSWER: (C) Há batimentos em qualquer posição de O; o som percebido tem frequência $f_2+20$ Hz e a frequência de batimento é $40$ Hz.%
+\newpage%
+\section*{Questão 34}
+
+\section*{Solução}
+
+\textbf{1) Constante elástica a partir do gráfico.} A energia potencial elástica é $U=\tfrac12 k d^2$. Na figura 2, a parábola passa pelo ponto $d=0{,}10\ \text{m}$, $U=0{,}10\ \text{J}$. Logo
+\[
+k=\frac{2U}{d^2}=\frac{2\cdot 0{,}10}{(0{,}10)^2}=20\ \text{N/m}.
+\]
+Conferência com outros pontos do gráfico: em $d=0{,}05\ \text{m}$ temos $U=\tfrac12\cdot 20\cdot(0{,}05)^2=0{,}025\ \text{J}$, e a curva termina em $U=0{,}20\ \text{J}$ para $d=\sqrt{2\cdot 0{,}20/20}\approx 0{,}14\ \text{m}$. As duas leituras batem com a figura.
+
+\textbf{2) Deformação máxima sem deslizamento.} Enquanto os blocos se movem juntos, eles formam um único corpo de massa $M=m_1+m_2=3{,}0\ \text{kg}$. O piso não tem atrito, e as forças verticais se equilibram. Para uma deformação $d$:
+\[
+|a|=\frac{k\,|d|}{m_1+m_2}.
+\]
+A mola está presa em $m_1$. Por isso, a única força horizontal sobre $m_2$ é o atrito estático aplicado por $m_1$, e é esse atrito que acelera $m_2$:
+\[
+f_{at}=m_2|a|=\frac{m_2}{m_1+m_2}\,k|d|.
+\]
+O mesmo valor sai da análise de $m_1$: $k|d|-f_{at}=m_1|a|$. A normal entre os blocos vale $N=m_1g=10\ \text{N}$. Não há deslizamento enquanto $f_{at}\le \mu_e N$, e a iminência de deslizar ocorre na deformação máxima (extremo da oscilação, onde $|a|$ é máxima):
+\[
+\frac{m_2}{m_1+m_2}\,k\,d_{\max}=\mu_e m_1 g
+\;\Rightarrow\;
+d_{\max}=\frac{\mu_e m_1 g\,(m_1+m_2)}{k\,m_2}=\frac{0{,}40\cdot 1{,}0\cdot 10\cdot 3{,}0}{20\cdot 2{,}0}=0{,}30\ \text{m}=30\ \text{cm}.
+\]
+O coeficiente cinético ($0{,}30$) não interfere aqui, porque não há deslizamento. Também vemos que a oscilação do gráfico tem amplitude de cerca de $0{,}14\ \text{m}$, menor que $0{,}30\ \text{m}$, o que é coerente com o enunciado (nessa oscilação os blocos não deslizam).
+
+O valor de 20 cm é uma armadilha: ele resulta de $\mu_e m_1 g/k=4/20=0{,}20\ \text{m}$, conta que supõe, erradamente, que o atrito precisa equilibrar toda a força da mola. Na verdade, o atrito só precisa acelerar $m_2$.
+
+\textbf{3) Período.} Para $d<d_{\max}$ o sistema é um oscilador harmônico simples de massa $M=3{,}0\ \text{kg}$. O período não depende da amplitude:
+\[
+T=2\pi\sqrt{\frac{m_1+m_2}{k}}=2\pi\sqrt{\frac{3{,}0}{20}}=2\pi\sqrt{0{,}15}\approx 2{,}43\ \text{s}.
+\]
+Já $0{,}4\pi\sqrt5=2\pi\sqrt{0{,}20}\approx 2{,}81\ \text{s}$, que corresponderia a $M/k=0{,}20\ \text{kg}\cdot\text{m/N}$. Isso não é o caso, pois aqui $M/k=0{,}15\ \text{kg}\cdot\text{m/N}$.
+
+\textbf{4) Julgamento das afirmativas.}
+\begin{itemize}
+\item[(F)] $d_{\max}=80$ cm: falso, pois $d_{\max}=30$ cm.
+\item[(F)] $d_{\max}=20$ cm: falso, pois $d_{\max}=30$ cm.
+\item[(F)] $T=0{,}4\pi\sqrt5$: falso, pois $T=2\pi\sqrt{0{,}15}\ \text{s}\approx 2{,}43\ \text{s}$.
+\end{itemize}
+A sequência é (F)(F)(F), que corresponde à alternativa (B).
+
+ANSWER: (B) (F)(F)(F)%
+\newpage%
+\section*{Questão 35}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Água incompressível, escoamento ideal (sem viscosidade) e permanente, tubo cheio e de seção uniforme. O reservatório é grande, então a velocidade da superfície livre é desprezível. A pressão atmosférica $p_0$ atua sobre a superfície livre e no jato que sai em $C$. Também é a pressão externa sobre o trecho do tubo que fica fora da água. Medimos as alturas $y$ a partir do solo.
+
+\textbf{1) Velocidade no tubo.} Aplicamos Bernoulli entre a superfície livre ($y=H$, $v\approx 0$, $p=p_0$) e a saída $C$ ($y=h$, $p=p_0$):
+\[
+p_0+\rho g H = p_0+\rho g h+\tfrac12\rho v^2
+\quad\Longrightarrow\quad
+\tfrac12\rho v^2=\rho g\,(H-h).
+\]
+Pela continuidade, como a seção é uniforme, essa velocidade $v$ é a mesma em todo o tubo.
+
+\textbf{2) Pressão interna ao longo do tubo.} Em um ponto qualquer do tubo, de altura $y$, a velocidade é $v$. Então Bernoulli entre esse ponto e $C$ dá
+\[
+p(y)+\rho g y=p_0+\rho g h \quad\Longrightarrow\quad p(y)=p_0-\rho g\,(y-h).
+\]
+A pressão interna diminui com a altura. Ela é mínima no ponto mais alto, $B$, onde $y_B=H+a$:
+\[
+p_B=p_0-\rho g\,(H+a-h).
+\]
+
+\textbf{3) Ponto crítico.} No trecho fora da água, a diferença entre a pressão externa e a interna vale $p_0-p(y)=\rho g(y-h)$. O maior valor dessa diferença ocorre em $B$. No trecho submerso, a pressão externa é $p_0+\rho g(H-y)$, e a diferença fica constante:
+\[
+p_0+\rho g(H-y)-p(y)=\rho g(H-h),
+\]
+que é menor que $\rho g(H+a-h)$. Portanto o colapso, se ocorrer, começa em $B$.
+
+\textbf{4) Condição de não colapso.}
+\[
+p_0-p_B=\rho g\,(H+a-h)\le \Delta p_{\max}=25{,}0\ \text{kPa}
+\quad\Longrightarrow\quad
+h\ \ge\ H+a-\frac{\Delta p_{\max}}{\rho g}.
+\]
+Numericamente, $\dfrac{\Delta p_{\max}}{\rho g}=\dfrac{25\,000\ \text{Pa}}{1000\cdot 10\ \text{N/m}^3}=2{,}5\ \text{m}$, e então
+\[
+h_{\min}=3{,}0+1{,}5-2{,}5=2{,}0\ \text{m}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item As unidades estão corretas: $\text{Pa}/(\text{N/m}^3)=\text{m}$.
+\item Vale $h_{\min}=2{,}0\ \text{m}<H=3{,}0\ \text{m}$, como exige o enunciado. A velocidade é $v=\sqrt{2g(H-h)}=\sqrt{20}\approx 4{,}5\ \text{m/s}$, um valor razoável.
+\item Com $p_0\approx 100\ \text{kPa}$, temos $p_B\approx 75\ \text{kPa}$, muito acima da pressão de vapor da água. Portanto não há cavitação.
+\item Se $h$ diminuir, $v$ aumenta e $p_B$ cai, o que aumenta a diferença de pressão em $B$. Por isso a condição fixa um valor \emph{mínimo} de $h$.
+\end{itemize}
+
+\textbf{Alternativas.} Para $h=0{,}9$, $1{,}5$ ou $1{,}9$ m, a diferença em $B$ seria $36$, $30$ ou $26\ \text{kPa}$, todas acima de $25\ \text{kPa}$, e o tubo colapsaria. Para $h=2{,}5$ m não há colapso, mas esse não é o menor valor possível. O mínimo é $h=2{,}0$ m, que corresponde à alternativa (D).
+
+ANSWER: (D) 2,0 m%
+\newpage%
+\section*{Questão 36}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Placas ideais de área $A$, sem efeitos de borda: em cada região de ar o campo é uniforme e perpendicular às placas. No equilíbrio eletrostático o campo é nulo no interior de qualquer condutor, que fica com potencial uniforme. A placa metálica está isolada e neutra.
+
+\textbf{1) Distribuição de cargas.} Sejam $\sigma_s$ a densidade de carga na face interna da placa superior, $\sigma_a$ e $\sigma_b$ as densidades nas faces superior e inferior da placa metálica e $\sigma_i$ a densidade na face interna da placa inferior.
+
+\begin{itemize}
+\item Gauss numa caixa cilíndrica com uma base dentro da placa superior e outra dentro da placa metálica (onde $E=0$): as faces laterais não têm fluxo, porque o campo é perpendicular às placas. O fluxo total é nulo, logo $\sigma_s+\sigma_a=0$.
+\item O mesmo raciocínio entre a placa metálica e a placa inferior dá $\sigma_b+\sigma_i=0$.
+\item A placa metálica é neutra: $\sigma_a+\sigma_b=0$.
+\end{itemize}
+Chamando $\sigma_s=\sigma=Q/A$, obtemos $\sigma_a=-\sigma$, $\sigma_b=+\sigma$ e $\sigma_i=-\sigma$. A placa metálica apenas se polariza.
+
+\textbf{2) Campo nas duas regiões.} Junto à superfície de um condutor, $E=\sigma_{\text{local}}/\varepsilon_0$. Portanto
+\[
+E_1=\frac{\sigma}{\varepsilon_0}, \qquad E_2=\frac{\sigma_b}{\varepsilon_0}=\frac{\sigma}{\varepsilon_0}
+\quad\Longrightarrow\quad E_1=E_2=E=\frac{Q}{\varepsilon_0 A}.
+\]
+Isso equivale a dois capacitores em série, $C_1=\varepsilon_0A/d_1$ e $C_2=\varepsilon_0A/d_2$, que guardam a mesma carga $Q$.
+
+\textbf{3) Diferenças de potencial.} Como o campo é uniforme em cada região,
+\[
+V_1=E\,d_1=\frac{Q\,d_1}{\varepsilon_0 A}, \qquad V_2=E\,d_2=\frac{Q\,d_2}{\varepsilon_0 A}.
+\]
+A placa metálica é equipotencial, e não há queda de potencial no seu interior. A bateria impõe então
+\[
+V_1+V_2=V \;\Longrightarrow\; E=\frac{V}{d_1+d_2}, \qquad
+V_1=\frac{V\,d_1}{d_1+d_2}, \qquad V_2=\frac{V\,d_2}{d_1+d_2}, \qquad \frac{V_1}{V_2}=\frac{d_1}{d_2}.
+\]
+
+\textbf{Verificações.} As unidades estão corretas: $E$ em V/m e $E\,d$ em V. No caso particular $d_1=d_2$, temos $V_1=V_2=V/2$, como exige a simetria. Se $d_1\to 0$, então $V_1\to 0$ e $V_2\to V$.
+
+\textbf{4) Análise das alternativas.}
+\begin{itemize}
+\item[(A)] Falsa: $V_1=V_2$ somente quando $d_1=d_2$.
+\item[(B)] \textbf{Verdadeira}: $V_1/V_2=d_1/d_2$. Logo, se $d_1>d_2$, então $V_1>V_2$.
+\item[(C)] Falsa: é o oposto do resultado obtido.
+\item[(D)] Falsa: $V_1+V_2=V$ é fixado pela bateria e não depende da posição da placa. Só a divisão entre $V_1$ e $V_2$ muda, porque $d_1+d_2$ é constante.
+\item[(E)] Falsa: o campo é nulo apenas \emph{dentro} do metal. Nas regiões de ar vale $E=V/(d_1+d_2)\neq 0$.
+\end{itemize}
+
+ANSWER: (B) $V_1>V_2$ quando $d_1>d_2$, pois $V_1/V_2=d_1/d_2$ e $V_1+V_2=V$%
+\newpage%
+\section*{Questão 37}
+
+\section*{Solução}
+
+\textbf{Ideia central.} A normal é perpendicular ao deslocamento, logo seu trabalho \emph{total} é nulo. Mas a pergunta é sobre a \emph{componente $x$} da normal. Essa componente não é perpendicular ao deslocamento e realiza trabalho; esse trabalho é cancelado exatamente pelo trabalho da componente $y$.
+
+\textbf{1) Módulo da normal.} Não há atrito e o bloco não se afasta do plano, então a aceleração na direção perpendicular ao plano é nula:
+\[
+N = mg\cos 30^\circ .
+\]
+Isso vale durante todo o percurso, porque a força é constante.
+
+\textbf{2) Componentes da normal no sistema da figura.} O plano desce da esquerda para a direita. Um vetor unitário ao longo do plano, no sentido da descida, é $\hat u=(\cos 30^\circ,\,-\sin 30^\circ)$. A normal aponta para fora do plano, isto é, para cima e para a direita, perpendicular a $\hat u$: $\hat n=(\sin 30^\circ,\,\cos 30^\circ)$. Assim,
+\[
+N_x = N\sin 30^\circ = mg\cos 30^\circ\sin 30^\circ>0,\qquad N_y = mg\cos^2 30^\circ .
+\]
+
+\textbf{3) Deslocamento entre $t_1$ e $t_2$.} Da geometria, $h = d\sin 30^\circ$, então $d=\dfrac{0{,}20}{1/2}=0{,}40\ \text{m}$ e
+\[
+\Delta x = d\cos 30^\circ = 0{,}40\cdot\frac{\sqrt3}{2}=0{,}20\sqrt3\ \text{m}>0,\qquad \Delta y=-h .
+\]
+
+\textbf{4) Trabalho da componente $x$.} A força $N_x$ é constante e tem o mesmo sentido de $\Delta x$, portanto
+\[
+W_{N_x}=N_x\,\Delta x = mg\cos 30^\circ\sin 30^\circ\cdot d\cos 30^\circ = mg\,h\cos^2 30^\circ .
+\]
+Numericamente:
+\[
+W_{N_x}=0{,}40\cdot 10\cdot 0{,}20\cdot\frac{3}{4}=0{,}60\ \text{J}=6{,}0\cdot 10^{-1}\ \text{J}.
+\]
+
+\textbf{5) Verificação.} Para a componente $y$:
+\[
+W_{N_y}=N_y\,\Delta y=mg\cos^2 30^\circ\,(-h)=-0{,}60\ \text{J}.
+\]
+Então $W_N=W_{N_x}+W_{N_y}=0$, como deve ser para uma força perpendicular ao deslocamento.
+
+Sinal: o trabalho de $N_x$ é positivo, pois $N_x$ e $\Delta x$ têm o mesmo sentido. Ordem de grandeza: $0{,}60\ \text{J}$ é menor que $mgh=0{,}80\ \text{J}$, o que é coerente com o fator $\cos^2 30^\circ=3/4$.
+
+\textbf{Conclusão.} A alternativa (A), $0$, seria o trabalho da normal \emph{total}, não da sua componente $x$. A alternativa (D), $0{,}80\ \text{J}$, é o trabalho do peso. O valor pedido é $0{,}60\ \text{J}$, que corresponde à alternativa (B).
+
+ANSWER: (B) $6{,}0\cdot 10^{-1}$ J%
+\newpage%
+\section*{Questão 38}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} A barra é rígida e de massa desprezível, o fio e a mola são ideais, o sistema está em equilíbrio estático e o cilindro fica apenas pendurado no fio, sem tocar o fundo do recipiente (como mostra a figura). Assim, sobre o cilindro atuam somente o peso, o empuxo e a tração do fio.
+
+\textbf{1) Volume do cilindro e empuxo.} Como o cilindro é maciço e homogêneo,
+\[
+V=\frac{m}{\rho_c}=\frac{m}{8\rho}.
+\]
+Metade do volume está submersa. Pelo princípio de Arquimedes,
+\[
+E=\rho\, g\,\frac{V}{2}=\rho\, g\,\frac{m}{16\rho}=\frac{mg}{16}.
+\]
+
+\textbf{2) Tração no fio (equilíbrio do cilindro).} O peso aponta para baixo; o empuxo e a tração apontam para cima:
+\[
+T+E=mg\quad\Longrightarrow\quad T=mg-\frac{mg}{16}=\frac{15}{16}\,mg .
+\]
+Pela terceira lei de Newton, o fio puxa a extremidade direita da barra para baixo com uma força de módulo $T$.
+
+\textbf{3) Equilíbrio de rotação da barra em torno de $O$.} Escolhemos $O$ como polo. Assim, a reação do apoio não produz torque e o peso da barra é desprezível. A força $T$, aplicada a $2L/3$ de $O$, tende a abaixar a extremidade direita e a levantar a esquerda. Logo, a mola presa ao solo fica \emph{alongada} e puxa a extremidade esquerda para baixo com uma força $F=kx$, aplicada a $L/3$ de $O$. As duas forças são verticais e a barra é horizontal, então os braços de alavanca são as próprias distâncias a $O$. A soma dos torques é nula:
+\[
+F\cdot\frac{L}{3}=T\cdot\frac{2L}{3}\quad\Longrightarrow\quad F=2T=\frac{15}{8}\,mg .
+\]
+
+\textbf{4) Deformação da mola.} Pela lei de Hooke, $F=kx$, e portanto
+\[
+x=\frac{F}{k}=\frac{15}{8}\,\frac{mg}{k}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item \emph{Unidades:} $[mg/k]=\mathrm{N}/(\mathrm{N/m})=\mathrm{m}$, uma deformação, como esperado.
+\item \emph{Casos-limite:} sem líquido ($E=0$), teríamos $x=2mg/k=\frac{16}{8}\frac{mg}{k}$. Com o cilindro totalmente submerso ($E=mg/8$), teríamos $x=\frac{7}{4}\frac{mg}{k}=\frac{14}{8}\frac{mg}{k}$. O resultado $\frac{15}{8}\frac{mg}{k}$ fica entre esses dois valores, o que é coerente com metade do volume submerso.
+\item \emph{Sentido:} a mola fica alongada. O enunciado pede apenas o módulo $x$ da deformação.
+\end{itemize}
+
+\textbf{Conclusão.} A alternativa (C) é a correta, porque é a única que leva em conta ao mesmo tempo o empuxo sobre metade do volume ($mg/16$) e a vantagem mecânica $2$ da alavanca. As outras alternativas não correspondem a $2\left(mg-\frac{mg}{16}\right)/k$.
+
+ANSWER: (C) $x=\dfrac{15}{8}\dfrac{mg}{k}$%
+\newpage%
+\section*{Questão 39}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} O calorímetro é isolado, então todo calor cedido por A é absorvido por B. Pelo enunciado, esse fluxo ocorre a uma taxa constante $P$ (potência térmica, em W) em todo o intervalo $0 \le t \le t_2$, isto é, até o equilíbrio.
+
+\textbf{Substância A (linha contínua).} A temperatura de A cai linearmente de $T_{i,A}$ até $T_{eq}$ ao longo de todo o intervalo $[0,\,t_2]$. Não há patamar, logo não há mudança de fase e todo o calor cedido é sensível:
+\[
+Q_A = C_A\,(T_{i,A}-T_{eq}) = P\,t_2 .
+\]
+Como A esfria, temos $T_{i,A} > T_{eq}$, de modo que $T_{i,A}-T_{eq} = |T_{eq}-T_{i,A}|$.
+
+\textbf{Substância B (linha tracejada).}
+\begin{itemize}
+\item Em $[0,\,t_1]$, B recebe o calor $P\,t_1$ e sua temperatura fica constante em $T_{i,B}$. Receber calor a temperatura constante caracteriza uma mudança de fase: o sólido B está fundindo. Todo esse calor é latente, $P\,t_1 = m_B L_B$, e não aparece na expressão pedida.
+\item Em $[t_1,\,t_2]$, B já mudou de fase e aquece linearmente de $T_{i,B}$ até $T_{eq}$. Esse calor é sensível; $C_B$ é a capacidade térmica de B nessa etapa:
+\[
+C_B\,(T_{eq}-T_{i,B}) = P\,(t_2-t_1).
+\]
+\end{itemize}
+
+\textbf{Razão pedida.} Dividindo a equação de B pela de A, a taxa $P$ se cancela:
+\[
+\frac{t_2-t_1}{t_2} = \frac{C_B\,(T_{eq}-T_{i,B})}{C_A\,(T_{i,A}-T_{eq})} = \frac{C_B\,(T_{eq}-T_{i,B})}{C_A\,|T_{eq}-T_{i,A}|}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item \emph{Unidades:} $C\cdot\Delta T$ tem unidade de energia (J) no numerador e no denominador, então a razão é adimensional, como deve ser uma razão entre tempos.
+\item \emph{Ordem de grandeza:} A cede no total $P\,t_2$, e B usa só a parte $P\,(t_2-t_1)$ para aquecer, pois o restante, $P\,t_1$, vai para a fusão. Por isso a razão fica entre $0$ e $1$.
+\item \emph{Caso particular:} sem patamar ($t_1 = 0$), a razão vale $1$ e recai em $C_A(T_{i,A}-T_{eq}) = C_B(T_{eq}-T_{i,B})$, o balanço calorimétrico usual sem mudança de fase.
+\end{itemize}
+
+\textbf{Exclusão das demais alternativas.}
+\begin{itemize}
+\item As opções (A), (C) e (D) contêm $T_{eq}$ isolada, e não uma diferença de temperaturas. O resultado mudaria ao trocar a escala (por exemplo, de $^\circ$C para K), o que é fisicamente impossível, pois só diferenças de temperatura importam nas trocas de calor.
+\item A opção (B) troca as variações de temperatura: associa $|T_{eq}-T_{i,A}|$ a $C_B$ e $(T_{eq}-T_{i,B})$ a $C_A$. Assim, ela não representa os calores trocados por cada corpo.
+\end{itemize}
+Portanto, a única expressão compatível com o balanço de energia é a alternativa (E).
+
+ANSWER: (E) $C_B\cdot(T_{eq}-T_{i,B})/[C_A\cdot|T_{eq}-T_{i,A}|]$%
+\newpage%
+\section*{Questão 40}
+
+\section*{Solução}
+
+\textbf{Hipóteses e lei usada.} O movimento é todo no plano horizontal e as velocidades são constantes. O barco está em translação uniforme em relação à margem, então vale a composição galileana de velocidades:
+\[
+\vec v_{vm}=\vec v_{vb}+\vec v_{bm}\quad\Longleftrightarrow\quad \vec v_{vb}=\vec v_{vm}-\vec v_{bm}.
+\]
+Como a turbulência é desprezada, a bandeira presa ao mastro se alinha com o vento que o barco percebe (vento aparente). Ela aponta para onde esse vento sopra, ou seja, na direção e sentido de $\vec v_{vb}$.
+
+\textbf{Componentes.} Tomamos $\hat\imath$ para leste (L) e $\hat\jmath$ para norte (N).
+\[
+\vec v_{bm}=10\,\hat\imath\ \text{km/h},\qquad
+\vec v_{vm}=v_{vm}\left(-\sin 30^\circ\,\hat\imath+\cos 30^\circ\,\hat\jmath\right),\qquad
+\vec v_{vb}=v_{vb}\left(-\sin 45^\circ\,\hat\imath+\cos 45^\circ\,\hat\jmath\right).
+\]
+Os dois vetores do vento apontam para o noroeste, a $30^\circ$ e a $45^\circ$ do norte, como na figura.
+
+\textbf{Componente norte.} A velocidade do barco não tem componente norte. Logo a componente norte do vento é a mesma nos dois referenciais:
+\[
+v_{vb}\cos 45^\circ=v_{vm}\cos 30^\circ
+\;\Longrightarrow\;
+\frac{v_{vb}}{v_{vm}}=\frac{\cos 30^\circ}{\cos 45^\circ}=\frac{\sqrt3/2}{\sqrt2/2}=\frac{\sqrt6}{2}\approx 1{,}22 .
+\]
+
+\textbf{Verificação pela componente leste.} Precisamos conferir que existe uma solução física, isto é, com $v_{vm}>0$:
+\[
+-v_{vb}\sin45^\circ=-v_{vm}\sin30^\circ-10
+\;\Longrightarrow\;
+\frac{\sqrt3}{2}\,v_{vm}=\frac12\,v_{vm}+10
+\;\Longrightarrow\;
+v_{vm}=\frac{20}{\sqrt3-1}=10\left(\sqrt3+1\right)\approx 27{,}3\ \text{km/h}.
+\]
+Daí $v_{vb}=\frac{\sqrt6}{2}\,v_{vm}=5\left(3\sqrt2+\sqrt6\right)\approx 33{,}5\ \text{km/h}$. Os valores são positivos e as unidades estão corretas (km/h), então os dados são compatíveis com a figura. Essa solução física só existe se as direções forem lidas como o sentido para onde o vento sopra. Na leitura oposta (o vento vindo de $30^\circ$ a oeste do norte), a equação leste daria $v_{vm}<0$.
+
+\textbf{Conferência qualitativa.} No referencial do barco, que vai para leste, aparece uma componente extra $-\vec v_{bm}$ apontando para oeste. Por isso o vento aparente se inclina mais para oeste ($45^\circ>30^\circ$, como mostra a bandeira) e fica mais forte que o vento real. A razão deve então ser maior que 1, o que elimina (A), (B) e (C). Já (E) dá $1{,}5\neq 1{,}22$. A velocidade de $10$ km/h não entra na razão; ela só fixa os módulos absolutos.
+
+\textbf{Conclusão.} $\dfrac{v_{vb}}{v_{vm}}=\dfrac{\sqrt6}{2}$, que é a alternativa (D).
+
+ANSWER: (D) $\dfrac{\sqrt6}{2}$%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 19: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} T\_\{i,2\} - T\_\{i,1\} = 1/(4$\cdot$$\alpha$$_{1}$). Alternativa (D). O resultado não depende da temperatura final de equilíbrio, porque $\alpha$$_{2}$R$_{2}$ = $\alpha$$_{1}$R$_{1}$.\par %
+A resposta do candidato está certa, (D) 1/(4$\alpha$$_{1}$), e é a mesma da minha referência. Conferi o enunciado no PDF original e a transcrição está fiel.\newline%
+\newline%
+**Raciocínio**\newline%
+{-} A geometria está bem interpretada. O diâmetro 1,6R do anel 1 é uma corda do anel 2, a d = 0,6R de C$_{2}$. Os centros coincidem quando a corda vira diâmetro, ou seja, quando os raios finais são iguais. A distância 0,6R é calculada só para conferir a figura, sem entrar na conta.\newline%
+{-} O comprimento inicial de cada anel é tomado na sua própria temperatura: 0,8R a T\_\{i,1\} e R a T\_\{i,2\}.\newline%
+{-} A razão está usada no sentido certo, $\alpha$$_{2}$ = 0,8$\alpha$$_{1}$.\newline%
+{-} A temperatura final T\_f é tratada como desconhecida, e a solução mostra explicitamente que ela se cancela. A justificativa física está correta: r$_{1}$$\alpha$$_{1}$ = r$_{2}$$\alpha$$_{2}$.\newline%
+{-} A aritmética está certa: 0,2/0,8 = 1/4.\newline%
+\newline%
+**Conferências do candidato**\newline%
+{-} Unidade e sinal conferidos.\newline%
+{-} A substituição de volta com T\_f qualquer está correta.\newline%
+{-} O teste das demais alternativas está certo: 3,2; 0,8; 3,6; 0,4.\newline%
+{-} A observação de ordem de grandeza também está certa: $\alpha$$_{1}$ \textasciitilde{} 10$^{-}$$^{5}$ K$^{-}$$^{1}$ dá $\Delta$T \textasciitilde{} 2,5$\cdot$10$^{4}$ K, e a variação de 20\% é uma idealização.\newline%
+\newline%
+Refiz o cálculo numericamente para T\_f = -50, 0, 37 e 123: $\alpha$$_{1}$$\Delta$T dá 0,25 em todos os casos. Todas as armadilhas que eu tinha listado foram tratadas.\newline%
+\newline%
+**Problemas (todos menores)**\newline%
+{-} Na seção de Hipóteses, a solução justifica o modelo linear com "$\alpha$$\Delta$T ? 1 em cada parcela". Isso é falso aqui, porque pelo menos uma parcela passa de 0,11, e contradiz a própria observação final.\newline%
+{-} O comentário de sinal supõe que T\_f fica entre T\_\{i,1\} e T\_\{i,2\}, o que não está garantido.\newline%
+{-} A notação "$\Delta$r/$\Delta$T" está solta no meio da frase.\newline%
+\newline%
+Com pequenos ajustes de redação, dá para publicar como gabarito comentado. Nota: 9,0.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na seção de Hipóteses, a solução diz que a aproximação linear vale "porque $\alpha$$\Delta$T ? 1 em cada parcela". Isso é falso dentro do próprio problema. Sejam x$_{1}$ = $\alpha$$_{1}$(T\_f - T\_\{i,1\}) e x$_{2}$ = $\alpha$$_{2}$(T\_f - T\_\{i,2\}). A condição de equilíbrio exige 0,8x$_{1}$ - x$_{2}$ = 0,2, e então pelo menos uma das parcelas tem |x| $\geq$ 0,2/1,8 $\approx$ 0,11. A própria solução admite isso depois, na ordem de grandeza (variação de 20\% e $\Delta$T \textasciitilde{} 2,5$\cdot$10$^{4}$ K), e o texto fica contraditório. O certo seria escrever desde o início que o modelo linear é uma idealização pedida pelo enunciado e não justificá{-}lo com $\alpha$$\Delta$T ? 1.%
+\item%
+{[}minor{]} Na verificação de sinal, a solução diz que o anel 1 ganha raio em relação ao anel 2 "quando ele se aquece enquanto o anel 2 esfria". Isso supõe T\_\{i,1\} < T\_f < T\_\{i,2\}, o que não está garantido: há troca de calor com o meio, e a própria solução diz que T\_f é desconhecido. O argumento certo usa só o que já foi mostrado: como r$_{1}$$\alpha$$_{1}$ = r$_{2}$$\alpha$$_{2}$, a diferença r$_{2}$ - r$_{1}$ cai de 0,8R$\alpha$$_{1}$(T\_\{i,2\} - T\_\{i,1\}), seja qual for T\_f. Isso não afeta o resultado.%
+\item%
+{[}minor{]} A notação "os dois raios variam igualmente, $\Delta$r/$\Delta$T" está um pouco solta no meio da frase. Ficaria mais claro escrever dr/dT = r$_{0}$$\alpha$, com o mesmo valor 0,8R$\alpha$$_{1}$ para os dois anéis.%
+\end{itemize}%
+\subsection*{Questão 20: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} t = $\surd$(2HM/F). Logo após a ruptura, o corpo cai com aceleração g e a cabine passa a ter aceleração a\_c = F/M - g (só M, sem o corpo). A aceleração do corpo em relação à cabine é F/M, para baixo, e a velocidade relativa inicial é zero. Alternativa (E).\par %
+Conferi a transcrição com o original (PDF p. 1, impressa 8/18) e ela está correta. A resposta do candidato, (E) t = $\surd$(2HM/F), é a mesma da minha referência e está correta.\newline%
+\newline%
+A física está certa e bem justificada:\newline%
+{-} velocidades contínuas no rompimento, porque as forças são finitas;\newline%
+{-} corpo em queda livre (a = -g);\newline%
+{-} cabine só com F e Mg depois do rompimento (a\_c = F/M - g), e não com a aceleração do sistema M+m de antes;\newline%
+{-} F continua agindo;\newline%
+{-} aceleração relativa F/M, partindo do repouso relativo;\newline%
+{-} g\_ef = g + a\_c no referencial da cabine.\newline%
+\newline%
+A resolução também verifica unidades, o caso F = Mg e a ordem de grandeza (0,58 s, conta conferida). Diz que o resultado não depende de v$_{0}$ nem de m e explica por que (A) e (B) falham, incluindo a raiz negativa de (B) e (D) para certas faixas de F.\newline%
+\newline%
+Todas as armadilhas da referência foram tratadas, explícita ou implicitamente. Ficam só ressalvas menores:\newline%
+{-} notação de sinal: y\_rel é a altura do corpo, mas a\_rel é a aceleração do piso;\newline%
+{-} a explicação para descartar (C) e (D) é genérica;\newline%
+{-} não diz explicitamente que o resultado vale para F < Mg e não depende de g.\newline%
+\newline%
+É uma resolução que serve de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A convenção de sinais é um pouco inconsistente. y\_rel é definido como a altura do corpo acima do piso, mas a\_rel é definido como a\_cab - a\_corpo, que é a aceleração do piso em relação ao corpo. Com isso, a\_rel = -d$^2$y\_rel/dt$^2$. A conta final, H = $\frac12$(F/M)t$^2$, está correta em módulo, mas o ideal seria escrever d$^2$y\_rel/dt$^2$ = a\_corpo - a\_cab = -F/M, ou então definir a distância piso--corpo e usar a\_rel como sua derivada segunda.%
+\item%
+{[}minor{]} A justificativa para descartar (C) e (D) é vaga: diz apenas que elas 'somam ou subtraem g e F/M de forma incorreta'. Seria mais forte mostrar a composição correta, g\_ef = g + a\_c = g + (F/M - g) = F/M, e apontar que (C) ou (D) aparecem quando se toma a\_c = $\pm$F/M em vez de F/M - g. Também seria bom citar que (D) diverge em F = Mg.%
+\item%
+{[}minor{]} A resolução não diz explicitamente que o resultado vale também quando F < Mg, caso em que a cabine acelera para baixo depois do rompimento. Também não diz explicitamente que o resultado não depende de g. As duas coisas decorrem de 'a\_rel constante e positiva = F/M', mas um gabarito comentado poderia destacá{-}las.%
+\end{itemize}%
+\subsection*{Questão 21: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (A): só I e II são verdadeiras. Tomando "para dentro da página" como positivo, o campo em O é B(r) = $\mu$0 I/(2$\pi$R) + $\mu$0 I/(2R) - $\mu$0 I/(2r). O campo se anula num único raio, r = $\pi$R/($\pi$+1) $\approx$ 0,76R. I: verdadeira. II: verdadeira. III: falsa. IV: falsa.\par %
+Resolução correta e completa, com nível de gabarito comentado. Confiro a figura original ampliada (1200 dpi na junção). O trecho retilíneo da esquerda se cruza com o radial direito e continua no arco direito da espira externa. Assim, a corrente percorre primeiro a espira externa no sentido horário (setas: arco superior esquerdo para cima/direita, arco superior direito para baixo/direita, embaixo para a esquerda). Depois desce pelo radial esquerdo, percorre a espira interna no sentido anti{-}horário (seta de baixo para a direita), sobe pelo radial direito (seta para cima) e sai pelo fio da direita. O caminho descrito pelo candidato está exatamente certo. Já o da minha referência (que fazia a corrente passar primeiro pela espira interna) estava errado na ordem do percurso, mas isso não afeta os sentidos de circulação nem o resultado. Com as convenções do candidato, B\_O = ($\mu$0I/2R)(1+1/$\pi$) - $\mu$0I/(2r): o fio (duas semirretas que terminam no ponto de tangência, totalizando $\mu$0I/2$\pi$R) e a espira externa dão campo entrando, e a espira interna dá campo saindo. Conferi em Python: o zero fica em r* = $\pi$R/($\pi$+1) $\approx$ 0,7585R e, no limite r$\to$R, B\_O $\to$ $\mu$0I/(2$\pi$R). I é verdadeira: o candidato mostra a existência, verifica 0<r*<R e prova a unicidade por dB/dr>0, confirmando com os limites. II é verdadeira: a razão B\_r/(B\_R+B\_fio) = r*/r $\to$ $\infty$. III é falsa: B\_fio só depende de I e de R. IV é falsa: as espiras circulam em sentidos opostos. Resposta (A), igual à da referência. Todas as armadilhas foram tratadas: o sentido da espira interna, o sentido do campo do fio, as duas semirretas, a unicidade, a refutação do argumento de 'único fio' em III, a distinção entre intensidade e sentido em IV, a contribuição nula dos trechos radiais e a divergência em II. Restam só detalhes de redação.%
+\begin{itemize}%
+\item%
+{[}minor{]} Há um erro de digitação/LaTeX: aparece 'horário*' com um asterisco solto dentro de \textbackslash{}emph. Basta remover.%
+\item%
+{[}minor{]} Em IV, o argumento complementar 'se os sentidos fossem iguais, B\_O nunca se anularia, o que contradiz I' é um pouco circular, porque a veracidade de I já depende dos sentidos opostos. Como o argumento principal (o sentido do campo depende do sentido de circulação, lido na figura) está certo e vem antes, isso não compromete a resolução. Também valeria comentar que o 'necessariamente' bastaria para tornar a afirmativa falsa.%
+\item%
+{[}minor{]} Na leitura da figura, a hipótese de desprezar as aberturas das espiras foi declarada, mas não se disse que a pequena dobra do fio retilíneo no ponto de tangência também é desprezada para tratá{-}lo como reta a uma distância R de O. É um detalhe de rigor sem efeito no resultado.%
+\end{itemize}%
+\subsection*{Questão 22: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (A). $\theta$\_A = $\frac12$$\cdot$(1/(3$\pi$))$\cdot$(3$\pi$)$^2$ = 3$\pi$/2 rad (270$^\circ$, anti{-}horário), logo P fica no topo e a seta de A aponta para baixo. $\theta$\_B = 2$\theta$\_A = 3$\pi$ rad (180$^\circ$ líquidos, horário), logo a seta de B passa a apontar para a direita.\par %
+A resposta (A) está correta e coincide com a referência. Conferi o enunciado na página 2 do PDF (impressa como 9/18). Os cálculos estão certos: a\_t = tg30$^\circ$ = $\surd$3/3 m/s$^2$, V = $\surd$3$\pi$ m/s e $\Delta$$\theta$\_A = 3$\pi$/2 (270$^\circ$, anti{-}horário), obtido pela área do gráfico e conferido por $\frac12$$\alpha$t$^2$. Daí P fica no topo e a seta de A aponta para baixo. Sem deslizamento, o arco percorrido é o mesmo nas duas bordas, então $\Delta$$\theta$\_B = 2$\Delta$$\theta$\_A = 3$\pi$ no sentido horário (meia volta), e a seta de B aponta para a direita. O candidato observou que o resultado de B não depende do sentido de giro. Tratou as armadilhas principais: ângulo de 30$^\circ$ medido a partir do eixo t, fator $\frac12$, igualdade de velocidades lineares (e não angulares) e sentidos opostos. Todas as alternativas erradas foram eliminadas. Restam só detalhes de redação: sinais inconsistentes ao descartar (E), a hipótese de escala igual dos eixos não explicitada e a ausência do argumento de corpo rígido para (B) e (D). É uma resolução de nível de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Sinais inconsistentes ao descartar (E). O candidato diz que (E) 'corresponderia a $\Delta$$\theta$\_B = $\pi$/2 (mod 2$\pi$)', o que só vale com sinal na convenção anti{-}horária (-3$\pi$/2 $\equiv$ $\pi$/2). Antes, ele usou $\Delta$$\theta$\_B = 3$\pi$ como valor absoluto no sentido horário. Nesse uso, (E) corresponde a 3$\pi$/2 no sentido horário, ou seja, ao erro $\theta$\_B = $\theta$\_A. Deveria declarar a convenção de sinal ou dizer 'giro horário de 3$\pi$/2 ($\theta$\_B = $\theta$\_A)'.%
+\item%
+{[}minor{]} Ler a inclinação do gráfico como tg 30$^\circ$ pressupõe que os eixos v$\times$t têm a mesma escala em unidades do SI. É a intenção da banca, mas a hipótese não foi explicitada.%
+\item%
+{[}minor{]} (B) e (D) foram eliminadas só pela direção da seta de A. Faltou o argumento de corpo rígido: P e a ponta da seta de A são sempre diametralmente opostos, o que elimina as duas sem nenhuma conta. A eliminação feita é válida; o argumento só deixaria a resolução mais elegante.%
+\end{itemize}%
+\subsection*{Questão 23: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A tensão no resistor quando a potência é máxima vale U = 0,50 V. Alternativa (B).\newline%
+\newline%
+Pelo gráfico, R$_{0}$ = 10 $\Omega$ e P\_máx = 0,025 W. Daí U = $\surd$(P$\cdot$R) = $\surd$(0,025$\cdot$10) = 0,50 V. A fem vale $\varepsilon$ = 2U = 1,0 V e a corrente vale i = 0,05 A.\par %
+Conferi o enunciado na prova original (pág. 10/18, prova AMARELA) e a transcrição está fiel. O pico da curva fica sobre a interseção das linhas de grade R = 10 $\Omega$ e P = 0,025 W.\newline%
+\newline%
+A resposta do candidato é (B) 0,50 V, igual à minha referência, e está correta. Ele lê no gráfico R$_{0}$ = 10 $\Omega$, justificando pela condição de máximo dada no enunciado, e P\_máx = 0,025 W. Depois calcula U = $\surd$(P$\cdot$R) = $\surd$0,25 = 0,50 V, com análise dimensional (W$\cdot$$\Omega$ = V$^2$).\newline%
+\newline%
+Ele também confere o resultado pelo modelo do circuito:\newline%
+{-} Com R = R$_{0}$, a tensão em R vale U = $\varepsilon$/2. Daí $\varepsilon$ = 1,0 V, e P\_máx = $\varepsilon$$^2$/(4R$_{0}$) = 0,025 W confere.\newline%
+{-} Testa outro ponto da curva: P(50 $\Omega$) = 50/3600 $\approx$ 0,014 W, compatível com o gráfico.\newline%
+{-} Calcula a corrente certa, i = 0,050 A.\newline%
+\newline%
+Todas as armadilhas foram tratadas:\newline%
+{-} Não confunde U com a fem; diz explicitamente que 1,0 V é $\varepsilon$.\newline%
+{-} Tira a raiz de 0,25; não para em 0,25.\newline%
+{-} Usa o fator 4 em P\_máx = $\varepsilon$$^2$/(4R$_{0}$).\newline%
+{-} Explica que metade da fem cai na resistência interna.\newline%
+{-} Acerta as unidades e a ordem de grandeza da corrente.\newline%
+\newline%
+A exposição é clara e organizada e serve como gabarito comentado. Os únicos reparos são de redação: o 'exatamente' aplicado a uma leitura aproximada do gráfico e a falta, opcional, de uma linha deduzindo a condição de máximo.%
+\begin{itemize}%
+\item%
+{[}minor{]} Diz que P(50 $\Omega$) $\approx$ 0,014 W é 'exatamente o valor lido na extremidade direita da curva'. A leitura do gráfico nesse ponto é aproximada: a curva fica um pouco abaixo de 0,015 W e não cai sobre nenhuma linha de grade. Melhor escrever 'compatível com o valor lido ($\approx$ 0,014 W)'.%
+\item%
+{[}minor{]} Chama a condição R = R$_{0}$ de 'teorema da máxima transferência de potência' sem deduzi{-}la. Isso é aceitável, porque o enunciado dá essa condição. Num gabarito comentado, porém, uma linha mostrando dP/dR = $\varepsilon$$^2$(R$_{0}$ - R)/(R + R$_{0}$)$^3$ = 0 deixaria o resultado autocontido. É opcional.%
+\end{itemize}%
+\subsection*{Questão 24: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (E): a linha de ação de F é a linha 1 (passa por A, descendo da esquerda para a direita). F\_x é positiva e F\_y aponta no sentido negativo de y, porque F\_y = Mg(1 - 4cos$^2$$\theta$) < 0 quando $\theta$ < 60$^\circ$, e na figura $\theta$ $\approx$ 40$^\circ$.\par %
+Conferi o enunciado e as figuras no original, renderizado a 300 dpi. A barra sobe de A para a direita com $\theta$ $\approx$ 38--39$^\circ$, a cota L/4 vai de A até o apoio na estaca, a linha 1 passa por A descendo para a direita, a linha 2 é vertical e a linha 3 segue a barra. O candidato chega à alternativa (E), a mesma da minha referência, pelo mesmo caminho.\newline%
+\newline%
+Pelos momentos em A, N$\cdot$L/4 = Mg$\cdot$L$\cdot$cos$\theta$, então N = 4Mg cos$\theta$. Os braços estão certos: L/4 para N, que é perpendicular à barra, e L$\cdot$cos$\theta$ para T. Do equilíbrio de forças saem F\_x = 4Mg sen$\theta$ cos$\theta$ > 0 e F\_y = Mg(1 - 4cos$^2$$\theta$), que é negativo exatamente quando $\theta$ < 60$^\circ$. Conferi tudo com python3: $\theta$ = 37$^\circ$, N = 64 N, F\_x = 38,4 N, F\_y = -31,2 N. Também conferi a identidade |F| = Mg$\surd$(1+8cos$^2$$\theta$) $\approx$ 49,5 N, o ângulo de $\approx$ 39$^\circ$ abaixo da horizontal, o ponto de concorrência Q = (L cos$\theta$, L(sen$^2$$\theta$ - 3cos$^2$$\theta$)/(4 sen$\theta$)) e a direção de AQ, proporcional a (4 sen$\theta$ cos$\theta$, 1 - 4cos$^2$$\theta$). Todas as contas estão corretas.\newline%
+\newline%
+As alternativas erradas foram descartadas com argumentos sólidos:\newline%
+{-} **Linha 3:** pelos momentos em relação ao apoio P, uma força ao longo da barra não equilibraria o momento de T, que é Mg$\cdot$(3L/4)$\cdot$cos$\theta$.\newline%
+{-} **Linha 2:** exigiria F\_x = 0, mas a componente horizontal da normal precisa ser equilibrada.\newline%
+{-} **Alternativa (D):** exigiria F\_x < 0, o que contradiz F\_x > 0.\newline%
+\newline%
+Quase todas as armadilhas foram tratadas: a barra não é um elemento de duas forças; a normal é perpendicular à barra; os braços estão certos; a cota L/4 foi lida corretamente; o sinal de F\_y depende de $\theta$ < 60$^\circ$, com análise dos casos{-}limite; o sentido de F\_x está certo; e há conferência pelo teorema das três forças. Faltaram apenas a justificativa de por que o apoio precisa ser liso (indeterminação com atrito) e uma observação sobre a figura fora de escala. A resolução tem nível de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A resolução supõe que o apoio na estaca é liso, mas não explica por que precisa dessa hipótese. Com atrito, haveria 4 incógnitas (F\_x, F\_y, N, f) para 3 equações, e o problema ficaria estaticamente indeterminado. Bastava uma frase dizendo isso.%
+\item%
+{[}minor{]} A figura não está em escala. Na figura 1, a estaca aparece a cerca de L/2 de A, e não a L/4. Também a linha 1 está desenhada a uns 21--22$^\circ$ abaixo da horizontal, enquanto a direção calculada de F fica entre 34$^\circ$ e 39$^\circ$. A resposta continua valendo: com o apoio em L/2, F\_y/Mg = 1 - 2cos$^2$$\theta$ $\approx$ -0,22 para $\theta$ $\approx$ 38,7$^\circ$, e o enunciado pede só uma resposta qualitativa. Ainda assim, um gabarito comentado deveria registrar isso, para mostrar que a conclusão não depende da escala do desenho.%
+\item%
+{[}minor{]} A ordem de grandeza (N $\approx$ 64 N, |F| $\approx$ 49 N) parte de um $\theta$ estimado na figura, que o enunciado não fornece. A resolução poderia dizer explicitamente que M e g não são necessários para a resposta e que esses valores servem apenas como ilustração.%
+\end{itemize}%
+\subsection*{Questão 25: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (D). A reta mais inclinada (A) é o processo isobárico e a tracejada (B) é o isovolumétrico, porque Cp > Cv. Na isobárica, o trabalho do gás é W = P$\Delta$V = nR(T2 - T1) > 0, qualquer que seja a atomicidade do gás. As demais alternativas são falsas: P3 > P2; parte do calor da isobárica vira trabalho; $\Delta$U = nCv$\Delta$T só vale 3nR$\Delta$T/2 para gás monoatômico; e U2 = U3 porque T2 = T3.\par %
+Conferi o enunciado e o gráfico na página 4 do PDF (Questão 25). A transcrição está fiel: a reta A, contínua, é a mais inclinada, e o ponto 2 fica acima do ponto 3 em T2 = T3.\newline%
+\newline%
+A resposta final do candidato é (D), a mesma da minha referência, e está correta.\newline%
+\newline%
+**Identificação dos processos.** A inclinação de cada reta no gráfico Q $\times$ T é nC. Como C\_p = C\_v + R > C\_v (relação de Mayer), a reta A é a isobárica e a B é a isovolumétrica. O candidato declara a hipótese de calor molar constante, que é o que faz as curvas serem retas.\newline%
+\newline%
+**Estados finais.** p2 = p1 e V2 = V1$\cdot$T2/T1; V3 = V1 e p3 = p1$\cdot$T2/T1. Ambos estão corretos.\newline%
+\newline%
+**Alternativas.**\newline%
+{-} **(A)** O candidato refuta corretamente: p2 < p3.\newline%
+{-} **(B)** Mostra que só na isovolumétrica todo o calor vira energia interna (W = 0); na isobárica, W > 0.\newline%
+{-} **(C)** Mostra que $\Delta$U = nC\_v$\Delta$T e que 3nR$\Delta$T/2 só vale para gás monoatômico.\newline%
+{-} **(D)** Calcula W = p1(V2 - V1) = nR$\Delta$T > 0 e justifica que o resultado vem apenas da equação de estado, por isso independe da atomicidade. Confere o resultado pela relação de Mayer e pelas unidades.\newline%
+{-} **(E)** Refuta corretamente: U2 = U3, porque T2 = T3.\newline%
+\newline%
+**Armadilhas.** Todas as que identifiquei foram tratadas:\newline%
+{-} a identificação dos processos pela inclinação;\newline%
+{-} (A) invertida;\newline%
+{-} o "em ambos" de (B);\newline%
+{-} o "independentemente" de (C);\newline%
+{-} U depender só de T em (E);\newline%
+{-} a independência de (D) em relação aos graus de liberdade;\newline%
+{-} a checagem de que Q\_A - Q\_B é igual ao trabalho;\newline%
+{-} a hipótese de C constante.\newline%
+\newline%
+**Ressalvas.** Há só duas, ambas menores:\newline%
+{-} a expressão U = nC\_vT é uma simplificação (bastaria dizer que U depende só de n e T);\newline%
+{-} o caso poliatômico ficou em "etc.", sem C\_v $\geq$ 3R.\newline%
+\newline%
+A resolução é clara, rigorosa e completa, com qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Em (E), o candidato escreve U = nC\_vT. Isso só vale se C\_v for constante desde 0 K, o que não é verdade fisicamente para gases di e poliatômicos. Para o argumento basta saber que U depende apenas de n e T, ou que $\Delta$U = nC\_v$\Delta$T na faixa considerada. Correção: escrever U = U(n, T), ou U = nC\_vT + cte.%
+\item%
+{[}minor{]} Em (C), o caso poliatômico ficou em 'etc.', sem dizer que C\_v $\geq$ 3R. O raciocínio continua correto, porque basta um contraexemplo (o diatômico) para derrubar o 'independentemente'. Mesmo assim, a alternativa cita os três tipos de gás, e um gabarito comentado deveria mostrar o valor para o poliatômico.%
+\end{itemize}%
+\subsection*{Questão 26: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} $\eta$\_M = 1 - 1/(5$\cdot$ln(5/4)) $\approx$ 0,10 e $\eta$\_máx = 1 - 400/500 = 0,20, então $\eta$\_M/$\eta$\_máx $\approx$ 0,5. Alternativa (C).\par %
+Conferi o enunciado transcrito com a p. 4 do PDF e ele está correto. A resposta do candidato, (C) 0,5, coincide com a minha referência e está certa. A estrutura da resolução também é a mesma da referência.\newline%
+{-} **Etapa AB:** Q\_AB = W\_AB = 1250nR$\cdot$ln(5/4). O candidato verificou corretamente, pela relação T$\cdot$V\^{}($\gamma$-1) da adiabática CA, que a área cinza é o trabalho da isoterma AB e não o trabalho líquido do ciclo.\newline%
+{-} **Etapa BC:** Q\_BC = nC\_v(T\_C - T\_B) = -250nR, ou seja, calor cedido.\newline%
+{-} **Etapa CA:** é adiabática, logo Q = 0, e W\_CA = -250nR.\newline%
+{-} **Rendimento de M:** $\eta$\_M = 1 - 1/(5$\cdot$ln(5/4)) $\approx$ 0,10.\newline%
+{-} **Rendimento máximo:** $\eta$\_máx = 1 - 400/500 = 0,20, o rendimento de Carnot entre as temperaturas extremas.\newline%
+{-} **Razão:** $\eta$\_M/$\eta$\_máx = 0,5. Conferi com python: o valor exato é $\eta$\_M = 0,1037 e a razão dá 0,519, o que bate com o que o candidato informa.\newline%
+\newline%
+Todas as armadilhas foram tratadas:\newline%
+{-} **Natureza da área cinza:** identificada corretamente como o trabalho de AB.\newline%
+{-} **Calor absorvido:** só em AB, como deve ser.\newline%
+{-} **C\_v e $\gamma$:** usados de forma coerente com o gás diatômico.\newline%
+{-} **Origem da expressão da área:** demonstrada pela adiabática.\newline%
+{-} **Rendimento máximo:** calculado como Carnot entre T\_A e T\_C.\newline%
+{-} **Distratores:** cada alternativa errada foi explicada.\newline%
+{-} **Arredondamento:** coberto pelo cálculo com o valor exato de ln(5/4).\newline%
+\newline%
+O candidato ainda conferiu o trabalho líquido somando os trabalhos das três etapas e checou a desigualdade de Carnot. A resolução é clara, rigorosa e pode ser publicada como gabarito. Os dois pontos listados são observações de estilo, não erros.%
+\begin{itemize}%
+\item%
+{[}minor{]} A resolução usa $\gamma$ = 7/5 de forma coerente, mas não comenta que o fator 1/($\gamma$-1) se cancela em Q\_ced/Q\_abs = {[}100nR/($\gamma$-1){]}/{[}500nR$\cdot$ln(5/4)/($\gamma$-1){]}. Por isso $\eta$\_M = 1 - 1/(5$\cdot$ln(5/4)) não depende de $\gamma$. Essa observação, de uma linha, mostra por que o dado numérico do enunciado serve para qualquer gás e deixaria o gabarito mais completo. Não é erro.%
+\item%
+{[}minor{]} A resolução diz que a área cinza é W\_AB antes de verificar isso pela adiabática. A verificação vem logo depois e está correta, então é só uma questão de ordem na exposição.%
+\end{itemize}%
+\subsection*{Questão 27: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa A: y(x) = 3x - 9/2. O CM parte de (2; 1,5) m com velocidade constante (0,5; 1,5) m/s, porque a força resultante externa é nula e a mola é força interna. Logo y - 1,5 = 3(x - 2).\par %
+Conferi o enunciado no PDF original (pág. 12/18, Questão 27) e a transcrição está fiel. O candidato chega à alternativa (A), y = 3x - 9/2, a mesma da minha referência. As duas resoluções seguem o mesmo raciocínio.\newline%
+\newline%
+A resolução está correta e completa. Ela mostra que $\Sigma$F\_ext = 0: peso e normal se anulam, e a força da mola é interna e se cancela pela 3ª lei de Newton. Daí conclui que o CM está em MRU.\newline%
+\newline%
+As condições iniciais estão certas: r\_CM(0) = (2; 1,5) m e v\_CM = (0,5; 1,5) m/s. A eliminação de t está correta, e a resolução registra que a trajetória vale para x $\geq$ 2. A inclinação vem de v\_y/v\_x do CM, e não da razão casual 3/1 entre v\_B e v\_A. O candidato também confere que a reta passa pelo ponto inicial e verifica as unidades.\newline%
+\newline%
+Todas as armadilhas foram tratadas:\newline%
+{-} Alternativa D: o termo 10$^{-}$$^3$$\cdot$sen(x) confunde a oscilação relativa com o movimento do CM, e a curva não passa por (2; 1,5).\newline%
+{-} Parábolas B, C e E: exigiriam força externa resultante.\newline%
+{-} O valor de k não interfere.\newline%
+\newline%
+Há três defeitos menores:\newline%
+{-} A justificativa do equilíbrio vertical é imprecisa: atribui o cancelamento de peso e normal também à falta de atrito.\newline%
+{-} Há um asterisco solto no texto.\newline%
+{-} Falta dizer explicitamente que 'mola inicialmente relaxada' também é irrelevante.\newline%
+\newline%
+Nenhum deles compromete o resultado. A resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A frase 'Como o plano é horizontal e não há atrito, essas forças se anulam' mistura duas justificativas diferentes. Peso e normal se anulam porque as partículas ficam no plano (equilíbrio vertical), e isso não depende de haver atrito. A ausência de atrito e de forças dissipativas é outro argumento: garante que não há força externa horizontal. O correto seria separar: (i) N = P na vertical; (ii) sem atrito e sem dissipação, não há força externa no plano xy.%
+\item%
+{[}minor{]} Erro tipográfico em '\textbackslash{}emph\{interna*\}': há um asterisco solto que não remete a nenhuma nota. Basta removê{-}lo.%
+\item%
+{[}minor{]} A resolução diz que k não interfere, mas não comenta explicitamente o outro distrator, 'mola inicialmente relaxada' (L0 = 5 m). Faltou uma frase dizendo que o estado inicial da mola também é irrelevante para o CM. A ideia está implícita em 'quaisquer que sejam k e as oscilações da mola'.%
+\end{itemize}%
+\subsection*{Questão 28: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A energia mecânica do sistema é E = -kq$^2$/d, com d$^3$ = kq$^2$T$^2$/($\pi$$^2$M). Em função do período, E = -($\pi$$^2$ M k$^2$ q$^{4}$/T$^2$)\^{}\{1/3\}, que é a alternativa (B).\par %
+Conferi o enunciado na p. 12/18 do PDF (questão 28) e a transcrição está fiel. O candidato marcou (B), E = -($\pi$$^2$Mk$^2$q$^{4}$/T$^2$)\^{}\{1/3\}, a mesma resposta da minha referência, e confirmei por conta numérica que E/B = 1. O núcleo da resolução está correto e completo. O CM fica no ponto médio, com raio d/2. A força é F = 2kq$^2$/d$^2$, com o fator 2 da carga -2q. A relação d$^3$ = kq$^2$T$^2$/($\pi$$^2$M) está certa. A energia cinética soma as duas partículas e dá kq$^2$/d. A potencial tem o sinal certo: U = -2kq$^2$/d. Daí E = -kq$^2$/d = U/2 = -K, de acordo com o virial. A eliminação de d está correta. A análise de unidades está certa ({[}kq$^2${]} = J$\cdot$m e {[}M/T$^2${]} = J/m$^2$, logo o produto tem unidade J$^3$) e descarta A, C e E. Todas as armadilhas da minha lista foram tratadas. O único defeito real está na verificação final: o candidato diz que (D) resulta de usar o raio d em vez de d/2, mas esse erro sozinho dá o fator 2\^{}\{1/3\}, e não 4\^{}\{1/3\}. Para chegar a (D) é preciso errar também o fator 2 da carga. Essa afirmação falsa sobre o distrator e a falta de justificativa explícita para o $\omega$ comum são falhas menores e não afetam a resposta. Com essa frase sobre (D) corrigida, a resolução serve como gabarito comentado. Nota 9,0.%
+\begin{itemize}%
+\item%
+{[}minor{]} A última verificação afirma que a alternativa (D) sai de usar o raio d em vez de d/2 no movimento de cada partícula. Isso é falso, e conferi numericamente. Com raio d, só uma partícula se movendo e F = 2kq$^2$/d$^2$, vem d$^3$ = kq$^2$T$^2$/(2$\pi$$^2$M) e E = -(2$\pi$$^2$Mk$^2$q$^{4}$/T$^2$)\^{}\{1/3\}, que difere de (B) por um fator 2\^{}\{1/3\} e não está entre as alternativas. Com raio d e as duas partículas se movendo, E = 0. Chega{-}se a (D) com dois erros juntos: raio d e esquecer o fator 2 da carga (F = kq$^2$/d$^2$, d$^3$ = kq$^2$T$^2$/(4$\pi$$^2$M) e E = -kq$^2$/d). Num gabarito comentado, essa frase precisa ser corrigida ou retirada. Não afeta a resposta.%
+\item%
+{[}minor{]} A resolução diz que as duas partículas têm a mesma velocidade angular sem explicar por quê. Bastaria uma frase: com a distância fixa e o CM fixo no ponto médio, as partículas ficam sempre diametralmente opostas, então giram com o mesmo $\omega$. A ideia está implícita no texto, mas falta dizê{-}la.%
+\end{itemize}%
+\subsection*{Questão 29: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} **Alternativa (A):** F = (1/10)$\cdot$GM$^2$/R$^2$.\newline%
+\newline%
+Para chegar lá:\newline%
+{-} F = GMm/(4R$^2$) - G(M/8)m/(25R$^2$/4) = (23/100)$\cdot$GMm/R$^2$.\newline%
+{-} Com m = 10M/23, isso dá F = GM$^2$/(10R$^2$).\par %
+A resposta do candidato é a alternativa (A), F = GM$^2$/(10R$^2$). É a mesma da minha referência, e as contas conferem em Python com frações exatas: 1/4 - (1/8)/(25/4) = 23/100, e 23/100 $\cdot$ 10/23 = 1/10. A verificação de ordem de grandeza também está certa: 10/92 $\approx$ 0,109.\newline%
+\newline%
+As armadilhas centrais foram todas tratadas corretamente:\newline%
+{-} **Massa da cavidade:** M/8, pela razão cúbica dos volumes.\newline%
+{-} **Posição da cavidade:** centro a R/2 à esquerda de O, do lado oposto ao da partícula, o que dá distância 5R/2.\newline%
+{-} **M como massa da esfera completa:** usado assim na superposição.\newline%
+{-} **Validade do teorema das cascas:** a solução justifica para as duas esferas, já que a partícula está fora de ambas.\newline%
+{-} **Sinais:** a contribuição da massa negativa entra com sinal oposto.\newline%
+{-} **Soma escalar:** justificada pela colinearidade de O, C e m.\newline%
+\newline%
+O candidato ainda confere que o resultado é positivo (a força continua atrativa), checa a dimensão e faz uma estimativa física da redução da força. Os problemas encontrados são apenas de acabamento: o descarte de B e C é superficial e falta um comentário sobre o erro de concentrar 7M/8 em O. A resolução está no nível de um gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A eliminação de (B) e (C) se limita a dizer que elas 'não correspondem à combinação 1/4 - 1/50'. Isso não acrescenta nada além do próprio cálculo. Para um gabarito comentado, valeria mostrar de qual erro típico vem cada distrator ou dizer explicitamente que nenhum erro comum leva a eles. Por exemplo: cavidade do mesmo lado dá 35/414, 7M/8 concentrada em O dá 35/368, e massa da cavidade M/2 dá 17/230.%
+\item%
+{[}minor{]} A resolução não comenta por que é errado tratar a massa restante, 7M/8, como pontual em O: o corpo com cavidade não tem simetria esférica. A abordagem usada já evita esse erro e o texto deixa claro que M é a massa da esfera completa, mas um comentário de uma linha fecharia essa armadilha didaticamente.%
+\item%
+{[}minor{]} Na etapa 3 a solução fixa um sentido, 'sentido negativo, para a esquerda', mas logo passa a trabalhar 'em módulo' e não usa mais essa convenção. Não é um erro, apenas um pouco de ruído de notação.%
+\end{itemize}%
+\subsection*{Questão 30: nota 9,3 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} $\lambda$ = 6,0$\times$10$^{-}$$^{7}$ m, alternativa (D).\par %
+Conferi o enunciado no PDF original (página 6 do arquivo, impressa como 13/18): a transcrição está correta. O candidato e a minha referência chegam à mesma resposta, (D) $\lambda$ = 6,0$\times$10$^{-}$$^{7}$ m. Refiz a conta em python: 9,0$\times$10$^{-}$$^{4}$/(0,5$\cdot$3000) = 6,0$\times$10$^{-}$$^{7}$ m.\newline%
+\newline%
+A resolução está correta e bem organizada:\newline%
+{-} Deduz y\_n = n$\lambda$L/d a partir da diferença de caminho, com a aproximação de ângulos pequenos justificada por d ? L e y ? L.\newline%
+{-} Identifica corretamente A como n = 0 e D como n = 3, logo y$_{3}$ = 3$\lambda$L/d.\newline%
+{-} Converte a escala do eixo horizontal, L = 1000$\cdot$d$\cdot$x, e o d se cancela.\newline%
+{-} Usa o fator 10$^{-}$$^{4}$ m do eixo vertical.\newline%
+{-} Trabalha com variações ($\Delta$L = 500d, $\Delta$y$_{3}$ = 9,0$\times$10$^{-}$$^{4}$ m), e não com valores absolutos.\newline%
+{-} Confere unidades e a ordem de grandeza: 600 nm é luz visível.\newline%
+{-} Deixa explícito que d fica fixo ao longo do gráfico.\newline%
+\newline%
+Todas as armadilhas que listei foram tratadas: a contagem das franjas, a escala em múltiplos de 1000d, o fator 10$^{-}$$^{4}$, o uso da inclinação e as hipóteses de validade.\newline%
+\newline%
+Há só três ressalvas menores:\newline%
+{-} Atribuição errada da origem do distrator (C): ele vem de um fator 2, não de um erro de contagem.\newline%
+{-} Falta explicar por que a reta "não precisa" passar pela origem: o gráfico não mostra os zeros dos eixos.\newline%
+{-} A afirmação "em fase" pressupõe, sem dizer, que F$_{3}$ é simétrica em relação a F$_{1}$ e F$_{2}$.\newline%
+\newline%
+Com pequenos ajustes, seria publicável como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na verificação final, o candidato diz que a alternativa (C), 3,0$\times$10$^{-}$$^{7}$ m, "seria obtida contando errado o número de franjas entre A e D". Isso não procede. Contando 2 espaçamentos sai 9$\times$10$^{-}$$^{7}$ m e contando 4 sai 4,5$\times$10$^{-}$$^{7}$ m. Para chegar a 3,0$\times$10$^{-}$$^{7}$ m seria preciso usar 6 espaçamentos, o que não é um erro de contagem plausível. Esse valor vem de um fator 2 indevido: confundir franjas claras com escuras ou usar $\Delta$y = $\lambda$L/(2d). O erro não afeta a resposta, mas o comentário sobre o distrator deveria ser corrigido.%
+\item%
+{[}minor{]} O candidato escreve que "a reta não precisa passar pela origem do gráfico" sem dizer por quê, e isso fica em tensão com o próprio modelo y$_{3}$ = 3$\lambda$L/d, que prevê proporcionalidade direta (reta pela origem). A justificativa correta seria: o gráfico não informa onde ficam os zeros dos eixos nem valores absolutos, só as variações cotadas. Por isso só a inclinação é confiável, e ela basta, porque não depende do intercepto.%
+\item%
+{[}minor{]} O candidato afirma que F$_{1}$ e F$_{2}$ estão "em fase" só porque são iluminadas pela mesma fenda F$_{3}$. Faltou dizer que isso pressupõe F$_{3}$ equidistante de F$_{1}$ e F$_{2}$, como sugere a franja central A no eixo. É uma hipótese implícita. Não muda o resultado, já que a diferença y$_{3}$ entre duas franjas não depende de uma fase constante.%
+\end{itemize}%
+\subsection*{Questão 31: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} v = 0,20 m/s. Alternativa (C).\par %
+Conferi o enunciado na p. 13/18 do PDF e a transcrição está correta: trilhos em y = 0 e y = 0,1 m, tira em x = 0, barra em x = 0,2 m em t = 0, B = -(2,0t)k? T. O candidato chega a v = 0,20 m/s, alternativa (C), a mesma da minha referência. Refiz as contas em Python: $\varepsilon$(t) = 0,04 + 0,4vt e $\varepsilon$(2) = 0,04 + 0,8v = 0,20 V dão v = 0,20 m/s. Na verificação, 0,12 V + 0,08 V = 0,20 V, que dá i = 0,050 A.\newline%
+\newline%
+Armadilhas tratadas:\newline%
+{-} As duas causas de variação do fluxo foram consideradas juntas: B variando no tempo e área crescendo.\newline%
+{-} O sinal entre as parcelas foi justificado: as duas aumentam o fluxo que entra no plano, então se somam.\newline%
+{-} A área foi calculada em t = 2 s (x = 0,60 m).\newline%
+{-} No termo de movimento, |B| = 4,0 T, com o sinal negativo lido como sentido (entrando no plano).\newline%
+{-} A única resistência é a da barra, e a autoindutância desprezível permite usar I = $\varepsilon$/R direto.\newline%
+{-} A separação entre os trilhos é L = 0,10 m.\newline%
+\newline%
+O candidato também conferiu as unidades e calculou valores alternativos (0,50 e 0,40 m/s), que estão corretos. Os defeitos são só de forma: escreve $\varepsilon$ = d?/dt sem o sinal negativo e sem dizer claramente que trabalha com módulos, não justifica o sentido de Lenz em uma linha e não comenta os distratores (D) e (E). É uma resolução que pode ser publicada como gabarito.%
+\begin{itemize}%
+\item%
+{[}minor{]} Falta rigor na convenção de sinal. O candidato toma a normal em -k? e escreve $\varepsilon$(t) = d?/dt, sem o sinal negativo da lei de Faraday. Antes ele tinha anunciado que trabalharia com módulos (|$\varepsilon$| = |d?/dt|), então o valor numérico não muda. Mesmo assim, a passagem para a forma sem módulo ficou ambígua. O certo seria escrever |$\varepsilon$| = d?/dt (fluxo crescente) ou $\varepsilon$ = -d?/dt, deixando explícita a relação entre o sinal e o sentido de circulação.%
+\item%
+{[}minor{]} O sentido anti{-}horário da corrente está correto, mas foi afirmado sem justificativa. Faltou uma linha: o fluxo entrando no plano cresce, então a corrente induzida gera campo em +k?. O item não é cobrado, então isso não afeta a resposta.%
+\item%
+{[}minor{]} O fecho fala em 'considerar só um dos efeitos', mas o segundo exemplo não é bem isso: usar a área inicial no termo A$\cdot$dB/dt é outro erro, embora também dê v = 0,40 m/s. Além disso, a análise de distratores deixou de fora os dois erros que caem em alternativas oferecidas: subtrair as parcelas dá (E) 0,30, e esquecer a parcela 0,04 V dá (D) 0,25. Para um gabarito comentado de múltipla escolha, esses são os distratores mais didáticos.%
+\end{itemize}%
+\subsection*{Questão 32: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (E). A é a fundamental, com f0 = 1/(2t'). B é o 3º harmônico e C é o 5º. Então R = 1º + 3º + 5º, e f\_B/f\_C = 3/5. Como $\lambda$1 = 2L = 1,20 m, v = $\lambda$1$\cdot$f0 = 0,60/t' e T/$\mu$ = v$^2$ = (0,60/t')$^2$.\par %
+As respostas finais coincidem: alternativa (E). Conferi a figura original ampliada (400 dpi) e a leitura do candidato está correta. A origem fica em x $\approx$ 122 px, t' em $\approx$ 700 px e 2t' em $\approx$ 1270 px.\newline%
+{-} A tem máximo em 0, mínimo em t' e máximo em 2t' (período 2t').\newline%
+{-} B pontilhada tem máximos em 0, $\approx$ 2t'/3, $\approx$ 4t'/3 e 2t' (3 ciclos).\newline%
+{-} C tracejada tem máximos a cada $\approx$ 0,4t' (5 ciclos).\newline%
+{-} R tem máximos em 0 e 2t' e o mínimo profundo em t'.\newline%
+{-} Todas as curvas cruzam o eixo em t'/2 e em 3t'/2, como o candidato afirma.\newline%
+\newline%
+Com f\_R = f0 = 1/(2t'), o fundamental é A, B é o 3º harmônico e C é o 5º. Daí f\_B/f\_C = 3/5, e as alternativas (A), (B), (C) e (D) são falsas. Em (E), a corda presa nas duas pontas dá $\lambda$1 = 2L = 1,20 m, então v = $\lambda$1$\cdot$f0 = 0,60/t' e T/$\mu$ = v$^2$ = (0,60/t')$^2$, que está correta. O candidato também conferiu unidades e ordem de grandeza.\newline%
+\newline%
+Todas as armadilhas da referência foram tratadas:\newline%
+{-} período 2t' em vez de t';\newline%
+{-} contagem de ciclos com a verificação de paridade em t';\newline%
+{-} fundamental identificado pela frequência, não pela amplitude;\newline%
+{-} razão 3/5 em vez de 2/5;\newline%
+{-} $\lambda$ = 2L;\newline%
+{-} velocidade na corda, não no ar;\newline%
+{-} conversão de 60 cm para 0,60 m.\newline%
+\newline%
+Ficaram só pontos menores: a conferência das amplitudes não é quantitativa, falta um argumento independente contra harmônicos pares em (A) e a letra T é usada tanto para período quanto para tensão. A resolução está clara, completa e correta, no nível de um gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A conferência da superposição é só qualitativa: compara fases, máximos em 0 e 2t', mínimos em t' e zeros em t'/2. Faltou a conferência quantitativa das amplitudes pela grade. Os valores iniciais são A $\approx$ 210 px, C $\approx$ 150 px e B $\approx$ 90 px, que somam $\approx$ 450 px; o pico de R mede $\approx$ 465 px e o vale em t' $\approx$ 460 px. Bastaria uma linha mostrando R(0) $\approx$ A+B+C $\approx$ -R(t') para fechar a identificação R = 1º+3º+5º.%
+\item%
+{[}minor{]} A alternativa (A) é refutada só pela leitura das contagens. Valeria acrescentar um argumento independente da contagem fina: um harmônico par estaria em máximo em t' (cos(n$\pi$) = +1), o que é incompatível com B e C em mínimo em t' e com o vale profundo de R.%
+\item%
+{[}minor{]} A letra T aparece com dois sentidos: período (T\_A, T\_0, T\_R) e tensão (T/$\mu$). Os índices evitam ambiguidade real, mas num gabarito publicado seria melhor chamar o período de outra forma (por exemplo, P ou $\tau$).%
+\end{itemize}%
+\subsection*{Questão 33: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} (C): com f$_{1}$ = f$_{2}$ + 40 Hz há batimentos em qualquer posição de O. O som percebido tem frequência (f$_{1}$+f$_{2}$)/2 = f$_{2}$ + 20 Hz e a frequência dos batimentos é |f$_{1}$-f$_{2}$| = 40 Hz. Com f$_{1}$ = f$_{2}$ forma{-}se uma onda estacionária: há silêncio só nos nós e, nos outros pontos, som de frequência f$_{1}$ (não 2f$_{1}$).\par %
+Conferi o enunciado na pág. 14/18 do PDF (a página 7 do arquivo) e a transcrição está fiel. A resposta final do candidato, (C), coincide com a minha referência e está correta.\newline%
+\newline%
+A dedução é limpa:\newline%
+{-} Escreve as duas ondas em O com os atrasos d$_{1}$/v e d$_{2}$/v e aplica a identidade de soma em produto, com as fases $\varphi$$\pm$ escritas corretamente.\newline%
+{-} **Caso f$_{1}$ = f$_{2}$:** obtém a onda estacionária de amplitude 2A|cos($\pi$(d$_{2}$-d$_{1}$)/$\lambda$)|. Usa o dado $\lambda$ < d$_{1}$+d$_{2}$ para garantir que existem nós, já que d$_{2}$-d$_{1}$ percorre (-L, L) e $\lambda$/2 < L. Mostra que a frequência ouvida é f$_{1}$. Com isso, (A) e (B) são falsas.\newline%
+{-} **Caso f$_{1}$ = f$_{2}$ + 40 Hz:** identifica a frequência do som, (f$_{1}$+f$_{2}$)/2 = f$_{2}$ + 20 Hz, e a frequência de batimento, |f$_{1}$-f$_{2}$| = 40 Hz. A justificativa está certa: |cos| tem período $\pi$, e a intensidade segue cos$^2$, com o dobro da frequência do fator cosseno. Também mostra que a posição só entra na fase $\varphi$?. Isso desloca os máximos e mínimos no tempo, sem mudar a profundidade nem a frequência da modulação. Logo há batimentos em todas as posições, e (D) e (E) são falsas.\newline%
+\newline%
+Conferi numericamente para d$_{1}$ = 0,3; 2,37; 5; 7,81; 9,9 m (L = 10 m, f$_{2}$ = 300 Hz):\newline%
+{-} a identidade vale com erro da ordem de 10$^{-}$$^{1}$$^3$;\newline%
+{-} a envoltória vai de 0 a 2A;\newline%
+{-} a envoltória tem 40 mínimos por segundo em todos os pontos.\newline%
+\newline%
+O candidato tratou todas as armadilhas centrais: a troca entre frequência do som e frequência de batimento (D), os 20 Hz da envoltória contra os 40 Hz do batimento (E), a ideia de que os batimentos dependem da posição, e os casos (A) e (B), além de usar as hipóteses t > L/v e $\lambda$ < L. Faltaram só detalhes menores: a origem do distrator 2f, uma frase sobre a hipótese de fase inicial e a ressalva perceptiva sobre batimentos de 40 Hz. A resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na alternativa (B), o candidato descarta corretamente a afirmação 'frequência 2f$_{1}$', mas não explica de onde o distrator vem: 2f é a frequência de oscilação da intensidade instantânea ($\propto$ y$^2$). Também não comenta a primeira parte de (B), 'som em algumas posições', que isoladamente é quase verdadeira, pois só os nós são silenciosos. Para um gabarito comentado, convém registrar que o erro de (B) está somente na frequência.%
+\item%
+{[}minor{]} Supõe que as fontes 'emitem em fase em t$_{0}$ = 0', mas o enunciado diz apenas que são ligadas simultaneamente. A hipótese não afeta a resposta: no caso f$_{1}$ $\neq$ f$_{2}$, a fase relativa só desloca a envoltória no tempo; no caso f$_{1}$ = f$_{2}$, só desloca a posição dos nós. Ainda assim, valeria uma frase dizendo que a conclusão não depende dela.%
+\item%
+{[}minor{]} Faltou uma ressalva física opcional: batimentos de 40 Hz ficam acima do limite (\textasciitilde{}15--20 Hz) em que o ouvido distingue pulsações individuais e são percebidos como 'aspereza'. A banca idealiza o fenômeno, e o gabarito continua (C). Também poderia observar que bastaria t > máx(d$_{1}$, d$_{2}$)/v. São omissões menores, que não pesam na correção.%
+\end{itemize}%
+\subsection*{Questão 34: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} k = 20 N/m (lido do gráfico: U = 0,1 J em d = 0,1 m); d\_máx = $\mu$\_e$\cdot$m$_{1}$g$\cdot$(m$_{1}$+m$_{2}$)/(m$_{2}$k) = 0,30 m = 30 cm; T = 2$\pi$$\surd$(3/20) = 0,2$\pi$$\surd$15 s $\approx$ 2,43 s $\neq$ 0,4$\pi$$\surd$5 $\approx$ 2,81 s. Itens: (F)(F)(F). Alternativa (B).\par %
+A resposta do candidato bate com a minha referência em todos os itens: (F)(F)(F), alternativa (B). Revi a página 8 do PDF original. A parábola da Figura 2 passa de fato por (0,10 m; 0,10 J) e chega a 0,2 J perto de 0,14 m. Logo k = 20 N/m, e o candidato leu isso corretamente, com U = $\frac12$kd$^2$ e conferência em outros dois pontos. Na condição de não deslizamento ele identifica bem que a mola está presa ao bloco de cima. O atrito estático é a única força horizontal sobre m$_{2}$, então f\_at = m$_{2}$a = m$_{2}$k|d|/M. A normal é m$_{1}$g = 10 N e, na iminência, vale o coeficiente estático 0,40. Isso dá d\_máx = 0,30 m, conta que conferi em Python. Ele confere o resultado pelo bloco m$_{1}$, verifica que a amplitude do gráfico (0,14 m) é menor que d\_máx e explica de onde vem o distrator de 20 cm ($\mu$\_e m$_{1}$g/k). O período usa a massa total: T = 2$\pi$$\surd$(3/20) $\approx$ 2,43 s, diferente de 0,4$\pi$$\surd$5 $\approx$ 2,81 s (que exigiria M/k = 0,2). Todas as armadilhas foram tratadas: fator $\frac12$, normal m$_{1}$g, coeficiente estático em vez do cinético, massa total no período, período independente da amplitude e 30 cm ausente das opções. Só há ressalvas menores de redação: a mistura entre amplitude e d\_máx, a unidade implícita no item III e a falta de um teste de robustez contra outra leitura do gráfico. É uma resolução clara e rigorosa, publicável como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A frase 'a iminência de deslizar ocorre na deformação máxima (extremo da oscilação, onde |a| é máxima)' mistura dois conceitos: a amplitude de uma oscilação e o limiar d\_máx. O certo seria dizer que, numa oscilação de amplitude A, o atrito exigido é máximo no extremo, e por isso a condição de não deslizar é m$_{2}$kA/M $\leq$ $\mu$\_e m$_{1}$g, o que dá A $\leq$ d\_máx. A conta e a conclusão não mudam.%
+\item%
+{[}minor{]} O item III vem sem unidade (0,4$\pi$$\surd$5). O candidato usa segundos sem dizer que isso é uma suposição. Valia uma frase explicando que a falta de unidade não muda o julgamento, porque o valor numérico já é diferente de 2,43 s.%
+\item%
+{[}minor{]} O candidato não comenta que a transcrição ('U $\approx$ 0,2 J em d = $\pm$0,15 m') diverge da figura. Ele só lê o ponto correto (0,10 m; 0,10 J) e confere que U = 0,2 J ocorre em $\approx$0,14 m. Faltou mostrar que a resposta continua (F)(F)(F) mesmo com uma leitura grosseira do gráfico (k $\approx$ 17,8 N/m), o que daria mais segurança ao gabarito.%
+\end{itemize}%
+\subsection*{Questão 35: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} h\_mín = 2,0 m. Alternativa (D).\par %
+Conferi a transcrição com o original, na página 15/18 da prova (Questão 35), e ela confere. O candidato chega a h\_mín = 2,0 m, alternativa (D), a mesma resposta da minha referência, e a resposta está correta. A resolução declara todas as hipóteses: fluido incompressível e ideal, regime permanente, seção uniforme (para justificar v constante pela continuidade), reservatório grande com v $\approx$ 0 na superfície e jato livre à pressão p0 em C. A velocidade sai corretamente de Bernoulli entre a superfície e C: v$^2$ = 2g(H-h). A expressão geral p(y) = p0 - $\rho$g(y-h) incorpora de uma vez o desnível a e o termo cinético. O ponto crítico B é justificado com cuidado: fora da água, a diferença $\rho$g(y-h) é máxima no ponto mais alto; no trecho submerso a diferença é constante e vale $\rho$g(H-h), que é menor. A desigualdade tem o sentido certo e dá um limite inferior, coerente com o pedido de 'mínimo'. As unidades e a condição h < H foram conferidas. A nota sobre cavitação, com p\_B $\approx$ 75 kPa, está correta. Recalculei a diferença de pressão em B para cada alternativa: 36, 30, 26 e 15 kPa para h = 0,9, 1,5, 1,9 e 2,5 m, como o candidato afirma. Todas as armadilhas que listei foram tratadas: termo cinético, desnível a, desnível correto para v, justificativa do ponto crítico, continuidade, sentido da desigualdade, desnecessidade de p\_atm e distratores 2,5 e 1,5. Só há detalhes menores de redação. A resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} O passo 2 diz que a fórmula p(y)=p0-$\rho$g(y-h) vale para 'um ponto qualquer do tubo'. Isso está certo, mas a resolução não explicita que vale também no trecho mergulhado, perto de A. O passo 3 depende disso ao usar p(y) no trecho submerso. Uma frase dizendo que Bernoulli vale em toda a linha de corrente, de A a C, porque v é constante, deixaria isso fechado.%
+\item%
+{[}minor{]} A resolução usa a condição de não colapso com '$\leq$', mas não justifica pelo enunciado que a igualdade é permitida. O texto diz 'pode colapsar se a pressão externa exceder a interna em 25,0 kPa', então no valor exatamente igual não há colapso e h = 2,0 m é admissível. Faltou uma linha dizendo isso, o que não afeta o resultado.%
+\item%
+{[}minor{]} A velocidade é dada como v $\approx$ 4,5 m/s, arredondada a partir de $\surd$20 $\approx$ 4,47 m/s. É aceitável, mas a verificação inversa ficaria mais limpa se mostrasse que $\rho$v$^2$/2 = 10 kPa e $\rho$ga = 15 kPa somam exatamente 25 kPa.%
+\end{itemize}%
+\subsection*{Questão 36: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (B): V$_{1}$ > V$_{2}$ quando d$_{1}$ > d$_{2}$. O campo nos dois gaps de ar é o mesmo, E = Q/($\varepsilon$$_{0}$A). Assim, V$_{1}$ = E$\cdot$d$_{1}$ e V$_{2}$ = E$\cdot$d$_{2}$, o que dá V$_{1}$/V$_{2}$ = d$_{1}$/d$_{2}$, com V$_{1}$ + V$_{2}$ = V constante.\par %
+Conferi o enunciado na página 9 do PDF (página 16/18 da prova amarela) e a transcrição está fiel. A resposta final do candidato é (B), a mesma da minha referência, e está correta: V1/V2 = d1/d2, com V1+V2 = V.\newline%
+\newline%
+A física é tratada com rigor. A distribuição de cargas sai de Gauss com caixas cilíndricas apoiadas em regiões de campo nulo dentro dos condutores, e a neutralidade da placa dá $\sigma$a = -$\sigma$ e $\sigma$b = +$\sigma$. Com isso, o campo é igual nos dois gaps (E = $\sigma$/$\varepsilon$0), o que justifica a equivalência com dois capacitores em série de mesma carga. A equipotencialidade da placa metálica dá V1+V2 = V. As expressões explícitas V1 = Vd1/(d1+d2) e V2 = Vd2/(d1+d2) estão certas. As verificações de unidade, de simetria (d1 = d2) e do limite d1 $\to$ 0 estão corretas.\newline%
+\newline%
+As cinco alternativas são analisadas com justificativa adequada. Todas as armadilhas relevantes foram tratadas:\newline%
+{-} campo nulo só dentro do metal (E);\newline%
+{-} divisão proporcional às espessuras, e não igual (A);\newline%
+{-} inversão da desigualdade (C);\newline%
+{-} soma fixada pela bateria (D);\newline%
+{-} campos iguais nos dois gaps, justificados pela neutralidade e por Gauss.\newline%
+\newline%
+Restam apenas detalhes de redação: o nexo causal mal formulado na análise de (D) e a falta da relação d1+d2 = d - t. Nenhum deles afeta a correção. A resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na alternativa (D), a frase 'Só a divisão entre V1 e V2 muda, porque d1+d2 é constante' tem um nexo causal mal construído. A divisão muda porque d1 e d2 variam individualmente. O fato de d1+d2 ser constante explica outra coisa: E e Q não mudam. Deveria ser reescrita, por exemplo: 'Como d1+d2 = d - t é constante, E e Q não dependem da posição; só a partição V1/V2 = d1/d2 muda.'%
+\item%
+{[}minor{]} A afirmação 'd1+d2 é constante' aparece sem justificativa. O ideal seria escrever d1+d2 = d - t, com d a separação entre as placas externas e t a espessura da placa metálica, o que mostra explicitamente que Q = $\varepsilon$0AV/(d1+d2) independe da posição.%
+\item%
+{[}minor{]} A refutação de (E) está correta, mas poderia ser fechada pela soma também: se V1 = V2 = 0, então V1+V2 = 0 $\neq$ V, o que contradiz a bateria. Isso tornaria a alternativa duplamente refutada. É só um detalhe de completude.%
+\end{itemize}%
+\subsection*{Questão 37: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} W(N\_x) = m$\cdot$g$\cdot$h$\cdot$cos$^2$30$^\circ$ = 0,40$\cdot$10$\cdot$0,20$\cdot$(3/4) = 0,60 J = 6,0$\cdot$10$^{-}$$^{1}$ J. Alternativa (B).\par %
+Conferi a figura no original (p. 9). O plano desce para a direita, com vértice de 30$^\circ$ no canto inferior direito, e o bloco fica sobre a face inclinada. Logo a normal aponta para cima e para a direita (N\_x > 0) e o deslocamento tem $\Delta$x > 0. A resolução do candidato coincide com a minha referência em todos os passos. N = mg$\cdot$cos30$^\circ$; N\_x = mg$\cdot$sin30$^\circ$$\cdot$cos30$^\circ$; d = h/sin30$^\circ$ = 0,40 m; $\Delta$x = d$\cdot$cos30$^\circ$ = 0,20$\surd$3 m; W = N\_x$\cdot$$\Delta$x = mgh$\cdot$cos$^2$30$^\circ$ = 0,60 J, alternativa (B). Conferi em Python: W\_x = 0,600 J, W\_y = -0,600 J, N\_x$\cdot$d $\approx$ 0,693 J (distração C) e mgh = 0,80 J (distração D). O candidato tratou as principais armadilhas. Distinguiu o trabalho da normal total (nulo) do trabalho da componente x, usou $\Delta$x e não d, adotou N = mg$\cdot$cos30$^\circ$ e não mg, converteu h para metros, acertou o sinal e verificou que W\_x + W\_y = 0. A exposição é clara, com versores explícitos e checagem de consistência. Os problemas encontrados são só de redação: uma justificativa circular sobre a constância de N, a falta de comentário sobre as distrações (C) e (E) e a ausência de referência explícita à figura para fixar o sentido da normal. Serve como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} No item 1, a frase "Isso vale durante todo o percurso, porque a força é constante" inverte a causa e o efeito. N é constante porque N = mg$\cdot$cos30$^\circ$ só depende de grandezas constantes (plano fixo, sem atrito, contato mantido). Não se pode partir da constância da força para justificar a constância de N. Melhor escrever: "como m, g e o ângulo são constantes, N é constante".%
+\item%
+{[}minor{]} A conclusão discute as alternativas (A) e (D), mas não as distrações (C) e (E). A (C), $\approx$0,69 J, sai de usar N\_x$\cdot$d no lugar de N\_x$\cdot$$\Delta$x. A (E), 1,2 J, sai de usar m$\cdot$g$\cdot$d$\cdot$cos$^2$30$^\circ$. Comentar essas duas deixaria a resolução completa como gabarito comentado. Não afeta a correção.%
+\item%
+{[}minor{]} A orientação da normal (+x) é afirmada com base em "o plano desce da esquerda para a direita", mas a resolução não diz explicitamente que o bloco está apoiado na face superior da cunha. Essa é a informação da figura que fixa o sinal de N\_x. Faltou uma frase citando a figura.%
+\end{itemize}%
+\subsection*{Questão 38: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} x = (15/8)$\cdot$(mg/k), alternativa (C). Detalhe: E = mg/16, T = 15mg/16, F\_mola = 2T = 15mg/8, e a mola está distendida.\par %
+Conferi o enunciado na página 17/18 do PDF e a transcrição bate, inclusive a figura: a mola fica sob a extremidade esquerda e está presa ao solo, os braços são L/3 e 2L/3, e o cilindro está suspenso sem tocar o fundo. O candidato chega a x = 15mg/(8k), alternativa (C), a mesma resposta da minha referência. Refiz as contas com frações exatas em python: E = mg/16, T = 15mg/16, F = 15mg/8 e N = 45mg/16.\newline%
+\newline%
+A resolução está correta e bem estruturada:\newline%
+{-} As hipóteses estão explícitas: barra de massa desprezível, fio e mola ideais, cilindro sem tocar o fundo.\newline%
+{-} O volume é obtido de V = m/$\rho$c.\newline%
+{-} O empuxo usa a densidade do líquido e só o volume submerso, V/2.\newline%
+{-} O equilíbrio do cilindro dá T = mg - E, e o candidato aplica a terceira lei de Newton para levar T à barra.\newline%
+{-} Os momentos são tomados em torno de O, com os braços certos (a mola no braço curto, logo F = 2T).\newline%
+{-} O sentido da força da mola está justificado: a mola está alongada.\newline%
+{-} As verificações de unidade e de casos{-}limite estão corretas. Sem empuxo, x = 2mg/k; com o cilindro totalmente imerso, x = 7mg/(4k); o resultado fica entre esses dois valores.\newline%
+\newline%
+O candidato trata praticamente todas as armadilhas que identifiquei. As exceções são duas omissões menores: não confere a reação N > 0 no apoio e não identifica explicitamente o distrator (A). A qualidade é de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A resolução não confere o equilíbrio de translação da barra, N = F + T = 45mg/16 > 0. Essa conta mostra que o apoio simples em O consegue de fato exercer a reação necessária, que só pode ser para cima. Bastaria uma linha nas verificações.%
+\item%
+{[}minor{]} A conclusão diz que (C) é 'a única que leva em conta ao mesmo tempo...', mas não aponta explicitamente o distrator (A). Esse valor sai quando se usa $\rho$c no lugar de $\rho$ no empuxo, o que dá E = mg/2 e x = mg/k. Citar esse caminho deixaria o comentário mais didático, como num gabarito comentado.%
+\end{itemize}%
+\subsection*{Questão 39: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} (E): (t$_{2}$ - t$_{1}$)/t$_{2}$ = C\_B$\cdot$(T\_eq - T\_\{i,B\}) / {[}C\_A$\cdot$|T\_eq - T\_\{i,A\}|{]}. Vem de P$\cdot$t$_{2}$ = C\_A(T\_\{i,A\} - T\_eq), já que A cede calor de 0 a t$_{2}$, e de P$\cdot$(t$_{2}$ - t$_{1}$) = C\_B(T\_eq - T\_\{i,B\}), já que B só aquece de t$_{1}$ a t$_{2}$ (de 0 a t$_{1}$ ela funde, absorvendo calor latente).\par %
+Conferi a figura no original (pág. 10 do PDF, pág. 17/18 do caderno). A descrição bate com a transcrição: A cai linearmente de T\_\{i,A\} até T\_eq em {[}0, t$_{2}${]}; B fica em patamar em T\_\{i,B\} até t$_{1}$ e depois sobe até T\_eq em t$_{2}$. A resposta do candidato é a alternativa (E), a mesma da minha referência, e está correta. Também conferi numericamente: t$_{2}$ = 120 s, t$_{2}$ - t$_{1}$ = 30 s, razão 0,25, igual ao valor da fórmula (E).\newline%
+\newline%
+A resolução trata todas as armadilhas relevantes:\newline%
+{-} A taxa P é a mesma e constante em todo o intervalo {[}0, t$_{2}${]}, e o candidato tira isso do enunciado.\newline%
+{-} A cede calor desde t = 0, então C\_A(T\_\{i,A\} - T\_eq) = P$\cdot$t$_{2}$, e não P$\cdot$(t$_{2}$ - t$_{1}$).\newline%
+{-} O patamar de B é interpretado como fusão, com calor latente P$\cdot$t$_{1}$ = m\_B$\cdot$L\_B, fora do termo C\_B$\cdot$$\Delta$T.\newline%
+{-} C\_B é entendida como a capacidade de B na etapa posterior à mudança de fase.\newline%
+{-} O módulo |T\_eq - T\_\{i,A\}| = T\_\{i,A\} - T\_eq é justificado porque A esfria.\newline%
+{-} P se cancela na divisão.\newline%
+\newline%
+As verificações estão boas: unidades, razão entre 0 e 1 justificada pelo calor latente, e o caso t$_{1}$ = 0, que recai no balanço usual. A eliminação também está correta: (A), (C) e (D) dependem da origem da escala, porque contêm T\_eq isolada, e (B) troca as variações de temperatura entre C\_A e C\_B.\newline%
+\newline%
+Os problemas são só de acabamento: algumas hipóteses idealizadoras ficam implícitas (calorímetro sem capacidade térmica, C constantes) e falta um contraexemplo numérico contra (B). A resolução é clara, rigorosa e completa, e poderia ser publicada como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Algumas hipóteses idealizadoras ficam implícitas: calorímetro de capacidade térmica desprezível e capacidades C\_A e C\_B constantes. A linearidade dos gráficos sustenta essas hipóteses, mas a resolução não chega a dizer isso. Basta uma linha como 'calorímetro ideal, sem capacidade térmica própria; C constantes, coerente com os trechos retilíneos'.%
+\item%
+{[}minor{]} Na exclusão de (B), o argumento é só qualitativo ('não representa os calores trocados por cada corpo'). Um contraexemplo numérico, por exemplo C\_A = 200, C\_B = 150, T\_\{i,A\} = 80, T\_eq = 20, T\_\{i,B\} = 0, dá (E) = 0,25 e (B) = 2,25 > 1. Ele tornaria a eliminação mais convincente e mostraria que (B) pode até violar a restrição razão < 1.%
+\end{itemize}%
+\subsection*{Questão 40: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} v\_vb/v\_vm = cos30$^\circ$/cos45$^\circ$ = $\surd$6/2 $\approx$ 1,22. Alternativa (D).\par %
+Conferi o enunciado no original (p. 18/18 da prova amarela) e a transcrição está fiel. A bandeira sai do mastro para NO, a 45$^\circ$ de N. A resposta do candidato, (D) $\surd$6/2, coincide com a minha referência e está correta.\newline%
+\newline%
+A resolução é completa e rigorosa:\newline%
+{-} **Composição de velocidades e convenção:** a composição galileana está correta (v\_vb = v\_vm - v\_bm). A convenção da bandeira (ela aponta para onde o vento relativo sopra) está explícita.\newline%
+{-} **Componentes e passo principal:** as componentes estão escritas com ângulos medidos a partir de N, então não há troca de seno por cosseno. O passo central é a conservação da componente norte, já que o barco não tem velocidade N--S. Daí v\_vb/v\_vm = cos30$^\circ$/cos45$^\circ$ = $\surd$6/2.\newline%
+{-} **Consistência:** a verificação pela componente leste dá v\_vm = 10($\surd$3+1) $\approx$ 27,3 km/h > 0 e v\_vb = 5(3$\surd$2+$\surd$6) $\approx$ 33,5 km/h. Conferi em Python: o vetor fica a exatamente 45$^\circ$ de N e a razão é 1,22474.\newline%
+{-} **Comentários finais:** o candidato observa corretamente que os 10 km/h não entram na razão. A conferência qualitativa (razão > 1) elimina A, B e C, e E é descartada pelo valor numérico.\newline%
+\newline%
+Todas as armadilhas que listei foram tratadas:\newline%
+{-} seno/cosseno;\newline%
+{-} inversão da razão;\newline%
+{-} sinal da composição;\newline%
+{-} convenção da bandeira;\newline%
+{-} irrelevância dos 10 km/h;\newline%
+{-} ângulo medido a partir de N.\newline%
+\newline%
+Os únicos problemas são de redação: uma frase ambígua sobre a 'leitura oposta' e uma justificativa qualitativa que ficou implícita. Merece nota de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A frase 'Na leitura oposta (o vento vindo de 30$^\circ$ a oeste do norte), a equação leste daria v\_vm<0' fica ambígua. Ela só é exata se a convenção 'de onde vem' for aplicada aos dois vetores, isto é, ao vento real e à bandeira. Com leitura mista (vento real 'de onde vem' e bandeira 'para onde sopra'), quem falha já é a equação norte, porque os sinais das componentes N ficariam opostos, e não a equação leste. O que fazer: dizer explicitamente 'adotando a convenção oposta para ambos os vetores'.%
+\item%
+{[}minor{]} A conferência qualitativa diz que o vento aparente 'fica mais forte' só por causa da componente extra para oeste. A justificativa está certa, mas faltou escrevê{-}la explicitamente. Daria para fechar em uma linha: pela própria igualdade das componentes N, v\_vb$\cdot$cos45$^\circ$ = v\_vm$\cdot$cos30$^\circ$, e como cos45$^\circ$ < cos30$^\circ$, segue v\_vb > v\_vm. Outra opção: |v\_vm - v\_bm|$^2$ = v\_vm$^2$ + 10$\cdot$v\_vm + 100 > v\_vm$^2$.%
+\end{itemize}%
+\end{document}

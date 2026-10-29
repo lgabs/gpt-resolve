@@ -1,0 +1,49 @@
+{
+  "question": 32,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(E) — O fundamental é a curva A, com período 2t', logo f0 = 1/(2t'). B é o 3º harmônico e C é o 5º. Com v = 2L·f0 = 0,60/t', obtemos T/μ = v² = (0,60/t')².",
+  "judge_reference": {
+    "final_answer": "Alternativa (E). A é a fundamental, com f0 = 1/(2t'). B é o 3º harmônico e C é o 5º. Então R = 1º + 3º + 5º, e f_B/f_C = 3/5. Como λ1 = 2L = 1,20 m, v = λ1·f0 = 0,60/t' e T/μ = v² = (0,60/t')².",
+    "reference_solution": "**Leitura do gráfico (conferida no original ampliado)**\n\nOs períodos saem da figura. No gráfico, t' = 1t' corresponde a cerca de 573 px, e a origem fica em x ≈ 155 px. No instante t = 0, as quatro curvas estão num máximo.\n\n- **R (contínua fina):** tem máximo em t = 0, mínimo absoluto e profundo em t = t' e volta ao mesmo máximo em t = 2t'. O período é T_R = 2t', logo f_R = 1/(2t').\n- **A (contínua grossa):** tem máximo em 0, mínimo em t' e máximo em 2t'. O período é T_A = 2t', logo f_A = 1/(2t').\n- **B (pontilhada):** os máximos estão em 0, ≈ 2t'/3, ≈ 4t'/3 e 2t'. São 3 ciclos completos em 2t', logo f_B = 3/(2t'). Em t = t' a curva está num mínimo, porque ali já passou 1,5 ciclo.\n- **C (tracejada):** os máximos estão em 0, 0,4t', 0,8t', 1,2t', 1,6t' e 2t'. São 5 ciclos em 2t', logo f_C = 5/(2t'). Em t' a curva também está num mínimo, pois ali já passaram 2,5 ciclos.\n\n**Quem é o fundamental**\n\nO enunciado diz que f_R = f0. Como f_R = 1/(2t'), temos f0 = 1/(2t'). Só a curva A tem essa frequência, então A é o harmônico fundamental. Daí vem f_B = 3f0, ou seja, B é o 3º harmônico (n = 3), e f_C = 5f0, ou seja, C é o 5º harmônico (n = 5).\n\n**Consistência das amplitudes**\n\nPela grade, A ≈ 2, C ≈ 1,5 e B ≈ 0,9 unidades. Então R(0) = A + B + C ≈ 4,4 unidades, que é o valor marcado no eixo. Em t', vale cos(π) = cos(3π) = cos(5π) = −1, e por isso R(t') = −(A + B + C), o mínimo profundo do gráfico.\n\nSimulei numericamente a soma 2cos(πt/t') + 0,9cos(3πt/t') + 1,5cos(5πt/t'). Ela reproduz os extremos locais de R:\n- −0,34 em t ≈ 0,23t';\n- +1,39 em t ≈ 0,40t';\n- −1,39 em t ≈ 0,60t';\n- +0,34 em t ≈ 0,77t';\n- −4,4 em t = t'.\n\nIsso confirma que R é a soma dos harmônicos 1, 3 e 5.\n\n**Análise das alternativas**\n\n- **(A) Falsa.** A onda R é formada pelo fundamental, pelo 3º e pelo 5º harmônicos (n = 1, 3, 5), não por 1, 4 e 6. Há também uma prova independente: com n = 4 e n = 6 junto com n = 1, todos os termos estariam em fase em t' com valores +1, +1 e −1. Assim R(t') não seria −(soma das amplitudes), o que contradiz o mínimo profundo em t'.\n- **(B) Falsa.** O fundamental é A (contínua grossa). C (tracejada) é o 5º harmônico.\n- **(C) Falsa.** O período fundamental é 2t', logo f0 = 1/(2t'), e não 1/t'.\n- **(D) Falsa.** f_B/f_C = 3f0/5f0 = 3/5, e não 2/5.\n- **(E) Verdadeira.** Na corda presa nas duas pontas, o modo fundamental tem λ1 = 2L = 2·0,60 = 1,20 m. A velocidade da onda transversal na corda é v = λ1·f0 = 1,20·1/(2t') = 0,60/t' (em m/s, com t' em s). Pela fórmula de Taylor, v = √(T/μ), logo T/μ = v² = (0,60/t')².\n\n**Resposta: (E).**",
+    "pitfalls": [
+      "Confundir o período da fundamental com t': as curvas A e R completam um ciclo em 2t' (mínimo em t', máximo em 2t'), então f0 = 1/(2t') e não 1/t'. Esse é o erro que leva à alternativa (C).",
+      "Contar picos ou meios ciclos de forma errada nas curvas rápidas. B tem 3 ciclos em 2t' (n = 3) e C tem 5 (n = 5). Contar errado leva a respostas como n = 4 e n = 6 (alternativa A) ou a uma razão errada (D). Uma boa conferência é ver que B e C estão em mínimo em t' (número ímpar de meios ciclos), o que exige n ímpar.",
+      "Identificar o fundamental pela amplitude ou pelo estilo de traço em vez da frequência. O fundamental é a componente com f = f_R (curva A, de período 2t'), não C.",
+      "Calcular a razão B/C invertida ou subtraída. f_B/f_C = 3/5, e o valor 2/5 da alternativa (D) é distrator.",
+      "Na alternativa (E), usar λ1 = L em vez de λ1 = 2L para a corda presa nas duas extremidades. Com λ = L, sairia v = 0,30/t'.",
+      "Misturar a onda sonora no ar com a onda na corda: a frequência é a mesma, mas T/μ = v² usa a velocidade da onda transversal NA CORDA (v = λ_corda·f), não a velocidade do som no ar (≈ 340 m/s) nem o comprimento de onda do som.",
+      "Esquecer de converter L = 60 cm para 0,60 m, ou não perceber que 0,60/t' sai de 2·0,60·(1/(2t')).",
+      "Uma verificação útil é a da superposição: R(0) = A + B + C e R(t') = −(A + B + C), o que só ocorre se todos os harmônicos forem ímpares e começarem em fase (cossenos com máximo em t = 0)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(E) — O fundamental é a curva A, com período 2t', logo f0 = 1/(2t'). B é o 3º harmônico e C é o 5º. Com v = 2L·f0 = 0,60/t', obtemos T/μ = v² = (0,60/t')².",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A conferência da superposição é só qualitativa: compara fases, máximos em 0 e 2t', mínimos em t' e zeros em t'/2. Faltou a conferência quantitativa das amplitudes pela grade. Os valores iniciais são A ≈ 210 px, C ≈ 150 px e B ≈ 90 px, que somam ≈ 450 px; o pico de R mede ≈ 465 px e o vale em t' ≈ 460 px. Bastaria uma linha mostrando R(0) ≈ A+B+C ≈ −R(t') para fechar a identificação R = 1º+3º+5º."
+          },
+          {
+            "severity": "minor",
+            "description": "A alternativa (A) é refutada só pela leitura das contagens. Valeria acrescentar um argumento independente da contagem fina: um harmônico par estaria em máximo em t' (cos(nπ) = +1), o que é incompatível com B e C em mínimo em t' e com o vale profundo de R."
+          },
+          {
+            "severity": "minor",
+            "description": "A letra T aparece com dois sentidos: período (T_A, T_0, T_R) e tensão (T/μ). Os índices evitam ambiguidade real, mas num gabarito publicado seria melhor chamar o período de outra forma (por exemplo, P ou τ)."
+          }
+        ],
+        "summary": "As respostas finais coincidem: alternativa (E). Conferi a figura original ampliada (400 dpi) e a leitura do candidato está correta. A origem fica em x ≈ 122 px, t' em ≈ 700 px e 2t' em ≈ 1270 px.\n- A tem máximo em 0, mínimo em t' e máximo em 2t' (período 2t').\n- B pontilhada tem máximos em 0, ≈ 2t'/3, ≈ 4t'/3 e 2t' (3 ciclos).\n- C tracejada tem máximos a cada ≈ 0,4t' (5 ciclos).\n- R tem máximos em 0 e 2t' e o mínimo profundo em t'.\n- Todas as curvas cruzam o eixo em t'/2 e em 3t'/2, como o candidato afirma.\n\nCom f_R = f0 = 1/(2t'), o fundamental é A, B é o 3º harmônico e C é o 5º. Daí f_B/f_C = 3/5, e as alternativas (A), (B), (C) e (D) são falsas. Em (E), a corda presa nas duas pontas dá λ1 = 2L = 1,20 m, então v = λ1·f0 = 0,60/t' e T/μ = v² = (0,60/t')², que está correta. O candidato também conferiu unidades e ordem de grandeza.\n\nTodas as armadilhas da referência foram tratadas:\n- período 2t' em vez de t';\n- contagem de ciclos com a verificação de paridade em t';\n- fundamental identificado pela frequência, não pela amplitude;\n- razão 3/5 em vez de 2/5;\n- λ = 2L;\n- velocidade na corda, não no ar;\n- conversão de 60 cm para 0,60 m.\n\nFicaram só pontos menores: a conferência das amplitudes não é quantitativa, falta um argumento independente contra harmônicos pares em (A) e a letra T é usada tanto para período quanto para tensão. A resolução está clara, completa e correta, no nível de um gabarito comentado."
+      }
+    }
+  ]
+}

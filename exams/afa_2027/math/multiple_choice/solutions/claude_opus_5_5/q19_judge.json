@@ -1,0 +1,45 @@
+{
+  "question": 19,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Alternativa (A): o intervalo [π/6, π/4] está contido em M. As duas raízes exigem sen x > 0 e cos x > 1/2, então M é a união dos intervalos ]2kπ, π/3 + 2kπ[, com k inteiro.",
+  "judge_reference": {
+    "reference_solution": "**Leitura do enunciado.** Conferi a transcrição com o PDF (página 2) e ela confere. M é o domínio de g, ou seja, o conjunto dos x reais para os quais as duas raízes estão definidas em ℝ. A questão pede o intervalo que está contido em M.\n\n**Condições de existência**\n\nPrimeira raiz, √( sen x / (cos x − 1/2) ). Precisamos de:\n- (I) cos x ≠ 1/2;\n- (II) sen x / (cos x − 1/2) ≥ 0.\n\nSegunda raiz, √( (1 − cos x) / sen x ). Precisamos de:\n- (III) sen x ≠ 0;\n- (IV) (1 − cos x) / sen x ≥ 0.\n\n**Análise de (III) e (IV).** Para todo x, 1 − cos x ≥ 0. O numerador só se anula quando cos x = 1, e nesse caso sen x = 0, o que (III) proíbe. Então, nos pontos admitidos, 1 − cos x > 0. Para o quociente ser ≥ 0 é preciso ter **sen x > 0**, isto é, x ∈ ]2kπ, π + 2kπ[, com k ∈ ℤ.\n\n**Análise de (I) e (II), já com sen x > 0.** Como o numerador sen x é positivo, o quociente é ≥ 0 se e somente se o denominador for positivo: **cos x > 1/2**. Isso também cobre (I).\n\nSozinha, a condição (II) aceitaria ainda sen x ≤ 0 com cos x < 1/2, por exemplo x ∈ [π, 5π/3[. Esses pontos, porém, já foram eliminados por (III) e (IV).\n\n**Domínio.** Precisamos de sen x > 0 e cos x > 1/2 ao mesmo tempo, ou seja, x no 1º quadrante com 0 < x < π/3:\n\nM = ⋃_{k∈ℤ} ]2kπ, π/3 + 2kπ[. Na primeira volta, M ∩ [0, 2π[ = ]0, π/3[.\n\n**Análise das alternativas**\n\na) [π/6, π/4]. Temos 0 < π/6 < π/4 < π/3, então o intervalo fechado está dentro de ]0, π/3[. Nas extremidades:\n- em x = π/6, sen = 1/2 > 0 e cos = √3/2 > 1/2;\n- em x = π/4, sen = √2/2 > 0 e cos = √2/2 ≈ 0,707 > 1/2.\n\nO intervalo **está contido em M**.\n\nb) [π/4, π/2] − {π/3}. Retirar π/3 só evita o zero do denominador; o sinal continua errado em ]π/3, π/2]. Por exemplo, em x = π/2 a primeira radicanda vale 1/(0 − 1/2) = −2 < 0. **Não está contido.**\n\nc) ]0, π/2[. Contém π/3, onde o denominador se anula, e também ]π/3, π/2[, onde a primeira radicanda é negativa. **Não está contido.**\n\nd) ]π/3, π/2[. Nesse intervalo sen x > 0 e cos x < 1/2, logo sen x/(cos x − 1/2) < 0. Esse intervalo é exatamente o oposto do que se pede. **Não está contido.**\n\n**Conferência numérica (Python).** Varri [−2π, 2π] e encontrei as faixas válidas ]−2π, −5π/3[ e ]0, π/3[, como esperado. Testando os pontos de cada alternativa, apenas a alternativa a) passa inteira (True); b), c) e d) falham. Em π/2 a primeira radicanda vale −2.\n\n**Resposta: alternativa a).**",
+    "final_answer": "M = ⋃_{k∈ℤ} ]2kπ, π/3 + 2kπ[, que na primeira volta é ]0, π/3[. Entre as opções, só [π/6, π/4] está contido em M. Resposta: alternativa a).",
+    "pitfalls": [
+      "Ver que a segunda raiz obriga a ter sen x > 0. Como 1 − cos x ≥ 0, o sinal depende do denominador. O caso 1 − cos x = 0 (cos x = 1) faz sen x = 0 e é proibido, por isso a desigualdade é estrita.",
+      "Com sen x > 0, a primeira raiz exige cos x − 1/2 > 0, com desigualdade estrita (cos x ≠ 1/2 por ser denominador). Então x = π/3 fica fora e o domínio é ]0, π/3[, aberto nos dois lados, na primeira volta.",
+      "Se a primeira raiz for analisada sozinha, entram também pontos com sen x ≤ 0 e cos x < 1/2, como [π, 5π/3[. Uma boa solução precisa fazer a interseção com a condição da segunda raiz, que elimina esses pontos.",
+      "Distrator b): tirar {π/3} resolve só o zero do denominador e não o sinal. Em ]π/3, π/2] a radicanda sen x/(cos x − 1/2) é negativa; em π/2 ela vale −2.",
+      "Distrator d): ]π/3, π/2[ é justamente a faixa em que cos x < 1/2 com sen x > 0, ou seja, onde a primeira radicanda é negativa. Quem inverte o sinal da inequação cai nessa alternativa.",
+      "Distrator c): ]0, π/2[ contém π/3, onde o denominador se anula, e o trecho em que a radicanda é negativa.",
+      "Na alternativa a) o intervalo é fechado, então é preciso conferir as extremidades π/6 e π/4. As duas ficam dentro de ]0, π/3[, com sen > 0 e cos > 1/2, e não há problema com as extremidades abertas de M (0 e π/3).",
+      "M deve ser entendido como o domínio máximo de g em ℝ, que é periódico com período 2π. A pergunta é de inclusão: basta um único ponto ruim no intervalo para eliminar a alternativa."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Alternativa (A): o intervalo [π/6, π/4] está contido em M. As duas raízes exigem sen x > 0 e cos x > 1/2, então M é a união dos intervalos ]2kπ, π/3 + 2kπ[, com k inteiro.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Inconsistência no texto: a resolução diz \"Isso exige três condições\", mas lista só duas, (I) e (II), cada uma com duas subcondições. Corrigir para \"duas condições\" ou separar em quatro (sen x ≠ 0, quociente ≥ 0, cos x ≠ 1/2, quociente ≥ 0)."
+          },
+          {
+            "severity": "minor",
+            "description": "Na alternativa c), a resolução aponta só o zero do denominador em π/3. Esse contraexemplo basta para descartar a alternativa. Ainda assim, um gabarito comentado ficaria mais completo se dissesse também que em ]π/3, π/2[ a radicanda é negativa, para mostrar que retirar π/3 não salvaria c) (é o mesmo motivo que derruba b))."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (pág. 2) e a transcrição está correta. O candidato responde a), a mesma resposta da referência. Testei 20001 pontos em cada intervalo: a) passa inteiro; b), c) e d) falham, e em d) nenhum ponto vale.\n\n**A resolução está certa e rigorosa.**\n- Interpreta M como o domínio natural de g.\n- Da segunda raiz tira sen x > 0, com desigualdade estrita: o caso cos x = 1 levaria a sen x = 0, que está excluído.\n- Usa sen x > 0 na primeira raiz e chega a cos x > 1/2, também estrita.\n- Obtém M = ⋃]2kπ, π/3 + 2kπ[ e justifica a redução a ]0, π/3[ observando que as alternativas estão em [0, π/2].\n\n**Armadilhas: todas tratadas.**\n- As desigualdades estritas foram justificadas.\n- A interseção com sen x > 0 é feita antes de analisar a primeira raiz, o que afasta os pontos espúrios com sen x ≤ 0 e cos x < 1/2.\n- Os extremos fechados de a) foram conferidos.\n- Em b) usou o contraexemplo π/2, onde a radicanda vale −2.\n- Em c) usou π/3, onde o denominador se anula.\n- Em d) mostrou que a radicanda é negativa em todo o intervalo.\n\n**Ressalvas, ambas menores.**\n- O texto diz \"três condições\" e lista duas.\n- Em c), poderia citar também o trecho onde a radicanda é negativa.\n\nA resolução serve como gabarito comentado."
+      }
+    }
+  ]
+}

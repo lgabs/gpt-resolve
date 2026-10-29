@@ -1,0 +1,49 @@
+{
+  "question": 31,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(C) 0,20 m/s. O fluxo é Φ = 0,040t + 0,20vt², então ε = 0,040 + 0,40vt. Em t = 2,0 s, ε = RI = 0,20 V, o que dá v = 0,20 m/s.",
+  "judge_reference": {
+    "final_answer": "v = 0,20 m/s. Alternativa (C).",
+    "reference_solution": "**Conferência com o original (p. 13/18 da prova amarela, Questão 31).** A transcrição bate com a prova. Na figura, os trilhos estão em y = 0 e y = 0,1 m, a tira fixa fica em x = 0 e a barra começa em x = 0,2 m (em t = 0). O \"×\" indica B entrando no plano. Os pequenos \"i/j\" perto da origem são só os versores î e ĵ. A separação dos trilhos é 0,10 m, igual ao comprimento L da barra.\n\n**1) Fluxo magnético na espira**\n- Posição da barra: x(t) = 0,20 + v·t (m).\n- Área da espira: A(t) = L·x(t) = 0,10·(0,20 + v·t) (m²).\n- Campo: B_z(t) = −2,0·t (T). O campo entra no plano e sua intensidade cresce com o tempo.\n- Fluxo, com normal +k̂: Φ(t) = B_z·A = −2,0t · 0,10(0,20 + vt) = −0,04t − 0,2·v·t² (Wb).\n\n**2) Lei de Faraday**\nε = −dΦ/dt = 0,04 + 0,4·v·t (V).\n\nA mesma conta, separando as duas parcelas, fica assim:\nε = |dB/dt|·A(t) + |B(t)|·L·v\n\n- Parcela 1, variação do campo (fem \"de transformador\"): 2,0 · 0,10·(0,20 + vt).\n- Parcela 2, fem de movimento: 2,0t · 0,10 · v.\n\nEm t = 2,0 s:\n- parcela 1 = 2,0 · 0,10·(0,20 + 2v) = 0,04 + 0,4v;\n- parcela 2 = 4,0 · 0,10 · v = 0,4v.\n\nLogo ε(2 s) = 0,04 + 0,8v (V).\n\nAs duas parcelas têm o mesmo sinal. A intensidade de B cresce e a área também cresce, então as duas aumentam |Φ| (fluxo entrando no plano). Por isso as fem se somam.\n\n**3) Lei de Ohm**\nA única resistência do circuito é a da barra, R = 4,0 Ω, porque trilhos e tira têm resistência desprezível. A autoindutância também é desprezível, então i = ε/R.\n\nε = i·R = 0,050 · 4,0 = 0,20 V\n\n0,04 + 0,8v = 0,20 ⇒ 0,8v = 0,16 ⇒ **v = 0,20 m/s**\n\n**4) Sentido da corrente (não é pedido, mas confirma a coerência)**\nO fluxo para dentro do plano (−k̂) aumenta. Pela lei de Lenz, a corrente induzida cria campo para fora (+k̂), então circula no sentido anti-horário visto de +z. Em t = 2 s, i = 0,05 A, como dado.\n\n**Verificação numérica**\nCom v = 0,2 m/s e t = 2 s: x = 0,6 m e A = 0,06 m².\n- dB/dt·A = 2 · 0,06 = 0,12 V;\n- B·L·v = 4 · 0,1 · 0,2 = 0,08 V.\n\nε = 0,20 V e i = 0,20/4 = 0,050 A. ✓\n\nResposta: **(C) 0,20 m/s**.",
+    "pitfalls": [
+      "As duas fontes de fem (B variando no tempo e área variando) têm que ser consideradas juntas: dΦ/dt = (dB/dt)·A(t) + B(t)·dA/dt. Quem usa só uma delas erra.",
+      "Erro de sinal entre as parcelas: |B| cresce e a área cresce, então as fem se somam. Subtrair (0,8v − 0,04 = 0,20) dá v = 0,30 m/s, a alternativa (E), que é o distrator para esse erro.",
+      "A área no termo de transformador tem que ser a de t = 2 s, x = 0,20 + 2v, e não a de t = 0 (x = 0,20). Usar a área inicial dá 0,04 + 0,4v = 0,2 ⇒ v = 0,40 m/s, que não está entre as opções.",
+      "No termo de movimento, B deve ser avaliado em t = 2 s: |B| = 4,0 T, e não 2,0 T. O sinal negativo de B só indica que o campo entra no plano. Usar só BLv com B = 4 T dá v = 0,5 m/s, que também não é opção.",
+      "Se o termo dB/dt·x0·L (0,04 V) for esquecido ou contado errado, chega-se a 0,8v = 0,20 ⇒ v = 0,25 m/s, a alternativa (D).",
+      "A resistência total é só a da barra (4,0 Ω), porque trilhos e tira são ideais. A autoindutância desprezível permite usar i = ε/R direto, sem transitório.",
+      "O comprimento útil da barra é igual à separação dos trilhos, 0,10 m, o que a figura confirma. A posição inicial é x = 0,20 m, contada a partir da tira em x = 0.",
+      "A lei do fluxo (ε = −dΦ/dt) vale para esse circuito com parte móvel. Ela equivale a somar a fem de movimento (v×B) à circulação do campo elétrico induzido."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(C) 0,20 m/s. O fluxo é Φ = 0,040t + 0,20vt², então ε = 0,040 + 0,40vt. Em t = 2,0 s, ε = RI = 0,20 V, o que dá v = 0,20 m/s.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Falta rigor na convenção de sinal. O candidato toma a normal em −k̂ e escreve ε(t) = dΦ/dt, sem o sinal negativo da lei de Faraday. Antes ele tinha anunciado que trabalharia com módulos (|ε| = |dΦ/dt|), então o valor numérico não muda. Mesmo assim, a passagem para a forma sem módulo ficou ambígua. O certo seria escrever |ε| = dΦ/dt (fluxo crescente) ou ε = −dΦ/dt, deixando explícita a relação entre o sinal e o sentido de circulação."
+          },
+          {
+            "severity": "minor",
+            "description": "O sentido anti-horário da corrente está correto, mas foi afirmado sem justificativa. Faltou uma linha: o fluxo entrando no plano cresce, então a corrente induzida gera campo em +k̂. O item não é cobrado, então isso não afeta a resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "O fecho fala em 'considerar só um dos efeitos', mas o segundo exemplo não é bem isso: usar a área inicial no termo A·dB/dt é outro erro, embora também dê v = 0,40 m/s. Além disso, a análise de distratores deixou de fora os dois erros que caem em alternativas oferecidas: subtrair as parcelas dá (E) 0,30, e esquecer a parcela 0,04 V dá (D) 0,25. Para um gabarito comentado de múltipla escolha, esses são os distratores mais didáticos."
+          }
+        ],
+        "summary": "Conferi o enunciado na p. 13/18 do PDF e a transcrição está correta: trilhos em y = 0 e y = 0,1 m, tira em x = 0, barra em x = 0,2 m em t = 0, B = −(2,0t)k̂ T. O candidato chega a v = 0,20 m/s, alternativa (C), a mesma da minha referência. Refiz as contas em Python: ε(t) = 0,04 + 0,4vt e ε(2) = 0,04 + 0,8v = 0,20 V dão v = 0,20 m/s. Na verificação, 0,12 V + 0,08 V = 0,20 V, que dá i = 0,050 A.\n\nArmadilhas tratadas:\n- As duas causas de variação do fluxo foram consideradas juntas: B variando no tempo e área crescendo.\n- O sinal entre as parcelas foi justificado: as duas aumentam o fluxo que entra no plano, então se somam.\n- A área foi calculada em t = 2 s (x = 0,60 m).\n- No termo de movimento, |B| = 4,0 T, com o sinal negativo lido como sentido (entrando no plano).\n- A única resistência é a da barra, e a autoindutância desprezível permite usar I = ε/R direto.\n- A separação entre os trilhos é L = 0,10 m.\n\nO candidato também conferiu as unidades e calculou valores alternativos (0,50 e 0,40 m/s), que estão corretos. Os defeitos são só de forma: escreve ε = dΦ/dt sem o sinal negativo e sem dizer claramente que trabalha com módulos, não justifica o sentido de Lenz em uma linha e não comenta os distratores (D) e (E). É uma resolução que pode ser publicada como gabarito."
+      }
+    }
+  ]
+}

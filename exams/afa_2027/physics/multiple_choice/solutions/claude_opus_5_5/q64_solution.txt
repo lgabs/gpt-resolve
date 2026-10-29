@@ -1,0 +1,45 @@
+\section*{Questão 64}
+
+\section*{Solução}
+
+\textbf{Modelo.} A pá $MN$ é uma haste condutora de comprimento $L$ que gira num plano horizontal em torno do eixo vertical que passa por $M$, com velocidade angular constante
+\[
+\omega = 2\pi f .
+\]
+Como $\vec B$ é uniforme na região da pá e constante no tempo, a f.e.m. é \emph{de movimento}. Em cada elemento $d\vec\ell$ da haste, os portadores de carga sofrem a força magnética por unidade de carga $\vec v\times\vec B$, e
+\[
+d\varepsilon = (\vec v\times\vec B)\cdot d\vec\ell .
+\]
+
+\textbf{Direção dos vetores.} Um ponto da pá a uma distância $r$ de $M$ tem velocidade $\vec v$ horizontal, tangente à circunferência, de módulo $v = \omega r$. O vetor $d\vec\ell$ também é horizontal, mas tem a direção radial, ao longo da pá.
+
+\begin{itemize}
+\item \emph{Componente horizontal $\vec B_H$:} os vetores $\vec v$ e $\vec B_H$ são ambos horizontais, logo $\vec v\times\vec B_H$ é vertical. Então $\vec v\times\vec B_H$ é perpendicular a $d\vec\ell$ e $(\vec v\times\vec B_H)\cdot d\vec\ell = 0$. Essa força apenas empurra as cargas para cima ou para baixo, através da espessura da pá: \textbf{não gera f.e.m. entre $M$ e $N$}.
+\item \emph{Componente vertical $\vec B_V$:} como $\vec v \perp \vec B_V$, o vetor $\vec v\times\vec B_V$ é horizontal, perpendicular a $\vec v$ e, portanto, radial, isto é, paralelo à pá. Seu módulo é $vB_V = \omega r B_V$, e esse é o único termo que contribui.
+\end{itemize}
+
+\textbf{Cálculo.} Somando ao longo da pá, de $r=0$ (em $M$) até $r=L$ (em $N$):
+\[
+\varepsilon = \int_0^L \omega\, r\, B_V\, dr = \frac{B_V\,\omega L^2}{2}
+= \frac{B_V (2\pi f) L^2}{2} = \pi B_V L^2 f .
+\]
+
+\textbf{Conferência pela lei de Faraday.} Em uma volta, de duração $T = 1/f$, a pá varre um disco de área $\pi L^2$. Só a componente vertical do campo atravessa esse disco horizontal, então o fluxo ``cortado'' por volta é $B_V\,\pi L^2$. Assim,
+\[
+|\varepsilon| = \frac{\Delta\Phi}{\Delta t} = \frac{B_V\,\pi L^2}{1/f} = \pi B_V L^2 f ,
+\]
+que é o mesmo resultado.
+
+\textbf{Unidades e ordem de grandeza.} $[B_V L^2 f] = \text{T}\cdot\text{m}^2\cdot\text{s}^{-1} = \text{Wb/s} = \text{V}$, como deve ser. Com valores típicos ($B_V \sim 5\cdot 10^{-5}\ \text{T}$, $L\sim 5\ \text{m}$, $f \sim 5\ \text{Hz}$), obtém-se $\varepsilon \sim 3\cdot 5\cdot 10^{-5}\cdot 25\cdot 5 \approx 2\cdot 10^{-2}\ \text{V}$, um valor pequeno e plausível para o campo terrestre.
+
+\textbf{Caso particular.} No equador magnético o campo é horizontal ($B_V = 0$), e o resultado dá $\varepsilon = 0$. Isso é coerente com a análise acima: $\vec B_H$ sozinho não induz f.e.m. ao longo da pá.
+
+\textbf{Análise das alternativas.}
+\begin{itemize}
+\item (a) Está errada porque usa $B_H$, cuja contribuição é nula.
+\item (c) Está errada porque usa o módulo total de $\vec B$. Isso só valeria se o campo fosse inteiramente vertical.
+\item (d) É dimensionalmente incorreta: $[(B_V+B_H)Lf]^{1/2}$ não tem unidade de volt.
+\item (b) Coincide com o resultado obtido. Ela é a correta porque só a componente vertical do campo, perpendicular ao plano de rotação, induz f.e.m. ao longo da pá.
+\end{itemize}
+
+ANSWER: (B) $\pi B_V L^2 f$

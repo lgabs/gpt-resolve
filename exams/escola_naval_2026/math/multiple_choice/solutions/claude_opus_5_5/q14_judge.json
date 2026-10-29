@@ -1,0 +1,49 @@
+{
+  "question": 14,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(B) 128/15: as curvas se cruzam em x = -2, 0 e 2, e a área é a integral de -2 a 2 de (4x^2 - x^4) dx = 128/15.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com o original (página 5/12 do PDF, Questão 14): f(x) = x⁴ − 3x², g(x) = x², e as alternativas 128/25, 128/15, 128/10, 182/15, 182/25.\n\n**1) Pontos de interseção**\nIgualando as duas funções: x⁴ − 3x² = x², ou seja, x⁴ − 4x² = 0, que fatora como x²(x − 2)(x + 2) = 0.\nAs raízes são x = −2, x = 0 (raiz dupla) e x = 2. Os pontos de interseção são (−2, 4), (0, 0) e (2, 4).\n\n**2) Qual curva fica por cima**\nDefina h(x) = g(x) − f(x) = 4x² − x⁴ = x²(4 − x²).\n- Para 0 < |x| < 2, h(x) > 0, então a parábola g fica acima da quártica f.\n- Em x = 0, h tem raiz dupla. As curvas se tangenciam na origem e não se cruzam ali: h não muda de sinal.\n- Para |x| > 2, h(x) < 0 e as curvas se afastam indefinidamente. Não há outra região limitada.\n\nA região limitada fica em [−2, 2]. É formada por dois \"lóbulos\" simétricos (h é par) que se tocam na origem.\n\n**3) Cálculo da área**\nA = ∫₋₂² (g − f) dx = ∫₋₂² (4x² − x⁴) dx = 2 ∫₀² (4x² − x⁴) dx\n  = 2 [4x³/3 − x⁵/5]₀²\n  = 2 (32/3 − 32/5)\n  = 2 · (160 − 96)/15\n  = 2 · 64/15 = 128/15.\n\nCada lóbulo tem área 64/15, e a área total é 128/15 ≈ 8,533.\n\n**Conferência numérica:** a integral exata com frações dá 128/15. A soma de Riemann de |g − f| em [−2, 2] dá 8,5333…, igual a 128/15.\n\n**Observação:** f fica negativa em 0 < |x| < √3, mas isso não importa. A área entre as curvas é ∫(cima − baixo) dx, que não depende da posição do eixo x.\n\n**Resposta: (B) 128/15.**",
+    "final_answer": "A área é 128/15 (cada um dos dois lóbulos simétricos mede 64/15). Alternativa (B).",
+    "pitfalls": [
+      "Interseções: de x⁴ − 4x² = 0 saem x = 0 (raiz dupla) e x = ±2. Quem divide por x² sem cuidado perde x = 0. Aqui isso não altera a área, mas a resolução precisa reconhecer a origem como ponto de contato.",
+      "Em x = 0 há tangência, não cruzamento: g − f = x²(4 − x²) não muda de sinal. Assim g ≥ f em todo o intervalo [−2, 2] e não é preciso trocar a ordem do integrando na origem.",
+      "Integrar só em [0, 2] dá 64/15, que é a área de um lóbulo só. A região tem dois lóbulos simétricos, e a área total é o dobro: 128/15.",
+      "Trocar a ordem (f − g) dá integral negativa, −128/15. Área é sempre positiva: é ∫(cima − baixo) dx.",
+      "f fica abaixo do eixo x em 0 < |x| < √3. Calcular áreas em relação ao eixo x (por exemplo, ∫f = −16/5 em [−2, 2]) ou separar a região pelo eixo leva a erro. O que conta é a diferença entre as curvas.",
+      "Erro aritmético: 32/3 − 32/5 = 64/15, e não 64/8 nem 64/25. As alternativas 128/25 e 128/10 são justamente esses deslizes de denominador.",
+      "Os distratores 182/15 e 182/25 trocam os algarismos de 128. É preciso conferir o numerador.",
+      "Para |x| > 2 as curvas divergem, então a única região limitada está em [−2, 2]. Vale justificar isso em uma linha."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(B) 128/15: as curvas se cruzam em x = -2, 0 e 2, e a área é a integral de -2 a 2 de (4x^2 - x^4) dx = 128/15.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução diz que a região limitada fica em [−2, 2] usando apenas um \"Assim\" logo após listar as interseções. Não justifica por que não há outra região limitada para |x| > 2. Faltou uma linha, por exemplo: para |x| > 2, g − f = x²(4 − x²) < 0 e |g − f| → ∞, então as curvas divergem e não fecham outra região."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não diz explicitamente que x = 0 é raiz dupla de x⁴ − 4x² = 0. Isso aparece só de forma indireta, quando afirma que a diferença não troca de sinal. A tangência na origem está bem tratada no mérito, mas citar a multiplicidade, ou f'(0) = g'(0) = 0, deixaria o argumento de tangência mais direto."
+          },
+          {
+            "severity": "minor",
+            "description": "O teste do retângulo com área 25 confere só uma cota superior bem folgada. Ele não separa as alternativas 128/15 ≈ 8,53, 128/10 = 12,8 e 182/15 ≈ 12,1. Uma conferência mais útil seria pela simetria: cada lóbulo mede 64/15 ≈ 4,27. Isso não é erro, apenas uma verificação de pouco valor."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (página 5/12, Questão 14) e ele bate com a transcrição. A resposta do candidato, (B) 128/15, coincide com a minha referência. Recalculei com frações exatas: 2(32/3 − 32/5) = 128/15. As armadilhas foram tratadas assim:\n- As interseções x ∈ {−2, 0, 2} estão corretas, e a origem foi mantida.\n- A tangência em x = 0 foi reconhecida, com o argumento de que g − f = x²(4 − x²) ≥ 0 não troca de sinal. Por isso basta uma única integral de g − f.\n- Os dois lóbulos simétricos foram somados pela paridade do integrando, o que dá o dobro de 64/15.\n- A ordem cima − baixo está correta e a área sai positiva.\n- O candidato não cometeu o erro de integrar em relação ao eixo x.\n- As contas estão corretas, inclusive o denominador 15.\n- Os distratores com numerador 182 foram descartados explicitamente.\n\nA verificação extra também confere: o mínimo de f é −9/4 em x² = 3/2, e o retângulo [−2, 2] × [−2,25; 4] de área 25 contém a região. As falhas são pequenas: a justificativa de que não há região limitada para |x| > 2 ficou implícita, a multiplicidade dupla de x = 0 não foi citada e o teste de ordem de grandeza é pouco discriminante. A resolução é clara, correta e completa, com qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

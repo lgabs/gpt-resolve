@@ -1,0 +1,46 @@
+{
+  "question": 21,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(E): f(x)=2x^2-1, então g(x)=1/(2x^2-1), com assíntotas em x=±√2/2, ramo central negativo com máximo g(0)=-1 e ramos laterais positivos que terminam em g(±1)=1.",
+  "judge_reference": {
+    "reference_solution": "**1) Simplificar f.** Para x ∈ [−1, 1], seja θ = arccos(x), com θ ∈ [0, π]. Então cos θ = x, o que vale porque x está no domínio de arccos. Pela fórmula do arco duplo, cos 2θ = 2cos²θ − 1. Logo:\n\nf(x) = 2x² − 1, para −1 ≤ x ≤ 1.\n\nÉ uma parábola restrita a [−1, 1] (o polinômio de Chebyshev T₂). Dá o mesmo resultado se usarmos cos 2θ = 1 − 2sen²θ com sen θ = √(1 − x²), que é ≥ 0 em [0, π].\n\n**2) Domínio de g = 1/f.** A função f se anula quando 2x² − 1 = 0, ou seja, em x = ±√2/2 ≈ ±0,707. Esses pontos estão dentro de [−1, 1]. Então:\n\n- Dom g = [−1, 1] \\ {−√2/2, √2/2}.\n- As retas x = ±√2/2 são assíntotas verticais.\n- O gráfico termina em x = ±1. Não existe nada fora de [−1, 1].\n\n**3) Sinal e valores de g.**\n\n- **Ramo central, |x| < √2/2.** Aqui 2x² − 1 ∈ [−1, 0), logo g(x) ≤ −1, ou seja, g é negativa. O máximo é g(0) = −1. Quando x → ±(√2/2) por dentro, temos f → 0⁻ e g → −∞.\n- **Ramos laterais, √2/2 < |x| ≤ 1.** Aqui 2x² − 1 ∈ (0, 1], logo g(x) ≥ 1, ou seja, g é positiva. Nas extremidades, g(±1) = 1, e esses pontos fazem parte do gráfico. Quando x → ±(√2/2) por fora, temos f → 0⁺ e g → +∞.\n- **Simetria.** g é par, então o gráfico é simétrico em relação ao eixo y.\n\n**4) Variação e concavidade (confirmação).**\n\n- Derivada: g'(x) = −4x/(2x² − 1)².\n  - g cresce em [−1, −√2/2) e em (−√2/2, 0].\n  - g decresce em [0, √2/2) e em (√2/2, 1].\n- Segunda derivada: g''(x) = (24x² + 4)/(2x² − 1)³.\n  - No ramo central, g'' < 0: a curva é côncava para baixo, em forma de ∩, com topo em (0, −1).\n  - Nos ramos laterais, g'' > 0: a curva é convexa. Ela sobe de y = 1 (em x = ±1) até +∞ junto às assíntotas.\n\n**Conferência numérica (python3).**\n\n| x | f(x) | g(x) |\n|---|---|---|\n| 0 | −1 | −1 |\n| ±0,5 | −0,5 | −2 |\n| ±0,70 | −0,02 | −50 |\n| ±0,72 | 0,0368 | ≈ 27,2 |\n| ±0,75 | 0,125 | 8 |\n| ±0,9 | 0,62 | ≈ 1,61 |\n| ±1 | 1 | 1 |\n\n**5) Análise das alternativas** (conferidas na figura original, p. 6/12 do PDF).\n\n- **(A)** Errada. A curva é limitada e positiva, sem assíntotas verticais e sem ramo negativo.\n- **(B)** Errada. É toda positiva, com um U central positivo. O sinal do ramo central está trocado e faltam os ramos laterais corretos.\n- **(C)** Errada. O U central é positivo e os ramos laterais são negativos. É exatamente o gráfico de −g = 1/(1 − 2x²), ou seja, os sinais estão invertidos.\n- **(D)** Errada. Tem um U central positivo, ramos laterais positivos e um ramo que passa de x = 1. Isso desrespeita o sinal do ramo central e o domínio.\n- **(E)** Correta. Os ramos laterais ficam acima do eixo x, sobem para +∞ junto às assíntotas internas x = ±√2/2 e descem até a reta tracejada y = 1 em x = ±1. O ramo central fica abaixo do eixo, em forma de ∩, com máximo em (0, −1) (marca \"−1\" no eixo y), e desce para −∞ junto às assíntotas.\n\n**Resposta: (E).**",
+    "final_answer": "Alternativa (E). f(x) = cos(2·arccos x) = 2x² − 1 em [−1, 1], então g(x) = 1/(2x² − 1). Há assíntotas verticais em x = ±√2/2. O ramo central é negativo, com máximo g(0) = −1 e g → −∞ junto às assíntotas. Os ramos laterais são positivos, vão de +∞ (junto às assíntotas) até g(±1) = 1 e terminam em x = ±1.",
+    "pitfalls": [
+      "Simplificar corretamente: cos(2·arccos x) = 2x² − 1. Isso usa cos(arccos x) = x, que vale só para x ∈ [−1, 1]. Se a fórmula do arco duplo for escrita errada como 1 − 2cos²θ, sai f = 1 − 2x², e o candidato marca (C), que tem os sinais invertidos.",
+      "Se usar cos 2θ = 1 − 2sen²θ, é preciso justificar que sen(arccos x) = +√(1 − x²), positivo porque θ ∈ [0, π]. O resultado continua sendo 2x² − 1.",
+      "Os zeros de f em x = ±√2/2 estão dentro de [−1, 1] e geram assíntotas verticais internas. Eles precisam ser excluídos do domínio de g.",
+      "O domínio é [−1, 1]: o gráfico não pode passar de x = ±1. Isso elimina (D), que tem um ramo além de x = 1.",
+      "Os pontos extremos g(±1) = 1 pertencem ao gráfico. É neles que os ramos laterais tocam a reta tracejada y = 1.",
+      "Estudar o sinal: no ramo central (|x| < √2/2), f ∈ [−1, 0), então g ≤ −1, com máximo g(0) = −1. Nos ramos laterais, f ∈ (0, 1], então g ≥ 1. Quem não faz essa análise de sinal costuma confundir com (B) ou (C).",
+      "Limites laterais junto às assíntotas: pelo lado de dentro g → −∞; pelo lado de fora g → +∞.",
+      "g é par. Pela concavidade, o ramo central é côncavo para baixo (∩) e os ramos laterais são convexos: g'' = (24x² + 4)/(2x² − 1)³.",
+      "Não basta encontrar a fórmula de g. É preciso comparar cada alternativa com as características do gráfico (sinal, assíntotas, domínio, valores em 0 e em ±1) e justificar por que as outras estão erradas."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(E): f(x)=2x^2-1, então g(x)=1/(2x^2-1), com assíntotas em x=±√2/2, ramo central negativo com máximo g(0)=-1 e ramos laterais positivos que terminam em g(±1)=1.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O formato de ∩ do ramo central e a convexidade dos ramos laterais saem só da monotonicidade e dos limites. Não há estudo de concavidade, que seria g''(x) = (24x²+4)/(2x²−1)³ (negativa no centro e positiva nas laterais). Para uma questão de múltipla escolha isso basta, mas um gabarito comentado ficaria mais completo com uma linha sobre g''."
+          },
+          {
+            "severity": "minor",
+            "description": "Na eliminação de (A), o argumento de que 'não há assíntotas verticais' depende de como se lê o esboço: na figura, a curva sobe até a reta tracejada junto às retas verticais. A resolução não cita o critério mais objetivo, que é a curva de (A) continuar além de x = 1, fora do domínio. Mesmo assim, o argumento do sinal (g(0) = −1 < 0) já basta para eliminar a alternativa."
+          }
+        ],
+        "summary": "Conferi o enunciado e as cinco figuras no original (p. 6/12 do PDF). A resposta do candidato, (E), coincide com a minha referência e está correta.\n\n**Cálculos.** Todos estão certos. O candidato toma θ = arccos x ∈ [0, π] e usa cos θ = x com cos 2θ = 2cos²θ − 1, o que dá f(x) = 2x² − 1 em [−1, 1]. Daí g(x) = 1/(2x² − 1), com zeros de f em ±√2/2, que geram assíntotas verticais internas. A derivada g'(x) = −4x/(2x² − 1)² também está correta.\n\n**Armadilhas.** Ele tratou todas as que importam:\n- fórmula do arco duplo com o sinal correto;\n- exclusão de ±√2/2 do domínio;\n- domínio restrito a [−1, 1];\n- g(±1) = 1 como pontos finais do gráfico;\n- estudo de sinal: g ≤ −1 no centro, com máximo g(0) = −1, e g ≥ 1 nas laterais;\n- limites laterais: −∞ por dentro e +∞ por fora;\n- paridade de g.\n\n**Alternativas.** As eliminações estão corretas e cada uma tem justificativa própria:\n- (A) e (B): não têm parte negativa;\n- (C): os sinais estão trocados;\n- (D): o ramo central é positivo e o gráfico passa de x = 1;\n- (E): bate com todas as propriedades encontradas.\n\n**Ressalvas menores.** Falta o estudo de concavidade (o formato ∩ sai só da monotonicidade e dos limites). Além disso, a eliminação de (A) por 'ausência de assíntotas' depende de como se lê o esboço, quando havia um critério mais objetivo: a curva continua além de x = 1. A resolução é clara, rigorosa e publicável como gabarito comentado."
+      }
+    }
+  ]
+}

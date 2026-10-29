@@ -1,0 +1,48 @@
+{
+  "question": 22,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(D) (1+√2)/8. Temos I = BE ∩ CH = (−4√2, 0), com área de IEG = 16(1+√2)² e área do octógono = 128(1+√2).",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura**, conferida com o original (p. 6 do PDF, \"Questão 22\"): os vértices estão em sentido anti-horário a partir de A, no lado superior. A e H formam o lado de cima, G e F o lado direito, E e D o lado de baixo, e C e B o lado esquerdo. O ponto I está na diagonal BE e na reta HC, porque a reta IH passa por C. Logo, I = BE ∩ HC.\n\n**Coordenadas** (lado s = 8; a projeção de um lado oblíquo em cada eixo vale s/√2 = 4√2; w = 4 + 4√2 é a metade da largura). A origem fica no centro do octógono:\n- A(−4, w), H(4, w), G(w, 4), F(w, −4)\n- E(4, −w), D(−4, −w), C(−w, −4), B(−w, 4)\n\n**1) Localizar I**\n- A reta BE tem inclinação (−w−4)/(4+w) = −1. Sua equação é x + y = 4 − w = −4√2.\n- A reta HC tem inclinação (w+4)/(w+4) = 1. Sua equação é y − x = w − 4 = 4√2.\n- Portanto BE ⊥ HC. Resolvendo o sistema, obtemos I = (−4√2, 0).\n\n**2) Observações geométricas**\n- A inclinação de GH é (w−4)/(4−w) = −1, logo GH ∥ BE (ou seja, GH ∥ IE).\n- Os triângulos IEG e IEH têm a mesma base IE e a mesma altura, porque G e H estão numa paralela a IE. Logo Área(IEG) = Área(IEH).\n- O segmento HE é vertical (x = 4) e seu comprimento é a largura do octógono: HE = 2w = s(1+√2) = 8 + 8√2.\n- O ângulo entre HE (vertical) e BE (inclinação −1) é 45°. Como HI ⊥ BE, o triângulo HIE é retângulo isósceles em I, com IH = IE = HE/√2 = 8 + 4√2.\n- Então Área(IEG) = Área(IEH) = IE²/2 = HE²/4 = s²(1+√2)²/4 = 16(1+√2)² = 48 + 32√2.\n\n**Verificação pelo determinante**, com E − I = (4+4√2, −4−4√2) e G − I = (4+8√2, 4):\n- O determinante vale (4+4√2)·4 + (4+4√2)(4+8√2) = 96 + 64√2.\n- A área é metade disso: 48 + 32√2. ✓\n\n**3) Área do octógono regular de lado s**\n- S = 2(1+√2)s² = 128(1+√2).\n- Conferência: o quadrado circunscrito tem lado s(1+√2). Dele se retiram 4 cantos, cada um um triângulo retângulo isósceles de catetos s/√2. Fica s²(1+√2)² − s² = s²(2 + 2√2). ✓\n\n**4) Razão**\n- Área(IEG)/S = [s²(1+√2)²/4] / [2(1+√2)s²] = (1+√2)/8.\n- O resultado não depende de s.\n- Numericamente: 93,2548/309,0193 ≈ 0,30178, que coincide com (1+√2)/8 ≈ 0,30178. Também conferi numericamente o ponto I e as áreas (fórmula de Gauss), e todos os 8 lados medem 8.\n\n**Resposta: (D) (1+√2)/8.**",
+    "final_answer": "A razão é (1+√2)/8, alternativa (D). I = BE ∩ HC = (−4√2, 0), com o centro do octógono na origem. Área(IEG) = 48 + 32√2 = 16(1+√2)². Área do octógono = 128(1+√2).",
+    "pitfalls": [
+      "Interpretar corretamente a condição 'a reta que contém IH intersecta C': ela define I como a interseção das diagonais BE e HC. Sem isso, I fica indeterminado sobre BE.",
+      "Ler os rótulos na ordem certa: A e H no lado de cima, G e F à direita, E e D embaixo, C e B à esquerda. A ordem é anti-horária a partir de A, e H fica ao lado de A.",
+      "Não confundir o triângulo pedido (IEG) com o triângulo IHG, que também aparece na figura.",
+      "Fato-chave: GH ∥ BE, logo Área(IEG) = Área(IEH). Além disso, BE ⊥ HC e o ângulo entre HE e BE é 45°, então o triângulo HIE é retângulo isósceles com IE = IH = HE/√2.",
+      "HE = s(1+√2) é a largura do octógono (distância entre lados opostos), e não a diagonal maior (diâmetro do círculo circunscrito).",
+      "Área do octógono regular: 2(1+√2)s². Usar (1+√2)s² (metade) leva à alternativa (A). Errar a área do triângulo por um fator constante leva a outras alternativas.",
+      "O lado 8 é irrelevante para a razão. A figura não está em escala exata, então I deve ser determinado analiticamente."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(D) (1+√2)/8. Temos I = BE ∩ CH = (−4√2, 0), com área de IEG = 16(1+√2)² e área do octógono = 128(1+√2).",
+      "review": {
+        "agrees_with_reference": true,
+        "answer_correct": true,
+        "score": 9.5,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O passo 2 afirma que I está no interior do octógono e sobre os segmentos BE e CH, mas não verifica isso. A verificação é imediata: x_I = −4√2 ≈ −5,66 fica entre x_B = −b ≈ −9,66 e x_E = 4, e também entre x_C = −b e x_H = 4. Bastaria uma linha para fechar o ponto."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase do passo 1 está mal construída: 'os lados AH, BC, DE, FG [...] e os lados oblíquos formam com o quadrado circunscrito quatro triângulos'. Na verdade, quem forma os triângulos dos cantos com o quadrado são só os lados oblíquos. O conteúdo está certo (hipotenusa 8, catetos 4√2), mas a redação deveria ser mais clara."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta notar que GH ∥ BE, o que dá Área(IEG) = Área(IEH) e uma conferência sintética elegante. Isso não é um erro, porque a altura é calculada diretamente. Mesmo assim, enriqueceria um gabarito comentado."
+          }
+        ],
+        "summary": "Conferi o enunciado e a figura no original (p. 6). A rotulação usada pelo candidato está correta: A e H em cima, G e F à direita, E e D embaixo, C e B à esquerda. Ele também interpreta corretamente a condição dada: I = BE ∩ CH.\n\n**Conferência dos cálculos.** Refiz todas as contas e verifiquei numericamente em Python. Os 8 lados medem 8, I fica colinear com B, E e com C, H, e a área por Gauss confere.\n- I = (−4√2, 0).\n- IE = (b, −b), com b = 4 + 4√2.\n- A altura de G até a reta BE é b√2.\n- S_IEG = b² = 48 + 32√2 ≈ 93,25, conferido também pelo produto vetorial (2b²/2).\n- S_oct = 128(1+√2) ≈ 309,02.\n- Razão = (1+√2)/8 ≈ 0,3018.\n\n**Comparação com a referência.** Os valores coincidem integralmente com os da minha referência. A resposta (D) está correta.\n\n**Armadilhas.**\n- A condição sobre IH foi tratada.\n- A ordem dos rótulos foi lida corretamente.\n- O triângulo usado é o IEG, e não o IHG.\n- A largura 2b foi usada corretamente, sem confundir com a diagonal maior.\n- A área do octógono é 2(1+√2)s², e não a metade disso.\n\nHá ainda duas conferências independentes: o produto vetorial e a comparação numérica com as alternativas.\n\n**Problemas encontrados.** São só de forma: o passo 2 afirma sem verificar (a verificação é trivial) que I está nos segmentos, e uma frase do passo 1 está mal redigida. A resolução é rigorosa, completa e clara, com qualidade de gabarito."
+      }
+    }
+  ]
+}

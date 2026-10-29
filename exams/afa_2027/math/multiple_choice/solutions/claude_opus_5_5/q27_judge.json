@@ -1,0 +1,46 @@
+{
+  "question": 27,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Alternativa (B): Q3 < Q2 < Q1, com Q1 = 1, Q2 = 3(3√3−π)/(9√3−π) ≈ 0,495 e Q3 = (6√3−3π)/(6√3−2π) ≈ 0,235.",
+  "judge_reference": {
+    "reference_solution": "**Leitura das figuras** (conferidas no original ampliado). Em cada caso, Q é a área cinza da figura de cima dividida pela área cinza da figura de baixo, nessa ordem. Os resultados não dependem de r, ℓ ou m.\n\n---\n\n**Q1 (retângulos)**\n\n- Figura de cima: são 2 linhas de 4 círculos de raio r, tangentes entre si e aos lados. Logo o retângulo mede 8r × 4r e tem área 32r².\n  - Área dos círculos: 8·πr² = 8πr².\n  - Área cinza: 32r² − 8πr² = 8r²(4 − π).\n- Figura de baixo: são 2 círculos de raio 2r, tangentes entre si e aos lados. O retângulo é o mesmo, 4·2r × 2·2r = 8r × 4r, com área 32r².\n  - Área dos círculos: 2·π(2r)² = 8πr².\n  - Área cinza: 8r²(4 − π).\n\n**Q1 = 1.**\n\n---\n\n**Q2 (triângulos equiláteros de lado ℓ)**\n\n- Área do triângulo: T = ℓ²√3/4.\n- Raio do círculo inscrito: R = ℓ√3/6, então πR² = πℓ²/12.\n- Figura de cima: área cinza = T − πR² = ℓ²(3√3 − π)/12.\n\nFigura de baixo: o círculo inscrito também está em cinza. Só os 3 círculos pequenos dos vértices são brancos.\n\n- Raio ρ do círculo pequeno:\n  - O centro do círculo pequeno fica na bissetriz do vértice, que forma 30° com os lados. Então a distância do vértice ao centro pequeno é ρ/sen30° = 2ρ.\n  - A distância do vértice ao incentro é 2R, porque o baricentro divide a mediana na razão 2:1.\n  - Pela tangência externa com o círculo inscrito: 2R − 2ρ = R + ρ, logo **ρ = R/3**.\n  - Outro caminho: a tangente comum, paralela à base, corta no vértice um triângulo equilátero de altura h − 2R = h/3. Por semelhança de razão 1/3, ρ = R/3.\n- Área dos 3 círculos pequenos: 3π(R/3)² = πR²/3 = πℓ²/36.\n- Área cinza: T − πℓ²/36 = ℓ²(9√3 − π)/36.\n\nQ2 = [(3√3 − π)/12] / [(9√3 − π)/36] = **3(3√3 − π)/(9√3 − π) ≈ 6,164/12,447 ≈ 0,495.**\n\n---\n\n**Q3 (hexágonos regulares de lado m)**\n\n- Área do hexágono: H = 3√3m²/2.\n- Apótema: a = m√3/2.\n- Figura de cima: o círculo inscrito tem raio a e área πa² = 3πm²/4.\n  - Área cinza: H − 3πm²/4 = m²(6√3 − 3π)/4.\n\nFigura de baixo: há 6 círculos congruentes de raio ρ. Cada um toca o ponto médio de um lado (há marcas de ângulo reto lá) e os dois vizinhos. A região central e os cantos são cinza.\n\n- Os centros ficam nos apótemas, à distância d do centro. Eles formam um hexágono regular de circunraio d, e o lado desse hexágono também vale d.\n- Tangência entre círculos vizinhos: d = 2ρ.\n- Tangência com o lado: d + ρ = a.\n- Logo 3ρ = a, isto é, **ρ = a/3 = m√3/6**.\n- Área dos 6 círculos: 6π·(3m²/36) = πm²/2.\n- Área cinza: H − πm²/2 = m²(6√3 − 2π)/4.\n\nQ3 = (6√3 − 3π)/(6√3 − 2π) = **3(2√3 − π)/[2(3√3 − π)] ≈ 0,9675/4,1092 ≈ 0,235.**\n\n---\n\n**Comparação**\n\n- **Q2 < Q1:** a área cinza de baixo é maior que a de cima, pois se subtrai πℓ²/36 < πℓ²/12. Então Q2 < 1 = Q1.\n- **Q3 < Q2:** vale Q3 < Q2 ⇔ (2√3 − π)(9√3 − π) < 2(3√3 − π)². Isso equivale a 54 − 11√3π + π² < 54 − 12√3π + 2π², ou seja, 0 < π(π − √3). Isso é verdadeiro.\n- Conferido numericamente com python: Q1 = 1; Q2 ≈ 0,4952; Q3 ≈ 0,2355.\n\nPortanto **Q3 < Q2 < Q1**, que é a alternativa **b**.",
+    "final_answer": "Alternativa b): Q3 < Q2 < Q1. Os valores são Q1 = 1, Q2 = 3(3√3 − π)/(9√3 − π) ≈ 0,495 e Q3 = 3(2√3 − π)/[2(3√3 − π)] ≈ 0,235.",
+    "pitfalls": [
+      "Ordem da razão: cada Q é a figura de cima dividida pela de baixo ('nessa ordem'). Inverter a fração faz Q2 e Q3 ficarem maiores que 1 e leva às alternativas c) ou d).",
+      "Q1: os dois retângulos têm as mesmas dimensões, 8r × 4r. A área total dos círculos é a mesma nos dois (8πr²), então Q1 = 1 exatamente. Achar que os círculos menores 'deixam mais sobra' é erro.",
+      "Q2: na figura de baixo, o círculo inscrito está em CINZA e só os 3 círculos pequenos são brancos. Quem subtrai também o incírculo obtém Q2 > 1 e erra a ordem.",
+      "Q2: o raio dos círculos dos vértices é ρ = R/3. Sai de: distância vértice–incentro = 2R; distância vértice–centro pequeno = ρ/sen30° = 2ρ; tangência externa 2R − 2ρ = R + ρ. Equivale à homotetia de razão 1/3 no vértice. Erros comuns: tomar ρ = R/2, ou usar tangência interna.",
+      "Q3: os 6 círculos tocam os lados nos pontos médios (marcas de ângulo reto), com centros nos apótemas. O hexágono dos centros tem lado igual ao circunraio (d = 2ρ), e d + ρ = apótema. Logo ρ = a/3 = m√3/6. Não confundir apótema (m√3/2) com lado ou circunraio (m), nem pôr os centros nas diagonais que vão aos vértices.",
+      "Q3: a região central entre os 6 círculos e os cantos do hexágono são cinza. A área cinza de baixo é o hexágono menos 6πρ² = πm²/2.",
+      "Armadilha da alternativa a): supor por 'analogia' que Q3 = 1 como Q1. No hexágono, a área total dos 6 círculos (πm²/2) é menor que a do círculo inscrito (3πm²/4), então Q3 ≠ 1.",
+      "Q2 ≈ 0,495 fica muito perto de 1/2 (Q2 < 1/2 ⇔ 9√3 < 5π). Comparar Q2 e Q3 por aproximações grosseiras pode confundir. O ideal é a comparação exata: Q3 < Q2 ⇔ π(π − √3) > 0.",
+      "As razões não dependem de r, ℓ ou m. Não é preciso relacionar as figuras de questões diferentes entre si."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Alternativa (B): Q3 < Q2 < Q1, com Q1 = 1, Q2 = 3(3√3−π)/(9√3−π) ≈ 0,495 e Q3 = (6√3−3π)/(6√3−2π) ≈ 0,235.",
+      "review": {
+        "agrees_with_reference": true,
+        "answer_correct": true,
+        "score": 9.5,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Para comparar Q3 e Q2, a resolução usa apenas os valores aproximados (0,235 < 0,495). A folga é grande e as aproximações com 4 casas estão corretas, então a conclusão vale. Ainda assim, um gabarito comentado ficaria mais elegante com a comparação exata: Q3 < Q2 ⇔ (2√3 − π)(9√3 − π) < 2(3√3 − π)² ⇔ π(π − √3) > 0. O argumento de que Q2 < 1 = Q1, por haver menos área branca embaixo, já é exato."
+          },
+          {
+            "severity": "minor",
+            "description": "Na relação IJ = VI − VJ fica implícito que o centro J do círculo pequeno está entre V e I, sobre a bissetriz. É evidente pela figura e pela tangência externa, mas caberia uma frase para justificar."
+          }
+        ],
+        "summary": "A resposta é a alternativa b) (Q3 < Q2 < Q1), a mesma da minha referência. Conferi a leitura das figuras no original, na página 6 da prova, e refiz todas as contas em python.\n\n**Q1.** O candidato identificou que os dois retângulos medem 8r × 4r e que a área branca é 8πr² nos dois, logo Q1 = 1.\n\n**Q2.** Leu corretamente que, na figura de baixo, o círculo inscrito é cinza e só os 3 círculos pequenos são brancos. O raio dos círculos dos vértices, ρ = R/3, foi deduzido com rigor:\n- VI = 2R, pelo ângulo de 30° entre a bissetriz e os lados;\n- VJ = 2ρ, pelo mesmo motivo;\n- tangência externa: 2R − 2ρ = R + ρ.\n\nCom isso, Q2 = 3(3√3 − π)/(9√3 − π) ≈ 0,4952, o que confere.\n\n**Q3.** Os centros ficam sobre os apótemas e formam um triângulo equilátero OC1C2, de onde vêm d = 2ρ' e a − ρ' = 2ρ'. Logo ρ' = a/3 = m√3/6 e a área dos 6 círculos é πm²/2. O candidato ainda verificou que os círculos ficam dentro do hexágono: a distância de cada centro ao lado adjacente é 2ρ' > ρ'. Q3 ≈ 0,2355, o que confere.\n\n**Ordem da razão.** A ordem \"figura de cima / figura de baixo\" foi respeitada. A verificação de coerência sobre as áreas brancas (menores embaixo em Q2 e Q3, iguais em Q1) é correta e mostra de forma exata que Q2 < 1 e Q3 < 1.\n\n**Armadilhas.** Todas as armadilhas listadas foram tratadas: ordem da razão, Q1 = 1, incírculo cinza em Q2, ρ = R/3, ρ' = a/3 com apótema e lado corretos, e a alternativa a) descartada.\n\n**Ressalvas.** Há só ressalvas menores: a comparação Q3 < Q2 é feita apenas numericamente, embora com folga ampla, e falta uma frase justificando que J está entre V e I.\n\nA resolução é clara e completa, publicável como gabarito comentado."
+      }
+    }
+  ]
+}

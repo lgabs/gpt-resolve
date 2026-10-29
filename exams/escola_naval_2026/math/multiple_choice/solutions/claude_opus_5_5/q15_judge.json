@@ -1,0 +1,45 @@
+{
+  "question": 15,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Fazendo P(A)=P(B)=p, P(C)=p/3 e P(D)=P(E)=2p/3, a soma dá 11p/3=1, logo p=3/11 e P(D)=2/11. No segundo turno, mantida a proporção, P(A)=(3/11)/(3/11+2/11)=3/5. ANSWER: (B) 3/5",
+  "judge_reference": {
+    "reference_solution": "Conferi a transcrição com o original (página 5/12 do PDF, Questão 15). Ela está fiel.\n\n**1) Escrever as probabilidades do 1º turno em função de um parâmetro**\nSeja p a probabilidade comum de A e B ganharem.\n- P(A) = P(B) = p\n- P(C) = (1/3)·p = p/3. Aqui \"desta probabilidade\" é a probabilidade comum de A e B.\n- P(D) = P(E) = 2·P(C) = 2p/3\n\n**2) Normalizar (opcional, mas útil para ver os distratores)**\nAdmitindo que um dos 5 candidatos vence:\np + p + p/3 + 2p/3 + 2p/3 = 11p/3 = 1, logo p = 3/11.\nEntão P(A) = P(B) = 3/11, P(C) = 1/11, P(D) = P(E) = 2/11. A soma é 11/11 = 1.\n\n**3) 2º turno: A contra D, mantendo a proporção das chances**\n\"Mantendo-se proporcionalmente as chances\" quer dizer que as chances de A e D ficam na mesma razão do 1º turno:\nP(A) : P(D) = p : 2p/3 = 3 : 2.\nPara obter a probabilidade, renormalizamos só entre os dois finalistas, o que é o mesmo que condicionar ao evento \"o vencedor é A ou D\":\nP(A vence no 2º turno) = P(A) / (P(A) + P(D)) = (3/11) / (3/11 + 2/11) = 3/5.\nDa mesma forma, P(D vence) = 2/5, e 3/5 + 2/5 = 1.\n\nEsse resultado não depende do valor de p:\np / (p + 2p/3) = 1 / (5/3) = 3/5.\nPortanto a normalização do passo 2 não é necessária para a resposta.\n\nConferi as contas em Python com frações exatas: p = 3/11, P(A) = 3/11, P(D) = 2/11, A no 2º turno = 3/5.\n\n**Resposta: 3/5, alternativa (B).**",
+    "final_answer": "P(A vence no 2º turno) = 3/5, alternativa (B). As chances do 1º turno estão na razão A:B:C:D:E = 3:3:1:2:2, o que dá P(A) = 3/11 e P(D) = 2/11. No 2º turno renormaliza-se entre A e D: 3/(3+2) = 3/5.",
+    "pitfalls": [
+      "Distrator (C) 3/11: é a probabilidade de A ganhar no 1º turno, entre os 5 candidatos. Quem para aí esquece de renormalizar para o 2º turno, em que só A e D disputam.",
+      "Distrator (A) 2/5: é a probabilidade de D vencer no 2º turno. Aparece quando se troca a razão (2:3 em vez de 3:2) ou quando se responde pelo candidato errado.",
+      "Distrator (D) 5/11: é P(A) + P(D) = 5/11, a probabilidade de o vencedor no 1º turno ser A ou D. Não é a chance de A no 2º turno.",
+      "Distrator (E) 6/11: é P(A) + P(B). Também é o que se obtém se P(D) for confundida com P(C) = 1/11 sem renormalizar no 2º turno.",
+      "Leitura do enunciado: 'um terço desta probabilidade' refere-se à probabilidade comum de A e B, ou seja, P(C) = p/3. Já 'o dobro da probabilidade de C' dá P(D) = P(E) = 2p/3, e não 2p.",
+      "'Mantendo-se proporcionalmente as chances' significa preservar a razão P(A):P(D) = 3:2 e renormalizar entre os dois finalistas. É o mesmo que a probabilidade condicional P(A | vencedor ∈ {A, D}).",
+      "Não é preciso supor que as cinco probabilidades somam 1: a resposta p/(p + 2p/3) = 3/5 não depende de p. Isso evita a objeção de que, se há 2º turno, ninguém ganhou no 1º turno. A normalização serve só para checar os distratores.",
+      "Uma boa resolução deve verificar que as probabilidades dos dois finalistas somam 1 (3/5 + 2/5) e, se normalizar no 1º turno, que as cinco somam 11/11."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Fazendo P(A)=P(B)=p, P(C)=p/3 e P(D)=P(E)=2p/3, a soma dá 11p/3=1, logo p=3/11 e P(D)=2/11. No segundo turno, mantida a proporção, P(A)=(3/11)/(3/11+2/11)=3/5. ANSWER: (B) 3/5",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A normalização (soma das cinco probabilidades = 1) está justificada como se os eventos 'X vence' cobrissem todos os casos. Isso não vale se 'ganhar' significar ganhar no 1º turno: o evento 'ninguém vence no 1º turno' é possível, e é justamente o que ocorre no cenário, já que houve 2º turno. O candidato também não diz que a resposta não depende dessa hipótese: p/(p+2p/3) = 3/5 para qualquer p. Correção sugerida: tratar a normalização como hipótese de leitura ('ganhar a eleição') ou, melhor, mostrar que a razão 3:2 basta e que a normalização é dispensável."
+          },
+          {
+            "severity": "minor",
+            "description": "Na seção de armadilhas falta a alternativa (E) 6/11, que é P(A)+P(B). Ela também aparece quando se confunde P(D) com P(C) sem renormalizar. Três dos quatro distratores foram discutidos; para um gabarito comentado completo, convinha comentar também a (E)."
+          }
+        ],
+        "summary": "O enunciado está fiel ao original (Questão 15, p. 5/12 do PDF). A resposta do candidato é (B) 3/5, igual à da referência. Conferi com frações exatas: a razão A:B:C:D:E é 3:3:1:2:2, então P(A)=3/11 e P(D)=2/11. Renormalizando entre os dois finalistas, P₂(A)=3/5 e P₂(D)=2/5. O resultado não depende de p. A leitura de 'um terço desta probabilidade' (P(C)=p/3) e de 'o dobro da probabilidade de C' (P(D)=2p/3) está correta. A expressão 'mantendo-se proporcionalmente as chances' foi interpretada de forma explícita e bem justificada: preserva-se a razão e normaliza-se a soma em 1, o que equivale a condicionar a 'o vencedor é A ou D'. A resolução confere os resultados (as cinco probabilidades somam 11/11, 3/5+2/5=1 e A continua favorito) e é clara e organizada. Há duas falhas pequenas. A primeira é que a soma igual a 1 é apresentada como fato ('cobrem todos os casos'), embora possa não valer, porque ninguém vencer no 1º turno é possível e foi o que aconteceu. Faltou dizer que a resposta não depende dessa normalização. A segunda é que o distrator (E) 6/11 não foi comentado. Nenhuma das duas afeta a resposta. A resolução está no nível de um gabarito comentado publicável, com pequenos ajustes de rigor."
+      }
+    }
+  ]
+}

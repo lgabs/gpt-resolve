@@ -1,0 +1,44 @@
+{
+  "question": 30,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A resposta é a alternativa (C), soma igual a 11. g corresponde ao gráfico (4): mesmas raízes x₁ e x₂, concavidade para cima e vértice de abscissa x_v. As cotas marcadas em (4), −y_v e −c, valem para −f; para g elas ficam multiplicadas por c (−c·y_v e −c²), mas (4) é o único gráfico compatível. h corresponde ao (6): vértice em (x_v, y_v − c), com o gráfico passando pela origem. j corresponde ao (1): translação de c unidades para a direita. Logo 4 + 6 + 1 = 11.",
+  "judge_reference": {
+    "reference_solution": "**Dados da figura de f**\nf é quadrática com concavidade para baixo. Então f(x) = a(x − x₁)(x − x₂) = a(x − x_v)² + y_v, com a < 0.\n- x₁ < x_v < 0 < x₂ e y_v > 0.\n- c = f(0), com 1 < c < y_v. A desigualdade c < y_v é estrita porque 0 ≠ x_v e y_v é o máximo de f.\n\n**1) g(x) = −c·f(x)**\n- Coeficiente líder: −c·a > 0, logo a concavidade é para cima. O gráfico de f é refletido em torno do eixo x e esticado verticalmente pelo fator c > 1.\n- Zeros: g(x) = 0 ⇔ f(x) = 0, logo os zeros continuam sendo x₁ e x₂.\n- Eixo de simetria x = x_v. O vértice é (x_v, −c·y_v), que é ponto de mínimo.\n- Ponto no eixo y: g(0) = −c·f(0) = −c².\n\nAgora comparamos com os gráficos de concavidade para cima:\n- O (3) tem zeros −x₂ e −x₁ e eixo x = −x_v. É o gráfico de −f(−x), então não serve.\n- O (4) tem concavidade para cima, zeros x₁ e x₂ e eixo x = x_v. É o único compatível com g.\n\nRessalva: as marcas \"−c\" e \"−y_v\" do gráfico (4) são, a rigor, as de −f(x). Para g os valores corretos seriam −c² e −c·y_v. Como c > 1, eles são diferentes de −c e −y_v. Mesmo assim, o (4) é o único gráfico com a forma de g (concavidade, zeros e eixo de simetria).\n- Os gráficos (1), (2), (5) e (6) têm concavidade para baixo, o que é impossível para g.\n\n**Conclusão: g → (4).**\n\n**2) h(x) = −c + f(x) = f(x) − c**\n- O gráfico de f é transladado c unidades para baixo. A concavidade continua para baixo.\n- Vértice: (x_v, y_v − c), com y_v − c > 0, ou seja, acima do eixo x.\n- h(0) = f(0) − c = c − c = 0, então o gráfico passa pela origem.\n- Por simetria em torno de x = x_v, o outro zero é 2x_v. Como f(2x_v) = f(0) = c > 0, temos x₁ < 2x_v < x_v < 0. Assim, os zeros de h ficam estritamente entre x₁ e x₂.\n- O gráfico (6) mostra exatamente isso: vértice (x_v, y_v − c), passagem pela origem e zeros entre x₁ e x₂.\n- O (5) não serve: tem vértice sobre o eixo x e passa por (0, −c).\n\n**Conclusão: h → (6).**\n\n**3) j(x) = f(x − c)**\n- O gráfico de f é transladado c unidades para a direita, pois c > 0.\n- Vértice: (x_v + c, y_v). Zeros: x₁ + c e x₂ + c. A concavidade continua para baixo.\n- O gráfico (1) traz exatamente esses rótulos.\n- O (2) não serve: é f(−x), uma reflexão em torno do eixo y, com vértice (−x_v, y_v) e passagem por (0, c).\n\n**Conclusão: j → (1).**\n\n**Conferência numérica (python)**\nTomei f(x) = −(x + 1)² + 2,5, o que dá x_v = −1, y_v = 2,5 e c = 1,5 > 1.\n- g: concavidade para cima, mesmos zeros de f (−2,58 e 0,58), vértice (−1; −3,75), g(0) = −2,25 = −c².\n- h: vértice (−1; 1), zeros −2 = 2x_v e 0.\n- j: vértice (0,5; 2,5), zeros x₁ + c e x₂ + c.\nTudo bate com a análise acima.\n\n**Soma:** 4 + 6 + 1 = 11 → alternativa c).\n\nOs gráficos (2), (3) e (5) não correspondem a nenhuma das três funções:\n- (2) é f(−x), aliás com os rótulos −x₁ e −x₂ trocados de lado, já que −x₁ > 0 > −x₂.\n- (3) é −f(−x).\n- (5) é um distrator puro.",
+    "final_answer": "g → gráfico (4), h → gráfico (6), j → gráfico (1). Soma = 4 + 6 + 1 = 11. Alternativa c).",
+    "pitfalls": [
+      "Sinal de −c·f: como c > 0, multiplicar por −c inverte a concavidade, que passa a ser para cima. Por isso g só pode ser (3) ou (4), nunca um gráfico com concavidade para baixo como o (5), por mais 'esticado' que ele pareça.",
+      "Multiplicar por −c não muda os zeros: g tem os mesmos zeros x₁, x₂ e o mesmo eixo x = x_v de f. Isso descarta o (3), cujos zeros são −x₂ e −x₁ (é o gráfico de −f(−x)).",
+      "Rigor sobre o gráfico (4): ele é exatamente o de −f, com vértice em −y_v e ponto no eixo y em −c. Para g os valores corretos são −c·y_v e g(0) = −c². Como c > 1, eles diferem. Uma boa resolução escolhe (4) por ser o único compatível em concavidade, zeros e eixo, e registra essa imprecisão dos rótulos, sem afirmar que g(0) = −c.",
+      "Confundir as translações: h = f − c é uma translação vertical para baixo, com vértice (x_v, y_v − c). Já j = f(x − c) é uma translação horizontal para a DIREITA (não para a esquerda), com vértice (x_v + c, y_v) e zeros x₁ + c e x₂ + c.",
+      "Para identificar h, o ponto-chave é que h(0) = f(0) − c = 0: o gráfico passa pela origem. O outro zero é 2x_v, que fica entre x₁ e x₂. Além disso, y_v − c > 0 estritamente (c = f(0) < y_v porque 0 ≠ x_v), então o vértice de h fica acima do eixo x. Isso exclui o (5), que tem vértice sobre o eixo x e passa por (0, −c).",
+      "Não confundir j(x) = f(x − c) com f(−x): o gráfico (2) é a reflexão em torno do eixo y (passa por (0, c) e tem vértice em −x_v) e ainda tem os rótulos −x₁ e −x₂ trocados de posição. j corresponde ao (1).",
+      "As alternativas cobrem as somas que saem de identificações erradas, por exemplo g = (5) dá 12 e g = (3) ou h = (5) dá 10. Por isso é preciso justificar cada associação, e não apenas 'encaixar' a soma."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A resposta é a alternativa (C), soma igual a 11. g corresponde ao gráfico (4): mesmas raízes x₁ e x₂, concavidade para cima e vértice de abscissa x_v. As cotas marcadas em (4), −y_v e −c, valem para −f; para g elas ficam multiplicadas por c (−c·y_v e −c²), mas (4) é o único gráfico compatível. h corresponde ao (6): vértice em (x_v, y_v − c), com o gráfico passando pela origem. j corresponde ao (1): translação de c unidades para a direita. Logo 4 + 6 + 1 = 11.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na frase final, a afirmação de que 'as demais alternativas exigiriam associar g a (2), (3) ou (5)' vale apenas porque h → (6) e j → (1) já foram demonstrados. O raciocínio está certo, mas valeria deixar explícita essa condição: com h e j fixos, a soma é g + 7, e as somas 9, 10 e 12 exigiriam g = 2, 3 e 5, respectivamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Ao descartar o gráfico (2), o candidato não comenta que os rótulos −x₁ e −x₂ aparecem em posições trocadas. Como −x₁ > 0 > −x₂, a figura é inconsistente até como gráfico de f(−x). Isso não afeta a resposta, mas reforçaria o descarte."
+          }
+        ],
+        "summary": "A resposta final está correta e coincide com a minha referência: g → (4), h → (6), j → (1), soma 11, alternativa c). Conferi a figura no PDF original (página 8) e as contas com um exemplo numérico (f(x) = −(x+1)² + 2,5, que dá c = 1,5): g tem os mesmos zeros de f, vértice em −c·y_v e g(0) = −c²; h tem zeros 2x_v e 0; j tem zeros x₁+c e x₂+c. Tudo confere com o que o candidato escreveu.\n\nA resolução trata todas as armadilhas que eu tinha identificado:\n- **Sinal de −c:** mostra que multiplicar por −c inverte a concavidade, porque o coeficiente líder vira −ca > 0.\n- **Descarte do (3):** usa os zeros e o eixo de simetria, e reconhece corretamente que o (3) é o gráfico de −f(−x).\n- **Rótulos do (4):** observa de forma explícita e correta que as marcas −c e −y_v seriam as de −f, enquanto para g os valores são −c² e −c·y_v. Acrescenta, com razão, que a ordem relativa se mantém (−c² > −c·y_v porque c < y_v).\n- **c < y_v:** justifica a desigualdade estrita (0 ≠ x_v e y_v é o máximo de f), o que dá y_v − c > 0.\n- **Gráfico de h:** prova que passa pela origem (h(0) = 0). Mostra que as raízes 0 e 2x_v ficam em ]x₁, x₂[ com um argumento elegante: são as soluções de f(x) = c > 0, e f só é positiva nesse intervalo.\n- **Descarte do (5):** usa o intercepto −c e o vértice sobre o eixo x.\n- **Translação de j:** identifica corretamente que é para a direita, e distingue o (2) como reflexão em torno do eixo y, não translação.\n\nO texto é claro, rigoroso e bem organizado. As ressalvas são de detalhe: a eliminação das outras alternativas depende de h e j já estarem fixados, o que poderia ficar explícito, e faltou mencionar a inconsistência dos rótulos no (2). A resolução tem nível de gabarito comentado."
+      }
+    }
+  ]
+}

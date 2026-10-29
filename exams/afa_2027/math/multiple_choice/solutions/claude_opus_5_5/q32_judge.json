@@ -1,0 +1,44 @@
+{
+  "question": 32,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A probabilidade de ter pelo menos uma fêmea é 1 - (2/5)^n > 0,95. Então (2/5)^n < 1/20, ou seja, -0,4n < -1,3, o que dá n > 3,25. O tamanho mínimo da amostra é 4. Conferindo: com n = 3 a probabilidade é 93,6%; com n = 4 é 97,44%. Alternativa (C) 4.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com a prova original (p. 15 do caderno, questão 32): \"para cada dois machos ... há o nascimento de três fêmeas\"; queremos P(pelo menos uma fêmea) > 95%; dados: log(1/20) = −1,3 e log(2/5) = −0,4; alternativas 2, 3, 4, 5.\n\n**1) Modelo probabilístico.** Para cada 2 machos nascem 3 fêmeas, então a razão é machos : fêmeas = 2 : 3, num total de 5 partes. Cada animal escolhido ao acaso é:\n- macho com probabilidade p_M = 2/5;\n- fêmea com probabilidade p_F = 3/5.\n\nHipótese implícita, que é o modelo pretendido: os n animais da amostra são independentes, com a mesma probabilidade de ser macho. Isso vale se o rebanho for grande (o efeito de retirar sem reposição pode ser desprezado) ou se interpretarmos a proporção como probabilidade de nascimento.\n\n**2) Evento complementar.** \"Pelo menos uma fêmea\" é o complementar de \"todos os n animais são machos\". Pela independência:\nP(pelo menos uma fêmea) = 1 − (2/5)^n.\n\n**3) Condição.**\n1 − (2/5)^n > 0,95 ⟺ (2/5)^n < 0,05 = 1/20.\n\n**4) Logaritmos.** O log decimal é crescente, então o sentido da desigualdade se mantém:\nn · log(2/5) < log(1/20) ⟹ −0,4·n < −1,3.\n\nDividimos por −0,4, que é negativo, e o sentido se inverte:\nn > 1,3/0,4 = 3,25.\n\n**5) Menor inteiro.** n ∈ IN* e n > 3,25, logo n_mín = 4.\n\n**Conferência numérica:**\n- n = 3: (0,4)³ = 0,064 > 0,05, logo P = 0,936 < 0,95. Não basta.\n- n = 4: (0,4)⁴ = 0,0256 < 0,05, logo P = 0,9744 > 0,95. Basta.\n\nCom os logaritmos exatos, log 0,05 / log 0,4 ≈ 3,269, o que confirma n = 4. Os valores aproximados dados no enunciado não mudam a resposta.\n\nResposta: **alternativa c) 4**.",
+    "final_answer": "O tamanho mínimo da amostra é 4, alternativa **c**. Com P(macho) = 2/5, a condição é 1 − (2/5)^n > 0,95, ou seja, (2/5)^n < 1/20. Aplicando log: −0,4n < −1,3, logo n > 3,25 e n_mín = 4. Conferência: com n = 3, P = 0,936; com n = 4, P = 0,9744.",
+    "pitfalls": [
+      "Interpretar a razão: 'para cada 2 machos, 3 fêmeas' dá P(macho) = 2/5 e P(fêmea) = 3/5, não 2/3 e 1/3. Com P(macho) = 2/3, (2/3)^n < 0,05 levaria a n = 8, que não está entre as alternativas.",
+      "Trocar o evento: 'pelo menos uma fêmea' tem como complementar 'todos machos', então P = 1 − (2/5)^n. Usar (3/5)^n, que corresponde a 'pelo menos um macho', daria n > 5,86, ou seja, n = 6, que também não é alternativa.",
+      "Desigualdade com logaritmo negativo: ao dividir −0,4n < −1,3 por −0,4 o sentido se inverte, e fica n > 3,25. Quem esquece a inversão chega a n < 3,25 e pode marcar 3, que está errado.",
+      "Arredondamento: n > 3,25 com n inteiro dá mínimo 4, não 3. Conferir com n = 3: P = 0,936 < 0,95.",
+      "Desigualdade estrita ('superior a 95%'): aqui não há empate, porque 3,25 não é inteiro, mas a boa resolução mantém o sinal estrito.",
+      "Hipótese de independência (modelo binomial, rebanho grande ou proporção vista como probabilidade): ela precisa estar explícita. Num rebanho finito pequeno, com retirada sem reposição (hipergeométrica), n = 3 já bastaria para N ≤ 20 (ex.: N = 5 → P = 1; N = 20 → P ≈ 0,951). Não é a leitura pretendida.",
+      "Os logs dados são aproximações (log 0,4 ≈ −0,398 e log 0,05 ≈ −1,301, razão ≈ 3,27). A resposta não muda, e é bom conferir diretamente: (0,4)^3 = 0,064 e (0,4)^4 = 0,0256."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A probabilidade de ter pelo menos uma fêmea é 1 - (2/5)^n > 0,95. Então (2/5)^n < 1/20, ou seja, -0,4n < -1,3, o que dá n > 3,25. O tamanho mínimo da amostra é 4. Conferindo: com n = 3 a probabilidade é 93,6%; com n = 4 é 97,44%. Alternativa (C) 4.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Os valores log(2/5) = −0,4 e log(1/20) = −1,3 são aproximações. Os exatos são ≈ −0,398 e ≈ −1,301, e a razão dá ≈ 3,269. A resolução não comenta isso. A verificação direta com n = 3 e n = 4 já torna a resposta independente dessas aproximações, então basta uma frase dizendo que a conferência exata confirma o resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "Passar da razão de nascimentos (2:3) para a composição do rebanho supõe que não há mortalidade diferente entre os sexos nem vendas anteriores, e que a amostragem dispensa a correção da hipergeométrica. A resolução cobre isso com 'consideramos o rebanho grande' e com o argumento de que os logs dados envolvem 2/5, o que é suficiente para a leitura pretendida. Poderia dizer de forma explícita que a proporção de nascimentos é tomada como probabilidade de cada animal ser macho ou fêmea."
+          }
+        ],
+        "summary": "Conferi o enunciado na p. 9 do PDF (p. 15 do caderno) e a transcrição está correta. A resposta do candidato é c) 4, a mesma da minha referência, e está certa. O modelo é adequado: P(macho) = 2/5, P(fêmea) = 3/5, com a hipótese de independência dita explicitamente e justificada. O candidato usa o complementar correto, 'todos machos', e chega a 1 − (2/5)^n > 0,95 ⟺ (2/5)^n < 1/20. Ao aplicar o log, justifica que a função é crescente e que os dois membros são positivos. Ao dividir por −0,4, inverte o sentido da desigualdade e obtém n > 3,25, logo n_mín = 4. A verificação direta também está certa: 8/125 = 0,064 dá P = 0,936, e 16/625 = 0,0256 dá P = 0,9744. Conferi em Python, inclusive a observação de que a) e b) dão no máximo 93,6% e de que d) também serve, mas não é o mínimo. A resolução trata todas as armadilhas que listei: razão 2/5 e não 2/3, complementar correto, inversão da desigualdade, arredondamento para o inteiro seguinte, desigualdade estrita e hipótese de independência. Só falta dizer que os logs dados são aproximados, o que a verificação exata já resolve. A resolução é clara e rigorosa e serve como gabarito comentado."
+      }
+    }
+  ]
+}

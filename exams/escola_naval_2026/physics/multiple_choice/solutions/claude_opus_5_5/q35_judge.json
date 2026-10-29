@@ -1,0 +1,51 @@
+{
+  "question": 35,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(D) 2,0 m: aplicando Bernoulli, a diferença de pressão no ponto mais alto B é p_0 - p_B = ρg(H + a - h). A condição ρg(H + a - h) ≤ 25 kPa dá h ≥ 3,0 + 1,5 - 2,5 = 2,0 m.",
+  "judge_reference": {
+    "reference_solution": "Conferi a transcrição com a prova original (pág. 15/18, Questão 35). Ela confere: a = 1,5 m, H = 3,0 m, h < H, colapso quando p_ext − p_int > 25,0 kPa, ρ = 1000 kg/m³ e g = 10 m/s².\n\n**1) Velocidade no tubo.** O reservatório é grande, então a velocidade na superfície livre é ≈ 0. A superfície (ponto 0, cota H) e a saída C (cota h) estão as duas à pressão atmosférica p0. Aplicando Bernoulli entre elas, com o solo como referência:\np0 + ρgH = p0 + ρgh + ρv²/2 ⇒ v² = 2g(H − h).\nO tubo tem seção constante, então pela continuidade v é a mesma em todo o tubo.\n\n**2) Pressão em B.** B fica na cota H + a. Aplicando Bernoulli entre a superfície e B:\np0 + ρgH = p_B + ρg(H + a) + ρv²/2\n⇒ p_B = p0 − ρga − ρv²/2 = p0 − ρg(a + H − h).\n\n**3) Ponto crítico.**\n- Fora do reservatório, a pressão externa é p0. Num ponto do tubo na cota z, a pressão interna é p0 − ρg(z − h). A diferença p0 − p_int = ρg(z − h) é máxima no ponto mais alto, z = H + a, ou seja, em B.\n- No trecho mergulhado, a pressão externa é a da água, p0 + ρgd, onde d é a profundidade. A pressão interna é p0 + ρgd − ρv²/2. A diferença é ρv²/2 = ρg(H − h), que é menor que ρg(a + H − h).\n\nPortanto o ponto crítico é B, com Δp_B = p0 − p_B = ρg(a + H − h).\n\n**4) Condição de não colapso.**\nρg(a + H − h) ≤ 25,0 kPa\n⇒ a + H − h ≤ 25000/(1000·10) = 2,5 m\n⇒ h ≥ a + H − 2,5 = 1,5 + 3,0 − 2,5 = 2,0 m.\n\nΔp_B cresce quando h diminui, porque a velocidade aumenta. Por isso a condição dá um limite inferior para h. O valor h = 2,0 m satisfaz h < H = 3,0 m.\n\n**Verificação numérica.** Com h = 2,0 m: v = √(2·10·1,0) ≈ 4,47 m/s. Então Δp_B = ρga + ρv²/2 = 15 kPa + 10 kPa = 25 kPa, exatamente o limite.\n\n**Resposta: h_mín = 2,0 m, alternativa (D).**",
+    "final_answer": "h_mín = 2,0 m. Alternativa (D).",
+    "pitfalls": [
+      "Esquecer o termo cinético ρv²/2 em B e usar só p_B = p0 − ρga. Isso dá uma diferença de 15 kPa, que nunca chega a 25 kPa, e a conclusão errada de que o sifão nunca colapsa.",
+      "Usar só o termo cinético e esquecer o desnível a entre a superfície e B.",
+      "Errar o desnível que define a velocidade: v² = 2g(H − h), medido entre a superfície livre e a saída C. Não é 2gH nem 2g(H + a − h).",
+      "Não justificar que B é o ponto crítico. Fora do reservatório, a diferença p0 − p_int = ρg(z − h) é máxima no ponto mais alto. No trecho mergulhado a pressão externa é a da água, maior que p0, e a diferença é só ρv²/2.",
+      "Velocidade uniforme no tubo: isso exige seção constante (continuidade), uma hipótese implícita que deve ser declarada.",
+      "Usar o reservatório grande para fazer a velocidade da superfície ≈ 0 e o regime permanente sem perdas viscosas, como manda o enunciado.",
+      "Inverter o sentido da desigualdade. Quanto menor h, maior a velocidade e menor p_B, então a condição dá h ≥ 2,0 m, um limite inferior, que é coerente com o pedido de 'valor mínimo'.",
+      "Não é preciso o valor de p_atm, porque o critério usa só a diferença de pressão. Quem introduz p_atm = 100 kPa e trabalha com a pressão absoluta pode errar o critério. Se quiser, observe que p_B = p0 − 25 kPa ≈ 75 kPa, bem acima da pressão de vapor, então não há cavitação.",
+      "Distratores: 2,5 m é a carga de pressão 25 kPa/(ρg); 1,5 m é o valor de a. Confundi-los com h é erro comum.",
+      "Verificar a consistência com a condição h < H: 2,0 m < 3,0 m."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(D) 2,0 m: aplicando Bernoulli, a diferença de pressão no ponto mais alto B é p_0 - p_B = ρg(H + a - h). A condição ρg(H + a - h) ≤ 25 kPa dá h ≥ 3,0 + 1,5 - 2,5 = 2,0 m.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O passo 2 diz que a fórmula p(y)=p0−ρg(y−h) vale para 'um ponto qualquer do tubo'. Isso está certo, mas a resolução não explicita que vale também no trecho mergulhado, perto de A. O passo 3 depende disso ao usar p(y) no trecho submerso. Uma frase dizendo que Bernoulli vale em toda a linha de corrente, de A a C, porque v é constante, deixaria isso fechado."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução usa a condição de não colapso com '≤', mas não justifica pelo enunciado que a igualdade é permitida. O texto diz 'pode colapsar se a pressão externa exceder a interna em 25,0 kPa', então no valor exatamente igual não há colapso e h = 2,0 m é admissível. Faltou uma linha dizendo isso, o que não afeta o resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "A velocidade é dada como v ≈ 4,5 m/s, arredondada a partir de √20 ≈ 4,47 m/s. É aceitável, mas a verificação inversa ficaria mais limpa se mostrasse que ρv²/2 = 10 kPa e ρga = 15 kPa somam exatamente 25 kPa."
+          }
+        ],
+        "summary": "Conferi a transcrição com o original, na página 15/18 da prova (Questão 35), e ela confere. O candidato chega a h_mín = 2,0 m, alternativa (D), a mesma resposta da minha referência, e a resposta está correta. A resolução declara todas as hipóteses: fluido incompressível e ideal, regime permanente, seção uniforme (para justificar v constante pela continuidade), reservatório grande com v ≈ 0 na superfície e jato livre à pressão p0 em C. A velocidade sai corretamente de Bernoulli entre a superfície e C: v² = 2g(H−h). A expressão geral p(y) = p0 − ρg(y−h) incorpora de uma vez o desnível a e o termo cinético. O ponto crítico B é justificado com cuidado: fora da água, a diferença ρg(y−h) é máxima no ponto mais alto; no trecho submerso a diferença é constante e vale ρg(H−h), que é menor. A desigualdade tem o sentido certo e dá um limite inferior, coerente com o pedido de 'mínimo'. As unidades e a condição h < H foram conferidas. A nota sobre cavitação, com p_B ≈ 75 kPa, está correta. Recalculei a diferença de pressão em B para cada alternativa: 36, 30, 26 e 15 kPa para h = 0,9, 1,5, 1,9 e 2,5 m, como o candidato afirma. Todas as armadilhas que listei foram tratadas: termo cinético, desnível a, desnível correto para v, justificativa do ponto crítico, continuidade, sentido da desigualdade, desnecessidade de p_atm e distratores 2,5 e 1,5. Só há detalhes menores de redação. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

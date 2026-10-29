@@ -1,0 +1,48 @@
+{
+  "question": 4,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A resposta é a (B) Laplace e Cauchy. No caso (1), com i = k, a soma dos elementos da linha i multiplicados pelos próprios cofatores dá det(B), pelo Teorema de Laplace. No caso (2), com i ≠ k, a soma dos elementos da linha i multiplicados pelos cofatores de outra linha k dá 0, pelo Teorema de Cauchy: essa soma é o determinante de uma matriz com duas linhas iguais.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (pág. 2/12 do PDF, Questão 4). No quadro, o aspirante escreve $a_{ij}$ para os elementos de $B$, $B_{jk}$ para os elementos da adjunta $\\bar B$ e $A_{kj}$ para o cofator do elemento $a_{kj}$. A notação é confusa, porque $B$ também é o nome da matriz, mas o sentido é o padrão.\n\n**1) Lembrete: o que é a adjunta.** Seja $A_{kj}=(-1)^{k+j}M_{kj}$ o cofator de $a_{kj}$. A matriz adjunta (adjunta clássica) é a transposta da matriz dos cofatores: $\\bar B=(\\text{cof }B)^T$. Então o elemento $(j,k)$ da adjunta é $\\bar B_{jk}=A_{kj}$. É por isso que o aspirante pode trocar $B_{jk}$ por $A_{kj}$.\n\n**2) O produto.** Chame $B\\bar B=(b_{ik})$. Pela regra do produto de matrizes,\n$$b_{ik}=\\sum_{j=1}^{n}a_{ij}\\,\\bar B_{jk}=\\sum_{j=1}^{n}a_{ij}\\,A_{kj}.$$\n\n**3) Condição (1), com $i=k$.**\n$$b_{ii}=\\sum_{j=1}^{n}a_{ij}A_{ij}.$$\nEssa é a soma dos elementos da linha $i$, cada um multiplicado pelo seu próprio cofator. Pelo **Teorema de Laplace** (expansão do determinante pela linha $i$), essa soma é $\\det(B)$. Logo $b_{ii}=\\det B$, o que justifica a condição (1) pelo Teorema de Laplace.\n\n**4) Condição (2), com $i\\neq k$.**\n$$b_{ik}=\\sum_{j=1}^{n}a_{ij}A_{kj}.$$\nAqui os elementos da linha $i$ são multiplicados pelos cofatores dos elementos correspondentes de outra linha, a linha $k$, que é paralela. Esse é exatamente o enunciado do **Teorema de Cauchy**, como aparece nos livros brasileiros (por exemplo, Iezzi): *a soma dos produtos dos elementos de uma fila pelos cofatores dos elementos correspondentes de uma fila paralela é nula.*\n\nProva: considere a matriz $B'$ obtida de $B$ trocando a linha $k$ pela linha $i$. Os cofatores da linha $k$ não dependem da própria linha $k$, então são os mesmos $A_{kj}$ em $B$ e em $B'$. Expandindo $\\det B'$ por Laplace na linha $k$, obtemos $\\det B'=\\sum_j a_{ij}A_{kj}$. Mas $B'$ tem duas linhas iguais (as linhas $i$ e $k$), logo $\\det B'=0$. Assim $b_{ik}=0$, o que justifica a condição (2) pelo Teorema de Cauchy.\n\n**5) Conclusão.** $B\\bar B=\\det(B)\\,I_n$, e o mesmo vale para $\\bar B B$, usando colunas. Esse é o teorema da matriz adjunta, que dá $B^{-1}=\\bar B/\\det B$ quando $\\det B\\neq0$.\n\n**Verificação numérica (Python).** Para uma matriz $4\\times4$ inteira aleatória, calculei $\\sum_j a_{ij}A_{kj}$. O resultado foi $\\det B=6642$ quando $i=k$ e $0$ quando $i\\neq k$, como esperado.\n\n**Análise das alternativas.**\n- (A) Chió e (E) Chió estão erradas: a regra de Chió serve para baixar a ordem do determinante usando um elemento igual a 1. Ela não aparece aqui.\n- (C) está errada: Cramer (escrito \"Kramer\") trata da resolução de sistemas lineares.\n- (E) também está errada pelo segundo nome: Binet é $\\det(AB)=\\det A\\cdot\\det B$.\n- (D) cita os nomes certos na ordem invertida.\n- (B) está correta: (1) é Laplace e (2) é Cauchy.\n\n**Resposta: (B) Laplace e Cauchy.**",
+    "final_answer": "A resposta é **(B) Laplace e Cauchy**.\n- **Condição (1):** com $i=k$, a soma $\\sum_j a_{ij}A_{ij}$ é igual a $\\det B$ pelo Teorema de Laplace.\n- **Condição (2):** com $i\\neq k$, a soma $\\sum_j a_{ij}A_{kj}$ é igual a $0$ pelo Teorema de Cauchy. Os elementos de uma fila são multiplicados pelos cofatores de uma fila paralela.",
+    "pitfalls": [
+      "Ordem pedida: o enunciado pede 'respectivamente' as condições (1) e (2). A alternativa (D), 'Cauchy e Laplace', tem os nomes certos na ordem invertida e é a principal pegadinha.",
+      "Notação: aqui 'adjunta' é a adjunta clássica, isto é, a transposta da matriz dos cofatores. Não é a transposta conjugada (adjunta hermitiana). Por causa da transposição, $\\bar B_{jk}=A_{kj}$. Sem isso não se entende por que aparece $A_{kj}$ e não $A_{jk}$.",
+      "Notação confusa do aspirante: $a_{ij}$ são os elementos de $B$, $B_{jk}$ são os elementos de $\\bar B$ e $A_{kj}$ são os cofatores de $B$. O próprio $B$ também nomeia a matriz. Uma boa resolução esclarece isso.",
+      "Uma boa resolução justifica o Teorema de Cauchy, não apenas cita o nome. Basta trocar a linha $k$ pela linha $i$: a matriz resultante tem duas linhas iguais, e sua expansão de Laplace pela linha $k$ é exatamente $\\sum_j a_{ij}A_{kj}=0$.",
+      "Não confundir os nomes: Chió é o abaixamento de ordem com pivô 1; Binet é $\\det(AB)=\\det A\\,\\det B$; Cramer (grafado 'Kramer') resolve sistemas lineares; Jacobi trata de somar a uma fila uma combinação de outras. Nenhum deles responde às condições (1) ou (2).",
+      "Na nomenclatura dos livros brasileiros, 'Teorema de Cauchy' é justamente o enunciado sobre fila paralela. Não confundir com a fórmula de Cauchy-Binet nem com outros teoremas de Cauchy.",
+      "Validade: a identidade $B\\bar B=\\det(B) I_n$ vale mesmo quando $\\det B=0$. Só a consequência $B^{-1}=\\bar B/\\det B$ exige $\\det B\\neq0$."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A resposta é a (B) Laplace e Cauchy. No caso (1), com i = k, a soma dos elementos da linha i multiplicados pelos próprios cofatores dá det(B), pelo Teorema de Laplace. No caso (2), com i ≠ k, a soma dos elementos da linha i multiplicados pelos cofatores de outra linha k dá 0, pelo Teorema de Cauchy: essa soma é o determinante de uma matriz com duas linhas iguais.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não comenta que no quadro o aspirante usa o nome B tanto para a matriz quanto para os elementos B_{jk} da adjunta. O candidato define corretamente B_{jk} = A_{kj}, mas não diz que a notação é ambígua. Bastava uma frase dizendo que B_{jk} é o elemento (j,k) de \\bar B, e não um elemento de B."
+          },
+          {
+            "severity": "minor",
+            "description": "A análise das alternativas descarta os nomes (Chió, Binet, Cramer), mas não as letras (A), (C) e (E). Faltou também comentar a grafia 'Kramer' do enunciado. A eliminação está correta, mas ficaria mais clara se fosse feita letra por letra."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação com n=2 confere só b_11 e b_12. Ela é suficiente como ilustração, mas não mostra b_21 = 0 nem b_22 = det B. Também não observa que a identidade vale mesmo com det B = 0, e que só a fórmula B^{-1} = \\bar B/det B exige det B ≠ 0. Isso não pesa na questão, mas cabe num gabarito comentado."
+          }
+        ],
+        "summary": "Comparei a transcrição com o original (PDF pág. 1, impressa como Página 2/12, Questão 4) e ela confere. A resposta final do candidato, (B) Laplace e Cauchy, coincide com a minha referência e está correta.\n\nO raciocínio está completo e correto:\n- **Adjunta:** define a adjunta como a transposta da matriz dos cofatores. Daí B_{jk} = A_{kj}, o que explica o índice A_{kj} que aparece no quadro.\n- **Condição (1):** com i = k, identifica b_ii = Σ a_ij A_ij como a expansão de Laplace pela linha i.\n- **Condição (2):** com i ≠ k, identifica Σ a_ij A_kj como o Teorema de Cauchy (fila paralela) e também o demonstra. Troca a linha k por uma cópia da linha i, nota que os cofatores da linha k não mudam porque essa linha é eliminada nos menores, e conclui que a matriz tem duas linhas iguais, logo determinante nulo.\n- **Fechamento:** monta B·\\bar B = det(B) I_n e indica que \\bar B·B sai do mesmo jeito usando colunas.\n- **Exemplo n=2:** conferi os cofatores (d, −c, −b, a) e as contas b_11 = ad − bc e b_12 = −ab + ab = 0. Estão certos.\n\nDas armadilhas da referência, todas as principais foram tratadas:\n- a ordem pedida ('respectivamente'), com (D) apontada como inversão;\n- a adjunta clássica com a transposição;\n- a justificativa do Teorema de Cauchy, e não só a citação do nome;\n- a distinção entre Chió, Binet e Cramer.\n\nFicaram de fora só detalhes de acabamento: a ambiguidade da notação B_{jk}, a grafia 'Kramer', a eliminação letra por letra e a observação sobre det B = 0. É uma resolução publicável como gabarito comentado."
+      }
+    }
+  ]
+}

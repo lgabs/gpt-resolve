@@ -1,0 +1,48 @@
+\section*{Questão 17}
+
+\section*{Solução}
+
+\textbf{Notação.} Para $x$ real e $k$ inteiro, defina o binomial generalizado
+\[
+\binom{x}{k}=\frac{x(x-1)\cdots(x-k+1)}{k!}\ (k\ge 1),\qquad \binom{x}{0}=1,\qquad \binom{x}{-1}=0 .
+\]
+Com isso, a expressão pedida é
+\[
+S_n(x)=\sum_{k=0}^{n}(-1)^k\binom{x}{k}.
+\]
+
+\textbf{Passo 1: relação de Stifel (Pascal) para $x$ real.} Para $k\ge 1$:
+\[
+\binom{x-1}{k}+\binom{x-1}{k-1}
+=\frac{(x-1)\cdots(x-k+1)}{(k-1)!}\left[\frac{x-k}{k}+1\right]
+=\frac{(x-1)\cdots(x-k+1)}{(k-1)!}\cdot\frac{x}{k}
+=\binom{x}{k}.
+\]
+Para $k=0$ ela também vale: $\binom{x-1}{0}+\binom{x-1}{-1}=1+0=1=\binom{x}{0}$. A identidade é puramente algébrica, logo vale para todo $x$ real (não é preciso que $x$ seja natural).
+
+\textbf{Passo 2: soma telescópica.} Substituindo em $S_n$:
+\[
+S_n(x)=\sum_{k=0}^{n}(-1)^k\binom{x-1}{k}+\sum_{k=0}^{n}(-1)^k\binom{x-1}{k-1}.
+\]
+Na segunda soma, o termo $k=0$ é nulo. Fazendo $j=k-1$, ela fica $-\sum_{j=0}^{n-1}(-1)^j\binom{x-1}{j}$. Assim, todos os termos se cancelam, exceto o termo $k=n$ da primeira soma:
+\[
+S_n(x)=(-1)^n\binom{x-1}{n}=(-1)^n\,\frac{(x-1)(x-2)\cdots(x-n)}{n!}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item $n=1$: $1-x=-(x-1)$. Confere.
+\item $n=2$: $1-x+\dfrac{x(x-1)}{2}=\dfrac{x^2-3x+2}{2}=\dfrac{(x-1)(x-2)}{2}$. Confere.
+\item $x=0$: a soma vale $1$, e a fórmula dá $(-1)^n\dfrac{(-1)^n\,n!}{n!}=1$. Confere.
+\end{itemize}
+
+\textbf{Análise das alternativas.} $S_n$ é um polinômio de grau exatamente $n$, com coeficiente líder $\dfrac{(-1)^n}{n!}$, que vem apenas do último termo.
+\begin{itemize}
+\item (C): o numerador $(x-1)\cdots(x-n+1)$ tem só $n-1$ fatores, logo grau $n-1$. Falsa.
+\item (D): o numerador tem $2n$ fatores, logo grau $2n$. Falsa.
+\item (E): é apenas o último termo da soma, o que equivaleria a todos os demais termos se anularem. Falsa; por exemplo, para $n=1$ daria $-x\neq 1-x$.
+\item (B): os fatores vão de $x-1$ até $x+n$, o que não forma uma sequência coerente nem tem grau $n$. Falsa.
+\end{itemize}
+A alternativa (A) coincide exatamente com o resultado obtido: $(-1)^n\binom{x-1}{n}$.
+
+ANSWER: (A) $(-1)^n\dfrac{(x-1)(x-2)\cdots(x-n)}{n!}$

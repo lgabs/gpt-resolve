@@ -1,0 +1,45 @@
+{
+  "question": 19,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(A) $-\\ln\\left(\\frac{\\sqrt{2}}{2}\\right)+\\frac{\\pi}{4}-\\frac{3\\pi^2}{32}\\approx 0,207$",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** Na prova original (Questão 19, p. 6/12, Prova Amarela) a integral é $\\int_{\\pi/4}^{\\pi/2} x\\,[\\cot g(x)]^2\\,dx$ e as alternativas são iguais às da transcrição.\n\n**1) Domínio e continuidade.** No intervalo $[\\pi/4,\\pi/2]$ vale $\\sin x \\ge \\sqrt2/2 > 0$, então $\\cot x = \\cos x/\\sin x$ é contínua. A singularidade de $\\cot$ está em $x=0$, fora do intervalo. Em $\\pi/2$ temos $\\cot(\\pi/2)=0$, e a integral é própria.\n\n**2) Identidade trigonométrica.** Como $1+\\cot^2 x = \\csc^2 x$, temos $\\cot^2 x = \\csc^2 x - 1$. Logo\n$$I=\\int_{\\pi/4}^{\\pi/2} x\\csc^2 x\\,dx-\\int_{\\pi/4}^{\\pi/2} x\\,dx.$$\n\n**3) Integração por partes em $\\int x\\csc^2 x\\,dx$.** Tome $u=x$, $dv=\\csc^2x\\,dx$. Então $du=dx$ e $v=-\\cot x$, pois $(\\cot x)'=-\\csc^2 x$:\n$$\\int x\\csc^2x\\,dx=-x\\cot x+\\int\\cot x\\,dx=-x\\cot x+\\ln|\\sin x|+C.$$\n\n**4) Primitiva.**\n$$F(x)=-x\\cot x+\\ln(\\sin x)-\\frac{x^2}{2}.$$\nVerificação por derivação: $F'(x)=-\\cot x + x\\csc^2 x+\\cot x - x = x(\\csc^2x-1)=x\\cot^2x$ ✓.\n\n**5) Valores nos limites.**\n- $F(\\pi/2)= -\\frac{\\pi}{2}\\cdot 0+\\ln 1-\\frac{\\pi^2}{8}=-\\frac{\\pi^2}{8}$.\n- $F(\\pi/4)= -\\frac{\\pi}{4}\\cdot 1+\\ln\\frac{\\sqrt2}{2}-\\frac{\\pi^2}{32}$.\n\n$$I=F(\\pi/2)-F(\\pi/4)=-\\frac{\\pi^2}{8}+\\frac{\\pi}{4}-\\ln\\frac{\\sqrt2}{2}+\\frac{\\pi^2}{32}=-\\ln\\!\\left(\\frac{\\sqrt2}{2}\\right)+\\frac{\\pi}{4}-\\frac{3\\pi^2}{32}.$$\n\nEsta é exatamente a alternativa **(A)**. Equivalentemente, $I=\\frac12\\ln 2+\\frac{\\pi}{4}-\\frac{3\\pi^2}{32}\\approx 0{,}34657+0{,}78540-0{,}92528\\approx 0{,}20670$.\n\n**6) Conferência numérica (Python, regra de Simpson com 200 000 subintervalos).** $I\\approx 0{,}2066963411$. Comparação com as alternativas:\n- (A) $0{,}2066963411$: diferença de cerca de $10^{-16}$.\n- (B) $\\approx -1{,}796$.\n- (C) $\\approx 4{,}076$.\n- (D) $\\approx 3{,}523$.\n- (E) $\\approx 0{,}8235$.\n\n**7) Eliminação por estimativa (checagem independente).** No intervalo, $x\\cot^2x\\ge 0$ e $\\pi/4\\le x\\le\\pi/2$. Além disso, $\\int_{\\pi/4}^{\\pi/2}\\cot^2x\\,dx=[-\\cot x - x]_{\\pi/4}^{\\pi/2}=1-\\pi/4$. Portanto\n$$0{,}1685\\approx\\frac{\\pi}{4}\\left(1-\\frac{\\pi}{4}\\right)\\le I\\le\\frac{\\pi}{2}\\left(1-\\frac{\\pi}{4}\\right)\\approx 0{,}3371.$$\nSó a alternativa (A), com valor $\\approx 0{,}2067$, cai nessa faixa. (B) é negativa, e (C), (D) e (E) passam do limite superior.\n\n**Resposta: (A).**",
+    "final_answer": "$I=-\\ln\\left(\\frac{\\sqrt2}{2}\\right)+\\frac{\\pi}{4}-\\frac{3\\pi^2}{32}=\\frac12\\ln2+\\frac{\\pi}{4}-\\frac{3\\pi^2}{32}\\approx 0{,}2067$. Alternativa (A).",
+    "pitfalls": [
+      "Identidade correta: cot²x = csc²x − 1, vinda de 1 + cot² = csc². Confundir com tan² = sec² − 1, ou trocar o sinal (1 − csc²x), leva a resultado errado.",
+      "Sinal na integração por partes: a primitiva de csc²x é −cot x, então ∫x csc²x dx = −x cot x + ∫cot x dx. É comum errar o sinal de v ou do termo −∫v du.",
+      "∫cot x dx = ln|sin x| (e não −ln|sin x|, que é a primitiva de tan x... na verdade ∫tan x dx = −ln|cos x|). No intervalo, sin x > 0, então o módulo pode ser dispensado.",
+      "Não esquecer o termo −x²/2, que vem do −1 da identidade, nem avaliá-lo nos dois limites: −(π²/8 − π²/32) = −3π²/32. Errar essa conta produz coeficientes como −π²/32 (alternativa E) ou −5π²/32.",
+      "Valores nos limites: cot(π/2) = 0, de modo que o termo −x cot x some em π/2 e ln(sin(π/2)) = 0; cot(π/4) = 1 e sin(π/4) = √2/2. A integral é própria, porque a singularidade de cot fica em x = 0, fora de [π/4, π/2].",
+      "Sinal do logaritmo: ln(√2/2) = −½ ln 2 < 0, então o termo −ln(√2/2) é positivo. As alternativas D e B usam +ln(√2/2) e ln(√2/4), respectivamente, como distratores.",
+      "Checagem de sanidade: o integrando é ≥ 0, logo I > 0 e a alternativa B (negativa) fica eliminada. Pela cota (π/4)(1−π/4) ≤ I ≤ (π/2)(1−π/4), I fica entre ≈ 0,169 e ≈ 0,337, o que elimina C, D e E e confirma A (≈ 0,2067).",
+      "Uma boa resolução deve apresentar a primitiva (de preferência conferida por derivação) e a avaliação explícita nos limites, não só o valor numérico."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(A) $-\\ln\\left(\\frac{\\sqrt{2}}{2}\\right)+\\frac{\\pi}{4}-\\frac{3\\pi^2}{32}\\approx 0,207$",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na seção 4, o candidato afirma sem justificar que o integrando x·cot²x é decrescente em [π/4, π/2]. É essa monotonicidade que sustenta a cota x·cot²x ≤ π/4 e, por consequência, I < π²/16 ≈ 0,62. Só com x ≤ π/2 e cot²x ≤ 1, a cota seria π/2 e daria I ≤ π²/8 ≈ 1,23. A afirmação é verdadeira, porque a derivada é cot x·(cot x − 2x csc²x) ≤ 0, já que 2x csc²x ≥ π/2 > 1 ≥ cot x, e conferi numericamente. Bastava uma linha mostrando esse sinal, ou então usar a cota mais fraca, que também exclui C e D."
+          },
+          {
+            "severity": "minor",
+            "description": "Na análise das alternativas, a (E) é descartada com o argumento de que 'tem o coeficiente errado em π²'. Esse argumento só repete a derivação e não traz uma checagem independente. Como E ≈ 0,8235 > 0,617, a própria cota usada pelo candidato já a eliminaria, e convinha dizer isso. Não afeta a resposta."
+          }
+        ],
+        "summary": "Conferi o enunciado na prova original (p. 6/12, Questão 19). Integral e alternativas batem com a transcrição. O candidato chegou à mesma resposta da referência, a alternativa (A), e ela está certa. Conferi em Python com a regra de Simpson (200 000 subintervalos) e obtive I ≈ 0,2066963411, igual ao valor de (A) até cerca de 10⁻¹⁶. As outras dão B ≈ −1,796, C ≈ 4,076, D ≈ 3,523 e E ≈ 0,8235.\n\nA resolução segue o caminho correto e completo:\n- **Identidade:** usa cot²x = csc²x − 1, com o sinal certo.\n- **Por partes:** toma v = −cot x e usa ∫cot x dx = ln|sin x|, explicando por que o módulo pode sair (sin x > 0 no intervalo).\n- **Primitiva:** escreve F explicitamente e confere por derivação.\n- **Limites:** calcula cot(π/2) = 0, cot(π/4) = 1 e sin(π/4) = √2/2.\n- **Termo em π²:** fecha a conta −π²/8 + π²/32 = −3π²/32 de forma explícita.\n- **Domínio:** diz por que a integral é própria.\n- **Sanidade:** como o integrando é ≥ 0, I > 0, o que elimina (B).\n\nTodas as armadilhas que eu tinha listado foram tratadas. Só há duas falhas pequenas, ambas na parte de checagem e não na derivação principal. A monotonicidade do integrando, usada na cota 0,62, é afirmada sem demonstração, embora seja verdadeira. E a (E) é descartada por um argumento circular quando a própria cota já bastava. Com uma linha a mais justificando a cota, daria para publicar como gabarito comentado."
+      }
+    }
+  ]
+}

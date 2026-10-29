@@ -1,0 +1,45 @@
+{
+  "question": 28,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Alternativa (A): os tiros dão 165x + 231y >= 3003, ou seja, 5x + 7y - 91 >= 0. O orçamento dá 660x + 4840y <= 26000, ou seja, 33x + 242y - 1300 <= 0. Ressalva: com x, y >= 0, todo par viável também satisfaz (b), mas (b) não é o sistema que traduz as condições.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado (p. 7 do PDF, \"13\" na numeração da prova):** a transcrição bate com o original. São 165 cápsulas .38 por caixa a R$ 660,00 e 231 cápsulas 9 mm Luger por caixa a R$ 4840,00. O teste exige pelo menos 3003 tiros e o gasto máximo é R$ 26000,00.\n\n**Variáveis:** x é o número de caixas .38 e y o número de caixas 9 mm. Na prática, x, y ∈ ℕ (inteiros não negativos).\n\n**1) Restrição de quantidade de tiros (ao menos 3003)**\nCada cápsula dá um tiro, então o total de tiros é 165x + 231y, e a condição é\n165x + 231y ≥ 3003.\nTemos 165 = 3·5·11, 231 = 3·7·11 e 3003 = 3·7·11·13, logo mdc = 33. Dividindo por 33 > 0, o sentido da desigualdade se mantém:\n5x + 7y ≥ 91, ou seja, **5x + 7y − 91 ≥ 0**.\n\n**2) Restrição orçamentária (não pode ultrapassar R$ 26000)**\nO custo é 660x + 4840y, e \"não ultrapassar\" significa ≤:\n660x + 4840y ≤ 26000.\nTemos 660 = 2²·3·5·11, 4840 = 2³·5·11² e 26000 = 2⁴·5³·13, logo mdc = 20. Dividindo por 20:\n33x + 242y ≤ 1300, ou seja, **33x + 242y − 1300 ≤ 0**.\n\n**3) Sistema obtido**\n{ 33x + 242y − 1300 ≤ 0\n{ 5x + 7y − 91 ≥ 0\nÉ exatamente a alternativa **a)**.\n\n**4) Análise das outras alternativas**\n- c) inverte os dois sentidos. Ela exigiria gastar pelo menos R$ 26000 e dar no máximo 3003 tiros, o que contradiz o enunciado. Um par válido como (19, 0) não satisfaz c), pois 33·19 = 627 < 1300.\n- d) troca as constantes entre as equações (91 com os coeficientes de custo e 1300 com os de tiros). O par (19, 0) também não satisfaz d), pois 627 > 91.\n- b) também troca as constantes. Ela não modela o problema: suas fronteiras são retas que não têm relação com tiros nem com custo.\n  - **Observação de rigor:** com x, y ≥ 0, todo par viável também satisfaz b).\n  - De fato, 33x + 242y ≥ 5x + 7y ≥ 91, e 5x + 7y ≤ 33x + 242y ≤ 1300.\n  - Verifiquei por enumeração: há 50 pares inteiros viáveis, por exemplo x de 19 a 39 com y = 0, e até (14, 3). Todos estão nos conjuntos solução de a) e de b), e nenhum nos de c) ou d).\n  - Então b) é uma consequência mais fraca, que só vale usando x, y ≥ 0, e não é a tradução das condições do teste.\n  - A única alternativa que é a modelagem direta e exata das duas restrições é a a). Ela é a resposta pretendida (gabarito esperado: A).\n\n**5) Viabilidade (o modelo não é vazio)**\nCom y = 0: 5x ≥ 91 dá x ≥ 19, e 33x ≤ 1300 dá x ≤ 39. Logo, por exemplo, (19, 0) atende: 3135 tiros por R$ 12540.\nCom y = 3: 5x ≥ 70 dá x ≥ 14, e 33x ≤ 574 dá x ≤ 17. Logo (14, 3) atende: 3003 tiros por R$ 23760. O valor de y vai no máximo até 3.\n\n**Resposta: alternativa a).**",
+    "final_answer": "Alternativa a): {33x + 242y − 1300 ≤ 0 ; 5x + 7y − 91 ≥ 0}. Ela vem de 165x + 231y ≥ 3003 dividido por 33 e de 660x + 4840y ≤ 26000 dividido por 20.",
+    "pitfalls": [
+      "Ler 'ao menos 3003 tiros' como ≥ e 'não pode ultrapassar R$ 26000' como ≤. Inverter os sentidos leva à alternativa c).",
+      "Associar cada constante à restrição certa: 91 vem de 3003/33 (tiros) e 1300 vem de 26000/20 (custo). Trocar as constantes leva a b) ou d).",
+      "Simplificar corretamente: mdc(165, 231, 3003) = 33, dando 5, 7 e 91; mdc(660, 4840, 26000) = 20, dando 33, 242 e 1300. Um erro de divisão (por exemplo, dividir 4840 por 20 e obter 252 ou 224) impede reconhecer as alternativas.",
+      "Dividir por um número positivo não inverte a desigualdade. Ao passar os termos para a forma '... − k ≤ 0' ou '... − k ≥ 0', o sentido também não muda.",
+      "Usar a hipótese implícita x, y inteiros não negativos (número de caixas). O sistema é condição necessária para o par ser viável, não o conjunto exato, que é a interseção do sistema com ℕ².",
+      "Sutileza do 'necessariamente': com x, y ≥ 0, todo par viável também satisfaz o sistema b), que é mais fraco. Mesmo assim, b) não é a modelagem do problema. A resposta pretendida é a a), a tradução direta das duas restrições. Uma boa resolução deve escolher a) e, idealmente, notar ou ao menos não se confundir com isso.",
+      "É bom checar que o conjunto viável não é vazio: (19, 0) e (14, 3) servem; com y = 0, x vai de 19 a 39; y ≤ 3.",
+      "Para eliminar c) e d), basta testar um par viável, como (19, 0)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Alternativa (A): os tiros dão 165x + 231y >= 3003, ou seja, 5x + 7y - 91 >= 0. O orçamento dá 660x + 4840y <= 26000, ou seja, 33x + 242y - 1300 <= 0. Ressalva: com x, y >= 0, todo par viável também satisfaz (b), mas (b) não é o sistema que traduz as condições.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na alternativa (b), o candidato diz que ela 'troca os coeficientes entre as restrições'. Na verdade, os coeficientes 33/242 e 5/7 continuam nas mesmas linhas; o que se troca são as constantes 91 e 1300, além dos sentidos. A frase deveria dizer que (b) troca as constantes."
+          },
+          {
+            "severity": "minor",
+            "description": "Na análise de (d), a desigualdade 33x + 242y ≥ 6,6(5x + 7y) só vale porque y ≥ 0 (242 ≥ 46,2). A hipótese foi declarada no início (x, y ∈ ℕ), mas não é citada nesse passo. Além disso, o item abre com '(d) exige 5x + 7y ≥ 1300' e depois refuta a outra inequação, o que deixa a exposição um pouco truncada. Seria melhor dizer explicitamente qual das duas inequações falha e por quê."
+          }
+        ],
+        "summary": "Conferi o enunciado com o original (p. 7 do PDF, numerada 13 na prova) e a transcrição está correta. A resposta do candidato é a alternativa (a), a mesma da minha referência, e ela está correta.\n\n**Modelagem.** As duas restrições estão certas:\n- tiros: 165x + 231y ≥ 3003, que dividida por 33 dá 5x + 7y ≥ 91;\n- custo: 660x + 4840y ≤ 26000, que dividida por 20 dá 33x + 242y ≤ 1300.\n\nAs fatorações estão explícitas e o candidato justifica que dividir por um número positivo mantém o sentido da desigualdade.\n\n**Viabilidade.** Ele mostra que o conjunto não é vazio com o par (19, 0): são 3135 tiros por R$ 12540.\n\n**Eliminação das alternativas.**\n- (c) é descartada testando o par (19, 0).\n- (d) é descartada com um argumento geral correto: 33x + 242y ≥ 6,6·91 > 91, logo a inequação 33x + 242y − 91 ≤ 0 nunca vale para um par viável.\n- (b): ele percebe a sutileza do 'necessariamente'. Todo par viável também satisfaz (b), mas (b) é muito mais fraca: o contraexemplo (0, 1), com só 231 tiros, satisfaz (b) sem atender ao teste. Por isso (b) não traduz as condições do enunciado. É o mesmo tratamento da minha referência.\n\n**Conferência numérica.** Refiz as contas com python. Há 50 pares inteiros viáveis; todos satisfazem (a) e (b) e nenhum satisfaz (d). Os valores −673, 3135 e 12540 conferem.\n\nTodas as armadilhas foram tratadas: os sentidos das desigualdades, a associação de cada constante à restrição certa, as divisões, a hipótese x, y ≥ 0, a sutileza da alternativa (b) e a viabilidade do conjunto.\n\nEncontrei só duas imprecisões menores de redação:\n- o candidato diz que (b) 'troca os coeficientes', quando o que se troca são as constantes;\n- na análise de (d), o uso de y ≥ 0 não é citado no passo em que é necessário.\n\nÉ uma resolução no nível de um gabarito comentado."
+      }
+    }
+  ]
+}

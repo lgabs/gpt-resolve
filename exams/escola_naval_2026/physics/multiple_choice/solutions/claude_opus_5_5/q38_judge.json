@@ -1,0 +1,45 @@
+{
+  "question": 38,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(C) x = (15/8)·mg/k. O empuxo é mg/16, então a tração no fio é T = 15mg/16. Os torques em torno de O dão kx = 2T.",
+  "judge_reference": {
+    "reference_solution": "**Conferência com o original (p. 17/18 do PDF, Questão 38):** a transcrição bate com a prova. Na figura, a mola fica embaixo da extremidade esquerda e está presa ao solo. O apoio triangular está em O, com L/3 à esquerda e 2L/3 à direita. O cilindro está pendurado por um fio na extremidade direita, dentro de um recipiente com líquido de densidade ρ, e não toca o fundo.\n\n**1) Empuxo sobre o cilindro**\n- Volume do cilindro: V = m/ρc = m/(8ρ).\n- Volume submerso: V/2 = m/(16ρ).\n- Empuxo: E = ρ·g·(V/2) = ρ·g·m/(16ρ) = mg/16.\n\nO empuxo usa a densidade do **líquido** (ρ), não a do cilindro.\n\n**2) Tração no fio (equilíbrio do cilindro)**\nComo ρc = 8ρ > ρ, o cilindro afundaria sozinho, e por isso o fio está tracionado. Equilíbrio vertical do cilindro:\nT + E = mg ⇒ T = mg − mg/16 = 15mg/16.\n\n**3) Equilíbrio de rotação da barra em torno de O**\n- Forças na barra: tração T para baixo na extremidade direita (braço 2L/3), força da mola F na extremidade esquerda (braço L/3) e reação do apoio N em O, que tem torque nulo em relação a O. O peso da barra é desprezível.\n- A tração tende a girar a barra no sentido horário, baixando a direita. Para equilibrar, a mola precisa puxar a extremidade esquerda **para baixo**. Como a mola está presa ao solo, ela está **distendida**.\n- Momentos em relação a O:\n  F·(L/3) = T·(2L/3) ⇒ F = 2T = 2·(15mg/16) = 15mg/8.\n\n**4) Deformação da mola**\nPela lei de Hooke, F = kx, logo x = 15mg/(8k).\n\n**5) Verificação de consistência**\n- Equilíbrio de translação da barra: N = F + T = 15mg/8 + 15mg/16 = 45mg/16 > 0, para cima.\n- Isso é compatível com uma barra simplesmente apoiada em O: o apoio só empurra, não puxa.\n- Conferido numericamente em python, com frações exatas: E = mg/16, T = 15mg/16, F = 15mg/8, N = 45mg/16.\n\nResposta: x = (15/8)·mg/k, alternativa (C).",
+    "final_answer": "x = (15/8)·(mg/k), alternativa (C). Detalhe: E = mg/16, T = 15mg/16, F_mola = 2T = 15mg/8, e a mola está distendida.",
+    "pitfalls": [
+      "O empuxo usa a densidade do LÍQUIDO (ρ) e o volume SUBMERSO (V/2). Usar ρc no lugar de ρ dá E = mg/2, T = mg/2 e x = mg/k, que é a alternativa (A), um distrator.",
+      "Considerar o cilindro totalmente imerso dá E = mg/8, T = 7mg/8 e x = 7mg/(4k), valor que não está nas alternativas.",
+      "Esquecer o empuxo, isto é, tomar T = mg, dá x = 2mg/k, valor que não está nas alternativas.",
+      "Inverter os braços de alavanca (F·2L/3 = T·L/3) dá F = T/2 e x = 15mg/(32k), o que está errado. A mola está no braço curto (L/3), então F = 2T.",
+      "O volume do cilindro precisa ser escrito em função de m e ρc: V = m/ρc = m/(8ρ). Não há volume dado diretamente.",
+      "Como ρc = 8ρ > ρ, o cilindro não flutuaria sozinho. O fio sustenta o cilindro com T = mg − E > 0, e é T, e não mg, que atua na barra.",
+      "Sentido da força da mola: para equilibrar o torque da tração, a mola precisa puxar a extremidade esquerda para baixo, logo está distendida. Vale conferir que a reação em O, N = F + T = 45mg/16, é positiva (para cima), coerente com uma barra apenas apoiada.",
+      "Hipóteses implícitas: fio ideal e vertical, mola vertical, cilindro sem tocar o fundo do recipiente, barra de peso desprezível e equilíbrio estático com a barra horizontal."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(C) x = (15/8)·mg/k. O empuxo é mg/16, então a tração no fio é T = 15mg/16. Os torques em torno de O dão kx = 2T.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não confere o equilíbrio de translação da barra, N = F + T = 45mg/16 > 0. Essa conta mostra que o apoio simples em O consegue de fato exercer a reação necessária, que só pode ser para cima. Bastaria uma linha nas verificações."
+          },
+          {
+            "severity": "minor",
+            "description": "A conclusão diz que (C) é 'a única que leva em conta ao mesmo tempo...', mas não aponta explicitamente o distrator (A). Esse valor sai quando se usa ρc no lugar de ρ no empuxo, o que dá E = mg/2 e x = mg/k. Citar esse caminho deixaria o comentário mais didático, como num gabarito comentado."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 17/18 do PDF e a transcrição bate, inclusive a figura: a mola fica sob a extremidade esquerda e está presa ao solo, os braços são L/3 e 2L/3, e o cilindro está suspenso sem tocar o fundo. O candidato chega a x = 15mg/(8k), alternativa (C), a mesma resposta da minha referência. Refiz as contas com frações exatas em python: E = mg/16, T = 15mg/16, F = 15mg/8 e N = 45mg/16.\n\nA resolução está correta e bem estruturada:\n- As hipóteses estão explícitas: barra de massa desprezível, fio e mola ideais, cilindro sem tocar o fundo.\n- O volume é obtido de V = m/ρc.\n- O empuxo usa a densidade do líquido e só o volume submerso, V/2.\n- O equilíbrio do cilindro dá T = mg − E, e o candidato aplica a terceira lei de Newton para levar T à barra.\n- Os momentos são tomados em torno de O, com os braços certos (a mola no braço curto, logo F = 2T).\n- O sentido da força da mola está justificado: a mola está alongada.\n- As verificações de unidade e de casos-limite estão corretas. Sem empuxo, x = 2mg/k; com o cilindro totalmente imerso, x = 7mg/(4k); o resultado fica entre esses dois valores.\n\nO candidato trata praticamente todas as armadilhas que identifiquei. As exceções são duas omissões menores: não confere a reação N > 0 no apoio e não identifica explicitamente o distrator (A). A qualidade é de gabarito comentado."
+      }
+    }
+  ]
+}

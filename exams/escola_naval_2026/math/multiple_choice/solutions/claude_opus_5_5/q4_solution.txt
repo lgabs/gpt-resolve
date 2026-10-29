@@ -1,0 +1,45 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Notação.} Seja $B=(a_{ij})$ e seja $A_{ij}=(-1)^{i+j}D_{ij}$ o cofator de $a_{ij}$, em que $D_{ij}$ é o menor complementar. A adjunta é a transposta da matriz dos cofatores. Logo, o elemento da linha $j$ e coluna $k$ de $\bar B$ é $B_{jk}=A_{kj}$. Pela definição do produto de matrizes:
+\[
+b_{ik}=\sum_{j=1}^{n}a_{ij}\,B_{jk}=\sum_{j=1}^{n}a_{ij}\,A_{kj}.
+\]
+Esta é exatamente a expressão do quadro. Resta identificar qual teorema justifica cada caso.
+
+\textbf{Condição (1): $i=k$.} Nesse caso,
+\[
+b_{ii}=\sum_{j=1}^{n}a_{ij}\,A_{ij}=a_{i1}A_{i1}+a_{i2}A_{i2}+\dots+a_{in}A_{in}.
+\]
+Pelo \emph{Teorema de Laplace}, o determinante de uma matriz quadrada é igual à soma dos produtos dos elementos de uma fila (aqui, a linha $i$) pelos seus próprios cofatores. Portanto $b_{ii}=\det(B)$.
+
+\textbf{Condição (2): $i\neq k$.} Agora,
+\[
+b_{ik}=\sum_{j=1}^{n}a_{ij}\,A_{kj},
+\]
+isto é, os elementos da linha $i$ multiplicam os cofatores da linha $k$, que é uma fila paralela \emph{diferente}. O \emph{Teorema de Cauchy} afirma que essa soma é nula. Demonstração:
+\begin{itemize}
+\item Seja $B'$ a matriz obtida de $B$ trocando-se a linha $k$ por uma cópia da linha $i$.
+\item Os cofatores $A_{kj}$ não dependem da linha $k$, pois ela é eliminada no cálculo do menor. Assim, os cofatores da linha $k$ de $B'$ são os mesmos $A_{kj}$ de $B$.
+\item Aplicando Laplace à linha $k$ de $B'$, obtemos $\det(B')=\sum_{j}a_{ij}A_{kj}=b_{ik}$.
+\item Como $B'$ tem duas linhas iguais (a $i$ e a $k$), $\det(B')=0$. Logo $b_{ik}=0$.
+\end{itemize}
+
+\textbf{Conclusão.} Juntando os dois casos, $b_{ik}=\det(B)\,\delta_{ik}$, ou seja, $B\cdot\bar B=\det(B)\,I_n$. A igualdade $\bar B\cdot B=\det(B)\,I_n$ sai do mesmo modo, usando colunas no lugar de linhas.
+
+\textbf{Verificação ($n=2$).} Para $B=\begin{pmatrix}a&b\\c&d\end{pmatrix}$, os cofatores são $A_{11}=d$, $A_{12}=-c$, $A_{21}=-b$ e $A_{22}=a$. Então:
+\begin{itemize}
+\item $b_{11}=a\,d+b(-c)=ad-bc=\det(B)$, pelo caso (1);
+\item $b_{12}=a(-b)+b\,a=0$, pelo caso (2).
+\end{itemize}
+
+\textbf{Análise das alternativas.} A ordem pedida é (1) Laplace e (2) Cauchy, que é a alternativa (B). As demais não servem:
+\begin{itemize}
+\item a regra de Chió é um processo de abaixamento da ordem de um determinante;
+\item o Teorema de Binet afirma que $\det(AB)=\det A\cdot\det B$;
+\item a regra de Cramer resolve sistemas lineares;
+\item a alternativa (D) cita os teoremas certos, mas na ordem trocada.
+\end{itemize}
+
+ANSWER: (B) Laplace e Cauchy.

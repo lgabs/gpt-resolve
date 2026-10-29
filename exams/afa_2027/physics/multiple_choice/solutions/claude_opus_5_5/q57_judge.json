@@ -1,0 +1,48 @@
+{
+  "question": 57,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(B) 39 °C: a potência do chuveiro não muda, então vazão × ΔT é constante. Assim, 182·20 = 130·ΔT, o que dá ΔT = 28 °C e T = 11 + 28 = 39 °C.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com o original (página 5 da prova, questão 57, versão A). Os dados são: água entrando a 11 °C; vazão inicial Q₁ = 182 mL/s com saída a 31 °C; vazão final Q₂ = 130 mL/s. Não há figura nesta questão.\n\n**1) A potência do chuveiro não muda**\nO chuveiro continua ligado na mesma tensão U e nada foi alterado na parte elétrica. O enunciado manda desprezar o efeito da temperatura sobre a resistividade, então a resistência R também fica igual. Com isso, P = U²/R é a mesma nas duas situações.\n\n**2) Balanço de energia em regime permanente**\nSupomos que toda a energia elétrica vai para a água, ou pelo menos sempre a mesma fração dela. A cada segundo, a massa de água que passa é ṁ = d·Q, onde d é a densidade e Q a vazão:\n\nP = ṁ·c·ΔT = d·Q·c·ΔT\n\nDensidade d e calor específico c são constantes (o calor específico também por ordem do enunciado). Então:\n\nQ·ΔT = constante ⇒ Q₁·ΔT₁ = Q₂·ΔT₂\n\n**3) Contas**\n- ΔT₁ = 31 − 11 = 20 °C\n- 182 · 20 = 130 · ΔT₂\n- ΔT₂ = 3640/130 = 28 °C (a razão das vazões é 182/130 = 1,4 = 7/5, e 20 · 1,4 = 28)\n\nTemperatura de saída: T₂ = 11 + 28 = **39 °C**, alternativa **b**.\n\nConferência numérica em Python: ΔT₂ = 28,0 e T₂ = 39,0.\n\n**Interpretação física:** quando a vazão cai, a mesma potência aquece menos água por segundo. Por isso a **variação** de temperatura cresce na razão inversa da vazão (28 °C em vez de 20 °C). A temperatura final em si não cresce nessa razão.",
+    "final_answer": "T = 11 + 20·(182/130) = 11 + 28 = 39 °C. Alternativa b.",
+    "pitfalls": [
+      "O que é inversamente proporcional à vazão é a variação de temperatura ΔT = T_saída − T_entrada, e não a temperatura final. Fazer 31·182/130 dá 43,4 °C, que não está entre as alternativas.",
+      "É preciso justificar por que a potência é constante: mesma tensão U e mesma resistência R (o enunciado manda desprezar o efeito da temperatura na resistividade), logo P = U²/R não muda. Tratar P como constante sem dizer isso deixa a resolução incompleta.",
+      "Não inverter a proporção. Usar ΔT₂ = 20·130/182 ≈ 14,3 °C, como se ΔT fosse diretamente proporcional à vazão, dá cerca de 25,3 °C, uma temperatura menor, o que contradiz a ideia do enunciado.",
+      "Não esquecer de somar a temperatura de entrada (11 °C). Responder só ΔT₂ = 28 °C, ou somar o ΔT a 31 °C, é erro.",
+      "Hipóteses que precisam aparecer: regime permanente; toda a energia elétrica vai para a água, ou sempre a mesma fração dela (perdas proporcionais); densidade e calor específico da água constantes. Assim, a massa por segundo é proporcional à vazão em volume (mL/s).",
+      "Não é preciso converter mL/s para kg/s nem saber o valor de P, porque as constantes se cancelam na razão. Converter não está errado, mas não é necessário.",
+      "Pegadinha numérica: 182/130 = 7/5 = 1,4, e por isso ΔT₂ dá exatamente 28 °C."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(B) 39 °C: a potência do chuveiro não muda, então vazão × ΔT é constante. Assim, 182·20 = 130·ΔT, o que dá ΔT = 28 °C e T = 11 + 28 = 39 °C.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na conferência de ordem de grandeza, o candidato diz que P ≈ 15 kW é 'da mesma ordem dos chuveiros elétricos potentes'. A ordem de grandeza (10⁴ W) está certa, mas o valor é cerca de o dobro do de um chuveiro residencial típico, que fica entre 5,5 e 7,5 kW. Ele chega a reconhecer que a potência é 'alta', então isso não afeta a resolução. O ideal seria deixar claro que os dados da questão são idealizados e não tratar o valor como confirmação forte."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'as outras alternativas não respeitam essa proporção inversa' é quase tautológica. Bastaria dizer que ΔT₂ = 28 °C leva a 39 °C, sem tolerância, o que elimina 38, 40 e 41. Ficaria mais didático citar o erro clássico de aplicar a proporção à temperatura final (31·1,4 ≈ 43,4 °C), mas não fazer isso não é falha."
+          },
+          {
+            "severity": "minor",
+            "description": "Ficou implícito que a temperatura de entrada continua em 11 °C na segunda situação. É uma hipótese óbvia, mas poderia aparecer junto com as demais."
+          }
+        ],
+        "summary": "Conferi a transcrição com a página 5 da prova (Q57, versão A) e ela bate. O candidato chega ao mesmo resultado da minha resolução de referência: ΔT₂ = 20·182/130 = 28 °C e T₂ = 11 + 28 = 39 °C, alternativa (b), que está correta.\n\nA resolução é rigorosa e completa. Ela justifica por que a potência é constante: mesma tensão U, mesma resistência R (porque o enunciado manda desprezar o efeito da temperatura na resistividade), logo P = U²/R não muda. Também declara as hipóteses necessárias: regime permanente, toda a energia vai para a água ou uma fração constante dela, densidade e calor específico constantes. O balanço de energia é deduzido corretamente com Δm = ρΦΔt.\n\nO candidato deixa claro que o que é inversamente proporcional à vazão é a elevação de temperatura, e não a temperatura final. Não inverte a proporção, soma a temperatura de entrada no final e observa que não é preciso converter as unidades da vazão. Assim, todas as armadilhas que eu tinha listado foram evitadas.\n\nA conferência de ordem de grandeza também está certa: ρc ≈ 4,2 J/(mL·°C) dá P ≈ 15 kW. Só a frase que chama esse valor de típico de 'chuveiros potentes' é um pouco generosa. Os demais problemas são detalhes de redação: a eliminação das outras alternativas é quase tautológica e a temperatura de entrada constante ficou implícita. A resolução está no nível de um gabarito comentado."
+      }
+    }
+  ]
+}

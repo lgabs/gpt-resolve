@@ -1,0 +1,43 @@
+{
+  "question": 11,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "(B) e^{-1}",
+  "judge_reference": {
+    "final_answer": "L = e^{-1}. O limite bilateral existe e vale e^{-1} ≈ 0,3679, o mesmo pelos dois lados. Alternativa (B).",
+    "reference_solution": "**Conferência do enunciado.** Pela página 4/12 do PDF, a questão 11 pede $\\lim_{x\\to1}\\left(\\operatorname{tg}\\frac{\\pi x}{4}\\right)^{\\operatorname{tg}\\frac{\\pi x}{2}}$. As alternativas são (A) $e$, (B) $e^{-1}$, (C) $2e^{-1}$, (D) $0$ e (E) $+\\infty$. A transcrição está correta.\n\n**1. Tipo de indeterminação e domínio**\nQuando $x\\to1$, temos $\\frac{\\pi x}{4}\\to\\frac{\\pi}{4}$, logo a base $\\operatorname{tg}\\frac{\\pi x}{4}\\to1$. Ao mesmo tempo $\\frac{\\pi x}{2}\\to\\frac{\\pi}{2}$, logo o expoente $\\operatorname{tg}\\frac{\\pi x}{2}\\to\\pm\\infty$:\n- se $x\\to1^-$, a base tende a $1^-$ e o expoente a $+\\infty$;\n- se $x\\to1^+$, a base tende a $1^+$ e o expoente a $-\\infty$.\n\nA forma é do tipo $1^{\\infty}$, que é indeterminada. Perto de $x=1$ a base é positiva, então a potência real está bem definida. Podemos escrever\n$$L=\\exp\\Big(\\lim_{x\\to1}\\operatorname{tg}\\tfrac{\\pi x}{2}\\cdot\\ln\\operatorname{tg}\\tfrac{\\pi x}{4}\\Big).$$\n\n**2. Cálculo do expoente (método 1: arco duplo)**\nSejam $u=\\frac{\\pi x}{4}$ e $s=\\operatorname{tg}u$. Então $s\\to1$ e $\\frac{\\pi x}{2}=2u$, de modo que\n$$\\operatorname{tg}2u=\\frac{2s}{1-s^2}=\\frac{2s}{(1-s)(1+s)}.$$\nO expoente fica:\n$$\\operatorname{tg}2u\\cdot\\ln s=\\frac{2s}{1+s}\\cdot\\frac{\\ln s}{1-s}=-\\frac{2s}{1+s}\\cdot\\frac{\\ln s}{s-1}.$$\nComo $\\frac{\\ln s}{s-1}\\to1$ (limite fundamental) e $\\frac{2s}{1+s}\\to\\frac{2}{2}=1$, o expoente tende a $-1$. Isso vale pelos dois lados, porque nenhum desses fatores depende do sinal de $s-1$.\n\n**Método 2: L'Hôpital, para conferir**\nEscrevemos o expoente como a forma $\\frac{0}{0}$:\n$$\\frac{\\ln\\operatorname{tg}\\frac{\\pi x}{4}}{\\operatorname{cotg}\\frac{\\pi x}{2}}.$$\n- A derivada do numerador é $\\frac{\\pi}{4}\\frac{\\sec^2(\\pi x/4)}{\\operatorname{tg}(\\pi x/4)}$, que tende a $\\frac{\\pi}{4}\\cdot\\frac{2}{1}=\\frac{\\pi}{2}$.\n- A derivada do denominador é $-\\frac{\\pi}{2}\\operatorname{cossec}^2\\frac{\\pi x}{2}$, que tende a $-\\frac{\\pi}{2}$.\n\nA razão tende a $-1$.\n\n**3. Conclusão**\n$$L=e^{-1}\\approx0{,}3679.$$\n\n**Conferência numérica (Python):**\n- $x=1\\pm10^{-3}$ dá $0{,}3678796$;\n- $x=1\\pm10^{-6}$ dá $0{,}36787944$;\n- $e^{-1}=0{,}36787944$.\n\nOs dois lados convergem para o mesmo valor. **Resposta: (B).**",
+    "pitfalls": [
+      "Tratar 1^∞ como 1, ou concluir que 'base tende a 1, logo o resultado é 1': a forma é indeterminada. Use L = exp(lim expoente·ln base).",
+      "Olhar só um dos lados de forma ingênua: pela esquerda a base é <1 com expoente +∞, o que sugere 0 (alternativa D); pela direita a base é >1 com expoente −∞, o que sugere 0, ou +∞ se o sinal for trocado (E). Os dois lados são 1^∞ e convergem para o mesmo valor, e^{-1}. Uma boa resolução verifica (ou justifica) que o limite é bilateral.",
+      "Errar o sinal: tg(πx/2) = 2s/(1−s²) tem (1−s) no denominador, enquanto ln s ~ (s−1). Perder o sinal leva a e (alternativa A).",
+      "Esquecer o fator 1/(1+s) → 1/2 na fatoração de 1−s² = (1−s)(1+s). Usar só 2s/(1−s) dá expoente −2 ou leva a confusões com 2e^{-1} (alternativa C). Note também que 2e^{-1} não tem a forma e^{k}, o que já indica que o candidato misturou fator multiplicativo com expoente.",
+      "Ao usar L'Hôpital, é preciso primeiro reescrever o expoente como quociente 0/0 (ln tg(πx/4) / cotg(πx/2)) e derivar corretamente: sec²(π/4) = 2, tg(π/4) = 1 e cossec²(π/2) = 1, com os fatores π/4 e π/2 da regra da cadeia.",
+      "Hipótese de domínio: a potência com expoente real só faz sentido com base positiva. Aqui tg(πx/4) > 0 numa vizinhança de x = 1 (já que πx/4 ∈ (0, π/2)), então tomar o ln é legítimo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "(B) e^{-1}",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O parágrafo 'Verificação dos limites laterais' tem uma inferência que não se sustenta. De fato, a potência é menor que 1 pelos dois lados: à esquerda, base < 1 com expoente > 0; à direita, base > 1 com expoente < 0. Mas daí só se conclui que o limite, se existir, é ≤ 1, e não que ele seja 'um valor menor que 1'. Além disso, a frase 'Isso confirma o valor e^{-1}' é um non sequitur: a observação é apenas compatível com e^{-1} e não confirma nada (por exemplo, também seria compatível com o valor 0, que é a alternativa D). O correto seria chamar isso de checagem de plausibilidade e apoiar a bilateralidade apenas no argumento que vem logo depois, que já está certo: a fatoração vale para u → 1 por qualquer lado. Uma checagem numérica em x = 1 ± 10⁻³ também serviria."
+          },
+          {
+            "severity": "minor",
+            "description": "A troca de variável x ↦ u = tg(πx/4) dentro do limite vem justificada só pela continuidade e injetividade perto de π/4. Seria melhor dizer explicitamente que se usa o teorema do limite da composta: u(x) → 1 e u(x) ≠ 1 para x ≠ 1 numa vizinhança. A ideia está presente, mas o teorema que a legitima não é citado. Isso é só formalismo."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 4/12 do PDF (o pedido indica página 3) e a transcrição está correta. A resposta final do candidato é (B) e^{-1}, igual à minha referência. Confirmei numericamente: x = 1 ± 10⁻⁶ dá 0,36787944 pelos dois lados.\n\nO método é o mesmo da referência, e o cálculo está correto em todos os passos:\n- reconhece a indeterminação 1^∞;\n- justifica que a base é positiva perto de x = 1, o que permite usar ln;\n- faz a substituição u = tg(πx/4) e usa o arco duplo, tg(πx/2) = 2u/(1−u²);\n- fatora 1−u² = −(u−1)(u+1) com o sinal certo e sem perder o fator 1/(u+1);\n- usa o limite fundamental ln u/(u−1) → 1 para obter o expoente −1;\n- conclui L = e^{-1} pela continuidade da exponencial.\n\nTodas as armadilhas foram tratadas:\n- não trata 1^∞ como 1;\n- acerta o sinal;\n- mantém o fator (1+u);\n- trata o domínio;\n- discute os dois lados e diz explicitamente que a fatoração vale por qualquer lado, então o limite bilateral existe.\n\nO único defeito é o parágrafo sobre os limites laterais. Ele afirma que o fato de a potência ser < 1 dos dois lados 'confirma' e^{-1}, mas isso é só uma checagem de compatibilidade e não confirma o valor. Há também um ponto de formalismo: a troca de variável não cita o teorema do limite da composta.\n\nA resolução é limpa, correta e completa, com qualidade de gabarito comentado. Nota 9,0."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "question": 5,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A alternativa correta é a (E), 27π. As curvas se cruzam em x = 2 e x = 4, e nesse intervalo x² > 2^x. Pelo método dos anéis, V = π∫₂⁴(x⁴ − 4^x)dx = π(992/5 − 120/ln 2). Com ln 2 ≅ 0,7, isso dá V ≅ 26,97π ≅ 27π. Com o valor exato de ln 2, o volume seria cerca de 25,3π, mais próximo de 24π. Mesmo assim, o enunciado manda usar ln 2 ≅ 0,7, e com esse dado a resposta é 27π.",
+  "judge_reference": {
+    "reference_solution": "**Questão 5 (Escola Naval/CPAEN 2026): volume de revolução da região entre f(x)=2^x e g(x)=x² para x ∈ [0;5)**\n\nConferi o enunciado no PDF original (página 2 da prova): a transcrição está correta.\n\n**1) Pontos de interseção**\nResolvemos 2^x = x².\n- x = 2: 2² = 4 = 2².\n- x = 4: 2⁴ = 16 = 4².\n- Existe ainda uma raiz negativa, x ≈ −0,767, que está fora de [0;5) e é descartada.\n- Com x ∈ [0;5), as curvas se cruzam somente em x = 2 e x = 4. Por isso o intervalo [0;5) foi escolhido: ele contém as duas raízes positivas e exclui a negativa.\n\n**2) Quem fica por cima em cada trecho**\n- Em [0,2): 2^x > x². Por exemplo, em x = 1: 2 > 1.\n- Em (2,4): x² > 2^x. Por exemplo, em x = 3: 9 > 8.\n- Em (4,5): 2^x > x². Por exemplo, em x = 4,5: 22,6 > 20,25.\n\nA única região de fato fechada pelas curvas, com bordas nos pontos de interseção, é a de 2 ≤ x ≤ 4. Nela x² é a curva de cima e 2^x a de baixo, e as duas são positivas.\n\n**3) Método das arruelas (girando em torno do eixo x)**\n- Raio externo: R = x². Raio interno: r = 2^x.\n- V = π∫₂⁴ [(x²)² − (2^x)²] dx = π∫₂⁴ (x⁴ − 4^x) dx.\n\nRepare que (2^x)² = 4^x. Não é 2^(x²).\n\n**4) Integrais**\n- ∫₂⁴ x⁴ dx = (4⁵ − 2⁵)/5 = (1024 − 32)/5 = 992/5 = 198,4.\n- ∫₂⁴ 4^x dx = (4⁴ − 4²)/ln 4 = (256 − 16)/(2 ln 2) = 120/ln 2.\n- Logo V = π(992/5 − 120/ln 2), que é o valor exato.\n\n**5) Usando o dado ln 2 ≅ 0,7**\n- 120/0,7 ≈ 171,43.\n- V ≈ π(198,40 − 171,43) ≈ 26,97π ≈ 27π.\n\nConferência numérica em Python: as primitivas batem com a integração numérica. Com o ln 2 exato (0,6931...), V ≈ 25,28π. Com o dado da prova, ln 2 = 0,7, V ≈ 26,97π, o que dá exatamente a alternativa (E).\n\n**6) As outras leituras não batem com nenhuma alternativa**\n- Girar toda a região entre as curvas em [0,5), somando os três trechos: π(4,31 + 26,97 + 128,37) ≈ 159,7π. Com ln 2 exato, ≈ 163,5π.\n- Integrar sem módulo em [0,5): ≈ 105,7π.\n\nNenhum desses valores está entre as opções. Isso confirma que a leitura pretendida é a região limitada pelas interseções x = 2 e x = 4.\n\n**Resposta: (E) 27π**",
+    "final_answer": "V = π∫₂⁴ (x⁴ − 4^x) dx = π(992/5 − 120/ln 2). Com ln 2 ≅ 0,7, V ≈ 26,97π ≈ 27π. Alternativa (E).",
+    "pitfalls": [
+      "Achar as interseções 2^x = x² dentro de [0;5): x = 2 e x = 4. A raiz negativa (≈ −0,767) fica fora do intervalo e deve ser descartada. Uma boa resolução verifica ou justifica que não há outras raízes no intervalo.",
+      "Interpretar o enunciado: a região 'delimitada pelas intersecções' é a de 2 ≤ x ≤ 4. Girar toda a região entre as curvas em [0,5) dá ≈ 159,7π (≈ 163,5π com ln 2 exato), que não aparece nas alternativas.",
+      "Identificar a curva de cima em [2,4]: x² ≥ 2^x. Trocar a ordem leva a um volume negativo ou a erro de sinal.",
+      "Usar arruelas da forma certa: π∫(R² − r²) dx = π∫(x⁴ − 4^x) dx. Escrever π∫(x² − 2^x)² dx está errado e dá ≈ 1,12π. Também não basta usar só a área entre as curvas (≈ 1,35).",
+      "Elevar ao quadrado corretamente: (2^x)² = 4^x, e não 2^(x²). Lembrar que ∫4^x dx = 4^x/ln 4 = 4^x/(2 ln 2), sem esquecer o fator 2 de ln 4.",
+      "Usar obrigatoriamente o dado ln 2 ≅ 0,7. Com o ln 2 real (0,693), V ≈ 25,28π, e a alternativa mais próxima seria (D) 24π. É uma armadilha numérica: com o dado da prova, V ≈ 26,97π → (E).",
+      "Contas de potência: 4⁵ − 2⁵ = 992 e 4⁴ − 4² = 240. Errar aqui faz cair em outras alternativas.",
+      "O intervalo aberto em 5 ([0;5)) não muda nada no cálculo: serve só para delimitar o domínio que contém as duas raízes positivas."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A alternativa correta é a (E), 27π. As curvas se cruzam em x = 2 e x = 4, e nesse intervalo x² > 2^x. Pelo método dos anéis, V = π∫₂⁴(x⁴ − 4^x)dx = π(992/5 − 120/ln 2). Com ln 2 ≅ 0,7, isso dá V ≅ 26,97π ≅ 27π. Com o valor exato de ln 2, o volume seria cerca de 25,3π, mais próximo de 24π. Mesmo assim, o enunciado manda usar ln 2 ≅ 0,7, e com esse dado a resposta é 27π.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A escolha da região entre x = 2 e x = 4 é justificada só pelo texto (\"delimitada pelas intersecções\"). Faltou um teste numérico da outra leitura: girar toda a região entre as curvas em [0;5) dá ≈ 159,7π (≈ 163,5π com o ln 2 exato), valor que não está entre as alternativas. Uma frase com esse número tornaria a interpretação incontestável."
+          },
+          {
+            "severity": "minor",
+            "description": "A raiz negativa (≈ −0,77) aparece sem justificativa. Isso não pesa, porque ela está fora do intervalo e não interfere em nada. Bastaria dizer que ela existe pelo TVI, já que h(x) = 2^x − x² muda de sinal em [−1, 0], ou simplesmente omiti-la."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência de ordem de grandeza (\"algumas dezenas\") é vaga. Daria para fechar a conta com uma estimativa concreta, como Simpson em [2,4]: (2/6)(0 + 4·17 + 0) ≈ 22,7, que é compatível com 25,3. A observação sobre o ln 2 exato está certa (≈ 25,3π), mas não diz que, sem o dado da prova, a alternativa mais próxima seria (D). Esse é justamente o ponto da armadilha."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 2 do PDF original (Questão 5, CPAEN/2026) e a transcrição está correta. O candidato marcou (E) 27π, a mesma resposta da minha referência, e acertou.\n\nSobre as interseções, a resolução vai além da referência. Ela reescreve 2^x = x² como φ(x) = φ(2), com φ(x) = ln x / x, e usa a monotonicidade de φ (cresce em (0, e] e decresce em [e, ∞)) para provar que em (0;5) as únicas raízes são x = 2 e x = 4. Também descarta x = 0 explicitamente.\n\nA mesma função φ prova com rigor que x² > 2^x em (2;4), e assim os raios externo e interno ficam bem identificados. O método das arruelas está correto: π∫₂⁴ [(x²)² − (2^x)²] dx = π∫₂⁴ (x⁴ − 4^x) dx. O candidato usa (2^x)² = 4^x e ln 4 = 2 ln 2, e as potências estão certas (992/5 e 240). O valor exato π(992/5 − 120/ln 2) foi conferido com integração numérica (25,2766 contra 25,2766). Com ln 2 ≅ 0,7, 198,4 − 171,43 = 26,97, logo V ≈ 27π.\n\nO candidato percebeu a sutileza numérica: com o ln 2 exato, V ≈ 25,3π. Ele também explicou por quê: o resultado é a diferença de dois números grandes e próximos, o que amplifica o erro da aproximação. E manteve o dado da prova, como manda o enunciado.\n\nQuanto às armadilhas, quase todas foram tratadas: interseções, curva de cima, arruelas sem o erro de (R − r)², 4^x, o fator 2 de ln 4, o uso de ln 2 = 0,7 e o intervalo aberto. A interpretação da região está justificada pelo texto, mas falta o teste numérico das outras leituras. Restam só pontos menores de completude, e a resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

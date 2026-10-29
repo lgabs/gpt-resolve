@@ -1,0 +1,46 @@
+{
+  "question": 1,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(D) Apenas as afirmativas I, III e IV são verdadeiras. A II é falsa porque f(x) = x e^{1/x} tem duas assíntotas: x = 0 e y = x + 1.",
+  "judge_reference": {
+    "final_answer": "I verdadeira, II falsa, III verdadeira e IV verdadeira. Resposta: alternativa (D), \"Apenas as afirmativas I, III e IV são verdadeiras\". A II é falsa porque f(x) = x·e^{1/x} tem duas assíntotas: a vertical x = 0 (pela direita) e a oblíqua y = x + 1 (em +∞ e em −∞).",
+    "reference_solution": "Conferi a transcrição com o PDF original (Questão 1, página 1) e ela está fiel.\n\n**Afirmativa I: VERDADEIRA**\n\nHipótese: α ∩ β = r. Então α ≠ β e α não é paralelo a β. Seja γ um plano paralelo a β.\n\n1. **α corta γ.** Se α fosse paralelo a γ, como γ é paralelo a β, teríamos α paralelo a β, pois o paralelismo entre planos é transitivo. Isso é absurdo, porque α corta β. Como α ≠ γ e os dois não são paralelos, α ∩ γ é uma reta s.\n2. **s é paralela a r.** As retas r e s estão ambas no plano α, logo são coplanares. Além disso, r ⊂ β e s ⊂ γ. Se γ ≠ β, então β ∩ γ = ∅, e portanto r ∩ s = ∅. Duas retas coplanares e disjuntas são paralelas, logo s ∥ r.\n3. **Caso γ = β.** Se se aceita γ = β (paralelo coincidente), então s = r, que é paralela a r no sentido amplo.\n\nEsse é o teorema clássico: \"se dois planos paralelos são cortados por um terceiro plano, as interseções são retas paralelas\".\n\n**Afirmativa II: FALSA**\n\nf(x) = x·e^{1/x}, com domínio ℝ \\ {0}.\n\n1. **Vertical em x = 0.**\n   - Pela direita: com t = 1/x → +∞, temos f(x) = e^t / t → +∞. Logo x = 0 é assíntota vertical.\n   - Pela esquerda: 1/x → −∞, então e^{1/x} → 0 e f(x) → 0·0 = 0. Desse lado a reta não é assíntota, mas para ser assíntota vertical basta que um dos limites laterais seja infinito.\n2. **Oblíqua (x → ±∞).**\n   - f(x)/x = e^{1/x} → e^0 = 1, logo m = 1.\n   - f(x) − x = x(e^{1/x} − 1) = (e^u − 1)/u, com u = 1/x → 0. Esse limite vale 1, logo n = 1.\n   - O mesmo vale em +∞ e em −∞, então y = x + 1 é assíntota oblíqua nos dois sentidos.\n3. **Horizontal: não há**, pois f(x) → ±∞ quando x → ±∞.\n\nO gráfico tem portanto duas assíntotas, x = 0 e y = x + 1, e não \"apenas uma\". Conferência numérica: f(0,01) ≈ 2,7·10^41, f(−0,01) ≈ 0, e f(10^6) − 10^6 ≈ 1,0000005.\n\n**Afirmativa III: VERDADEIRA**\n\nAplico a desigualdade MA–MG a n+1 números positivos: n cópias de (1 + 1/n) e o número 1.\n\n- MG = [(1 + 1/n)^n · 1]^{1/(n+1)}\n- MA = [n(1 + 1/n) + 1]/(n+1) = (n+2)/(n+1) = 1 + 1/(n+1)\n\nOs números não são todos iguais, pois 1 + 1/n ≠ 1. Então a desigualdade é estrita:\n\n(1 + 1/n)^{n/(n+1)} < 1 + 1/(n+1).\n\nElevando à potência n+1: a_n = (1 + 1/n)^n < (1 + 1/(n+1))^{n+1} = a_{n+1}, para todo n ∈ ℕ*.\n\nA sequência é estritamente crescente, com a₁ = 2, a₂ = 2,25, a₃ ≈ 2,370, a₄ ≈ 2,441, …, e tende a e.\n\nOutra prova, pelo binômio: a_n = Σ_{k=0}^{n} (1/k!)·∏_{j=0}^{k−1}(1 − j/n). Cada parcela cresce com n, e a_{n+1} ainda tem uma parcela positiva a mais.\n\n**Afirmativa IV: VERDADEIRA**\n\nAplico MA–MG a √x, √y, √z > 0:\n\n(√x + √y + √z)/3 ≥ ∛(√x·√y·√z) = (xyz)^{1/6}.\n\nOs dois membros são positivos, então posso elevar ao quadrado:\n\n(√x + √y + √z)²/9 ≥ (xyz)^{1/3}, ou seja, (√x + √y + √z)² ≥ 9·∛(xyz).\n\nA igualdade vale se e somente se x = y = z. Num teste com 10^5 ternas aleatórias, a diferença mínima encontrada foi ≥ 0.\n\n**Conclusão:** I, III e IV são verdadeiras e II é falsa. Alternativa **(D)**.",
+    "pitfalls": [
+      "II é o ponto central: f(x) = x·e^{1/x} tem DUAS assíntotas, a vertical x = 0 e a oblíqua y = x + 1. Quem só procura assíntota vertical, ou só a oblíqua, conclui por engano que existe 'apenas uma' e marca (B) ou (E).",
+      "II: a assíntota vertical é unilateral. Pela direita o limite é +∞; pela esquerda o limite é 0. É um erro comum descartar x = 0 por causa do limite à esquerda, mas basta um limite lateral infinito.",
+      "II: o coeficiente linear da oblíqua sai de lim x(e^{1/x} − 1) = lim (e^u − 1)/u = 1, um limite fundamental. Errar esse limite (por exemplo, dar n = 0, ou seja, y = x) não muda a contagem, mas é um erro de conteúdo.",
+      "II: a mesma reta y = x + 1 serve em +∞ e em −∞. Contar uma reta por lado não muda a conclusão: há mais de uma assíntota de qualquer jeito.",
+      "I: é preciso justificar que α não é paralelo a γ, usando a transitividade do paralelismo entre planos. Também é preciso usar que r e s são coplanares (ambas em α) para concluir que são paralelas e não reversas: só ser disjuntas não basta.",
+      "I: há o caso degenerado γ = β, em que a interseção é a própria r. Ele só é aceito se 'paralelo' incluir o coincidente; não muda a veracidade da afirmativa.",
+      "III: calcular os primeiros termos (2; 2,25; 2,37…) não prova que a sequência é crescente. É preciso uma prova para todo n, por MA–MG com n cópias de (1 + 1/n) e o número 1, ou pelo binômio de Newton. Também não se deve confundir 'convergir para e' com 'ser monótona'.",
+      "IV: aplicar MA–MG a √x, √y, √z (e não a x, y, z) e elevar ao quadrado, o que só é lícito porque os dois membros são positivos. A igualdade ocorre se e somente se x = y = z, e isso não invalida o '≥'.",
+      "Alternativas: com II falsa e I, III, IV verdadeiras, só (D) serve. (C) omite a I, que é verdadeira; (E) inclui a II, que é falsa."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(D) Apenas as afirmativas I, III e IV são verdadeiras. A II é falsa porque f(x) = x e^{1/x} tem duas assíntotas: x = 0 e y = x + 1.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item I: o candidato supõe γ ≠ β logo no início, sem dizer nada sobre o caso coincidente. Nesse caso α ∩ γ = r, que é paralela a r no sentido amplo, e a afirmativa continua verdadeira. Uma frase bastaria para fechar o caso."
+          },
+          {
+            "severity": "minor",
+            "description": "Item II: o candidato calcula o limite à esquerda (que dá 0) e mesmo assim declara x = 0 assíntota vertical. A conclusão está certa, mas faltou dizer explicitamente que basta um limite lateral infinito. É justamente essa a armadilha clássica do item."
+          }
+        ],
+        "summary": "Conferi a transcrição com o PDF (Questão 1, p. 2/12) e ela está fiel. A resposta final é a mesma da minha referência: I verdadeira, II falsa, III verdadeira, IV verdadeira, alternativa (D).\n\nItem por item:\n- **I:** a prova está completa. Usa a transitividade do paralelismo, aplicada a α e β paralelos ao mesmo γ, para garantir que α corta γ. Depois usa que r e s são coplanares (ambas em α) e disjuntas, o que exclui retas reversas.\n- **II:** a assíntota vertical x = 0 sai de lim e^t/t = +∞ pela direita. O limite à esquerda, que dá 0, também foi registrado. A oblíqua y = x + 1 está correta: m = 1 e q = lim (e^t − 1)/t = 1, valendo em ±∞. Conferi numericamente: f(10^6) − 10^6 ≈ 1,0000005 e f(−10^6) + 10^6 ≈ 0,9999995. O candidato também descartou corretamente a assíntota horizontal e concluiu que há duas assíntotas.\n- **III:** usa MA–MG com n cópias de 1 + 1/n e o número 1. A desigualdade estrita está justificada e a elevação à potência n + 1 é lícita. Os termos numéricos aparecem só como conferência, não como prova.\n- **IV:** usa MA–MG em √x, √y, √z e eleva ao quadrado, justificando pela positividade dos dois membros. A condição de igualdade está correta. Num teste com 10^5 ternas aleatórias, a diferença mínima foi ≥ 0.\n\nA conclusão também explica por que as outras alternativas falham. Restam só duas omissões menores: o caso degenerado γ = β e a observação explícita de que basta um limite lateral infinito. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

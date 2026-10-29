@@ -1,0 +1,112 @@
+{
+  "question": 24,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.0,
+  "final_answer": "A resposta é a alternativa (A): 2 + P_3·C_{26,3}·A_{10,2}·C_{21,1} = 29484002 possibilidades. As duas formas biométricas somam 2, pois os modos de entrar são exclusivos. As letras contam como combinação, os algarismos como arranjo, e há 21 símbolos. Os 3 blocos podem aparecer em qualquer ordem no código, o que dá o fator P_3. A alternativa (B) só vale se o formato for fixo, hipótese que o enunciado não faz.",
+  "judge_reference": {
+    "final_answer": "Alternativa B: 2 + C_{26,3}·A_{10,2}·A_{21,1} = 2 + 2600·90·21 = 4.914.002 possibilidades. Biometria facial e digital do indicador direito contam 1 cada. O código é formado por 3 letras sem ordem (C_{26,3}), um par ordenado de algarismos distintos (A_{10,2}) e um símbolo (21). Como as três formas de entrada são alternativas (\"ou\"), as quantidades se somam. Confiança alta: a única leitura que levaria à alternativa A seria permutar os blocos entre si, e o enunciado não dá base para isso.",
+    "pitfalls": [
+      "Princípio aditivo e multiplicativo: o enunciado diz 'ou biometria facial ou digital … ou código'. São formas alternativas de entrar, então as quantidades se SOMAM (2 + …). Usar '2 · …' é o erro das alternativas C e D.",
+      "Cada biometria vale 1 possibilidade: é um único rosto e um único dedo especificado (o indicador direito). Não se deve contar 10 dedos nem multiplicar por algo.",
+      "As letras são combinação, não arranjo: o enunciado diz '3 letras distintas, não importando sua ordem', logo C_{26,3} = 2600, e não A_{26,3} = 15600.",
+      "P_3·C_{26,3} = A_{26,3}: a alternativa A equivale, numericamente, a ordenar as letras, o que contraria o enunciado. Também pode ser lida como permutar os 3 blocos entre si, mas o enunciado nunca autoriza nem menciona trocar a ordem dos blocos. Uma boa resolução precisa rejeitar explicitamente o fator P_3.",
+      "Os algarismos são arranjo: 'pares ordenados de algarismos distintos' dá A_{10,2} = 90, e não C_{10,2} = 45 nem 10² = 100 (que admitiria repetição).",
+      "A_{21,1} = C_{21,1} = 21: com um único elemento, arranjo e combinação coincidem. Por isso a troca A↔C no fator do símbolo não serve para distinguir alternativas.",
+      "As alternativas C e D são numericamente iguais (58.968.000), porque diferem só em C_{21,1} versus A_{21,1}. Como a questão tem resposta única, ambas ficam eliminadas de cara, o que confirma a análise.",
+      "Contar as teclas na figura: 26 letras (10+9+7, padrão QWERTY), 21 símbolos (3 linhas de 7) e 10 algarismos.",
+      "A hipótese de que bloco de letras, bloco de algarismos e símbolo vêm numa disposição fixa precisa ser assumida e comentada. É ela que separa a alternativa B da A."
+    ],
+    "reference_solution": "**Questão 24: possibilidades de entrar na sala (resposta B)**\n\n**1) Dados da figura (conferidos no original)**\n- Letras: QWERTYUIOP (10) + ASDFGHJKL (9) + ZXCVBNM (7) = 26 teclas.\n- Símbolos: 3 linhas de 7, ou seja, 21 teclas.\n  - ' ! @ # $ % ¨\n  - & * ( ) − + /\n  - \\ ~ ^ · ; : ?\n- Algarismos: 0 a 9, ou seja, 10 teclas.\n\n**2) Estrutura do problema: princípio aditivo**\nO dispositivo reconhece biometria facial **ou** digital do indicador direito **ou** um código. São três modos de entrada que se excluem, então o total é a soma dos casos:\n\nTotal = (facial) + (digital) + (nº de códigos).\n\n- A biometria facial é 1 possibilidade (o rosto da pessoa).\n- A digital é de um dedo específico, o indicador direito, e também é 1 possibilidade.\n- As biometrias contribuem, portanto, com 1 + 1 = 2.\n\n**3) Número de códigos: princípio multiplicativo dentro do código**\nO código tem obrigatoriamente três componentes independentes.\n\n- **Bloco de 3 letras distintas, \"não importando sua ordem\":** é um subconjunto de 3 letras entre 26, logo C_{26,3} = 26·25·24/3! = 2600. Não é A_{26,3}, porque a ordem das letras não importa.\n- **Bloco de par ordenado de algarismos distintos:** a ordem importa e não há repetição, logo A_{10,2} = 10·9 = 90. Não é C_{10,2} = 45 nem 10² = 100.\n- **Um símbolo:** são 21 escolhas, e A_{21,1} = C_{21,1} = 21 (com um só elemento, arranjo e combinação coincidem).\n\nO enunciado não atribui à ordem dos blocos entre si nenhum papel na formação do código. O código fica determinado por três informações: o conjunto de letras, o par ordenado de algarismos e o símbolo. Por isso não há fator P_3. Assim:\n\nnº de códigos = C_{26,3}·A_{10,2}·A_{21,1} = 2600·90·21 = 4.914.000.\n\n**4) Total**\nTotal = 2 + C_{26,3}·A_{10,2}·A_{21,1} = 2 + 4.914.000 = 4.914.002.\n\n**5) Análise das alternativas (valores conferidos em Python)**\n- **a)** 2 + P_3·C_{26,3}·A_{10,2}·C_{21,1} = 29.484.002. **Errada.** Como P_3·C_{26,3} = A_{26,3}, isso equivale a ordenar as 3 letras, o que contraria \"não importando sua ordem\". Também pode ser lida como permutar os 3 blocos, algo que o enunciado não prevê.\n- **b)** 2 + C_{26,3}·A_{10,2}·A_{21,1} = 4.914.002. **Correta.**\n- **c)** 2·A_{26,3}·A_{10,2}·C_{21,1} = 58.968.000. **Errada.** Multiplica onde deveria somar (\"ou\") e ordena as letras.\n- **d)** 2·A_{26,3}·A_{10,2}·A_{21,1} = 58.968.000. **Errada** pelos mesmos dois motivos. Note que C e D têm o mesmo valor, já que A_{21,1} = C_{21,1}, então nenhuma das duas pode ser a resposta única.\n\n**Resposta: alternativa B.**"
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "(A) 2 + P_3 · C_{26,3} · A_{10,2} · C_{21,1} = 29484002 possibilidades",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": false,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não reconhece que o passo decisivo depende de interpretação. A escolha entre (a) e (b) está toda no fator P_3, e o texto não diz de forma explícita se os blocos podem trocar de posição. O candidato só afirma que o enunciado não fixa a ordem, sem apoio textual mais forte, e descarta (b) de modo categórico. O que faltou: (i) notar que o texto diz 'devem ter' (conter), e não 'nessa ordem'; (ii) notar que P_m é definido no enunciado e só aparece na alternativa (a); (iii) notar que P_3·C_{26,3} = A_{26,3}. Com esse último ponto, a mesma alternativa (a) também sai na leitura 'letras ordenadas e blocos em ordem fixa', e (b) só sai combinando letras sem ordem com blocos em ordem fixa, que é uma hipótese não declarada. Esse é o principal motivo para a nota não chegar a 9."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta justificar por que cada biometria vale exatamente 1 possibilidade: é um único rosto e um único dedo especificado, o indicador direito. Não se contam outros dedos. Os valores 1 e 1 aparecem só como rótulos."
+          },
+          {
+            "severity": "minor",
+            "description": "As teclas não foram contadas a partir da figura. A resolução apenas afirma '26', '21' e '10'. Deveria mostrar 10+9+7 = 26 letras (QWERTY), 3×7 = 21 símbolos e 10 algarismos."
+          },
+          {
+            "severity": "minor",
+            "description": "Na análise de (c) e (d), faltou observar que 2·A_{26,3}·A_{10,2}·21 = 2·P_3·C_{26,3}·A_{10,2}·C_{21,1}. Ou seja, (c) e (d) são exatamente a contagem de (a) com soma trocada por produto. Isso reforçaria (a) como a alternativa central, da qual cada distrator se afasta por um único erro."
+          }
+        ],
+        "summary": "Conferi a transcrição com o original (p. 10 do PDF): o texto bate, e a figura tem 26 letras, 21 símbolos (3×7) e 10 algarismos.\n\n**Alternativa correta: (a).** A resposta do candidato está certa e a minha referência, que marcou (b), está errada.\n\n**Onde as duas divergem.** A diferença está toda no fator P_3. Ao refazer o raciocínio, concluo que a leitura do candidato é a mais defensável, por três motivos:\n1. **O enunciado não fixa a ordem dos blocos.** Ele diz que os códigos 'devem ter' os três componentes e não acrescenta 'nessa ordem'. O código é uma sequência digitada, e o texto só declara irrelevante a ordem interna das letras. Logo, os blocos em posições diferentes geram códigos diferentes, o que dá P_3 = 6.\n2. **A notação definida aponta para (a).** O enunciado define P_m de propósito, e P_m só aparece na alternativa (a).\n3. **A estrutura das alternativas confirma (a).** Como P_3·C_{26,3} = A_{26,3}, cada distrator se afasta de (a) por um único erro: (c) e (d) trocam a soma por produto, e (b) omite P_3. Além disso, (a) também sai na leitura alternativa 'letras ordenadas e blocos fixos'. Já (b) exige combinar letras sem ordem com uma ordem fixa dos blocos que o texto não estabelece.\n\nA minha referência admitia essa hipótese de blocos fixos sem tirá-la do enunciado.\n\n**Contas (conferidas em Python):**\n\n| Alternativa | Valor |\n|---|---|\n| (a) | 29.484.002 |\n| (b) | 4.914.002 |\n| (c) | 58.968.000 |\n| (d) | 58.968.000 |\n\n**Armadilhas tratadas corretamente pelo candidato:**\n- Princípio aditivo para o 'ou', o que elimina (c) e (d).\n- (c) e (d) têm o mesmo valor, então nenhuma pode ser a resposta única.\n- A_{21,1} = C_{21,1} = 21.\n- C_{26,3} para as letras, por causa de 'não importando sua ordem'.\n- A_{10,2} para o par ordenado de algarismos distintos.\n- Discussão da posição dos blocos.\n\n**O que impede nota 9 ou mais:**\n- O passo decisivo (o fator P_3) é afirmado com segurança demais. Faltam o apoio textual citado acima e a observação de que P_3·C_{26,3} = A_{26,3}.\n- Não justifica por que cada biometria vale 1 possibilidade.\n- Não mostra a contagem das teclas a partir da figura.\n\nA resolução é clara e bem organizada, mas ainda não está no nível de um gabarito comentado publicável."
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "A resposta é a alternativa (A): N = 2 + P_3·C_{26,3}·A_{10,2}·C_{21,1} = 2 + 6·2600·90·21 = 29484002.\n\n- **Princípio aditivo:** a face e a digital do indicador direito valem 1 possibilidade cada, e as formas de entrar se excluem, então somam-se aos códigos. Isso elimina (c) e (d), que multiplicam por 2.\n- **Códigos:** C_{26,3} para as letras sem ordem, A_{10,2} para o par ordenado de algarismos e 21 para o símbolo.\n- **Posição dos blocos:** o enunciado não fixa em que ordem os três blocos aparecem, então eles se permutam de P_3 = 6 modos. A falta desse fator é o que separa (b) de (a). Esse ponto depende de interpretação, já que o texto não diz isso de forma explícita, mas a leitura é sustentada por duas observações. A notação P_m é definida no enunciado e só aparece em (a). E P_3·C_{26,3} = A_{26,3}, então a mesma expressão sai também na leitura \"letras ordenadas e blocos em posição fixa\".",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": false,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O segundo argumento de 'confirmação' é mal formulado. O candidato diz que a expressão de a) 'também sai na leitura letras ordenadas e blocos em posição fixa'. Essa leitura contradiz o texto ('não importando sua ordem'), então não pode servir de apoio a a(). A identidade P_3·C_{26,3} = A_{26,3} deveria aparecer só para explicar a forma das alternativas c) e d), e não como evidência a favor da resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato usa um argumento de forma de prova ('a notação P_m só aparece na alternativa a)') como confirmação. Isso não é justificativa matemática. Num gabarito comentado, o argumento deveria vir rotulado como observação lateral, não como algo que 'confirma' a leitura."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta mostrar por que não há dupla contagem quando se permutam os blocos. Letras, algarismos e símbolos são conjuntos disjuntos de teclas, então todo código válido se decompõe de forma única em (posição dos blocos, conjunto de letras, par de algarismos, símbolo). Os exemplos (ABC 12 #, # ABC 12, …) ilustram, mas não substituem essa justificativa geral da bijeção."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não reconhece explicitamente que o enunciado é ambíguo quanto à posição dos blocos. A leitura de 'formato fixo', como nas placas de carro, é plausível e leva a b). A resolução a rejeita com argumentos corretos (o código digitado é uma sequência, e o texto só declara irrelevante a ordem interna das letras), mas um gabarito publicável deveria nomear essa leitura alternativa e dizer por que ela exige uma hipótese que não está no enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "O texto diz 'bloco de pares ordenados' (no plural) e o candidato o trata como um único par sem comentar. Também não descarta explicitamente C_{10,2} = 45 e 10² = 100, que admitiria repetição. As alternativas resolvem a questão, mas uma linha bastaria."
+          }
+        ],
+        "summary": "**Respostas finais:** o candidato marca a alternativa A, 2 + P_3·C_{26,3}·A_{10,2}·C_{21,1} = 29.484.002. Minha referência às cegas marcava B, 2 + C_{26,3}·A_{10,2}·A_{21,1} = 4.914.002. Reli o enunciado no PDF original (pág. 4) e refiz o ponto de divergência. Concluí que a resposta do candidato é a correta e que minha referência errou.\n\n**Por que A e não B:**\n- O código é uma sequência digitada num teclado, e em sequência a posição importa por padrão.\n- O enunciado abre uma única exceção: a ordem interna das 3 letras ('não importando sua ordem').\n- Ele não fixa a posição relativa dos blocos (não há 'nessa ordem' nem 'seguido de'). Exige apenas que o código contenha um bloco de letras, um bloco de algarismos e um símbolo.\n- Logo, os 3 blocos se dispõem livremente, o que dá P_3 = 6 arranjos.\n- Para chegar em B, minha referência teve de supor que o código fica determinado só por (conjunto de letras, par, símbolo). Isso é uma hipótese não declarada: formato fixo, ou um dispositivo que ignora a posição dos blocos.\n- Há ainda um indício na própria prova: a alternativa a) escreve P_3 separado de C_{26,3}, enquanto c) e d) usam A_{26,3}. Ou seja, a banca conhece A_{26,3} e escolheu escrever P_3 à parte, o que indica que ele representa a permutação dos blocos.\n\n**Contas e figura:** conferi tudo em Python. C_{26,3} = 2600, A_{10,2} = 90, A_{26,3} = 15600. a) = 29.484.002, b) = 4.914.002, c) = d) = 58.968.000. A contagem de teclas também está certa: 26 letras, 21 símbolos e 10 algarismos.\n\n**Armadilhas, todas tratadas:**\n- somar e não multiplicar ('ou'), o que elimina c) e d);\n- 1 possibilidade para cada biometria;\n- letras como combinação;\n- algarismos como arranjo;\n- A_{21,1} = C_{21,1};\n- c) e d) numericamente iguais;\n- discussão explícita da posição dos blocos, que é o passo decisivo.\n\n**Defeitos, todos menores:**\n- um argumento de 'confirmação' se apoia numa leitura que contradiz o enunciado;\n- uma inferência tirada da forma das alternativas aparece como se fosse prova;\n- falta a justificativa geral de que permutar blocos não gera dupla contagem (tipos de tecla disjuntos);\n- o candidato não admite abertamente que a leitura de formato fixo, que leva a b), é plausível;\n- o plural 'pares ordenados' passa sem comentário.\n\n**Avaliação:** a resolução é clara, correta no essencial e bem organizada. Com pequenos ajustes de rigor seria publicável como gabarito comentado. Nota 8,5."
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.0,
+      "final_answer": "A resposta é a alternativa (A): 2 + P_3·C_{26,3}·A_{10,2}·C_{21,1} = 29484002 possibilidades. As duas formas biométricas somam 2, pois os modos de entrar são exclusivos. As letras contam como combinação, os algarismos como arranjo, e há 21 símbolos. Os 3 blocos podem aparecer em qualquer ordem no código, o que dá o fator P_3. A alternativa (B) só vale se o formato for fixo, hipótese que o enunciado não faz.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": false,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A frase 'leitura literal, que não acrescenta hipóteses' exagera um pouco. A resolução ainda supõe, sem dizer, três coisas: (i) o código tem só os três blocos, sem teclas extras ('devem ter, obrigatoriamente' poderia ser lido como 'conter pelo menos'); (ii) cada bloco é contíguo, de modo que o símbolo não pode ficar dentro do bloco de letras ou do par de algarismos; (iii) duas sequências que diferem só na ordem das letras contam como o mesmo código. Faltou declarar essas hipóteses, que são comuns às duas leituras."
+          },
+          {
+            "severity": "minor",
+            "description": "Ao ler 'pares ordenados' (no plural) como um único par, a resolução se apoia nas alternativas ('como confirmam todas as alternativas'). Isso é aceitável numa prova de múltipla escolha, mas não sai do texto do enunciado. Bastaria registrar que essa é uma escolha interpretativa."
+          },
+          {
+            "severity": "minor",
+            "description": "O enunciado é genuinamente ambíguo quanto à ordem dos blocos. A resolução trata bem essa ambiguidade: apresenta as duas leituras e justifica a escolha. Ainda assim, poderia rebater de forma mais direta o argumento mais forte da leitura de formato fixo, que é a enumeração 'letras, algarismos, símbolo'. Bastaria uma frase dizendo que enumerar componentes ('devem ter') não é o mesmo que fixar a ordem ('seguido de'). A observação lateral sobre a notação foi corretamente apresentada como indício, não como prova."
+          }
+        ],
+        "summary": "As respostas finais divergem: o candidato marcou A e minha referência marcou B. Refiz a análise e concluo que a correta é A. Minha referência estava errada: ela supôs, sem base no texto, que os blocos vêm numa ordem fixa (letras, depois algarismos, depois símbolo), e eu mesmo tinha listado essa hipótese como armadilha. Conferi o enunciado no PDF: ele diz apenas que o código 'deve ter' um bloco de 3 letras ('não importando sua ordem'), um bloco de pares ordenados de algarismos e 'ainda, um símbolo'. Nada fixa a ordem dos blocos. Como o código é digitado, ele é uma sequência, e nela a posição importa, salvo exceção declarada. A única exceção declarada é a ordem interna das letras. O uso de 'bloco' remete à permutação de blocos, um tema clássico. Além disso, a alternativa A escreve P_3 separado de C_{26,3}, enquanto C e D usam A_{26,3} para letras ordenadas, o que sugere que P_3 permuta os 3 blocos. Ainda assim, há um risco residual de o gabarito oficial ser B por causa da ambiguidade, e o gabarito oficial não foi consultado.\n\nContas conferidas em Python: C_{26,3}=2600, A_{10,2}=90, A_{26,3}=15600. As alternativas valem a) 29.484.002, b) 4.914.002, c) e d) 58.968.000 cada.\n\nA resolução do candidato trata todas as armadilhas:\n- contagem das teclas (26, 21 e 10);\n- princípio aditivo, com 1+1 para as duas biometrias, o que elimina C e D por multiplicarem por 2;\n- C_{26,3} para as letras, sem ordem;\n- A_{10,2} para os algarismos, com exclusão explícita de 45 e de 100;\n- A_{21,1}=C_{21,1}, o que torna C e D numericamente iguais;\n- a identidade P_3·C_{26,3}=A_{26,3};\n- a hipótese decisiva sobre a ordem dos blocos, discutida com as duas leituras.\n\nO argumento de bijeção é rigoroso: como letras, algarismos e símbolos são conjuntos de teclas disjuntos, não há dupla contagem. Os problemas são todos menores: hipóteses implícitas não declaradas (contiguidade dos blocos, ausência de teclas extras, códigos com letras em outra ordem contados como iguais), o apoio nas alternativas para ler 'pares' como um único par e um rebate pouco direto à leitura de formato fixo. A resolução é clara, completa e publicável como gabarito comentado, com a ressalva de que o enunciado é ambíguo."
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "question": 25,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(D) O processo A é isobárico porque tem a maior inclinação nC, e Cp > Cv. Nele, W = p(V2 − V1) = nR(T2 − T1) > 0, valor que não depende da atomicidade do gás.",
+  "judge_reference": {
+    "final_answer": "Alternativa (D). A reta mais inclinada (A) é o processo isobárico e a tracejada (B) é o isovolumétrico, porque Cp > Cv. Na isobárica, o trabalho do gás é W = PΔV = nR(T2 − T1) > 0, qualquer que seja a atomicidade do gás. As demais alternativas são falsas: P3 > P2; parte do calor da isobárica vira trabalho; ΔU = nCvΔT só vale 3nRΔT/2 para gás monoatômico; e U2 = U3 porque T2 = T3.",
+    "pitfalls": [
+      "Identificar os processos pela inclinação. No gráfico Q × T, a inclinação de cada reta é a capacidade térmica n·C. A reta mais inclinada (A) tem o maior calor molar, ou seja, é a isobárica (Cp = Cv + R > Cv). A tracejada (B) é a isovolumétrica. Trocar os dois inverte as conclusões das alternativas (A) e (D).",
+      "Alternativa (A) invertida: a isobárica mantém P2 = P1. A isovolumétrica dá P3 = P1·T2/T1 > P1. Logo P3 > P2, e não o contrário. Também vale p·V = nRT com T igual nos estados 2 e 3, então p2·V2 = p3·V3 com V2 > V3.",
+      "Alternativa (B) só vale para o processo isovolumétrico (W = 0). Na isobárica, Q = ΔU + W com W = nRΔT > 0. Usar 'em ambos' torna a afirmação falsa.",
+      "Alternativa (C): ΔU = n·Cv·ΔT, e Cv = 3R/2 apenas para o gás monoatômico. Para diatômico, Cv = 5R/2; para poliatômico, Cv ≥ 3R. A expressão 3nRΔT/2 não vale 'independentemente' da atomicidade. A independência que existe é a de ΔU em relação ao processo, não ao tipo de gás.",
+      "Alternativa (E): a energia interna do gás ideal depende só de T, e T2 = T3, então U2 = U3. Estados com p e V diferentes não mudam isso.",
+      "Alternativa (D): o resultado W = PΔV = nR(T2 − T1) depende só da equação de estado e da pressão constante, não dos graus de liberdade. É positivo porque o gás é aquecido (T2 > T1) e se expande. É a relação de Mayer, Cp − Cv = R, que vale para qualquer gás ideal.",
+      "Checagem de consistência pelo gráfico: a distância vertical entre os pontos 2 e 3 é Q_A − Q_B = n(Cp − Cv)ΔT = nRΔT. Esse valor é exatamente o trabalho da isobárica, já que ΔU é o mesmo nos dois processos.",
+      "Hipótese implícita: o calor molar é constante, o que garante retas no gráfico Q × T e permite usar Q = nCΔT. Ela é razoável para gás ideal na faixa considerada."
+    ],
+    "reference_solution": "**Leitura do gráfico.** Conferi o enunciado na página 11/18 do PDF (página 4 do arquivo), Questão 25. A transcrição está correta.\n\nO gráfico é de Q em função de T. As duas retas partem do ponto (T1, 0) e terminam em T2 = T3. A reta A é contínua e mais inclinada; a reta B é tracejada e menos inclinada. Em T2 = T3, o ponto 2 fica acima do ponto 3, então Q_A > Q_B.\n\n**1) Qual processo é qual**\n\nNos dois processos, Q = n·C·(T − T1). Portanto a inclinação de cada reta vale n·C.\n- No processo isobárico, C = Cp.\n- No processo isovolumétrico, C = Cv.\n\nPela relação de Mayer, Cp = Cv + R > Cv para qualquer gás ideal. Assim:\n- A (mais inclinada) é o processo **isobárico**: Q_A = n·Cp·ΔT.\n- B (menos inclinada) é o processo **isovolumétrico**: Q_B = n·Cv·ΔT.\n\nAqui ΔT = T2 − T1 > 0.\n\n**2) Estados finais**\n\nPartimos do estado 1 com (p1, V1, T1).\n- Processo A (p constante): p2 = p1 e V2 = V1·T2/T1 > V1.\n- Processo B (V constante): V3 = V1 e p3 = p1·T2/T1 > p1.\n\n**3) Análise das alternativas**\n\n(A) **Falsa.** p2 = p1 < p3 = p1·T2/T1, isto é, a pressão no estado 3 é a maior. Outra forma de ver: como T2 = T3, vale p2·V2 = p3·V3, e V2 > V3 implica p2 < p3.\n\n(B) **Falsa.** Pela 1ª lei, Q = ΔU + W.\n- Na isovolumétrica, W = 0 e Q_B = ΔU: todo o calor vira energia interna.\n- Na isobárica, W = p1(V2 − V1) = nRΔT > 0, então Q_A = ΔU + nRΔT > ΔU. Só parte do calor vira energia interna.\n\n(C) **Falsa.** No processo B, ΔU = Q_B = n·Cv·ΔT. Os valores de Cv são:\n- 3R/2 para gás monoatômico;\n- 5R/2 para diatômico (sem vibração);\n- 3R ou mais para poliatômico.\n\nA expressão 3nR(T2 − T1)/2 só vale para gás monoatômico. Portanto não vale \"independentemente\" da atomicidade.\n\n(D) **Verdadeira.** No processo A (isobárico), W = p·ΔV = p1V2 − p1V1 = nRT2 − nRT1 = nR(T2 − T1).\n- O trabalho é positivo, pois T2 > T1 e o gás se expande.\n- O resultado vem só da equação de estado pV = nRT e de p ser constante. Por isso independe de o gás ser mono, di ou poliatômico.\n- Equivalentemente, W = Q_A − ΔU = n(Cp − Cv)ΔT = nRΔT.\n\n(E) **Falsa.** A energia interna de um gás ideal só depende de T (e de n). Como T2 = T3, temos U2 = U3. As diferenças de p e V entre os estados 2 e 3 não alteram U.\n\n**4) Conferências**\n- A distância vertical entre os pontos 2 e 3 no gráfico é Q_A − Q_B = n(Cp − Cv)ΔT = nRΔT, exatamente o trabalho da isobárica. Isso confirma que ΔU é o mesmo nos dois processos.\n- Conferi numericamente em python3 para gás mono, di e poliatômico: Q_A > Q_B, p2 < p3, W = nRΔT e Q_A − Q_B = W valem nos três casos. Já a razão ΔU_B / (3nRΔT/2) vale 1; 1,67; 2, ou seja, só é 1 no caso monoatômico.\n\n**Resposta: (D).**"
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(D) O processo A é isobárico porque tem a maior inclinação nC, e Cp > Cv. Nele, W = p(V2 − V1) = nR(T2 − T1) > 0, valor que não depende da atomicidade do gás.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Em (E), o candidato escreve U = nC_vT. Isso só vale se C_v for constante desde 0 K, o que não é verdade fisicamente para gases di e poliatômicos. Para o argumento basta saber que U depende apenas de n e T, ou que ΔU = nC_vΔT na faixa considerada. Correção: escrever U = U(n, T), ou U = nC_vT + cte."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (C), o caso poliatômico ficou em 'etc.', sem dizer que C_v ≥ 3R. O raciocínio continua correto, porque basta um contraexemplo (o diatômico) para derrubar o 'independentemente'. Mesmo assim, a alternativa cita os três tipos de gás, e um gabarito comentado deveria mostrar o valor para o poliatômico."
+          }
+        ],
+        "summary": "Conferi o enunciado e o gráfico na página 4 do PDF (Questão 25). A transcrição está fiel: a reta A, contínua, é a mais inclinada, e o ponto 2 fica acima do ponto 3 em T2 = T3.\n\nA resposta final do candidato é (D), a mesma da minha referência, e está correta.\n\n**Identificação dos processos.** A inclinação de cada reta no gráfico Q × T é nC. Como C_p = C_v + R > C_v (relação de Mayer), a reta A é a isobárica e a B é a isovolumétrica. O candidato declara a hipótese de calor molar constante, que é o que faz as curvas serem retas.\n\n**Estados finais.** p2 = p1 e V2 = V1·T2/T1; V3 = V1 e p3 = p1·T2/T1. Ambos estão corretos.\n\n**Alternativas.**\n- **(A)** O candidato refuta corretamente: p2 < p3.\n- **(B)** Mostra que só na isovolumétrica todo o calor vira energia interna (W = 0); na isobárica, W > 0.\n- **(C)** Mostra que ΔU = nC_vΔT e que 3nRΔT/2 só vale para gás monoatômico.\n- **(D)** Calcula W = p1(V2 − V1) = nRΔT > 0 e justifica que o resultado vem apenas da equação de estado, por isso independe da atomicidade. Confere o resultado pela relação de Mayer e pelas unidades.\n- **(E)** Refuta corretamente: U2 = U3, porque T2 = T3.\n\n**Armadilhas.** Todas as que identifiquei foram tratadas:\n- a identificação dos processos pela inclinação;\n- (A) invertida;\n- o \"em ambos\" de (B);\n- o \"independentemente\" de (C);\n- U depender só de T em (E);\n- a independência de (D) em relação aos graus de liberdade;\n- a checagem de que Q_A − Q_B é igual ao trabalho;\n- a hipótese de C constante.\n\n**Ressalvas.** Há só duas, ambas menores:\n- a expressão U = nC_vT é uma simplificação (bastaria dizer que U depende só de n e T);\n- o caso poliatômico ficou em \"etc.\", sem C_v ≥ 3R.\n\nA resolução é clara, rigorosa e completa, com qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

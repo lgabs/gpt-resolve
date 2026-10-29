@@ -1,0 +1,49 @@
+{
+  "question": 49,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(A) De 0 a t, A tem v < 0 (o espaço decresce) e |v| crescente (a < 0, mesmo sinal de v). Logo, o movimento de A é acelerado e retrógrado. B é progressivo e acelerado, e C (a = 0) não é necessariamente progressivo.",
+  "judge_reference": {
+    "reference_solution": "Conferi a figura no PDF original e ela confere com a transcrição.\n\n**Critérios de classificação**\n- Progressivo: v > 0. Retrógrado: v < 0. O sinal de v é a inclinação do gráfico s × t.\n- Acelerado: |v| aumenta, ou seja, a e v têm o mesmo sinal (a·v > 0).\n- Retardado: |v| diminui, ou seja, a e v têm sinais opostos (a·v < 0).\n- Uniforme: a = 0 e v constante, diferente de zero.\n\nO que conta é o sinal do produto a·v. O sinal de a, sozinho, não diz se o movimento é acelerado.\n\n**Partícula A (gráfico s × t, parábola com concavidade para baixo e vértice em t < 0)**\n- Entre 0 e t, o espaço é positivo e decresce. A inclinação da curva é negativa, então v < 0 e o movimento é retrógrado.\n- O vértice, onde v = 0, fica em tempo negativo. Por isso v já é negativo em t = 0 e continua negativo em todo o intervalo.\n- A concavidade para baixo indica a < 0 e constante (MUV).\n- Como a < 0 e v < 0, temos a·v > 0 e o movimento é acelerado. O gráfico mostra o mesmo: a curva fica cada vez mais inclinada, então |v| cresce.\n- Exemplo numérico: s(τ) = 4 − (τ+1)², com o vértice em τ = −1, s(0) = 3 e s(1) = 0. Nele, v = −2(τ+1) vai de −2 a −4 e a = −2, sempre com a·v > 0.\n- Conclusão: A é acelerado e retrógrado. A alternativa (a) é verdadeira.\n\n**Partícula B (gráfico v × t, reta crescente pela origem)**\n- Entre 0 e t, a velocidade é positiva (v = 0 só no instante 0), então o movimento é progressivo.\n- A inclinação da reta é positiva e constante, então a > 0. Com v > 0, temos a·v > 0 e |v| aumenta: o movimento é acelerado.\n- Conclusão: B é progressivo e acelerado.\n- (b) é falsa: B não é retrógrado. O trecho tracejado com v < 0 está fora do intervalo pedido.\n- (c) é falsa: B não é retardado.\n\n**Partícula C (gráfico a × t, a = 0 entre 0 e t)**\n- Aceleração nula significa apenas que a velocidade é constante.\n- O gráfico não informa nem o valor nem o sinal dessa velocidade. A partícula pode estar em MRU progressivo (v > 0), em MRU retrógrado (v < 0) ou em repouso (v = 0). No repouso, o movimento nem chega a ser \"uniforme e progressivo\".\n- Logo, \"necessariamente progressivo\" é falso, e \"necessariamente uniforme\" também é discutível por causa do caso de repouso.\n- (d) é falsa.\n\n**Resposta: alternativa (a).**",
+    "final_answer": "Alternativa (a): entre 0 e t, A é acelerado e retrógrado. A velocidade é negativa porque o espaço decresce, a aceleração é negativa porque a concavidade é para baixo, e como a·v > 0 o módulo de v cresce. B é progressivo e acelerado, então (b) e (c) são falsas. C tem a = 0, mas o sinal da velocidade é desconhecido (e ela pode até ser nula), então (d) é falsa.",
+    "pitfalls": [
+      "Confundir 'acelerado' com 'a > 0'. Em A, a < 0 e mesmo assim o movimento é acelerado, porque v também é negativo. O critério correto é o sinal de a·v, ou seja, se |v| aumenta.",
+      "Achar que A é retardado porque o espaço diminui ou porque a concavidade é para baixo. Espaço decrescente indica retrógrado, não retardado.",
+      "Interpretar o espaço chegar a zero em t como a partícula parando. s = 0 é só a passagem pela origem das posições; v = 0 ocorre no vértice da parábola, que fica em tempo negativo.",
+      "Usar os trechos tracejados (tempos negativos) para classificar o movimento. A pergunta é só sobre o intervalo de 0 a t. Em B, a parte tracejada com v < 0 pode levar a marcar 'retrógrado' por engano.",
+      "Em A, conferir que o vértice (v = 0) fica antes de t = 0, o que garante v < 0 em todo o intervalo.",
+      "Em B, ler o gráfico v × t como se fosse s × t. A reta crescente é de velocidade: v > 0 e crescendo, portanto progressivo e acelerado, não MRU.",
+      "Em C, a = 0 não determina o sinal de v. O movimento pode ser progressivo, retrógrado ou repouso, o que derruba a palavra 'necessariamente' na alternativa (d). O caso v = 0 (repouso) também enfraquece o 'necessariamente uniforme'.",
+      "Uma boa resolução precisa justificar por que cada alternativa errada é falsa, e não só apontar a (a)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(A) De 0 a t, A tem v < 0 (o espaço decresce) e |v| crescente (a < 0, mesmo sinal de v). Logo, o movimento de A é acelerado e retrógrado. B é progressivo e acelerado, e C (a = 0) não é necessariamente progressivo.",
+      "review": {
+        "agrees_with_reference": true,
+        "answer_correct": true,
+        "score": 9.5,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução define 'uniforme' apenas como a = 0 (|v| constante), sem exigir v ≠ 0. Pela convenção usual, repouso não é movimento uniforme. Em C, o caso v0 = 0 aparece como 'repouso' sem dizer que ele também enfraquece o 'necessariamente uniforme' da alternativa (d). A conclusão de que (d) é falsa não muda, porque o 'necessariamente progressivo' já basta para derrubá-la. Sugestão: definir uniforme como v constante e diferente de zero e registrar que, no repouso, a alternativa falha também na parte 'uniforme'."
+          },
+          {
+            "severity": "minor",
+            "description": "Em A, a resolução supõe que a curva é exatamente uma parábola (MUV) ao escrever v = a(τ − τ_V). O enunciado não garante isso. O argumento fica mais robusto usando só a concavidade: s'' < 0 implica v decrescente, e v(τ_V) = 0 com τ_V < 0 implica v < 0 em [0, t]. A conclusão não muda."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não comenta os trechos tracejados (tempos negativos) nem a armadilha de ler s = 0 em t como parada. As duas armadilhas ficam resolvidas implicitamente: a análise restringe 0 < τ ≤ t e põe o vértice em τ_V < 0. Uma frase explícita deixaria o gabarito comentado mais didático."
+          }
+        ],
+        "summary": "Nota 9,5. O candidato marcou (a), a mesma resposta da minha referência, e ela está correta. Conferi a figura no PDF original: o vértice da parábola de A fica em tempo negativo, a reta de B passa pela origem e C tem a = 0 entre 0 e t.\n\n**A:** usa o critério certo, o sinal de a·v. Mostra que v = a(τ − τ_V) < 0 porque τ_V < 0 e a < 0, o que dá movimento retrógrado. Como a·v > 0, o movimento é acelerado. Também confirma pelo gráfico, que fica cada vez mais inclinado. Com isso evita a armadilha de confundir 'acelerado' com 'a > 0' e a de achar que A é retardado porque o espaço diminui.\n\n**B:** mostra que é progressivo e acelerado e refuta (b) e (c) explicitamente. Trata corretamente o repouso instantâneo em τ = 0.\n\n**C:** lista os casos v0 > 0, v0 < 0 e v0 = 0 e derruba o 'necessariamente' da alternativa (d).\n\nCada alternativa errada recebe justificativa, e o texto é claro e organizado. Os problemas são todos menores:\n- A definição de 'uniforme' não exige v ≠ 0, e o repouso não foi usado contra o 'necessariamente uniforme'.\n- Em A, a resolução depende da forma exata de parábola, quando a concavidade bastaria.\n- Não há menção explícita aos trechos tracejados nem a que s = 0 em t não significa parada.\n\nDo jeito que está, a resolução serve como gabarito comentado."
+      }
+    }
+  ]
+}

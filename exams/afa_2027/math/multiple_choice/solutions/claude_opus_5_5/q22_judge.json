@@ -1,0 +1,49 @@
+{
+  "question": 22,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(B) todas as afirmativas são verdadeiras. As raízes são 2, −1, 5i e −5i. (I) Os argumentos 0, π/2, π e 3π/2 formam uma PA. (II) O triângulo de vértices −1, 5i e −5i tem área 5, que divide 5. (III) A soma dos produtos dois a dois é 69/3 = 23, que é primo.",
+  "judge_reference": {
+    "reference_solution": "**1) Raízes de P(x).** Conferi o enunciado com o PDF (p. 9 da prova) e a transcrição está correta.\n\nP(x) = 3x⁴ − 3x³ + 69x² − 75x − 150 = 3(x⁴ − x³ + 23x² − 25x − 50).\n\nPrimeiro procuramos raízes racionais, que são divisores de 50:\n- Q(2) = 16 − 8 + 92 − 50 − 50 = 0, então 2 é raiz.\n- Q(−1) = 1 + 1 + 23 + 25 − 50 = 0, então −1 é raiz.\n\nLogo (x − 2)(x + 1) = x² − x − 2 divide Q. Fazendo a divisão:\nx⁴ − x³ + 23x² − 25x − 50 = (x² − x − 2)(x² + 25).\nPara conferir, basta expandir: x⁴ − x³ + (−2 + 25)x² − 25x − 50.\n\nEntão P(x) = 3(x − 2)(x + 1)(x − 5i)(x + 5i). As raízes são 2, −1, 5i e −5i, e os afixos são (2, 0), (−1, 0), (0, 5) e (0, −5). Também conferi numericamente que P se anula nos quatro pontos.\n\n**(I) Argumentos principais.**\n- arg(2) = 0\n- arg(5i) = π/2\n- arg(−1) = π\n- arg(−5i) = 3π/2, na convenção usual no Brasil, θ ∈ [0, 2π[\n\nNa ordem 0, π/2, π, 3π/2 eles formam uma PA de razão π/2. Na convenção ]−π, π], arg(−5i) = −π/2, e a sequência −π/2, 0, π/2, π continua sendo PA de razão π/2. Portanto (I) é **VERDADEIRA** em qualquer das duas convenções.\n\n**(II) Polígonos com vértices nos afixos.**\n- **Quadrilátero:** os quatro pontos estão em posição convexa. O único quadrilátero simples é o de ordem 2, 5i, −1, −5i. Suas diagonais estão sobre os eixos, são perpendiculares e medem 3 e 10, então a área é 3·10/2 = 15. Como 15 não divide 5, o quadrilátero não serve.\n- **Triângulos:**\n  - (2, −1, 5i): base 3, altura 5, área 7,5\n  - (2, −1, −5i): área 7,5\n  - (2, 5i, −5i): base 10, altura 2, área 10\n  - (−1, 5i, −5i): base 10 sobre o eixo imaginário, altura |−1| = 1, área **5**\n\nOs divisores positivos de 5 são 1 e 5. O triângulo de vértices −1, 5i e −5i tem área 5, e 5 divide 5. Logo existe um polígono com a propriedade, e (II) é **VERDADEIRA**. O enunciado diz \"há um polígono\", não \"o quadrilátero\", e por isso os triângulos contam. Conferi todas as áreas pela fórmula do cadarço (shoelace).\n\n**(III) Soma dos produtos dois a dois.**\nPor Girard, σ₂ = c/a = 69/3 = 23.\nPara conferir com as raízes: 2(−1) + 2(5i) + 2(−5i) + (−1)(5i) + (−1)(−5i) + (5i)(−5i) = −2 + 0 + 0 + 25 = 23.\n23 é primo, então (III) é **VERDADEIRA**.\n\n**Conclusão:** as três afirmativas são verdadeiras, e a resposta é a **alternativa b**.",
+    "final_answer": "As raízes são 2, −1, 5i e −5i.\n- **(I) Verdadeira:** os argumentos principais 0, π/2, π e 3π/2 formam uma PA de razão π/2. Na convenção ]−π, π], a sequência −π/2, 0, π/2, π também é PA.\n- **(II) Verdadeira:** o triângulo de vértices −1, 5i e −5i tem área 5, que é divisor de 5. O quadrilátero tem área 15, que não serve.\n- **(III) Verdadeira:** σ₂ = 69/3 = 23, que é primo.\n\nTodas as afirmativas são verdadeiras: **alternativa b**.",
+    "pitfalls": [
+      "Esquecer de tirar o fator 3 em comum. Em Girard, σ₂ = c/a = 69/3 = 23, e não 69, que é composto (3·23). Quem usa 69 conclui erradamente que (III) é falsa.",
+      "Fatorar P errado: as raízes racionais 2 e −1 aparecem testando divisores de 50 (ou de 150/3). O fator restante é x² + 25, com raízes ±5i (e não ±5 nem ±√25 reais). É bom conferir a fatoração expandindo.",
+      "Em (II), olhar só o quadrilátero formado pelos quatro afixos (área 15, que não divide 5) e marcar (II) como falsa. O enunciado diz 'há um polígono', então os triângulos contam, e o triângulo (−1, 5i, −5i) tem área 5. Uma boa resolução precisa examinar os subconjuntos de 3 vértices.",
+      "Confundir 'divisor de 5' com 'múltiplo de 5': 15 é múltiplo de 5, mas não é divisor. Os divisores positivos de 5 são só 1 e 5.",
+      "Calcular a área do quadrilátero com vértices na ordem errada (polígono entrelaçado) ou usar a fórmula do losango sem verificar. As diagonais estão sobre os eixos e são perpendiculares (3 e 10), então a área é 15. Isso vale para o deltoide, mesmo que ele não seja losango.",
+      "Convenção do argumento principal: em [0, 2π[ temos arg(−5i) = 3π/2; em ]−π, π] temos −π/2. Nos dois casos os quatro argumentos formam PA de razão π/2, mas a resolução deve observar que é preciso reordenar ('em alguma ordem').",
+      "Atribuir à raiz real negativa −1 argumento 0, ou argumento −π na convenção ]−π, π], cujo intervalo é aberto em −π. O argumento principal correto de −1 é π.",
+      "Concluir 'apenas duas verdadeiras' (alternativa d) por causa de um dos erros acima em (II) ou (III). A resposta correta é b."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(B) todas as afirmativas são verdadeiras. As raízes são 2, −1, 5i e −5i. (I) Os argumentos 0, π/2, π e 3π/2 formam uma PA. (II) O triângulo de vértices −1, 5i e −5i tem área 5, que divide 5. (III) A soma dos produtos dois a dois é 69/3 = 23, que é primo.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Em (II), o candidato não diz explicitamente que os divisores positivos de 5 são só 1 e 5. Isso deixaria evidente por que 15 (múltiplo de 5), 10 e 7,5 não servem. A conclusão está certa, mas faltou uma linha de justificativa."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (II), o candidato chama o quadrilátero de 'o quadrilátero convexo' sem justificar que os quatro afixos estão em posição convexa. Também não diz que a única ordem simples é 2, 5i, −1, −5i. Bastaria observar que cada eixo separa os outros dois pontos, o que deixa as diagonais sobre os eixos. Como a área do quadrilátero só aparece para comparação, o problema é pequeno."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (I), o candidato escreve 'Nessa ordem' sem dizer que a ordem que forma a PA (2, 5i, −1, −5i) é diferente da ordem em que as raízes foram listadas (2, −1, 5i, −5i), e o enunciado pede justamente 'em alguma ordem'. A mudança fica implícita na ordenação dos argumentos, mas convinha deixá-la explícita."
+          }
+        ],
+        "summary": "Conferi a transcrição com o PDF (questão 22, folha numerada 9, página 3 do arquivo) e ela está fiel. A resposta final do candidato coincide com a minha referência: alternativa (b), todas as afirmativas verdadeiras. Refiz as contas em Python:\n- P se anula em 2, −1, 5i e −5i.\n- Pela fórmula do cadarço, os triângulos têm áreas 7,5, 7,5, 10 e 5. O quadrilátero tem área 15.\n- σ₂ = 69/3 = 23.\n\nAvaliação por item:\n- **Fatoração:** feita pelo teorema das raízes racionais, com divisão e verificação por expansão. Está correta.\n- **(I):** o candidato trata as duas convenções de argumento principal, [0, 2π[ e ]−π, π]. Nas duas os argumentos formam PA de razão π/2. Ele atribui corretamente arg(−1) = π.\n- **(II):** ele percebe que basta existir um polígono e exibe o triângulo (−1, 5i, −5i), de área 5. Também lista as demais áreas (15, 7,5 e 10) e com isso evita a armadilha de olhar só o quadrilátero.\n- **(III):** usa Girard dividindo pelo coeficiente líder, o que evita o erro de tomar 69 por σ₂. Confere o valor 23 pela soma explícita dos produtos dois a dois.\n\nTodas as armadilhas que listei foram evitadas. Restam três detalhes de redação, todos menores:\n- não diz explicitamente que os divisores de 5 são só 1 e 5;\n- não justifica que o quadrilátero é convexo;\n- não deixa explícita a reordenação das raízes em (I).\n\nA resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}
