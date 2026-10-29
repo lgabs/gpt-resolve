@@ -1,0 +1,75 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Identificação das etapas.} Para o gás ideal ($n=1$), $PV=RT$ e a energia interna depende só de $T$ (lei de Joule): $U=U(T)$.
+\begin{itemize}
+\item I (lenta, isotérmica): quase-estática, $P_{\text{ext}}=P=RT_1/V$; percorre a isoterma $T_1$ de $V_1$ até $V_2<V_1$.
+\item II (rápida, $Q=0$): compressão adiabática; o trabalho recebido aquece o gás, logo $T_3>T_1$.
+\item III (lenta, isotérmica): expansão sobre a isoterma $T_3$, de $V_3$ até $V_4>V_3$.
+\item IV (rápida, $Q=0$): expansão adiabática; o gás esfria de $T_3$ de volta a $T_1$.
+\end{itemize}
+O processo é, portanto, um \emph{ciclo de Carnot} (duas isotermas e duas adiabáticas).
+
+\textbf{a)} Na isoterma, $P=RT/V$ (hipérbole); na adiabática reversível, $PV^{\gamma}=\text{cte}$ ($\gamma>1$), curva mais íngreme. Como $T_3>T_1$, a isoterma $T_3$ fica acima da isoterma $T_1$ e o ciclo é percorrido no sentido \emph{horário}:
+
+\begin{center}
+\begin{tikzpicture}[x=1.3cm,y=3.2cm,>=stealth]
+\draw[->] (0,0) -- (6.9,0) node[below] {$V$};
+\draw[->] (0,0) -- (0,1.65) node[left] {$P$};
+% isotermas completas (finas, tracejadas)
+\draw[gray,dashed,domain=0.75:6.3,samples=60] plot (\x,{1/\x}) node[below right] {$T_1$};
+\draw[gray,dashed,domain=1.0:6.3,samples=60] plot (\x,{1.5/\x}) node[above right] {$T_3$};
+% Etapa I: isoterma T1, de V1=5 a V2=2
+\draw[very thick,->,domain=5:3.3,samples=40] plot (\x,{1/\x});
+\draw[very thick,domain=3.3:2,samples=40] plot (\x,{1/\x});
+% Etapa II: adiabatica de V2=2 a V3=1,0887
+\draw[very thick,->,domain=2:1.45,samples=40] plot (\x,{0.5*(2/\x)^(5/3)});
+\draw[very thick,domain=1.45:1.0887,samples=40] plot (\x,{0.5*(2/\x)^(5/3)});
+% Etapa III: isoterma T3, de V3 a V4=2,7217
+\draw[very thick,->,domain=1.0887:1.9,samples=40] plot (\x,{1.5/\x});
+\draw[very thick,domain=1.9:2.7217,samples=40] plot (\x,{1.5/\x});
+% Etapa IV: adiabatica de V4 a V1=5
+\draw[very thick,->,domain=2.7217:3.9,samples=40] plot (\x,{0.2*(5/\x)^(5/3)});
+\draw[very thick,domain=3.9:5,samples=40] plot (\x,{0.2*(5/\x)^(5/3)});
+% estados
+\fill (5,0.2) circle (1.6pt) node[below] {$1\,(P_1,V_1,T_1)$};
+\fill (2,0.5) circle (1.6pt) node[below left] {$2\,(P_2,V_2,T_1)$};
+\fill (1.0887,1.3778) circle (1.6pt) node[above right] {$3\,(P_3,V_3,T_3)$};
+\fill (2.7217,0.5511) circle (1.6pt) node[above right] {$4\,(P_4,V_4,T_3)$};
+% nomes das etapas
+\node at (3.6,0.2) {I};
+\node[left] at (1.31,1.0) {II};
+\node at (1.95,0.92) {III};
+\node at (3.85,0.47) {IV};
+\end{tikzpicture}
+\end{center}
+I e III: isotermas ($T_1<T_3$); II e IV: adiabáticas. (Se as etapas rápidas forem irreversíveis, só os estados extremos $2,3$ e $4,1$ são estados de equilíbrio e as curvas II e IV são apenas indicativas; isso não altera o item b.)
+
+\textbf{b)} Convenção: $W$ é o trabalho realizado \emph{pelo} gás, e a 1ª lei fica $\Delta U=Q-W$.
+
+Nas etapas adiabáticas, $Q_2=Q_4=0\Rightarrow W=-\Delta U$, o que vale mesmo para processo irreversível, pois $U$ é função de estado:
+\[
+W_2=-[U(T_3)-U(T_1)],\qquad W_4=-[U(T_1)-U(T_3)]=+[U(T_3)-U(T_1)].
+\]
+Como o gás ideal tem $U=U(T)$ e as duas adiabáticas ligam as \emph{mesmas} temperaturas $T_1$ e $T_3$, em sentidos opostos,
+\[
+W_2+W_4=0 \qquad\left(\text{com } C_V \text{ constante: } W_2=-C_V(T_3-T_1)=-W_4\right).
+\]
+Portanto
+\[
+W_{\text{tot}}=W_1+W_2+W_3+W_4=W_1+W_3 .
+\]
+\emph{Conferência por outra via:} no ciclo, $\Delta U_{\text{ciclo}}=0\Rightarrow W_{\text{tot}}=Q_{\text{tot}}=Q_1+Q_3$; nas isotermas do gás ideal, $\Delta U=0\Rightarrow Q_1=W_1$ e $Q_3=W_3$. O resultado é o mesmo.
+
+\emph{Explicitando} (isotermas reversíveis):
+\[
+W_1=\int_{V_1}^{V_2}\frac{RT_1}{V}\,dV=RT_1\ln\frac{V_2}{V_1}<0,\qquad W_3=RT_3\ln\frac{V_4}{V_3}>0 .
+\]
+Se II e IV forem adiabáticas reversíveis, $T_1V_2^{\gamma-1}=T_3V_3^{\gamma-1}$ e $T_3V_4^{\gamma-1}=T_1V_1^{\gamma-1}$; multiplicando membro a membro, $(V_2V_4)^{\gamma-1}=(V_3V_1)^{\gamma-1}$, isto é, $V_4/V_3=V_1/V_2$, e então
+\[
+W_{\text{tot}}=R\,(T_3-T_1)\ln\frac{V_1}{V_2}>0,
+\]
+coerente com o ciclo horário: o gás realiza trabalho líquido igual à área interna do ciclo (unidade: J). Caso limite: $T_3=T_1\Rightarrow W_{\text{tot}}=0$. Na convenção oposta ($W$ realizado sobre o gás), todos os sinais se invertem, mas $W_2+W_4=0$ continua valendo.
+
+ANSWER: a) Ciclo de Carnot percorrido no sentido horário no diagrama $P\times V$: I = compressão isotérmica em $T_1$ ($1\to2$); II = compressão adiabática ($2\to3$, de $T_1$ a $T_3>T_1$); III = expansão isotérmica em $T_3$ ($3\to4$); IV = expansão adiabática ($4\to1$). b) Nas adiabáticas, $Q=0\Rightarrow W=-\Delta U$ e, como a $U$ do gás ideal só depende de $T$, $W_2=-[U(T_3)-U(T_1)]=-W_4$; logo $W_2+W_4=0$ e $W_{\text{tot}}=W_1+W_3=RT_1\ln(V_2/V_1)+RT_3\ln(V_4/V_3)$; com adiabáticas reversíveis, $W_{\text{tot}}=R(T_3-T_1)\ln(V_1/V_2)>0$.

@@ -1,6 +1,6 @@
 # IME 2027 (2nd phase)
 
-The IME 2027 2nd phase took place on October 26 (Math) and October 27, 2026 (Physics). This is the first exam solved with the Claude Agent SDK pipeline (v0.5).
+The IME 2027 2nd phase took place on October 26 (Math), October 27 (Physics) and October 28, 2026 (Chemistry). This is the first exam solved with the Claude Agent SDK pipeline (v0.5).
 
 ## Physics essay
 
@@ -92,3 +92,42 @@ Graded with `gpt-resolve grade` against the [Poliedro Resolve](https://poliedror
 - **Q5:** the official statement prints x2 + x4 + x6 + x8 = 5540, which has no rational answer; Poliedro assumes a typo (5440 → 10912) and suggests annulling the question. Our solution gives both the literal answer (≈ 11196.5) and the 5440 one, so it holds whatever the board decides.
 - **Q7:** the final result matches, but the grader found a false step in Poliedro's proof ("1013 does not divide 1025!·1001!"; it does divide 1025!). The correct argument counts the multiplicity of 1013, as our solution does.
 - Q3 and Q10: Poliedro skips justifications (x ∈ ℤ+, rectangular base) that our solutions include.
+
+## Chemistry essay
+
+| Exam | Phase | Section   | Type  | Solver            | Judge             | Status   | Judge scores | PDF Compiled |
+| ---- | ----- | --------- | ----- | ----------------- | ----------------- | -------- | ------------ | ------------ |
+| IME  | 2nd   | Chemistry | Essay | `claude-opus-5-5` | `claude-opus-5-5` | ✅ Solved | 9.0 – 9.5    | [PDF](chemistry/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) |
+
+Same parameters as the math run (`--effort xhigh`, `--pass-score 9`, `--max-rounds 3`, `--concurrency 10`). The whole exam (extraction + 10 questions) took 5.2 minutes in a cloud container, and all 10 questions were approved by the judge in the first round, with no critical or major issue.
+
+```bash
+gpt-resolve resolve -p exams/ime_2027/chemistry/essays/exam.pdf -t "IME 2027 - Química" \
+  -o exams/ime_2027/chemistry/essays/solutions/claude_opus_5_5 --concurrency 10
+```
+
+The exam PDF ([exam.pdf](chemistry/essays/exam.pdf)) is the official `QUÍMICA_-_DISCURSIVA.pdf` from the same IME page (direct link: `https://inscricoes.ime.eb.br/documentos/QU%C3%8DMICA_-_DISCURSIVA.pdf`, SHA-256 `08c7fcba…c8c266`).
+
+| Question | Judge score | Final answer (summary) |
+| -------- | ----------- | ---------------------- |
+| 1  | 9.5 | MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O; Cl₂ + 2NaBr → 2NaCl + Br₂; m(MnO₂) ≈ 0.870 g |
+| 2  | 9.5 | a) Carnot cycle, clockwise; b) W2 = −W4 since U = U(T), so Wtot = W1 + W3 |
+| 3  | 9.3 | a) order 2 in SO₂, 0 in O₃; b) v = k[SO₂]²; c) k = 1.888 L·mol⁻¹·s⁻¹; d) Ea = 594R ≈ 4.93 kJ/mol |
+| 4  | 9.5 | a) two hydrogen bonds; b) 8-membered cyclic dimer; c) Kc = 16.4/C₀ (16.4 L/mol assuming C₀ = 1 mol/L); d) 5.11 °C |
+| 5  | 9.5 | Δn_gas = +3 ⇒ n-heptane |
+| 6  | 9.5 | a) Fischer esterification 1:1:1:1; b) α = 0.40; c) Kc = 8/3 |
+| 7  | 9.0 | a) α = 1, β = 2, γ = −1 (flags the printed v₀ of exp. 4 as a typo, 10⁻⁶ → 10⁻³); b) k = 1.25×10⁻² L·mol⁻¹·s⁻¹; c) v = k[A][B]²/[C]; d) order 2 |
+| 8  | 9.0 | a) meso-3,4-dimethylhexane (3R,4S); b) X = 2-chlorobutane |
+| 9  | 9.0 | M = 106 g/mol ⇒ p-xylene |
+| 10 | 9.5 | t = t½·ln(1.024)/ln 2 ≈ 4.9×10⁸ years |
+
+### Comparison with the Poliedro answer key
+
+Graded with `gpt-resolve grade` against the [Poliedro Resolve](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-3-28-10-2026-2-fase-dia-3/dissertativa-1-quimica-2-fase-dia-3-ime-2027) solutions (10 grader agents in parallel, 1.1 min). The answer key was only given to the grader, after the solutions were done. Full report: [PDF](chemistry/essays/solutions/claude_opus_5_5/grade_report.pdf) ([LaTeX](chemistry/essays/solutions/claude_opus_5_5/grade_report.tex), [Markdown](chemistry/essays/solutions/claude_opus_5_5/grade_report.md)).
+
+**Final score: 100% (25 of 25 items match the key).** Notes:
+
+- **Q7:** the official statement prints v₀ = 1.28×10⁻⁶ in experiment 4, which gives non-integer, meaningless exponents. Poliedro assumes 1.28×10⁻³ and suggests annulling the question. Our solution found the same typo on its own (1.28×10⁻³ / 1.25×10⁻⁶ = 2¹⁰) and reached the same answers.
+- **Q4c:** the statement gives no volume or concentration, so Kc has no single value. Poliedro answers Kc = 16.4·V; ours gives the same expression and a numeric value under a stated assumption (C₀ = 1 mol/L). Graded as equivalent; whether the board accepts the numeric value is an open point.
+- Q2 and Q10 differ only in sign convention (work by vs. on the gas) and rounding (4.9 vs. 4.88×10⁸ years).
+
