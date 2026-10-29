@@ -10,7 +10,7 @@ EXTRACT_PROMPT = """A prova está em: {sources}
 Liste todas as questões da prova. Para cada questão informe:
 - number: o número da questão como aparece na prova;
 - pages: as páginas do PDF (contando a partir de 1) onde estão o enunciado e as figuras dela (vazio se a prova for em imagens);
-- statement: a transcrição fiel do enunciado, com fórmulas em LaTeX e uma descrição das figuras.
+- statement: a transcrição fiel do enunciado (com todas as alternativas, se for de múltipla escolha), com fórmulas em LaTeX e uma descrição das figuras.
 
 Em `instructions`, transcreva as instruções gerais, notações e constantes da prova que valem para todas as questões (ou deixe vazio)."""
 
@@ -58,6 +58,7 @@ Requisitos da resolução:
 - Dentro de fórmulas use apenas comandos LaTeX, nunca caracteres Unicode como ω, −, ≈ ou ² (acentos do português no texto podem).
 - Use vírgula como separador decimal e não use ponto para milhar.
 - Termine com uma linha 'ANSWER:' seguida do resultado final.
+- Se a questão for de múltipla escolha, diga por que a alternativa escolhida é a correta e termine com a letra dela (ex.: 'ANSWER: (C) 12 m/s').
 {revision}
 Devolva `solution_latex` (a seção LaTeX completa) e `final_answer` (resumo curto da resposta)."""
 
@@ -98,7 +99,7 @@ Instruções gerais da prova:
 Transcrição do enunciado (confira com o original, que prevalece):
 {statement}
 
-Devolva `reference_solution` (sua resolução completa, item por item), `final_answer` (resumo das respostas finais) e `pitfalls` (as armadilhas e pontos que uma boa resolução precisa tratar)."""
+Devolva `reference_solution` (sua resolução completa, item por item), `final_answer` (resumo das respostas finais; em múltipla escolha, inclua a letra da alternativa) e `pitfalls` (as armadilhas e pontos que uma boa resolução precisa tratar)."""
 
 BLIND_SCHEMA = {
     "type": "object",

@@ -68,6 +68,8 @@ class Settings:
     concurrency: int = 4
     show_tools: bool = True
     retries: int = 2
+    # Sum of the agents' reported cost (API prices; with a subscription it counts against usage limits instead)
+    spent_usd: float = 0.0
 
 
 async def run_agent(
@@ -79,7 +81,8 @@ async def run_agent(
         log(f"[{label}] iniciando" + (f" (tentativa {attempt + 1})" if attempt else ""))
         try:
             result = await provider.run(on_event=on_event, **kwargs)
-            log(f"[{label}] concluído em {result.duration_s / 60:.1f} min")
+            settings.spent_usd += result.cost_usd
+            log(f"[{label}] concluído em {result.duration_s / 60:.1f} min (US$ {result.cost_usd:.2f})")
             return result
         except Exception as e:
             log(f"[{label}] erro: {type(e).__name__}: {str(e)[:200]}")
@@ -300,5 +303,5 @@ async def resolve_exam_async(
     for r in results:
         status = "aprovada" if r.approved else "NÃO aprovada"
         log(f"Q{r.number}: nota {r.best.score:g} ({status}, {len(r.attempts)} rodada(s))")
-    log(f"Concluído em {(time.perf_counter() - start) / 60:.1f} min. Saída: {output_dir}")
+    log(f"Concluído em {(time.perf_counter() - start) / 60:.1f} min. Custo estimado: US$ {settings.spent_usd:.2f}. Saída: {output_dir}")
     return results
