@@ -1,0 +1,65 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} (i) O soluto é não eletrólito (fator de van't Hoff $i=1$), e a solução é diluída, de modo que vale a lei de van't Hoff, $\Pi=[\text{soluto}]\,RT$. (ii) A compressão é reversível (quase estática): em cada posição do êmbolo há equilíbrio através da membrana. Assim, a sobrepressão aplicada é igual à pressão osmótica da solução naquele instante, $\pi=\Pi$. (iii) O volume da solução é igual ao volume do compartimento, $V=A\,h$, desprezando-se o volume do sólido que eventualmente precipite e as diferenças de pressão hidrostática.
+
+\textbf{Volume em função do deslocamento.} Com $A=1\ \text{dm}^2$ e altura inicial $h_0=10\ \text{dm}$, temos $V_0=10\ \text{dm}^3=10\ \text{L}$. Para um deslocamento $x$ (em dm), a altura passa a ser $10-x$:
+\[
+V(x)=(10-x)\ \text{L}.
+\]
+Só o solvente atravessa a membrana; portanto, enquanto não houver precipitação, a quantidade de soluto dissolvido permanece $n=0{,}2\ \text{mol}$.
+
+\textbf{Limite de solubilidade.}
+\[
+c_{\text{sat}}=\frac{4\ \text{g}\cdot\text{L}^{-1}}{80\ \text{g}\cdot\text{mol}^{-1}}=0{,}05\ \text{mol}\cdot\text{L}^{-1}
+\quad\Rightarrow\quad
+V_{\text{sat}}=\frac{0{,}2}{0{,}05}=4\ \text{L}\ \Rightarrow\ x_{\text{sat}}=10-4=6\ \text{dm}.
+\]
+Como verificação, a massa de soluto é $0{,}2\cdot 80=16\ \text{g}$, e $16\ \text{g}/4\ \text{g}\cdot\text{L}^{-1}=4\ \text{L}$.
+
+\textbf{Trecho 1: $0\le x\le 6\ \text{dm}$ (solução insaturada).} Temos $RT=0{,}0821\cdot 305=25{,}04\ \text{atm}\cdot\text{L}\cdot\text{mol}^{-1}$ e $nRT=0{,}2\cdot 25{,}04=5{,}008\ \text{atm}\cdot\text{L}$. Logo
+\[
+\pi(x)=\frac{n}{V}\,RT=\frac{5{,}008}{10-x}\ \text{atm}\qquad(\pi V=\text{constante: ramo de hipérbole}).
+\]
+\begin{center}
+\begin{tabular}{c|ccccccc}
+$x$ (dm) & 0 & 1 & 2 & 3 & 4 & 5 & 6\\ \hline
+$V$ (L) & 10 & 9 & 8 & 7 & 6 & 5 & 4\\
+$\pi$ (atm) & 0{,}50 & 0{,}56 & 0{,}63 & 0{,}72 & 0{,}83 & 1{,}00 & 1{,}25
+\end{tabular}
+\end{center}
+Em particular, $\pi(0)=0{,}02\cdot 25{,}04\approx 0{,}50\ \text{atm}$ e $\pi(6)=0{,}05\cdot 25{,}04\approx 1{,}25\ \text{atm}$.
+
+\textbf{Trecho 2: $6\le x\le 9\ \text{dm}$ (solução saturada).} Se o êmbolo continua a descer, o solvente que sai faz o excesso de soluto precipitar. A concentração do soluto dissolvido fica fixa em $c_{\text{sat}}$, de modo que
+\[
+\pi=c_{\text{sat}}RT=0{,}05\cdot 25{,}04\approx 1{,}25\ \text{atm}\quad(\text{constante}).
+\]
+Em $x=9\ \text{dm}$ ($V=1\ \text{L}$), restam $0{,}05\ \text{mol}$ dissolvidos e $0{,}15\ \text{mol}$ ($12\ \text{g}$) precipitados.
+
+\textbf{Gráfico.}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=10cm, height=6.5cm,
+  xmin=0, xmax=9.5, ymin=0, ymax=1.5,
+  xtick={0,1,2,3,4,5,6,7,8,9},
+  ytick={0,0.25,0.5,0.75,1,1.25,1.5},
+  yticklabels={$0$,$0{,}25$,$0{,}50$,$0{,}75$,$1{,}00$,$1{,}25$,$1{,}50$},
+  xlabel={deslocamento do êmbolo $x$ (dm)},
+  ylabel={$\pi$ (atm)},
+  grid=major, axis lines=left]
+\addplot[thick, domain=0:6, samples=60] {5.008/(10-x)};
+\addplot[thick, domain=6:9] {1.252};
+\addplot[only marks, mark=*, mark size=1.5pt] coordinates {(0,0.5008) (1,0.5565) (2,0.626) (3,0.7154) (4,0.8347) (5,1.0016) (6,1.252) (9,1.252)};
+\draw[dashed] (axis cs:6,0) -- (axis cs:6,1.252);
+\node[anchor=south east, font=\small] at (axis cs:5.8,1.27) {$\pi=\dfrac{5{,}008}{10-x}$};
+\node[anchor=south, font=\small] at (axis cs:7.5,1.27) {saturada: $\pi\approx 1{,}25$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\textbf{Conclusão.} De $x=0$ a $x=6\ \text{dm}$, $\pi$ cresce ao longo de um ramo de hipérbole, de $0{,}50$ a $1{,}25\ \text{atm}$. De $x=6$ a $x=9\ \text{dm}$, há precipitação do soluto e $\pi$ permanece constante em $1{,}25\ \text{atm}$. As ordens de grandeza são coerentes, pois uma solução $0{,}02\ \text{mol}\cdot\text{L}^{-1}$ tem pressão osmótica da ordem de $0{,}5\ \text{atm}$.
+
+\medskip
+\noindent ANSWER: $\pi(x)=\dfrac{5{,}008}{10-x}\ \text{atm}$ para $0\le x\le 6\ \text{dm}$ (de $0{,}50$ a $1{,}25\ \text{atm}$, ramo de hipérbole); $\pi\approx 1{,}25\ \text{atm}$ constante (patamar, solução saturada com precipitação) para $6\le x\le 9\ \text{dm}$.

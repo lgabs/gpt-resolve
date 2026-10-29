@@ -1,0 +1,60 @@
+\section*{Questão 9}
+
+\section*{Solução}
+
+\noindent\textbf{Hipóteses.} As duas ondas são planas, harmônicas, têm o mesmo $k$ e o mesmo $\omega$ (são coerentes) e se propagam no vácuo, logo $\omega = ck$. Pelo princípio da superposição (as equações de Maxwell no vácuo são lineares), os campos se somam vetorialmente. Ambos os campos são paralelos a $\hat z$.
+
+\medskip
+\noindent\textbf{a)} Seja $\phi \equiv kx-\omega t$. Como $kd=n\pi$,
+\[
+k(x+d)-\omega t=\phi+n\pi \quad\Rightarrow\quad \cos(\phi+n\pi)=(-1)^n\cos\phi ,
+\]
+pois somar $\pi$ à fase troca o sinal do cosseno. Então
+\[
+\vec E=E_0\left[(-1)^n\cos\phi+\cos\phi\right]\hat z
+\;\Longrightarrow\;
+\boxed{\vec E=E_0\left[1+(-1)^n\right]\cos(kx-\omega t)\,\hat z } .
+\]
+Conferindo com a fórmula de soma em produto: $\cos p+\cos q=2\cos\frac{p-q}{2}\cos\frac{p+q}{2}$ dá $\vec E=2E_0\cos\frac{n\pi}{2}\cos\left(\phi+\frac{n\pi}{2}\right)\hat z$. Para $n$ ímpar, $\cos\frac{n\pi}{2}=0$. Para $n$ par, os dois fatores valem $(-1)^{n/2}$ e $(-1)^{n/2}\cos\phi$, e o produto deles é $\cos\phi$. O resultado é o mesmo.
+
+O campo depende de $x$ e $t$ apenas pela combinação $kx-\omega t$. Um ponto de fase constante obedece a $x=x_0+(\omega/k)\,t$, ou seja, desloca-se no sentido $x>0$ com velocidade $\omega/k=c$. Trata-se de uma onda progressiva em $+\hat x$, de amplitude
+\[
+E_R=E_0\left[1+(-1)^n\right],
+\]
+que só depende de $E_0$ e de $n$.
+
+\medskip
+\noindent\textbf{b)} A diferença de fase entre as ondas é $\Delta\varphi=kd=n\pi$. Com $k=2\pi/\lambda$, isso corresponde a $d=n\lambda/2$.
+\begin{itemize}
+\item $n$ \textbf{par} ($n=0,2,4,\dots$; $d$ múltiplo inteiro de $\lambda$): $\Delta\varphi=2m\pi$ e as ondas estão em fase. Então $E_R=2E_0$ e ocorre \textbf{interferência construtiva}. Como $I\propto E_R^2$, a intensidade é $4$ vezes a de cada onda.
+\item $n$ \textbf{ímpar} ($d$ múltiplo ímpar de $\lambda/2$): $\Delta\varphi=(2m+1)\pi$ e as ondas estão em oposição de fase. Então $E_R=0$ e ocorre \textbf{interferência destrutiva} total, porque as amplitudes são iguais.
+\end{itemize}
+Caso particular: para $n=0$ temos $d=0$, ou seja, duas ondas idênticas, e de fato $E_R=2E_0$.
+
+\medskip
+\noindent\textbf{c)} Numa onda plana no vácuo, $\vec B$ é perpendicular a $\vec E$ e à direção de propagação, tem módulo $|\vec B|=|\vec E|/c$ e $\vec E\times\vec B$ aponta no sentido de propagação ($+\hat x$). Com $\vec E\parallel\hat z$, procuramos $\hat u_B$ tal que $\hat z\times\hat u_B=\hat x$. Como $\hat z\times(-\hat y)=\hat x$, temos $\hat u_B=-\hat y$.
+
+\emph{Verificação pela lei de Faraday}, $\nabla\times\vec E=-\partial\vec B/\partial t$. Com $\vec E=E_z(x,t)\,\hat z$, temos $\nabla\times\vec E=-\dfrac{\partial E_z}{\partial x}\,\hat y$. Logo
+\[
+\frac{\partial B_y}{\partial t}=\frac{\partial E_z}{\partial x}=-kE_R\sin\phi
+\;\Rightarrow\;
+B_y=-\frac{k}{\omega}E_R\cos\phi=-\frac{E_R}{c}\cos\phi .
+\]
+A constante de integração foi tomada nula, pois não há campo estático. Portanto
+\[
+\boxed{\vec B=-B_0\cos(kx-\omega t)\,\hat y,\qquad B_0=\frac{E_R}{c}=\frac{E_0\left[1+(-1)^n\right]}{c}} .
+\]
+\begin{itemize}
+\item Para $n$ par, $B_0=2E_0/c$: $\vec B$ oscila na direção do eixo $y$, em fase com $\vec E$, e aponta para $-\hat y$ quando $\vec E$ aponta para $+\hat z$.
+\item Para $n$ ímpar, $B_0=0$ e $\vec B=\vec 0$, pois não há onda resultante.
+\end{itemize}
+
+Conferências:
+\begin{itemize}
+\item Vetor de Poynting: $\vec S=\dfrac{\vec E\times\vec B}{\mu_0}=\dfrac{E_R^2}{\mu_0 c}\cos^2\phi\;(\hat z\times(-\hat y))=\dfrac{E_R^2}{\mu_0 c}\cos^2\phi\,\hat x$. A energia flui sempre em $+x$, como esperado.
+\item Unidades: $[E/c]=\dfrac{\mathrm{V/m}}{\mathrm{m/s}}=\mathrm{V\,s/m^2}=\mathrm{T}$.
+\end{itemize}
+Se $B_0$ for entendido como a amplitude magnética de cada onda individual ($B_0=E_0/c$), o mesmo resultado se escreve $\vec B=-B_0\left[1+(-1)^n\right]\cos(kx-\omega t)\,\hat y$.
+
+\medskip
+\noindent ANSWER: a) $\vec E=E_0\left[1+(-1)^n\right]\cos(kx-\omega t)\,\hat z$ (onda em $+x$ de amplitude $E_0[1+(-1)^n]$); b) $n$ par: interferência construtiva ($E_R=2E_0$); $n$ ímpar: interferência destrutiva total ($E_R=0$); c) $\vec B=-B_0\cos(kx-\omega t)\,\hat y$, com $B_0=E_0[1+(-1)^n]/c$ ($=2E_0/c$ para $n$ par; $\vec B=\vec 0$ para $n$ ímpar), direção do eixo $y$, com sentido $-\hat y$ quando $\vec E$ aponta para $+\hat z$, de modo que $\vec E\times\vec B$ aponta para $+\hat x$.

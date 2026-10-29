@@ -1,0 +1,50 @@
+{
+  "question": 9,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A área da seção é 10 + 5√3 ≈ 18,66 unidades de área. A seção é um trapézio isósceles com bases 8 (a diagonal maior da base) e 2 (a base média da face oposta). Sua altura é 2 + √3, metade do apótema 4 + 2√3 da face lateral.",
+  "judge_reference": {
+    "reference_solution": "**Dados e notação.** Seja V o ápice e O o centro da base. O hexágono regular é A1A2A3A4A5A6, com lado 4, raio da circunferência circunscrita R = 4 e apótema a = 2√3. Uma diagonal maior é A1A4, que passa por O e mede 8.\n\n**1) Qual face lateral serve.** A seção contém a reta A1A4, que está no plano da base. Se o plano da seção é paralelo à face VAkAk+1, os dois planos cortam o plano da base segundo retas paralelas: de um lado a reta A1A4, do outro a reta AkAk+1. Logo a aresta da base dessa face precisa ser paralela à diagonal. Para A1A4, isso só ocorre com A2A3 e A5A6. Os dois casos são simétricos; tomamos a face VA2A3. Com as outras quatro faces, o plano pedido não existe.\n\n**2) Elementos da face.** Cada face é isósceles, com base 4 e ângulo no ápice π/6 (ângulos da base de 75°). Seja g o apótema da face (altura relativa à base):\ng = 2 / tg(π/12) = 2/(2 − √3) = 2(2 + √3) = 4 + 2√3.\nOs demais valores não são necessários, mas servem para conferir: aresta lateral ℓ = 2/sen 15° = 2(√6 + √2), ℓ² = 32 + 16√3, e altura da pirâmide h² = ℓ² − R² = 16(1 + √3).\n\n**3) Corte pelo plano de simetria perpendicular a A2A3.** Sejam M e N os pontos médios de A2A3 e A5A6. O plano VMN contém o eixo VO e é perpendicular a A2A3 e a A1A4. Nele aparece o triângulo VMN, com O ponto médio de MN (OM = ON = 2√3) e VM = VN = g.\nO plano da seção corta o plano VMN segundo a reta que passa por O e é paralela a VM. Pelo teorema da base média, essa reta encontra VN no seu ponto médio P, e OP = VM/2 = g/2 = 2 + √3.\nNote que a seção sobe para o lado da face oposta VA5A6, e não para o lado da face à qual é paralela.\n\n**4) Forma da seção.** A pirâmide é convexa, então a seção é o polígono formado pelos pontos em que o plano corta as arestas:\n- arestas da base: só A1 e A4, porque o plano encontra a base apenas na reta A1A4;\n- VA1 e VA4: em A1 e A4;\n- VA2 e VA3: nenhum ponto, pois são paralelas ao plano (estão na face paralela);\n- VA5 e VA6: nos pontos médios P5 e P6. Dentro da face VA5A6, a reta de corte passa por P (ponto médio de VN) e é paralela a A5A6.\n\nA seção é, portanto, o trapézio A1A4P5P6. As bases são A1A4 = 8 e P5P6 = A5A6/2 = 2 (base média do triângulo VA5A6). A altura é OP = 2 + √3, já que OP ⊥ A1A4 (OP está no plano VMN, que é perpendicular a A1A4) e P pertence a P5P6.\n\nConferência em coordenadas, com V = (0, 0, h), A1 = (4, 0, 0), A6 = (2, −2√3, 0) e a face VA2A3 contida em y/(2√3) + z/h = 1:\n- o plano da seção é y/(2√3) + z/h = 0;\n- em VA6, o ponto V + t(A6 − V) satisfaz h(1 − t) = ht, logo t = 1/2 e P6 = (1, −√3, h/2);\n- a distância de P6 ao eixo x é √(3 + h²/4) = √(7 + 4√3) = 2 + √3.\n\n**5) Área.**\nS = (8 + 2)/2 · (2 + √3) = 5(2 + √3) = 10 + 5√3 ≈ 18,66.\n\nUm script em Python que intersecta o plano com as 12 arestas e calcula a área do polígono confirmou os cortes em t = 0,5 e a área 18,6603 = 10 + 5√3. O ângulo no ápice da face também foi conferido: 30°.",
+    "final_answer": "A seção é um trapézio com bases 8 (a diagonal maior) e 2 (a base média da face oposta) e altura 2 + √3, que é metade do apótema da face lateral. Área = 5(2 + √3) = 10 + 5√3 ≈ 18,66 (unidades de área).",
+    "pitfalls": [
+      "Justificar qual face lateral serve: o plano contém a diagonal e é paralelo à face, então a aresta da base dessa face precisa ser paralela à diagonal (A2A3 ou A5A6 para a diagonal A1A4). Com as outras faces, o plano não existe.",
+      "Direção do corte: o plano sobe para o lado da face oposta (VA5A6), e não para o lado da face à qual é paralelo. Desenhar a seção do lado errado leva a uma figura impossível.",
+      "A seção não passa pelo ápice e não é um triângulo. É um trapézio: A1, A4 e os pontos médios das arestas VA5 e VA6. As arestas VA2 e VA3 são paralelas ao plano e não são cortadas.",
+      "Os pontos médios precisam de justificativa: O é ponto médio de MN, e a paralela a VM por O corta VN no ponto médio (base média). Afirmar isso sem argumento é uma lacuna.",
+      "Usar a diagonal maior, de comprimento 2·4 = 8, e não a menor (4√3).",
+      "A altura do trapézio é a distância, medida dentro do plano da seção, entre A1A4 e P5P6: vale g/2 = 2 + √3, onde g é o apótema da face. Não é h/2 nem a distância vertical. Também é preciso justificar que OP ⊥ A1A4.",
+      "Calcular bem o apótema da face: g = 2/tg 15° = 2(2 + √3), com tg 15° = 2 − √3. Se usar a altura, h² = 16(1 + √3) e ℓ = 2(√6 + √2). Erros comuns: confundir sen 15° com tg 15° ou usar o ângulo de 30° inteiro em vez da metade.",
+      "O ângulo π/6 é o ângulo plano no ápice de cada face lateral, não um ângulo diedro nem a inclinação da aresta. A altura h acaba não sendo necessária no caminho sintético.",
+      "Simplificação final: √(7 + 4√3) = 2 + √3. A resposta esperada é 10 + 5√3 ≈ 18,66."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A área da seção é 10 + 5√3 ≈ 18,66 unidades de área. A seção é um trapézio isósceles com bases 8 (a diagonal maior da base) e 2 (a base média da face oposta). Sua altura é 2 + √3, metade do apótema 4 + 2√3 da face lateral.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato não trata explicitamente as faces VFA e VDE. As interseções com elas são os lados AF' e DE' do trapézio, e o fato de a seção ser o polígono convexo formado pelos pontos em que o plano corta as arestas também fica só implícito. Bastaria uma frase do tipo: 'a pirâmide é convexa, então a seção é o polígono convexo de vértices nos pontos em que π corta as arestas: A, D, E' e F''."
+          },
+          {
+            "severity": "minor",
+            "description": "A igualdade tg(π/12) = 2 − √3 é usada sem dedução. É um resultado clássico, mas uma linha bastaria, por exemplo tg 15° = (1 − cos 30°)/sen 30° ou tg(45° − 30°)."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conferência em coordenadas, o candidato não diz onde ficam os vértices do hexágono (por exemplo A = (4, 0, 0) e B = (2, 2√3, 0)). Por isso os pontos (±1, −√3, h/2) aparecem sem dedução. Como é só uma verificação, isso não afeta a resolução principal."
+          }
+        ],
+        "summary": "Conferi o enunciado na página do PDF e ele bate com a transcrição. A resposta do candidato, 10 + 5√3 ≈ 18,66, é igual à da minha referência e está certa. Também conferi numericamente: o ângulo no ápice dá 30°, VM = 4 + 2√3, o plano corta as arestas exatamente em A, D e nos pontos médios de VE e VF, e a área do polígono resultante é 18,6603.\n\nTodas as armadilhas da referência foram tratadas:\n- **Qual face serve:** o candidato elimina VAB, VFA, VCD e VDE porque contêm A ou D. Sobram VBC e VEF, que servem porque BC ∥ AD ∥ EF, e ele nota que as duas são simétricas em relação ao plano VAD.\n- **Diagonal maior:** usa a diagonal maior, de comprimento 8.\n- **Apótema da face:** calcula g = 2/tg 15° = 4 + 2√3 e ainda verifica que a pirâmide existe (aresta lateral VB ≈ 7,73 > 4).\n- **Direção do corte:** a seção vai para o lado da face oposta. VB e VC são paralelas ao plano e, nas faces VAB e VCD, o plano só toca os vértices A e D.\n- **Pontos médios:** justifica pelo teorema da base média no triângulo VMN, e depois na base média do triângulo VEF.\n- **Altura do trapézio:** OP = g/2. A perpendicularidade OP ⊥ AD vem de AD ⊥ (VMN), que foi demonstrado.\n- **Fechamento:** a conferência em coordenadas usa h² = 16 + 16√3 e √(7 + 4√3) = 2 + √3.\n\nAs falhas são só de detalhe de redação: as faces VFA e VDE e o argumento de convexidade ficam implícitos, tg 15° é usada sem dedução e as coordenadas da conferência não são especificadas. A resolução é clara e rigorosa e serviria como gabarito comentado."
+      }
+    }
+  ]
+}

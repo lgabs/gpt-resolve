@@ -1,0 +1,55 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Estado inicial.} O recipiente tem massa desprezível e acima do pistão há vácuo. O equilíbrio do conjunto pistão + areia dá
+\[
+p_i A=(m+M)g \;\Rightarrow\; p_i=\frac{(m+M)g}{A},\qquad V_i=Ah_i .
+\]
+O gás é monoatômico, então $C_V=\tfrac32R$, $\gamma=C_P/C_V=\tfrac53$ e $U=\tfrac32\, nRT=\tfrac32\,pV$. Supomos o cilindro alto o bastante para o pistão não sair dele.
+
+\textbf{a) Retirada lenta (quase estática).} O gás passa por uma sucessão de estados de equilíbrio. Paredes e pistão são adiabáticos e não há atrito, logo o processo é adiabático reversível: $pV^{\gamma}=\text{cte}$. No estado final, sem areia, $p_fA=mg$, isto é, $p_f=mg/A$, e $V_f=Ah_f$. Portanto
+\[
+\frac{(m+M)g}{A}\,(Ah_i)^{5/3}=\frac{mg}{A}\,(Ah_f)^{5/3}
+\;\Rightarrow\;
+\boxed{h_f=h_i\left(\frac{m+M}{m}\right)^{3/5}}
+\]
+O fator $\left(\frac{m+M}{m}\right)^{3/5}$ é adimensional, então $h_f$ tem dimensão de comprimento. Para $M=0$ vem $h_f=h_i$, e para $M>0$ temos $h_f>h_i$, porque o gás se expande.
+
+\textbf{b) Retirada instantânea.} A força resultante sobre o pistão passa a ser $F(h)=p(h)A-mg$. Em $h_i$ ela vale $Mg>0$, logo o pistão acelera para cima. A altura máxima é o primeiro ponto em que a velocidade volta a se anular.
+
+\emph{Hipóteses.} O pistão se move devagar em comparação com a velocidade do som no gás. Assim, o gás fica em equilíbrio interno, com pressão uniforme, e sofre expansão adiabática sem dissipação:
+\[
+p(h)=p_i\left(\frac{h_i}{h}\right)^{5/3}.
+\]
+
+\emph{Energia.} Aplicamos o teorema da energia cinética ao pistão entre $h_i$ (repouso) e $h_{max}$ (repouso). O vácuo não exerce força e a areia já saiu, então só realizam trabalho o gás e o peso do pistão:
+\[
+\int_{h_i}^{h_{max}} pA\,dh-mg\,(h_{max}-h_i)=0 .
+\]
+Pela primeira lei com $Q=0$, o trabalho do gás é $-\Delta U=\tfrac32\left(p_iV_i-p_{max}V_{max}\right)$. Usando $p_iV_i=(m+M)gh_i$ e $p_{max}V_{max}=p_iV_i\,(h_i/h_{max})^{2/3}$:
+\[
+\int_{h_i}^{h_{max}} pA\,dh=\frac32\,(m+M)g\,h_i\left[1-\left(\frac{h_i}{h_{max}}\right)^{2/3}\right].
+\]
+Dividindo por $g$:
+\[
+\boxed{\,m\,(h_{max}-h_i)=\frac32\,(m+M)\,h_i\left[1-\left(\frac{h_i}{h_{max}}\right)^{2/3}\right]\,}
+\]
+A relação não depende de $A$, $n$, $R$ nem de $g$.
+
+\emph{Forma polinomial e unicidade.} Sejam $y=(h_{max}/h_i)^{1/3}$ e $k=1+M/m$. A equação fica $2y^2(y^3-1)=3k(y^2-1)$. Cancelando o fator $y-1$, que corresponde à raiz trivial $y=1$ (o ponto de partida), obtemos
+\[
+f(y)\equiv 2y^4+2y^3+2y^2-3k(y+1)=0 .
+\]
+Temos $f''(y)=24y^2+12y+4>0$, logo $f$ é convexa. Além disso, $f(1)=6-6k=-6M/m<0$ e $f(y)\to+\infty$. Uma função convexa que é negativa em $y=1$ cruza o zero uma única vez para $y>1$, então $h_{max}$ é único.
+
+\emph{$h_{max}>h_f$ em geral.} Como $p(h)$ é decrescente, $F(h)>0$ para $h<h_f$ e $F(h)<0$ para $h>h_f$, com $h_f$ do item (a). O pistão chega a $h_f$ com energia cinética positiva e só para depois disso. Ele oscila em torno de $h_f$ entre os pontos de retorno $h_i$ e $h_{max}$.
+
+\textbf{Verificações.}
+\begin{itemize}
+\item $M\ll m$: com $y=1+\varepsilon$, $f(1)+f'(1)\varepsilon\approx-6M/m+15\varepsilon=0$, logo $\varepsilon\approx 0{,}4\,M/m$ e $h_{max}\approx h_i\left(1+1{,}2\,\tfrac{M}{m}\right)$. Já $h_f\approx h_i\left(1+0{,}6\,\tfrac{M}{m}\right)$: numa oscilação harmônica o deslocamento máximo é o dobro do deslocamento de equilíbrio. Está coerente.
+\item $M\gg m$: $h_{max}\approx \tfrac32\,\tfrac{M}{m}\,h_i$. Quase toda a energia interna $\tfrac32(m+M)gh_i$ vira energia potencial do pistão.
+\item $M=m$: $h_{max}\approx 2{,}26\,h_i$ e $h_f=2^{3/5}h_i\approx1{,}52\,h_i$.
+\end{itemize}
+
+ANSWER: a) $h_f=h_i\left(\dfrac{m+M}{m}\right)^{3/5}$; \quad b) $m\,(h_{max}-h_i)=\dfrac32\,(m+M)\,h_i\left[1-\left(\dfrac{h_i}{h_{max}}\right)^{2/3}\right]$, ou seja, $2y^4+2y^3+2y^2=3\left(1+\frac{M}{m}\right)(y+1)$ com $y=(h_{max}/h_i)^{1/3}>1$.

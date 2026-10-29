@@ -1,0 +1,47 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} A massa é tratada como partícula na borda ($r=R$) do disco horizontal, que gira em torno do eixo $z$. A origem fica no solo, na base do eixo. Desprezam-se a resistência do ar e a espessura do disco.
+
+\textbf{1) Instante em que a massa escorrega.} Enquanto não há deslizamento, a massa descreve um MCUV com $\omega(t)=\alpha t$. A única força horizontal é o atrito estático, que deve fornecer as acelerações tangencial e centrípeta:
+\[
+a_t=\alpha R,\qquad a_c=\omega^2R=\alpha^2t^2R,\qquad f_{\text{nec}}=m\sqrt{a_t^2+a_c^2}=mR\sqrt{\alpha^2+\omega^4}.
+\]
+Como o disco é horizontal, $N=mg$ e $f\le\mu_e mg$. A força necessária cresce com $t$, e o deslizamento começa quando
+\[
+R^2(\alpha^2+\omega_s^4)=\mu_e^2g^2\;\Longrightarrow\;\omega_s^2=\frac{\sqrt{\mu_e^2g^2-\alpha^2R^2}}{R},\qquad t_s=\frac{\omega_s}{\alpha}=\frac{\left(\mu_e^2g^2-\alpha^2R^2\right)^{1/4}}{\alpha\sqrt{R}}.
+\]
+É preciso ter $\mu_e g>\alpha R$; caso contrário, a massa escorrega já em $t=0$ e cai praticamente em repouso, a uma distância $\approx R$ da origem. Como a massa está na extremidade, ao escorregar ela abandona o disco com a velocidade do ponto da borda, que é horizontal, tangente à circunferência e de módulo
+\[
+v=\omega_sR=\sqrt{R}\left(\mu_e^2g^2-\alpha^2R^2\right)^{1/4}.
+\]
+
+\textbf{a) Ponto de contato com o solo.} A partir daí temos um lançamento horizontal da altura $h$. O tempo de queda é $t_q=\sqrt{2h/g}$, e o deslocamento horizontal $d=v\,t_q$ ocorre na direção tangente. No ponto de saída, essa direção é perpendicular ao raio horizontal de comprimento $R$. Pelo teorema de Pitágoras no plano do solo,
+\[
+D=\sqrt{R^2+d^2}=\sqrt{R^2+\omega_s^2R^2\,\frac{2h}{g}}
+=\sqrt{R^2+\frac{2hR}{g}\sqrt{\mu_e^2g^2-\alpha^2R^2}}.
+\]
+O ângulo girado até o escorregamento, $\theta_s=\alpha t_s^2/2$, não aparece no resultado: a distância à origem não depende dele, e por isso nenhuma aproximação angular é necessária.
+
+\textbf{b) Instante de parada.} Ao tocar o solo sem quicar, o impulso normal anula a componente vertical da velocidade. Adota-se a hipótese do enunciado de que a massa passa a deslizar com a velocidade horizontal $v$, ou seja, o impulso de atrito durante o choque é desprezado. No solo, $N=mg$, e o atrito cinético produz um movimento retilíneo uniformemente retardado com desaceleração $\mu_c g$. Logo,
+\[
+t_d=\frac{v}{\mu_c g}=\frac{\sqrt{R}\left(\mu_e^2g^2-\alpha^2R^2\right)^{1/4}}{\mu_c g}.
+\]
+O instante da parada é $T=t_s+t_q+t_d$:
+\[
+T=\sqrt{R}\left(\mu_e^2g^2-\alpha^2R^2\right)^{1/4}\left(\frac{1}{\alpha R}+\frac{1}{\mu_c g}\right)+\sqrt{\frac{2h}{g}}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Unidades: $\sqrt{R}\,(\mu_e^2g^2)^{1/4}$ tem unidade de m/s, e $1/(\alpha R)$ e $1/(\mu_c g)$ têm unidade de s$^2$/m. Assim, $T$ sai em s e $D$ em m.
+\item Se $\alpha R\to\mu_e g$: $v\to0$, $D\to R$ (queda vertical a partir da borda) e $T\to\sqrt{2h/g}$.
+\item Se $\alpha\to0$: $v^2\to\mu_e gR$, que é o limite clássico do disco girando com velocidade constante, e $t_s\to\infty$.
+\item Um teste numérico ($g=9{,}8$, $R=2$, $\alpha=1{,}5$, $\mu_e=0{,}6$, $\mu_c=0{,}4$, $h=1{,}2$, em unidades SI) dá $D\approx2{,}54$ m e $T\approx2{,}37$ s, em acordo com a simulação direta.
+\end{itemize}
+
+\emph{Observação:} se o atrito de Coulomb também agisse durante o choque (impulso $\mu_c m\sqrt{2gh}$), a velocidade horizontal cairia para $v-\mu_c\sqrt{2gh}$, e o resultado seria $T=t_s+v/(\mu_c g)$.
+
+\medskip
+ANSWER: a) $D=\sqrt{R^2+\dfrac{2hR}{g}\sqrt{\mu_e^2g^2-\alpha^2R^2}}$; \quad b) $T=\sqrt{R}\left(\mu_e^2g^2-\alpha^2R^2\right)^{1/4}\left(\dfrac{1}{\alpha R}+\dfrac{1}{\mu_c g}\right)+\sqrt{\dfrac{2h}{g}}$ (com $\mu_e g>\alpha R$).

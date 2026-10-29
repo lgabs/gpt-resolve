@@ -1,0 +1,45 @@
+{
+  "question": 6,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Existem 235 sêxtuplas. O sistema força x2 = 6, x1 = 8 - 2x6 e x3+x4+x5 = 16 - x6, com x6 em {1, 2, 3}. A contagem é C(14,2)+C(13,2)+C(12,2) = 91+78+66 = 235.",
+  "judge_reference": {
+    "reference_solution": "**Convenção:** a prova define ℕ = {1, 2, 3, …}, então toda incógnita satisfaz xᵢ ≥ 1.\n\n**1) Redução do sistema.** As incógnitas x₃, x₄ e x₅ têm o mesmo coeficiente em cada equação (1, 2 e 3). Por isso, defina T = x₃ + x₄ + x₅. O sistema fica:\n- (E1) x₁ + x₂ + T + 3x₆ = 30\n- (E2) x₁ + 2x₂ + 2T + 4x₆ = 52\n- (E3) 2x₁ + 2x₂ + 3T + 7x₆ = 76\n\n**2) Escalonamento.**\n- (E2) − (E1): x₂ + T + x₆ = 22.\n- (E3) − 2·(E1): T + x₆ = 16.\n- Subtraindo essas duas: **x₂ = 6**.\n- Em (E1): x₁ + 6 + (16 − x₆) + 3x₆ = 30, logo **x₁ + 2x₆ = 8** e **T = 16 − x₆**.\n\nO sistema reduzido tem posto 3 nas variáveis (x₁, x₂, T, x₆). Resta um grau de liberdade (x₆), mais a escolha de como decompor T em três parcelas.\n\nConferência com a família de soluções (x₁, x₂, T, x₆) = (8 − 2t, 6, 16 − t, t):\n- (E1): (8 − 2t) + 6 + (16 − t) + 3t = 30 ✓\n- (E2): (8 − 2t) + 12 + 2(16 − t) + 4t = 52 ✓\n- (E3): 2(8 − 2t) + 12 + 3(16 − t) + 7t = 76 ✓\n\n**3) Restrições de naturalidade.**\n- x₆ ≥ 1.\n- x₁ = 8 − 2x₆ ≥ 1, logo x₆ ≤ 3,5, ou seja, x₆ ≤ 3.\n- Portanto x₆ ∈ {1, 2, 3}, com x₁ = 6, 4, 2 e T = 15, 14, 13, respectivamente.\n- x₂ = 6 já é natural, e T ≥ 3 vale em todos os casos.\n\n**4) Contagem de (x₃, x₄, x₅).** Para cada valor de T, conte as ternas ordenadas de naturais (≥ 1) com x₃ + x₄ + x₅ = T. Por estrelas e barras, há C(T − 1, 2) delas.\n\n| x₆ | x₁ | T | ternas |\n|---|---|---|---|\n| 1 | 6 | 15 | C(14, 2) = 91 |\n| 2 | 4 | 14 | C(13, 2) = 78 |\n| 3 | 2 | 13 | C(12, 2) = 66 |\n\nOs casos são disjuntos porque x₆ é diferente em cada um. Somando: 91 + 78 + 66 = **235**.\n\n**5) Verificação.** Uma enumeração exaustiva em Python, que testa as três equações para todas as sêxtuplas com xᵢ ≥ 1, encontrou exatamente 235 soluções. Se o zero fosse permitido, seriam 605, o que não vale aqui.\n\n**Resposta:** 235 sêxtuplas ordenadas.",
+    "final_answer": "São 235 sêxtuplas. Necessariamente x₂ = 6, x₁ = 8 − 2x₆ e x₃ + x₄ + x₅ = 16 − x₆, com x₆ ∈ {1, 2, 3}. As contagens para cada valor de x₆ são C(14,2) + C(13,2) + C(12,2) = 91 + 78 + 66 = 235.",
+    "pitfalls": [
+      "Na convenção da prova, ℕ = {1, 2, 3, …}, então xᵢ ≥ 1. Quem inclui o zero chega a 605 (x₆ de 0 a 4: 153 + 136 + 120 + 105 + 91), que está errado.",
+      "Estrelas e barras: com parcelas ≥ 1, x₃ + x₄ + x₅ = T tem C(T − 1, 2) soluções, e não C(T + 2, 2). Misturar as duas fórmulas é um erro comum.",
+      "Como x₃, x₄ e x₅ têm coeficientes iguais em todas as equações, só a soma T é determinada. Uma resolução que trate o sistema como 'impossível de resolver' ou que fixe x₃, x₄ e x₅ individualmente erra a contagem.",
+      "As sêxtuplas são ordenadas. Contar apenas ternas não ordenadas (partições de T) dá um resultado errado.",
+      "A restrição x₁ = 8 − 2x₆ ≥ 1 limita x₆ a no máximo 3. Esquecer essa restrição, ou considerar x₆ = 4 (que dá x₁ = 0), gera casos inválidos.",
+      "Fazer as contas de escalonamento com cuidado: (E3) − 2(E1) dá T + x₆ = 16 e (E2) − (E1) dá x₂ + T + x₆ = 22, logo x₂ = 6. Um erro aqui altera tudo o que vem depois.",
+      "A resolução precisa justificar que os casos x₆ = 1, 2, 3 são disjuntos e exaustivos, e que cada um gera C(T − 1, 2) sêxtuplas distintas (princípio aditivo). Respostas sem essa justificativa estão incompletas.",
+      "Conferir que a família paramétrica satisfaz as três equações originais, e não só as combinações lineares usadas, evita aceitar soluções espúrias."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Existem 235 sêxtuplas. O sistema força x2 = 6, x1 = 8 - 2x6 e x3+x4+x5 = 16 - x6, com x6 em {1, 2, 3}. A contagem é C(14,2)+C(13,2)+C(12,2) = 91+78+66 = 235.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na etapa 3, o candidato não diz que x₂ = 6 também cumpre a condição x₂ ≥ 1. É óbvio, mas, para a lista de restrições ficar completa, deveria constar uma frase como 'x₂ = 6 ∈ ℕ'."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato afirma que 'as operações feitas são reversíveis' sem dizer por quê. Bastaria uma linha: (I), (II)−(I) e (III)−2(I) formam um sistema equivalente, porque a matriz da transformação é triangular com diagonal unitária, e a substituição em (I) também é reversível. Isso deixaria explícito que não entram soluções espúrias. A verificação com um único exemplo no final não substitui esse argumento, mas o argumento de equivalência já basta."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 6 do PDF, e ele coincide com a transcrição. A resposta do candidato, 235, é a mesma da minha referência e foi confirmada por uma enumeração exaustiva em Python (235), que também confere C(14,2) + C(13,2) + C(12,2) = 91 + 78 + 66 = 235.\n\nO raciocínio está correto e completo:\n- **Redução do sistema:** usa S = x₃ + x₄ + x₅, porque essas três variáveis têm os mesmos coeficientes em todas as equações.\n- **Escalonamento:** está certo. (II)−(I) dá x₂ + S + x₆ = 22 e (III)−2(I) dá S + x₆ = 16, logo x₂ = 6, x₁ = 8 − 2x₆ e S = 16 − x₆.\n- **Equivalência com o sistema original:** a resolução declara que as operações são reversíveis, o que garante que nenhuma solução espúria entra na contagem.\n- **Convenção ℕ = {1, 2, …}:** foi aplicada corretamente. Disso vem x₆ ∈ {1, 2, 3}, e o caso x₆ = 4, que daria x₁ = 0, fica excluído.\n- **Estrelas e barras:** usa C(S − 1, 2) para parcelas ≥ 1 e justifica a fórmula pela escolha de 2 entre os S − 1 espaços.\n- **Princípio aditivo:** os casos são disjuntos, porque diferem em x₆, e exaustivos, porque esgotam as restrições.\n- **Exemplo numérico:** a sêxtupla (6, 6, 13, 1, 1, 1) satisfaz as três equações; também conferi isso.\n\nTodas as armadilhas que listei foram tratadas: a convenção de ℕ, a fórmula certa de estrelas e barras, a determinação apenas da soma S, a ordenação das sêxtuplas, o limite x₆ ≤ 3, as contas do escalonamento, a disjunção e exaustividade dos casos e a equivalência com o sistema original.\n\nFicam só dois detalhes menores: não diz explicitamente que x₂ = 6 é natural e não justifica a reversibilidade das operações. A resolução tem nível de gabarito comentado."
+      }
+    }
+  ]
+}

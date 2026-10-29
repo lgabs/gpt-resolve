@@ -1,0 +1,50 @@
+{
+  "question": 2,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "$\\log_2\\frac{\\sqrt5-1}{2}<x<1$, ou seja, $S=\\left]\\log_2\\frac{\\sqrt5-1}{2},\\,1\\right[$ (o extremo esquerdo vale $-\\log_2\\frac{1+\\sqrt5}{2}\\approx-0{,}694$).",
+  "judge_reference": {
+    "reference_solution": "**Questão 02.** Encontrar todo x ∈ ℝ com |log₂(2ˣ + 2)| > |2x|.\n\n**1) O módulo da esquerda pode ser retirado.**\nPara qualquer x real, 2ˣ > 0, então 2ˣ + 2 > 2. Logo log₂(2ˣ + 2) > log₂2 = 1 > 0. O logaritmo está definido para todo x real (não há restrição de domínio) e é sempre positivo, portanto |log₂(2ˣ+2)| = log₂(2ˣ+2).\n\nA inequação fica: log₂(2ˣ + 2) > |2x|.\n\n**2) Troca de variável.** Faça t = 2ˣ, com t > 0. A função t ↦ 2ˣ é uma bijeção crescente de ℝ em (0, +∞).\n\nPara um número A > 0, vale A > |B| ⇔ (A > B e A > −B). Então a inequação equivale ao sistema:\n (I) log₂(2ˣ+2) > 2x  e  (II) log₂(2ˣ+2) > −2x.\nEsse caminho não exige separar os casos x ≥ 0 e x < 0. Separar os casos também funciona e leva ao mesmo resultado (ver o item 5).\n\n**3) Condição (I).** Como log₂ é crescente:\n log₂(t+2) > 2x = log₂(4ˣ) ⇔ t + 2 > t² ⇔ t² − t − 2 < 0 ⇔ (t − 2)(t + 1) < 0.\nComo t + 1 > 0, isso equivale a t < 2, ou seja, 2ˣ < 2, isto é, **x < 1**.\n\n**4) Condição (II).**\n log₂(t+2) > −2x = log₂(2^(−2x)) = log₂(1/t²) ⇔ t + 2 > 1/t².\nMultiplicando por t² > 0 (o sentido da desigualdade não muda): t³ + 2t² − 1 > 0.\nNote que t = −1 é raiz: t³ + 2t² − 1 = (t + 1)(t² + t − 1). Conferindo: t³ + t² − t + t² + t − 1 = t³ + 2t² − 1. ✓\nComo t + 1 > 0, a condição vira t² + t − 1 > 0. As raízes são t = (−1 ± √5)/2. Para t > 0, a condição vale exatamente quando\n t > (√5 − 1)/2 ⇔ 2ˣ > (√5 − 1)/2 ⇔ **x > log₂((√5 − 1)/2)**.\nEsse número é igual a −log₂((1+√5)/2) = log₂(√5 − 1) − 1 ≈ −0,6942. Ele é negativo, porque (√5−1)/2 ≈ 0,618 < 1.\n\n**5) Interseção.** Juntando (I) e (II): log₂((√5−1)/2) < x < 1.\nO intervalo não é vazio, pois log₂((√5−1)/2) < 0 < 1.\n\nConferência pela separação em casos:\n- Se x ≥ 0: |2x| = 2x. Só (I) importa e dá 0 ≤ x < 1.\n- Se x < 0: |2x| = −2x. Só (II) importa e dá log₂((√5−1)/2) < x < 0.\n- A união dos dois casos é o mesmo intervalo.\n\nExtremos: em x = 1, os dois lados valem 2 (log₂4 = 2 = |2|). Em x = log₂((√5−1)/2), vale t + 2 = 1/t², ou seja, os dois lados são iguais. Como a desigualdade é estrita, os dois extremos ficam de fora.\n\nTeste rápido: em x = 0, log₂3 ≈ 1,58 > 0 ✓. Em x = 2, log₂6 ≈ 2,58 < 4 ✗. Em x = −1, log₂(2,5) ≈ 1,32 < 2 ✗. A verificação numérica em [−5, 5] confirma que o conjunto solução é exatamente esse intervalo aberto.\n\n**Resposta:** S = { x ∈ ℝ : log₂((√5 − 1)/2) < x < 1 } = ( −log₂((1+√5)/2) , 1 ) ≈ (−0,694 ; 1).",
+    "final_answer": "S = ] log₂((√5 − 1)/2) , 1 [, ou seja, −log₂((1+√5)/2) < x < 1 (≈ −0,694 < x < 1). Formas equivalentes do extremo esquerdo: log₂(√5 − 1) − 1 = −log₂ φ, com φ = (1+√5)/2. Os dois extremos ficam excluídos.",
+    "pitfalls": [
+      "O módulo da esquerda precisa ser justificado: log₂(2ˣ+2) > log₂2 = 1 > 0 para todo x real. Também convém observar que não há restrição de domínio, porque 2ˣ+2 > 0 sempre. Quem não justifica e trata um caso 'log negativo' perde rigor, mas não muda o resultado.",
+      "No caso x < 0 (ou na condição log₂(2ˣ+2) > −2x), o certo é 2^(−2x) = 1/t² e não −t² nem 4ˣ. Isso leva à cúbica t³ + 2t² − 1 > 0, que se fatora como (t+1)(t²+t−1). Errar a fatoração ou não achar a raiz t = −1 é o erro mais provável.",
+      "Ao multiplicar t+2 > 1/t² por t², o sentido da desigualdade se mantém porque t² > 0. Isso deve ser dito.",
+      "Na quadrática t² + t − 1 > 0, é preciso descartar a raiz negativa (−1−√5)/2 usando t > 0. A resposta certa é t > (√5−1)/2, e não t < (√5−1)/2 nem a união com a parte negativa.",
+      "Na condição x ≥ 0: t² − t − 2 < 0 ⇔ (t−2)(t+1) < 0 ⇔ t < 2 ⇔ x < 1. Não se pode esquecer o fator (t+1) > 0 nem trocar o sentido.",
+      "Se a resolução separar em casos, cada condição deve ser intersectada com seu caso (x ≥ 0 com x < 1; x < 0 com x > log₂((√5−1)/2)), e depois os casos devem ser unidos. Esquecer essa interseção ou essa união leva a conjuntos errados, como apenas [0,1) ou apenas (log₂((√5−1)/2), 0).",
+      "A desigualdade é estrita, então os extremos x = 1 e x = log₂((√5−1)/2) devem ficar excluídos. Nos dois pontos há igualdade.",
+      "A resposta deve ser dada em forma exata. São aceitáveis log₂((√5−1)/2), log₂(√5−1) − 1 e −log₂((1+√5)/2), todas ≈ −0,6942. Dar só o valor aproximado é uma resposta incompleta.",
+      "Se a resolução elevar ao quadrado (|A| > |B| ⇔ A² > B² ⇔ (A−B)(A+B) > 0), precisa notar que, como A > 0, os dois fatores não podem ser negativos ao mesmo tempo (a soma deles é 2A > 0). Portanto ambos devem ser positivos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "$\\log_2\\frac{\\sqrt5-1}{2}<x<1$, ou seja, $S=\\left]\\log_2\\frac{\\sqrt5-1}{2},\\,1\\right[$ (o extremo esquerdo vale $-\\log_2\\frac{1+\\sqrt5}{2}\\approx-0{,}694$).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No passo 3, o descarte da raiz negativa ficou implícito no trecho 'Com t>0, a condição fica t > (√5−1)/2'. O ideal seria escrever a solução completa, t²+t−1>0 ⇔ t < (−1−√5)/2 ou t > (−1+√5)/2, e então descartar o primeiro ramo porque (−1−√5)/2 < 0 < t. A conclusão está certa, mas ficou mais curta do que um gabarito comentado pede."
+          },
+          {
+            "severity": "minor",
+            "description": "Faltou dizer explicitamente que não há restrição de domínio, ou seja, que 2ˣ+2>0 e por isso o logaritmo está definido para todo x real. Isso decorre de 2ˣ+2>2, que o candidato mostra, mas uma frase deixaria o ponto completo."
+          },
+          {
+            "severity": "minor",
+            "description": "A identidade (t+1)(t²+t−1)=t³+2t²−1 foi afirmada sem a expansão. A identidade está correta e é fácil de verificar, então isso é só um detalhe de apresentação."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF: |log₂(2ˣ+2)| > |2x|, igual à transcrição. A resposta do candidato, S = ]log₂((√5−1)/2), 1[, coincide com a da minha referência. Também conferi numericamente: em x₀ = log₂((√5−1)/2) ≈ −0,6942 e em x = 1 os dois lados são iguais, e uma varredura em [−5,5] dá exatamente esse intervalo aberto. A resposta está correta.\n\nA resolução é limpa e toda feita por equivalências.\n- **Passo 1:** tira o módulo da esquerda com justificativa (log₂(2ˣ+2) > 1 > 0) e usa |a|<b ⇔ −b<a<b, o que evita separar os casos x≥0 e x<0.\n- **Passo 2:** faz t = 2ˣ, que é uma bijeção crescente. O lado direito vira (t−2)(t+1)<0. O candidato usa t+1>0 explicitamente e conclui x<1.\n- **Passo 3:** escreve corretamente 2^(−2x) = 1/t². Multiplica por t² e diz que o sentido se mantém. A fatoração (t+1)(t²+t−1) está correta, o fator t+1>0 é descartado e a conclusão é t > (√5−1)/2.\n- **Passo 4:** faz a interseção correta, mostra que o intervalo não é vazio e dá a forma alternativa −log₂φ.\n\nA verificação dos extremos é exata e elegante: 2^(x₀)+2 = φ², logo log₂(2^(x₀)+2) = 2log₂φ = −2x₀ = |2x₀|. Ela mostra que os extremos ficam excluídos.\n\nTodas as armadilhas da referência foram tratadas: o módulo da esquerda, 1/t², o sentido da desigualdade ao multiplicar por t², a raiz t = −1, o fator t+1>0, a interseção, os extremos excluídos e a forma exata da resposta.\n\nSó há detalhes menores de apresentação: o descarte da raiz negativa da quadrática ficou implícito, faltou a menção explícita ao domínio e a expansão da fatoração não foi escrita. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

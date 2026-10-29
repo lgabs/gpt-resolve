@@ -1,0 +1,49 @@
+{
+  "question": 2,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) H_n = (0,49)^n V²/(8g). b) Δt = V/[g(1−0,7)] = 10V/(3g). Nesse instante a energia mecânica chega ao mínimo, 3mV²/8, e a massa passa a deslizar com velocidade (√3/2)V.",
+  "judge_reference": {
+    "reference_solution": "**Modelo e hipóteses.** A massa é tratada como partícula. Não há resistência do ar e g é constante. As colisões são instantâneas e o solo é horizontal e perfeitamente liso. Por ser liso, o solo exerce no choque apenas impulso normal (vertical). Logo:\n- a componente horizontal da velocidade se conserva em todos os choques: v_x = V cos30° = (√3/2)V;\n- o coeficiente de restituição atua só na componente normal: em cada choque, a velocidade vertical de saída é e vezes a de chegada, com e = 0,7.\n\nNo voo livre, a velocidade vertical com que a massa chega ao solo tem o mesmo módulo daquela com que saiu dele (simetria do movimento parabólico).\n\nComponentes iniciais: v_x = V√3/2 e v_{y,0} = V sen30° = V/2.\n\n**a) Altura máxima após n choques**\n\nPela regra acima, a velocidade vertical logo após o k-ésimo choque é\nv_{y,k} = e^k · v_{y,0} = (0,7)^k · V/2.\n\nA altura máxima vem de Torricelli aplicada só à vertical (no ápice v_y = 0; a componente v_x não interfere):\nH_n = v_{y,n}²/(2g) = e^{2n} (V/2)²/(2g) = e^{2n} V²/(8g).\n\nCom e² = 0,49:\n**H_n = (0,49)^n · V²/(8g) = (0,49)^n H_0**, sendo H_0 = V²/(8g) a altura máxima antes de qualquer choque.\n\nConferência: para n = 0, obtém-se H_0 = V² sen²30°/(2g), a altura máxima do lançamento oblíquo.\n\n**b) Tempo até a energia mínima**\n\nTome a energia mecânica E = ½m(v_x² + v_y²) + mgy, com referência no solo.\n- Entre choques E é constante, pois só o peso realiza trabalho.\n- No k-ésimo choque há perda de ΔE_k = ½ m v_{y,k−1}² (1 − e²) > 0, que vem apenas da parte vertical.\n\nPortanto E nunca aumenta e diminui a cada choque. Ela não chega a zero: a parte horizontal ½ m v_x² nunca é dissipada, porque o solo é liso. O mínimo ocorre quando o movimento vertical se extingue (v_y → 0, y = 0), e a massa passa a deslizar com v_x constante:\nE_min = ½ m (V cos30°)² = (3/8) m V² = (3/4) E_0.\n\nEsse estado não é alcançado com um número finito de choques. São infinitos choques, mas as durações dos voos formam uma PG convergente, então ele é atingido em tempo finito.\n\nDuração do voo entre o k-ésimo e o (k+1)-ésimo contato com o solo (k = 0 é o voo inicial, a partir da origem):\nT_k = 2 v_{y,k}/g = 2 e^k (V/2)/g = e^k V/g.\n\nSomando:\nT = Σ_{k=0}^{∞} e^k V/g = (V/g) · 1/(1 − e) = V/(0,3 g)\n**T = 10V/(3g) ≈ 3,33 V/g**.\n\nA partir desse instante a energia permanece constante e igual ao mínimo 3mV²/8: a massa desliza sem atrito com velocidade (√3/2)V.\n\nResultados extras, que não foram pedidos:\n- distância horizontal percorrida até esse instante: x = v_x T = (√3/2)V · 10V/(3g) = 5√3 V²/(3g);\n- energia total dissipada: mV²/8, isto é, toda a energia cinética vertical inicial.\n\nConferência numérica com uma simulação de 200 choques em Python: as alturas coincidem com 0,49^n/8 e o tempo total converge para 3,3333 (com V = g = 1).",
+    "final_answer": "a) H_n = e^{2n} V²/(8g) = (0,49)^n · V²/(8g), isto é, H_n = (0,49)^n H_0 com H_0 = V²/(8g).\n\nb) A energia mecânica fica mínima, E_min = ½m(V cos30°)² = 3mV²/8 (75% da inicial, nunca zero), quando cessa o movimento vertical. Isso acontece depois de infinitos choques, porém em tempo finito, contado a partir do lançamento: Δt = Σ_{k≥0} e^k V/g = V/[g(1 − e)] = 10V/(3g) ≈ 3,33 V/g. Depois disso a massa desliza com velocidade constante (√3/2)V.",
+    "pitfalls": [
+      "O solo é perfeitamente liso, então o impulso no choque é só vertical: a componente horizontal V cos30° se conserva e o coeficiente e = 0,7 vale apenas para a componente vertical. Aplicar e ao módulo da velocidade, mantendo os 30°, é conceitualmente errado. No item (a) esse erro chega por acaso ao mesmo H_n e o tempo do item (b) também coincide, mas a energia mínima sairia zero, o que está errado. O raciocínio precisa ser cobrado.",
+      "A altura é proporcional a v_y², logo o fator correto é e^{2n} = 0,49^n, e não e^n = 0,7^n. Cuidado também em usar v_y = V sen30° = V/2, e não V: H_0 = V²/(8g), não V²/(2g).",
+      "Indexação: o voo inicial (antes do 1º choque) dura V/g, sem fator e. A série dos tempos começa em k = 0. Começar em k = 1 dá 7V/(3g), que está errado. Usar só o tempo de subida (esquecer o fator 2) dá 5V/(3g), também errado.",
+      "A energia mínima não é atingida após um número finito de choques. São infinitos choques, e é preciso somar uma PG convergente (e < 1) para obter o tempo finito V/[g(1 − e)]. Quem 'para' após n choques ou deixa a resposta em função de n erra o item (b).",
+      "A energia mínima não é zero. Sobra a energia cinética horizontal, E_min = ½m(V√3/2)² = 3mV²/8 = 0,75·E_0, e depois disso a massa desliza com velocidade constante. É bom justificar que E diminui apenas nos choques (perda ½m v_y²(1 − e²)) e é constante entre eles.",
+      "Ambiguidade de 'energia': o esperado é a energia mecânica total, com referência de energia potencial no solo. Se o candidato interpretar como energia cinética, o mínimo dela (também 3mV²/8) ocorre pela primeira vez no ápice do 1º voo, em t = V/(2g). Essa leitura ignora o papel de e no item e não é a pretendida pelo enunciado. Só aceitar se for explicitada e bem justificada, e mesmo assim de forma parcial.",
+      "Contas: 1/(1 − 0,7) = 10/3, logo Δt = 10V/(3g) ≈ 3,33 V/g; 0,7² = 0,49. A dica sen θ ≈ θ das instruções gerais não se aplica a esta questão.",
+      "Hipóteses que devem ser explicitadas: partícula pontual, sem resistência do ar, choques instantâneos e g constante. O intervalo de tempo é contado a partir do lançamento na origem."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) H_n = (0,49)^n V²/(8g). b) Δt = V/[g(1−0,7)] = 10V/(3g). Nesse instante a energia mecânica chega ao mínimo, 3mV²/8, e a massa passa a deslizar com velocidade (√3/2)V.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A indexação está misturada: o texto diz 'logo após o k-ésimo choque' e a fórmula seguinte usa v_{y,n} = e^n V/2. Deveria usar um único índice (v_{y,k} = e^k V/2) e particularizar para k = n só no final."
+          },
+          {
+            "severity": "minor",
+            "description": "Faltam duas hipóteses explícitas: que os choques são instantâneos (necessário para somar só os tempos de voo) e que o intervalo do item b) é contado a partir do lançamento na origem. As duas ficam implícitas, pela soma começar em k = 0 e pela fórmula de t_n, mas deveriam ser ditas."
+          },
+          {
+            "severity": "minor",
+            "description": "A perda por choque, ΔE_k = ½ m v_{y,k-1}² (1 − e²), não é escrita. A monotonicidade decorre corretamente da expressão de E_n, mas explicitar essa perda deixaria mais claro que só a parte vertical se dissipa."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (página 2), e ele coincide com a transcrição. As respostas finais do candidato coincidem item a item com a minha referência. Conferi as contas com python3: a soma da série, as alturas, t_n e a distância x estão todas corretas.\n\na) H_n = (0,49)^n V²/(8g) está correto. O candidato modelou bem o solo liso: a componente horizontal se conserva e e = 0,7 é aplicado só à componente vertical. Também usou v_y = V sen30° = V/2 e o fator e^{2n}, e não e^n. A conferência para n = 0 e a análise dimensional estão presentes.\n\nb) O candidato definiu explicitamente a energia mecânica, com referência de energia potencial no solo, e isso elimina a ambiguidade do enunciado. Afirmou que ela só varia nos choques e deu E_n = 3mV²/8 + e^{2n} mV²/8, sequência estritamente decrescente. Identificou E_min = 3mV²/8, que não é zero porque o solo não exerce impulso horizontal, e descreveu o estado final: a massa desliza com velocidade (√3/2)V. Tratou corretamente os infinitos choques em tempo finito: a PG T_k = e^k V/g começa em k = 0, com o voo inicial incluído e o fator 2 presente. Daí obteve Δt = V/[g(1 − e)] = 10V/(3g), deduziu t_n = (V/g)(1 − e^n)/(1 − e) e verificou o limite e → 0.\n\nTodas as armadilhas da minha lista foram evitadas. Restam apenas falhas pequenas de apresentação: a indexação k/n misturada, as hipóteses de choque instantâneo e de origem do tempo não explicitadas, e a perda por choque não escrita. É uma resolução de nível de gabarito comentado."
+      }
+    }
+  ]
+}

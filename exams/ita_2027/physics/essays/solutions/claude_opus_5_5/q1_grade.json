@@ -1,0 +1,55 @@
+{
+  "question": 1,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 3 - Física)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-3-22-10-2026-2-fase-dia-3/dissertativa-1-fisica-2-fase-dia-3-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "k_c = MgL/2 (o torque é τ ≈ −(k − MgL/2)θ, então θ=0 é estável se k > MgL/2; em k = k_c continua estável pelo termo cúbico −k_cθ³/6)",
+      "key_answer": "k_c = MgL/2",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Torque em relação ao mancal: τ = −kθ + (MgL/2) sen θ ≈ (MgL/2 − k)θ, que é restaurador se k > MgL/2. Logo k_c = MgL/2 e os dois chegam a isso. A resolução ainda confere pelo MHS (I_O = ML²/3) e analisa o caso limite k = k_c, que continua estável por causa do termo de 4ª ordem de U. Isso é coerente com o enunciado, que diz que a estabilidade se perde para k < k_c."
+    },
+    {
+      "item": "b",
+      "solution_answer": "k/k_c ≥ 1: só θ=0, estável. 2/π < k/k_c < 1: três equilíbrios, θ=0 instável e ±θ* estáveis, com sen θ*/θ* = k/k_c. 0 < k/k_c ≤ 2/π: só θ=0, instável (a haste tomba).",
+      "key_answer": "k/k_c ≥ 1: um único equilíbrio, θ=0, estável. 2/π < k/k_c < 1: três equilíbrios, θ=0 instável e ±θ0 estáveis (kθ0 = k_c sen θ0). k/k_c ≤ 2/π: um único equilíbrio (θ=0), instável, no intervalo aberto.",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os equilíbrios saem de (k/k_c)θ = sen θ. Como sen θ/θ é estritamente decrescente em (0, π/2), indo de 1 a 2/π, existe uma raiz não nula ±θ* só quando 2/π < r < 1. As fronteiras batem nos dois: r = 1 entra no caso estável, e r = 2/π entra no caso de equilíbrio único instável, porque a raiz ±π/2 fica fora do intervalo aberto. Estabilidade: U'' = k_c(r − cos θ). Em θ*, U'' = k_c(sen θ* − θ* cos θ*)/θ* > 0, portanto θ* é mínimo. Conferi numericamente: para r = 1,5 e r = 1, dU/dθ > 0 em (0, π/2); para r = 0,4 e r = 2/π, dU/dθ < 0 em (0, π/2). A condição sen θ*/θ* = k/k_c da resolução é a mesma kθ0 = k_c sen θ0 do gabarito."
+    },
+    {
+      "item": "c",
+      "solution_answer": "U_total = kθ²/2 + (MgL/2) cos θ, com U(0) = MgL/2 e U(±π/2) = kπ²/8. Esboços: (i) k ≥ k_c: poço único com mínimo em 0; (ii) 2/π < k/k_c < 1: poço duplo em 'W', com máximo local em 0 e mínimos em ±θ*, onde U(θ*) = (MgL/2)(cos θ* + (θ*/2) sen θ*) < MgL/2; (iii) k/k_c ≤ 2/π: 'morro' (∩) com máximo em 0, decrescente até as bordas.",
+      "key_answer": "U(θ) = (MgL/2) cos θ + kθ²/2. k ≥ k_c: poço único com mínimo em 0; 2/π < k/k_c < 1: duplo poço (máximo local em 0, mínimos em ±θ0); k/k_c ≤ 2/π: máximo em 0 e U decrescendo para as bordas.",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os dois usam a mesma expressão de U e descrevem as mesmas três formas de gráfico. Conferi os detalhes extras da resolução. Para r = 0,8: θ* = 1,1311 (bate com o tick do gráfico), U(θ*)/k_c = 0,9374 < 1 e U(π/2)/k_c = 0,987. As bordas ficam acima de MgL/2 se r > 8/π² ≈ 0,8106. No caso (iii), U(π/2) ≤ (π/4)·MgL/2. As curvas do pgfplots (0,75x², 0,4x² e 0,2x², somadas a cos x) correspondem exatamente a U/k_c para r = 1,5, 0,8 e 0,4. Em todos os casos a resolução está certa e é mais detalhada que o gabarito."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Erro de digitação na resolução do gabarito, item a: 'τ ≈ MgL/2θ − kθ ⇒ τ ≈ MgL/2 − kθ'. Faltam parênteses: o certo é τ ≈ (MgL/2 − k)θ. Isso não muda a conclusão k_c = MgL/2."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O caso limite k = k_c não é linearmente estável; é estável só pelo termo de 4ª ordem (U − U(0) ≈ k_cθ⁴/24). Gabarito e resolução colocam esse caso junto com 'estável', o que é coerente com a frase do enunciado ('deixa de ser estável para k < k_c'). Um corretor pode exigir ou ignorar essa justificativa."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "Referência de altura: o enunciado manda tomar o 'mancal inferior' como zero, e a figura mostra o suporte/mancal abaixo do bloco de polímero. Os dois tomaram o zero no pivô (centro do polímero), o que dá U(0) = MgL/2. Se o zero fosse a base do suporte, U só ganharia uma constante aditiva, sem mudar a forma dos gráficos."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "No caso k/k_c = 2/π, as raízes ±π/2 caem exatamente na borda do intervalo aberto. Os dois tratam esse caso como um único equilíbrio instável, o que está certo no intervalo pedido, mas é um ponto de fronteira que o corretor pode querer ver comentado. A resolução comenta."
+    }
+  ],
+  "summary": "A resolução e o gabarito do Poliedro concordam nos três itens. a) k_c = MgL/2. b) São três regimes: k/k_c ≥ 1 dá um equilíbrio estável; 2/π < k/k_c < 1 dá θ=0 instável e ±θ* estáveis; k/k_c ≤ 2/π dá θ=0 instável. c) Com U = kθ²/2 + (MgL/2) cos θ, os gráficos são poço único, poço duplo e 'morro'. Refiz as contas e verifiquei numericamente a monotonicidade de U, o valor θ* = 1,1311 para r = 0,8 e os valores de U nas bordas e nos mínimos; tudo está certo. A resolução é mais completa que o gabarito: trata o caso marginal k = k_c, calcula U(θ*) e compara as bordas com MgL/2. Achei só um pequeno erro de digitação (parênteses faltando) na dedução do gabarito no item a, que não muda o resultado."
+}
