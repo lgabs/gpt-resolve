@@ -62,6 +62,20 @@ def test_judge_loop_stops_at_max_rounds_and_keeps_best(tmp_path):
     assert result.best.round == 2
 
 
+def test_no_judge_runs_one_solver_pass(tmp_path):
+    pdf = tmp_path / "prova.pdf"
+    pdf.touch()
+    provider = MockProvider(num_questions=1)
+
+    (result,) = run(pdf, tmp_path / "out", provider, Settings(judge=False))
+
+    assert len(result.attempts) == 1
+    assert not result.judged and not result.approved
+    assert "blind" not in provider.calls and "judge" not in provider.calls
+    report = json.loads((tmp_path / "out" / "q1_judge.json").read_text(encoding="utf-8"))
+    assert report["judged"] is False and report["final_answer"]
+
+
 def test_image_folder_exam_skips_extraction(temp_exam_dir, tmp_path):
     provider = MockProvider()
 

@@ -12,7 +12,7 @@ The exam PDFs are the official ones, `https://www.vestibular.ita.br/provas/<subj
 
 Parameters for all three: `--effort xhigh`, `--pass-score 9`, `--max-rounds 3`, `--concurrency 10`, run in a cloud container. 29 of the 30 questions were approved by the judge in the first round; only Physics Q4 needed a second round (8.5 → 9.5).
 
-The score vs Poliedro is the share of items where the grader found our answer right (matching or equivalent to the key, or the key wrong); within a question every item weighs the same. The answer keys were built from the [Poliedro Resolve](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027) pages (final answer per item + the full resolution text) and are not committed. Several "typos in the key" listed in the grade reports come from extracting Poliedro's formulas (MathML) to plain text, not from Poliedro itself.
+The score vs Poliedro is the share of items where the grader found our answer right (matching or equivalent to the key, or the key wrong); within a question every item weighs the same. The answer keys follow the format described in the [README](../../README.md#compare-with-an-answer-key-grade) (final answer per item + the worked resolution, based on the public [Poliedro Resolve](https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027) solutions) and are not committed. Several "typos in the key" listed in the grade reports come from writing the formulas as plain text in the key file, not from Poliedro itself.
 
 ## Math essay
 

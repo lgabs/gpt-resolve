@@ -1,148 +1,151 @@
 # gpt-resolve
-Can GPT solve Brazilian university entrance exams?
 
-This project is an implementation of how to use LLMs to solve challenging Brazilian university entrance exams.
+**Can AI solve Brazil's hardest university entrance exams?** gpt-resolve turns an exam PDF into a ready-to-print PDF of model solutions, written like a cursinho answer sheet: step by step, in standardized LaTeX, each one reviewed by an adversarial AI judge and, optionally, graded against an answer key.
 
-We started with `o1-preview`, and `gpt-4o` to describe the exam images so that `o1-preview` could solve them, because it did not have image capabilities yet. Later versions passed images directly to `o1`, `o3` and `o4-mini`.
-
-Since v0.5, the project runs on agents: the [Claude Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview) reads the exam PDF, solves each question in its own agent, and an adversarial judge agent (which first solves the question blind) scores each resolution and asks for revisions until it is good enough. Results are saved as LaTeX files plus the judge reviews, and compiled into a PDF.
-
-The project begins with the ITA (Instituto Tecnológico de Aeronáutica) 2025 exam, focusing first on the Math essay section. This section, from the recent exam on November 5, 2024, demands deep subject understanding and step-by-step solutions. More details are in the [report](exams/ita_2025/report.md) documentation.
-
-**Spoilers: o1-preview scored 90% in the ITA 2025 Math Essay Exam, 95% in Chemistry Essay and only 65% in Physics Essay. o1 scored 95% in the same Math exam. On the IME 2027 Physics essay, Claude Opus 5.5 had all 10 questions approved by its judge (scores 9.0–9.5) in 6 minutes and matched the Poliedro answer key on all 30 items (100%); on the Math essay, all 10 approved (9.5) in 3.5 minutes and 12/12 items matched the key (100%); on the Chemistry essay, all 10 approved (9.0–9.5) in 5.2 minutes and 25/25 items matched the key (100%, [report](exams/ime_2027/report.md)). On the ITA 2027 essays, all 30 questions were approved (29 in the first round) and matched the Poliedro key on 100% of Math items, 99% of Chemistry (36/37) and 100% of Physics ([report](exams/ita_2027/report.md)).**
-
-After the first ITA 2025 exam is fully solved, the project will try to expand to other sections and eventually other exams. Feel free to contribute with ideas and implementations of other exams!
-
-Table of some exams to be solved:
-
-| Exam         | Year | Status        | Score | Report                             |
-| ------------ | ---- | ------------- | ----- | ---------------------------------- |
-| ITA          | 2025 | 🚧 In Progress | -     | [Report](exams/ita_2025/report.md) |
-| IME          | 2027 | ✅ Done        | Math: 100%, Physics: 100%, Chemistry: 100% | [Report](exams/ime_2027/report.md) |
-| ITA          | 2027 | ✅ Done        | Math: 100%, Chemistry: 99%, Physics: 100% | [Report](exams/ita_2027/report.md) |
-| Escola Naval | 2025 | 📅 Todo        | -     | -                                  |
-| Fuvest/USP   | 2025 | 📅 Todo        | -     | -                                  |
-| AFA          | 2025 | 📅 Todo        | -     | -                                  |
-| UNICAMP      | 2025 | 📅 Todo        | -     | -                                  |
-| ENEM         | 2025 | 📅 Todo        | -     | -                                  |
-
-# New in v0.6
-
-v0.6 has no breaking changes: everything from v0.5 works as before.
-
-- **New command `grade`**: compares the solutions with an answer key (one grader agent per question, in parallel), and writes `q<n>_grade.json`, `grade_report.md` and `grade_report.pdf` with scores and the doubts to review. See [Compare with an answer key](#compare-with-an-answer-key-with-grade).
-- `click` is pinned below 8.2, since `typer` 0.13 crashes on `--help` with newer versions when installed with pip.
-
-# Breaking changes in v0.5
-
-v0.5 replaces the OpenAI pipeline with the Claude Agent SDK. If you used v0.4:
-
-- **Backend**: OpenAI is no longer used and `OPENAI_API_KEY` is ignored. You need the `claude` CLI ([Claude Code](https://docs.claude.com/en/docs/claude-code)) installed and logged in (`claude login` for a Claude subscription, or `ANTHROPIC_API_KEY`). New backends can be added as providers (`src/gpt_resolve/providers/`).
-- **Python 3.10+** is required (Claude Agent SDK requirement).
-- **Input**: `-p` now also accepts an exam PDF. The image folder layout still works, and `conventions.jpg` is now optional.
-- **CLI options**: `--max-tokens-output` was removed; use `--effort`. `--model` now takes Claude model ids (default `claude-opus-5-5`). New: `--judge-model`, `--pass-score`, `--max-rounds`, `--concurrency`, `--provider`, `--quiet`, `-o/--output`, `--compile/--no-compile`, `-t/--title`.
-- **Output**: for a PDF, solutions go to `<pdf name>_solutions/<model>/` by default. Each question also gets a `q<n>_judge.json`, and `resolve` compiles `solutions_compiled.pdf` at the end (with a judge appendix).
-- **`compile-solutions`** no longer aborts on a solution with invalid LaTeX: it puts a placeholder in the PDF and prints a warning.
-- **`--dry-run`** now uses an offline mock agent.
-
-# Installation and How to use
-gpt-resolve is distributed in pypi (v0.5 is installed from this repository until it is published):
 ```bash
-pip install gpt-resolve
+gpt-resolve resolve -p "IME 2027 Matematica.pdf" -t "IME 2027 - Matemática"
+# -> IME 2027 Matematica_solutions/claude_opus_5_5/solutions_compiled.pdf
 ```
 
-`gpt-resolve` provides a simple CLI with three main commands: `resolve` for solving exam questions, `grade` for comparing the solutions with an answer key, and `compile-solutions` for generating PDFs from the solutions, as you can check below. During development, install locally with `pip install -e .`.
+## Results
 
-### Solve exams with `resolve`
+Score is the share of items that match the answer key (or where the key was found wrong). ITA 2025 scores were reviewed by hand.
 
-Since v0.5, `gpt-resolve` runs on the [Claude Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview), which drives the local `claude` CLI. That means it uses whatever auth your Claude Code has: your Claude subscription (after `claude login`) or `ANTHROPIC_API_KEY`.
+| Exam     | Section   | Solver            | Judge scores | Score | Solutions | Grade report | Report |
+| -------- | --------- | ----------------- | ------------ | ----- | --------- | ------------ | ------ |
+| ITA 2027 | Math      | `claude-opus-5-5` | 9.5 – 10     | **100%** (12/12) | [PDF](exams/ita_2027/math/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/ita_2027/math/essays/solutions/claude_opus_5_5/grade_report.pdf) | [ITA 2027](exams/ita_2027/report.md) |
+| ITA 2027 | Chemistry | `claude-opus-5-5` | 9.0 – 9.5    | **99%** (36/37)  | [PDF](exams/ita_2027/chemistry/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/ita_2027/chemistry/essays/solutions/claude_opus_5_5/grade_report.pdf) | [ITA 2027](exams/ita_2027/report.md) |
+| ITA 2027 | Physics   | `claude-opus-5-5` | 9.0 – 9.5    | **100%** (24/24) | [PDF](exams/ita_2027/physics/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/ita_2027/physics/essays/solutions/claude_opus_5_5/grade_report.pdf) | [ITA 2027](exams/ita_2027/report.md) |
+| IME 2027 | Math      | `claude-opus-5-5` | 9.5          | **100%** (12/12) | [PDF](exams/ime_2027/math/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/ime_2027/math/essays/solutions/claude_opus_5_5/grade_report.pdf) | [IME 2027](exams/ime_2027/report.md) |
+| IME 2027 | Physics   | `claude-opus-5-5` | 9.0 – 9.5    | **100%** (30/30) | [PDF](exams/ime_2027/physics/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/ime_2027/physics/essays/solutions/claude_opus_5_5/grade_report.pdf) | [IME 2027](exams/ime_2027/report.md) |
+| IME 2027 | Chemistry | `claude-opus-5-5` | 9.0 – 9.5    | **100%** (25/25) | [PDF](exams/ime_2027/chemistry/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/ime_2027/chemistry/essays/solutions/claude_opus_5_5/grade_report.pdf) | [IME 2027](exams/ime_2027/report.md) |
+| ITA 2025 | Math      | `o3` / `o4-mini`  | –            | 98%   | [o3](exams/ita_2025/math/essays/solutions/o3/solutions_compiled.pdf) · [o4-mini](exams/ita_2025/math/essays/solutions/o4_mini/solutions_compiled.pdf) | – | [ITA 2025](exams/ita_2025/report.md) |
+| ITA 2025 | Math      | `o1` / `o1-preview` | –          | 95% / 90% | [o1](exams/ita_2025/math/essays/solutions/o1/solutions_compiled.pdf) · [o1-preview](exams/ita_2025/math/essays/solutions/o1_preview/solutions_compiled.pdf) | – | [ITA 2025](exams/ita_2025/report.md) |
+| ITA 2025 | Chemistry | `o1-preview`      | –            | 95%   | [PDF](exams/ita_2025/chemistry/essays/solutions/solutions_compiled.pdf) | – | [ITA 2025](exams/ita_2025/report.md) |
+| ITA 2025 | Physics   | `o1-preview`      | –            | 65%   | [PDF](exams/ita_2025/physics/essays/solutions/solutions_compiled.pdf) | – | [ITA 2025](exams/ita_2025/report.md) |
 
-How it works:
-1. **Extract** (PDF only): an agent reads the exam PDF and lists the questions (number, pages, transcription). Cached in `questions.json`, so re-runs skip it.
-2. **Solve**: each question runs in its own agent (default `claude-opus-5-5`), which can read the original pages/figures and use Python to check its work.
-3. **Judge**: an adversarial agent (default `claude-opus-5-5`) solves the question independently and scores the *whole resolution* (correctness, completeness, rigor, clarity) from 0 to 10. Below `--pass-score` (default 9), the solver revises using the critique, up to `--max-rounds` (default 3). The best attempt is kept and flagged as approved or not.
-   The judge works in two phases: it first solves the question blind (without seeing the candidate) and lists its pitfalls, then reviews the candidate against that reference, resolving any disagreement instead of anchoring on it.
-4. **Compile**: a PDF with all solutions plus an appendix with each judge score and review (needs `pdflatex`).
+Each 2027 essay exam (10 questions) took under 7 minutes end to end. Next on the list: Escola Naval, AFA, Fuvest/USP, Unicamp and ENEM.
+
+## How it works
+
+| Step | What happens | Output |
+| ---- | ------------ | ------ |
+| 1. Extract | An agent reads the exam PDF and lists each question (number, pages, transcription). Cached, so re-runs skip it. | `questions.json` |
+| 2. Solve | One agent per question (in parallel) reads the original pages and figures and may check its math with Python. | `q<n>_solution.txt` |
+| 3. Judge | An adversarial agent first solves the question **blind**, then scores the whole resolution from 0 to 10 (correctness, completeness, rigor, clarity). Below the pass score, the solver revises with the critique. Optional (`--no-judge`). | `q<n>_judge.json` |
+| 4. Compile | All solutions go into one PDF, plus an appendix with each judge score and review. | `solutions_compiled.pdf` |
+| 5. Grade | Optional, separate command: compares the solutions with an answer key you provide. | `grade_report.pdf` |
+
+Agents are sandboxed: they can only read the exam files and their own work folder, and Bash is limited to local computation (no network), so an answer key on your machine can't leak into a solution.
+
+## Why it's different
+
+| | |
+| - | - |
+| **Standardized LaTeX** | Every solution is a single `\section*` in plain LaTeX (only `amsmath`, `amssymb`, `amsfonts`, `graphicx`, `tikz`, `pgfplots`), no Unicode inside formulas, decimal comma, no nested display math. All exams compile with the same preamble into the same layout, and a solution with broken LaTeX becomes a placeholder instead of breaking the PDF. |
+| **Exam-grade prompts** | The solver writes like a cursinho model answer: correct, complete, rigorous and didactic, about one page per question, ending with the final answer. All prompts and output schemas live in [`prompts.py`](src/gpt_resolve/prompts.py), in Portuguese. |
+| **A judge that isn't anchored** | The judge solves the question before seeing the candidate, lists the pitfalls, and only then reviews it. Disagreements are resolved, not copied. |
+| **Answer key stays out** | Solver and judge never see an answer key. Grading is a separate step, run after the solutions are done. |
+| **Swappable backend** | Runs on the [Claude Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview). Other backends plug in as providers in [`providers/`](src/gpt_resolve/providers/). |
+
+## Quick start
+
+Requirements: Python 3.10+, the [`claude` CLI](https://docs.claude.com/en/docs/claude-code) logged in (`claude login` for a Claude subscription, or `ANTHROPIC_API_KEY`), and a LaTeX distribution with `pdflatex` for the PDFs ([TeX Live](https://www.tug.org/texlive/), [MacTeX](https://www.tug.org/mactex/) or TinyTeX).
 
 ```bash
-claude login            # once, if using your subscription
+git clone https://github.com/lgabs/gpt-resolve && cd gpt-resolve
 pip install -e .
-gpt-resolve resolve -p "IME 2027 Matematica.pdf" -q 1,2 -t "IME 2027 - Matemática"
+claude login
+gpt-resolve resolve -p exam.pdf -q 1,2 -t "My exam"     # solve questions 1 and 2
 ```
 
-Outputs go to `<pdf name>_solutions/<model>/`: `q<n>_solution.txt` (LaTeX), `q<n>_judge.json` (scores and reviews of every round) and `solutions_compiled.pdf`. The old layout of one image per question (`q1.jpg`, ..., optional `conventions.jpg`) still works by passing the folder to `-p`.
+## Commands
 
-Agents are sandboxed by a `PreToolUse` hook: they can only read the exam files and their own work folder, and Bash is limited to local computation (no network, no files elsewhere), so answer keys on the machine can't leak in. The terminal shows each agent's tool calls and the judge scores live (`--quiet` hides tool calls); a failing agent is retried, and a question that still fails doesn't stop the others.
+| Command | Use it to |
+| ------- | --------- |
+| `gpt-resolve resolve` | Solve an exam (PDF, or a folder with `q1.jpg`, `q2.jpg`, ... and optional `conventions.jpg`) |
+| `gpt-resolve grade` | Compare solutions with an answer key |
+| `gpt-resolve compile-solutions` | Rebuild the PDF from existing `q<n>_solution.txt` files |
 
-Useful options (see `gpt-resolve resolve --help`): `--model`, `--judge-model`, `--pass-score`, `--max-rounds`, `--effort`, `--concurrency`, `--no-compile`, `--dry-run` (offline mock).
+Run any of them with `--help` for all options.
 
-Providers live in `src/gpt_resolve/providers/`: implement `Provider.run` and register it in `get_provider` to use another backend (`--provider`).
+### `resolve`
 
+| Option | Default | Description |
+| ------ | ------- | ----------- |
+| `-p, --path` | – | Exam PDF or image folder |
+| `-q, --questions` | all | Questions to solve, e.g. `1,3,5` |
+| `-o, --output` | `<pdf name>_solutions/<model>/` | Output folder |
+| `-t, --title` | `Soluções` | Title of the compiled PDF |
+| `-m, --model` | `claude-opus-5-5` | Solver model |
+| `--judge / --no-judge` | `--judge` | Review with the adversarial judge. `--no-judge` runs one solver pass per question (faster, cheaper, no score) |
+| `--judge-model` | `claude-opus-5-5` | Judge model |
+| `--pass-score` | `9` | Minimum judge score (0–10) to approve |
+| `--max-rounds` | `3` | Max solve/judge rounds per question; the best attempt is kept |
+| `--effort` | `xhigh` | Reasoning effort: `low`, `medium`, `high`, `xhigh`, `max` |
+| `--concurrency` | `4` | Questions solved in parallel |
+| `--compile / --no-compile` | `--compile` | Compile the PDF at the end |
+| `--quiet` | off | Hide each agent's tool calls |
+| `--dry-run` | off | Offline mock agent, to test the pipeline |
 
-### Compare with an answer key with `grade`
+A failing agent is retried, and a question that still fails doesn't stop the others: re-run it with `-q <n>`.
 
-Once a cursinho (or the official board) publishes its answer key, `grade` compares it with your solutions. Each question runs in its own grader agent (same Claude Agent SDK setup and sandbox as the solver, `--concurrency` in parallel), which compares the final answers item by item, redoes the work where they disagree (the key can be wrong too) and lists the points worth checking with a teacher.
+### Compare with an answer key (`grade`)
 
 ```bash
 gpt-resolve grade -p exams/ime_2027/physics/essays/solutions/claude_opus_5_5 \
-  -k poliedro_key.json -e exams/ime_2027/physics/essays/exam.pdf
+  -k answer_key.json -e exams/ime_2027/physics/essays/exam.pdf
 ```
 
-The answer key is a JSON file; `answer` is a string or an object with one answer per item, and `resolution` (the key's worked solution) is optional but helps the grader:
+One grader agent per question compares the final answers item by item, redoes the work where they disagree (keys can be wrong too) and lists the doubts worth checking with a teacher. A question's score is the share of its items where the solution is right.
+
+**You bring the answer key.** gpt-resolve doesn't fetch or build answer keys: getting one (official or from a cursinho) and organizing it in the format below is up to you. Any tool works for that, including an LLM, but it is outside this project.
 
 ```json
 {
-  "source": "Poliedro",
+  "source": "Name of the answer key",
   "questions": [
-    {"number": 1, "answer": {"a": "v0 = 250 m/s", "b": "T = 4000 K"}, "resolution": "...", "url": "https://..."}
+    {"number": 1, "answer": {"a": "v0 = 250 m/s", "b": "T = 4000 K"}, "resolution": "optional worked solution", "url": "optional link"}
   ]
 }
 ```
 
-Outputs go to the solutions folder: `q<n>_grade.json` (per item: both answers, verdict, who is right and why; plus the doubts), `grade_report.md` and `grade_report.pdf` (LaTeX, compiled at the end unless `--no-compile`; scores, item verdicts and all doubts). The score of a question is the share of its items where the solution is right. Doubts that could change an item's grade or reveal an error are marked important and listed first. The grader only sees the key through its prompt, and `-e` lets it read the exam pages listed in `questions.json`.
+| Field | Required | Description |
+| ----- | -------- | ----------- |
+| `source` | no | Shown in the report |
+| `number` | yes | Question number, as in the exam |
+| `answer` | yes | A string, or an object with one answer per item |
+| `resolution` | no | The key's worked solution; helps the grader judge disagreements |
+| `url` | no | Link to the original key |
 
-### Compile solutions with `compile-solutions`
+Outputs go to the solutions folder: `q<n>_grade.json` (per item: both answers, verdict, who is right and why), `grade_report.md` and `grade_report.pdf`. Options: `-q`, `-m`, `--effort`, `--concurrency`, `--no-compile`, `-t`, `--dry-run`.
 
-Once you have the solutions in your exam folder `exam_path`, you can compile them into a single PDF running:
+### `compile-solutions`
+
 ```bash
-gpt-resolve compile-solutions -p exam_path --title "Your Exam Title --author 'o1 (OpenAI)'"
+gpt-resolve compile-solutions -p exam_solutions_folder -t "Your exam title" -a "Author"
 ```
 
-For that command to work, you'll need a LaTeX distribution in your system. See some guidelines [here](https://www.tug.org/texlive/) (MacTeX for MacOS was used to start this project). This project was developed with [MacTeX](https://www.tug.org/mactex/) distribution.
+## Costs
 
-# Troubleshooting
+With a Claude subscription, runs count against your plan's usage limits. With `ANTHROPIC_API_KEY` you pay per token:
 
-Sometimes, it was observed that the output from `o1-preview` produced invalid LaTeX code when nesting display math environments (such as `\[...\]` and `\begin{align*} ... \end{align*}` together). The current prompt for `o1-preview` adds an instruction to avoid this, which works most of the time. If that happens, you can try to solve the question again by running `gpt-resolve resolve -p exam_path -q <question_number>`, or making more adjustments to the prompt, or fixing the output LaTeX code manually. Experiments with `o1` did not show any similar errors so far.
+| Mode | Agent sessions per question |
+| ---- | --------------------------- |
+| `--no-judge` | 1 (solver) |
+| With judge, approved in round 1 | 3 (blind judge, solver, review) |
+| Each extra round | +2 (solver, review) |
 
-# Costs
+Plus one extraction per PDF and, for `grade`, one session per question. Lower `--effort`, `--max-rounds` or `--concurrency` to spend less.
 
-With a Claude subscription, runs count against your plan's usage limits instead of being billed per token. With `ANTHROPIC_API_KEY`, each question costs at least three agent sessions (blind judge solution, solver, judge review), plus one solver + judge pair per revision round, and one extraction per PDF. Lower `--effort`, `--max-rounds` or `--concurrency` to spend less. For reference, the IME 2027 Physics essay (10 questions, all approved in the first round) ran in about 6 minutes at `--effort xhigh`.
+## Changelog
 
-Earlier OpenAI versions (v0.4 and before) were billed per token: for `o1` ($15/$60 per 1M input/output tokens), a 10-question exam with 10000 max tokens per question cost less than $6.
+| Version | Changes |
+| ------- | ------- |
+| v0.6 | New `grade` command. `--no-judge` option. No breaking changes. |
+| v0.5 | **Breaking:** OpenAI replaced by the Claude Agent SDK (`OPENAI_API_KEY` ignored, needs the `claude` CLI). Python 3.10+. `-p` accepts PDFs. `--max-tokens-output` replaced by `--effort`; new judge options. Outputs go to `<pdf name>_solutions/<model>/`. |
+| ≤ v0.4 | OpenAI pipeline (`o1-preview`, `o1`, `o3`, `o4-mini`), one image per question. |
 
-# Contributing
+## Contributing
 
-There are several ways you can contribute to this project:
-
-- Add solutions for new exams or sections
-- Improve existing solutions or model prompts
-- Add automatic evaluation metrics for answers
-- Create documentations for exams
-- Report issues or suggest improvements
-
-To contribute, simply fork the repository, create a new branch for your changes, and submit a pull request. Please ensure your PR includes:
-- Clear description of the changes
-- Updated table entry (if adding new exam solutions)
-- Any relevant documentation
-
-Feel free to open an issue first to discuss major changes or new ideas!
-
-## Sponsors
-
-<p align="center">
-  <a href="https://www.buser.com.br">
-    <img src="assets/sponsors/buser-logo.png" alt="Buser Logo" width="100"/>
-  </a>
-</p>
-
-This project is proudly sponsored by [Buser](https://www.buser.com.br), Brazil's leading bus travel platform.
+Ideas and PRs are welcome: new exams, better prompts, new providers, docs. Fork, branch, and open a PR with a clear description and, for new exam solutions, the results table updated. For bigger changes, open an issue first.

@@ -117,7 +117,12 @@ def generate_solutions_pdf(
         doc.append(NoEscape(r"\newpage"))
 
     judge_reports = sorted(
-        solutions_dir.glob("q*_judge.json"), key=lambda x: int(x.stem.split("_")[0][1:])
+        (
+            f
+            for f in solutions_dir.glob("q*_judge.json")
+            if json.loads(f.read_text(encoding="utf-8")).get("judged", True)
+        ),
+        key=lambda x: int(x.stem.split("_")[0][1:]),
     )
     if judge_reports:
         append_judge_appendix(doc, judge_reports)
