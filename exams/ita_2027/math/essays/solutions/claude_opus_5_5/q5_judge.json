@@ -1,0 +1,45 @@
+{
+  "question": 5,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A abscissa do vértice C é 5√3 − 9 ≈ −0,34.\n\nCom x = 1 na elipse 2x² + y² = 6, obtemos A = (1, 2) e B = (1, −2), então AB = 4. Como o perímetro é 10, AC + BC = 6. Esse é o lugar geométrico da elipse de focos A e B: (x−1)²/5 + y²/9 = 1.\n\nSubstituindo y² = 6 − 2x² nessa equação, chega-se a x² + 18x + 6 = 0, cujas raízes são x = −9 ± 5√3. A raiz −9 − 5√3 é descartada porque os pontos da elipse dada têm |x| ≤ √3. Sobra C = (5√3 − 9, ±√(180√3 − 306)), dois pontos simétricos com a mesma abscissa, então a resposta é única.\n\nConferi numericamente que o perímetro dá 10.",
+  "judge_reference": {
+    "reference_solution": "**Questão 05 – Resolução de referência**\n\n**1) Os vértices A e B.**\nA elipse é 2x² + y² = 6, ou seja, x²/3 + y²/6 = 1. O eixo maior é vertical, com a² = 6 e b² = 3; os focos ficam em (0, ±√3), que não serão usados.\nPara x = 1: 2 + y² = 6, logo y² = 4 e y = ±2. Os únicos pontos da elipse com abscissa 1 são (1, 2) e (1, −2). Como ABC é triângulo, A ≠ B. Portanto {A, B} = {(1, 2), (1, −2)} e m(AB) = 4. A ordem dos rótulos não altera nada, por simetria.\n\n**2) A condição do perímetro.**\nDe m(AB) + m(AC) + m(BC) = 10 vem m(AC) + m(BC) = 6.\n\n**3) Primeiro caminho: lugar geométrico (elipse auxiliar).**\nOs pontos P com PA + PB = 6 formam uma elipse de focos A(1, 2) e B(1, −2). Ela tem:\n- centro (1, 0), semieixo focal c' = 2 e semieixo maior a' = 3, na vertical;\n- b'² = 9 − 4 = 5;\n- equação (x − 1)²/5 + y²/9 = 1.\n\nO vértice C está nas duas elipses. Substituindo y² = 6 − 2x²:\n9(x − 1)² + 5(6 − 2x²) = 45\n9x² − 18x + 9 + 30 − 10x² = 45\nx² + 18x + 6 = 0\nx = −9 ± √75 = −9 ± 5√3.\n\n**4) Segundo caminho (equivalente): cálculo direto.**\nSeja C = (x, y) com y² = 6 − 2x².\n- m(AC)² = (x − 1)² + (y − 2)² = 11 − 2x − x² − 4y\n- m(BC)² = 11 − 2x − x² + 4y\n\nChame s = 11 − 2x − x² = 12 − (x + 1)². A condição fica √(s − 4y) + √(s + 4y) = 6. Elevando ao quadrado:\n2s + 2√(s² − 16y²) = 36, isto é, √(s² − 16y²) = 18 − s.\nComo s ≤ 12, temos 18 − s > 0, então elevar de novo ao quadrado é legítimo:\ns² − 16y² = 324 − 36s + s², logo 4y² = 9s − 81.\nCom y² = 6 − 2x²: 24 − 8x² = 18 − 18x − 9x², ou seja, x² + 18x + 6 = 0.\nÉ a mesma equação do item 3.\n\n**5) Seleção da raiz.**\nTodo ponto da elipse dada satisfaz |x| ≤ √3 ≈ 1,732.\n- x = −9 − 5√3 ≈ −17,66 está fora da elipse e é descartada.\n- x = 5√3 − 9 ≈ −0,3397 satisfaz |x| ≤ √3 e é aceita.\n\nPara essa raiz, x² = 156 − 90√3 e y² = 6 − 2x² = 180√3 − 306 ≈ 5,769 > 0. Então C existe: são dois pontos simétricos, C = (5√3 − 9, ±√(180√3 − 306)) ≈ (−0,340, ±2,402).\n\n**6) Verificação de que ABC é triângulo.**\nComo x_C ≠ 1, C não está na reta x = 1, que contém A e B. Logo A, B e C não são colineares e C é diferente de A e de B.\nConferência numérica: 4 + m(AC) + m(BC) = 10,000 nos dois casos. Uma varredura de toda a elipse mostra que perímetro 10 só ocorre em x ≈ −0,33975. Para referência, o perímetro varia de 8 (C perto de A ou de B) até cerca de 11,6 (C em x = −√3), então o valor 10 é atingido.\n\n**Resposta:** a abscissa de C é 5√3 − 9 ≈ −0,34.",
+    "final_answer": "A abscissa de C é x_C = 5√3 − 9 ≈ −0,34.\n\n- A e B são (1, 2) e (1, −2), em alguma ordem, e m(AB) = 4.\n- C fica nas duas elipses 2x² + y² = 6 e (x − 1)²/5 + y²/9 = 1, o que dá x² + 18x + 6 = 0.\n- A outra raiz, −9 − 5√3, é descartada porque fica fora da elipse.\n- O vértice C pode ser (5√3 − 9, ±√(180√3 − 306)): são dois pontos, mas com a mesma abscissa.",
+    "pitfalls": [
+      "Justificar que A e B são obrigatoriamente (1, 2) e (1, −2): eles são distintos porque ABC é triângulo, e só há esses dois pontos da elipse com x = 1. Daí m(AB) = 4 e m(AC) + m(BC) = 6.",
+      "Montar corretamente a elipse auxiliar de focos A e B: centro (1, 0), a' = 3 (eixo vertical), c' = 2, b'² = 5, equação (x − 1)²/5 + y²/9 = 1. Erros comuns são trocar os eixos (eixo maior na horizontal), usar b'² = 9 + 4 ou esquecer o deslocamento do centro para x = 1.",
+      "A equação final é x² + 18x + 6 = 0. É preciso descartar a raiz −9 − 5√3 ≈ −17,66, que viola |x| ≤ √3. Apresentar duas abscissas como resposta é erro.",
+      "Mostrar que C existe para a raiz aceita: y² = 180√3 − 306 > 0, com dois pontos simétricos. Dizer que C é único ou que y = 0 está errado; o que se pede é só a abscissa, e ela é única.",
+      "Verificar que o triângulo não é degenerado: x_C ≠ 1, então C não está sobre a reta AB.",
+      "No cálculo direto com radicais, é preciso tratar a condição de sinal ao elevar ao quadrado, 18 − s ≥ 0 com s = 11 − 2x − x² ≤ 12, ou então conferir a solução no fim. Elevar ao quadrado sem justificar pode introduzir soluções estranhas.",
+      "Erros de álgebra frequentes: 9(x − 1)² + 5(6 − 2x²) = 45 leva a −x² − 18x − 6 = 0, e o sinal costuma ser trocado. Também é comum simplificar √75 de forma errada; o correto é 5√3.",
+      "Não confundir os focos da elipse dada, (0, ±√3), com A e B. A e B não são focos da elipse original, então não vale usar diretamente a propriedade PF1 + PF2 = 2a = 2√6 dela."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A abscissa do vértice C é 5√3 − 9 ≈ −0,34.\n\nCom x = 1 na elipse 2x² + y² = 6, obtemos A = (1, 2) e B = (1, −2), então AB = 4. Como o perímetro é 10, AC + BC = 6. Esse é o lugar geométrico da elipse de focos A e B: (x−1)²/5 + y²/9 = 1.\n\nSubstituindo y² = 6 − 2x² nessa equação, chega-se a x² + 18x + 6 = 0, cujas raízes são x = −9 ± 5√3. A raiz −9 − 5√3 é descartada porque os pontos da elipse dada têm |x| ≤ √3. Sobra C = (5√3 − 9, ±√(180√3 − 306)), dois pontos simétricos com a mesma abscissa, então a resposta é única.\n\nConferi numericamente que o perímetro dá 10.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Para garantir que a raiz 5√3 − 9 satisfaz |x| < √3, o candidato usou só a aproximação numérica (−0,34 contra 1,73). Isso basta, mas num gabarito comentado ficaria melhor a verificação exata: 9 − 5√3 < √3 ⇔ 9 < 6√3 ⇔ 81 < 108. Para a positividade de y² ele fez exatamente isso (97200 > 93636); faltou o mesmo tratamento aqui."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação numérica do perímetro foi feita só para C com y > 0. O caso y < 0 sai pela simetria em relação a Ox, que o próprio candidato menciona, mas a frase que liga essa simetria ao perímetro (as distâncias a A e a B apenas trocam de lugar) não aparece. É um detalhe de redação."
+          }
+        ],
+        "summary": "Reli o enunciado no PDF original (pág. 6, Questão 05), e a transcrição confere. O candidato chegou a x_C = 5√3 − 9 ≈ −0,34, a mesma resposta da minha referência. Conferi as contas com python3: x² = 156 − 90√3, y² = 180√3 − 306 ≈ 5,769, e o perímetro dá 10,000 para os dois pontos C = (5√3 − 9, ±2,402). A resposta está correta.\n\nRepassei cada armadilha:\n1. A e B são forçados a ser (1, ±2), porque x = 1 dá y = ±2 e os vértices são distintos. Por isso m(AB) = 4. A escolha dos rótulos sem perda de generalidade é legítima.\n2. A elipse auxiliar está bem construída. A desigualdade 6 > 4, que garante que ela não é degenerada, foi justificada. O centro (1, 0), o eixo maior vertical, a' = 3, c' = 2 e b'² = 5 estão certos, e a equação é (x − 1)²/5 + y²/9 = 1.\n3. A álgebra 9(x − 1)² + 5(6 − 2x²) = 45 ⇔ x² + 18x + 6 = 0 tem o sinal tratado corretamente, e √75 = 5√3 está certo.\n4. A raiz −9 − 5√3 foi descartada porque |x| ≤ √3.\n5. A existência de C foi provada com y² > 0 por um argumento exato. O candidato reconhece que há dois pontos simétricos com a mesma abscissa, então a resposta é única.\n6. O triângulo não é degenerado, porque x_C ≠ 1.\n7. Não houve confusão com os focos (0, ±√3) da elipse original.\n\nO método por interseção de elipses não tem a armadilha de elevar ao quadrado. A equivalência entre o lugar geométrico e a condição m(AC) + m(BC) = 6 vale pela definição de elipse. A redação é clara e organizada e inclui uma verificação numérica que confirma o resultado.\n\nEncontrei só duas questões menores de redação. Uma é a verificação apenas numérica de |5√3 − 9| < √3. A outra é que a conferência do perímetro foi feita só para y > 0. A resolução poderia ser publicada como gabarito comentado."
+      }
+    }
+  ]
+}

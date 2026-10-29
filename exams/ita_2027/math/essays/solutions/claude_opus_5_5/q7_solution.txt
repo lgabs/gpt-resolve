@@ -1,0 +1,48 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+Seja $D(n)=n^2-2n-27=(n-1)^2-28$. Como $28$ não é quadrado perfeito, $D(n)\neq 0$ para todo $n\in\mathbb{Z}$; portanto o quociente está sempre definido.
+
+\textbf{1) Divisão de polinômios.} Dividindo $P(n)=2n^3-5n^2-52n+90$ por $D(n)$:
+\[
+2n\,(n^2-2n-27)=2n^3-4n^2-54n \;\Rightarrow\; P(n)-2n\,D(n)=-n^2+2n+90,
+\]
+\[
+(-n^2+2n+90)-(-1)\,D(n)=-n^2+2n+90+n^2-2n-27=63 .
+\]
+Logo $P(n)=(2n-1)\,D(n)+63$ e
+\[
+\frac{2n^3-5n^2-52n+90}{n^2-2n-27}=2n-1+\frac{63}{n^2-2n-27}.
+\]
+
+\textbf{2) Condição de integralidade.} Para $n$ inteiro, $2n-1$ é inteiro. Então o quociente é inteiro se, e somente se, $\dfrac{63}{D(n)}$ é inteiro, ou seja, se $D(n)$ é um divisor (positivo ou negativo) de $63=3^2\cdot 7$:
+\[
+D(n)\in\{\pm1,\ \pm3,\ \pm7,\ \pm9,\ \pm21,\ \pm63\}.
+\]
+
+\textbf{3) Busca dos quadrados.} Como $(n-1)^2=28+D(n)$, o número $28+D(n)$ precisa ser um quadrado perfeito:
+\[
+\begin{array}{c|cccccccccccc}
+D(n) & 1 & -1 & 3 & -3 & 7 & -7 & 9 & -9 & 21 & -21 & 63 & -63\\ \hline
+28+D(n) & 29 & 27 & 31 & 25 & 35 & 21 & 37 & 19 & 49 & 7 & 91 & -35
+\end{array}
+\]
+Os únicos quadrados perfeitos são $25$ (com $D=-3$) e $49$ (com $D=21$):
+\begin{itemize}
+\item $(n-1)^2=25 \Rightarrow n-1=\pm5 \Rightarrow n=6$ ou $n=-4$;
+\item $(n-1)^2=49 \Rightarrow n-1=\pm7 \Rightarrow n=8$ ou $n=-6$.
+\end{itemize}
+
+\textbf{4) Verificação} (usando $2n-1+\frac{63}{D}$ e conferindo pela expressão original):
+\begin{itemize}
+\item $n=6$: $D=-3$, quociente $=11-21=-10$; de fato $P(6)=30$ e $30/(-3)=-10$.
+\item $n=-4$: $D=-3$, quociente $=-9-21=-30$; de fato $P(-4)=90$ e $90/(-3)=-30$.
+\item $n=8$: $D=21$, quociente $=15+3=18$; de fato $P(8)=378$ e $378/21=18$.
+\item $n=-6$: $D=21$, quociente $=-13+3=-10$; de fato $P(-6)=-210$ e $-210/21=-10$.
+\end{itemize}
+
+Como o passo 2 é uma equivalência e a tabela esgota todos os divisores de $63$, não há outras soluções.
+
+\medskip
+\noindent ANSWER: $n\in\{-6,\,-4,\,6,\,8\}$ (os quocientes correspondentes são $-10$, $-30$, $-10$ e $18$).

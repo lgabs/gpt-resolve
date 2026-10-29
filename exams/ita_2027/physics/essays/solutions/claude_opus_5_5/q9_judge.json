@@ -1,0 +1,48 @@
+{
+  "question": 9,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) Como kd = nπ, cos(kx − ωt + nπ) = (−1)^n cos(kx − ωt). Logo E = E0[1+(−1)^n] cos(kx − ωt) ẑ: é uma onda que se propaga em +x com velocidade ω/k = c e amplitude E0[1+(−1)^n].\nb) A diferença de fase é Δφ = nπ, ou seja, d = nλ/2. Para n par a interferência é construtiva (amplitude 2E0, intensidade 4 vezes a de cada onda). Para n ímpar a interferência é destrutiva total (E = 0).\nc) B = −B0 cos(kx − ωt) ŷ, com B0 = E0[1+(−1)^n]/c. Para n par, B0 = 2E0/c; para n ímpar, B = 0. B oscila ao longo do eixo y, em fase com E, e aponta para −ŷ quando E aponta para +ẑ, de modo que E×B aponta para +x̂.",
+  "judge_reference": {
+    "reference_solution": "**Conferência com o original:** a transcrição bate com a p. 10 do PDF (Questão 9). Não há figura.\n\n---\n\n## a) Reescrevendo o campo como uma única onda progressiva\n\nSeja θ = kx − ωt. Como kd = nπ, o primeiro termo fica:\n\ncos[k(x+d) − ωt] = cos(θ + nπ) = (−1)ⁿ cos θ.\n\nEntão:\n\n**E⃗ = E₀[1 + (−1)ⁿ] cos(kx − ωt) ẑ.**\n\nA mesma conta pode ser feita com soma em produto, cos A + cos B = 2 cos[(A+B)/2] cos[(A−B)/2]:\n\nE⃗ = 2E₀ cos(kd/2) cos(kx − ωt + kd/2) ẑ = **2E₀ cos(nπ/2) · cos(kx − ωt + nπ/2) ẑ.**\n\nAs duas formas são idênticas para todo n (conferido numericamente para n = 0,…,6):\n- n par, n = 2m: 2E₀(−1)ᵐ · (−1)ᵐ cos θ = 2E₀ cos θ;\n- n ímpar: cos(nπ/2) = 0, logo E⃗ = 0.\n\n**Por que é uma onda no sentido +x:** a dependência é f(kx − ωt). Uma fase constante exige kx − ωt = cte, ou seja, x = (ω/k)t + cte. A velocidade de fase é ω/k = c > 0, então a onda anda no sentido +x. É uma onda **progressiva**, não estacionária: as duas parcelas andam no mesmo sentido, só com uma defasagem kd entre elas.\n\n**Amplitude, só em função de E₀ e n:**\n\nE_res = E₀[1 + (−1)ⁿ] = 2E₀|cos(nπ/2)|, ou seja:\n- 2E₀ se n é par;\n- 0 se n é ímpar.\n\n## b) Relação entre n e o tipo de interferência\n\nA diferença de fase entre as ondas é Δφ = kd = nπ. Isso equivale a uma diferença de caminho d = nλ/2.\n\n- **n par** (Δφ = 2mπ, d = mλ): **interferência construtiva** (máxima). A amplitude é 2E₀ e a intensidade é 4 vezes a de uma onda isolada, porque I ∝ E².\n- **n ímpar** (Δφ = (2m+1)π, d = (2m+1)λ/2): **interferência destrutiva** (total). A amplitude é 0 e os campos se anulam em todo ponto e instante.\n\nObservação: n = 0 dá d = 0, o que contradiz um pouco o \"d positivo\" do enunciado. Nesse caso as ondas coincidem e a interferência é trivialmente construtiva.\n\n## c) Campo magnético\n\nNo vácuo, para uma onda plana que se propaga em +x:\n- B⃗ = (1/c) x̂ × E⃗;\n- |B| = |E|/c;\n- B⃗ está em fase com E⃗;\n- E⃗, B⃗ e a direção de propagação são mutuamente perpendiculares.\n\nComo x̂ × ẑ = −ŷ, temos B⃗ ∥ −ŷ quando E⃗ ∥ +ẑ.\n\nVerificação pela Lei de Faraday, ∇×E⃗ = −∂B⃗/∂t. Com E⃗ = E_z(x,t) ẑ, vem ∇×E⃗ = −(∂E_z/∂x) ŷ. Logo ∂B_y/∂t = ∂E_z/∂x. Para E_z = A cos(kx − ωt):\n\nB_y = −(k/ω) A cos(kx − ωt) = −(A/c) cos(kx − ωt).\n\nVerificação pelo vetor de Poynting: S⃗ ∝ E⃗ × B⃗ = A cos θ · (−A/c) cos θ (ẑ × ŷ) = (A²/c) cos²θ x̂. Ele aponta para +x, coerente com a propagação.\n\n**Resultado:**\n\n**B⃗ = −B₀ cos(kx − ωt) ŷ**, de forma equivalente B⃗ = B₀ cos(kx − ωt + π) ŷ.\n\nAqui B₀ = E_res/c = E₀[1 + (−1)ⁿ]/c. Ou seja:\n- **n par:** B₀ = 2E₀/c, com c = ω/k = 1/√(μ₀ε₀);\n- **n ímpar:** B₀ = 0 e B⃗ = 0.\n\nNa forma geral:\n\nB⃗ = −(2E₀/c) cos(nπ/2) cos(kx − ωt + nπ/2) ŷ.\n\n**Orientação:** B⃗ oscila ao longo do eixo y. Quando E⃗ aponta em +ẑ, B⃗ aponta em −ŷ, e B⃗ é perpendicular a E⃗ (eixo z) e à propagação (eixo x).",
+    "final_answer": "a) Com kd = nπ:\n\nE⃗ = E₀[1 + (−1)ⁿ] cos(kx − ωt) ẑ = 2E₀ cos(nπ/2) cos(kx − ωt + nπ/2) ẑ.\n\nÉ uma onda progressiva em +x, com fase em kx − ωt e v = ω/k = c > 0. A amplitude é E₀[1 + (−1)ⁿ], isto é, 2E₀ para n par e 0 para n ímpar.\n\nb) n par (d = mλ, Δφ = 2mπ): interferência construtiva, com amplitude 2E₀ e intensidade 4I₀. n ímpar (d = (2m+1)λ/2, Δφ = (2m+1)π): interferência destrutiva total, com E⃗ = 0.\n\nc) B⃗ = (1/c) x̂ × E⃗ = −B₀ cos(kx − ωt) ŷ. B⃗ está em fase com E⃗, é perpendicular a E⃗ e à propagação, e aponta em −ŷ quando E⃗ aponta em +ẑ. Vale B₀ = E₀[1 + (−1)ⁿ]/c: B₀ = 2E₀/c para n par e B⃗ = 0 para n ímpar.",
+    "pitfalls": [
+      "Sinal/orientação de B⃗: como x̂ × ẑ = −ŷ, B⃗ deve ser −B₀cos(kx−ωt)ŷ. Responder +B₀cos(kx−ωt)ŷ faz o vetor de Poynting apontar para −x, o que é incompatível com a propagação em +x. Falar apenas 'direção y' sem o sentido (ou sem indicar a fase relativa) é uma resposta incompleta.",
+      "Ao usar soma em produto, não se pode descartar a fase nπ/2. A expressão 2E₀cos(nπ/2)cos(kx−ωt) está errada para n ≡ 2 (mod 4): para n = 2 ela dá −2E₀cos(kx−ωt), mas o correto é +2E₀cos(kx−ωt). É preciso manter cos(kx−ωt+nπ/2) ou simplificar para E₀[1+(−1)ⁿ]cos(kx−ωt).",
+      "A amplitude tem de ficar só em função de E₀ e n. Deixar cos(kd/2) ou k e d na resposta não atende ao item a). Também convém tratar o sinal de cos(nπ/2): o módulo da amplitude é 2E₀|cos(nπ/2)|.",
+      "É preciso justificar que a onda se propaga em +x (fase kx − ωt constante ⇒ x = ct + cte). Não confundir com onda estacionária: as duas ondas andam no mesmo sentido, então a superposição é progressiva.",
+      "Casos particulares: para n ímpar, E⃗ = 0 e B⃗ = 0 (B₀ = 0), e a 'onda' degenera. Para n = 0, d = 0, o que conflita com 'd positivo', e as ondas coincidem (construtiva trivial). Uma boa resolução menciona isso.",
+      "Item b): n par ↔ construtiva e n ímpar ↔ destrutiva, ligando à diferença de fase kd = nπ ou à diferença de caminho d = nλ/2. Erro comum: inverter a associação ou dizer que a intensidade dobra, quando na verdade quadruplica (I ∝ E²).",
+      "Relação entre B₀ e E₀: B₀ = E_res/c = 2E₀/c (n par), com c = ω/k. Usar B₀ = E₀/c, isto é, a amplitude de uma só onda em vez da resultante, é um erro. B⃗ está em fase com E⃗ no vácuo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) Como kd = nπ, cos(kx − ωt + nπ) = (−1)^n cos(kx − ωt). Logo E = E0[1+(−1)^n] cos(kx − ωt) ẑ: é uma onda que se propaga em +x com velocidade ω/k = c e amplitude E0[1+(−1)^n].\nb) A diferença de fase é Δφ = nπ, ou seja, d = nλ/2. Para n par a interferência é construtiva (amplitude 2E0, intensidade 4 vezes a de cada onda). Para n ímpar a interferência é destrutiva total (E = 0).\nc) B = −B0 cos(kx − ωt) ŷ, com B0 = E0[1+(−1)^n]/c. Para n par, B0 = 2E0/c; para n ímpar, B = 0. B oscila ao longo do eixo y, em fase com E, e aponta para −ŷ quando E aponta para +ẑ, de modo que E×B aponta para +x̂.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Caso n = 0: o candidato registra que n = 0 dá d = 0 (duas ondas idênticas), mas não aponta que isso contraria o enunciado, que diz que d é uma constante positiva. Bastava uma frase dizendo que n = 0 é um caso degenerado, admitido só formalmente."
+          },
+          {
+            "severity": "minor",
+            "description": "Na integração da lei de Faraday, a 'constante' de integração em t pode, em princípio, depender de x, ou seja, é uma função f(x). O candidato a anula dizendo apenas que 'não há campo estático'. A justificativa é aceitável, mas o rigor pedia escrever f(x) e descartá-la por ser um campo estático que não faz parte da onda."
+          },
+          {
+            "severity": "minor",
+            "description": "No item a), a afirmação de que se trata de uma 'onda progressiva em +x' vale para todo n. Para n ímpar, porém, o campo é identicamente nulo e a onda degenera. A ressalva só aparece nos itens b) e c). No item a), também não se escreve explicitamente E_R = 2E₀ (n par) / 0 (n ímpar), embora isso apareça logo em seguida."
+          }
+        ],
+        "summary": "Confirmei a transcrição pelo PDF original (p. 10, Questão 9): ela confere. A resolução do candidato coincide com a minha referência nos três itens, e as duas estão corretas.\n\n**a)** O candidato obtém E⃗ = E₀[1+(−1)ⁿ]cos(kx−ωt)ẑ. Ele confere o resultado pela soma em produto mantendo a fase nπ/2, ou seja, evita a armadilha de chegar a 2E₀cos(nπ/2)cos(kx−ωt). Também justifica a propagação em +x pela fase constante, x = x₀ + (ω/k)t. A amplitude fica E₀[1+(−1)ⁿ], só em função de E₀ e n. Conferi numericamente as duas formas para n = 0 a 6 e ambas são idênticas ao campo original.\n\n**b)** n par corresponde a interferência construtiva e n ímpar a interferência destrutiva total. O candidato liga isso a Δφ = kd = nπ e a d = nλ/2, e diz corretamente que a intensidade quadruplica.\n\n**c)** O candidato obtém B⃗ = −B₀cos(kx−ωt)ŷ com B₀ = E_R/c, que dá 2E₀/c para n par e B⃗ = 0 para n ímpar. O sentido está certo (x̂×ẑ = −ŷ). Ele deduz o resultado pela lei de Faraday, com o sinal certo (conferi numericamente), e verifica pelo vetor de Poynting, que aponta para +x, e pela análise de unidades. Também considera a leitura alternativa em que B₀ é a amplitude de cada onda isolada.\n\nTodas as armadilhas que eu tinha listado foram tratadas: sinal de B⃗, fase nπ/2, amplitude só em E₀ e n, sentido de propagação, onda progressiva e não estacionária, n ímpar dando campo nulo, intensidade 4× e B₀ calculado com a amplitude resultante.\n\nRestam só detalhes menores: a tensão entre n = 0 e o \"d positivo\" do enunciado não é comentada, a função de integração em x é descartada sem ser escrita, e no item a) a degenerescência para n ímpar não é mencionada no ponto em que se afirma a propagação. É uma resolução de qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

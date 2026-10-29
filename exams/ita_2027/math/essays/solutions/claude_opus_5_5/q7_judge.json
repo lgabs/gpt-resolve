@@ -1,0 +1,36 @@
+{
+  "question": 7,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 10.0,
+  "final_answer": "n ∈ {−6, −4, 6, 8}. Pela divisão, o quociente é 2n − 1 + 63/(n² − 2n − 27); logo n² − 2n − 27 = (n − 1)² − 28 tem de dividir 63. Isso ocorre só para (n − 1)² = 25 ou 49, e os quocientes correspondentes são −10, −30, −10 e 18.",
+  "judge_reference": {
+    "reference_solution": "**Questão 07: resolução de referência**\n\nSejam N(n) = 2n³ − 5n² − 52n + 90 e D(n) = n² − 2n − 27, com n ∈ ℤ.\n\n**1) O denominador nunca se anula para n inteiro.**\nO discriminante de D é Δ = 4 + 108 = 112. Como 112 não é quadrado perfeito, as raízes 1 ± 2√7 são irracionais. Logo D(n) ≠ 0 para todo n ∈ ℤ e o quociente está sempre definido. Vale a forma equivalente D(n) = (n − 1)² − 28, e 28 não é quadrado perfeito.\n\n**2) Divisão de polinômios.**\n- 2n·(n² − 2n − 27) = 2n³ − 4n² − 54n. Subtraindo de N, sobra −n² + 2n + 90.\n- (−1)·(n² − 2n − 27) = −n² + 2n + 27. Subtraindo, o resto é 63.\n\nLogo N(n) = (2n − 1)·D(n) + 63, ou seja,\n\n  N/D = 2n − 1 + 63/(n² − 2n − 27).\n\nPara n inteiro, 2n − 1 é inteiro. Então N/D é inteiro se e somente se 63/D(n) é inteiro, isto é, se e somente se D(n) divide 63. O divisor D é mônico, então o quociente 2n − 1 tem coeficientes inteiros e a equivalência vale nos dois sentidos.\n\n**3) Divisores de 63.**\nOs divisores de 63 são d ∈ {±1, ±3, ±7, ±9, ±21, ±63}. A condição é (n − 1)² − 28 = d, isto é, (n − 1)² = 28 + d, que precisa ser um quadrado perfeito (≥ 0):\n\n| d | 28 + d | quadrado perfeito? |\n|---|---|---|\n| 1 | 29 | não |\n| −1 | 27 | não |\n| 3 | 31 | não |\n| −3 | 25 | sim, n − 1 = ±5, logo n = 6 ou n = −4 |\n| 7 | 35 | não |\n| −7 | 21 | não |\n| 9 | 37 | não |\n| −9 | 19 | não |\n| 21 | 49 | sim, n − 1 = ±7, logo n = 8 ou n = −6 |\n| −21 | 7 | não |\n| 63 | 91 | não |\n| −63 | −35 | não (negativo) |\n\n**4) Verificação.**\n- n = 6: D = −3, N = 30, quociente = −10 (= 11 − 21).\n- n = −4: D = −3, N = 90, quociente = −30 (= −9 − 21).\n- n = 8: D = 21, N = 378, quociente = 18 (= 15 + 3).\n- n = −6: D = 21, N = −210, quociente = −10 (= −13 + 3).\n\nUma busca exaustiva por computador em |n| ≤ 10⁵ encontrou apenas esses quatro valores. Isso é coerente com o argumento: para |n| grande, |D| > 63, então D não pode dividir 63 a não ser que 63 = 0, o que é impossível.\n\n**Resposta:** n ∈ {−6, −4, 6, 8}.",
+    "final_answer": "n ∈ {−6, −4, 6, 8}. Os quocientes correspondentes são −10, −30, −10 e 18. Isso sai de N/D = 2n − 1 + 63/(n² − 2n − 27), com a condição n² − 2n − 27 | 63. As soluções aparecem para D = −3 (n = 6, −4) e D = 21 (n = 8, −6).",
+    "pitfalls": [
+      "Errar a divisão de polinômios: o quociente é 2n − 1 e o resto é exatamente 63. Um resto errado leva a um conjunto de divisores errado.",
+      "Esquecer os divisores negativos de 63. D = −3 gera n = 6 e n = −4, ou seja, metade das soluções. Quem usa só divisores positivos encontra apenas {−6, 8}.",
+      "Ao resolver (n − 1)² = 25 ou 49, esquecer a raiz negativa (n − 1 = −5 e n − 1 = −7), que dá n = −4 e n = −6. O enunciado pede n inteiro, não natural.",
+      "Não justificar a equivalência: como 2n − 1 é inteiro para n inteiro (D é mônico), N/D é inteiro se e somente se D | 63. Uma boa resolução deixa claros os dois sentidos, ou ao menos verifica os candidatos.",
+      "Não comentar que o denominador nunca se anula para n inteiro (Δ = 112 não é quadrado perfeito; (n − 1)² = 28 é impossível).",
+      "Testar só alguns valores ou limitar n sem justificativa. A limitação correta vem de |D(n)| ≤ 63 (ou da tabela de divisores), e a enumeração precisa ser completa.",
+      "Contar como solução um valor com 28 + d negativo (d = −63) ou que não é quadrado perfeito, por erro aritmético.",
+      "Não verificar as respostas: os quocientes são −10, −30, −10 e 18, todos inteiros."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 10.0,
+      "final_answer": "n ∈ {−6, −4, 6, 8}. Pela divisão, o quociente é 2n − 1 + 63/(n² − 2n − 27); logo n² − 2n − 27 = (n − 1)² − 28 tem de dividir 63. Isso ocorre só para (n − 1)² = 25 ou 49, e os quocientes correspondentes são −10, −30, −10 e 18.",
+      "review": {
+        "score": 10,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [],
+        "summary": "A resposta final está correta e confere item por item com a referência: n ∈ {−6, −4, 6, 8}, com quocientes −10, −30, −10 e 18. Conferi o enunciado na página 7 do PDF original e ele está de acordo com a transcrição. Uma busca exaustiva em |n| ≤ 10⁵, feita em Python, devolve exatamente esses quatro valores.\n\nComo cada armadilha foi tratada:\n(1) Denominador: o candidato justifica que ele nunca se anula para n inteiro, porque D = (n−1)² − 28 e 28 não é quadrado perfeito.\n(2) Divisão de polinômios: está feita por extenso e sem erro. O quociente é 2n − 1 e o resto é 63.\n(3) Equivalência: o candidato declara explicitamente que a condição vale nos dois sentidos, já que 2n − 1 é inteiro.\n(4) Divisores negativos: os 12 divisores de 63, positivos e negativos, aparecem na tabela.\n(5) Quadrados perfeitos: a tabela 28 + D está completa e correta. O caso −35 não gera solução, e as raízes ± foram tomadas tanto em (n−1)² = 25 quanto em (n−1)² = 49.\n(6) Verificação: os quatro valores foram conferidos de duas formas, pela forma 2n − 1 + 63/D e pela expressão original. Refiz as contas: P(6) = 30, P(−4) = 90, P(8) = 378, P(−6) = −210, todas corretas.\n\nA conclusão sobre não haver outras soluções está bem fundamentada: o passo 2 é uma equivalência e a tabela esgota todos os divisores de 63.\n\nA redação é clara, concisa e rigorosa, no padrão de um gabarito comentado publicável. Não encontrei falhas."
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Modelo.} A haste gira em torno do ponto $O$ (centro do polímero, no mancal); seu centro de massa está a $L/2$ de $O$. Em relação a $O$ atuam o torque elástico $\tau_e=-k\theta$ e o torque do peso, de braço $\frac{L}{2}\operatorname{sen}\theta$, que tende a \emph{aumentar} $|\theta|$ (pêndulo invertido); a reação do mancal passa por $O$ e não dá torque. Logo
+\[
+\tau(\theta)=-k\theta+\frac{MgL}{2}\operatorname{sen}\theta ,\qquad
+U_{total}(\theta)=\frac{1}{2}k\theta^{2}+Mg\,\frac{L}{2}\cos\theta ,
+\]
+pois, com zero no mancal, o centro de massa está à altura $\frac{L}{2}\cos\theta$; confere-se que $\tau=-\,dU_{total}/d\theta$.
+
+\textbf{a)} Para $\theta\ll 1$, $\operatorname{sen}\theta\approx\theta$ e $\tau\approx-\left(k-\frac{MgL}{2}\right)\theta$. Como $\tau(0)=0$, $\theta=0$ é sempre equilíbrio; ele é estável se o torque for restaurador, isto é, $k>\frac{MgL}{2}$. De fato, com $I_O=\frac{ML^{2}}{3}$, $I_O\ddot\theta=-\left(k-\frac{MgL}{2}\right)\theta$ é um MHS de $\omega^{2}=\frac{3(k-MgL/2)}{ML^{2}}$ se $k>\frac{MgL}{2}$, e um afastamento exponencial se $k<\frac{MgL}{2}$. Portanto
+\[
+\boxed{k_c=\frac{MgL}{2}}\qquad(\text{unidade N}\cdot\text{m/rad, coerente com }k).
+\]
+Para $k=k_c$, usando $\operatorname{sen}\theta\approx\theta-\theta^{3}/6$: $\tau\approx-k_c\theta^{3}/6$, ainda restaurador ($\theta=0$ continua estável, embora ``fraco'').
+
+\textbf{b)} Seja $r=k/k_c>0$. Equilíbrio: $\tau=0\iff r\theta=\operatorname{sen}\theta$. Além de $\theta=0$, as raízes satisfazem $f(\theta)\equiv\frac{\operatorname{sen}\theta}{\theta}=r$. A função $f$ é par e, em $0<\theta<\pi/2$, estritamente decrescente ($f'=\frac{\theta\cos\theta-\operatorname{sen}\theta}{\theta^{2}}<0$, pois $\operatorname{tg}\theta>\theta$), indo de $1$ (em $\theta\to0$) a $2/\pi$ (em $\theta=\pi/2$). Estabilidade: $U_{total}''(\theta)=k_c(r-\cos\theta)$; em $\theta=0$, $U_{total}''=k_c(r-1)$; em uma raiz $\theta^{*}\neq0$, $r-\cos\theta^{*}=\frac{\operatorname{sen}\theta^{*}-\theta^{*}\cos\theta^{*}}{\theta^{*}}>0$ (mínimo).
+\begin{itemize}
+\item $k/k_c\ge 1$: \textbf{1 equilíbrio}, $\theta=0$, \textbf{estável} (para $k=k_c$, pelo termo de 4.ª ordem, $U_{total}-U_{total}(0)\approx k_c\theta^{4}/24>0$).
+\item $2/\pi<k/k_c<1$: \textbf{3 equilíbrios}: $\theta=0$ \textbf{instável} e $\theta=\pm\theta^{*}$ \textbf{estáveis}, com $\frac{\operatorname{sen}\theta^{*}}{\theta^{*}}=\frac{k}{k_c}$ (perto de $k_c$, $\theta^{*}\approx\sqrt{6(1-k/k_c)}$; $\theta^{*}\to\pi/2$ quando $k/k_c\to2/\pi$).
+\item $0<k/k_c\le 2/\pi$: \textbf{1 equilíbrio}, $\theta=0$, \textbf{instável}; como $U_{total}'=k_c(r\theta-\operatorname{sen}\theta)<0$ para $0<\theta<\pi/2$, a haste tomba até o limite $|\theta|\to\pi/2$ (para $r=2/\pi$ a raiz seria $\pm\pi/2$, fora do intervalo aberto).
+\end{itemize}
+No ensaio, ao aquecer ($k$ diminui), a haste fica vertical, depois inclina-se para um lado ($\pm\theta^{*}$ crescente) e, por fim, colapsa.
+
+\textbf{c)} $U_{total}$ é par, com $U_{total}(0)=\frac{MgL}{2}=k_c$ e $U_{total}(\pm\frac{\pi}{2})=\frac{k\pi^{2}}{8}$. Nos poços laterais (caso ii), usando $k\theta^{*}=k_c\operatorname{sen}\theta^{*}$,
+\[
+U_{total}(\pm\theta^{*})=\frac{MgL}{2}\left(\cos\theta^{*}+\frac{\theta^{*}}{2}\operatorname{sen}\theta^{*}\right)<\frac{MgL}{2}.
+\]
+Esboços (curvas exatas para $k/k_c=1{,}5$; $0{,}8$; $0{,}4$; a linha tracejada marca $\frac{MgL}{2}$):
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=4.9cm,height=4.4cm,axis lines=left,domain=-pi/2:pi/2,samples=121,
+ xmin=-1.7,xmax=1.7,ymin=0,ymax=2.05,xtick={-1.5708,0,1.5708},
+ xticklabels={$-\frac{\pi}{2}$,$0$,$\frac{\pi}{2}$},ytick={1},yticklabels={$\frac{MgL}{2}$},
+ xlabel={$\theta$},ylabel={$U_{total}$},title={\small (i) $k\ge k_c$: poço único}]
+\addplot[thick,blue]{0.75*x^2+cos(deg(x))};
+\addplot[dashed,gray,domain=-1.7:1.7]{1};
+\end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+\begin{axis}[width=4.9cm,height=4.4cm,axis lines=left,domain=-pi/2:pi/2,samples=121,
+ xmin=-1.7,xmax=1.7,ymin=0.9,ymax=1.03,xtick={-1.5708,-1.1311,0,1.1311,1.5708},
+ xticklabels={,$-\theta^{*}$,$0$,$\theta^{*}$,},ytick={1},yticklabels={$\frac{MgL}{2}$},
+ xlabel={$\theta$},title={\small (ii) $\frac{2}{\pi}<\frac{k}{k_c}<1$: poço duplo}]
+\addplot[thick,red]{0.4*x^2+cos(deg(x))};
+\addplot[dashed,gray,domain=-1.7:1.7]{1};
+\end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+\begin{axis}[width=4.9cm,height=4.4cm,axis lines=left,domain=-pi/2:pi/2,samples=121,
+ xmin=-1.7,xmax=1.7,ymin=0,ymax=1.2,xtick={-1.5708,0,1.5708},
+ xticklabels={$-\frac{\pi}{2}$,$0$,$\frac{\pi}{2}$},ytick={1},yticklabels={$\frac{MgL}{2}$},
+ xlabel={$\theta$},title={\small (iii) $0<\frac{k}{k_c}\le\frac{2}{\pi}$: ``morro''}]
+\addplot[thick,black!60!green]{0.2*x^2+cos(deg(x))};
+\addplot[dashed,gray,domain=-1.7:1.7]{1};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+(i) Mínimo único em $\theta=0$ (valor $\frac{MgL}{2}$), crescendo até $\frac{k\pi^{2}}{8}>\frac{MgL}{2}$ nas bordas; para $k=k_c$ o fundo é mais achatado ($\propto\theta^{4}$). (ii) Forma de ``W'' (eixo vertical ampliado): máximo local em $\theta=0$ e mínimos simétricos em $\pm\theta^{*}$; nas bordas $U_{total}=\frac{k\pi^{2}}{8}$ (acima de $\frac{MgL}{2}$ se $k/k_c>8/\pi^{2}\approx0{,}81$, abaixo caso contrário). (iii) Forma de ``$\cap$'': máximo em $\theta=0$ e decrescimento monótono até $\frac{k\pi^{2}}{8}\le\frac{\pi}{4}\cdot\frac{MgL}{2}$ nas bordas.
+
+\medskip
+\noindent ANSWER: a) $k_c=\dfrac{MgL}{2}$. b) $k/k_c\ge1$: só $\theta=0$, estável; $2/\pi<k/k_c<1$: $\theta=0$ instável e $\pm\theta^{*}$ estáveis, com $\operatorname{sen}\theta^{*}/\theta^{*}=k/k_c$; $0<k/k_c\le2/\pi$: só $\theta=0$, instável. c) $U_{total}=\frac{1}{2}k\theta^{2}+\frac{MgL}{2}\cos\theta$: poço único, poço duplo (``W'') e ``morro'' ($\cap$), respectivamente.

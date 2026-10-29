@@ -1,0 +1,45 @@
+{
+  "question": 1,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Da soma vem $5(2a_1+9r)=435$, ou seja, $2a_1+9r=87$. Logo a razão $r$ é um inteiro ímpar e $a_1=(87-9r)/2$. Exigir $a_1\\ge 1$ e $a_{10}\\ge 1$ dá $-9\\le r\\le 9$.\n\nAs 5 PAs crescentes são:\n- $r=1$: 39, 40, ..., 48\n- $r=3$: 30, 33, ..., 57\n- $r=5$: 21, 26, ..., 66\n- $r=7$: 12, 19, ..., 75\n- $r=9$: 3, 12, ..., 84\n\nAs outras 5 são essas mesmas sequências em ordem decrescente, com $r=-1,-3,-5,-7,-9$ e $a_1=48,57,66,75,84$. São 10 PAs no total, ou 5 se a ordem dos termos não importar.",
+  "judge_reference": {
+    "reference_solution": "**Questão 01 — Resolução de referência**\n\nConferi o enunciado no PDF original, e a transcrição está fiel. A prova usa ℕ = {1, 2, 3, …}.\n\n**1. Montagem**\nSeja (a₁, a₂, …, a₁₀) uma PA com primeiro termo a = a₁ e razão r. Então a_k = a + (k−1)r, para k = 1, …, 10.\nTodos os termos são naturais. Logo r = a₂ − a₁ é a diferença de dois inteiros, e portanto **r ∈ ℤ**. A razão não precisa ser positiva: r pode ser negativa ou nula.\n\n**2. Condição da soma**\nS₁₀ = 10·(a₁ + a₁₀)/2 = 5(2a + 9r) = 435 ⟹ **2a + 9r = 87**.\nO lado direito é ímpar e 2a é par, então 9r é ímpar. Assim, **r é ímpar**. Em particular r ≠ 0: não existe PA constante, porque 2a = 87 não tem solução inteira.\nDaí vem a = (87 − 9r)/2, que é inteiro para todo r ímpar.\n\n**3. Condição de que todos os termos sejam naturais**\nUma PA é monótona, então o menor termo é a₁ (se r > 0) ou a₁₀ (se r < 0). Basta exigir que os dois extremos sejam ≥ 1.\n- a₁ = (87 − 9r)/2 ≥ 1 ⟺ 9r ≤ 85 ⟺ r ≤ 9 (r inteiro).\n- a₁₀ = a + 9r = (87 + 9r)/2 ≥ 1 ⟺ 9r ≥ −85 ⟺ r ≥ −9.\nCom r ímpar, os valores possíveis são r ∈ {±1, ±3, ±5, ±7, ±9}.\nTodos os termos ficam inteiros: a é inteiro e r também. Todos ficam ≥ 1, porque estão entre os dois extremos. Logo os 10 valores servem.\n\n**4. Lista das soluções** (a = (87 − 9r)/2)\n- r = 1, a = 39: 39, 40, 41, 42, 43, 44, 45, 46, 47, 48\n- r = 3, a = 30: 30, 33, 36, 39, 42, 45, 48, 51, 54, 57\n- r = 5, a = 21: 21, 26, 31, 36, 41, 46, 51, 56, 61, 66\n- r = 7, a = 12: 12, 19, 26, 33, 40, 47, 54, 61, 68, 75\n- r = 9, a = 3: 3, 12, 21, 30, 39, 48, 57, 66, 75, 84\n- r = −1, −3, −5, −7, −9: as mesmas sequências em ordem inversa. Os primeiros termos são 48, 57, 66, 75, 84, respectivamente.\n\n**Descrição compacta.** a₅ + a₆ = 2a + 9r = 87, então toda solução é simétrica em torno de 43,5:\na_k = 43,5 + (k − 5,5)·r, com r ∈ {±1, ±3, ±5, ±7, ±9}.\nEquivalentemente, a_k = (87 + (2k − 11)r)/2.\n\n**Verificação**\nUma busca exaustiva em Python (a de 0 a 499, r de −100 a 100) achou exatamente essas 10 sequências. Elas também são as únicas quando ℕ inclui o 0: a condição a₁ ≥ 0 dá 9r ≤ 87, e como r é ímpar, continua valendo r ≤ 9.\n\n**Conclusão.** São exatamente **10 progressões aritméticas**, todas com razão ímpar r tal que |r| ≤ 9 e primeiro termo a₁ = (87 − 9r)/2. Elas formam 5 crescentes (r = 1, 3, 5, 7, 9) e as 5 decrescentes correspondentes, que são as mesmas sequências invertidas. Como conjuntos de números, há 5 soluções distintas.",
+    "final_answer": "As PAs são exatamente as que têm razão r ∈ {±1, ±3, ±5, ±7, ±9} e primeiro termo a₁ = (87 − 9r)/2, ou seja, a_k = (87 + (2k − 11)r)/2 para k = 1, …, 10. São 10 sequências no total.\n\nCrescentes:\n- (39, 40, …, 48), com r = 1\n- (30, 33, …, 57), com r = 3\n- (21, 26, …, 66), com r = 5\n- (12, 19, …, 75), com r = 7\n- (3, 12, …, 84), com r = 9\n\nDecrescentes: as mesmas 5 sequências em ordem inversa, com r = −1, −3, −5, −7, −9 e a₁ = 48, 57, 66, 75, 84.\n\nComo conjuntos de números, são 5 soluções distintas.",
+    "pitfalls": [
+      "A razão pode ser negativa. Considerar só r > 0 deixa de fora as 5 PAs decrescentes. É preciso pelo menos mencioná-las, ou deixar explícito que a contagem foi feita a menos da ordem (5 conjuntos versus 10 sequências).",
+      "É preciso justificar que r é inteiro: ele é a diferença de dois naturais, a₂ − a₁. Sem isso, a análise de paridade de 2a + 9r = 87 não se sustenta.",
+      "Paridade: 2a + 9r = 87 obriga r a ser ímpar. Daí sai que não existe PA constante (r = 0 daria 2a = 87) e que nenhuma razão par serve.",
+      "Para limitar a razão, é preciso exigir que os DOIS extremos sejam ≥ 1: a₁ ≥ 1 dá r ≤ 9 e a₁₀ ≥ 1 dá r ≥ −9. Quem só olha a₁ ≥ 1 deixa r ilimitado para baixo.",
+      "Convenção ℕ = {1, 2, 3, …}: a condição é a_k ≥ 1. Se alguém usar 0 ∈ ℕ, o resultado não muda, porque 9r ≤ 87 com r ímpar continua dando r ≤ 9. Mesmo assim, a resolução deve usar a convenção da prova.",
+      "Erro de conta comum: escrever a soma como 10(2a + 9r)/2 = 435 e depois errar a simplificação para 2a + 9r = 87. Outro erro é calcular errado a₁ = (87 − 9r)/2, por exemplo dar a₁ = 3 para r = 9 errado ou incluir r = 11, que daria a₁ = −6.",
+      "O enunciado pede para 'descrever todas' as PAs. Uma boa resposta lista as soluções explicitamente, ou dá a fórmula fechada junto com o conjunto exato de razões, e prova que não há outras (condição necessária e suficiente). Apresentar só alguns exemplos não basta.",
+      "Precisa conferir que os termos intermediários também são naturais. Isso vale porque são inteiros e ficam entre os dois extremos, já que a PA é monótona."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Da soma vem $5(2a_1+9r)=435$, ou seja, $2a_1+9r=87$. Logo a razão $r$ é um inteiro ímpar e $a_1=(87-9r)/2$. Exigir $a_1\\ge 1$ e $a_{10}\\ge 1$ dá $-9\\le r\\le 9$.\n\nAs 5 PAs crescentes são:\n- $r=1$: 39, 40, ..., 48\n- $r=3$: 30, 33, ..., 57\n- $r=5$: 21, 26, ..., 66\n- $r=7$: 12, 19, ..., 75\n- $r=9$: 3, 12, ..., 84\n\nAs outras 5 são essas mesmas sequências em ordem decrescente, com $r=-1,-3,-5,-7,-9$ e $a_1=48,57,66,75,84$. São 10 PAs no total, ou 5 se a ordem dos termos não importar.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No passo 4, a equivalência 'todos os termos são naturais ⟺ a₁ ≥ 1 e a₁₀ ≥ 1' só vale porque todos os termos são inteiros. Isso decorre de a₁ ∈ ℤ (passo 3) e r ∈ ℤ (passo 1), mas o candidato não diz isso explicitamente nesse ponto. Bastaria uma frase: 'como a₁ e r são inteiros, todos os aₖ são inteiros; pela monotonia, ficam entre a₁ e a₁₀, logo são ≥ 1'."
+          },
+          {
+            "severity": "minor",
+            "description": "A fórmula fechada aₖ = (87 + (2k − 11)r)/2 não aparece. A tabela, o par (a₁, r) e o argumento de inversão já descrevem todas as soluções, então a falta é só estética: a forma simétrica em torno de 43,5 deixaria a descrição mais elegante."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF, e a transcrição está fiel. A prova usa ℕ = {1, 2, 3, …}.\n\n**Resposta final.** A do candidato coincide com a minha referência, item por item: r ∈ {±1, ±3, ±5, ±7, ±9}, a₁ = (87 − 9r)/2, 10 sequências no total (5 crescentes e suas 5 inversas), ou 5 se a ordem não contar. Fiz uma busca exaustiva em Python (a₁ de −200 a 499, r de −100 a 100, todos os termos ≥ 1, soma 435). Ela encontrou exatamente esses 10 pares (a₁, r), e as sequências da tabela do candidato estão todas certas.\n\n**Como o candidato tratou cada armadilha:**\n1. **r é inteiro:** justificado por r = a₂ − a₁.\n2. **Razão negativa:** considerada explicitamente, com as 5 PAs decrescentes listadas pelos seus primeiros termos 48, 57, 66, 75, 84. O candidato ainda prova que inverter a PA de razão r dá a PA de razão −r.\n3. **Paridade:** conclui que r é ímpar e exclui r = 0 (2a₁ = 87 não tem solução inteira).\n4. **Os dois extremos:** exige a₁ ≥ 1, que dá r ≤ 9, e a₁₀ ≥ 1, que dá r ≥ −9. As contas 9r ≤ 85 e 9r ≥ −85 estão corretas.\n5. **Convenção da prova:** usa aₖ ≥ 1, como manda ℕ = {1, 2, 3, …}.\n6. **Contas:** sem erros. A soma 5(2a₁ + 9r) = 435 e os primeiros termos estão certos, e r = 11 não foi incluído.\n7. **Necessidade e suficiência:** declaradas (\"os passos acima são equivalências\").\n8. **Termos intermediários:** cobertos pelo argumento de monotonia.\n\n**Rigor e clareza.** O texto é claro e enxuto. A contagem distingue sequências de conjuntos, e a verificação final usa a₅ + a₆ = 87.\n\n**Ressalvas (ambas menores).** A integralidade dos termos intermediários fica implícita na equivalência do passo 4, e a fórmula fechada aₖ = (87 + (2k − 11)r)/2 não aparece.\n\n**Nota: 9,5.** A resolução serviria como gabarito comentado."
+      }
+    }
+  ]
+}

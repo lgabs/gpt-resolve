@@ -1,0 +1,49 @@
+{
+  "question": 8,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) 0 < x ≤ 1 ou 9 ≤ x < 10. b) Os lados medem √10 e 3√10, ocorrendo para x = 1 ou x = 9, com F no ponto médio de BC.",
+  "judge_reference": {
+    "reference_solution": "**Convenção.** \"Inscrito\" quer dizer que cada vértice de EFGH está sobre um lado de ABCD. Os vértices são consecutivos E → F → G → H, com E ∈ AB e F ∈ BC, então G ∈ CD e H ∈ DA. As outras distribuições levam a casos degenerados que o enunciado exclui:\n- Se H ∈ AB, então EF ⟂ AB força F = B.\n- Se G ∈ BC, então E teria ordenada y_F > 0.\n- Se G ∈ DA e H ∈ CD, os pontos médios das diagonais dão x = 10 + h ≥ 10.\n\n**Coordenadas.** A = (0,0), B = (10,0), C = (10,6), D = (0,6).\nE = (x, 0), com 0 < x < 10; F = (10, y), com 0 < y < 6; G = (g, 6); H = (0, h).\n\n**1) O centro de EFGH é o centro de ABCD.** EFGH é paralelogramo, então suas diagonais se cortam ao meio:\n- ponto médio de EG = ((x+g)/2, 3);\n- ponto médio de FH = (5, (y+h)/2).\n\nDaí g = 10 − x e h = 6 − y. Então G = (10−x, 6), H = (0, 6−y), e o centro é O = (5, 3).\n\n**2) Condição de retângulo.** O ângulo em E é reto, ou seja, EF·EH = 0:\n- EF = (10−x, y) e EH = (−x, 6−y);\n- −x(10−x) + y(6−y) = 0, logo **x(10−x) = y(6−y)**. (\\*)\n\nA mesma condição sai de outros caminhos:\n- semelhança dos triângulos AEH ~ BFE: x/y = (6−y)/(10−x);\n- diagonais iguais: (10−2x)² + 36 = 100 + (6−2y)², que equivale a (5−x)² − (3−y)² = 16.\n\n**Recíproca.** Dado x, se existe y ∈ (0,6) que satisfaz (\\*), os pontos E, F, G = (10−x, 6) e H = (0, 6−y) formam um paralelogramo (diagonais com o mesmo ponto médio) com ângulo reto, ou seja, um retângulo não degenerado com um vértice em cada lado.\n\n**a)** Em (0,6), y(6−y) = 9 − (3−y)² assume exatamente os valores do intervalo (0, 9], com máximo 9 em y = 3. Então x serve se, e somente se, 0 < x(10−x) ≤ 9:\n- x(10−x) ≤ 9 ⇔ x² − 10x + 9 ≥ 0 ⇔ (x−1)(x−9) ≥ 0 ⇔ x ≤ 1 ou x ≥ 9;\n- com 0 < x < 10, isso dá **x ∈ ]0, 1] ∪ [9, 10[**.\n\nPara cada x desse conjunto, y = 3 ± √((5−x)² − 16) ∈ (0,6).\n- Nos extremos x = 1 ou x = 9 há uma única solução, y = 3. Por exemplo, para x = 1: E(1,0), F(10,3), G(9,6), H(0,3), e EF·EH = (9,3)·(−1,3) = 0. Esses extremos são válidos.\n- x = 0 e x = 10 estão excluídos pelo enunciado (E ≠ A, B).\n\n**b)** Área de EFGH = área de ABCD menos os quatro triângulos dos cantos. Esses triângulos são congruentes dois a dois (A com C, B com D):\n- área(EBF) = área(GDH) = (10−x)y/2;\n- área(HAE) = área(FCG) = x(6−y)/2.\n\nLogo S = 60 − (10−x)y − x(6−y) = 60 − 6x − 10y + 2xy.\n\nImpondo S = 30: 2xy − 6x − 10y + 30 = 0, ou seja, xy − 3x − 5y + 15 = 0, ou seja, **(x−5)(y−3) = 0**.\n- x = 5 é impossível: está fora de ]0,1] ∪ [9,10[. Em (\\*), daria 25 = y(6−y) ≤ 9.\n- Então y = 3. Por (\\*), x(10−x) = 9, logo x = 1 ou x = 9.\n\nLados no caso x = 1, y = 3:\n- EF = (9, 3), com |EF| = √90 = 3√10;\n- EH = (−1, 3), com |EH| = √10.\n\nO caso x = 9 é o simétrico: |EF| = √10 e |EH| = 3√10.\n\nConferências:\n- 3√10 · √10 = 30 ✓;\n- diagonais: FH = 10 (segmento horizontal y = 3) e EG = √(8² + 6²) = 10 ✓.\n\n**Lados de EFGH: √10 e 3√10.**",
+    "final_answer": "a) x ∈ ]0, 1] ∪ [9, 10[, ou seja, 0 < x ≤ 1 ou 9 ≤ x < 10. Os extremos 1 e 9 são válidos (com y = BF = 3); 0 e 10 são excluídos pelo enunciado. A condição que leva a isso é x(10−x) = y(6−y) ≤ 9.\n\nb) Os lados de EFGH medem √10 e 3√10. Isso ocorre com BF = 3 e AE = 1 ou AE = 9.",
+    "pitfalls": [
+      "Não basta impor que E, F, G e H estejam nos lados: é preciso usar que EFGH é retângulo. As diagonais se cortam ao meio, o que dá G = (10−x, 6) e H = (0, 6−y), e o ângulo é reto (ou as diagonais são iguais), o que dá x(10−x) = y(6−y). Quem supõe sem justificar que o centro coincide com o de ABCD, ou que os triângulos dos cantos são congruentes, deixa uma lacuna.",
+      "Erro comum no item a: responder 0 < x < 10, achando que qualquer posição de E serve. A restrição aparece porque y(6−y) ≤ 9 < 25 = máximo de x(10−x).",
+      "Os extremos x = 1 e x = 9 entram no conjunto: com y = 3 dão um retângulo legítimo, por exemplo E(1,0), F(10,3), G(9,6), H(0,3). Usar desigualdade estrita e excluí-los é erro. Já x = 0 e x = 10 estão excluídos (E ≠ A, B), e por isso o intervalo é ]0,1] ∪ [9,10[.",
+      "Falta de rigor comum: não verificar a recíproca, isto é, que para todo x do conjunto existe y em (0,6) que forma o retângulo (y = 3 ± √((5−x)²−16)). Também é preciso tratar a possibilidade de G ou H coincidirem com cantos ou estarem em outros lados; esses casos levam a x ∈ {0, 10} ou y ∈ {0, 6}, excluídos.",
+      "Item b: a equação de área fatora como (x−5)(y−3) = 0. É preciso descartar x = 5, que viola o item a (daria 25 = y(6−y) ≤ 9), e concluir y = 3 e x = 1 ou 9. Dar x = 5 como solução, ou não descartá-lo, é erro.",
+      "Item b: a pergunta é sobre os LADOS (√10 e 3√10), não sobre x e y. As duas configurações (x = 1 e x = 9) são simétricas e dão os mesmos lados. Uma boa resolução confere que √10 · 3√10 = 30.",
+      "Não confundir área 30 (metade de ABCD) com a de um retângulo de lados paralelos aos de ABCD. Esse caso está excluído, porque exigiria vértices nos cantos (E = A ou B).",
+      "Erro de conta comum: trocar os catetos dos triângulos dos cantos. Os certos são: em B, (10−x) e y; em C, (6−y) e x; em D, (10−x) e y; em A, x e (6−y). A área correta é S = 60 − 6x − 10y + 2xy."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) 0 < x ≤ 1 ou 9 ≤ x < 10. b) Os lados medem √10 e 3√10, ocorrendo para x = 1 ou x = 9, com F no ponto médio de BC.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato não diz explicitamente como interpreta 'inscrito' (cada vértice sobre um lado de ABCD, com os vértices na ordem E→F→G→H). Usa essa leitura o tempo todo, mas uma frase de convenção no início deixaria a solução mais clara."
+          },
+          {
+            "severity": "minor",
+            "description": "Ao concluir que 'necessariamente G ∈ CD', o texto só descarta G ∈ AD, com abscissa 10−x > 0. Faltou escrever os outros dois descartes, que são imediatos: G_x = 10−x < 10 tira G de BC, e G_y = y + t(10−x) > 0 tira G de AB."
+          },
+          {
+            "severity": "minor",
+            "description": "A recíproca está certa, mas muito condensada. A conta EF·FG = t[−(10−x)y + y(10−x)] = 0 é trivialmente nula para qualquer t. O que de fato usa (*) é a igualdade G − F = (−x, 6−y) = (x/y)(−y, 10−x), que vale se, e somente se, x(10−x) = y(6−y). Faltou também dizer que G = (10−x, 6) ∈ CD e H = (0, 6−y) ∈ AD, o que é imediato porque 0<x<10 e 0<y<6. Melhor seria calcular EF·EH = −x(10−x) + y(6−y) = 0 diretamente."
+          }
+        ],
+        "summary": "Nota 9,5: resolução correta e completa, com rigor de gabarito comentado. As respostas finais coincidem com a minha referência nos dois itens, e as duas estão certas.\n- a) 0 < x ≤ 1 ou 9 ≤ x < 10.\n- b) Lados √10 e 3√10.\n\nConferi com python as contas que poderiam ter erro:\n- a fatoração da área, S − 30 = 2(x−5)(y−3);\n- a fórmula y = 3 ± √((x−1)(x−9));\n- os lados nos casos x = 1 e x = 9;\n- o produto dos lados, igual a 30.\n\nTodas estão certas.\n\nO ponto mais forte é a parametrização FG = EH = t(−y, 10−x). Ela deduz a posição de G e H sem supor nada:\n- t < 0 poria G fora de ABCD;\n- H ∈ CD daria G_y > 6;\n- H ∈ AB ou H ∈ BC ficam excluídos pelo sinal das coordenadas.\n\nCom isso o candidato obtém a condição x(10−x) = y(6−y) e mostra que o centro de EFGH é o centro de ABCD, sem tomar isso como hipótese.\n\nTodas as armadilhas que listei foram tratadas:\n- a restrição y(6−y) ≤ 9;\n- os extremos 1 e 9 incluídos (y = 3, com raiz nula) e 0 e 10 excluídos;\n- a recíproca, com y ∈ ]0,6[ provado pela desigualdade √(...) < 3;\n- os catetos certos nos triângulos dos cantos;\n- o descarte de x = 5 pela restrição do item a;\n- a resposta dada em termos dos lados, não de x e y;\n- a verificação final pela área e pela diagonal FH = 10.\n\nHá só três falhas menores de redação, detalhadas na lista:\n- falta uma frase de convenção sobre o sentido de 'inscrito';\n- dois descartes óbvios de lado para G ficaram implícitos;\n- a recíproca está escrita de forma condensada, e a conta EF·FG = t[…] = 0, do jeito que aparece, não usa (*)."
+      }
+    }
+  ]
+}

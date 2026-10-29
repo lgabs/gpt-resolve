@@ -1,0 +1,58 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Saída da ponte.} Pela figura, a fonte ideal está entre $A$ e $C$. Tomamos $V_A-V_C=V_s$ e $V_C=0$; trocar a polaridade só troca o sinal de $V_o$. Como o voltímetro é ideal, não passa corrente entre $D$ e $B$, e cada lado da ponte funciona como um divisor de tensão:
+\[
+V_D=V_s\,\frac{R_3}{R_1+R_3},\qquad V_B=V_s\,\frac{R_4}{R_2+R_4},\qquad
+V_o=V_D-V_B=V_s\left(\frac{R_3}{R_1+R_3}-\frac{R_4}{R_2+R_4}\right).
+\]
+Escrevemos $R_i=R_0(1+x_i)$. Para um extensômetro, $x_i=G\varepsilon_i+\alpha\Delta T$; para um resistor fixo, $x_i=0$. Usando $(1+x)^{-1}\approx 1-x$ e desprezando produtos de pequenas correções:
+\[
+\frac{R_3}{R_1+R_3}=\frac{1+x_3}{2}\Bigl(1+\tfrac{x_1+x_3}{2}\Bigr)^{-1}\approx\frac12+\frac{x_3-x_1}{4},
+\qquad
+\frac{R_4}{R_2+R_4}\approx\frac12+\frac{x_4-x_2}{4},
+\]
+\[
+\boxed{V_o\approx\frac{V_s}{4}\,\bigl[(x_2+x_3)-(x_1+x_4)\bigr]}
+\]
+Portanto, braços opostos ($R_1$ e $R_4$, ou $R_2$ e $R_3$) entram com o mesmo sinal, e braços adjacentes entram com sinais opostos.
+
+\textbf{a)} Há um único extensômetro, com $x=G\varepsilon+\alpha\Delta T$, e os outros três braços têm $x_i=0$.
+\begin{itemize}
+\item Se o extensômetro está em $R_1$ ou $R_4$: $V_o=-\frac{V_s}{4}(G\varepsilon+\alpha\Delta T)$.
+\item Se está em $R_2$ ou $R_3$: $V_o=+\frac{V_s}{4}(G\varepsilon+\alpha\Delta T)$.
+\end{itemize}
+Em qualquer posição,
+\[
+|V_o|=\frac{V_s}{4}\,\bigl|G\varepsilon+\alpha\,\Delta T\bigr| .
+\]
+\emph{Verificações:}
+\begin{itemize}
+\item $G\varepsilon$ e $\alpha\Delta T$ são adimensionais, logo $V_o$ tem unidade de tensão.
+\item Se $\varepsilon=0$ e $\Delta T=0$, temos $V_o=0$ (ponte equilibrada).
+\item Ordem de grandeza: com $V_s=10\ \text{V}$, $G\approx2$ e $\varepsilon\sim10^{-4}$, obtemos $V_o\sim0{,}5\ \text{mV}$.
+\end{itemize}
+Note que o termo térmico $\alpha\Delta T$ aparece somado ao sinal e não pode ser separado da deformação. É por isso que essa montagem é ruim.
+
+\textbf{b)} Todos os dispositivos estão à mesma temperatura. Nos pontos de tração $\varepsilon_i=+\varepsilon$ e nos de compressão $\varepsilon_i=-\varepsilon$. Seja $n_i=1$ se o braço $i$ é extensômetro e $n_i=0$ se é resistor fixo, e seja $s_i=\pm1$ o tipo de ponto. Pela fórmula acima,
+\[
+V_o=\frac{V_s}{4}\Bigl[G\varepsilon\,(n_2s_2+n_3s_3-n_1s_1-n_4s_4)+\alpha\Delta T\,(n_2+n_3-n_1-n_4)\Bigr].
+\]
+\begin{itemize}
+\item \emph{Máxima sensibilidade:} cada termo do primeiro parêntese vale no máximo $1$ em módulo. O módulo $4$ só é atingido com os quatro braços sendo extensômetros ($n_i=1$), com $s_2=s_3$ e $s_1=s_4=-s_2$.
+\item \emph{Compensação térmica:} com $n_i=1$ em todos os braços, $n_2+n_3-n_1-n_4=0$, e o efeito térmico se cancela. Se algum braço fosse um resistor fixo, essa soma não se anularia (por exemplo, com três extensômetros ela vale $\pm1$), e a sensibilidade também cairia.
+\end{itemize}
+Escolha: \emph{os quatro dispositivos são extensômetros}, $R_2$ e $R_3$ em pontos de \emph{tração} e $R_1$ e $R_4$ em pontos de \emph{compressão}. Com isso,
+\[
+V_o\approx\frac{V_s}{4}\,(4G\varepsilon)=V_s\,G\,\varepsilon .
+\]
+A escolha inversa ($R_1$ e $R_4$ na tração, $R_2$ e $R_3$ na compressão) é equivalente e dá $V_o=-V_sG\varepsilon$.
+
+\emph{Verificação exata:} com $R_1=R_4=R_0(1-G\varepsilon+\alpha\Delta T)$ e $R_2=R_3=R_0(1+G\varepsilon+\alpha\Delta T)$, obtém-se
+\[
+V_o=\frac{V_sG\varepsilon}{1+\alpha\Delta T}\approx V_sG\varepsilon .
+\]
+A temperatura só aparece no produto $\varepsilon\,\alpha\Delta T$, que é desprezado. O sinal é $4$ vezes maior que o do item a), e a resposta é linear em $\varepsilon$.
+
+ANSWER: a) $|V_o|=\dfrac{V_s}{4}\,|G\varepsilon+\alpha\Delta T|$. b) Os quatro dispositivos devem ser extensômetros (nenhum resistor fixo): $R_2$ e $R_3$ em pontos de tração, $R_1$ e $R_4$ em pontos de compressão (ou o inverso; braços opostos no mesmo tipo de ponto, braços adjacentes em tipos opostos). Assim, $V_o=V_sG\varepsilon$, sem dependência de $\Delta T$.
