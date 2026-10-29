@@ -1,0 +1,46 @@
+{
+  "question": 10,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A idade da amostra é de aproximadamente 4,9×10^8 anos (cerca de 490 milhões de anos).\n\nO cálculo usa o relógio Th–Pb: n(208Pb)/n(232Th) = e^{λt} − 1, com λ = ln2/(1,41×10^10 ano). Como 1,024 = 128/125, tem-se ln(1,024) = 7 ln2 − 3 ln5 ≈ 0,024. Logo, t = 0,024 × 1,41×10^10/0,693 ≈ 4,9×10^8 anos.\n\nCom logaritmos mais precisos (ln 1,024 = 0,0237), o resultado fica em cerca de 4,8×10^8 anos.",
+  "judge_reference": {
+    "reference_solution": "**Questão 10: idade da areia monazítica (datação Th–Pb)**\n\n**1. O que entra no cálculo**\nO único dado medido é a razão atômica (molar) ²⁰⁸Pb/²³²Th = 0,024. As porcentagens de ThO₂ (9%) e U₃O₈ (0,35%), o ²⁰⁶Pb e a meia-vida do ²³⁸U não aparecem na datação, porque não foi dada nenhuma razão ²⁰⁶Pb/²³⁸U nem a quantidade total de Pb. São informações de contexto ou distratores. A idade sai só do par ²³²Th → ²⁰⁸Pb.\n\n**2. Balanço da série do tório**\n²³²₉₀Th → ²⁰⁸₈₂Pb. A massa cai 24 unidades, o que dá 24/4 = 6 decaimentos α. Seis α baixariam Z de 90 para 78; para chegar a 82 são necessários 4 decaimentos β⁻.\n²³²Th → ²⁰⁸Pb + 6 ⁴He + 4 β⁻\nCada átomo de ²³²Th que decai gera exatamente 1 átomo de ²⁰⁸Pb. Os nuclídeos intermediários da série têm meias-vidas muito curtas comparadas a 10¹⁰ anos, então suas quantidades são desprezíveis.\n\n**3. Hipóteses do enunciado**\n- Sistema fechado: nada de Th ou Pb entrou ou saiu.\n- Todo o Pb é radiogênico: em t = 0, N(²⁰⁸Pb) = 0.\n\n**4. Equação da idade**\n- N_Th(t) = N₀·e^(−λt)\n- N_Pb(t) = N₀ − N_Th = N_Th·(e^(λt) − 1)\n- Daí N_Pb/N_Th = e^(λt) − 1, ou seja, t = (1/λ)·ln(1 + N_Pb/N_Th), com λ = ln2/t½.\n\n**5. Cálculo**\n- t½(Th) = 1,41×10¹⁰ anos, logo λ = 0,693/1,41×10¹⁰ ≈ 4,915×10⁻¹¹ ano⁻¹ e 1/λ ≈ 2,035×10¹⁰ anos.\n- Para ln(1,024) com os logaritmos dados: 1,024 = 1024/1000 = 2¹⁰/(2³·5³) = 2⁷/5³ = 128/125.\n- ln(1,024) = 7 ln2 − 3 ln5 = 7(0,693) − 3(1,609) = 4,851 − 4,827 = 0,024.\n- t = (1,41×10¹⁰/0,693)·0,024 ≈ 4,88×10⁸ anos.\n\nCom o valor exato ln(1,024) = 0,02372, obtém-se t ≈ 4,83×10⁸ anos. A diferença de cerca de 1% vem apenas do arredondamento dos logaritmos da folha de dados.\n\n**6. Verificações**\n- A fração de Th que decaiu é 1 − e^(−λt) ≈ 2,4%. A razão é pequena, então a aproximação linear t ≈ (Pb/Th)/λ = 0,024×2,035×10¹⁰ ≈ 4,9×10⁸ anos dá o mesmo resultado.\n- A idade é muito menor que t½(Th), o que é coerente com uma razão filho/pai pequena.\n- O valor, cerca de 0,5 bilhão de anos, é compatível com rochas-fonte do fim do Neoproterozoico/Cambriano (ciclo Brasiliano).\n- Complemento opcional, não pedido: na mesma idade, o sistema U–Pb deveria ter ²⁰⁶Pb/²³⁸U = e^(λ_U t) − 1 ≈ 0,079.\n\n**Resposta:** t ≈ 4,9×10⁸ anos (≈ 488 milhões de anos; com ln exato, ≈ 483 milhões de anos).",
+    "final_answer": "Idade estimada t = (t½/ln2)·ln(1 + ²⁰⁸Pb/²³²Th) = (1,41×10¹⁰/0,693)·ln(1,024). Com ln(1,024) = 7 ln2 − 3 ln5 = 0,024, dá t ≈ 4,9×10⁸ anos (≈ 488 milhões de anos). Com o ln exato (0,02372), dá ≈ 4,83×10⁸ anos. Qualquer valor entre cerca de 4,8 e 4,9×10⁸ anos deve ser aceito.",
+    "pitfalls": [
+      "Distratores: as porcentagens de ThO2 (9%) e U3O8 (0,35%), o 206Pb e a meia-vida do 238U não entram na idade, pois não há razão 206Pb/238U nem quantidade total de Pb. Tentar combiná-los (por exemplo, calcular mols de Th e U na amostra) é desperdício e fonte de erro.",
+      "A relação correta é Pb/Th = e^(λt) − 1, com o filho dividido pelo pai que resta hoje. Tratar 0,024 como fração do Th original que decaiu (Pb/N0), usando t = (1/λ)·ln[1/(1−0,024)], dá ≈ 4,94×10⁸ anos. O número fica próximo, mas o raciocínio está errado.",
+      "A razão dada é atômica/molar. Converter por massas (208/232) não faz sentido e muda o resultado (≈ 4,3 ou 5,4×10⁸ anos).",
+      "λ = ln2/t½. Erros comuns: usar t½ no lugar de 1/λ, esquecer o ln2 ou usar a meia-vida do 238U (4,47×10⁹ anos) no lugar da do 232Th (1,41×10¹⁰ anos).",
+      "Para usar os ln da folha de dados, é preciso notar que 1,024 = 2^7/5^3 = 128/125, logo ln(1,024) = 7ln2 − 3ln5 = 0,024. O valor exato é 0,02372 (diferença ≈ 1%), então 4,83×10⁸ e 4,88×10⁸ anos são ambos aceitáveis.",
+      "É preciso justificar a correspondência 1:1 entre Th que decai e 208Pb formado: 6 α + 4 β⁻, com intermediários de vida curta e quantidades desprezíveis.",
+      "Hipóteses necessárias: sistema fechado (sem perda nem ganho de Th ou Pb) e ausência de Pb inicial (todo radiogênico). Ambas são dadas no enunciado e devem ser citadas como condição de validade.",
+      "Erro de potência de 10 ou de unidade: a resposta é da ordem de 10⁸ anos (≈ 0,49 bilhão de anos), não 10⁹ nem 10¹⁰.",
+      "A aproximação linear t ≈ (Pb/Th)/λ é aceitável porque λt ≪ 1. A resolução completa deve, porém, partir da lei exponencial."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A idade da amostra é de aproximadamente 4,9×10^8 anos (cerca de 490 milhões de anos).\n\nO cálculo usa o relógio Th–Pb: n(208Pb)/n(232Th) = e^{λt} − 1, com λ = ln2/(1,41×10^10 ano). Como 1,024 = 128/125, tem-se ln(1,024) = 7 ln2 − 3 ln5 ≈ 0,024. Logo, t = 0,024 × 1,41×10^10/0,693 ≈ 4,9×10^8 anos.\n\nCom logaritmos mais precisos (ln 1,024 = 0,0237), o resultado fica em cerca de 4,8×10^8 anos.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A correspondência 1:1 entre ²³²Th que decai e ²⁰⁸Pb formado é justificada de forma qualitativa: a série termina em ²⁰⁸Pb e os intermediários têm vida curta. Falta o balanço nuclear explícito ²³²₉₀Th → ²⁰⁸₈₂Pb + 6 α + 4 β⁻, que daria uma justificativa mais completa e de nível de gabarito. A melhoria é acrescentar uma linha com a contagem de A (−24, logo 6 α) e de Z (90 − 12 + 4 = 82, logo 4 β⁻)."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação de ordem de grandeza, o texto diz que restam 'cerca de 97,6 % do ²³²Th inicial (1/1,024)'. Mas 1/1,024 = 0,9766, ou seja, 97,7 %. O valor 97,6 % vem de e^(−λt) calculado com os logaritmos arredondados. A discrepância é de arredondamento e não afeta o resultado, mas o número e a expressão entre parênteses não batem."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 5 do PDF; a transcrição está fiel.\n\n**Resposta final.** O candidato chega a t ≈ 4,9×10⁸ anos, o que coincide com a minha referência (≈ 4,88×10⁸ anos com os ln da folha de dados; ≈ 4,82–4,83×10⁸ anos com o ln exato). Refiz as contas em Python:\n- λ = 4,915×10⁻¹¹ ano⁻¹;\n- t = (1,41×10¹⁰/0,693)·0,024 = 4,883×10⁸ anos;\n- com o ln exato, t = 4,824×10⁸ anos;\n- a razão ²⁰⁶Pb/²³⁸U prevista para essa idade é 0,0786, o que bate com o ≈ 0,08 do candidato.\n\n**Armadilhas.** Todas foram tratadas:\n- **Lei exponencial e razão:** parte da lei exponencial e deduz corretamente N_Pb/N_Th = e^(λt) − 1, com o filho dividido pelo pai que resta hoje.\n- **Constante e meia-vida:** usa λ = ln2/t½ com a meia-vida do Th, não a do U.\n- **Distratores:** reconhece que a razão já é molar e que os teores de ThO₂ e U₃O₈ e os dados do urânio não entram no cálculo.\n- **Hipóteses:** cita sistema fechado e Pb inicial nulo.\n- **Logaritmo:** usa 1,024 = 2⁷/5³ para obter ln(1,024) = 7ln2 − 3ln5 = 0,024 com os dados da folha.\n- **Precisão:** discute o efeito de usar o ln exato.\n- **Unidades e ordem de grandeza:** confere unidades e a ordem de grandeza (10⁸ anos).\n- **Checagem extra:** propõe a verificação independente pelo sistema U–Pb.\n\n**Ressalvas** (ambas menores):\n1. Falta o balanço explícito 6 α + 4 β⁻ para justificar a correspondência 1:1 entre Th que decai e Pb formado.\n2. Há um pequeno descompasso de arredondamento: o texto diz 97,6 %, mas 1/1,024 = 97,7 %.\n\nA resolução é clara, rigorosa e completa, de qualidade de gabarito comentado."
+      }
+    }
+  ]
+}
