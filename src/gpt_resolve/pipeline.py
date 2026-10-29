@@ -48,6 +48,7 @@ class QuestionResult:
     number: int
     attempts: list[Attempt]
     pass_score: float
+    judged: bool = True
 
     @property
     def best(self) -> Attempt:
@@ -55,7 +56,7 @@ class QuestionResult:
 
     @property
     def approved(self) -> bool:
-        return self.best.score >= self.pass_score
+        return self.judged and self.best.score >= self.pass_score
 
 
 @dataclass
@@ -67,6 +68,7 @@ class Settings:
     effort: Optional[str] = "xhigh"
     concurrency: int = 4
     show_tools: bool = True
+    judge: bool = True
     retries: int = 2
     # Sum of the agents' reported cost (API prices; with a subscription it counts against usage limits instead)
     spent_usd: float = 0.0
@@ -159,6 +161,27 @@ async def solve_question(
         instructions=exam.instructions or "(nenhuma)",
         statement=question.statement,
     )
+    if not settings.judge:
+        solved = await run_agent(
+            provider,
+            settings,
+            f"Q{question.number} solver",
+            log,
+            prompt=prompts.SOLVER_PROMPT.format(**common, revision=""),
+            allowed_files=question.sources,
+            system_prompt=prompts.SOLVER_SYSTEM,
+            model=settings.model,
+            workdir=workdir / "solver",
+            schema=prompts.SOLVER_SCHEMA,
+            effort=settings.effort,
+        )
+        attempt = Attempt(
+            1, solved.structured["solution_latex"], solved.structured.get("final_answer", ""), {}
+        )
+        result = QuestionResult(question.number, [attempt], settings.pass_score, judged=False)
+        save_result(result, output_dir)
+        return result
+
     # The judge first solves the question blind, so its review is not anchored on the candidate.
     # The blind reference runs alongside the first solver round and is reused in every revision.
     reference_task = asyncio.create_task(
@@ -244,6 +267,7 @@ def save_result(
     )
     report = {
         "question": result.number,
+        "judged": result.judged,
         "approved": result.approved,
         "pass_score": result.pass_score,
         "best_round": best.round,
@@ -301,6 +325,9 @@ async def resolve_exam_async(
     results = await asyncio.gather(*(run(q) for q in questions))
     results = sorted((r for r in results if r), key=lambda r: r.number)
     for r in results:
+        if not r.judged:
+            log(f"Q{r.number}: resolvida (sem judge)")
+            continue
         status = "aprovada" if r.approved else "NÃO aprovada"
         log(f"Q{r.number}: nota {r.best.score:g} ({status}, {len(r.attempts)} rodada(s))")
     log(f"Concluído em {(time.perf_counter() - start) / 60:.1f} min. Custo estimado: US$ {settings.spent_usd:.2f}. Saída: {output_dir}")
