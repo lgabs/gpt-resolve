@@ -1,0 +1,58 @@
+{
+  "question": 6,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-6-fisica-2-fase-dia-2-ime-2027",
+  "score": 10.0,
+  "summary": "A resolução está certa e bate com o gabarito Poliedro nos quatro itens. Os resultados são v = 68 m/s, R = 5√3 m ≈ 8,66 m, T ≈ 1,07·10³ N e V_sub ≈ 5,51·10⁻² m³ ≈ 55·10⁻³ m³. As duas usam o mesmo caminho: Doppler em A com a velocidade apontando direto para O, e em B com a projeção v·cosθ = 34 m/s, que dá θ = 60° e R = (√3/2)·d. Depois vêm T·senα = mv²/R e o equilíbrio vertical E = mg + T·cosα. Conferi o enunciado no PDF original e refiz as contas em Python: tudo bate. As diferenças são só de arredondamento e notação. Não encontrei erro em nenhum dos dois.",
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "v = 68 m/s",
+      "key_answer": "v = 68 m/s",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Em A a velocidade (sentido anti-horário, ponto mais baixo) aponta para +x, direto para O, porque AO é tangente em A. Então 5/4 = 340/(340 − v), o que dá v = 68 m/s = v_som/5. Conferido."
+    },
+    {
+      "item": "b",
+      "solution_answer": "R = 5√3 ≈ 8,66 m (cosθ = 1/2)",
+      "key_answer": "θ = 60° (cosθ = 1/2); R = 5√3 m",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Em B, v = (−v, 0) e o vetor de B até O é (d, −2R), então a fonte se afasta de O. 10/11 = 340/(340 + v·cosθ) dá v·cosθ = 34 e cosθ = 1/2. A resolução usa d/√(d² + 4R²) = 1/2 e o gabarito usa tgθ = 2R/d = √3. São formas equivalentes e as duas dão R = 5√3 m ≈ 8,660 m."
+    },
+    {
+      "item": "c",
+      "solution_answer": "T ≈ 1067,8 N (α = 60°)",
+      "key_answer": "α = 60°; T ≅ 1,07·10³ N",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "senα = R/L = √3/2, logo α = 60°. T = mv²/(R·senα) = (8/5)·(34²/√3) = (8/5)·667,4 ≈ 1067,8 N. O valor exato é 1067,87 N. A diferença em relação ao gabarito é só de arredondamento."
+    },
+    {
+      "item": "d",
+      "solution_answer": "V_sub ≈ 5,51·10⁻² m³ (≈ 55,1 L), com E ≈ 551,24 N",
+      "key_answer": "E ≈ 551 N; V ≅ 55·10⁻³ m³",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "E = mg + T·cosα = 17,32 + 533,92 ≈ 551,2 N. V = E/(ρg) ≈ 0,0551 m³. É o mesmo valor que 55·10⁻³ m³, só escrito em outra notação e com outro arredondamento."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A velocidade de 68 m/s (≈ 245 km/h) para um objeto preso ao fundo de uma piscina é fisicamente irrealista, e por isso a tração resulta enorme (~1,07 kN) diante de um peso de ~17 N. É uma característica dos dados do enunciado e não um erro das respostas, mas vale comentar em sala."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "As duas soluções usam uma hipótese implícita padrão: o som se propaga no ar com o observador parado, e o efeito Doppler depende só da componente da velocidade da fonte na direção fonte–observador no instante da emissão. A resolução declara isso explicitamente, e o gabarito usa a mesma ideia."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Para obter α = 60°, a resolução supõe que o raio R (do centro até o objeto, desprezando as dimensões do objeto) é a projeção horizontal do fio de comprimento L preso no fundo, logo abaixo do centro da circunferência. Essa geometria está de acordo com a figura e o gabarito usa a mesma."
+    }
+  ]
+}

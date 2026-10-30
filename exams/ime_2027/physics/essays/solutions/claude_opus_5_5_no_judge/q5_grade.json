@@ -1,0 +1,55 @@
+{
+  "question": 5,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-5-fisica-2-fase-dia-2-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "η_A = 60/150 = 0,40 = 0,8·η_Carnot ⇒ η_Carnot = 0,5 ⇒ T = 450 K",
+      "key_answer": "η1 = 40%; T = 450 K",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz a conta: Ẇ = 80·3/4 = 60 kW, η = 0,4, η_Carnot = 0,4/0,8 = 0,5 e T = 900·(1 − 0,5) = 450 K. A resolução e o gabarito dão o mesmo resultado. A transcrição confere com o enunciado original (p. 5)."
+    },
+    {
+      "item": "b",
+      "solution_answer": "Q̇ = 150 − 60 = 90 kW",
+      "key_answer": "Q̇ rejeitado = 90 kW",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Pela 1ª lei, Q̇ = 150 − 60 = 90 kW. Os dois chegam ao mesmo valor. A resolução ainda confere a geração de entropia, 1/30 kW/K > 0, coerente com uma máquina irreversível."
+    },
+    {
+      "item": "c",
+      "solution_answer": "Não é realista. São necessários 116,7 kW (elétrica) + 33,3 kW (água) + 45 kW (rejeitados a 450 K) = 195 kW > 150 kW, o que viola a 1ª lei. Pela 2ª lei, Q̇₃ ≥ 20 kW, logo Ẇ ≤ 85 kW (≤ 255 residências). Aquecendo a água, B fornece 71,7 kW (215 residências), com ΔṠ ≈ +0,044 kW/K, o que é aceitável.",
+      "key_answer": "P necessária = 116,7 kW; Q̇_água = 33,3 kW; a máquina 2 fornece 71,7 kW < 116,7 kW ⇒ NÃO supre as 350 residências (máx. 215); ΔṠ_universo = +0,04 kW/K ⇒ não viola a 2ª lei",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi com python: P = 350·240/720 = 116,67 kW; Q̇_água = (50/60)·4000·10 = 33,33 kW; Ẇ = 150 − 45 − 33,33 = 71,67 kW; 71,67·3 = 215 residências; ΔṠ = −1/6 + 1/10 + 33,33/300 = 0,0444 kW/K. A conclusão é a mesma do gabarito: com a água aquecida, B entrega 71,7 kW e não supre as 350 residências (no máximo 215), sem violar a 2ª lei nessa configuração. A resolução vai além e acerta dois pontos extras: o total pedido (195 kW) excede a entrada de 150 kW, e o limite reversível dá Ẇ ≤ 85 kW (Q̇₃ ≥ 300·(1/6 − 1/10) = 20 kW). O gabarito arredonda ΔṠ para 0,04 e a resolução dá 0,044; a diferença é só de arredondamento."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "solution",
+      "importance": "high",
+      "description": "No item c, a desigualdade de Clausius está escrita com o sinal trocado. As hipóteses adotam Σ Q̇_i/T_i ≤ 0, com Q̇_i positivo quando o calor entra no ciclo; isso daria +150/900 − 45/450 − Q̇₃/300 ≤ 0. A resolução, porém, escreve −150/900 + 45/450 + Q̇₃/300 ≤ 0, que é a variação de entropia dos reservatórios (deveria ser ≥ 0). Do jeito que está escrita, a desigualdade levaria a Q̇₃ ≤ 20 kW, mas a resolução conclui Q̇₃ ≥ 20 kW, que é o correto. É um erro de digitação que inverte o sentido da desigualdade. Não afeta a resposta final (Ẇ ≤ 85 kW), mas um corretor rigoroso pode descontar um pouco. A mesma mistura de convenções aparece na verificação do item b, onde se usa −150/900 + 90/450 > 0 como geração de entropia."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito dá ΔṠ_universo = +0,04 kW/K. O valor exato é 2/45 ≈ 0,044 kW/K. É só arredondamento, sem efeito na conclusão."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado não diz como interpretar 'realísticos'. O gabarito julga pela potência disponível (71,7 kW < 116,7 kW) depois de atender a água. A resolução mostra também a violação da 1ª lei (195 kW > 150 kW) e o teto da 2ª lei (85 kW, 255 residências). As duas leituras levam à mesma conclusão: a proposta de B não é realista."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Há duas hipóteses implícitas, ambas razoáveis e presentes também no gabarito: (i) todo o calor rejeitado a 300 K vai para a água, ou seja, Q̇₃ = 33,3 kW; (ii) a demanda residencial é a potência média, 240 kWh/720 h = 1/3 kW por residência, sem considerar picos."
+    }
+  ],
+  "summary": "A resolução está correta e bate com o gabarito Poliedro nos três itens: a) T = 450 K; b) Q̇ = 90 kW; c) a proposta de B não é realista. Com a água aquecida, B entrega 71,7 kW e não 116,7 kW, o que dá no máximo 215 residências, e ΔṠ ≈ +0,04 kW/K. No item c, a resolução ainda mostra que o total pedido (195 kW) viola a 1ª lei e que a 2ª lei limita Ẇ a 85 kW. O único problema é um erro de digitação na desigualdade de Clausius do item c: o sinal está invertido em relação à convenção que a própria resolução declarou, embora a conclusão (Q̇₃ ≥ 20 kW) esteja certa. Isso pode render um desconto pequeno de forma, mas não muda nenhum resultado."
+}

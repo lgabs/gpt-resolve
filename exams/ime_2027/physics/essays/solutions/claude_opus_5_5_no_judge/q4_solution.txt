@@ -1,0 +1,57 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Fusível, chave e fios são ideais (resistência desprezível). Os receptores seguem o modelo dado: f.c.e.m. constante em série com $R_{int}$, ou seja, $U = E' + R_{int}\,i$. Chamamos de $V = V_A - V_B$ a tensão comum aos três ramos, que estão todos ligados entre os nós $A$ e $B$.
+
+\subsection*{a) Correntes logo após o fechamento de S}
+
+Equações de ramo, com $I$ saindo do gerador e $i_1, i_2$ entrando nos receptores:
+\[
+I=\frac{1000-V}{2},\qquad i_1=\frac{V-850}{1},\qquad i_2=\frac{V-900}{2}.
+\]
+Lei dos nós em $A$: $I=i_1+i_2$. Isso equivale ao teorema de Millman:
+\[
+V=\frac{\dfrac{1000}{2}+\dfrac{850}{1}+\dfrac{900}{2}}{\dfrac12+\dfrac11+\dfrac12}=\frac{500+850+450}{2}=900\ \text{V}.
+\]
+Logo
+\[
+I=\frac{1000-900}{2}=50\ \text{A},\qquad i_1=900-850=50\ \text{A},\qquad i_2=\frac{900-900}{2}=0 .
+\]
+O valor $i_2=0$ é coerente: a tensão disponível ($900$ V) apenas iguala a f.c.e.m. de Rec$_2$, que, portanto, não recebe corrente.
+
+Verificação de potência:
+\begin{itemize}
+\item potência fornecida pelo gerador: $1000\cdot 50=50000$ W;
+\item potência dissipada na resistência interna do gerador: $2\cdot 50^2=5000$ W;
+\item potência absorvida por Rec$_1$: $850\cdot 50+1\cdot 50^2=45000$ W.
+\end{itemize}
+Como $5000+45000=50000$ W, o balanço fecha.
+
+\subsection*{b) Rompimento do fusível}
+
+Toda a corrente do gerador passa pelo fusível:
+\[
+\frac{I}{I_{FUS}}=\frac{50}{20}=2{,}5 .
+\]
+Na Figura 2, a assíntota vertical em $I/I_{FUS}\approx 1{,}1$ indica que só há rompimento para razões maiores que cerca de $1{,}1$. Como $2{,}5>1{,}1$, o fusível \textbf{vai romper}. As correntes são constantes, porque o modelo é resistivo com f.c.e.m. constante, então o tempo de rompimento é lido diretamente na curva.
+
+Na região de interesse, a curva é um segmento de reta que vai de aproximadamente $(1{,}1;\ 3{,}8\ \text{s})$ até $(3{,}3;\ 0{,}1\ \text{s})$. Interpolando:
+\[
+t\approx 3{,}8-\frac{3{,}8-0{,}1}{3{,}3-1{,}1}\,(2{,}5-1{,}1)\approx 3{,}8-1{,}68\cdot 1{,}4\approx 1{,}5\ \text{s}.
+\]
+Portanto, o fusível rompe cerca de $1{,}5$ s após o fechamento de S. Esse valor vem de leitura gráfica, com incerteza de aproximadamente $\pm 0{,}1$ s. A partir desse instante, o gerador fica desligado dos receptores.
+
+\subsection*{c) Curto-circuito entre A e B}
+
+Com o curto ideal, $V_{AB}=0$. Os receptores ficam em paralelo com o curto e não alteram a corrente do ramo do gerador: as correntes que eles eventualmente fornecessem circulariam pelo próprio curto, sem passar por F. O gerador, então, opera em curto-circuito:
+\[
+I_{cc}=\frac{\varepsilon}{r}=\frac{1000}{2}=500\ \text{A}\quad\Rightarrow\quad \frac{I_{cc}}{I_{FUS}}=\frac{500}{20}=25 .
+\]
+Na Figura 2, para $I/I_{FUS}\gtrsim 3{,}3$ a curva é horizontal no valor mínimo $t=10^{-1}$ s. Esse patamar representa o tempo mínimo de atuação do fusível e vale também para a razão $25$, que está fora da escala do gráfico. Logo
+\[
+t_{rompimento}=0{,}1\ \text{s}=100\ \text{ms}>50\ \text{ms}.
+\]
+O gerador ficaria em curto durante $100$ ms, o dobro do tempo máximo que suporta. Assim, o fusível \textbf{não} consegue proteger a fonte. Seria necessário um dispositivo com tempo de atuação de no máximo $50$ ms para $I=500$ A.
+
+ANSWER: a) $V_{AB}=900$ V; $i_{\text{Rec}_1}=50$ A, $i_{\text{Rec}_2}=0$ (corrente no gerador e no fusível $I=50$ A). b) Sim: $I/I_{FUS}=2{,}5>1{,}1$, e o fusível rompe em $t\approx 1{,}5$ s (leitura gráfica). c) $I_{cc}=500$ A, $I/I_{FUS}=25$, e o fusível rompe em $0{,}1$ s $=100$ ms $>50$ ms; logo não protege o gerador.

@@ -1,0 +1,57 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Equacionamento geral da ponte.} Tomamos $V_C=0$ e $V_A=V_s$ (fonte ideal entre $A$ e $C$). Como o voltímetro é ideal, ele não drena corrente. Assim, cada lado da ponte funciona como um divisor de tensão:
+\[
+V_D=V_s\,\frac{R_3}{R_1+R_3},\qquad V_B=V_s\,\frac{R_4}{R_2+R_4}.
+\]
+Escrevemos cada braço como $R_i=R_0(1+x_i)$, com $|x_i|\ll 1$. Para um resistor constante, $x_i=0$; para um extensômetro, $x_i=G\varepsilon_i+\alpha\,\Delta T$. Usando $(1+x)^{-1}\approx 1-x$ e desprezando produtos de pequenas correções:
+\[
+\frac{R_3}{R_1+R_3}=\frac{1+x_3}{2}\left(1+\frac{x_1+x_3}{2}\right)^{-1}\approx\frac{1+x_3}{2}\left(1-\frac{x_1+x_3}{2}\right)\approx\frac12+\frac{x_3-x_1}{4}.
+\]
+Da mesma forma, $\dfrac{R_4}{R_2+R_4}\approx\dfrac12+\dfrac{x_4-x_2}{4}$. Portanto:
+\[
+V_o=V_D-V_B\approx\frac{V_s}{4}\,\bigl(x_2+x_3-x_1-x_4\bigr).\qquad(\ast)
+\]
+Interpretação de $(\ast)$: braços adjacentes, isto é, com um vértice em comum ($R_1,R_3$ em $D$; $R_2,R_4$ em $B$; $R_1,R_2$ em $A$; $R_3,R_4$ em $C$), entram com sinais opostos. Já os braços opostos ($R_1$ e $R_4$; $R_2$ e $R_3$) entram com o mesmo sinal.
+
+\textbf{a)} Há um único extensômetro, num braço qualquer $R_k$. Então $x_k=G\varepsilon+\alpha\Delta T$ e os demais $x_i$ são nulos. Por $(\ast)$, $V_o=\pm\frac{V_s}{4}(G\varepsilon+\alpha\Delta T)$: o sinal é $+$ se o extensômetro está em $R_2$ ou $R_3$ e $-$ se está em $R_1$ ou $R_4$.
+
+Verificação exata com o extensômetro em $R_1$:
+\[
+V_o=V_s\left[\frac{1}{2+x}-\frac12\right]=-\frac{V_s\,x}{2(2+x)}\approx-\frac{V_s\,x}{4}.
+\]
+Logo:
+\[
+|V_o|=\frac{V_s}{4}\,\bigl|G\varepsilon+\alpha\,\Delta T\bigr|.
+\]
+A unidade é o volt, pois $G\varepsilon$ e $\alpha\Delta T$ são adimensionais. Note que a temperatura entra com o mesmo peso da deformação: a montagem com um só extensômetro tem um erro térmico equivalente a uma deformação aparente $\alpha\Delta T/G$.
+
+\textbf{b)} Por $(\ast)$, um resistor constante contribui com $x_i=0$, ou seja, não acrescenta sinal. Cada extensômetro, por sua vez, acrescenta $\pm\frac{V_s}{4}G\varepsilon_i$. Para a máxima sensibilidade, \emph{os quatro dispositivos devem ser extensômetros}, e as quatro contribuições devem somar-se com o mesmo sinal. Para isso, $\varepsilon_2$ e $\varepsilon_3$ devem ter um sinal e $\varepsilon_1$ e $\varepsilon_4$ o sinal oposto.
+
+Como há pontos de tração e de compressão de mesma intensidade $|\varepsilon|$, fazemos:
+\begin{itemize}
+\item $R_2$ e $R_3$: extensômetros em pontos de \textbf{tração}, com $x_2=x_3=G\varepsilon+\alpha\Delta T$;
+\item $R_1$ e $R_4$: extensômetros em pontos de \textbf{compressão}, com $x_1=x_4=-G\varepsilon+\alpha\Delta T$.
+\end{itemize}
+Substituindo em $(\ast)$:
+\[
+V_o=\frac{V_s}{4}\Bigl[2(G\varepsilon+\alpha\Delta T)-2(-G\varepsilon+\alpha\Delta T)\Bigr]=V_s\,G\,\varepsilon .
+\]
+O termo térmico se cancela, porque os quatro braços estão à mesma temperatura e $(+1+1-1-1)\alpha\Delta T=0$.
+
+Conferência exata: $V_o=V_s\dfrac{(1+G\varepsilon+\alpha\Delta T)-(1-G\varepsilon+\alpha\Delta T)}{2(1+\alpha\Delta T)}=\dfrac{V_sG\varepsilon}{1+\alpha\Delta T}\approx V_sG\varepsilon$. A saída é, portanto, linear em $\varepsilon$; desprezou-se apenas o termo $\varepsilon\alpha\Delta T$.
+
+A atribuição inversa também é válida: $R_1,R_4$ na tração e $R_2,R_3$ na compressão dão $V_o=-V_sG\varepsilon$, com o mesmo módulo. A regra é: braços opostos no mesmo tipo de ponto, braços adjacentes em tipos opostos.
+
+Comparação das sensibilidades:
+\begin{itemize}
+\item um extensômetro (item a): $V_sG\varepsilon/4$, com erro térmico;
+\item dois extensômetros adjacentes (meia ponte): $V_sG\varepsilon/2$;
+\item ponte completa: $V_sG\varepsilon$, quatro vezes a do item a e sem erro térmico.
+\end{itemize}
+Ordem de grandeza: com $V_s=10$ V, $G\approx2$ e $\varepsilon=10^{-3}$, obtém-se $V_o\approx 20$ mV, contra $5$ mV no item a.
+
+\medskip
+ANSWER: a) $|V_o|=\dfrac{V_s}{4}\,|G\varepsilon+\alpha\Delta T|$. b) Os quatro dispositivos devem ser extensômetros: $R_2$ e $R_3$ em pontos de tração e $R_1$ e $R_4$ em pontos de compressão (ou o inverso). Assim, $|V_o|=V_sG|\varepsilon|$, sem efeito térmico.

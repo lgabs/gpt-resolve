@@ -1,0 +1,83 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Modelo.} Tomamos $\theta$ positivo no sentido da figura. Sobre a haste (corpo rígido que gira em torno do eixo fixo no polímero) atuam o torque elástico $\tau_e=-k\theta$ e o torque do peso, aplicado no centro de massa (ponto médio, a $L/2$ do eixo):
+\[
+\tau_P=+Mg\,\frac{L}{2}\,\operatorname{sen}\theta ,
+\]
+que tende a \emph{aumentar} $|\theta|$ (pêndulo invertido). Ambos os torques são conservativos, com
+\[
+U_{total}(\theta)=\underbrace{\tfrac12 k\theta^2}_{\text{elástica}}+\underbrace{Mg\,\tfrac{L}{2}\cos\theta}_{\text{gravitacional (zero no mancal)}},
+\qquad
+\tau=-\frac{dU_{total}}{d\theta}=-k\theta+\frac{MgL}{2}\operatorname{sen}\theta .
+\]
+
+\textbf{a)} Para $|\theta|\ll 1$, $\operatorname{sen}\theta\approx\theta$ e
+$\tau\approx-\left(k-\tfrac{MgL}{2}\right)\theta$. O torque é restaurador (equilíbrio estável, com oscilações de $\omega^2=\frac{k-MgL/2}{ML^2/3}>0$) somente se $k>MgL/2$; se $k<MgL/2$, o torque afasta a haste da vertical. Logo
+\[
+\boxed{k_c=\frac{MgL}{2}}\qquad(\text{unidade: N}\cdot\text{m/rad, coerente com }k).
+\]
+No caso limite $k=k_c$: $U_{total}-U_{total}(0)=k_c\left(\tfrac{\theta^2}{2}+\cos\theta-1\right)\approx k_c\,\tfrac{\theta^4}{24}>0$, de modo que $\theta=0$ ainda é estável (mínimo quártico), em acordo com o enunciado (é $k<k_c$ que desestabiliza).
+
+\textbf{b)} Com $k_c=MgL/2$ e $r\equiv k/k_c>0$, os equilíbrios ($\tau=0$) satisfazem
+\[
+k\theta=k_c\operatorname{sen}\theta\iff \theta=0\quad\text{ou}\quad \frac{\operatorname{sen}\theta}{\theta}=r .
+\]
+Em $0<|\theta|<\pi/2$ a função par $f(\theta)=\operatorname{sen}\theta/\theta$ decresce estritamente de $1$ (em $\theta\to0$) até $2/\pi$ (em $|\theta|=\pi/2$). Além disso, $U_{total}''(\theta)=k-k_c\cos\theta$, logo $U_{total}''(0)=k_c(r-1)$. Daí:
+
+\begin{itemize}
+\item \textbf{$r\ge1$:} $f(\theta)<1\le r$ para $\theta\neq0$ $\Rightarrow$ \textbf{um único} equilíbrio, $\theta=0$, \textbf{estável} ($U_{total}''(0)>0$; para $r=1$, mínimo quártico do item a).
+\item \textbf{$2/\pi<r<1$:} \textbf{três} equilíbrios. $\theta=0$ é \textbf{instável} ($U_{total}''(0)<0$); $\theta=\pm\theta_e$, com $\dfrac{\operatorname{sen}\theta_e}{\theta_e}=\dfrac{k}{k_c}$ ($0<\theta_e<\pi/2$), são \textbf{estáveis}: para $\theta>\theta_e$ tem-se $f(\theta)<r$, isto é, $k\theta>k_c\operatorname{sen}\theta$ e $\tau<0$; para $0<\theta<\theta_e$, $\tau>0$; o torque sempre empurra a haste de volta para $\theta_e$ (idem para $-\theta_e$, por simetria). Equivalentemente, $U_{total}''(\theta_e)=k_c\cos\theta_e\,\frac{\tan\theta_e-\theta_e}{\theta_e}>0$.
+\item \textbf{$0<r\le2/\pi$:} $f(\theta)>2/\pi\ge r$ em todo o intervalo aberto $\Rightarrow$ \textbf{um único} equilíbrio, $\theta=0$, \textbf{instável}; o torque afasta a haste da vertical até ela sair do intervalo (tomba até $|\theta|=\pi/2$, sobre o suporte). Em $r=2/\pi$ ($k=MgL/\pi$) os pontos $\pm\theta_e$ chegam exatamente a $\pm\pi/2$, fora do intervalo aberto.
+\end{itemize}
+Interpretação do ensaio: ao aquecer, a haste fica vertical até $k=k_c$; depois inclina-se para um dos lados ($\pm\theta_e$, quebra de simetria), com $\theta_e$ crescendo continuamente ($\theta_e\approx\sqrt{6(1-r)}$ para $r\to1^-$), e tomba quando $k\to MgL/\pi$.
+
+\textbf{c)} $\dfrac{U_{total}}{k_c}=\dfrac{r}{2}\theta^2+\cos\theta$, função par, com $U_{total}(0)=\dfrac{MgL}{2}$ (centro de massa a $L/2$ acima do mancal) e $U_{total}(\pm\pi/2)=\dfrac{\pi^2k}{8}$ (haste horizontal: energia gravitacional nula). Esboços (curvas exatas para $r=1{,}5$ e $r=1$; $r=0{,}75$; $r=0{,}4$):
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=5.4cm,height=4.6cm,domain=-pi/2:pi/2,samples=81,
+  xmin=-1.65,xmax=1.65,xtick={-1.5708,0,1.5708},xticklabels={$-\frac{\pi}{2}$,$0$,$\frac{\pi}{2}$},
+  ytick={1},yticklabels={$\frac{MgL}{2}$},ymin=0.8,ymax=2.0,
+  title={\small $k\ge k_c$: poço único},xlabel={$\theta$},ylabel={$U_{total}$}]
+\addplot[thick] {0.75*x^2+cos(deg(x))};
+\addplot[dashed] {0.5*x^2+cos(deg(x))};
+\addplot[only marks,mark=*] coordinates {(0,1)};
+\node[font=\scriptsize] at (axis cs:0,1.12) {estável};
+\node[font=\scriptsize,anchor=west] at (axis cs:0.35,1.6) {$k>k_c$};
+\node[font=\scriptsize] at (axis cs:0.8,0.88) {$k=k_c$ (- - -)};
+\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+\begin{axis}[width=5.4cm,height=4.6cm,domain=-pi/2:pi/2,samples=121,
+  xmin=-1.65,xmax=1.65,xtick={-1.2757,0,1.2757},xticklabels={$-\theta_e$,$0$,$\theta_e$},
+  ytick={1},yticklabels={$\frac{MgL}{2}$},ymin=0.865,ymax=1.03,
+  title={\small $\frac{2}{\pi}<\frac{k}{k_c}<1$: poço duplo},xlabel={$\theta$}]
+\addplot[thick] {0.375*x^2+cos(deg(x))};
+\addplot[only marks,mark=*] coordinates {(0,1)};
+\addplot[only marks,mark=o] coordinates {(-1.2757,0.9011) (1.2757,0.9011)};
+\node[font=\scriptsize,anchor=south] at (axis cs:0,1.003) {instável};
+\node[font=\scriptsize,anchor=north] at (axis cs:-1.12,0.893) {estável};
+\node[font=\scriptsize,anchor=north] at (axis cs:1.12,0.893) {estável};
+\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+\begin{axis}[width=5.4cm,height=4.6cm,domain=-pi/2:pi/2,samples=81,
+  xmin=-1.65,xmax=1.65,xtick={-1.5708,0,1.5708},xticklabels={$-\frac{\pi}{2}$,$0$,$\frac{\pi}{2}$},
+  ytick={1},yticklabels={$\frac{MgL}{2}$},ymin=0.4,ymax=1.15,
+  title={\small $0<\frac{k}{k_c}\le\frac{2}{\pi}$: só um máximo},xlabel={$\theta$}]
+\addplot[thick] {0.2*x^2+cos(deg(x))};
+\addplot[only marks,mark=*] coordinates {(0,1)};
+\node[font=\scriptsize,anchor=south] at (axis cs:0,1.01) {instável};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+\item $k\ge k_c$: curva em ``U'' (convexa, pois $U_{total}''=k-k_c\cos\theta\ge0$), mínimo $MgL/2$ em $\theta=0$; para $k=k_c$ o fundo é achatado ($\propto\theta^4$).
+\item $2/\pi<k/k_c<1$: curva em ``W'': máximo local $MgL/2$ em $\theta=0$ e dois mínimos simétricos em $\pm\theta_e$ (abaixo de $MgL/2$).
+\item $0<k/k_c\le2/\pi$: curva em ``$\cap$'': máximo em $\theta=0$ e $U_{total}$ decrescendo monotonamente até $\pi^2k/8\le\frac{\pi}{4}\cdot\frac{MgL}{2}$ nas extremidades.
+\end{itemize}
+
+ANSWER: a) $k_c=\dfrac{MgL}{2}$. b) Para $k/k_c\ge1$: um equilíbrio, $\theta=0$, estável. Para $2/\pi<k/k_c<1$: três equilíbrios, $\theta=0$ instável e $\theta=\pm\theta_e$ estáveis, com $\operatorname{sen}\theta_e/\theta_e=k/k_c$. Para $0<k/k_c\le2/\pi$: um equilíbrio, $\theta=0$, instável. c) $U_{total}=\tfrac12k\theta^2+\tfrac{MgL}{2}\cos\theta$: poço único (``U'') com mínimo $MgL/2$ em $0$; poço duplo (``W'') com máximo $MgL/2$ em $0$ e mínimos em $\pm\theta_e$; curva em ``$\cap$'' com máximo em $0$, decrescendo até $\pi^2k/8$ em $\pm\pi/2$.

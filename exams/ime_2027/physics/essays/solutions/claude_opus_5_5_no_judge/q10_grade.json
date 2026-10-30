@@ -1,0 +1,42 @@
+{
+  "question": 10,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-10-fisica-2-fase-dia-2-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "Só a situação 2 (as duas correntes para cima e a partícula descendo). Nas situações 1 e 4, B(0) = 2μ0 i/(πd) ≠ 0, então já existe força lateral sobre o eixo. Na situação 3, F_x = +Kx afasta a partícula do eixo. Na situação 2, F_x = −Kx, com K = 4μ0 q i v/(πd²), e a força é restauradora.",
+      "key_answer": "Somente a situação 2 (1 e 4: B no eixo ≠ 0, descartadas; 3: afasta; 2: restaura)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz os sinais. Com fios em x = ∓d/2 e as duas correntes para cima, B_z = (μ0 i/2π)[1/(d/2−x) − 1/(d/2+x)] ≈ 4μ0 i x/(πd²). Com F_x = q v_y B_z e v_y = −v (situação 2), F_x = −Kx, que é restauradora. Com v_y = +v (situação 3), a força afasta do eixo. Na simulação RK4 da situação 3, x cresce de forma monotônica a partir de 10⁻⁷. Com correntes opostas (situações 1 e 4), os dois campos entram no papel entre os fios, então B(0) = −2μ0 i/(πd) ≠ 0 e a força lateral já age no eixo. As justificativas da resolução coincidem com as do gabarito, inclusive a leitura física: carga descendo equivale a corrente antiparalela, que é repelida pelos fios."
+    },
+    {
+      "item": "b",
+      "solution_answer": "p = πv/ω ≈ (πd/2)·√(π m v/(μ0 q i)), com ω = (2/d)√(μ0 q i v/(π m))",
+      "key_answer": "T = πd·√(mπ/(μ0 i q v)); p = (πd/2)·√(πmv/(μ0 i q))",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Partindo de K = 4μ0 q i v/(πd²), obtém-se ω² = K/m e T = 2π/ω = πd√(πm/(μ0 q i v)), o mesmo período do gabarito. Daí p = v·T/2 = (πd/2)√(πmv/(μ0 q i)). Conferi numericamente com RK4 da trajetória exata (μ0 = i = q = m = v = d = 1, desvio inicial pequeno): a distância entre cruzamentos consecutivos do eixo deu 2,78416, e a fórmula dá 2,78416. Ambos tomam p como a distância percorrida em meio período, que é o que mostra a figura (um lóbulo entre cruzamentos consecutivos). A resolução não escreve T explicitamente, mas dá ω, o que é equivalente."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O passo p depende de ler na figura que ele vai de um cruzamento do eixo y ao seguinte, o que corresponde a meio período (p = vT/2). Se alguém o tomasse como o período completo da oscilação, obteria p = vT, o dobro. A figura e o gabarito apoiam T/2, e a resolução justifica essa escolha."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução despreza o peso porque g não foi dado. A hipótese é razoável e o gabarito faz o mesmo implicitamente, mas com a velocidade vertical o peso mudaria v ao longo da trajetória. Vale declarar a hipótese, e a resolução declara."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Para manter o MHS em x, a resolução aproxima v_y ≈ −v e trata F_y = −q v_x B_z como correção de segunda ordem. A aproximação é correta para amplitude A ≪ d, e o gabarito usa a mesma hipótese sem comentá-la."
+    }
+  ],
+  "summary": "A resolução e o gabarito do Poliedro concordam nos dois itens. Em (a), só a situação 2 serve, com as mesmas justificativas para descartar 1, 3 e 4. Em (b), ambos chegam a p = (πd/2)√(πmv/(μ0 q i)), e o período T = πd√(πm/(μ0 q i v)) é o mesmo. Refiz a física (sentidos dos campos, sinal de F_x, constante K = 4μ0 q i v/(πd²)) e conferi com uma simulação numérica da trajetória exata: o passo simulado bate com a fórmula até a 5ª casa. A instabilidade da situação 3 também se confirmou na simulação. Não encontrei erro: os dois estão corretos."
+}

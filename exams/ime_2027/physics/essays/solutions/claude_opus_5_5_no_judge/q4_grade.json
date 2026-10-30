@@ -1,0 +1,50 @@
+{
+  "question": 4,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-4-fisica-2-fase-dia-2-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "V_AB = 900 V; i_Rec1 = 50 A, i_Rec2 = 0 (I no gerador/fusível = 50 A)",
+      "key_answer": "U_AB = 900 V; i1 = 50 A; i2 = 0",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz a conta. Pelo teorema de Millman, V = (500+850+450)/2 = 900 V, logo I = (1000−900)/2 = 50 A, i1 = 900−850 = 50 A e i2 = (900−900)/2 = 0. O balanço de potência fecha: 50 kW fornecidos = 5 kW dissipados no gerador + 45 kW absorvidos por Rec1. A resolução e o gabarito chegam aos mesmos valores."
+    },
+    {
+      "item": "b",
+      "solution_answer": "Sim, rompe: I/I_F = 2,5 > ~1,1 e t ≈ 1,5 s (leitura gráfica)",
+      "key_answer": "I/I_fus = 2,5 ⇒ rompe em t ≈ 1,5 s",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Razão: 50/20 = 2,5. Medindo a figura original, o joelho da curva fica em cerca de (1,15–1,2; 3,8 s) e o trecho reto termina em cerca de (3,3–3,4; 0,1 s). Testei a interpolação em python3 para todas essas combinações e obtive t entre 1,45 e 1,61 s. Isso é coerente com ≈1,5 s dos dois. A resolução também justifica que haverá rompimento, porque 2,5 está à direita da assíntota em ≈1,1, como o item pede ('se e quando')."
+    },
+    {
+      "item": "c",
+      "solution_answer": "I_cc = 500 A, I/I_F = 25, t = 0,1 s = 100 ms > 50 ms; o fusível não protege o gerador",
+      "key_answer": "I_curto = 500 A, razão 25 ⇒ t = 100 ms > 50 ms ⇒ NÃO protege",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Com o curto em A–B, V_AB = 0. As correntes que os receptores injetariam circulam pelo curto e não passam por F, então I_F = 1000/2 = 500 A e a razão é 25. A curva se mantém no patamar mínimo de 10⁻¹ s = 100 ms, que é mais que os 50 ms suportados. Logo o fusível não protege. A resolução e o gabarito tiram a mesma conclusão."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "Os tempos dos itens (b) e (c) vêm de leitura gráfica. Na figura original, a linha tracejada fica em ≈1,1–1,15, e o início do trecho decrescente (≈3,8 s) parece estar em ≈1,2, não em 1,1 como diz a transcrição. Dependendo da leitura, t no item (b) fica entre ≈1,45 e ≈1,6 s. A conclusão não muda, mas o corretor deve aceitar uma faixa em torno de 1,5 s."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "No item (c), a razão 25 está fora da escala do gráfico, que vai só até 5. Tanto a resolução quanto o gabarito supõem que o patamar de 0,1 s continua para razões maiores. A hipótese é razoável, já que o patamar representa o tempo mínimo de atuação, mas não está explícita no enunciado."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "No item (a), 'imediatamente após o fechamento' é tratado com as f.c.e.m. dadas, valendo desde t = 0. Num motor real que parte do repouso, a f.c.e.m. inicial seria nula. O enunciado, porém, fornece valores fixos de f.c.e.m., e a resolução e o gabarito adotam esse modelo, que é o esperado."
+    }
+  ],
+  "summary": "A resolução está correta e coincide com o gabarito Poliedro nos três itens. Em (a), V_AB = 900 V, i1 = 50 A e i2 = 0. Em (b), I/I_F = 2,5 e o fusível rompe em ≈1,5 s. Em (c), I = 500 A, razão 25 e t = 100 ms > 50 ms, então o fusível não protege. Conferi as contas em python3 e a leitura do gráfico na figura original. A única ressalva é a incerteza de leitura gráfica no item (b), com t entre ≈1,45 e 1,6 s, que não altera a conclusão."
+}

@@ -1,0 +1,56 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} O solo é horizontal e liso, a resistência do ar é desprezada e o choque é instantâneo. Tomamos o eixo $x$ na horizontal, o eixo $y$ na vertical para cima e a energia potencial nula no solo.
+
+\textbf{Componentes da velocidade.} No lançamento,
+\[
+v_x = V\cos 30^\circ = \frac{\sqrt{3}}{2}V, \qquad v_{y,0} = V\,\mathrm{sen}\, 30^\circ = \frac{V}{2}.
+\]
+\begin{itemize}
+\item \emph{Entre os choques:} a única força é o peso, que é vertical. Logo $v_x$ é constante, o movimento vertical é um MUV e a energia mecânica se conserva.
+\item \emph{No choque:} como o solo é liso, não há atrito e o impulso do solo é só normal (vertical). Assim, $v_x$ não muda. Na vertical, pela definição do coeficiente de restituição (o solo fica parado),
+\[
+e=\frac{|v_y'|}{|v_y|}\;\Rightarrow\; v_{y,k}=e\,v_{y,k-1}\;\Rightarrow\; v_{y,n}=e^{n}\,\frac{V}{2}.
+\]
+Aqui $v_{y,n}$ é a componente vertical logo após o $n$-ésimo choque. Pela simetria do MUV, o corpo chega ao solo com a mesma componente vertical, em módulo, com que saiu dele.
+\end{itemize}
+
+\textbf{a) Altura máxima após $n$ choques.} No ponto mais alto, $v_y=0$. Por Torricelli na vertical,
+\[
+H_n=\frac{v_{y,n}^2}{2g}=\frac{e^{2n}}{2g}\cdot\frac{V^2}{4}=\frac{(0{,}49)^n\,V^2}{8g}.
+\]
+\emph{Verificação:} para $n=0$ obtemos $V^2/(8g)$, que é a altura máxima do lançamento oblíquo usual. A cada choque a altura fica multiplicada por $e^2=0{,}49$.
+
+\textbf{b) Tempo até a energia mínima.} Logo após o $k$-ésimo choque (no solo, $U=0$), a energia mecânica é
+\[
+E_k=\frac{1}{2}m v_x^2+\frac{1}{2}m v_{y,k}^2=\frac{3mV^2}{8}+\frac{mV^2}{8}(0{,}49)^k .
+\]
+\begin{itemize}
+\item A energia só diminui nos choques, e cada choque dissipa a fração $1-e^2=0{,}51$ da energia cinética vertical.
+\item A parcela horizontal $\tfrac{1}{2}mv_x^2$ não pode ser dissipada, porque nenhuma força horizontal atua sobre o corpo.
+\end{itemize}
+Portanto, a energia mínima é
+\[
+E_{\min}=\frac{3mV^2}{8},
+\]
+atingida quando $v_y\to 0$. Isso exige infinitos choques, mas em tempo finito.
+
+\emph{Cálculo do tempo.} O voo que começa com componente vertical $v_{y,k}$ dura
+\[
+t_k=\frac{2v_{y,k}}{g}=\frac{V}{g}\,e^{k}.
+\]
+Somando a série geométrica de razão $e=0{,}7<1$ (convergente):
+\[
+\Delta t=\sum_{k=0}^{\infty}\frac{V}{g}\,e^{k}=\frac{V}{g}\cdot\frac{1}{1-e}=\frac{V}{0{,}3\,g}=\frac{10V}{3g}.
+\]
+Nesse instante, $y\to 0$ e $v_y\to 0$. A partir dele, a massa desliza sobre o solo liso com velocidade constante $\frac{\sqrt{3}}{2}V$ e a energia permanece no mínimo. Nesse intervalo, a massa percorre a distância horizontal $x=v_x\,\Delta t=\dfrac{5\sqrt{3}\,V^2}{3g}$.
+
+\emph{Conferências:}
+\begin{itemize}
+\item Unidades: $[V/g]=\mathrm{s}$ e $[V^2/g]=\mathrm{m}$.
+\item Ordem de grandeza: para $V=10$ m/s, $\Delta t\approx 3{,}4$ s, cerca de $3{,}3$ vezes a duração do primeiro voo ($V/g$).
+\end{itemize}
+
+ANSWER: a) $H_n=\dfrac{(0{,}49)^n V^2}{8g}$; b) $\Delta t=\dfrac{V}{g(1-e)}=\dfrac{10V}{3g}$, quando a energia atinge o mínimo $E_{\min}=\dfrac{3mV^2}{8}$ (só resta a energia cinética horizontal).

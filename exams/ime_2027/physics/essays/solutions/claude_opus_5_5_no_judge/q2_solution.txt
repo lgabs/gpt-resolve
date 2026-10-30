@@ -1,0 +1,64 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses e geometria.} Trata-se de uma treliça ideal: as barras têm peso desprezível, são articuladas nas extremidades e a carga atua só nos nós. Cada barra é, portanto, um elemento de duas forças, e o esforço normal $N$ atua ao longo do eixo da barra. Convenção: $N>0$ indica tração e $N<0$, compressão. Com origem em $A$: $A(0,0)$, $B(3,0)$, $C(-3,4)$, $D(0,4)$, $E(3,4)$, $F(0,8)$ (em m). As barras inclinadas $CF$, $EF$ e $AE$ medem $\sqrt{3^2+4^2}=5$ m, com cossenos diretores $3/5$ (horizontal) e $4/5$ (vertical).
+
+Contagem: $b+r=8+4=12=2n=2\cdot 6$. O problema é isostático e todas as incógnitas saem do equilíbrio.
+
+\textbf{a) Reações.} A barra $BE$ é a única ligada a $B$ e é vertical. Como ela só transmite força ao longo do próprio eixo, a reação em $B$ é vertical: $B_x=0$. Para a estrutura inteira (momentos anti-horários positivos):
+\[
+\sum F_x=0:\ A_x+B_x=0\ \Rightarrow\ A_x=0,
+\]
+\[
+\sum M_A=0:\ (-3)(-P)+3\,B_y=0\ \Rightarrow\ B_y=-P=-100\ \text{kN},
+\]
+\[
+\sum F_y=0:\ A_y+B_y-P=0\ \Rightarrow\ A_y=2P=200\ \text{kN}.
+\]
+Logo $\vec R_A$ tem $200$ kN, é vertical e aponta para cima. Já $\vec R_B$ tem $100$ kN, é vertical e aponta para baixo: o apoio $B$ precisa ancorar (puxar) a estrutura.
+
+\textbf{b) Método dos nós.} Em cada nó, a força de uma barra sobre ele vale $N$ vezes o vetor unitário que aponta do nó para a outra extremidade da barra.
+
+\emph{Nó C:}
+\[
+\tfrac45 N_{CF}-P=0\Rightarrow N_{CF}=125\ \text{kN};\qquad N_{CD}+\tfrac35N_{CF}=0\Rightarrow N_{CD}=-75\ \text{kN}.
+\]
+\emph{Nó F:}
+\[
+-\tfrac35N_{CF}+\tfrac35N_{EF}=0\Rightarrow N_{EF}=125\ \text{kN};\qquad
+-\tfrac45N_{CF}-N_{DF}-\tfrac45N_{EF}=0\Rightarrow N_{DF}=-200\ \text{kN}.
+\]
+\emph{Nó D} (só há barras horizontais e verticais):
+\[
+N_{DE}=N_{CD}=-75\ \text{kN};\qquad N_{AD}=N_{DF}=-200\ \text{kN}.
+\]
+\emph{Nó E:}
+\[
+\textstyle\sum F_x:\ -N_{DE}-\tfrac35N_{EF}-\tfrac35N_{AE}=0\Rightarrow 75-75-\tfrac35N_{AE}=0\Rightarrow N_{AE}=0,
+\]
+\[
+\textstyle\sum F_y:\ \tfrac45N_{EF}-\tfrac45N_{AE}-N_{BE}=0\Rightarrow N_{BE}=100\ \text{kN}.
+\]
+\emph{Verificação nos apoios.} Em $B$, a barra $BE$ tracionada com $100$ kN puxa o nó para cima, e o apoio reage com $100$ kN para baixo. Em $A$, a barra $AD$ comprimida com $200$ kN empurra o nó para baixo, e como $N_{AE}=0$ o apoio reage com $A_y=200$ kN e $A_x=0$. Os resultados coincidem com o item (a).
+
+\begin{center}
+\begin{tabular}{c|c|c}
+Barra & $|N|$ (kN) & Esforço\\ \hline
+$CD$ & $75$ & compressão\\
+$DE$ & $75$ & compressão\\
+$CF$ & $125$ & tração\\
+$EF$ & $125$ & tração\\
+$DF$ & $200$ & compressão\\
+$AD$ & $200$ & compressão\\
+$BE$ & $100$ & tração\\
+$AE$ & $0$ & nulo
+\end{tabular}
+\end{center}
+
+\textbf{c) Função da barra AE.} Sem $AE$, teríamos $b+r=7+4=11<12$: a estrutura seria hipostática. A parte superior $CDEF$, rígida por ser triangulada, ficaria apoiada apenas em duas barras verticais paralelas, $AD$ e $BE$, articuladas no solo. O painel retangular $ADEB$ formaria então um mecanismo de paralelogramo, e a parte superior poderia oscilar lateralmente. Além disso, nesse deslocamento a carga desce, de modo que o equilíbrio seria instável e a estrutura colapsaria.
+
+A diagonal $AE$ triangula esse painel e torna a estrutura rígida e isostática: é uma barra de contraventamento (travamento lateral). Com a carga puramente vertical deste problema ela não trabalha ($N_{AE}=0$). Ainda assim, é indispensável para a estabilidade e para resistir a qualquer ação horizontal, como vento, componente horizontal da carga ou perturbações dinâmicas.
+
+\medskip
+ANSWER: a) $\vec R_A$: $200$ kN, vertical, para cima; $\vec R_B$: $100$ kN, vertical, para baixo (componentes horizontais nulas). b) $CD=DE=75$ kN (compressão); $CF=EF=125$ kN (tração); $DF=AD=200$ kN (compressão); $BE=100$ kN (tração); $AE=0$. c) $AE$ é a diagonal de contraventamento: triangula o painel $ADEB$ e impede o mecanismo de deslocamento lateral. Sem esforço sob esta carga vertical, ela garante a rigidez e a estabilidade da estrutura.

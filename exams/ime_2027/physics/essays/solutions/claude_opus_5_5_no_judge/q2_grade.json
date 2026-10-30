@@ -1,0 +1,45 @@
+{
+  "question": 2,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-2-fisica-2-fase-dia-2-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "R_A = 200 kN, vertical, para cima; R_B = 100 kN, vertical, para baixo (o apoio puxa/ancora a estrutura); A_x = B_x = 0",
+      "key_answer": "A = 200 kN vertical para cima; B = 100 kN vertical para baixo (A_x = B_x = 0)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz a conta. BE é a única barra em B e é vertical, então B_x = 0 e daí A_x = 0. Momentos em A: 3·P + 3·B_y = 0, logo B_y = −100 kN. Somando as forças verticais: A_y = 200 kN. O gabarito chega ao mesmo resultado tomando momentos em B (6P = 3A_y). A solução numérica do sistema completo de 12 equações dá A_y = 200, B_y = −100 e componentes horizontais nulas."
+    },
+    {
+      "item": "b",
+      "solution_answer": "CD = DE = 75 kN (compressão); CF = EF = 125 kN (tração); DF = AD = 200 kN (compressão); BE = 100 kN (tração); AE = 0",
+      "key_answer": "N_CD = 75 kN (C); N_CF = 125 kN (T); N_DF = 200 kN (C); N_AD = 200 kN (C); N_AE = 0; N_DE = 75 kN (C); N_BE = 100 kN (T); N_EF = 125 kN (T)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os oito esforços coincidem em módulo e no tipo (tração ou compressão). Conferi pelo método dos nós e pela solução numérica da matriz 12×12, que tem posto 12 (estrutura isostática). Ela dá CD = DE = −75, CF = EF = +125, DF = AD = −200, AE = 0 e BE = +100 kN, na convenção tração > 0. As equações de cada nó na resolução estão corretas, inclusive a do nó E, onde 75 − 75 − (3/5)N_AE = 0 leva a N_AE = 0. A verificação nos apoios fecha com o item a."
+    },
+    {
+      "item": "c",
+      "solution_answer": "AE é a diagonal de contraventamento: triangula o painel ADEB e impede que ele se comporte como um paralelogramo articulado (mecanismo de deslocamento lateral). Sem ela, b + r = 11 < 12 e a estrutura é hipostática, com equilíbrio instável. Sob esta carga vertical, N_AE = 0, mas a barra garante a rigidez e resiste a cargas horizontais ou a outras distribuições de carga.",
+      "key_answer": "N_AE = 0 só para este carregamento; AE é necessária para outras distribuições de carga e garante a rigidez (sem ela, ADEB vira um paralelogramo articulado e o guindaste balança lateralmente)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "A conclusão é a mesma: esforço nulo neste carregamento, função de travamento/rigidez e o painel ADEB virando paralelogramo sem a barra. A resolução vai além e acrescenta a contagem b + r = 11 < 12. Conferi numericamente que, sem AE, a matriz fica 12×11 com posto 11, ou seja, há um mecanismo. A resolução também afirma que o equilíbrio seria instável porque a carga desce no deslocamento lateral. Isso está certo: a parte superior translada com y_C = 4cosθ + cte, que é máximo em θ = 0, então a energia potencial da carga é máxima na posição de equilíbrio."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A reação em B é para baixo (100 kN), então o apoio B precisa ser ancorado e resistir a arrancamento. A figura mostra um apoio articulado comum, sem indicar essa capacidade. Tanto a resolução quanto o gabarito supõem, corretamente, que o apoio resiste à tração. A resolução declara isso explicitamente."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "No item c, a resolução fala em instabilidade (a carga desce no mecanismo), um argumento que o gabarito não usa. O argumento está correto, mas é uma justificativa extra. Não muda a conclusão."
+    }
+  ],
+  "summary": "A resolução coincide com o gabarito Poliedro nos três itens. No item a, A = 200 kN para cima e B = 100 kN para baixo, sem componentes horizontais. No item b, CD = DE = 75 kN (compressão), CF = EF = 125 kN (tração), DF = AD = 200 kN (compressão), BE = 100 kN (tração) e AE = 0. No item c, AE é a diagonal de contraventamento: tem esforço nulo neste carregamento, mas impede o mecanismo de paralelogramo no painel ADEB. Refiz o equilíbrio nó a nó e resolvi numericamente o sistema 12×12, que tem posto 12. Os valores conferem, e a matriz sem AE tem posto 11, o que confirma que a estrutura seria hipostática. Não há divergência entre resolução e gabarito."
+}
