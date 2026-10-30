@@ -1,0 +1,45 @@
+{
+  "question": 17,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(B): y = det A(x) = -x^3 + 27x + 10 é uma cúbica com coeficiente líder negativo. Tem mínimo local em (-3, -44), máximo local em (3, 64), corta o eixo y em 10 e tem raízes -5 e (5 ± √33)/2.",
+  "judge_reference": {
+    "reference_solution": "**1. Cálculo de y = det A(x)**\n\nEscrevemos A(x) = M − xI, com M = [[2, 1, −3], [−7, −3, 9], [0, 3, 1]]. Para uma matriz 3×3:\n\ndet(M − xI) = −x³ + (tr M)·x² − (soma dos menores principais 2×2)·x + det M.\n\n- tr M = 2 − 3 + 1 = **0**.\n- Menores principais 2×2:\n  - linhas e colunas {1,2}: 2·(−3) − 1·(−7) = 1;\n  - linhas e colunas {1,3}: 2·1 − (−3)·0 = 2;\n  - linhas e colunas {2,3}: (−3)·1 − 9·3 = −30.\n  - Soma = 1 + 2 − 30 = **−27**.\n- det M = 2·(−3 − 27) − 1·(−7 − 0) + (−3)·(−21 − 0) = −60 + 7 + 63 = **10**.\n\nPortanto **y = det A(x) = −x³ + 27x + 10**.\n\nConferência pela regra de Sarrus, direto em A(x):\n- (2−x)[(−3−x)(1−x) − 27] = (2−x)(x² + 2x − 30) = −x³ + 34x − 60;\n- −1·[−7(1−x) − 0] = 7 − 7x;\n- −3·[(−7)·3 − 0] = 63.\n- Soma: −x³ + 27x + 10. ✔\n\nConferi também numericamente em Python (x = −5, −3, −1, 0, 1, 3, 5, 10): os valores do determinante batem com o polinômio.\n\n**2. Forma do gráfico**\n\n- **Grau 3**, porque o termo −x³ vem só do produto da diagonal. Isso elimina as quárticas (c) e (d).\n- **Coeficiente líder negativo** (−1): y → +∞ quando x → −∞ e y → −∞ quando x → +∞. Isso elimina (a).\n- **Corte no eixo y:** y(0) = 10 > 0. O gráfico passa acima da origem, e pouco acima quando comparado aos extremos.\n- **Pontos críticos:** y' = −3x² + 27 = 0 ⇒ x = ±3.\n  - y(−3) = 27 − 81 + 10 = −44 < 0: mínimo local, à esquerda do eixo y e abaixo do eixo x.\n  - y(3) = −27 + 81 + 10 = 64 > 0: máximo local, à direita do eixo y e acima do eixo x.\n- **Ponto de inflexão:** y'' = −6x = 0 ⇒ x = 0.\n- **Raízes:** x = −5 é raiz, pois −(−125) − 135 + 10 = 0. Fatorando, y = −(x + 5)(x² − 5x − 2). As raízes são −5, (5 − √33)/2 ≈ −0,372 e (5 + √33)/2 ≈ 5,372.\n  - São três raízes reais. A raiz do meio fica logo à esquerda da origem, coerente com y(0) = 10 > 0 e y crescente em (−3, 3).\n\n**3. Comparação com as alternativas**\n\nA curva vem de cima à esquerda e desce até um mínimo abaixo do eixo x, à esquerda do eixo y. Depois sobe, cruza o eixo x um pouco à esquerda da origem e corta o eixo y acima da origem. Chega a um máximo acima do eixo x, à direita do eixo y (o máximo, 64, é mais alto do que o mínimo, −44, é fundo), e então desce para −∞. Essa é exatamente a figura da alternativa **(b)**.\n\n- (a) tem coeficiente líder positivo.\n- (c) e (d) são de grau 4.",
+    "final_answer": "det A(x) = −x³ + 27x + 10 = −(x + 5)(x² − 5x − 2). É uma cúbica com coeficiente líder negativo e y(0) = 10 > 0. Tem mínimo local em (−3, −44), máximo local em (3, 64) e raízes −5, (5 ∓ √33)/2 ≈ −0,37 e 5,37. Alternativa **B**.",
+    "pitfalls": [
+      "O grau do determinante é 3, porque o termo −x³ vem do produto da diagonal (2−x)(−3−x)(1−x). Quem pensa em grau 4, contando 4 entradas com x ou confundindo com a matriz, marca (c) ou (d) por engano.",
+      "O sinal do coeficiente líder é (−1)³ = −1, e não +1. Quem esquece que det(M − xI) = −x³ + … para n = 3 (confundindo com det(xI − M)) marca (a).",
+      "O traço de M é zero, então não há termo em x². Quem erra o traço desloca o ponto de inflexão, que na verdade está em x = 0.",
+      "Erro de sinal frequente nos cofatores (Sarrus/Laplace), sobretudo no termo −3·(−21) = +63 e no menor (−3)(1) − 27 = −30. A conferência com o traço, a soma dos menores principais e det M evita isso.",
+      "O termo independente é det M = 10 > 0, e não 0: o gráfico não passa pela origem. É isso que diferencia (b) de uma cúbica qualquer que decresce no infinito. Também confirma a raiz do meio em ≈ −0,37, logo à esquerda da origem.",
+      "É preciso conferir que existem 3 raízes reais: os extremos são y(−3) = −44 < 0 e y(3) = 64 > 0. A posição deles (mínimo à esquerda e máximo à direita do eixo y) é o que confirma o esboço de (b).",
+      "Basta o comportamento qualitativo (grau, sinal do líder, y(0), extremos). Não é preciso achar as raízes exatas, mas x = −5 é raiz racional e facilita a fatoração: −(x + 5)(x² − 5x − 2)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(B): y = det A(x) = -x^3 + 27x + 10 é uma cúbica com coeficiente líder negativo. Tem mínimo local em (-3, -44), máximo local em (3, 64), corta o eixo y em 10 e tem raízes -5 e (5 ± √33)/2.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A 'conferência' em x = 0 só valida o termo independente (10). Erros nos coeficientes de x ou de x³ passariam por ela. Uma conferência completa poderia usar traço = 0 (ausência de x²) e soma dos menores principais = −27, ou então avaliar em um segundo ponto, por exemplo y(1) = 36 = det A(1). Mesmo assim, ela é independente da expansão principal (feita pela 1ª linha, enquanto a expansão foi pela 1ª coluna), e isso tem algum valor."
+          },
+          {
+            "severity": "minor",
+            "description": "A divisão por (x + 5) não aparece: o resultado −(x + 5)(x² − 5x − 2) é dado direto. Seria bom mostrar Briot-Ruffini ou a multiplicação de volta. Conferi e o resultado está correto."
+          }
+        ],
+        "summary": "Confronto com o PDF original (p. 8 do arquivo, Questão 17): o enunciado e os quatro gráficos batem com a transcrição.\n\nA resolução do candidato está correta. A resposta final, alternativa (B) com y = −x³ + 27x + 10, coincide com a minha referência.\n\nConferi o cálculo passo a passo:\n- Na expansão de Laplace pela 1ª coluna, o cofator de a21 = −7 é −(10 − x), e o candidato chega certo a +7(10 − x).\n- (−3 − x)(1 − x) − 27 = x² + 2x − 30.\n- (2 − x)(x² + 2x − 30) = −x³ + 34x − 60.\n- Somando: −x³ + 27x + 10.\n\nTambém verifiquei numericamente em Python, para x = −5, −3, −1, 0, 1, 3, 5 e 7,5. O determinante bate com o polinômio e com a forma fatorada −(x + 5)(x² − 5x − 2). As raízes são −5 e (5 ∓ √33)/2 ≈ −0,372 e 5,372.\n\nTodas as armadilhas foram tratadas explicitamente:\n- O grau é 3, porque x³ só aparece no produto da diagonal. Isso elimina (c) e (d).\n- O coeficiente líder é (−1)³ = −1. Isso elimina (a).\n- Não há termo em x².\n- O termo independente é 10 > 0: a curva corta o eixo y um pouco acima da origem, e 10 é pequeno perto dos extremos −44 e 64.\n- O estudo de sinal de y′ dá um mínimo em (−3, −44), à esquerda do eixo y e abaixo do eixo x, e um máximo em (3, 64), à direita do eixo y e acima do eixo x.\n- Há três raízes reais, e a posição de cada uma em relação aos extremos e à origem está correta.\n\nA comparação final com a figura (b) é precisa. Há apenas detalhes menores: a conferência só cobre o termo independente e a divisão polinomial não foi mostrada. A resolução tem nível de gabarito comentado."
+      }
+    }
+  ]
+}

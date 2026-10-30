@@ -1,0 +1,49 @@
+{
+  "question": 22,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Alternativa (B). A borda de baixo do quadrado é o gráfico de y = |x| e a borda de cima é o gráfico de y = 2 − |x|, com |x| ≤ 1. Portanto a região é |x| ≤ y ≤ 2 − |x|, o que equivale a |x| + |y − 1| ≤ 1. As outras falham: (a) exclui o ponto interior (0,1), (c) é o conjunto vazio e (d) é uma região ilimitada.",
+  "judge_reference": {
+    "reference_solution": "**Questão 22: resolução de referência**\n\nConferi o enunciado no PDF original (página 9 do arquivo, numerada 7 na prova). A transcrição está correta, apenas falta uma vírgula entre (-1,1) e (0,2). A figura mostra um losango (quadrado girado 45°) de vértices (0,0), (1,1), (0,2) e (-1,1), todo sombreado, inclusive o interior.\n\n**1. Equações dos lados**\n- Lado de (0,0) a (1,1): y = x, para 0 ≤ x ≤ 1.\n- Lado de (0,0) a (-1,1): y = -x, para -1 ≤ x ≤ 0.\n  Juntos, formam a fronteira inferior: **y = |x|**, para |x| ≤ 1.\n- Lado de (1,1) a (0,2): y = 2 - x, para 0 ≤ x ≤ 1.\n- Lado de (-1,1) a (0,2): y = 2 + x, para -1 ≤ x ≤ 0.\n  Juntos, formam a fronteira superior: **y = 2 - |x|**, para |x| ≤ 1.\n\n**2. Descrição da região**\nFixe x com |x| ≤ 1. Os pontos sombreados nessa vertical são os que ficam entre a fronteira inferior e a superior:\n  |x| ≤ y ≤ 2 - |x|.\n\nNão é preciso escrever a restrição |x| ≤ 1, porque a dupla desigualdade já a garante: |x| ≤ y ≤ 2 - |x| implica |x| ≤ 2 - |x|, ou seja, |x| ≤ 1. Se |x| > 1, não existe y que satisfaça a condição. Portanto\n  R = {(x,y) ∈ ℝ²: |x| ≤ y ≤ 2 - |x|}.\n\nOutra forma de ver: o quadrado é a \"bola\" da norma da soma centrada em (0,1), ou seja, |x| + |y - 1| ≤ 1. Essa condição equivale a |y - 1| ≤ 1 - |x|, isto é, -(1 - |x|) ≤ y - 1 ≤ 1 - |x|, que dá |x| ≤ y ≤ 2 - |x|.\n\nTeste com os vértices:\n- (0,0): 0 ≤ 0 ≤ 2. Vale.\n- (±1,1): 1 ≤ 1 ≤ 1. Vale.\n- (0,2): 0 ≤ 2 ≤ 2. Vale.\n- Centro (0,1): 0 ≤ 1 ≤ 2. Vale.\n\n**3. Análise das alternativas**\n- **a)** |x| ≥ y ≥ 2 - |x| implica |x| ≥ 2 - |x|, ou seja, |x| ≥ 1. São duas cunhas ilimitadas, à esquerda e à direita, entre as retas y = 2 - |x| e y = |x|. Elas tocam o quadrado só nos pontos (±1,1). Por exemplo, (3,0) e (-3,-1) pertencem ao conjunto. **Falsa.**\n- **b)** |x| ≤ y ≤ 2 - |x| é exatamente o quadrado. **Correta.**\n- **c)** |x| ≥ y ≥ 2 + |x| exigiria |x| ≥ 2 + |x|, isto é, 0 ≥ 2, o que é impossível. O conjunto é **vazio**. **Falsa.**\n- **d)** |x| ≤ y ≤ 2 + |x| é uma faixa ilimitada entre os gráficos em \"V\" de y = |x| e y = |x| + 2. Ela contém o quadrado, mas também pontos como (3,3) e (5,6). **Falsa.**\n\n**4. Verificação numérica**\nTestei cada condição em uma malha racional exata (passo 1/20, x ∈ [-3,3], y ∈ [-3,5]) contra o quadrado |x| + |y - 1| ≤ 1:\n- (b) coincide com o quadrado em todos os 841 pontos.\n- (a) e (d) incluem pontos fora do quadrado.\n- (c) é vazia.\n\n**Resposta: alternativa B.**",
+    "final_answer": "Alternativa **B**: {(x,y) ∈ ℝ²: |x| ≤ y ≤ 2 - |x|}. A fronteira inferior do quadrado é y = |x| e a superior é y = 2 - |x|. A restrição |x| ≤ 1 já decorre das duas desigualdades (|x| ≤ 2 - |x|).",
+    "pitfalls": [
+      "Identificar qual módulo é a fronteira inferior e qual é a superior. Os lados que partem de (0,0) formam y = |x| (embaixo) e os que chegam a (0,2) formam y = 2 - |x| (em cima). Trocar as duas leva à alternativa (a).",
+      "Trocar o sinal na fronteira superior. Para x ≥ 0, o lado que vai de (1,1) a (0,2) é y = 2 - x, logo a fronteira é 2 - |x| e não 2 + |x|. A alternativa (d) usa 2 + |x|, que é a reta do lado esquerdo (y = 2 + x) estendida de forma errada para os dois lados.",
+      "Não é preciso escrever -1 ≤ x ≤ 1. Essa restrição já decorre de |x| ≤ 2 - |x|. Uma boa resolução observa isso, em vez de achar que falta uma condição em (b).",
+      "A alternativa (d) contém o quadrado, mas é ilimitada (por exemplo, (5,6) pertence a ela). Contestar a região descrita é diferente de descrevê-la: o conjunto precisa coincidir com o quadrado.",
+      "A alternativa (c) é vazia, porque exigiria |x| ≥ 2 + |x|. A alternativa (a) são duas cunhas ilimitadas com |x| ≥ 1, que tocam o quadrado só em (±1,1).",
+      "Conferir com os vértices e com um ponto interior, como (0,1). Conferir com pontos de fora, como (0,3) e (2,1), descarta as alternativas erradas.",
+      "A transcrição tem uma vírgula faltando entre (-1,1) e (0,2). Isso não muda nada, e a figura confirma os vértices e que o interior está sombreado. O 'quadrado' é um losango girado 45° (lado √2, área 2)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Alternativa (B). A borda de baixo do quadrado é o gráfico de y = |x| e a borda de cima é o gráfico de y = 2 − |x|, com |x| ≤ 1. Portanto a região é |x| ≤ y ≤ 2 − |x|, o que equivale a |x| + |y − 1| ≤ 1. As outras falham: (a) exclui o ponto interior (0,1), (c) é o conjunto vazio e (d) é uma região ilimitada.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A equivalência |y−1| ≤ 1−|x| ⟺ |x| ≤ y ≤ 2−|x| foi justificada com a regra |t| ≤ a ⟺ −a ≤ t ≤ a, citada só para a ≥ 0. O caso 1−|x| < 0 (|x| > 1) não foi tratado nesse ponto. A equivalência continua válida, porque os dois lados são falsos, e isso decorre da observação anterior de que a dupla desigualdade força |x| ≤ 1. Mesmo assim, valeria uma linha para fechar o caso ali mesmo."
+          },
+          {
+            "severity": "minor",
+            "description": "O texto diz que 'os quatro vértices satisfazem a condição', mas só mostra a conta para (1,1). Num gabarito comentado, convém listar os quatro de forma explícita: (0,0): 0≤0≤2; (±1,1): 1≤1≤1; (0,2): 0≤2≤2."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta uma vírgula entre (−1,1) e (0,2) no enunciado original, e a resolução não comenta isso. A figura também não é usada para confirmar que o interior está sombreado. Não muda nada no resultado, é só um detalhe de leitura atenta do enunciado."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (página 9, questão 22). A transcrição está correta, só falta uma vírgula entre (−1,1) e (0,2). A resposta do candidato, (B), coincide com a minha referência e está correta. Também conferi com uma malha racional exata de passo 1/20, comparando com o quadrado |x|+|y−1| ≤ 1: (B) coincide em todos os pontos, (C) é vazia, e (A) e (D) divergem em milhares de pontos. Os contraexemplos do candidato estão certos: (2,1) pertence a (A) e fica fora do quadrado; (0,1) está no quadrado e não pertence a (A); (5,6) pertence a (D) e fica fora do quadrado.\n\nA resolução é completa e bem organizada:\n- Deduz as quatro retas dos lados e as junta nas fronteiras y = |x| (embaixo) e y = 2−|x| (em cima).\n- Descreve a região por cortes verticais.\n- Mostra que a restrição |x| ≤ 1 já decorre da dupla desigualdade, uma armadilha importante.\n- Confirma tudo por um segundo caminho, a \"bola\" da norma da soma |x|+|y−1| ≤ 1, centrada em (0,1).\n- Descarta cada alternativa com um argumento próprio: (C) é vazia por exigir 0 ≥ 2; (A) exige |x| ≥ 1 e tem contraexemplos dos dois tipos (ponto do quadrado que fica de fora e ponto de fora que entra); (D) é ilimitada.\n\nTodas as armadilhas que listei foram tratadas: a ordem das fronteiras, o sinal em 2−|x|, a restrição implícita |x| ≤ 1 e o fato de (D) conter o quadrado sem ser igual a ele. Restam só detalhes: a equivalência com |t| ≤ a foi citada apenas para a ≥ 0 (o caso |x| > 1 fica implícito), a conferência dos vértices mostra só um deles, e a vírgula faltando no enunciado não foi comentada. Do jeito que está, a resolução poderia ser publicada como gabarito comentado."
+      }
+    }
+  ]
+}

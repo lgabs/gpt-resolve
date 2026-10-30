@@ -1,0 +1,36 @@
+\section*{Questão 24}
+
+\section*{Solução}
+
+\textbf{Espaço amostral.} Como a retirada é sem reposição e a ordem não importa para o $\operatorname{mdc}$, os resultados possíveis são os pares $\{a,b\}$ com $a\neq b$ em $\{1,2,\dots,100\}$. Todos são equiprováveis:
+\[
+|\Omega|=\binom{100}{2}=\frac{100\cdot 99}{2}=4950 .
+\]
+
+\textbf{Quando o mdc é par?} Seja $d=\operatorname{mdc}(a,b)\geq 1$. Pela definição de mdc, um inteiro divide $d$ se, e somente se, divide $a$ e $b$ ao mesmo tempo. Com o inteiro $2$:
+\[
+d \text{ é par} \iff 2\mid d \iff 2\mid a \ \text{e}\ 2\mid b .
+\]
+Logo o mdc é par exatamente quando os dois números sorteados são pares. Basta que um deles seja ímpar para que o mdc seja ímpar. Por exemplo, $\operatorname{mdc}(3,9)=3$ e $\operatorname{mdc}(4,9)=1$ são ímpares, e $\operatorname{mdc}(4,6)=2$ é par.
+
+\textbf{Evento complementar.} Entre $1$ e $100$ há $50$ números pares. Então
+\[
+P(\text{mdc par})=\frac{\binom{50}{2}}{\binom{100}{2}}=\frac{1225}{4950}=\frac{49}{198}.
+\]
+Isso coincide com o cálculo sequencial: a primeira bola é par com probabilidade $\tfrac{50}{100}$; dado isso, a segunda é par com probabilidade $\tfrac{49}{99}$. Assim, $\tfrac{50}{100}\cdot\tfrac{49}{99}=\tfrac{49}{198}$.
+
+\textbf{Resposta.} Pelo complementar,
+\[
+P(\text{mdc ímpar})=1-\frac{49}{198}=\frac{149}{198}\approx 0{,}75 .
+\]
+
+\textbf{Conferência.} O resultado é coerente com uma estimativa rápida: a chance de os dois números serem pares é de cerca de $\tfrac12\cdot\tfrac12=\tfrac14$, e então o mdc é ímpar em cerca de $\tfrac34$ dos casos. Esse valor fica um pouco acima de $\tfrac34$, porque, sem reposição, a segunda bola par é um pouco menos provável ($\tfrac{49}{99}<\tfrac12$). Pela contagem direta, os pares favoráveis são $4950-1225=3725$, e $\tfrac{3725}{4950}=\tfrac{149}{198}$.
+
+\textbf{Alternativas.} A alternativa (d) é a correta, pois é exatamente o valor encontrado. As demais estão erradas:
+\begin{itemize}
+\item (a) $\tfrac12$ supõe, sem justificativa, que mdc par e mdc ímpar têm a mesma chance.
+\item (b) $\tfrac{50}{198}$ fica muito próximo de $\tfrac{49}{198}$, a probabilidade do evento complementar (mdc par).
+\item (c) $\tfrac{100}{199}\approx 0{,}50$ fica muito abaixo de $0{,}75$.
+\end{itemize}
+
+ANSWER: (D) $\dfrac{149}{198}$

@@ -1,0 +1,44 @@
+{
+  "question": 63,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A resposta é a alternativa (a), d ≈ 1,2×10^25 m. Multiplica-se a velocidade pelo tempo de viagem: d = c·Δt = 3,0×10^8 m/s × (1,3×10^9 × 3,2×10^7 s) = 3,0×10^8 m/s × 4,16×10^16 s ≈ 1,25×10^25 m.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição está de acordo com o original (p. 22 do PDF, p. 20 da prova). Os dados são: tempo de propagação de 1,3 bilhão de anos, velocidade da onda ≈ c = 3,0×10⁸ m/s e 1 ano ≈ 3,2×10⁷ s. A questão não tem figura.\n\n**Modelo:** o enunciado diz que a onda gravitacional viaja com velocidade muito próxima de c. Supõe-se então movimento uniforme em linha reta, com velocidade c, durante todo o tempo de propagação:\n\nd = c · Δt\n\n**1) Passar o tempo para segundos (SI)**\n- 1,3 bilhão = 1,3 × 10⁹ (bilhão = 10⁹, e não 10⁶)\n- Δt = 1,3×10⁹ anos × 3,2×10⁷ s/ano = 4,16×10¹⁶ s\n\n**2) Calcular a distância**\n- d = 3,0×10⁸ m/s × 4,16×10¹⁶ s\n- Mantissas: 3,0 × 1,3 × 3,2 = 12,48\n- Potências: 10⁸ · 10⁹ · 10⁷ = 10²⁴\n- d = 12,48×10²⁴ m ≈ 1,2×10²⁵ m\n\nConferido em Python: 3,0e8 × 1,3e9 × 3,2e7 = 1,248e25 m.\n\n**3) Análise das alternativas**\n- **a) 1,2×10²⁵ m: correta.**\n- b) 3,9×10¹⁷ m = 3,0×10⁸ × 1,3×10⁹. É o erro de não converter anos em segundos: multiplica \"m/s\" por \"anos\", o que é incoerente nas unidades.\n- c) 1,2×10²² m = 3,0×10⁸ × 1,3×10⁶ × 3,2×10⁷. É o erro de ler \"bilhão\" como 10⁶ (milhão).\n- d) 3,9×10¹⁴ m = 3,0×10⁸ × 1,3×10⁶. Junta os dois erros anteriores.\n\n**Checagem de plausibilidade (só como conferência, não é exigida):** pela definição, 1,3 bilhão de anos-luz equivale a 1,3×10⁹ × (3,0×10⁸ × 3,2×10⁷) m ≈ 1,2×10²⁵ m. A fonte real do evento GW150914 está a cerca de 410 Mpc ≈ 1,3×10²⁵ m, da mesma ordem de grandeza. A rigor, a expansão do Universo faz com que distância e tempo de viagem da luz não sejam simplesmente proporcionais. O enunciado, porém, pede explicitamente o modelo d = c·t.\n\n**Resposta: alternativa A (d ≈ 1,2×10²⁵ m).**",
+    "final_answer": "Alternativa A: d = c·Δt = 3,0×10⁸ m/s × (1,3×10⁹ × 3,2×10⁷ s) = 1,248×10²⁵ m ≈ 1,2×10²⁵ m.",
+    "pitfalls": [
+      "Converter o tempo para segundos: 1,3×10⁹ anos × 3,2×10⁷ s/ano = 4,16×10¹⁶ s. Sem essa conversão sai 3,9×10¹⁷ m (alternativa b), que mistura m/s com anos.",
+      "'Bilhão' vale 10⁹, não 10⁶. Usar 10⁶ leva a 1,2×10²² m (alternativa c). Cometer esse erro junto com o de não converter o tempo leva a 3,9×10¹⁴ m (alternativa d).",
+      "Fazer a conta das potências com cuidado: 10⁸·10⁹·10⁷ = 10²⁴, e o produto das mantissas 3,0·1,3·3,2 = 12,48 acrescenta mais um fator 10, dando 1,248×10²⁵. Errar a normalização da notação científica tira o resultado da ordem de grandeza certa.",
+      "A hipótese do modelo deve ser explícita: velocidade constante igual a c durante a propagação, ou seja, d = c·t (movimento uniforme). Efeitos cosmológicos, como a expansão do Universo e a diferença entre distância e tempo de viagem da luz, são ignorados, como o próprio enunciado indica.",
+      "Usar os valores aproximados dados no enunciado (1 ano ≈ 3,2×10⁷ s, c = 3,0×10⁸ m/s) e arredondar para 2 algarismos significativos: 12,48×10²⁴ ≈ 1,2×10²⁵ m.",
+      "Uma boa resolução explica a origem de cada distrator (b, c, d), mostrando que a resposta escolhida não é coincidência numérica."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A resposta é a alternativa (a), d ≈ 1,2×10^25 m. Multiplica-se a velocidade pelo tempo de viagem: d = c·Δt = 3,0×10^8 m/s × (1,3×10^9 × 3,2×10^7 s) = 3,0×10^8 m/s × 4,16×10^16 s ≈ 1,25×10^25 m.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A 'verificação da ordem de grandeza' por ano-luz multiplica os mesmos três fatores (c, 3,2×10⁷ s e 1,3×10⁹), só que em outra ordem. Ela pega erros de normalização das potências, mas não é uma checagem independente, e dizer que 'confirma o resultado' é exagero. Uma conferência independente usaria um dado externo, por exemplo a ordem de grandeza conhecida da distância de GW150914, cerca de 410 Mpc ≈ 1,3×10²⁵ m. Outra opção é apresentar o trecho apenas como releitura da conta."
+          },
+          {
+            "severity": "minor",
+            "description": "A conta aparece direto como 12,48×10²⁴ m. Faltou separar mantissas (3,0·1,3·3,2 = 12,48) e potências (10⁸·10⁹·10⁷ = 10²⁴), o que tornaria a normalização para 1,248×10²⁵ explícita linha a linha. É um detalhe de apresentação; o resultado está certo."
+          }
+        ],
+        "summary": "A resposta final está certa: alternativa (a), 1,2×10²⁵ m, igual à minha referência. Conferi o enunciado na p. 22 do PDF e a transcrição está correta. Refiz as contas em Python: 3,0e8 × 1,3e9 × 3,2e7 = 1,248e25. Os três distratores também conferem: (b) 3,9e17, sem converter anos em segundos; (c) 1,248e22, com bilhão = 10⁶; (d) 3,9e14, com os dois erros juntos. O candidato declara as hipóteses: movimento uniforme com v ≈ c, bilhão = 10⁹ e expansão do Universo desprezada. Converte o tempo para segundos (4,16×10¹⁶ s), verifica as unidades (m/s·s = m), arredonda para 2 algarismos significativos e explica a origem de cada distrator. Assim, todas as armadilhas que listei foram tratadas: conversão para segundos, bilhão = 10⁹, normalização da notação científica, hipótese do modelo, uso dos valores dados e explicação dos distratores. Há só duas ressalvas pequenas. A checagem por ano-luz repete a mesma conta em outra ordem e não é uma verificação independente. A separação entre mantissas e potências poderia estar escrita. A resolução serve como gabarito comentado."
+      }
+    }
+  ]
+}
