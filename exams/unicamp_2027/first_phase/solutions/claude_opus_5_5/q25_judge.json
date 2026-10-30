@@ -1,0 +1,45 @@
+{
+  "question": 25,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(D) 1/16 < A < 3/32. Temos A = (1/4)(1/2 − f(1/2)), e como 1/8 < f(1/2) < 1/4, a área fica estritamente entre 1/16 e 3/32.",
+  "judge_reference": {
+    "reference_solution": "**Leitura do enunciado** (conferido com o original, p. 10 do PDF, Questão 25): f: ℝ→ℝ satisfaz x³ < f(x) < x² para 0 < x < 1. O triângulo tem vértices P = (0,0), Q = (1/2, f(1/2)) e R = (1/2, 1/2). O enunciado pede a faixa em que está a área A.\n\n**1) Limites para f(1/2).** Com x = 1/2 (que pertence a (0,1)):\n(1/2)³ < f(1/2) < (1/2)², ou seja, 1/8 < f(1/2) < 1/4.\nSó o valor de f em 1/2 importa. O resto da função não interfere.\n\n**2) Geometria do triângulo.** Q e R têm a mesma abscissa x = 1/2, então o lado QR é vertical.\n- Comprimento da base: QR = |1/2 − f(1/2)|. Como f(1/2) < 1/4 < 1/2, temos QR = 1/2 − f(1/2) > 0. Logo Q fica abaixo de R e o triângulo não é degenerado.\n- Altura relativa a QR: é a distância de P = (0,0) até a reta x = 1/2, que vale h = 1/2.\n\nPortanto\nA = (1/2)·QR·h = (1/2)·(1/2 − f(1/2))·(1/2) = (1/4)·(1/2 − f(1/2)).\n\nConferência pela fórmula do determinante (shoelace): A = ½|0·(f − ½) + ½·(½ − 0) + ½·(0 − f)| = ½·|¼ − f/2| = (1/4)(1/2 − f), com f = f(1/2). Dá o mesmo resultado.\n\n**3) Faixa de A.** A função A = (1/4)(1/2 − f) é decrescente em f. Então:\n- 1/8 < f(1/2) < 1/4\n- logo 1/4 < 1/2 − f(1/2) < 3/8\n- logo 1/16 < A < 3/32.\n\nValores nos extremos, conferidos com python (Fraction): f = 1/8 dá A = 3/32, e f = 1/4 dá A = 1/16. As desigualdades do enunciado são estritas, então nenhum dos extremos é atingido. Mesmo assim, a faixa (1/16, 3/32) é exatamente a alternativa d.\n\n**4) Conferência das alternativas.** a) (0, 3/128), b) (3/128, 1/32) e c) (1/32, 1/16) estão todas abaixo de 1/16. Elas não contêm nenhum valor possível de A e são falsas. A alternativa d) (1/16, 3/32) é a correta, para qualquer f que satisfaça a hipótese.\n\nResposta: **d**.",
+    "final_answer": "A resposta é a alternativa **d**: 1/16 < A < 3/32.\n\nComo 1/8 < f(1/2) < 1/4, a área é A = (1/4)(1/2 − f(1/2)). Isso dá 1/16 < A < 3/32.",
+    "pitfalls": [
+      "Calcular a área a partir do lado vertical QR: a base é QR = 1/2 − f(1/2) e a altura é a distância de P à reta x = 1/2, que vale 1/2. O resultado é A = (1/4)(1/2 − f(1/2)).",
+      "Erro comum: usar f(1/2) como base ou altura, ou seja, calcular a área do triângulo P, (1/2,0), (1/2,f(1/2)). Isso dá A = f(1/2)/4, que fica em (1/32, 1/16) e leva ao distrator c.",
+      "Como A decresce com f(1/2), as faixas se invertem: f(1/2) = 1/8 dá A = 3/32 (máximo) e f(1/2) = 1/4 dá A = 1/16 (mínimo). Quem esquece de inverter troca os extremos.",
+      "Em 0 < x < 1 vale x³ < x². Então, em x = 1/2, f(1/2) está em (1/8, 1/4) e não em (1/4, 1/8). Calcule (1/2)³ = 1/8 e (1/2)² = 1/4 corretamente.",
+      "Confirmar que o triângulo não é degenerado: f(1/2) < 1/4 < 1/2 garante Q ≠ R, com Q abaixo de R. Isso também permite tirar o módulo de |1/2 − f(1/2)|.",
+      "Só o valor f(1/2) importa. Não é preciso (nem possível) conhecer f. Também não se deve confundir com integrais ou áreas sob as curvas x² e x³.",
+      "As desigualdades são estritas, então A nunca vale 1/16 nem 3/32, e as alternativas usam intervalos abertos. A faixa (1/16, 3/32) é exata: qualquer valor dentro dela é atingido por alguma f válida, e nenhuma outra alternativa contém valores possíveis."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(D) 1/16 < A < 3/32. Temos A = (1/4)(1/2 − f(1/2)), e como 1/8 < f(1/2) < 1/4, a área fica estritamente entre 1/16 e 3/32.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na conclusão, o candidato diz que os extremos 1/16 e 3/32 'podem ser aproximados tanto quanto se queira', mas não justifica. A afirmação é verdadeira e bastaria um exemplo: f(x) = x³ + t(x² − x³), com t ∈ (0,1), satisfaz a hipótese e dá f(1/2) = 1/8 + t/8, que percorre todo o intervalo (1/8, 1/4). Para escolher a alternativa isso não é necessário, mas a frase fica sem demonstração. Ou se inclui o exemplo, ou se retira a afirmação."
+          },
+          {
+            "severity": "minor",
+            "description": "Detalhe de notação: as alternativas da prova são minúsculas (d), mas o candidato escreveu 'ANSWER: (D)'. Não muda a resposta."
+          }
+        ],
+        "summary": "Conferi o enunciado no original (p. 10 do PDF, Questão 25) e a transcrição está fiel. O candidato marcou a alternativa d (1/16 < A < 3/32), a mesma da minha referência. Refiz as contas e a resposta está certa.\n\nOs passos do candidato:\n- Aplica a hipótese em x = 1/2 e obtém 1/8 < f(1/2) < 1/4.\n- Mostra que f(1/2) < 1/2, então Q fica abaixo de R e o triângulo não é degenerado. Isso também justifica tirar o módulo.\n- Toma o lado vertical QR = 1/2 − f(1/2) como base, com altura 1/2 (distância de P à reta x = 1/2), e chega a A = (1/4)(1/2 − f(1/2)).\n- Confere pela fórmula do determinante com P na origem: ½|x_Q·y_R − x_R·y_Q| = ½|1/4 − f/2|. É a mesma expressão.\n- Inverte as desigualdades de forma explícita ao multiplicar por −1 e mantém o sentido ao multiplicar por 1/4 > 0. Obtém 1/16 < A < 3/32 com os extremos na ordem certa (f = 1/8 dá o máximo 3/32 e f = 1/4 dá o mínimo 1/16).\n- Descarta as alternativas a, b e c porque estão contidas em (0, 1/16).\n\nTodas as armadilhas da minha lista foram tratadas: a base e a altura corretas (sem cair no distrator c, que vem de A = f(1/2)/4), a inversão por A ser decrescente em f, os valores (1/2)³ = 1/8 e (1/2)² = 1/4, a não degenerescência, o fato de só f(1/2) importar, e as desigualdades estritas.\n\nSó há ressalvas pequenas: a afirmação de que os extremos podem ser aproximados tanto quanto se queira não vem com um exemplo de f, e a letra da alternativa está maiúscula. É uma resolução clara, rigorosa e completa, no nível de um gabarito comentado."
+      }
+    }
+  ]
+}

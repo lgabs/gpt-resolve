@@ -1,0 +1,49 @@
+{
+  "question": 24,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Alternativa (D): a probabilidade é 149/198. O mdc só é par quando os dois números sorteados são pares. A chance disso é C(50,2)/C(100,2) = 1225/4950 = 49/198, então a probabilidade de o mdc ser ímpar é 1 − 49/198 = 149/198.",
+  "judge_reference": {
+    "reference_solution": "**Questão 24: probabilidade de o mdc de duas bolinhas ser ímpar**\n\nO enunciado transcrito confere com o original (página 10 do PDF, \"QUESTÃO 24\"). As alternativas são: a) 1/2; b) 50/198; c) 100/199; d) 149/198.\n\n**1) Quando o mdc é ímpar**\nSejam a ≠ b os números sorteados em {1, …, 100}.\n- O mdc(a, b) é par ⇔ 2 | mdc(a, b) ⇔ 2 | a e 2 | b. Isso vale porque todo divisor comum divide o mdc e, inversamente, o mdc divide a e b.\n- Portanto, o mdc(a, b) é ímpar ⇔ pelo menos um dos dois números é ímpar.\n- Logo, o evento complementar é \"os dois números são pares\".\n\n**2) Espaço amostral**\nO sorteio é sem reposição e a ordem não importa, porque o mdc é simétrico. São C(100, 2) = 100·99/2 = 4950 pares, todos com a mesma probabilidade.\n\n**3) Casos desfavoráveis (os dois pares)**\nHá 50 números pares entre 1 e 100 (2, 4, …, 100). São C(50, 2) = 50·49/2 = 1225 pares.\n\nOu, contando em sequência: P(os dois pares) = (50/100)·(49/99) = 49/198.\n\n**4) Probabilidade pedida**\nP(mdc ímpar) = 1 − 1225/4950 = 1 − 49/198 = **149/198** (≈ 0,7525).\n\nFazendo a conta direta: um ímpar e um par dão 50·50 = 2500 pares, e os dois ímpares dão C(50, 2) = 1225 pares. São 3725 casos favoráveis, e 3725/4950 = 149/198. ✔\n\n**Conferência por força bruta (Python)**\nPercorri todos os 4950 pares {a, b} com a < b ≤ 100. O mdc é ímpar em 3725 deles, e 3725/4950 = 149/198.\n\n**Por que as outras alternativas estão erradas**\n- a) 1/2: é um palpite de que \"par ou ímpar\" seria meio a meio, sem fazer a conta.\n- b) 50/198 = 25/99 = 2500/9900: aparece ao contar pares ordenados sem reposição e usar 50·50 no numerador (como se fosse \"um par e outro ímpar\") sobre 100·99. Também aparece ao confundir com a probabilidade do complementar, 49/198.\n- c) 100/199: é um distrator sem justificativa natural.\n- d) 149/198: correta.",
+    "final_answer": "P(mdc ímpar) = 1 − C(50,2)/C(100,2) = 1 − 49/198 = 149/198. Alternativa **d**.",
+    "pitfalls": [
+      "É preciso justificar a equivalência: o mdc(a,b) é par se e somente se a e b são ambos pares. Em consequência, o mdc é ímpar se e somente se pelo menos um dos números é ímpar. Não basta afirmar isso sem argumento.",
+      "Não se deve confundir 'mdc ímpar' com 'mdc = 1' (primos entre si). Pares como (3, 9), com mdc 3, contam como favoráveis.",
+      "O sorteio é SEM reposição. Com reposição daria 3/4, e o caso a = b (mdc = a) entraria indevidamente. A conta certa usa 49/99 na segunda retirada, e não 50/100.",
+      "O denominador e o numerador devem ser coerentes: os dois ordenados (100·99 e 50·49) ou os dois não ordenados (C(100,2) = 4950 e C(50,2) = 1225). Misturar os critérios leva ao distrator 50/198.",
+      "Não confundir a probabilidade do complementar (os dois pares: 49/198) com a resposta pedida, 149/198.",
+      "Na contagem direta, não esquecer o caso em que os dois números são ímpares (1225), além de 'um par e um ímpar' (2500). Ao todo são 3725 casos favoráveis.",
+      "De 1 a 100 há exatamente 50 pares e 50 ímpares."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Alternativa (D): a probabilidade é 149/198. O mdc só é par quando os dois números sorteados são pares. A chance disso é C(50,2)/C(100,2) = 1225/4950 = 49/198, então a probabilidade de o mdc ser ímpar é 1 − 49/198 = 149/198.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato diz que 'um inteiro divide d se e somente se divide a e b' vem 'pela definição de mdc'. Na definição escolar, porém, o mdc é o maior divisor comum, e essa equivalência é uma propriedade dele (sai de Bézout ou da fatoração em primos). Nesta questão, só a ida é realmente necessária: se 2 | d, então 2 | a e 2 | b. Essa parte segue da definição, porque d divide a e b. A volta também é imediata: se 2 é divisor comum, 2 ≤ d e, mais precisamente, 2 | d. Mesmo assim, chamar isso de 'definição' é impreciso. O certo seria dizer 'propriedade do mdc' ou justificar em uma linha."
+          },
+          {
+            "severity": "minor",
+            "description": "A explicação do distrator (b) 50/198 é superficial. O candidato só diz que o valor 'fica muito próximo' de 49/198, sem mostrar um erro de raciocínio que leve a ele. Um mecanismo plausível é contar 50·50 casos sobre 100·99 pares ordenados, misturando critérios. Para (c), o argumento também é só numérico. Como a análise dos distratores não era obrigatória, o peso disso é pequeno."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conferência, os 3725 casos favoráveis foram obtidos por diferença (4950 − 1225), o que repete a conta do complementar. Uma contagem direta independente, 50·50 (um par e um ímpar) + C(50,2) (dois ímpares) = 2500 + 1225 = 3725, valeria como verificação de verdade. A estimativa heurística ≈ 3/4 compensa em parte."
+          }
+        ],
+        "summary": "Conferi a transcrição com o PDF original (p. 10), e ela confere: sorteio sem reposição de 1 a 100, alternativas a) 1/2, b) 50/198, c) 100/199, d) 149/198. O candidato e a minha referência chegam à mesma resposta, (d) 149/198. A força bruta em Python confirma: o mdc é ímpar em 3725 dos 4950 pares não ordenados, e 3725/4950 = 149/198 ≈ 0,7525.\n\nA resolução está correta e bem organizada. Ela define o espaço amostral não ordenado, C(100,2) = 4950, e justifica a equivalência central: o mdc é par ⇔ 2 | a e 2 | b. Também dá exemplos que separam 'mdc ímpar' de 'mdc = 1', como mdc(3,9) = 3. Em seguida, calcula o complementar de forma coerente de duas maneiras: C(50,2)/C(100,2) e 50/100 · 49/99, ambas dando 49/198. Por fim, chega a 1 − 49/198 e ainda explica por que o valor fica um pouco acima de 3/4, o que trata bem a armadilha do sorteio sem reposição.\n\nTodas as armadilhas foram cobertas: a equivalência justificada, mdc ímpar ≠ mdc 1, sorteio sem reposição, coerência entre numerador e denominador, não responder com o complementar e os 50 pares/50 ímpares. Os problemas que encontrei são menores: chamar de 'definição' o que é uma propriedade do mdc, a explicação fraca dos distratores (b) e (c) e uma conferência que só repete a conta do complementar. A resolução serve como gabarito comentado."
+      }
+    }
+  ]
+}

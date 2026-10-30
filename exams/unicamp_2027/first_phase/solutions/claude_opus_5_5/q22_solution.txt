@@ -1,0 +1,32 @@
+\section*{Questão 22}
+
+\section*{Solução}
+
+\textbf{1. Retas que contêm os lados.} Os vértices são $O(0,0)$, $A(1,1)$, $B(0,2)$ e $C(-1,1)$.
+\begin{itemize}
+\item Lado $OA$: reta $y=x$, com $0\le x\le 1$. Lado $OC$: reta $y=-x$, com $-1\le x\le 0$. Juntos, eles formam o gráfico de $y=|x|$ para $|x|\le 1$ (a ``borda de baixo'').
+\item Lado $AB$: reta pelos pontos $(1,1)$ e $(0,2)$, ou seja, $y=2-x$, com $0\le x\le 1$. Lado $CB$: $y=2+x$, com $-1\le x\le 0$. Juntos, eles formam o gráfico de $y=2-|x|$ para $|x|\le 1$ (a ``borda de cima'').
+\end{itemize}
+
+\textbf{2. Descrição da região.} Fixado $x$ com $|x|\le 1$, a reta vertical que passa por esse $x$ corta o quadrado no segmento que vai da borda de baixo à de cima. Logo,
+\[
+(x,y)\ \text{está na região} \iff |x|\le y\le 2-|x| .
+\]
+Não é preciso impor $|x|\le 1$ à parte. Da própria dupla desigualdade sai $|x|\le 2-|x|$, isto é, $|x|\le 1$. Ela também dá $y\ge |x|\ge 0$. Portanto o conjunto não tem pontos fora da faixa $-1\le x\le 1$.
+
+\textbf{Verificação algébrica.} O quadrado tem centro $(0,1)$ e diagonais paralelas aos eixos, ambas de comprimento $2$ (semidiagonal $1$). Por isso ele é o conjunto $|x|+|y-1|\le 1$. Usando que $|t|\le a \iff -a\le t\le a$ (com $a\ge 0$):
+\[
+|y-1|\le 1-|x| \iff |x|-1\le y-1\le 1-|x| \iff |x|\le y\le 2-|x| .
+\]
+Os quatro vértices satisfazem a condição. Por exemplo, para $(1,1)$ temos $1\le 1\le 1$. O ponto interior $(0,1)$ também satisfaz, pois $0\le 1\le 2$.
+
+\textbf{3. Por que as outras alternativas falham.}
+\begin{itemize}
+\item[(a)] $|x|\ge y\ge 2-|x|$ exige $|x|\ge 2-|x|$, ou seja, $|x|\ge 1$. O ponto $(0,1)$, que está dentro do quadrado, fica de fora. Já o ponto $(2,1)$, que está fora do quadrado, é aceito.
+\item[(c)] $|x|\ge 2+|x|$ daria $0\ge 2$, o que é absurdo. O conjunto é vazio.
+\item[(d)] $|x|\le y\le 2+|x|$ descreve uma região ilimitada. Por exemplo, o ponto $(5,6)$ satisfaz $5\le 6\le 7$ e não pertence ao quadrado.
+\end{itemize}
+
+Assim, a região é $\{(x,y)\in\mathbb{R}^2:\ |x|\le y\le 2-|x|\}$, que é a alternativa (b).
+
+ANSWER: (B) $\{(x,y)\in\mathbb{R}^2: |x|\le y\le 2-|x|\}$

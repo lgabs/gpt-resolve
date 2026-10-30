@@ -1,0 +1,36 @@
+{
+  "question": 21,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 10.0,
+  "final_answer": "Com a PA a, a+r, a+2r, a+3r, o determinante é det M = -2r^2 = -8, então r = -2 (porque a razão é negativa). O traço dá 2a + 3r = -4, logo a = 1. Conferindo: a PA é 1, -1, -3, -5, com det = -8 e traço = -4. Resposta: (A) 1.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** Olhei o original (página 9 do PDF, Questão 21) e a transcrição está correta: M = [[a, b],[c, d]], a, b, c, d em PA de razão negativa nessa ordem, det M = −8, tr M = −4. Alternativas: a) 1; b) −1; c) 5; d) −5.\n\n**1) Montagem pela PA.** Seja r < 0 a razão. Então:\nb = a + r, c = a + 2r, d = a + 3r.\n\n**2) Traço.** O traço é a soma da diagonal principal, a + d:\na + (a + 3r) = 2a + 3r = −4.   (I)\n\n**3) Determinante.** det M = ad − bc:\nad = a(a + 3r) = a² + 3ar\nbc = (a + r)(a + 2r) = a² + 3ar + 2r²\ndet M = ad − bc = −2r².\nO determinante não depende de a; depende só da razão. Logo:\n−2r² = −8 ⇒ r² = 4 ⇒ r = ±2.\nComo a razão é negativa, r = −2.\n\n**4) Valor de a.** Substituindo em (I): 2a + 3(−2) = −4 ⇒ 2a = 2 ⇒ a = 1.\n\n**5) Verificação.** A PA é (a, b, c, d) = (1, −1, −3, −5), com razão −2 < 0.\nM = [[1, −1],[−3, −5]].\ntr M = 1 + (−5) = −4 ✓\ndet M = (1)(−5) − (−1)(−3) = −5 − 3 = −8 ✓\nResolvi o sistema por força bruta em Python. Só há duas soluções, (a, r) = (1, −2) e (a, r) = (−5, 2). A condição r < 0 elimina a segunda.\n\n**Resposta: a = 1, alternativa (a).**",
+    "final_answer": "a = 1, alternativa (a). Com a razão r, os termos são b = a + r, c = a + 2r e d = a + 3r. Então det M = −2r² = −8 dá r = −2 (porque r < 0), e o traço 2a + 3r = −4 dá a = 1. A matriz fica M = [[1, −1],[−3, −5]].",
+    "pitfalls": [
+      "Hipótese da razão negativa: det M = −8 leva a r² = 4, que tem duas raízes, r = ±2. Quem não descarta r = +2 chega a a = −5, e isso é exatamente a alternativa (d), o distrator. Uma boa resolução precisa dizer explicitamente que r = −2 por causa da hipótese r < 0.",
+      "Ver que det M = ad − bc = −2r² não depende de a. A expansão tem que ser cuidadosa: os termos a² e 3ar se cancelam e sobra −2r². Errar o sinal ou o coeficiente (por exemplo, achar −r² ou +2r²) leva a r² = 8 ou a r² = −4, que é impossível.",
+      "Traço é a + d, a soma da diagonal principal, e não a + b, nem a soma de todos os termos, nem b + c.",
+      "A ordem da PA é a, b, c, d, lendo as linhas. Então d = a + 3r, e não a + 2r. Trocar a ordem (ler por colunas, a, c, b, d) muda as contas.",
+      "Determinante 2×2 é ad − bc, e não ad + bc nem ac − bd.",
+      "Vale conferir a resposta: com (1, −1, −3, −5), o traço dá −4 e o determinante dá −8. A alternativa (b), −1, é b, e não a. A alternativa (c), 5, é só o sinal trocado de −5.",
+      "Se a solução escrever a PA como (x − 3s, x − s, x + s, x + 3s), é preciso lembrar que a razão é 2s. A condição r < 0 vira s < 0, e as contas devem ser refeitas com isso."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 10.0,
+      "final_answer": "Com a PA a, a+r, a+2r, a+3r, o determinante é det M = -2r^2 = -8, então r = -2 (porque a razão é negativa). O traço dá 2a + 3r = -4, logo a = 1. Conferindo: a PA é 1, -1, -3, -5, com det = -8 e traço = -4. Resposta: (A) 1.",
+      "review": {
+        "score": 10,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [],
+        "summary": "Conferi o enunciado na página 9 do PDF (Questão 21) e a transcrição está correta. A resposta do candidato, a = 1 (alternativa a), é a mesma da minha referência e está certa.\n\nA resolução está correta, completa e bem escrita:\n- **PA:** a PA foi montada na ordem certa, lendo por linhas: b = a + r, c = a + 2r, d = a + 3r.\n- **Traço:** o traço foi tomado como a soma da diagonal principal, a + d = 2a + 3r = −4.\n- **Determinante:** usou ad − bc e expandiu sem erro de sinal ou coeficiente. Os termos a² e 3ar se cancelam e sobra −2r². O candidato ainda observa que o determinante não depende de a.\n- **Raiz r = +2:** de r² = 4 sai r = ±2, e r = +2 é descartado explicitamente pela hipótese r < 0. O candidato também mostra que r = +2 levaria a a = −5, a alternativa (d), que é o distrator. Conferi essa conta: 2a + 6 = −4 dá a = −5.\n- **Verificação:** a PA fica (1, −1, −3, −5), a matriz fica M = [[1, −1],[−3, −5]], e de fato det M = −8 e tr M = −4.\n\nTodas as armadilhas que listei foram tratadas: o descarte de r = +2, a expansão do determinante, a definição de traço, a ordem da PA, a fórmula do determinante 2×2 e a verificação final. Não encontrei nenhum erro, salto lógico ou omissão. A resolução serve como gabarito comentado."
+      }
+    }
+  ]
+}

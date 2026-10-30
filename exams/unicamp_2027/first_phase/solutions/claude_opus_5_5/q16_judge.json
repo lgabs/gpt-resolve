@@ -1,0 +1,44 @@
+{
+  "question": 16,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A equipe vermelha vence com 2 pontos: alternativa (D). A pedra mais próxima do centro é a vermelha em (1/2, 1/5), com r² = 0,29. A azul mais próxima fica em (−3/2, −1), com d² = 13/4. Só duas pedras vermelhas têm r² < 13/4: (1/2, 1/5), com 0,29, e (−1, 1), com 2.",
+  "judge_reference": {
+    "reference_solution": "**Questão 16 (curling): resolução de referência**\n\nConferi o enunciado no original (p. 6 do caderno, p. 8 do PDF). A transcrição está fiel. As distâncias são medidas do centro da pedra ao centro do alvo, a origem O. O tamanho das pedras e os círculos da figura não entram na regra de pontuação.\n\n**1) Quadrado da distância de cada pedra à origem**\nPara comparar distâncias, basta comparar r² = x² + y², porque a raiz é crescente.\n\nEquipe azul:\n- (1, 2): r² = 1 + 4 = 5, então r = √5 ≈ 2,236\n- (−3/2, −1): r² = 9/4 + 1 = 13/4, então r = √13/2 ≈ 1,803\n- (−2, −3): r² = 4 + 9 = 13, então r ≈ 3,606\n- (4, −1): r² = 16 + 1 = 17, então r ≈ 4,123 (fica fora do alvo)\n\nEquipe vermelha:\n- (1/2, 1/5): r² = 1/4 + 1/25 = 29/100, então r ≈ 0,539\n- (2, 0): r² = 4, então r = 2\n- (−1, 1): r² = 2, então r = √2 ≈ 1,414\n- (2, −2): r² = 8, então r = 2√2 ≈ 2,828\n\n**2) Vencedora da rodada**\nA pedra mais próxima do centro é a vermelha (1/2, 1/5), com r² = 0,29. A melhor pedra azul tem r² = 3,25, que é maior. **O vermelho vence.**\n\n**3) Valor de d**\nd é a distância da pedra adversária (azul) mais próxima do centro: d² = min{5; 13/4; 13; 17} = 13/4. Logo d = √13/2 ≈ 1,80.\n\n**4) Pontuação**\nContamos as pedras vermelhas com r < d, ou seja, r² < 13/4 = 3,25:\n- (1/2, 1/5): 0,29 < 3,25, conta.\n- (−1, 1): 2 < 3,25, conta.\n- (2, 0): 4 > 3,25, não conta (r = 2 > 1,80).\n- (2, −2): 8 > 3,25, não conta.\n\n**O vermelho faz 2 pontos.** Isso é coerente com o curling real: só pontuam as pedras da vencedora que ficam mais perto do centro do que a melhor pedra adversária. Neste caso são a 1ª e a 2ª pedras vermelhas mais próximas. A 3ª vermelha, (2, 0) com r = 2, já está atrás da melhor azul, que tem r ≈ 1,80.\n\nConferi as contas com frações exatas em Python: d² = 13/4, contagem = 2.\n\n**Resposta: alternativa d) Vermelho venceu com 2 pontos.**",
+    "final_answer": "Alternativa **d**: o vermelho venceu com 2 pontos. A pedra vermelha (1/2, 1/5) é a mais próxima do centro (r ≈ 0,54). A melhor pedra azul é (−3/2, −1), então d = √13/2 ≈ 1,80. Ficam a menos de d só as vermelhas (1/2, 1/5) e (−1, 1), com r = √2 ≈ 1,41. A pedra (2, 0) tem r = 2 > d e não conta.",
+    "pitfalls": [
+      "Usar os anéis da figura em vez das distâncias exatas: a azul (−3/2, −1), com r ≈ 1,80, e a vermelha (−1, 1), com r ≈ 1,41, estão no mesmo anel (entre 1 e 2), e (2, 0) fica exatamente na circunferência de raio 2. Quem conta pedras por anel pode errar a contagem. A regra pede a comparação numérica r < d.",
+      "Errar a pedra (2, 0): r = 2 > d = √13/2 ≈ 1,803 (4 > 13/4). Contá-la levaria a 3 pontos, que não tem alternativa. Também não se deve achar que só a pedra mais próxima pontua, o que daria a alternativa c.",
+      "Calcular d errado: d é a distância da pedra ADVERSÁRIA (azul) mais próxima do centro, e não a da segunda pedra vermelha. O valor correto é d² = 13/4, com d ≈ 1,80.",
+      "Errar a conta das frações: (1/2)² + (1/5)² = 1/4 + 1/25 = 29/100, e (−3/2)² + (−1)² = 9/4 + 1 = 13/4. Comparar os r² (sem raiz) evita erro de arredondamento.",
+      "Considerar o raio físico da pedra ou se ela está 'dentro do alvo': a regra mede do centro da pedra. A pedra azul (4, −1) está fora do círculo de raio 4, o que não altera nada.",
+      "Concluir que o azul venceu porque tem pedras em todos os anéis ou porque tem pedras mais 'espalhadas': vence quem tem a pedra mais próxima, e essa pedra é vermelha (r ≈ 0,54)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A equipe vermelha vence com 2 pontos: alternativa (D). A pedra mais próxima do centro é a vermelha em (1/2, 1/5), com r² = 0,29. A azul mais próxima fica em (−3/2, −1), com d² = 13/4. Só duas pedras vermelhas têm r² < 13/4: (1/2, 1/5), com 0,29, e (−1, 1), com 2.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na seção 'Vencedora da rodada', o texto diz 'A pedra azul mais próxima tem r²=3,25' sem dizer explicitamente que esse é o mínimo de {5; 13/4; 13; 17}. A conclusão está correta e dá para tirá-la da lista anterior, mas valeria escrever d² = min{5; 13/4; 13; 17} = 13/4 logo ali, e não só na seção de pontuação."
+          },
+          {
+            "severity": "minor",
+            "description": "Detalhe de redação: 'Ela está menos de 1 unidade do centro' deveria ser 'a menos de 1 unidade'. A frase sobre o botão também é dispensável, porque a regra não usa os anéis. Não afeta a correção."
+          }
+        ],
+        "summary": "Respostas finais: as duas dão a alternativa (d), Vermelho venceu com 2 pontos, e a resposta está correta. Conferi o enunciado na p. 8 do PDF (p. 6 do caderno) e ele bate com a transcrição. Refiz todas as contas com frações exatas em Python: os r² da azul são {5; 13/4; 13; 17} e os da vermelha são {29/100; 4; 2; 8}, logo d² = 13/4. As vermelhas com r² < 13/4 são 29/100 e 2, ou seja, 2 pontos. A ordem crescente das oito pedras é V, V, A, V, A, V, A, A, o que confirma o resultado. A resolução do candidato coincide passo a passo com a referência.\n\nArmadilhas, uma a uma:\n- Compara r² com frações exatas e justifica por que pode fazer isso (r ≥ 0).\n- Diz explicitamente que os raios dos círculos não entram na regra, então não cai na contagem por anel.\n- Trata a pedra (2,0) do jeito certo: r = 2 > d ≈ 1,80, então ela não conta.\n- Toma d como a distância da pedra adversária (azul) mais próxima do centro.\n- Calcula 1/4 + 1/25 = 29/100 e 9/4 + 1 = 13/4 sem erro.\n- Verifica que nenhuma pedra fica exatamente à distância d, então não há empate a tratar.\n- Elimina as alternativas a, b e c com justificativa.\n- A pedra (4,−1), fora do alvo, fica coberta pela observação de que os raios do alvo não importam.\n\nSó há falhas de redação, que não afetam a correção. A resolução está completa, rigorosa e clara, e serve como gabarito comentado."
+      }
+    }
+  ]
+}

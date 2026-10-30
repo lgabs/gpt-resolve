@@ -1,0 +1,45 @@
+{
+  "question": 18,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "As raízes inteiras satisfazem r1·r2·r3 = -8 e b = -(r1+r2+r3). A menor soma possível é -10, com raízes -1, -1, -8, o que dá p(x) = x^3 + 10x^2 + 17x + 8. Logo o maior valor de b é 10: alternativa (C).",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** Conferi a página 9 do PDF (página 7 do caderno), Questão 18. A transcrição está correta: p(x) = x³ + bx² + cx + 8, com b e c reais, e todas as soluções de p(x) = 0 são inteiras. Pede-se o maior valor possível de b. Alternativas: a) 6, b) 7, c) 10, d) 13.\n\n**1) Como ler a hipótese.**\n- p é mônico de grau 3, então tem exatamente 3 raízes complexas r₁, r₂, r₃, contadas com multiplicidade.\n- \"Todas as soluções são inteiras\" significa que r₁, r₂, r₃ ∈ ℤ. Então p(x) = (x − r₁)(x − r₂)(x − r₃), e as raízes podem se repetir.\n- Essa é a única leitura que dá resposta. Se exigíssemos apenas que as soluções reais fossem inteiras, poderíamos ter uma raiz real r < 0 e duas complexas. Exemplo: p(x) = (x + 50)(x² + 0,5x + 0,16), com termo independente 50·0,16 = 8 e discriminante 0,25 − 0,64 < 0. Aí b = 50,5. Tomando r cada vez mais negativo, b cresce sem limite e não existe máximo.\n\n**2) Relações de Girard (Vieta).** Para x³ + bx² + cx + d:\n- r₁ + r₂ + r₃ = −b\n- r₁r₂ + r₁r₃ + r₂r₃ = c\n- r₁r₂r₃ = −d = −8\n\nPortanto, maximizar b = −(r₁ + r₂ + r₃) equivale a minimizar a soma das raízes, com a restrição r₁r₂r₃ = −8 e rᵢ ∈ ℤ. Cada raiz divide 8, então pertence a {±1, ±2, ±4, ±8}. Isso coincide com o teorema das raízes racionais.\n\n**3) Enumeração.** O produto é negativo, logo há 1 ou 3 raízes negativas.\n\nTrês raízes negativas, com |r₁|·|r₂|·|r₃| = 8:\n- (−1, −1, −8): soma −10, b = 10, c = 1 + 8 + 8 = 17\n- (−1, −2, −4): soma −7, b = 7, c = 14\n- (−2, −2, −2): soma −6, b = 6, c = 12\n\nUma raiz negativa:\n- (−8, 1, 1): b = 6\n- (−4, 1, 2): b = 1\n- (−2, 2, 2): b = −2\n- (−2, 1, 4): b = −3\n- (−1, 2, 4): b = −5\n- (−1, 1, 8): b = −8\n\nConferi a lista completa por força bruta em Python.\n\n**4) Por que o mínimo é −10.** Os valores absolutos são inteiros positivos com produto 8. Para k ≥ 1 vale k ≤ 8/(produto dos outros dois), e a soma |r₁| + |r₂| + |r₃| é máxima quando dois deles valem 1 e o outro vale 8, dando 10. Logo r₁ + r₂ + r₃ ≥ −(|r₁| + |r₂| + |r₃|) ≥ −10. A igualdade ocorre só para (−1, −1, −8).\n\n**5) Verificação.** (x + 1)²(x + 8) = (x² + 2x + 1)(x + 8) = x³ + 10x² + 17x + 8. O termo independente é 8, como exigido. As raízes são −1 (dupla) e −8, todas inteiras. Com b = 10 e c = 17 (real), o valor 10 é atingido.\n\n**Conclusão:** o maior valor possível de b é 10. Alternativa c.",
+    "final_answer": "O maior valor possível é b = 10, alternativa c. Ele é atingido com p(x) = (x + 1)²(x + 8) = x³ + 10x² + 17x + 8, de raízes −1 (dupla) e −8.",
+    "pitfalls": [
+      "Raízes repetidas são permitidas. Quem impõe raízes distintas chega a (−1, −2, −4) e marca b) 7, mas o máximo vem da raiz dupla −1, com (−1, −1, −8).",
+      "Sinal nas relações de Girard: r₁r₂r₃ = −8, não +8, e a soma das raízes é −b, não b. Errar algum desses sinais muda o problema: por exemplo, maximizar a soma em vez de minimizá-la, ou usar produto +8.",
+      "Maximizar b significa minimizar a soma das raízes. Por isso as candidatas boas têm todas as raízes negativas, com produto (−)(−)(−) = −8.",
+      "Hipótese necessária: as 3 raízes complexas, contadas com multiplicidade, são inteiras. Se a hipótese valesse só para as raízes reais (uma raiz real e duas complexas conjugadas), b seria ilimitado e não haveria máximo. A resolução deve usar a fatoração completa p(x) = (x − r₁)(x − r₂)(x − r₃).",
+      "As raízes inteiras precisam dividir 8 e ter produto exatamente −8. O valor 13 = 1 + 4 + 8 sai de tomar −1, −4, −8 sem conferir o produto, que daria −32.",
+      "Os empates em b = 6, com (−2, −2, −2) ou (−8, 1, 1), não são o máximo. É preciso enumerar todos os casos ou dar uma cota (soma ≥ −10) para justificar que 10 é o máximo.",
+      "É bom verificar que o valor é atingido: (x + 1)²(x + 8) = x³ + 10x² + 17x + 8, com c = 17 real e termo independente 8."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "As raízes inteiras satisfazem r1·r2·r3 = -8 e b = -(r1+r2+r3). A menor soma possível é -10, com raízes -1, -1, -8, o que dá p(x) = x^3 + 10x^2 + 17x + 8. Logo o maior valor de b é 10: alternativa (C).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No caso de uma raiz negativa, a resolução usa m ≤ 8 sem dizer de onde vem. Bastaria escrever m = 8/(uv) ≤ 8, já que u, v ≥ 1. A cota está correta, mas faltou meia linha de justificativa."
+          },
+          {
+            "severity": "minor",
+            "description": "Não diz explicitamente que nenhuma raiz é zero (o produto é −8 ≠ 0). Isso garante que cada raiz seja só positiva ou só negativa, e por isso a divisão em dois casos cobre todas as possibilidades. Fica implícito em 'o número de raízes negativas é ímpar', mas um gabarito comentado registraria isso em uma frase."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 9 do PDF (Questão 18): a transcrição está fiel. A resposta do candidato, (C) b = 10, coincide com a minha referência e está correta. Uma força bruta em Python sobre todas as ternas de divisores de 8 com produto −8 deu os valores possíveis de b: {−8, −5, −3, −2, 1, 6, 7, 10}. O máximo é 10, com as raízes (−1, −1, −8).\n\nA resolução trata todas as armadilhas:\n- **Hipótese:** interpreta corretamente que as 3 raízes complexas, contadas com multiplicidade, são inteiras. Também justifica essa leitura com um contraexemplo válido: a raiz −n e duas raízes conjugadas ±i√(8/n) dão produto −8 e b = n, então b não teria limite.\n- **Sinais de Girard:** estão corretos (soma = −b, produto = −8), e o problema passa a ser minimizar a soma das raízes.\n- **Raízes repetidas:** admite raízes repetidas, então não cai na resposta 7.\n- **Enumeração:** lista completa no caso de três raízes negativas, e no caso de uma negativa dá a cota u + v − m ≥ −6, que está correta e é atingida em (−8, 1, 1).\n- **Valor atingido:** verifica (x+1)²(x+8) = x³ + 10x² + 17x + 8.\n- **Alternativas:** descarta 13 (a soma mínima é −10) e mostra que 6 e 7 são atingíveis, mas não são o máximo.\n\nA exposição é clara e organizada, no nível de um gabarito comentado. Só há duas observações pequenas de rigor, ambas fáceis de completar: justificar m ≤ 8 por m = 8/(uv), e dizer explicitamente que as raízes são não nulas."
+      }
+    }
+  ]
+}

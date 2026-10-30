@@ -1,0 +1,44 @@
+{
+  "question": 23,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Resposta: (C) [1,2]. f(x) = x² − x − 2 = (x − 1/2)² − 9/4 tem vértice em x = 1/2, e f(a) = f(b) com a ≠ b vale exatamente quando a + b = 1. Os intervalos [0,2], [−1,2] e [−2,1] têm pares assim, como f(0) = f(1) e f(−1) = f(2). Em [1,2], f é estritamente crescente, logo injetora. Com B = [−2,0], a inversa é f⁻¹(y) = 1/2 + √(y + 9/4).",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com o original (p. 9 do PDF, Questão 23): f: A→B, f(x) = x² − x − 2, f invertível. As alternativas são a) [0,2], b) [−1,2], c) [1,2], d) [−2,1].\n\n**1. Condição para f ser invertível**\nf: A→B é invertível exatamente quando é bijetora:\n- **sobrejetora:** basta tomar B = f(A), já que o contradomínio B não foi fixado e pode ser escolhido;\n- **injetora:** essa é a condição que restringe A.\n\nLogo, procuramos um intervalo A em que f seja injetora.\n\n**2. Comportamento de f**\nf(x) = x² − x − 2 = (x − 2)(x + 1) = (x − 1/2)² − 9/4.\n- É uma parábola com concavidade para cima.\n- O vértice está em x_v = −b/(2a) = 1/2, com f(1/2) = −9/4.\n- As raízes são x = −1 e x = 2.\n- f é estritamente decrescente em (−∞, 1/2] e estritamente crescente em [1/2, +∞).\n- Existe simetria em torno de x = 1/2: f(1/2 + t) = f(1/2 − t).\n\nEm um intervalo, f é injetora se e somente se o intervalo não contém 1/2 no seu interior. Ou seja, o intervalo precisa estar contido em (−∞, 1/2] ou em [1/2, +∞). Se 1/2 for ponto interior, para t > 0 pequeno os pontos 1/2 ± t estão ambos no intervalo e têm a mesma imagem.\n\n**3. Análise das alternativas**\n- **a) [0,2]:** contém 1/2 no interior. Contraexemplo: f(0) = −2 = f(1), e 0 ≠ 1. Não é injetora. ✗\n- **b) [−1,2]:** contém 1/2 no interior. Contraexemplo: f(−1) = 0 = f(2), as duas raízes. Não é injetora. ✗\n- **c) [1,2]:** como 1 ≥ 1/2, temos [1,2] ⊂ [1/2, +∞), onde f é estritamente crescente. Portanto f é injetora em [1,2]. Com f(1) = −2 e f(2) = 0, e tomando B = f(A) = [−2, 0], f: [1,2] → [−2,0] é bijetora. ✓\n  - Como verificação, a inversa explícita é: y = (x − 1/2)² − 9/4, com x ≥ 1/2, o que dá x = 1/2 + √(y + 9/4), definida para y ∈ [−2, 0].\n- **d) [−2,1]:** contém 1/2 no interior. Contraexemplo: f(0) = −2 = f(1). Não é injetora (a imagem seria [−9/4, 4]). ✗\n\n**Conferência numérica (python):** de [0,2], [−1,2], [1,2] e [−2,1], só em [1,2] a função é monótona, com imagem [−2, 0].\n\n**Resposta: alternativa c) [1,2].**",
+    "final_answer": "c) [1,2]. É o único intervalo que não contém o vértice x = 1/2 da parábola no seu interior. Nele f é estritamente crescente e, portanto, injetora. Tomando B = [−2, 0], a inversa é f⁻¹(y) = 1/2 + √(y + 9/4).",
+    "pitfalls": [
+      "O vértice está em x = 1/2, não em x = 0 nem em x = 1. Quem erra a posição do vértice (por exemplo, confundindo com x² − 2 ou x² − 2x) acaba aceitando ou rejeitando os intervalos errados.",
+      "Comparar só os valores nos extremos não basta. Em a) [0,2], f(0) = −2 e f(2) = 0, e em d) [−2,1], f(−2) = 4 e f(1) = −2: os extremos têm imagens diferentes, mas f não é injetora (f(0) = f(1) = −2). Somente em b) os extremos têm a mesma imagem.",
+      "Invertível significa bijetora. A sobrejetividade é resolvida escolhendo B = f(A), porque B não foi fixado. A condição que realmente restringe A é a injetividade. Uma boa resolução deve dizer isso explicitamente.",
+      "O critério correto é que o intervalo não contenha x_v = 1/2 no seu interior. O vértice pode ser extremo do intervalo: [1/2, 2] também serviria.",
+      "Para descartar as alternativas, é preciso exibir um contraexemplo concreto: f(0) = f(1) em a) e d), e f(−1) = f(2) em b). Não basta dizer 'parece não ser'.",
+      "Para justificar c), deve-se mostrar que [1,2] ⊂ [1/2, ∞), onde f é estritamente crescente. Opcionalmente, dar B = [−2, 0] e a inversa f⁻¹(y) = 1/2 + √(y + 9/4)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Resposta: (C) [1,2]. f(x) = x² − x − 2 = (x − 1/2)² − 9/4 tem vértice em x = 1/2, e f(a) = f(b) com a ≠ b vale exatamente quando a + b = 1. Os intervalos [0,2], [−1,2] e [−2,1] têm pares assim, como f(0) = f(1) e f(−1) = f(2). Em [1,2], f é estritamente crescente, logo injetora. Com B = [−2,0], a inversa é f⁻¹(y) = 1/2 + √(y + 9/4).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A frase 'um intervalo serve se, e somente se, 1/2 não for ponto interior dele' é afirmada sem demonstrar a ida (se 1/2 for interior, os pontos 1/2 ± t pertencem ao intervalo e somam 1). Isso sai direto do critério a + b = 1 que o próprio candidato estabeleceu, e as alternativas são todas descartadas com contraexemplos explícitos, então a lacuna não afeta a resposta. Bastaria uma linha a mais para fechar o argumento."
+          },
+          {
+            "severity": "minor",
+            "description": "No item d), o candidato não repete a observação 0 + 1 = 1, como fez em a). O contraexemplo f(0) = f(1) = −2 está correto e basta; a falta é só de uniformidade na redação."
+          }
+        ],
+        "summary": "Conferi a transcrição com o PDF original (p. 9, Questão 23) e ela está correta. O candidato responde C) [1,2], a mesma resposta da minha referência, e a resposta está certa.\n\nA resolução é de gabarito. Ela começa dizendo explicitamente que invertível equivale a bijetora e que, como B é livre, a sobrejetividade se resolve tomando B = f(A); assim a condição que restringe A é a injetividade. Em seguida o candidato fatora f(a) − f(b) = (a − b)(a + b − 1). Esse é um critério algébrico mais forte que o argumento só pelo gráfico: ele mostra que f(a) = f(b) com a ≠ b exatamente quando a + b = 1, ou seja, quando os dois pontos são simétricos em relação a x = 1/2. O candidato confere isso com a forma canônica (x − 1/2)² − 9/4.\n\nAs alternativas erradas são descartadas com contraexemplos concretos e corretos:\n- a) e d): f(0) = f(1) = −2;\n- b): f(−1) = f(2) = 0.\n\nEm c), ele prova a injetividade de [1,2] por a + b ≥ 2 > 1 e também pela monotonicidade em [1/2, ∞). Por fim, dá B = [−2, 0] e a inversa f⁻¹(y) = 1/2 + √(y + 9/4), verificada nos extremos. Conferi tudo numericamente: só em [1,2] a função é monótona, a imagem é [−2, 0] e a fórmula da inversa confere.\n\nTodas as armadilhas foram tratadas: a posição do vértice, a insuficiência de comparar só os extremos (resolvida com contraexemplos internos), a escolha de B, o critério de ponto interior e a justificativa de c). Restam apenas detalhes mínimos de redação, como a ida do critério do intervalo, que é óbvia mas não foi escrita."
+      }
+    }
+  ]
+}

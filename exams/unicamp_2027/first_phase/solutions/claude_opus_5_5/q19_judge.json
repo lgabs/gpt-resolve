@@ -1,0 +1,49 @@
+{
+  "question": 19,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(D) 07h30 e 19h30. O mínimo ocorre quando sen((pi/12)(2t+3)) = -1, ou seja, para t = 7,5 h e t = 19,5 h. Nesses horários a altura é 0,6 m.",
+  "judge_reference": {
+    "reference_solution": "Conferi com o original (pág. 9 do PDF, impressa como 7). A transcrição está correta: A(t) = (7/10)·sen[(π/12)(2t+3)] + 13/10, com 0 ≤ t ≤ 24 e t em horas.\n\n1) Quando a maré é mínima\nA amplitude 7/10 é positiva, então A(t) é mínima exatamente quando o seno vale −1. O valor mínimo é A = 13/10 − 7/10 = 0,6 m. O máximo é 2,0 m.\n\n2) Resolver sen[(π/12)(2t+3)] = −1\n(π/12)(2t+3) = 3π/2 + 2kπ, com k inteiro\n⇔ 2t + 3 = 18 + 24k\n⇔ 2t = 15 + 24k\n⇔ t = 7,5 + 12k.\n\nObservação: o argumento é (π/6)t + π/4. A frequência angular é π/6, então o período é 2π/(π/6) = 12 h. Isso confirma que os mínimos se repetem a cada 12 h.\n\n3) Restrição ao domínio 0 ≤ t ≤ 24\n- k = 0 dá t = 7,5.\n- k = 1 dá t = 19,5.\n- k = −1 dá t = −4,5, fora do domínio.\n- k = 2 dá t = 31,5, fora do domínio.\nNos extremos, A(0) = A(24) ≈ 1,79 m, então não são mínimos.\n\n4) Converter para horário\n7,5 h = 7h30 e 19,5 h = 19h30.\n\nVerificação numérica (python):\n- A(7,5) = A(19,5) = 0,600 m (mínimo).\n- A(6) = A(18) ≈ 0,805 m.\n- A(6,5) ≈ 0,694 m.\n- A(7) ≈ 0,624 m.\n- Os máximos de 2,0 m ocorrem em t = 1,5 h e t = 13,5 h.\nUma varredura em [0, 24] com passo de 0,001 h encontra o mínimo apenas em t = 7,5 e t = 19,5.\n\nResposta: 07h30 e 19h30, alternativa (d).",
+    "final_answer": "A maré é mínima (0,6 m) quando sen[(π/12)(2t+3)] = −1. Isso dá t = 7,5 + 12k e, dentro de [0, 24], t = 7,5 h e t = 19,5 h, ou seja, às 07h30 e às 19h30. Alternativa (d).",
+    "pitfalls": [
+      "O argumento do seno é (π/12)(2t+3), que é igual a (π/6)t + π/4. O fator 2 multiplica t, então o período é 12 h, e não 24 h. Quem esquece o 2, ou distribui π/12 só sobre o 2t, erra o período e a fase.",
+      "Igualar o argumento a 3π/2 (seno = −1), e não a π/2 (que dá o máximo, em 1,5 h e 13,5 h) nem a −π/2 sem somar 2kπ. Com −π/2 se obtém t = −4,5 + 12k e, sem os outros valores de k, a resposta fica incompleta ou com valores fora do domínio.",
+      "Erro de deslocamento de fase: tratar o +3 como deslocamento de 3 h, quando o deslocamento horizontal é 3/2 = 1,5 h, porque 2t+3 = 2(t+1,5). Esse erro leva a respostas como 6h/18h ou 7h/19h.",
+      "O mínimo depende de a amplitude 7/10 ser positiva. Se ela fosse negativa, o mínimo ocorreria onde o seno vale +1.",
+      "É preciso restringir as soluções ao domínio 0 ≤ t ≤ 24 e verificar que só k = 0 e k = 1 servem. Os extremos t = 0 e t = 24 não são mínimos: ali A ≈ 1,79 m.",
+      "Converter corretamente 7,5 h para 7h30 e 19,5 h para 19h30. Não ler 7,5 como 7h50.",
+      "As alternativas (a), (b) e (c) são distratores próximos (6h, 6h30, 7h). Por exemplo, A(7) ≈ 0,624 m é maior que 0,6 m, então 7h não é o mínimo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(D) 07h30 e 19h30. O mínimo ocorre quando sen((pi/12)(2t+3)) = -1, ou seja, para t = 7,5 h e t = 19,5 h. Nesses horários a altura é 0,6 m.",
+      "review": {
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A afirmação de que θ é crescente em t não é justificada. A justificativa é curta: o coeficiente de t em θ(t) = (π/6)t + π/4 é positivo. Basta uma frase."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação do período, o candidato escreve ω = 2π/12 sem mostrar que esse valor vem de (π/12)·2. É melhor escrever explicitamente θ(t) = (π/6)t + π/4, porque isso também deixa claro o deslocamento de fase de 1,5 h. Essa é a armadilha das alternativas (a) e (c)."
+          },
+          {
+            "severity": "minor",
+            "description": "Para t = 6 e t = 6,5, o candidato só afirma que sen θ > −1, sem dar valores. Seria mais completo informar A(6) ≈ 0,805 m e A(6,5) ≈ 0,694 m, como fez com A(7) ≈ 0,62 m. Essa omissão não afeta a correção, porque o mínimo global já está estabelecido."
+          }
+        ],
+        "score": 9.5,
+        "summary": "A resposta final do candidato é (d), 07h30 e 19h30, a mesma da minha referência, e está correta. Conferi as contas com Python:\n- θ(0) = π/4 e θ(24) = 51π/12 = 17π/4.\n- No intervalo, só as soluções 3π/2 e 7π/2 servem. Os candidatos vizinhos ficam fora: 11π/2 > 17π/4 e −π/2 < π/4.\n- Daí saem t = 7,5 h e t = 19,5 h, com A = 0,6 m em ambos.\n- Em t = 7: sen(17π/12) ≈ −0,966 e A(7) ≈ 0,624 m, como o candidato afirma.\n\nO método de restringir θ ao intervalo imagem é elegante e mais rigoroso que só listar valores de k. Ele também cobre os extremos do domínio sem esforço extra, porque o seno vale −1 apenas nesses dois pontos.\n\nO candidato tratou todas as armadilhas:\n- usou a amplitude positiva para concluir que o mínimo ocorre com sen = −1;\n- igualou o argumento a 3π/2 + 2kπ, e não a π/2;\n- obteve o período correto de 12 h;\n- restringiu as soluções ao domínio;\n- converteu 0,5 h em 30 min;\n- descartou os distratores próximos com um valor numérico.\n\nRestam só detalhes de exposição: não justifica que θ é crescente, não mostra a forma (π/6)t + π/4 e não dá valores numéricos para t = 6 e t = 6,5. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

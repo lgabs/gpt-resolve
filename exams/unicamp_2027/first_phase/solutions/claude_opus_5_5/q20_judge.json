@@ -1,0 +1,49 @@
+{
+  "question": 20,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A área de B é a soma de uma série geométrica: 1 + 1/3 + 1/9 + ... = 1/(1 − 1/3) = 3/2. Alternativa (C).",
+  "judge_reference": {
+    "reference_solution": "**Leitura do enunciado (conferida com o original, p. 7 do caderno / p. 9 do PDF):** a transcrição bate com a prova. f(x) = 1/3^x. A região B é a união dos retângulos [n, n+1] × [0, f(n)] para n = 0, 1, 2, … A figura mostra os retângulos com alturas 1, 1/3, 1/9, 1/27 e, em seguida, reticências, o que indica que são infinitos.\n\n**1) Área de cada retângulo.** O retângulo de índice n tem base 1 e altura f(n) = 1/3^n, então sua área é 1/3^n. Como os retângulos só se encostam nas arestas verticais x = n, que têm área nula, a área de B é a soma das áreas:\n\nÁrea(B) = Σ_{n=0}^{∞} 1/3^n = 1 + 1/3 + 1/9 + 1/27 + …\n\n**2) Soma da série geométrica.** O primeiro termo é a₁ = 1 e a razão é q = 1/3. Como |q| < 1, a série converge e vale\n\nS = a₁/(1 − q) = 1/(1 − 1/3) = 1/(2/3) = 3/2.\n\n(Conferido numericamente: as somas parciais tendem a 1,5.)\n\n**3) Verificação de coerência.** B contém A porque f é decrescente: para x em [n, n+1], f(x) ≤ f(n). Por isso Área(B) deve ser maior que Área(A). Calculando Área(A) = ∫₀^∞ 3^(−x) dx = 1/ln 3 ≈ 0,910, temos 3/2 = 1,5 > 0,910, como esperado. Esse cálculo da integral não é necessário para responder; serve só como conferência.\n\n**4) Análise das alternativas.**\n- a) 9/10 = 0,9. Fica perto de Área(A) ≈ 0,91, mas é menor que ela, então não pode ser uma estimativa por excesso. Não é a área de B.\n- b) 3/9 = 1/3. É a razão da PG (ou a área do segundo retângulo), não a soma.\n- c) 3/2. **Correta.**\n- d) 40/27 = 1 + 1/3 + 1/9 + 1/27. É a soma só dos 4 retângulos desenhados (soma parcial S₄). Ignora as reticências e os infinitos retângulos seguintes.\n\n**Resposta: alternativa c) 3/2.**",
+    "final_answer": "A área de B é Σ_{n≥0} (1/3)^n = 1/(1 − 1/3) = 3/2. Alternativa c.",
+    "pitfalls": [
+      "Somar só os 4 retângulos desenhados (1 + 1/3 + 1/9 + 1/27 = 40/27, alternativa d). As reticências e o enunciado ('infinitos retângulos') pedem a série geométrica infinita.",
+      "Começar a soma em n = 1 em vez de n = 0. Isso daria 1/2 e esqueceria o primeiro retângulo, de altura f(0) = 1, em [0,1].",
+      "Errar a fórmula da soma infinita da PG: usar q/(1−q) ou 1/(1+q) em vez de a₁/(1−q). Uma boa resolução também diz que a série converge porque |q| = 1/3 < 1.",
+      "Confundir a área de B com a área de A. ∫₀^∞ 3^(−x) dx = 1/ln3 ≈ 0,91 fica perto de 9/10 (alternativa a), mas a pergunta é sobre B. Além disso, 0,9 < Área(A), então nem seria uma estimativa por excesso.",
+      "Marcar 3/9 (alternativa b) por confundir a razão da PG, ou a área do segundo retângulo, com a soma.",
+      "Para justificar que A ⊂ B, é preciso usar que f é decrescente (f(x) ≤ f(n) em [n, n+1]). Isso também confirma, por coerência, que Área(B) = 1,5 > Área(A) ≈ 0,91.",
+      "Os retângulos só se encostam em segmentos verticais de área nula, então a área da união é a soma das áreas."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A área de B é a soma de uma série geométrica: 1 + 1/3 + 1/9 + ... = 1/(1 − 1/3) = 3/2. Alternativa (C).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na alternativa (b), o candidato diz que 3/9 = 1/3 é só a área do segundo retângulo. O valor também é a razão q da PG, que é a confusão mais provável de quem marca (b). Vale citar as duas leituras."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'as somas parciais crescem e se aproximam de 1,5, o que confirma o limite' exagera um pouco. Três ou quatro somas parciais não confirmam um limite, apenas mostram que o resultado é coerente. Quem prova a convergência é o critério |q| < 1, que o candidato já citou. O certo seria chamar isso de checagem numérica."
+          },
+          {
+            "severity": "minor",
+            "description": "Para mostrar que A ⊂ B, o candidato usa que f é decrescente. Ficou implícito que os intervalos [n, n+1] com n ≥ 0 cobrem todo o semieixo x ≥ 0, e isso poderia ser dito numa linha. A colagem [-3^{-x}/ln 3]_0^∞ também usa um limite no infinito, que é notação usual para integral imprópria. Detalhes sem impacto."
+          }
+        ],
+        "summary": "Conferi o enunciado no original (p. 9 do PDF) e a transcrição está correta. A resposta do candidato é (c) 3/2, a mesma da minha referência, e está certa.\n\nA resolução está completa e correta:\n- Calcula a área de cada retângulo, 1/3^n.\n- Justifica por que a área da união é a soma das áreas: os retângulos só se encostam em lados verticais, de área nula.\n- Identifica a PG infinita com a₀ = 1 e q = 1/3, mostra que converge porque |q| < 1 e aplica a fórmula correta a₀/(1−q) = 3/2.\n- Verifica que A ⊂ B porque f é decrescente.\n- Confere a ordem de grandeza: Área(A) = 1/ln 3 ≈ 0,910 < 1,5.\n- Mostra as somas parciais 13/9 ≈ 1,444 e 40/27 ≈ 1,481. Conferi tudo isso numericamente.\n\nTodas as armadilhas foram tratadas:\n- (d) 40/27 é a soma só dos quatro retângulos desenhados.\n- A soma começa em n = 0, então o primeiro retângulo, de altura 1, está incluído.\n- A fórmula da PG está certa e a convergência foi justificada.\n- (a) 0,9 < Área(A), então não pode ser estimativa por excesso.\n- (b) foi descartada.\n\nSó há ressalvas pequenas de redação: (b) também é a razão da PG; somas parciais não 'confirmam' um limite; a cobertura de x ≥ 0 pelos intervalos ficou implícita. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

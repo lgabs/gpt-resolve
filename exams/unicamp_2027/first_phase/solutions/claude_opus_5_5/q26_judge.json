@@ -1,0 +1,51 @@
+{
+  "question": 26,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Na figura, OCB e OAC são triângulos isósceles. Com isso, o ângulo AOP é ângulo externo do triângulo AOB e vale 30° + 15° = 45°. Pela lei dos cossenos, AP² = 2 − √2, ou seja, AP = √(2 − √2) ≈ 0,765. Alternativa (a).",
+  "judge_reference": {
+    "reference_solution": "Conferi o enunciado com a página 10 do PDF (página 8 da prova). A transcrição está fiel. Pela figura, P é o extremo esquerdo do diâmetro horizontal e B é um ponto externo, à direita, no prolongamento de PO. A secante que sai de B corta a circunferência primeiro em C, no lado direito superior, e depois em A, no lado esquerdo superior. O raio OA está traçado.\n\n**1) Triângulo OCB.** C está na circunferência, então OC = r. Pelo enunciado, BC = r. Logo o triângulo OCB é isósceles com OC = CB, e os ângulos opostos a esses lados são iguais:\n∠COB = ∠CBO = 15°.\nEm consequência, ∠OCB = 180° − 30° = 150°.\nEssa configuração é a única possível. Pela lei dos senos, sen∠COB = sen 15°, o que dá ∠COB = 15° ou 165°. O valor 165° somado aos 15° em B dá 180° e degenera o triângulo. Ainda resulta OB = 2r·cos 15°.\n\n**2) Triângulo OAC.** A, C e B são colineares, e C fica entre A e B. Então ∠OCA é o suplemento de ∠OCB:\n∠OCA = 180° − 150° = 30°.\nTambém se chega a isso pelo ângulo externo do triângulo OCB: ∠OCA = 15° + 15° = 30°.\nComo OA = OC = r, o triângulo OAC é isósceles e ∠OAC = ∠OCA = 30°. Daí ∠AOC = 120°.\n\n**3) Ângulo AOP.** No triângulo AOB, temos ∠OAB = ∠OAC = 30° e ∠ABO = 15°. Como P, O e B são colineares, ∠AOP é ângulo externo em O:\n∠AOP = ∠OAB + ∠OBA = 30° + 15° = 45°.\nEsse é o resultado clássico da prova de 1987: ∠AOP = 3·∠ABO. Por outro caminho: ∠AOB = 180° − 30° − 15° = 135°, logo ∠AOP = 180° − 135° = 45°.\n\n**4) Corda AP.** Aplicando a lei dos cossenos no triângulo AOP, com OA = OP = 1:\nAP² = 1² + 1² − 2·1·1·cos 45° = 2 − √2\nAP = √(2 − √2).\nEquivalentemente, AP = 2r·sen(22,5°) = 2·sen 22,5° ≈ 0,7654.\n\n**Verificação numérica (python).** Usei r = 1, B = (2cos15°, 0) e a reta por B inclinada 15° em relação ao eixo.\n- As interseções com a circunferência dão BC = 1 e BA = 1 + √3. Isso confere com a potência de ponto: BA·BC = OB² − 1 = 4cos²15° − 1 = 1 + √3.\n- O ponto A = (−√2/2, √2/2) fica a 135° do semieixo positivo, coerente com a figura.\n- Obtive |AP| = 0,76537 = √(2 − √2). Por comparação, √(2+√2) ≈ 1,848, √(4−√2) ≈ 1,608 e √(4+√2) ≈ 2,327.\n- A lei dos cossenos no triângulo APB, com AB = 1+√3, PB = 1 + 2cos15° e ângulo de 15°, dá o mesmo valor.\n\n**Resposta:** AP = √(2 − √2), alternativa a).",
+    "final_answer": "AP = √(2 − √2) ≈ 0,765. Alternativa a). Como BC = OC = r, o ângulo COB vale 15°. Daí OCA = OAC = 30°, e o ângulo externo dá AOP = 30° + 15° = 45°. Pela lei dos cossenos, AP² = 2 − 2cos45° = 2 − √2.",
+    "pitfalls": [
+      "Ponto-chave: ver que BC = r = OC torna o triângulo OCB isósceles com ∠COB = ∠CBO = 15°. Quem não usa OC = r não consegue continuar.",
+      "Para justificar a unicidade: pela lei dos senos, ∠COB poderia ser 15° ou 165°, mas 165° com 15° em B degenera o triângulo. A configuração é única, com OB = 2r·cos15° = (√6+√2)/2 para r = 1.",
+      "Erro mais comum: usar o ângulo central AOB = 135° no lugar de AOP = 45°. Isso dá AP² = 2 − 2cos135° = 2 + √2, que é a alternativa b), a distratora principal. Note que √(2+√2) é a corda AQ, onde Q é o outro extremo do diâmetro, e AP² + AQ² = 4.",
+      "Confundir quem é A e quem é C na secante. C é o ponto mais próximo de B, com BC = r, e A é o mais distante, com BA = 1 + √3. Trocá-los muda todos os ângulos.",
+      "∠OCA é o suplemento de ∠OCB = 150°, ou o ângulo externo do triângulo OCB, e vale 30°, não 15°. Em seguida, OA = OC dá ∠OAC = 30°.",
+      "O ângulo AOP é externo ao triângulo AOB, então vale ∠OAB + ∠OBA = 45°. Resultado clássico da questão de 1987: ∠AOP = 3·∠ABO.",
+      "Na lei dos cossenos, os lados são os raios OA = OP = r = 1, não o diâmetro 2. Usar o diâmetro leva a números do tipo 4 ± √2, que são as distratoras c) e d).",
+      "Para conferir: AP = 2·sen22,5° ≈ 0,765 é menor que o raio, coerente com A próximo de P na figura (corda de 45°). As demais alternativas valem cerca de 1,85, 1,61 e 2,33.",
+      "O resultado não depende da escala: AP = r·√(2−√2). A questão fixa r = 1."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Na figura, OCB e OAC são triângulos isósceles. Com isso, o ângulo AOP é ângulo externo do triângulo AOB e vale 30° + 15° = 45°. Pela lei dos cossenos, AP² = 2 − √2, ou seja, AP = √(2 − √2) ≈ 0,765. Alternativa (a).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Dois dos valores numéricos das alternativas descartadas estão errados. O candidato dá ≈1,612 para (c) e ≈2,298 para (d). Os valores corretos são √(4−√2) ≈ 1,608 e √(4+√2) ≈ 2,327, conferidos em python. Isso não muda a conclusão, já que (d) continua maior que o diâmetro 2. Mesmo assim, números errados não deveriam aparecer num gabarito comentado, e as contas devem ser refeitas."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato põe nos 'Dados' que O fica entre P e B e que C fica entre A e B. O texto do enunciado só fala em colinearidade, e essas posições vêm da figura. Faltou dizer que foram lidas da figura e explicar por que a configuração é única: pela lei dos senos, ∠COB = 15° ou 165°, e o caso de 165° degenera o triângulo OCB. Com isso, ∠COB = ∠CBO = 15° sai demonstrado, e não apenas afirmado a partir do isósceles."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência é em parte circular. Ela já parte de A em 135°, que é o resultado obtido, e verifica apenas que a reta por B passa por esse ponto. O teste é válido como verificação de consistência, mas seria mais forte calcular as interseções da reta com a circunferência e checar que BC = 1 e BA = 1+√3, por exemplo pela potência de ponto BA·BC = OB² − 1."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 10 do PDF e a transcrição está fiel. A resposta final do candidato é a alternativa (a), AP = √(2−√2) ≈ 0,765, a mesma da minha referência. Está correta.\n\nA cadeia de raciocínio é a mesma da referência e está toda certa:\n- OC = CB = r torna o triângulo OCB isósceles, então ∠COB = ∠CBO = 15° e ∠OCB = 150°.\n- O suplemento dá ∠OCA = 30°, e o isósceles OAC dá ∠OAC = 30°.\n- Pelo ângulo externo do triângulo AOB, ∠AOP = 30° + 15° = 45°.\n- A lei dos cossenos com os raios OA = OP = 1 dá AP² = 2 − √2.\n\nO candidato tratou as armadilhas principais:\n- usou OC = r;\n- identificou corretamente qual ponto da secante é A e qual é C;\n- obteve ∠OCA = 30°, e não 15°;\n- usou ∠AOP = 45°, e não o ângulo central de 135°, que levaria à distratora (b);\n- usou os raios na lei dos cossenos, e não o diâmetro.\n\nEle também fez uma conferência por coordenadas, que está correta embora seja em parte circular, e um teste de plausibilidade: a corda de 45° é menor que o raio.\n\nProblemas encontrados:\n- Os valores numéricos das alternativas (c) e (d) estão errados: ele escreve 1,612 e 2,298, quando o certo é 1,608 e 2,327. A conclusão não muda.\n- Não diz que as posições \"entre\" (O entre P e B, C entre A e B) foram lidas da figura.\n- Não justifica a unicidade da configuração, descartando o caso de 165°, que é degenerado.\n\nSão falhas menores. A resolução é clara e rigorosa no essencial e serve como gabarito depois que esses números forem corrigidos."
+      }
+    }
+  ]
+}

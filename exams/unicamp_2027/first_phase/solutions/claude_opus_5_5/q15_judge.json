@@ -1,0 +1,35 @@
+{
+  "question": 15,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 10.0,
+  "final_answer": "Foram vendidas 95 pizzas de brigadeiro e 110 de calabresa, porque 45·110 + 40·95 = 8750 reais. Resposta: alternativa (a) 95.",
+  "judge_reference": {
+    "reference_solution": "Conferi a transcrição com a página 8 do PDF e ela está fiel ao original. A questão 15 não tem figura.\n\n**Variáveis.** Seja c o número de pizzas de calabresa (R$ 45,00 cada) e b o número de pizzas de brigadeiro (R$ 40,00 cada), com c e b inteiros não negativos.\n\n**Sistema.**\n(I) c + b = 205 (quantidade total de pizzas)\n(II) 45c + 40b = 8750 (valor total arrecadado, em reais)\n\n**Resolução por substituição.** De (I), c = 205 − b. Substituindo em (II):\n45(205 − b) + 40b = 8750\n9225 − 45b + 40b = 8750\n9225 − 5b = 8750\n5b = 475\nb = 95\nLogo c = 205 − 95 = 110.\n\n**Raciocínio alternativo (suposição).** Se as 205 pizzas fossem de calabresa, o total seria 205 × 45 = R$ 9.225,00. Isso passa do valor real em 9.225 − 8.750 = R$ 475,00. Cada pizza de calabresa trocada por uma de brigadeiro reduz o total em R$ 5,00. Então há 475 / 5 = 95 pizzas de brigadeiro.\n\n**Verificação.**\n- 110 × 45 = 4.950 e 95 × 40 = 3.800.\n- 4.950 + 3.800 = 8.750 ✓\n- 110 + 95 = 205 ✓\n- Ambos os valores são inteiros não negativos, o que é coerente com o contexto.\n- Conferi também com uma busca exaustiva em Python, com b de 0 a 205: a única solução é b = 95, c = 110.\n- A solução é única porque as equações não são proporcionais (determinante 1·40 − 1·45 = −5 ≠ 0).\n\n**Resposta:** foram vendidas 95 pizzas de brigadeiro, alternativa **a)**.",
+    "final_answer": "Foram vendidas 95 pizzas de brigadeiro (e 110 de calabresa): alternativa a) 95.",
+    "pitfalls": [
+      "Confundir as incógnitas: 110 é a quantidade de pizzas de calabresa, e esse valor aparece como distrator na alternativa d). A pergunta pede as de brigadeiro (95).",
+      "Associar o preço errado a cada sabor (por exemplo, R$ 40 para calabresa). Com os preços trocados, a conta dá 110 de brigadeiro e leva à alternativa d), que está errada.",
+      "Errar a conta 45 × 205 = 9225 ou a diferença 9225 − 8750 = 475. Daí sai 5b = 475, logo b = 95.",
+      "No método da suposição, esquecer que cada troca muda o total em R$ 5,00 (a diferença de preço), e não em R$ 40 ou R$ 45.",
+      "Não verificar o resultado nas duas equações. Uma boa resolução confere 110·45 + 95·40 = 8750 e 110 + 95 = 205.",
+      "Checar se a solução é inteira e não negativa e se é única. O determinante do sistema é não nulo, então a solução é única."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 10.0,
+      "final_answer": "Foram vendidas 95 pizzas de brigadeiro e 110 de calabresa, porque 45·110 + 40·95 = 8750 reais. Resposta: alternativa (a) 95.",
+      "review": {
+        "score": 10,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [],
+        "summary": "Conferi o enunciado na página 8 do PDF e a transcrição está fiel: calabresa custa R$ 45, brigadeiro custa R$ 40, foram 205 pizzas e R$ 8.750 arrecadados. A pergunta é sobre as pizzas de brigadeiro.\n\nO candidato chega ao mesmo resultado que a referência: b = 95, c = 110, alternativa a). Não há divergência.\n\nO candidato montou corretamente o sistema c + b = 205 e 45c + 40b = 8750, com os preços nos sabores certos. Resolveu por substituição sem erro de conta: 45·205 = 9225, 9225 − 8750 = 475 e 475/5 = 95.\n\nEle também apresenta o método da suposição e usa corretamente a variação de R$ 5 por troca. Na verificação, testa as duas equações: 4950 + 3800 = 8750 e 110 + 95 = 205.\n\nTestei em Python as outras alternativas e os valores que ele dá estão certos: b = 100 dá 8725, b = 105 dá 8700 e b = 110 dá 8675.\n\nA unicidade fica justificada porque a arrecadação cai R$ 5 a cada pizza de brigadeiro a mais, com o total fixo em 205. Isso equivale ao argumento do determinante não nulo.\n\nEle trata todas as armadilhas, inclusive o distrator d) = 110, que é a quantidade de calabresa. Também verifica que a solução é inteira e não negativa.\n\nA resolução é clara, completa e rigorosa, com qualidade de gabarito comentado. Não encontrei nenhum problema."
+      }
+    }
+  ]
+}

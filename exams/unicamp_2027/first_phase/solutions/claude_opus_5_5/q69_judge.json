@@ -1,0 +1,43 @@
+{
+  "question": 69,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Com o alarme ativado, a chave se fecha e os quatro resistores de 1,2 kΩ ficam em paralelo sob a tensão da bateria. A resistência equivalente é R_eq = 1,2 kΩ / 4 = 300 Ω, e a corrente total é i = 9,0 V / 300 Ω = 0,030 A = 30 mA.\n\nConferência: cada ramo conduz 9,0 V / 1,2 kΩ = 7,5 mA, e 4 × 7,5 mA = 30 mA.\n\nPor que as outras alternativas estão erradas:\n- (a) 1,9 mA corresponde aos quatro resistores em série.\n- (b) 7,5 mA é a corrente de um só ramo, não a total.\n- (c) 22 mA corresponde a só três ramos em paralelo, ou seja, com a chave aberta.\n\nANSWER: (D) 30 mA",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura (páginas 23 e 24 do PDF, p. 21 e 22 do caderno).** Os quatro resistores R1, R2, R3 e R4 estão em ramos paralelos, ligados entre os mesmos dois nós. A bateria de 9 V fica no ramo externo e por ela passa a corrente total i, indicada pelas setas nos fios de entrada e de saída do conjunto. O ramo de R4 tem uma chave em série que, no desenho, está aberta. É a situação normal, com o alarme desligado.\n\n**Situação pedida.** O enunciado pede a corrente \"quando o sistema de alarmes é ativado\". Nesse caso a chave de R4 está fechada, e os quatro ramos conduzem, todos em paralelo e submetidos à mesma ddp de 9,0 V. Considera-se a bateria ideal, sem resistência interna, e os fios sem resistência.\n\n**Resistência equivalente.** Para n resistores iguais em paralelo, R_eq = R/n:\nR_eq = 1,2 kΩ / 4 = 1200 Ω / 4 = 300 Ω.\n\n**Corrente total (Lei de Ohm).**\ni = U_b / R_eq = 9,0 V / 300 Ω = 0,030 A = 30 mA.\n\n**Conferência pelos ramos.** Cada ramo recebe a ddp total, então cada um conduz 9,0 / 1200 = 7,5 mA. Pela lei dos nós, i = 4 × 7,5 mA = 30 mA. O resultado bate.\n\n**Origem dos distratores** (conferidos com python):\n- a) 1,9 mA: resulta de tratar os quatro resistores como se estivessem em série. Daria 9/4800 = 1,875 mA ≈ 1,9 mA.\n- b) 7,5 mA: é a corrente em um único ramo (9/1200), e não a corrente total.\n- c) 22 mA: é a corrente com a chave aberta, ou seja, com o alarme desligado e só três ramos em paralelo. Daria 9/400 = 22,5 mA ≈ 22 mA.\n- d) 30 mA: alarme ativado, com os quatro ramos em paralelo. É a resposta correta.\n\n**Resposta: alternativa d) 30 mA.**",
+    "final_answer": "d) 30 mA. Com o alarme ativado, a chave fecha e os quatro resistores de 1,2 kΩ ficam em paralelo. Assim, R_eq = 300 Ω e i = 9,0 V / 300 Ω = 30 mA.",
+    "pitfalls": [
+      "Interpretar o estado da chave: no desenho ela está ABERTA, que é a situação normal. A pergunta, porém, trata do alarme ATIVADO, quando a chave está FECHADA e R4 conduz. Quem usa a figura tal como está desenhada chega a 3 ramos em paralelo: 9/400 = 22,5 mA, a alternativa c (distrator).",
+      "Associação errada: os resistores estão em PARALELO, todos entre os mesmos dois nós e com a bateria em série com o conjunto, e não em série. Tratá-los em série leva a 9/4800 ≈ 1,9 mA (alternativa a).",
+      "Confundir a corrente de um ramo (9/1200 = 7,5 mA, alternativa b) com a corrente total i que passa pela bateria. A boa resolução soma as correntes dos ramos ou usa a R_eq.",
+      "Conversão de unidades: 1,2 kΩ = 1200 Ω, e o resultado 0,030 A deve ser expresso como 30 mA.",
+      "Hipóteses implícitas que uma boa resolução deve citar: bateria ideal (sem resistência interna), fios e chave fechada com resistência desprezível, e mesma ddp de 9,0 V em todos os ramos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Com o alarme ativado, a chave se fecha e os quatro resistores de 1,2 kΩ ficam em paralelo sob a tensão da bateria. A resistência equivalente é R_eq = 1,2 kΩ / 4 = 300 Ω, e a corrente total é i = 9,0 V / 300 Ω = 0,030 A = 30 mA.\n\nConferência: cada ramo conduz 9,0 V / 1,2 kΩ = 7,5 mA, e 4 × 7,5 mA = 30 mA.\n\nPor que as outras alternativas estão erradas:\n- (a) 1,9 mA corresponde aos quatro resistores em série.\n- (b) 7,5 mA é a corrente de um só ramo, não a total.\n- (c) 22 mA corresponde a só três ramos em paralelo, ou seja, com a chave aberta.\n\nANSWER: (D) 30 mA",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não diz explicitamente que a figura mostra a chave ABERTA (estado normal) e que, por isso, a situação pedida é diferente da desenhada. Ela só diz que 'com o dispositivo intacto, a chave está aberta'. A conclusão está certa, mas para fechar a armadilha principal com clareza caberia uma frase como 'a figura mostra a chave aberta; com o alarme ativado ela se fecha'."
+          },
+          {
+            "severity": "minor",
+            "description": "No distrator (c), a resolução escreve 22 mA ≈ 9,0/400 A sem mostrar que 9,0/400 A = 22,5 mA, valor que o enunciado arredonda para 22 mA (dois algarismos significativos). Faltou explicitar o valor intermediário."
+          }
+        ],
+        "summary": "Conferi a figura no PDF original (p. 23). Ela mostra quatro ramos em paralelo, ligados aos mesmos dois nós, e a bateria de 9 V em série com o conjunto. A chave do ramo de R4 aparece aberta. A resposta do candidato, (d) 30 mA, coincide com a minha referência e está correta. Com o alarme ativado, a chave fecha, então R_eq = 1200/4 = 300 Ω e i = 9,0/300 = 30 mA. Conferi as contas em python: 30; 7,5; 22,5; 1,875 mA. A resolução declara as hipóteses (bateria ideal, fios e chave sem resistência, resistores ôhmicos) e justifica a ligação em paralelo pelos nós comuns. Ela calcula R_eq corretamente e confere o resultado pela lei dos nós (4 × 7,5 mA). Também verifica unidades e ordem de grandeza e explica a origem de cada distrator: série (a), um ramo só (b) e três ramos com a chave aberta (c). Todas as armadilhas que identifiquei foram tratadas. Restam apenas detalhes de redação: não diz explicitamente que a figura mostra a chave aberta e não mostra que 22,5 mA arredonda para 22 mA. É uma resolução publicável como gabarito comentado."
+      }
+    }
+  ]
+}
