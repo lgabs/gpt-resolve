@@ -1,0 +1,48 @@
+{
+  "question": 7,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(A) m < -4 ou m > 4: é uma hipérbole se, e somente se, det [[1,m],[m,16]] = 16 - m^2 < 0. Ela não é degenerada porque o segundo membro é 1, não 0.",
+  "judge_reference": {
+    "final_answer": "Alternativa (A): a curva é hipérbole exatamente quando m < −4 ou m > 4, isto é, |m| > 4. Nos casos de fronteira m = ±4 ela vira o par de retas paralelas x ± 4y = ±1. Para |m| < 4 ela é uma elipse.",
+    "reference_solution": "Conferi o enunciado no original (QUESTÃO 7, página 3/12 do PDF) e ele coincide com a transcrição: x² + 16y² + 2mxy − 1 = 0.\n\n1) Identificar os coeficientes\nNa forma geral Ax² + Bxy + Cy² + Dx + Ey + F = 0, temos A = 1, B = 2m, C = 16, D = E = 0 e F = −1. Como não há termos lineares, a cônica, se tiver centro, está centrada na origem.\n\n2) Forma matricial e diagonalização\nA equação pode ser escrita como [x y]·M·[x y]ᵀ = 1, com M = [[1, m], [m, 16]].\nComo M é simétrica real, uma rotação de eixos (o que não muda o tipo da curva) leva a equação para λ₁u² + λ₂v² = 1. Os autovalores de M são λ₁ e λ₂, com:\n- λ₁ + λ₂ = tr M = 17 > 0;\n- λ₁·λ₂ = det M = 16 − m².\n\n3) Classificação\n- Hipérbole: λ₁ e λ₂ precisam ter sinais opostos, ou seja, det M < 0. Isso dá 16 − m² < 0, logo m² > 16, logo |m| > 4. Nesse caso λ₁ > 0 > λ₂, e λ₁u² − |λ₂|v² = 1 é uma hipérbole verdadeira, porque o segundo membro é 1 ≠ 0. Pelo discriminante clássico chega-se ao mesmo resultado: B² − 4AC = 4m² − 64 > 0.\n- Não há degenerescência: o determinante da matriz 3×3 da cônica, [[1, m, 0], [m, 16, 0], [0, 0, −1]], vale m² − 16, que é diferente de 0 para todo |m| > 4. Logo, nessa faixa, a curva nunca vira um par de retas concorrentes.\n- Casos de fronteira m = ±4: det M = 0 e a equação fica x² ± 8xy + 16y² = (x ± 4y)² = 1, ou seja, x ± 4y = ±1. É um par de retas paralelas (cônica degenerada do tipo parabólico), não uma hipérbole. Por isso as desigualdades são estritas.\n- Caso |m| < 4: det M > 0 e o traço é 17 > 0, então os dois autovalores são positivos e a curva é uma elipse real. Para m = 0, por exemplo, temos x² + 16y² = 1.\n\nConferência numérica (autovalores de M):\n- m = ±5: 17,51 e −0,51, sinais opostos, hipérbole;\n- m = ±4: 17 e 0, retas paralelas;\n- m = ±3: 16,58 e 0,42, elipse;\n- m = ±8: 19,47 e −2,47, hipérbole.\n\n4) Escolha da alternativa\nO conjunto completo de valores de m para os quais a curva é hipérbole é m < −4 ou m > 4.\n- (A) coincide com esse conjunto.\n- (D) m < −8 e (E) m > 8 são só subconjuntos próprios. Eles são condições suficientes, mas não descrevem a condição \"plenamente\".\n- (B) inclui valores que não servem, como m = 3, que dá elipse, e deixa de fora valores que servem, como m = −4,5.\n- (C) é exatamente a faixa da elipse, mais os pontos m = ±4.\n\nResposta: (A).",
+    "pitfalls": [
+      "Como o termo misto é 2mxy, temos B = 2m e não m. Usar B = m no discriminante B² − 4AC > 0 dá m² > 64, isto é, |m| > 8, e isso leva o aluno a ficar entre as alternativas (D) e (E), que são distratores.",
+      "Ler \"valor estabelecido plenamente\" como pedido do conjunto completo de valores de m. As alternativas (D) e (E) são condições suficientes (subconjuntos de |m| > 4), mas não são o conjunto completo.",
+      "Nas fronteiras m = ±4 a curva é (x ± 4y)² = 1, um par de retas paralelas, e não uma hipérbole. As desigualdades precisam ser estritas.",
+      "Uma resolução completa deve verificar que a cônica não degenera em hipérbole degenerada (par de retas concorrentes). Como F = −1 ≠ 0 e não há termos lineares, o determinante 3×3 vale m² − 16 ≠ 0 para |m| > 4. De forma equivalente, depois da rotação o segundo membro continua igual a 1 ≠ 0.",
+      "Inverter o sinal da condição: para hipérbole vale B² − 4AC > 0, ou seja, det da forma quadrática < 0. Trocar esse sinal leva à alternativa (C), que é a faixa da elipse (|m| < 4).",
+      "Ao discutir |m| < 4, mostrar que a elipse é real: o traço 17 é positivo e o segundo membro é positivo, então não se trata de uma elipse imaginária. Isso não muda a resposta, mas completa a classificação.",
+      "Usar o discriminante B² − 4AC é legítimo porque o tipo da cônica não muda com rotação. A justificativa via autovalores (sinais opostos quando o determinante é negativo) deixa a resolução mais rigorosa."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(A) m < -4 ou m > 4: é uma hipérbole se, e somente se, det [[1,m],[m,16]] = 16 - m^2 < 0. Ela não é degenerada porque o segundo membro é 1, não 0.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na análise da (B), o candidato só mostra que ela inclui um valor que não serve (m = 3 dá elipse). Isso basta para descartá-la, mas fica mais completo dizer também que ela exclui valores que servem, como m = −4,5 (|m| > 4, hipérbole), o que mostra que (B) falha nos dois sentidos."
+          },
+          {
+            "severity": "minor",
+            "description": "A notação 'x ± 4y = ±1' mistura dois ± que não têm o mesmo significado: o primeiro depende do sinal de m e o segundo vem da raiz. O certo é escrever explicitamente: para m = 4, x + 4y = 1 ou x + 4y = −1; para m = −4, x − 4y = ±1."
+          },
+          {
+            "severity": "minor",
+            "description": "Fica implícito que a rotação de eixos não muda o tipo da cônica, porque é uma isometria. Faltou dizer isso em uma linha. Também faltou registrar que o teorema espectral permite escolher a matriz ortogonal com determinante +1, ou seja, uma rotação de fato. É um detalhe de rigor, não um erro."
+          }
+        ],
+        "summary": "O candidato e a referência chegam à mesma resposta: (A), m < −4 ou m > 4. Conferi o enunciado no PDF original (Questão 7, p. 3/12): é x² + 16y² + 2mxy − 1 = 0 e bate com a transcrição. Refiz as contas: autovalores de M = [[1, m], [m, 16]] com traço 17 e determinante 16 − m², e o determinante 3×3 dá m² − 16 (por exemplo, 9 para m = 5, 0 para m = 4, −7 para m = 3). Os dois resultados conferem.\n\nA resolução está correta e completa e trata todas as armadilhas:\n- usa B = 2m, e não m, e por isso não cai nos distratores (D) e (E);\n- a condição de hipérbole tem o sinal certo (det M < 0, equivalente a B² − 4AC > 0) e é justificada por autovalores de sinais opostos;\n- descarta a degenerescência em retas concorrentes de dois jeitos: o segundo membro é 1 ≠ 0 e o determinante 3×3 é m² − 16 ≠ 0;\n- analisa a fronteira m = ±4, onde (x ± 4y)² = 1 dá retas paralelas, e por isso as desigualdades são estritas;\n- mostra que para |m| < 4 a curva é uma elipse real, porque traço > 0 e determinante > 0;\n- interpreta 'plenamente' como o conjunto completo de valores e explica por que (D) e (E) são apenas condições suficientes.\n\nOs problemas que restam são de acabamento: a refutação da (B) mostra só um dos sentidos, a notação ± nas retas de fronteira é ambígua e a invariância do tipo da cônica pela rotação ficou implícita. A resolução é clara e rigorosa e pode ser publicada como gabarito comentado."
+      }
+    }
+  ]
+}

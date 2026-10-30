@@ -1,0 +1,34 @@
+\section*{Questão 11}
+
+\section*{Solução}
+
+\textbf{Identificação da indeterminação.} Quando $x\to 1$, temos $\dfrac{\pi x}{4}\to\dfrac{\pi}{4}$, logo $\operatorname{tg}\dfrac{\pi x}{4}\to 1$, e $\dfrac{\pi x}{2}\to\dfrac{\pi}{2}$, logo $\left|\operatorname{tg}\dfrac{\pi x}{2}\right|\to\infty$. É uma indeterminação do tipo $1^{\infty}$. Note que, para $x$ próximo de $1$ (e $x\neq 1$), a base é positiva, então a potência está bem definida e podemos usar logaritmo.
+
+\textbf{Mudança de variável.} Seja $t=\dfrac{\pi x}{4}$ e $u=\operatorname{tg} t$. Então $\dfrac{\pi x}{2}=2t$ e, pela fórmula do arco duplo,
+\[
+\operatorname{tg}\frac{\pi x}{2}=\operatorname{tg}(2t)=\frac{2\operatorname{tg} t}{1-\operatorname{tg}^2 t}=\frac{2u}{1-u^2}.
+\]
+Quando $x\to 1$, $u\to 1$ com $u\neq 1$ (pois $\operatorname{tg}$ é contínua e injetora perto de $\pi/4$). Assim, sendo $L$ o limite procurado,
+\[
+L=\lim_{u\to 1} u^{\frac{2u}{1-u^2}}=\lim_{u\to 1}\exp\!\left(\frac{2u\,\ln u}{1-u^2}\right).
+\]
+
+\textbf{Cálculo do expoente.} Escrevendo $1-u^2=-(u-1)(u+1)$:
+\[
+\frac{2u\,\ln u}{1-u^2}=-\frac{2u}{u+1}\cdot\frac{\ln u}{u-1}.
+\]
+Usamos o limite fundamental $\displaystyle\lim_{u\to 1}\frac{\ln u}{u-1}=1$ (é a derivada de $\ln$ em $u=1$). Como $\dfrac{2u}{u+1}\to\dfrac{2}{2}=1$, obtemos
+\[
+\lim_{u\to 1}\frac{2u\,\ln u}{1-u^2}=-1\cdot 1=-1.
+\]
+
+\textbf{Conclusão.} Como a exponencial é contínua,
+\[
+L=e^{-1}.
+\]
+
+\textbf{Verificação dos limites laterais.} Para $x\to 1^-$: a base é menor que $1$ e o expoente tende a $+\infty$. Para $x\to 1^+$: a base é maior que $1$ e o expoente tende a $-\infty$. Nos dois casos a potência tende a um valor menor que $1$. Isso confirma o valor $e^{-1}\approx 0{,}37$ para os dois lados. O cálculo acima vale para $u\to 1$ por qualquer lado, então o limite bilateral existe.
+
+\textbf{Exclusão das outras alternativas.} O limite vale $e^{-1}$, que é finito, positivo e diferente de $e$ e de $2e^{-1}$. Portanto (A), (C), (D) e (E) estão erradas, e a correta é a (B).
+
+ANSWER: (B) $e^{-1}$

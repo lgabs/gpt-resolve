@@ -1,0 +1,50 @@
+{
+  "question": 18,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "As curvas se cortam onde x² = 8/(a+1). A ortogonalidade exige f'(x)·g'(x) = −4a·x² = −1, o que dá 32a = a + 1, logo a = 1/31. Os pontos de interseção são x = ±√31/2, com y = −27/4. Alternativa (A) 1/31.",
+  "judge_reference": {
+    "reference_solution": "Conferi o enunciado na página do PDF e ele coincide com a transcrição: f(x) = ax² − 7 e g(x) = −x² + 1, com a ∈ ℝ.\n\n**1) Pontos de interseção**\nIgualando as funções: ax² − 7 = −x² + 1, logo (a + 1)x² = 8.\n- Se a = −1, a equação fica 0 = 8. Não há interseção.\n- Se a ≠ −1, x² = 8/(a + 1). Para existir solução real é preciso a + 1 > 0, ou seja, a > −1.\nNesse caso há dois pontos simétricos, x = ±√(8/(a+1)). O ponto x = 0 nunca é interseção, porque daria −7 = 1.\n\n**2) Condição de ortogonalidade**\nAs curvas se cortam ortogonalmente quando, no ponto de interseção, as retas tangentes são perpendiculares. As derivadas são f'(x) = 2ax e g'(x) = −2x.\nNenhuma das tangentes é vertical, porque as funções são polinômios. Também não há tangente horizontal nos pontos de interseção, já que x ≠ 0. Por isso podemos usar a condição m₁·m₂ = −1:\n(2ax)(−2x) = −1, ou seja, 4a·x² = 1.\nEssa condição depende só de x². Então, se vale em um dos pontos, vale também no ponto simétrico, e as curvas se cortam ortogonalmente nos dois pontos.\n\n**3) Resolução do sistema**\nSubstituindo x² = 8/(a+1):\n4a · 8/(a+1) = 1, logo 32a = a + 1, logo a = 1/31.\nEsse valor satisfaz a > −1. Também é coerente com 4a·x² = 1, que exige a > 0.\n\n**4) Verificação**\nCom a = 1/31:\n- x² = 8/(32/31) = 31/4, então x = ±√31/2.\n- f(x) = (1/31)(31/4) − 7 = −27/4 e g(x) = −31/4 + 1 = −27/4. Os valores coincidem, então o ponto é de fato de interseção: (±√31/2, −27/4).\n- Produto das inclinações: f'·g' = −4a·x² = −4·(1/31)·(31/4) = −1. ✓\n\nAs demais alternativas não servem (conferido numericamente). O produto f'·g' vale:\n- 27/4: −864/31\n- 17/27: −136/11\n- 1/17: −16/9\n- 7/14 = 1/2: −32/3\nNenhum desses é −1.\n\nResposta: a = 1/31, alternativa (A).",
+    "final_answer": "a = 1/31, alternativa (A). As interseções ficam em (±√31/2, −27/4), e em cada uma delas f'(x)·g'(x) = −1.",
+    "pitfalls": [
+      "Interpretar corretamente \"intersectar ortogonalmente\": as retas tangentes às duas curvas no ponto de interseção devem ser perpendiculares, ou seja, f'(x₀)·g'(x₀) = −1. Não basta que as curvas se intersectem.",
+      "Avaliar as derivadas no ponto de interseção, isto é, combinar a condição 4a·x² = 1 com x² = 8/(a+1). Erro comum: impor 4a·x² = 1 sem usar o fato de que o ponto precisa ser comum às duas curvas.",
+      "Sinal de g'(x) = −2x: errar o sinal leva a 4a·x² = −1, equação sem solução para a > −1, ou a valores errados.",
+      "Condição de existência: a interseção exige a + 1 > 0 (para a = −1 não há interseção) e x = 0 nunca é ponto comum. Uma boa resolução verifica que a = 1/31 satisfaz isso (e também a > 0, exigido por 4a·x² = 1).",
+      "Para usar m₁·m₂ = −1 é preciso que nenhuma tangente seja vertical (as funções são polinomiais) nem horizontal no ponto (x ≠ 0, pois em x = 0 as duas tangentes seriam horizontais e paralelas). Ambas as condições valem aqui.",
+      "Simetria: há dois pontos de interseção, x = ±√31/2. Como a condição depende só de x², a ortogonalidade vale nos dois, e convém mencionar isso.",
+      "Distrator (B) 27/4: é o valor absoluto da ordenada do ponto de interseção (y = −27/4) quando a = 1/31. Quem confunde a coordenada com o parâmetro marca B.",
+      "Distrator (E) 7/14 = 1/2 aparece sem simplificar. Não satisfaz a condição: o produto das inclinações dá −32/3.",
+      "Conferir a resposta: com a = 1/31, x² = 31/4, f = g = −27/4 e f'·g' = −1."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "As curvas se cortam onde x² = 8/(a+1). A ortogonalidade exige f'(x)·g'(x) = −4a·x² = −1, o que dá 32a = a + 1, logo a = 1/31. Os pontos de interseção são x = ±√31/2, com y = −27/4. Alternativa (A) 1/31.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No passo 1, a equivalência (a+1)x0² = 8 ⟺ x0² = 8/(a+1) só vale para a ≠ −1. O caso a = −1 (0 = 8, sem interseção) fica coberto apenas implicitamente pela frase 'é preciso ter a > −1'. Bastava uma linha separando esse caso antes de dividir."
+          },
+          {
+            "severity": "minor",
+            "description": "O parágrafo 'Ideia' descarta tangentes horizontais por um argumento genérico ('a outra teria de ser vertical'), e a justificativa concreta só aparece no passo 2 (a > 0 e x0 ≠ 0 implicam f'(x0) ≠ 0 e g'(x0) ≠ 0). A informação está toda lá, mas um pouco redundante e espalhada. É questão de clareza, não de correção."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'pela simetria par das duas funções' justifica corretamente que a ortogonalidade vale nos dois pontos. Seria mais direto observar que a condição 4a·x0² = 1 depende só de x0². Detalhe de estilo."
+          }
+        ],
+        "summary": "A transcrição confere com o PDF (Questão 18, página 6/12). A resposta do candidato, a = 1/31 (A), coincide com a minha referência e está correta. A resolução impõe as duas condições ao mesmo tempo: o ponto é comum, (a+1)x0² = 8, e as tangentes são perpendiculares. As derivadas estão com o sinal certo (g' = −2x), o que leva a 4a·x0² = 1, depois a 32a = a + 1 e a a = 1/31. O candidato também cuidou do rigor: descarta tangente vertical porque as funções são polinomiais e tangente horizontal porque a > 0 e x0 ≠ 0 (x = 0 daria −7 = 1), exige a > −1 para haver interseção e confere que a = 1/31 é admissível. Na verificação explícita, x0² = 31/4, f = g = −27/4 e f'·g' = −1, e a resolução menciona os dois pontos simétricos. Conferi com frações exatas os produtos das inclinações para as demais alternativas: −864/31, −136/11, −16/9 e −32/3, todos corretos. A alternativa (E) foi simplificada para 1/2. Quase todas as armadilhas foram tratadas. Só não explica que o distrator (B) é o valor absoluto da ordenada, o que não é necessário. Restam apenas detalhes menores de redação, como o caso a = −1 tratado só implicitamente e uma justificativa um pouco redundante sobre as tangentes horizontais. A resolução tem nível de gabarito comentado."
+      }
+    }
+  ]
+}

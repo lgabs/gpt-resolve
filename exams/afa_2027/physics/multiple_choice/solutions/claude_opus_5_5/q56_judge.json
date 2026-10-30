@@ -1,0 +1,45 @@
+{
+  "question": 56,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(B) 20 m/s: como a velocidade é constante, a força elétrica equilibra a magnética e v = E/B = 4,0/0,2 = 20 m/s. No espelho plano fixo, a imagem se aproxima do espelho com essa mesma velocidade.",
+  "judge_reference": {
+    "final_answer": "A partícula se move em MRU sob campos E e B cruzados, então funciona como um seletor de velocidades: qE = qvB, o que dá v = E/B = 4,0/(2,0·10⁻¹) = 20 m/s. Como o espelho plano está fixo, a imagem se aproxima do espelho com a mesma rapidez do objeto, 20 m/s. Em relação ao objeto, a rapidez seria 40 m/s. Alternativa B (20 m/s).",
+    "reference_solution": "Conferi o enunciado na página 4 do PDF (questão 56). A transcrição está fiel e a questão não tem figura.\n\n**1) Física da partícula (seletor de velocidades)**\nA gravidade e a resistência do ar são desprezadas. Sobre a partícula atuam só a força elétrica qE e a força magnética q v×B. Como a velocidade é constante (MRU), a resultante é nula:\n  q(E + v×B) = 0  ⟹  E = −v×B.\n\nConsequências:\n- v×B é perpendicular a v, então E também é perpendicular a v.\n- O enunciado diz que E é perpendicular a B. Assim, na configuração usual do seletor, v, E e B são mutuamente perpendiculares, com sen θ = 1 entre v e B.\n- Em módulo, qE = qvB·sen 90°, o que dá v = E/B.\n- O valor da carga q e o seu sinal se cancelam. Para qualquer carga, as forças elétrica e magnética têm sentidos opostos quando v = E/B na orientação correta.\n\nCálculo:\n  v = E/B = 4,0 / (2,0·10⁻¹) = 20 m/s.\n\n**2) Óptica (espelho plano fixo)**\nA imagem é simétrica ao objeto em relação ao plano do espelho. Se o objeto está a uma distância d(t) do espelho, a imagem está à mesma distância d(t), do outro lado. O espelho está fixo e o movimento é perpendicular a ele. Logo:\n  |v_imagem, rel. espelho| = |v_objeto, rel. espelho| = 20 m/s.\n\nA imagem se aproxima do espelho com a mesma rapidez do objeto, 20 m/s. A velocidade relativa entre imagem e objeto seria 2v = 40 m/s, mas não é o que a questão pede.\n\n**3) Verificação numérica**\nCom python3: E/B = 20,0 m/s para a imagem em relação ao espelho e 2E/B = 40,0 m/s para a imagem em relação ao objeto.\n\n**4) Análise das alternativas**\n- a) 10 → corresponde a v/2, sem justificativa física.\n- b) 20 → correta.\n- c) 40 → velocidade da imagem em relação ao objeto (2v), o distrator clássico.\n- d) 80 → não corresponde à grandeza pedida; só aparece com erro de conta, como dobrar duas vezes ou confundir 2,0·10⁻¹ com 5·10⁻².\n\n**Resposta: alternativa B, 20 m/s.**",
+    "pitfalls": [
+      "Confundir o referencial. A pergunta é sobre a velocidade da imagem em relação ao espelho, que vale v = 20 m/s. A velocidade da imagem em relação ao objeto vale 2v = 40 m/s e é o distrator da alternativa c.",
+      "Reconhecer que velocidade constante sob E e B cruzados, sem gravidade, significa resultante nula (seletor de velocidades): qE = qvB, logo v = E/B. Dá para responder sem conhecer a carga q nem a massa, porque elas se cancelam.",
+      "Hipótese implícita: v perpendicular a B, com v, E e B mutuamente perpendiculares. Rigorosamente, a condição de equilíbrio E = −v×B fixa só a componente de v perpendicular a B: v_perp = E/B. Uma componente de v paralela a B não sofre força magnética. O enunciado ('campos perpendiculares entre si', configuração de seletor) pressupõe v perpendicular a B. Uma boa resolução declara essa hipótese, ou seja, sen θ = 1.",
+      "Note que E precisa ser perpendicular a v, já que v×B é perpendicular a v. A força elétrica, portanto, não tem componente ao longo da trajetória e não altera a rapidez, o que é coerente com o MRU.",
+      "O sinal da carga não importa: para carga negativa as duas forças invertem juntas e o equilíbrio continua valendo.",
+      "Erro de potência de dez: 2,0·10⁻¹ T = 0,2 T. Assim, 4,0/0,2 = 20, e não 2 nem 200.",
+      "O espelho está fixo. Por isso a velocidade da imagem em relação a ele é igual à do objeto e não aparece o fator 2 que surgiria se o espelho se movesse (caso do espelho móvel: imagem com 2v em relação ao objeto fixo).",
+      "Não confundir com a velocidade de deriva E×B nem levar em conta efeitos como carga-imagem num espelho metálico: o enunciado manda tratar o espelho só como sistema óptico e afirma que a velocidade é constante."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(B) 20 m/s: como a velocidade é constante, a força elétrica equilibra a magnética e v = E/B = 4,0/0,2 = 20 m/s. No espelho plano fixo, a imagem se aproxima do espelho com essa mesma velocidade.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução apresenta v⊥E como parte da 'configuração clássica do seletor', mas essa condição não precisa ser suposta: ela sai direto da equação de equilíbrio. Como v×B é perpendicular a v e E = −v×B, E tem de ser perpendicular a v. Hipótese de verdade é só v⊥B, que fixa sen θ = 1. O certo seria deduzir v⊥E da equação vetorial e declarar como hipótese apenas v⊥B. A observação em parênteses sobre a componente paralela a B mostra que o candidato entende o ponto, então isso não compromete a resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "Na análise das alternativas, dizer que 10 e 80 'não correspondem a nenhuma relação física' é vago. Bastaria apontar que 10 = v/2 e que 80 só aparece com erro de conta, por exemplo dobrando duas vezes. Em questão objetiva isso pesa pouco."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 4 do PDF e a transcrição está fiel. A resposta do candidato (B, 20 m/s) coincide com a minha referência e está correta. Refiz a conta em python3: E/B = 4,0/0,2 = 20 m/s para a imagem em relação ao espelho, e 2E/B = 40 m/s para a imagem em relação ao objeto.\n\nA resolução aplica bem as ideias centrais:\n- Como a velocidade é constante e gravidade e resistência do ar são desprezadas, a resultante é nula: qE + q v×B = 0. É a situação do seletor de velocidades, que dá v = E/B.\n- A análise dimensional (N/C)/T = m/s está certa.\n- O candidato observa que o resultado não depende da carga nem da massa, e o uso de |q| cobre o sinal da carga.\n- Ele declara a hipótese sen θ = 1 e ainda comenta a componente de v paralela a B, que deixaria o módulo de v indeterminado.\n- Na parte de óptica, mostra com d_img(t) = d_obj(t) que, com o espelho fixo, a imagem se aproxima dele com a mesma rapidez do objeto.\n- Identifica 40 m/s (2v, a velocidade em relação à partícula) como o distrator.\n\nTodas as armadilhas que listei foram tratadas: referencial, potência de dez, sinal da carga, espelho fixo, hipótese v⊥B e o fato de a força elétrica não realizar trabalho. Só há dois detalhes menores. Primeiro, v⊥E aparece como suposição, quando poderia ser deduzido de E = −v×B. Segundo, o descarte das alternativas 10 e 80 é genérico. É uma resolução publicável como gabarito comentado."
+      }
+    }
+  ]
+}

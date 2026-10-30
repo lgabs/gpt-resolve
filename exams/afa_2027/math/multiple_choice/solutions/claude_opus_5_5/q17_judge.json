@@ -1,0 +1,54 @@
+{
+  "question": 17,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "(B) apenas uma afirmativa é verdadeira. Só a II vale: existe um único x com f(x)=3k, em ]5a/2, 6a[. A I é falsa porque -a pertence a A (f(-a)=5k/2). A III é falsa porque f tende a +∞ e não tem máximo. A IV é falsa porque Im(f)=IR. A V é falsa porque f decresce em [-4b,-3b]. A VI é falsa porque f não é injetora e não tem inversa.",
+  "judge_reference": {
+    "reference_solution": "**Leitura do gráfico** (conferi na figura ampliada a 300 dpi)\n\nOrdem das marcas no eixo x: −5b < −4b < −3b < −2b < −a < 0 < a < b < 5a/2 < 2b < 4a < 6a. Para isso é preciso a, b > 0 e 5a/4 < b < 2a. Pela figura, b ≈ 1,5a, e todas as marcas ficam nas posições esperadas.\n\nTrechos do gráfico:\n1. Em ]−5b, −2b]: poligonal em zigue-zague. Sobe de (−5b, k), com bolinha aberta, até (−4b, 2k). Desce até (−3b, k). Sobe até (−2b, 2k), com bolinha fechada. Logo f(−2b) = 2k, e a imagem deste trecho é [k, 2k] (k é atingido em x = −3b).\n2. Em ]−2b, −a[: começa na bolinha aberta (−2b, 3k), é contínua e estritamente decrescente, com lim x→−a⁻ f(x) = −∞ (assíntota vertical x = −a, à direita do trecho). Imagem: ]−∞, 3k[. O valor 3k não é atingido neste trecho.\n3. Em [−a, a]: bolinha fechada em (−a, 5k/2) e segmento horizontal. Logo f(−a) = 5k/2.\n4. Em [a, 5a/2]: decresce continuamente de 5k/2 até o mínimo (5a/2, −k).\n5. Em [5a/2, 6a[: cresce continuamente. Passa por (4a, k/2), que é um ponto de inflexão onde a curva quase fica horizontal, e tem lim x→6a⁻ f(x) = +∞ (assíntota x = 6a). Imagem: [−k, +∞[.\n\nDomínio: A = ]−5b, −2b] ∪ ]−2b, −a[ ∪ [−a, 6a[ = ]−5b, 6a[.\nImagem: [k, 2k] ∪ ]−∞, 3k[ ∪ {5k/2} ∪ [−k, 5k/2] ∪ [−k, +∞[ = ℝ.\n\n**(I) A = ]−5b, 6a[ − {−a}: FALSA.**\nA bolinha fechada em (−a, 5k/2) mostra que f(−a) = 5k/2, então −a ∈ A. A assíntota x = −a só limita o trecho à sua esquerda, ]−2b, −a[. Ela não tira o ponto −a do domínio. Além disso, −2b ∈ A porque f(−2b) = 2k. Logo A = ]−5b, 6a[.\n\n**(II) ∃| x ∈ A tal que y = 3k: VERDADEIRA.**\n- Em x = −2b a bolinha em 3k é aberta, e f(−2b) = 2k.\n- No trecho ]−2b, −a[, f < 3k, porque 3k é só o supremo e não é atingido.\n- Nos trechos 1, 3 e 4, f ≤ 5k/2 < 3k.\n- No trecho 5, f é contínua e crescente, com f(5a/2) = −k < 3k e lim x→6a⁻ f(x) = +∞. Pelo Teorema do Valor Intermediário, existe x₀ ∈ ]4a, 6a[ com f(x₀) = 3k. Esse x₀ é único porque a função é estritamente crescente ali; após 4a ela já está acima de k/2 e sobe sem achatar.\n\nPortanto existe exatamente um x ∈ A com f(x) = 3k.\n\n**(III) O valor máximo de f é 3k: FALSA.**\nf não é limitada superiormente, pois f → +∞ quando x → 6a⁻. Então f não tem valor máximo. Além disso, f assume valores maiores que 3k, por exemplo perto de 6a.\n\n**(IV) Im = [−k, 3k[: FALSA.**\nO trecho 2 já fornece ]−∞, 3k[, que inclui valores menores que −k. O trecho 5 fornece [−k, +∞[. Logo Im(f) = ℝ.\n\n**(V) Se x ∈ ]−5b, −2b], então f é crescente: FALSA.**\nEm [−4b, −3b] a função decresce de 2k para k. Por exemplo, f(−4b) = 2k > k = f(−3b), embora −4b < −3b. Ela só é crescente nos subintervalos ]−5b, −4b] e [−3b, −2b].\n\n**(VI) As assíntotas de f⁻¹ serão y = −a e y = 6a: FALSA.**\nf não é injetora, então f⁻¹ não existe como função. Exemplos: f(−4b) = f(−2b) = 2k, e f vale 5k/2 em todo o intervalo [−a, a]. Note que f é sobrejetora, já que Im = ℝ = contradomínio, mas não é bijetora. A ideia de \"refletir as assíntotas verticais x = −a e x = 6a nas horizontais y = −a e y = 6a\" só valeria se a inversa existisse.\n\n**Conclusão:** só a afirmativa (II) é verdadeira. Alternativa **b**.",
+    "final_answer": "Só a afirmativa (II) é verdadeira; as outras são falsas.\n- (I) F: −a ∈ A, pois f(−a) = 5k/2. Logo A = ]−5b, 6a[.\n- (II) V: o valor 3k é atingido exatamente uma vez, em x₀ ∈ ]4a, 6a[, no ramo crescente que tende a +∞.\n- (III) F: f não tem máximo.\n- (IV) F: Im = ℝ.\n- (V) F: f decresce em [−4b, −3b].\n- (VI) F: f não é injetora, então f⁻¹ não existe.\n\nAlternativa **b) apenas uma afirmativa é verdadeira**.",
+    "pitfalls": [
+      "(II): achar que y = 3k não é atingido por causa da bolinha aberta em (−2b, 3k). Ela só exclui o ponto x = −2b daquele ramo. O último ramo é contínuo, vai de −k a +∞ quando x → 6a⁻ e corta y = 3k exatamente uma vez. A justificativa precisa usar o TVI e a monotonia estrita.",
+      "(II): também é preciso provar a unicidade. Os outros ramos ficam abaixo de 3k: o ramo ]−2b, −a[ tem supremo 3k que não é atingido, e os demais ficam em ≤ 5k/2. E f(−2b) = 2k, não 3k.",
+      "(I): confundir a assíntota x = −a com a exclusão de −a do domínio. A bolinha fechada em (−a, 5k/2) define f(−a). Logo A = ]−5b, 6a[, sem retirar ponto algum (−2b também pertence a A, com f(−2b) = 2k).",
+      "(III): o supremo/limite 3k do segundo ramo não é máximo, e f nem tem máximo, pois é ilimitada superiormente perto de x = 6a.",
+      "(IV): esquecer o ramo que vai a −∞ perto de x = −a e o ramo que vai a +∞ perto de x = 6a. A imagem é ℝ, não [−k, 3k[.",
+      "(V): o zigue-zague não é monótono. Ele decresce em [−4b, −3b]; 'crescente' só vale por partes.",
+      "(VI): aplicar mecanicamente 'assíntota vertical x = c vira horizontal y = c na inversa' sem verificar se f é inversível. f não é injetora (f(−4b) = f(−2b) = 2k; f é constante em [−a, a]), então f⁻¹ não existe. f é sobrejetora (Im = ℝ), mas não bijetora.",
+      "Interpretação: 'assíntotas à direita do traçado em cada intervalo' quer dizer que x = −a e x = 6a limitam pela direita os ramos ]−2b, −a[ e [5a/2, 6a[ (limites laterais à esquerda: −∞ e +∞, respectivamente).",
+      "Coerência da figura: a ordem das marcas exige 5a/4 < b < 2a (pela figura, b ≈ 1,5a). Isso não altera nenhuma conclusão, mas garante, por exemplo, que −2b < −a."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "(B) apenas uma afirmativa é verdadeira. Só a II vale: existe um único x com f(x)=3k, em ]5a/2, 6a[. A I é falsa porque -a pertence a A (f(-a)=5k/2). A III é falsa porque f tende a +∞ e não tem máximo. A IV é falsa porque Im(f)=IR. A V é falsa porque f decresce em [-4b,-3b]. A VI é falsa porque f não é injetora e não tem inversa.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na leitura do gráfico, o candidato primeiro diz que f(−5b) não está definido (bolinha aberta) e logo depois escreve que a função sobe 'em [−5b,−4b]', com intervalo fechado. A notação se contradiz e deveria ser ]−5b,−4b]."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (II), a justificativa de f(x) < 3k em ]−2b,−a[ ('porque o ponto (−2b,3k) está excluído e f(−2b)=2k') não basta: excluir o ponto inicial não impede, sozinho, que o valor 3k apareça em outro ponto do ramo. O argumento correto é que f é estritamente decrescente em ]−2b,−a[ e 3k é o limite quando x→−2b⁺. Assim 3k é o supremo do ramo e não é atingido. A monotonia foi citada na leitura do gráfico, mas não foi usada explicitamente nesse passo."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não localiza o ponto x₀ em que f(x₀)=3k; poderia dizer que x₀ ∈ ]4a,6a[, já que f(4a)=k/2<3k. Também não deixa explícito que as comparações 2k<3k e 5k/2<3k usam k>0, o que se lê na figura. Nada disso afeta a conclusão."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não comenta como interpretou 'assíntotas à direita do traçado em cada intervalo', isto é, que x=−a e x=6a limitam pela direita os ramos ]−2b,−a[ e [5a/2,6a[. Também não comenta a ordem das marcas no eixo x (por exemplo, −2b<−a), que a leitura usa sem dizer. O efeito é só na completude da exposição."
+          }
+        ],
+        "summary": "Conferi o enunciado e a figura no PDF original, inclusive com ampliação a 400 dpi. A transcrição está fiel. Bolinhas abertas em (−5b,k) e (−2b,3k). Bolinhas fechadas em (−2b,2k) e (−a,5k/2). Há um mínimo em (5a/2,−k), o gráfico passa por (4a,k/2) e as assíntotas são x=−a, com f→−∞, e x=6a, com f→+∞.\n\nA resposta do candidato coincide com a minha referência item por item:\n- (I) F: f(−a)=5k/2, logo A=]−5b,6a[.\n- (II) V: 3k é atingido uma única vez no último ramo, que é contínuo, estritamente crescente e vai de −k a +∞. Os demais ramos ficam abaixo de 3k.\n- (III) F: f não tem máximo.\n- (IV) F: Im=ℝ.\n- (V) F: o contraexemplo f(−4b)=2k>f(−3b)=k mostra que f não é crescente no intervalo.\n- (VI) F: f não é injetora, pois f(−4b)=f(−2b) e f é constante em [−a,a], então f⁻¹ não existe.\n\nAlternativa b. As duas resoluções estão corretas.\n\nTodas as armadilhas foram tratadas:\n- a bolinha aberta em 3k frente ao Teorema do Valor Intermediário (TVI) com monotonia no último ramo;\n- a unicidade em (II), verificada ramo a ramo;\n- assíntota não é exclusão do domínio;\n- supremo não é máximo, e f é ilimitada;\n- os ramos que vão a ±∞ na imagem;\n- o zigue-zague não é monótono;\n- a inversa não existe.\n\nA redação é clara e organizada. Os problemas são pequenos:\n- a notação [−5b,−4b] contradiz a bolinha aberta;\n- em (II), a justificativa de f<3k no ramo ]−2b,−a[ deveria usar a monotonia estrita e não apenas a exclusão do ponto;\n- faltam detalhes opcionais, como localizar x₀∈]4a,6a[, usar k>0 explicitamente e dizer como interpretou 'assíntotas à direita'.\n\nA resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

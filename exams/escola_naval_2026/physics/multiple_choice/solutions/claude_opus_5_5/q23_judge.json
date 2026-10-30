@@ -1,0 +1,44 @@
+{
+  "question": 23,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(B) 0,50 V. Pelo gráfico, R0 = 10 Ω e Pmax = 0,025 W. Então U² = Pmax·R = 0,25 V², logo U = 0,50 V (= ε/2, com ε = 1,0 V).",
+  "judge_reference": {
+    "final_answer": "A tensão no resistor quando a potência é máxima vale U = 0,50 V. Alternativa (B).\n\nPelo gráfico, R₀ = 10 Ω e P_máx = 0,025 W. Daí U = √(P·R) = √(0,025·10) = 0,50 V. A fem vale ε = 2U = 1,0 V e a corrente vale i = 0,05 A.",
+    "reference_solution": "**Questão 23: resolução de referência**\n\nConferi o enunciado na prova original (pág. 10/18 da prova AMARELA). A transcrição está fiel. O gráfico mostra o pico da curva exatamente na interseção da linha de grade R = 10 Ω com a linha P = 0,025 W.\n\n**1) Leitura do gráfico**\n- O máximo da curva está em R = 10 Ω. Pelo próprio enunciado, a potência é máxima quando R = R₀, logo R₀ = 10 Ω.\n- A potência máxima é P_máx = 0,025 W.\n\n**2) Tensão no resistor R no ponto de máximo**\nA potência dissipada em R é P = U²/R. Daí U = √(P·R) = √(0,025 · 10) = √0,25 = 0,50 V.\n\n**3) Verificação pelo modelo do circuito**\n- Corrente: i = ε/(R + R₀).\n- Potência em R: P(R) = ε²R/(R + R₀)².\n- Derivando: dP/dR = ε²(R₀ − R)/(R + R₀)³. A derivada se anula em R = R₀, o que confirma a informação dada.\n- No máximo: P_máx = ε²/(4R₀), então 0,025 = ε²/40, o que dá ε² = 1 e ε = 1,0 V.\n- Com R = R₀, a fem se divide igualmente entre R₀ e R. Assim U_R = ε/2 = 0,50 V, que bate com o item 2.\n- Corrente no máximo: i = ε/(2R₀) = 1/20 = 0,05 A. Conferindo: U = iR = 0,05 · 10 = 0,50 V e P = U·i = 0,5 · 0,05 = 0,025 W.\n\n**4) Coerência com o resto da curva (ε = 1 V, R₀ = 10 Ω)**\n\n| R (Ω) | P (W) |\n|---|---|\n| 20 | 20/900 ≈ 0,0222 |\n| 30 | 30/1600 ≈ 0,0188 |\n| 40 | 40/2500 = 0,016 |\n| 50 | 50/3600 ≈ 0,0139 |\n\nEsses valores batem com o gráfico, que mostra cerca de 0,014 W em 50 Ω. Isso confirma a leitura R₀ = 10 Ω e P_máx = 0,025 W.\n\n**Resposta:** U = 0,50 V, alternativa **(B)**.",
+    "pitfalls": [
+      "Confundir a tensão em R com a fem: ε = 1,0 V (alternativa C) é distrator. No máximo, R = R₀ e a tensão em R vale só ε/2.",
+      "Parar em U² = P·R = 0,25 e marcar 0,25 (alternativa A), esquecendo de tirar a raiz quadrada.",
+      "Ler mal o gráfico: o máximo está em R = 10 Ω, não em outro ponto da grade, e P_máx = 0,025 W. Uma leitura errada de R₀ ou de P_máx muda tudo.",
+      "Usar P_máx = ε²/R₀ (sem o fator 4) para achar ε dá ε ≈ 0,5 V e U = 0,25 V, que é errado. O certo é P_máx = ε²/(4R₀).",
+      "Achar a tensão terminal pela fem inteira: com R = R₀, metade da fem cai na resistência interna.",
+      "Uma boa resolução deve justificar que R₀ = 10 Ω vem da condição de máximo dada (R = R₀). Opcionalmente, pode conferir com P(R) = ε²R/(R+R₀)² em outro ponto da curva, por exemplo P(50) ≈ 0,014 W.",
+      "Unidades: 0,025 W·10 Ω = 0,25 V², então U = 0,5 V. A corrente é 0,05 A, não 0,5 A."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(B) 0,50 V. Pelo gráfico, R0 = 10 Ω e Pmax = 0,025 W. Então U² = Pmax·R = 0,25 V², logo U = 0,50 V (= ε/2, com ε = 1,0 V).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Diz que P(50 Ω) ≈ 0,014 W é 'exatamente o valor lido na extremidade direita da curva'. A leitura do gráfico nesse ponto é aproximada: a curva fica um pouco abaixo de 0,015 W e não cai sobre nenhuma linha de grade. Melhor escrever 'compatível com o valor lido (≈ 0,014 W)'."
+          },
+          {
+            "severity": "minor",
+            "description": "Chama a condição R = R₀ de 'teorema da máxima transferência de potência' sem deduzi-la. Isso é aceitável, porque o enunciado dá essa condição. Num gabarito comentado, porém, uma linha mostrando dP/dR = ε²(R₀ − R)/(R + R₀)³ = 0 deixaria o resultado autocontido. É opcional."
+          }
+        ],
+        "summary": "Conferi o enunciado na prova original (pág. 10/18, prova AMARELA) e a transcrição está fiel. O pico da curva fica sobre a interseção das linhas de grade R = 10 Ω e P = 0,025 W.\n\nA resposta do candidato é (B) 0,50 V, igual à minha referência, e está correta. Ele lê no gráfico R₀ = 10 Ω, justificando pela condição de máximo dada no enunciado, e P_máx = 0,025 W. Depois calcula U = √(P·R) = √0,25 = 0,50 V, com análise dimensional (W·Ω = V²).\n\nEle também confere o resultado pelo modelo do circuito:\n- Com R = R₀, a tensão em R vale U = ε/2. Daí ε = 1,0 V, e P_máx = ε²/(4R₀) = 0,025 W confere.\n- Testa outro ponto da curva: P(50 Ω) = 50/3600 ≈ 0,014 W, compatível com o gráfico.\n- Calcula a corrente certa, i = 0,050 A.\n\nTodas as armadilhas foram tratadas:\n- Não confunde U com a fem; diz explicitamente que 1,0 V é ε.\n- Tira a raiz de 0,25; não para em 0,25.\n- Usa o fator 4 em P_máx = ε²/(4R₀).\n- Explica que metade da fem cai na resistência interna.\n- Acerta as unidades e a ordem de grandeza da corrente.\n\nA exposição é clara e organizada e serve como gabarito comentado. Os únicos reparos são de redação: o 'exatamente' aplicado a uma leitura aproximada do gráfico e a falta, opcional, de uma linha deduzindo a condição de máximo."
+      }
+    }
+  ]
+}

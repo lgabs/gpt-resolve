@@ -1,0 +1,45 @@
+{
+  "question": 39,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A resposta é (E): (t2 − t1)/t2 = C_B·(T_eq − T_i,B)/[C_A·|T_eq − T_i,A|]. Como o calor flui a taxa constante P, A cede C_A·(T_i,A − T_eq) = P·t2. B recebe o calor de 0 a t1 sem mudar de temperatura (está fundindo, calor latente) e só depois aquece, com C_B·(T_eq − T_i,B) = P·(t2 − t1). Dividindo uma equação pela outra, P se cancela.",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura (conferida no original, pág. 17/18 do caderno)**\n- A (linha contínua) cai linearmente de T_{i,A} em t = 0 até T_eq em t₂. Logo A cede calor durante todo o intervalo [0, t₂].\n- B (linha tracejada) fica constante em T_{i,B} de 0 a t₁ e depois sobe linearmente até T_eq em t₂.\n- Para t > t₂, o sistema fica em T_eq.\n\n**Modelo físico**\nO calorímetro é isolado, e o enunciado diz que todo o calor cedido por A é absorvido por B a uma taxa constante P, a mesma para os dois.\n\n1) **Substância A, intervalo [0, t₂]:** A não muda de fase (a temperatura varia linearmente o tempo todo). Então\n Q_A = C_A·(T_{i,A} − T_eq) = P·t₂ ⇒ t₂ = C_A·(T_{i,A} − T_eq)/P.\n Como T_{i,A} > T_eq, vale T_{i,A} − T_eq = |T_eq − T_{i,A}|.\n\n2) **Substância B, intervalo [0, t₁]:** B é sólida, recebe calor à taxa P e mesmo assim sua temperatura não muda. Isso só é possível se B estiver mudando de fase (fusão) em T_{i,B}. O calor recebido, P·t₁ = m_B·L_B, é calor latente e não entra em C_B·ΔT.\n\n3) **Substância B, intervalo [t₁, t₂]:** só há aquecimento sensível de B (já fundida), de T_{i,B} até T_eq:\n C_B·(T_eq − T_{i,B}) = P·(t₂ − t₁) ⇒ t₂ − t₁ = C_B·(T_eq − T_{i,B})/P.\n\n4) **Razão pedida:** dividindo as duas expressões, P se cancela:\n (t₂ − t₁)/t₂ = C_B·(T_eq − T_{i,B}) / [C_A·(T_{i,A} − T_eq)] = C_B·(T_eq − T_{i,B}) / [C_A·|T_eq − T_{i,A}|].\n\nIsso é exatamente a alternativa (E).\n\n**Outra forma, pelas inclinações:** dT_A/dt = −P/C_A e dT_B/dt = +P/C_B (para t > t₁). Então\n t₂ = (T_{i,A} − T_eq)·C_A/P e t₂ − t₁ = (T_eq − T_{i,B})·C_B/P,\no que dá o mesmo resultado.\n\n**Verificações**\n- A razão é menor que 1, como deve ser, porque C_A(T_{i,A} − T_eq) = C_B(T_eq − T_{i,B}) + m_B·L_B. Ou seja, A cede mais calor do que B usa só para aquecer; a diferença foi gasta na fusão.\n- Exemplo numérico (Python): C_A = 200 J/K, T_{i,A} = 80, T_eq = 20, T_{i,B} = 0, C_B = 150 J/K, P = 100 W. Resulta t₂ = 120 s, t₂ − t₁ = 30 s, razão 0,25 e calor latente 9000 J. A fórmula (E) dá 0,25; a (B) dá 2,25.\n- Invariância de escala: a razão de tempos não pode depender da origem da escala de temperatura, então só pode conter diferenças de temperatura. Somando 273 a todas as temperaturas, (E) continua 0,25, enquanto (C) e (D) mudam (D passa de 0,25 para 3,66).\n\n**Eliminação das outras alternativas**\n- (A) usa T_{i,A} − T_{i,B} e T_eq sozinha: está errada e depende da escala.\n- (B) é a fórmula correta com as diferenças de temperatura trocadas entre C_B e C_A.\n- (C) e (D) usam T_eq sozinha, o que depende da escala. A (D) só coincide com a resposta no caso particular T_{i,B} = 0 (na escala usada).\n\nResposta: **(E)**.",
+    "final_answer": "(E): (t₂ − t₁)/t₂ = C_B·(T_eq − T_{i,B}) / [C_A·|T_eq − T_{i,A}|]. Vem de P·t₂ = C_A(T_{i,A} − T_eq), já que A cede calor de 0 a t₂, e de P·(t₂ − t₁) = C_B(T_eq − T_{i,B}), já que B só aquece de t₁ a t₂ (de 0 a t₁ ela funde, absorvendo calor latente).",
+    "pitfalls": [
+      "O patamar de B entre 0 e t₁ não quer dizer que B não recebe calor. Pelo enunciado, a taxa é a mesma e constante desde t = 0. B (sólida) está fundindo e absorve calor latente P·t₁, que não entra em C_B·ΔT. Quem imagina que A só começa a ceder calor em t₁ erra a equação de A.",
+      "A cede calor durante todo o intervalo [0, t₂], por isso o tempo associado a C_A é t₂ e não t₂ − t₁. B só aquece sensivelmente durante t₂ − t₁.",
+      "Sinal e módulo: T_eq − T_{i,A} < 0, por isso as alternativas usam |T_eq − T_{i,A}| = T_{i,A} − T_eq. Uma boa resolução justifica o módulo.",
+      "A taxa P é a mesma para os dois corpos e se cancela na razão. Pelas inclinações: dT_A/dt = −P/C_A e dT_B/dt = P/C_B.",
+      "A alternativa (B) é a armadilha da inversão: as mesmas grandezas, mas com as diferenças de temperatura trocadas entre os C. Vale conferir que a razão dá menor que 1, o que é coerente com o calor latente: C_A(T_{i,A} − T_eq) = C_B(T_eq − T_{i,B}) + m_B·L_B.",
+      "(C) e (D) usam T_eq sozinha. Isso é dimensionalmente consistente, mas depende da origem da escala (°C ou K). Uma razão de tempos só pode conter diferenças de temperatura. A (D) coincide numericamente com a (E) quando T_{i,B} = 0 (por exemplo, gelo a 0 °C), o que pode enganar quem testa com números.",
+      "C_B deve ser entendida como a capacidade térmica de B na fase em que ela está entre t₁ e t₂ (após a fusão). O enunciado idealiza isso usando um único C_B; a resolução não deve usar a capacidade do sólido no trecho do patamar.",
+      "Hipóteses necessárias: calorímetro ideal (sem perdas e sem capacidade térmica própria), taxa constante e capacidades térmicas constantes. A não muda de fase, porque sua temperatura varia linearmente o tempo todo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A resposta é (E): (t2 − t1)/t2 = C_B·(T_eq − T_i,B)/[C_A·|T_eq − T_i,A|]. Como o calor flui a taxa constante P, A cede C_A·(T_i,A − T_eq) = P·t2. B recebe o calor de 0 a t1 sem mudar de temperatura (está fundindo, calor latente) e só depois aquece, com C_B·(T_eq − T_i,B) = P·(t2 − t1). Dividindo uma equação pela outra, P se cancela.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Algumas hipóteses idealizadoras ficam implícitas: calorímetro de capacidade térmica desprezível e capacidades C_A e C_B constantes. A linearidade dos gráficos sustenta essas hipóteses, mas a resolução não chega a dizer isso. Basta uma linha como 'calorímetro ideal, sem capacidade térmica própria; C constantes, coerente com os trechos retilíneos'."
+          },
+          {
+            "severity": "minor",
+            "description": "Na exclusão de (B), o argumento é só qualitativo ('não representa os calores trocados por cada corpo'). Um contraexemplo numérico, por exemplo C_A = 200, C_B = 150, T_{i,A} = 80, T_eq = 20, T_{i,B} = 0, dá (E) = 0,25 e (B) = 2,25 > 1. Ele tornaria a eliminação mais convincente e mostraria que (B) pode até violar a restrição razão < 1."
+          }
+        ],
+        "summary": "Conferi a figura no original (pág. 10 do PDF, pág. 17/18 do caderno). A descrição bate com a transcrição: A cai linearmente de T_{i,A} até T_eq em [0, t₂]; B fica em patamar em T_{i,B} até t₁ e depois sobe até T_eq em t₂. A resposta do candidato é a alternativa (E), a mesma da minha referência, e está correta. Também conferi numericamente: t₂ = 120 s, t₂ − t₁ = 30 s, razão 0,25, igual ao valor da fórmula (E).\n\nA resolução trata todas as armadilhas relevantes:\n- A taxa P é a mesma e constante em todo o intervalo [0, t₂], e o candidato tira isso do enunciado.\n- A cede calor desde t = 0, então C_A(T_{i,A} − T_eq) = P·t₂, e não P·(t₂ − t₁).\n- O patamar de B é interpretado como fusão, com calor latente P·t₁ = m_B·L_B, fora do termo C_B·ΔT.\n- C_B é entendida como a capacidade de B na etapa posterior à mudança de fase.\n- O módulo |T_eq − T_{i,A}| = T_{i,A} − T_eq é justificado porque A esfria.\n- P se cancela na divisão.\n\nAs verificações estão boas: unidades, razão entre 0 e 1 justificada pelo calor latente, e o caso t₁ = 0, que recai no balanço usual. A eliminação também está correta: (A), (C) e (D) dependem da origem da escala, porque contêm T_eq isolada, e (B) troca as variações de temperatura entre C_A e C_B.\n\nOs problemas são só de acabamento: algumas hipóteses idealizadoras ficam implícitas (calorímetro sem capacidade térmica, C constantes) e falta um contraexemplo numérico contra (B). A resolução é clara, rigorosa e completa, e poderia ser publicada como gabarito comentado."
+      }
+    }
+  ]
+}

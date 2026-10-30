@@ -1,0 +1,49 @@
+{
+  "question": 12,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "(E) 27π. As curvas se cruzam em x = 2 e x = 4, e entre esses pontos x² ≥ 2^x. Pelo método das arruelas, V = π∫₂⁴ (x⁴ − 4^x) dx = π(198,4 − 120/ln 2). Com ln 2 ≅ 0,7, V ≅ 26,97π ≅ 27π. Com o valor mais preciso ln 2 ≅ 0,693, V ≅ 25,3π; a alternativa (E) só sai usando o dado da prova.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (pág. 4/12, Questão 12): f(x)=2^x, g(x)=x², rotação em torno do eixo x, x∈[0;5), dado ln 2 ≅ 0,7, alternativas 17π, 19π, 21π, 24π e 27π. A prova não traz figura para esta questão.\n\n**1) Pontos de interseção.** Resolvemos 2^x = x².\n- x = 2: 2² = 4 = 2². ✔\n- x = 4: 2⁴ = 16 = 4². ✔\n- Existe ainda uma raiz negativa, x ≈ −0,7667, que fica fora de [0;5) e por isso é descartada.\n\nEm [0;5) não há outras raízes. Seja h(x) = 2^x − x². Temos h(0)=1>0, h(2)=0, h(3)=8−9<0, h(4)=0 e h(5)=32−25>0. Conferência numérica por bisseção: as raízes são −0,76666…, 2 e 4.\n\nLogo, dentro do intervalo dado, a região limitada pelas duas curvas é a faixa entre x = 2 e x = 4. Nas faixas [0,2] e [4,5) as curvas não se fecham uma sobre a outra (em x=0, por exemplo, f(0)=1 e g(0)=0), então não formam região limitada pelas interseções.\n\n**2) Qual curva fica por cima em [2,4].** Em x=3: g(3)=9 > f(3)=8. Portanto x² ≥ 2^x ≥ 1 > 0 em [2,4]. A curva de cima é g e a de baixo é f, ambas positivas.\n\n**3) Volume pelo método das arruelas.** Ao girar em torno do eixo x, cada seção é uma coroa circular com raio externo R = x² e raio interno r = 2^x:\n\nV = π∫₂⁴ [(x²)² − (2^x)²] dx = π∫₂⁴ (x⁴ − 4^x) dx.\n\n- ∫₂⁴ x⁴ dx = (4⁵ − 2⁵)/5 = (1024 − 32)/5 = 992/5 = 198,4\n- ∫₂⁴ 4^x dx = (4⁴ − 4²)/ln 4 = (256 − 16)/(2 ln 2) = 240/(2 ln 2)\n\nCom ln 2 ≅ 0,7, temos ln 4 ≅ 1,4 e 240/1,4 ≅ 171,43.\n\nV ≅ π(198,4 − 171,43) ≅ 26,97π ≈ **27π**.\n\n**Observação numérica.** Com ln 2 exato (0,6931…), V = π(198,4 − 120/ln 2) ≈ 25,28π, valor que também conferi por quadratura numérica (25,2766π). Ele fica entre 24π e 27π e está até mais perto de 24π. A alternativa esperada só aparece com a aproximação dada pela banca (ln 2 ≅ 0,7), que o enunciado manda usar. Resultado: **27π**, alternativa (E).",
+    "final_answer": "V = π∫₂⁴ (x⁴ − 4^x) dx = π[992/5 − 240/(2 ln 2)] ≅ π(198,4 − 171,4) ≅ 27π, usando ln 2 ≅ 0,7. Alternativa (E) 27π.",
+    "pitfalls": [
+      "Achar as interseções que estão em [0;5): x=2 e x=4. Também existe a raiz negativa x≈−0,767, que o intervalo [0;5) descarta. Uma boa resolução justifica que não há outra raiz no intervalo, por exemplo pelos sinais de 2^x − x² em 0, 3 e 5.",
+      "Entender que a região limitada pelas interseções é só a faixa 2≤x≤4. O intervalo [0;5) serve apenas para escolher as raízes. Integrar |x⁴ − 4^x| em todo o [0,5) daria um valor bem maior (cerca de 163π) e está errado.",
+      "Identificar corretamente qual curva fica por cima em (2,4): x² > 2^x (por exemplo, em x=3, 9 > 8). O raio externo é x² e o interno é 2^x.",
+      "Usar arruelas, π∫(R² − r²)dx, e não π∫(R − r)²dx. O segundo cálculo dá cerca de 1,12π e não corresponde a nenhuma alternativa.",
+      "Elevar ao quadrado corretamente: (2^x)² = 4^x, não 2^(x²), e (x²)² = x⁴. A primitiva de 4^x é 4^x/ln 4 = 4^x/(2 ln 2).",
+      "Usar a aproximação dada ln 2 ≅ 0,7, ou seja ln 4 ≅ 1,4. Com ln 2 exato o volume é ≈25,28π, mais próximo de 24π (D). Quem usar 0,693 pode marcar D por engano. A resposta esperada, 27π (E), vem de 198,4 − 240/1,4 ≈ 26,97.",
+      "Não confundir volume com área: a área entre as curvas é 56/3 − 12/ln 2 ≈ 1,35, e multiplicá-la por π ou 2π não dá o volume.",
+      "Conferir o sinal no final: o resultado tem de ser positivo (198,4 > 171,4). Se o candidato inverter os raios, obtém um valor negativo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "(E) 27π. As curvas se cruzam em x = 2 e x = 4, e entre esses pontos x² ≥ 2^x. Pelo método das arruelas, V = π∫₂⁴ (x⁴ − 4^x) dx = π(198,4 − 120/ln 2). Com ln 2 ≅ 0,7, V ≅ 26,97π ≅ 27π. Com o valor mais preciso ln 2 ≅ 0,693, V ≅ 25,3π; a alternativa (E) só sai usando o dado da prova.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na 'Conferência', o candidato diz que o integrando x⁴ − 4^x vale no máximo 81 − 64 = 17, em x = 3. Isso é falso. Em x = 3 a derivada é 4·27 − 64·ln 4 ≈ 19,3 > 0, e o máximo em [2,4] fica em x ≈ 3,43, com valor ≈ 22,25. A cota V < 34π não sai desse argumento: a cota honesta seria 2·22,25 ≈ 44,5π. A conclusão continua verdadeira, já que V ≈ 25,3π com ln 2 exato e ≈ 26,97π com ln 2 ≅ 0,7. O erro fica numa verificação auxiliar e não afeta a resolução principal, mas é uma afirmação matemática falsa num texto que se quer gabarito. O certo seria localizar o máximo pela derivada, 4x³ = 4^x·ln 4, ou usar uma cota grosseira válida, por exemplo x⁴ − 4^x < 4⁴ − 4² = 240 em [2,4]. Outra saída é simplesmente omitir esse comentário."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não diz explicitamente por que as faixas [0,2] e [4,5) ficam de fora. Ele afirma que as curvas só se cruzam em 2 e 4 e conclui direto qual é a região. Faltou uma frase dizendo que o intervalo [0;5) serve só para escolher as raízes e que nessas faixas as curvas não fecham região limitada pelas interseções (por exemplo, em x=0, f(0)=1 e g(0)=0). A interpretação adotada está correta."
+          },
+          {
+            "severity": "minor",
+            "description": "A observação sobre a sensibilidade a ln 2 está correta (≈25,3π com ln 2 ≅ 0,693), mas não diz que esse valor está mais perto de 24π (D) que de 27π (E). É exatamente essa a armadilha da questão. Dizer isso deixaria mais claro por que o dado ln 2 ≅ 0,7 é decisivo para chegar à alternativa (E)."
+          }
+        ],
+        "summary": "Conferi a transcrição com o original (pág. 4/12, Questão 12) e ela está correta. A resposta do candidato, (E) 27π, coincide com a da referência e está certa. Com ln 2 ≅ 0,7, V = π(198,4 − 120/0,7) ≈ 26,97π. Com ln 2 exato, dá ≈ 25,28π, confirmado numericamente.\n\nO argumento principal é rigoroso e, em um ponto, melhor que o da referência. Para provar que, em x > 0, só há as raízes x=2 e x=4, o candidato usa a convexidade estrita de h(x) = x ln 2 − 2 ln x, já que h'' = 2/x² > 0. Ele também descarta a raiz negativa e mostra que x² ≥ 2^x > 0 em [2,4] pelo teste em x=3.\n\nAs demais armadilhas foram evitadas:\n- método das arruelas com R = x² e r = 2^x;\n- quadrado feito corretamente, (2^x)² = 4^x;\n- primitiva correta, 4^x/(2 ln 2);\n- conta 992/5 = 198,4 certa;\n- dado ln 2 ≅ 0,7 aplicado;\n- sinal positivo conferido.\n\nO único erro matemático está na verificação auxiliar. Ali o candidato afirma que o máximo do integrando é 17, em x=3, quando na verdade é ≈ 22,25, em x ≈ 3,43. A cota V < 34π, portanto, não está justificada, embora seja verdadeira. Além disso, faltam duas observações:\n- dizer explicitamente que as faixas [0,2] e [4,5) não entram na região;\n- notar que o valor com ln 2 exato aponta para (D).\n\nSão falhas menores numa resolução que, no resto, está clara e completa. Nota 9."
+      }
+    }
+  ]
+}

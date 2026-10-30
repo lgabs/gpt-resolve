@@ -1,0 +1,49 @@
+{
+  "question": 19,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "(D) T_{i,2} - T_{i,1} = 1/(4·α1). Para os centros coincidirem, os raios finais precisam ser iguais: 0,8R[1+α1(Tf−Ti1)] = R[1+0,8α1(Tf−Ti2)]. Como α2 = 0,8α1, a temperatura final Tf se cancela e sobra 0,8α1(Ti2−Ti1) = 0,2.",
+  "judge_reference": {
+    "final_answer": "T_{i,2} − T_{i,1} = 1/(4·α₁). Alternativa (D). O resultado não depende da temperatura final de equilíbrio, porque α₂R₂ = α₁R₁.",
+    "reference_solution": "**1) Leitura da figura e da geometria.** O anel 2 (pontilhado) aparece de frente: é uma circunferência de centro C₂ e raio R₂ = R. O anel 1 (contínuo) é perpendicular ao plano do anel 2 e por isso aparece como uma elipse. Seu raio, medido de C₁ até a extremidade, vale R₁ = 0,8R. As extremidades do diâmetro do anel 1 que fica no plano do anel 2 tocam o anel 2. Então esse diâmetro é uma corda do anel 2, de comprimento 2R₁.\n\nA distância de C₂ a essa corda é d = √(R₂² − R₁²) = √(R² − 0,64R²) = 0,6R. Por isso C₁ fica 0,6R abaixo de C₂. Esse valor só confirma que a figura é coerente; não entra na conta.\n\nOs centros só coincidem quando d = 0, ou seja, quando a corda vira um diâmetro do anel 2. Isso exige que, no equilíbrio, os raios sejam iguais: R₁,f = R₂,f. É exatamente o que o enunciado diz (\"os raios dos dois anéis são praticamente iguais\").\n\n**2) Dilatação linear.** Seja T_f a temperatura final comum, que é desconhecida porque também há troca de calor com o meio. Cada raio é um comprimento, então segue L = L₀(1 + αΔT), com L₀ medido na temperatura inicial do próprio anel:\n\n- R₁,f = 0,8R·[1 + α₁(T_f − T_{i,1})]\n- R₂,f = R·[1 + α₂(T_f − T_{i,2})], com α₂ = 0,8α₁\n\n**3) Condição de equilíbrio.** Igualando os raios:\n\n0,8R[1 + α₁(T_f − T_{i,1})] = R[1 + 0,8α₁(T_f − T_{i,2})]\n\n0,8 + 0,8α₁T_f − 0,8α₁T_{i,1} = 1 + 0,8α₁T_f − 0,8α₁T_{i,2}\n\nO termo 0,8α₁T_f aparece dos dois lados e se cancela. Isso acontece porque α₂R₂ = 0,8α₁R = α₁R₁. Sobra:\n\n0,8α₁(T_{i,2} − T_{i,1}) = 1 − 0,8 = 0,2\n\nT_{i,2} − T_{i,1} = 0,2/(0,8α₁) = 1/(4α₁)\n\n**4) Conferências.**\n- O resultado é positivo, o que está de acordo com T_{i,2} > T_{i,1}. Fisicamente, o anel 2, que está mais quente, se contrai e/ou o anel 1, mais frio, se dilata, até os raios ficarem iguais.\n- Verifiquei numericamente com T_f = −50, 0, 37 e 123 (α₁ = 10⁻³): em todos os casos α₁(T_{i,2} − T_{i,1}) = 1/4. Também dá o mesmo valor nos casos extremos \"só o anel 2 se contrai\" e \"só o anel 1 se dilata\".\n\n**Resposta: (D) 1/(4·α₁).**",
+    "pitfalls": [
+      "A condição física é que os raios fiquem iguais (R₁,f = R₂,f). A distância entre os centros (0,6R) não entra na conta. Quem tenta fazer a distância 0,6R 'sumir' por dilatação está usando o modelo errado.",
+      "A temperatura final T_f é desconhecida, já que os anéis também trocam calor com o meio. Uma boa resolução precisa mostrar que T_f se cancela, o que acontece porque α₂R₂ = α₁R₁ (0,8α₁·R = α₁·0,8R). Não se pode supor sem justificativa que T_f é a média das temperaturas ou que vale T_{i,1} ou T_{i,2}. Mesmo que essas hipóteses levem ao mesmo número, a justificativa correta é o cancelamento.",
+      "Os comprimentos iniciais devem ser tomados nas temperaturas iniciais de cada anel: 0,8R para o anel 1 a T_{i,1} e R para o anel 2 a T_{i,2}. Usar R como referência para os dois anéis estraga o cancelamento.",
+      "Não inverter a razão dos coeficientes: α₂ = 0,8α₁, e não α₁ = 0,8α₂. Com a razão invertida, T_f não se cancela e nenhuma alternativa pode ser justificada.",
+      "Use dilatação linear (com o raio ou o perímetro, tanto faz, pois o fator 2π se cancela). Não use coeficiente superficial (2α) nem volumétrico (3α); o anel é fino e o que importa é o raio.",
+      "Cuidado com a aritmética: 0,2/0,8 = 1/4. Inverter a fração dá 4/α₁ (alternativa A).",
+      "O sinal precisa ser coerente: T_{i,2} − T_{i,1} > 0, de acordo com o enunciado. O anel 2, que é maior e está mais quente, precisa 'encolher' em relação ao anel 1.",
+      "Observação de modelagem: α₁ΔT = 0,25 é uma variação de 25%, fora do regime em que L = L₀(1+αΔT) vale de fato. Mesmo assim, o modelo linear é o pretendido pela questão. Um modelo exponencial não daria o cancelamento de T_f."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "(D) T_{i,2} - T_{i,1} = 1/(4·α1). Para os centros coincidirem, os raios finais precisam ser iguais: 0,8R[1+α1(Tf−Ti1)] = R[1+0,8α1(Tf−Ti2)]. Como α2 = 0,8α1, a temperatura final Tf se cancela e sobra 0,8α1(Ti2−Ti1) = 0,2.",
+      "review": {
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "score": 9,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na seção de Hipóteses, a solução diz que a aproximação linear vale \"porque αΔT ≪ 1 em cada parcela\". Isso é falso dentro do próprio problema. Sejam x₁ = α₁(T_f − T_{i,1}) e x₂ = α₂(T_f − T_{i,2}). A condição de equilíbrio exige 0,8x₁ − x₂ = 0,2, e então pelo menos uma das parcelas tem |x| ≥ 0,2/1,8 ≈ 0,11. A própria solução admite isso depois, na ordem de grandeza (variação de 20% e ΔT ~ 2,5·10⁴ K), e o texto fica contraditório. O certo seria escrever desde o início que o modelo linear é uma idealização pedida pelo enunciado e não justificá-lo com αΔT ≪ 1."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação de sinal, a solução diz que o anel 1 ganha raio em relação ao anel 2 \"quando ele se aquece enquanto o anel 2 esfria\". Isso supõe T_{i,1} < T_f < T_{i,2}, o que não está garantido: há troca de calor com o meio, e a própria solução diz que T_f é desconhecido. O argumento certo usa só o que já foi mostrado: como r₁α₁ = r₂α₂, a diferença r₂ − r₁ cai de 0,8Rα₁(T_{i,2} − T_{i,1}), seja qual for T_f. Isso não afeta o resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "A notação \"os dois raios variam igualmente, Δr/ΔT\" está um pouco solta no meio da frase. Ficaria mais claro escrever dr/dT = r₀α, com o mesmo valor 0,8Rα₁ para os dois anéis."
+          }
+        ],
+        "summary": "A resposta do candidato está certa, (D) 1/(4α₁), e é a mesma da minha referência. Conferi o enunciado no PDF original e a transcrição está fiel.\n\n**Raciocínio**\n- A geometria está bem interpretada. O diâmetro 1,6R do anel 1 é uma corda do anel 2, a d = 0,6R de C₂. Os centros coincidem quando a corda vira diâmetro, ou seja, quando os raios finais são iguais. A distância 0,6R é calculada só para conferir a figura, sem entrar na conta.\n- O comprimento inicial de cada anel é tomado na sua própria temperatura: 0,8R a T_{i,1} e R a T_{i,2}.\n- A razão está usada no sentido certo, α₂ = 0,8α₁.\n- A temperatura final T_f é tratada como desconhecida, e a solução mostra explicitamente que ela se cancela. A justificativa física está correta: r₁α₁ = r₂α₂.\n- A aritmética está certa: 0,2/0,8 = 1/4.\n\n**Conferências do candidato**\n- Unidade e sinal conferidos.\n- A substituição de volta com T_f qualquer está correta.\n- O teste das demais alternativas está certo: 3,2; 0,8; 3,6; 0,4.\n- A observação de ordem de grandeza também está certa: α₁ ~ 10⁻⁵ K⁻¹ dá ΔT ~ 2,5·10⁴ K, e a variação de 20% é uma idealização.\n\nRefiz o cálculo numericamente para T_f = −50, 0, 37 e 123: α₁ΔT dá 0,25 em todos os casos. Todas as armadilhas que eu tinha listado foram tratadas.\n\n**Problemas (todos menores)**\n- Na seção de Hipóteses, a solução justifica o modelo linear com \"αΔT ≪ 1 em cada parcela\". Isso é falso aqui, porque pelo menos uma parcela passa de 0,11, e contradiz a própria observação final.\n- O comentário de sinal supõe que T_f fica entre T_{i,1} e T_{i,2}, o que não está garantido.\n- A notação \"Δr/ΔT\" está solta no meio da frase.\n\nCom pequenos ajustes de redação, dá para publicar como gabarito comentado. Nota: 9,0."
+      }
+    }
+  ]
+}

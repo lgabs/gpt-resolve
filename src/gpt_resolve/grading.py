@@ -201,5 +201,5 @@ async def grade_exam_async(
 
     results = [r for r in await asyncio.gather(*(run(n) for n in numbers)) if r]
     report = write_grade_report(results, key, solutions_dir)
-    log(f"Concluído em {(time.perf_counter() - start) / 60:.1f} min. Relatório: {report}")
+    log(f"Concluído em {(time.perf_counter() - start) / 60:.1f} min. Custo estimado: US$ {settings.spent_usd:.2f}. Relatório: {report}")
     return results

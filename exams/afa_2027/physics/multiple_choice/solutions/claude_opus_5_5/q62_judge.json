@@ -1,0 +1,46 @@
+{
+  "question": 62,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(D) O côncavo forma uma imagem real a 1,5R, com A1 = -2. Essa imagem fica a 0,5R do convexo, que forma uma imagem virtual 0,25R atrás dele, com A2 = +1/2. A imagem final é virtual, invertida em relação ao objeto (A = -1) e tem metade da altura da imagem do côncavo.",
+  "judge_reference": {
+    "reference_solution": "**Montagem (conferida com o original, p. 23 do PDF — a transcrição está fiel):** o espelho côncavo C1 fica com o vértice em x = 0, com a face refletora voltada para +x. O espelho convexo C2 fica com o vértice em x = 2R, com a face refletora voltada para −x. Os dois têm raio R, então |f| = R/2: o côncavo tem f₁ = +R/2 e o convexo tem f₂ = −R/2. Uso a equação de Gauss, 1/f = 1/p + 1/p', e o aumento A = −p'/p, com p, p' > 0 para objeto e imagem reais (aproximação paraxial).\n\nO objeto está a 0,75R do côncavo, na frente da face refletora. Logo ele fica entre os espelhos, em x = 0,75R.\n\n**1) Reflexão no espelho côncavo**\n- p₁ = 3R/4 e f₁ = R/2.\n- 1/p₁' = 2/R − 4/(3R) = 2/(3R), então p₁' = 1,5R.\n- A₁ = −p₁'/p₁ = −1,5R/0,75R = −2.\n- Imagem I₁: real, em x = 1,5R, invertida e com o dobro da altura do objeto. Isso é esperado, porque o objeto está entre F (0,5R) e C (R), e então a imagem fica além de C.\n\n**2) I₁ como objeto para o espelho convexo**\n- I₁ fica em x = 1,5R, antes do vértice do convexo (x = 2R).\n- Os raios convergem em I₁ e depois divergem até o convexo. Por isso I₁ é um objeto real para C2, com p₂ = 2R − 1,5R = 0,5R.\n- f₂ = −R/2.\n- 1/p₂' = 1/f₂ − 1/p₂ = −2/R − 2/R = −4/R, então p₂' = −R/4.\n- A₂ = −p₂'/p₂ = (R/4)/(R/2) = +1/2.\n- Imagem final I₂: virtual, R/4 atrás do convexo (x = 2,25R).\n- Em relação a I₁, ela é direita (A₂ > 0) e tem metade da altura de I₁.\n\n**3) Aumento total**\n- A = A₁·A₂ = (−2)(1/2) = −1.\n- Em relação ao objeto, a imagem final é invertida e do mesmo tamanho.\n- As contas foram conferidas com frações em Python: p₁' = 3/2, A₁ = −2, p₂ = 1/2, p₂' = −1/4, A₂ = 1/2, A = −1.\n\n**Análise das alternativas**\n- a) Falsa. \"Virtual\" e \"direita em relação à imagem do côncavo\" estão certos, mas a altura é igual à do objeto, e não metade dela. A metade vale em relação a I₁.\n- b) Falsa. A imagem final é virtual, não real. \"Direita em relação a I₁\" e \"mesmo tamanho do objeto\" seriam verdadeiros, mas não salvam a alternativa.\n- c) Falsa. A imagem é virtual, não real. Também não tem o tamanho de I₁: tem metade dele.\n- d) Verdadeira. A imagem é virtual, invertida em relação ao objeto (A = −1) e tem metade da altura da imagem do côncavo (A₂ = 1/2).\n\n**Gabarito: D.**",
+    "final_answer": "**Alternativa D.**\n\n- O côncavo forma a imagem real I₁ a 1,5R do seu vértice, com A₁ = −2.\n- I₁ fica a 0,5R do convexo e é objeto real para ele.\n- O convexo forma a imagem final virtual a R/4 atrás do seu vértice, com A₂ = +1/2.\n- Aumento total: A = −1.\n\nA imagem final é virtual, invertida em relação ao objeto (do mesmo tamanho dele) e tem metade da altura da imagem do côncavo.",
+    "pitfalls": [
+      "Medir a distância do objeto ao convexo errado. Para o convexo, o objeto é a imagem I1 do côncavo, em x = 1,5R. A distância correta é 2R − 1,5R = 0,5R, e não 1,5R nem 1,25R (que seria a distância do objeto original ao convexo).",
+      "Conferir se I1 é objeto real ou virtual para o convexo. Ela é real porque se forma antes do vértice do convexo (1,5R < 2R). Se ficasse além de 2R, seria objeto virtual (p < 0), e a solução mudaria.",
+      "Errar o sinal na equação de Gauss. No convexo, f = −R/2. Usar f positivo dá p' errado e pode levar à conclusão falsa de imagem real.",
+      "Confundir a referência de 'direita/invertida' e de 'metade/mesmo tamanho'. Em relação a I1, a imagem final é direita e tem metade do tamanho (A2 = +1/2). Em relação ao objeto, é invertida e do mesmo tamanho (A = A1·A2 = −1). As alternativas misturam essas referências de propósito.",
+      "A alternativa (a) é a principal pegadinha: 'virtual' e 'direita em relação à imagem do côncavo' estão corretos, mas 'metade da altura do objeto' é falso, porque a metade vale em relação a I1.",
+      "A alternativa (b) também traz dois itens verdadeiros ('direita em relação a I1' e 'mesmo tamanho do objeto'), mas cai porque a imagem é virtual.",
+      "O aumento total do sistema é o produto dos aumentos (A1·A2), e não a soma deles.",
+      "Hipóteses implícitas: aproximação paraxial (Gauss); objeto em frente à face refletora do côncavo, ou seja, entre os espelhos; e apenas a sequência pedida, côncavo e depois convexo. A luz que vai direto ao convexo e as reflexões múltiplas posteriores não entram na questão.",
+      "Conferência qualitativa: objeto entre F e C do côncavo ⇒ imagem real, invertida, maior e além de C. Um convexo com objeto real sempre dá imagem virtual, direita e menor, o que bate com A2 = 1/2."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(D) O côncavo forma uma imagem real a 1,5R, com A1 = -2. Essa imagem fica a 0,5R do convexo, que forma uma imagem virtual 0,25R atrás dele, com A2 = +1/2. A imagem final é virtual, invertida em relação ao objeto (A = -1) e tem metade da altura da imagem do côncavo.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Faltou dizer explicitamente que a questão considera só a sequência objeto → côncavo → convexo. A luz que vai direto do objeto ao convexo e as reflexões múltiplas seguintes não entram. Também ficou implícito que o objeto está entre os espelhos, na frente da face refletora do côncavo. O certo é declarar essas hipóteses junto com a das condições de Gauss."
+          },
+          {
+            "severity": "minor",
+            "description": "Na alternativa (b), a justificativa diz apenas 'virtual, não real'. Isso basta para descartá-la, mas um gabarito comentado deveria apontar que os outros dois itens ('direita em relação a I1' e 'mesmo tamanho do objeto') são verdadeiros. É justamente aí que mora a pegadinha: um único item falso derruba a alternativa."
+          }
+        ],
+        "summary": "Conferi com o original (p. 23 do PDF, questão 62) e a transcrição está fiel. A resolução do candidato coincide com a minha referência em todas as etapas.\n\n**1ª reflexão (côncavo):**\n- p₁ = 3R/4 e f₁ = R/2, o que dá p₁' = 1,5R.\n- A₁ = −2: a imagem I₁ é real e invertida, com o dobro da altura do objeto.\n- Há uma checagem qualitativa: o objeto está entre F e C, então a imagem fica além de C.\n\n**2ª reflexão (convexo):**\n- I₁ está em x = 1,5R, antes do vértice do convexo (x = 2R). O candidato justifica corretamente que I₁ é objeto real para o convexo, porque os raios convergem em I₁ e depois divergem.\n- A distância é p₂ = 0,5R, medida corretamente a partir de I₁, e não do objeto original.\n- Com f₂ = −R/2, sinal correto, sai p₂' = −R/4: a imagem final é virtual.\n- A₂ = +1/2: a imagem é direita e tem metade da altura de I₁.\n\n**Aumento total:** A = A₁·A₂ = −1, ou seja, a imagem é invertida e do mesmo tamanho do objeto. O candidato multiplica os aumentos, não os soma, e confirma com i₂ = −o.\n\nRefiz as contas e todas conferem: 2/R − 4/(3R) = 2/(3R) e −2/R − 2/R = −4/R.\n\n**Armadilhas:** o candidato tratou todas as que listei:\n- distância correta até o convexo;\n- natureza real de I₁ como objeto do convexo;\n- sinal de f no convexo;\n- distinção entre as referências I₁ e objeto para 'direita/invertida' e 'metade/mesmo tamanho';\n- produto dos aumentos.\n\n**Alternativas:** a análise está correta, inclusive a pegadinha da (a): 'metade' vale em relação a I₁, não ao objeto.\n\n**Problemas encontrados (ambos menores):**\n- Faltou declarar explicitamente a hipótese de considerar só a sequência côncavo → convexo.\n- A análise da (b) é sucinta e não aponta que os outros dois itens dela são verdadeiros.\n\n**Conclusão:** a resposta é a alternativa D, a mesma da referência e correta. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "question": 13,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "(C) α² — derivando xy=4 duas vezes com ẏ=α e ÿ=0, no ponto (2,2) obtém-se ẋ=−α e ẍ=α².",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (página 5/12 do PDF, Questão 13). O ponto se move sobre a curva xy = 4, com dy/dt = α constante e α ≠ 0. A questão pede a aceleração da abscissa, isto é, d²x/dt², no instante em que x = 2.\n\n**Dados.** Como dy/dt = α é constante, temos d²y/dt² = 0. Quando x = 2, a curva dá y = 4/2 = 2, então o ponto é (2, 2).\n\n**Resolução 1 (escrevendo x em função de y).** Na curva, y ≠ 0, então podemos escrever x = 4/y.\n- Primeira derivada pela regra da cadeia: dx/dt = −4y⁻²·(dy/dt) = −4α/y².\n- Segunda derivada, com α constante: d²x/dt² = −4α·(−2y⁻³)·(dy/dt) = 8α·α/y³ = 8α²/y³.\n- Em x = 2 temos y = 2, então d²x/dt² = 8α²/8 = **α²**.\n\n**Resolução 2 (derivação implícita, para conferir).** Derivando xy = 4 em relação a t:\n- x'y + xy' = 0, logo x' = −xα/y. Substituindo y = 4/x, fica x' = −αx²/4.\n- Derivando de novo: x'' = −(α/4)·2x·x' = −(αx/2)·(−αx²/4) = α²x³/8.\n- Em x = 2: x'' = α²·8/8 = α².\n\n**Conferência numérica.** Tomei y(t) = y₀ + αt e x = 4/y, e calculei por diferenças finitas no instante em que x = 2:\n- α = 1 deu x' ≈ −1 e x'' ≈ 1.\n- α = −3 deu x' ≈ 3 e x'' ≈ 9.\n- α = 0,5 deu x'' ≈ 0,25.\n\nEm todos os casos x'' = α², confirmando o resultado.\n\n**Observações.**\n- A aceleração α² é sempre positiva, qualquer que seja o sinal de α. Faz sentido: x = 4/y é convexa em y no ramo y > 0, e y varia linearmente com t.\n- No ramo x, y < 0, o valor x = 2 nunca é atingido, então só o ramo do 1º quadrante importa.\n- Nesse ponto a velocidade da abscissa vale dx/dt = −α. A pergunta, porém, é sobre a aceleração.\n\n**Resposta: (C) α².**",
+    "final_answer": "Alternativa (C): a aceleração da abscissa em x = 2 é d²x/dt² = 8α²/y³, avaliada em y = 2, que dá α².",
+    "pitfalls": [
+      "\"Velocidade de y\" quer dizer dy/dt = α, a taxa de variação da ordenada. Não é a velocidade escalar ao longo da curva. Com |v| = α constante, a resposta seria x'' = α²/4 em (2, 2), que não está entre as alternativas.",
+      "Aceleração da abscissa é d²x/dt². Confundir com velocidade dá dx/dt = −α em x = 2, e quem erra o sinal ou toma o módulo pode marcar (A) α.",
+      "Usar d²y/dt² = 0, que vale porque dy/dt é constante.",
+      "Aplicar a regra da cadeia nas duas derivadas temporais. Derivar só em relação a y (d²x/dy² = 8/y³ = 1 em y = 2) e esquecer o fator (dy/dt)² = α² leva a um resultado errado.",
+      "Na derivação implícita, não tratar x' como constante ao derivar x' = −αx²/4. É preciso usar x'' = −(αx/2)·x' e substituir x' de novo.",
+      "Obter o ponto correto: x = 2 implica y = 2. Só o ramo do 1º quadrante (x, y > 0) contém x = 2.",
+      "O sinal da resposta: α² é positivo para qualquer α ≠ 0. Uma resposta negativa ou linear em α (como (B) ou (E)) indica erro de derivação.",
+      "A hipótese α ≠ 0 (α ∈ ℝ*) garante que o ponto de fato se move. A resposta não depende do sinal de α."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "(C) α² — derivando xy=4 duas vezes com ẏ=α e ÿ=0, no ponto (2,2) obtém-se ẋ=−α e ẍ=α².",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na 'Análise do resultado', a frase 'a aceleração é par em t' está imprecisa: a aceleração não é uma função par do tempo. O correto é dizer que d²x/dt² não muda quando se troca t por −t. O argumento de paridade em α também deveria dizer que a trajetória com tempo invertido passa pelo mesmo ponto (2,2), com ẏ = −α. Bastaria escrever: 'como d²x/d(−t)² = d²x/dt², a aceleração em (2,2) é a mesma para α e −α'."
+          },
+          {
+            "severity": "minor",
+            "description": "O parágrafo de análise dimensional confunde mais do que esclarece. Ele mostra que 8α²/y³ tem dimensão de aceleração, mas não comenta que a resposta final α² tem dimensão L²/T². Isso acontece porque o enunciado trata 4 e x = 2 como números puros e, ao substituí-los, o fator 8/y³ vira 1. Era melhor tirar esse parágrafo ou explicar a substituição numérica."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato toma 'velocidade de y' como dy/dt sem comentar a outra leitura possível, a velocidade escalar ao longo da curva. Essa leitura daria α²/4, que não está entre as alternativas, e isso confirmaria a interpretação adotada. Também não cita que x = 2 só ocorre no ramo do 1º quadrante, mas isso não tem consequência, porque y = 4/x fica bem determinado."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 5/12 do PDF e ele bate com a transcrição. O candidato marcou a alternativa (C) α², a mesma da minha referência. Confirmei o valor numericamente com diferenças finitas: x'' = α² para α = 1, −3, 0,5 e 2,7.\n\nA resolução central está correta e completa:\n- Interpreta corretamente ẏ = α e daí tira ÿ = 0.\n- Acha o ponto (2,2).\n- Pela derivação implícita, chega a ẍy + 2ẋẏ + xÿ = 0 e, em seguida, a ẍ = α².\n- Confere pelo método explícito, aplicando a regra da cadeia nas duas derivadas: ẍ = 8α²/y³ = α².\n\nEle trata as armadilhas principais: usa ÿ = 0, inclui o fator ẏ na segunda derivada, não confunde aceleração com velocidade (ẋ = −α) e nota que α² > 0 vale para qualquer α ≠ 0.\n\nOs defeitos estão só nos comentários extras:\n- A frase 'a aceleração é par em t' está imprecisa.\n- O parágrafo dimensional não explica por que α², sozinho, não tem dimensão de aceleração.\n- Não discute a leitura alternativa de 'velocidade de y' como velocidade escalar ao longo da curva.\n\nNenhum desses pontos afeta a correção. A resolução fica no nível de gabarito comentado, com pequenas ressalvas de redação."
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+\section*{Questão 60}
+
+\section*{Solução}
+
+\textbf{Hipóteses e leis.} As cargas são puntiformes, estão fixas e há um único meio, com constante $k$. Seja $L$ o lado do triângulo. Pela lei de Coulomb, a força que $Q_i$ exerce sobre $Q_B$ tem módulo
+\[
+F_{iB}=\frac{k\,|Q_i|\,|Q_B|}{L^2}
+\]
+e atua na reta que une as duas cargas. Ela é de repulsão se os sinais são iguais e de atração se são opostos. Pelo princípio da superposição, $\vec F=\vec F_{AB}+\vec F_{CB}$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.6]
+\coordinate (A) at (0,0); \coordinate (B) at (2,0); \coordinate (C) at (1,1.732);
+\draw (A)--(B)--(C)--cycle;
+\fill (A) circle (1.5pt) node[below left]{$Q_A$};
+\fill (B) circle (1.5pt) node[below right]{$Q_B$};
+\fill (C) circle (1.5pt) node[above]{$Q_C$};
+\draw[->,thick] (B)--++(0.5,-0.866) node[right]{$\vec F_{CB}$};
+\draw[->,thick] (B)--++(-0.5,0) node[above left]{$\vec F_{AB}$};
+\draw[->,very thick] (B)--++(0,-0.866) node[left]{$\vec F$};
+\draw (B)++(0.3,0) arc (0:-60:0.3); \node at (2.45,-0.12) {\small $60^\circ$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Decomposição.} Tome o eixo $x$ de $A$ para $B$ e o eixo $y$ vertical para cima. Pela figura da prova, a força resultante sobre $Q_B$ é $\vec F=-F\,\hat y$, ou seja, perpendicular a $AB$ e voltada para baixo.
+\begin{itemize}
+\item $\vec F_{AB}$ age ao longo de $AB$. Portanto é horizontal e não tem componente $y$.
+\item $\vec F_{CB}$ age ao longo de $CB$, que forma $60^\circ$ com a horizontal. O unitário que vai de $C$ para $B$ é $\hat u=(\cos 60^\circ,\,-\text{sen}\,60^\circ)=\left(\tfrac12,\,-\tfrac{\sqrt3}{2}\right)$.
+\end{itemize}
+
+\textbf{(i) Componente vertical.} Só $\vec F_{CB}$ tem componente $y$, e ela precisa ser negativa. Logo $\vec F_{CB}$ tem o sentido de $\hat u$: a força afasta $B$ de $C$, isto é, há repulsão. Então $Q_C$ tem o mesmo sinal de $Q_B$, ou seja, $Q_C<0$.
+
+\textbf{(ii) Componente horizontal.} A componente $x$ de $\vec F_{CB}$ vale $F_{CB}\cos 60^\circ=F_{CB}/2$ e aponta no sentido $+x$. Como a resultante não tem componente horizontal, $\vec F_{AB}$ tem de apontar para $-x$, isto é, de $B$ para $A$. Trata-se de atração, logo $Q_A$ tem sinal oposto ao de $Q_B$ e $Q_A=+1\ \mu\text{C}$. Além disso,
+\[
+F_{AB}=F_{CB}\cos 60^\circ
+\;\Longrightarrow\;
+\frac{k|Q_A||Q_B|}{L^2}=\frac12\,\frac{k|Q_C||Q_B|}{L^2}
+\;\Longrightarrow\;
+|Q_C|=2|Q_A|=2\ \mu\text{C}.
+\]
+Logo $Q_C=-2\ \mu\text{C}$. Os fatores $k$, $L$ e $|Q_B|$ se cancelam, e por isso o enunciado não precisa fornecê-los.
+
+\textbf{Verificação.} Com $Q_A=+1\ \mu\text{C}$ e $Q_C=-2\ \mu\text{C}$, as componentes horizontais se anulam: $F_{AB}-\tfrac12F_{CB}=0$. A resultante vale $F=F_{CB}\,\text{sen}\,60^\circ=\tfrac{\sqrt3}{2}F_{CB}$ e aponta para baixo, como na figura.
+
+\textbf{Soma das cargas.}
+\[
+Q_A+Q_B+Q_C=(+1)+(-3)+(-2)=-4{,}0\ \mu\text{C}.
+\]
+
+\textbf{Por que as outras alternativas estão erradas.} Com $Q_C>0$ haveria atração entre $B$ e $C$, e $\vec F_{CB}$ teria componente para cima, o que contradiz a figura. Isso exclui, por exemplo, $Q_A=+1$ e $Q_C=+2$ (soma $0$, alternativa c). A alternativa b ($-1{,}5$) aparece quando se inverte a projeção e se escreve $|Q_C|=|Q_A|/2$. A alternativa d ($+6{,}0$) é incompatível com os sinais obtidos em (i) e (ii). Portanto, a alternativa correta é a (A).
+
+ANSWER: (A) $-4{,}0\ \mu\text{C}$

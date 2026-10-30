@@ -1,0 +1,44 @@
+{
+  "question": 26,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(C) 0,5. A razão vale 0,5 porque η_M = 1 − 1/(5 ln(5/4)) ≈ 0,10 e η_máx = 1 − 400/500 = 0,20.",
+  "judge_reference": {
+    "reference_solution": "**Conferência com o original (p. 4 do PDF, página 11/18 da prova):** a transcrição está correta. O ciclo é horário, A→B→C→A. AB é uma isoterma a T_A = 500 K. BC é uma isovolumétrica em V_B, com a pressão caindo até T_C = 400 K. CA é uma adiabática que leva o volume de V_B a V_A. A curva CA é mais íngreme que a isoterma AB, como deve ser. A área cinza é a área sob AB, entre V_A e V_B; a parte mais escura é o interior do ciclo.\n\n**1) Coerência da área dada (W_AB)**\n- Na adiabática CA vale T·V^(γ−1) = constante. Então T_A·V_A^(γ−1) = T_C·V_B^(γ−1), e daí (V_B/V_A)^(γ−1) = T_A/T_C = 5/4, ou seja, ln(V_B/V_A) = ln(5/4)/(γ−1).\n- Na isoterma AB: W_AB = nRT_A·ln(V_B/V_A) = 500·n·R·ln(5/4)/(γ−1).\n- Isso é exatamente a expressão do enunciado. Logo, a área cinza é o trabalho W_AB realizado pelo gás em AB, e não o trabalho líquido do ciclo.\n\n**2) Trocas de calor em cada etapa** (C_v = R/(γ−1); para gás diatômico, γ = 7/5, então C_v = 5R/2 e 1/(γ−1) = 5/2)\n- AB, isotérmica: ΔU = 0, então Q_AB = W_AB = 500nR·ln(5/4)·(5/2) = 1250·nR·ln(5/4) > 0. É o único calor absorvido.\n- BC, isovolumétrica: W = 0, então Q_BC = nC_v(T_C − T_A) = n(5R/2)(−100) = −250·nR. É calor cedido.\n- CA, adiabática: Q_CA = 0. O trabalho é W_CA = −ΔU_CA = −nC_v(T_A − T_C) = −250·nR.\n\n**3) Rendimento da máquina M**\n- W_líq = Q_AB + Q_BC = W_AB + W_CA = 1250nR·ln(5/4) − 250nR.\n- η_M = W_líq/Q_abs = 1 − 250nR/(1250nR·ln(5/4)) = 1 − 1/(5·ln(5/4)) ≈ 1 − 0,90 = 0,10.\n- Em geral, η_M = 1 − [100nR/(γ−1)]/[500nR·ln(5/4)/(γ−1)] = 1 − 1/(5·ln(5/4)). O fator 1/(γ−1) se cancela, então η_M não depende de γ. O valor numérico exato é ≈ 0,1037.\n\n**4) Rendimento máximo (Carnot) entre T_A e T_C**\n- η_máx = 1 − T_C/T_A = 1 − 400/500 = 0,20.\n\n**5) Razão**\n- η_M/η_máx = 0,10/0,20 = **0,5**.\n- Com o valor exato, 0,1037/0,2 ≈ 0,52, o que confirma a mesma alternativa.\n\n**Resposta: (C) 0,5.**",
+    "final_answer": "η_M = 1 − 1/(5·ln(5/4)) ≈ 0,10 e η_máx = 1 − 400/500 = 0,20, então η_M/η_máx ≈ 0,5. Alternativa (C).",
+    "pitfalls": [
+      "A área cinza é o trabalho da isoterma AB (W_AB = Q_AB), e não o trabalho líquido do ciclo. Quem usa essa área como W_líq e calcula W/Q com outro Q erra.",
+      "O calor só entra no sistema em AB. Em BC o gás cede calor (Q_BC = nC_v(T_C − T_A) < 0) e em CA não há troca (Q = 0). Somar Q_BC ao calor absorvido, ou pôr calor na adiabática, dá um rendimento errado.",
+      "C_v deve ser escrito de forma coerente com a expressão da área: C_v = R/(γ−1) (5R/2 para gás diatômico, γ = 7/5). Misturar C_v diatômico com γ monoatômico (ou o contrário) quebra o cancelamento. Feito de forma coerente, η_M = 1 − 1/(5·ln(5/4)) não depende de γ.",
+      "Convém mostrar que a expressão dada para a área vem da adiabática: (V_B/V_A)^(γ−1) = T_A/T_C, logo ln(V_B/V_A) = ln(5/4)/(γ−1). Essa conta confirma que a área é nRT_A·ln(V_B/V_A).",
+      "O rendimento máximo é o de Carnot entre as temperaturas extremas: η_máx = 1 − T_C/T_A = 0,20. A fórmula de Carnot não vale para o próprio ciclo M, que não é reversível entre dois reservatórios só (BC troca calor com temperatura variando).",
+      "Os distratores são valores intermediários da conta: (A) 0,1 é η_M; (B) 0,2 é η_máx; (D) 0,9 é Q_ced/Q_abs = 1/(5·ln(5/4)); (E) 1,0 seria tratar M como máquina de Carnot.",
+      "Arredondamento: com o dado 0,90 a razão dá exatamente 0,5. O valor exato é ≈ 0,519, que também leva à alternativa C. Calcular 1 − 0,90 ≈ 0,1 sem cuidado não muda a alternativa, mas a resolução deve deixar claro que η_M = 1 − Q_ced/Q_abs."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(C) 0,5. A razão vale 0,5 porque η_M = 1 − 1/(5 ln(5/4)) ≈ 0,10 e η_máx = 1 − 400/500 = 0,20.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução usa γ = 7/5 de forma coerente, mas não comenta que o fator 1/(γ−1) se cancela em Q_ced/Q_abs = [100nR/(γ−1)]/[500nR·ln(5/4)/(γ−1)]. Por isso η_M = 1 − 1/(5·ln(5/4)) não depende de γ. Essa observação, de uma linha, mostra por que o dado numérico do enunciado serve para qualquer gás e deixaria o gabarito mais completo. Não é erro."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução diz que a área cinza é W_AB antes de verificar isso pela adiabática. A verificação vem logo depois e está correta, então é só uma questão de ordem na exposição."
+          }
+        ],
+        "summary": "Conferi o enunciado transcrito com a p. 4 do PDF e ele está correto. A resposta do candidato, (C) 0,5, coincide com a minha referência e está certa. A estrutura da resolução também é a mesma da referência.\n- **Etapa AB:** Q_AB = W_AB = 1250nR·ln(5/4). O candidato verificou corretamente, pela relação T·V^(γ−1) da adiabática CA, que a área cinza é o trabalho da isoterma AB e não o trabalho líquido do ciclo.\n- **Etapa BC:** Q_BC = nC_v(T_C − T_B) = −250nR, ou seja, calor cedido.\n- **Etapa CA:** é adiabática, logo Q = 0, e W_CA = −250nR.\n- **Rendimento de M:** η_M = 1 − 1/(5·ln(5/4)) ≈ 0,10.\n- **Rendimento máximo:** η_máx = 1 − 400/500 = 0,20, o rendimento de Carnot entre as temperaturas extremas.\n- **Razão:** η_M/η_máx = 0,5. Conferi com python: o valor exato é η_M = 0,1037 e a razão dá 0,519, o que bate com o que o candidato informa.\n\nTodas as armadilhas foram tratadas:\n- **Natureza da área cinza:** identificada corretamente como o trabalho de AB.\n- **Calor absorvido:** só em AB, como deve ser.\n- **C_v e γ:** usados de forma coerente com o gás diatômico.\n- **Origem da expressão da área:** demonstrada pela adiabática.\n- **Rendimento máximo:** calculado como Carnot entre T_A e T_C.\n- **Distratores:** cada alternativa errada foi explicada.\n- **Arredondamento:** coberto pelo cálculo com o valor exato de ln(5/4).\n\nO candidato ainda conferiu o trabalho líquido somando os trabalhos das três etapas e checou a desigualdade de Carnot. A resolução é clara, rigorosa e pode ser publicada como gabarito. Os dois pontos listados são observações de estilo, não erros."
+      }
+    }
+  ]
+}

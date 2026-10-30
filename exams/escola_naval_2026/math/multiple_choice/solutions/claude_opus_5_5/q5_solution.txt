@@ -1,0 +1,40 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{1) Interseções em $[0;5)$.} Em $x=0$ temos $2^0=1\neq 0$, logo $x=0$ não é interseção. Para $x>0$ (ambos os lados positivos), tomando $\ln$:
+\[
+2^x=x^2 \iff x\ln 2=2\ln x \iff \varphi(x)=\varphi(2), \qquad \text{em que } \varphi(x)=\frac{\ln x}{x}\ \text{ e }\ \varphi(2)=\frac{\ln 2}{2}.
+\]
+Como $\varphi'(x)=\dfrac{1-\ln x}{x^2}$, $\varphi$ é estritamente crescente em $(0;e]$ e estritamente decrescente em $[e;+\infty)$. Assim, cada valor é assumido no máximo duas vezes, e como $2^2=2^2$ e $2^4=16=4^2$, as interseções em $[0;5)$ são exatamente $x=2$ e $x=4$. (A outra raiz real, $x\approx-0{,}77$, está fora do intervalo.)
+
+\textbf{2) Posição relativa no intervalo $[2;4]$.} Para $x\in(2;e]$, $\varphi(x)>\varphi(2)$ (crescimento); para $x\in[e;4)$, $\varphi(x)>\varphi(4)=\varphi(2)$ (decrescimento). Logo, em $(2;4)$,
+\[
+\frac{\ln x}{x}>\frac{\ln 2}{2}\iff 2\ln x>x\ln 2\iff x^2>2^x .
+\]
+A região limitada pelas duas curvas entre seus pontos de interseção é, portanto,
+$\{(x,y):\ 2\le x\le 4,\ 2^x\le y\le x^2\}$, que está toda acima do eixo $x$ (pois $2^x>0$). É a única região de $[0;5)$ delimitada apenas pelas interseções das duas curvas: as faixas $[0;2]$ e $[4;5)$ não são fechadas por pontos de interseção nas duas extremidades.
+
+\textbf{3) Volume (método dos anéis/arruelas).} Girando em torno do eixo $x$, cada seção transversal é um anel de raio externo $R=x^2$ e raio interno $r=2^x$ (válido porque $0<r\le R$ no intervalo):
+\[
+V=\pi\int_{2}^{4}\left[(x^2)^2-(2^x)^2\right]dx=\pi\int_{2}^{4}\left(x^4-4^x\right)dx
+=\pi\left[\frac{x^5}{5}-\frac{4^x}{\ln 4}\right]_{2}^{4}.
+\]
+Calculando cada parcela, com $\ln 4=2\ln 2$:
+\[
+\frac{4^5-2^5}{5}=\frac{1024-32}{5}=\frac{992}{5}=198{,}4,
+\qquad
+\frac{4^4-4^2}{2\ln 2}=\frac{256-16}{2\ln 2}=\frac{120}{\ln 2}.
+\]
+Logo
+\[
+V=\pi\left(\frac{992}{5}-\frac{120}{\ln 2}\right).
+\]
+Usando o dado $\ln 2\cong 0{,}7$:
+\[
+V\cong\pi\left(198{,}4-\frac{120}{0{,}7}\right)=\pi\,(198{,}4-171{,}43)\cong 26{,}97\,\pi\cong 27\pi .
+\]
+
+\textbf{4) Verificações.} O resultado é positivo, como deve ser, pois $x^4>4^x$ em $(2;4)$. Ordem de grandeza: o integrando vale $0$ nas extremidades e, em $x=3$, vale $81-64=17$; com largura $2$, um valor de algumas dezenas (vezes $\pi$) é coerente. Observação: com o valor exato $\ln 2=0{,}6931\ldots$ obtém-se $V\approx 25{,}3\,\pi$. A diferença surge porque o resultado é a diferença de dois números grandes e próximos ($198{,}4$ e $\approx 173$), o que amplifica o erro da aproximação. O enunciado, porém, manda usar $\ln 2\cong 0{,}7$, e com esse dado o valor aproximado é $27\pi$, que corresponde à alternativa (E).
+
+ANSWER: (E) $27\pi$

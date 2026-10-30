@@ -1,0 +1,1495 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{Escola Naval 2026 (CPAEN) - Matemática\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}opus{-}5{-}5 (solver) + claude{-}opus{-}5{-}5 (judge)}%
+\date{October 29, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{I -- Verdadeira.} Seja $\gamma\parallel\beta$ ($\gamma\neq\beta$), de modo que $\beta\cap\gamma=\varnothing$.
+
+\emph{(a) $\alpha$ corta $\gamma$.} Se fosse $\alpha\parallel\gamma$ (ou $\alpha=\gamma$), $\alpha$ e $\beta$ seriam paralelos ao mesmo plano $\gamma$ e, portanto, paralelos ou coincidentes entre si. Isso contradiz a hipótese de que $\alpha$ e $\beta$ se cortam segundo uma reta. Logo $\alpha$ e $\gamma$ são distintos e não paralelos, e então $\alpha\cap\gamma$ é uma reta $s$.
+
+\emph{(b) $s\parallel r$.} As retas $r$ e $s$ estão ambas em $\alpha$, logo são coplanares. Além disso, $r\subset\beta$ e $s\subset\gamma$; como $\beta\cap\gamma=\varnothing$, temos $r\cap s=\varnothing$. Duas retas coplanares sem ponto comum são paralelas, portanto $s\parallel r$.
+
+\medskip
+\textbf{II -- Falsa.} O domínio de $f(x)=x\,e^{1/x}$ é $\mathbb{R}^*$.
+
+\emph{Assíntota vertical.} Com $t=\frac1x\to+\infty$:
+\[
+\lim_{x\to0^+} x\,e^{1/x}=\lim_{t\to+\infty}\frac{e^t}{t}=+\infty ,
+\]
+logo a reta $x=0$ é assíntota vertical. (Pela esquerda, $f(x)\to0\cdot 0=0$.)
+
+\emph{Assíntota oblíqua.} Para $x\to\pm\infty$:
+\[
+m=\lim_{x\to\pm\infty}\frac{f(x)}{x}=\lim_{x\to\pm\infty} e^{1/x}=1 .
+\]
+Em seguida, com $t=\frac1x\to0$:
+\[
+q=\lim_{x\to\pm\infty}\bigl(f(x)-x\bigr)=\lim_{x\to\pm\infty}x\left(e^{1/x}-1\right)=\lim_{t\to0}\frac{e^t-1}{t}=1 .
+\]
+Logo $y=x+1$ é assíntota oblíqua nos dois sentidos. Como $f(x)\to\pm\infty$ quando $x\to\pm\infty$, não há assíntota horizontal.
+
+Assim, $f$ tem \emph{duas} assíntotas, $x=0$ e $y=x+1$, e não apenas uma.
+
+\medskip
+\textbf{III -- Verdadeira.} Aplicamos a desigualdade das médias (MA $\ge$ MG) aos $n+1$ números positivos $\underbrace{1+\tfrac1n,\dots,1+\tfrac1n}_{n\text{ vezes}},\,1$. Eles não são todos iguais, então a desigualdade é estrita:
+\[
+\sqrt[n+1]{\left(1+\tfrac1n\right)^n\cdot 1}<\frac{n\left(1+\frac1n\right)+1}{n+1}=\frac{n+2}{n+1}=1+\frac{1}{n+1}.
+\]
+Elevando ambos os membros (positivos) à potência $n+1$:
+\[
+a_n=\left(1+\tfrac1n\right)^n<\left(1+\tfrac1{n+1}\right)^{n+1}=a_{n+1}\quad\forall n\in\mathbb{N}^*,
+\]
+ou seja, a sequência é (estritamente) crescente. Conferência: $a_1=2$, $a_2=2{,}25$, $a_3\approx2{,}37$.
+
+\medskip
+\textbf{IV -- Verdadeira.} Pela desigualdade MA $\ge$ MG aplicada a $\sqrt x,\sqrt y,\sqrt z>0$:
+\[
+\sqrt x+\sqrt y+\sqrt z\;\ge\;3\sqrt[3]{\sqrt x\,\sqrt y\,\sqrt z}=3\,(xyz)^{1/6}.
+\]
+Os dois membros são positivos; elevando ao quadrado:
+\[
+\left(\sqrt x+\sqrt y+\sqrt z\right)^2\ge 9\,(xyz)^{1/3}=9\sqrt[3]{xyz}.
+\]
+A igualdade ocorre se, e somente se, $x=y=z$, mas a desigualdade vale sempre.
+
+\medskip
+\textbf{Conclusão.} Apenas as afirmativas I, III e IV são verdadeiras. Isso corresponde exatamente à alternativa (D). As alternativas (B) e (E) incluem a II, que é falsa; (A) e (C) omitem afirmativas verdadeiras.
+
+\medskip
+ANSWER: (D) Apenas as afirmativas I, III e IV são verdadeiras.%
+\newpage%
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{1) Raiz evidente.} Os coeficientes $1,-5,9,-9,5,-1$ são antissimétricos ($a_k=-a_{5-k}$): a equação é recíproca de 2.ª espécie e de grau ímpar, portanto $x=1$ é raiz (de fato, $1-5+9-9+5-1=0$). Pelo dispositivo de Briot--Ruffini:
+\[
+x^5-5x^4+9x^3-9x^2+5x-1=(x-1)\left(x^4-4x^3+5x^2-4x+1\right).
+\]
+
+\textbf{2) Fator recíproco de grau 4.} Como $x=0$ não é raiz, dividimos $x^4-4x^3+5x^2-4x+1=0$ por $x^2$:
+\[
+\left(x^2+\frac{1}{x^2}\right)-4\left(x+\frac{1}{x}\right)+5=0 .
+\]
+Fazendo $y=x+\dfrac1x$, temos $x^2+\dfrac1{x^2}=y^2-2$, e então
+\[
+y^2-4y+3=0\ \Longrightarrow\ y=1\ \text{ou}\ y=3 .
+\]
+\begin{itemize}
+\item $y=1$: $x^2-x+1=0$, com $\Delta=-3<0$; as raízes $\dfrac{1\pm i\sqrt3}{2}$ não são reais.
+\item $y=3$: $x^2-3x+1=0$, com $\Delta=5>0$; as raízes são $x=\dfrac{3\pm\sqrt5}{2}$.
+\end{itemize}
+
+\textbf{3) Raízes reais.} São exatamente
+\[
+\frac{3-\sqrt5}{2}\approx 0{,}382,\qquad 1,\qquad \frac{3+\sqrt5}{2}\approx 2{,}618 .
+\]
+São três raízes reais, todas positivas, e as duas extremas são inversas uma da outra (produto $1$).
+
+\textbf{4) Razão pedida.}
+\[
+\frac{x_{\min}}{x_{\max}}=\frac{3-\sqrt5}{3+\sqrt5}
+=\frac{(3-\sqrt5)^2}{9-5}=\frac{14-6\sqrt5}{4}
+=\frac{7-3\sqrt5}{2}=\left(\frac{3-\sqrt5}{2}\right)^2\approx 0{,}146 .
+\]
+Verificação: $\dfrac{0{,}382}{2{,}618}\approx 0{,}146$.
+
+\textbf{5) Análise das alternativas.} O valor exato $\dfrac{7-3\sqrt5}{2}$ \emph{não aparece} em nenhuma das opções. Logo, a rigor, a questão não tem alternativa correta e seria passível de anulação. Ainda assim, todas as raízes reais são positivas, então a razão menor/maior é necessariamente um número real em $(0,1)$. Isso descarta as alternativas:
+\begin{itemize}
+\item (C) e (D), que não são reais (são justamente as raízes de $x^2-x+1=0$);
+\item (B) $\approx 2{,}618$ e (E) $\approx 1{,}618$, que são maiores que $1$.
+\end{itemize}
+Resta apenas (A), $\dfrac{3-\sqrt5}{2}\approx0{,}382$, que é a única compatível com o sinal e a ordem de grandeza. Esse valor é a razão da progressão geométrica formada pelas raízes reais em ordem decrescente: $\dfrac{3+\sqrt5}{2},\ 1,\ \dfrac{3-\sqrt5}{2}$. Também coincide com $x_{\min}/1$, ou seja, a razão entre raízes reais consecutivas. A razão entre as raízes extremas é o \emph{quadrado} desse valor. Por isso, (A) é provavelmente a resposta pretendida pela banca, mas o valor correto do que foi perguntado é $\dfrac{7-3\sqrt5}{2}$.
+
+\medskip
+ANSWER: $\dfrac{7-3\sqrt5}{2}\approx 0{,}146$; nenhuma alternativa confere exatamente (questão passível de anulação). Se for obrigatório marcar uma opção: (A) $\frac{1}{2}(3-\sqrt5)$%
+\newpage%
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{Ideia.} O ângulo entre duas faces adjacentes é o ângulo diedro ao longo da aresta comum. Ele é o ângulo plano formado por duas perpendiculares a essa aresta, traçadas pelo mesmo ponto e contidas, cada uma, em uma das faces.
+
+\textbf{1) Vizinhança de um vértice.} No icosaedro regular de aresta $a$, cada vértice $V$ pertence a $5$ triângulos equiláteros. Os $5$ vizinhos de $V$ são $A,B,C,D,E$, nessa ordem cíclica. A rotação de $72^\circ$ em torno do eixo que passa por $V$ e pelo centro do sólido leva o icosaedro nele mesmo e permuta ciclicamente esses vizinhos. Logo eles são coplanares e formam um pentágono regular. Vizinhos consecutivos estão em uma mesma face com $V$, portanto o lado desse pentágono é $a$.
+
+\textbf{2) Diagonal do pentágono.} As faces que contêm a aresta $VA$ são $VAB$ e $VAE$. Como $B$ e $E$ não são consecutivos no pentágono, $BE$ é uma diagonal. No triângulo $ABE$ temos $AB=AE=a$ e $\angle BAE=108^\circ$. Daí
+\[
+BE = 2a\,\mathrm{sen}\,54^\circ = 2a\cos 36^\circ = 2a\cdot\frac{1+\sqrt5}{4}=\frac{1+\sqrt5}{2}\,a ,
+\qquad BE^2=\frac{3+\sqrt5}{2}\,a^2 .
+\]
+
+\textbf{3) Ângulo plano do diedro.} Seja $M$ o ponto médio de $VA$. Os triângulos $VAB$ e $VAE$ são equiláteros, então as medianas $BM$ e $EM$ também são alturas: $BM\perp VA$ e $EM\perp VA$, com
+\[
+BM=EM=\frac{a\sqrt3}{2}.
+\]
+Assim, o diedro $\theta$ é o ângulo $\angle BME$. Pela lei dos cossenos no triângulo $BME$:
+\[
+BE^2 = BM^2+EM^2-2\,BM\cdot EM\cos\theta
+\;\Longrightarrow\;
+\frac{3+\sqrt5}{2}\,a^2=\frac{3a^2}{4}+\frac{3a^2}{4}-2\cdot\frac{3a^2}{4}\cos\theta .
+\]
+Dividindo por $a^2$, obtemos $\dfrac{3+\sqrt5}{2}=\dfrac32\,(1-\cos\theta)$. Portanto
+\[
+1-\cos\theta=\frac{3+\sqrt5}{3}
+\quad\Longrightarrow\quad
+\boxed{\cos\theta=-\frac{\sqrt5}{3}}.
+\]
+O sólido é convexo, então $0<\theta<\pi$, e o cosseno determina $\theta$ de forma única:
+\[
+\theta=\arccos\left(-\frac{\sqrt5}{3}\right)\approx 138{,}19^\circ .
+\]
+O ângulo é obtuso, como se espera para um poliedro com $5$ faces por vértice. Ele também é maior que o diedro do octaedro ($\approx 109{,}47^\circ$).
+
+\textbf{4) Análise das alternativas.}
+\begin{itemize}
+\item (A) $\arcsin\left(-\frac{\sqrt5}{7}\right)\approx -18{,}63^\circ<0$: não pode ser um ângulo diedro. Note que o valor correto do seno é $\mathrm{sen}\,\theta=\sqrt{1-\frac59}=\frac23$.
+\item (B) $\mathrm{arctg}\left(-\frac{\sqrt5}{4}\right)\approx -29{,}21^\circ<0$: também é negativo. Além disso, $\mathrm{tg}\,\theta=\frac{2/3}{-\sqrt5/3}=-\frac{2\sqrt5}{5}\neq-\frac{\sqrt5}{4}$.
+\item (C) $\arccos\left(-\frac{\sqrt5}{3}\right)$: a imagem do arco-cosseno é $[0,\pi]$, então esse é exatamente o ângulo obtuso encontrado. \textbf{Correta.}
+\item (D) $\mathrm{arccosec}(x)$ só existe para $|x|\ge 1$, e $\left|-\frac{\sqrt5}{5}\right|\approx 0{,}447<1$: não está definida.
+\item (E) $\left|-\frac{\sqrt5}{2}\right|\approx 1{,}118>1$, fora do domínio do arco-cosseno: não está definida.
+\end{itemize}
+
+ANSWER: (C) $\arccos\left(-\frac{\sqrt5}{3}\right)$%
+\newpage%
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Notação.} Seja $B=(a_{ij})$ e seja $A_{ij}=(-1)^{i+j}D_{ij}$ o cofator de $a_{ij}$, em que $D_{ij}$ é o menor complementar. A adjunta é a transposta da matriz dos cofatores. Logo, o elemento da linha $j$ e coluna $k$ de $\bar B$ é $B_{jk}=A_{kj}$. Pela definição do produto de matrizes:
+\[
+b_{ik}=\sum_{j=1}^{n}a_{ij}\,B_{jk}=\sum_{j=1}^{n}a_{ij}\,A_{kj}.
+\]
+Esta é exatamente a expressão do quadro. Resta identificar qual teorema justifica cada caso.
+
+\textbf{Condição (1): $i=k$.} Nesse caso,
+\[
+b_{ii}=\sum_{j=1}^{n}a_{ij}\,A_{ij}=a_{i1}A_{i1}+a_{i2}A_{i2}+\dots+a_{in}A_{in}.
+\]
+Pelo \emph{Teorema de Laplace}, o determinante de uma matriz quadrada é igual à soma dos produtos dos elementos de uma fila (aqui, a linha $i$) pelos seus próprios cofatores. Portanto $b_{ii}=\det(B)$.
+
+\textbf{Condição (2): $i\neq k$.} Agora,
+\[
+b_{ik}=\sum_{j=1}^{n}a_{ij}\,A_{kj},
+\]
+isto é, os elementos da linha $i$ multiplicam os cofatores da linha $k$, que é uma fila paralela \emph{diferente}. O \emph{Teorema de Cauchy} afirma que essa soma é nula. Demonstração:
+\begin{itemize}
+\item Seja $B'$ a matriz obtida de $B$ trocando-se a linha $k$ por uma cópia da linha $i$.
+\item Os cofatores $A_{kj}$ não dependem da linha $k$, pois ela é eliminada no cálculo do menor. Assim, os cofatores da linha $k$ de $B'$ são os mesmos $A_{kj}$ de $B$.
+\item Aplicando Laplace à linha $k$ de $B'$, obtemos $\det(B')=\sum_{j}a_{ij}A_{kj}=b_{ik}$.
+\item Como $B'$ tem duas linhas iguais (a $i$ e a $k$), $\det(B')=0$. Logo $b_{ik}=0$.
+\end{itemize}
+
+\textbf{Conclusão.} Juntando os dois casos, $b_{ik}=\det(B)\,\delta_{ik}$, ou seja, $B\cdot\bar B=\det(B)\,I_n$. A igualdade $\bar B\cdot B=\det(B)\,I_n$ sai do mesmo modo, usando colunas no lugar de linhas.
+
+\textbf{Verificação ($n=2$).} Para $B=\begin{pmatrix}a&b\\c&d\end{pmatrix}$, os cofatores são $A_{11}=d$, $A_{12}=-c$, $A_{21}=-b$ e $A_{22}=a$. Então:
+\begin{itemize}
+\item $b_{11}=a\,d+b(-c)=ad-bc=\det(B)$, pelo caso (1);
+\item $b_{12}=a(-b)+b\,a=0$, pelo caso (2).
+\end{itemize}
+
+\textbf{Análise das alternativas.} A ordem pedida é (1) Laplace e (2) Cauchy, que é a alternativa (B). As demais não servem:
+\begin{itemize}
+\item a regra de Chió é um processo de abaixamento da ordem de um determinante;
+\item o Teorema de Binet afirma que $\det(AB)=\det A\cdot\det B$;
+\item a regra de Cramer resolve sistemas lineares;
+\item a alternativa (D) cita os teoremas certos, mas na ordem trocada.
+\end{itemize}
+
+ANSWER: (B) Laplace e Cauchy.%
+\newpage%
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{1) Interseções em $[0;5)$.} Em $x=0$ temos $2^0=1\neq 0$, logo $x=0$ não é interseção. Para $x>0$ (ambos os lados positivos), tomando $\ln$:
+\[
+2^x=x^2 \iff x\ln 2=2\ln x \iff \varphi(x)=\varphi(2), \qquad \text{em que } \varphi(x)=\frac{\ln x}{x}\ \text{ e }\ \varphi(2)=\frac{\ln 2}{2}.
+\]
+Como $\varphi'(x)=\dfrac{1-\ln x}{x^2}$, $\varphi$ é estritamente crescente em $(0;e]$ e estritamente decrescente em $[e;+\infty)$. Assim, cada valor é assumido no máximo duas vezes, e como $2^2=2^2$ e $2^4=16=4^2$, as interseções em $[0;5)$ são exatamente $x=2$ e $x=4$. (A outra raiz real, $x\approx-0{,}77$, está fora do intervalo.)
+
+\textbf{2) Posição relativa no intervalo $[2;4]$.} Para $x\in(2;e]$, $\varphi(x)>\varphi(2)$ (crescimento); para $x\in[e;4)$, $\varphi(x)>\varphi(4)=\varphi(2)$ (decrescimento). Logo, em $(2;4)$,
+\[
+\frac{\ln x}{x}>\frac{\ln 2}{2}\iff 2\ln x>x\ln 2\iff x^2>2^x .
+\]
+A região limitada pelas duas curvas entre seus pontos de interseção é, portanto,
+$\{(x,y):\ 2\le x\le 4,\ 2^x\le y\le x^2\}$, que está toda acima do eixo $x$ (pois $2^x>0$). É a única região de $[0;5)$ delimitada apenas pelas interseções das duas curvas: as faixas $[0;2]$ e $[4;5)$ não são fechadas por pontos de interseção nas duas extremidades.
+
+\textbf{3) Volume (método dos anéis/arruelas).} Girando em torno do eixo $x$, cada seção transversal é um anel de raio externo $R=x^2$ e raio interno $r=2^x$ (válido porque $0<r\le R$ no intervalo):
+\[
+V=\pi\int_{2}^{4}\left[(x^2)^2-(2^x)^2\right]dx=\pi\int_{2}^{4}\left(x^4-4^x\right)dx
+=\pi\left[\frac{x^5}{5}-\frac{4^x}{\ln 4}\right]_{2}^{4}.
+\]
+Calculando cada parcela, com $\ln 4=2\ln 2$:
+\[
+\frac{4^5-2^5}{5}=\frac{1024-32}{5}=\frac{992}{5}=198{,}4,
+\qquad
+\frac{4^4-4^2}{2\ln 2}=\frac{256-16}{2\ln 2}=\frac{120}{\ln 2}.
+\]
+Logo
+\[
+V=\pi\left(\frac{992}{5}-\frac{120}{\ln 2}\right).
+\]
+Usando o dado $\ln 2\cong 0{,}7$:
+\[
+V\cong\pi\left(198{,}4-\frac{120}{0{,}7}\right)=\pi\,(198{,}4-171{,}43)\cong 26{,}97\,\pi\cong 27\pi .
+\]
+
+\textbf{4) Verificações.} O resultado é positivo, como deve ser, pois $x^4>4^x$ em $(2;4)$. Ordem de grandeza: o integrando vale $0$ nas extremidades e, em $x=3$, vale $81-64=17$; com largura $2$, um valor de algumas dezenas (vezes $\pi$) é coerente. Observação: com o valor exato $\ln 2=0{,}6931\ldots$ obtém-se $V\approx 25{,}3\,\pi$. A diferença surge porque o resultado é a diferença de dois números grandes e próximos ($198{,}4$ e $\approx 173$), o que amplifica o erro da aproximação. O enunciado, porém, manda usar $\ln 2\cong 0{,}7$, e com esse dado o valor aproximado é $27\pi$, que corresponde à alternativa (E).
+
+ANSWER: (E) $27\pi$%
+\newpage%
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{1. Valor de $f$.} Para todo $u\in[-1,1]$ vale a identidade
+\[
+\operatorname{arcsen} u+\arccos u=\frac{\pi}{2}.
+\]
+\emph{Justificativa:} se $\theta=\operatorname{arcsen} u\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$, então $\frac{\pi}{2}-\theta\in[0,\pi]$ e $\cos\left(\frac{\pi}{2}-\theta\right)=\operatorname{sen}\theta=u$. Logo $\arccos u=\frac{\pi}{2}-\theta$.
+
+Com $u=\dfrac{2x-1}{x+2}$, conclui-se que $f(x)=\dfrac{\pi}{2}$ (constante) em todo o domínio. O gráfico é, portanto, um segmento horizontal acima do eixo $x$.
+
+\textbf{2. Domínio de $f$.} As duas funções inversas exigem $x\neq -2$ e
+\[
+-1\le \frac{2x-1}{x+2}\le 1 .
+\]
+
+\emph{Desigualdade da direita:}
+\[
+\frac{2x-1}{x+2}-1=\frac{x-3}{x+2}\le 0 \iff -2<x\le 3 .
+\]
+
+\emph{Desigualdade da esquerda:}
+\[
+\frac{2x-1}{x+2}+1=\frac{3x+1}{x+2}\ge 0 \iff x<-2 \ \text{ ou } \ x\ge -\frac{1}{3}.
+\]
+
+A interseção dá
+\[
+D(f)=\left[-\frac{1}{3},\,3\right].
+\]
+
+\emph{Conferência nos extremos:} em $x=-\frac13$, $u=\dfrac{-5/3}{5/3}=-1$; em $x=3$, $u=\dfrac{5}{5}=1$. Os dois valores são admissíveis.
+
+\textbf{3. Área.} A região limitada pelo gráfico, pelo eixo $x$ e pelas retas $x=-\frac13$ e $x=3$ é um retângulo. Sua base mede $3-\left(-\frac13\right)=\frac{10}{3}$ e sua altura mede $\frac{\pi}{2}$. Então
+\[
+A=\frac{10}{3}\cdot\frac{\pi}{2}=\frac{5\pi}{3}.
+\]
+O mesmo resultado sai da integral: $A=\displaystyle\int_{-1/3}^{3}\frac{\pi}{2}\,dx=\frac{5\pi}{3}$.
+
+\emph{Ordem de grandeza:} $A\approx 3{,}33\cdot 1{,}57\approx 5{,}24$, que coincide com $\frac{5\pi}{3}\approx 5{,}24$.
+
+\textbf{Conclusão.} A alternativa (B) é a correta porque a área é a de um retângulo de base $\frac{10}{3}$ e altura $\frac{\pi}{2}$. As outras alternativas dão bases diferentes de $\frac{10}{3}$. Por exemplo, (A) corresponderia a uma base $3$, que se obtém ao esquecer o trecho $\left[-\frac13,0\right]$, e (E) corresponderia a uma base $1$.
+
+ANSWER: (B) $\dfrac{5\pi}{3}$%
+\newpage%
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Ideia.} A curva $x^2+16y^2+2mxy-1=0$ é uma cônica centrada na origem, pois não tem termos lineares. Para identificá-la, giramos os eixos para eliminar o termo misto $xy$. Depois verificamos se a cônica é degenerada.
+
+\textbf{1) Forma quadrática e rotação.} Escrevemos
+\[
+x^2+2mxy+16y^2=\begin{pmatrix}x & y\end{pmatrix}
+\underbrace{\begin{pmatrix}1 & m\\ m & 16\end{pmatrix}}_{M}
+\begin{pmatrix}x\\ y\end{pmatrix}.
+\]
+A matriz $M$ é real e simétrica. Pelo teorema espectral, existe uma rotação $(x,y)\mapsto(X,Y)$ que a diagonaliza. Nas novas coordenadas, a equação fica
+\[
+\lambda_1X^2+\lambda_2Y^2=1,
+\]
+onde $\lambda_1,\lambda_2$ são os autovalores de $M$. Eles satisfazem
+\[
+\lambda_1+\lambda_2=\operatorname{tr}M=17,\qquad
+\lambda_1\lambda_2=\det M=16-m^2 .
+\]
+
+\textbf{2) Condição para hipérbole.} A equação $\lambda_1X^2+\lambda_2Y^2=1$ é uma hipérbole se, e somente se, $\lambda_1$ e $\lambda_2$ são não nulos e têm sinais opostos. Isso equivale a $\lambda_1\lambda_2<0$:
+\[
+16-m^2<0 \iff m^2>16 \iff m<-4\ \text{ ou }\ m>4 .
+\]
+Essa é a mesma condição do discriminante $B^2-4AC>0$, com $A=1$, $B=2m$ e $C=16$:
+\[
+B^2-4AC=4m^2-64>0 \iff |m|>4 .
+\]
+
+\textbf{3) A hipérbole não é degenerada.} O segundo membro é $1\neq 0$. Logo, para $|m|>4$, a equação $\lambda_1X^2+\lambda_2Y^2=1$ não se reduz a um par de retas concorrentes. De forma equivalente, o determinante da matriz completa da cônica é
+\[
+\det\begin{pmatrix}1 & m & 0\\ m & 16 & 0\\ 0 & 0 & -1\end{pmatrix}=-(16-m^2)=m^2-16\neq 0
+\quad\text{para } |m|>4 .
+\]
+
+\textbf{4) Casos restantes.}
+\begin{itemize}
+\item $|m|<4$: temos $\lambda_1\lambda_2>0$ e $\lambda_1+\lambda_2=17>0$. Então os dois autovalores são positivos e a curva é uma elipse real.
+\item $m=\pm4$: a equação vira $x^2\pm8xy+16y^2=(x\pm4y)^2=1$, isto é, $x\pm4y=\pm1$. É um par de retas paralelas, ou seja, uma parábola degenerada, e não uma hipérbole.
+\end{itemize}
+Exemplo de verificação: para $m=5$, $\det M=16-25=-9<0$, e a curva é uma hipérbole.
+
+\textbf{5) Análise das alternativas.} O conjunto completo (\emph{plenamente}) de valores é $m<-4$ ou $m>4$.
+\begin{itemize}
+\item (B) inclui, por exemplo, $m=3$. Nesse caso $16-9=7>0$, e a curva é uma elipse.
+\item (C) contém apenas valores com $|m|<4$, que dão elipses.
+\item (D) e (E) estão corretas como condições suficientes, mas são apenas partes do conjunto e não o descrevem por inteiro.
+\end{itemize}
+Portanto, a alternativa correta é a (A).
+
+ANSWER: (A) $m<-4$ ou $m>4$%
+\newpage%
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Ideia.} O ângulo entre duas retas no espaço (concorrentes ou reversas) é o ângulo agudo $\theta\in\left[0,\frac{\pi}{2}\right]$ entre seus vetores diretores. Pela definição de produto escalar,
+\[
+\cos\theta=\frac{|\vec u\cdot\vec v|}{\|\vec u\|\,\|\vec v\|},
+\]
+onde o módulo no numerador garante que o ângulo seja agudo.
+
+\textbf{1. Vetores diretores.}
+\begin{itemize}
+  \item Reta $r$ na forma simétrica $\dfrac{x-1}{1}=\dfrac{y-2}{2}=\dfrac{z}{3}$: os denominadores formam o vetor diretor, $\vec u=(1,2,3)$, e a reta passa por $A=(1,2,0)$.
+  \item Reta $s$ na forma paramétrica: os coeficientes de $t$ formam o vetor diretor, $\vec v=(1,1,3)$, e a reta passa por $B=(1,2,3)$.
+\end{itemize}
+
+\textbf{2. Posição relativa (verificação).} Como $\vec u$ e $\vec v$ não são proporcionais ($1/1\neq 2/1$), as retas não são paralelas. Escrevendo $r$ como $(1+a,\,2+2a,\,3a)$ e igualando a $s$, obtemos $a=t$ e $2a=t$, logo $a=t=0$. Então a terceira coordenada daria $0=3$, o que é absurdo. Portanto as retas são \emph{reversas}. Isso não muda nada: o ângulo continua sendo definido pelos vetores diretores.
+
+\textbf{3. Cálculo.}
+\[
+\vec u\cdot\vec v = 1\cdot 1+2\cdot 1+3\cdot 3 = 12,
+\]
+\[
+\|\vec u\|=\sqrt{1+4+9}=\sqrt{14},\qquad \|\vec v\|=\sqrt{1+1+9}=\sqrt{11}.
+\]
+Logo,
+\[
+\cos\theta=\frac{|12|}{\sqrt{14}\cdot\sqrt{11}}=\frac{12}{\sqrt{154}}=\frac{6\sqrt{154}}{77}.
+\]
+
+\textbf{4. Conferência.} Temos $\sqrt{154}\approx 12{,}41$, logo $\cos\theta\approx 0{,}967$ e $\theta\approx 14{,}8^\circ$. O valor está entre $0$ e $1$ e é próximo de $1$, o que é coerente: os vetores diretores diferem só na segunda coordenada ($2$ contra $1$), então as direções são parecidas. As outras alternativas têm denominadores diferentes de $\|\vec u\|\,\|\vec v\|=\sqrt{154}$. Em (D) e (E), o numerador $11$ também não corresponde ao produto escalar, que é $12$.
+
+\textbf{Conclusão.} O cosseno do ângulo entre as retas é $\dfrac{12}{\sqrt{154}}$, que é exatamente a alternativa (A).
+
+\medskip
+ANSWER: (A) $\dfrac{12}{\sqrt{154}}$
+%
+\newpage%
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{1) Domínio.} O denominador se anula em $x^2-1=0$, ou seja, em $x=\pm 1$. Logo
+\[
+D(f)=\mathbb{R}\setminus\{-1,\,1\}.
+\]
+
+\textbf{2) Simplificação.} Como $x^2-1=(x-1)(x+1)$, para $x\neq -1$ podemos cancelar o fator $x+1$:
+\[
+f(x)=-\frac{x+1}{(x-1)(x+1)}=-\frac{1}{x-1}=\frac{1}{1-x},\qquad x\neq \pm 1 .
+\]
+O gráfico de $f$ é, portanto, o da hipérbole $y=\dfrac{1}{1-x}$, \emph{retirado o ponto de abscissa} $x=-1$. Esse ponto ficaria em
+\[
+y=\frac{1}{1-(-1)}=\frac12 ,
+\]
+e por isso o gráfico tem um \emph{buraco} (bolinha aberta) em $\left(-1,\tfrac12\right)$, que está à esquerda do eixo $y$ e acima do eixo $x$. Em $x=-1$ a descontinuidade é removível, pois $\lim_{x\to -1} f(x)=\tfrac12$ é finito.
+
+\textbf{3) Assíntotas.}
+\begin{itemize}
+\item Vertical: $x=1$, que fica à direita do eixo $y$, pois
+\[
+\lim_{x\to 1^-}\frac{1}{1-x}=+\infty,\qquad \lim_{x\to 1^+}\frac{1}{1-x}=-\infty .
+\]
+\item Horizontal: $y=0$ (o eixo $x$), pois $\lim_{x\to\pm\infty}\dfrac{1}{1-x}=0$.
+\end{itemize}
+
+\textbf{4) Sinal e monotonicidade.} Para $x<1$ temos $1-x>0$, logo $f(x)>0$: o ramo esquerdo fica acima do eixo $x$. Para $x>1$ temos $f(x)<0$: o ramo direito fica abaixo do eixo $x$. Além disso,
+\[
+f'(x)=\frac{1}{(1-x)^2}>0\quad\text{para todo } x\in D(f),
+\]
+então $f$ é crescente em cada ramo. O ramo esquerdo sai de valores próximos de $0$ (quando $x\to-\infty$) e sobe até $+\infty$ junto a $x=1$. O ramo direito vem de $-\infty$ junto a $x=1$ e cresce em direção a $0$.
+
+\textbf{5) Interseção com o eixo $y$.} Temos $f(0)=1>0$, ou seja, o ramo esquerdo corta o eixo $y$ acima da origem. A função nunca se anula, então não há interseção com o eixo $x$.
+
+\textbf{6) Análise das alternativas.}
+\begin{itemize}
+\item (B) e (C) têm o ramo direito acima do eixo e decrescente, e o ramo esquerdo abaixo. Isso é o oposto do sinal e da monotonicidade obtidos. Descartadas.
+\item (D) tem a assíntota vertical à esquerda do eixo $y$ e o buraco em $x>0$. A assíntota correta é $x=1>0$ e o buraco fica em $x=-1<0$. Descartada.
+\item (E) tem o formato correto, mas não mostra o ponto excluído $x=-1$. Isso não pode ser omitido, porque $-1\notin D(f)$. Descartada.
+\item (A) tem a assíntota vertical à direita do eixo $y$. O ramo esquerdo está acima do eixo $x$, é crescente, corta o eixo $y$ em valor positivo e vai a $+\infty$. O ramo direito está abaixo do eixo, vem de $-\infty$ e tende a $0$. A bolinha aberta está à esquerda do eixo $y$ e acima do eixo $x$, compatível com $\left(-1,\tfrac12\right)$. É a única alternativa que atende a todas as condições.
+\end{itemize}
+
+\textbf{Conclusão.} O gráfico é a hipérbole $y=\dfrac{1}{1-x}$, com assíntotas $x=1$ e $y=0$ e um buraco em $\left(-1,\tfrac12\right)$. Isso corresponde à alternativa (A).
+
+ANSWER: (A)%
+\newpage%
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Ideia.} A condicional $p\rightarrow q$ só é falsa quando $p$ é verdadeira e $q$ é falsa; nos outros três casos ela é verdadeira. A negação $\sim p$ tem o valor lógico oposto ao de $p$. O enunciado lembra que $(\sim n\rightarrow\sim m)$ é a \emph{contrapositiva} de $(m\rightarrow n)$. As duas são equivalentes, portanto têm a mesma coluna na tabela-verdade.
+
+\textbf{Ordem das linhas.} Usamos a ordem usual para duas proposições: $(m,n)=(V,V),\ (V,F),\ (F,V),\ (F,F)$.
+
+\textbf{Tabela-verdade.}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$m$ & $n$ & $\sim m$ & $\sim n$ & $\sim n\rightarrow\sim m$ & $m\rightarrow n$\\
+\hline
+V & V & F & F & V & V\\
+V & F & F & V & F & F\\
+F & V & V & F & V & V\\
+F & F & V & V & V & V\\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Justificativa de cada linha.}
+\begin{itemize}
+\item $m=V,\ n=V$: temos $\sim n=F$. Antecedente falso, logo a condicional é V.
+\item $m=V,\ n=F$: temos $\sim n=V$ e $\sim m=F$. Antecedente verdadeiro e consequente falso, logo a condicional é F. É o único caso falso.
+\item $m=F,\ n=V$: temos $\sim n=F$. Antecedente falso, logo a condicional é V.
+\item $m=F,\ n=F$: temos $\sim n=V$ e $\sim m=V$. Consequente verdadeiro, logo a condicional é V.
+\end{itemize}
+
+\textbf{Verificação.} As colunas de $\sim n\rightarrow\sim m$ e de $m\rightarrow n$ são iguais, linha por linha: $V,F,V,V$. Isso confirma a equivalência $(m\rightarrow n)\Leftrightarrow(\sim n\rightarrow\sim m)$ dada no enunciado. Nas duas sentenças, a única linha falsa é aquela em que $m$ é verdadeira e $n$ é falsa.
+
+\textbf{Conclusão.} A sequência lógica de $(\sim n\rightarrow\sim m)$ é V, F, V, V. Somente a alternativa (E) traz essa sequência, com o único F na segunda posição. As alternativas (A), (B), (C) e (D) erram a posição ou a quantidade de valores falsos.
+
+ANSWER: (E) V, F, V, V%
+\newpage%
+\section*{Questão 11}
+
+\section*{Solução}
+
+\textbf{Identificação da indeterminação.} Quando $x\to 1$, temos $\dfrac{\pi x}{4}\to\dfrac{\pi}{4}$, logo $\operatorname{tg}\dfrac{\pi x}{4}\to 1$, e $\dfrac{\pi x}{2}\to\dfrac{\pi}{2}$, logo $\left|\operatorname{tg}\dfrac{\pi x}{2}\right|\to\infty$. É uma indeterminação do tipo $1^{\infty}$. Note que, para $x$ próximo de $1$ (e $x\neq 1$), a base é positiva, então a potência está bem definida e podemos usar logaritmo.
+
+\textbf{Mudança de variável.} Seja $t=\dfrac{\pi x}{4}$ e $u=\operatorname{tg} t$. Então $\dfrac{\pi x}{2}=2t$ e, pela fórmula do arco duplo,
+\[
+\operatorname{tg}\frac{\pi x}{2}=\operatorname{tg}(2t)=\frac{2\operatorname{tg} t}{1-\operatorname{tg}^2 t}=\frac{2u}{1-u^2}.
+\]
+Quando $x\to 1$, $u\to 1$ com $u\neq 1$ (pois $\operatorname{tg}$ é contínua e injetora perto de $\pi/4$). Assim, sendo $L$ o limite procurado,
+\[
+L=\lim_{u\to 1} u^{\frac{2u}{1-u^2}}=\lim_{u\to 1}\exp\!\left(\frac{2u\,\ln u}{1-u^2}\right).
+\]
+
+\textbf{Cálculo do expoente.} Escrevendo $1-u^2=-(u-1)(u+1)$:
+\[
+\frac{2u\,\ln u}{1-u^2}=-\frac{2u}{u+1}\cdot\frac{\ln u}{u-1}.
+\]
+Usamos o limite fundamental $\displaystyle\lim_{u\to 1}\frac{\ln u}{u-1}=1$ (é a derivada de $\ln$ em $u=1$). Como $\dfrac{2u}{u+1}\to\dfrac{2}{2}=1$, obtemos
+\[
+\lim_{u\to 1}\frac{2u\,\ln u}{1-u^2}=-1\cdot 1=-1.
+\]
+
+\textbf{Conclusão.} Como a exponencial é contínua,
+\[
+L=e^{-1}.
+\]
+
+\textbf{Verificação dos limites laterais.} Para $x\to 1^-$: a base é menor que $1$ e o expoente tende a $+\infty$. Para $x\to 1^+$: a base é maior que $1$ e o expoente tende a $-\infty$. Nos dois casos a potência tende a um valor menor que $1$. Isso confirma o valor $e^{-1}\approx 0{,}37$ para os dois lados. O cálculo acima vale para $u\to 1$ por qualquer lado, então o limite bilateral existe.
+
+\textbf{Exclusão das outras alternativas.} O limite vale $e^{-1}$, que é finito, positivo e diferente de $e$ e de $2e^{-1}$. Portanto (A), (C), (D) e (E) estão erradas, e a correta é a (B).
+
+ANSWER: (B) $e^{-1}$%
+\newpage%
+\section*{Questão 12}
+
+\section*{Solução}
+
+\textbf{1) Interseções em $[0;5)$.} Para $x>0$, $2^x=x^2 \iff h(x)=x\ln 2-2\ln x=0$. Como $h''(x)=\dfrac{2}{x^2}>0$, $h$ é estritamente convexa em $(0,+\infty)$ e tem no máximo dois zeros. Por verificação direta, $2^2=4=2^2$ e $2^4=16=4^2$, então os zeros são exatamente $x=2$ e $x=4$. Em $x=0$ não há interseção ($2^0=1\neq 0$). A raiz negativa de $2^x=x^2$ fica fora do intervalo dado.
+
+\textbf{2) Região delimitada.} As duas curvas só se cruzam em $x=2$ e $x=4$, e $h$ é negativa entre seus zeros (por exemplo, em $x=3$: $3^2=9>8=2^3$). Logo, em $[2,4]$,
+\[
+x^2\ \ge\ 2^x>0 .
+\]
+A região limitada pelas interseções é, portanto, $\{(x,y):\ 2\le x\le 4,\ 2^x\le y\le x^2\}$, toda acima do eixo $x$.
+
+\textbf{3) Volume pelo método das arruelas.} Ao girar a região em torno do eixo $x$, cada seção transversal é uma coroa circular de raio externo $R=x^2$ e raio interno $r=2^x$. Assim,
+\[
+V=\pi\int_2^4\left[(x^2)^2-(2^x)^2\right]dx=\pi\int_2^4\left(x^4-4^x\right)dx .
+\]
+Usando $\displaystyle\int x^4\,dx=\frac{x^5}{5}$ e $\displaystyle\int 4^x\,dx=\frac{4^x}{\ln 4}=\frac{4^x}{2\ln 2}$:
+\[
+\int_2^4 x^4\,dx=\frac{4^5-2^5}{5}=\frac{1024-32}{5}=198{,}4,
+\qquad
+\int_2^4 4^x\,dx=\frac{4^4-4^2}{2\ln 2}=\frac{240}{2\ln 2}=\frac{120}{\ln 2}.
+\]
+Logo,
+\[
+V=\pi\left(198{,}4-\frac{120}{\ln 2}\right).
+\]
+
+\textbf{4) Valor numérico com o dado $\ln 2\cong 0{,}7$:}
+\[
+\frac{120}{0{,}7}\cong 171{,}43
+\quad\Longrightarrow\quad
+V\cong\pi\,(198{,}4-171{,}43)\cong 26{,}97\,\pi\cong 27\pi .
+\]
+
+\textbf{Conferência.} O valor é positivo, como deve ser, já que $x^4>4^x$ em $(2,4)$. A ordem de grandeza também é coerente: o integrando vale no máximo $81-64=17$, em $x=3$, num intervalo de comprimento $2$, o que dá $V<34\pi$.
+
+\textit{Observação:} o resultado depende bastante da aproximação de $\ln 2$, porque se subtraem números próximos. Com $\ln 2\cong 0{,}693$, obtém-se $V\cong 25{,}3\pi$. Como o enunciado manda usar $\ln 2\cong 0{,}7$, o valor esperado é $\cong 27\pi$.
+
+\textbf{Conclusão.} Com o dado do enunciado, o volume vale aproximadamente $27\pi$. A alternativa (E) é a correta, pois é a única que coincide com $26{,}97\pi\cong 27\pi$.
+
+ANSWER: (E) $27\pi$%
+\newpage%
+\section*{Questão 13}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} O ponto $(x(t),y(t))$ percorre a hipérbole $xy=4$, e $x$ e $y$ são funções duas vezes deriváveis do tempo. Pelo enunciado, a velocidade da ordenada é constante:
+\[
+\dot y=\frac{dy}{dt}=\alpha \ (\alpha\neq 0) \quad\Longrightarrow\quad \ddot y=\frac{d^2y}{dt^2}=0 .
+\]
+Queremos $\ddot x$, a aceleração da abscissa, no instante em que $x=2$. Sobre a curva, $x=2$ dá $y=\dfrac{4}{2}=2$. Como $xy=4\neq 0$, temos sempre $x\neq 0$ e $y\neq 0$, então as divisões abaixo são válidas.
+
+\textbf{1) Primeira derivada (velocidade de $x$).} Derivando $x(t)\,y(t)=4$ em relação a $t$ (regra do produto):
+\[
+\dot x\,y+x\,\dot y=0 \quad\Longrightarrow\quad \dot x=-\frac{x\,\dot y}{y}=-\frac{x\,\alpha}{y}.
+\]
+Em $(2,2)$: $\dot x=-\alpha$. O sinal é coerente: na hipérbole, quando $y$ cresce, $x$ decresce.
+
+\textbf{2) Segunda derivada (aceleração de $x$).} Derivando novamente $\dot x\,y+x\,\dot y=0$:
+\[
+\ddot x\,y+\dot x\,\dot y+\dot x\,\dot y+x\,\ddot y=0
+\quad\Longrightarrow\quad
+\ddot x\,y+2\,\dot x\,\dot y+x\,\ddot y=0 .
+\]
+Substituímos $\ddot y=0$, $y=2$, $\dot x=-\alpha$ e $\dot y=\alpha$:
+\[
+2\,\ddot x+2(-\alpha)(\alpha)+0=0 \quad\Longrightarrow\quad \ddot x=\alpha^2 .
+\]
+
+\textbf{Conferência pelo método explícito.} Escrevendo $x=4y^{-1}$:
+\[
+\dot x=-\frac{4\dot y}{y^2}=-\frac{4\alpha}{y^2},\qquad
+\ddot x=\frac{8\alpha\,\dot y}{y^3}=\frac{8\alpha^2}{y^3}.
+\]
+Para $y=2$: $\ddot x=\dfrac{8\alpha^2}{8}=\alpha^2$. O resultado é o mesmo.
+
+\textbf{Análise do resultado.} Temos $\ddot x=\alpha^2>0$ para todo $\alpha\neq 0$. Isso faz sentido, porque a aceleração não pode depender do sentido do percurso: trocar $\alpha$ por $-\alpha$ equivale a inverter o tempo, e a aceleração é par em $t$. Isso descarta as alternativas lineares ou ímpares em $\alpha$, ou seja, (A), (B), (D) e (E). Quanto às dimensões: se $\dot y=\alpha$ tem unidade de comprimento/tempo, então $\alpha^2/y$ tem unidade de comprimento/tempo$^2$, que é a unidade de aceleração. Aqui $\ddot x=8\alpha^2/y^3$ e a constante $4$ da curva tem dimensão de comprimento$^2$, logo $8\alpha^2/y^3$ também é uma aceleração.
+
+Portanto, a aceleração da abscissa em $x=2$ é $\alpha^2$, que é a alternativa (C).
+
+ANSWER: (C) $\alpha^2$%
+\newpage%
+\section*{Questão 14}
+
+\section*{Solução}
+
+\textbf{1) Pontos de interseção das curvas.} Igualando $f(x)=g(x)$:
+\[
+x^4-3x^2=x^2 \iff x^4-4x^2=0 \iff x^2(x^2-4)=0 \iff x\in\{-2,\,0,\,2\}.
+\]
+Os pontos comuns são $(-2,4)$, $(0,0)$ e $(2,4)$. Assim, a região limitada pelas duas curvas fica no intervalo $[-2,2]$.
+
+\textbf{2) Qual curva fica por cima.} Para $x\in[-2,2]$,
+\[
+g(x)-f(x)=x^2-(x^4-3x^2)=4x^2-x^4=x^2(4-x^2)\ge 0,
+\]
+e a igualdade só ocorre em $x=0$ e $x=\pm 2$. Logo, em todo o intervalo a parábola $g$ fica acima da quártica $f$, ou no máximo a toca. Em $x=0$ as curvas apenas se tangenciam: ali a diferença não troca de sinal. Por isso a região é formada por dois \textit{lóbulos} simétricos, e a área pode ser calculada com uma única integral de $g-f$, sem trocar a ordem da subtração.
+
+\textbf{3) Cálculo da área.} O integrando $4x^2-x^4$ é uma função par. Então
+\[
+A=\int_{-2}^{2}\left(4x^2-x^4\right)dx
+=2\int_{0}^{2}\left(4x^2-x^4\right)dx
+=2\left[\frac{4x^3}{3}-\frac{x^5}{5}\right]_{0}^{2}.
+\]
+\[
+A=2\left(\frac{32}{3}-\frac{32}{5}\right)
+=2\cdot\frac{160-96}{15}
+=2\cdot\frac{64}{15}
+=\frac{128}{15}\approx 8{,}53 .
+\]
+
+\textbf{4) Verificação.} O resultado é positivo, como uma área deve ser. Para conferir a ordem de grandeza, basta observar que a região fica dentro do retângulo $[-2,2]\times[-2{,}25;\,4]$. O valor mínimo de $f$ é $-\frac{9}{4}$, atingido em $x^2=\frac{3}{2}$. Esse retângulo tem área $4\cdot 6{,}25=25$, e $8{,}53<25$, o que é coerente.
+
+\textbf{Conclusão.} A área da região limitada pelas curvas é $\dfrac{128}{15}$, que corresponde à alternativa (B). As alternativas (D) e (E) trazem o numerador $182$ e não coincidem com esse valor. As alternativas (A) e (C) trazem o numerador correto, mas o denominador errado.
+
+ANSWER: (B) $\dfrac{128}{15}$%
+\newpage%
+\section*{Questão 15}
+
+\section*{Solução}
+
+\textbf{1) Probabilidades no primeiro turno.} Seja $p$ a probabilidade de A vencer. Pelo enunciado:
+\[
+P(A)=P(B)=p,\qquad P(C)=\frac{p}{3},\qquad P(D)=P(E)=2\cdot\frac{p}{3}=\frac{2p}{3}.
+\]
+Os eventos ``o candidato X vence'' são mutuamente exclusivos (só um candidato vence) e cobrem todos os casos possíveis, já que há exatamente 5 candidatos. Logo, a soma das probabilidades é igual a $1$:
+\[
+p+p+\frac{p}{3}+\frac{2p}{3}+\frac{2p}{3}=1
+\;\Longrightarrow\;
+\frac{6p+p+2p+2p}{3}=\frac{11p}{3}=1
+\;\Longrightarrow\;
+p=\frac{3}{11}.
+\]
+Portanto,
+\[
+P(A)=P(B)=\frac{3}{11},\qquad P(C)=\frac{1}{11},\qquad P(D)=P(E)=\frac{2}{11}.
+\]
+Verificação: $\dfrac{3+3+1+2+2}{11}=1$.
+
+\textbf{2) Segundo turno entre A e D.} Com ``mantendo-se proporcionalmente as chances'', entende-se que, no segundo turno, as probabilidades de A e de D continuam na mesma razão do primeiro turno,
+\[
+\frac{P_2(A)}{P_2(D)}=\frac{P(A)}{P(D)}=\frac{3/11}{2/11}=\frac{3}{2},
+\]
+e somam $1$, pois agora apenas A ou D pode vencer: $P_2(A)+P_2(D)=1$. Isso equivale a normalizar as chances de A e D pela soma delas, que é o mesmo que condicionar ao evento ``o vencedor é A ou D'':
+\[
+P_2(A)=\frac{P(A)}{P(A)+P(D)}=\frac{\dfrac{3}{11}}{\dfrac{3}{11}+\dfrac{2}{11}}=\frac{3}{5},
+\qquad
+P_2(D)=\frac{2}{5}.
+\]
+
+\textbf{3) Conferência e alternativas.} $P_2(A)+P_2(D)=\frac{3}{5}+\frac{2}{5}=1$, e A, que era favorito em relação a D no primeiro turno ($3/11>2/11$), continua favorito ($3/5>1/2$). As demais opções são armadilhas:
+\begin{itemize}
+\item $3/11$, opção (C): é a chance de A no primeiro turno, sem renormalizar;
+\item $5/11$, opção (D): é $P(A)+P(D)$;
+\item $2/5$, opção (A): é a chance de D no segundo turno.
+\end{itemize}
+A opção correta é, portanto, a (B): $3/5$.
+
+ANSWER: (B) $\dfrac{3}{5}$%
+\newpage%
+\section*{Questão 16}
+
+\section*{Solução}
+
+\textbf{1. Separação da soma.} As duas séries $\sum_{n\ge 1} \frac{1}{3^n}$ e $\sum_{n\ge 1} \frac{1}{2^n}$ convergem (justificado abaixo). Pela linearidade das séries convergentes, a soma termo a termo é igual à soma das duas séries:
+\[
+S=\sum_{n=1}^{\infty}\left(\frac{1}{3^n}+\frac{1}{2^n}\right)=\sum_{n=1}^{\infty}\frac{1}{3^n}+\sum_{n=1}^{\infty}\frac{1}{2^n}.
+\]
+
+\textbf{2. Séries geométricas.} Uma série geométrica $\sum_{n=1}^{\infty} r^n$ converge quando $|r|<1$, e então
+\[
+\sum_{n=1}^{\infty} r^n=\frac{r}{1-r}\qquad(\text{primeiro termo } r,\ \text{razão } r).
+\]
+Para $r=\frac13$ e para $r=\frac12$ vale $|r|<1$. Assim:
+\[
+\sum_{n=1}^{\infty}\frac{1}{3^n}=\frac{\frac13}{1-\frac13}=\frac{\frac13}{\frac23}=\frac12,
+\qquad
+\sum_{n=1}^{\infty}\frac{1}{2^n}=\frac{\frac12}{1-\frac12}=1.
+\]
+
+\textbf{3. Valor pedido.} Daí,
+\[
+S=\frac12+1=\frac32
+\qquad\Longrightarrow\qquad
+S^4=\left(\frac32\right)^4=\frac{3^4}{2^4}=\frac{81}{16}.
+\]
+
+\textbf{Verificação.} Todos os termos são positivos, então $S$ é maior que o primeiro termo, $\frac13+\frac12=\frac56$. Somando os dois primeiros termos, obtemos $\frac56+\frac19+\frac14=\frac{43}{36}\approx 1{,}19$. Ainda faltam os termos seguintes, o que é coerente com $S=1{,}5$. Logo, $S^4=5{,}0625$.
+
+Valores aproximados das alternativas:
+\begin{itemize}
+\item (A) $\frac{70}{59}\approx 1{,}19$;
+\item (B) $\frac{70}{79}\approx 0{,}89$;
+\item (C) $\frac{79}{16}=4{,}9375$;
+\item (E) $\frac{80}{61}\approx 1{,}31$.
+\end{itemize}
+Nenhuma delas é igual a $\frac{81}{16}$. A alternativa (C) é próxima, mas difere de $\frac{81}{16}$ por $\frac{2}{16}$. Portanto, a única alternativa correta é a (D).
+
+ANSWER: (D) $\frac{81}{16}$%
+\newpage%
+\section*{Questão 17}
+
+\section*{Solução}
+
+\textbf{Notação.} Para $x$ real e $k$ inteiro, defina o binomial generalizado
+\[
+\binom{x}{k}=\frac{x(x-1)\cdots(x-k+1)}{k!}\ (k\ge 1),\qquad \binom{x}{0}=1,\qquad \binom{x}{-1}=0 .
+\]
+Com isso, a expressão pedida é
+\[
+S_n(x)=\sum_{k=0}^{n}(-1)^k\binom{x}{k}.
+\]
+
+\textbf{Passo 1: relação de Stifel (Pascal) para $x$ real.} Para $k\ge 1$:
+\[
+\binom{x-1}{k}+\binom{x-1}{k-1}
+=\frac{(x-1)\cdots(x-k+1)}{(k-1)!}\left[\frac{x-k}{k}+1\right]
+=\frac{(x-1)\cdots(x-k+1)}{(k-1)!}\cdot\frac{x}{k}
+=\binom{x}{k}.
+\]
+Para $k=0$ ela também vale: $\binom{x-1}{0}+\binom{x-1}{-1}=1+0=1=\binom{x}{0}$. A identidade é puramente algébrica, logo vale para todo $x$ real (não é preciso que $x$ seja natural).
+
+\textbf{Passo 2: soma telescópica.} Substituindo em $S_n$:
+\[
+S_n(x)=\sum_{k=0}^{n}(-1)^k\binom{x-1}{k}+\sum_{k=0}^{n}(-1)^k\binom{x-1}{k-1}.
+\]
+Na segunda soma, o termo $k=0$ é nulo. Fazendo $j=k-1$, ela fica $-\sum_{j=0}^{n-1}(-1)^j\binom{x-1}{j}$. Assim, todos os termos se cancelam, exceto o termo $k=n$ da primeira soma:
+\[
+S_n(x)=(-1)^n\binom{x-1}{n}=(-1)^n\,\frac{(x-1)(x-2)\cdots(x-n)}{n!}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item $n=1$: $1-x=-(x-1)$. Confere.
+\item $n=2$: $1-x+\dfrac{x(x-1)}{2}=\dfrac{x^2-3x+2}{2}=\dfrac{(x-1)(x-2)}{2}$. Confere.
+\item $x=0$: a soma vale $1$, e a fórmula dá $(-1)^n\dfrac{(-1)^n\,n!}{n!}=1$. Confere.
+\end{itemize}
+
+\textbf{Análise das alternativas.} $S_n$ é um polinômio de grau exatamente $n$, com coeficiente líder $\dfrac{(-1)^n}{n!}$, que vem apenas do último termo.
+\begin{itemize}
+\item (C): o numerador $(x-1)\cdots(x-n+1)$ tem só $n-1$ fatores, logo grau $n-1$. Falsa.
+\item (D): o numerador tem $2n$ fatores, logo grau $2n$. Falsa.
+\item (E): é apenas o último termo da soma, o que equivaleria a todos os demais termos se anularem. Falsa; por exemplo, para $n=1$ daria $-x\neq 1-x$.
+\item (B): os fatores vão de $x-1$ até $x+n$, o que não forma uma sequência coerente nem tem grau $n$. Falsa.
+\end{itemize}
+A alternativa (A) coincide exatamente com o resultado obtido: $(-1)^n\binom{x-1}{n}$.
+
+ANSWER: (A) $(-1)^n\dfrac{(x-1)(x-2)\cdots(x-n)}{n!}$%
+\newpage%
+\section*{Questão 18}
+
+\section*{Solução}
+
+\textbf{Ideia.} Duas curvas se intersectam ortogonalmente quando, em um ponto comum, suas retas tangentes são perpendiculares. Como $f$ e $g$ são deriváveis, nenhuma das tangentes é vertical. Então a perpendicularidade equivale a ter o produto dos coeficientes angulares igual a $-1$ (sendo os dois coeficientes não nulos):
+\[
+f(x_0)=g(x_0) \quad\text{e}\quad f'(x_0)\,g'(x_0)=-1 .
+\]
+Também precisamos descartar o caso em que uma tangente é horizontal: a outra teria de ser vertical, o que não ocorre aqui.
+
+\textbf{1) Pontos de interseção.}
+\[
+ax_0^2-7=-x_0^2+1 \;\Longleftrightarrow\; (a+1)\,x_0^2=8 \;\Longleftrightarrow\; x_0^2=\frac{8}{a+1}.
+\]
+Para existir interseção é preciso ter $a>-1$. Note que $x_0\neq 0$, pois em $x=0$ teríamos $-7=1$, o que é falso.
+
+\textbf{2) Condição de ortogonalidade.} As derivadas são $f'(x)=2ax$ e $g'(x)=-2x$. Assim,
+\[
+f'(x_0)\,g'(x_0)=(2ax_0)(-2x_0)=-4a\,x_0^2=-1 \;\Longleftrightarrow\; 4a\,x_0^2=1 .
+\]
+Em particular, $a>0$. Logo $f'(x_0)\neq 0$ e $g'(x_0)\neq 0$, e o critério do produto $-1$ é válido.
+
+\textbf{3) Resolvendo o sistema.} Substituindo $x_0^2=\dfrac{8}{a+1}$ na condição do passo 2:
+\[
+4a\cdot\frac{8}{a+1}=1 \;\Longleftrightarrow\; 32a=a+1 \;\Longleftrightarrow\; a=\frac{1}{31}.
+\]
+Esse valor satisfaz $a>0>-1$, portanto é admissível.
+
+\textbf{4) Verificação.} Com $a=\dfrac{1}{31}$:
+\[
+x_0^2=\frac{8}{32/31}=\frac{31}{4} \quad\Longrightarrow\quad x_0=\pm\frac{\sqrt{31}}{2}.
+\]
+Nesses pontos, $f(x_0)=\dfrac{1}{31}\cdot\dfrac{31}{4}-7=-\dfrac{27}{4}$ e $g(x_0)=-\dfrac{31}{4}+1=-\dfrac{27}{4}$, ou seja, as curvas de fato se encontram. Além disso,
+\[
+f'(x_0)\,g'(x_0)=-4\cdot\frac{1}{31}\cdot\frac{31}{4}=-1 .
+\]
+Pela simetria par das duas funções, a ortogonalidade vale nos dois pontos de interseção.
+
+\textbf{Conferência das demais alternativas.} Para cada alternativa calculamos o produto $-4a\,x_0^2=-\dfrac{32a}{a+1}$:
+\begin{itemize}
+\item (B) $a=\frac{27}{4}$: o produto vale $-\frac{864}{31}$;
+\item (C) $a=\frac{17}{27}$: o produto vale $-\frac{136}{11}$;
+\item (D) $a=\frac{1}{17}$: o produto vale $-\frac{16}{9}$;
+\item (E) $a=\frac{7}{14}=\frac{1}{2}$: o produto vale $-\frac{32}{3}$.
+\end{itemize}
+Nenhum desses valores é $-1$. A única alternativa correta é, portanto, a (A).
+
+ANSWER: (A) $\frac{1}{31}$%
+\newpage%
+\section*{Questão 19}
+
+\section*{Solução}
+
+\textbf{1) Simplificação do integrando.} No intervalo $\left[\frac{\pi}{4},\frac{\pi}{2}\right]$ temos $\sin x \ge \frac{\sqrt{2}}{2} > 0$. Assim, o integrando é contínuo e não há singularidade. Pela identidade $1+\cot^2 x=\csc^2 x$:
+\[
+x\cot^2 x = x\csc^2 x - x .
+\]
+Portanto
+\[
+I=\int_{\pi/4}^{\pi/2} x\cot^2 x\,dx=\int_{\pi/4}^{\pi/2} x\csc^2 x\,dx-\int_{\pi/4}^{\pi/2} x\,dx .
+\]
+
+\textbf{2) Integração por partes.} Tomamos $u=x$ e $dv=\csc^2 x\,dx$. Então $du=dx$ e $v=-\cot x$, pois $(\cot x)'=-\csc^2 x$. Daí
+\[
+\int x\csc^2 x\,dx=-x\cot x+\int \cot x\,dx=-x\cot x+\ln(\sin x)+C .
+\]
+Aqui usamos $\int \cot x\,dx=\ln|\sin x|+C$, com $\sin x>0$ no intervalo.
+
+Uma primitiva do integrando original é, então,
+\[
+F(x)=-x\cot x+\ln(\sin x)-\frac{x^2}{2}.
+\]
+Conferência: $F'(x)=-\cot x+x\csc^2 x+\cot x-x=x(\csc^2 x-1)=x\cot^2 x$.
+
+\textbf{3) Teorema Fundamental do Cálculo.} Avaliamos $F$ nos extremos.
+
+Em $x=\frac{\pi}{2}$: $\cot\frac{\pi}{2}=0$ e $\sin\frac{\pi}{2}=1$, logo
+\[
+F\!\left(\tfrac{\pi}{2}\right)=0+\ln 1-\frac{\pi^2}{8}=-\frac{\pi^2}{8}.
+\]
+
+Em $x=\frac{\pi}{4}$: $\cot\frac{\pi}{4}=1$ e $\sin\frac{\pi}{4}=\frac{\sqrt2}{2}$, logo
+\[
+F\!\left(\tfrac{\pi}{4}\right)=-\frac{\pi}{4}+\ln\!\left(\frac{\sqrt2}{2}\right)-\frac{\pi^2}{32}.
+\]
+
+Subtraindo:
+\[
+I=F\!\left(\tfrac{\pi}{2}\right)-F\!\left(\tfrac{\pi}{4}\right)
+=-\frac{\pi^2}{8}+\frac{\pi}{4}-\ln\!\left(\frac{\sqrt2}{2}\right)+\frac{\pi^2}{32}.
+\]
+Como $-\frac{\pi^2}{8}+\frac{\pi^2}{32}=-\frac{4\pi^2}{32}+\frac{\pi^2}{32}=-\frac{3\pi^2}{32}$, obtemos
+\[
+\boxed{I=-\ln\!\left(\frac{\sqrt2}{2}\right)+\frac{\pi}{4}-\frac{3\pi^2}{32}}
+\]
+Equivalentemente, $I=\frac{\ln 2}{2}+\frac{\pi}{4}-\frac{3\pi^2}{32}$.
+
+\textbf{4) Verificação de sinal e ordem de grandeza.} Numericamente,
+\[
+I\approx 0{,}3466+0{,}7854-0{,}9253\approx 0{,}207 .
+\]
+Esse valor é coerente com o integrando. No intervalo, $0\le \cot^2 x\le 1$, e o integrando vale $\frac{\pi}{4}\approx 0{,}785$ em $x=\frac{\pi}{4}$ e decresce até $0$ em $x=\frac{\pi}{2}$. A integral é, portanto, positiva e menor que $\frac{\pi}{4}\cdot\frac{\pi}{4}\approx 0{,}62$. Uma integração numérica (regra de Simpson) confirma $I\approx 0{,}2067$.
+
+\textbf{5) Análise das alternativas.} As outras opções têm valores incompatíveis:
+\begin{itemize}
+\item (B) $\approx -1{,}80$: negativa, o que é impossível, pois o integrando é não negativo.
+\item (C) $\approx 4{,}08$ e (D) $\approx 3{,}52$: excedem a cota $0{,}62$.
+\item (E) $\approx 0{,}82$: tem o coeficiente errado em $\pi^2$, pois o correto é $-\frac{3\pi^2}{32}$, e não $-\frac{\pi^2}{32}$.
+\end{itemize}
+A alternativa (A) coincide exatamente com o valor obtido.
+
+ANSWER: (A) $-\ln\left(\frac{\sqrt{2}}{2}\right)+\frac{\pi}{4}-\frac{3\pi^2}{32}$%
+\newpage%
+\section*{Questão 20}
+
+\section*{Solução}
+
+\textbf{Interpretação do enunciado.} As perdas de $10\%$ e $30\%$ são calculadas ``sobre o valor adquirido''. Logo, R\$ 150000,00 é o valor de referência: o preço pago pelo veículo quando foi adquirido. O ``valor atual'' é o que resta depois das duas perdas, e é sobre ele que incide o acréscimo de $40\%$. (Se R\$ 150000,00 já fosse o valor após as perdas, o preço de venda seria $150000\cdot 1{,}4 = 210000$ reais, que não está entre as opções.)
+
+\textbf{Fatores multiplicativos.} Quando um valor $V$ sofre uma variação percentual $i$, ele passa a valer $V(1+i)$. Assim:
+\begin{itemize}
+  \item uma perda de $10\%$ corresponde ao fator $1-0{,}10 = 0{,}90$;
+  \item uma perda de $30\%$ corresponde ao fator $1-0{,}30 = 0{,}70$;
+  \item um acréscimo de $40\%$ corresponde ao fator $1+0{,}40 = 1{,}40$.
+\end{itemize}
+Como as variações são \emph{sucessivas}, cada uma incide sobre o valor resultante da anterior. Por isso os fatores se multiplicam; as porcentagens não se somam.
+
+\textbf{Valor atual (após as duas perdas).}
+\[
+V_{\text{atual}} = 150000 \cdot 0{,}90 \cdot 0{,}70 = 150000 \cdot 0{,}63 = 94500 \text{ reais}.
+\]
+Passo a passo: $150000\cdot 0{,}9 = 135000$ e $135000\cdot 0{,}7 = 94500$. A perda acumulada é de $1-0{,}63 = 37\%$, e não de $10\% + 30\% = 40\%$.
+
+\textbf{Preço de venda (acréscimo de $40\%$ sobre o valor atual).}
+\[
+V_{\text{venda}} = 94500 \cdot 1{,}40 = 132300 \text{ reais}.
+\]
+Em uma única expressão: $V_{\text{venda}} = 150000\cdot 0{,}9\cdot 0{,}7\cdot 1{,}4 = 150000\cdot 0{,}882 = 132300$ reais.
+
+\textbf{Verificação.}
+\begin{itemize}
+  \item Ordem de grandeza: o fator total é $0{,}882<1$. Portanto, mesmo com o acréscimo de $40\%$, o preço de venda fica abaixo do valor de aquisição, cerca de $11{,}8\%$ menor. Isso é coerente com a ideia de ``não ter \emph{tanta} perda'': a perda diminui, mas não desaparece.
+  \item Erro comum: somar as perdas, obtendo $150000\cdot 0{,}60 = 90000$ e depois $90000\cdot 1{,}4 = 126000$ reais. Esse valor não consta das alternativas, o que confirma que as perdas devem ser compostas.
+\end{itemize}
+
+\textbf{Conclusão.} O proprietário venderá o veículo por R\$ 132300,00. Esse valor corresponde exatamente à alternativa (D). As demais opções não resultam da composição correta dos fatores $0{,}9$, $0{,}7$ e $1{,}4$ aplicados a R\$ 150000,00.
+
+ANSWER: (D) R\$ 132300,00%
+\newpage%
+\section*{Questão 21}
+
+\section*{Solução}
+
+\textbf{1) Forma algébrica de $f$.} Para $-1\le x\le 1$, seja $\theta=\arccos x$, com $\theta\in[0,\pi]$ e $\cos\theta=x$. Pela fórmula do arco duplo,
+\[
+f(x)=\cos(2\theta)=2\cos^2\theta-1=2x^2-1,\qquad -1\le x\le 1 .
+\]
+Ou seja, $f$ é o arco de parábola $y=2x^2-1$ restrito a $[-1,1]$ (é o polinômio de Chebyshev $T_2$).
+
+\textbf{2) Domínio de $g$.} Temos
+\[
+g(x)=\frac{1}{f(x)}=\frac{1}{2x^2-1},
+\]
+definida em $[-1,1]$ exceto onde $2x^2-1=0$, isto é, $x=\pm\frac{\sqrt2}{2}\approx\pm 0{,}71$. Como o numerador vale $1\neq 0$, as retas $x=\pm\frac{\sqrt2}{2}$ são \emph{assíntotas verticais}. Além disso, $g(-x)=g(x)$: o gráfico é simétrico em relação ao eixo $y$.
+
+\textbf{3) Sinal e valores de $g$.}
+\begin{itemize}
+\item \emph{Ramo central}, $|x|<\frac{\sqrt2}{2}$: aqui $-1\le 2x^2-1<0$, logo $g(x)\le -1<0$. O máximo é $g(0)=\frac{1}{-1}=-1$, e quando $x\to\pm\frac{\sqrt2}{2}$ por dentro, $2x^2-1\to 0^-$, logo $g(x)\to-\infty$. É um ramo em forma de ``$\cap$'' \emph{abaixo} do eixo $x$, com topo no ponto $(0,-1)$.
+\item \emph{Ramos laterais}, $\frac{\sqrt2}{2}<|x|\le 1$: aqui $0<2x^2-1\le 1$, logo $g(x)\ge 1>0$. Quando $|x|\to\frac{\sqrt2}{2}$ por fora, $2x^2-1\to0^+$ e $g(x)\to+\infty$; nas extremidades do domínio, $g(\pm1)=\frac{1}{2-1}=1$. São ramos \emph{acima} do eixo $x$, descendo de $+\infty$ até a altura $1$ em $x=\pm1$, onde o gráfico termina.
+\end{itemize}
+
+\textbf{4) Monotonicidade (confirmação).}
+\[
+g'(x)=-\frac{4x}{(2x^2-1)^2}.
+\]
+Para $x<0$ temos $g'>0$ e para $x>0$ temos $g'<0$. Assim, no ramo central $g$ cresce até $x=0$ e depois decresce (máximo local $-1$). O ramo da direita decresce de $+\infty$ até $1$, e o da esquerda cresce de $1$ até $+\infty$, como esperado pela simetria.
+
+\textbf{5) Comparação com as alternativas.} O gráfico tem, portanto, assíntotas verticais em $x=\pm\frac{\sqrt2}{2}$, um ramo central negativo com máximo $-1$ em $x=0$, ramos laterais positivos que terminam no nível $y=1$ em $x=\pm1$, e não existe fora de $[-1,1]$.
+\begin{itemize}
+\item (A) e (B): não têm parte negativa, mas $g(0)=-1<0$. Em (A), além disso, não há assíntotas verticais.
+\item (C): os sinais estão trocados (ramo central positivo, laterais negativos).
+\item (D): o ramo central é positivo e o gráfico se estende além de $x=1$, fora do domínio.
+\item (E): ramo central em ``$\cap$'' abaixo do eixo, com máximo no ponto marcado $-1$ do eixo $y$; ramos laterais positivos que vão a $+\infty$ junto às assíntotas e descem até a linha tracejada $y=1$ em $x=\pm1$. Coincide com todas as propriedades encontradas.
+\end{itemize}
+
+Logo, o gráfico que melhor representa $g(x)=\dfrac{1}{2x^2-1}$ é o da alternativa (E).
+
+ANSWER: (E)%
+\newpage%
+\section*{Questão 22}
+
+\section*{Solução}
+
+\textbf{1. Coordenadas do octógono.} Num octógono regular de lado $8$, os lados $AH$, $BC$, $DE$, $FG$ (horizontais e verticais, como na figura) e os lados oblíquos formam com o quadrado circunscrito quatro triângulos retângulos isósceles nos cantos (ângulo interno $135^\circ$, logo ângulos de $45^\circ$ nos cantos), de hipotenusa $8$ e catetos $8/\sqrt2=4\sqrt2$. O quadrado circunscrito tem lado $8+2\cdot4\sqrt2$. Com o centro na origem, seja
+\[
+b=4+4\sqrt2=4(1+\sqrt2).
+\]
+Então
+\[
+A(-4,b),\; B(-b,4),\; C(-b,-4),\; D(-4,-b),\; E(4,-b),\; F(b,-4),\; G(b,4),\; H(4,b).
+\]
+
+\textbf{2. O ponto $I$.} Como a reta $IH$ passa por $C$, temos $I\in CH$; e $I\in BE$. Logo $I=BE\cap CH$.
+\begin{itemize}
+\item Reta $BE$: inclinação $\dfrac{-b-4}{4+b}=-1$, então $x+y=4-b$, isto é, $x+y=-4\sqrt2$.
+\item Reta $CH$: inclinação $\dfrac{b+4}{4+b}=1$, então $y=x+b-4$, isto é, $y=x+4\sqrt2$.
+\end{itemize}
+Resolvendo: $2x+4\sqrt2=-4\sqrt2\Rightarrow x=-4\sqrt2$, $y=0$. Assim $I(-4\sqrt2,\,0)$, que fica de fato no interior do octógono, sobre os segmentos $BE$ e $CH$ (que são perpendiculares).
+
+\textbf{3. Área de $IEG$.} Tomamos a base $IE$, que está sobre a reta $BE$:
+\[
+\overrightarrow{IE}=(4+4\sqrt2,\,-b)=(b,-b)\;\Rightarrow\; IE=b\sqrt2 .
+\]
+A altura é a distância de $G(b,4)$ à reta $x+y+4\sqrt2=0$:
+\[
+h=\frac{|\,b+4+4\sqrt2\,|}{\sqrt2}=\frac{2b}{\sqrt2}=b\sqrt2 .
+\]
+Logo
+\[
+S_{IEG}=\frac12\cdot b\sqrt2\cdot b\sqrt2=b^2=16(1+\sqrt2)^2=48+32\sqrt2 .
+\]
+(Conferência pelo produto vetorial: $\overrightarrow{IE}\times\overrightarrow{IG}=b\cdot4-(-b)(b+4\sqrt2)=b(4+4\sqrt2+b)=2b^2$, cuja metade é $b^2$.)
+
+\textbf{4. Área do octógono.} Quadrado de lado $2b$ menos os quatro cantos:
+\[
+S_{oct}=(2b)^2-4\cdot\frac12\,(4\sqrt2)^2=64(3+2\sqrt2)-64=128(1+\sqrt2),
+\]
+o que coincide com a fórmula $2(1+\sqrt2)\,\ell^2$ para $\ell=8$.
+
+\textbf{5. Razão.}
+\[
+\frac{S_{IEG}}{S_{oct}}=\frac{16(1+\sqrt2)^2}{128(1+\sqrt2)}=\frac{1+\sqrt2}{8}\approx0{,}302 .
+\]
+\textbf{Conferência numérica:} $S_{IEG}\approx93{,}25$ e $S_{oct}\approx309{,}02$. A razão fica perto de $0{,}3$, o que é coerente com a figura, em que o triângulo $IEG$ ocupa pouco menos de um terço do octógono. Entre as alternativas, os valores são $0{,}60$; $0{,}40$; $0{,}20$; $0{,}30$; $0{,}17$, e só a (D) coincide com o resultado.
+
+ANSWER: (D) $\dfrac{1+\sqrt2}{8}$%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 1: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} I verdadeira, II falsa, III verdadeira e IV verdadeira. Resposta: alternativa (D), "Apenas as afirmativas I, III e IV são verdadeiras". A II é falsa porque f(x) = x$\cdot$e\^{}\{1/x\} tem duas assíntotas: a vertical x = 0 (pela direita) e a oblíqua y = x + 1 (em +$\infty$ e em -$\infty$).\par %
+Conferi a transcrição com o PDF (Questão 1, p. 2/12) e ela está fiel. A resposta final é a mesma da minha referência: I verdadeira, II falsa, III verdadeira, IV verdadeira, alternativa (D).\newline%
+\newline%
+Item por item:\newline%
+{-} **I:** a prova está completa. Usa a transitividade do paralelismo, aplicada a $\alpha$ e $\beta$ paralelos ao mesmo $\gamma$, para garantir que $\alpha$ corta $\gamma$. Depois usa que r e s são coplanares (ambas em $\alpha$) e disjuntas, o que exclui retas reversas.\newline%
+{-} **II:** a assíntota vertical x = 0 sai de lim e\^{}t/t = +$\infty$ pela direita. O limite à esquerda, que dá 0, também foi registrado. A oblíqua y = x + 1 está correta: m = 1 e q = lim (e\^{}t - 1)/t = 1, valendo em $\pm$$\infty$. Conferi numericamente: f(10\^{}6) - 10\^{}6 $\approx$ 1,0000005 e f(-10\^{}6) + 10\^{}6 $\approx$ 0,9999995. O candidato também descartou corretamente a assíntota horizontal e concluiu que há duas assíntotas.\newline%
+{-} **III:** usa MA--MG com n cópias de 1 + 1/n e o número 1. A desigualdade estrita está justificada e a elevação à potência n + 1 é lícita. Os termos numéricos aparecem só como conferência, não como prova.\newline%
+{-} **IV:** usa MA--MG em $\surd$x, $\surd$y, $\surd$z e eleva ao quadrado, justificando pela positividade dos dois membros. A condição de igualdade está correta. Num teste com 10\^{}5 ternas aleatórias, a diferença mínima foi $\geq$ 0.\newline%
+\newline%
+A conclusão também explica por que as outras alternativas falham. Restam só duas omissões menores: o caso degenerado $\gamma$ = $\beta$ e a observação explícita de que basta um limite lateral infinito. A resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Item I: o candidato supõe $\gamma$ $\neq$ $\beta$ logo no início, sem dizer nada sobre o caso coincidente. Nesse caso $\alpha$ ? $\gamma$ = r, que é paralela a r no sentido amplo, e a afirmativa continua verdadeira. Uma frase bastaria para fechar o caso.%
+\item%
+{[}minor{]} Item II: o candidato calcula o limite à esquerda (que dá 0) e mesmo assim declara x = 0 assíntota vertical. A conclusão está certa, mas faltou dizer explicitamente que basta um limite lateral infinito. É justamente essa a armadilha clássica do item.%
+\end{itemize}%
+\subsection*{Questão 2: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} As raízes reais são (3-$\surd$5)/2, 1 e (3+$\surd$5)/2. As raízes não reais são (1$\pm$i$\surd$3)/2. A razão pedida é ((3-$\surd$5)/2)/((3+$\surd$5)/2) = (7-3$\surd$5)/2 $\approx$ 0,146, e esse valor não aparece em nenhuma alternativa. Em sentido estrito, a questão não tem alternativa correta e é passível de anulação. A alternativa que a banca provavelmente pretendia (gabarito esperado) é a (A), (3-$\surd$5)/2: ela é igual à menor raiz, a 1/(maior raiz) e a $\varphi$\^{}(-2).\par %
+Conferi o enunciado na prova original (Questão 2, p. 2/12) e ele bate com a transcrição.\newline%
+\newline%
+A resolução do candidato coincide com a minha referência em todos os pontos:\newline%
+{-} x = 1 é raiz porque o polinômio é antirrecíproco.\newline%
+{-} O quociente x\^{}4 - 4x\^{}3 + 5x\^{}2 - 4x + 1 é recíproco. Com y = x + 1/x, chega{-}se a y\^{}2 - 4y + 3 = 0, com y = 1 ou y = 3. A divisão por x\^{}2 está justificada, pois x = 0 não é raiz.\newline%
+{-} y = 1 dá as raízes complexas (1 $\pm$ i$\surd$3)/2, que correspondem às alternativas C e D, e o candidato as descarta corretamente.\newline%
+{-} y = 3 dá as raízes reais (3 $\pm$ $\surd$5)/2.\newline%
+{-} A razão é calculada certo: (3 - $\surd$5)/(3 + $\surd$5) = (7 - 3$\surd$5)/2 $\approx$ 0,146 = m$^2$.\newline%
+\newline%
+Conferi em Python: P se anula em todas as raízes e m/M = 0,14590 = (7 - 3$\surd$5)/2.\newline%
+\newline%
+O candidato também constata que nenhuma alternativa traz esse valor e declara a questão passível de anulação. Indica (A) apenas como a resposta provavelmente pretendida pela banca e explica de onde ela vem: é a razão da PG formada por M, 1, m (também igual a m/1), e a razão entre as raízes extremas é o quadrado de (A). Essa é exatamente a postura correta. Ele não força uma igualdade falsa.\newline%
+\newline%
+Armadilhas: tratou praticamente todas. Ficaram de fora só pontos menores: não diz que a raiz 1 é simples, não mostra a tabela de Briot{-}Ruffini, não menciona que a razão inversa M/m também não aparece e não comenta que (E) = $\varphi$ não é raiz.\newline%
+\newline%
+Resposta final: certa, igual à da referência. É uma resolução clara e rigorosa, com qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A fatoração por Briot{-}Ruffini aparece só como resultado, sem a tabela do dispositivo (1 | 1 -5 9 -9 5 -1 $\to$ 1 -4 5 -4 1 | 0). A conta está certa, mas um gabarito comentado deveria mostrar esse passo.%
+\item%
+{[}minor{]} Faltou dizer que x = 1 é raiz simples (P'(1) = -1 $\neq$ 0), ou seja, que são exatamente três raízes reais distintas. Isso não muda a razão pedida, mas completaria a ordenação.%
+\item%
+{[}minor{]} Na análise das alternativas, faltaram duas observações: a razão no sentido inverso, M/m = (7+3$\surd$5)/2 $\approx$ 6,854, também não aparece entre as opções; e (E) = $\varphi$ não é raiz. A eliminação por sinal e por tamanho já cobre esses pontos, então a omissão é pequena.%
+\item%
+{[}minor{]} Para descartar as outras alternativas e ficar com (A), o candidato fala em 'ordem de grandeza'. A expressão é imprecisa, porque 0,382 $\neq$ 0,146. O argumento real é só que (A) é a única opção real no intervalo (0,1). O próprio texto deixa claro que isso não faz de (A) o valor exato.%
+\end{itemize}%
+\subsection*{Questão 3: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} O ângulo diedro entre duas faces adjacentes do icosaedro regular é $\theta$ = arccos(-$\surd$5/3) $\approx$ 138,19$^\circ$ (sen $\theta$ = 2/3, tg $\theta$ = -2/$\surd$5). Alternativa (C).\par %
+Conferi o enunciado no original (Questão 3, p. 2/12) e a transcrição está fiel. A resposta do candidato é (C), arccos(-$\surd$5/3) $\approx$ 138,19$^\circ$, igual à minha referência, e a resposta está correta.\newline%
+\newline%
+O caminho é o mesmo da referência. O candidato toma a pirâmide pentagonal em volta de um vértice e justifica bem o pentágono regular: a rotação de 72$^\circ$ em torno do eixo que passa pelo vértice e pelo centro permuta ciclicamente os 5 vizinhos, então eles são coplanares e equidistantes. Nesse ponto a justificativa é até mais cuidadosa que a da referência.\newline%
+\newline%
+Os passos seguintes também estão certos:\newline%
+{-} A diagonal vale BE = 2a$\cdot$sen 54$^\circ$ = $\varphi$a, e BE$^2$ = (3+$\surd$5)/2$\cdot$a$^2$.\newline%
+{-} O ângulo plano do diedro foi construído corretamente: M é o ponto médio de VA, e as medianas são também alturas, logo BM ? VA e EM ? VA no mesmo ponto, com BM = EM = a$\surd$3/2.\newline%
+{-} A lei dos cossenos dá cos $\theta$ = -$\surd$5/3. Conferi em Python: -0,745356, com $\theta$ $\approx$ 138,19$^\circ$.\newline%
+\newline%
+A análise das alternativas está completa e correta:\newline%
+{-} (A) dá $\approx$ -18,63$^\circ$ e (B) dá $\approx$ -29,21$^\circ$. As duas são negativas por causa da imagem de arcsen e arctg. O candidato ainda mostra que sen $\theta$ = 2/3 e tg $\theta$ = -2$\surd$5/5.\newline%
+{-} (D) está fora do domínio, porque a arccossecante exige |x| $\geq$ 1 e aqui |x| $\approx$ 0,447.\newline%
+{-} (E) está fora do domínio do arccos, porque |x| $\approx$ 1,118.\newline%
+\newline%
+Quase todas as armadilhas foram tratadas: as perpendiculares no mesmo ponto da aresta, a diagonal do pentágono, $\varphi$$^2$, as imagens e os domínios das funções inversas. Só ficou implícita a distinção entre o diedro interno e o ângulo agudo entre os planos (ou entre as normais). As falhas que restam são de forma, e a resolução serve como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A solução não discute a leitura alternativa de 'ângulo entre faces' como o ângulo agudo entre os planos, que daria arccos($\surd$5/3) $\approx$ 41,81$^\circ$ e não aparece nas alternativas. O candidato define logo de saída que se trata do diedro interno, e isso basta para resolver, mas uma frase deixando explícito que o diedro interno é o suplemento do ângulo entre as normais exteriores, e que é ele o pedido, fecharia essa armadilha.%
+\item%
+{[}minor{]} A frase 'o ângulo é obtuso, como se espera para um poliedro com 5 faces por vértice' é só uma heurística, sem justificativa. Não compromete nada, porque o sinal sai da lei dos cossenos e o diedro está em (0, $\pi$), mas não deve ser lida como argumento.%
+\item%
+{[}minor{]} O valor cos 36$^\circ$ = (1+$\surd$5)/4 é usado sem dedução. É um resultado clássico e aceitável numa questão objetiva, mas um gabarito comentado poderia citar a origem: o triângulo 36{-}72{-}72 ou a relação d = $\varphi$$\cdot$a no pentágono regular.%
+\item%
+{[}minor{]} Na alternativa (A), o candidato calcula sen $\theta$ = 2/3, mas não escreve explicitamente que 2/3 $\neq$ $\surd$5/7. Como o descarte já está garantido pelo sinal negativo, a falta é só de forma.%
+\end{itemize}%
+\subsection*{Questão 4: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A resposta é **(B) Laplace e Cauchy**.\newline%
+{-} **Condição (1):** com \$i=k\$, a soma \$\textbackslash{}sum\_j a\_\{ij\}A\_\{ij\}\$ é igual a \$\textbackslash{}det B\$ pelo Teorema de Laplace.\newline%
+{-} **Condição (2):** com \$i\textbackslash{}neq k\$, a soma \$\textbackslash{}sum\_j a\_\{ij\}A\_\{kj\}\$ é igual a \$0\$ pelo Teorema de Cauchy. Os elementos de uma fila são multiplicados pelos cofatores de uma fila paralela.\par %
+Comparei a transcrição com o original (PDF pág. 1, impressa como Página 2/12, Questão 4) e ela confere. A resposta final do candidato, (B) Laplace e Cauchy, coincide com a minha referência e está correta.\newline%
+\newline%
+O raciocínio está completo e correto:\newline%
+{-} **Adjunta:** define a adjunta como a transposta da matriz dos cofatores. Daí B\_\{jk\} = A\_\{kj\}, o que explica o índice A\_\{kj\} que aparece no quadro.\newline%
+{-} **Condição (1):** com i = k, identifica b\_ii = $\Sigma$ a\_ij A\_ij como a expansão de Laplace pela linha i.\newline%
+{-} **Condição (2):** com i $\neq$ k, identifica $\Sigma$ a\_ij A\_kj como o Teorema de Cauchy (fila paralela) e também o demonstra. Troca a linha k por uma cópia da linha i, nota que os cofatores da linha k não mudam porque essa linha é eliminada nos menores, e conclui que a matriz tem duas linhas iguais, logo determinante nulo.\newline%
+{-} **Fechamento:** monta B$\cdot$\textbackslash{}bar B = det(B) I\_n e indica que \textbackslash{}bar B$\cdot$B sai do mesmo jeito usando colunas.\newline%
+{-} **Exemplo n=2:** conferi os cofatores (d, -c, -b, a) e as contas b\_11 = ad - bc e b\_12 = -ab + ab = 0. Estão certos.\newline%
+\newline%
+Das armadilhas da referência, todas as principais foram tratadas:\newline%
+{-} a ordem pedida ('respectivamente'), com (D) apontada como inversão;\newline%
+{-} a adjunta clássica com a transposição;\newline%
+{-} a justificativa do Teorema de Cauchy, e não só a citação do nome;\newline%
+{-} a distinção entre Chió, Binet e Cramer.\newline%
+\newline%
+Ficaram de fora só detalhes de acabamento: a ambiguidade da notação B\_\{jk\}, a grafia 'Kramer', a eliminação letra por letra e a observação sobre det B = 0. É uma resolução publicável como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A resolução não comenta que no quadro o aspirante usa o nome B tanto para a matriz quanto para os elementos B\_\{jk\} da adjunta. O candidato define corretamente B\_\{jk\} = A\_\{kj\}, mas não diz que a notação é ambígua. Bastava uma frase dizendo que B\_\{jk\} é o elemento (j,k) de \textbackslash{}bar B, e não um elemento de B.%
+\item%
+{[}minor{]} A análise das alternativas descarta os nomes (Chió, Binet, Cramer), mas não as letras (A), (C) e (E). Faltou também comentar a grafia 'Kramer' do enunciado. A eliminação está correta, mas ficaria mais clara se fosse feita letra por letra.%
+\item%
+{[}minor{]} A verificação com n=2 confere só b\_11 e b\_12. Ela é suficiente como ilustração, mas não mostra b\_21 = 0 nem b\_22 = det B. Também não observa que a identidade vale mesmo com det B = 0, e que só a fórmula B\^{}\{{-}1\} = \textbackslash{}bar B/det B exige det B $\neq$ 0. Isso não pesa na questão, mas cabe num gabarito comentado.%
+\end{itemize}%
+\subsection*{Questão 5: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} V = $\pi$$\int$$_{2}$$^{4}$ (x$^{4}$ - 4\^{}x) dx = $\pi$(992/5 - 120/ln 2). Com ln 2 $\cong$ 0,7, V $\approx$ 26,97$\pi$ $\approx$ 27$\pi$. Alternativa (E).\par %
+Conferi o enunciado na página 2 do PDF original (Questão 5, CPAEN/2026) e a transcrição está correta. O candidato marcou (E) 27$\pi$, a mesma resposta da minha referência, e acertou.\newline%
+\newline%
+Sobre as interseções, a resolução vai além da referência. Ela reescreve 2\^{}x = x$^2$ como $\varphi$(x) = $\varphi$(2), com $\varphi$(x) = ln x / x, e usa a monotonicidade de $\varphi$ (cresce em (0, e{]} e decresce em {[}e, $\infty$)) para provar que em (0;5) as únicas raízes são x = 2 e x = 4. Também descarta x = 0 explicitamente.\newline%
+\newline%
+A mesma função $\varphi$ prova com rigor que x$^2$ > 2\^{}x em (2;4), e assim os raios externo e interno ficam bem identificados. O método das arruelas está correto: $\pi$$\int$$_{2}$$^{4}$ {[}(x$^2$)$^2$ - (2\^{}x)$^2${]} dx = $\pi$$\int$$_{2}$$^{4}$ (x$^{4}$ - 4\^{}x) dx. O candidato usa (2\^{}x)$^2$ = 4\^{}x e ln 4 = 2 ln 2, e as potências estão certas (992/5 e 240). O valor exato $\pi$(992/5 - 120/ln 2) foi conferido com integração numérica (25,2766 contra 25,2766). Com ln 2 $\cong$ 0,7, 198,4 - 171,43 = 26,97, logo V $\approx$ 27$\pi$.\newline%
+\newline%
+O candidato percebeu a sutileza numérica: com o ln 2 exato, V $\approx$ 25,3$\pi$. Ele também explicou por quê: o resultado é a diferença de dois números grandes e próximos, o que amplifica o erro da aproximação. E manteve o dado da prova, como manda o enunciado.\newline%
+\newline%
+Quanto às armadilhas, quase todas foram tratadas: interseções, curva de cima, arruelas sem o erro de (R - r)$^2$, 4\^{}x, o fator 2 de ln 4, o uso de ln 2 = 0,7 e o intervalo aberto. A interpretação da região está justificada pelo texto, mas falta o teste numérico das outras leituras. Restam só pontos menores de completude, e a resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A escolha da região entre x = 2 e x = 4 é justificada só pelo texto ("delimitada pelas intersecções"). Faltou um teste numérico da outra leitura: girar toda a região entre as curvas em {[}0;5) dá $\approx$ 159,7$\pi$ ($\approx$ 163,5$\pi$ com o ln 2 exato), valor que não está entre as alternativas. Uma frase com esse número tornaria a interpretação incontestável.%
+\item%
+{[}minor{]} A raiz negativa ($\approx$ -0,77) aparece sem justificativa. Isso não pesa, porque ela está fora do intervalo e não interfere em nada. Bastaria dizer que ela existe pelo TVI, já que h(x) = 2\^{}x - x$^2$ muda de sinal em {[}-1, 0{]}, ou simplesmente omiti{-}la.%
+\item%
+{[}minor{]} A conferência de ordem de grandeza ("algumas dezenas") é vaga. Daria para fechar a conta com uma estimativa concreta, como Simpson em {[}2,4{]}: (2/6)(0 + 4$\cdot$17 + 0) $\approx$ 22,7, que é compatível com 25,3. A observação sobre o ln 2 exato está certa ($\approx$ 25,3$\pi$), mas não diz que, sem o dado da prova, a alternativa mais próxima seria (D). Esse é justamente o ponto da armadilha.%
+\end{itemize}%
+\subsection*{Questão 6: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Domínio: {[}-1/3, 3{]}, de comprimento 10/3. Nele, f(x) = $\pi$/2 (constante). Área = ($\pi$/2)$\cdot$(10/3) = 5$\pi$/3. Alternativa (B).\par %
+Conferi o enunciado na prova original (Questão 6, página 3/12) e a transcrição está fiel. O candidato marcou (B) 5$\pi$/3, a mesma resposta da minha referência, e a resposta está correta. Também conferi numericamente: u(-1/3) = -1, u(3) = 1, e (10/3)($\pi$/2) = 5$\pi$/3 $\approx$ 5,236.\newline%
+\newline%
+A resolução está completa e correta:\newline%
+{-} **Identidade:** arcsen u + arccos u = $\pi$/2 vem com justificativa própria, incluindo a verificação de que $\pi$/2 - $\theta$ $\in$ {[}0, $\pi${]}.\newline%
+{-} **Domínio:** as duas inequações racionais são resolvidas passando tudo para um lado (x-3)/(x+2) $\leq$ 0 e (3x+1)/(x+2) $\geq$ 0, sem multiplicar pelo denominador de sinal variável. O ponto x = -2 é excluído.\newline%
+{-} **Extremos:** a interseção {[}-1/3, 3{]} é obtida corretamente e os extremos são conferidos.\newline%
+{-} **Área:** o retângulo tem base 10/3 e altura $\pi$/2. O resultado é confirmado por integral e por ordem de grandeza.\newline%
+\newline%
+Todas as armadilhas que listei foram tratadas:\newline%
+{-} o domínio como base do retângulo;\newline%
+{-} o estudo de sinal sem multiplicar pelo denominador;\newline%
+{-} a exclusão de x = -2;\newline%
+{-} a conferência dos extremos;\newline%
+{-} a condição de validade da identidade;\newline%
+{-} o comprimento 10/3, sem erro de sinal;\newline%
+{-} o gráfico acima do eixo x.\newline%
+\newline%
+O candidato ainda explica a origem dos distratores (A) e (E). Restam só pequenos ajustes de redação: a identidade é aplicada 'no domínio' antes de o domínio ser obtido, e falta o quadro de sinais explícito. Nada disso afeta a correção. É uma resolução publicável como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na etapa 1, o candidato escreve f(x) = $\pi$/2 'em todo o domínio' antes de determinar esse domínio. A lógica fica correta, porque a identidade vale para u $\in$ {[}-1,1{]} e o domínio é justamente o conjunto onde u $\in$ {[}-1,1{]}. Ainda assim, a ordem domínio $\to$ identidade seria mais limpa ou deveria trazer uma remissão explícita.%
+\item%
+{[}minor{]} Na desigualdade da esquerda, o resultado 'x < -2 ou x $\geq$ -1/3' aparece sem o quadro de sinais de (3x+1)/(x+2). Está correto, mas em uma prova discursiva caberia uma linha indicando os zeros (-1/3 e -2) e o sinal de cada fator. O mesmo vale para (x-3)/(x+2) $\leq$ 0.%
+\item%
+{[}minor{]} Na conclusão, a frase 'as outras alternativas dão bases diferentes de 10/3' só é verificada para (A) e (E). Para (C) a base seria 7 e para (D) seria 18/5. Isso é irrelevante para a correção, porque a resposta já está provada diretamente.%
+\end{itemize}%
+\subsection*{Questão 7: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (A): a curva é hipérbole exatamente quando m < -4 ou m > 4, isto é, |m| > 4. Nos casos de fronteira m = $\pm$4 ela vira o par de retas paralelas x $\pm$ 4y = $\pm$1. Para |m| < 4 ela é uma elipse.\par %
+O candidato e a referência chegam à mesma resposta: (A), m < -4 ou m > 4. Conferi o enunciado no PDF original (Questão 7, p. 3/12): é x$^2$ + 16y$^2$ + 2mxy - 1 = 0 e bate com a transcrição. Refiz as contas: autovalores de M = {[}{[}1, m{]}, {[}m, 16{]}{]} com traço 17 e determinante 16 - m$^2$, e o determinante 3$\times$3 dá m$^2$ - 16 (por exemplo, 9 para m = 5, 0 para m = 4, -7 para m = 3). Os dois resultados conferem.\newline%
+\newline%
+A resolução está correta e completa e trata todas as armadilhas:\newline%
+{-} usa B = 2m, e não m, e por isso não cai nos distratores (D) e (E);\newline%
+{-} a condição de hipérbole tem o sinal certo (det M < 0, equivalente a B$^2$ - 4AC > 0) e é justificada por autovalores de sinais opostos;\newline%
+{-} descarta a degenerescência em retas concorrentes de dois jeitos: o segundo membro é 1 $\neq$ 0 e o determinante 3$\times$3 é m$^2$ - 16 $\neq$ 0;\newline%
+{-} analisa a fronteira m = $\pm$4, onde (x $\pm$ 4y)$^2$ = 1 dá retas paralelas, e por isso as desigualdades são estritas;\newline%
+{-} mostra que para |m| < 4 a curva é uma elipse real, porque traço > 0 e determinante > 0;\newline%
+{-} interpreta 'plenamente' como o conjunto completo de valores e explica por que (D) e (E) são apenas condições suficientes.\newline%
+\newline%
+Os problemas que restam são de acabamento: a refutação da (B) mostra só um dos sentidos, a notação $\pm$ nas retas de fronteira é ambígua e a invariância do tipo da cônica pela rotação ficou implícita. A resolução é clara e rigorosa e pode ser publicada como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na análise da (B), o candidato só mostra que ela inclui um valor que não serve (m = 3 dá elipse). Isso basta para descartá{-}la, mas fica mais completo dizer também que ela exclui valores que servem, como m = -4,5 (|m| > 4, hipérbole), o que mostra que (B) falha nos dois sentidos.%
+\item%
+{[}minor{]} A notação 'x $\pm$ 4y = $\pm$1' mistura dois $\pm$ que não têm o mesmo significado: o primeiro depende do sinal de m e o segundo vem da raiz. O certo é escrever explicitamente: para m = 4, x + 4y = 1 ou x + 4y = -1; para m = -4, x - 4y = $\pm$1.%
+\item%
+{[}minor{]} Fica implícito que a rotação de eixos não muda o tipo da cônica, porque é uma isometria. Faltou dizer isso em uma linha. Também faltou registrar que o teorema espectral permite escolher a matriz ortogonal com determinante +1, ou seja, uma rotação de fato. É um detalhe de rigor, não um erro.%
+\end{itemize}%
+\subsection*{Questão 8: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} cos $\theta$ = 12/$\surd$154 = 12/($\surd$14$\cdot$$\surd$11) $\approx$ 0,967. Alternativa (A).\par %
+Conferi o enunciado no original (página 3/12) e a transcrição está fiel. A resposta do candidato coincide com a minha referência: cos $\theta$ = 12/$\surd$154, alternativa (A). Refiz as contas em Python: u$\cdot$v = 12, |u||v| = $\surd$154, cos $\theta$ $\approx$ 0,96699 e $\theta$ $\approx$ 14,76$^\circ$. A forma racionalizada 6$\surd$154/77 também está certa.\newline%
+\newline%
+O candidato tratou todas as armadilhas que eu tinha listado:\newline%
+{-} **Ponto e direção:** separou corretamente o ponto (1,2,0) da direção (1,2,3) em r. Em s, leu o coeficiente de t em y como 1, e não como 2.\newline%
+{-} **Módulo:** usou o módulo no produto escalar e justificou com o fato de o ângulo entre retas ficar em {[}0,$\pi$/2{]}.\newline%
+{-} **Normas:** calculou $\surd$14 e $\surd$11 sem erro e não caiu nos distratores $\surd$153 e $\surd$152.\newline%
+{-} **Posição relativa:** verificou que as retas são reversas pelo sistema a = t, 2a = t $\Rightarrow$ a = t = 0 e 0 = 3, que é absurdo. Também deixou explícito que isso não impede a definição do ângulo.\newline%
+{-} **Coerência:** conferiu o resultado numericamente e argumentou que ele faz sentido, porque as direções só diferem na segunda coordenada.\newline%
+\newline%
+A resolução é clara, bem organizada e serve como gabarito comentado. Os únicos problemas são de redação: chamar de 'agudo' um ângulo em intervalo fechado que inclui 0 e $\pi$/2, e faltar uma frase com a definição geométrica do ângulo entre retas reversas.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na 'Ideia', o candidato chama $\theta$ de 'ângulo agudo' e escreve $\theta$$\in${[}0,$\pi$/2{]}. O intervalo fechado inclui 0 (retas paralelas) e $\pi$/2 (retas ortogonais), que não são ângulos agudos. O termo mais preciso é 'ângulo não obtuso'. Também bastaria dizer que o módulo garante cos $\theta$ $\geq$ 0. Isso não afeta o resultado.%
+\item%
+{[}minor{]} Para retas reversas, o candidato só diz que 'o ângulo continua sendo definido pelos vetores diretores'. Uma frase sobre a definição geométrica ajudaria: é o ângulo entre uma das retas e uma paralela à outra traçada por um ponto da primeira. É um detalhe de completude didática, não um erro.%
+\end{itemize}%
+\subsection*{Questão 9: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (A). Para x $\neq$ $\pm$1, f(x) = -1/(x-1). O gráfico tem assíntota vertical em x = 1, à direita do eixo y, e assíntota horizontal y = 0. O ramo esquerdo fica acima do eixo x, é crescente e passa por (0, 1). O ramo direito fica abaixo do eixo x e também é crescente. Há um buraco (descontinuidade removível) em (-1, 1/2), no ramo esquerdo.\par %
+Conferi as figuras no PDF original (página 3 do arquivo, página 4/12 da prova). A transcrição está correta. Em (A), a assíntota vertical fica à direita do eixo y; o ramo esquerdo está acima do eixo x, é crescente, corta o eixo y e tem uma bolinha aberta em x < 0; o ramo direito está abaixo do eixo x. A resposta do candidato, (A), coincide com a minha referência e está certa.\newline%
+\newline%
+A resolução segue o caminho esperado e não tem erros de conta:\newline%
+{-} domínio $\mathbb{R}$?\{-1, 1\};\newline%
+{-} simplificação f(x) = 1/(1-x), mantendo explicitamente a exclusão de x = -1;\newline%
+{-} descontinuidade removível em (-1, 1/2), já que o limite ali é finito;\newline%
+{-} assíntotas x = 1 (com os limites laterais certos, +$\infty$ e -$\infty$) e y = 0;\newline%
+{-} sinal de cada ramo;\newline%
+{-} f'(x) = 1/(1-x)$^2$ > 0, que verifiquei;\newline%
+{-} corte no eixo y em f(0) = 1 e ausência de raízes.\newline%
+\newline%
+O candidato evita as principais armadilhas. Não trata x = -1 como assíntota. Elimina (E) por omitir o ponto excluído. Não troca o sinal, o que eliminaria (B) e (C). Rejeita (D) pela posição da assíntota e do buraco. Também diz corretamente que f é crescente em cada ramo, e não no domínio todo.\newline%
+\newline%
+As falhas são apenas de redação e completude:\newline%
+{-} falta escrever "x $\neq$ -1" ao lado de "x < 1";\newline%
+{-} falta comparar a altura do buraco (1/2) com a do corte no eixo y (1);\newline%
+{-} (C) poderia ter sido descartada também pela posição do buraco.\newline%
+\newline%
+É uma resolução de nível de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na seção 4, o texto diz 'Para x<1 temos f(x)>0', mas deveria dizer 'para x<1, x$\neq$-1'. O domínio foi definido corretamente antes, então é só falta de precisão na escrita.%
+\item%
+{[}minor{]} A resolução diz apenas que a bolinha está 'à esquerda do eixo y e acima do eixo x'. Seria mais completo comparar a altura do buraco com a do corte no eixo y: 1/2 < 1, então o buraco fica abaixo do ponto (0, 1). É exatamente o que aparece na figura (A) e reforça a escolha.%
+\item%
+{[}minor{]} Ao descartar (C), a resolução cita só o sinal e a monotonia trocados. Poderia acrescentar que o buraco de (C) está no ramo direito, em x > 0, e não em x = -1. Também poderia notar que (D) é o gráfico de -1/(x+1) com buraco em x = 1, ou seja, o erro de cancelar o fator errado. Isso não é necessário para a conclusão, mas deixaria a análise das alternativas mais didática.%
+\end{itemize}%
+\subsection*{Questão 10: nota 9,3 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (E): V, F, V, V. É a coluna de \textasciitilde{}n $\to$ \textasciitilde{}m na ordem usual das linhas (m, n) = (V,V), (V,F), (F,V), (F,F). Essa coluna é igual à de m $\to$ n.\par %
+Conferi o enunciado na página 4/12 da prova original. A transcrição e as alternativas estão corretas.\newline%
+\newline%
+A resposta do candidato é (E) V, F, V, V, igual à minha referência. Refiz a tabela com um script em Python: \textasciitilde{}n$\to$\textasciitilde{}m dá VFVV na ordem (m,n) usual. Na ordem (n,m) daria VVFV, que não está entre as opções.\newline%
+\newline%
+**Pontos fortes da resolução:**\newline%
+{-} Enuncia a regra do condicional: só é falso quando vai de V para F.\newline%
+{-} Declara a ordem das linhas que usa.\newline%
+{-} Monta a tabela completa com \textasciitilde{}m, \textasciitilde{}n, \textasciitilde{}n$\to$\textasciitilde{}m e m$\to$n.\newline%
+{-} Justifica cada linha corretamente: antecedente falso nas linhas 1 e 3; V$\to$F na linha 2; consequente verdadeiro na linha 4.\newline%
+{-} Verifica que as colunas de \textasciitilde{}n$\to$\textasciitilde{}m e de m$\to$n coincidem, o que confirma a equivalência dada no enunciado. Não se limita a supor que ela vale.\newline%
+{-} Identifica corretamente a contrapositiva, sem confundi{-}la com a recíproca ou com a inversa.\newline%
+\newline%
+**Armadilhas:**\newline%
+{-} A confusão entre condicional e bicondicional, a que leva a (C), foi evitada.\newline%
+{-} A confusão com a recíproca ou com a inversa também foi evitada.\newline%
+{-} A ordem das linhas foi declarada, mas não se mostrou que outra ordem não bate com nenhuma opção.\newline%
+\newline%
+**Lacunas, todas menores:**\newline%
+{-} Não discute a ordem alternativa das linhas.\newline%
+{-} Não diz o que representam as alternativas erradas.\newline%
+{-} Não traz a prova algébrica da equivalência.\newline%
+\newline%
+É uma resolução limpa, correta e no nível de um gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A resolução declara a ordem usual das linhas (m,n) = VV, VF, FV, FF, mas não explica que essa convenção é necessária. Com a ordem (n,m) a coluna seria V,V,F,V, que não aparece entre as opções. Bastava uma frase dizendo isso para fechar a questão da ordem das linhas, que o enunciado não fixa.%
+\item%
+{[}minor{]} O descarte de (A){-}(D) é genérico: diz só que elas 'erram a posição ou a quantidade de valores falsos'. Seria mais didático dizer o que cada uma representa: (A) é m?n, (B) é a coluna de n, (C) é o bicondicional m?n, (D) é a coluna de m. Também ajudaria lembrar que a recíproca e a inversa dão V,V,F,V. Não é obrigatório numa questão objetiva.%
+\item%
+{[}minor{]} Falta a verificação algébrica, que é curta: \textasciitilde{}n$\to$\textasciitilde{}m $\equiv$ n?\textasciitilde{}m $\equiv$ m$\to$n. Ela deixaria a equivalência demonstrada sem depender só da tabela. A tabela já basta, então isso é opcional.%
+\end{itemize}%
+\subsection*{Questão 11: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} L = e\^{}\{{-}1\}. O limite bilateral existe e vale e\^{}\{{-}1\} $\approx$ 0,3679, o mesmo pelos dois lados. Alternativa (B).\par %
+Conferi o enunciado na página 4/12 do PDF (o pedido indica página 3) e a transcrição está correta. A resposta final do candidato é (B) e\^{}\{{-}1\}, igual à minha referência. Confirmei numericamente: x = 1 $\pm$ 10$^{-}$$^{6}$ dá 0,36787944 pelos dois lados.\newline%
+\newline%
+O método é o mesmo da referência, e o cálculo está correto em todos os passos:\newline%
+{-} reconhece a indeterminação 1\^{}$\infty$;\newline%
+{-} justifica que a base é positiva perto de x = 1, o que permite usar ln;\newline%
+{-} faz a substituição u = tg($\pi$x/4) e usa o arco duplo, tg($\pi$x/2) = 2u/(1-u$^2$);\newline%
+{-} fatora 1-u$^2$ = -(u-1)(u+1) com o sinal certo e sem perder o fator 1/(u+1);\newline%
+{-} usa o limite fundamental ln u/(u-1) $\to$ 1 para obter o expoente -1;\newline%
+{-} conclui L = e\^{}\{{-}1\} pela continuidade da exponencial.\newline%
+\newline%
+Todas as armadilhas foram tratadas:\newline%
+{-} não trata 1\^{}$\infty$ como 1;\newline%
+{-} acerta o sinal;\newline%
+{-} mantém o fator (1+u);\newline%
+{-} trata o domínio;\newline%
+{-} discute os dois lados e diz explicitamente que a fatoração vale por qualquer lado, então o limite bilateral existe.\newline%
+\newline%
+O único defeito é o parágrafo sobre os limites laterais. Ele afirma que o fato de a potência ser < 1 dos dois lados 'confirma' e\^{}\{{-}1\}, mas isso é só uma checagem de compatibilidade e não confirma o valor. Há também um ponto de formalismo: a troca de variável não cita o teorema do limite da composta.\newline%
+\newline%
+A resolução é limpa, correta e completa, com qualidade de gabarito comentado. Nota 9,0.%
+\begin{itemize}%
+\item%
+{[}minor{]} O parágrafo 'Verificação dos limites laterais' tem uma inferência que não se sustenta. De fato, a potência é menor que 1 pelos dois lados: à esquerda, base < 1 com expoente > 0; à direita, base > 1 com expoente < 0. Mas daí só se conclui que o limite, se existir, é $\leq$ 1, e não que ele seja 'um valor menor que 1'. Além disso, a frase 'Isso confirma o valor e\^{}\{{-}1\}' é um non sequitur: a observação é apenas compatível com e\^{}\{{-}1\} e não confirma nada (por exemplo, também seria compatível com o valor 0, que é a alternativa D). O correto seria chamar isso de checagem de plausibilidade e apoiar a bilateralidade apenas no argumento que vem logo depois, que já está certo: a fatoração vale para u $\to$ 1 por qualquer lado. Uma checagem numérica em x = 1 $\pm$ 10$^{-}$$^3$ também serviria.%
+\item%
+{[}minor{]} A troca de variável x ? u = tg($\pi$x/4) dentro do limite vem justificada só pela continuidade e injetividade perto de $\pi$/4. Seria melhor dizer explicitamente que se usa o teorema do limite da composta: u(x) $\to$ 1 e u(x) $\neq$ 1 para x $\neq$ 1 numa vizinhança. A ideia está presente, mas o teorema que a legitima não é citado. Isso é só formalismo.%
+\end{itemize}%
+\subsection*{Questão 12: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} V = $\pi$$\int$$_{2}$$^{4}$ (x$^{4}$ - 4\^{}x) dx = $\pi${[}992/5 - 240/(2 ln 2){]} $\cong$ $\pi$(198,4 - 171,4) $\cong$ 27$\pi$, usando ln 2 $\cong$ 0,7. Alternativa (E) 27$\pi$.\par %
+Conferi a transcrição com o original (pág. 4/12, Questão 12) e ela está correta. A resposta do candidato, (E) 27$\pi$, coincide com a da referência e está certa. Com ln 2 $\cong$ 0,7, V = $\pi$(198,4 - 120/0,7) $\approx$ 26,97$\pi$. Com ln 2 exato, dá $\approx$ 25,28$\pi$, confirmado numericamente.\newline%
+\newline%
+O argumento principal é rigoroso e, em um ponto, melhor que o da referência. Para provar que, em x > 0, só há as raízes x=2 e x=4, o candidato usa a convexidade estrita de h(x) = x ln 2 - 2 ln x, já que h'' = 2/x$^2$ > 0. Ele também descarta a raiz negativa e mostra que x$^2$ $\geq$ 2\^{}x > 0 em {[}2,4{]} pelo teste em x=3.\newline%
+\newline%
+As demais armadilhas foram evitadas:\newline%
+{-} método das arruelas com R = x$^2$ e r = 2\^{}x;\newline%
+{-} quadrado feito corretamente, (2\^{}x)$^2$ = 4\^{}x;\newline%
+{-} primitiva correta, 4\^{}x/(2 ln 2);\newline%
+{-} conta 992/5 = 198,4 certa;\newline%
+{-} dado ln 2 $\cong$ 0,7 aplicado;\newline%
+{-} sinal positivo conferido.\newline%
+\newline%
+O único erro matemático está na verificação auxiliar. Ali o candidato afirma que o máximo do integrando é 17, em x=3, quando na verdade é $\approx$ 22,25, em x $\approx$ 3,43. A cota V < 34$\pi$, portanto, não está justificada, embora seja verdadeira. Além disso, faltam duas observações:\newline%
+{-} dizer explicitamente que as faixas {[}0,2{]} e {[}4,5) não entram na região;\newline%
+{-} notar que o valor com ln 2 exato aponta para (D).\newline%
+\newline%
+São falhas menores numa resolução que, no resto, está clara e completa. Nota 9.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na 'Conferência', o candidato diz que o integrando x$^{4}$ - 4\^{}x vale no máximo 81 - 64 = 17, em x = 3. Isso é falso. Em x = 3 a derivada é 4$\cdot$27 - 64$\cdot$ln 4 $\approx$ 19,3 > 0, e o máximo em {[}2,4{]} fica em x $\approx$ 3,43, com valor $\approx$ 22,25. A cota V < 34$\pi$ não sai desse argumento: a cota honesta seria 2$\cdot$22,25 $\approx$ 44,5$\pi$. A conclusão continua verdadeira, já que V $\approx$ 25,3$\pi$ com ln 2 exato e $\approx$ 26,97$\pi$ com ln 2 $\cong$ 0,7. O erro fica numa verificação auxiliar e não afeta a resolução principal, mas é uma afirmação matemática falsa num texto que se quer gabarito. O certo seria localizar o máximo pela derivada, 4x$^3$ = 4\^{}x$\cdot$ln 4, ou usar uma cota grosseira válida, por exemplo x$^{4}$ - 4\^{}x < 4$^{4}$ - 4$^2$ = 240 em {[}2,4{]}. Outra saída é simplesmente omitir esse comentário.%
+\item%
+{[}minor{]} O candidato não diz explicitamente por que as faixas {[}0,2{]} e {[}4,5) ficam de fora. Ele afirma que as curvas só se cruzam em 2 e 4 e conclui direto qual é a região. Faltou uma frase dizendo que o intervalo {[}0;5) serve só para escolher as raízes e que nessas faixas as curvas não fecham região limitada pelas interseções (por exemplo, em x=0, f(0)=1 e g(0)=0). A interpretação adotada está correta.%
+\item%
+{[}minor{]} A observação sobre a sensibilidade a ln 2 está correta ($\approx$25,3$\pi$ com ln 2 $\cong$ 0,693), mas não diz que esse valor está mais perto de 24$\pi$ (D) que de 27$\pi$ (E). É exatamente essa a armadilha da questão. Dizer isso deixaria mais claro por que o dado ln 2 $\cong$ 0,7 é decisivo para chegar à alternativa (E).%
+\end{itemize}%
+\subsection*{Questão 13: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (C): a aceleração da abscissa em x = 2 é d$^2$x/dt$^2$ = 8$\alpha$$^2$/y$^3$, avaliada em y = 2, que dá $\alpha$$^2$.\par %
+Conferi o enunciado na página 5/12 do PDF e ele bate com a transcrição. O candidato marcou a alternativa (C) $\alpha$$^2$, a mesma da minha referência. Confirmei o valor numericamente com diferenças finitas: x'' = $\alpha$$^2$ para $\alpha$ = 1, -3, 0,5 e 2,7.\newline%
+\newline%
+A resolução central está correta e completa:\newline%
+{-} Interpreta corretamente ? = $\alpha$ e daí tira ÿ = 0.\newline%
+{-} Acha o ponto (2,2).\newline%
+{-} Pela derivação implícita, chega a ?y + 2?? + xÿ = 0 e, em seguida, a ? = $\alpha$$^2$.\newline%
+{-} Confere pelo método explícito, aplicando a regra da cadeia nas duas derivadas: ? = 8$\alpha$$^2$/y$^3$ = $\alpha$$^2$.\newline%
+\newline%
+Ele trata as armadilhas principais: usa ÿ = 0, inclui o fator ? na segunda derivada, não confunde aceleração com velocidade (? = -$\alpha$) e nota que $\alpha$$^2$ > 0 vale para qualquer $\alpha$ $\neq$ 0.\newline%
+\newline%
+Os defeitos estão só nos comentários extras:\newline%
+{-} A frase 'a aceleração é par em t' está imprecisa.\newline%
+{-} O parágrafo dimensional não explica por que $\alpha$$^2$, sozinho, não tem dimensão de aceleração.\newline%
+{-} Não discute a leitura alternativa de 'velocidade de y' como velocidade escalar ao longo da curva.\newline%
+\newline%
+Nenhum desses pontos afeta a correção. A resolução fica no nível de gabarito comentado, com pequenas ressalvas de redação.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na 'Análise do resultado', a frase 'a aceleração é par em t' está imprecisa: a aceleração não é uma função par do tempo. O correto é dizer que d$^2$x/dt$^2$ não muda quando se troca t por -t. O argumento de paridade em $\alpha$ também deveria dizer que a trajetória com tempo invertido passa pelo mesmo ponto (2,2), com ? = -$\alpha$. Bastaria escrever: 'como d$^2$x/d(-t)$^2$ = d$^2$x/dt$^2$, a aceleração em (2,2) é a mesma para $\alpha$ e -$\alpha$'.%
+\item%
+{[}minor{]} O parágrafo de análise dimensional confunde mais do que esclarece. Ele mostra que 8$\alpha$$^2$/y$^3$ tem dimensão de aceleração, mas não comenta que a resposta final $\alpha$$^2$ tem dimensão L$^2$/T$^2$. Isso acontece porque o enunciado trata 4 e x = 2 como números puros e, ao substituí{-}los, o fator 8/y$^3$ vira 1. Era melhor tirar esse parágrafo ou explicar a substituição numérica.%
+\item%
+{[}minor{]} O candidato toma 'velocidade de y' como dy/dt sem comentar a outra leitura possível, a velocidade escalar ao longo da curva. Essa leitura daria $\alpha$$^2$/4, que não está entre as alternativas, e isso confirmaria a interpretação adotada. Também não cita que x = 2 só ocorre no ramo do 1º quadrante, mas isso não tem consequência, porque y = 4/x fica bem determinado.%
+\end{itemize}%
+\subsection*{Questão 14: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A área é 128/15 (cada um dos dois lóbulos simétricos mede 64/15). Alternativa (B).\par %
+Conferi o enunciado no PDF (página 5/12, Questão 14) e ele bate com a transcrição. A resposta do candidato, (B) 128/15, coincide com a minha referência. Recalculei com frações exatas: 2(32/3 - 32/5) = 128/15. As armadilhas foram tratadas assim:\newline%
+{-} As interseções x $\in$ \{-2, 0, 2\} estão corretas, e a origem foi mantida.\newline%
+{-} A tangência em x = 0 foi reconhecida, com o argumento de que g - f = x$^2$(4 - x$^2$) $\geq$ 0 não troca de sinal. Por isso basta uma única integral de g - f.\newline%
+{-} Os dois lóbulos simétricos foram somados pela paridade do integrando, o que dá o dobro de 64/15.\newline%
+{-} A ordem cima - baixo está correta e a área sai positiva.\newline%
+{-} O candidato não cometeu o erro de integrar em relação ao eixo x.\newline%
+{-} As contas estão corretas, inclusive o denominador 15.\newline%
+{-} Os distratores com numerador 182 foram descartados explicitamente.\newline%
+\newline%
+A verificação extra também confere: o mínimo de f é -9/4 em x$^2$ = 3/2, e o retângulo {[}-2, 2{]} $\times$ {[}-2,25; 4{]} de área 25 contém a região. As falhas são pequenas: a justificativa de que não há região limitada para |x| > 2 ficou implícita, a multiplicidade dupla de x = 0 não foi citada e o teste de ordem de grandeza é pouco discriminante. A resolução é clara, correta e completa, com qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A resolução diz que a região limitada fica em {[}-2, 2{]} usando apenas um "Assim" logo após listar as interseções. Não justifica por que não há outra região limitada para |x| > 2. Faltou uma linha, por exemplo: para |x| > 2, g - f = x$^2$(4 - x$^2$) < 0 e |g - f| $\to$ $\infty$, então as curvas divergem e não fecham outra região.%
+\item%
+{[}minor{]} A resolução não diz explicitamente que x = 0 é raiz dupla de x$^{4}$ - 4x$^2$ = 0. Isso aparece só de forma indireta, quando afirma que a diferença não troca de sinal. A tangência na origem está bem tratada no mérito, mas citar a multiplicidade, ou f'(0) = g'(0) = 0, deixaria o argumento de tangência mais direto.%
+\item%
+{[}minor{]} O teste do retângulo com área 25 confere só uma cota superior bem folgada. Ele não separa as alternativas 128/15 $\approx$ 8,53, 128/10 = 12,8 e 182/15 $\approx$ 12,1. Uma conferência mais útil seria pela simetria: cada lóbulo mede 64/15 $\approx$ 4,27. Isso não é erro, apenas uma verificação de pouco valor.%
+\end{itemize}%
+\subsection*{Questão 15: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} P(A vence no 2º turno) = 3/5, alternativa (B). As chances do 1º turno estão na razão A:B:C:D:E = 3:3:1:2:2, o que dá P(A) = 3/11 e P(D) = 2/11. No 2º turno renormaliza{-}se entre A e D: 3/(3+2) = 3/5.\par %
+O enunciado está fiel ao original (Questão 15, p. 5/12 do PDF). A resposta do candidato é (B) 3/5, igual à da referência. Conferi com frações exatas: a razão A:B:C:D:E é 3:3:1:2:2, então P(A)=3/11 e P(D)=2/11. Renormalizando entre os dois finalistas, P$_{2}$(A)=3/5 e P$_{2}$(D)=2/5. O resultado não depende de p. A leitura de 'um terço desta probabilidade' (P(C)=p/3) e de 'o dobro da probabilidade de C' (P(D)=2p/3) está correta. A expressão 'mantendo{-}se proporcionalmente as chances' foi interpretada de forma explícita e bem justificada: preserva{-}se a razão e normaliza{-}se a soma em 1, o que equivale a condicionar a 'o vencedor é A ou D'. A resolução confere os resultados (as cinco probabilidades somam 11/11, 3/5+2/5=1 e A continua favorito) e é clara e organizada. Há duas falhas pequenas. A primeira é que a soma igual a 1 é apresentada como fato ('cobrem todos os casos'), embora possa não valer, porque ninguém vencer no 1º turno é possível e foi o que aconteceu. Faltou dizer que a resposta não depende dessa normalização. A segunda é que o distrator (E) 6/11 não foi comentado. Nenhuma das duas afeta a resposta. A resolução está no nível de um gabarito comentado publicável, com pequenos ajustes de rigor.%
+\begin{itemize}%
+\item%
+{[}minor{]} A normalização (soma das cinco probabilidades = 1) está justificada como se os eventos 'X vence' cobrissem todos os casos. Isso não vale se 'ganhar' significar ganhar no 1º turno: o evento 'ninguém vence no 1º turno' é possível, e é justamente o que ocorre no cenário, já que houve 2º turno. O candidato também não diz que a resposta não depende dessa hipótese: p/(p+2p/3) = 3/5 para qualquer p. Correção sugerida: tratar a normalização como hipótese de leitura ('ganhar a eleição') ou, melhor, mostrar que a razão 3:2 basta e que a normalização é dispensável.%
+\item%
+{[}minor{]} Na seção de armadilhas falta a alternativa (E) 6/11, que é P(A)+P(B). Ela também aparece quando se confunde P(D) com P(C) sem renormalizar. Três dos quatro distratores foram discutidos; para um gabarito comentado completo, convinha comentar também a (E).%
+\end{itemize}%
+\subsection*{Questão 16: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A soma da série é 1/2 + 1 = 3/2, e (3/2)\^{}4 = 81/16. Alternativa (D).\par %
+Respostas comparadas: candidato (D) 81/16, referência (D) 81/16. As duas coincidem e estão corretas. Refiz as contas em frações exatas: $\Sigma$(1/3)\^{}n = 1/2, $\Sigma$(1/2)\^{}n = 1, S = 3/2 e S\^{}4 = 81/16 = 5,0625. A soma parcial até n = 200 elevada à quarta também dá 5,0625. Não consegui extrair o texto da página 4 do PDF com pdftotext. Por isso, para conferir o enunciado, me apoio na conferência que fiz na resolução de referência, que bate com a transcrição. Também conferi os números da seção de verificação: 5/6 + 1/9 + 1/4 = 43/36 $\approx$ 1,194, 70/59 $\approx$ 1,186, 70/79 $\approx$ 0,886, 79/16 = 4,9375, 80/61 $\approx$ 1,311 e 81/16 - 79/16 = 2/16. Todos estão certos. Armadilhas: (i) o índice começa em n = 1 e o candidato usa a fórmula correta r/(1-r), dizendo explicitamente que o primeiro termo é r; (ii) a convergência é justificada por |r| < 1 e a linearidade das séries convergentes é citada antes de separar a soma; (iii) a potência 4 é aplicada à soma total, não termo a termo; (iv) $\Sigma$(1/3)\^{}n = 1/2 está certo, com o passo intermediário (1/3)/(2/3) mostrado; (v) o distrator (C) 79/16 é descartado explicitamente, com 3\^{}4 = 81 e 2\^{}4 = 16 visíveis. A resolução é limpa, rigorosa na medida certa para a questão e está pronta para servir de gabarito comentado. Há só dois problemas, ambos de redação. A 'Verificação' dá apenas uma cota inferior e termina com um 'Logo' que não decorre dela. A justificativa da convergência vem depois de a linearidade ser usada, mas está presente. Nenhum dos dois afeta a correção.%
+\begin{itemize}%
+\item%
+{[}minor{]} A 'Verificação' só mostra uma cota inferior (S > 43/36 $\approx$ 1,19). Isso não confirma S = 1,5, apenas mostra que não há contradição. A frase 'Logo, S\^{}4 = 5,0625' não decorre dessa estimativa, é só a repetição do resultado do item 3. Para a verificação valer de fato, deveria trazer também uma cota superior ou a fórmula fechada das somas parciais, S\_N = 1/2$\cdot$(1 - 3\^{}\{-N\}) + (1 - 2\^{}\{-N\}) $\to$ 3/2, ou ser apresentada apenas como uma checagem de plausibilidade.%
+\item%
+{[}minor{]} No item 1, a convergência é usada antes de ser justificada ('justificado abaixo'). Fica logicamente correto porque o item 2 traz a justificativa (|r| < 1), mas a ordem natural seria mostrar primeiro a convergência e só depois aplicar a linearidade.%
+\end{itemize}%
+\subsection*{Questão 17: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A soma vale 1 - x/1! + x(x-1)/2! - ? + (-1)\^{}n x(x-1)?(x-n+1)/n! = $\Sigma$\_\{k=0\}\^{}n (-1)\^{}k C(x,k) = (-1)\^{}n C(x-1,n) = (-1)\^{}n (x-1)(x-2)?(x-n)/n!. A resposta é a **alternativa (A)**.\par %
+Conferi o enunciado no original (p. 5/12 do PDF, Questão 17) e a transcrição está correta. A resposta do candidato é (A), igual à da minha referência. Também conferi a identidade com aritmética exata para n = 1,\ldots{},9 em 41 valores racionais de x: S\_n(x) = (-1)\^{}n C(x-1,n) em todos os casos.\newline%
+\newline%
+A resolução é rigorosa e completa:\newline%
+{-} **Binomial generalizado.** É definido para x real, com as convenções C(x,0) = 1 e C(x,-1) = 0.\newline%
+{-} **Relação de Stifel.** É demonstrada algebricamente para x real e k $\geq$ 1, e estendida a k = 0 pela convenção. Isso resolve a armadilha do termo 1.\newline%
+{-} **Telescópica.** Feita corretamente pela mudança de índice j = k-1, com sinal certo: sobra só (-1)\^{}n C(x-1,n).\newline%
+{-} **Verificações.** Os casos n = 1, n = 2 e x = 0 estão certos. Para n = 2, conferi que (x$^2$-3x+2)/2 = (x-1)(x-2)/2.\newline%
+{-} **Outras alternativas.** (C) e (D) caem por grau, com o coeficiente líder (-1)\^{}n/n! justificado. (E) é identificada como só o último termo e cai com contraexemplo em n = 1. (B) cai por notação incoerente e grau.\newline%
+\newline%
+O candidato não usa o argumento errado '(1-1)\^{}x = 0' e trata x como real, não como natural. Todas as armadilhas relevantes foram evitadas ou tratadas.\newline%
+\newline%
+Há só falhas menores de acabamento. O descarte da (B) poderia ser mais concreto: em x = 0 ela se anula, mas a soma vale 1. O mesmo teste x = 0 também eliminaria a (E) para todo n, não só para n = 1. A resolução tem nível de gabarito comentado publicável.%
+\begin{itemize}%
+\item%
+{[}minor{]} O descarte da (B) é vago. A frase 'não forma uma sequência coerente nem tem grau n' não diz qual é o grau. Deveria ser concreto: lida como o produto de (x-1) até (x+n), a expressão tem n+2 fatores, incluindo o fator x. Ela se anula em x = 0, mas S\_n(0) = 1. O candidato já calculou S\_n(0) = 1 nas verificações, mas não usou esse valor para eliminar a (B).%
+\item%
+{[}minor{]} A (E) foi descartada só com n = 1. Isso basta para descartar uma alternativa que se pretende identidade geral. Mesmo assim, o teste x = 0 já feito acima ((E) dá 0, a soma dá 1) a eliminaria para todo n e seria mais elegante.%
+\item%
+{[}minor{]} Não diz explicitamente que n $\geq$ 1, nem comenta n = 0. Para n = 0 a fórmula também vale, com produto vazio = 1. A omissão não afeta a resposta.%
+\end{itemize}%
+\subsection*{Questão 18: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a = 1/31, alternativa (A). As interseções ficam em ($\pm$$\surd$31/2, -27/4), e em cada uma delas f'(x)$\cdot$g'(x) = -1.\par %
+A transcrição confere com o PDF (Questão 18, página 6/12). A resposta do candidato, a = 1/31 (A), coincide com a minha referência e está correta. A resolução impõe as duas condições ao mesmo tempo: o ponto é comum, (a+1)x0$^2$ = 8, e as tangentes são perpendiculares. As derivadas estão com o sinal certo (g' = -2x), o que leva a 4a$\cdot$x0$^2$ = 1, depois a 32a = a + 1 e a a = 1/31. O candidato também cuidou do rigor: descarta tangente vertical porque as funções são polinomiais e tangente horizontal porque a > 0 e x0 $\neq$ 0 (x = 0 daria -7 = 1), exige a > -1 para haver interseção e confere que a = 1/31 é admissível. Na verificação explícita, x0$^2$ = 31/4, f = g = -27/4 e f'$\cdot$g' = -1, e a resolução menciona os dois pontos simétricos. Conferi com frações exatas os produtos das inclinações para as demais alternativas: -864/31, -136/11, -16/9 e -32/3, todos corretos. A alternativa (E) foi simplificada para 1/2. Quase todas as armadilhas foram tratadas. Só não explica que o distrator (B) é o valor absoluto da ordenada, o que não é necessário. Restam apenas detalhes menores de redação, como o caso a = -1 tratado só implicitamente e uma justificativa um pouco redundante sobre as tangentes horizontais. A resolução tem nível de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} No passo 1, a equivalência (a+1)x0$^2$ = 8 ? x0$^2$ = 8/(a+1) só vale para a $\neq$ -1. O caso a = -1 (0 = 8, sem interseção) fica coberto apenas implicitamente pela frase 'é preciso ter a > -1'. Bastava uma linha separando esse caso antes de dividir.%
+\item%
+{[}minor{]} O parágrafo 'Ideia' descarta tangentes horizontais por um argumento genérico ('a outra teria de ser vertical'), e a justificativa concreta só aparece no passo 2 (a > 0 e x0 $\neq$ 0 implicam f'(x0) $\neq$ 0 e g'(x0) $\neq$ 0). A informação está toda lá, mas um pouco redundante e espalhada. É questão de clareza, não de correção.%
+\item%
+{[}minor{]} A frase 'pela simetria par das duas funções' justifica corretamente que a ortogonalidade vale nos dois pontos. Seria mais direto observar que a condição 4a$\cdot$x0$^2$ = 1 depende só de x0$^2$. Detalhe de estilo.%
+\end{itemize}%
+\subsection*{Questão 19: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} \$I={-}\textbackslash{}ln\textbackslash{}left(\textbackslash{}frac\{\textbackslash{}sqrt2\}\{2\}\textbackslash{}right)+\textbackslash{}frac\{\textbackslash{}pi\}\{4\}{-}\textbackslash{}frac\{3\textbackslash{}pi\^{}2\}\{32\}=\textbackslash{}frac12\textbackslash{}ln2+\textbackslash{}frac\{\textbackslash{}pi\}\{4\}{-}\textbackslash{}frac\{3\textbackslash{}pi\^{}2\}\{32\}\textbackslash{}approx 0\{,\}2067\$. Alternativa (A).\par %
+Conferi o enunciado na prova original (p. 6/12, Questão 19). Integral e alternativas batem com a transcrição. O candidato chegou à mesma resposta da referência, a alternativa (A), e ela está certa. Conferi em Python com a regra de Simpson (200 000 subintervalos) e obtive I $\approx$ 0,2066963411, igual ao valor de (A) até cerca de 10$^{-}$$^{1}$$^{6}$. As outras dão B $\approx$ -1,796, C $\approx$ 4,076, D $\approx$ 3,523 e E $\approx$ 0,8235.\newline%
+\newline%
+A resolução segue o caminho correto e completo:\newline%
+{-} **Identidade:** usa cot$^2$x = csc$^2$x - 1, com o sinal certo.\newline%
+{-} **Por partes:** toma v = -cot x e usa $\int$cot x dx = ln|sin x|, explicando por que o módulo pode sair (sin x > 0 no intervalo).\newline%
+{-} **Primitiva:** escreve F explicitamente e confere por derivação.\newline%
+{-} **Limites:** calcula cot($\pi$/2) = 0, cot($\pi$/4) = 1 e sin($\pi$/4) = $\surd$2/2.\newline%
+{-} **Termo em $\pi$$^2$:** fecha a conta -$\pi$$^2$/8 + $\pi$$^2$/32 = -3$\pi$$^2$/32 de forma explícita.\newline%
+{-} **Domínio:** diz por que a integral é própria.\newline%
+{-} **Sanidade:** como o integrando é $\geq$ 0, I > 0, o que elimina (B).\newline%
+\newline%
+Todas as armadilhas que eu tinha listado foram tratadas. Só há duas falhas pequenas, ambas na parte de checagem e não na derivação principal. A monotonicidade do integrando, usada na cota 0,62, é afirmada sem demonstração, embora seja verdadeira. E a (E) é descartada por um argumento circular quando a própria cota já bastava. Com uma linha a mais justificando a cota, daria para publicar como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na seção 4, o candidato afirma sem justificar que o integrando x$\cdot$cot$^2$x é decrescente em {[}$\pi$/4, $\pi$/2{]}. É essa monotonicidade que sustenta a cota x$\cdot$cot$^2$x $\leq$ $\pi$/4 e, por consequência, I < $\pi$$^2$/16 $\approx$ 0,62. Só com x $\leq$ $\pi$/2 e cot$^2$x $\leq$ 1, a cota seria $\pi$/2 e daria I $\leq$ $\pi$$^2$/8 $\approx$ 1,23. A afirmação é verdadeira, porque a derivada é cot x$\cdot$(cot x - 2x csc$^2$x) $\leq$ 0, já que 2x csc$^2$x $\geq$ $\pi$/2 > 1 $\geq$ cot x, e conferi numericamente. Bastava uma linha mostrando esse sinal, ou então usar a cota mais fraca, que também exclui C e D.%
+\item%
+{[}minor{]} Na análise das alternativas, a (E) é descartada com o argumento de que 'tem o coeficiente errado em $\pi$$^2$'. Esse argumento só repete a derivação e não traz uma checagem independente. Como E $\approx$ 0,8235 > 0,617, a própria cota usada pelo candidato já a eliminaria, e convinha dizer isso. Não afeta a resposta.%
+\end{itemize}%
+\subsection*{Questão 20: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} (D) R\$ 132.300,00. Pela conta 150.000 $\times$ 0,9 $\times$ 0,7 = 94.500 (valor atual) e 94.500 $\times$ 1,4 = 132.300.\par %
+Conferi o enunciado no PDF original (página 6/12, Questão 20) e a transcrição bate. A resposta final do candidato é a mesma da referência: (D) R\$ 132.300,00. Refiz as contas em Python: 150.000$\cdot$0,9 = 135.000, depois $\cdot$0,7 = 94.500 e $\cdot$1,4 = 132.300. O fator global é 0,882, ou seja, 11,8\% abaixo dos 150.000. Tudo confere. A resolução está correta, clara e bem organizada. Ela apresenta os fatores multiplicativos, diz explicitamente que perdas sucessivas se compõem e não se somam (perda acumulada de 37\%, não de 40\%) e descarta a leitura em que 150.000 seria o valor atual (210.000 não é alternativa). Também descarta a soma das perdas (126.000, fora das alternativas) e confere a ordem de grandeza com o fator 0,882 < 1. Das armadilhas, o candidato tratou a composição das perdas, a interpretação de 150.000, o fato de que o aumento de 40\% não compensa a perda e a necessidade de explicitar a leitura adotada. Ficaram duas lacunas pequenas. A primeira é a tensão entre \textbackslash{}"custa atualmente\textbackslash{}" e \textbackslash{}"preço pago quando adquirido\textbackslash{}", que ele não explica. A segunda é que não verificou o acréscimo de 40\% sobre os 150.000 iniciais (154.500) nem a distratora (E). Merece nota 9: está em nível de gabarito comentado, com pequenas omissões de completude na discussão da redação ambígua.%
+\begin{itemize}%
+\item%
+{[}minor{]} O candidato chama R\$ 150.000,00 de "preço pago pelo veículo quando foi adquirido", mas o enunciado diz que o veículo "custa atualmente" esse valor. Ele não explica essa tensão de redação, e a justificativa da leitura vem só de "sobre o valor adquirido" e da exclusão de 210.000. O certo seria deixar explícito que 150.000 é o preço de referência (de compra, ou de um veículo novo hoje) e que o "valor atual do veículo" é o valor já depreciado. Com isso, "custa atualmente" passa a ser lido como preço de referência, sem contradizer o texto.%
+\item%
+{[}minor{]} Ficou faltando conferir outra leitura possível: o acréscimo de 40\% calculado sobre os 150.000 iniciais, que dá 94.500 + 60.000 = 154.500 e não está entre as alternativas. O candidato também não explica de onde vêm as distratoras, por exemplo a (E), 84.000 = 0,4$\cdot$150.000$\cdot$1,4. Isso completaria o argumento de que só uma leitura coerente cai nas alternativas, o que reforça a resposta numa questão de redação ambígua.%
+\end{itemize}%
+\subsection*{Questão 21: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Alternativa (E). f(x) = cos(2$\cdot$arccos x) = 2x$^2$ - 1 em {[}-1, 1{]}, então g(x) = 1/(2x$^2$ - 1). Há assíntotas verticais em x = $\pm$$\surd$2/2. O ramo central é negativo, com máximo g(0) = -1 e g $\to$ -$\infty$ junto às assíntotas. Os ramos laterais são positivos, vão de +$\infty$ (junto às assíntotas) até g($\pm$1) = 1 e terminam em x = $\pm$1.\par %
+Conferi o enunciado e as cinco figuras no original (p. 6/12 do PDF). A resposta do candidato, (E), coincide com a minha referência e está correta.\newline%
+\newline%
+**Cálculos.** Todos estão certos. O candidato toma $\theta$ = arccos x $\in$ {[}0, $\pi${]} e usa cos $\theta$ = x com cos 2$\theta$ = 2cos$^2$$\theta$ - 1, o que dá f(x) = 2x$^2$ - 1 em {[}-1, 1{]}. Daí g(x) = 1/(2x$^2$ - 1), com zeros de f em $\pm$$\surd$2/2, que geram assíntotas verticais internas. A derivada g'(x) = -4x/(2x$^2$ - 1)$^2$ também está correta.\newline%
+\newline%
+**Armadilhas.** Ele tratou todas as que importam:\newline%
+{-} fórmula do arco duplo com o sinal correto;\newline%
+{-} exclusão de $\pm$$\surd$2/2 do domínio;\newline%
+{-} domínio restrito a {[}-1, 1{]};\newline%
+{-} g($\pm$1) = 1 como pontos finais do gráfico;\newline%
+{-} estudo de sinal: g $\leq$ -1 no centro, com máximo g(0) = -1, e g $\geq$ 1 nas laterais;\newline%
+{-} limites laterais: -$\infty$ por dentro e +$\infty$ por fora;\newline%
+{-} paridade de g.\newline%
+\newline%
+**Alternativas.** As eliminações estão corretas e cada uma tem justificativa própria:\newline%
+{-} (A) e (B): não têm parte negativa;\newline%
+{-} (C): os sinais estão trocados;\newline%
+{-} (D): o ramo central é positivo e o gráfico passa de x = 1;\newline%
+{-} (E): bate com todas as propriedades encontradas.\newline%
+\newline%
+**Ressalvas menores.** Falta o estudo de concavidade (o formato ? sai só da monotonicidade e dos limites). Além disso, a eliminação de (A) por 'ausência de assíntotas' depende de como se lê o esboço, quando havia um critério mais objetivo: a curva continua além de x = 1. A resolução é clara, rigorosa e publicável como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} O formato de ? do ramo central e a convexidade dos ramos laterais saem só da monotonicidade e dos limites. Não há estudo de concavidade, que seria g''(x) = (24x$^2$+4)/(2x$^2$-1)$^3$ (negativa no centro e positiva nas laterais). Para uma questão de múltipla escolha isso basta, mas um gabarito comentado ficaria mais completo com uma linha sobre g''.%
+\item%
+{[}minor{]} Na eliminação de (A), o argumento de que 'não há assíntotas verticais' depende de como se lê o esboço: na figura, a curva sobe até a reta tracejada junto às retas verticais. A resolução não cita o critério mais objetivo, que é a curva de (A) continuar além de x = 1, fora do domínio. Mesmo assim, o argumento do sinal (g(0) = -1 < 0) já basta para eliminar a alternativa.%
+\end{itemize}%
+\subsection*{Questão 22: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A razão é (1+$\surd$2)/8, alternativa (D). I = BE ? HC = (-4$\surd$2, 0), com o centro do octógono na origem. Área(IEG) = 48 + 32$\surd$2 = 16(1+$\surd$2)$^2$. Área do octógono = 128(1+$\surd$2).\par %
+Conferi o enunciado e a figura no original (p. 6). A rotulação usada pelo candidato está correta: A e H em cima, G e F à direita, E e D embaixo, C e B à esquerda. Ele também interpreta corretamente a condição dada: I = BE ? CH.\newline%
+\newline%
+**Conferência dos cálculos.** Refiz todas as contas e verifiquei numericamente em Python. Os 8 lados medem 8, I fica colinear com B, E e com C, H, e a área por Gauss confere.\newline%
+{-} I = (-4$\surd$2, 0).\newline%
+{-} IE = (b, -b), com b = 4 + 4$\surd$2.\newline%
+{-} A altura de G até a reta BE é b$\surd$2.\newline%
+{-} S\_IEG = b$^2$ = 48 + 32$\surd$2 $\approx$ 93,25, conferido também pelo produto vetorial (2b$^2$/2).\newline%
+{-} S\_oct = 128(1+$\surd$2) $\approx$ 309,02.\newline%
+{-} Razão = (1+$\surd$2)/8 $\approx$ 0,3018.\newline%
+\newline%
+**Comparação com a referência.** Os valores coincidem integralmente com os da minha referência. A resposta (D) está correta.\newline%
+\newline%
+**Armadilhas.**\newline%
+{-} A condição sobre IH foi tratada.\newline%
+{-} A ordem dos rótulos foi lida corretamente.\newline%
+{-} O triângulo usado é o IEG, e não o IHG.\newline%
+{-} A largura 2b foi usada corretamente, sem confundir com a diagonal maior.\newline%
+{-} A área do octógono é 2(1+$\surd$2)s$^2$, e não a metade disso.\newline%
+\newline%
+Há ainda duas conferências independentes: o produto vetorial e a comparação numérica com as alternativas.\newline%
+\newline%
+**Problemas encontrados.** São só de forma: o passo 2 afirma sem verificar (a verificação é trivial) que I está nos segmentos, e uma frase do passo 1 está mal redigida. A resolução é rigorosa, completa e clara, com qualidade de gabarito.%
+\begin{itemize}%
+\item%
+{[}minor{]} O passo 2 afirma que I está no interior do octógono e sobre os segmentos BE e CH, mas não verifica isso. A verificação é imediata: x\_I = -4$\surd$2 $\approx$ -5,66 fica entre x\_B = -b $\approx$ -9,66 e x\_E = 4, e também entre x\_C = -b e x\_H = 4. Bastaria uma linha para fechar o ponto.%
+\item%
+{[}minor{]} A frase do passo 1 está mal construída: 'os lados AH, BC, DE, FG {[}...{]} e os lados oblíquos formam com o quadrado circunscrito quatro triângulos'. Na verdade, quem forma os triângulos dos cantos com o quadrado são só os lados oblíquos. O conteúdo está certo (hipotenusa 8, catetos 4$\surd$2), mas a redação deveria ser mais clara.%
+\item%
+{[}minor{]} Falta notar que GH ? BE, o que dá Área(IEG) = Área(IEH) e uma conferência sintética elegante. Isso não é um erro, porque a altura é calculada diretamente. Mesmo assim, enriqueceria um gabarito comentado.%
+\end{itemize}%
+\end{document}

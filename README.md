@@ -19,12 +19,16 @@ Score is the share of items that match the answer key (or where the key was foun
 | IME 2027 | Math      | `claude-opus-5-5` | 9.5          | **100%** (12/12) | [PDF](exams/ime_2027/math/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/ime_2027/math/essays/solutions/claude_opus_5_5/grade_report.pdf) | [IME 2027](exams/ime_2027/report.md) |
 | IME 2027 | Physics   | `claude-opus-5-5` | 9.0 – 9.5    | **100%** (30/30) | [PDF](exams/ime_2027/physics/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/ime_2027/physics/essays/solutions/claude_opus_5_5/grade_report.pdf) | [IME 2027](exams/ime_2027/report.md) |
 | IME 2027 | Chemistry | `claude-opus-5-5` | 9.0 – 9.5    | **100%** (25/25) | [PDF](exams/ime_2027/chemistry/essays/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/ime_2027/chemistry/essays/solutions/claude_opus_5_5/grade_report.pdf) | [IME 2027](exams/ime_2027/report.md) |
+| Escola Naval 2026 | Math | `claude-opus-5-5` | 9.0 – 9.5 | **100%** (22/22) | [PDF](exams/escola_naval_2026/math/multiple_choice/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/escola_naval_2026/math/multiple_choice/solutions/claude_opus_5_5/grade_report.pdf) | [Escola Naval 2026](exams/escola_naval_2026/report.md) |
+| Escola Naval 2026 | Physics | `claude-opus-5-5` | 9.0 – 9.5 | **95%** (21/22) | [PDF](exams/escola_naval_2026/physics/multiple_choice/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/escola_naval_2026/physics/multiple_choice/solutions/claude_opus_5_5/grade_report.pdf) | [Escola Naval 2026](exams/escola_naval_2026/report.md) |
+| AFA 2027 | Math | `claude-opus-5-5` | 9.0 – 9.5 | **94%** (15/16) | [PDF](exams/afa_2027/math/multiple_choice/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/afa_2027/math/multiple_choice/solutions/claude_opus_5_5/grade_report.pdf) | [AFA 2027](exams/afa_2027/report.md) |
+| AFA 2027 | Physics | `claude-opus-5-5` | 9.0 – 9.5 | **100%** (16/16) | [PDF](exams/afa_2027/physics/multiple_choice/solutions/claude_opus_5_5/solutions_compiled.pdf) | [PDF](exams/afa_2027/physics/multiple_choice/solutions/claude_opus_5_5/grade_report.pdf) | [AFA 2027](exams/afa_2027/report.md) |
 | ITA 2025 | Math      | `o3` / `o4-mini`  | –            | 98%   | [o3](exams/ita_2025/math/essays/solutions/o3/solutions_compiled.pdf) · [o4-mini](exams/ita_2025/math/essays/solutions/o4_mini/solutions_compiled.pdf) | – | [ITA 2025](exams/ita_2025/report.md) |
 | ITA 2025 | Math      | `o1` / `o1-preview` | –          | 95% / 90% | [o1](exams/ita_2025/math/essays/solutions/o1/solutions_compiled.pdf) · [o1-preview](exams/ita_2025/math/essays/solutions/o1_preview/solutions_compiled.pdf) | – | [ITA 2025](exams/ita_2025/report.md) |
 | ITA 2025 | Chemistry | `o1-preview`      | –            | 95%   | [PDF](exams/ita_2025/chemistry/essays/solutions/solutions_compiled.pdf) | – | [ITA 2025](exams/ita_2025/report.md) |
 | ITA 2025 | Physics   | `o1-preview`      | –            | 65%   | [PDF](exams/ita_2025/physics/essays/solutions/solutions_compiled.pdf) | – | [ITA 2025](exams/ita_2025/report.md) |
 
-Each 2027 essay exam (10 questions) took under 7 minutes end to end. Next on the list: Escola Naval, AFA, Fuvest/USP, Unicamp and ENEM.
+Each 2027 essay exam (10 questions) took under 7 minutes end to end. Escola Naval and AFA are multiple choice (Math and Physics only), graded against the official keys; in the one mismatch per exam the grader found the key wrong (Escola Naval Physics Q34) or the statement ambiguous (AFA Math Q22). Next on the list: Unicamp, Fuvest/USP and ENEM.
 
 ## How it works
 
@@ -137,6 +141,8 @@ With a Claude subscription, runs count against your plan's usage limits. With `A
 | Each extra round | +2 (solver, review) |
 
 Plus one extraction per PDF and, for `grade`, one session per question. Lower `--effort`, `--max-rounds` or `--concurrency` to spend less.
+
+`resolve` and `grade` log each agent's estimated cost (API prices, as reported by the SDK) and the total at the end. For reference, at `--effort xhigh` the Escola Naval 2026 and AFA 2027 Math and Physics exams (76 multiple-choice questions) cost about US$ 0.50 per question to solve and US$ 0.10 to grade.
 
 ## Changelog
 

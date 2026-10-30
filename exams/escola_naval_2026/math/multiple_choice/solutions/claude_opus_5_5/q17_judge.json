@@ -1,0 +1,49 @@
+{
+  "question": 17,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A resposta é a alternativa (A): a soma vale (-1)^n·(x-1)(x-2)···(x-n)/n!. Pela relação de Stifel para x real, C(x,k) = C(x-1,k) + C(x-1,k-1). Com isso a soma se cancela em cadeia e sobra só o último termo, (-1)^n·C(x-1,n). Conferi a identidade com frações exatas para n de 1 a 8 e vários valores de x.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (p. 5/12 do PDF, Questão 17), inclusive as cinco alternativas. Na alternativa (E), o numerador é x(x−1)(x−2)⋯(x−n+1). Não há figura.\n\n**1) Notação.** O polinômio é S_n(x) = Σ_{k=0}^{n} (−1)^k · x(x−1)⋯(x−k+1)/k!. O termo de k = 0 vale 1.\n\nUsamos o binomial generalizado C(x,k) = x(x−1)⋯(x−k+1)/k!, com C(x,0) = 1. Ele vale para qualquer x real (ou complexo), não só para x natural. Assim:\n\nS_n(x) = Σ_{k=0}^{n} (−1)^k C(x,k).\n\n**2) Relação de Stifel para x qualquer.** Para k ≥ 1:\n\nC(x−1,k) + C(x−1,k−1) = (x−1)⋯(x−k+1)/(k−1)! · [(x−k)/k + 1] = x(x−1)⋯(x−k+1)/k! = C(x,k).\n\nEssa relação é uma identidade polinomial em x, e por isso vale para todo x.\n\n**3) Telescópica.** Escreva T_k = (−1)^k C(x−1,k), com T_{−1} = 0. Para k ≥ 1:\n\n(−1)^k C(x,k) = (−1)^k C(x−1,k) + (−1)^k C(x−1,k−1) = T_k − T_{k−1}.\n\nPara k = 0, o termo vale 1 = C(x−1,0) = T_0. Somando de k = 0 até n, os termos se cancelam em cadeia:\n\nS_n(x) = T_n = (−1)^n C(x−1,n) = (−1)^n (x−1)(x−2)⋯(x−n)/n!\n\n**3') Alternativa: indução em n.**\n- Caso n = 1: S_1 = 1 − x = (−1)¹(x−1)/1!. Confere.\n- Passo: suponha S_n = (−1)^n (x−1)⋯(x−n)/n!. Então\n  S_{n+1} = (−1)^n (x−1)⋯(x−n)/n! + (−1)^{n+1} x(x−1)⋯(x−n)/(n+1)!\n  = (−1)^{n+1} (x−1)⋯(x−n)/(n+1)! · [−(n+1) + x]\n  = (−1)^{n+1} (x−1)⋯(x−n)(x−n−1)/(n+1)!. Confere.\n\n**4) Testes que eliminam as outras alternativas.**\n- **Grau.** S_n tem grau n e coeficiente líder (−1)^n/n!. Isso vem só do último termo, porque os outros têm grau menor.\n  - (C) tem apenas n−1 fatores, logo grau n−1. Falha.\n  - (D) tem 2n fatores, logo grau 2n. Falha.\n- **x = 0.** Todos os termos com k ≥ 1 se anulam, então S_n(0) = 1.\n  - (A) dá (−1)^n·(−1)^n·n!/n! = 1. Confere.\n  - (E) dá 0. Falha: (E) é só o último termo da soma, sem os demais.\n  - (C) dá −1/n. Falha.\n- **x = 1.** S_n(1) = 1 − 1 + 0 + ⋯ = 0. (A) se anula pelo fator (x−1). Confere.\n- **(B).** A notação (x−1)(x−2)⋯(x+n) não define um produto coerente: a sequência é decrescente mas o último fator é x+n. Mesmo lida como o produto de x−1 até x+n, teria grau n+2 e um fator (x+0) = x, que zeraria a expressão em x = 0. Falha.\n\n**5) Verificação numérica (Python, aritmética exata com Fraction).** Para n = 1,…,9 e x em 45 valores racionais entre −7 e 7, S_n(x) coincidiu com (A) em todos os casos. São mais de n+1 pontos para polinômios de grau n, o que prova a identidade para esses n. Para n = 2 e x = 0: S = 1, (C) = −1/2 e (E) = 0.\n\n**Interpretação.** Pela fórmula de Newton, Σ_{k=0}^{n}(−1)^k C(x,k) é a soma parcial da série binomial de (1−1)^x. A soma parcial não é 0, e sim (−1)^n C(x−1,n). Para x = m natural e n ≥ m, isso dá 0, que é o caso clássico Σ(−1)^k C(m,k) = 0.\n\n**Resposta: (A)** (−1)^n (x−1)(x−2)⋯(x−n)/n!",
+    "final_answer": "A soma vale 1 − x/1! + x(x−1)/2! − ⋯ + (−1)^n x(x−1)⋯(x−n+1)/n! = Σ_{k=0}^n (−1)^k C(x,k) = (−1)^n C(x−1,n) = (−1)^n (x−1)(x−2)⋯(x−n)/n!. A resposta é a **alternativa (A)**.",
+    "pitfalls": [
+      "Não basta escrever a resposta: é preciso justificar a identidade. Vale a telescópica pela relação de Stifel C(x,k) = C(x−1,k) + C(x−1,k−1) com x real, ou a indução em n. Testar alguns valores de n não prova o caso geral.",
+      "x é uma variável real, não um natural. A relação de Stifel e o binomial C(x,k) = x(x−1)⋯(x−k+1)/k! devem ser usados na forma generalizada, como identidade polinomial. Dizer 'pelo binômio, Σ(−1)^k C(x,k) = (1−1)^x = 0' está errado: a soma é parcial (para em n) e x não é inteiro.",
+      "Para k = 0, o termo 1 deve ser tratado à parte na telescópica (1 = C(x−1,0)), senão sobra ou falta um termo.",
+      "A alternativa (E) é exatamente o último termo da soma. Quem esquece os outros termos ou erra o cancelamento cai nela. O teste x = 0 a descarta: a soma vale 1 e (E) vale 0.",
+      "A alternativa (C) tem só n−1 fatores (x−1)⋯(x−n+1), logo grau n−1, mas o polinômio tem grau n e coeficiente líder (−1)^n/n!. Erro típico de indexação do último fator, (x−n+1) em vez de (x−n). Em x = 0, (C) dá −1/n em vez de 1.",
+      "A alternativa (D) tem grau 2n e a (B) tem notação incoerente (vai até x+n). Ambas falham na comparação de grau ou no teste x = 0.",
+      "Bons testes rápidos de consistência: x = 0 (soma = 1), x = 1 (soma = 0), n = 1 (1 − x = −(x−1)) e o grau com o coeficiente líder.",
+      "No passo de indução, o fator comum é (−1)^{n+1}(x−1)⋯(x−n)/(n+1)!, e o colchete fica [x − (n+1)], o que gera o novo fator (x−n−1). É comum errar o sinal de −(n+1)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A resposta é a alternativa (A): a soma vale (-1)^n·(x-1)(x-2)···(x-n)/n!. Pela relação de Stifel para x real, C(x,k) = C(x-1,k) + C(x-1,k-1). Com isso a soma se cancela em cadeia e sobra só o último termo, (-1)^n·C(x-1,n). Conferi a identidade com frações exatas para n de 1 a 8 e vários valores de x.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O descarte da (B) é vago. A frase 'não forma uma sequência coerente nem tem grau n' não diz qual é o grau. Deveria ser concreto: lida como o produto de (x−1) até (x+n), a expressão tem n+2 fatores, incluindo o fator x. Ela se anula em x = 0, mas S_n(0) = 1. O candidato já calculou S_n(0) = 1 nas verificações, mas não usou esse valor para eliminar a (B)."
+          },
+          {
+            "severity": "minor",
+            "description": "A (E) foi descartada só com n = 1. Isso basta para descartar uma alternativa que se pretende identidade geral. Mesmo assim, o teste x = 0 já feito acima ((E) dá 0, a soma dá 1) a eliminaria para todo n e seria mais elegante."
+          },
+          {
+            "severity": "minor",
+            "description": "Não diz explicitamente que n ≥ 1, nem comenta n = 0. Para n = 0 a fórmula também vale, com produto vazio = 1. A omissão não afeta a resposta."
+          }
+        ],
+        "summary": "Conferi o enunciado no original (p. 5/12 do PDF, Questão 17) e a transcrição está correta. A resposta do candidato é (A), igual à da minha referência. Também conferi a identidade com aritmética exata para n = 1,…,9 em 41 valores racionais de x: S_n(x) = (−1)^n C(x−1,n) em todos os casos.\n\nA resolução é rigorosa e completa:\n- **Binomial generalizado.** É definido para x real, com as convenções C(x,0) = 1 e C(x,−1) = 0.\n- **Relação de Stifel.** É demonstrada algebricamente para x real e k ≥ 1, e estendida a k = 0 pela convenção. Isso resolve a armadilha do termo 1.\n- **Telescópica.** Feita corretamente pela mudança de índice j = k−1, com sinal certo: sobra só (−1)^n C(x−1,n).\n- **Verificações.** Os casos n = 1, n = 2 e x = 0 estão certos. Para n = 2, conferi que (x²−3x+2)/2 = (x−1)(x−2)/2.\n- **Outras alternativas.** (C) e (D) caem por grau, com o coeficiente líder (−1)^n/n! justificado. (E) é identificada como só o último termo e cai com contraexemplo em n = 1. (B) cai por notação incoerente e grau.\n\nO candidato não usa o argumento errado '(1−1)^x = 0' e trata x como real, não como natural. Todas as armadilhas relevantes foram evitadas ou tratadas.\n\nHá só falhas menores de acabamento. O descarte da (B) poderia ser mais concreto: em x = 0 ela se anula, mas a soma vale 1. O mesmo teste x = 0 também eliminaria a (E) para todo n, não só para n = 1. A resolução tem nível de gabarito comentado publicável."
+      }
+    }
+  ]
+}

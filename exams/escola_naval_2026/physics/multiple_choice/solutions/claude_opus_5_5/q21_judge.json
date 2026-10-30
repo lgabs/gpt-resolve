@@ -1,0 +1,49 @@
+{
+  "question": 21,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(A) Apenas I e II são verdadeiras. Em O: B = μ0I/(2R)(1+1/π) − μ0I/(2r), nulo só em r = πR/(π+1) ≈ 0,76R; a espira interna domina quando r→0; o campo do fio retilíneo, μ0I/(2πR), não depende de r; as espiras têm sentidos opostos.",
+  "judge_reference": {
+    "final_answer": "Alternativa (A): só I e II são verdadeiras. Tomando \"para dentro da página\" como positivo, o campo em O é B(r) = μ0 I/(2πR) + μ0 I/(2R) − μ0 I/(2r). O campo se anula num único raio, r = πR/(π+1) ≈ 0,76R. I: verdadeira. II: verdadeira. III: falsa. IV: falsa.",
+    "reference_solution": "**Leitura da figura** (conferida no original ampliado; a figura prevalece sobre a transcrição)\n- Trecho retilíneo: fica acima de O, a uma distância R, e é tangente à espira externa no ponto mais alto. A corrente I vai da esquerda para a direita, antes e depois das espiras.\n- Espira externa (raio R): há setas no arco superior esquerdo (para cima/direita), no superior direito (para baixo/direita) e embaixo (para a esquerda). Logo a corrente gira no **sentido horário**.\n- Espira interna (raio r): a seta de baixo aponta para a **direita**, então a corrente gira no **sentido anti-horário**. Isso bate com o trecho radial direito, cuja seta aponta para cima.\n- Caminho da corrente: vem pelo fio da esquerda, desce pelo trecho radial esquerdo, percorre a espira interna no sentido anti-horário, sobe pelo trecho radial direito, percorre a espira externa no sentido horário e sai pelo fio da direita.\n- Os trechos radiais não dão campo em O, porque nesses trechos dl é paralelo ao vetor que vai até O.\n\n**Contribuições em O** (positivo = entrando no plano)\n1. Trecho retilíneo: são duas semirretas que terminam no pé da perpendicular baixada de O (o ponto de tangência). Cada uma dá μ0 I/(4πR), e juntas dão B_fio = μ0 I/(2πR), o mesmo valor de um fio infinito. Sentido: com a corrente para a direita e O abaixo do fio, a regra da mão direita dá campo **entrando**.\n2. Espira externa (horária): B_R = μ0 I/(2R), **entrando**. Tem o mesmo sentido do campo do fio, como era de esperar, já que no topo a espira horária continua o fio que vai para a direita.\n3. Espira interna (anti-horária): B_r = μ0 I/(2r), **saindo**.\n\nCampo resultante:\nB(r) = (μ0 I/2)·[1/R + 1/(πR) − 1/r] = (μ0 I/2)·[(π+1)/(πR) − 1/r].\n\n**I – Verdadeira.** B = 0 quando 1/r = (π+1)/(πR), ou seja, r* = πR/(π+1) ≈ 0,7585R, que está em (0, R). B(r) é estritamente crescente em r (o termo −1/r é monótono), então o zero é único. O campo aponta para fora do plano quando r < r* e para dentro quando r > r*.\n\n**II – Verdadeira.** Quando r → 0, μ0 I/(2r) → ∞, enquanto os outros dois termos ficam fixos (somam μ0 I(π+1)/(2πR)). Assim, para r suficientemente pequeno, a espira interna domina o campo, que aponta para fora.\n\n**III – Falsa.** O campo do trecho retilíneo é μ0 I/(2πR) e só depende de I e da distância R do fio a O. Mudar r não altera nem a corrente (o circuito é em série, então I é a mesma) nem a geometria do trecho retilíneo. A justificativa dada (\"único fio, mesma corrente\") não leva à dependência em r.\n\n**IV – Falsa.** O sentido do campo de cada espira depende do sentido em que a corrente circula nela, e não do fato de a corrente ter a mesma intensidade. Na figura, a espira externa é horária e a interna é anti-horária, então as contribuições são opostas. Inclusive, é justamente por isso que existe o zero da afirmativa I: com sentidos iguais, as três contribuições se somariam e B nunca se anularia. Além disso, o \"necessariamente\" já torna a frase falsa em qualquer caso.\n\nSó I e II são verdadeiras: **alternativa (A)**.\n\n(Conta conferida em Python: r*/R = π/(π+1) = 0,75855; o campo do fio vale 1/π ≈ 0,318 do campo da espira externa.)",
+    "pitfalls": [
+      "Ler mal o sentido da corrente na espira interna. A seta de baixo aponta para a direita, então a espira interna é anti-horária e a externa é horária. Quem supõe sentidos iguais conclui que I é falsa e IV verdadeira, e cai na alternativa (C), que é o distrator previsto.",
+      "Esquecer o trecho retilíneo ou errar o sentido do campo dele. O campo do fio (μ0I/2πR) tem o mesmo sentido do campo da espira externa. Se for tomado como oposto, o zero ficaria em r = πR/(π−1) > R, fora do intervalo, e I seria julgada falsa por engano.",
+      "Tratar o trecho retilíneo como uma única semirreta. O fio forma duas semirretas que terminam no ponto de tangência, cada uma com μ0I/(4πR), totalizando μ0I/(2πR).",
+      "Não demonstrar a unicidade em I. É preciso mostrar que B(r) é monótono, o que vem do termo −1/r, e que r* = πR/(π+1) satisfaz 0 < r* < R.",
+      "Em III, aceitar o argumento de 'único fio, mesma corrente' como prova de dependência em r. O campo do fio depende só de I e de R.",
+      "Em IV, confundir 'mesma corrente' (mesma intensidade) com 'mesmo sentido de circulação'. A palavra 'necessariamente' também torna a afirmativa falsa por si só.",
+      "Atribuir campo em O aos trechos radiais. O enunciado já avisa que essa contribuição é nula, porque dl é paralelo ao vetor que vai até O.",
+      "Em II, não justificar a divergência μ0I/(2r) → ∞ quando r → 0 em comparação com os termos constantes."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(A) Apenas I e II são verdadeiras. Em O: B = μ0I/(2R)(1+1/π) − μ0I/(2r), nulo só em r = πR/(π+1) ≈ 0,76R; a espira interna domina quando r→0; o campo do fio retilíneo, μ0I/(2πR), não depende de r; as espiras têm sentidos opostos.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Há um erro de digitação/LaTeX: aparece 'horário*' com um asterisco solto dentro de \\emph. Basta remover."
+          },
+          {
+            "severity": "minor",
+            "description": "Em IV, o argumento complementar 'se os sentidos fossem iguais, B_O nunca se anularia, o que contradiz I' é um pouco circular, porque a veracidade de I já depende dos sentidos opostos. Como o argumento principal (o sentido do campo depende do sentido de circulação, lido na figura) está certo e vem antes, isso não compromete a resolução. Também valeria comentar que o 'necessariamente' bastaria para tornar a afirmativa falsa."
+          },
+          {
+            "severity": "minor",
+            "description": "Na leitura da figura, a hipótese de desprezar as aberturas das espiras foi declarada, mas não se disse que a pequena dobra do fio retilíneo no ponto de tangência também é desprezada para tratá-lo como reta a uma distância R de O. É um detalhe de rigor sem efeito no resultado."
+          }
+        ],
+        "summary": "Resolução correta e completa, com nível de gabarito comentado. Confiro a figura original ampliada (1200 dpi na junção). O trecho retilíneo da esquerda se cruza com o radial direito e continua no arco direito da espira externa. Assim, a corrente percorre primeiro a espira externa no sentido horário (setas: arco superior esquerdo para cima/direita, arco superior direito para baixo/direita, embaixo para a esquerda). Depois desce pelo radial esquerdo, percorre a espira interna no sentido anti-horário (seta de baixo para a direita), sobe pelo radial direito (seta para cima) e sai pelo fio da direita. O caminho descrito pelo candidato está exatamente certo. Já o da minha referência (que fazia a corrente passar primeiro pela espira interna) estava errado na ordem do percurso, mas isso não afeta os sentidos de circulação nem o resultado. Com as convenções do candidato, B_O = (μ0I/2R)(1+1/π) − μ0I/(2r): o fio (duas semirretas que terminam no ponto de tangência, totalizando μ0I/2πR) e a espira externa dão campo entrando, e a espira interna dá campo saindo. Conferi em Python: o zero fica em r* = πR/(π+1) ≈ 0,7585R e, no limite r→R, B_O → μ0I/(2πR). I é verdadeira: o candidato mostra a existência, verifica 0<r*<R e prova a unicidade por dB/dr>0, confirmando com os limites. II é verdadeira: a razão B_r/(B_R+B_fio) = r*/r → ∞. III é falsa: B_fio só depende de I e de R. IV é falsa: as espiras circulam em sentidos opostos. Resposta (A), igual à da referência. Todas as armadilhas foram tratadas: o sentido da espira interna, o sentido do campo do fio, as duas semirretas, a unicidade, a refutação do argumento de 'único fio' em III, a distinção entre intensidade e sentido em IV, a contribuição nula dos trechos radiais e a divergência em II. Restam só detalhes de redação."
+      }
+    }
+  ]
+}

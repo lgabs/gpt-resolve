@@ -1,0 +1,42 @@
+\section*{Questão 23}
+
+\section*{Solução}
+
+\textbf{1) Horas voadas por aeronave.} Na primeira tabela, as linhas são as rotas e as colunas são as aeronaves. Sejam
+\[
+A=\begin{pmatrix} 6 & 12 & 1\\ 14 & 4 & 8\\ 5 & 2 & 18\end{pmatrix}
+\quad(\text{rotas}\times\text{aeronaves}),
+\qquad
+d=\begin{pmatrix}1{,}5\\ 2\\ 3\end{pmatrix}\ (\text{h por voo em cada rota}).
+\]
+Em cada rota, as horas de uma aeronave são o número de voos multiplicado pela duração de um voo. Somando sobre as três rotas, o vetor de horas total (na ordem Caravan, Phenon, Eurocopter) é $H=A^{T}d$:
+\[
+H=\begin{pmatrix} 6 & 14 & 5\\ 12 & 4 & 2\\ 1 & 8 & 18\end{pmatrix}
+\begin{pmatrix}1{,}5\\ 2\\ 3\end{pmatrix}.
+\]
+Logo:
+\begin{align*}
+\text{Caravan:}&\quad 6\cdot 1{,}5+14\cdot 2+5\cdot 3=9+28+15=52\ \text{h},\\
+\text{Phenon:}&\quad 12\cdot 1{,}5+4\cdot 2+2\cdot 3=18+8+6=32\ \text{h},\\
+\text{Eurocopter:}&\quad 1\cdot 1{,}5+8\cdot 2+18\cdot 3=1{,}5+16+54=71{,}5\ \text{h}.
+\end{align*}
+
+\textbf{2) Faixa de cada aeronave na terceira tabela.} Cuidado: na terceira tabela as colunas estão em outra ordem (Phenon, Eurocopter, Caravan). Por isso, o custo de cada aeronave deve ser lido pelo nome, e não pela posição da coluna.
+\begin{itemize}
+\item Caravan: $40<52<60$, ou seja, faixa ``entre 40 h e 60 h''. Custo: $4$ mil dólares.
+\item Phenon: $32<40$, ou seja, faixa ``abaixo de 40 h''. Custo: $3$ mil dólares.
+\item Eurocopter: $71{,}5>60$, ou seja, faixa ``acima de 60 h''. Custo: $4$ mil dólares.
+\end{itemize}
+Nenhum total coincide com os limites $40$ h ou $60$ h. Assim, não há ambiguidade de faixa.
+
+\textbf{3) Gasto total.}
+\[
+x=4+3+4=11 \ \text{(milhares de dólares)}.
+\]
+
+\textbf{Conferência.} No total, a frota voou $52+32+71{,}5=155{,}5$ h. Pelas linhas, isso também é $19\cdot 1{,}5+26\cdot 2+25\cdot 3=28{,}5+52+75=155{,}5$ h, o que confirma as contas. Além disso, $x=11$ fica entre o menor gasto possível ($3+1+2=6$) e o maior ($6+4+8=18$), como era de se esperar.
+
+Como $9\le 11<13$, a alternativa correta é a \textbf{b)}. As demais não servem: a) exige $x<9$, c) exige $x\ge 13$ e d) exige $x\ge 17$.
+
+\medskip
+ANSWER: (B) $9 \le x < 13$ \quad ($x = 11$ mil dólares)

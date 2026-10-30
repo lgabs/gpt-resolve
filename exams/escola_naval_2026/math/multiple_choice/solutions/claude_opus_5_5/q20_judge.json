@@ -1,0 +1,43 @@
+{
+  "question": 20,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "(D) R$ 132.300,00 — 150.000 × 0,90 × 0,70 = 94.500 (valor atual após as perdas); 94.500 × 1,40 = 132.300.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com o original (página 6/12 do PDF, Questão 20). As alternativas são (A) 125.100, (B) 98.200, (C) 102.400, (D) 132.300 e (E) 84.000.\n\n**Interpretação.** R$ 150.000,00 é quanto um veículo desse modelo custa hoje, ou seja, o \"valor adquirido\" sobre o qual as perdas incidem. Esse valor sofreu duas desvalorizações sucessivas, de 10% e depois de 30%. O \"valor atual do veículo\" é, portanto, o valor já depreciado. O proprietário quer vender por esse valor atual acrescido de 40%.\n\n**1) Valor após as perdas sucessivas.** Cada perda aplica um fator multiplicativo sobre o valor do momento:\n- 1º ano: 150.000 × (1 − 0,10) = 150.000 × 0,9 = 135.000\n- 2º ano: 135.000 × (1 − 0,30) = 135.000 × 0,7 = 94.500\n\nO fator acumulado é 0,9 × 0,7 = 0,63, uma perda total de 37% (e não de 40%). O valor atual do veículo é R$ 94.500,00.\n\n**2) Acréscimo de 40% sobre o valor atual.**\n94.500 × 1,40 = 132.300\n\nO fator global é 0,63 × 1,4 = 0,882. O preço de venda continua 11,8% abaixo dos R$ 150.000,00, pois o aumento de 40% não compensa a perda.\n\n**Conferência em Python:** 150000·0,9·0,7 = 94500 e 94500·1,4 = 132300.\n\n**Verificação das outras leituras (nenhuma cai nas alternativas, o que confirma a leitura acima):**\n- Considerar 150.000 como o valor já depreciado: 150.000 × 1,4 = 210.000. Não é alternativa.\n- Somar as perdas sem compor (10% + 30% = 40% sobre o valor inicial): 150.000 × 0,6 × 1,4 = 126.000. Não é alternativa.\n- Calcular o acréscimo de 40% sobre o valor inicial: 94.500 + 0,4 × 150.000 = 154.500. Não é alternativa.\n- 40% × 150.000 × 1,4 = 84.000 dá a alternativa (E), mas é uma conta sem sentido: aplica-se o aumento ao valor da perda (60.000), e não ao valor do veículo.\n\n**Resposta:** o proprietário venderá por R$ 132.300,00, alternativa (D).",
+    "final_answer": "(D) R$ 132.300,00. Pela conta 150.000 × 0,9 × 0,7 = 94.500 (valor atual) e 94.500 × 1,4 = 132.300.",
+    "pitfalls": [
+      "Ambiguidade de redação: 'custa atualmente R$ 150.000' é o preço de referência (valor adquirido), e o 'valor atual do veículo' é o valor depreciado (R$ 94.500). Tratar 150.000 como valor atual e fazer 150.000 × 1,4 = 210.000 não leva a nenhuma alternativa.",
+      "As perdas são sucessivas, com fatores multiplicativos 0,9 × 0,7 = 0,63 (perda total de 37%). Somar 10% + 30% = 40% leva a 150.000 × 0,6 × 1,4 = 126.000, que não é alternativa (a (A), 125.100, está próxima e pode atrair quem errar).",
+      "O acréscimo de 40% incide sobre o valor atual (94.500), e não sobre os 150.000 iniciais. A conta 94.500 + 60.000 = 154.500 está errada.",
+      "Um aumento de 40% não compensa as perdas: 0,63 × 1,4 = 0,882 ≠ 1. Não se deve supor que a venda volta ao valor original.",
+      "A distratora (E), 84.000 = 0,4 × 150.000 × 1,4, aplica o aumento ao valor da perda, e não ao valor do veículo.",
+      "Uma boa resolução deve explicitar a interpretação adotada e mostrar que a única leitura coerente com as alternativas é a de perdas compostas seguidas de +40% sobre o valor depreciado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "(D) R$ 132.300,00 — 150.000 × 0,90 × 0,70 = 94.500 (valor atual após as perdas); 94.500 × 1,40 = 132.300.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato chama R$ 150.000,00 de \"preço pago pelo veículo quando foi adquirido\", mas o enunciado diz que o veículo \"custa atualmente\" esse valor. Ele não explica essa tensão de redação, e a justificativa da leitura vem só de \"sobre o valor adquirido\" e da exclusão de 210.000. O certo seria deixar explícito que 150.000 é o preço de referência (de compra, ou de um veículo novo hoje) e que o \"valor atual do veículo\" é o valor já depreciado. Com isso, \"custa atualmente\" passa a ser lido como preço de referência, sem contradizer o texto."
+          },
+          {
+            "severity": "minor",
+            "description": "Ficou faltando conferir outra leitura possível: o acréscimo de 40% calculado sobre os 150.000 iniciais, que dá 94.500 + 60.000 = 154.500 e não está entre as alternativas. O candidato também não explica de onde vêm as distratoras, por exemplo a (E), 84.000 = 0,4·150.000·1,4. Isso completaria o argumento de que só uma leitura coerente cai nas alternativas, o que reforça a resposta numa questão de redação ambígua."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (página 6/12, Questão 20) e a transcrição bate. A resposta final do candidato é a mesma da referência: (D) R$ 132.300,00. Refiz as contas em Python: 150.000·0,9 = 135.000, depois ·0,7 = 94.500 e ·1,4 = 132.300. O fator global é 0,882, ou seja, 11,8% abaixo dos 150.000. Tudo confere. A resolução está correta, clara e bem organizada. Ela apresenta os fatores multiplicativos, diz explicitamente que perdas sucessivas se compõem e não se somam (perda acumulada de 37%, não de 40%) e descarta a leitura em que 150.000 seria o valor atual (210.000 não é alternativa). Também descarta a soma das perdas (126.000, fora das alternativas) e confere a ordem de grandeza com o fator 0,882 < 1. Das armadilhas, o candidato tratou a composição das perdas, a interpretação de 150.000, o fato de que o aumento de 40% não compensa a perda e a necessidade de explicitar a leitura adotada. Ficaram duas lacunas pequenas. A primeira é a tensão entre \\\"custa atualmente\\\" e \\\"preço pago quando adquirido\\\", que ele não explica. A segunda é que não verificou o acréscimo de 40% sobre os 150.000 iniciais (154.500) nem a distratora (E). Merece nota 9: está em nível de gabarito comentado, com pequenas omissões de completude na discussão da redação ambígua."
+      }
+    }
+  ]
+}

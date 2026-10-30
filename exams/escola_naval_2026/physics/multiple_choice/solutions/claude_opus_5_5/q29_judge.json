@@ -1,0 +1,48 @@
+{
+  "question": 29,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(A) F = (1/10)·GM²/R²",
+  "judge_reference": {
+    "reference_solution": "**Conferência com o original (p. 12/18 do PDF, Questão 29):** a transcrição está correta. A figura mostra a cavidade de raio R/2 à esquerda, tangente à casca externa e passando por O, e a partícula m à direita, sobre o diâmetro horizontal que passa pelos dois centros, a uma distância r de O. Os dados são m = 10M/23 e r = 2R.\n\n**1) Superposição**\nEsfera com cavidade = esfera maciça completa (massa M, centro O) + esfera de massa \"negativa\" −M_c (centro C, raio R/2).\nIsso vale porque a densidade é uniforme: somar ρ em todo o volume com −ρ no volume da cavidade dá exatamente o corpo real.\n\n**2) Massa retirada**\nA densidade é a mesma, então a massa é proporcional ao volume:\nM_c = M·(R/2)³/R³ = M/8.\n(A massa que sobra é 7M/8, mas o enunciado define M como a massa da esfera completa.)\n\n**3) Distâncias**\n- O centro C da cavidade fica a R/2 de O, do lado esquerdo, ou seja, do lado oposto ao da partícula.\n- Distância de O à partícula: 2R.\n- Distância de C à partícula: 2R + R/2 = 5R/2.\n- A partícula está fora das duas esferas (2R > R), então o teorema das cascas vale para ambas: cada uma atua como massa pontual no próprio centro.\n\n**4) Forças (colineares)**\nO, C e m estão na mesma reta. As duas contribuições, portanto, têm a mesma direção e sentidos opostos.\n- Esfera completa (atração, apontando para O):\n  F₁ = GMm/(2R)² = GMm/(4R²).\n- Massa negativa (sentido oposto, \"repulsão\"):\n  F₂ = G(M/8)m/(5R/2)² = G(M/8)m·4/(25R²) = GMm/(50R²).\n- Força resultante:\n  F = F₁ − F₂ = (GMm/R²)(1/4 − 1/50) = (GMm/R²)(25 − 2)/100 = (23/100)·GMm/R².\n\n**5) Substituindo m = 10M/23**\nF = (23/100)·(10/23)·GM²/R² = (1/10)·GM²/R².\nO fator 23 se cancela, o que confirma que o enunciado foi construído para isso.\nConferido em Python com frações exatas: (1/4 − (1/8)/(25/4))·(10/23) = 1/10.\n\n**Alternativas:** a única compatível é **(A)**. Calculei também os erros comuns:\n\n| Erro | Resultado |\n|---|---|\n| Cavidade do mesmo lado da partícula (distância 3R/2) | 35/414 |\n| Massa 7M/8 concentrada em O | 35/368 |\n| Ignorar a cavidade | 5/46 |\n| Massa da cavidade M/2 | 17/230 |\n| Massa da cavidade M/4 | 21/230 |\n\nNenhum desses valores coincide com B, C, D ou E. Os distratores parecem ser apenas números \"plausíveis\", como 5/23 = m/(2M) e 10/23 = m/M.",
+    "final_answer": "**Alternativa (A):** F = (1/10)·GM²/R².\n\nPara chegar lá:\n- F = GMm/(4R²) − G(M/8)m/(25R²/4) = (23/100)·GMm/R².\n- Com m = 10M/23, isso dá F = GM²/(10R²).",
+    "pitfalls": [
+      "Massa da cavidade: é M/8, porque o volume escala com o cubo do raio, (1/2)³. Usar M/2 (razão linear) ou M/4 (razão de áreas) está errado.",
+      "Distância do centro da cavidade até a partícula: é 2R + R/2 = 5R/2, pois a cavidade fica do lado oposto ao da partícula (à esquerda, segundo a figura). Usar 3R/2 (cavidade do mesmo lado) ou 2R (ignorar o deslocamento) está errado. É preciso ler a figura com atenção.",
+      "M é a massa da esfera completa, antes da cavidade. Não se deve tratar M como a massa restante, nem colocar 7M/8 no centro O: a massa restante não tem simetria esférica, e seu centro de massa não está em O.",
+      "Sinais na superposição: a massa negativa produz força no sentido oposto, então a contribuição da cavidade é subtraída. A subtração escalar só é legítima porque O, C e m são colineares; caso contrário, seria necessária soma vetorial.",
+      "Condição de validade do teorema das cascas: a partícula está fora das duas esferas (2R > R, e 5R/2 > R/2). A superposição exige densidade uniforme, o que o enunciado garante.",
+      "r = 2R é medido a partir do centro O, não da superfície da esfera.",
+      "Simplificação final: 23/100 · 10/23 = 1/10. O cancelamento do 23 é um bom teste de consistência. Atenção aos distratores 5/23 e 10/23, que aparecem se o candidato não multiplica corretamente por m."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(A) F = (1/10)·GM²/R²",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A eliminação de (B) e (C) se limita a dizer que elas 'não correspondem à combinação 1/4 − 1/50'. Isso não acrescenta nada além do próprio cálculo. Para um gabarito comentado, valeria mostrar de qual erro típico vem cada distrator ou dizer explicitamente que nenhum erro comum leva a eles. Por exemplo: cavidade do mesmo lado dá 35/414, 7M/8 concentrada em O dá 35/368, e massa da cavidade M/2 dá 17/230."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não comenta por que é errado tratar a massa restante, 7M/8, como pontual em O: o corpo com cavidade não tem simetria esférica. A abordagem usada já evita esse erro e o texto deixa claro que M é a massa da esfera completa, mas um comentário de uma linha fecharia essa armadilha didaticamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Na etapa 3 a solução fixa um sentido, 'sentido negativo, para a esquerda', mas logo passa a trabalhar 'em módulo' e não usa mais essa convenção. Não é um erro, apenas um pouco de ruído de notação."
+          }
+        ],
+        "summary": "A resposta do candidato é a alternativa (A), F = GM²/(10R²). É a mesma da minha referência, e as contas conferem em Python com frações exatas: 1/4 − (1/8)/(25/4) = 23/100, e 23/100 · 10/23 = 1/10. A verificação de ordem de grandeza também está certa: 10/92 ≈ 0,109.\n\nAs armadilhas centrais foram todas tratadas corretamente:\n- **Massa da cavidade:** M/8, pela razão cúbica dos volumes.\n- **Posição da cavidade:** centro a R/2 à esquerda de O, do lado oposto ao da partícula, o que dá distância 5R/2.\n- **M como massa da esfera completa:** usado assim na superposição.\n- **Validade do teorema das cascas:** a solução justifica para as duas esferas, já que a partícula está fora de ambas.\n- **Sinais:** a contribuição da massa negativa entra com sinal oposto.\n- **Soma escalar:** justificada pela colinearidade de O, C e m.\n\nO candidato ainda confere que o resultado é positivo (a força continua atrativa), checa a dimensão e faz uma estimativa física da redução da força. Os problemas encontrados são apenas de acabamento: o descarte de B e C é superficial e falta um comentário sobre o erro de concentrar 7M/8 em O. A resolução está no nível de um gabarito comentado."
+      }
+    }
+  ]
+}

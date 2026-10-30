@@ -1,0 +1,67 @@
+{
+  "question": 18,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "(D) A = ]-4, 2] ∪ [3, 4] ∪ {5/2}",
+  "judge_reference": {
+    "reference_solution": "**1) Domínio de f(x) = log_{|x−3|} |2x−5|**\n- Base: |x−3| > 0 e |x−3| ≠ 1, logo x ≠ 3, x ≠ 2 e x ≠ 4.\n- Logaritmando: |2x−5| > 0, logo x ≠ 5/2.\n- D(f) = ℝ − {2, 5/2, 3, 4}.\n\n**2) Inequação f(x) > 0**\nTemos log_b a > 0 ⇔ (b > 1 e a > 1) ou (0 < b < 1 e 0 < a < 1).\n\n*Caso I: base maior que 1.*\n- |x−3| > 1 ⇔ x < 2 ou x > 4.\n- |2x−5| > 1 ⇔ x < 2 ou x > 3.\n- Interseção: x < 2 ou x > 4.\n\n*Caso II: base entre 0 e 1.*\n- 0 < |x−3| < 1 ⇔ 2 < x < 4, com x ≠ 3.\n- 0 < |2x−5| < 1 ⇔ 2 < x < 3, com x ≠ 5/2.\n- Interseção: 2 < x < 3, com x ≠ 5/2.\n\nLogo f(x) > 0 ⇔ x ∈ ]−∞, 2[ ∪ ]2, 5/2[ ∪ ]5/2, 3[ ∪ ]4, +∞[.\n\n**3) Inequação g(x) ≤ 0**\n−3x² − 6x + 24 ≤ 0 ⇔ x² + 2x − 8 ≥ 0 ⇔ (x+4)(x−2) ≥ 0 ⇔ x ≤ −4 ou x ≥ 2.\n\n**4) Sistema (interseção)**\n- Com ]−∞, 2[ sobra ]−∞, −4].\n- Com ]2, 5/2[ ∪ ]5/2, 3[ sobra o próprio conjunto, já que nele x ≥ 2.\n- Com ]4, +∞[ sobra ]4, +∞[.\n- Em x = 2 vale g(2) = 0, mas f não está definida (a base seria 1), então 2 ∉ S.\n\nS = ]−∞, −4] ∪ ]2, 5/2[ ∪ ]5/2, 3[ ∪ ]4, +∞[.\n\n**Conferência nas extremidades:**\n- x = −4: g(−4) = 0 e f(−4) = log₇ 13 > 0, logo −4 ∈ S.\n- x = 2 e x = 4: a base é 1, logo ficam fora de S.\n- x = 3: a base é 0, logo fica fora de S.\n- x = 5/2: o logaritmando é 0, logo fica fora de S.\n\n**5) Complementar**\nA = ℝ − S = ]−4, 2] ∪ {5/2} ∪ [3, 4].\n\nIsso é a alternativa d). Um teste em Python, com passo de 0,001 em [−10, 10] e nos pontos de fronteira, confirmou que S e A coincidem com esses conjuntos.\n\n**Por que as outras alternativas estão erradas:**\n- a) ]−∞, 3[ ∪ ]4, +∞[ é parecida com o conjunto de f > 0, sem os furos e sem a restrição de g. Não é o complementar.\n- b) e c) contêm pontos de S, por exemplo 2,2 ∈ S (em b) e −3 ∉ S (que está na região correta, mas c exclui −2 e 2 sem motivo e não inclui [3, 4] inteiro). Ambas são distratores.",
+    "final_answer": "A resposta é a **alternativa d)**: A = ]−4, 2] ∪ [3, 4] ∪ {5/2}.\n\nO conjunto solução do sistema é S = ]−∞, −4] ∪ ]2, 5/2[ ∪ ]5/2, 3[ ∪ ]4, +∞[, e A é o complementar dele em ℝ.",
+    "pitfalls": [
+      "Domínio do logaritmo: a base |x−3| deve ser positiva e diferente de 1, o que exclui x = 3, x = 2 e x = 4. É comum esquecer a condição base ≠ 1.",
+      "O logaritmando |2x−5| deve ser positivo, o que exclui x = 5/2. Esse ponto aparece isolado em A, como {5/2}, e por isso não pode ser esquecido.",
+      "A base é variável, então é preciso separar dois casos: base > 1 (logaritmando > 1) e 0 < base < 1 (0 < logaritmando < 1). Tratar como se a base fosse sempre maior que 1 perde o intervalo ]2, 3[ − {5/2}.",
+      "No caso 0 < |x−3| < 1, lembrar que x ≠ 3 (base nula). No caso 0 < |2x−5| < 1, lembrar que x ≠ 5/2.",
+      "Em g(x) ≤ 0 o coeficiente líder é negativo. Ao dividir por −3, o sentido da desigualdade inverte: x² + 2x − 8 ≥ 0, ou seja, x ≤ −4 ou x ≥ 2. Errar o sentido leva a ]−4, 2[.",
+      "x = 2 zera g, então satisfaz g ≤ 0, mas f não existe ali (base 1). Logo 2 ∉ S e 2 ∈ A, o que dá o intervalo ]−4, 2] fechado em 2.",
+      "x = −4 está em S, porque g(−4) = 0 e f(−4) = log₇ 13 > 0. Por isso A é aberto em −4.",
+      "x = 3 e x = 4 não estão em S (base 0 e base 1). Junto com ]3, 4[, onde f < 0 ou falha o caso, formam [3, 4] fechado em A.",
+      "A pergunta é sobre o complementar de S, não sobre S. A alternativa a) é uma armadilha parecida com o conjunto de f > 0."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "Resposta: alternativa (D), A = ]-4, 2] ∪ [3, 4] ∪ {5/2}.\n\n- **Existência de f:** o logaritmando |2x−5| precisa ser positivo e a base |x−3| precisa ser positiva e diferente de 1. Isso exclui x = 2, 5/2, 3 e 4.\n- **f(x) > 0:** base e logaritmando têm de estar do mesmo lado de 1.\n  - Os dois maiores que 1: x < 2 ou x > 4.\n  - Os dois entre 0 e 1: ]2, 3[ − {5/2}.\n- **g(x) ≤ 0:** equivale a (x+4)(x−2) ≥ 0, ou seja, x ≤ −4 ou x ≥ 2.\n- **Conjunto S (interseção):** S = ]−∞, −4] ∪ ]2, 5/2[ ∪ ]5/2, 3[ ∪ ]4, +∞[.\n- **Complementar:** A = ]−4, 2] ∪ [3, 4] ∪ {5/2}. O −4 fica de fora de A porque g(−4) = 0, então −4 está em S. Já 2, 5/2, 3 e 4 entram em A porque estão fora do domínio de f.\n\nConferi o resultado numericamente com milhares de pontos de teste e ele bate com a alternativa (D).\n\nNo texto LaTeX, o item que descarta a alternativa (c) ficou com uma frase confusa e precisa ser reescrito antes de usar. O motivo correto para descartar (c) é que ela contém 2,8, que está em S, e exclui 2, que está em A.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na análise da alternativa (c), o texto se corrige no meio da frase: \"contém −3,5... na verdade −3,5 ∈ A; o erro de (c) é...\". A primeira afirmação está errada, porque −3,5 ∉ ]−3, 4[, e a correção também não ajuda, porque dizer que −3,5 ∈ A não explica o erro de (c). O certo seria dizer que (c) exclui −3,5, que está em A. Isso não pode aparecer num gabarito publicado. A frase deveria ser reescrita de forma direta, por exemplo: \"(c) é falsa: contém 2,8 ∈ S e exclui 2, 4 e −3,5, que estão em A\"."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conferência das extremidades, a justificativa de −4 ∈ S cita só g(−4) = 0. Faltou dizer que f(−4) = log₇ 13 > 0. A condição sobre f aparece de forma implícita no passo 4 (\"x ≤ −4 ⇒ x < 2 ⇒ f > 0\"), mas a conferência deveria verificar as duas inequações do sistema."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original, e a transcrição está correta. A resposta final do candidato é a alternativa (d), A = ]−4, 2] ∪ [3, 4] ∪ {5/2}. Ela coincide com a minha referência, e um teste numérico em Python com passo de 0,001 em [−20, 20] não encontrou nenhuma discrepância.\n\nA resolução está correta e completa e trata todas as armadilhas:\n- O domínio exclui 2, 5/2, 3 e 4, incluindo a condição de base ≠ 1.\n- A análise separa os dois casos da base variável, base > 1 e 0 < base < 1, com as exclusões x ≠ 3 e x ≠ 5/2 no caso II.\n- O sentido da desigualdade inverte corretamente ao dividir g ≤ 0 por −3.\n- O ponto x = 2 zera g mas está fora do domínio de f, e isso aparece explicitamente, o que fecha A em 2.\n- O ponto x = −4 pertence a S, o que deixa A aberto em −4.\n- O isolado {5/2} e o intervalo [3, 4] fechado em A estão justificados.\n\nOs testes pontuais conferem: f(0) = log₃ 5 > 0 e f(2,8) = log₀,₂ 0,6 > 0.\n\nOs problemas estão só na apresentação:\n- Na discussão da alternativa (c), há uma frase confusa que se corrige pela metade, com a afirmação falsa \\\"contém −3,5\\\" deixada no texto.\n- A conferência de −4 ∈ S cita só g e não menciona f(−4) > 0.\n\nA matemática está impecável, mas a resolução precisaria de uma pequena revisão antes de ser publicada como gabarito comentado, e por isso a nota fica um pouco abaixo de 9."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "(D) A = ]-4, 2] ∪ [3, 4] ∪ {5/2}",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No passo 4 não se diz explicitamente por que ]3,4[ fica fora de S. Isso decorre do conjunto obtido para f>0, mas uma linha ajudaria: em ]3,4[ a base fica entre 0 e 1 e o logaritmando é maior que 1, então f<0. Assim o fechamento de [3,4] em A ficaria visível também pelo interior, e não só pelas extremidades."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conferência das extremidades, os pontos 2, 5/2, 3 e 4 aparecem todos juntos como 'fora de D_f'. Seria mais didático lembrar o motivo de cada um: x=2 e x=4 dão base 1, x=3 dá base 0 e x=5/2 dá logaritmando 0. Isso já está no passo 1, então é só uma questão de estilo."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (pág. 1, questão 18) e ele bate com a transcrição. A resposta do candidato é a alternativa (D), A = ]−4,2] ∪ [3,4] ∪ {5/2}, igual à minha referência. Testei numericamente com python3, em passo de 0,001 em [−20,20] e nos pontos de fronteira, e nenhum ponto destoa. Também conferi as contas citadas: f(−4)=log₇13, g(−4)=0, f(2,8)=log₀,₂0,6≈0,317>0, g(−10)=−216, g(−2)=24, f(0)=log₃5. Todas estão certas.\n\nO candidato trata todas as armadilhas:\n- domínio com base ≠ 1, o que exclui 2 e 4;\n- base > 0 (x ≠ 3) e logaritmando > 0 (x ≠ 5/2);\n- divisão em dois casos para a base variável, com a equivalência justificada via ln a / ln b;\n- inversão do sentido da desigualdade ao dividir por −3;\n- x=2 zera g, mas fica fora de D_f;\n- −4 ∈ S, por isso A é aberto em −4;\n- a pergunta pede o complementar de S.\n\nA refutação das alternativas é feita com contraexemplos concretos e corretos, e é até mais limpa que a da minha referência, que tinha uma frase confusa sobre b) e c). Só achei detalhes de exposição: falta uma linha explicando que f<0 em ]3,4[, e as exclusões nas extremidades poderiam vir com o motivo de cada ponto. Daria para publicar como gabarito comentado."
+      }
+    }
+  ]
+}

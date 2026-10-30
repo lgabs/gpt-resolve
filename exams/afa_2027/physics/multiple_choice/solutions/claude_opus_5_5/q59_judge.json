@@ -1,0 +1,48 @@
+{
+  "question": 59,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(C) 10^20 Hz. Cada fóton recebe a energia de repouso de uma partícula, m c^2 = 8,1·10^-14 J, então f_min = m c^2/h ≈ 1,2·10^20 Hz.",
+  "judge_reference": {
+    "reference_solution": "**Questão 59 (AFA 2027, Física, Versão A, p. 22 do caderno / p. 5 do PDF)**\n\nConferi a transcrição com o original e ela confere (enunciado e alternativas a) 10^12, b) 10^15, c) 10^20, d) 10^24).\n\n**1) Conservação do momento**\nO enunciado diz que os dois fótons têm momentos de mesmo módulo e sentidos opostos. Então o momento total depois da aniquilação é nulo. Como o momento se conserva, o par elétron–pósitron também tinha momento total nulo, ou seja, estamos no referencial do centro de massa.\nPara um fóton, p = E/c = hf. Se |p₁| = |p₂|, então E₁ = E₂ e f₁ = f₂ = f: os dois fótons têm a mesma frequência.\n\n**2) Conservação da energia**\nA energia total antes da aniquilação é a soma das energias de repouso com as energias cinéticas:\nE_total = m_e c² + m_p c² + K_total = 2 m_e c² + K_total, pois m_p = m_e.\nDepois da aniquilação: E_total = 2hf.\nLogo hf = m_e c² + K_total/2.\n\n**3) Condição de mínimo**\nA frequência é mínima quando K_total = 0, isto é, com as partículas praticamente em repouso. Esse é também o caso que o enunciado descreve (\"suas massas de repouso são convertidas em energia\"). Assim:\nf_min = m_e c² / h.\n\n**4) Conta**\nm_e c² = 9,0·10⁻³¹ · (3,0·10⁸)² = 9,0·10⁻³¹ · 9,0·10¹⁶ = 8,1·10⁻¹⁴ J (≈ 0,51 MeV)\nf_min = 8,1·10⁻¹⁴ / 6,6·10⁻³⁴ ≈ 1,23·10²⁰ Hz\n(Conferido em Python: f ≈ 1,227·10²⁰ Hz, log₁₀ f ≈ 20,09.)\n\n**5) Ordem de grandeza**\nO coeficiente é 1,23, que é menor que √10 ≈ 3,16. Então a ordem de grandeza é 10²⁰ Hz, alternativa (c).\nO λ correspondente é c/f ≈ 2,4·10⁻¹² m, na faixa dos raios gama. Isso é coerente com os fótons de 511 keV detectados na PET.\n\n**Robustez:** suponha que alguém atribua por engano toda a energia 2m_e c² a um único fóton. Daria f ≈ 2,45·10²⁰ Hz. Como 2,45 < 3,16, a ordem continua sendo 10²⁰, e a alternativa não muda. Mesmo assim, o raciocínio está errado e deve ser cobrado na correção.",
+    "final_answer": "Alternativa (c): 10²⁰ Hz. A frequência mínima de cada fóton é f_min = m_e c²/h = 8,1·10⁻¹⁴ J / 6,6·10⁻³⁴ J·s ≈ 1,2·10²⁰ Hz, cuja ordem de grandeza é 10²⁰ Hz.",
+    "pitfalls": [
+      "Divisão da energia: são 2 fótons, e cada um leva m_e c², não 2m_e c². Para justificar, use a conservação do momento: os momentos têm módulos iguais, então as energias são iguais (E = pc) e cada fóton fica com metade da energia total. Atribuir 2m_e c² a um fóton dá 2,45·10²⁰ Hz. A ordem continua 10²⁰, então a letra sai certa por acaso, mas o raciocínio está errado.",
+      "Por que a frequência é 'mínima': a energia disponível é 2m_e c² + K. O mínimo ocorre com energia cinética nula (par em repouso). Uma boa resolução precisa dizer isso, e não apenas igualar hf = m_e c² sem comentar.",
+      "Momento total nulo: os momentos opostos e de mesmo módulo indicam referencial do centro de massa. Se o par tivesse momento líquido, os fótons não teriam frequências iguais.",
+      "Critério de ordem de grandeza: compare o coeficiente com √10 ≈ 3,16. Como 1,23 < 3,16, a ordem é 10²⁰ e não 10²¹.",
+      "Confusão entre h e ħ, ou entre f e ω: usar E = ħω com ħ = h/(2π) = 1,1·10⁻³⁴ (com π = 3) dá ω ≈ 7,4·10²⁰ rad/s, de ordem 10²¹, que nem está entre as alternativas. A pergunta é sobre frequência f, então use E = hf.",
+      "Contas com potências: c² = 9,0·10¹⁶ m²/s², e não 9·10⁸ nem 3·10¹⁶. Também é preciso usar as massas fornecidas (m_e = m_p = 9,0·10⁻³¹ kg) e h = 6,6·10⁻³⁴ J·s.",
+      "As alternativas 10¹² (micro-ondas/IV distante) e 10¹⁵ (visível/UV) são distratores. Fótons de aniquilação de cerca de 511 keV são raios gama (λ ≈ 2,4 pm). 10²⁴ resultaria de erro de expoente."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(C) 10^20 Hz. Cada fóton recebe a energia de repouso de uma partícula, m c^2 = 8,1·10^-14 J, então f_min = m c^2/h ≈ 1,2·10^20 Hz.",
+      "review": {
+        "agrees_with_reference": true,
+        "answer_correct": true,
+        "score": 9.5,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na análise da alternativa (d), o candidato diz que ela 'contraria a hipótese de frequência mínima'. A formulação é imprecisa. O ponto correto é outro: 10^24 Hz exigiria K ≈ 1,6·10^4·mc² (cada fóton com ≈ 8·10^3·mc²), e isso não é o mínimo, que ocorre com K = 0. Não há hipótese sendo contrariada. A ideia está certa, mas a redação poderia ser mais precisa."
+          },
+          {
+            "severity": "minor",
+            "description": "Faltou dizer explicitamente que f₁ = f₂, o que decorre de E₁ = E₂ via E = hf. O passo é imediato, mas citar a frequência deixaria claro que 'cada fóton' tem a mesma f_min."
+          },
+          {
+            "severity": "minor",
+            "description": "Chamar 10^12 Hz de 'infravermelho' é aceitável, mas impreciso: λ ≈ 0,3 mm fica na fronteira entre infravermelho distante e terahertz/micro-ondas. Isso não afeta a resposta."
+          }
+        ],
+        "summary": "Conferi a transcrição com o PDF (p. 5, questão 59) e ela confere com o original. A resposta final do candidato é (C) 10^20 Hz, igual à da minha referência. Refiz a conta: mc² = 8,1·10⁻¹⁴ J, f = 1,227·10²⁰ Hz e log₁₀ f ≈ 20,09. A resposta está correta.\n\nO raciocínio cobre todas as armadilhas que eu tinha listado:\n- **Momento total nulo:** os momentos opostos de mesmo módulo indicam momento total nulo, ou seja, referencial do centro de massa.\n- **Divisão da energia:** como E = pc, as energias dos dois fótons são iguais, e cada fóton recebe mc², não 2mc².\n- **Por que é mínima:** a conservação relativística dá 2E_f = 2mc² + K com K ≥ 0, então o mínimo é K = 0. O candidato ainda liga isso à frase do enunciado sobre 'massas de repouso'.\n- **Contas e unidades:** usa E = hf (e não ħω), c² = 9·10¹⁶ e confere as unidades.\n- **Ordem de grandeza:** aplica o critério correto, 1,2 < √10.\n- **Coerência física:** identifica cerca de 0,5 MeV, na faixa dos raios gama.\n\nA análise dos distratores está correta no essencial. Para (d), a razão de cerca de 10⁴ confere (≈ 8,1·10³), só a redação do argumento é imprecisa.\n\nRestam apenas detalhes de redação: não citar f₁ = f₂ de forma explícita e a classificação aproximada de 10¹² Hz. Nenhum deles afeta a física nem a conta. A resolução é limpa, completa e serviria de gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "question": 27,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Alternativa (A), y(x) = 3x − 9/2. Não há força externa resultante no plano e a força da mola é interna, então o CM se move em linha reta com velocidade constante. Ele parte de (2; 1,5) m com velocidade (0,5; 1,5) m/s; eliminando t, obtém-se y = 3x − 4,5.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com o original (pág. 12/18 da prova amarela, Questão 27). As massas são m_A = m_B = 4 kg. No instante inicial, A está em (0, 3) m com v_A = 1 î m/s e B está em (4, 0) m com v_B = 3 ĵ m/s. A mola tem k = 2×10⁻³ N/m e começa relaxada, com comprimento natural igual à distância inicial entre as partículas, √(4² + 3²) = 5 m. O plano é horizontal e não há atrito.\n\n**1) Forças externas sobre o sistema A+B**\n- O peso de cada partícula é equilibrado pela normal do plano, que é horizontal. A soma dessas forças é zero.\n- Não há atrito nem outras forças dissipativas.\n- A força da mola é interna ao sistema. Pela 3ª lei de Newton, ela age sobre A e sobre B com sentidos opostos, e a soma é zero.\n\nPortanto ΣF_ext = 0, e então M·a_CM = 0. O centro de massa (CM) se move em MRU: trajetória retilínea com velocidade constante. O valor de k e o estado inicial da mola não influenciam o movimento do CM.\n\n**2) Posição inicial do CM** (massas iguais, então é o ponto médio de AB)\nx_CM(0) = (4·0 + 4·4)/8 = 2 m\ny_CM(0) = (4·3 + 4·0)/8 = 1,5 m\n\n**3) Velocidade do CM** (constante)\nv_CM = (m·v_A + m·v_B)/(2m) = (1 î + 3 ĵ)/2 = 0,5 î + 1,5 ĵ m/s\n\n**4) Equações horárias e trajetória**\nx(t) = 2 + 0,5t\ny(t) = 1,5 + 1,5t\nDa primeira, t = 2(x − 2). Substituindo na segunda:\ny = 1,5 + 3(x − 2) = 3x − 9/2\n\nA inclinação da reta é v_y/v_x = 1,5/0,5 = 3. A reta passa pelo ponto inicial: 3·2 − 4,5 = 1,5. ✓\nPara t ≥ 0 o CM percorre a semirreta com x ≥ 2. A equação da trajetória é a mesma.\n\n**5) Conferência numérica**\nIntegrei numericamente as equações de A e B (RK4 com a força elástica real, L₀ = 5 m, até t = 1000 s).\n- O desvio máximo do CM em relação à reta y = 3x − 4,5 foi de cerca de 10⁻¹¹ m, ou seja, erro de arredondamento.\n- Em t = 1000 s, o CM está em (502; 1501,5), exatamente o previsto pelo MRU.\n- A distância entre A e B oscila, mas isso é movimento relativo e não afeta o CM.\n\n**6) Análise das alternativas**\n- **(A) y = 3x − 9/2:** correta.\n- **(B), (C) e (E):** são parábolas. Isso exigiria aceleração constante não nula do CM, o que é impossível porque ΣF_ext = 0. As retas de (C) e (E) também não passam por (2; 1,5): (C) dá 5,5 e (E) dá −0,5.\n- **(D):** acrescenta o termo 10⁻³·sen(x). Isso confunde a oscilação relativa causada pela mola com o movimento do CM. A força elástica é interna e não faz o CM oscilar. Além disso, em x = 2 o termo 10⁻³·sen(2) ≠ 0, e a curva nem passa exatamente pelo ponto inicial do CM.\n\n**Resposta: (A) y(x) = 3x − 9/2.**",
+    "final_answer": "Alternativa A: y(x) = 3x − 9/2. O CM parte de (2; 1,5) m com velocidade constante (0,5; 1,5) m/s, porque a força resultante externa é nula e a mola é força interna. Logo y − 1,5 = 3(x − 2).",
+    "pitfalls": [
+      "A mola é força interna e não altera o movimento do CM. Os dados k = 2×10⁻³ N/m e 'mola inicialmente relaxada' são distratores. Uma boa resolução precisa dizer isso explicitamente, pela 3ª lei de Newton e ΣF_ext = 0.",
+      "Justificar ΣF_ext = 0: o plano é horizontal (peso equilibrado pela normal), não há atrito e não há forças dissipativas. Sem isso, o MRU do CM fica sem justificativa.",
+      "Alternativa D (com 10⁻³·sen(x)) é a armadilha principal: confunde a oscilação relativa entre A e B, causada pela mola, com o movimento do CM. O termo também faz a curva não passar exatamente por (2; 1,5).",
+      "Posição inicial do CM: com massas iguais, é o ponto médio (2; 1,5). Errar aqui (por exemplo, usar a origem ou não dividir por 2) leva a um coeficiente linear errado.",
+      "Velocidade do CM: v_CM = (v_A + v_B)/2 = (0,5; 1,5) m/s. A inclinação é v_y/v_x = 3. Não confundir com a razão 3/1 entre as velocidades das partículas, que por coincidência dá o mesmo valor; quem acerta a inclinação dessa forma sem justificar acerta por acaso.",
+      "Eliminar a dependência temporal corretamente: x = 2 + t/2 ⇒ t = 2(x − 2) ⇒ y = 1,5 + 3(x − 2) = 3x − 9/2.",
+      "Parábolas (B, C, E) exigiriam aceleração não nula do CM, o que é incompatível com ΣF_ext = 0. Também convém verificar que a resposta escolhida passa pelo ponto inicial do CM.",
+      "Para t ≥ 0, a trajetória é uma semirreta (x ≥ 2), mas a equação da reta é a mesma. A eventual aproximação ou colisão entre as partículas também não afeta o CM, pois são forças internas."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Alternativa (A), y(x) = 3x − 9/2. Não há força externa resultante no plano e a força da mola é interna, então o CM se move em linha reta com velocidade constante. Ele parte de (2; 1,5) m com velocidade (0,5; 1,5) m/s; eliminando t, obtém-se y = 3x − 4,5.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A frase 'Como o plano é horizontal e não há atrito, essas forças se anulam' mistura duas justificativas diferentes. Peso e normal se anulam porque as partículas ficam no plano (equilíbrio vertical), e isso não depende de haver atrito. A ausência de atrito e de forças dissipativas é outro argumento: garante que não há força externa horizontal. O correto seria separar: (i) N = P na vertical; (ii) sem atrito e sem dissipação, não há força externa no plano xy."
+          },
+          {
+            "severity": "minor",
+            "description": "Erro tipográfico em '\\emph{interna*}': há um asterisco solto que não remete a nenhuma nota. Basta removê-lo."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução diz que k não interfere, mas não comenta explicitamente o outro distrator, 'mola inicialmente relaxada' (L0 = 5 m). Faltou uma frase dizendo que o estado inicial da mola também é irrelevante para o CM. A ideia está implícita em 'quaisquer que sejam k e as oscilações da mola'."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (pág. 12/18, Questão 27) e a transcrição está fiel. O candidato chega à alternativa (A), y = 3x − 9/2, a mesma da minha referência. As duas resoluções seguem o mesmo raciocínio.\n\nA resolução está correta e completa. Ela mostra que ΣF_ext = 0: peso e normal se anulam, e a força da mola é interna e se cancela pela 3ª lei de Newton. Daí conclui que o CM está em MRU.\n\nAs condições iniciais estão certas: r_CM(0) = (2; 1,5) m e v_CM = (0,5; 1,5) m/s. A eliminação de t está correta, e a resolução registra que a trajetória vale para x ≥ 2. A inclinação vem de v_y/v_x do CM, e não da razão casual 3/1 entre v_B e v_A. O candidato também confere que a reta passa pelo ponto inicial e verifica as unidades.\n\nTodas as armadilhas foram tratadas:\n- Alternativa D: o termo 10⁻³·sen(x) confunde a oscilação relativa com o movimento do CM, e a curva não passa por (2; 1,5).\n- Parábolas B, C e E: exigiriam força externa resultante.\n- O valor de k não interfere.\n\nHá três defeitos menores:\n- A justificativa do equilíbrio vertical é imprecisa: atribui o cancelamento de peso e normal também à falta de atrito.\n- Há um asterisco solto no texto.\n- Falta dizer explicitamente que 'mola inicialmente relaxada' também é irrelevante.\n\nNenhum deles compromete o resultado. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

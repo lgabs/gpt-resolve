@@ -1,0 +1,49 @@
+{
+  "question": 20,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(E) t = sqrt(2HM/F). Depois que o fio se rompe, o corpo cai com aceleração g e a cabine passa a ter aceleração F/M − g. A aceleração relativa é F/M, partindo do repouso relativo, então H = (1/2)(F/M)t².",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com o original (Questão 20, p. 8/18). A questão não tem figura. As alternativas são: (A) √(2H/g), (B) √(2HM/(F−Mg)), (C) √(2H/(g+F/M)), (D) √(2H/(g−F/M)), (E) √(2HM/F).\n\n**1) Antes da ruptura (só para entender a situação)**\nA cabine e o corpo formam um único sistema de massa M+m, com aceleração a₀ = F/(M+m) − g, tomando o sentido para cima como positivo. O corpo está em repouso em relação à cabine, então no instante da ruptura os dois têm a mesma velocidade v₀. Não importa se v₀ aponta para cima ou para baixo, nem qual é o seu valor.\n\n**2) Logo após a ruptura**\nO fio é ideal, então a tração some no mesmo instante. A aceleração de cada corpo muda na hora; as velocidades não mudam.\n- Corpo (m): a única força é o peso. Logo a_m = −g, em queda livre.\n- Cabine (M): sobre ela agem F, que continua constante, e o peso Mg. Ela não carrega mais o corpo. Logo M·a_c = F − Mg, ou seja, a_c = F/M − g. **Atenção: não é a₀.**\n\n**3) Movimento relativo**\nA aceleração do corpo em relação à cabine é\na_rel = a_m − a_c = −g − (F/M − g) = −F/M.\nO resultado não depende de g nem de m, e aponta para baixo, em direção ao piso, para qualquer F > 0. A velocidade relativa inicial é zero e a separação inicial é H. Então:\nH = (1/2)(F/M) t²  ⇒  **t = √(2H/(F/M)) = √(2HM/F)**.\n\nOutra forma de ver: no referencial da cabine, que acelera com a_c, a gravidade efetiva vale g_ef = g + a_c = g + (F/M − g) = F/M. Chega-se ao mesmo resultado.\n\n**4) Verificações**\n- Caso particular F = Mg: a cabine passa a ter aceleração nula e t = √(2H/g). Esse valor coincide com (E) nesse caso, como deveria.\n- Uma simulação numérica com parâmetros diferentes confirmou que t = √(2HM/F) não depende de v₀ (para cima, para baixo ou nulo), de m, nem do sentido de a_c. Por exemplo: F = 5000 N, M = 400 kg, H = 1,5 m dá t = 0,4899 s, igual à fórmula (E). Os valores de (B) e (C) não conferem.\n\n**5) Por que as outras alternativas estão erradas**\n- (A): trata a cabine como referencial inercial. Só vale no caso particular F = Mg.\n- (B): usa como aceleração relativa apenas a aceleração da cabine, (F − Mg)/M, e esquece a queda livre do corpo. Além disso, não tem sentido físico quando F ≤ Mg.\n- (C): soma g com F/M, um erro de composição de acelerações e de sinal. O certo é g + a_c = g + F/M − g.\n- (D): erro de sinal parecido. Não tem sentido físico quando F > Mg.\n\n**Alternativa correta: (E)**.",
+    "final_answer": "t = √(2HM/F). Logo após a ruptura, o corpo cai com aceleração g e a cabine passa a ter aceleração a_c = F/M − g (só M, sem o corpo). A aceleração do corpo em relação à cabine é F/M, para baixo, e a velocidade relativa inicial é zero. Alternativa (E).",
+    "pitfalls": [
+      "Depois da ruptura, a aceleração da cabine passa a ser (F − Mg)/M e não (F − (M+m)g)/(M+m). Quem usa a aceleração do sistema antes da ruptura chega a uma resposta que depende de m e não está entre as alternativas.",
+      "A força F é constante e continua agindo na cabine depois da ruptura. Quem supõe que a cabine mantém a aceleração ou a velocidade de antes erra.",
+      "Composição de acelerações: a_rel = −g − (F/M − g) = −F/M, ou seja, g_ef = g + a_c = F/M. Erros de sinal levam a (C) √(2H/(g+F/M)) ou a (D) √(2H/(g−F/M)).",
+      "Usar só a aceleração da cabine (F − Mg)/M e esquecer que o corpo também acelera, em queda livre, leva à alternativa (B).",
+      "Tratar a cabine como inercial leva a (A), que só vale no caso particular F = Mg.",
+      "A hipótese 'em repouso em relação ao elevador' garante velocidade relativa inicial nula. O sentido e o valor da velocidade da cabine (subindo ou descendo) não importam.",
+      "O resultado não depende de m nem de g e vale para qualquer F > 0, mesmo quando F < Mg e a cabine acelera para baixo: o corpo sempre atinge o piso. Já (B) e (D) deixam de ter sentido físico em algumas faixas de F.",
+      "O fio ideal faz a tração sumir no mesmo instante da ruptura. As acelerações mudam de forma descontínua; as velocidades não."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(E) t = sqrt(2HM/F). Depois que o fio se rompe, o corpo cai com aceleração g e a cabine passa a ter aceleração F/M − g. A aceleração relativa é F/M, partindo do repouso relativo, então H = (1/2)(F/M)t².",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A convenção de sinais é um pouco inconsistente. y_rel é definido como a altura do corpo acima do piso, mas a_rel é definido como a_cab − a_corpo, que é a aceleração do piso em relação ao corpo. Com isso, a_rel = −d²y_rel/dt². A conta final, H = ½(F/M)t², está correta em módulo, mas o ideal seria escrever d²y_rel/dt² = a_corpo − a_cab = −F/M, ou então definir a distância piso–corpo e usar a_rel como sua derivada segunda."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa para descartar (C) e (D) é vaga: diz apenas que elas 'somam ou subtraem g e F/M de forma incorreta'. Seria mais forte mostrar a composição correta, g_ef = g + a_c = g + (F/M − g) = F/M, e apontar que (C) ou (D) aparecem quando se toma a_c = ±F/M em vez de F/M − g. Também seria bom citar que (D) diverge em F = Mg."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não diz explicitamente que o resultado vale também quando F < Mg, caso em que a cabine acelera para baixo depois do rompimento. Também não diz explicitamente que o resultado não depende de g. As duas coisas decorrem de 'a_rel constante e positiva = F/M', mas um gabarito comentado poderia destacá-las."
+          }
+        ],
+        "summary": "Conferi a transcrição com o original (PDF p. 1, impressa 8/18) e ela está correta. A resposta do candidato, (E) t = √(2HM/F), é a mesma da minha referência e está correta.\n\nA física está certa e bem justificada:\n- velocidades contínuas no rompimento, porque as forças são finitas;\n- corpo em queda livre (a = −g);\n- cabine só com F e Mg depois do rompimento (a_c = F/M − g), e não com a aceleração do sistema M+m de antes;\n- F continua agindo;\n- aceleração relativa F/M, partindo do repouso relativo;\n- g_ef = g + a_c no referencial da cabine.\n\nA resolução também verifica unidades, o caso F = Mg e a ordem de grandeza (0,58 s, conta conferida). Diz que o resultado não depende de v₀ nem de m e explica por que (A) e (B) falham, incluindo a raiz negativa de (B) e (D) para certas faixas de F.\n\nTodas as armadilhas da referência foram tratadas, explícita ou implicitamente. Ficam só ressalvas menores:\n- notação de sinal: y_rel é a altura do corpo, mas a_rel é a aceleração do piso;\n- a explicação para descartar (C) e (D) é genérica;\n- não diz explicitamente que o resultado vale para F < Mg e não depende de g.\n\nÉ uma resolução que serve de gabarito comentado."
+      }
+    }
+  ]
+}

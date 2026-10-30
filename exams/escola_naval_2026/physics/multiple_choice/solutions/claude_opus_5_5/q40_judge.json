@@ -1,0 +1,44 @@
+{
+  "question": 40,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(D) v_vb/v_vm = √6/2 ≈ 1,22. O barco só se move para leste, então a componente norte do vento é a mesma nos dois referenciais: v_vb·cos45° = v_vm·cos30°. Isso dá v_vm = 10(√3+1) ≈ 27,3 km/h e v_vb ≈ 33,5 km/h.",
+  "judge_reference": {
+    "final_answer": "v_vb/v_vm = cos30°/cos45° = √6/2 ≈ 1,22. Alternativa (D).",
+    "reference_solution": "**Conferência com o original (p. 18/18 da prova amarela, Questão 40):** a transcrição está fiel. Na figura, o barco está no eixo O–L com a proa para L. A bandeira sai do mastro (no centro) para cima e para a esquerda, ou seja, para o noroeste, e forma 45° com o semieixo N.\n\n**1) Referencial e dados**\nTome x apontando para o leste e y para o norte.\n- Velocidade do barco em relação à margem: v_b = (10, 0) km/h.\n- Vento em relação à margem: forma 30° com N, desviado para O. Com módulo w = v_vm, temos v_vm = w(−sen30°, cos30°) = (−w/2, w√3/2).\n- Vento em relação ao barco: a bandeira tremula no sentido para onde o vento relativo sopra. Ela aponta para NO, a 45° de N, então v_vb = u(−sen45°, cos45°) = (−u√2/2, u√2/2).\n\n**2) Composição de velocidades**\nv_vm = v_vb + v_b, logo v_vb = v_vm − v_b = (−w/2 − 10, w√3/2).\n\n**3) Ponto central: a componente N–S não muda**\nO barco anda só na direção L–O, então v_b não tem componente norte–sul. Por isso a componente N–S do vento é a mesma nos dois referenciais:\nv_vb·cos45° = v_vm·cos30°\n⇒ v_vb/v_vm = cos30°/cos45° = (√3/2)/(√2/2) = √3/√2 = **√6/2 ≈ 1,22**.\n\n**4) Conferência de consistência, usando a componente L–O**\nA direção a 45° exige |x| = y, ou seja, w/2 + 10 = w√3/2. Daí w(√3 − 1)/2 = 10, logo w = 20/(√3 − 1) = 10(√3 + 1) ≈ 27,3 km/h. Esse valor é positivo, então a configuração existe.\nEntão v_vb = (−23,66; 23,66) km/h. Esse vetor está de fato a 45° de N para O, e |v_vb| = √2·w√3/2 = w√6/2 ≈ 33,5 km/h.\nConferido numericamente em Python: razão = 1,22474 = √6/2.\n\n**Observação:** a razão não depende dos 10 km/h. A velocidade do barco só é necessária para achar os módulos absolutos e para garantir que a configuração existe.\n\n**Resposta: (D) √6/2**",
+    "pitfalls": [
+      "Ideia-chave: v_b é puramente L–O, então a componente N–S do vento é a mesma nos dois referenciais, o que dá v_vb·cos45° = v_vm·cos30°. Quem não percebe isso pode se perder em lei dos senos ou em sistemas desnecessários.",
+      "Usar seno no lugar de cosseno: os ângulos são medidos a partir do NORTE, não do eixo L–O. Igualar as componentes com sen30°/sen45° dá √2/2, que é a alternativa (A) e funciona como distrator.",
+      "Inverter a razão: cos45°/cos30° = √6/3, que não está entre as opções. Ou tomar só cos30° = √3/2, que é a alternativa (B), também distratora.",
+      "Sinal na composição: o correto é v_vb = v_vm − v_b. Com v_vm + v_b, a direção NO a 45° levaria a w < 0, sinal de geometria inconsistente. Uma boa resolução deve mostrar que w = 10(√3+1) ≈ 27,3 km/h > 0.",
+      "Interpretação da bandeira: ela tremula no sentido para onde o vento relativo SOPRA (a favor do vento). A razão sai √6/2 mesmo sob outras convenções (vento 'de onde vem'), porque a igualdade das componentes N–S vale em qualquer caso. Ainda assim, a resolução deve deixar a convenção explícita.",
+      "Os 10 km/h são dado irrelevante para a razão. Servem só para os módulos absolutos e para confirmar que a configuração existe. Não se deve tentar fazer o resultado depender deles.",
+      "Achar que o ângulo de 45° é medido em relação ao eixo do barco ou à proa: no enunciado e na figura ele é medido em relação ao sentido N."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(D) v_vb/v_vm = √6/2 ≈ 1,22. O barco só se move para leste, então a componente norte do vento é a mesma nos dois referenciais: v_vb·cos45° = v_vm·cos30°. Isso dá v_vm = 10(√3+1) ≈ 27,3 km/h e v_vb ≈ 33,5 km/h.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A frase 'Na leitura oposta (o vento vindo de 30° a oeste do norte), a equação leste daria v_vm<0' fica ambígua. Ela só é exata se a convenção 'de onde vem' for aplicada aos dois vetores, isto é, ao vento real e à bandeira. Com leitura mista (vento real 'de onde vem' e bandeira 'para onde sopra'), quem falha já é a equação norte, porque os sinais das componentes N ficariam opostos, e não a equação leste. O que fazer: dizer explicitamente 'adotando a convenção oposta para ambos os vetores'."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência qualitativa diz que o vento aparente 'fica mais forte' só por causa da componente extra para oeste. A justificativa está certa, mas faltou escrevê-la explicitamente. Daria para fechar em uma linha: pela própria igualdade das componentes N, v_vb·cos45° = v_vm·cos30°, e como cos45° < cos30°, segue v_vb > v_vm. Outra opção: |v_vm − v_bm|² = v_vm² + 10·v_vm + 100 > v_vm²."
+          }
+        ],
+        "summary": "Conferi o enunciado no original (p. 18/18 da prova amarela) e a transcrição está fiel. A bandeira sai do mastro para NO, a 45° de N. A resposta do candidato, (D) √6/2, coincide com a minha referência e está correta.\n\nA resolução é completa e rigorosa:\n- **Composição de velocidades e convenção:** a composição galileana está correta (v_vb = v_vm − v_bm). A convenção da bandeira (ela aponta para onde o vento relativo sopra) está explícita.\n- **Componentes e passo principal:** as componentes estão escritas com ângulos medidos a partir de N, então não há troca de seno por cosseno. O passo central é a conservação da componente norte, já que o barco não tem velocidade N–S. Daí v_vb/v_vm = cos30°/cos45° = √6/2.\n- **Consistência:** a verificação pela componente leste dá v_vm = 10(√3+1) ≈ 27,3 km/h > 0 e v_vb = 5(3√2+√6) ≈ 33,5 km/h. Conferi em Python: o vetor fica a exatamente 45° de N e a razão é 1,22474.\n- **Comentários finais:** o candidato observa corretamente que os 10 km/h não entram na razão. A conferência qualitativa (razão > 1) elimina A, B e C, e E é descartada pelo valor numérico.\n\nTodas as armadilhas que listei foram tratadas:\n- seno/cosseno;\n- inversão da razão;\n- sinal da composição;\n- convenção da bandeira;\n- irrelevância dos 10 km/h;\n- ângulo medido a partir de N.\n\nOs únicos problemas são de redação: uma frase ambígua sobre a 'leitura oposta' e uma justificativa qualitativa que ficou implícita. Merece nota de gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "question": 58,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "(C) T = μ(mg + BiL)/(μ cos θ + sen θ). A força magnética, BiL, aponta para baixo e se soma ao peso. Na iminência de deslizar, f = μN. Pelo equilíbrio de momentos, isso equivale a μ = tg θ, o que dá T = (mg + BiL)/(2 cos θ).",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura (confere com a transcrição).** A barra AC está na horizontal. O fio sai do teto e desce para a direita até A. Assim, em A a tração aponta para cima e para a esquerda, formando o ângulo θ com a vertical. A extremidade C apoia-se num suporte pontual (o triângulo), que aplica uma normal N vertical e um atrito estático f horizontal. Os eixos usados são: x para a direita, y para cima e z para fora da folha.\n\n**1) Força magnética (direção e sentido)**\nA corrente vai de C para A, isto é, da direita para a esquerda: L⃗ = −L x̂. O campo entra na folha: B⃗ = −B ẑ.\nF⃗ = i L⃗ × B⃗ = i(−L)(−B)(x̂ × ẑ) = iLB(−ŷ).\nA força magnética vale BiL e aponta **para baixo**. Como o campo é uniforme e a barra é homogênea, ela atua no centro da barra, a L/2 de cada extremidade. A carga vertical total no centro é, portanto, mg + BiL, para baixo.\n\n**2) Forças na barra**\n- Tração em A: T sen θ para a esquerda e T cos θ para cima.\n- Peso mais força magnética no centro: (mg + BiL) para baixo.\n- Em C: normal N para cima e atrito f. Como o fio puxa a barra para a esquerda, a tendência é escorregar para a esquerda, e o atrito em C aponta para a direita.\n\n**3) Equilíbrio de forças e iminência**\n- Horizontal: f = T sen θ\n- Vertical: T cos θ + N = mg + BiL, logo N = (mg + BiL) − T cos θ\n- Iminência de escorregar: f = μN\n\nSubstituindo: T sen θ = μ[(mg + BiL) − T cos θ], ou seja, T(sen θ + μ cos θ) = μ(mg + BiL). Então:\n\n**T = μ(mg + BiL)/(μ cos θ + sen θ)**, que é a alternativa c.\n\n**4) Conferência como corpo rígido (torques em relação a C)**\nA barra é um corpo extenso, então também vale o equilíbrio de rotação:\nT cos θ · L = (mg + BiL)·L/2, logo T cos θ = (mg + BiL)/2.\nDaí saem N = (mg + BiL)/2 e f = T sen θ = (mg + BiL) tg θ / 2.\n\nO problema é estaticamente determinado (3 incógnitas, 3 equações). Na iminência, f = μN dá **μ = tg θ**, o que torna o enunciado sobredeterminado. Com essa relação, as expressões coincidem:\nT = (mg + BiL)/(2 cos θ) = μ(mg + BiL)/(2 sen θ) = μ(mg + BiL)/(μ cos θ + sen θ).\n\nOu seja, a expressão da alternativa c é igual à tração verdadeira. Já a alternativa b daria tg θ (mg + BiL)/(2 cos θ), que só coincide se μ = 1, e as alternativas a e d trazem o sinal errado (mg − BiL).\n\nConferi numericamente em Python, com m = 2, g = 10, B = 0,5, i = 3, L = 1,2 e θ = 0,3; 0,5; 0,8 rad, impondo μ = f/N = tg θ. Só a alternativa c reproduziu a tração calculada pelo equilíbrio completo:\n- θ = 0,3: T = 11,41 e c = 11,41 (a = 9,53, b = 3,53, d = 61,6)\n- θ = 0,5: T = 12,42 e c = 12,42\n- θ = 0,8: T = 15,65 e c = 15,65\n\n**Análise das alternativas**\n- a) μ(mg − BiL)/(2 sen θ): tem a forma do resultado com torques, mas com a força magnética para cima. Errada pelo sinal.\n- b) μ(mg + BiL)/(2 cos θ): mistura seno e cosseno, ou insere μ indevidamente em T = (mg + BiL)/(2 cos θ). Errada.\n- c) μ(mg + BiL)/(μ cos θ + sen θ): **correta**.\n- d) (μ sen θ + cos θ)(mg − BiL)/μ: sinal errado e expressão \"invertida\". Errada.",
+    "final_answer": "**Alternativa c:** T = μ(mg + BiL)/(μ cos θ + sen θ).\n\nA força magnética BiL aponta para baixo (corrente de C para A, campo entrando na folha), então a carga vertical é mg + BiL. O equilíbrio de forças com f = μN leva a esse resultado. Pelo equilíbrio completo do corpo rígido, T = (mg + BiL)/(2 cos θ) com μ = tg θ, e esse valor coincide com a alternativa c.",
+    "pitfalls": [
+      "Sentido da força magnética: com a corrente de C para A (da direita para a esquerda) e o campo entrando na folha, F = iL⃗×B⃗ aponta para baixo e soma ao peso (mg + BiL). Quem erra a regra da mão direita chega a (mg − BiL) e cai nas alternativas a ou d.",
+      "Sentido do atrito em C: o fio puxa a barra para a esquerda com T sen θ, então o atrito em C aponta para a direita. Na iminência, f = μN com a normal N = (mg + BiL) − T cos θ, e não N = mg.",
+      "A barra é corpo extenso. Com torques, o problema já fica determinado: T cos θ = (mg + BiL)/2, N = (mg + BiL)/2, e a iminência impõe μ = tg θ. O enunciado é sobredeterminado. A forma 'natural' com torques, μ(mg + BiL)/(2 sen θ), não aparece nas alternativas; é preciso reconhecer que, com μ = tg θ, ela é idêntica a μ(mg + BiL)/(μ cos θ + sen θ).",
+      "Distrator a: é exatamente a resposta via torques com o sinal da força magnética trocado. Não marque a só porque 'tem o fator 2 dos torques'.",
+      "Distrator b: não é equivalente à resposta correta, pois tg θ/(2 cos θ) ≠ 1/(2 cos θ), salvo se μ = 1. Também não serve como 'resposta via torques'.",
+      "A força magnética atua no centro da barra (campo uniforme, barra homogênea). Isso importa para o equilíbrio de torques: braço L/2 em relação a C.",
+      "Inconsistência física do enunciado: a razão f/N = tg θ não depende da corrente, então ligar a corrente não altera a condição de iminência. Isso não muda a resposta, mas uma boa resolução não deve se apoiar na ideia de que 'a corrente provoca a iminência'.",
+      "O fio é isolante, então a corrente passa só pela barra; o fio não sofre força magnética. A tração tem a direção do fio (ângulo θ com a vertical), não a da barra."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "(C) T = μ(mg + BiL)/(μ cos θ + sen θ). A força magnética, BiL, aponta para baixo e se soma ao peso. Na iminência de deslizar, f = μN. Pelo equilíbrio de momentos, isso equivale a μ = tg θ, o que dá T = (mg + BiL)/(2 cos θ).",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não diz que a condição de iminência (f/N = tg θ) independe da corrente. Assim, a barra já estaria na iminência com i = 0, e o enunciado ('ao ser percorrida por uma corrente... verifica-se que fica na iminência') é fisicamente inconsistente ou sobredeterminado. O candidato chega a escrever 'a iminência só ocorre se μ = tg θ', mas não tira essa consequência. O que fazer: acrescentar uma frase observando que o enunciado é sobredeterminado e que a corrente não provoca a iminência; ela apenas altera o valor de T."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'verificação' do item 5 é em parte circular. O valor μ = tg θ vem das próprias equações de translação combinadas com a de momentos. Por isso, substituí-lo no resultado do item 4 e reencontrar W/(2 cos θ) é uma coincidência garantida, e não uma checagem independente. O teste 'i = 0 dá só o peso' também é trivial. O que fazer: apresentar o item 5 como prova de compatibilidade das três equações, mostrando que (c) é igual à tração verdadeira, e não como verificação independente."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução usa sem declarar duas hipóteses no torque em relação a A: (i) o atrito em C tem braço nulo, porque o contato do suporte está no eixo da barra horizontal; (ii) a força magnética resultante atua no ponto médio. A segunda está justificada; a primeira, não. O que fazer: mencionar explicitamente a hipótese (i)."
+          },
+          {
+            "severity": "minor",
+            "description": "A alternativa (a) é descartada só pelo sinal. Seria mais instrutivo notar que, com μ = tg θ, μW/(2 sen θ) = W/(2 cos θ). Ou seja, (a) é exatamente a forma obtida via torques, mas com o sinal errado. Isso ajuda a explicar por que ela é um distrator 'perigoso'."
+          }
+        ],
+        "summary": "Conferi a figura no PDF original (p. 5, questão 58). O fio desce do teto para a direita até A e puxa A para cima e para a esquerda, formando θ com a vertical; C se apoia no suporte triangular. A leitura do candidato está correta.\n\nA resposta do candidato, alternativa (c), coincide com a minha referência. Conferi numericamente para θ = 0,3; 0,5; 0,8 e 1,2 rad, impondo μ = f/N (que dá exatamente tg θ). Em todos os casos só (c) reproduz a tração do equilíbrio completo, T = (mg+BiL)/(2 cos θ).\n\nA resolução trata as armadilhas principais:\n- **Força magnética:** o produto vetorial está feito com eixos explícitos e dá BiL para baixo, logo a carga vertical é mg + BiL. Isso descarta (a) e (d).\n- **Ponto de aplicação:** a força magnética atua no ponto médio, e isso está justificado.\n- **Atrito em C:** aponta para a direita.\n- **Normal:** N = W − T cos θ, e não mg.\n- **Iminência:** f = μN, levando ao resultado em (c).\n- **Corpo rígido:** os momentos em relação a A dão N = W/2 e T cos θ = W/2, e o candidato conclui que a iminência exige μ = tg θ. Com isso ele mostra que (c) é idêntica a W/(2 cos θ).\n- **Alternativa (b):** é refutada corretamente, pois só valeria com μ = 1.\n\nAs falhas são todas menores:\n- não diz que a condição de iminência independe da corrente, o que torna o enunciado sobredeterminado e fisicamente inconsistente;\n- a 'verificação' do item 5 é parcialmente circular, e o caso i = 0 é trivial;\n- não declara a hipótese de braço nulo do atrito em C;\n- não comenta que (a) é a forma obtida via torques com o sinal errado.\n\nNo conjunto, é uma resolução clara, correta e de nível de gabarito comentado."
+      }
+    }
+  ]
+}

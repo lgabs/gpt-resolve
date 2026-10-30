@@ -1,0 +1,51 @@
+\section*{Questão 26}
+
+\section*{Solução}
+
+\textbf{1. Propriedades da curva logística.} Seja $f(t)=\dfrac{L}{1+e^{-k(t-t_0)}}$, com $L>0$ e $k>0$.
+
+\emph{(i) Imagem e assíntotas.} Como $e^{-k(t-t_0)}>0$ para todo $t$, o denominador é maior que $1$. Logo
+\[
+0<f(t)<L,\qquad \lim_{t\to-\infty}f(t)=0,\qquad \lim_{t\to+\infty}f(t)=L .
+\]
+A imagem é $]0,L[$ e a amplitude da variação é $L$. É isso que mostra o exemplo: $L=6$, $t_0=0$, $f(0)=3$, com a curva entre $0$ e $6$. O enunciado escreve $]-L,L[$, mas isso contradiz a própria lei e o exemplo. Em particular, $f$ tem sempre o sinal de $L$ e \textbf{nunca muda de sinal}.
+
+\emph{(ii) Inflexão e simetria.} Com $u=e^{-k(t-t_0)}>0$:
+\[
+f'(t)=\frac{Lk\,u}{(1+u)^2}>0,\qquad f''(t)=\frac{Lk^2\,u\,(u-1)}{(1+u)^3}.
+\]
+$f''$ só muda de sinal em $u=1$, isto é, em $t=t_0$, onde $f(t_0)=\dfrac{L}{2}$. Além disso, para todo $h$,
+\[
+f(t_0+h)+f(t_0-h)=\frac{L}{1+e^{-kh}}+\frac{L}{1+e^{kh}}=L .
+\]
+Portanto a curva é simétrica em relação ao ponto $\left(t_0,\tfrac{L}{2}\right)$. Nesse ponto $|f'|$ é máximo e, depois dele, $|f'|$ diminui até $0$. Por isso, a partir de $t_0$ a curva \emph{tende a se estabilizar}.
+
+\emph{(iii) Decrescimento.} Para descrever um decrescimento com taxa $k>0$, basta trocar o sinal do expoente:
+\[
+g(t)=\frac{L}{1+e^{k(t-t_0)}}=L-f(t).
+\]
+$g$ é decrescente, vale $L$ quando $t\to-\infty$ e $0$ quando $t\to+\infty$. A imagem continua sendo $]0,L[$ e a inflexão continua em $\left(t_0,\tfrac{L}{2}\right)$.
+
+\textbf{2. Tradução dos dados.}
+\begin{itemize}
+\item ``observada a partir de seu decrescimento'': a curva é decrescente, do tipo $g$.
+\item ``amplitude de $70000$ indivíduos'': a imagem $]0,L[$ tem amplitude $L$, logo $L=70000$, ou seja, $70$ milhares. A população fica entre $0$ e $70$ mil, portanto nunca é negativa, como deve ser.
+\item ``tendência à estabilização a partir de $10$ anos'': o ponto de inflexão é $t_0=10$, com $g(10)=\dfrac{70}{2}=35$ mil.
+\end{itemize}
+Modelo (em milhares):
+\[
+P(t)=\frac{70}{1+e^{k(t-10)}},\quad k>0.
+\]
+Conferência: $P(0)=\dfrac{70}{1+e^{-10k}}\in\,]35,70[$, de modo que a curva corta o eixo vertical entre $35$ e $70$.
+
+\textbf{3. Análise das alternativas.}
+\begin{itemize}
+\item[a)] É decrescente, mas varia de $35$ a $-35$ e anula-se em $t=10$. Isso é impossível para uma logística, que não muda de sinal e tem $f(t_0)=L/2\neq 0$. Também não faz sentido para uma população, que não pode ter valor negativo.
+\item[b)] Tem os mesmos defeitos de (a) e, além disso, é crescente.
+\item[c)] Tem a forma correta (de $0$ a $70$, com inflexão à meia altura em $t=10$), mas é \emph{crescente}, o que contradiz o decrescimento.
+\item[d)] É decrescente, vai da assíntota $70$ até valores próximos de $0$ e tem inflexão em $(10,\,35)$, à meia altura. É exatamente o gráfico de $P(t)$.
+\end{itemize}
+
+Portanto, o gráfico que representa a suposição é o da alternativa (d).
+
+ANSWER: (D)

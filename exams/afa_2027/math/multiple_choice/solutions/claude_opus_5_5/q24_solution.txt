@@ -1,0 +1,45 @@
+\section*{Questão 24}
+
+\section*{Solução}
+
+\textbf{1) Teclas disponíveis (contadas na figura).} As letras ocupam três fileiras QWERTY, com $10+9+7=26$ teclas. Os símbolos formam 3 linhas de 7 teclas, ou seja, $21$. Os algarismos são $3+3+3+1=10$ (de 0 a 9). Os três tipos de tecla formam conjuntos \emph{disjuntos}, e isso será usado no passo 4.
+
+\textbf{2) Princípio aditivo.} O dispositivo reconhece \emph{ou} a biometria facial, \emph{ou} a digital do indicador direito, \emph{ou} um código digitado. São três modos de entrar que se excluem mutuamente, então as quantidades \emph{se somam}. A face é um único reconhecimento, o que dá $1$ possibilidade. A digital é a de um único dedo, especificado no enunciado, o que dá mais $1$. Sendo $N_c$ o número de códigos,
+\[
+N = 1+1+N_c = 2+N_c .
+\]
+Isso já descarta c) e d), que \emph{multiplicam} por 2 em vez de somar.
+
+\textbf{3) Conteúdo de cada bloco (princípio multiplicativo).}
+\begin{itemize}
+\item \emph{Letras:} 3 letras distintas entre 26, ``não importando sua ordem''. Basta escolher o conjunto: $C_{26,3}=\dfrac{26\cdot25\cdot24}{3!}=2600$.
+\item \emph{Algarismos:} o plural ``pares ordenados'' nomeia o tipo de objeto, e o bloco é \emph{um} par, como confirmam todas as alternativas, que trazem $A_{10,2}$. Como o par é ordenado, $C_{10,2}=45$ está excluído. Como os algarismos são distintos, $10^2=100$ também está excluído. Fica $A_{10,2}=10\cdot 9=90$.
+\item \emph{Símbolo:} 1 entre 21, ou seja, $C_{21,1}=A_{21,1}=21$.
+\end{itemize}
+
+\textbf{4) Posição dos blocos (o passo que decide entre a) e b)).} O texto admite duas leituras.
+\begin{itemize}
+\item \emph{Formato fixo} (letras, depois algarismos, depois símbolo, como numa placa de carro). Essa leitura dá $N_c=C_{26,3}\cdot A_{10,2}\cdot 21$, que é a alternativa b). Ela é plausível, mas depende de uma hipótese que o enunciado não faz: não aparece ``nessa ordem'' nem ``seguido de''.
+\item \emph{Leitura literal.} O código é uma sequência digitada, e numa sequência a posição importa, salvo exceção declarada. O enunciado declara uma única exceção, a ordem \emph{interna} das letras. Ele exige apenas que o código \emph{contenha} os três blocos. Então os 3 blocos podem aparecer em qualquer das $P_3=3!=6$ ordens.
+\end{itemize}
+Adotamos a leitura literal, que não acrescenta hipóteses. Ela também não gera dupla contagem. Como letras, algarismos e símbolos são teclas de conjuntos disjuntos, basta olhar um código válido para identificar, sem ambiguidade, o tipo de cada tecla digitada. Disso se lê, de modo único, a ordem dos blocos, o conjunto de letras, o par ordenado e o símbolo. Por exemplo, $\text{ABC}\,12\,\#$ e $\#\,\text{ABC}\,12$ são códigos diferentes. Assim, os códigos correspondem bijetivamente às quádruplas (ordem dos blocos, conjunto de letras, par, símbolo), e
+\[
+N_c=P_3\cdot C_{26,3}\cdot A_{10,2}\cdot C_{21,1}=6\cdot2600\cdot90\cdot21=29484000 .
+\]
+\emph{Observação lateral (não é demonstração):} a notação $P_m$ é definida no enunciado e só aparece em a). Além disso, a banca usa $A_{26,3}$ em c) e d), mas em a) escreve $P_3$ separado de $C_{26,3}$. Isso é coerente com $P_3$ representar a permutação dos blocos.
+
+\textbf{5) Resultado.}
+\[
+N=2+P_3\cdot C_{26,3}\cdot A_{10,2}\cdot C_{21,1}=29484002\approx 3\cdot10^{7}.
+\]
+A ordem de grandeza é coerente: as 2 formas biométricas são desprezíveis diante do número de códigos.
+
+\textbf{Conferência das alternativas.}
+\begin{itemize}
+\item a) É exatamente a expressão obtida.
+\item b) Vale $2+C_{26,3}\cdot A_{10,2}\cdot A_{21,1}=4914002$. Corresponde à hipótese não declarada de formato fixo, pois omite $P_3$.
+\item c) e d) Como $P_3\cdot C_{26,3}=\dfrac{3!\cdot 26!}{3!\,23!}=A_{26,3}$, ambas valem $2\cdot A_{26,3}\cdot A_{10,2}\cdot21=2N_c=58968000$. Elas contam os mesmos códigos, mas trocam a soma dos casos exclusivos por um produto. Além disso, como $A_{21,1}=C_{21,1}$, c) e d) são numericamente iguais, então nenhuma delas poderia ser a única correta.
+\end{itemize}
+Portanto, a alternativa correta é a).
+
+ANSWER: (A) $2 + P_3\cdot C_{26,3}\cdot A_{10,2}\cdot C_{21,1}$

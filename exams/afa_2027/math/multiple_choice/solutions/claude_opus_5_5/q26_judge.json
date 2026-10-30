@@ -1,0 +1,45 @@
+{
+  "question": 26,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "(D) — a curva logística decresce de 70 mil até perto de 0 e tem inflexão em (10, 35) mil, ou seja, P(t) = 70/(1+e^{k(t-10)}) milhares, com k > 0. Observação: o enunciado diz que o intervalo é ]-L, L[, mas isso contradiz a fórmula e o exemplo, que mostram ]0, L[.",
+  "judge_reference": {
+    "reference_solution": "**Questão 26 – Curva logística (AFA 2027, Versão A)**\n\n**1. Propriedades reais de f(t) = L / (1 + e^{−k(t−t₀)})**, com L > 0:\n- A exponencial é sempre positiva, então o denominador 1 + e^{−k(t−t₀)} é maior que 1. Logo 0 < f(t) < L para todo t. A imagem é ]0, L[, e f **nunca vale 0 nem fica negativa**.\n- Se k > 0: quando t → −∞, f → 0; quando t → +∞, f → L. A curva é crescente e tem assíntotas y = 0 e y = L.\n- f(t₀) = L/(1+1) = L/2. A curva é simétrica em relação ao ponto (t₀, L/2), pois f(t₀+h) + f(t₀−h) = L. Esse é o ponto de inflexão: f'' muda de sinal em t₀, e |f'| é máxima ali, valendo |k|L/4.\n- O exemplo da prova confirma isso. A assíntota é 6, a cauda esquerda fica rente ao eixo t (valor 0) e f(0) = 3 = 6/2. Portanto L = 6, t₀ = 0 e a imagem é ]0, 6[. Pela medição das figuras, o 3 fica de fato na meia altura.\n- Conclusão: o item do enunciado \"]−L, L[ é o intervalo de mínimo e máximo\" está errado. O correto é ]0, L[, como o próprio exemplo mostra.\n\n**2. Modelo para o decrescimento.** Para a curva decrescer, troca-se o sinal do expoente: f(t) = L / (1 + e^{k(t−t₀)}), com k > 0. Isso equivale a usar −k na lei dada. Assim, f → L quando t → −∞ e f → 0 quando t → +∞. A imagem continua sendo ]0, L[ e continua valendo f(t₀) = L/2.\n\n**3. Tradução dos dados (f em milhares):**\n- \"Observada a partir de seu decrescimento\": a curva é decrescente.\n- \"Intervalo de variação com amplitude de 70000 indivíduos\": a imagem ]0, L[ tem amplitude L. Então L = 70 mil, e a população vai de cerca de 70 mil até perto de 0.\n- \"Tendência à estabilização a partir de 10 anos\": t₀ = 10 é o ponto de inflexão. Antes de t₀ a queda acelera; depois dele a taxa de queda diminui e a curva se achata rumo à assíntota. Nesse ponto, f(10) = 35 mil, que é a meia altura.\n- Modelo: f(t) = 70 / (1 + e^{k(t−10)}) mil indivíduos, com k > 0.\n- Conferência numérica (python, k = 0,3): f(−∞) = 70, f(10) = 35, f(+∞) = 0. Também f(10+h) + f(10−h) = 70, e f'' troca de sinal em t = 10.\n\n**4. Análise das alternativas:**\n- **a)** É decrescente, mas vai de 35 a −35 e corta o eixo em t = 10, ou seja, f(10) = 0. A lei dada nunca se anula nem troca de sinal, para nenhum L, k ou t₀. Além disso, uma população negativa é absurda. Essa alternativa só sai da leitura literal do item errado \"]−L, L[\": 2L = 70000, L = 35000. **Falsa.**\n- **b)** Tem os mesmos defeitos de a) e, além disso, é crescente. **Falsa.**\n- **c)** A faixa ]0, 70[ está certa, mas a curva é crescente, contrariando o decrescimento. Também não é simétrica: o ponto marcado em t = 10 fica perto de 47, e não na meia altura 35. **Falsa.**\n- **d)** É decrescente, com assíntotas 70 (à esquerda) e 0 (à direita), e amplitude 70 mil. As linhas tracejadas marcam o ponto (10, 35), na meia altura (medido: cerca de 35,4). Esse é o ponto de inflexão, a partir do qual a queda desacelera e a curva tende a se estabilizar. É exatamente f(t) = 70/(1 + e^{k(t−10)}). **Verdadeira.**\n\n**Resposta: alternativa d).**\n\nObservação para a correção: o enunciado se contradiz. O item \"]−L, L[\" contradiz a própria lei e o exemplo. Quem segue esse item ao pé da letra chega em a). O gabarito oficial pode ter seguido essa leitura ou o item pode ter sido anulado; não tenho como verificar. Matematicamente, porém, só d) é compatível com a função dada, com o exemplo e com o fato de uma população não ser negativa.",
+    "final_answer": "Alternativa d). O modelo é f(t) = 70/(1 + e^{k(t−10)}) mil indivíduos, com k > 0. A curva é decrescente, vai de cerca de 70 mil até perto de 0 (amplitude de 70 mil) e tem inflexão em t₀ = 10, onde f(10) = 35 mil, na meia altura. Ressalva: se o item \"]−L, L[\" do enunciado for lido ao pé da letra, chega-se em a). Esse item está errado, porque a imagem real da função é ]0, L[. Por isso o gabarito oficial pode divergir ou a questão pode ter sido anulada.",
+    "pitfalls": [
+      "O enunciado erra ao dizer que ]−L, L[ é o intervalo de mínimo e máximo. Como e^{(...)} > 0, vale 0 < L/(1+e^{−k(t−t₀)}) < L, e a imagem é ]0, L[. O próprio exemplo (assíntotas 0 e 6, f(0) = 3 = L/2) confirma isso. Uma boa resolução precisa apontar essa contradição.",
+      "Seguir o item ']−L, L[' ao pé da letra (2L = 70000, L = 35000) leva à alternativa a). Só que a função dada nunca se anula nem troca de sinal, e a curva de a) passa por f(10) = 0 e chega a −35 mil indivíduos. População negativa é absurda.",
+      "A lei dada, com k > 0, é crescente. Para modelar o decrescimento é preciso trocar o sinal do expoente (k < 0, ou e^{+k(t−t₀)}). Isso descarta as alternativas crescentes b) e c).",
+      "A 'amplitude de 70000' é a amplitude da imagem ]0, L[, que vale L. Logo L = 70 (em milhares), e não 2L = 70.",
+      "Deve-se interpretar 'estabilização a partir de 10 anos' como o ponto de inflexão em t₀ = 10. A população não fica constante em t = 10: nesse ponto a taxa de queda é máxima, e a partir dele a queda desacelera rumo à assíntota.",
+      "O ponto de inflexão fica na meia altura, f(t₀) = L/2 = 35, por causa da simetria f(t₀+h) + f(t₀−h) = L. Em d) a marcação está na meia altura. Em c) o ponto marcado em t = 10 fica perto de 47, o que não confere com uma logística simétrica.",
+      "Não confundir a amplitude da variação (70 mil) com o valor máximo nem com o valor no ponto de inflexão (35 mil).",
+      "Possível divergência com o gabarito oficial (a), ou anulação) por causa do item contraditório do enunciado. A resposta matematicamente consistente é d)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "(D) — a curva logística decresce de 70 mil até perto de 0 e tem inflexão em (10, 35) mil, ou seja, P(t) = 70/(1+e^{k(t-10)}) milhares, com k > 0. Observação: o enunciado diz que o intervalo é ]-L, L[, mas isso contradiz a fórmula e o exemplo, que mostram ]0, L[.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na análise da alternativa c), o candidato diz que ela tem 'inflexão à meia altura em t=10'. Na figura original não é isso: o ponto marcado em t=10 fica a cerca de 2/3 da altura. Medi os pixels e deu ≈47 mil, não 35 mil. A curva de c) nem chega a ser uma logística simétrica em torno de t=10. Como c) é descartada pelo motivo certo (é crescente), o erro não muda a resposta. Mesmo assim, um gabarito comentado não pode descrever a figura errado. O certo seria dizer que c) é crescente e que, além disso, o ponto marcado em t=10 não fica na meia altura."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato aponta que o enunciado se contradiz ao escrever ]−L, L[, mas não diz que ler esse trecho ao pé da letra (2L = 70000, L = 35000) leva justamente à alternativa a). Também não comenta que, por isso, o gabarito oficial pode divergir ou a questão pode ser anulada. Uma nota curta sobre isso deixaria o comentário mais completo, já que a) e b) foram montadas exatamente sobre essa leitura."
+          }
+        ],
+        "summary": "Conferi a figura no PDF original (p. 5) e ela bate com a transcrição. A resposta do candidato, d), coincide com a minha referência e está correta. A lei dada tem imagem ]0, L[ para L>0, nunca muda de sinal e tem inflexão em (t₀, L/2). Com decrescimento, amplitude L = 70 mil e t₀ = 10, o modelo é P(t) = 70/(1+e^{k(t−10)}), que é exatamente o gráfico d). As contas do candidato estão todas certas, e eu refiz cada uma: f' = Lku/(1+u)², f'' = Lk²u(u−1)/(1+u)³, simetria f(t₀+h)+f(t₀−h) = L, g = L − f e P(0) ∈ ]35, 70[. Ele também tratou as armadilhas principais. Apontou que ]−L, L[ contradiz a lei e o exemplo, que tem L = 6, t₀ = 0 e f(0) = 3. Trocou o sinal do expoente para obter o decrescimento. Leu a amplitude como L, e não como 2L. Justificou 'estabilização a partir de 10 anos' como o ponto de inflexão, onde |f'| é máximo e depois diminui até 0. E descartou a) e b) porque a função não muda de sinal e porque não existe população negativa. Há duas falhas, ambas menores. Na alternativa c), o candidato diz que o ponto em t=10 está na meia altura, mas ele está em ≈47 mil, contra ≈33–35 mil em d). E falta uma nota de que ler ]−L, L[ ao pé da letra leva a a), o que pode afetar o gabarito oficial. Com essas ressalvas, a resolução está no nível de um gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "question": 60,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "A soma das cargas é Q_A + Q_B + Q_C = (+1) + (−3) + (−2) = −4,0 μC, alternativa (A). A força sobre B aponta só para baixo, então C repele B (Q_C < 0) e A atrai B (Q_A = +1 μC). O equilíbrio horizontal F_AB = F_CB·cos 60° dá |Q_C| = 2 μC.",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura (conferida no original, p. 23 do caderno / p. 6 do PDF):** triângulo equilátero de lado L, com Q_A no vértice inferior esquerdo, Q_B no inferior direito e Q_C no superior. A resultante F sobre Q_B aponta verticalmente para baixo, perpendicular ao lado AB (há marca de ângulo reto).\n\n**Eixos:** x horizontal de A para B, y vertical para cima. Sobre Q_B atuam só duas forças:\n- F_AB, de Q_A: horizontal, ao longo da reta AB;\n- F_CB, de Q_C: ao longo da reta CB, que faz 60° com AB. O versor de C para B é (cos 60°, −sen 60°) = (1/2, −√3/2).\n\n**1) Sinal de Q_C (pela componente vertical).** Só F_CB tem componente vertical, e a resultante aponta para baixo. Então F_CB precisa ter componente para baixo, ou seja, apontar de C para B (no sentido que afasta B de C). Isso é repulsão, logo Q_C tem o mesmo sinal de Q_B: **Q_C < 0**. Se fosse atração, a força apontaria para C, para cima e para a esquerda, e a resultante teria componente para cima. Q_C = 0 também não serve, porque aí a resultante seria horizontal.\n\n**2) Sinal de Q_A (pela componente horizontal).** Como a força de C é repulsiva, sua componente horizontal aponta para +x (para a direita) e vale F_CB·cos 60°. Para a resultante ficar puramente vertical, F_AB tem de apontar para −x, isto é, para A. Isso é atração, logo Q_A tem sinal oposto ao de Q_B: **Q_A = +1 μC**.\nContraprova: com Q_A = −1 μC, A repeliria B para +x. A componente horizontal de C teria de ser −x, o que exige atração, e aí a componente vertical seria para cima. Contradição.\n\n**3) Módulo de Q_C (anulando a resultante em x).**\nF_AB = F_CB·cos 60°\nk|Q_A||Q_B|/L² = k|Q_C||Q_B|/L² · (1/2)\n|Q_C| = 2|Q_A| = 2 μC, então **Q_C = −2 μC**.\n(k, L e |Q_B| se cancelam. A resultante fica F = F_CB·sen 60° = k·6·10⁻¹²·(√3/2)/L², para baixo, o que é coerente.)\n\n**4) Soma das cargas:**\nQ_A + Q_B + Q_C = (+1) + (−3) + (−2) = **−4,0 μC**.\n\n**Conferência numérica (python):** varri Q_A = ±1 e Q_C de −10 a +10 μC em passos de 0,5. A única configuração com resultante sobre B vertical e para baixo é Q_A = +1 e Q_C = −2, com soma −4.\n\n**Resposta: alternativa a) −4,0 μC.**",
+    "final_answer": "Q_A = +1 μC, Q_C = −2 μC e Q_B = −3 μC. A soma das cargas é −4,0 μC. **Alternativa a).**",
+    "pitfalls": [
+      "Determinar o sinal de Q_C pela componente vertical: só a força de C tem componente vertical, e como a resultante aponta para baixo, C precisa repelir B. Logo Q_C tem o mesmo sinal de Q_B, ou seja, é negativa. Muitos candidatos supõem o sinal em vez de deduzi-lo.",
+      "Determinar o sinal de Q_A pela componente horizontal: a repulsão de C empurra B para a direita, então A tem de atrair B. Logo Q_A = +1 μC. Quem usa Q_A = −1 cai em −6 μC, que não está entre as alternativas, ou se perde.",
+      "Usar o ângulo certo: no triângulo equilátero, CB faz 60° com AB. A componente horizontal de F_CB é F_CB·cos 60° = F_CB/2, e daí |Q_C| = 2|Q_A|. Quem troca por sen 60° ou cos 30° chega a |Q_C| = 2/√3 e erra a soma.",
+      "Não confundir o sentido da força com a orientação geométrica: repulsão sobre B aponta de C para B (para baixo e para a direita), e atração aponta de B para C (para cima e para a esquerda).",
+      "Q_B entra na soma com sinal: 1 − 3 − 2 = −4. Somar módulos (6) ou esquecer Q_B leva a +6,0 (d), que é um distrator.",
+      "A distância é a mesma para todos os pares (lado L), e k, L e |Q_B| se cancelam. Não é preciso nenhum valor numérico além das cargas.",
+      "Q_C = 0 está descartada, porque a resultante seria horizontal. 'Sistema isolado' e 'cargas fixas' só garantem que as únicas forças relevantes são as eletrostáticas entre as três cargas; o enunciado não pede equilíbrio de B, a resultante é não nula.",
+      "Uma boa resolução deve justificar a unicidade: mostrar que o caso Q_A negativo leva a contradição, e não apenas testar as alternativas."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "A soma das cargas é Q_A + Q_B + Q_C = (+1) + (−3) + (−2) = −4,0 μC, alternativa (A). A força sobre B aponta só para baixo, então C repele B (Q_C < 0) e A atrai B (Q_A = +1 μC). O equilíbrio horizontal F_AB = F_CB·cos 60° dá |Q_C| = 2 μC.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A justificativa do distrator b) está errada nas contas. Com os sinais que o próprio candidato deduziu (Q_A = +1, Q_C < 0), a hipótese |Q_C| = |Q_A|/2 dá Q_C = −0,5 e soma 1 − 3 − 0,5 = −2,5, não −1,5. Para chegar a −1,5 seria preciso Q_C = +0,5, ou seja, inverter também o sinal de Q_C. O certo seria corrigir a explicação ou retirá-la. Isso não afeta a resolução principal, mas num gabarito comentado é uma afirmação falsa."
+          },
+          {
+            "severity": "minor",
+            "description": "A unicidade decorre da dedução de sinais em (i) e (ii), que está correta. Faltou registrar de forma explícita que Q_C = 0 está excluída (a resultante seria horizontal) e que Q_A = −1 leva a contradição. Ambos os fatos já estão implícitos em 'a componente y precisa ser negativa' e em 'F_AB tem de apontar para −x'. Uma frase explícita deixaria a solução mais blindada."
+          },
+          {
+            "severity": "minor",
+            "description": "A explicação do distrator d) (+6,0) diz apenas que ele é 'incompatível com os sinais obtidos'. Seria mais didático apontar a origem provável do valor: soma dos módulos, 1 + 3 + 2 = 6."
+          }
+        ],
+        "summary": "Conferi a figura no original (p. 23 do caderno, p. 6 do PDF): Q_A fica no vértice inferior esquerdo, Q_B no inferior direito e Q_C no superior, e F sobre Q_B aponta verticalmente para baixo, com marca de ângulo reto em relação a AB. A resolução do candidato coincide com a minha referência em todos os passos e na resposta: Q_A = +1 μC, Q_C = −2 μC, soma −4,0 μC, alternativa a).\n\nPontos fortes:\n- Os eixos estão bem definidos e o versor de C para B, (1/2, −√3/2), está correto.\n- O sinal de Q_C é deduzido pela componente vertical: só C contribui em y, logo há repulsão e Q_C < 0.\n- O sinal de Q_A é deduzido pela componente horizontal: F_AB precisa apontar para −x, logo há atração e Q_A = +1. A dedução é feita, e não testando as alternativas.\n- A projeção usa o ângulo certo (cos 60° = 1/2), o que dá |Q_C| = 2|Q_A|.\n- O candidato observa que k, L e |Q_B| se cancelam e confere que a resultante fica (√3/2)F_CB para baixo.\n- A soma é feita com os sinais.\n- O diagrama TikZ é coerente: F_AB tem metade do comprimento de F_CB, e a soma dá um vetor vertical.\n\nArmadilhas: todas foram tratadas (sinal de Q_C, sinal de Q_A, ângulo de 60°, sentido de atração/repulsão, Q_B com sinal na soma, cancelamento de k e L). A exclusão de Q_C = 0 e do caso Q_A = −1 está apenas implícita.\n\nÚnico erro: a explicação extra do distrator b) é falsa. |Q_C| = |Q_A|/2 com os sinais deduzidos dá −2,5, e não −1,5 (conferido em python). Por esse deslize na parte acessória, a nota fica em 9 e não acima."
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "question": 31,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "(C) Aeronave 5: a média é 6 h e o desvio padrão é \\sqrt{6,5}, cerca de 2,55 h. O valor mais próximo é 3 h, da aeronave 5.",
+  "judge_reference": {
+    "reference_solution": "**Leitura do gráfico** (conferida na página 9 do PDF; bate com a transcrição)\nHoras voadas por aeronave:\n- aeronave 1: 7\n- aeronave 2: 10\n- aeronave 3: 8\n- aeronave 4: 5\n- aeronave 5: 3\n- aeronave 6: 5\n- aeronave 7: 8\n- aeronave 8: 2\n\nSão n = 8 valores.\n\n**1) Média**\nx̄ = (7 + 10 + 8 + 5 + 3 + 5 + 8 + 2)/8 = 48/8 = 6 h.\n\n**2) Desvios e quadrados**\n- Desvios xᵢ − x̄: 1, 4, 2, −1, −3, −1, 2, −4 (somam 0, o que confere a média).\n- Quadrados: 1, 16, 4, 1, 9, 1, 4, 16.\n- Soma dos quadrados: Σ(xᵢ − x̄)² = 52.\n\n**3) Variância e desvio padrão**\nO gráfico mostra todas as 8 aeronaves do esquadrão, ou seja, a população inteira. Por isso usamos a variância populacional:\n- σ² = 52/8 = 6,5\n- σ = √6,5 ≈ 2,55 h\n\nConferência sem calculadora: 2,5² = 6,25 < 6,5 < 9 = 3², logo 2,5 < σ < 3.\n\n**4) Qual valor fica mais perto de σ?**\nOs candidatos são os valores 2 (aeronave 8) e 3 (aeronave 5), um de cada lado de σ.\n- |σ − 3| = 3 − σ ≈ 0,45\n- |σ − 2| = σ − 2 ≈ 0,55\n\nComo σ > 2,5 (já que σ² = 6,5 > 6,25), σ fica mais perto de 3 do que de 2. Os outros valores (5, 7, 8, 10) estão a mais de 2,4 de σ.\n\nPortanto, a aeronave que mais se aproxima do desvio padrão em horas voadas é a **nº 5 (3 h)**.\n\n**Conferência de robustez**\nSe alguém usar o desvio padrão amostral, s² = 52/7 ≈ 7,43 e s ≈ 2,73. O valor mais próximo continua sendo 3: distâncias 0,27 contra 0,73 do valor 2. A resposta não muda.\n\n**Resposta: alternativa c) 5.**",
+    "final_answer": "Média = 6 h; Σ(xᵢ − x̄)² = 52; σ² = 52/8 = 6,5; σ = √6,5 ≈ 2,55 h. O valor mais próximo é 3 h, da aeronave 5. Alternativa c).",
+    "pitfalls": [
+      "Ler o gráfico corretamente: 7, 10, 8, 5, 3, 5, 8, 2, com soma 48 e média 6. As aeronaves 4 e 6 têm 5 h; as 3 e 7 têm 8 h.",
+      "Confundir variância com desvio padrão. A variância 6,5 fica mais perto de 7 h (aeronave 1, alternativa a). Esse é o distrator clássico: é obrigatório tirar a raiz.",
+      "Comparar com a média (6 h) ou com outra medida, como mediana 6 ou modas 5 e 8 (alternativas b e d), em vez de comparar com o desvio padrão.",
+      "O ponto crítico é decidir entre 2 h (aeronave 8, que não aparece nas alternativas) e 3 h (aeronave 5). Uma boa resolução justifica que σ > 2,5, porque σ² = 6,5 > 6,25. Não basta dizer 'σ ≈ 2,5'.",
+      "Erros de arredondamento: aproximar √6,5 por 2,5 deixaria σ equidistante de 2 e 3. É preciso pelo menos 2 casas (2,55) ou a comparação exata σ² > 6,25.",
+      "População × amostra: os 8 dados são todo o esquadrão, então o natural é dividir por n = 8. Com n − 1 = 7, s ≈ 2,73 e a resposta continua sendo a aeronave 5. Vale mencionar que a escolha não altera o resultado.",
+      "A pergunta é sobre o número da aeronave (5), não sobre as horas (3). Não confundir o rótulo da aeronave com o valor em horas na hora de marcar a alternativa."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "(C) Aeronave 5: a média é 6 h e o desvio padrão é \\sqrt{6,5}, cerca de 2,55 h. O valor mais próximo é 3 h, da aeronave 5.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na verificação com o desvio padrão amostral, o candidato só afirma que 'o valor mais próximo continuaria sendo 3 h' e não mostra por quê. Bastaria uma linha: s ≈ 2,73 > 2,5, ou as distâncias 0,27 contra 0,73. A afirmação está certa, mas falta a justificativa."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não aponta de forma explícita o distrator da alternativa a): a variância 6,5 fica mais perto de 7 h, que é a aeronave 1. O cálculo trata a armadilha implicitamente, porque tira a raiz corretamente, mas um gabarito comentado ganharia em dizer de onde vem cada alternativa errada."
+          }
+        ],
+        "summary": "Comparei com o PDF original (p. 9) e a leitura do gráfico está certa: 7, 10, 8, 5, 3, 5, 8, 2. Conferi em Python os valores do candidato, e todos batem com a minha referência: média 6, Σ(xᵢ − x̄)² = 52, σ² = 6,5 h², σ ≈ 2,55 h. A ordenação das distâncias a σ dá a aeronave 5 (0,45), depois a 8 (0,55) e em seguida as 4 e 6 (2,45). A resposta é c) 5, a mesma da referência.\n\nO passo crítico tem justificativa rigorosa e sem arredondamento:\n- 2 < σ < 3, porque 4 < 6,5 < 9. Não há dado entre 2 e 3, então só 2 h e 3 h podem ser os mais próximos.\n- σ fica mais perto de 3 se e somente se σ² > 6,25. Isso vale, porque 6,5 > 6,25.\n\nAs demais armadilhas também foram tratadas:\n- Tirou a raiz em vez de comparar com a variância.\n- Justificou o uso da variância populacional, pois os 8 dados são o esquadrão inteiro.\n- Checou que a convenção amostral (s ≈ 2,73) não muda a resposta.\n- Conferiu a média pela soma dos desvios.\n- Usou unidade correta (h²).\n- Distinguiu o número da aeronave (5) das horas voadas (3).\n\nRestam duas ressalvas pequenas: a verificação amostral não mostra as distâncias, e o distrator variância→aeronave 1 não é citado. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

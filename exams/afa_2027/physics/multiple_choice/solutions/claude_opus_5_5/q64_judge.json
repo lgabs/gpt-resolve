@@ -1,0 +1,45 @@
+{
+  "question": 64,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A resposta é a alternativa (B), $\\varepsilon = \\pi B_V L^2 f$. Só a componente vertical do campo induz f.e.m. ao longo da pá, pois $B_H$ dá $\\vec v\\times\\vec B_H$ vertical, perpendicular à pá. Integrando $\\omega r B_V\\,dr$ de 0 a $L$, com $\\omega = 2\\pi f$, obtém-se $\\pi B_V L^2 f$.",
+  "judge_reference": {
+    "reference_solution": "**Questão 64: fem induzida na pá do helicóptero que gira**\n\n**1. Conferência com o original (p. 7, versão A).** A transcrição bate com a prova. A pá MN tem comprimento L. A ponta M fica no eixo do rotor e a ponta N descreve uma circunferência num plano horizontal, com frequência constante f. Na figura, o campo B se decompõe em B_V (vertical) e B_H (horizontal).\n\n**2. Modelo físico (fem de movimento).** A pá é uma haste condutora que se move num campo uniforme. Os elétrons livres da haste sofrem a força magnética q(v × B). Então surge, ao longo da haste, uma diferença de potencial entre M e N:\nε = ∫_M^N (v × B) · dl.\nNão é preciso ter circuito fechado, porque essa fem é a própria ddp entre as pontas.\n\n**3. Qual componente de B contribui.** Tome o ponto da pá que está à distância r do eixo.\n- A velocidade é tangencial e horizontal, com módulo v = ωr, onde ω = 2πf.\n- O elemento dl é radial e também horizontal, porque a pá está no plano de rotação.\n\nComponente horizontal B_H:\n- v e B_H estão ambos no plano horizontal.\n- Logo v × B_H é vertical, perpendicular a dl, e (v × B_H) · dl = 0.\n- Em qualquer posição angular da pá, B_H não gera fem ao longo de MN. No máximo empurra cargas de uma face da pá para a outra (na espessura), nunca ao longo do comprimento.\n\nComponente vertical B_V:\n- v (tangencial) é perpendicular a B_V (vertical).\n- Logo v × B_V é horizontal e radial, ou seja, paralelo à pá, com módulo ωr·B_V.\n\nSó B_V contribui:\nε = ∫₀^L ω r B_V dr = B_V ω L²/2.\n\n**4. Conferência pelo fluxo (Faraday).** Em cada volta, a pá varre um círculo de área πL², e o fluxo através dessa superfície horizontal é B_V·πL². Em uma volta, de período T = 1/f:\nε = B_V·πL²/T = π B_V L² f.\nCom a taxa de varredura de área, dA/dt = ½L²ω = πL²f, o resultado é o mesmo.\n\n**5. Resultado.**\nε = B_V (2πf) L²/2 = **π B_V L² f**.\n\nConferi numericamente: integrei (v × B)·r̂ com B_H ≠ 0 e a pá em vários ângulos. O resultado foi sempre π B_V L² f, sem depender de B_H nem da posição da pá. Isso confirma que a fem é constante.\n\n**6. Por que as outras alternativas falham.**\n- **a)** Usa só B_H, que dá contribuição nula, e ainda erra o fator.\n- **c)** Usa o módulo total |B|, o que só valeria se B fosse inteiramente perpendicular ao plano de rotação.\n- **d)** Nem tem dimensão de fem (T·m·s⁻¹ dentro de uma raiz). Além disso, soma escalarmente B_V e B_H.\n\nAs constantes numéricas dadas na prova (π = 3, g etc.) não são usadas, porque a resposta é literal.",
+    "final_answer": "A fem é ε = π B_V L² f, alternativa **B**. Ela é constante: não depende da posição da pá nem de B_H.",
+    "pitfalls": [
+      "Achar que B_H contribui. Como v e B_H são ambos horizontais, v × B_H é vertical e perpendicular à pá, então dá contribuição nula. Usar o módulo total |B| leva ao erro da alternativa c.",
+      "Usar a velocidade da ponta, v = ωL, em vez de integrar ao longo da pá (ou usar a velocidade média ωL/2). Isso dá 2π B_V L² f, o dobro do valor correto.",
+      "Confundir frequência com velocidade angular (ω = f em vez de ω = 2πf). Isso leva a B_V L² f/2.",
+      "Pelo método do fluxo, usar como área varrida por volta algo diferente de πL² (por exemplo, a área de um retângulo), ou usar o período errado.",
+      "Achar que não há fem porque não existe circuito fechado. A fem de movimento existe como ddp entre M e N, mesmo sem corrente.",
+      "Achar que a fem varia com o ângulo da pá (por causa de B_H). Ela é constante e vale π B_V L² f em qualquer posição.",
+      "A alternativa d nem tem dimensão de fem, o que permite descartá-la só pela análise dimensional.",
+      "Ao conferir o enunciado com o original: a figura mostra B_V para cima e B_H para a direita, e o plano de rotação é horizontal. O sentido de B_V só afeta a polaridade (qual ponta fica com potencial maior), não o módulo pedido."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A resposta é a alternativa (B), $\\varepsilon = \\pi B_V L^2 f$. Só a componente vertical do campo induz f.e.m. ao longo da pá, pois $B_H$ dá $\\vec v\\times\\vec B_H$ vertical, perpendicular à pá. Integrando $\\omega r B_V\\,dr$ de 0 a $L$, com $\\omega = 2\\pi f$, obtém-se $\\pi B_V L^2 f$.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na conferência por Faraday, o candidato faz ΔΦ/Δt sobre uma volta inteira, o que dá a fem média. Ele não diz explicitamente que a taxa de varredura dA/dt = ωL²/2 = πL²f é constante, e é isso que torna a média igual ao valor instantâneo. O certo seria escrever ε = B_V·dA/dt = B_V·(½L²ω) ou declarar que a fem é constante. A fem constante decorre implicitamente da análise de v×B, mas não aparece de forma explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "Ele não comenta a armadilha de que 'não há circuito fechado, logo não há fem'. Também não diz que a fem é a ddp entre M e N mesmo sem corrente. Basta uma frase para isso. A dedução por ∫(v×B)·dl já cobre o caso de forma implícita."
+          }
+        ],
+        "summary": "Conferi o enunciado na p. 7 (versão A) e a transcrição está fiel: a pá MN gira no plano horizontal com frequência f, e B tem componentes B_V (vertical) e B_H (horizontal). O candidato chegou a ε = π B_V L² f, alternativa B, a mesma da minha referência. Não há divergência.\n\nA dedução está correta e é rigorosa:\n- Usa ε = ∫(v×B)·dl.\n- Mostra que v×B_H é vertical, portanto perpendicular à pá, e não contribui.\n- Mostra que v×B_V é radial, com módulo ωrB_V.\n- Integra de 0 a L e obtém B_V ωL²/2 = π B_V L² f.\n\nEle também confere o resultado:\n- pela lei de Faraday, com área varrida πL² por período 1/f;\n- pelas unidades (T·m²/s = V);\n- por uma ordem de grandeza plausível, ~2·10⁻² V (refiz a conta e está certa);\n- pelo caso limite do equador magnético.\n\nO descarte das alternativas também está certo:\n- a) usa B_H, cuja contribuição é nula.\n- c) usa |B|, que só serviria se o campo fosse todo vertical.\n- d) está errada pelas dimensões.\n\nAs armadilhas principais foram tratadas: a contribuição de B_H, a integração ao longo da pá em vez de usar a velocidade da ponta, ω = 2πf, a área πL² e a análise dimensional da d.\n\nHá só duas lacunas pequenas. A primeira é que ele não diz explicitamente que a fem é constante, o que justificaria usar a média de uma volta no método do fluxo. A segunda é que não comenta que não é preciso circuito fechado. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{Ideia.} O ângulo entre duas faces adjacentes é o ângulo diedro ao longo da aresta comum. Ele é o ângulo plano formado por duas perpendiculares a essa aresta, traçadas pelo mesmo ponto e contidas, cada uma, em uma das faces.
+
+\textbf{1) Vizinhança de um vértice.} No icosaedro regular de aresta $a$, cada vértice $V$ pertence a $5$ triângulos equiláteros. Os $5$ vizinhos de $V$ são $A,B,C,D,E$, nessa ordem cíclica. A rotação de $72^\circ$ em torno do eixo que passa por $V$ e pelo centro do sólido leva o icosaedro nele mesmo e permuta ciclicamente esses vizinhos. Logo eles são coplanares e formam um pentágono regular. Vizinhos consecutivos estão em uma mesma face com $V$, portanto o lado desse pentágono é $a$.
+
+\textbf{2) Diagonal do pentágono.} As faces que contêm a aresta $VA$ são $VAB$ e $VAE$. Como $B$ e $E$ não são consecutivos no pentágono, $BE$ é uma diagonal. No triângulo $ABE$ temos $AB=AE=a$ e $\angle BAE=108^\circ$. Daí
+\[
+BE = 2a\,\mathrm{sen}\,54^\circ = 2a\cos 36^\circ = 2a\cdot\frac{1+\sqrt5}{4}=\frac{1+\sqrt5}{2}\,a ,
+\qquad BE^2=\frac{3+\sqrt5}{2}\,a^2 .
+\]
+
+\textbf{3) Ângulo plano do diedro.} Seja $M$ o ponto médio de $VA$. Os triângulos $VAB$ e $VAE$ são equiláteros, então as medianas $BM$ e $EM$ também são alturas: $BM\perp VA$ e $EM\perp VA$, com
+\[
+BM=EM=\frac{a\sqrt3}{2}.
+\]
+Assim, o diedro $\theta$ é o ângulo $\angle BME$. Pela lei dos cossenos no triângulo $BME$:
+\[
+BE^2 = BM^2+EM^2-2\,BM\cdot EM\cos\theta
+\;\Longrightarrow\;
+\frac{3+\sqrt5}{2}\,a^2=\frac{3a^2}{4}+\frac{3a^2}{4}-2\cdot\frac{3a^2}{4}\cos\theta .
+\]
+Dividindo por $a^2$, obtemos $\dfrac{3+\sqrt5}{2}=\dfrac32\,(1-\cos\theta)$. Portanto
+\[
+1-\cos\theta=\frac{3+\sqrt5}{3}
+\quad\Longrightarrow\quad
+\boxed{\cos\theta=-\frac{\sqrt5}{3}}.
+\]
+O sólido é convexo, então $0<\theta<\pi$, e o cosseno determina $\theta$ de forma única:
+\[
+\theta=\arccos\left(-\frac{\sqrt5}{3}\right)\approx 138{,}19^\circ .
+\]
+O ângulo é obtuso, como se espera para um poliedro com $5$ faces por vértice. Ele também é maior que o diedro do octaedro ($\approx 109{,}47^\circ$).
+
+\textbf{4) Análise das alternativas.}
+\begin{itemize}
+\item (A) $\arcsin\left(-\frac{\sqrt5}{7}\right)\approx -18{,}63^\circ<0$: não pode ser um ângulo diedro. Note que o valor correto do seno é $\mathrm{sen}\,\theta=\sqrt{1-\frac59}=\frac23$.
+\item (B) $\mathrm{arctg}\left(-\frac{\sqrt5}{4}\right)\approx -29{,}21^\circ<0$: também é negativo. Além disso, $\mathrm{tg}\,\theta=\frac{2/3}{-\sqrt5/3}=-\frac{2\sqrt5}{5}\neq-\frac{\sqrt5}{4}$.
+\item (C) $\arccos\left(-\frac{\sqrt5}{3}\right)$: a imagem do arco-cosseno é $[0,\pi]$, então esse é exatamente o ângulo obtuso encontrado. \textbf{Correta.}
+\item (D) $\mathrm{arccosec}(x)$ só existe para $|x|\ge 1$, e $\left|-\frac{\sqrt5}{5}\right|\approx 0{,}447<1$: não está definida.
+\item (E) $\left|-\frac{\sqrt5}{2}\right|\approx 1{,}118>1$, fora do domínio do arco-cosseno: não está definida.
+\end{itemize}
+
+ANSWER: (C) $\arccos\left(-\frac{\sqrt5}{3}\right)$

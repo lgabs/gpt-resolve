@@ -1,0 +1,53 @@
+{
+  "question": 2,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "As raízes reais são (3−√5)/2, 1 e (3+√5)/2. A razão entre a menor e a maior raiz real é (7−3√5)/2 ≈ 0,146, valor que não aparece em nenhuma alternativa, então a questão seria passível de anulação. Se for obrigatório marcar, a única opção compatível (real e entre 0 e 1) é a (A), (3−√5)/2. Ela é a razão da PG formada pelas raízes reais e provavelmente é o gabarito pretendido pela banca.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com a prova original (Questão 2, p. 2/12): x^5 − 5x^4 + 9x^3 − 9x^2 + 5x − 1 = 0. O enunciado pede a razão entre a menor raiz real e a maior raiz real.\n\n**1) Raiz x = 1 (polinômio antirrecíproco)**\nOs coeficientes são 1, −5, 9, −9, 5, −1. Cada coeficiente é o oposto do coeficiente simétrico (a_k = −a_{5−k}). Por isso o polinômio é recíproco de 2ª espécie e de grau ímpar, e x = 1 é raiz:\nP(1) = 1 − 5 + 9 − 9 + 5 − 1 = 0.\n\nBriot-Ruffini por (x − 1):\n1 | 1  −5  9  −9  5  −1\n  | 1  −4  5  −4  1 | 0\nLogo P(x) = (x − 1)(x^4 − 4x^3 + 5x^2 − 4x + 1).\n\nAlém disso, P'(1) = 5 − 20 + 27 − 18 + 5 = −1 ≠ 0, então x = 1 é raiz simples.\n\n**2) O fator de grau 4 é recíproco de 1ª espécie (palíndromo)**\nx = 0 não é raiz. Dividindo por x^2:\n(x^2 + 1/x^2) − 4(x + 1/x) + 5 = 0.\n\nCom t = x + 1/x, temos x^2 + 1/x^2 = t^2 − 2. Daí:\nt^2 − 4t + 3 = 0, ou seja, t = 1 ou t = 3.\n\n- t = 1: x^2 − x + 1 = 0, logo x = (1 ± i√3)/2. Não são reais (Δ = −3); são exatamente as alternativas C e D.\n- t = 3: x^2 − 3x + 1 = 0, logo x = (3 ± √5)/2. São reais (Δ = 5).\n\nFatoração completa: P(x) = (x − 1)(x^2 − x + 1)(x^2 − 3x + 1).\nConferência numérica: as raízes 1; 0,381966…; 2,618034…; 0,5 ± 0,866i anulam P (resíduos da ordem de 10⁻¹⁴).\n\n**3) Raízes reais**\nSão três: (3 − √5)/2 ≈ 0,382 < 1 < (3 + √5)/2 ≈ 2,618.\n- menor raiz real: m = (3 − √5)/2;\n- maior raiz real: M = (3 + √5)/2.\n\n**4) Razão pedida**\nm/M = (3 − √5)/(3 + √5) = (3 − √5)^2/(9 − 5) = (14 − 6√5)/4 = (7 − 3√5)/2 ≈ 0,1459.\n\nAtalho: m·M = 1 (produto das raízes de x^2 − 3x + 1). Então m/M = m^2 = [(3 − √5)/2]^2 = (7 − 3√5)/2.\nA razão no sentido inverso seria M/m = (7 + 3√5)/2 ≈ 6,854.\n\n**5) Comparação com as alternativas**\n- (A) (3 − √5)/2 ≈ 0,382: é a própria menor raiz m. Também é igual a 1/M e a m/1, isto é, a razão entre a menor raiz e a raiz intermediária.\n- (B) (3 + √5)/2 ≈ 2,618: é a própria maior raiz M.\n- (C) e (D): são as raízes complexas, que não são reais. São distratores.\n- (E) (1 + √5)/2 ≈ 1,618: é φ, que não é raiz do polinômio.\n\nNenhuma alternativa é igual a (7 − 3√5)/2 ≈ 0,146 (nem a (7 + 3√5)/2). **Em sentido estrito, a questão não tem alternativa correta e é passível de anulação.**\n\nA alternativa que a banca mais provavelmente pretendia é **(A)**. As raízes reais são φ^(−2), 1, φ^2, em que φ = (1 + √5)/2. Elas formam uma PG de razão φ^2. A alternativa (A) aparece se o elaborador:\n- confundiu as raízes reais com φ^(−1) e φ: nesse caso a razão seria φ^(−2) = (3 − √5)/2;\n- dividiu a menor raiz pela raiz 1, ou usou 1/M em vez de m/M;\n- pensou na \"razão\" da PG decrescente M, 1, m.\n\nNenhuma dessas leituras corresponde ao texto, que diz \"razão entre a menor raiz real e a maior raiz real\".",
+    "final_answer": "As raízes reais são (3−√5)/2, 1 e (3+√5)/2. As raízes não reais são (1±i√3)/2. A razão pedida é ((3−√5)/2)/((3+√5)/2) = (7−3√5)/2 ≈ 0,146, e esse valor não aparece em nenhuma alternativa. Em sentido estrito, a questão não tem alternativa correta e é passível de anulação. A alternativa que a banca provavelmente pretendia (gabarito esperado) é a (A), (3−√5)/2: ela é igual à menor raiz, a 1/(maior raiz) e a φ^(−2).",
+    "pitfalls": [
+      "Reconhecer que o polinômio é antirrecíproco (a_k = −a_{5−k}), o que garante x = 1 como raiz. Depois de dividir por (x−1), o quociente x^4−4x^3+5x^2−4x+1 é recíproco e se resolve com t = x + 1/x.",
+      "Na substituição t = x + 1/x, usar x^2 + 1/x^2 = t^2 − 2. Isso leva a t^2 − 4t + 3 = 0, com t = 1 ou t = 3. É preciso justificar a divisão por x^2, já que x = 0 não é raiz.",
+      "Descartar as raízes de x^2 − x + 1 = 0 (Δ < 0): as alternativas C e D são justamente essas raízes complexas e funcionam como distratores. A questão pede raízes reais.",
+      "Não esquecer a raiz real x = 1 (é simples, pois P'(1) = −1). Ela é a raiz intermediária e não muda a menor nem a maior raiz, mas precisa entrar na ordenação.",
+      "Calcular a razão corretamente: m/M = (3−√5)/(3+√5) = (7−3√5)/2 ≈ 0,146. Como m·M = 1, vale m/M = m^2, e não m. Escolher (A) achando que m/M = m é erro de conta.",
+      "Verificar que nenhuma alternativa coincide com (7−3√5)/2, nem com (7+3√5)/2 no sentido inverso. Uma boa resolução deve apontar a falha do enunciado ou das alternativas, em vez de forçar uma igualdade falsa.",
+      "Se for indicar uma letra, deixar explícito que (A) só aparece por uma leitura alternativa ou por erro do elaborador: confundir as raízes φ^(±2) com φ^(±1), dividir pela raiz 1, usar 1/M ou pensar na razão da PG M, 1, m. Não se deve apresentar (A) como valor exato da razão pedida.",
+      "(E) = φ ≈ 1,618 não é raiz. (B) é a maior raiz, e não uma razão. Também não se deve confundir a razão m/M com a razão da PG formada pelas raízes reais."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "As raízes reais são (3−√5)/2, 1 e (3+√5)/2. A razão entre a menor e a maior raiz real é (7−3√5)/2 ≈ 0,146, valor que não aparece em nenhuma alternativa, então a questão seria passível de anulação. Se for obrigatório marcar, a única opção compatível (real e entre 0 e 1) é a (A), (3−√5)/2. Ela é a razão da PG formada pelas raízes reais e provavelmente é o gabarito pretendido pela banca.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A fatoração por Briot-Ruffini aparece só como resultado, sem a tabela do dispositivo (1 | 1 −5 9 −9 5 −1 → 1 −4 5 −4 1 | 0). A conta está certa, mas um gabarito comentado deveria mostrar esse passo."
+          },
+          {
+            "severity": "minor",
+            "description": "Faltou dizer que x = 1 é raiz simples (P'(1) = −1 ≠ 0), ou seja, que são exatamente três raízes reais distintas. Isso não muda a razão pedida, mas completaria a ordenação."
+          },
+          {
+            "severity": "minor",
+            "description": "Na análise das alternativas, faltaram duas observações: a razão no sentido inverso, M/m = (7+3√5)/2 ≈ 6,854, também não aparece entre as opções; e (E) = φ não é raiz. A eliminação por sinal e por tamanho já cobre esses pontos, então a omissão é pequena."
+          },
+          {
+            "severity": "minor",
+            "description": "Para descartar as outras alternativas e ficar com (A), o candidato fala em 'ordem de grandeza'. A expressão é imprecisa, porque 0,382 ≠ 0,146. O argumento real é só que (A) é a única opção real no intervalo (0,1). O próprio texto deixa claro que isso não faz de (A) o valor exato."
+          }
+        ],
+        "summary": "Conferi o enunciado na prova original (Questão 2, p. 2/12) e ele bate com a transcrição.\n\nA resolução do candidato coincide com a minha referência em todos os pontos:\n- x = 1 é raiz porque o polinômio é antirrecíproco.\n- O quociente x^4 − 4x^3 + 5x^2 − 4x + 1 é recíproco. Com y = x + 1/x, chega-se a y^2 − 4y + 3 = 0, com y = 1 ou y = 3. A divisão por x^2 está justificada, pois x = 0 não é raiz.\n- y = 1 dá as raízes complexas (1 ± i√3)/2, que correspondem às alternativas C e D, e o candidato as descarta corretamente.\n- y = 3 dá as raízes reais (3 ± √5)/2.\n- A razão é calculada certo: (3 − √5)/(3 + √5) = (7 − 3√5)/2 ≈ 0,146 = m².\n\nConferi em Python: P se anula em todas as raízes e m/M = 0,14590 = (7 − 3√5)/2.\n\nO candidato também constata que nenhuma alternativa traz esse valor e declara a questão passível de anulação. Indica (A) apenas como a resposta provavelmente pretendida pela banca e explica de onde ela vem: é a razão da PG formada por M, 1, m (também igual a m/1), e a razão entre as raízes extremas é o quadrado de (A). Essa é exatamente a postura correta. Ele não força uma igualdade falsa.\n\nArmadilhas: tratou praticamente todas. Ficaram de fora só pontos menores: não diz que a raiz 1 é simples, não mostra a tabela de Briot-Ruffini, não menciona que a razão inversa M/m também não aparece e não comenta que (E) = φ não é raiz.\n\nResposta final: certa, igual à da referência. É uma resolução clara e rigorosa, com qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

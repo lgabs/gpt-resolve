@@ -1,0 +1,53 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Ideia.} A curva $x^2+16y^2+2mxy-1=0$ é uma cônica centrada na origem, pois não tem termos lineares. Para identificá-la, giramos os eixos para eliminar o termo misto $xy$. Depois verificamos se a cônica é degenerada.
+
+\textbf{1) Forma quadrática e rotação.} Escrevemos
+\[
+x^2+2mxy+16y^2=\begin{pmatrix}x & y\end{pmatrix}
+\underbrace{\begin{pmatrix}1 & m\\ m & 16\end{pmatrix}}_{M}
+\begin{pmatrix}x\\ y\end{pmatrix}.
+\]
+A matriz $M$ é real e simétrica. Pelo teorema espectral, existe uma rotação $(x,y)\mapsto(X,Y)$ que a diagonaliza. Nas novas coordenadas, a equação fica
+\[
+\lambda_1X^2+\lambda_2Y^2=1,
+\]
+onde $\lambda_1,\lambda_2$ são os autovalores de $M$. Eles satisfazem
+\[
+\lambda_1+\lambda_2=\operatorname{tr}M=17,\qquad
+\lambda_1\lambda_2=\det M=16-m^2 .
+\]
+
+\textbf{2) Condição para hipérbole.} A equação $\lambda_1X^2+\lambda_2Y^2=1$ é uma hipérbole se, e somente se, $\lambda_1$ e $\lambda_2$ são não nulos e têm sinais opostos. Isso equivale a $\lambda_1\lambda_2<0$:
+\[
+16-m^2<0 \iff m^2>16 \iff m<-4\ \text{ ou }\ m>4 .
+\]
+Essa é a mesma condição do discriminante $B^2-4AC>0$, com $A=1$, $B=2m$ e $C=16$:
+\[
+B^2-4AC=4m^2-64>0 \iff |m|>4 .
+\]
+
+\textbf{3) A hipérbole não é degenerada.} O segundo membro é $1\neq 0$. Logo, para $|m|>4$, a equação $\lambda_1X^2+\lambda_2Y^2=1$ não se reduz a um par de retas concorrentes. De forma equivalente, o determinante da matriz completa da cônica é
+\[
+\det\begin{pmatrix}1 & m & 0\\ m & 16 & 0\\ 0 & 0 & -1\end{pmatrix}=-(16-m^2)=m^2-16\neq 0
+\quad\text{para } |m|>4 .
+\]
+
+\textbf{4) Casos restantes.}
+\begin{itemize}
+\item $|m|<4$: temos $\lambda_1\lambda_2>0$ e $\lambda_1+\lambda_2=17>0$. Então os dois autovalores são positivos e a curva é uma elipse real.
+\item $m=\pm4$: a equação vira $x^2\pm8xy+16y^2=(x\pm4y)^2=1$, isto é, $x\pm4y=\pm1$. É um par de retas paralelas, ou seja, uma parábola degenerada, e não uma hipérbole.
+\end{itemize}
+Exemplo de verificação: para $m=5$, $\det M=16-25=-9<0$, e a curva é uma hipérbole.
+
+\textbf{5) Análise das alternativas.} O conjunto completo (\emph{plenamente}) de valores é $m<-4$ ou $m>4$.
+\begin{itemize}
+\item (B) inclui, por exemplo, $m=3$. Nesse caso $16-9=7>0$, e a curva é uma elipse.
+\item (C) contém apenas valores com $|m|<4$, que dão elipses.
+\item (D) e (E) estão corretas como condições suficientes, mas são apenas partes do conjunto e não o descrevem por inteiro.
+\end{itemize}
+Portanto, a alternativa correta é a (A).
+
+ANSWER: (A) $m<-4$ ou $m>4$
