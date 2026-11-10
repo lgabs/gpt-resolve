@@ -1,0 +1,60 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Hipóteses e modelo.}
+\begin{enumerate}
+\item O laser é linearmente polarizado, com o campo elétrico paralelo ao eixo do polarizador 1. O feixe é cilíndrico e homogêneo: a seção transversal tem área $A=\pi r^2$, constante ao longo do percurso, e a intensidade é uniforme sobre ela. Os polarizadores são normais à direção de propagação e não deslocam nem deformam o feixe. Assim $I=P/A$ em qualquer seção transversal.
+\item Lei de Malus ideal: um polarizador cujo eixo forma ângulo $\theta$ com a polarização de um feixe linearmente polarizado de intensidade $I_{\text{ent}}$ transmite $I_{\text{ent}}\cos^2\theta$, e a luz transmitida sai polarizada ao longo do seu eixo.
+\item Perdas: cada polarizador real transmite a fração $x$ do que o polarizador ideal transmitiria com a luz que de fato recebe. A perda não altera a direção de polarização. O enunciado aplica $x$ à intensidade ``após a passagem por cada polarizador'', e a luz que chega a um polarizador é a que saiu do anterior, já atenuada. Por isso os fatores se multiplicam. A leitura alternativa, com $x$ aparecendo uma única vez, é discutida no fim.
+\item O analisador mede a potência de todo o feixe que o atinge, sem alterar a intensidade. O enunciado não lhe dá ângulo de polarização; se fosse um polarizador, $P$ dependeria de um ângulo não fornecido. Por isso ele não entra na contagem dos $N+1$ polarizadores.
+\item $N\ge 1$ é inteiro, pois $\beta=\phi/N$; $0<x\le 1$, $I_0>0$ e $P>0$, pois um feixe de raio não nulo transmite potência positiva.
+\end{enumerate}
+
+\textbf{Passo 1 (primeiro polarizador).} O eixo do polarizador 1 coincide com a polarização do laser, logo a lei de Malus ideal dá $I_0\cos^2 0=I_0$. Com a perda do próprio polarizador 1,
+\[
+I_1 = x\,I_0 .
+\]
+
+\textbf{Passo 2 (recorrência).} Para $k=2,\dots,N+1$, a luz que chega ao polarizador $k$ está polarizada ao longo do eixo do polarizador $k-1$ (hipótese 2), e esse eixo forma com o eixo $k$ o ângulo $\beta$. Pela lei de Malus com a perda $x$,
+\[
+I_k = x\cos^2\beta\; I_{k-1}, \qquad k=2,\dots,N+1 .
+\]
+Como $\cos^2$ é par, a relação vale para qualquer sinal de $\beta$.
+
+\textbf{Passo 3 (solução da recorrência).} A razão $q=x\cos^2\beta$ é constante. Há $N$ transições ($1\to 2,\ 2\to 3,\ \dots,\ N\to N+1$), logo
+\[
+I_{N+1}=q^{N}\,I_1=(x\cos^2\beta)^N\,x\,I_0 = x^{N+1}\cos^{2N}\beta\; I_0 .
+\]
+Conferência dos expoentes: $N+1$ polarizadores geram $N+1$ fatores de $x$, e as $N$ transições geram $N$ fatores de $\cos^2\beta$. Com $\beta=\phi/N$:
+
+\textbf{Item a.} A intensidade após o sistema é
+\[
+I = x^{N+1}\, I_0\, \cos^{2N}\!\left(\frac{\phi}{N}\right).
+\]
+Este resultado não depende de $P$, que só é necessário para o raio.
+
+\textbf{Item b (raio).} O analisador intercepta todo o feixe, e a intensidade é a potência por unidade de área. Logo $P=I\,A=I\,\pi r^2$. Isolando $r$,
+\[
+r=\sqrt{\frac{P}{\pi I}}=\sqrt{\frac{P}{\pi\,x^{N+1}\,I_0\,\cos^{2N}(\phi/N)}} .
+\]
+O radicando é positivo quando $P>0$ e $\cos(\phi/N)\neq 0$. Como $\cos^{2N}=|\cos|^{2N}$, também vale
+\[
+r=\frac{1}{|\cos(\phi/N)|^{N}}\sqrt{\frac{P}{\pi\,x^{N+1}\,I_0}} .
+\]
+Caso $\cos(\phi/N)=0$: o modelo prevê $I=0$ e, portanto, $P=0$. Se o enunciado fornecesse $P>0$ nesse caso, os dados seriam incompatíveis com o modelo. Se $P=0$, a relação $P=I\pi r^2$ se reduz a $0=0$, e $P$ não determina $r$.
+
+\textbf{Leitura alternativa de $x$ (não adotada).} Se $x$ valesse uma única vez, como fração do resultado ideal do sistema inteiro, teríamos $I'=x\,I_0\cos^{2N}(\phi/N)$ e $r'=\sqrt{P/(\pi\,x\,I_0\cos^{2N}(\phi/N))}$. Essa leitura exige que a luz que chega a cada polarizador seja a ideal, e não a que saiu do anterior: a perda no polarizador $k-1$ não reduziria a luz que chega ao polarizador $k$. Isso contradiz um feixe que atravessa elementos em sequência, e por isso a leitura composta é a adotada. Para $N=2$, $x=0{,}9$, $\phi=\pi/2$ e $I_0=1000\ \mathrm{W/m^2}$, a composta dá $182{,}25\ \mathrm{W/m^2}$ e a alternativa daria $225\ \mathrm{W/m^2}$.
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Unidades: $[I_0]=\mathrm{W/m^2}$, e $x$ e $\cos$ são adimensionais, logo $[I]=\mathrm{W/m^2}$. Em seguida, $[P]=\mathrm{W}$ e $[r]=\sqrt{\mathrm{W}/(\mathrm{W/m^2})}=\mathrm{m}$.
+\item Sinais: $I\ge 0$, e o radicando de $r$ é positivo para $P>0$.
+\item Malus clássica, $N=1$, $x=1$: $I=\cos^2\phi\,I_0$. Com $\phi=\pi/4$, $I=I_0/2$.
+\item Cadeia ideal, $N=2$, $x=1$, $\phi=\pi/2$ (logo $\beta=\pi/4$): $I_0\to I_0/2\to I_0/4$, e a fórmula dá $\cos^4(\pi/4)\,I_0=I_0/4$. Usar $\phi$ no lugar de $\beta$ daria $I_0\cos^2(\pi/2)=0$, o que está errado.
+\item Perdas, $N=2$, $x=0{,}8$, $\phi=\pi/2$: pela recorrência, $I_1=0{,}8\,I_0$, $I_2=0{,}8\cdot 0{,}5\cdot 0{,}8\,I_0=0{,}32\,I_0$ e $I_3=0{,}8\cdot 0{,}5\cdot 0{,}32\,I_0=0{,}128\,I_0$. A fórmula dá $0{,}8^3\cdot 0{,}25\,I_0=0{,}128\,I_0$.
+\item Limite $N\to\infty$. Com $x=1$: $\ln\cos^{2N}(\phi/N)=2N\ln\cos(\phi/N)\approx -\phi^2/N\to 0$, logo $I\to I_0$. Com $0<x<1$ fixo: $x^{N+1}\to 0$ exponencialmente, enquanto $\cos^{2N}(\phi/N)\to 1$, logo $I\to 0$. As perdas dominam o efeito das rotações. Com $I_0=1000\ \mathrm{W/m^2}$, $x=0{,}9$ e $\phi=1$ rad, $N=10$ dá $I\approx 284\ \mathrm{W/m^2}$ e $N=100$ dá $I\approx 0{,}024\ \mathrm{W/m^2}$.
+\item Numérico: $I_0=100\ \mathrm{W/m^2}$, $x=0{,}9$, $N=3$, $\phi=\pi/3$, logo $\phi/N=\pi/9=20^\circ$. Então $I=0{,}9^4\cos^6(20^\circ)\cdot 100\approx 0{,}6561\cdot 0{,}6885\cdot 100\approx 45{,}17\ \mathrm{W/m^2}$. Com $P=2{,}5\ \mathrm{mW}$, $r=\sqrt{2{,}5\times 10^{-3}/(\pi\cdot 45{,}17)}\approx 4{,}2\times 10^{-3}\ \mathrm{m}$, e $I\pi r^2$ recupera $2{,}5\ \mathrm{mW}$.
+\end{itemize}
+
+ANSWER: a) $I = x^{N+1}\, I_0\, \cos^{2N}(\phi/N)$, independente de $P$; b) $r = \sqrt{\dfrac{P}{\pi\, x^{N+1} I_0 \cos^{2N}(\phi/N)}} = \dfrac{1}{|\cos(\phi/N)|^{N}}\sqrt{\dfrac{P}{\pi\, x^{N+1} I_0}}$, para $\cos(\phi/N)\neq 0$.

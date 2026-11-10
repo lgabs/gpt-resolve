@@ -1,0 +1,60 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Sem resistência do ar; massa puntiforme, que parte do repouso em $(0,R,h)$ (borda do disco, sobre o eixo $y$); disco horizontal girando em torno de $z$ com $\omega=\alpha t$ (anti-horário visto de cima; o sentido não altera $d$ nem o tempo). O coeficiente $\mu_e$ vale entre massa e disco, e $\mu_c$ só entre massa e solo. Supomos $\mu_e g>\alpha R$; caso contrário a massa escorregaria já em $t=0$.
+
+\subsection*{1) Permanência sobre o disco}
+Sem aceleração vertical, $N=mg$. O atrito estático é a única força horizontal e deve fornecer a aceleração do ponto da borda, que tem componente tangencial $\alpha R$ e componente centrípeta $\omega^2R$, perpendiculares entre si:
+\[
+|\vec a_p|=R\sqrt{\alpha^2+\omega^4}\le \mu_e g .
+\]
+Como $|\vec a_p|$ cresce com $t$, o deslizamento começa no primeiro instante $t_1$ em que vale a igualdade:
+\[
+R^2\omega_1^4=\mu_e^2g^2-\alpha^2R^2
+\;\Rightarrow\;
+\omega_1^2R=Q^2,\qquad Q\equiv\left(\mu_e^2g^2-\alpha^2R^2\right)^{1/4}.
+\]
+Logo
+\[
+\omega_1=\frac{Q}{\sqrt R},\qquad t_1=\frac{\omega_1}{\alpha}=\frac{Q}{\alpha\sqrt R},\qquad v=\omega_1R=Q\sqrt R .
+\]
+
+\subsection*{2) Saída do disco}
+Logo após $t_1$, o atrito (oposto ao deslizamento relativo, portanto paralelo a $\vec a_p$) não supre $m\vec a_p$. A aceleração relativa ao disco é $-(|\vec a_p|-f/m)\,\hat a_p$, e sua componente radial aponta para fora, pois $\omega_1^2R>0$. Como a massa já está na borda, ela deixa o disco sem percorrer distância apreciável, e sua velocidade de saída é a do ponto da borda: módulo $v$, horizontal e tangente à circunferência. Daí em diante só atua a gravidade (lançamento horizontal):
+\[
+t_q=\sqrt{\frac{2h}{g}},\qquad s=v\,t_q \ \text{(deslocamento horizontal, tangencial).}
+\]
+
+\subsection*{a) Distância do ponto de contato à origem}
+Na saída, o ângulo percorrido a partir de $y$ é $\theta_1=\alpha t_1^2/2$. A posição é $(-R\,\mathrm{sen}\,\theta_1,\;R\cos\theta_1)$ e o versor tangente é $(-\cos\theta_1,-\mathrm{sen}\,\theta_1)$. O ponto de queda é
+\[
+(x_f,y_f)=\big(-R\,\mathrm{sen}\,\theta_1-s\cos\theta_1,\; R\cos\theta_1-s\,\mathrm{sen}\,\theta_1\big),
+\]
+e $x_f^2+y_f^2=R^2+s^2$ (raio e tangente são perpendiculares). Com $s^2=v^2\,\dfrac{2h}{g}=\dfrac{2hR}{g}\,Q^2$, resulta
+\[
+\boxed{d=\sqrt{R^2+\frac{2hR}{g}\sqrt{\mu_e^2g^2-\alpha^2R^2}}}
+\]
+O resultado independe de $\theta_1$ (em geral não é pequeno), então a aproximação $\mathrm{sen}\,\theta\approx\theta$ não é usada. Também independe do sentido de giro e de $\mu_c$.
+
+\subsection*{b) Instante em que a massa para}
+No contato com o solo, sem quicar, $v_z\to0$. Adotamos que a componente horizontal $v$ se conserva (impulso de atrito desprezado), conforme o enunciado: "realiza um deslizamento". A massa então desliza em linha reta, na direção da tangente, com $N=mg$ e atrito cinético constante $\mu_c mg$ oposto à velocidade. A desaceleração é $\mu_c g$, e
+\[
+t_d=\frac{v}{\mu_c g}=\frac{Q\sqrt R}{\mu_c g}.
+\]
+O instante de parada é a soma das três fases:
+\[
+\boxed{t_{\text{para}}=t_1+t_q+t_d=\sqrt{\frac{2h}{g}}+\sqrt R\,\big(\mu_e^2g^2-\alpha^2R^2\big)^{1/4}\left[\frac{1}{\alpha R}+\frac{1}{\mu_c g}\right]}
+\]
+
+\emph{Ressalva.} Se o atrito cinético atuasse de forma impulsiva durante o impacto, a velocidade horizontal seria $v'=v-\mu_c\sqrt{2gh}$ e teríamos $t_{\text{para}}=t_1+v/(\mu_c g)$, isto é, $\sqrt{2h/g}$ a menos. Se $v\le\mu_c\sqrt{2gh}$, a massa pararia no próprio choque. A parte (a) não muda.
+
+\subsection*{Verificações}
+\begin{itemize}
+\item \emph{Unidades:} $Q^2$ é aceleração (m/s$^2$). $Q/(\alpha\sqrt R)$ e $Q\sqrt R/(\mu_c g)$ têm unidade de s. $\sqrt{2h/g}$ tem unidade de s. $d$ tem unidade de m.
+\item \emph{Limite $\alpha R\to\mu_e g$:} $Q\to0$, então $d\to R$ e $t_{\text{para}}\to\sqrt{2h/g}$. A massa cai na vertical da borda e para ao tocar o solo.
+\item \emph{Limite $\alpha\to0$:} $v\to\sqrt{\mu_e gR}$, a velocidade máxima de uma curva com atrito. Quando $\mu_c\to0$, $t_d\to\infty$: a massa desliza sem parar, como esperado.
+\item \emph{Exemplo numérico} ($g=9,8$ m/s$^2$; $\mu_e=0,5$; $\mu_c=0,3$; $R=2$ m; $\alpha=0,5$ rad/s$^2$; $h=1,2$ m): $Q^2=4,797$ m/s$^2$; $\omega_1=1,549$ rad/s; $t_1=3,097$ s; $v=3,097$ m/s. O critério de atrito é satisfeito: $R\sqrt{\alpha^2+\omega_1^4}=4,90=\mu_e g$. Em seguida, $t_q=0,495$ s; $s=1,533$ m; $\theta_1=2,398$ rad; $(x_f,y_f)=(-0,225;\,-2,510)$ m; $d=2,520$ m, que coincide com $\sqrt{x_f^2+y_f^2}$. Por fim, $t_d=1,054$ s e $t_{\text{para}}=4,646$ s.
+\end{itemize}
+
+ANSWER: a) $d=\sqrt{R^{2}+\dfrac{2hR}{g}\sqrt{\mu_e^{2}g^{2}-\alpha^{2}R^{2}}}$; b) $t_{\text{para}}=\sqrt{\dfrac{2h}{g}}+\sqrt{R}\,\big(\mu_e^{2}g^{2}-\alpha^{2}R^{2}\big)^{1/4}\left[\dfrac{1}{\alpha R}+\dfrac{1}{\mu_c g}\right]$

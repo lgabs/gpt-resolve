@@ -1,0 +1,59 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Com A=(0,0), B=(a,0), C=(a,a), D=(0,a), M=(a,t) e N=(t,a) (pela condição AM=AN). A igualdade AM=MN dá t^2-4at+a^2=0, cuja única raiz em [0,a] é t=(2-sqrt(3))a. O triângulo CMN é retângulo isósceles em C, com catetos L=(sqrt(3)-1)a. Sua inradius é r=L(2-sqrt(2))/2. Logo r = ((sqrt(3)-1)(2-sqrt(2))/2) a = ((2sqrt(3)+sqrt(2)-sqrt(6)-2)/2) a ≈ 0,214a.",
+  "judge_reference": {
+    "reference_solution": "**Questão 9 (IME 2026, Matemática): resolução de referência**\n\n**Enunciado:** no quadrado ABCD de lado a, M está sobre BC e N sobre CD, com AMN equilátero. Calcule, em função de a, o raio do círculo inscrito em CMN.\n\n**Passo 1: coordenadas.** Tome A=(0,0), B=(a,0), C=(a,a), D=(0,a). Como M∈BC e N∈CD, temos M=(a,m) e N=(n,a), com 0 ≤ m, n ≤ a.\n\n**Passo 2: AM = AN.** AM² = a² + m² e AN² = n² + a². Igualando, m² = n². Como m, n ≥ 0, resulta m = n =: t. Logo M=(a,t) e N=(t,a), com 0 ≤ t ≤ a.\n\n**Passo 3: AM = MN.** AM² = a² + t² e MN² = (a−t)² + (a−t)² = 2(a−t)². Então a² + t² = 2(a−t)², ou seja, t² − 4at + a² = 0, cujas raízes são t = a(2 ± √3).\n- A raiz a(2+√3) ≈ 3,73a é maior que a, portanto fora do lado. Deve ser descartada.\n- Fica t = a(2−√3) ≈ 0,268a.\n- Conferência: AM² = a²+t² = 4a²(2−√3) e MN² = 2a²(√3−1)² = 4a²(2−√3). São iguais, então AMN é equilátero com lado 2a√(2−√3) = a(√6−√2) ≈ 1,0353a.\n\n**Passo 4: triângulo CMN.** Temos CM = a − t = a(√3−1) e CN = a − t = a(√3−1). O ângulo MCN é o ângulo BCD do quadrado, logo vale 90°. Assim CMN é retângulo isósceles em C, com catetos x = a(√3−1) e hipotenusa h = x√2 = a(√6−√2), que coincide com o lado de AMN.\n\n**Passo 5: inraio de triângulo retângulo.** Para catetos p, q e hipotenusa h, r = (p + q − h)/2. Logo:\nr = (x + x − x√2)/2 = x(2−√2)/2 = a(√3−1)(2−√2)/2.\n\nConferência pela fórmula r = S/s: S = x²/2 e s = x(2+√2)/2, donde r = x/(2+√2) = x(2−√2)/2. Coincide.\n\n**Passo 6: forma expandida.** r = a(2√3 − √6 + √2 − 2)/2 ≈ 0,21441·a.\n\n**Verificação numérica (a=1, via Python):** os lados de AMN valem 1,035276 (iguais). Em CMN, CM = CN = 0,732051 e MN = 1,035276. O centro I=(a−r, a−r) dista r ≈ 0,214413 de CM, CN e MN. Tudo confere.\n\n**Resposta:** r = a(√3−1)(2−√2)/2 = (a/2)(2√3 − √6 + √2 − 2) ≈ 0,2144·a.\n(A questão não é de múltipla escolha.)",
+    "final_answer": "Raio do círculo inscrito no triângulo CMN:\n\nr = a(√3 − 1)(2 − √2)/2 = (a/2)(2√3 − √6 + √2 − 2) ≈ 0,2144·a\n\nResumo do caminho: M=(a, a(2−√3)) e N=(a(2−√3), a), pois AM = AN força m = n e AM = MN leva a t² − 4at + a² = 0, com raiz válida t = a(2−√3). Então CM = CN = a(√3−1), CMN é retângulo isósceles em C, e r = (p + q − h)/2 com catetos x = a(√3−1). A questão não é de múltipla escolha.",
+    "pitfalls": [
+      "Raiz espúria: a equação t² − 4at + a² = 0 tem raízes a(2±√3). A raiz a(2+√3) > a fica fora do lado BC/CD e deve ser descartada com justificativa geométrica.",
+      "Confusão entre BM e CM: BM = t = a(2−√3) ≈ 0,268a, mas o triângulo CMN depende de CM = a − t = a(√3−1) ≈ 0,732a. Usar BM dá resposta errada.",
+      "Simetria m = n: a igualdade AM = AN dá m² = n², e só vale m = n porque as coordenadas são não negativas (M e N ficam dentro dos lados). Assumir a simetria sem esse argumento é lacuna.",
+      "CMN não é equilátero: ele é retângulo isósceles com ângulo reto em C (ângulo MCN = ângulo BCD = 90°). Aplicar a fórmula r = l√3/6 do equilátero é erro.",
+      "Fórmula do inraio: para triângulo retângulo, r = (p + q − h)/2 (equivalente a S/s). Erros comuns: (p+q+h)/2, h/2 (que é o circunraio), ou pq/(p+q).",
+      "Casos degenerados: t = 0 (M=B, N=D) não serve, pois AM = AN = a e MN = a√2, sem ser equilátero. t = a (M=N=C) anula o triângulo CMN. Nenhum deles é solução.",
+      "Verificar que AMN é de fato equilátero: AM = AN = MN = 2a√(2−√3) = a(√6−√2) ≈ 1,0353a. Usar só duas das três igualdades deixa a checagem incompleta.",
+      "Forma da resposta: o pedido é em função de a. Resultado exato r = a(√3−1)(2−√2)/2; valor aproximado 0,2144a. Formas equivalentes (ex.: a(√3−1)/(2+√2)) também são corretas.",
+      "Erro de álgebra ao expandir (√3−1)(2−√2): o produto é 2√3 − √6 − 2 + √2, e o fator 1/2 deve ser aplicado a todos os termos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Com A=(0,0), B=(a,0), C=(a,a), D=(0,a), M=(a,t) e N=(t,a) (pela condição AM=AN). A igualdade AM=MN dá t^2-4at+a^2=0, cuja única raiz em [0,a] é t=(2-sqrt(3))a. O triângulo CMN é retângulo isósceles em C, com catetos L=(sqrt(3)-1)a. Sua inradius é r=L(2-sqrt(2))/2. Logo r = ((sqrt(3)-1)(2-sqrt(2))/2) a = ((2sqrt(3)+sqrt(2)-sqrt(6)-2)/2) a ≈ 0,214a.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 5: os lados x, y, z de ABC não são definidos, e a identidade x+y+z = 2p (perímetro = 2 semiperímetro) não é explicitada antes de escrever S = (r/2)(x+y+z) = pr. O cálculo está certo, mas a justificativa de r = S/p fica pouco legível. Deveria definir os lados (CM, CN, MN) e escrever S = (r/2)(2p) = pr."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 4: CN = a − t é afirmado sem cálculo. Deveria mostrar que, com N=(t,a) e C=(a,a), CN = |a − t| = a − t, do mesmo modo que CM."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 6 (verificação do equilátero): AN² não aparece. Como AM = AN é a hipótese do passo 2, a checagem completa exige escrever AN² = t² + a² = (8 − 4√3)a² = AM². Sem isso a verificação das três igualdades fica implícita."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 6: a 'conferência numérica' (S/p calculado pelas coordenadas) e a conferência com (p+q−h)/2 são afirmadas sem mostrar a conta. Os valores batem (r = 0,2144127...), mas em texto de gabarito essas verificações devem ser mostradas ou retiradas. A verificação de ordem de grandeza é trivial e não acrescenta muito."
+          },
+          {
+            "severity": "minor",
+            "description": "Casos degenerados não discutidos: t = 0 (M=B, N=D) e t = a (M=N=C) são excluídos automaticamente, porque a equação t² − 4at + a² = 0 dá a² = 0 e −2a² = 0 nesses pontos. A solução deveria dizer isso explicitamente, em vez de apenas afirmar 0 < t < a depois de achar a raiz."
+          }
+        ],
+        "summary": "A resposta final do candidato, r = a(√3−1)(2−√2)/2 = (a/2)(2√3 + √2 − √6 − 2) ≈ 0,2144a, confere com a referência e com minha verificação numérica (r = S/p = (p+q−h)/2 = 0,21441271...a). Não há divergência. O enunciado do PDF (questão 9, página 2) também confere com a transcrição. O candidato tratou corretamente as armadilhas: m = n pela não negatividade, descarte de t = a(2+√3), CMN como retângulo isósceles em C (ângulo de 90° verificado por coordenadas), inraio por S/p e o cálculo de a(√6−√2) para o lado de AMN. Não encontrei erros críticos nem de conta. Os problemas são de rigor e apresentação: variáveis não definidas no passo do inraio, AN² não escrito na verificação do equilátero, verificações numéricas apenas afirmadas e os casos degenerados t = 0 e t = a não discutidos explicitamente. Em conjunto, é uma resolução que um professor publicaria como gabarito, com pequenos ajustes de redação. Nota 9.\""
+      }
+    }
+  ]
+}

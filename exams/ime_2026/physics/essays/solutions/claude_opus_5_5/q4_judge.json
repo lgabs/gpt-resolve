@@ -1,0 +1,46 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A energia total dissipada na malha infinita entre 0 e 60 s é E = 7560 J (cerca de 7,56 kJ). A resistência equivalente da malha é 2 Ω. De 0 a 20 s passam 5 A (50 W, 1000 J); de 20 a 40 s, 8 A (128 W, 2560 J); de 40 a 60 s, 10 A (200 W, 4000 J).",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura (confirmada no original, p. 4).** Os três ramos (fonte V em série com R1) têm a mesma polaridade. No fio superior, da esquerda para a direita, a ordem é: ramo 1, S2, ramo 2, S1, ramo 3, S0 e depois a escada infinita. A escada começa com um R2 em série, seguido de um R2 em derivação, e esse par se repete indefinidamente. Assim:\n- S0 liga o ramo 3 à malha;\n- S1 liga o ramo 2 ao nó do ramo 3;\n- S2 liga o ramo 1 ao nó do ramo 2.\n\nO fio inferior é comum a todos os elementos.\n\n**1) Resistência equivalente da malha infinita.** Vista a partir de S0, a malha é um R2 em série, depois um R2 em derivação, e então uma malha idêntica à original. Logo:\nReq = R2 + (R2·Req)/(R2 + Req)\n⇒ Req² − R2·Req − R2² = 0\n⇒ Req = R2(1 + √5)/2.\n\nA raiz negativa não tem sentido físico e é descartada. Com R2 = (√5 − 1) Ω:\nReq = (√5 − 1)(√5 + 1)/2 = 4/2 = 2 Ω.\n\nConferência numérica: iterando uma escada finita, o valor converge para 2,000 Ω.\n\n**2) Fontes em paralelo.** Os ramos ligados são n ramos iguais (V, R1) em paralelo e com a mesma polaridade. O equivalente de Thévenin é uma fonte V com resistência R1/n. Como os ramos são idênticos, não circula corrente entre eles. O circuito é puramente resistivo, então cada nova configuração vale assim que a chave fecha, sem transitório.\n\nCorrente na malha: I_n = V/(R1/n + Req). Potência dissipada na malha: P_n = I_n²·Req.\n\n- **0 ≤ t < 20 s** (só S0 fechada, n = 1):\n  - I = 40/(6 + 2) = 5 A\n  - P = 25·2 = 50 W\n  - E1 = 50·20 = 1000 J\n- **20 ≤ t < 40 s** (S0 e S1 fechadas, n = 2, R_th = 3 Ω):\n  - I = 40/(3 + 2) = 8 A\n  - P = 64·2 = 128 W\n  - E2 = 128·20 = 2560 J\n- **40 ≤ t ≤ 60 s** (as três chaves fechadas, n = 3, R_th = 2 Ω):\n  - I = 40/(2 + 2) = 10 A\n  - P = 100·2 = 200 W\n  - E3 = 200·20 = 4000 J\n\nObservação: nesta última etapa R_th = Req = 2 Ω, que é a condição de máxima transferência de potência.\n\n**3) Energia total dissipada na malha infinita:**\nE = 1000 + 2560 + 4000 = **7560 J ≈ 7,56 kJ**.\n\nA energia dissipada nos resistores R1 não entra nesta conta.",
+    "final_answer": "A malha infinita equivale a Req = R2(1+√5)/2 = 2 Ω. As correntes na malha são 5 A, 8 A e 10 A, e as potências são 50 W, 128 W e 200 W nos intervalos [0,20), [20,40) e [40,60] s. As energias correspondentes são 1000 J, 2560 J e 4000 J. A energia total dissipada na malha entre t = 0 e t = 60 s é E = 7560 J (≈ 7,56 kJ).",
+    "pitfalls": [
+      "Montar a equação da escada a partir do elemento certo: a malha começa com um R2 em SÉRIE (Req = R2 + R2∥Req = 2 Ω). Se começar pelo R2 em derivação, obtém-se 3 − √5 ≈ 0,76 Ω, que está errado.",
+      "Descartar a raiz negativa da equação do 2º grau (Req² − R2·Req − R2² = 0) e simplificar R2(1+√5)/2 = (√5−1)(√5+1)/2 = 2 Ω.",
+      "Identificar a topologia das chaves: S0 liga o ramo 3 à malha, S1 acrescenta o ramo 2 e S2 acrescenta o ramo 1. O número de fontes ativas é 1, 2 e 3, em sequência.",
+      "As fontes são iguais e têm a mesma polaridade. Em paralelo, equivalem a uma fonte V com resistência R1/n, e não a nV. Também não há corrente circulando entre ramos idênticos.",
+      "Contar apenas a energia dissipada na malha infinita (P = I²·Req), sem somar a dissipação nos resistores R1 e sem usar a potência total fornecida pelas fontes.",
+      "Tratar a energia por partes no tempo: cada intervalo dura 20 s e o último vai de 40 s até 60 s. O circuito é puramente resistivo, então não há transitório e a potência é constante em cada intervalo.",
+      "Erro aritmético comum: elevar a corrente ao quadrado corretamente (P = I²R, não I·R) e somar 1000 + 2560 + 4000 = 7560 J.",
+      "Na 3ª etapa, R1/3 = 2 Ω = Req, que é a condição de máxima transferência de potência (só uma observação, não muda a conta)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A energia total dissipada na malha infinita entre 0 e 60 s é E = 7560 J (cerca de 7,56 kJ). A resistência equivalente da malha é 2 Ω. De 0 a 20 s passam 5 A (50 W, 1000 J); de 20 a 40 s, 8 A (128 W, 2560 J); de 40 a 60 s, 10 A (200 W, 4000 J).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na verificação de 'Limite', o texto diz que a potência 'fica abaixo' da máxima transferível e, logo em seguida, que 'esse valor é atingido' no último intervalo. As duas frases se contradizem. O correto é 'não excede', ou seja, P ≤ V²/(4R) = 200 W, com igualdade quando n = 3. Não afeta a conta."
+          },
+          {
+            "severity": "minor",
+            "description": "A recorrência da malha infinita (R = R2 + R2∥R) é usada sem comentar que R é o limite das escadas finitas, nem por que a raiz positiva é o valor desse limite. Esse é o tratamento padrão em gabaritos e é aceitável. Uma linha sobre isso, ou a observação de que a iteração converge para 2 Ω, deixaria o argumento completo."
+          }
+        ],
+        "summary": "Conferi a figura no original (p. 4). As três fontes têm a mesma polaridade. Da esquerda para a direita, a ordem é: ramo 1, S2, ramo 2, S1, ramo 3, S0. A escada começa com um R2 em SÉRIE e segue com um R2 em derivação. O candidato montou essa topologia corretamente. Também acertou a recorrência R = R2 + R2R/(R2+R) e descartou a raiz negativa, chegando a R = (1+√5)R2/2 = 2 Ω. Conferi numericamente: a iteração converge para 2,000 Ω.\n\nEle deduziu explicitamente, pela tensão U entre os fios, que n ramos idênticos em paralelo equivalem a uma fonte V com resistência R1/n. Isso já implica que não há corrente circulando entre os ramos. Justificou também a ausência de transitório: o circuito é puramente resistivo. Contou apenas a dissipação na malha (I²R) e tratou os três intervalos de 20 s separadamente.\n\nValores obtidos em cada intervalo:\n- Correntes: 5, 8 e 10 A.\n- Potências: 50, 128 e 200 W.\n- Energias: 1000, 2560 e 4000 J.\n- Total: 7560 J.\n\nEsse total coincide com a minha referência, e refiz as contas em Python. Todas as armadilhas foram tratadas: a escada começa pelo resistor em série, a raiz negativa foi descartada, a topologia das chaves está certa, o paralelo dá V com R1/n e não nV, só a malha foi contada, a energia foi calculada por partes e a máxima transferência foi observada. A apresentação é clara e as verificações de unidades e coerência estão corretas. Há apenas dois deslizes menores: a redação ambígua sobre a máxima transferência ('abaixo' versus 'atingido') e a falta de um comentário sobre a convergência da escada. É uma resolução publicável como gabarito."
+      }
+    }
+  ]
+}

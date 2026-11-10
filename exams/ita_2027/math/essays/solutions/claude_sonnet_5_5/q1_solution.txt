@@ -1,0 +1,44 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Notação e condição inicial.} Seja $(a_1,a_2,\dots,a_{10})$ uma PA de razão $r$, com $a_n=a_1+(n-1)r$ e $a_n\in\mathbb{N}=\{1,2,3,\dots\}$ para todo $n$. Como $r=a_2-a_1$ é diferença de dois naturais, $r\in\mathbb{Z}$.
+
+\textbf{Passo 1: a condição da soma.} Pela fórmula da soma dos termos de uma PA,
+\[
+S_{10}=\frac{(a_1+a_{10})\cdot 10}{2}=5\,(2a_1+9r)=435
+\quad\Longleftrightarrow\quad 2a_1+9r=87 .
+\]
+Equivalentemente, $a_1+a_{10}=87$.
+
+\textbf{Passo 2: paridade.} Como $2a_1$ é par e $87$ é ímpar, $9r$ deve ser ímpar, isto é, \emph{$r$ é ímpar}. Em particular $r\neq 0$ (a PA constante exigiria $2a_1=87$, impossível). Reciprocamente, se $r$ é ímpar, então $87-9r$ é par e $a_1=\dfrac{87-9r}{2}$ é inteiro.
+
+\textbf{Passo 3: redução a $r>0$.} Lendo uma PA de trás para frente obtém-se outra PA, com os mesmos termos, a mesma soma e razão $-r$. Basta, então, estudar $r>0$ e depois incluir as sequências invertidas.
+
+\textbf{Passo 4: todos os termos naturais.} Para $r>0$ a PA é crescente, e o menor termo é $a_1$. Logo a condição é $a_1\ge 1$:
+\[
+\frac{87-9r}{2}\ge 1\iff 9r\le 85\iff r\le \frac{85}{9}\approx 9{,}4 .
+\]
+Com $r$ ímpar e positivo, resta $r\in\{1,3,5,7,9\}$, e $a_1=\dfrac{87-9r}{2}$ é inteiro positivo em cada caso. (Se $0$ fosse considerado natural, a condição $a_1\ge 0$ daria o mesmo conjunto, pois $r=11$ daria $a_1<0$.)
+
+\textbf{Passo 5: as progressões.}
+\[
+\begin{array}{c|c|c|c}
+r & a_1 & a_{10}=a_1+9r & \text{PA}\\ \hline
+1 & 39 & 48 & 39,40,41,\dots,48\\
+3 & 30 & 57 & 30,33,36,\dots,57\\
+5 & 21 & 66 & 21,26,31,\dots,66\\
+7 & 12 & 75 & 12,19,26,\dots,75\\
+9 & 3 & 84 & 3,12,21,\dots,84
+\end{array}
+\]
+
+\textbf{Verificação.} Em cada linha $a_1+a_{10}=87$, logo $S_{10}=5\cdot 87=435$. Todos os termos são naturais, pois $a_1\ge 3\ge 1$ e $r>0$.
+
+\textbf{Conclusão.} As PAs pedidas têm razão $r$ ímpar com $|r|\le 9$ e termo geral
+\[
+a_n=\frac{87-9r}{2}+(n-1)\,r,\qquad r\in\{1,3,5,7,9\}\ \text{(crescentes)}.
+\]
+Há exatamente \textbf{5 progressões crescentes}, as da tabela. Se o sentido da sequência for levado em conta, há também as \textbf{5 decrescentes} correspondentes, obtidas invertendo a ordem dos termos. Elas têm razões $-1,-3,-5,-7,-9$ e primeiros termos $48,57,66,75,84$. Não existe PA constante. Não há outras soluções.
+
+ANSWER: As PAs são $a_n=\frac{87-9r}{2}+(n-1)r$ com $r\in\{1,3,5,7,9\}$, isto é, $(39,\dots,48)$, $(30,\dots,57)$, $(21,\dots,66)$, $(12,\dots,75)$ e $(3,\dots,84)$, com razões $1,3,5,7,9$. Cada uma pode ser lida também em ordem inversa, com razão $-r$. São 5 PAs crescentes, ou 10 contando as decrescentes.

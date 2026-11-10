@@ -1,0 +1,128 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.0,
+  "final_answer": "(a) k_C = MgL/2 (com U''(0) = k − MgL/2 e ω² = (3g/2L)(k/k_C − 1)).\n\n(b) Com λ = k/k_C:\n- λ > 1: um equilíbrio no intervalo, θ = 0, estável.\n- λ = 1: um equilíbrio, θ = 0, estável degenerado (U − U(0) ≈ MgLθ⁴/48).\n- 2/π < λ < 1: três equilíbrios. θ = 0 é instável e ±θ_e são estáveis, com sen θ_e / θ_e = λ e θ_e única em (0, π/2).\n- 0 < λ ≤ 2/π: só θ = 0 no intervalo aberto, instável. O equilíbrio estável em (π/2, π) fica fora do intervalo; em λ = 2/π ele está na borda π/2.\n\n(c) Com U = Mg h_O + (MgL/2)[cosθ + λθ²/2]:\n- λ > 1: poço único, mínimo em θ = 0.\n- λ = 1: poço quártico, mínimo estrito em θ = 0.\n- 2/π < λ < 1: duplo poço, máximo local em θ = 0 e mínimos em ±θ_e. A barreira é MgL sin x (sin x − x cos x), com x = θ_e/2. Para λ > 8/π² ≈ 0,81, o supremo no intervalo aberto está nas bordas, não é atingido e supera U(0).\n- 0 < λ ≤ 2/π: U decresce monotonicamente de θ = 0 até as bordas (máximo global atingido em 0, sem mínimo no intervalo).",
+  "judge_reference": {
+    "reference_solution": "**Modelagem e energia potencial**\n\n- Pivô O = extremidade inferior da haste (centro do polímero), a uma altura h_p acima do mancal. O enunciado não dá h_p.\n- Centro de massa G a L/2 de O (haste homogênea). Com θ medido a partir da vertical, a altura de G é h_p + (L/2)cosθ. Para |θ| < π/2, cosθ > 0 e a haste fica acima do pivô.\n- Energia gravitacional: U_g = Mg(h_p + (L/2)cosθ).\n- Energia elástica: τ_e = −kθ = −dU_e/dθ, logo U_e = ½kθ² (com U_e(0) = 0).\n- Logo U_total(θ) = ½kθ² + (MgL/2)cosθ + Mg·h_p. A constante Mg·h_p não altera equilíbrios, estabilidade nem a forma da curva; só desloca o gráfico. Se o pivô estiver no nível de referência, h_p = 0.\n- Equivalente por torques, com I_O = ML²/3 (haste girando em torno de uma extremidade): I_O θ̈ = −kθ + (MgL/2)senθ. Equilíbrio: kθ = (MgL/2)senθ, que é o mesmo que dU/dθ = 0.\n\n**a) Rigidez crítica k_C**\n\n- dU/dθ = kθ − (MgL/2)senθ e d²U/dθ² = k − (MgL/2)cosθ.\n- θ = 0 é equilíbrio para qualquer k, pois dU/dθ(0) = 0. Em θ = 0: U''(0) = k − MgL/2.\n- Se k > MgL/2, U''(0) > 0, mínimo, estável. Se k < MgL/2, U''(0) < 0, máximo, instável.\n- Portanto **k_C = MgL/2 = ½MgL**.\n- Conferência dinâmica com senθ ≈ θ: θ̈ = −[3(k − MgL/2)/(ML²)]θ, ou seja ω² = 3(k − MgL/2)/(ML²). O mesmo limiar aparece. O momento de inércia só entra na frequência, não no limiar.\n\n**b) Equilíbrios em −π/2 < θ < π/2**\n\nSeja r = k/k_C > 0, isto é, k = r·MgL/2. A condição de equilíbrio dá θ = 0 ou\n\n  senθ/θ = r  (θ ≠ 0).  (*)\n\nNão se deve usar senθ ≈ θ neste item. Essa aproximação reduziria (*) a r = 1 e eliminaria os ramos inclinados. O intervalo dado indica o uso da função completa.\n\n- f(θ) = senθ/θ é par e estritamente decrescente em (0, π/2), pois f'(θ) = (θcosθ − senθ)/θ² < 0 (vale tanθ > θ nesse intervalo).\n- f → 1 quando θ → 0 e f → 2/π quando θ → π/2, valor que não é atingido no intervalo aberto.\n- Logo (*) tem soluções não nulas no intervalo se, e somente se, 2/π < r < 1. Nesse caso há exatamente duas: θ = ±θ*, com 0 < θ* < π/2.\n\nNatureza, usando U'' = k_C(r − cosθ):\n\n- Em θ = 0: U''(0) = k_C(r − 1).\n- Em θ = ±θ* (com r = senθ*/θ*): U'' = k_C(senθ* − θ*cosθ*)/θ* > 0, pois tanθ* > θ*. Logo são estáveis.\n\nQuadro-resumo:\n\n| k/k_C | equilíbrios em (−π/2, π/2) | natureza |\n|---|---|---|\n| > 1 | θ = 0 (1 ponto) | estável |\n| = 1 | θ = 0 (1 ponto) | degenerado: U'' = 0 e U − U(0) ≈ MgLθ⁴/48. É mínimo estrito, mas marginal |\n| 2/π < k/k_C < 1 | θ = 0 (instável) e θ = ±θ* (estáveis), 3 pontos | bifurcação pitchfork supercrítica |\n| 0 < k/k_C ≤ 2/π | θ = 0 (1 ponto) | instável |\n\nEm k/k_C = 2/π, os ramos inclinados estão em θ = ±π/2, fora do intervalo aberto.\n\nExemplos: r = 0,9 → θ* ≈ 0,787 rad (≈45°); r = 0,8 → θ* ≈ 1,131 rad (≈65°); r = 0,7 → θ* ≈ 1,410 rad (≈81°). Se k cai quase estaticamente a partir de k > k_C, a haste se desloca continuamente para ±θ*, sem salto.\n\n**c) Gráficos de U_total(θ)**\n\nEm unidades de MgL/2 e descontando a constante: Ũ(θ) = rθ²/2 + cosθ, com Ũ' = rθ − senθ e Ũ'' = r − cosθ. A curva é par em θ. A gravidade (cosθ) tem máximo em θ = 0 e tende a derrubar a haste. A mola (½kθ²) tem mínimo em 0 e a traz de volta.\n\n1. **k > k_C (r > 1):** um único poço, com mínimo em θ = 0. Ũ' tem o sinal de θ e Ũ'' > 0 em todo o intervalo, então a curva é convexa e cresce até ±π/2.\n2. **k = k_C (r = 1):** poço único com fundo achatado. U − U(0) ≈ MgLθ⁴/48, então o mínimo é quártico e continua sendo global em θ = 0, já que Ũ' = θ − senθ > 0 para θ > 0.\n3. **2k_C/π < k < k_C:** duplo poço simétrico. θ = 0 é máximo local, com U(0) = MgL/2 + Mgh_p, e há mínimos em ±θ* com U(θ*) < U(0). A barreira some quando k → k_C. Para r = 0,9, ΔU ≈ 0,015·(MgL/2). Para r = 0,8, ΔU ≈ 0,063·(MgL/2). Depois do mínimo a curva volta a subir até ±π/2, pois Ũ' > 0 para θ > θ*. Se r > 8/π² ≈ 0,81, o valor em ±π/2, que é (MgL/2)·rπ²/8 mais a constante, supera o do centro. Nesse caso o máximo global do intervalo fica nas bordas, e θ = 0 é apenas máximo local.\n4. **k ≤ 2k_C/π:** não há mínimo no intervalo. θ = 0 é um pico, e U decresce monotonicamente de 0 até ±π/2, pois Ũ' = rθ − senθ < 0 para θ ∈ (0, π/2). Fora do intervalo existe um mínimo estável (por exemplo, r = 0,6 dá θ ≈ 1,66 rad ≈ 95°), mas ele não entra na contagem pedida.\n\n**Verificação realizada:** derivadas conferidas numericamente, raízes de rθ = senθ obtidas por mudança de sinal, classificação pelo sinal de U'' e formas das curvas conferidas em ASCII. Scripts em checks/ dentro da pasta de trabalho. sympy e matplotlib não estão instalados.",
+    "final_answer": "**a)** k_C = MgL/2 (ou ½MgL). Obtido de U''(0) = k − MgL/2 com U = ½kθ² + (MgL/2)cosθ. A haste é homogênea, então o centro de massa fica a L/2 do pivô.\n\n**b)** Com r = k/k_C no intervalo (−π/2, π/2):\n- r > 1: um equilíbrio, θ = 0, estável.\n- r = 1: um equilíbrio, θ = 0, degenerado (mínimo quártico, marginal).\n- 2/π < r < 1: três equilíbrios. θ = 0 é instável. θ = ±θ* são estáveis, com senθ*/θ* = r, de modo que 0 < θ* < π/2.\n- 0 < r ≤ 2/π: um equilíbrio, θ = 0, instável. Os ramos inclinados saem do intervalo por ±π/2.\n\n**c)** U_total = ½kθ² + (MgL/2)cosθ + const (constante = Mgh_p, a altura do pivô, não dada):\n- r > 1: poço único com mínimo em θ = 0.\n- r = 1: poço único de fundo quártico, U − U(0) ≈ MgLθ⁴/48.\n- 2/π < r < 1: duplo poço simétrico. Máximo local em θ = 0 e mínimos em ±θ*.\n- r ≤ 2/π: pico em θ = 0 com decrescimento monotônico até ±π/2, sem mínimo no intervalo.",
+    "pitfalls": [
+      "Centro de massa a L/2 e não a L: usar L leva a k_C = MgL, errado. O momento de inércia ML²/3 não é o limiar; ele só aparece na frequência de oscilação.",
+      "Esquecer o ½ na energia elástica: com U = kθ² a condição fica 2k − MgL/2 = 0, ou seja k_C = MgL/4, errado. O correto é U_e = ½kθ², pois τ = −kθ = −dU/dθ.",
+      "Sinais da energia: U_e = +½kθ² e U_g = +(MgL/2)cosθ. A gravidade tem máximo em θ = 0, o que torna a vertical instável sem a mola. Trocar sinais inverte a estabilidade.",
+      "Não usar senθ ≈ θ no item b. A aproximação transforma a condição de equilíbrio em k = k_C e apaga os ramos θ*. Ela só serve para a estabilidade em torno de θ = 0 (item a). O intervalo −π/2 < θ < π/2 sinaliza o uso de senθ/θ.",
+      "Limiar 2/π: não afirmar que, para qualquer k < k_C, existem dois equilíbrios estáveis extras. Eles só existem para 2/π < k/k_C < 1. Abaixo de 2/π o ramo estável sai do intervalo por ±π/2 e não deve ser contado.",
+      "Intervalo aberto: em k/k_C = 2/π os extremos ±π/2 não pertencem ao intervalo. Não contar θ = ±π/2 como equilíbrios.",
+      "Caso k = k_C: U''(0) = 0, então o teste da 2ª derivada é inconclusivo. Não classificar como instável nem como dois equilíbrios. É um único ponto degenerado, com U ~ θ⁴ e mínimo estrito.",
+      "Esboço de k < k_C: θ = 0 é máximo local (instável), não poço. Desenhar o centro como mínimo é o erro típico nos gráficos.",
+      "Nas bordas: para r > 8/π² ≈ 0,81 o valor em ±π/2 supera o do pico em θ = 0. Logo 'máximo em 0' vale só localmente. Não afirmar que o máximo global do intervalo está sempre no centro.",
+      "Contar apenas equilíbrios dentro do intervalo. Fora dele existem outros pontos estáveis, por exemplo r = 0,6 com θ ≈ 1,66 rad, e eles não entram na resposta do item b.",
+      "Referência de energia: a altura do polímero h_p não é dada. A constante Mgh_p é só um deslocamento vertical e não deve ser tratada como incógnita que altera a forma das curvas.",
+      "Nos equilíbrios a velocidade é nula, então não há termo cinético em U_total. O critério de estabilidade é o sinal de U'', não o de I."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "(a) $k_C=\\frac{MgL}{2}$ (linearizando $\\frac{ML^2}{3}\\ddot{\\theta}=\\frac{MgL}{2}\\sin\\theta-k\\theta$; a inércia não entra em $k_C$).\n\n(b) Com $\\lambda=k/k_C$ e equilíbrios em $(-\\pi/2,\\pi/2)$ dados por $\\theta=0$ e $\\sin\\theta/\\theta=\\lambda$:\n- $k/k_C>1$: um equilíbrio, $\\theta=0$, estável.\n- $k/k_C=1$: um equilíbrio, $\\theta=0$, estável mas degenerado (mínimo quártico).\n- $2/\\pi<k/k_C<1$: três equilíbrios: $\\theta=0$ instável e $\\pm\\theta_e$ estáveis, com $\\sin\\theta_e/\\theta_e=k/k_C$.\n- $0<k/k_C\\le 2/\\pi$: apenas $\\theta=0$, instável (sem equilíbrio no intervalo).\n\n(c) $U_{total}=Mg\\,h_p+\\frac{MgL}{2}\\left[\\cos\\theta+\\frac{k}{2k_C}\\theta^2\\right]$: poço único (com mínimo em $\\theta=0$) para $k/k_C>1$; poço quártico para $k/k_C=1$; duplo poço com máximo central e mínimos em $\\pm\\theta_e$ para $2/\\pi<k/k_C<1$; máximo monotonicamente decrescente para $k/k_C\\le 2/\\pi$.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item c, caso (iii): o candidato afirma 'duplo poço com máximo central' para todo 2/π<k/k_C<1, e a ANSWER repete isso sem ressalva. Não é verdade no intervalo inteiro. Com U(±π/2)−U(0) = (MgL/2)(λπ²/8 − 1), o centro deixa de ser o máximo do intervalo para λ > 8/π² ≈ 0,81. Por exemplo, λ = 0,9 dá U(π/2)−U(0) ≈ +0,110·(MgL/2). O texto diz 'máximo local', o que está correto, mas o caveat de bordas precisa aparecer explicitamente. O esboço só cobre λ = 0,8, abaixo desse limiar, e isso deveria ser dito. Correção: acrescentar que, para 8/π² < k/k_C < 1, as bordas ±π/2 superam U(0) e o máximo global do intervalo fica nas bordas, com θ = 0 sendo apenas máximo local."
+          },
+          {
+            "severity": "minor",
+            "description": "Item c, caso (iii): a frase 'A barreira é positiva, pois U(θ_e)−U(0) = −(MgL/2)[...] < 0' está com o sinal confuso. A grandeza que é positiva é a altura da barreira, U(0)−U(θ_e) > 0. A conta da forma fechada está correta (verifiquei: colchete = 2 sin x (sin x − x cos x) com x = θ_e/2, e 0,015311 para λ = 0,9 e 0,062580 para λ = 0,8). Correção: escrever U(0)−U(θ_e) = (MgL/2)[(1−cosθ_e) − θ_e sinθ_e/2] > 0."
+          },
+          {
+            "severity": "minor",
+            "description": "Modelo: 'articulada sem atrito em O' é impreciso. A haste está rigidamente acoplada ao polímero, e o eixo fixo em O é o eixo do corpo de prova, com o torque vindo da mola torcional, e não de uma articulação. A equação de movimento está correta; só o rótulo é inadequado. Correção: 'rotação em torno de eixo fixo O, com torque elástico do polímero'."
+          },
+          {
+            "severity": "minor",
+            "description": "Item c, caso (i): 'poço único, mínimo em θ = 0' é afirmado sem justificativa no próprio item. Bastava uma linha: para λ > 1, λθ > θ > sin θ para θ > 0, logo U' = k_C(λθ − sin θ) só se anula em θ = 0, e U é monótona para cada lado. A unicidade só é mencionada indiretamente em b."
+          },
+          {
+            "severity": "minor",
+            "description": "Item b, caso k/k_C ≤ 2/π: o candidato diz que as raízes não nulas ficam 'além da fronteira, fora do intervalo', o que está certo, mas não menciona que existe um equilíbrio estável fora do intervalo, por exemplo k/k_C = 0,6 com θ ≈ 1,66 rad. Isso não entra na contagem pedida, então é apenas uma omissão opcional de contexto. Não afeta a resposta."
+          }
+        ],
+        "summary": "Não há divergência entre a resolução do candidato e a referência, e a verificação independente confirma as respostas finais. (a) k_C = MgL/2 está correto: o centro de massa fica a L/2, a energia elástica é ½kθ² e I_O = ML²/3 aparece só na frequência. (b) Para k/k_C > 1, θ = 0 é estável. Para k/k_C = 1, θ = 0 é estável e degenerado, com U − U(0) ≈ MgLθ⁴/48. Para 2/π < k/k_C < 1, θ = 0 é instável e ±θ_e são estáveis, com U''(θ_e) > 0 pois tanθ > θ. Para k/k_C ≤ 2/π, só θ = 0 existe, e é instável. Valores conferidos numericamente: λ = 0,8 dá θ_e = 1,1311 rad (64,8°); λ = 0,9 dá θ_e = 0,7867 rad; a barreira em λ = 0,8 é 0,0626·MgL/2. O marcador (±64,8°, 0,937) do esboço (iii) confere com 0,93742. Todas as armadilhas da lista foram tratadas, exceto uma: o caveat de bordas para k/k_C > 8/π² ≈ 0,81, que o candidato não menciona e que a ANSWER generaliza demais ao falar em 'máximo central'. Os demais problemas são de redação. Nota 8,5: é quase publicável como gabarito; com o caveat de bordas e a frase da barreira corrigidos, subiria para 9."
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "(a) k_C = MgL/2. (b) Com λ = k/k_C: para λ > 1 há um equilíbrio, θ = 0, estável; para λ = 1, θ = 0 é estável e degenerado; para 2/π < λ < 1, θ = 0 é instável e há dois equilíbrios estáveis ±θ_e, com sin θ_e/θ_e = λ; para 0 < λ ≤ 2/π, só θ = 0, instável. (c) Poço único (λ > 1), poço quártico (λ = 1), duplo poço com máximo local em θ = 0 e mínimos em ±θ_e (2/π < λ < 1; para λ > 8/π² o máximo global do intervalo fica nas bordas), e máximo monotônico decrescente em θ = 0 (λ ≤ 2/π).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item b, caso 4 (0 < k/k_C ≤ 2/π): o texto diz que há um equilíbrio estável em (π/2, π) para todo k/k_C ≤ 2/π. Isso vale só para 0 < k/k_C < 2/π. Em k/k_C = 2/π a raiz de sinθ/θ = λ cai exatamente em θ = π/2, que não pertence ao intervalo aberto (π/2, π). Deve-se escrever a desigualdade estrita ou separar esse caso de borda."
+          },
+          {
+            "severity": "minor",
+            "description": "Item c, caveat de bordas: 'o máximo global do intervalo está nas bordas' é impreciso no intervalo aberto. U(θ) tende ao valor de borda quando θ → ±π/2, mas não o atinge, então não há máximo global no intervalo. O correto é dizer que o supremo, não atingido, está no limite e supera U(0). A referência tem a mesma imprecisão. Ela contradiz a própria insistência da resolução em 'intervalo aberto'."
+          },
+          {
+            "severity": "minor",
+            "description": "Narrativa física (fim do item b): 'a haste se inclina ao longo do ramo ±θ_e' omite que a simetria θ→−θ é quebrada apenas por imperfeição. Com simetria perfeita, θ = 0 continua sendo equilíbrio instável. O modelo não escolhe o sinal. Deve-se dizer isso explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Unicidade de θ_e não é afirmada. A monotonicidade estrita de f em (0, π/2) implica exatamente uma raiz positiva para cada λ ∈ (2/π, 1), e a contagem de 'três equilíbrios' depende disso. O texto só diz 'existem raízes ±θ_e'. Deve-se citar a monotonicidade como argumento de unicidade."
+          },
+          {
+            "severity": "minor",
+            "description": "Energia elástica: 'referência nula em θ=0, onde o torque elástico se anula' dá uma justificativa imprecisa para a constante aditiva. A constante é escolha de referência, não tem efeito físico, e a condição τ = 0 em θ = 0 não a determina. Deve-se dizer que a constante é arbitrária e irrelevante para equilíbrios e estabilidade."
+          },
+          {
+            "severity": "minor",
+            "description": "Não se afirma explicitamente que U_total não tem termo cinético e que, nos equilíbrios, a velocidade é nula. Isso decorre de ML²/3·θ̈ = −dU/dθ, mas a armadilha pede a afirmação direta. Deve-se acrescentar uma frase."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 1 (pêndulo invertido com mola torcional). Não há erro de resposta final. Verifiquei no enunciado original e numericamente (python3 em scripts/check_q1.py): (a) k_C = MgL/2, com U''(0) = k − MgL/2 e ω² = (3g/2L)(k/k_C − 1). Usar o centro de massa a L/2 e o fator ½ na mola está correto. (b) Os equilíbrios não nulos satisfazem sinθ/θ = λ com λ = k/k_C. f é estritamente decrescente em (0, π/2), com imagem (2/π, 1), então há dois equilíbrios estáveis ±θ_e se e somente se 2/π < λ < 1. θ = 0 é instável nesse caso, e é estável degenerado em λ = 1 (U − U(0) ≈ MgLθ⁴/48, confirmado). Os valores de θ_e (0,787 rad em λ = 0,9; 1,131 rad em λ = 0,8; 1,410 rad em λ = 0,7) e de U''(θ_e) conferem. (c) Os esboços e a barreira ΔU = MgL sin x (sin x − x cos x), com x = θ_e/2, conferem (0,0313 MgL em λ = 0,8; aproximação ≈ ¾MgL(1−λ)² perto de λ = 1). O limiar 8/π² ≈ 0,8106 para as bordas também confere. A resolução cobre as armadilhas listadas: CM em L/2, ML²/3 só na frequência, ½ na energia elástica, sinais de U, não usar senθ ≈ θ no item b, limiar 2/π, intervalo aberto, caso degenerado, θ = 0 como máximo local nos esboços, bordas e h_O como constante. Os pontos a corrigir são de precisão e de discussão física, sem nenhum erro de conta: a afirmação de equilíbrio em (π/2, π) no endpoint λ = 2/π, a linguagem 'máximo global nas bordas' num intervalo aberto, a quebra de simetria não discutida, a unicidade de θ_e não citada, a justificativa da constante aditiva e a ausência de menção explícita a 'sem termo cinético'. Os esboços TikZ não foram compilados por mim, mas as curvas e as marcas (±64,8°, U ≈ 0,937) batem com as fórmulas. Nota 8,5: é uma resolução excelente e quase publicável como gabarito comentado, mas as imprecisões nas partes de intervalo aberto ainda impedem a nota 9.\""
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.0,
+      "final_answer": "(a) k_C = MgL/2 (com U''(0) = k − MgL/2 e ω² = (3g/2L)(k/k_C − 1)).\n\n(b) Com λ = k/k_C:\n- λ > 1: um equilíbrio no intervalo, θ = 0, estável.\n- λ = 1: um equilíbrio, θ = 0, estável degenerado (U − U(0) ≈ MgLθ⁴/48).\n- 2/π < λ < 1: três equilíbrios. θ = 0 é instável e ±θ_e são estáveis, com sen θ_e / θ_e = λ e θ_e única em (0, π/2).\n- 0 < λ ≤ 2/π: só θ = 0 no intervalo aberto, instável. O equilíbrio estável em (π/2, π) fica fora do intervalo; em λ = 2/π ele está na borda π/2.\n\n(c) Com U = Mg h_O + (MgL/2)[cosθ + λθ²/2]:\n- λ > 1: poço único, mínimo em θ = 0.\n- λ = 1: poço quártico, mínimo estrito em θ = 0.\n- 2/π < λ < 1: duplo poço, máximo local em θ = 0 e mínimos em ±θ_e. A barreira é MgL sin x (sin x − x cos x), com x = θ_e/2. Para λ > 8/π² ≈ 0,81, o supremo no intervalo aberto está nas bordas, não é atingido e supera U(0).\n- 0 < λ ≤ 2/π: U decresce monotonicamente de θ = 0 até as bordas (máximo global atingido em 0, sem mínimo no intervalo).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na seção 'Evolução física' a resolução diz que em k=k_C 'a vertical perde estabilidade'. Pelo próprio item (b)(2), em k=k_C θ=0 ainda é mínimo estrito (degenerado, U−U(0)≈MgLθ⁴/48). A perda de estabilidade ocorre para k<k_C; k=k_C é o ponto de bifurcação marginal. Corrigir a frase para evitar a contradição interna."
+          },
+          {
+            "severity": "minor",
+            "description": "O item (b) usa f(θ)=senθ/θ sem justificar por que a aproximação senθ≈θ, permitida pelo cabeçalho, não se aplica nele. A frase que faltava: as raízes θ_e podem chegar perto de π/2 (já para λ=0,8, θ_e≈64,8°), então a aproximação eliminaria os ramos θ_e e não é válida aqui. A armadilha foi evitada na prática, mas não explicada, e um leitor pode suspeitar de uso indevido da aproximação."
+          },
+          {
+            "severity": "minor",
+            "description": "A bifurcação em k=k_C é descrita como 'bifurcação em forquilha' sem a classificação. Seria mais preciso dizer forquilha supercrítica (ramos estáveis nascendo de um equilíbrio que perde estabilidade, com barreira que vai a zero), como o gabarito comentado faria."
+          },
+          {
+            "severity": "minor",
+            "description": "A altura h_O do pivô não é dada no enunciado. A resolução a trata corretamente como constante que só desloca U_total, mas não diz explicitamente que o enunciado não a fornece e que escolher o mancal como zero não a determina. Também aparece C=0 ao lado de Mg·h_O dentro de U_total, o que pode confundir dois termos constantes. Não é erro, só clareza."
+          }
+        ],
+        "summary": "Resposta final idêntica à referência em todos os itens. Conferi o enunciado original e as contas com python3 (raízes de senθ/θ=λ, barreira, limite λ→1, bordas e inflexão). Resultados: k_C = MgL/2 correto (centro de massa a L/2, U''(0)=k−MgL/2, sem a inércia no limiar). Em (b), θ=0 é sempre equilíbrio; com 2/π<λ<1 há ±θ_e com senθ_e/θ_e=λ, estáveis (U''>0 pois tanθ>θ), e θ=0 instável; λ>1 e λ=1 dão um equilíbrio estável (o segundo degenerado); λ≤2/π deixa só θ=0 instável no intervalo aberto. Em (c), os quatro esboços e as formas de U_total estão corretos. Números conferidos: θ_e(0,9)=0,7867 rad (45,1°); θ_e(0,8)=1,1311 rad (64,8°); θ_e(0,7)=1,4102 rad; θ_e(0,6)=1,660 rad (fora do intervalo). Barreira em λ=0,8: 0,0313·MgL, igual à forma MgL·senx(senx−x cosx) com x=θ_e/2. Limite λ→1: barreira/[(3/4)MgL(1−λ)²]→1. Sinal de U(π/2)−U(0)=(MgL/2)(λπ²/8−1) muda em λ=8/π²≈0,8106. As armadilhas do gabarito foram tratadas: centro de massa a L/2, ½ na energia elástica, sinais, limiar 2/π, intervalo aberto, caso k=k_C, θ=0 como máximo local, bordas para λ>8/π², velocidade nula sem termo cinético e h_O constante. Não encontrei erro crítico nem grave; os problemas são de redação e de justificativa, e a resolução é quase publicável como gabarito comentado.\""
+      }
+    }
+  ]
+}

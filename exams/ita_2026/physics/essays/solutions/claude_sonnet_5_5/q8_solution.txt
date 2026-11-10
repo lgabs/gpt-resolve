@@ -1,0 +1,69 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Dados.} $m=100\ \mathrm{g}$, $c=2{,}0\ \mathrm{J/(g\,^\circ C)}$, $\Delta\theta=50-20=30\ ^\circ\mathrm{C}$. A bateria tem $q=2\ \mathrm{Ah}$ e $U=5{,}0\ \mathrm{V}$. O tempo de carga é $\Delta t_{\text{carga}}=20\ \mathrm{min}=1200\ \mathrm{s}$.
+
+\subsection*{a) Potência média mínima do carregador}
+
+\textbf{Raciocínio.} Pela conservação da energia, o carregador fornece no mínimo a energia que fica armazenada na bateria mais a energia térmica que aquece o aparelho. Perdas adicionais (resistência das bobinas, irradiação, aquecimento do próprio carregador) só aumentam a energia fornecida. Por isso a soma abaixo é um \emph{mínimo}.
+
+\begin{itemize}
+\item Carga da bateria: $q = 2\ \mathrm{A\cdot h} = 2\cdot 3600\ \mathrm{C} = 7200\ \mathrm{C}$.
+\item Energia armazenada, com a bateria inicialmente descarregada e $U$ constante: $E_{\text{bat}} = qU = 7200\cdot 5{,}0 = 3{,}6\cdot 10^{4}\ \mathrm{J}$.
+\item Energia térmica: $Q = mc\,\Delta\theta = 100\cdot 2{,}0\cdot 30 = 6{,}0\cdot 10^{3}\ \mathrm{J}$. Aqui $m$ entra em gramas, por coerência com $c$ em $\mathrm{J/(g\,^\circ C)}$.
+\end{itemize}
+
+\[
+E_{\min}=E_{\text{bat}}+Q = 3{,}6\cdot10^{4}+0{,}6\cdot10^{4}=4{,}2\cdot 10^{4}\ \mathrm{J},
+\qquad
+P_{\min}=\frac{E_{\min}}{\Delta t_{\text{carga}}}=\frac{4{,}2\cdot 10^{4}}{1200}=35\ \mathrm{W}.
+\]
+
+\emph{Conferência.} A corrente média na bateria é $7200/1200=6\ \mathrm{A}$, o que dá $6\cdot 5=30\ \mathrm{W}$ úteis. Somando $6000/1200=5\ \mathrm{W}$ de aquecimento, obtém-se $35\ \mathrm{W}$.
+
+\subsection*{b) Máximo valor de $\Delta t$}
+
+\textbf{Geometria (solenoide ideal).} Usa-se $B=\mu_0 nI$ uniforme no interior, com todo o fluxo atravessando todas as espiras.
+
+\begin{itemize}
+\item $n=20\ \mathrm{espiras/cm}=2000\ \mathrm{m^{-1}}$ e $\ell=2\ \mathrm{cm}$, logo $N=n\ell=40$ espiras.
+\item $A=\pi R^{2}=\pi(5\cdot 10^{-3})^{2}=2{,}5\pi\cdot10^{-5}\ \mathrm{m^{2}}$.
+\end{itemize}
+
+\textbf{Indutância.} O fluxo concatenado é $N\,BA=LI$, portanto
+
+\[
+L=\frac{\mu_0 N^{2}A}{\ell}
+=\frac{4\pi\cdot10^{-7}\cdot 1600\cdot 2{,}5\pi\cdot 10^{-5}}{2\cdot10^{-2}}
+=8\pi^{2}\cdot 10^{-7}\ \mathrm{H}\approx 7{,}9\cdot10^{-6}\ \mathrm{H}.
+\]
+
+\textbf{F.e.m. induzida.} Pela lei de Faraday--Lenz, a f.e.m. na bobina do celular é $\varepsilon=M\,|dI/dt|$, em que $M=k\sqrt{L_1L_2}=kL$ é a indutância mútua e $k\le 1$ é o coeficiente de acoplamento. Em cada ciclo a corrente varia linearmente em $\Delta I\le 14\ \mathrm{A}$, logo $|dI/dt|=\Delta I/\Delta t$ é constante. O enunciado fixa $\varepsilon=U$, então
+
+\[
+\frac{kL\,\Delta I}{\Delta t}=U
+\quad\Longrightarrow\quad
+\Delta t=\frac{kL\,\Delta I}{U}\le\frac{14\,L}{U}.
+\]
+
+\textbf{Por que este é o máximo.} Para $U$ fixo, $\Delta t$ cresce com $k$, com $L$ e com $\Delta I$. O valor máximo ocorre quando os três assumem seus tetos:
+\begin{itemize}
+\item $\Delta I=14\ \mathrm{A}$, a excursão máxima da corrente;
+\item $k=1$, o acoplamento perfeito dado no enunciado, que dá $M=L$;
+\item $L$ do solenoide ideal. Como $\ell$ é só duas vezes o diâmetro, a correção de extremidade (Nagaoka) reduziria $L$ real em cerca de $20\%$. A idealização superestima $L$ e, portanto, também $\Delta t$.
+\end{itemize}
+Qualquer não idealidade apenas diminui $\Delta t$. Assim, o valor calculado com solenoide ideal é um teto, que é o que o enunciado pede (``máximo possível'').
+
+\[
+\Delta t_{\max}=\frac{14\,L}{U}=\frac{14\cdot 8\pi^{2}\cdot10^{-7}}{5{,}0}=2{,}24\pi^{2}\cdot10^{-6}\ \mathrm{s}\approx 2{,}21\cdot10^{-5}\ \mathrm{s}\ (\approx 22\ \mu\mathrm{s}).
+\]
+
+\textbf{Conferência com o item (a).} No caso ideal (bobinas sem resistência e sem perdas), o primário tem o mesmo fluxo e o mesmo número de espiras que o secundário. Sua f.e.m. própria é então $5\ \mathrm{V}$, constante, e a corrente média é $\bar I=7\ \mathrm{A}$. A potência média é $\bar P=\varepsilon\bar I=5\cdot 7=35\ \mathrm{W}$, exatamente o mínimo do item (a). Se $\Delta t$ fosse maior que $\Delta t_{\max}$ com os mesmos $L$, $k$ e $\Delta I$, a f.e.m. cairia abaixo de $5\ \mathrm{V}$ e a bateria não carregaria. Ordem de grandeza: $L\sim10^{-5}\ \mathrm{H}$ e $\Delta I=14\ \mathrm{A}$ exigem ciclos de dezenas de microssegundos para induzir alguns volts, o que é coerente.
+
+\textbf{Resultados:}
+\[
+\text{a) } P_{\min}=35\ \mathrm{W};\qquad \text{b) } \Delta t_{\max}=2{,}24\pi^{2}\cdot10^{-6}\ \mathrm{s}\approx 2{,}2\cdot 10^{-5}\ \mathrm{s}.
+\]
+
+ANSWER: a) $35\ \mathrm{W}$; b) $\Delta t_{\max}=2{,}24\pi^{2}\cdot 10^{-6}\ \mathrm{s}\approx 2{,}2\cdot10^{-5}\ \mathrm{s}$ (cerca de $22\ \mu\mathrm{s}$)

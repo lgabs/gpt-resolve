@@ -1,0 +1,57 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "m_1/m_2 = 1 (as massas são iguais; com as massas atômicas da tabela, ≈ 1,003). O resultado independe do valor de ΔH, pois o calor é proporcional à quantidade de reação: n(CH4) está na razão 324/81 = 4 e m(O2) = 64 g por mol de reação contra 16 g de CH4.",
+  "judge_reference": {
+    "reference_solution": "**Leitura do enunciado.** A prova original (p. 3) confere com a transcrição. Combustão completa do metano com água líquida, a pressão constante, então o calor trocado é ΔH. Duas queimas \"nas mesmas condições\": na 1ª queimou-se uma massa m₁ de CH₄ e liberaram-se 324 kJ; na 2ª consumiu-se uma massa m₂ de O₂ e liberaram-se 81 kJ.\n\n**1) Equação balanceada.**\nCH₄(g) + 2 O₂(g) → CO₂(g) + 2 H₂O(ℓ), com ΔH_c = −Q (Q > 0, em kJ por mol de CH₄ queimado).\n\nPor ser a pressão constante, Q_liberado = |ΔH|. Pela estequiometria, cada mol de CH₄ queimado consome 2 mol de O₂. Portanto:\n- liberam-se Q kJ por mol de CH₄ consumido;\n- liberam-se Q/2 kJ por mol de O₂ consumido.\n\n**2) Queima 1 (massa de CH₄).**\nn(CH₄) = 324/Q, logo m₁ = (324/Q)·M(CH₄).\n\n**3) Queima 2 (massa de O₂).**\nn(O₂) = 81/(Q/2) = 162/Q, logo m₂ = (162/Q)·M(O₂).\n\n**4) Razão.** Q se cancela:\n\nm₁/m₂ = (324·M_CH₄)/(162·M_O₂) = 2·M_CH₄/M_O₂\n\nCom M(CH₄) = 16 g/mol e M(O₂) = 32 g/mol:\nm₁/m₂ = 2·16/32 = **1**\n\nCom as massas da tabela da prova: M_CH₄ = 12,011 + 4·1,0079 = 16,0426 g/mol e M_O₂ = 2·15,999 = 31,998 g/mol. Então m₁/m₂ = 2·16,0426/31,998 ≈ 1,003, ou seja, 1,00 com os algarismos significativos dos dados (324 e 81 têm 2–3 algs.).\n\n**5) Interpretação.** A energia 324 kJ é 4 vezes 81 kJ, então a 1ª queima consome 4 vezes mais CH₄ do que a 2ª. Mas a 2ª queima consome 2 mol de O₂ por mol de CH₄. Em massa, a 2ª queima gasta O₂ = 2·32 = 64 g por mol de CH₄ equivalente, e a 1ª gasta 4·16 = 64 g de CH₄. As duas massas coincidem.\n\n**6) Conferência numérica (python).**\n- Para Q = 500, 802, 890,8 e 1000 kJ/mol, a razão m₁/m₂ foi sempre 1,0027, independente de Q.\n- Com a razão exata de massas da tabela: 1,00273.\n- Com 16 e 32: exatamente 1.\n- Verificação opcional: se usássemos ΔH_f(CH₄) = −74,8 kJ/mol (valor de literatura, **não fornecido** na prova), ΔH_c = −394,0 + 2(−285,8) + 74,8 = −890,8 kJ/mol. Então m₁ ≈ 5,835 g e m₂ ≈ 5,819 g, com razão ≈ 1,003.\n\n**Resposta: m₁/m₂ = 1 (≈ 1,00; 1,003 com as massas atômicas exatas da tabela).**",
+    "final_answer": "m₁/m₂ = 1 (≈ 1,00). Exato: m₁/m₂ = 2·M(CH₄)/M(O₂) = 2·16/32 = 1. Com as massas da tabela: 2·16,0426/31,998 ≈ 1,003. A razão não depende da entalpia de combustão do metano.",
+    "pitfalls": [
+      "O ΔH_f do CH₄ NÃO consta na folha de dados, e não é necessário. O calor por mol de CH₄ (Q) aparece nas duas queimas e se cancela. Quem tenta calcular ΔH_c precisa de um dado que a prova não fornece (−74,8 kJ/mol da literatura) e perde tempo. Uma boa resolução deve notar que o resultado independe de Q.",
+      "A estequiometria é CH₄ + 2 O₂ → CO₂ + 2 H₂O(ℓ). Esquecer o fator 2 (usar 1 mol de O₂ por mol de CH₄) dá razão 2 em vez de 1. O calor por mol de O₂ é Q/2, não Q.",
+      "Usar M(O₂) = 16 g/mol (massa do átomo) em vez de 32 g/mol (molécula) é erro comum. m₂ é massa de gás oxigênio, O₂.",
+      "Hipótese implícita: a 2ª queima é também a combustão completa do metano com H₂O(ℓ) ('nas mesmas condições'), com O₂ consumido na proporção estequiométrica. Deve ser declarada. Se a 2ª fosse outra reação ou combustão incompleta, não haveria resposta única.",
+      "Pressão constante implica que o calor liberado é |ΔH| (e não |ΔU|). A água líquida só importa para o valor de ΔH (−285,8 e não −242,0 kJ/mol), que de qualquer forma se cancela. Misturar H₂O(g) e H₂O(ℓ) só afetaria Q, não a razão.",
+      "Cuidado com os sinais: 'liberados' significa ΔH < 0. Basta usar módulos; trocar sinais ou usar 324/81 = 4 como razão de massas é errado. 4 é só a razão entre mols de CH₄.",
+      "Resposta exata é 1 com 16 e 32. Com as massas da tabela sai 1,0027, que deve ser apresentado como ≈ 1,00. Não dizer que a razão é 'diferente de 1' por causa do arredondamento: os dados (324 e 81) não justificam mais que 2–3 algarismos significativos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "m_1/m_2 = 1 (as massas são iguais; com as massas atômicas da tabela, ≈ 1,003). O resultado independe do valor de ΔH, pois o calor é proporcional à quantidade de reação: n(CH4) está na razão 324/81 = 4 e m(O2) = 64 g por mol de reação contra 16 g de CH4.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A hipótese de que a 2ª queima também é combustão completa do CH₄ com H₂O(ℓ), com O₂ consumido na proporção estequiométrica, só aparece de forma implícita. Ela vem de 'mesmas condições... mesmos estados físicos' e da definição de n₂ como mols de CH₄ que reagem. Sem ela não existe razão única. Deveria ser escrita como premissa (por exemplo 'interpretamos \"nas mesmas condições\" como a mesma reação de combustão completa').",
+            "suggestion": "Declarar a premissa de forma explícita, antes do passo 2."
+          },
+          {
+            "severity": "minor",
+            "description": "Na última observação da conferência, 'fator 4 entre as massas molares (64/16)' é impreciso. 64 g é a massa de 2 mol de O₂ por mol de CH₄ queimado, não uma massa molar. As massas molares são 32 e 16.",
+            "suggestion": "Escrever 'a massa de O₂ consumida por mol de CH₄ (2·32 = 64 g) é 4 vezes a massa de 1 mol de CH₄ (16 g)'."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação numérica usa Q ≈ 890 kJ/mol como 'valor usual' sem dizer que vem da literatura e que o ΔH_f do CH₄ não consta na folha de dados. A resolução diz que Q é desnecessário e que a folha de dados não o traz, o que atenua o problema. O valor é apenas ilustrativo e correto (m₁ ≈ m₂ ≈ 5,8 g).",
+            "suggestion": "Marcar o valor como dado externo, usado só para ilustrar."
+          },
+          {
+            "severity": "minor",
+            "description": "Com as massas da tabela a razão é 1,0027, e o candidato diz '1 dentro da precisão dos dados'. Está correto, mas não justifica o arredondamento (324 e 81 têm 2–3 algarismos significativos). Também não explica por que o calor é |ΔH| e não |ΔU| além de citar 'pressão constante', nem por que a H₂O(ℓ) não altera a razão.",
+            "suggestion": "Acrescentar uma frase curta de justificativa, sem alterar o resultado."
+          }
+        ],
+        "summary": "A resposta final m₁/m₂ = 1 está correta e coincide com a minha referência. Conferi o enunciado na página 3 do PDF e refiz as contas em Python. Para Q = 500, 802, 890, 890,8 e 1000 kJ/mol a razão é sempre 1 (com M = 16 e 32). Com as massas da tabela dá 1,0027, como o candidato afirma. O raciocínio é limpo: a pressão constante implica calor = |ΔH|, a equação está balanceada (CH₄ + 2 O₂ → CO₂ + 2 H₂O(ℓ)), e Q é o mesmo nas duas queimas e se cancela, de modo que n₁/n₂ = 4 e m₁/m₂ = (16·4)/(32·2) = 1. As armadilhas principais foram tratadas. O fator 2 de O₂ está correto. Foi usado M(O₂) = 32 g/mol, não 16. O candidato não confundiu 4 com a razão de massas e observou que ΔH_f(CH₄) não consta da folha de dados e é desnecessário. A conferência com a tabela periódica da prova (≈ 1,003) e a verificação numérica (≈ 5,8 g cada) estão certas. Os defeitos são só de polimento: a premissa de que a 2ª queima é a mesma combustão completa fica implícita, há uma frase imprecisa ('massas molares 64/16') e o Q ≈ 890 não é identificado como dado externo. Resolução quase de gabarito comentado, sem erro de conteúdo."
+      }
+    }
+  ]
+}

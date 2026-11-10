@@ -1,0 +1,96 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "a) Cátodo/ânodo: (1) X cátodo, Y ânodo; (2) Y cátodo, X ânodo; (3) X cátodo, Y ânodo; (4) Y cátodo, X ânodo. b) Proteção catódica nos quatro casos (ânodo de sacrifício ou corrente impressa); a proteção anódica é inadequada.",
+  "judge_reference": {
+    "reference_solution": "**Ideia geral (vale para os 4 casos).** Em cada béquer há uma única barra de ferro (condutor metálico contínuo) imersa em um eletrólito cuja composição varia ao longo da barra. Isso forma uma pilha de concentração, e o sistema tende a igualar as concentrações. As regiões diferem apenas no potencial de redução (equação de Nernst).\n- A região em que a semirreação catódica tem MAIOR potencial de redução é o cátodo. Ela recebe elétrons e é preservada.\n- A outra região é o ânodo. Nela ocorre a oxidação Fe → Fe²⁺ + 2e⁻, que é a corrosão.\n- Os elétrons fluem do ânodo para o cátodo pela própria barra. Os íons migram pelo eletrólito, fechando o circuito.\n\n**a) Áreas anódica e catódica**\n\n**(1) Gradiente de [Fe²⁺]**\n- Semirreação: Fe²⁺ + 2e⁻ ⇌ Fe, com E = E° + (0,059/2)·log[Fe²⁺].\n- Na região X, [Fe²⁺] é alta, então E é maior. X é o cátodo: Fe²⁺ + 2e⁻ → Fe (consome Fe²⁺ e tende a diluí-lo).\n- Na região Y, [Fe²⁺] é baixa, então E é menor. Y é o ânodo: Fe → Fe²⁺ + 2e⁻ (produz Fe²⁺ e tende a igualar a concentração).\n- Ordem de grandeza: razão de concentrações de 100 dá ΔE ≈ 0,059 V.\n- **X = cátodo; Y = ânodo (corrói).**\n\n**(2) Gradiente de pH (X: pH alto, OH⁻; Y: pH baixo, H⁺)**\n- Cátodo: 2H⁺ + 2e⁻ → H₂. Seu potencial é E = −0,059·pH, maior em pH baixo. Em meio neutro ou aerado, O₂ + 2H₂O + 4e⁻ → 4OH⁻ também tem E maior em pH baixo (E = 1,23 − 0,059·pH). Logo, **Y (H⁺) é o cátodo**. A redução consome H⁺ e tende a elevar o pH.\n- Ânodo: em X (pH alto), Fe + 2OH⁻ → Fe(OH)₂ + 2e⁻. Aqui [Fe²⁺] é limitada por Kps/[OH⁻]², e E = E° − 0,059·log[OH⁻] é menor em pH alto. Logo, **X é o ânodo**. A oxidação consome OH⁻ e tende a baixar o pH.\n- **X = ânodo; Y = cátodo.**\n- Ressalva: o modelo simples da questão é o da pilha de pH acima. Na prática, o ferro se passiva em meio alcalino (filme de óxido, como a armadura no concreto). Nesse caso a região alcalina pode virar a \"nobre\" e a ácida a anódica. Isso é um refinamento, não a resposta esperada para \"explique simplificadamente\".\n\n**(3) Aeração diferencial (X: [O₂] alta; Y: [O₂] baixa)**\n- Cátodo: O₂ + 2H₂O + 4e⁻ → 4OH⁻, com E = E° + (0,059/4)·log(pO₂/[OH⁻]⁴), que aumenta com [O₂].\n- **X (rica em O₂) = cátodo.**\n- **Y (pobre em O₂) = ânodo**: Fe → Fe²⁺ + 2e⁻. É a corrosão por aeração diferencial (frestas, regiões sob depósito, base da peça).\n- Em termos de magnitude, razão de [O₂] de 21 dá ΔE ≈ 0,02 V, mas basta para a pilha funcionar.\n- O Fe²⁺ (de Y) e o OH⁻ (de X) se encontram no meio e formam Fe(OH)₂, depois oxidado a ferrugem (Fe₂O₃·nH₂O).\n- Resultado contraintuitivo: a corrosão ocorre onde há MENOS oxigênio.\n\n**(4) Gradiente de [Cl⁻] (X: alta; Y: baixa)**\n- O Cl⁻ não é oxidado nem reduzido nessas condições, e não há semirreação catódica própria dele. Ele atua indiretamente, favorecendo a dissolução anódica do ferro:\n  - rompe/penetra o filme passivo de óxido;\n  - forma complexos e sais solúveis com Fe²⁺ (FeCl⁺, FeCl₂), baixando a atividade de Fe²⁺ livre e o potencial do ferro. É análogo a Ag/AgCl: E = E° − 0,059·log[Cl⁻], menor em [Cl⁻] alta;\n  - ânions migram para a região anódica para neutralizar a carga do Fe²⁺ formado, e isso concentra Cl⁻ no local (pite autocatalítico).\n- **X (alta [Cl⁻]) = ânodo (Fe → Fe²⁺ + 2e⁻; pites).**\n- **Y (baixa [Cl⁻]) = cátodo**, com redução de O₂ ou H⁺ do meio.\n\n**b) Proteção mais adequada**\n\n**Resposta: proteção CATÓDICA nos quatro casos.**\n\nEm todos os casos, uma parte da própria barra funciona como ânodo e se corrói, enquanto outra parte é preservada. A proteção catódica transforma a peça INTEIRA em cátodo. Duas formas:\n- Ânodo de sacrifício: ligar eletricamente ao ferro um metal de menor E°red (Zn, Mg ou Al; E° = −0,76; −2,37; −1,66 V, contra −0,44 V do Fe). Esse metal se oxida no lugar do ferro.\n- Corrente impressa: ligar a peça ao polo negativo de uma fonte, com um ânodo inerte.\n\nO ferro deixa de oxidar em qualquer região, inclusive nas anódicas (Y em 1 e 3, X em 2 e 4). Não é preciso saber qual região é o ânodo, pois o método independe da causa (íons, pH, O₂ ou Cl⁻). O ânodo de sacrifício é consumido e é reposto periodicamente.\n\nA proteção anódica consiste em passivar o metal por polarização anódica controlada (potenciostato). Ela só serve para metais passiváveis em meios específicos e exige controle rigoroso. Se o filme falha ou o potencial sai da faixa passiva, a corrosão se acelera. Por isso é menos adequada:\n- No caso (4), é inviável: o Cl⁻ destrói o filme passivo.\n- Nos casos (1) e (3), a água é neutra e aerada, sem passivação estável.\n- No caso (2), é o único em que poderia ser considerada, em tanques ácidos ou alcalinos com controle potenciostático. Mesmo assim, o método geral e mais robusto é o catódico.",
+    "final_answer": "a) (1) X = cátodo (alta [Fe²⁺], maior E, Fe²⁺ + 2e⁻ → Fe); Y = ânodo (Fe → Fe²⁺ + 2e⁻). (2) Y = cátodo (pH baixo, 2H⁺ + 2e⁻ → H₂ ou O₂ com E maior em pH baixo); X = ânodo (pH alto, Fe + 2OH⁻ → Fe(OH)₂ + 2e⁻). (3) X = cátodo (rica em O₂, O₂ + 2H₂O + 4e⁻ → 4OH⁻); Y = ânodo (pobre em O₂, Fe → Fe²⁺ + 2e⁻). (4) X = ânodo (alta [Cl⁻], rompe o filme passivo e estabiliza Fe²⁺ em complexos, causando pites); Y = cátodo.\n\nb) Proteção catódica nos quatro casos. Ela faz da peça inteira o cátodo, por ânodo de sacrifício (Zn, Mg, Al, com E°red menor que o do Fe) ou por corrente impressa. A proteção anódica (passivação potenciostática) só serve para metais passiváveis em meios específicos e é inviável no caso (4), com Cl⁻. No caso (2) é a única que poderia ser considerada (ver ressalva na resolução).",
+    "pitfalls": [
+      "Caso (3): inverter ânodo e cátodo. A região MAIS aerada (X) é o cátodo, e a corrosão ocorre na região POBRE em O₂ (Y). Escrever O₂ + 2H₂O + 4e⁻ → 4OH⁻ no cátodo e Fe → Fe²⁺ + 2e⁻ no ânodo.",
+      "Caso (1): o cátodo é a região de MAIOR [Fe²⁺] (X), pois seu potencial de redução é maior pela equação de Nernst. O ânodo (Y) é a região diluída, onde Fe → Fe²⁺ tende a igualar as concentrações. Erro comum: dizer que onde há mais Fe²⁺ há mais corrosão.",
+      "Caso (2): cátodo = pH baixo (Y), onde H⁺ (ou O₂, com E = 1,23 − 0,059·pH) é reduzido. Ânodo = pH alto (X), com Fe + 2OH⁻ → Fe(OH)₂. Há uma ressalva física: o ferro passiva em meio alcalino, e na prática (ex.: concreto carbonatado) a região ácida pode ser a anódica. Uma boa resolução escolhe um modelo, justifica e, se possível, menciona isso.",
+      "Caso (4): o Cl⁻ NÃO é eletroativo (não se oxida nem se reduz aqui). É preciso justificar o papel dele: rompe o filme passivo, complexa Fe²⁺ (baixando o potencial do ferro), migra para a zona anódica e forma pites. Resposta: alta [Cl⁻] = ânodo (X). Não inventar uma semirreação catódica do Cl⁻; o cátodo (Y) reduz O₂ ou H⁺.",
+      "Explicar o fundamento comum: mesma barra metálica conduzindo elétrons (ânodo → cátodo) e eletrólito conduzindo íons; pilha de concentração com ddp pequena (~0,06 V por década de Fe²⁺, ~0,02 V para O₂), mas suficiente. Corrosão localizada no ânodo.",
+      "Terminologia no item b: ânodo de sacrifício (Zn, Mg) é proteção CATÓDICA, pois a peça vira cátodo. Não chamar de 'anódica'. Proteção anódica = passivação por polarização anódica controlada (potenciostato), só para metais passiváveis e meios específicos. Pode também aparecer na linguagem escolar como formação de camada protetora de óxido.",
+      "O metal de sacrifício precisa ter E°red menor que o do Fe (−0,44 V): Zn, Mg, Al. Não propor Cu, Sn ou Ag. Esses revestimentos são 'catódicos' e aceleram a corrosão do ferro quando o filme falha.",
+      "Item b pede 'para cada caso': a resposta mais robusta e independente da causa é catódica nos 4. A proteção anódica é inadequada em (4), porque o Cl⁻ destrói a passivação, e arriscada em (1) e (3). Só em (2) poderia ser defendida (tanques ácidos/alcalinos com potenciostato). O gabarito oficial pode diferenciar os casos, e quem responder de forma diferenciada deve justificar com passivação e cloreto.",
+      "A questão pede explicação 'simplificada', então equações de Nernst completas não são obrigatórias, mas as semirreações e o critério (maior potencial de redução = cátodo) são o mínimo esperado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) Cátodo/ânodo: (1) X/Y (maior [Fe²⁺] é cátodo); (2) Y/X (pH baixo é cátodo); (3) X/Y (mais O₂ é cátodo); (4) Y/X (alto Cl⁻ é ânodo, pois rompe a película passiva). b) Proteção catódica nos quatro casos (ânodo de sacrifício ou corrente impressa). A proteção anódica só vale para metais que passivam no meio e é arriscada aqui, sobretudo com Cl⁻.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Item (2): o modelo é inconsistente entre os casos. Em (4) o candidato decide cátodo/ânodo pela passivação (Y 'com película preservada', X sem película). Em (2) ele ignora a passivação do Fe em meio alcalino e usa só Nernst. Se a passivação fosse tratada de forma coerente, a região alcalina (X) tenderia a ser a nobre e a ácida (Y) a anódica. É o padrão real em frestas e em concreto carbonatado, e o inverso da resposta dada. O candidato só diz, na última linha, que 'ignora a passivação do Fe em pH muito alto'. Não afirma que isso inverteria a atribuição, nem justifica por que escolhe o modelo de Nernst. A resposta X=ânodo / Y=cátodo é defensável no modelo simples e coincide com a referência, mas é o ponto mais frágil da resolução. Deveria declarar o modelo escolhido, mostrar o potencial do ânodo (Fe/Fe(OH)2: E ≈ −0,047 − 0,059·pH, menor em pH alto) e citar explicitamente a alternativa."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (3): a frase 'O corpo da barra fica no ânodo, mas a ferrugem aparece entre as regiões' é confusa e contradiz a atribuição X=cátodo / Y=ânodo. O corpo da barra não está todo no ânodo. O ânodo é a região Y, e a ferrugem se forma onde Fe²⁺ (de Y) e OH⁻ (de X) se encontram. Deveria ser reescrita ou removida."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (b): 'o Fe só sofre redução' é incorreto. O ferro metálico não se reduz. Com proteção catódica ele deixa de se oxidar, e a redução ocorre sobre a sua superfície (O₂ ou H⁺ do meio). Deveria dizer 'o Fe não se oxida; todas as áreas passam a ser catódicas'."
+          },
+          {
+            "severity": "minor",
+            "description": "Critério geral pouco preciso: 'a região com maior E é o cátodo' usa, em (1), o par Fe²⁺/Fe do próprio eletrodo. Em (2) e (3) usa o potencial da semirreação catódica (H⁺/H₂, O₂/OH⁻). A passagem de um critério ao outro não é explicitada, e o texto não separa potencial do ânodo de potencial do cátodo."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (4) e 'Verificação': a verificação diz que o tratamento 'ignora o papel específico do Cl⁻', mas o item (4) justamente discute esse papel (ruptura do filme, complexação). Há também tensão com (b), onde se afirma que em (1) e (3) 'nada garante passivação estável' (meio neutro aerado), enquanto em (4) a região Y fica com 'película preservada' em meio igualmente neutro/aerado. Faltou mencionar a migração de Cl⁻ para a zona anódica (pite autocatalítico) e o efeito do complexo FeCl⁺/FeCl₂ sobre o potencial do Fe."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (b), caso (2): o candidato rejeita a proteção anódica só porque 'o Fe não passiva na região ácida'. Não reconhece que (2) é o único caso em que a passivação anódica poderia ser considerada (região alcalina, tanques com potenciostato). Também não discute que 'para cada caso' pode admitir resposta diferenciada. A conclusão 'catódica nos quatro' é a mais robusta e coincide com a referência, mas a discussão de (2) é menos nuançada."
+          }
+        ],
+        "summary": "Respostas finais iguais às da referência, item por item. (a) (1) X cátodo / Y ânodo; (2) Y cátodo / X ânodo; (3) X cátodo / Y ânodo; (4) Y cátodo / X ânodo. (b) Proteção catódica nos quatro casos. Conferi as contas: 0,059 V a 25 °C, ΔE = 0,059 V para razão 100 em Fe²⁺, E(H⁺/H₂) = −0,059·pH, E(O₂/H₂O) = 1,23 − 0,059·pH e a Nernst de O₂/OH⁻ estão corretos. Os E° citados (Fe −0,44, Zn −0,76, Mg −2,37 V) também. Armadilhas bem tratadas: (3) com aeração diferencial (corrosão na região pobre em O₂, com semirreações corretas); (1) com X, de maior [Fe²⁺], como cátodo; (4) sem inventar semirreação para o Cl⁻, com o efeito indireto explicado por ruptura do filme, complexação e pites; terminologia de (b) (ânodo de sacrifício = proteção catódica, metais de E°red menor que o Fe, corrente impressa, proteção anódica = passivação com potenciostato e inviável com Cl⁻). Os problemas são de rigor e clareza. O item (2) usa modelo diferente do de (4) e deixa a ressalva sobre a passivação alcalina pouco explícita. Há uma frase confusa em (3) ('o corpo da barra fica no ânodo') e uma imprecisão em (b) ('o Fe só sofre redução'). Resposta correta e bem fundamentada, mas ainda não no nível de gabarito comentado publicável. Nota 8,0.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "a) Cátodo/ânodo: (1) X cátodo, Y ânodo; (2) Y cátodo, X ânodo; (3) X cátodo, Y ânodo; (4) Y cátodo, X ânodo. b) Proteção catódica nos quatro casos (ânodo de sacrifício ou corrente impressa); a proteção anódica é inadequada.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O critério geral não é aplicado de forma uniforme. A resolução define ânodo como a região de menor E_Fe e cátodo como a de maior potencial do oxidante. Em (3) e (4) o E_Fe não muda entre X e Y por nenhuma grandeza dada no enunciado. O ânodo sai por complemento (a região que não é cátodo), mas isso não é dito. Bastava enunciar o critério como \"cátodo = região onde o oxidante é mais favorecido; ânodo = a outra, onde o Fe se oxida\" e tratar o E_Fe como critério auxiliar em (1), (2) e (4)."
+          },
+          {
+            "severity": "minor",
+            "description": "O enunciado pede explicação \"simplificada\", e a resolução é longa e densa. Traz Nernst completo, Kps, pares O₂/H⁺, hidrólise no pite e um parágrafo de \"Verificação\" que em parte é enchimento (\"1 mol de Fe para 2 mol de e⁻\"). A tabela final resume bem, mas faltou um parágrafo curto de 1–2 linhas por item para o leitor que só quer a ideia (ex.: \"o Fe²⁺ tende a se igualar\", \"a região pobre em O₂ é a que corrói\")."
+          },
+          {
+            "severity": "minor",
+            "description": "No item b, a resolução afirma que em (1) e (3) \"o meio é aproximadamente neutro\" e que o Fe comum não passiva de modo estável. O enunciado não diz o pH desses meios, então é uma hipótese não declarada como tal. A conclusão (catódica) continua válida, pois não depende dela."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (4), o argumento termodinâmico da complexação Fe²⁺ + Cl⁻ ⇌ FeCl⁺ é corretamente qualificado como \"pequeno\", e o peso real fica no argumento cinético (despassivação, pite autocatalítico). Falta dizer com clareza que esse é um critério empírico e não de Nernst, e que o Cl⁻ não é eletroativo no sentido de ter semirreação própria. A resolução já diz que ele não participa das semirreações principais, então essa falha é leve."
+          },
+          {
+            "severity": "minor",
+            "description": "A ressalva do item (2) sobre a passivação do Fe em pH alto (frestas, concreto carbonatado) está correta e útil. Está só nomeada e não articulada com a tabela final, que não marca (2) como ponto sensível. Um gabarito comentado poderia sinalizar na tabela ou na resposta final que (2) depende do modelo adotado. O item b já tem um ponto parecido (apenas a região alcalina poderia passivar)."
+          }
+        ],
+        "summary": "Respostas finais idênticas às da minha referência nos dois itens, e a resolução está correta e bem justificada.\n\n**Enunciado:** conferi no PDF original (questão 10, página 12). A transcrição está fiel e o candidato respondeu a tudo o que foi pedido.\n\n**Item a — cátodo/ânodo:** (1) X/Y; (2) Y/X; (3) X/Y; (4) Y/X.\n- (1) Nernst de Fe²⁺/Fe: maior [Fe²⁺] em X dá maior E, então X é o cátodo e Y o ânodo.\n- (2) Tratado pelos dois lados da pilha: H⁺ e O₂ têm E maior em pH baixo, e o par Fe/Fe(OH)₂ tem E menor em pH alto. Recalculei: com Kps ≈ 5·10⁻¹⁷ obtenho E_Fe ≈ −0,095 − 0,059·pH, igual ao do candidato (−0,1 − 0,059·pH). A ressalva sobre a passivação do Fe em pH alto aparece e está correta.\n- (3) Aeração diferencial, com a corrosão onde há menos O₂ (Y). A zona intermediária de Fe(OH)₂ e ferrugem também está tratada.\n- (4) O candidato reconhece que o Cl⁻ não é eletroativo e justifica o papel dele por complexação (efeito pequeno) e despassivação com pite autocatalítico. Escolhe X como ânodo e Y como cátodo, sem inventar semirreação do Cl⁻.\n\n**Item b:** proteção catódica nos quatro casos (ânodo de sacrifício com Zn, Al ou Mg, ou corrente impressa). O candidato explica que ela elimina todas as áreas anódicas, qualquer que seja a causa da pilha. Distingue corretamente proteção anódica (passivação potenciostática) de ânodo de sacrifício. Descarta a anódica caso a caso: Cl⁻ destrói o filme em (4), o meio de (1) e (3) não passiva de forma estável, e em (2) só a região alcalina passivaria. Os E° citados estão corretos.\n\n**Contas:** conferi em Python 0,059 V (RT/F·ln10, 100× em [Fe²⁺]), 0,0295 V (100× em pO₂) e a expressão do Fe com Kps. Tudo bate.\n\n**Armadilhas da referência:** todas foram tratadas. O cátodo em (1) é a região mais concentrada; (3) não está invertido; (2) escolhe um modelo e menciona a passivação; o Cl⁻ não é eletroativo; ânodo de sacrifício é proteção catódica; os metais de sacrifício têm E° menor que o do Fe; o fundamento comum (pilha de concentração, elétrons ânodo→cátodo) está explícito.\n\n**Por que não 10:** os problemas restantes são só de forma e rigor fino (lista acima). O critério geral não é aplicado de modo uniforme em (3) e (4). A resolução é mais longa do que o \"simplificadamente\" pede. Há uma hipótese de meio neutro em (1) e (3) que o enunciado não dá. Nenhum desses pontos afeta as respostas. É uma resolução publicável como gabarito comentado, e a nota 9 deve-se a essas pequenas arestas."
+      }
+    }
+  ]
+}

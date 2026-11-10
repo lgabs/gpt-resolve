@@ -1,0 +1,65 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "P = 1/3 (≈ 0,33). Como f é uma permutação, f^(9)(1)=1 ⇔ o comprimento L do ciclo de 1 divide 9, ou seja, L ∈ {1, 3, 9}. Cada L ∈ {1,…,9} ocorre em exatamente 8! das 9! bijeções, então P = 3·8!/9! = 1/3. Conferido por enumeração completa: 120960 bijeções favoráveis em 362880.",
+  "judge_reference": {
+    "reference_solution": "Questão 6 (IME 2026/2027, Matemática). Resolução de referência.\n\nEspaço amostral: f é escolhida uniformemente entre as 9! = 362880 bijeções S→S. Evento A: f^(9)(1) = 1, onde f^(9) = f∘f∘…∘f (9 vezes). A pergunta é P(A) = #A / 9!.\n\nItem 1 (estrutura da órbita de 1). Como S é finito e f é bijetora, a sequência 1, f(1), f²(1), … é periódica e volta a 1. Seja k ≥ 1 o menor inteiro com f^k(1) = 1 (comprimento do ciclo de f que contém 1). Os elementos 1, f(1), …, f^(k−1)(1) são distintos: se f^i(1) = f^j(1) com 0 ≤ i < j < k, a injetividade de f daria f^(j−i)(1) = 1 com 0 < j−i < k, contradizendo a minimalidade de k.\n\nItem 2 (caracterização). Para n ≥ 0, escreva n = qk + r com 0 ≤ r < k. Então f^n(1) = f^r(1), que vale 1 se e só se r = 0 (pelo item 1). Logo f^n(1) = 1 ⇔ k | n. Em particular f^(9)(1) = 1 ⇔ k | 9 ⇔ k ∈ {1, 3, 9}.\n\nItem 3 (contagem por comprimento k). Número de bijeções em que o ciclo de 1 tem comprimento k:\n- Escolhe-se a sequência ordenada (f(1), …, f^(k−1)(1)) de k−1 elementos distintos de {2,…,9}: 8!/(9−k)! maneiras. Então f^k(1) = 1 fica determinado.\n- Os 9−k elementos restantes são permutados entre si de forma arbitrária: (9−k)! maneiras.\n- Total: 8!/(9−k)! · (9−k)! = 8! = 40320, para cada k = 1, …, 9.\nConferência: 9 · 8! = 9!, então a soma recupera todas as bijeções. Equivalentemente, C(8, k−1)·(k−1)!·(9−k)! = 8!.\n\nItem 4 (probabilidade). Os casos favoráveis são k = 1 (f(1) = 1), k = 3 e k = 9:\n#A = 8! + 8! + 8! = 3·8! = 120960.\nP(A) = 3·8!/9! = 3/9 = 1/3 ≈ 0,333.\n\nVerificação numérica: a força bruta sobre as 9! bijeções dá 120960 favoráveis, ou seja 1/3. A distribuição do comprimento do ciclo de 1 é uniforme em {1,…,9}, com 40320 casos para cada k. Script usado: check_q6.py na pasta de trabalho, executado com python3 -I.\n\nResposta final: P = 1/3. A prova não tem alternativas.",
+    "final_answer": "Probabilidade pedida: P[f^(9)(1) = 1] = 1/3 (≈ 0,333). A questão é discursiva (não há alternativas).\n\nResumo do raciocínio: f^(9)(1) = 1 ⇔ o comprimento k do ciclo de f que contém 1 divide 9 ⇔ k ∈ {1, 3, 9}. Cada valor de k ocorre em exatamente 8! das 9! bijeções, portanto P = 3·8!/9! = 1/3. Confirmado por força bruta sobre as 9! bijeções (120960 favoráveis de 362880).",
+    "pitfalls": [
+      "Interpretação de f^(9): é a composição de f consigo mesma 9 vezes (iteração), não uma potência pontual nem f(9).",
+      "A pergunta é apenas sobre o elemento 1: não é P(f^9 = identidade), que é outra probabilidade e não foi pedida.",
+      "Os divisores de 9 são 1, 3 e 9. Esquecer o caso k = 3 (ciclo de comprimento 3 contendo 1) leva a 2/9, erro comum.",
+      "O caso k = 1 (ponto fixo f(1) = 1) deve ser contado. Omiti-lo também altera o resultado.",
+      "Bijetividade é hipótese essencial: garante que a órbita de 1 volta a 1 (existe k com f^k(1) = 1) e que a órbita não tem 'cauda'. Para funções quaisquer a órbita pode entrar num ciclo sem passar por 1, e a equivalência 'k | n' deixa de valer.",
+      "A injetividade é usada na prova de que 1, f(1), …, f^(k−1)(1) são distintos e de que k é o período mínimo. A equivalência f^n(1) = 1 ⇔ k | n precisa da divisão euclidiana n = qk + r e da minimalidade de k.",
+      "Equiprobabilidade: 'ao acaso' significa uniforme sobre as 9! bijeções, não sobre os tipos de ciclo (partições de 9). Contar partições em vez de permutações dá resultado errado.",
+      "Na contagem do ciclo de comprimento k, a conta correta é 8!/(9−k)! (ordenação dos k−1 elementos seguintes a 1) vezes (9−k)! (permutação dos restantes), que dá 8! para todo k. Usar combinações sem o fator (k−1)! ou sem permutar os restantes produz valores não uniformes e errados.",
+      "Verificar a soma: 9 valores de k × 8! = 9!, o que confirma a distribuição uniforme do comprimento do ciclo de 1.",
+      "Simplificação: 3·8!/9! = 3/9 = 1/3. Cuidado para não escrever 3/8 ou 1/9 por engano de fatorial.",
+      "A resposta deve ser dada como fração (1/3), não apenas como decimal aproximado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "P = 1/3 (≈ 0,33). Como f é uma permutação, f^(9)(1)=1 ⇔ o comprimento L do ciclo de 1 divide 9, ou seja, L ∈ {1, 3, 9}. Cada L ∈ {1,…,9} ocorre em exatamente 8! das 9! bijeções, então P = 3·8!/9! = 1/3. Conferido por enumeração completa: 120960 bijeções favoráveis em 362880.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "f^{(0)} = identidade é usado sem ser definido (Passo 1, f^{(0)}(1)=1; Passo 2, caso r=0). Deveria haver a convenção explícita f^{(0)} = id."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'Uma enumeração completa das 9! bijeções confirma N=120960' não tem evidência no texto e não é viável à mão numa prova. Deve ser removida ou marcada como verificação computacional, sem peso na argumentação."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 3: a afirmação 'f leva A em A' não é justificada. Faltava: f(a_k)=a_{k+1} e f(a_L)=1 dão f(A)⊆A; a injetividade com A finito dá f(A)=A; daí f(R)=S\\A=R."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 2: a indução 'por indução em q' para f^{(qL)}(1)=1 não está desenvolvida. Bastaria f^{((q+1)L)}(1)=f^{L}(f^{(qL)}(1))=f^{L}(1)=1."
+          },
+          {
+            "severity": "minor",
+            "description": "O papel essencial da bijetividade não é comentado. A solução usa injetividade e sobrejetividade implícita sem observar que, para funções gerais, a órbita pode cair num ciclo sem passar por 1 e a equivalência L|m falha. Não é obrigatório, mas um gabarito comentado diria."
+          },
+          {
+            "severity": "minor",
+            "description": "'L é o comprimento do ciclo de f que contém 1' é afirmado sem mostrar que o conjunto {1, f(1), ..., f^{L-1}(1)} é fechado por f e portanto é o ciclo."
+          }
+        ],
+        "summary": "Resposta final 1/3, igual à referência e correta: confirmei o enunciado no PDF (p. 2) e a força bruta sobre as 9! bijeções dá 120960 favoráveis, ou seja 1/3. A distribuição do comprimento do ciclo de 1 é uniforme (8! para cada L de 1 a 9), e os divisores de 9 são 1, 3 e 9. A argumentação é correta em todos os passos: casa dos pombos e injetividade para obter L≤9 e a minimalidade, equivalência f^{(m)}(1)=1 ⇔ L|m via divisão euclidiana, contagem 8!/(9−L)!·(9−L)!=8! com bijeção explícita, e 3·8!/9!=1/3. Todas as armadilhas listadas foram tratadas (f^{(9)} como iteração, L=1 e L=3 incluídos, equiprobabilidade sobre permutações, soma 9·8!=9!, resposta em fração). Os problemas são só de rigor e notação: f^{(0)} não definido, uma frase de 'enumeração completa' sem evidência, f(A)=A sem justificativa, indução terse, papel da bijetividade não comentado e identificação do ciclo não explicitada. Nenhum é crítico ou grave. Nota 9,0, acima do limiar de gabarito comentado."
+      }
+    }
+  ]
+}

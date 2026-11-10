@@ -1,0 +1,133 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "a) $I(\\theta)=I_1(\\theta)\\left[4+2\\sqrt{3}\\cos\\left(\\frac{2\\pi a\\sin\\theta}{\\lambda}\\right)\\right]$. b) Primeiro máximo com $\\theta>0$ (para $a>\\lambda$): $\\sin\\theta_1=\\lambda/a$ e $I_{\\max}=(4+2\\sqrt{3})\\,I_1(\\theta_1)\\approx 7{,}46\\,I_1(\\theta_1)$. c) Primeiro mínimo com $\\theta>0$ (para $a>\\lambda/2$): $\\sin\\theta_2=\\lambda/(2a)$ e $I_{\\min}=(4-2\\sqrt{3})\\,I_1(\\theta_2)\\approx 0{,}536\\,I_1(\\theta_2)$. Os valores de (b) e (c) são os extremos de interferência, exatos para $I_1$ constante e aproximados com erro $O(|L_1|\\lambda^2/a^2)$ rad em geral.",
+  "judge_reference": {
+    "reference_solution": "**Resolução de referência – Questão 9 (Física, IME 2025/2026, 2ª fase)**\n\n**0. Relações de partida**\n- Intensidade ∝ amplitude². Como I1 = I2/3, temos I2 = 3·I1(θ) e, portanto, A2/A1 = √3.\n- As fontes estão em fase, então a defasagem em P vem apenas da diferença de caminho.\n\n**1. Diferença de caminho e defasagem**\nTome a origem no ponto médio entre F1 e F2. O eixo horizontal (perpendicular ao alinhamento vertical das fontes) faz com o raio até P o ângulo θ, que é o θ da figura. Com F1 = (0, a/2), F2 = (0, −a/2) e P = (L, L·tanθ):\n- r2² − r1² = 2aL·tanθ, logo Δ = r2 − r1 = 2aL·tanθ/(r1 + r2).\n- Com L ≫ a, r1 + r2 ≈ 2L/cosθ, e portanto Δ ≈ a·sinθ. (Δ é a projeção de F1F2 sobre a direção de P.)\n- Defasagem: φ = (2π/λ)·a·sinθ.\n\n**2. Item (a) – intensidade resultante**\nA² = A1² + A2² + 2A1A2·cosφ. Multiplicando por k (I = kA²):\nI(θ) = I1 + I2 + 2√(I1·I2)·cosφ = I1 + 3I1 + 2√3·I1·cosφ\n\n  **I(θ) = I1(θ)·[4 + 2√3·cos(2πa·sinθ/λ)] = 2I1(θ)·[2 + √3·cos(2πa·sinθ/λ)]**\n\nChecagem: em φ = 0, I = (√I1 + √(3I1))² = (1+√3)²·I1 = (4+2√3)·I1. Em φ = π, I = (√3−1)²·I1 = (4−2√3)·I1.\n\n**3. Item (b) – primeiro máximo para θ > 0**\nMáximo ⇔ cosφ = 1 ⇔ φ = 2πm ⇔ a·sinθ = mλ.\n- m = 0 dá o máximo central (θ = 0), excluído pelo enunciado.\n- m = 1 dá o primeiro máximo com θ > 0: sinθ₁ = λ/a, isto é, θ₁ = arcsin(λ/a), com a > λ.\n\n  **I_max = (4 + 2√3)·I1(θ₁) = (1+√3)²·I1(θ₁) ≈ 7,46·I1(θ₁)**\n\n**4. Item (c) – primeiro mínimo para θ > 0**\nMínimo ⇔ cosφ = −1 ⇔ φ = (2m+1)π ⇔ a·sinθ = (2m+1)λ/2.\n- Com m = 0: sinθ₂ = λ/(2a), isto é, θ₂ = arcsin(λ/(2a)), com a > λ/2. Este mínimo ocorre antes do primeiro máximo (θ₂ < θ₁).\n\n  **I_min = (4 − 2√3)·I1(θ₂) = (√3−1)²·I1(θ₂) ≈ 0,536·I1(θ₂)**\n\nComo as amplitudes são diferentes, o mínimo não é nulo.\n\n**Checagens**\n- Visibilidade com I1 aproximadamente constante: V = (I_max − I_min)/(I_max + I_min) = 2√(I1I2)/(I1+I2) = √3/2.\n- Razão I_max/I_min = (2+√3)² ≈ 13,9.\n\n**Observação sobre a dependência de I1 com θ**\nRigorosamente, os extremos satisfazem dI/dθ = 0, e não φ = mπ. A derivada contém o termo I1'(θ)·[4 + 2√3·cosφ], que desloca levemente as posições. As expressões acima pressupõem que I1 varia pouco ao longo de uma franja, hipótese usual quando L ≫ a. Verificação numérica com I1 = cos²θ e a = 5λ: o primeiro máximo ficou em 0,2004 rad, contra 0,2014 rad da fórmula (desvio de cerca de 0,5%).",
+    "final_answer": "Resposta da Questão 9 (discursiva, sem alternativas):\n\na) I(θ) = I1(θ)·[4 + 2√3·cos(2πa·sinθ/λ)] = 2I1(θ)·[2 + √3·cos(2πa·sinθ/λ)]\n\nb) Primeiro máximo para θ > 0 (sinθ₁ = λ/a, com a > λ): I_max = (4 + 2√3)·I1(θ₁) ≈ 7,46·I1(θ₁)\n\nc) Primeiro mínimo para θ > 0 (sinθ₂ = λ/(2a), com a > λ/2): I_min = (4 − 2√3)·I1(θ₂) ≈ 0,536·I1(θ₂), que é diferente de zero.\n\nBase: I2 = 3·I1, amplitudes A2 = √3·A1, Δ = a·sinθ (com L ≫ a) e φ = 2πa·sinθ/λ.",
+    "pitfalls": [
+      "Razão de intensidades: I1 = I2/3, ou seja I2 = 3·I1. Não inverter a razão. Como I ∝ A², as amplitudes têm razão A2/A1 = √3, não 3.",
+      "Termo de interferência: I = I1 + I2 + 2√(I1·I2)·cosφ = I1(4 + 2√3·cosφ). O termo cruzado é 2√3·I1, não 2I1 (que vale apenas para fontes de mesma intensidade). Não escrever I = I1 + I2 (ignora a interferência). Checagem: em φ = 0 deve dar (1+√3)²·I1.",
+      "Diferença de caminho: Δ = a·sinθ, pois é a projeção de F1F2 na direção de P. Não usar a·tanθ nem a·θ. Numericamente, com a = 0,05 e L = 1 e θ = 10°, o valor exato é 0,008680, a·sinθ dá 0,008682 (erro ~0,03%) e a·tanθ dá 0,008816 (erro ~1,6%).",
+      "θ é medido a partir da horizontal que passa pelo ponto médio (perpendicular ao alinhamento das fontes), não a partir de F1 ou F2. Isso determina o uso de sinθ.",
+      "Hipótese L ≫ a: justifica raios praticamente paralelos e r1 + r2 ≈ 2L/cosθ, o que leva a Δ = a·sinθ. Sem ela a fórmula não vale.",
+      "Mínimo não nulo: como A1 ≠ A2, I_min = (4 − 2√3)·I1 ≈ 0,54·I1 > 0. Responder I_min = 0 é erro conceitual, válido só para amplitudes iguais.",
+      "Máximo e mínimo trocados: máximo ⇔ φ = 2πm ⇔ a·sinθ = mλ; mínimo ⇔ φ = (2m+1)π ⇔ a·sinθ = (2m+1)λ/2. O primeiro mínimo (sinθ = λ/2a) vem antes do primeiro máximo (sinθ = λ/a).",
+      "'Primeiro máximo para θ > 0' exclui o máximo central em θ = 0 (m = 0). O resultado é m = 1, com sinθ = λ/a, e não θ = 0.",
+      "Condições de existência: θ₁ = arcsin(λ/a) exige a > λ, e θ₂ = arcsin(λ/2a) exige a > λ/2. Se a < λ não há máximo secundário e o item (b) não tem resposta. Esta hipótese é implícita no enunciado.",
+      "Dependência de I1 com θ: as posições exatas dos extremos satisfazem dI/dθ = 0, que inclui o termo I1'(θ)·(4 + 2√3·cosφ), e não φ = mπ. A resposta padrão assume I1 aproximadamente constante na franja. Exemplo: com I1 = cos²θ e a = 5λ, o primeiro máximo fica em 0,2004 rad contra 0,2014 rad da fórmula (~0,5%).",
+      "A resposta deve ficar em função de I1(θ), avaliada em θ₁ (máximo) ou θ₂ (mínimo). Não substituir por I1(0) nem por um valor constante sem justificar.",
+      "Unidades e argumentos: λ e a na mesma unidade, sinθ adimensional, e o argumento do cosseno em radianos (2πa·sinθ/λ).",
+      "Formas equivalentes devem ser aceitas, por exemplo 2I1(θ)[2 + √3·cos(...)]. Verificar a equivalência algébrica em vez de exigir a forma exata."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) $I(\\theta)=I_1(\\theta)\\left[4+2\\sqrt{3}\\cos\\left(\\frac{2\\pi a\\sin\\theta}{\\lambda}\\right)\\right]$, pois $I_2=3I_1$ dá amplitudes na razão $\\sqrt3$ e a diferença de caminho em $P$ é $a\\sin\\theta$.\nb) Primeiro máximo com $\\theta>0$ em $\\sin\\theta_1=\\lambda/a$: $I_{\\max}=(4+2\\sqrt3)\\,I_1(\\theta_1)=2(2+\\sqrt3)\\,I_1(\\theta_1)\\approx 7{,}46\\,I_1(\\theta_1)$.\nc) Primeiro mínimo com $\\theta>0$ em $\\sin\\theta_2=\\lambda/(2a)$: $I_{\\min}=(4-2\\sqrt3)\\,I_1(\\theta_2)=2(2-\\sqrt3)\\,I_1(\\theta_2)\\approx 0{,}536\\,I_1(\\theta_2)$; não é nulo porque $I_1\\ne I_2$.\nANSWER: a) $I(\\theta)=I_1(\\theta)\\left[4+2\\sqrt{3}\\cos\\left(\\frac{2\\pi a\\sin\\theta}{\\lambda}\\right)\\right]$; b) $I_{\\max}=(4+2\\sqrt{3})\\,I_1(\\theta_1)$ com $\\sin\\theta_1=\\lambda/a$; c) $I_{\\min}=(4-2\\sqrt{3})\\,I_1(\\theta_2)$ com $\\sin\\theta_2=\\lambda/(2a)$.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 4: a fórmula δθ ≈ (1+2/√3)·(dlnI1/dθ)·λ²/(4π²a²cos²θ) só vale para os máximos. Para os mínimos o coeficiente é (1−2/√3), com sinal oposto. Verifiquei numericamente (I1=cos²θ, a=5λ): o máximo desloca −9,24·10⁻⁴ rad (a fórmula dá −9,28·10⁻⁴, correta); o mínimo desloca +3,18·10⁻⁵ rad, mas a fórmula do candidato aplicada ao mínimo daria −4,4·10⁻⁴. O texto apresenta uma expressão única para 'os extremos locais', o que é falso para metade dos casos. A ordem de grandeza e a conclusão ('desprezível') continuam válidas e não alteram nenhuma resposta. Deve-se dar as duas expressões ou restringir a fórmula ao máximo."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 4 afirma que a correção é desprezível sem derivação completa nem verificação numérica. A referência traz o exemplo que a confirma (primeiro máximo em 0,2004 rad contra 0,2014 rad da fórmula; eu obtive 0,200434 contra 0,201358, desvio de ~0,46%). Recomenda-se incluir pelo menos a ordem de grandeza e esse exemplo."
+          },
+          {
+            "severity": "minor",
+            "description": "Nas 'Conferências finais' o candidato diz que os ângulos são pequenos 'como exige L≫a'. Isso é um non sequitur: L≫a não impõe θ pequeno. A pequenez de θ vem de sinθ = λ/a com a≫λ. A justificativa deve ser corrigida."
+          },
+          {
+            "severity": "minor",
+            "description": "Validade das respostas (b) e (c) mal delimitada. O candidato adota a≫λ como hipótese, mas escreve 'existe se a≥λ' e 'existe se a≥λ/2'. Em a=λ tem-se θ1=90°, fora da geometria usada (expansão de r1,2 e aproximação de δθ). Em a=2λ, θ1=30° e o deslocamento já é da ordem de 4%. A resposta deveria declarar validade para a≫λ (por exemplo a ≳ 2–3λ) e excluir explicitamente o caso a=λ, em vez de usar a≥λ."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta a checagem de unidades e argumentos exigida pela referência: λ e a na mesma unidade, sinθ adimensional e argumento do cosseno em radianos (2πa·sinθ/λ). O candidato não menciona nenhum dos três pontos."
+          },
+          {
+            "severity": "minor",
+            "description": "Passos 2, 5 e 6 têm rigor incompleto. A relação r1,2 ≈ R ∓ (a/2)sinθ é afirmada sem a expansão (r1² = R² − aR sinθ + a²/4, descartando termos O(a²/R)). Na escolha do 'primeiro' máximo e mínimo, não se diz que m = −1 dá θ<0 nem que a·sinθ cresce monotonicamente para θ>0. Essas são lacunas pequenas, mas um gabarito comentado as explicitaria."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à da referência nos três itens: (a) I(θ) = I1(θ)[4 + 2√3·cos(2πa·sinθ/λ)]; (b) sinθ1 = λ/a e I_max = (4+2√3)·I1(θ1) ≈ 7,46·I1(θ1); (c) sinθ2 = λ/(2a) e I_min = (4−2√3)·I1(θ2) ≈ 0,536·I1(θ2), não nulo porque A1 ≠ A2. Conferi tudo numericamente: a diferença de caminho exata coincide com a·sinθ a menos de O(a/L), enquanto a·tanθ se afasta (a=5λ, L=1000λ, θ=11,5°: exato 0,996837, a·sinθ 0,996840, a·tanθ 1,017); a resultante bate com o cálculo exato; com I1=cos²θ, a=5λ e L=10⁶λ, os primeiros extremos com θ>0 caem em 0,200434 rad (máximo) e 0,100199 rad (mínimo), coerentes com as previsões e com a correção de deslocamento. As armadilhas da referência foram tratadas (razão de intensidades, termo cruzado 2√3·I1, Δ = a·sinθ com θ medido a partir da horizontal pelo ponto médio, L≫a, mínimo não nulo, máximo/mínimo não trocados, exclusão de m=0, existência de θ1 e θ2, dependência de I1 com θ), exceto a checagem de unidades e de argumento em radianos. As falhas estão em comentários e justificativas, não na resposta: a fórmula de deslocamento dos extremos vale só para máximos, há uma justificativa de ângulos pequenos mal atribuída a L≫a, a validade a≫λ está subespecificada e faltam algumas expansões. Nota 8: resolução sólida e correta, mas que ainda precisa das correções listadas para ser publicada como gabarito comentado.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "a) $I(\\theta)=I_1(\\theta)\\left[4+2\\sqrt{3}\\cos\\left(\\frac{2\\pi a\\sin\\theta}{\\lambda}\\right)\\right]$; b) $I_{\\max}=(4+2\\sqrt{3})\\,I_1(\\theta_1)\\approx 7{,}46\\,I_1(\\theta_1)$, com $\\sin\\theta_1=\\lambda/a$; c) $I_{\\min}=(4-2\\sqrt{3})\\,I_1(\\theta_2)\\approx 0{,}536\\,I_1(\\theta_2)$, com $\\sin\\theta_2=\\lambda/(2a)$. Válido para $a\\gg\\lambda$.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A conferência 'I_max/I_min = ((1+√3)/(√3−1))² = (2+√3)² ≈ 13,9, igual a 7,46/0,536' é uma identidade só dos fatores de franja g_max/g_min. Como I1 depende de θ e θ1 ≠ θ2, I_max/I_min = (2+√3)²·I1(θ1)/I1(θ2). Com I1 = cos²θ e a = 5λ, a razão dos extremos dá ≈ 13,5, não 13,9. Deveria escrever g_max/g_min ou explicitar a dependência de I1. Esse mesmo erro aparece na resolução de referência."
+          },
+          {
+            "severity": "minor",
+            "description": "Condições de existência não enunciadas. O item (b) exige a > λ (sinθ1 = λ/a ≤ 1; para a < λ não há segundo máximo com θ real e o item não tem resposta). O item (c) exige a > λ/2. O texto só diz que a = λ daria θ1 = 90° e que 'a ≫ λ' é necessário. Isso é mais restritivo que o necessário e deixa implícito o intervalo λ/2 < a ≤ λ no item (c). Deveria enunciar as duas condições explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação 'Os itens (b) e (c) exigem também a ≫ λ' é superestimada. Com I1 constante, as posições φ = nπ são exatas para qualquer a. O erro vem só da dependência de I1(θ), e é O((λ/a)²). Os próprios números do candidato confirmam isso: erro em θ1 de ~3,8% para a = 2λ, ~0,5% para a = 5λ, ~0,1% para a = 10λ. Deveria tratar a fórmula como aproximação com erro O((λ/a)²), e não como condição de validade estrita."
+          },
+          {
+            "severity": "minor",
+            "description": "O passo 4 (linearização de δθ e tabela de erros) está correto. Verifiquei: δθ_max = −9,28·10⁻⁴ rad pela fórmula contra −9,24·10⁻⁴ rad exato, e δθ_min = +3,18·10⁻⁵ rad exato. Mas é muito além do que um gabarito de 1,0 ponto precisa. A resolução fica longa e a linha principal da resposta fica diluída. Sugestão: uma observação curta com o erro O((λ/a)²), e a linearização movida para um apêndice ou removida."
+          },
+          {
+            "severity": "minor",
+            "description": "Justificativa imprecisa da média: 'a média sobre uma franja é I1+I2 = 4I1, como exige a conservação da energia'. O motivo direto é que o termo cruzado 2√(I1I2)cosφ tem média nula sobre um período de φ. A conservação de energia é a interpretação física, não a justificativa."
+          }
+        ],
+        "summary": "Resposta final do candidato confere com a referência nos três itens e confere com minha verificação numérica. (a) I(θ) = I1(θ)[4 + 2√3 cos(2πa sinθ/λ)]; (b) I_max = (4+2√3)I1(θ1), sinθ1 = λ/a; (c) I_min = (4−2√3)I1(θ2), sinθ2 = λ/(2a). A diferença de caminho exata (geometria com O no ponto médio e θ medido da horizontal) bate com a·sinθ até erro relativo ~3·10⁻¹² para a = 5λ e L = 10⁶λ. Os extremos exatos com I1 = cos²θ batem com o texto do candidato: máximo em 0,200434 rad, desvio −9,24·10⁻⁴ rad (linearização −9,28·10⁻⁴); mínimo em 0,100199 rad, desvio +3,18·10⁻⁵ rad; I no máximo difere de (4+2√3)I1(θ1) em 0,019%; erros em θ1 de ~3,8%, 1,4%, 0,46% e 0,11% para a = 2λ, 3λ, 5λ e 10λ. A resolução cobre quase todas as armadilhas da referência: razão de amplitudes, termo cruzado 2√3·I1, Δ = a sinθ com derivação, θ a partir do ponto médio, máximo e mínimo não trocados, exclusão de m = 0, mínimo não nulo, e dependência de I1(θ). Falta enunciar explicitamente a > λ (item b) e a > λ/2 (item c), e a afirmação 'exigem a ≫ λ' é mais forte que o necessário. Há ainda uma identidade de razão I_max/I_min tratada como exata quando só vale para os fatores de franja, e a parte de linearização é longa para um item de 1,0 ponto. Nada disso invalida a resposta. Nota 8,5: não chega a 9 porque um gabarito publicável enunciaria as condições de existência e não carregaria a razão mal rotulada nem o desenvolvimento excessivo."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "a) $I(\\theta)=I_1(\\theta)\\left[4+2\\sqrt{3}\\cos\\left(\\frac{2\\pi a\\sin\\theta}{\\lambda}\\right)\\right]$. b) Primeiro máximo com $\\theta>0$ (para $a>\\lambda$): $\\sin\\theta_1=\\lambda/a$ e $I_{\\max}=(4+2\\sqrt{3})\\,I_1(\\theta_1)\\approx 7{,}46\\,I_1(\\theta_1)$. c) Primeiro mínimo com $\\theta>0$ (para $a>\\lambda/2$): $\\sin\\theta_2=\\lambda/(2a)$ e $I_{\\min}=(4-2\\sqrt{3})\\,I_1(\\theta_2)\\approx 0{,}536\\,I_1(\\theta_2)$. Os valores de (b) e (c) são os extremos de interferência, exatos para $I_1$ constante e aproximados com erro $O(|L_1|\\lambda^2/a^2)$ rad em geral.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O bloco ANSWER dá I_max e I_min como valores exatos, mas eles valem apenas no limite em que I1 varia pouco na franja. A condição exata de extremo, dI/dθ = 0 ⇔ g′ + κ(θ)·g = 0 com κ = d ln I1/dθ, não aparece por escrito, e o deslocamento δθ aparece só como O(·). Deveria escrever a condição exata, marcar a aproximação no ANSWER e dar o coeficiente. Verificado numericamente: δθ ≈ (2+√3)·κ·λ²/(4√3·π²·a²·cos²θ₁), que para a=5λ e I1=cos²θ dá −0,000929 rad, contra −0,000924 rad do cálculo exato."
+          },
+          {
+            "severity": "minor",
+            "description": "A cadeia 'I_max > ⟨I⟩ = 4I1 > I_min' em Conferências compara valores avaliados em θ diferentes (θ₁, θ₂ e a média local). Não é uma desigualdade válida como escrita. Deveria ser removida ou reescrita como comparação no mesmo θ."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação: L1 (derivada logarítmica de I1) colide com L (distância ao anteparo) no mesmo texto. Deveria renomear, por exemplo κ(θ) = d ln I1/dθ."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha a·tanθ não é discutida explicitamente. A derivação está correta, pois usa a expansão de r1 e r2 e não tan. Faltou um contraste numérico que deixasse o ponto explícito: com a=0,05, L=1, θ=10°, o exato é 0,0086799; a·senθ erra 0,03%; a·tanθ erra 1,6%."
+          },
+          {
+            "severity": "minor",
+            "description": "Não há alerta explícito contra substituir I1(θ₁) ou I1(θ₂) por I1(0) ou por uma constante. As expressões finais usam I1(θ₁) e I1(θ₂) corretamente, então é apenas uma questão de clareza."
+          }
+        ],
+        "summary": "Parecer: resolução correta e rigorosa, nota 8,5. Não chega a 9 por causa de ressalvas de clareza e de uma cadeia de desigualdades mal formulada, não por erro físico.\n\nComparação item a item com a referência: (a) I(θ) = I1(θ)[4 + 2√3·cos(2πa·senθ/λ)]; (b) I_max = (4+2√3)·I1(θ₁) com senθ₁ = λ/a, para a > λ; (c) I_min = (4−2√3)·I1(θ₂) com senθ₂ = λ/(2a), para a > λ/2. As três respostas coincidem com a referência e as recalculei: estão corretas (answer_correct = true).\n\nVerificações numéricas que fiz (caminho exato, sem aproximação L≫a):\n- Com a=5λ, L=10⁶λ, I1=cos²θ: máximo exato em 0,200434 rad (candidato: 0,20043); previsto 0,201358 rad (candidato: 0,20136); diferença de intensidade no máximo 0,0189% (candidato: 0,019%). Confere.\n- Razão exata I_max/I_min = 13,509, contra 13,506 pela fórmula, ≈ 13,5. Confere.\n- θ₁ = 11,54° e θ₂ = 5,74°. Confere.\n- Com a=0,8λ há um máximo local de I em 1,0191 rad, e φ_max = 5,03 < 2π, logo não há máximo de interferência. A afirmação do candidato está correta e é uma boa observação.\n- Δ exato com a=0,05, L=1, θ=10°: 0,0086799; a·senθ erra 0,03%; a·tanθ erra 1,6%.\n\nPontos fortes: hipóteses explícitas; razão de amplitudes A2/A1 = √3 explícita; termo cruzado 2√3·I1 correto; expansão de r1 e r2 com erro O(a²/L) correta; monotonicidade de φ em (0, π/2) e paridade de n bem tratadas; casos de existência (a > λ, a > λ/2) e o caso a ≤ λ discutidos; verificação com (1+√3)² e (√3−1)²; resposta em radianos e sem dimensão.\n\nArmadilhas da referência: todas tratadas, exceto o contraste explícito com a·tanθ e o alerta contra I1(0). Os problemas listados são todos menores e não afetam a resposta."
+      }
+    }
+  ]
+}

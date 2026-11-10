@@ -1,0 +1,71 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Notação e hipóteses.} Seja $O$ o centro de $\mathcal{S}$ e $R=6\,\text{cm}$. Distingo a superfície esférica $\mathcal{S}=\{X:\ |X|=R\}$ da bola fechada $\mathcal{K}=\{X:\ |X|\le R\}$. "Contido na esfera" significa que o sólido do prisma está em $\mathcal{K}$. Como o prisma é reto, tomo o eixo $z$ paralelo às arestas laterais, com origem em $O$. As bases estão nos planos $z=a$ e $z=a+h$, com $h>0$ a altura. Um vértice de uma base é $(p_i,a)$, e o vértice correspondente da outra base é $(p_i,a+h)$, com $p_i\in\mathbb{R}^2$ ($i=1,2,3,4$, em ordem ao longo do contorno da base). Não supomos a base convexa nem quadrada.
+
+Usarei apenas que os oito vértices estão em $\mathcal{K}$. Assim a cota obtida vale qualquer que seja a face com vértices sobre $\mathcal{S}$ (base ou lateral).
+
+\textbf{Passo 1 (a base cabe num disco).} Os vértices $(p_i,a)$ e $(p_i,a+h)$ pertencem a $\mathcal{K}$, logo
+\[
+|p_i|^2\le R^2-a^2,\qquad |p_i|^2\le R^2-(a+h)^2 .
+\]
+Portanto $|p_i|^2\le R^2-M$, com $M=\max\{a^2,(a+h)^2\}$. Os quatro vértices da base estão no disco de centro $0$ e raio $r=\sqrt{R^2-M}$.
+
+\textbf{Passo 2 (área da base).} Seja $u\times v=u_1v_2-u_2v_1$ em $\mathbb{R}^2$. Pela fórmula de Gauss (cadarço), a área de um polígono simples, convexo ou não, é
+\[
+S=\tfrac12\left|p_1\times p_2+p_2\times p_3+p_3\times p_4+p_4\times p_1\right| .
+\]
+Expandindo e usando $-p_3\times p_2=p_2\times p_3$ e $-p_1\times p_4=p_4\times p_1$, obtemos
+\[
+(p_3-p_1)\times(p_4-p_2)=p_1\times p_2+p_2\times p_3+p_3\times p_4+p_4\times p_1 .
+\]
+Logo, se $\theta$ é o ângulo entre as diagonais $p_1p_3$ e $p_2p_4$,
+\[
+S=\tfrac12\,|p_3-p_1|\,|p_4-p_2|\,\operatorname{sen}\theta\le \tfrac12\,|p_3-p_1|\,|p_4-p_2| .
+\]
+Como $|p_3-p_1|\le |p_3|+|p_1|\le 2r$, e o mesmo vale para $|p_4-p_2|$, segue
+\[
+S\le 2r^2 .
+\]
+Para a igualdade, é preciso $|p_3-p_1|=|p_4-p_2|=2r$ e $\theta=90^\circ$. Como $|p_1|,|p_3|\le r$ e $|p_1|+|p_3|\ge|p_3-p_1|=2r$, vale $|p_1|=|p_3|=r$. Além disso $|p_3-p_1|^2=2r^2-2\,p_1\cdot p_3=4r^2$ dá $p_1\cdot p_3=-|p_1||p_3|$, e a igualdade em Cauchy–Schwarz força $p_3=-p_1$. O mesmo vale para $p_2,p_4$. Logo a base é um quadrado inscrito no círculo de raio $r$, com diagonais diâmetros perpendiculares.
+
+\textbf{Passo 3 (a altura).} Afirmo que $M\ge h^2/4$, com igualdade se e somente se $a=-h/2$. Como $a^2-(a+h)^2=-h(2a+h)$:
+\begin{itemize}
+\item se $2a+h\ge 0$, então $M=(a+h)^2$ e $a+h=\tfrac h2+\tfrac{2a+h}{2}\ge \tfrac h2$;
+\item se $2a+h\le 0$, então $M=a^2$ e $-a=\tfrac h2-\tfrac{2a+h}{2}\ge \tfrac h2$.
+\end{itemize}
+Nos dois casos $M\ge h^2/4$, e a igualdade exige $2a+h=0$. Ou seja, as bases devem ser simétricas em relação a $O$, nos planos $z=\mp h/2$.
+
+\textbf{Passo 4 (cota para o volume).} Pelos passos 1 e 3, $r^2=R^2-M\le R^2-\tfrac{h^2}{4}$. Com $R=6$,
+\[
+S\le 2r^2\le 2R^2-\frac{h^2}{2}=72-\frac{h^2}{2}\qquad(\text{cm}^2).
+\]
+Como $h>0$ e $V=Sh$ para o prisma reto,
+\[
+V\le 72h-\frac{h^3}{2}.
+\]
+Expandindo, $(h-4\sqrt3)^2(h+8\sqrt3)=h^3-144h+384\sqrt3$. Logo vale a identidade
+\[
+192\sqrt3-\Big(72h-\frac{h^3}{2}\Big)=\frac12\big(h-4\sqrt3\big)^2\big(h+8\sqrt3\big)\ge 0 ,
+\]
+pois $h+8\sqrt3>0$. Assim $V\le 192\sqrt3\ \text{cm}^3$ para todo $h>0$, com igualdade somente se $h=4\sqrt3\ \text{cm}$.
+
+\textbf{Passo 5 (o máximo é atingido e é único).} A igualdade $V=192\sqrt3$ exige, ao mesmo tempo: (i) base quadrada inscrita no círculo de raio $r$ centrado em $0$ (passo 2); (ii) $a=-h/2$ (passo 3); (iii) $h=4\sqrt3\ \text{cm}$ (passo 4). Então
+\[
+r^2=R^2-\frac{h^2}{4}=36-12=24,\qquad r=2\sqrt6\ \text{cm}.
+\]
+A diagonal da base vale $2r=4\sqrt6\ \text{cm}$, e o lado vale $\ell=\dfrac{2r}{\sqrt2}=4\sqrt3\ \text{cm}$.
+
+Admissibilidade: com $a=-2\sqrt3$, as bases estão em $z=\mp 2\sqrt3$. Cada vértice satisfaz $|X|^2=r^2+(2\sqrt3)^2=24+12=36$, logo os oito vértices estão em $\mathcal{S}$, e em particular os quatro de cada base, como pede o enunciado. Como $\mathcal{K}$ é convexa e o prisma é o fecho convexo de seus vértices, o prisma está contido em $\mathcal{K}$. Portanto $192\sqrt3$ é atingido. O prisma ótimo é o cubo de aresta $4\sqrt3\ \text{cm}$ inscrito em $\mathcal{S}$, e todos os cubos inscritos são congruentes entre si.
+
+\textbf{Conferências.}
+\begin{itemize}
+\item \textit{Checagem para bases quadradas (outra desigualdade):} se a base é quadrada de lado $\ell$, a diagonal espacial $\sqrt{2\ell^2+h^2}$ liga dois vértices, logo $2\ell^2+h^2\le 144$. Pela desigualdade entre médias, $(\ell^4h^2)^{1/3}\le\frac{2\ell^2+h^2}{3}\le 48$, donde $\ell^2h\le 48^{3/2}=192\sqrt3$. O resultado coincide. No ótimo, $\ell\sqrt3=12=2R$.
+\item \textit{Casos limites:} $72h-\tfrac{h^3}{2}\to 0$ quando $h\to 0$ ou $h\to 12=2R$, que é a altura máxima possível pois $R^2\ge M\ge h^2/4$. Esses são prismas degenerados, coerentes com o máximo interior em $h=4\sqrt3$.
+\item \textit{Unidades e ordem de grandeza:} $V_{\mathcal{K}}=\tfrac43\pi\,6^3=288\pi\approx 904{,}78\ \text{cm}^3$. A razão $\dfrac{192\sqrt3}{288\pi}=\dfrac{2}{\sqrt3\,\pi}\approx 0{,}368$ é a razão cubo/esfera esperada para um cubo inscrito. Os resultados estão em $\text{cm}^3$ e $\text{cm}$.
+\end{itemize}
+
+\textbf{Resposta.} (a) $V_{\max}=192\sqrt3\ \text{cm}^3\approx 332{,}55\ \text{cm}^3$. (b) O prisma é um cubo: altura $h=4\sqrt3\ \text{cm}\approx 6{,}93\ \text{cm}$ e base quadrada de lado $4\sqrt3\ \text{cm}\approx 6{,}93\ \text{cm}$ (diagonal da base $4\sqrt6\ \text{cm}\approx 9{,}80\ \text{cm}$).
+
+ANSWER: (a) $V_{\max}=192\sqrt{3}\ \text{cm}^3\approx 332{,}55\ \text{cm}^3$; (b) altura $h=4\sqrt{3}\ \text{cm}\approx 6{,}93\ \text{cm}$ e base quadrada de lado $4\sqrt{3}\ \text{cm}\approx 6{,}93\ \text{cm}$ (o prisma é o cubo de aresta $4\sqrt{3}\ \text{cm}$)

@@ -1,0 +1,56 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "a) Δt (Terra) = 12,09375 anos (≈ 12,1 anos); b) Δτ₂ = 9,675 anos (≈ 9,7 anos)",
+  "judge_reference": {
+    "final_answer": "a) Δt_Terra = 387/32 anos ≈ 12,09 anos (≈ 12,1 anos).\nb) Δτ_nave2 = 0,8 × 387/32 = 387/40 anos = 9,675 anos ≈ 9,7 anos.\n(Hipóteses: Sirius em repouso em relação ao Sistema Solar, distância de 8,6 a.l. medida no referencial da Terra, tamanho do Sistema Solar desprezado, as duas naves partindo do mesmo ponto em t0.)",
+    "reference_solution": "**Convenções e hipóteses.** Trabalho com c = 1, tempos em anos e distâncias em anos-luz. Referencial S é o da Terra, que é também o de Sirius e do Sistema Solar (repouso mútuo). A distância de 8,6 a.l. é medida em S, ou seja, é o comprimento próprio. O tamanho do Sistema Solar é desprezado. Origem: x = 0 é o ponto da fronteira do Sistema Solar e t = 0 é o instante t0. As duas naves estão em x = 0 em t = 0, porque as trajetórias são paralelas e a fronteira é atingida ao mesmo tempo. Ambas seguem para Sirius, em x = D = 8,6, e a nave 2 vai atrás da nave 1.\n\n**a) Tempo na Terra (referencial S)**\n\n1. A nave 1 chega a Sirius no instante t₁ = D/v₁ = 8,6/0,8 = 10,75 anos. Este é o evento de emissão: (t₁, x = 8,6).\n2. Nesse instante, a nave 2 está em x₂ = v₂·t₁ = 0,6 × 10,75 = 6,45 a.l., a 2,15 a.l. atrás da nave 1.\n3. O sinal volta para a nave 2 com velocidade c em S: x_s(t) = 8,6 − (t − 10,75). A nave 2 segue x₂(t) = 0,6·t.\n4. Igualando as duas posições: 8,6 + 10,75 − t = 0,6 t, logo 1,6 t = 19,35 e t = 19,35/1,6 = 387/32 ≈ 12,09 anos.\n\nConferência: a nave 2 está em x = 0,6 × 12,09375 = 7,25625 a.l. O sinal percorreu 8,6 − 7,25625 = 1,34375 a.l., que é igual a 12,09375 − 10,75 = 1,34375 anos. ✓\n\nOutra forma de ver: a taxa de aproximação no referencial S é c + 0,6c = 1,6c. Isso é uma taxa de fechamento de distância em um único referencial, não uma velocidade relativa. Por isso vale somar, e não se usa a composição relativística de velocidades. O tempo de aproximação é 2,15/1,6 = 1,34375 anos, e t = 10,75 + 1,34375 = 12,09375 anos.\n\n**Resposta (a):** Δt = 387/32 anos ≈ 12,09 anos ≈ 12,1 anos.\n\n**b) Tempo próprio da nave 2**\n\nA nave 2 move-se com velocidade constante v₂ = 0,6c desde t0 até receber o sinal. Os dois eventos (passar pela fronteira e receber o sinal) estão na linha de universo dela, e o relógio dela marca o tempo próprio entre eles. Então γ₂ = 1/√(1 − 0,36) = 1/0,8 = 5/4 e\n\nΔτ₂ = Δt/γ₂ = 0,8 × 387/32 = 387/40 = 9,675 anos.\n\nConferência 1 (invariante): τ² = t² − x² = 12,09375² − 7,25625² = 146,26 − 52,65 = 93,61, então τ = 9,675. ✓\n\nConferência 2 (referencial S′ da nave 2, por Lorentz com γ = 1,25 e v = 0,6):\n- Emissão: t′ = γ(t₁ − v·D) = 1,25 × (10,75 − 5,16) = 6,9875 anos e x′ = γ(D − v·t₁) = 1,25 × (8,6 − 6,45) = 2,6875 a.l.\n- Em S′ a nave 2 está em repouso na origem e o sinal viaja com c. O tempo extra é 2,6875 anos, logo t′_recepção = 6,9875 + 2,6875 = 9,675 anos. ✓\n\n**Resposta (b):** Δτ₂ = 387/40 anos = 9,675 anos ≈ 9,7 anos.",
+    "pitfalls": [
+      "Hipóteses que precisam ser declaradas: Sirius em repouso em relação ao Sistema Solar e à Terra; os 8,6 a.l. são medidos no referencial da Terra (comprimento próprio), portanto não há contração a aplicar nele; o tamanho do Sistema Solar é desprezado; as duas naves estão no mesmo ponto em t0, já que as trajetórias são paralelas e a fronteira é atingida ao mesmo tempo. Sem isso a posição inicial da nave 2 fica indefinida.",
+      "Entender 'tempo transcorrido na Terra' como tempo coordenado no referencial da Terra, com relógios sincronizados. Não é o instante em que um observador terrestre veria ou receberia a notícia, que incluiria atrasos de propagação da luz.",
+      "Usar o tempo próprio da nave 1 na viagem (8,6/0,8 × 0,6 = 6,45 anos, ou 8,6 × 0,6 = 5,16 anos) como se fosse tempo da Terra. O instante de emissão no referencial da Terra é 8,6/0,8 = 10,75 anos.",
+      "Esquecer que a nave 2 continua avançando enquanto o sinal viaja. Calcular o sinal como se a nave 2 estivesse parada em 6,45 a.l. dá 10,75 + 2,15 = 12,9 anos, valor errado.",
+      "Aplicar a composição relativística de velocidades à taxa de aproximação c + 0,6c e obter 'c', ou usar 0,4c ou outra combinação. No referencial da Terra, a distância entre o sinal e a nave 2 diminui a (1 + 0,6)c. Isso é uma taxa de fechamento num só referencial, não uma velocidade relativa.",
+      "Não esquecer que o sinal vai para trás (no sentido da Terra) e a nave 2 vem de trás. Se o sinal for tratado como se fosse na mesma direção que a nave 2 (perseguição), obtém-se 8,6 − ... com sinais trocados e o resultado fica errado.",
+      "No item (b), usar o γ errado (γ₁ = 5/3 da nave 1) ou dividir o tempo da Terra pelo fator do outro referencial. O correto é γ₂ = 5/4, porque a pergunta é sobre o relógio da nave 2. Pelo erro, obtém-se 12,09/(5/3) = 7,26 anos, valor errado.",
+      "A dilatação do tempo Δτ = Δt/γ só vale aqui porque os dois eventos (passar pela fronteira e receber o sinal) estão na linha de universo da nave 2, que tem velocidade constante. Para eventos em lugares diferentes do referencial da nave seria necessário usar Lorentz ou o invariante t² − x².",
+      "Fazer o item (b) como 'tempo da Terra − tempo de viagem do sinal' ou misturar contração de comprimento com dilatação do tempo sem escolher um referencial. O caminho seguro é ou calcular tudo em S e dividir por γ₂, ou transformar os eventos por Lorentz para S′ (ambos dão 9,675 anos).",
+      "Apresentar as expressões numéricas completas, como exige a prova: 387/32 ≈ 12,09 anos e 387/40 = 9,675 anos. Não deixar só 'γ' ou resultados simbólicos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "a) Δt (Terra) = 12,09375 anos (≈ 12,1 anos); b) Δτ₂ = 9,675 anos (≈ 9,7 anos)",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato não diz explicitamente que \"tempo transcorrido na Terra\" é o tempo coordenado do referencial S, com relógios sincronizados. Esse tempo não é o instante em que um observador terrestre veria ou receberia o evento, o que incluiria atrasos de propagação da luz. Essa ambiguidade é uma armadilha da questão e valia uma frase de declaração. A resolução usa a leitura correta, mas apenas de forma implícita."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conferência de (a), o tempo de aproximação 2,15/(c+v₂) usa a soma c+0,6c = 1,6c sem comentário. Falta dizer que essa soma é uma taxa de fechamento num único referencial (S), e não uma velocidade relativa, de modo que a composição relativística de velocidades não se aplica. Um leitor que confunde os dois conceitos pode estranhar o passo. O cálculo está correto, mas a justificativa conceitual não aparece."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), a justificativa de Δτ = Δt/γ₂ é só resumida. Ela vale porque os dois eventos (fronteira em t₀ e recepção do sinal) estão na linha de universo da nave 2, que tem velocidade constante. A resolução diz \"dois eventos sobre ela\", o que cobre a ideia. A segunda verificação por Lorentz compensa. Não há conferência pelo invariante t²−x² = 93,61, mas ela é dispensável."
+          },
+          {
+            "severity": "minor",
+            "description": "A \"Análise\" final é superficial. O comentário de que o tempo da Terra é \"um pouco maior que o de ida da nave 1, 10,75 anos\" pode confundir. Os 10,75 anos são o tempo da Terra para a nave 1, não o tempo próprio dela (6,45 anos). A frase é correta, mas imprecisa. Valeria dizer \"tempo da Terra até a emissão\"."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (página 11) e refiz as contas em Python. O candidato chega ao mesmo resultado da minha referência nos dois itens: (a) Δt = 387/32 = 12,09375 anos ≈ 12,1 anos e (b) Δτ₂ = 387/40 = 9,675 anos ≈ 9,7 anos. Os passos intermediários também coincidem: t₁ = 10,75; x₂(t₁) = 6,45; separação de 2,15 al; encontro em t = 19,35/1,6; γ₂ = 5/4; na transformação de Lorentz, t′ = 6,9875 e x′ = 2,6875. Conferi numericamente t′ e x′, e o invariante dá τ = 9,675.\\n\\nA resolução declara as hipóteses necessárias: referencial da Terra, Sirius em repouso, D como comprimento próprio, sistema Solar desprezível e naves no mesmo evento em t₀. Evita as armadilhas principais: não usa o tempo próprio da nave 1, não trata a nave 2 como parada, trata corretamente o sentido do sinal (indo ao encontro da nave 2) e usa γ₂ em vez de γ₁. Também dá duas verificações independentes e entrega as expressões numéricas completas, como a prova exige.\\n\\nFicam só ressalvas menores de rigor conceitual: a interpretação de \\\"tempo na Terra\\\" como tempo coordenado e a natureza da soma c+v₂ como taxa de fechamento ficam implícitas, e a seção de análise é rasa. Não há erro de conta, de física nem item sem resposta. É uma resolução de nível de gabarito comentado, com um pouco menos de explicitação conceitual do que o ideal."
+      }
+    }
+  ]
+}

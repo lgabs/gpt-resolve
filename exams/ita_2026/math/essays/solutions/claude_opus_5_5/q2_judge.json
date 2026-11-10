@@ -1,0 +1,47 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "n = 15. Calculando a entrada (1,3) de A^n, obtém-se n(n+3)/2. Para n = 14 ela vale exatamente 119, que não é maior que 119. Para n = 15 ela vale 135.",
+  "judge_reference": {
+    "reference_solution": "**Questão 02: resolução de referência**\n\n**1) Decomposição de A**\n\nEscreva A = I + N, com\nN = [[0,1,2],[0,0,1],[0,0,0]] (estritamente triangular superior, ou seja, nilpotente).\n\n- N² = [[0,0,1],[0,0,0],[0,0,0]]. A única entrada não nula é (N²)₁₃ = N₁₂·N₂₃ = 1·1 = 1.\n- N³ = N²·N = 0.\n\n**2) Fórmula para Aⁿ**\n\nAs matrizes I e N comutam. Por isso vale o binômio de Newton, e os termos com N^k, k ≥ 3, se anulam:\n\nAⁿ = (I + N)ⁿ = I + nN + C(n,2)N², com C(n,2) = n(n−1)/2. Para n = 1 a fórmula também vale, porque C(1,2) = 0.\n\nLogo\nAⁿ = [[1, n, 2n + n(n−1)/2], [0, 1, n], [0, 0, 1]].\n\nA entrada (1,3) é\naₙ = 2n + n(n−1)/2 = (n² + 3n)/2 = n(n+3)/2.\n\n*Caminho alternativo, por indução e recorrência:* suponha Aⁿ = [[1, n, aₙ],[0,1,n],[0,0,1]]. Então Aⁿ⁺¹ = Aⁿ·A = [[1, n+1, aₙ + n + 2],[0,1,n+1],[0,0,1]]. Daí aₙ₊₁ = aₙ + n + 2, com a₁ = 2, e portanto aₙ = 2 + Σ_{k=1}^{n−1}(k+2) = 2 + n(n−1)/2 + 2(n−1) = (n² + 3n)/2. A forma da matriz, incluindo a entrada (1,2) igual a n, também se mantém por indução.\n\n*Conferência:* a₁ = 2, a₂ = 5, a₃ = 9, a₄ = 14. Isso coincide com A² = [[1,2,5],[0,1,2],[0,0,1]] etc.\n\n**3) Inequação**\n\naₙ > 119 ⇔ n² + 3n > 238 ⇔ n² + 3n − 238 > 0.\n\n- Discriminante: Δ = 9 + 952 = 961 = 31².\n- Raízes: n = (−3 ± 31)/2, isto é, n = 14 ou n = −17. Então n² + 3n − 238 = (n − 14)(n + 17).\n- Como n ∈ ℕ, temos n + 17 > 0, e a condição equivale a n > 14 (desigualdade estrita).\n\nIsso também se vê pela monotonicidade: aₙ₊₁ − aₙ = n + 2 > 0, logo (aₙ) é estritamente crescente.\n\n- a₁₄ = (196 + 42)/2 = 238/2 = 119. Não serve, pois 119 não é maior que 119.\n- a₁₅ = (225 + 45)/2 = 270/2 = 135 > 119.\n\n**Resposta: n = 15.** De fato, A¹⁵ = [[1,15,135],[0,1,15],[0,0,1]]. Isso foi conferido calculando A¹,…,A¹⁶ em Python, com aₙ = 2, 5, 9, 14, 20, 27, 35, 44, 54, 65, 77, 90, 104, 119, 135, 152.",
+    "final_answer": "n = 15. A entrada (1,3) de Aⁿ é aₙ = n(n+3)/2. Para n = 14 ela vale exatamente 119, que não é maior que 119. Para n = 15 ela vale 135 > 119.",
+    "pitfalls": [
+      "Desigualdade estrita: para n = 14 a entrada vale exatamente 119. Responder n = 14 é o erro mais provável. A resposta correta é 15.",
+      "Justificar a fórmula de Aⁿ: dá para usar indução (Aⁿ⁺¹ = Aⁿ·A) ou o binômio de Newton com A = I + N. Adivinhar a fórmula a partir de A², A³ sem prova está incompleto e merece desconto.",
+      "No binômio é preciso dizer que I e N comutam e que N³ = 0, ou seja, que N é nilpotente. Quem não escreve isso deixa a justificativa incompleta.",
+      "Erro comum no cálculo de N²: a entrada (1,3) é N₁₂·N₂₃ = 1, não 2 nem 4. O 2 da posição (1,3) de A não entra em N².",
+      "Erro de 'potência entrada a entrada': supor que (Aⁿ)₁₃ = 2n ou 2ⁿ, ou elevar cada entrada à n-ésima potência. Para matrizes isso é falso.",
+      "A entrada (1,2) de Aⁿ é n e alimenta a recorrência aₙ₊₁ = aₙ + n + 2. Esquecer o termo n ou o termo 2 leva a outra fórmula.",
+      "Minimalidade: é preciso argumentar que nenhum n < 15 serve. Isso sai da solução da inequação quadrática (n − 14)(n + 17) > 0 com n > 0, ou da monotonicidade estrita de aₙ (aₙ₊₁ − aₙ = n + 2 > 0). Só mostrar que n = 15 funciona não basta.",
+      "Resolver a inequação com cuidado: Δ = 9 + 4·238 = 961 = 31², raízes 14 e −17. A raiz negativa é descartada porque n ∈ ℕ = {1, 2, 3, ...}.",
+      "Instrução 8 da prova: as expressões numéricas devem ser calculadas integralmente. O candidato deve mostrar a₁₄ = 119 e a₁₅ = 135 explicitamente."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "n = 15. Calculando a entrada (1,3) de A^n, obtém-se n(n+3)/2. Para n = 14 ela vale exatamente 119, que não é maior que 119. Para n = 15 ela vale 135.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato diz que a sequência a13(n) é 'estritamente crescente', mas não justifica. O argumento é redundante, porque a inequação (n−14)(n+17)>0 com n+17>0 já dá n>14 e, com isso, a minimalidade. Ainda assim, uma afirmação sem prova pode ser cobrada. Bastaria escrever a(n+1)−a(n)=n+2>0, ou notar que n e n+3 são positivos e crescentes."
+          },
+          {
+            "severity": "minor",
+            "description": "A fatoração n²+3n−238=(n−14)(n+17) aparece direto, sem Δ=961=31² e sem as raízes. Dá para conferir de cabeça (14·17=238 e 17−14=3), mas mostrar Δ ou a conferência do produto deixaria o passo mais explícito para o corretor, conforme a instrução 8."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 3 do PDF original, e a transcrição está correta. A resposta final do candidato é n = 15, a mesma da minha referência. Também conferi em Python as potências A¹ a A¹⁶: a entrada (1,3) de Aⁿ é n(n+3)/2, que vale 119 para n=14 e 135 para n=15. A resolução está correta e completa:\n(i) decompõe A = I + N e calcula N² corretamente, inclusive mostrando que a entrada (1,3) é 0·2+1·1+2·0 = 1, sem cair no erro de usar o 2 de A;\n(ii) justifica N³ = O e diz explicitamente que N é nilpotente;\n(iii) aplica o binômio de Newton e diz que vale porque I comuta com N;\n(iv) mostra que a fórmula também vale para n=1, porque C(1,2)=0;\n(v) confere a fórmula calculando A² diretamente (entrada 5);\n(vi) resolve a inequação com desigualdade estrita, descarta a raiz negativa porque n∈ℕ, e com isso prova a minimalidade;\n(vii) calcula por extenso a(14)=14·17/2=119 (não serve) e a(15)=15·18/2=135 (serve), como pede a instrução 8.\nTodas as armadilhas que listei foram tratadas. Restam só detalhes de apresentação: a monotonicidade é afirmada sem prova, mas não é necessária, e a fatoração aparece sem Δ, mas é fácil de conferir. É um texto que dá para publicar como gabarito comentado."
+      }
+    }
+  ]
+}

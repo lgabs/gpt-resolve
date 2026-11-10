@@ -1,0 +1,52 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) I = I1(θ)[4 + 2√3 cos(2πa senθ/λ)]; b) I_max = (4+2√3) I1(θ) ≈ 7,46 I1(θ), em a senθ = λ; c) I_min = (4−2√3) I1(θ) ≈ 0,536 I1(θ), em a senθ = λ/2.",
+  "judge_reference": {
+    "reference_solution": "**Modelo e hipóteses**\n- F₁ e F₂ são coerentes (mesma λ e em fase). Implicitamente, as polarizações também são iguais, para que haja interferência completa.\n- Em P, as intensidades individuais são I₁(θ) e I₂(θ) = 3·I₁(θ). Como I ∝ A², as amplitudes valem E₁ = E₀ e E₂ = √3·E₀, com I₁ = kE₀². A razão entre as amplitudes é √3, e não 3.\n- Como L ≫ a, os raios F₁P e F₂P são praticamente paralelos (aproximação de Fraunhofer). A diferença de caminho é a projeção de a na direção de P. Na figura, F₂ está abaixo e P acima, então F₂P > F₁P e\n  Δr = r₂ − r₁ = a·sen θ.\n- Diferença de fase em P: δ = k·Δr = 2π·a·sen θ / λ. O sinal de δ não importa, porque só cos δ entra no resultado.\n\n**a) Intensidade resultante**\nOs campos se somam: E = E₀cos(ωt − kr₁) + √3E₀cos(ωt − kr₂).\nA amplitude resultante sai da lei dos cossenos (fasores): A² = E₀² + 3E₀² + 2·E₀·√3E₀·cos δ.\nMultiplicando por k:\nI = I₁ + I₂ + 2√(I₁I₂)·cos δ = I₁ + 3I₁ + 2√3·I₁·cos δ\n\n**I(θ) = I₁(θ)·[4 + 2√3·cos(2π a sen θ / λ)]**\n\nFormas equivalentes:\n- I = 4I₁[1 + (√3/2)·cos(2πa sen θ/λ)]\n- I = I₁[(4+2√3)cos²(πa sen θ/λ) + (4−2√3)sen²(πa sen θ/λ)]\n- I = I₁[4 − 2√3 + 4√3·cos²(πa sen θ/λ)]\n\n**b) Primeiro máximo local para θ > 0**\nO fator de interferência é máximo quando cos δ = 1, ou seja, δ = 2πm. O valor m = 0 dá θ = 0, que é o máximo central e fica excluído. O primeiro máximo com θ > 0 corresponde a m = 1:\na·sen θ = λ → sen θ_max = λ/a (existe só se a ≥ λ).\n\nI_max = (4 + 2√3)·I₁(θ) = (1 + √3)²·I₁(θ) ≈ 7,46·I₁(θ), com I₁ avaliada em θ = arcsen(λ/a).\n\n**c) Primeiro mínimo local para θ > 0**\nO mínimo ocorre quando cos δ = −1, ou seja, δ = π (o primeiro com θ > 0):\na·sen θ = λ/2 → sen θ_min = λ/(2a) (existe só se a ≥ λ/2).\n\nI_min = (4 − 2√3)·I₁(θ) = (√3 − 1)²·I₁(θ) ≈ 0,536·I₁(θ), com I₁ avaliada em θ = arcsen(λ/(2a)).\n\nEsse mínimo não é zero, porque as amplitudes são diferentes: a interferência destrutiva deixa (√3E₀ − E₀)².\n\n**Observação de validade**\nOs extremos ficam exatamente em cos δ = ±1 quando I₁(θ) varia lentamente com θ em comparação com o termo de interferência. Essa é uma hipótese implícita no enunciado, já que a razão I₁/I₂ = 1/3 vale em qualquer P. Se I₁ variasse rapidamente, os extremos se deslocariam um pouco.\n\nConferência numérica: simulei a geometria exata com L = 10⁶λ e a = 3λ.\n- A expressão do item a) bate com a soma exata dos campos (erro ~10⁻⁸).\n- O primeiro mínimo aparece em θ = arcsen(1/6) com I = 0,5359·I₁ = 4 − 2√3.\n- O primeiro máximo aparece em θ = arcsen(1/3) com I = 7,4641·I₁ = 4 + 2√3.",
+    "final_answer": "a) I(θ) = I₁(θ)·[4 + 2√3·cos(2π a sen θ/λ)], o que equivale a I = I₁ + 3I₁ + 2√3·I₁·cos(2πa sen θ/λ).\n\nb) O primeiro máximo para θ > 0 fica em sen θ = λ/a: I_max = (4 + 2√3)·I₁(θ) = (1+√3)²·I₁(θ) ≈ 7,46·I₁(θ).\n\nc) O primeiro mínimo para θ > 0 fica em sen θ = λ/(2a): I_min = (4 − 2√3)·I₁(θ) = (√3−1)²·I₁(θ) ≈ 0,54·I₁(θ). O mínimo não é nulo.",
+    "pitfalls": [
+      "Razão de amplitudes: I₂ = 3I₁ dá A₂ = √3·A₁, não 3·A₁. Quem usa 3 chega a I = I₁(10 + 6cos δ) e erra tudo.",
+      "Somar intensidades (I = 4I₁) em vez de somar amplitudes ignora o termo de interferência 2√(I₁I₂)cos δ = 2√3·I₁cos δ.",
+      "O mínimo não é zero, porque as fontes têm intensidades diferentes: I_min = (√3−1)²I₁ = (4−2√3)I₁. Responder 0 no item c) é erro clássico.",
+      "No item b), o máximo central (θ = 0) fica excluído por 'θ > 0'. O primeiro máximo pedido é o de ordem 1 (a sen θ = λ), mas o valor da intensidade é o mesmo (4+2√3)I₁.",
+      "Diferença de caminho: com L ≫ a, os raios são paralelos e Δr = a·sen θ. Trocar sen θ por θ ou por tg θ = y/L é aproximação extra, não justificada pelos dados: o enunciado dá L ≫ a, mas não ângulos pequenos, e a pode ser da ordem de λ. Em θ = 0 não há diferença de caminho, porque as fontes estão simétricas em relação ao eixo.",
+      "A fase é δ = 2π a sen θ/λ, não π a sen θ/λ. O fator 1/2 só aparece se a resposta for escrita em cos²(δ/2) com os coeficientes corretos: I = I₁[4−2√3 + 4√3 cos²(πa sen θ/λ)].",
+      "I₁ depende de θ. Nos itens b) e c), I₁ deve ser avaliada no ângulo do extremo correspondente (arcsen(λ/a) e arcsen(λ/(2a))). A localização dos extremos em cos δ = ±1 supõe que I₁(θ) varie lentamente em relação ao termo de interferência.",
+      "Condições de existência: o primeiro máximo com θ > 0 exige a ≥ λ, e o primeiro mínimo exige a ≥ λ/2 (para ter sen θ ≤ 1).",
+      "Hipóteses implícitas: fontes coerentes, em fase e com a mesma polarização. Sem isso, não existe o termo cruzado completo.",
+      "O sinal da diferença de caminho (r₂ − r₁ ou r₁ − r₂) é irrelevante, porque o cosseno é par. Uma resolução não deve ser penalizada por isso."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) I = I1(θ)[4 + 2√3 cos(2πa senθ/λ)]; b) I_max = (4+2√3) I1(θ) ≈ 7,46 I1(θ), em a senθ = λ; c) I_min = (4−2√3) I1(θ) ≈ 0,536 I1(θ), em a senθ = λ/2.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A verificação ⟨I⟩ = 4I₁ = I₁ + I₂ está escrita de forma solta. I₁ depende de θ, e cos φ só tem média nula em uma média local, sobre algumas franjas, com I₁ quase constante. Não é uma média espacial global sobre o anteparo. O texto deveria dizer 'média local sobre franjas'."
+          },
+          {
+            "severity": "minor",
+            "description": "As condições de existência deveriam ser estritas: a > λ para o máximo e a > λ/2 para o mínimo. A igualdade dá θ = 90°, direção rasante que um ponto P de um anteparo a distância finita não atinge."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não declara que as fontes têm a mesma polarização. Essa hipótese implícita é necessária para que o termo cruzado 2√(I₁I₂)cos φ apareça inteiro."
+          }
+        ],
+        "summary": "A transcrição confere com o original da página 9. As três respostas finais coincidem com a referência e foram confirmadas numericamente pela soma exata dos campos, com L = 10⁶λ e a = 3λ.\n\n- **a)** I = I₁[4 + 2√3 cos(2πa sen θ/λ)]. O erro em relação à soma exata dos campos é de cerca de 7·10⁻⁹.\n- **b)** O primeiro máximo para θ > 0 fica em sen θ = λ/a, com I = (4+2√3)I₁ ≈ 7,464 I₁.\n- **c)** O primeiro mínimo para θ > 0 fica em sen θ = λ/(2a), com I = (4−2√3)I₁ ≈ 0,536 I₁.\n\nA resolução trata todas as armadilhas:\n- Usa a razão de amplitudes √3, e não 3.\n- Soma amplitudes, não intensidades.\n- A fase é 2πa sen θ/λ. Usa sen θ, não θ nem tg θ, e justifica pela aproximação de Fraunhofer com L ≫ a.\n- O sinal da fase é irrelevante, e a resolução diz isso.\n- No item b), exclui o máximo central e usa a ordem 1.\n- No item c), o mínimo não é nulo, e isso é explicado como (√I₂ − √I₁)².\n- Avalia I₁ no ângulo de cada extremo.\n- Supõe explicitamente que I₁(θ) varia lentamente com θ.\n- Dá as condições de existência dos extremos.\n- Confere a dimensão da fase.\n\nO texto é claro e bem organizado, no nível de um gabarito comentado. Há três ressalvas pequenas:\n- A afirmação da média ⟨I⟩ = 4I₁ está escrita de forma solta.\n- As condições de existência deveriam ser desigualdades estritas.\n- A resolução não menciona que as fontes precisam ter a mesma polarização."
+      }
+    }
+  ]
+}

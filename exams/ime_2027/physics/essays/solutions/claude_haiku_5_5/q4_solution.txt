@@ -1,0 +1,66 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses e convenções.} Gerador e receptores são modelados como fontes ideais de força eletromotriz (fcem) em série com resistências internas constantes, conforme o enunciado. Chave S, fusível F e fios têm resistência desprezível. O circuito é puramente resistivo (sem indutores nem capacitores): as correntes atingem o regime em $t = 0^+$ e permanecem constantes, sem transitório. Logo, o tempo de rompimento lido na curva é o tempo de atuação com corrente constante.
+
+Polaridade (Figura 1): em cada fonte, a placa longa (polo positivo) está do lado superior, voltada para A. Verificação de consistência: o gerador empurra corrente para A; se os polos positivos de Rec$_1$ e Rec$_2$ também estão voltados para A, a corrente entra neles pelo polo positivo e eles absorvem energia, como o enunciado afirma ao chamá-los de receptores.
+
+Convenções: $U = V_A - V_B$; $I$ é a corrente que sai do polo positivo do gerador, passa pelo fusível e chega a A (é também a corrente do fusível); $I_1$ e $I_2$ são as correntes que entram em Rec$_1$ e Rec$_2$ pelo polo positivo. Corrente negativa num receptor significa que ele passa a fornecer energia.
+
+\textbf{Equações do circuito.}
+Ramo do gerador (sobe $E$, cai $rI$): $U = E - rI = 1000 - 2I$.
+Ramos dos receptores (cai $\varepsilon_j + r_j I_j$): $U = \varepsilon_j + r_j I_j$, logo $I_1 = U - 850$ e $I_2 = \dfrac{U - 900}{2}$.
+Nó A (1ª lei de Kirchhoff): $I = I_1 + I_2$. Com $I = \dfrac{1000 - U}{2}$:
+\begin{align*}
+\frac{1000 - U}{2} &= (U - 850) + \frac{U - 900}{2} \\
+1000 - U &= 2U - 1700 + U - 900 = 3U - 2600 \\
+4U &= 3600 \quad\Rightarrow\quad U = 900\ \text{V}
+\end{align*}
+
+\textbf{a) Correntes logo após o fechamento de S.} Com $U = 900$ V, em $t = 0^+$:
+\begin{align*}
+I &= \frac{1000 - 900}{2} = 50\ \text{A}, \\
+I_1 &= 900 - 850 = 50\ \text{A}, \qquad I_2 = \frac{900 - 900}{2} = 0.
+\end{align*}
+Rec$_1$ recebe $50$ A pelo polo positivo e consome energia. Rec$_2$ fica sem corrente, porque $U$ coincide com a sua fcem.
+
+Verificação (balanço de potências): o gerador produz $EI = 1000 \cdot 50 = 50$ kW, dissipa $rI^2 = 2 \cdot 50^2 = 5$ kW e entrega $UI = 45$ kW ao restante do circuito. Rec$_1$ absorve $\varepsilon_1 I_1 = 42{,}5$ kW e dissipa $r_1 I_1^2 = 2{,}5$ kW, totalizando $45$ kW. Confere: $50 = 5 + 42{,}5 + 2{,}5$ kW.
+
+\textbf{b) Rompimento do fusível.} A razão de corrente é
+\[ \frac{I}{I_{\text{FUSÍVEL}}} = \frac{50}{20} = 2{,}5. \]
+Pela definição de $I_{\text{FUSÍVEL}}$ como corrente máxima admitida, para $I \le I_{\text{FUSÍVEL}}$ o fusível não rompe. Para $I > I_{\text{FUSÍVEL}}$ ele rompe em tempo finito, dado pela curva da Figura 2. Como $I = 50$ A é constante após $t = 0^+$, o rompimento ocorre no instante dado pela curva em $x = 2{,}5$.
+
+Leitura da Figura 2. Eixos lineares. A grade tem passo de $0{,}5$ nos dois eixos. As marcas 1 a 5 do eixo horizontal são equidistantes, assim como as marcas 1, 2, 3 e 4 s do eixo vertical; a marca $10^{-1}$ coincide com o patamar, que vale $0{,}1$ s. Pontos lidos: início do trecho inclinado $P_1 = (1{,}1;\ 3{,}8\ \text{s})$, logo após o trecho quase vertical em $x \approx 1{,}1$, e joelho $P_2 = (3{,}34;\ 0{,}1\ \text{s})$, onde a curva fica horizontal. A leitura de $x$ tem incerteza de cerca de $\pm 0{,}05$.
+
+Interpolação linear entre $P_1$ e $P_2$ (a curva é reta nesse trecho):
+\begin{align*}
+a &= \frac{0{,}1 - 3{,}8}{3{,}34 - 1{,}1} \approx -1{,}65\ \text{s}, \\
+t_{\text{rup}} &= 3{,}8 + a\,(2{,}5 - 1{,}1) \approx 3{,}8 - 1{,}65 \cdot 1{,}4 \approx 1{,}5\ \text{s}.
+\end{align*}
+Conferência gráfica: a curva cruza a linha $x = 2{,}5$ um pouco acima da grade horizontal de $1{,}5$ s. Estimo a incerteza de leitura em $\pm 0{,}05$ s, ou seja, $1{,}45\ \text{s} \le t_{\text{rup}} \le 1{,}55\ \text{s}$.
+
+Resultado: sim, o fusível rompe, em $t \approx 1{,}5$ s após o fechamento de S. O limite de 50 ms não se aplica aqui, porque não há curto-circuito.
+
+\textbf{c) Curto-circuito entre A e B no fechamento de S.} O enunciado prevê reposição de fusível, então o fusível é novo (não rompido em (b)). Com A e B ligados por fio ideal, $U = V_A - V_B = 0$, qualquer que seja a fcem. Logo:
+\begin{align*}
+I &= \frac{E - 0}{r} = \frac{1000}{2} = 500\ \text{A}, \\
+I_1 &= \frac{0 - 850}{1} = -850\ \text{A}, \qquad I_2 = \frac{0 - 900}{2} = -450\ \text{A}.
+\end{align*}
+Os sinais negativos mostram que Rec$_1$ e Rec$_2$ invertem o sentido da corrente e passam a fornecer energia ao curto. Pela 1ª lei de Kirchhoff no nó A, o fio do curto é percorrido de A para B por $500 + 850 + 450 = 1800$ A. No nó B, esses $1800$ A se dividem em $500$ A (gerador), $850$ A (Rec$_1$) e $450$ A (Rec$_2$). O fusível está só no ramo do gerador, por onde passam apenas $I = 500$ A; os $1800$ A do fio não o atravessam.
+
+Balanço: o gerador fornece $EI = 500$ kW e dissipa $rI^2 = 2 \cdot 500^2 = 500$ kW; sua potência externa $UI$ é nula, pois $U = 0$.
+
+A razão é
+\[ \frac{I}{I_{\text{FUSÍVEL}}} = \frac{500}{20} = 25. \]
+A Figura 2 vai somente até $x \approx 5$, então $x = 25$ exige extrapolação.
+
+Hipótese H: para $x > 3{,}34$ a característica é horizontal em $0{,}1$ s, como desenhada na figura. Esse patamar é o único dado disponível para correntes acima de $3{,}3\, I_{\text{FUSÍVEL}}$, e a figura não mostra nenhuma queda abaixo dele. Adota-se, então, $t_{\text{rup}}(25) = 0{,}1$ s $= 100$ ms. Como a corrente é constante desde $t = 0^+$, esse é o tempo durante o qual o gerador operaria com $500$ A antes da abertura do fusível.
+
+Comparação: $100$ ms $> 50$ ms. O gerador ficaria em curto-circuito por o dobro do tempo admissível, antes de o fusível atuar. Logo, o fusível não protege a fonte de tensão.
+
+Ressalva sobre H: a conclusão depende dessa extrapolação. Para proteger a fonte, seria necessário $t_{\text{rup}}(25) \le 50$ ms, ou seja, uma curva abaixo de $0{,}05$ s em $x = 25$, o que a figura não mostra. Se a curva real continuasse caindo além de $x \approx 3{,}3$, por exemplo com $t \propto 1/x^2$ (I$^2$t aproximadamente constante), teríamos $t_{\text{rup}}(25) \approx 1{,}5/100 \approx 15$ ms e o fusível protegeria a fonte. Essa queda não aparece na figura. Por isso, a resposta "não" vale para a característica fornecida (com o patamar H). Uma conclusão definitiva exigiria a curva do fabricante para $x > 5$.
+
+\textbf{Conferência.} Unidades: $\text{V}/\Omega = \text{A}$; $1000\ \text{V}/2\ \Omega = 500\ \text{A}$; $0{,}1\ \text{s} = 100$ ms; potências em $\text{V}\cdot\text{A} = \text{W}$. Sinais: em (a), corrente positiva em Rec$_1$ (consumo); em (c), corrente negativa nos receptores (fornecem energia). Casos particulares: em (a), Rec$_2$ fica em vazio porque $U$ coincide com sua fcem; em (c), $U = 0$ recupera $I = E/r$. Ordem de grandeza: $500$ A é $25$ vezes a corrente de projeto do fusível, e o fio do curto leva $1800$ A.
+
+ANSWER: (a) $I_{\text{Rec}_1} = 50\ \text{A}$ (consumindo, entrando pelo polo positivo) e $I_{\text{Rec}_2} = 0$, com $I = 50\ \text{A}$; (b) sim, o fusível rompe em $t \approx 1{,}5\ \text{s}$ (razão $2{,}5$; leitura entre 1,45 s e 1,55 s); (c) não, o fusível não protege a fonte: $I = 500\ \text{A}$ (razão $25$), $t_{\text{rup}} = 0{,}1\ \text{s} = 100\ \text{ms} > 50\ \text{ms}$, sob a hipótese H de patamar.

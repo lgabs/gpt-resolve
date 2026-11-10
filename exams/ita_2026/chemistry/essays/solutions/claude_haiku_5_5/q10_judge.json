@@ -1,0 +1,126 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.2,
+  "final_answer": "a) X = 226; b) Z = 86 (A = Rn-226, supondo que as únicas emissões de J são alfa); c) n = 3 partículas alfa.",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 10 – Resolução de referência (contas conferidas com python3: G = 232/90, E = 226/84, A = 226/86, n_alfa = 3)\n\nNotação: cada espécie é ^A_Z (A = número de massa, Z = número atômico, N = A − Z). Conforme o enunciado, X é a massa (número de massa) e Z é o número de prótons.\n\nPasso 0 – Espécie inicial\nJ: A = 238, Z = 92 → U-238.\n\nPasso 1 – Identificar G a partir de Q (condição iii)\nQ: A = 232, Z = 89 → Ac-232.\nDecaimento β⁻ (nêutron → próton + e⁻ + antineutrino): o número de massa não muda e o número atômico aumenta 1.\nG: A = 232, Z = 90 → Th-232.\nN_G = 232 − 90 = 142.\n\nPasso 2 – Identificar E (condições ii e iv)\n(iv) Z_E = 84 prótons.\n(ii) E é isótono de G → N_E = N_G = 142.\nA_E = Z_E + N_E = 84 + 142 = 226 → E = Po-226.\n\nPasso 3 – Identificar A (condição i) e o número de alfas (item c)\n(i) A é isóbaro de E → A_A = 226.\nJ forma A apenas por emissões alfa. Cada alfa: ΔA = −4 e ΔZ = −2.\nn_α = (238 − 226)/4 = 12/4 = 3.\nConferência pela carga: Z_A = 92 − 2·3 = 86 → A = Rn-226 (radônio).\nA diferença de massa é divisível por 4 e a carga bate, então a solução é consistente.\n\nPasso 4 – Respostas\na) X = 226 (número de massa de ²²⁶₈₆Rn).\nb) Z = 86 (número de prótons do radônio).\nc) 3 partículas alfa emitidas por J (²³⁸₉₂U → ²²⁶₈₆Rn; ΔA = 12, ΔZ = 6).\n\nObservação: Q = Ac-232, G = Th-232, E = Po-226, A = Rn-226 e J = U-238 são nuclídeos reais, o que reforça a coerência do enunciado. A resposta depende apenas do balanço de A e Z. As massas molares da tabela, as constantes e os logaritmos não são usados.",
+    "final_answer": "a) X = 226\nb) Z = 86 (A = ²²⁶₈₆Rn, radônio)\nc) 3 partículas alfa emitidas por J (²³⁸₉₂U)\n\nCadeia de identificação: J = U-238; Q = Ac-232; G = Th-232 (β⁻ de Q, Z + 1, A mantido); E = Po-226 (Z = 84, N = 142, igual ao de G); A = Rn-226 (isóbaro de E, A = 226, obtido de J por 3 alfas: 238 − 12 = 226 e 92 − 6 = 86).",
+    "pitfalls": [
+      "Notação ^X_Z A: X é o número de massa (superíndice) e Z o número de prótons (subíndice). Para o item a) a resposta é X = 226, não 86.",
+      "Decaimento β⁻ não altera A e aumenta Z em 1: Q (Z = 89) gera G com Z = 90 (Th), não 88 nem 91. Se o β for esquecido, N_G = 143, A_E = 227 e a diferença 238 − 227 = 11 não é múltiplo de 4, o que torna o cenário impossível para decaimentos só alfa. Esse teste de divisibilidade por 4 serve de checagem.",
+      "Isótono significa mesmo N = A − Z, não mesmo Z. Isóbaro significa mesmo número de massa A, não mesmo Z. Confundir os dois conceitos leva a E errado.",
+      "Para calcular E é preciso usar N_G = 142 e Z_E = 84, somando para obter A_E = 226. Não se deve usar Z_G no lugar de N_G.",
+      "O número de alfas sai da variação do número de massa: n = (238 − 226)/4 = 3. A carga confere: (92 − 86)/2 = 3. A cada alfa, ΔA = −4 e ΔZ = −2.",
+      "Z_A = 86 depende da premissa de que J se transforma em A somente por decaimentos alfa, como o enunciado afirma. Um β intermediário mudaria Z_A sem mudar A nem o número de alfas. O número de alfas (3) depende só da massa, mas Z = 86 depende da premissa.",
+      "Usar números de massa inteiros (238, 232, 226). A tabela de massas molares, as constantes e os logaritmos fornecidos na prova não se aplicam aqui.",
+      "Responder 'X = 226 u.m.a.' ou com unidade é desnecessário. X é um número de massa inteiro, adimensional na notação de nuclídeo.",
+      "Não confundir 'número de partículas alfa' com número de decaimentos de outro tipo. Aqui todos os decaimentos de J são alfa, então o número de alfas é 3."
+    ],
+    "reference_solution_placeholder": "unused"
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) X = 226; b) Z = 86 (o elemento A é o radônio, ${}^{226}_{86}$Rn); c) 3 partículas alfa. Equação: ${}^{238}_{92}$J → 3 ${}^{4}_{2}$He + ${}^{226}_{86}$A, com conservação de massa (238 = 12 + 226) e de número atômico (92 = 6 + 86) verificadas.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "O item b) (Z = 86) depende da premissa de que J decai apenas por emissões alfa. A resolução escreve 'O enunciado diz que J emite apenas partículas alfa', mas o enunciado diz 'sofre decaimentos de partículas alfa', sem 'apenas'. Além disso, a resolução não diz que essa premissa é o que fixa Z (e não n). Um decaimento β intermediário mudaria Z_A sem alterar A nem o número de alfas (n = 3). Deveria: apresentar a premissa como leitura do enunciado, sem atribuir-lhe o termo 'apenas', e explicar que ela determina Z."
+          },
+          {
+            "severity": "minor",
+            "description": "No Resultado, 'forma o rádio-isótopo de número de massa 226 e número atômico 86 (radônio)'. 'Rádio' é o elemento Ra (Z = 88), não Rn. O termo correto é 'radioisótopo' ou 'isótopo radioativo do radônio'. Como o parêntese corrige logo em seguida, o erro é mitigado, mas numa resposta de gabarito deveria ser corrigido para evitar confusão entre rádio e radônio."
+          },
+          {
+            "severity": "minor",
+            "description": "Colisão de notação. Na seção 'Convenções', 'E' é usado como símbolo genérico de núcleo ('^M_Z E'), mas E é também um elemento do enunciado (Po, Z = 84). Além disso, a resolução troca X por M para o número de massa e depois escreve 'X = M_A = M_E = 226', alternando X, M e A no mesmo passo. Deveria: usar um símbolo genérico que não colida com os elementos do enunciado e manter X, como no enunciado, ou explicar a troca uma única vez."
+          },
+          {
+            "severity": "minor",
+            "description": "A descrição do decaimento β⁻ ('um nêutron se transforma em próton e emite um elétron') omite o antineutrino do elétron (n → p + e⁻ + ν̄e). O balanço de M e Z não é afetado, mas uma descrição rigorosa de decaimento nuclear deveria incluí-lo. Deveria: acrescentar ν̄e à descrição ou à equação."
+          },
+          {
+            "severity": "minor",
+            "description": "Justificativa do uso de 238 como número de massa: a resolução escreve 'como no enunciado', mas o enunciado diz 'massa atômica igual a 238', e apenas X é descrito como 'massa'. A tratativa como número de massa inteiro é uma aproximação que deveria ser declarada em uma frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha dos dados não usados não é tratada. A tabela de massas molares, as constantes e os logaritmos da prova não são necessários para este item, e a resolução não diz isso. Deveria: incluir uma linha afirmando que esses dados são irrelevantes e que os números de massa inteiros bastam."
+          },
+          {
+            "severity": "minor",
+            "description": "Overclaims de linguagem. (1) 'valor inteiro e não negativo, portanto fisicamente válido': integralidade aritmética não estabelece validade física. (2) 'Isso confirma que o passo 1 está correto': o cenário sem β mostra apenas uma inconsistência em uma alternativa, o que é evidência, não confirmação. (3) 'plausível para uma cadeia que reduz M em 12 unidades': afirmação sem base no enunciado. Deveria: reformular como consistência aritmética e verificação de hipótese, sem linguagem de validação física."
+          },
+          {
+            "severity": "minor",
+            "description": "O nuclídeo Q (Z = 89, A = 232) não é identificado pelo nome (Ac-232), enquanto G (Th), E (Po) e A (Rn) são nomeados. Não é exigido pela questão, mas um gabarito comentado deveria nomear todos os nuclídeos da cadeia. Deveria: acrescentar 'Q = actínio-232 (Ac-232)' no Passo 1."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à referência: a) X = 226; b) Z = 86; c) n = 3 partículas alfa (J = ²³⁸₉₂U → 3 ⁴₂He + ²²⁶₈₆Rn). Refiz a cadeia com python3: Q = Ac-232 → G = Th-232 (β⁻: A mantido, Z + 1); N_G = 142; E = Po-226 (Z = 84, N = 142); A isóbaro de E tem A = 226; n = (238 − 226)/4 = 3; Z = 92 − 6 = 86. O balanço fecha (12 + 226 = 238; 6 + 86 = 92). Armadilhas bem tratadas: β⁻ com Z + 1 e A inalterado; definições de isótono e isóbaro; uso de N_G (não Z_G) para E; checagem de carga; ausência de unidades; e o cenário sem β (4n = 11, sem solução inteira), que é um bom acréscimo. Pontos que impedem um gabarito limpo: a premissa 'só alfa', que fixa Z, é atribuída ao enunciado com a palavra 'apenas' e não é sinalizada como dependência; há o termo errado 'rádio-isótopo'; o símbolo E colide com o elemento E; o β não menciona o antineutrino; os dados irrelevantes não são citados; e há alguns overclaims. Nenhum erro de conta ou conceito. Nota 8: publicável após os ajustes, mas abaixo de 9.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "a) X = 226; b) Z = 86 (A é o radônio-226, Rn, supondo que as únicas emissões de J são alfa); c) n = 3 partículas alfa. Cadeia: Q = Ac-232 →(β⁻) G = Th-232; E = Po-226 (isótono de G, Z = 84); A = Rn-226 (isóbaro de E); J = U-238 → 3 He-4 + Rn-226. Verificação: 12 + 226 = 238 e 6 + 86 = 92.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Convenções: a frase 'A diferença entre massa atômica e número de massa é de frações de unidade e não altera nenhum resultado inteiro aqui' é uma afirmação física não justificada e desnecessária. O ponto correto é outro: o enunciado fornece 238 e 232 como valores inteiros e a resolução os trata como números de massa por premissa. Deveria ser escrito como premissa de leitura, não como fato físico."
+          },
+          {
+            "severity": "minor",
+            "description": "Convenções: 'Os números de massa são tratados como inteiros, como a questão exige' atribui à questão uma exigência que ela não faz. Remover 'como a questão exige' ou reformular como escolha de leitura."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação: o enunciado usa A com superíndice X (massa) e subscrito Z (prótons). A resolução não faz esse mapeamento explicitamente, que é uma das armadilhas listadas. Além disso, usa X e M_A para o mesmo número sem necessidade. Bastaria uma linha ('no símbolo do enunciado, X é o superíndice = número de massa e Z o subscrito = prótons') e um único símbolo para a massa de A desde o início."
+          },
+          {
+            "severity": "minor",
+            "description": "Teste de sensibilidade: a frase 'Não comprova, por si só, a identificação de G, que decorre das leis de conservação' é confusa. O teste (4n = 11, sem solução inteira) é uma checagem de consistência, não uma prova. Deveria dizer isso de forma direta."
+          },
+          {
+            "severity": "minor",
+            "description": "Verbosidade: as seções 'Unidades' (sem conteúdo útil), 'Teste de sensibilidade' e a convenção geral de nuclídeo genérico são excessivas para uma questão cuja resposta são três inteiros. Para um gabarito comentado, o texto deveria ser mais enxuto e direto."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à referência: a) X = 226; b) Z = 86 (Rn-226); c) n = 3 partículas alfa. Conferi o enunciado no PDF (questão 10, página 12) e as contas com python3: Q = Ac-232 (Z = 89); β⁻ mantém A e sobe Z, então G = Th-232 com N_G = 142; E = Po-226 (Z = 84, N = 142); A isóbaro de E tem A = 226; n = (238 − 226)/4 = 3; Z_A = 92 − 6 = 86, com carga e massa conferidas. O teste sem β (N_G = 143, A_E = 227, 238 − 227 = 11, não divisível por 4) está correto. Todas as armadilhas da referência foram tratadas: N_G e não Z_G, ΔZ = +1 no β⁻, definições de isóbaro e isótono, X como número de massa, n pela variação de A, e a dependência de Z da premissa 'só alfa', formalizada como Z = 86 + k. Os problemas são de rigor de redação e clareza, não de conteúdo, e nenhum altera a resposta. Não chega a 9 porque uma seção de convenções contém afirmações não justificadas e a resolução é mais longa e menos enxuta do que um gabarito comentado precisaria."
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.2,
+      "final_answer": "a) X = 226; b) Z = 86 (A = Rn-226, supondo que as únicas emissões de J são alfa); c) n = 3 partículas alfa.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Enquadramento hesitante da premissa de que J decai apenas por alfa. O enunciado diz que J \"sofre decaimentos de partículas alfa e forma\" A, então a ausência de betas é dada e não uma escolha. O candidato escreve \"Aqui entra uma leitura do enunciado\", \"adotamos k = 0\" e, na linha ANSWER, \"Z = 86 (... supondo que as únicas emissões de J são alfa)\". Isso enfraquece uma resposta que o enunciado já determina. Correção: afirmar \"pelo enunciado, J decai só por alfa, logo k = 0\" e retirar o \"supondo\" da linha de resposta. A análise com k betas (Z = 86 + k) pode ficar como observação, pois está correta."
+          },
+          {
+            "severity": "minor",
+            "description": "Redação pouco precisa em dois pontos. (1) \"Isóbaros têm o mesmo M e Z diferente\" é ambíguo; o correto é \"mesmo M e Z diferente\" ou \"mesmo M, Z diferentes\". (2) A seção \"Sinais e unidades\" diz que os sinais de ΔZ foram usados nos balanços, mas os balanços do passo 4 e 5 são escritos como somas (238 = 4n + X; 92 = 2n + Z) e não como variações explícitas. Não há erro matemático, só imprecisão de texto."
+          }
+        ],
+        "summary": "Resposta final correta e igual à referência nos três itens: a) X = 226; b) Z = 86; c) n = 3 partículas alfa. Reli o enunciado original (página 12, Questão 10) e refiz a cadeia com python3: J = U-238; Q = Ac-232; G = Th-232 (β⁻ mantém A e aumenta Z em 1, N_G = 142); E = Po-226 (Z = 84, N = 142 igual ao de G); A = Rn-226 (isóbaro de E, A = 226); n = (238 − 226)/4 = 3; Z_A = 92 − 6 = 86. O caso sem o β de Q dá N_G = 143, A_E = 227 e resto 11, que não é divisível por 4, como o candidato afirma. Todas as armadilhas da referência foram tratadas explicitamente: notação ^X_Z A (X = massa, não 86); efeito do β⁻ (Z+1, A inalterado); definições de isótono (N igual) e isóbaro (A igual); uso de N_G = 142 e não Z_G = 90; n obtido do balanço de massa e confirmado pelo de carga; dependência de Z_A da premissa só-alfa, com análise de k betas (Z = 86 + k, correta); números de massa inteiros declarados como premissa; unidades tratadas (grandezas são contagens adimensionais). A resolução é rigorosa, bem organizada e publicável como gabarito comentado. Os descontos são só por hesitação de redação na premissa e por imprecisões de texto, sem erro de conteúdo.\""
+      }
+    }
+  ]
+}

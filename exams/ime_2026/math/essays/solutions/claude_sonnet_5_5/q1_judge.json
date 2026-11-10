@@ -1,0 +1,54 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "α = 3 e β = 2 (z = 3 + 2i)",
+  "judge_reference": {
+    "reference_solution": "**Questão 1 (IME 2026, Matemática discursiva)** — Dado: z = α + βi, com α, β ∈ ℤ*, e z³ = −9 + 46i. Determinar α e β.\n\n**1. Expansão (i² = −1, i³ = −i).**\nz³ = α³ + 3α²β i + 3αβ² i² + β³ i³ = (α³ − 3αβ²) + (3α²β − β³) i.\nIgualando partes real e imaginária (α, β reais):\n (R) α(α² − 3β²) = −9\n (I) β(3α² − β²) = 46\n\n**2. Módulo (condição necessária que reduz os candidatos).**\n|z|⁶ = |z³|² = (−9)² + 46² = 81 + 2116 = 2197 = 13³.\nLogo (α² + β²)³ = 13³. Como α² + β² é real positivo e t ↦ t³ é injetiva em ℝ, α² + β² = 13.\nEm inteiros, 13 = 4 + 9, então (|α|,|β|) ∈ {(2,3),(3,2)}, com os 8 sinais possíveis.\n\n**3. Teste dos candidatos.**\n- |α| = 2, |β| = 3: α² − 3β² = 4 − 27 = −23, então (R) daria α·(−23) = −9, impossível (±46 ≠ −9). Descartados. (Conferindo: (2+3i)³ = −46 + 9i, as partes trocadas.)\n- |α| = 3, |β| = 2: α² − 3β² = 9 − 12 = −3. (R): −3α = −9 ⇒ α = 3. (I): β(27 − 4) = 23β = 46 ⇒ β = 2.\n\n**4. Verificação direta.**\n(3 + 2i)² = 9 + 12i − 4 = 5 + 12i; (5 + 12i)(3 + 2i) = 15 + 10i + 36i − 24 = −9 + 46i ✓.\n\n**5. Unicidade (justificativa independente da enumeração).**\nPelos candidatos do passo 2, só (3, 2) serve, e como o passo 2 é necessário, é a única solução inteira. Confirmação por outro caminho: dividindo (R) por (I) e pondo t = α/β (β ≠ 0): (t³ − 3t)/(3t² − 1) = −9/46 ⇒ 46t³ + 27t² − 138t − 9 = 0 ⇒ (2t − 3)(23t² + 48t + 3) = 0. O discriminante do 2º fator é 48² − 4·23·3 = 2028 = 4·3·13², com √ = 26√3 irracional, então a única raiz racional é t = 3/2. Logo (α, β) = k(3, 2) com k inteiro; então z³ = k³(−9 + 46i) ⇒ k³ = 1 ⇒ k = 1. Também (α>0 etc. não é necessário): único par (3, 2).\n\n**6. Cuidado com as outras raízes.** A equação z³ = −9 + 46i em ℂ tem 3 raízes: 3 + 2i, ≈ −3,232 + 1,598i e ≈ 0,232 − 3,598i. As duas últimas não têm partes inteiras (diferem da primeira por multiplicação por ω = e^{2πi/3}). A hipótese \"α, β inteiros\" é o que isola 3 + 2i. (O \"não nulos\" é só um reforço: nenhuma solução inteira tem α = 0 ou β = 0, pois (R) e (I) não admitem isso.)\n\n**Resposta:** α = 3 e β = 2, isto é, z = 3 + 2i.\n\n(Conferido por Python: busca exaustiva em [−100,100]² retorna só (3,2); a fatoração da cúbica em t foi verificada.)",
+    "final_answer": "α = 3 e β = 2 (z = 3 + 2i). É a única solução com α e β inteiros; (3+2i)³ = −9 + 46i.",
+    "pitfalls": [
+      "Erro de sinal na expansão: i³ = −i. O termo −β³ i entra na parte imaginária e o termo 3αβ² i² = −3αβ² entra na parte real. Isso dá Re = α³ − 3αβ² e Im = 3α²β − β³. Errar um sinal leva a um sistema falso.",
+      "O módulo é só condição necessária: de (α²+β²)³ = 13³ sai α²+β² = 13, o que dá 8 candidatos (±2,±3) e (±3,±2). É obrigatório testar cada um nas partes real e imaginária; não basta parar no módulo.",
+      "Trocar α e β: (2+3i)³ = −46 + 9i, com as partes trocadas. Os pares (−3,2), (3,−2) e (−3,−2) têm módulo certo mas dão 9+46i, −9−46i e 9−46i. O sinal de α e de β precisa ser verificado explicitamente.",
+      "Justificar a passagem (α²+β²)³ = 13³ ⇒ α²+β² = 13: α²+β² é real positivo, e a injetividade de t³ em ℝ descarta qualquer outra raiz cúbica (as raízes complexas não reais não servem aqui).",
+      "Não basta 'chutar' 3+2i e verificar: a questão pede determinar α e β, então é preciso mostrar a unicidade, seja por enumeração via módulo, por divisibilidade (α | 9, β | 46) ou pela cúbica em t = α/β, cuja única raiz racional é 3/2.",
+      "A equação z³ = −9+46i tem 3 raízes complexas. As outras duas (≈ −3,232+1,598i e ≈ 0,232−3,598i) não são inteiras. A hipótese de coordenadas inteiras é o que dá resposta única, e a solução deve dizer isso.",
+      "Alternativa por divisibilidade: α(α²−3β²) = −9 ⇒ α | 9, e β(3α²−β²) = 46 ⇒ β | 46 (α ∈ {±1,±3,±9}, β ∈ {±1,±2,±23,±46}). Cobre-se tudo apenas combinando com α²+β²=13 ou testando todos os casos; testar só alguns é incompleto.",
+      "Conferir o resultado: (3+2i)² = 5+12i e (5+12i)(3+2i) = −9+46i. Uma resposta sem verificação final é frágil."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "α = 3 e β = 2 (z = 3 + 2i)",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 2 afirma que as únicas somas de dois quadrados positivos iguais a 13 são 4+9 e 9+4, mas não mostra a checagem. Basta escrever que 13−1=12 e 13−9=4, e que 12 não é quadrado perfeito. Isso é trivial, mas é o ponto em que a lista de candidatos é fechada."
+          },
+          {
+            "severity": "minor",
+            "description": "A unicidade depende de o módulo ser condição necessária, e isso poderia estar dito de forma explícita. O texto só diz 'a solução é única' no passo 4. Faltou escrever que α²+β²=13 vale para toda solução inteira, de modo que os casos restantes esgotam as possibilidades. O argumento está correto, mas fica implícito."
+          },
+          {
+            "severity": "minor",
+            "description": "Não menciona que z³=−9+46i tem três raízes complexas, e que as outras duas (≈−3,232+1,598i e ≈0,232−3,598i) não têm partes inteiras. Uma frase sobre isso mostraria que a hipótese de α e β inteiros é o que isola 3+2i. A omissão não afeta a correção."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 4, o caso |α|=2, |β|=3 é descartado só pela parte real, o que basta. Não comenta que (2+3i)³=−46+9i, que seria uma conferência cruzada simples, e a escrita '∓46' é compacta e exige que o leitor acompanhe o sinal."
+          }
+        ],
+        "summary": "A resposta α=3, β=2 (z=3+2i) está correta e coincide com a minha referência. Conferi no enunciado original do PDF e por busca exaustiva em Python em [−100,100]², que só retorna (3,2). A resolução expande z³ sem erro de sinal: Re=α(α²−3β²) e Im=β(3α²−β²). Obtém α²+β²=13 pelo módulo e justifica a passagem com |z|²>0 e a injetividade de t³. Reduz a {|α|,|β|}={2,3}, testa os dois casos nas partes real e imaginária e determina os sinais. Termina com a verificação direta (3+2i)²=5+12i e (5+12i)(3+2i)=−9+46i. As armadilhas principais foram tratadas: o sinal de i³, o módulo como condição necessária, a troca de α e β e a verificação final. Só ficaram implícitas a checagem de que 1+12 não serve, a menção às outras duas raízes cúbicas complexas e a declaração explícita de que o módulo é necessário, o que sustenta a unicidade. É um gabarito comentado publicável, conciso e correto, com apenas detalhes de acabamento."
+      }
+    }
+  ]
+}

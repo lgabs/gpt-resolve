@@ -1,0 +1,50 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{1) Forma fechada de $f$.} Para $x\in[0,1)$ temos $\sqrt{x^n}=(\sqrt{x})^n$ e $0\le\sqrt{x}<1$. Logo $f$ é uma série geométrica convergente de razão $\sqrt{x}$ e primeiro termo $\sqrt{x}$. Com $t=\sqrt{x}\in[0,1)$:
+\[
+f(x)=\frac{t}{1-t}.
+\]
+
+\textbf{2) Coeficiente angular da secante.} Sejam $s=\sqrt{a}\in[0,1)$ e $t=\sqrt{x}\in[0,1)$, com $t\neq s$ (pois $x\neq a$). Então
+\[
+f(x)-f(a)=\frac{t}{1-t}-\frac{s}{1-s}=\frac{t-s}{(1-t)(1-s)},\qquad x-a=t^2-s^2=(t-s)(t+s).
+\]
+Como $t\neq s$, podemos simplificar o fator $t-s$:
+\[
+m(t)=\frac{f(x)-f(a)}{x-a}=\frac{1}{(1-s)\,(1-t)(t+s)} .
+\]
+Observe que $m(t)>0$, pois $1-s>0$, $1-t>0$ e $t+s>0$ (se $t+s=0$ então $x=a=0$, o que é excluído).
+
+\textbf{3) Minimização.} Como o fator $\dfrac{1}{1-s}$ é constante e $(1-t)(t+s)>0$, minimizar $m$ equivale a \emph{maximizar}
+\[
+g(t)=(1-t)(t+s)=-t^2+(1-s)t+s,\qquad t\in[0,1).
+\]
+Trata-se de uma parábola de concavidade para baixo, com vértice em
+\[
+t_0=\frac{1-s}{2}\in\left(0,\tfrac12\right]\subset[0,1),
+\]
+que pertence ao domínio. O máximo é
+\[
+g(t_0)=\left(1-\frac{1-s}{2}\right)\left(\frac{1-s}{2}+s\right)=\frac{(1+s)^2}{4}.
+\]
+O ponto de mínimo só é admissível se $t_0\neq s$, isto é, $\frac{1-s}{2}\neq s\iff s\neq\frac13\iff a\neq\frac19$. É exatamente a restrição do enunciado: para $a=\frac19$ o mínimo seria atingido em $x=a$, que não define reta secante. Portanto, para $a\neq\frac19$, o menor coeficiente angular existe e vale
+\[
+m_{\min}=\frac{1}{(1-s)}\cdot\frac{4}{(1+s)^2}=\frac{4}{(1-\sqrt a)(1+\sqrt a)^2}.
+\]
+(O ponto correspondente é $x=\left(\frac{1-\sqrt a}{2}\right)^2$.)
+
+\textbf{4) Paralelismo.} A reta $ky-4x=2026$ tem coeficiente angular $\dfrac{4}{k}$ (para $k\neq0$; se $k=0$ seria vertical, o que é impossível, pois $m_{\min}$ é finito). Retas paralelas têm o mesmo coeficiente angular:
+\[
+\frac{4}{k}=\frac{4}{(1-\sqrt a)(1+\sqrt a)^2}\ \Longrightarrow\ k=(1-\sqrt a)(1+\sqrt a)^2=(1-a)(1+\sqrt a).
+\]
+
+\textbf{5) Conferência.} 
+Para $a=0$: $k=1$, e $m_{\min}=4$ ocorre em $x=\frac14$. Diretamente, $f(x)/x=\dfrac{1}{\sqrt{x}(1-\sqrt{x})}$ tem mínimo $4$ em $\sqrt{x}=\frac12$, o que confere. Verifiquei numericamente (varredura em $x$) os casos $a=0,\ 0{,}04,\ 0{,}25,\ 0{,}5,\ 0{,}81$, e o mínimo coincide com $4/k$. Além disso, $k>0$ para todo $a\in[0,1)$, de modo que a reta é bem definida.
+
+\[
+k=(1-\sqrt a)\,(1+\sqrt a)^2=(1-a)(1+\sqrt a).
+\]
+
+ANSWER: $k=(1-\sqrt{a})(1+\sqrt{a})^{2}=(1-a)(1+\sqrt{a})$

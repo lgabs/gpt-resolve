@@ -1,0 +1,125 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "a) det(AB) = 0. b) tr(AB) = n(n-1)/2. c) α1 = 1, α2 ∈ {1, -2}, α3 = 1, α4 ∈ R qualquer. Os itens b) e c) valem na leitura em que a soma das colunas de A é n-j. Com a hipótese literal sobre as colunas de AB, o enunciado é contraditório (as colunas n-1 e n de AB são iguais) e o conjunto solução de c) seria vazio.",
+  "judge_reference": {
+    "reference_solution": "**0. Estrutura das matrizes (vale para qualquer α_j)**\n\nPara j<i, a_ij = α_j^(i-j-1). A coluna j de A é (0,…,0, 1, α_j, α_j², …, α_j^(n-j-1))ᵀ, com n−j entradas não nulas. A coluna n de A é nula e A é estritamente triangular inferior. Use a convenção α^0 = 1, que vale também para α=0. Assim a_{j+1,j} = α_j^0 = 1 sempre.\n\nSeja c_j = 1 + α_j + … + α_j^(n-j-1) a soma da coluna j de A, com n−j parcelas. Em particular c_{n-1} = 1 e c_n = 0.\n\nB é triangular superior só de uns. Como b_jk = 1 ⇔ j ≤ k, vale (AB)_{ik} = Σ_{j=1}^{min(i-1,k)} α_j^(i-j-1).\n\nPortanto a coluna k de AB é a soma das colunas 1,…,k de A. A soma dos elementos da coluna k de AB é S_k = c_1 + … + c_k, com S_n = S_{n-1}, porque c_n = 0.\n\nPara k ≥ i−1 vale (AB)_{ik} = d_i := Σ_{j=1}^{i-1} α_j^(i-j-1). Logo:\n- as colunas n−1 e n de AB são idênticas;\n- a diagonal de AB coincide com a última coluna.\n\nConferi essas identidades numericamente, com frações exatas, para n=3,…,7 e α aleatórios. Exemplo com n=5 e α=(2,3,5,7): as colunas 4 e 5 são (0,1,3,8,23)ᵀ e (0,1,3,8,23)ᵀ, com somas 35 e 35.\n\n**a) det(AB)**\n\ndet(AB) = det A · det B. A primeira linha de A é nula, então det A = 0. Também vale det B = 1. Logo **det(AB) = 0**, para quaisquer α_j e sem usar a hipótese.\n\nConfirmação independente: AB tem duas colunas iguais (n−1 e n).\n\n**b) Traço de AB**\n\ntr(AB) = Σ_i (AB)_ii = Σ_{i=2}^{n} Σ_{j=1}^{i-1} α_j^(i-j-1) = Σ_{j=1}^{n-1} c_j = S_n.\n\nComo a diagonal de AB é a última coluna, o traço é a soma dos elementos da última coluna de AB. A hipótese com j=n dá S_n = n−n = 0. Logo **tr(AB) = 0**, constante e sem dependência de n.\n\nAlerta: o mesmo traço é S_{n-1}, a soma da coluna n−1, que a hipótese manda ser n−(n−1) = 1. Isso mostra que a hipótese é contraditória (veja c).\n\n**c) n = 5, enunciado literal**\n\nA hipótese S_k = 5−k para k=1,…,5 dá, por diferenças:\n- c_1 = 4;\n- c_2 = S_2−S_1 = 3−4 = −1;\n- c_3 = 2−3 = −1;\n- c_4 = 1−2 = −1;\n- c_5 = 0−1 = −1.\n\nObstruções:\n1. c_5 = 0 (coluna n de A é nula), mas a hipótese exige −1.\n2. c_4 = α_4^0 = 1, mas a hipótese exige −1. Equivalente: as colunas 4 e 5 de AB são idênticas e a hipótese exige somas 1 e 0.\n3. Mesmo ignorando as colunas 4 e 5, c_2 = 1+α_2+α_2² = −1 não tem raiz real, pois 1+x+x² ≥ 3/4 (discriminante de x²+x+2 é −7). Ela tem raízes complexas (−1±i√7)/2.\n4. c_1 = 4 ⇔ α_1³+α_1²+α_1−3 = (α_1−1)(α_1²+2α_1+3) = 0, que dá α_1 = 1 em ℝ.\n\nPortanto o sistema não tem solução (nem em ℝ, nem em ℂ). **Não existem α_1,…,α_4 reais que satisfaçam a hipótese literal: conjunto vazio.** Nesse caso (a) e (b) valem de forma vacuosa, e a hipótese como escrita não é realizável.\n\n**Leitura alternativa (não é o enunciado literal; não consegui confirmar o gabarito oficial)**\n\nSe a hipótese fosse sobre a soma das colunas de A, isto é, c_j = n−j, o problema fica consistente e o item (b) passa a depender de n.\n- (a) continua sendo 0.\n- (b) tr(AB) = Σ c_j = Σ_{j=1}^{n}(n−j) = **n(n−1)/2**.\n- (c) n=5:\n  - c_1 = 4 dá α_1 = 1;\n  - c_2 = 3 dá α_2² + α_2 − 2 = (α_2−1)(α_2+2) = 0, logo α_2 ∈ {1, −2};\n  - c_3 = 2 dá α_3 = 1;\n  - c_4 = 1 vale sempre, então α_4 é qualquer real.\n\nOutra leitura consistente: B triangular inferior (b_ij=1 se j ≤ i) tornaria S_k = Σ_{j≥k} c_j e exigiria c_j = 1. Para n=5 isso dá α_1 = 0, α_2 ∈ {0,−1}, α_3 = 0, α_4 livre, com tr(AB) = 0. Verifiquei numericamente com α=(0,−1,0,7).",
+    "final_answer": "Enunciado literal (conferido com a página 7 da prova):\na) det(AB) = 0, sempre.\nb) tr(AB) = 0. É a soma da última coluna, n−n = 0, e não depende de n.\nc) Para n=5 não existe nenhuma quadra (α_1,…,α_4) real que satisfaça a hipótese; o conjunto é vazio. A hipótese é autocontraditória: as colunas 4 e 5 de AB são idênticas, mas exigem somas 1 e 0.\n\nLeitura alternativa, conjectura minha sem gabarito oficial para confirmar: se a hipótese fosse sobre a soma das colunas de A, teríamos (a) 0, (b) n(n−1)/2 e, para n=5, α_1=1, α_2∈{1,−2}, α_3=1, α_4 qualquer real.\n\nO corretor deve conferir com o gabarito oficial ou errata qual leitura vale.",
+    "pitfalls": [
+      "A hipótese literal é inconsistente: (AB)_{ik} = Σ_{j≤min(i-1,k)} α_j^(i-j-1) faz as colunas n−1 e n de AB serem idênticas, mas o enunciado exige somas 1 e 0. Um candidato que força c_1=n−1 e c_j=−1 e 'acha' valores de α está errado. Uma boa resolução precisa detectar a contradição, ou avisar explicitamente que a hipótese não é realizável.",
+      "A soma da coluna k de AB é a soma parcial S_k = c_1+…+c_k das somas das colunas de A (a coluna k de AB é a soma das colunas 1..k de A). Confundir 'soma da coluna j de AB' com 'soma da coluna j de A' leva a respostas diferentes, e leituras diferentes dão resultados diferentes.",
+      "det(AB)=0 não exige a hipótese: A tem a primeira linha nula (é estritamente triangular), logo det A=0. Calcular o determinante via somas de colunas é desnecessário e arriscado.",
+      "O traço é a soma da última coluna de AB, porque a diagonal coincide com a última coluna (para k≥i−1, (AB)_{ik}=(AB)_{ii}). Isso dá 0, e também dá S_{n−1}=1: outro sinal da contradição. Não confundir o traço com a soma de todos os elementos, que vale n(n−1)/2 sob a hipótese literal.",
+      "O enunciado pede o traço 'em função de n', mas na leitura literal o resultado é constante (0). Qualquer resposta dependente de n, como n−1 ou n(n−1)/2, não decorre da hipótese literal; ela só aparece na leitura alternativa com a hipótese sobre A.",
+      "Em ℝ, 1+x+x² ≥ 3/4 > 0, então c_2=−1 é impossível para n=5 mesmo ignorando as colunas 4 e 5. Atenção: em ℂ, α_2=(−1±i√7)/2 resolveria só essa equação, mas c_4=1≠−1 e c_5=0≠−1 continuam impossíveis. O 'α∈ℝ' do enunciado não é a única obstrução.",
+      "a_{j+1,j}=α_j^0 deve valer 1 (convenção 0^0=1). Assim α_{n−1} só entra em A na entrada a_{n,n−1}=1 e nunca afeta AB. Na leitura alternativa, α_4 é livre, e esquecer isso é erro comum.",
+      "Na fatoração α_1³+α_1²+α_1−3=(α_1−1)(α_1²+2α_1+3), o segundo fator tem discriminante −8, então só α_1=1. Na leitura alternativa, α_2²+α_2−2=(α_2−1)(α_2+2) tem duas raízes reais, e perder α_2=−2 é erro comum. Não confundir as raízes de c_j=n−j com as de c_j=−1.",
+      "Não consegui confirmar o gabarito oficial: a prova não traz resposta e não pude consultar fontes externas. A resposta literal (∅) é a única matematicamente correta para o enunciado como está escrito; o corretor deve conferir com o gabarito ou errata oficial antes de penalizar quem adotou a leitura alternativa."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "(a) det(AB) = 0. (b) tr(AB) = 0, constante em n (a diagonal de AB coincide com a última coluna, cuja soma é n−n = 0). (c) Com B como impresso, a hipótese é contraditória: as colunas n−1 e n de AB são iguais, mas deveriam somar 1 e 0. Logo não há valores reais. Se B fosse triangular inferior (b_ij = 1 para j ≤ i): α1 = α3 = 0, α2 ∈ {0, −1}, α4 qualquer real.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "A leitura alternativa escolhida (B triangular inferior) dá traço 0, o que não explica o pedido do enunciado de traço 'em função de n'. A leitura mais natural, com a hipótese sobre as colunas de A (s_j = n−j), não é mencionada. Ela dá tr(AB) = soma de todos os elementos de A = n(n−1)/2, α_1 = 1, α_2 ∈ {1, −2}, α_3 = 1 e α_4 livre. Quem confere com o gabarito oficial pode ter essa leitura como a pretendida. O candidato deveria pelo menos citá-la e registrar que o 'em função de n' sugere um traço dependente de n. O corretor deve confirmar com o gabarito qual leitura vale."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b) o candidato afirma tr(AB) = c_n = 0 como resultado firme. Só depois mostra que a hipótese é absurda. Faltou dizer que (b) vale só vacuamente. O mesmo argumento (diagonal = coluna n−1 também) daria tr(AB) = c_{n−1} = 1. Esse segundo valor deixaria explícita a inconsistência do traço, e a ordem de apresentação fica pouco rigorosa."
+          },
+          {
+            "severity": "minor",
+            "description": "A linha final ANSWER mistura a resposta literal (∅) com uma resposta condicional a uma releitura do enunciado. O candidato deveria separar com mais clareza o que é a resposta ao enunciado como impresso do que é conjectura. O texto da solução já faz essa separação, mas a linha final dilui."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (a) usa det(AB) = det A · det B, mas não escreve det B = 1. É irrelevante, porque det A = 0, mas o passo fica incompleto. Poderia citar também a confirmação independente, que é a igualdade das colunas n−1 e n de AB."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (c) a impossibilidade só é mostrada pelas colunas 4 e 5 (s_4 = 1 ≠ −1) e por s_2 > 0. Não há menção a c_1 = 4 ⇔ (α_1−1)(α_1²+2α_1+3) = 0 (α_1 = 1) nem a c_5 = 0 ≠ −1. Isso não prejudica a conclusão, porque basta uma obstrução, mas o registro seria mais completo."
+          }
+        ],
+        "summary": "O enunciado da página 7 confere com a transcrição, com b_ij = 1 para j ≥ i (B triangular superior). Refiz as contas em Python com frações exatas e concordo com o candidato e com a referência:\n\n- A coluna k de AB é a soma das colunas 1..k de A (fórmula (1) do candidato).\n- A diagonal de AB coincide com a última coluna, e as colunas n−1 e n de AB são iguais. A hipótese literal (somas 1 e 0) é portanto impossível para todo n ≥ 2.\n- O exemplo n = 3 do candidato está correto: AB = [[0,0,0],[1,1,1],[α_1, α_1+1, α_1+1]], com somas 1+α_1, 2+α_1, 2+α_1. Conferi com α_1 = 2.\n- det(AB) = 0, porque a primeira linha de A é nula. Vale sem a hipótese.\n- tr(AB) = 0, constante.\n- Para n = 5 a hipótese dá s_1 = 4 e s_2 = s_3 = s_4 = −1. Isso é impossível: s_4 = a_54 = 1 sempre, e 1 + α + α² ≥ 3/4 > 0. O conjunto é vazio.\n\nA leitura alternativa com B triangular inferior também está correta e conferida numericamente: c_k = s_k + … + s_{n−1}, a hipótese equivale a s_j = 1, e para n = 5 resulta α_1 = α_3 = 0, α_2 ∈ {0, −1}, α_4 livre. Nessa leitura AB é estritamente triangular inferior, com det = tr = 0. As somas das colunas 4,3,2,1,0 foram verificadas.\n\nPontos fortes: detecta e prova a contradição, não confunde a soma da coluna de AB com a de A, trata a convenção α^0 = 1, trata α_4 livre e mostra que o resultado do traço não depende de n.\n\nPontos fracos: não cita a leitura da hipótese sobre as colunas de A (tr = n(n−1)/2; α_1 = 1, α_2 ∈ {1, −2}, α_3 = 1, α_4 livre), que explicaria o 'em função de n'. O item (b) é apresentado como resultado firme antes de se mostrar que a hipótese é inconsistente. A linha final mistura resposta literal e conjectura. Não consegui confirmar o gabarito oficial, então não penalizo a resposta literal (∅), que é a única matematicamente correta para o texto impresso. Nota 8,5: resolução correta, rigorosa e honesta, mas abaixo do nível de gabarito comentado publicável por causa da cobertura incompleta das leituras alternativas e da apresentação de (b).\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.0,
+      "final_answer": "(a) det(AB) = 0. (b) tr(AB) é a soma de todos os elementos de A. Com a hipótese literal sobre AB, o enunciado é inconsistente, porque as colunas n−1 e n de AB são iguais, mas as somas pedidas são 1 e 0. Com a hipótese lida sobre as colunas de A (a única leitura em que o traço depende de n), tr(AB) = n(n−1)/2. (c) Literalmente não há valores reais. Na leitura coerente (soma da coluna j de A igual a n−j): α1 = 1, α2 ∈ {1, −2}, α3 = 1, α4 qualquer real.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "Reli o enunciado na página 7 do PDF e ele bate com a transcrição. Conferi as contas com frações exatas para n=2..7, com α aleatórios, e também para n=3 com α=(2,0), n=5 com α=(1,-2,1,3) e (1,1,1,7), e a leitura com B triangular inferior. Tudo confirma o que o candidato afirma. (AB)_{ik}=Σ_{l≤min(i-1,k)}α_l^{i-l-1} está certa. As colunas n−1 e n de AB são idênticas. A diagonal de AB coincide com a última coluna. tr(AB) é a soma de todos os elementos de A. O exemplo n=3 dá AB=[[0,0,0],[1,1,1],[α₁,α₁+1,α₁+1]]. Com a hipótese lida sobre as colunas de A, as somas são 4,3,2,1,0 e tr(AB)=10 para n=5. Com B triangular inferior, tr(AB)=0 e AB é estritamente triangular inferior.\\n\\nConclusões do candidato, item a item:\\n- a) det(AB)=0, pelo argumento de que a primeira linha de A é nula, com confirmação independente pelas colunas repetidas. Correto, e não usa a hipótese.\\n- b) A identificação tr(AB)=soma de todos os elementos de A é correta. O candidato nota que, sob a hipótese literal, o traço seria c_n=0 e também c_{n−1}=1, e conclui que o item fica vácuo. Na leitura alternativa dá n(n−1)/2. Isso coincide com a minha referência, que dá 0 (vacuamente) no literal e n(n−1)/2 na leitura alternativa. Só falta o valor 0 aparecer na linha ANSWER.\\n- c) Enunciado literal: conjunto vazio, com as obstruções corretas (s₄=1≠−1, 1+α+α²≥3/4, c₅=c₄). Leitura alternativa: α₁=1, α₂∈{1,−2}, α₃=1, α₄ livre. Também correto e igual à referência. A fatoração (α₁−1)(α₁²+2α₁+3) com Δ=−8 e as duas raízes de α₂ estão certas.\\n\\nA resolução detecta a contradição, trata as armadilhas principais (soma parcial das colunas, det sem a hipótese, α₄ livre, convenção α⁰=1, raiz α₂=−2) e não confunde as leituras. Os defeitos são de apresentação e compromisso. A resposta final fica espalhada por três leituras e não diz qual delas o candidato entregaria. O valor literal 0 do traço não aparece na linha ANSWER. A afirmação 'única leitura em que o traço depende de n' é forte demais. Não há aviso de que o gabarito oficial não foi conferido. Por isso, 8 e não 9 ou mais.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O item b) não tem uma resposta única na linha ANSWER. O texto diz 'tr(AB) é a soma de todos os elementos de A; vácuo no literal; n(n−1)/2 na leitura sobre A'. O valor literal tr(AB)=0 (soma da última coluna, n−n) só aparece no corpo, de passagem ('seria c_n=0 e também c_{n−1}=1'). A resolução deveria dizer explicitamente que, no enunciado literal, tr(AB)=0 (constante, sem dependência de n) e que a hipótese é contraditória. Deveria também apontar n(n−1)/2 como a resposta pretendida, se o candidato acredita nisso."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não se compromete com uma leitura para entregar. Expõe três leituras (literal, hipótese sobre A, B triangular inferior) e deixa ao leitor escolher. Em prova de 2ª fase, ou em gabarito comentado, convém fechar assim: 'enunciado inconsistente; resposta literal X; leitura provável do examinador Y, com resposta Z'. O candidato quase faz isso, mas a linha ANSWER fica em formato de ramificação."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que a hipótese sobre A é a 'única leitura em que o traço depende de n' não está provada. O candidato só comparou três leituras. Não argumenta por que descarta outras, como hipótese sobre somas de linhas. A expressão deveria ser 'a leitura mais natural'."
+          },
+          {
+            "severity": "minor",
+            "description": "Não avisa que o gabarito oficial não foi conferido, nem que a leitura sobre as colunas de A é uma conjectura sobre a intenção do examinador. O texto chama a leitura de 'coerente' e 'única', o que passa mais certeza do que há. Também não diz que no literal os itens a) e b) valem apenas vacuosamente, exceto det=0, que vale sempre."
+          },
+          {
+            "severity": "minor",
+            "description": "A fórmula (1) e a convenção 0⁰=1 são dadas sem comentário. 'Convenção α_j⁰=1, pois a_{j+1,j}=1' é circular. Deveria dizer que a convenção é necessária para a_{j+1,j} estar definido quando α_j=0. Isso importa para α₄=0 na leitura alternativa e para α=0 na leitura com B inferior. Outro detalhe: o argumento literal de c) cobre s₂, s₄ e c₅=c₄, mas só comenta de passagem s₅ e a obstrução em ℂ. Isso não afeta o resultado."
+          }
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "a) det(AB) = 0. b) tr(AB) = n(n-1)/2. c) α1 = 1, α2 ∈ {1, -2}, α3 = 1, α4 ∈ R qualquer. Os itens b) e c) valem na leitura em que a soma das colunas de A é n-j. Com a hipótese literal sobre as colunas de AB, o enunciado é contraditório (as colunas n-1 e n de AB são iguais) e o conjunto solução de c) seria vazio.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "O ANSWER final dá b) e c) para uma leitura reescrita (soma das colunas de A), não para o enunciado impresso. A candidata avisa isso, mas depois chama a leitura B triangular inferior de \"menos plausível\" sem justificar. Essa leitura exige só inverter uma desigualdade na definição de B, o que é erro de digitação plausível, e deixa a hipótese sobre AB consistente. Conferi numericamente: com α=(0,−1,0,7) as somas das colunas de AB são 4,3,2,1,0 e tr(AB)=0. A leitura sobre A exige trocar AB por A. Sem o gabarito oficial não há base para ordenar as duas, então o ideal era apresentá-las em pé de igualdade, ou deixar o literal (∅) como resposta principal. Se o gabarito seguir a leitura B inferior ou a literal, o headline de b) e c) não bate."
+          },
+          {
+            "severity": "minor",
+            "description": "Na leitura literal, b) não recebe valor: \"nenhum valor é determinado\". A referência registra tr=0 (soma da última coluna, n−n), observando que também sai 1 pela coluna n−1. A posição da candidata é rigorosa, pois a hipótese é vacuosa. Faltou explicitar no ANSWER que, sob o enunciado literal, a hipótese é falsa e b) e c) são vacuosos."
+          },
+          {
+            "severity": "minor",
+            "description": "Na parte final de b) aparece \"traço = c_{n-1} = c_n\", mas a notação c_j não foi definida (a solução usa s_j para colunas de A). A igualdade diagonal de AB = última coluna de AB, que sustenta a frase, só é afirmada, não demonstrada. Bastava (AB)_{ik}=Σ_{l≤min(i−1,k)} α_l^{i−l−1}, que vale d_i para k≥i−1."
+          },
+          {
+            "severity": "minor",
+            "description": "A candidata mostra a contradição literal só pelas colunas n−1 e n, o que basta, mas não registra obstruções adicionais: c_2=−1 não tem raiz real (1+x²+x ≥ 3/4); c_4=1≠−1; e o sistema também não tem solução em ℂ. Isso deixaria o conjunto vazio em c) mais convincente."
+          },
+          {
+            "severity": "minor",
+            "description": "Diz que a leitura sobre A é \"consistente\" porque s_n=0 e s_{n−1}=1 valem sempre, mas não fecha o argumento: α_j=1 para todo j dá s_j=n−j para qualquer n, logo o sistema é solúvel para n geral. Isso sustenta o n(n−1)/2 de b) fora do caso n=5."
+          }
+        ],
+        "summary": "Li o enunciado na página 7 da prova e conferi as contas numericamente, com frações exatas para n=3..7. O enunciado impresso confere com a transcrição (B triangular superior de uns, hipótese sobre as colunas de AB).\n\nAs identidades da candidata estão corretas:\n- (AB)_{ik}=Σ_{l≤k} a_il.\n- As colunas n−1 e n de AB são idênticas, e a diagonal de AB coincide com a última coluna.\n- Para n=3, AB=[[0,0,0],[1,1,1],[α1,α1+1,α1+1]].\n- tr(AB)=soma de todos os elementos de A.\n- (α−1)(α²+2α+3) e (α−1)(α+2) estão fatorados corretamente.\n- Com (1,−2,1,3) e (1,1,1,7) as somas das colunas de A são 4,3,2,1,0 e o traço é 10.\n- Com B triangular inferior e α=(0,−1,0,7), as somas das colunas de AB são 4,3,2,1,0 e o traço é 0.\n\nComparação com a referência:\n- a) det(AB)=0, pelo mesmo argumento (primeira linha nula). Concordam.\n- b) A referência dá tr=0 no literal (vacuoso) e n(n−1)/2 na leitura sobre A. A candidata dá n(n−1)/2 na leitura sobre A e diz que no literal nenhum valor é determinado. Isso é consistente, porque o traço sairia 0 e 1 ao mesmo tempo, como a própria referência admite.\n- c) Literal: conjunto vazio, nos dois. Leitura sobre A: α1=1, α2∈{1,−2}, α3=1, α4∈ℝ, nos dois. Leitura B triangular inferior: α=(0,{0,−1},0,livre) e tr=0, também nos dois.\n\nArmadilhas tratadas:\n- A contradição das colunas n−1 e n foi detectada e avisada de forma explícita, sem forçar valores.\n- det(AB) foi calculado sem a hipótese.\n- Não confundiu traço com soma de todos os elementos de AB.\n- Usou α^0=1 e deixou α4 livre.\n- Não perdeu α2=−2.\n- Admitiu que não consultou o gabarito oficial.\n\nPontos fracos: o ANSWER final adota uma leitura reescrita e ranqueia as alternativas sem base. Há também notação não definida (c_j) e uma afirmação não demonstrada (diagonal = última coluna). Faltam as obstruções extras no literal. É uma resolução honesta e rigorosa, mas ainda não no nível de gabarito publicável, por causa da escolha do headline."
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Com o dado 5540 como impresso: x1+x3+x5+x7+x9 = 512(t^4-3t^2+1) ≈ 11196,5, onde t = q+1/q ≈ 2,5116 e x5 = 512. O dado 5540 é provável erro de digitação de 5440; com 5440, q = 2 e a soma é 10912.",
+  "judge_reference": {
+    "reference_solution": "**Q5 – IME 2027 (Matemática discursiva).** Enunciado conferido no PDF: o texto diz literalmente x₂+x₄+x₆+x₈ = 5540. Isso é decisivo no final (ver item 5).\n\n**1) Parametrização.** Seja log₂xₖ = a + (k−1)r, com r > 0. Os xₖ são positivos, então os logaritmos estão definidos. Seja m = log₂x₅, o termo central da PA. Então xₖ = 2^(m+(k−5)r). Com q = 2^r > 1, vale xₖ = x₅·q^(k−5).\n\n**2) Condição do produto.** Os termos de índice ímpar são x₁, x₃, x₅, x₇, x₉, e seus logaritmos são m−4r, m−2r, m, m+2r, m+4r. Os desvios se cancelam em pares, então log₂(x₁x₃x₅x₇x₉) = 5m. Como o produto é 2⁴⁵, temos 5m = 45, logo m = 9 e x₅ = 2⁹ = 512. (Equivalente: a+4r = 9.) Ainda falta determinar q.\n\n**3) Condição da soma dos pares.** x₂, x₄, x₆, x₈ valem 512·q⁻³, 512·q⁻¹, 512·q, 512·q³. Seja t = q + 1/q. Como q > 0 e q ≠ 1, t > 2. Então q² + q⁻² = t² − 2 e q³ + q⁻³ = t³ − 3t. Portanto\n\nE = 512(q³+q⁻³+q+q⁻¹) = 512(t³−2t) = 512·t(t²−2).\n\nEsse resultado também sai direto de (q+q⁻¹)(q²+q⁻²) = q³+q⁻¹+q+q⁻³.\n\n**4) Soma pedida em função de t.**\n\nO = x₁+x₃+x₅+x₇+x₉ = 512(q⁻⁴+q⁻²+1+q²+q⁴).\n\nSeja s = t² − 2 = q²+q⁻². Então q⁴+q⁻⁴ = s²−2, e\n\nO = 512(1 + s + s² − 2) = 512(s²+s−1) = 512(t⁴ − 3t² + 1).\n\n**5) Resolução da equação em t.**\n\nA equação é t³ − 2t = E/512. Para t > √(2/3), a função g(t) = t³−2t é estritamente crescente e g(2) = 4. Logo existe uma única raiz com t > 2 (na verdade a cúbica tem uma só raiz real). Dessa raiz sai um único q > 1 (q = (t+√(t²−4))/2), isto é, um único r > 0.\n\n**(a) Com o valor que o enunciado traz, 5540.** Temos E/512 = 1385/128, ou seja, 128t³ − 256t − 1385 = 0. Pelo teste das raízes racionais (a | 1385 = 5·277, b | 128), não há raiz racional. Numericamente:\n- t ≈ 2,5116001;\n- q ≈ 2,0154274;\n- r ≈ 1,0110858.\n\nConferi no computador que o produto dá 2⁴⁵ e a soma dos pares dá 5540. Então\n\nO = 512(t⁴ − 3t² + 1) ≈ 11196,499,\n\ncom t a raiz real da cúbica acima. É um número irracional, sem forma fechada simples; só sai por Cardano ou numericamente. Isso não é o tipo de resposta que o IME espera nesta questão.\n\n**(b) Com 5440, que é quase certamente o valor pretendido (erro de digitação).** Temos E/512 = 85/8, e t = 5/2 é raiz, pois 125/8 − 5 = 85/8. Então q + 1/q = 5/2, logo q = 2 ou q = 1/2. Como r > 0, q = 2 e r = 1. Daí xₖ = 2^(k+4):\n- ímpares: 2⁵+2⁷+2⁹+2¹¹+2¹³ = 32+128+512+2048+8192 = **10912**;\n- pares: 64+256+1024+4096 = 5440 ✓.\n\nPela fórmula: s = 17/4, s²+s−1 = 341/16, e 512·341/16 = 10912.\n\n**6) Conclusão.**\n- Se o enunciado for tomado ao pé da letra (5540): O ≈ 11196,50, valor irracional.\n- Com 5440 (provável intenção da banca): O = 10912. A razão da PA é 1 e a sequência é xₖ = 2^(k+4).\n\nO gabarito esperado é muito provavelmente 10912. Isso é uma inferência pelo caráter \"limpo\" dos números, não algo que eu possa confirmar só com a prova. Uma boa correção deve mencionar a inconsistência e dar os dois resultados, deixando claro qual hipótese cada um usa.",
+    "final_answer": "x₅ = 512 (log₂x₅ = 9). Seja t = q+1/q, com q = 2^r > 1. Então x₂+x₄+x₆+x₈ = 512·t(t²−2) e x₁+x₃+x₅+x₇+x₉ = 512(t⁴−3t²+1).\n• Com 5440, provável valor pretendido (5540 é erro de digitação): t = 5/2, q = 2, r = 1, xₖ = 2^(k+4), e a soma pedida é **10912** (32+128+512+2048+8192).\n• Com 5540 literal: t ≈ 2,5116 (raiz única >2 de 128t³−256t−1385 = 0, sem raiz racional), q ≈ 2,01543, r ≈ 1,01109, e a soma é ≈ 11196,50, irracional.\nResposta de referência: 10912, com a ressalva do dado 5540 do enunciado.",
+    "pitfalls": [
+      "O enunciado impresso traz 5540, que NÃO dá resposta limpa: a cúbica 128t³−256t−1385=0 não tem raiz racional e a soma fica ≈ 11196,50 (irracional). Com 5440 tudo fecha (t=5/2, q=2, r=1, soma 10912). Uma boa resolução deve notar a inconsistência e dar os dois resultados, com a hipótese de cada um, em vez de forçar 10912 em silêncio ou entregar só o decimal sem comentar.",
+      "Candidato que 'chuta' q=2 ou r=1 sem resolver a equação em t chega a 10912, mas isso não é consistente com 5540. Com o dado impresso, q=2 dá soma dos pares 5440 ≠ 5540. É preciso verificar a condição, não só adivinhar.",
+      "Passo-chave: log₂ do produto dos ímpares = 5·log₂x₅, porque os desvios ±2r e ±4r se cancelam em pares. Isso dá x₅ = 2⁹ = 512 diretamente, sem resolver sistema em a e r.",
+      "Erro comum de álgebra: q³+q⁻³ = t³−3t (não t³−2t, nem t³). Para a soma dos pares, 512(t³−3t+t) = 512(t³−2t) = 512·t(t²−2). Para os ímpares, q⁴+q⁻⁴ = (t²−2)²−2, o que leva a 512(t⁴−3t²+1).",
+      "Unicidade: t=q+1/q ≥ 2 para q>0. Como t³−2t é crescente para t>√(2/3) e vale 4 em t=2, existe uma única raiz t>2. Dela sai q>1 (r>0) único. A condição r>0 só escolhe q em vez de 1/q. A soma pedida é simétrica em q↔1/q, então o valor de O não depende dessa escolha, mas a sequência sim.",
+      "Hipóteses a declarar: xₖ>0 (logaritmos definidos), PA de razão r>0 (q>1), x₅ = 2⁹ obtido da condição do produto. Não confundir os índices: os ímpares são 1,3,5,7,9 (incluem o termo central x₅) e os pares são 2,4,6,8 (não incluem x₅).",
+      "Verificação final recomendada: recomputar o produto (2⁴⁵) e a soma dos pares com os xₖ encontrados, o que expõe imediatamente o problema do 5540."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Com o dado 5540 como impresso: x1+x3+x5+x7+x9 = 512(t^4-3t^2+1) ≈ 11196,5, onde t = q+1/q ≈ 2,5116 e x5 = 512. O dado 5540 é provável erro de digitação de 5440; com 5440, q = 2 e a soma é 10912.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A linha final 'ANSWER' dá primeiro o valor irracional ≈ 11196,5 (dado 5540 literal) e deixa 10912 entre parênteses. A reconciliação é correta e honesta, mas se o gabarito esperado for 10912 (provável, pela referência), o resultado principal anunciado não bate com ele à primeira vista. Seria melhor destacar os dois cenários com o mesmo peso, ou dizer explicitamente qual é a resposta recomendada (10912, com a ressalva do erro de digitação)."
+          },
+          {
+            "severity": "minor",
+            "description": "A solução para 5540 não confere de fato o resultado. Não recalcula o produto 2^45 nem a soma dos pares 5540 com os x_k obtidos (q≈2,0154, x₅=512). S≈11196,5 sai só da fórmula reduzida −512t²+5540t+512. Eu refiz numericamente e S, a soma dos pares (=5540,0000) e o produto fecham, então o valor está certo. Porém a conferência numérica independente deveria aparecer no texto, como ocorre no caso 5440."
+          },
+          {
+            "severity": "minor",
+            "description": "Passos tratados como conhecidos, sem demonstração curta: q³+q⁻³ = t³−3t e q⁴+q⁻⁴ = u²−2. O teste das raízes racionais é só citado, sem listar os candidatos (p | 1385 = 5·277, q | 128). Para uma resolução de gabarito, valia uma linha de justificativa, por exemplo mostrar que t=5/2 dá 128t³−256t−1385 = −25 ≠ 0."
+          },
+          {
+            "severity": "minor",
+            "description": "O resultado para o dado literal fica numérico: S = −512t²+5540t+512 com t raiz da cúbica. Não há forma fechada (Cardano) nem comentário explícito de que não existe resposta 'limpa'. A observação do item 6 cobre parte disso. Também não fica explícito que x_k>0 é automático (x_k = 2^(log)) e que r>0 só escolhe q>1 em vez de 1/q (S é simétrica em q↔1/q)."
+          }
+        ],
+        "summary": "A resolução está correta e coerente com a minha referência. O enunciado do PDF traz mesmo 5540, e eu confirmei isso. Conferi tudo numericamente: t≈2,5116001, q≈2,015427, r≈1,011086, a≈4,9557. A soma dos pares dá 5540,000 e o produto dá 2^45. S = 512(t⁴−3t²+1) ≈ 11196,4994, igual à forma reduzida −512t²+5540t+512. Os passos-chave estão certos: log₂ do produto dos ímpares = 5a+20r = 45, logo x₅ = 512, e soma dos pares = 512(t³−2t), com t³−2t = 1385/128. A unicidade da raiz t>2 está bem justificada (g'(t)=3t²−2>0, g(2)=4 < 1385/128). Os índices pares e ímpares não foram trocados, e a identidade t³−3t foi usada corretamente. A solução trata a armadilha principal. Percebe a inconsistência do dado, descarta o 'chute' q=2 mostrando que ele dá 5440≠5540, e apresenta os dois resultados com a hipótese de cada um: ≈11196,5 (literal) e 10912 (com 5440, t=5/2, q=2, r=1, x_k=2^(k+4)). Falhas só menores: a linha ANSWER dá ênfase ao valor irracional em vez de apontar 10912 como a resposta provavelmente esperada, falta a conferência numérica explícita do caso 5540, e há poucas justificativas intermediárias (identidades, teste de raízes racionais). Nota 9: publicável como gabarito comentado, com pequenos ajustes de apresentação.\""
+      }
+    }
+  ]
+}

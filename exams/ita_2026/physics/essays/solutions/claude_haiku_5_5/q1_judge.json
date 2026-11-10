@@ -1,0 +1,140 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "(a) $R_{\\min}=\\dfrac{v^2}{g\\tan(\\theta+\\arctan\\mu)}=\\dfrac{v^2(1-\\mu\\tan\\theta)}{g(\\mu+\\tan\\theta)}$, para $\\mu\\tan\\theta<1$ (se $\\mu\\tan\\theta\\ge 1$, o modelo não impõe cota inferior); (b) $R_{\\min}=\\dfrac{v^2}{g\\tan\\theta}$; (c) $R_{\\min}=\\dfrac{v^2}{\\mu g}$.",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA: Questão 1 (ITA 2026, 2ª fase, Física)\n\n0) Leitura da figura e hipóteses\n- Na figura, cada roda é um tronco de cone regular com a face maior voltada para o eixo. O trilho (barra vertical) encosta na geratriz INFERIOR da roda, que sobe para fora. A face superior não pode ser a superfície de contato, porque a normal dela apontaria para baixo. O ângulo θ, marcado no topo, é o da geratriz com a horizontal. Como o tronco é regular, a geratriz inferior também faz θ com a horizontal.\n- O eixo é horizontal e perpendicular ao sentido do movimento, logo é RADIAL à curva. A aceleração centrípeta v²/R está ao longo do eixo (horizontal), não na direção do movimento.\n- R ≫ dimensões do trem: as duas rodas do eixo têm a mesma geometria e as forças são paralelas.\n- Velocidade constante: não há força tangencial ao sentido do movimento (sem tração nem frenagem).\n- Atrito estático em cada roda: |f| ≤ μN.\n- Carga simétrica por eixo. Equilíbrio de forças apenas (não há altura do centro de massa nos dados, então não se consideram momentos). O número de eixos não altera R_min, pois tudo escala com M.\n\n1) Forças\nUse û horizontal, apontando para o centro da curva (ao longo do eixo), e k̂ vertical para cima. A normal ao cone faz θ com a VERTICAL.\n- Roda externa (E): N_E = N_E(sinθ û + cosθ k̂). Atrito ao longo da geratriz: f_E = f_E(−cosθ û + sinθ k̂).\n- Roda interna (I): N_I = N_I(−sinθ û + cosθ k̂). Atrito ao longo da geratriz: f_I = f_I(cosθ û + sinθ k̂).\n- Convenção: f > 0 é atrito para cima ao longo da geratriz, com as componentes indicadas acima.\n\nCom F ≡ Mv²/R, as equações são:\n(V) (N_E + N_I) cosθ + (f_E + f_I) sinθ = Mg\n(H) (N_E − N_I) sinθ − (f_E − f_I) cosθ = F\n\nCondição de não perda de contato: N_E ≥ 0 e N_I ≥ 0. A roda externa é a mais carregada, e a interna é a que pode levantar. Como F cresce quando R diminui, a condição crítica é N_I = 0. Nesse limite |f_I| ≤ μN_I = 0, logo f_I = 0.\n\n2) Item b) atrito desprezível (μ = 0, f = 0)\n(V) e (H) dão N_E + N_I = Mg/cosθ e N_E − N_I = F/sinθ. Então\nN_I = ½ [Mg/cosθ − Mv²/(R sinθ)] ≥ 0 ⇔ v²/R ≤ g tanθ.\nR_min(b) = v²/(g tanθ) = (v²/g) cotθ.\n\n3) Item a) atrito μ\nNo limite N_I = 0 temos f_I = 0. Então\n(V) N_E cosθ + f_E sinθ = Mg\n(H) N_E sinθ − f_E cosθ = F\nPara um dado N_E, F é máximo com f_E = −μN_E, ou seja, atrito máximo para BAIXO e para o CENTRO ao longo da geratriz. Nesse caso:\nN_E (cosθ − μ sinθ) = Mg e F_max = N_E (sinθ + μ cosθ) = Mg (sinθ + μ cosθ)/(cosθ − μ sinθ).\n\nJustificativa pelo cone de atrito: com N_I = 0, a reação total do trilho sobre a roda externa é a única força de apoio. Ela precisa estar dentro do cone de atrito de semiângulo φ = arctan μ, em torno da normal, que está inclinada de θ da vertical para o centro. A inclinação máxima da reação para o centro é θ + φ:\ntan α = F/(Mg) ≤ tan(θ + φ) = (tanθ + μ)/(1 − μ tanθ),\no que dá o mesmo F_max. Se F > F_max, a roda externa não sustenta sozinha a força centrípeta, e a interna teria que puxar (N_I < 0), ou seja, levantar.\n\nVerificação numérica: maximizei G = (N_E − N_I) sinθ − (f_E − f_I) cosθ sujeito a (V), N ≥ 0 e |f| ≤ μN, por enumeração de vértices. O máximo coincide com F_max e ocorre em N_I = 0, f_I = 0. Atrito positivo na roda interna não melhora o resultado.\n\nR_min(a) = Mv²/F_max = (v²/g) · (cosθ − μ sinθ)/(sinθ + μ cosθ) = (v²/g) · (1 − μ tanθ)/(tanθ + μ).\n\nValidade: a fórmula exige μ tanθ < 1, isto é, θ + arctan μ < 90°. Se μ tanθ ≥ 1 (μ ≥ cotθ), o cone de atrito permite qualquer inclinação. Então não há raio mínimo: R_min = 0 (qualquer curva é possível).\n\n4) Item c) rodas cilíndricas (θ = 0)\nAs normais são verticais e não há componente horizontal. Então:\n(V) N_E + N_I = Mg\n(H) −(f_E − f_I) = F\nLogo F = |f_E − f_I| ≤ |f_E| + |f_I| ≤ μ(N_E + N_I) = μMg. A capacidade de atrito é das DUAS rodas, μMg.\nF_max = μMg ⇒ R_min(c) = v²/(μg). O limite é atingido com N_I = 0, f_E = −μMg e N_E = Mg.\nConferência: o limite θ → 0 do item a dá v²/(μg), e a fórmula do item a com μ → 0 dá o item b.\n\n5) Resumo e comparação\nR_a ≤ R_b e R_a ≤ R_c: as rodas cônicas facilitam a curva em relação aos dois casos-limite.\nExemplo numérico (g = 10, v = 10 m/s, θ = 30°, μ = 0,2): R_a ≈ 11,4 m; R_b ≈ 17,3 m; R_c = 50 m.",
+    "final_answer": "a) R_min = (v²/g) · (cosθ − μ sinθ)/(sinθ + μ cosθ) = (v²/g) · (1 − μ tanθ)/(tanθ + μ). Válido para μ tanθ < 1. Se μ ≥ cotθ, não há restrição e R_min = 0.\n\nb) R_min = v²/(g tanθ) = (v²/g) cotθ.\n\nc) R_min = v²/(μ g).\n\nIndependentes da massa M. Exemplo com g = 10, v = 10 m/s, θ = 30°, μ = 0,2: R_a ≈ 11,4 m, R_b ≈ 17,3 m, R_c = 50 m.\n\nNão há alternativas de múltipla escolha.",
+    "pitfalls": [
+      "Ângulo da normal: a normal à geratriz faz θ com a VERTICAL, não com a horizontal. As componentes são N cosθ (vertical) e N sinθ (horizontal, ao longo do eixo). Trocar sin/cos ou tan/sin dá resposta errada; por exemplo, o item b vira v²tanθ/g em vez de v²/(g tanθ).",
+      "Direção da centrípeta: o eixo é radial à curva, então a força centrípeta é horizontal e ao longo do eixo. Não a coloque na direção do movimento. Forças tangenciais ao sentido do movimento são nulas (v constante, sem tração).",
+      "Atrito ao longo da geratriz: ele não é só horizontal nem só vertical. Tem componentes f cosθ (horizontal) e f sinθ (vertical). Esquecer a componente vertical quebra o equilíbrio vertical.",
+      "Qual roda perde contato: é a RODA INTERNA (mais próxima do centro da curva, e a menos carregada). A externa recebe mais carga, pois N_E − N_I = F/sinθ > 0. Concluir que a externa levanta é erro.",
+      "Sentido do atrito no limite (item a): o atrito máximo na roda externa aponta para BAIXO e para o CENTRO ao longo da geratriz (f_E = −μN_E). Usar o sentido oposto (para cima e para fora) dá v²(cosθ + μ sinθ)/(g(sinθ − μ cosθ)), que é um erro frequente e não é o máximo.",
+      "Atrito na roda interna: no limite N_I = 0, logo f_I = 0 (|f_I| ≤ μN_I). Supor atrito 'para cima' na roda interna não aumenta a capacidade e leva a conta errada. Verificado por enumeração de vértices.",
+      "Validade do item a: a fórmula só vale se μ tanθ < 1. Se μ ≥ cotθ, o denominador (cosθ − μ sinθ) fica ≤ 0 e o resultado perde sentido físico. Nesse caso não há raio mínimo (R_min = 0). Não apresente valor negativo.",
+      "Item c (cilíndricas): a força centrípeta vem só do atrito, e a capacidade total é μ(N_E + N_I) = μMg, somando as duas rodas. Usar μMg/2 (uma roda só) dá R = 2v²/(μg), que está errado. O resultado não depende de como a carga se divide entre as rodas.",
+      "Consistência: μ → 0 no item a deve dar o item b, e θ → 0 deve dar o item c. Use esses limites para conferir a fórmula. Também vale R_a ≤ R_b e R_a ≤ R_c, pois o cone e o atrito facilitam a curva.",
+      "Contato na geratriz inferior: a figura mostra o trilho encostando na face inferior, que sobe para fora. Usar a face superior como superfície de contato inverte o sentido da normal (apontaria para baixo), o que é inválido.",
+      "Hipóteses explícitas: carga simétrica por eixo, equilíbrio apenas de forças (sem momentos, pois a altura do centro de massa não é dada), R ≫ dimensões (forças paralelas, mesma geometria nas duas rodas) e atrito estático com |f| ≤ μN em cada roda. O número de eixos não muda R_min.",
+      "Escrever a resposta como expressão simbólica (sem M, pois ele cancela). Não use μ₀ nem a constante de permeabilidade, que não se aplica a esta questão."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "(a) R_min = v²/[g·tan(θ + arctan μ)] = v²(1 − μ·tanθ)/[g(μ + tanθ)]. (b) R_min = v²/(g·tanθ). (c) R_min = v²/(μg). Em todos os casos o resultado independe da massa M e tem unidade de metro.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Caso μ·tanθ ≥ 1 (μ ≥ cotθ) não tratado. O candidato só afirma a validade de R_min = v²(1−μtanθ)/[g(μ+tanθ)] para μ tanθ<1 e não diz o que acontece no outro caso. Nele o cone de atrito admite qualquer inclinação, a força centrípeta admissível não tem teto e R_min = 0. Verifiquei numericamente: com θ=60° e μ=0,6 (μ tanθ≈1,04), o F máximo cresce com N_I sem limite. Correção: apresentar a resposta por casos (R_min = v²(1−μtanθ)/[g(μ+tanθ)] se μ tanθ<1; R_min = 0 se μ tanθ ≥ 1) e refletir isso no bloco ANSWER, que hoje não tem a ressalva."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipótese (v) diz que as relações (1)-(2) 'valem para um eixo', mas elas usam M, que é a massa total. A massa de um eixo é m = M/n, com Σm = M. Correção: escrever com m ou dizer explicitamente que a desigualdade vale eixo a eixo porque a carga de cada eixo é proporcional à sua força centrípeta."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação sobrecarregada: F aparece como módulo do atrito (hipótese iii, F_E, F_I) e F_cp = Mv²/R é usado para a centrípeta. Isso exige leitura cuidadosa de (1). Sugestão: f para atrito e F_cp para a centrípeta."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha do sentido do atrito no item (a) é justificada por uma frase heurística ('a tendência do trem é escorregar para fora, subindo a geratriz'). A conclusão está certa, mas a justificação deveria dizer por que a tendência é essa (a geratriz sobe para fora e a tendência centrífuga é subir). A cota pelo cone de atrito, que é rigorosa, já cobre o caso e deveria ser apresentada como a razão principal."
+          },
+          {
+            "severity": "minor",
+            "description": "A indeterminação estática não é discutida: há 4 incógnitas (N_E, N_I, F_E, F_I) e 2 equações. R_min é um limiar de existência (há equilíbrio sem levantar para R ≥ R_min e não há para R < R_min). A cota do cone prova isso, mas o texto não o enuncia nem explica por que a distribuição de carga entre as rodas não afeta o resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "O comentário 'compatíveis com curvas ferroviárias' não se sustenta: R≈48 m com v=30 m/s (108 km/h) é muito mais fechado do que curvas ferroviárias reais, que costumam ter centenas de metros ou mais. Remover ou corrigir a afirmação."
+          }
+        ],
+        "summary": "Comparação item por item: (a) os dois dão R_min = v²(1−μtanθ)/[g(μ+tanθ)] = v²/(g·tan(θ+arctan μ)), idênticos. (b) os dois dão v²cotθ/g, idênticos. (c) os dois dão v²/(μg), idênticos. Verifiquei: a geometria (base maior voltada para o eixo, geratriz inferior subindo para fora, normal inclinada de θ da vertical) confere com a figura da prova; a maximização numérica (grade sobre N_I, N_E e os sinais dos atritos) dá F_max = Mg·tan(θ+φ), atingido em N_I=0 com atrito máximo na roda externa apontando para baixo e para o centro; os exemplos numéricos conferem (θ=30°, μ=0,2, v=10: 11,38 / 17,32 / 50 m; θ=45°, μ=0,3, v=30: 48,46 / 90 / 300 m). A prova da cota no item (a) (ângulo α da reação dentro do cone de atrito, α ≤ θ+φ para E e α ≤ φ−θ para I) está correta e é rigorosa. O candidato trata quase todas as armadilhas listadas: ângulo da normal com a vertical, direção da centrípeta ao longo do eixo, componentes do atrito, roda interna como a que levanta, sentido do atrito no limite, f_I=0 no limite, item (c) com as duas rodas, limites de consistência, hipóteses explícitas e expressão sem M. A nota fica abaixo de 9 principalmente pelo caso μ tanθ ≥ 1, que o candidato deixa sem resposta apesar de ser um caso esquecido que um gabarito comentado trataria. Também há problemas menores de clareza (eixo vs. massa total, uso de F para atrito, justificativa heurística do sentido do atrito) e um comentário físico exagerado sobre curvas ferroviárias. Nota: uma listagem de diretório foi bloqueada pelo hook; usei apenas a leitura direta da página 2 da prova."
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "(a) R_min = v^2/(g*tan(theta + arctan(mu))) = v^2(1 - mu*tan(theta))/(g(mu + tan(theta))) se mu*tan(theta) < 1; se mu*tan(theta) >= 1 não há limite inferior, R_min = 0. (b) R_min = v^2/(g*tan(theta)). (c) R_min = v^2/(mu*g). Os valores de (a) e (b) são limiares em que a roda interna se levanta (N_I = 0); em (a) a roda externa está no limite de atrito. Em (c) o limite é o atrito, não o contato.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Hipótese (iii), 'não há atrito longitudinal, pois v é constante e não há tração nem frenagem', é um non sequitur por roda: a condição só garante soma longitudinal nula, não força longitudinal nula em cada roda. Deveria argumentar que forças longitudinais reduzem a capacidade lateral (f_t² + f_l² ≤ μ²N²), logo f_l = 0 é ótimo e o R_min não muda; ou declarar explicitamente como hipótese de modelo."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): 'A igualdade ocorre com N_E = N_I = Mg/2 e f_E = f_I = μMg/2' soa como caso único. É apenas um exemplo: qualquer repartição N_E + N_I = Mg com f_w = μN_w, voltado para C, atinge a igualdade. Deveria dizer 'por exemplo' ou 'qualquer repartição'."
+          },
+          {
+            "severity": "minor",
+            "description": "Caso μ tanθ ≥ 1 (R_min = 0): a construção está correta (verifiquei numericamente: u ≥ 0 e H cresce sem limite com s). Mas a solução não explica que ela depende de a roda externa ser puxada para baixo pelo trilho com magnitude arbitrária (efeito de cunha/indeterminação estática), o que é um artefato do modelo de Coulomb e fisicamente implausível. Deveria dizer isso explicitamente, em vez de só 'R ≫ dimensões deixa de valer'."
+          },
+          {
+            "severity": "minor",
+            "description": "Suficiência: 'o conjunto das resultantes admissíveis é o setor |ψ| ≤ θ+φ' é afirmado a partir das bordas extremas sem dizer que a soma de dois cones convexos com abertura total < 180° é gerada pelos raios extremos. Falta uma frase de justificativa."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha da face de contato (geratriz inferior, que sobe para fora) não é justificada explicitamente a partir da figura. Ela aparece só implicitamente em (iv). Deveria afirmar que a face superior teria normal apontando para baixo e que a figura mostra a face inferior tocando o trilho. Verifiquei: a figura confirma essa leitura e a orientação usada pelo candidato."
+          },
+          {
+            "severity": "minor",
+            "description": "Torque/tombamento é desprezado com justificativa (altura do CM não dada), o que é aceitável. Mas a solução não observa que a condição de torque poderia impor uma restrição extra em um trem real; deveria registrar isso como limitação do modelo."
+          },
+          {
+            "severity": "minor",
+            "description": "Clareza para gabarito: a demonstração é longa e carregada de notação (ψ, β, φ, setores, cones de reação). Para publicação como gabarito comentado, deveria começar pela derivação direta no limite (N_I = 0, f_E = μN_E, f_I = 0), com a análise de cone como verificação de otimalidade. Assim o leitor vê primeiro o caminho principal."
+          }
+        ],
+        "summary": "Resposta final do candidato coincide com a referência nos três itens, e ambas estão corretas. (a) R_min = v²(1 − μ tanθ)/(g(μ + tanθ)) = v²/(g·tan(θ + arctan μ)) para μ tanθ < 1; com μ tanθ ≥ 1 não há restrição (R_min = 0). (b) R_min = v²/(g tanθ). (c) R_min = v²/(μg). Verificação: enumerei os vértices do problema linear de atrito (N_E, f_E, N_I, f_I; N ≥ 0; |f| ≤ μN; V = Mg; maximizar H) para 9 combinações de θ e μ com μ tanθ < 1, e o resultado coincide com a fórmula até ~1e-14. Para μ tanθ ≥ 1 verifiquei a construção por raios: u ≥ 0 e H cresce sem limite com s, o que confirma R_min = 0 dentro do modelo. Conferi também a figura do PDF: a face maior de cada roda está voltada para o eixo, o trilho encosta na face inferior (que sobe para fora) e a normal da roda externa se inclina para o centro, exatamente como o candidato assumiu. Os exemplos numéricos batem (θ = 30°, μ = 0,2, v = 10, g = 10: R_a ≈ 11,38; R_b ≈ 17,32; R_c = 50; θ = 45°, μ = 0,3, v = 30: R_a ≈ 48,46). O candidato tratou as armadilhas principais: normal a θ da vertical, roda interna como a que se levanta, sentido do atrito limite (para baixo e para C), f_I = 0 no limite, validade μ tanθ < 1, uso do atrito total μMg nas cilíndricas, limites μ→0 e θ→0, R_a ≤ R_b, R_c, hipóteses explícitas e resposta simbólica sem M. A nota fica em 8,5 e não em 9 por causa de lacunas de rigor e clareza: a exclusão do atrito longitudinal não está justificada por roda, o exemplo de (c) é apresentado como caso único, o caso R_min = 0 não discute o artefato de cunha, a suficiência depende de um fato de cones não justificado, a face de contato não é justificada a partir da figura e a demonstração é longa e pesada para um gabarito comentado."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "(a) $R_{\\min}=\\dfrac{v^2}{g\\tan(\\theta+\\arctan\\mu)}=\\dfrac{v^2(1-\\mu\\tan\\theta)}{g(\\mu+\\tan\\theta)}$, para $\\mu\\tan\\theta<1$ (se $\\mu\\tan\\theta\\ge 1$, o modelo não impõe cota inferior); (b) $R_{\\min}=\\dfrac{v^2}{g\\tan\\theta}$; (c) $R_{\\min}=\\dfrac{v^2}{\\mu g}$.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A hipótese (iii) diz \"O trilho só empurra: N_w ≥ 0\", o que contradiz a própria análise do caso μ·tanθ ≥ 1, em que a reação total de atrito tem componente vertical negativa (V_E < 0). Deve-se restringir a afirmação à componente normal: a normal só empurra (N_w ≥ 0), mas a reação total pode apontar para baixo quando μ·tanθ ≥ 1."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 2 da cota inferior do item (a), escreve-se f_w = N_w·tanβ_w, o que não está definido para N_w = 0. Deve-se acrescentar que, nesse caso, R_w = 0 e a desigualdade ΣH ≤ tan(θ+φ)·ΣV vale trivialmente para essa roda."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta final do caso μ·tanθ ≥ 1 diz apenas \"não há cota inferior no modelo\". O gabarito deve afirmar explicitamente R_min = 0 (no modelo, qualquer R > 0 admite contato nas duas rodas), e só depois a ressalva de que a hipótese de corpo rígido deixa de valer. Como está, a conclusão é ambígua."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), a afirmação \"a roda interna é a que se levanta\" não traz a razão física. Deve-se explicar que a normal da roda interna aponta para o ponto médio do eixo, isto é, para longe de C, e por isso reduz a força centrípeta. Em (ii), \"para o centro do eixo\" é ambíguo com o centro de curvatura C e deve ser reescrito."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase \"o trilho 'crava' a roda externa (efeito de cunha)\" é vaga. O mecanismo exato é a componente vertical do atrito, f·sinθ, tornar-se negativa e vencer a normal quando f < −N·cotθ, o que só é possível se μ ≥ cotθ. Vale escrever essa condição, pois ela é a origem do caso de exceção."
+          }
+        ],
+        "summary": "Comparação item por item: as três respostas finais coincidem com a referência e foram verificadas independentemente. (a) R_min = v²/(g·tan(θ+arctanμ)) = v²(1−μtanθ)/(g(μ+tanθ)) para μtanθ<1. (b) R_min = v²/(g·tanθ). (c) R_min = v²/(μg). Caso μtanθ ≥ 1: ambas as resoluções concluem que não há cota inferior positiva no modelo.\n\nConferências feitas: (1) A geometria foi lida na figura do PDF renderizada em 300 dpi. A face maior está voltada para o centro do eixo, a geratriz inferior sobe para fora, o trilho apoia-se nela, e θ é o ângulo da geratriz com a horizontal. Ambas as resoluções leram isso corretamente. (2) Um solver independente de vértices e raios do poliedro de equilíbrio (Mg = 1) dá H_max = tan(θ+φ) para (30°, 0,2), (45°, 0,3) e (60°, 0,5), e ilimitado para (60°, 0,6), com μtanθ > 1. O ótimo ocorre em N_I = 0, f_I = 0, f_E = −μN_E. (3) A família de equilíbrios que o candidato usa para μtanθ ≥ 1 foi verificada numericamente: H = Mg·tan(φ−θ) + s·sin2θ/cos(φ−θ) cresce sem limite com s, com N ≥ 0 e atrito no limite. (4) A prova de cota inferior (ΣH ≤ tan(θ+φ)·ΣV, com existência por combinação convexa de P* e P0) está correta. (5) Os itens (b) e (c) e as checagens de limite e de unidades estão corretos.\n\nArmadilhas da lista de referência: todas tratadas, exceto a explicitação de por que a roda interna levanta (a normal dela aponta para longe de C). Os problemas restantes são de precisão e redação e não alteram nenhum resultado. A nota é 8,5, e não 9, porque a hipótese (iii) contradiz a análise posterior, a resposta final do caso μtanθ ≥ 1 não diz R_min = 0 explicitamente, e o caso N_w = 0 não foi tratado."
+      }
+    }
+  ]
+}

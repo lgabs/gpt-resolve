@@ -1,0 +1,47 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{1. Identificação do sólido.} Num octaedro regular o centro é centro de simetria, então o simétrico de cada vértice em relação ao centro também é um vértice. Como o centro é a origem, além de $(5,0,0)$, $(0,5,0)$ e $(0,0,5)$ também são vértices $(-5,0,0)$, $(0,-5,0)$ e $(0,0,-5)$. Isso dá os $6$ vértices do octaedro.
+
+\textbf{Verificação.} Os vértices não opostos estão à distância $\sqrt{5^2+5^2}=5\sqrt{2}$ uns dos outros. Os $12$ segmentos entre eles são arestas de mesmo comprimento, e as $8$ faces são triângulos equiláteros de lado $5\sqrt2$. Portanto o octaedro é de fato regular. Os três vértices dados distam $5\sqrt2$ entre si e formam uma das faces.
+
+O sólido é a envoltória convexa desses vértices. Ele é limitado pelos $8$ planos $\pm x\pm y\pm z=5$, cada um contendo uma face. Assim,
+\[
+\mathcal{O}=\{(x,y,z)\in\mathbb{R}^3 : |x|+|y|+|z|\le 5\},
+\]
+em que a igualdade corresponde à superfície e a desigualdade estrita ao interior.
+
+\textbf{2. Contagem por camadas.} Queremos o número de ternas $(x,y,z)\in\mathbb{Z}^3$ com $|x|+|y|+|z|\le 5$. Fixamos $z$ e escrevemos $k=5-|z|\in\{0,1,\dots,5\}$. Então precisamos contar os pares inteiros com $|x|+|y|\le k$.
+
+Para cada inteiro $x$ com $|x|\le k$, o valor $y$ percorre os inteiros de $-(k-|x|)$ a $k-|x|$. São $2(k-|x|)+1$ valores. Logo
+\[
+N(k)=\sum_{x=-k}^{k}\bigl(2(k-|x|)+1\bigr)=(2k+1)+2\sum_{j=1}^{k}\bigl(2(k-j)+1\bigr)=(2k+1)+2\sum_{m=0}^{k-1}(2m+1)=2k^2+2k+1 .
+\]
+Para cada $k$ temos:
+\[
+N(0)=1,\quad N(1)=5,\quad N(2)=13,\quad N(3)=25,\quad N(4)=41,\quad N(5)=61.
+\]
+
+\textbf{3. Soma das camadas.} A camada $z=0$ tem $k=5$. Para $k=0,1,2,3,4$ existem duas camadas, $z=\pm(5-k)$. Então
+\[
+T=N(5)+2\bigl[N(4)+N(3)+N(2)+N(1)+N(0)\bigr]=61+2(41+25+13+5+1)=61+2\cdot 85=231 .
+\]
+
+\textbf{4. Conferência.} Separamos os pontos da superfície e os do interior.
+
+\emph{Superfície} ($|x|+|y|+|z|=5$): na camada $z=\pm(5-k)$ com $k\ge 1$, os pontos com $|x|+|y|=k$ são $N(k)-N(k-1)=4k$. Os polos $z=\pm5$ contribuem com $1$ ponto cada. O total é
+\[
+2\cdot 1+2(4+8+12+16)+20=102 .
+\]
+
+\emph{Interior} ($|x|+|y|+|z|\le 4$): pelo mesmo método, o total é
+\[
+41+2(25+13+5+1)=129 .
+\]
+
+De fato, $102+129=231$, o que confirma o resultado.
+
+\textbf{Conclusão.} O octaedro (interior e superfície) contém $231$ pontos de coordenadas inteiras.
+
+ANSWER: 231

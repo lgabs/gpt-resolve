@@ -1,0 +1,67 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Os processos são lentos (quase estáticos). Assim, a viga sustenta a massa apoiada sobre ela com uma força igual ao peso dessa massa. Como a viga é incompressível, seu comprimento depende só da temperatura, $L(T)=L\,[1+\alpha(T-20)]$, tanto com $M_1$ quanto com $M_2$ (aqui $L$ é o comprimento a $20\ ^\circ$C). A viga fica sempre em equilíbrio térmico com o banho. O trabalho contra a atmosfera é desprezado: ele se anula no ciclo e é ínfimo. Sejam
+\[
+\Delta T = 90-20 = 70\ \text{K}, \qquad \Delta L = \alpha L\,\Delta T .
+\]
+
+\textbf{Etapas do ciclo} (no plano força $\times$ comprimento elas formam um retângulo):
+\begin{itemize}
+\item[1.] Aquecimento com $M_1$: a viga se dilata $\Delta L$ e ergue $M_1$. Trabalho realizado pela viga: $W_1 = M_1 g\,\Delta L$.
+\item[2.] Troca de $M_1$ por $M_2$ no topo: não há deslocamento, então $W_2=0$.
+\item[3.] Resfriamento com $M_2$: a viga se contrai $\Delta L$ e $M_2$ desce. Trabalho: $W_3=-M_2 g\,\Delta L$.
+\item[4.] Troca de $M_2$ por $M_1$ embaixo: $W_4=0$.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->] (0,0) -- (4.2,0) node[right] {comprimento};
+\draw[->] (0,0) -- (0,3) node[above] {$F$};
+\draw[thick,->] (1,2.2) -- (3,2.2);
+\draw[thick,->] (3,2.2) -- (3,1);
+\draw[thick,->] (3,1) -- (1,1);
+\draw[thick,->] (1,1) -- (1,2.2);
+\draw[dashed] (0,2.2) node[left] {$M_1g$} -- (1,2.2);
+\draw[dashed] (0,1) node[left] {$M_2g$} -- (1,1);
+\draw[dashed] (1,0) node[below] {$L$} -- (1,1);
+\draw[dashed] (3,0) node[below] {$L+\Delta L$} -- (3,1);
+\node at (2,1.6) {$W$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{a)} O trabalho total é a área do retângulo (percorrido no sentido horário, logo $W>0$):
+\[
+W = (M_1-M_2)\,g\,\alpha L\,\Delta T = (M_1-M_2)\cdot 10\cdot 70\,\alpha L = 700\,\alpha L\,(M_1-M_2)\quad\text{(SI)} .
+\]
+Unidades: $\text{kg}\cdot\text{m/s}^2\cdot\text{K}^{-1}\cdot\text{m}\cdot\text{K}=\text{J}$. Como $M_1>M_2$, temos $W>0$: a máquina entrega trabalho.
+
+\textbf{b)} A fonte fornece calor apenas na etapa 1. Na etapa 3 o sistema cede calor ao ambiente. Pela 1ª lei, $Q=\Delta U+W$, a energia fornecida se divide em três parcelas:
+\begin{itemize}
+\item a água (massa $\rho_{\text{H}_2\text{O}}V$) recebe $\rho_{\text{H}_2\text{O}}V c_{\text{H}_2\text{O}}\,\Delta T$;
+\item a viga ($n=m/M_{\text{Cu}}$ mols) recebe $\Delta U = n\,c_V\,\Delta T = \dfrac{3Rm}{M_{\text{Cu}}}\,\Delta T$, pela lei de Dulong-Petit (para um sólido, $c_P\simeq c_V$);
+\item a viga ainda realiza o trabalho de erguer $M_1$: $M_1 g\,\alpha L\,\Delta T$.
+\end{itemize}
+Somando:
+\[
+Q_{\text{abs}} = \Delta T\left(\rho_{\text{H}_2\text{O}}V c_{\text{H}_2\text{O}} + \frac{3Rm}{M_{\text{Cu}}} + M_1 g\alpha L\right).
+\]
+A eficiência é $\eta = W/Q_{\text{abs}}$. O fator $\Delta T$ se cancela:
+\[
+\eta = \frac{(M_1-M_2)\,g\,\alpha L}{\rho_{\text{H}_2\text{O}}V c_{\text{H}_2\text{O}} + \dfrac{3Rm}{M_{\text{Cu}}} + M_1 g\alpha L}
+= \frac{10\,\alpha L\,(M_1-M_2)}{\rho_{\text{H}_2\text{O}}V c_{\text{H}_2\text{O}} + \dfrac{3Rm}{M_{\text{Cu}}} + 10\,\alpha L M_1}.
+\]
+O termo $M_1 g\alpha L$ é desprezível diante das capacidades térmicas. Por exemplo, com $\alpha\approx 1{,}7\times10^{-5}\ \text{K}^{-1}$, $L=1$ m e $M_1=20$ kg, ele vale cerca de $3{,}4\times10^{-3}$ J/K, enquanto 1 L de água tem cerca de $4{,}2\times10^{3}$ J/K. Portanto
+\[
+\eta \simeq \frac{10\,\alpha L\,(M_1-M_2)}{\rho_{\text{H}_2\text{O}}V c_{\text{H}_2\text{O}} + 3Rm/M_{\text{Cu}}} .
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item $\eta$ é adimensional e $\eta\to 0$ quando $M_1\to M_2$.
+\item Balanço de energia: o calor cedido no resfriamento é $Q_{\text{ced}}=\Delta T\,(\rho_{\text{H}_2\text{O}}Vc_{\text{H}_2\text{O}}+3Rm/M_{\text{Cu}}+M_2g\alpha L)$, e $Q_{\text{abs}}-Q_{\text{ced}}=W$, como esperado.
+\item Ordem de grandeza: com os valores do exemplo, $M_2=10$ kg e uma viga de 1 kg, $\eta\sim 10^{-7}$. Isso é muito menor que o limite de Carnot, $1-\dfrac{293}{363}\approx 0{,}19$, de acordo com a 2ª lei.
+\end{itemize}
+
+ANSWER: a) $W=(M_1-M_2)\,g\,\alpha L\,\Delta T = 700\,\alpha L\,(M_1-M_2)$ J (SI); b) $\eta=\dfrac{(M_1-M_2)g\alpha L}{\rho_{\text{H}_2\text{O}}Vc_{\text{H}_2\text{O}}+3Rm/M_{\text{Cu}}+M_1g\alpha L}\simeq\dfrac{10\,\alpha L(M_1-M_2)}{\rho_{\text{H}_2\text{O}}Vc_{\text{H}_2\text{O}}+3Rm/M_{\text{Cu}}}$

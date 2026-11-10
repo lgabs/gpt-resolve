@@ -1,0 +1,49 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "S = {-23/2, -7/2}, com -7/2 raiz tripla. A equação equivale a (x+7/2)^4 + (2x+7)^3 = 0.",
+  "judge_reference": {
+    "reference_solution": "**Ideia-chave.** Os termos x⁴ + 14x³ + (147/2)x² + (343/2)x são quase o desenvolvimento de (x + 7/2)⁴, e o 7⁴/16 do lado direito completa esse desenvolvimento.\n\n**1) Reconhecer a quarta potência.** Pelo binômio de Newton, com a = x e b = 7/2:\n(x + 7/2)⁴ = x⁴ + 4·(7/2)x³ + 6·(7/2)²x² + 4·(7/2)³x + (7/2)⁴\n= x⁴ + 14x³ + (6·49/4)x² + (4·343/8)x + 7⁴/16\n= x⁴ + 14x³ + (147/2)x² + (343/2)x + 7⁴/16.\n\nOs coeficientes batem com os da equação: 4·7/2 = 14, 6·49/4 = 147/2 e 4·343/8 = 343/2 = 7³/2.\n\n**2) Reescrever a equação.** Passando −7⁴/16 para o lado esquerdo:\nx⁴ + 14x³ + (147/2)x² + (7³/2)x + 7⁴/16 + (2x+7)³ = 0\n⟺ (x + 7/2)⁴ + (2x + 7)³ = 0.\n\n**3) Mudança de variável.** Seja y = x + 7/2. Então 2x + 7 = 2y, e (2x+7)³ = 8y³. A equação vira\ny⁴ + 8y³ = 0 ⟺ y³(y + 8) = 0.\n\n**4) Resolver.**\n- y³ = 0 dá y = 0, ou seja x = −7/2. É raiz tripla.\n- y + 8 = 0 dá y = −8, ou seja x = −8 − 7/2 = −23/2. É raiz simples.\n\n**5) Verificação direta.**\n- x = −7/2: 2x+7 = 0, então (2x+7)³ = 0. Resta (−7/2)⁴ + 14(−7/2)³ + (147/2)(−7/2)² + (343/2)(−7/2) = 2401/16 − 4802/16 + 7203/16 − 4802/8·... , e a soma dá −2401/16. A conferência numérica exata confirma LHS = −2401/16.\n- x = −23/2: 2x+7 = −16, então (2x+7)³ = −4096. Aqui (x+7/2)⁴ = (−8)⁴ = 4096, e a soma (x+7/2)⁴ + (2x+7)³ vale 0, o que equivale à equação original.\n\n**6) Sinal e raízes reais.** O polinômio do lado esquerdo, depois de tudo passado para um lado, é x⁴ + 22x³ + (315/2)x² + (931/2)x + 7889/16 = (x+7/2)³(x+23/2). Como o grau é 4, as 4 raízes contadas com multiplicidade (−7/2 três vezes e −23/2 uma vez) são todas reais. Não há raízes complexas a descartar. A mudança de sinal de y³(y+8) é coerente: positivo para y < −8, negativo para −8 < y < 0 e positivo para y > 0.\n\n**Resposta:** S = {−23/2, −7/2}, com −7/2 de multiplicidade 3.",
+    "final_answer": "Soluções reais: x = −23/2 (raiz simples) e x = −7/2 (raiz tripla). S = {−23/2, −7/2}.",
+    "pitfalls": [
+      "Atacar a equação expandindo tudo (x⁴ + 22x³ + 315/2 x² + 931/2 x + 7889/16 = 0) e procurar raízes racionais é inviável. O caminho esperado é reconhecer (x + 7/2)⁴ no lado esquerdo.",
+      "Verificar o termo 7⁴/16: ele vem do lado direito (−7⁴/16) e precisa ser passado para a esquerda com o sinal correto. Sem isso o binômio não fecha e a equação vira (x+7/2)⁴ + (2x+7)³ = 7⁴/16·2, o que é errado.",
+      "Conferir os coeficientes do binômio: 4·(7/2) = 14, 6·(7/2)² = 147/2, 4·(7/2)³ = 343/2 = 7³/2. Um erro em um deles esconde a estrutura.",
+      "Notar que 2x + 7 = 2(x + 7/2), portanto (2x+7)³ = 8y³ com y = x + 7/2. Esquecer o fator 2³ = 8 dá y⁴ + y³ = 0 e o resultado errado y = −1.",
+      "Perda de raiz: dividir y⁴ + 8y³ = 0 por y³ sem tratar y = 0 elimina x = −7/2. A forma correta é fatorar y³(y + 8) = 0. A resposta completa tem DUAS soluções reais, não apenas x = −23/2.",
+      "Erro aritmético ao voltar para x: y = −8 dá x = −8 − 7/2 = −23/2 (não −9/2 nem −15/2). Convém substituir os dois valores na equação original.",
+      "Distinguir solução de multiplicidade: x = −7/2 é raiz tripla (conta como uma única solução real distinta). Todas as raízes do quártico são reais, então não há raízes complexas a discutir, mas vale dizer isso explicitamente."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "S = {-23/2, -7/2}, com -7/2 raiz tripla. A equação equivale a (x+7/2)^4 + (2x+7)^3 = 0.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato afirma ter conferido as duas raízes \"em frações exatas\" na equação original completa, mas não mostra a conta. Eu refiz com Fractions: nos dois casos o LHS original vale −2401/16, igual ao RHS. A afirmação é verdadeira, mas num gabarito comentado valeria mostrar o valor −7⁴/16 = −2401/16 obtido nos dois casos, ou omitir a frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A passagem do enunciado para (x+7/2)⁴+(2x+7)³=0 é descrita em palavras (\"com sinal trocado\") e não escrita linha a linha. O resultado está correto, e os coeficientes 14, 147/2 e 7³/2 batem com o binômio. Faltou apenas escrever \"somando 7⁴/16 aos dois membros\" para deixar a equivalência explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "O texto diz que −7/2 é raiz tripla e que as 4 raízes são reais antes de mostrar a fatoração completa no polinômio em x, (x+7/2)³(x+23/2). A multiplicidade segue de u³(u+8)=0, então a afirmação é válida. Exibir (x+7/2)³(x+23/2)=x⁴+22x³+(315/2)x²+(931/2)x+7889/16 daria uma checagem independente. Conferi essa expansão e ela está correta."
+          }
+        ],
+        "summary": "A resposta do candidato, S = {−23/2, −7/2} com −7/2 raiz tripla, coincide com a da minha referência e está correta. Conferi no enunciado original que os termos são x⁴, (2x+7)³, 14x³, (147/2)x², (7³/2)x e −7⁴/16. Conferi também com Fractions que as duas raízes dão LHS = −2401/16 = RHS. A expansão (x+7/2)³(x+23/2) = x⁴+22x³+(315/2)x²+(931/2)x+7889/16 está correta, então não há outras raízes reais. A resolução reconhece (x+7/2)⁴ pelo binômio e move −7⁴/16 com o sinal certo. Usa u = x+7/2 com 2x+7 = 2u, o que dá 8u³ e evita o erro y⁴+y³. Fatora u³(u+8)=0 em vez de dividir por u³, então não perde x=−7/2. Converte de volta corretamente (x = −23/2, e não −9/2 ou −15/2). Verifica as duas raízes e comenta a multiplicidade e que todas as raízes do quártico são reais. Todas as armadilhas listadas foram tratadas. Restam só detalhes de apresentação: a conferência \\\"em frações exatas\\\" é dita sem ser mostrada, e a equivalência inicial está em prosa. Nenhum erro matemático. É uma resolução limpa e quase pronta para servir de gabarito comentado."
+      }
+    }
+  ]
+}

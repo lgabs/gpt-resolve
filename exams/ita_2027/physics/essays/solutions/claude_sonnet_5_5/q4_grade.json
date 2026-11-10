@@ -1,0 +1,47 @@
+{
+  "question": 4,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 3 - Física)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-3-22-10-2026-2-fase-dia-3/dissertativa-4-fisica-2-fase-dia-3-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "h_f = h_i (1 + M/m)^{3/5} (adiabática reversível, PV^{5/3} = cte, com P_i = (m+M)g/A e P_f = mg/A)",
+      "key_answer": "h_f = (1 + M/m)^{3/5} · h_i (adiabática reversível, γ = 5/3)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Mesma expressão e mesmo raciocínio: a retirada quase estática com paredes e pistão isolantes é uma adiabática reversível. P_i(Ah_i)^{5/3} = P_f(Ah_f)^{5/3} e P_i/P_f = (m+M)/m dão h_f = h_i(1+M/m)^{3/5}. Na transcrição do gabarito aparece \"p_i = (M + mg)/A\", que é só erro de digitação de (M+m)g/A."
+    },
+    {
+      "item": "b",
+      "solution_answer": "3(m+M) h_i [1 − (h_i/h_max)^{2/3}] = 2m (h_max − h_i), com a raiz h_max > h_i. Equivale a 2m y^4 + 2m y^3 + 2m y^2 − 3(m+M)(y+1) = 0, com y = (h_max/h_i)^{1/3}. Hipóteses: energia conservada e gás em adiabática reversível.",
+      "key_answer": "Forma geral: h_max = (3M+5m) g h_i/(3 p_f A + 2mg), com p_f indeterminado pelo enunciado. Interpretação 1 (adiabática reversível): 3(M+m)(h_i/h_max)^{5/3} h_max + 2m h_max = (3M+5m) h_i. Interpretação 2 (repouso final após as oscilações): h_eq = (1 + 3M/(5m)) h_i.",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "A equação da resolução é algebricamente idêntica à da interpretação 1 do gabarito. Basta passar 3(m+M)h_i(h_i/h_max)^{2/3} para o outro lado, lembrando que (h_i/h_max)^{5/3}·h_max = h_i^{5/3}h_max^{-2/3}. Conferi numericamente: sol + key ≈ 1e-14 para parâmetros aleatórios. O polinômio em y também está certo: sol·y²/h_i = −(y−1)·P(y). Integrei por RK4 a equação de movimento do pistão, m·ḧ = P_i A (h_i/h)^{5/3} − mg. Com m = M o pistão para pela primeira vez em 2,2559 h_i, igual à raiz da equação (2,2559). O h_f ≈ 1,516 h_i confere. Para M = 0,01m deu 1,0120 ≈ 1 + 6M/(5m). A física da resolução está certa. Sem atrito, a velocidade do pistão é contínua e muito menor que a do som no gás, então não há dissipação e a evolução é isentrópica (o pistão oscila sem amortecer). A conservação de energia ΔU + mgΔh = 0 em v = 0 coincide com a 1ª lei usada pelo gabarito. A forma geral do gabarito também está correta, mas fica em função de p_f. A interpretação 2 dá a altura de equilíbrio depois do amortecimento, não h_max. Como o enunciado pede \"a equação que relaciona h_max e m, M e h_i\" (uma relação implícita), a leitura da resolução é a mais natural."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "high",
+      "description": "No item b, o próprio Poliedro diz que o enunciado não basta para achar p_f em h_max e propõe duas leituras. A resolução seguiu a 1 (adiabática reversível), que bate com o pedido de \"equação que relaciona h_max e m, M e h_i\". O gabarito oficial do ITA ainda não saiu. Se a banca esperar outra leitura, por exemplo a altura de equilíbrio final h_eq = (1+3M/5m)h_i, a nota do item b pode mudar. Vale levar a um professor."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O Poliedro diz que a relação de Poisson exige uma hipótese extra. No modelo ideal do enunciado (sem atrito, vácuo acima, pistão bem mais lento que o som no gás, velocidade inicial nula e sem choque), a evolução do gás é de fato isentrópica e o pistão oscila entre h_i e h_max sem amortecer. A irreversibilidade só aparece com dissipação. A ressalva do Poliedro é cautelosa, mas a hipótese da resolução tem boa justificativa física. Já a interpretação 2 do Poliedro não responde h_max, e sim a altura final depois das oscilações amortecidas."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "A transcrição da resolução do gabarito tem erros tipográficos e de formatação que não mudam a resposta: \"p_i = (M + mg)/A\" no lugar de (M+m)g/A, \"h_f = 1 + M/m^(3/5) · h_i\" sem parênteses e h_f usado no lugar de h_max na 1ª lei do item b."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Detalhes de redação na resolução. A frase \"Não há atrito nem vácuo a dissipar energia\" ficou estranha. A aproximação h_max ≈ 3(m+M)h_i/(2m) para M ≫ m só vale assintoticamente e converge devagar: com M = 20m, o valor exato é 29,2 h_i e a aproximação dá 31,5 h_i. Nada disso afeta a resposta final."
+    }
+  ],
+  "summary": "Questão correta nos dois itens. No item a, a resolução e o Poliedro dão a mesma resposta, h_f = h_i(1+M/m)^{3/5}. No item b, a equação da resolução, 3(m+M)h_i[1−(h_i/h_max)^{2/3}] = 2m(h_max−h_i), é algebricamente a mesma da interpretação 1 do Poliedro (adiabática reversível). Conferi a equivalência numericamente e confirmei o valor de h_max integrando a equação de movimento do pistão (2,2559 h_i para m = M). O único ponto em aberto é a leitura do item b, que o próprio Poliedro marcou como ambígua. A escolha da resolução tem boa justificativa física e é a mais coerente com o pedido de uma \\\"equação que relaciona\\\" h_max, m, M e h_i."
+}

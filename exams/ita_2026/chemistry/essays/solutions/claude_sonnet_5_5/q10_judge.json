@@ -1,0 +1,54 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) X = 226; b) Z = 86; c) J emite 3 partículas alfa (A = Rn-226).",
+  "judge_reference": {
+    "reference_solution": "**Convenções.** Notação ᴬ_Z. Emissão α (⁴₂He): A diminui 4 e Z diminui 2. Emissão β⁻ (elétron): A não muda e Z aumenta 1, porque um nêutron vira próton. Isóbaros têm mesmo A. Isótonos têm mesmo número de nêutrons, N = A − Z. Isótopos têm mesmo Z.\n\n**Passo 1 – o elemento G (cond. iii).** Q tem A = 232 e Z = 89. Ele emite uma partícula β⁻:\n²³²₈₉Q → ²³²₉₀G + β⁻ (+ antineutrino).\nLogo G tem A = 232 e Z = 90. O número de nêutrons de G é N_G = 232 − 90 = 142.\n\n**Passo 2 – o elemento E (cond. ii e iv).** E é isótono de G, então N_E = N_G = 142. E tem Z_E = 84 prótons (é o polônio). O número de massa é A_E = 84 + 142 = 226, ou seja, ²²⁶₈₄E.\n\n**Passo 3 – o elemento A (cond. i).** A é isóbaro de E, então X = A_E = 226.\n\n**a) X = 226.**\n\n**c) Número de partículas alfa.** Só há emissões α, e cada uma reduz A em 4. Assim 238 − 4n = 226, o que dá 4n = 12 e n = 3.\n\n**b) Z.** Cada α reduz Z em 2. Então Z = 92 − 2·3 = 86. O elemento A é ²²⁶₈₆Rn (radônio).\n\n**Verificação de consistência.** A cadeia é ²³⁸₉₂J → ²³⁴₉₀Th → ²³⁰₈₈Ra → ²²⁶₈₆Rn. Os valores de A e Z batem com n = 3. Rn-226 e Po-226 são isóbaros (A = 226, Z = 86 e 84), e ²²⁶₈₄E é isótono de ²³²₉₀G (142 nêutrons cada), como o enunciado exige. Também conferi as contas com um script em Python.\n\n**Respostas:** a) X = 226; b) Z = 86; c) 3 partículas α.\n\nObservação: A e E são isóbaros, não o mesmo elemento. Por isso Z_A = 86 e Z_E = 84 não se contradizem. O enunciado diz que J só emite α (hipótese didática). Na série real do U-238 também ocorrem emissões β.",
+    "final_answer": "a) X = 226. b) Z = 86 (A = ²²⁶₈₆Rn). c) 3 partículas alfa.",
+    "pitfalls": [
+      "Confundir isóbaro (mesmo A), isótono (mesmo número de nêutrons, N = A − Z) e isótopo (mesmo Z). A troca mais comum é tratar 'E isótono de G' como 'mesma massa', o que daria A_E = 232 e resultados errados.",
+      "Emissão β⁻ mantém A e aumenta Z em 1. Então Q (232, 89) → G (232, 90). Errar o sentido (Z = 88, que seria β⁺ ou captura) ou mexer em A leva a N_G errado. Correto: N_G = 142.",
+      "Calcular A_E como 84 + 142 = 226 usando o nº de nêutrons, e não o número de massa de G. Usar 232 ou 90 + 84 são erros comuns.",
+      "Emissão α reduz A em 4 e Z em 2. O nº de α sai da variação de massa: (238 − 226)/4 = 3. Usar a variação de Z de forma errada, ou contar β onde o enunciado só admite α, dá resultado incorreto.",
+      "Não confundir Z de A (86) com Z de E (84). Eles são isóbaros, mas elementos diferentes (Rn e Po). Dizer que Z = 84 só porque A é isóbaro de E é erro.",
+      "Fazer a verificação cruzada: com n = 3, Z = 92 − 6 = 86 e A = 238 − 12 = 226 são consistentes. Se só uma das duas leis (massa ou carga) fosse usada, a inconsistência passaria despercebida.",
+      "O enunciado chama 'elemento' o que é um nuclídeo (A e Z definidos). Na série natural real do U-238 há também emissões β, então a cadeia só-α é uma hipótese da questão. Vale indicar isso sem contestar o enunciado.",
+      "Mostrar o raciocínio passo a passo e as expressões numéricas resolvidas, como exige a instrução 8 da prova. Dar só o resultado perde nota."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) X = 226; b) Z = 86; c) J emite 3 partículas alfa (A = Rn-226).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Os itens foram resolvidos na ordem a), c), b), e não na ordem do enunciado. A ordem é lógica, porque Z depende de n, mas o corretor precisa procurar o item b) depois do c). Seria mais claro apresentar a)–c) na ordem pedida ou avisar da inversão no início."
+          },
+          {
+            "severity": "minor",
+            "description": "Não comenta que a cadeia só com emissões α é uma hipótese da questão: na série natural real do U-238 também ocorrem emissões β. Também não comenta que o enunciado chama de 'elemento' o que é um nuclídeo. Uma ressalva de uma linha deixaria a resolução mais rigorosa, sem contestar o enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "A cadeia final é dada só como ²³⁸₉₂J →(3α) ²²⁶₈₆A. Os nuclídeos intermediários (²³⁴Th, ²³⁰Ra) não aparecem. Isso não é necessário para a resposta, mas daria uma verificação passo a passo mais completa."
+          },
+          {
+            "severity": "minor",
+            "description": "A distinção entre isóbaro, isótono e isótopo está nas leis iniciais, e a diferença Z_A = 86 ≠ Z_E = 84 aparece na verificação. Mas o texto não adverte explicitamente que A e E são elementos diferentes (Rn e Po) e que a condição i) fixa só o número de massa. Essa armadilha é tratada de forma implícita, não explícita."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (página 12): a transcrição está fiel. As respostas finais coincidem com a minha referência: X = 226, Z = 86 e 3 partículas α. Refiz as contas e estão certas. G tem A = 232 e Z = 90, logo N_G = 142. Como E é isótono de G, N_E = 142 e A_E = 84 + 142 = 226. Como A é isóbaro de E, X = 226. Então n = (238 − 226)/4 = 3 e Z = 92 − 2·3 = 86 (Rn-226). O sentido do β⁻ está correto (A fixo, Z + 1), assim como α (A − 4, Z − 2). A distinção entre isóbaro e isótono está correta. O candidato não confundiu Z de A (86) com Z de E (84). Ele fez a verificação cruzada de massa e carga e conferiu que E (226 − 84 = 142 nêutrons) é de fato isótono de G. O raciocínio é passo a passo, com as expressões numéricas resolvidas, como a instrução 8 exige. As falhas são só de forma: ordem dos itens (a, c, b), falta de ressalva sobre a hipótese só-α frente à série real do U-238 e ausência dos nuclídeos intermediários. Está perto de um gabarito comentado publicável."
+      }
+    }
+  ]
+}

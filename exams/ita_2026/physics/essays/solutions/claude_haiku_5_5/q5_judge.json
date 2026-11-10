@@ -1,0 +1,143 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 7.5,
+  "final_answer": "a) W_ciclo = 70 g α L (M1 − M2) = 700 α L (M1 − M2) J, com ΔT = 70 K; positivo se M1 > M2 (o trabalho é a soma do aquecimento com M1, +M1 g αL ΔT, e do resfriamento com M2, −M2 g αL ΔT).\n\nb) η = W/Q_H = (M1 − M2) g α L / (ρ_H2O V c_H2O + 3Rm/M_Cu + M1 g α L). Q_H inclui o calor da água, o ΔU do cobre pela lei de Dulong-Petit e o trabalho de expansão da viga. No exemplo ilustrativo, η ≈ 2×10⁻⁸.\n\nObservação: o modelo (viga incompressível, U só de T, carga externa constante) é termodinamicamente inconsistente, pois a variação de entropia ao longo do ciclo seria (M1 − M2) g α L ln(363/293) ≠ 0. Por isso, as cotas de Clausius (1 − 293/363 ≈ 0,19 ou 1 − 293/T_F) não se aplicam sem ressalva a este modelo.",
+  "judge_reference": {
+    "reference_solution": "Questão 5 (ITA 2026, 2ª fase, Física) — resolução de referência\n\nHipóteses (a prova não declara todas; adoto estas):\n(i) Viga e água têm temperatura uniforme a cada instante.\n(ii) A viga é incompressível: a carga não a encurta por deformação elástica. Seu comprimento muda só por dilatação térmica, ΔL = αLΔT.\n(iii) Peso próprio e empuxo da viga são desprezados. As cargas M1 e M2 estão fora da água, sem empuxo.\n(iv) A troca M1 → M2 (e de volta) é instantânea: não há variação de comprimento, de temperatura nem de calor.\n(v) No resfriamento, o calor cedido vai ao ambiente (sumidouro a 20 °C). O recipiente não absorve calor.\n(vi) Dulong-Petit: C_viga = n·c_V = (m/M_Cu)·3R = 3mR/M_Cu.\n\nDados derivados: ΔT = 90 − 20 = 70 K; ΔL = αLΔT.\nCapacidades térmicas: C_água = ρ_H2O·V·c_H2O (massa de água = ρV); C_viga = 3mR/M_Cu; C = C_água + C_viga.\n\nEtapas do ciclo. Com P = F/A e V = A·ℓ (A = área da seção), o ciclo é um retângulo no plano P–V.\n1→2 (aquecimento 20→90 °C, carga M1): força constante M1g. A viga se dilata e levanta M1.\n  W₁₂ = M1·g·αLΔT.\n  ΔU₁₂ = C·ΔT.\n  Q₁₂ = ΔU₁₂ + W₁₂ = C·ΔT + M1·g·αLΔT (absorvido da fonte).\n2→3 (troca instantânea M1 → M2 a 90 °C): ΔL = 0 e ΔT = 0, logo W = 0 e Q = 0.\n3→4 (resfriamento 90→20 °C, fonte desligada, carga M2 < M1): a viga encolhe ΔL e M2 desce.\n  W₃₄ = −M2·g·αLΔT.\n  ΔU₃₄ = −C·ΔT.\n  Q₃₄ = ΔU₃₄ + W₃₄ = −[C·ΔT + M2·g·αLΔT] (cedido ao ambiente).\n4→1 (troca instantânea M2 → M1 a 20 °C): W = Q = 0. O estado inicial é recuperado.\n\na) Trabalho total no ciclo (soma algébrica):\nW = W₁₂ + W₃₄ = (M1 − M2)·g·α·L·ΔT = 70·g·α·L·(M1 − M2).\nCom g = 10 m/s²: W = 700·α·L·(M1 − M2) (joules, com massas em kg e L em m). É positivo se M1 > M2.\nConferências:\n- Energia interna: ΔU_ciclo = 0, então W = Q₁₂ + Q₃₄ = [C·ΔT + M1·gαLΔT] − [C·ΔT + M2·gαLΔT] = (M1 − M2)·gαLΔT. Confere.\n- Área do retângulo P–V: ΔP·ΔV = [(M1 − M2)g/A]·[A·αLΔT] = (M1 − M2)·gαLΔT. Confere.\n\nb) Eficiência: η = W/Q_H, com Q_H = calor absorvido da fonte (etapa 1→2):\nQ_H = [ρ_H2O·V·c_H2O + 3mR/M_Cu + M1·g·αL]·ΔT.\nη = (M1 − M2)·g·α·L / (ρ_H2O·V·c_H2O + 3mR/M_Cu + M1·g·α·L).\nCom g = 10: η = 10·α·L·(M1 − M2) / (ρ_H2O·V·c_H2O + 3mR/M_Cu + 10·α·L·M1).\nEquivalente: η = 1 − |Q₃₄|/Q₁₂, pois |Q₃₄| = [C·ΔT + M2·gαLΔT].\n\nVerificações:\n- Limite de Carnot entre 293 K e 363 K: η_C = 1 − 293/363 ≈ 0,19. Deve valer η < η_C.\n- Exemplo ilustrativo (valores meus, não da prova): m = 1 kg, V = 10 L, L = 1 m, α = 1,7·10⁻⁵ K⁻¹, M1 = 10 kg, M2 = 5 kg, c_H2O = 4186 J/(kg·K), ρ = 1000 kg/m³, R = 8,31 J/(mol·K), M_Cu = 63,5 g/mol. Resultado: W ≈ 0,06 J, Q_H ≈ 3·10⁶ J, η ≈ 2·10⁻⁸. A eficiência real é ínfima, mas a fórmula é coerente. Checado numericamente em Python (sem sympy, então a álgebra simbólica foi feita à mão e conferida numericamente).",
+    "final_answer": "a) Trabalho total por ciclo: W = (M1 − M2)·g·α·L·ΔT, com ΔT = 70 K. Logo W = 70·g·α·L·(M1 − M2) = 700·α·L·(M1 − M2) (J, com g = 10 m/s²). É positivo se M1 > M2. Não é só o trabalho do aquecimento.\n\nb) Eficiência: η = W/Q_H = (M1 − M2)·g·α·L / (ρ_H2O·V·c_H2O + 3mR/M_Cu + M1·g·α·L). Com g = 10: η = 10·α·L·(M1 − M2) / (ρ_H2O·V·c_H2O + 3mR/M_Cu + 10·α·L·M1). É adimensional e muito menor que o limite de Carnot (≈ 0,19). Não há alternativa de múltipla escolha.",
+    "pitfalls": [
+      "Trabalho total do ciclo é a soma algébrica dos dois trechos com carga: W = M1·gαLΔT (aquecimento) − M2·gαLΔT (resfriamento) = (M1 − M2)·gαLΔT. Usar só o termo de M1 é erro comum.",
+      "ΔT = 90 − 20 = 70 K (diferença de temperatura). Não usar 90 K nem 110 K.",
+      "Armadilha central: o calor de entrada deve incluir o trabalho de expansão, Q = ΔU + W, com ΔU = n·c_V·ΔT. Se Q = m·c·ΔT for usado nas duas etapas sem o termo de trabalho, Q_H = Q_C e W = 0, o que contradiz a 1ª lei. Por isso a prova fixa c_V.",
+      "Eficiência = W/Q_H, com Q_H apenas o calor absorvido da fonte durante o aquecimento (20→90 °C). Não usar o calor total trocado nem somar Q_C ao denominador.",
+      "A eficiência não é Carnot (1 − T_C/T_H). O ciclo não é isotérmico e a fonte não é um reservatório à temperatura fixa. Serve apenas como cota superior: η < 1 − 293/363 ≈ 0,19.",
+      "A água contribui com massa ρ_H2O·V (não V) e calor específico c_H2O. Esquecer a água no denominador é erro comum.",
+      "A viga contribui com n = m/M_Cu moles e C = n·3R = 3mR/M_Cu. Não usar 3R por unidade de massa nem confundir M_Cu com densidade.",
+      "A dilatação é linear: ΔL = αLΔT, com α linear (não 3α volumétrico). Como W = F·ΔL e P = F/A, o trabalho não depende da área da seção.",
+      "A troca de carga M1 ↔ M2 é instantânea e não realiza trabalho nem troca calor. Não tratá-la como processo com trabalho.",
+      "Incompressível significa que a carga não encurta a viga elasticamente. Não usar módulo de Young nem deformação elástica no cálculo de ΔL.",
+      "O sinal importa: no resfriamento com M2, a viga contrai e M2 desce. O trabalho da viga nessa etapa é negativo. M2 < M1 garante W > 0. Se M2 > M1 o ciclo inverte e não é máquina.",
+      "Peso próprio e empuxo da viga foram desprezados por hipótese. Se incluídos, o trabalho líquido do ciclo não muda (força conservativa, configuração volta ao início), mas Q_H ganha termo extra (ex.: +(m/2)·g·αLΔT, com base fixa e centro de massa subindo ΔL/2). É refinamento; declarar a hipótese.",
+      "Calor cedido no resfriamento vai ao ambiente (sumidouro a 20 °C) e não é reaproveitado. A capacidade térmica do recipiente não é dada e é desprezada.",
+      "A resposta é simbólica: a prova não fornece valores numéricos de m, L, α, M1, M2, V nem M_Cu. Manter as unidades (g = 10 m/s², massas em kg, L em m, α em K⁻¹, ΔT em K) e evitar substituições numéricas não pedidas.",
+      "Verificação recomendada: W = Q_H − Q_C (1ª lei do ciclo) e η < η_Carnot. Ambas são satisfeitas pela solução acima."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 7.5,
+      "final_answer": "a) $W_{\\text{ciclo}}=(M_1-M_2)\\,g\\,\\alpha L\\,\\Delta T=70\\,g\\,\\alpha L\\,(M_1-M_2)=700\\,\\alpha L\\,(M_1-M_2)$ J, com $\\Delta T=70$ K e $g=10$ m/s$^2$; positivo somente se $M_1>M_2$.\n\nb) $\\eta=\\dfrac{(M_1-M_2)\\,g\\,\\alpha L}{\\rho_{\\text{H}_2\\text{O}}\\,V\\,c_{\\text{H}_2\\text{O}}+3Rm/M_{\\text{Cu}}+M_1\\,g\\,\\alpha L}$, que é muito menor que o limite de Carnot $70/363\\approx 0{,}19$ (no exemplo numérico, $\\eta\\approx 2\\times 10^{-8}$).",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "A verificação de segunda lei é inválida como escrita. A cota η ≤ 1 − 293/363 = 70/363 só sai da desigualdade de Clausius se o calor for absorvido à temperatura do banho (≤ 363 K), isto é, com transferência reversível ou fonte a no máximo 363 K. A prova não dá a temperatura da fonte, então a cota não decorre dos dados. A própria fórmula contraria a afirmação geral: com M1 = 10^9 kg, M2 = 0, m = 1 kg e V = 10 L, obtém-se η ≈ 0,80 > 0,19 (verificado em Python). Além disso, a resposta final diz que η é 'muito menor que o limite de Carnot', o que é uma generalização indevida; vale só para o exemplo numérico (η ≈ 2·10^-8). O que deveria ser feito: retirar a cota universal ou condicioná-la explicitamente a T_fonte ≤ 363 K; se quiser, escrever a versão geral η ≤ 1 − 293/T_fonte; escrever o sentido das desigualdades (Q_H/363 − Q_F/293 ≤ ∮dQ/T ≤ 0, com absorção em T ≤ 363 e cessão em T ≥ 293); e restringir 'muito menor que Carnot' ao exemplo. A referência tem o mesmo erro, então a concordância nesse ponto não valida a cota."
+          },
+          {
+            "severity": "minor",
+            "description": "A capacidade térmica do recipiente é desprezada sem ser declarada. A hipótese 4 fala só do banho e da viga. Deveria constar explicitamente que o recipiente não absorve calor, já que a prova não dá essa capacidade."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses sobre a água não declaradas: ρ_H2O e c_H2O são tratados como constantes (a 20 °C, sem dilatação térmica da água), V é tomado como volume de água (o volume deslocado pela viga é ignorado) e a água se mantém líquida a 90 °C (1 atm). Deveria haver uma hipótese explícita para cada um desses pontos."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 1: 'a força que a viga exerce sobre ela é seu peso' é impreciso. O correto é que a reação normal da viga sobre a carga é N = Mg, por equilíbrio quase estático. Além disso, 'massa' designa ao mesmo tempo a carga e a grandeza m, o que confunde. Deveria dizer que W é o trabalho realizado pela viga sobre as cargas, com essa convenção de sinal explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha 'a eficiência não é Carnot 1 − T_C/T_H' não é tratada explicitamente. A solução evita o erro, mas usa Carnot como cota sem dizer que o ciclo não é de Carnot (não é isotérmico e a fonte não é um reservatório fixo). Deveria haver uma frase dizendo isso, o que também evitaria a confusão com a cota da verificação."
+          },
+          {
+            "severity": "minor",
+            "description": "A linearidade é justificada com α·ΔT ≈ 1,2·10^-3, valor de α do cobre que não está no enunciado. Deveria ser indicado como valor típico externo, não dado. O resto do raciocínio não depende disso."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à referência nos dois itens: a) W = 70·g·α·L·(M1 − M2) = 700·α·L·(M1 − M2) J; b) η = (M1 − M2)·g·α·L / (ρ_H2O·V·c_H2O + 3Rm/M_Cu + M1·g·α·L). Conferi o enunciado original (página 6), ΔT = 70 K, os sinais, Q_H − Q_F = W, ΔU_ciclo = 0, o exemplo numérico (W ≈ 0,0595 J, Q_H ≈ 2,96·10^6 J, η ≈ 2,0·10^-8) e a razão do peso próprio (≈ 2,2·10^-7·L). Tudo confere. As armadilhas principais estão tratadas: soma algébrica dos dois trechos, ΔT = 70 K, Q = ΔU + W com c_V, água com massa ρV, viga com n = m/M_Cu, ΔL linear, troca instantânea sem trabalho, sinal com M2 < M1 e peso próprio. O defeito relevante está na verificação de segunda lei: a cota η ≤ 70/363 não decorre dos dados, pois depende da temperatura da fonte, que não é dada, e é falsa em geral (contraexemplo numérico com η ≈ 0,80). A resposta final repete a generalização ao dizer que η é 'muito menor que' Carnot. A referência tem o mesmo erro. Penalizo isso e a falta de declaração de algumas hipóteses (capacidade do recipiente, ρ e c constantes, V como volume de água, fase líquida a 90 °C). Nota 7,5: solução sólida, mas um gabarito comentado não afirmaria a cota universal.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 7.5,
+      "final_answer": "a) W_ciclo = 70·g·α·L·(M1 − M2) = 700·α·L·(M1 − M2) J, positivo se M1 > M2 (ΔT = 70 K, g = 10 m/s²). b) η = W_ciclo/Q_H = (M1 − M2)·g·α·L / (ρ_H2O·V·c_H2O + 3Rm/M_Cu + M1·g·α·L), com Q_H = (ρ_H2O·V·c_H2O + 3Rm/M_Cu + M1·g·α·L)·ΔT. Pela entropia com fonte a T_F e ambiente a 293 K, η ≤ 1 − 293/T_F (T_F não é dada; T_F ≥ 363 K), o que não dá uma cota universal de 0,19. No exemplo numérico, η ≈ 2×10^-8.",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "A seção 'Limite da segunda lei' afirma categoricamente que 1−293/363 'não é cota universal' e que 'a cota correta usa a temperatura da fonte'. Isso não está demonstrado e ignora o argumento de Clausius no próprio corpo de trabalho. Como a resolução admite equilíbrio térmico uniforme (hipótese 1) e calor absorvido só entre 293 K e 363 K e cedido só nesse intervalo, o teorema padrão dá η ≤ 1−293/363 ≈ 0,19 sem depender de T_F, e a resolução não discute isso. O contraexemplo (M1=1e9 kg, M2=0, η≈0,80) só existe porque o modelo idealizado é termodinamicamente inconsistente: com dS=δQ/T e o próprio δQ da resolução (dU=nC_V dT, sem dependência de V; ΔL=αLΔT independente da carga), a integral fechada do ciclo vale (M1−M2)·gαL·ln(363/293) ≈ 3,6×10⁴ J/K ≠ 0 nesse caso. O correto seria declarar a inconsistência do modelo (incompressibilidade + U dependendo só de T + carga externa constante), apresentar as duas cotas com suas hipóteses e não afirmar que a de 0,19 é falsa."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese 7 ('c_p ≈ c_V') é declarada mas não é usada. A primeira lei foi aplicada com dU=nC_V dT e W=P dV, que é justamente a hipótese que torna o modelo inconsistente. Essa hipótese deveria ser explicitada como 'a energia interna da viga depende só de T', em vez de ser misturada com c_p."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'trabalho e cargas não contribuem para a entropia' é afirmação não justificada. A justificativa correta é que as cargas não trocam calor e não mudam de temperatura; essa frase deveria ser justificada ou removida."
+          },
+          {
+            "severity": "minor",
+            "description": "'A cota é no mínimo 70/363' é correto (para T_F ≥ 363 K, 1−293/T_F ≥ 0,19), mas lido isoladamente leva a pensar que 0,19 é cota inferior de η. A formulação deveria dizer explicitamente que a cota 1−293/T_F cresce com T_F."
+          },
+          {
+            "severity": "minor",
+            "description": "A seção de limite da segunda lei é longa e não é pedida em (a) nem (b). Num gabarito comentado publicável, ela deveria ser reduzida a uma observação curta e correta, sem a afirmação categórica de que a cota de 0,19 não vale."
+          }
+        ],
+        "summary": "Itens (a) e (b) estão corretos e idênticos à referência. (a) W = (M1−M2)·g·αL·ΔT = 700·αL·(M1−M2) J, com ΔT=70 K, positivo se M1>M2. (b) η = (M1−M2)gαL / (ρVc + 3Rm/M_Cu + M1gαL), com Q_H incluindo o trabalho de expansão da viga. Verifiquei com python: W≈0,0595 J, Q_H≈2,96×10⁶ J (água 2,93×10⁶; cobre 2,7×10⁴; termo M1gαL ≈ 0,12 J), η≈2,0×10⁻⁸; a razão peso próprio/Dulong-Petit ≈ 2,2×10⁻⁷·L; o contraexemplo η≈0,80 e T_F≥1472 K estão corretos aritmeticamente. Armadilhas tratadas: soma algébrica dos dois trechos, ΔT=70 K, Q_H = ΔU+W, massa de água ρV, n=m/M_Cu, α linear, troca instantânea, sinal e caso M2>M1, unidades, peso próprio e empuxo declarados. Único ponto fraco: a seção de cota de Carnot. Vale notar que a referência diz 'η < 0,19' e ao mesmo tempo sua própria fórmula dá 0,80 para M1 grande; o candidato percebeu essa contradição, o que é mérito. Porém ele a resolve com uma afirmação categórica ('não é cota universal') sem considerar o teorema de Clausius no corpo nem a inconsistência do modelo, que é a verdadeira causa do contraexemplo. Por isso a nota fica em 7,5, abaixo de 9, que exigiria um gabarito sem afirmações falsas ou não justificadas."
+      }
+    },
+    {
+      "round": 3,
+      "score": 7.5,
+      "final_answer": "a) W_ciclo = 70 g α L (M1 − M2) = 700 α L (M1 − M2) J, com ΔT = 70 K; positivo se M1 > M2 (o trabalho é a soma do aquecimento com M1, +M1 g αL ΔT, e do resfriamento com M2, −M2 g αL ΔT).\n\nb) η = W/Q_H = (M1 − M2) g α L / (ρ_H2O V c_H2O + 3Rm/M_Cu + M1 g α L). Q_H inclui o calor da água, o ΔU do cobre pela lei de Dulong-Petit e o trabalho de expansão da viga. No exemplo ilustrativo, η ≈ 2×10⁻⁸.\n\nObservação: o modelo (viga incompressível, U só de T, carga externa constante) é termodinamicamente inconsistente, pois a variação de entropia ao longo do ciclo seria (M1 − M2) g α L ln(363/293) ≠ 0. Por isso, as cotas de Clausius (1 − 293/363 ≈ 0,19 ou 1 − 293/T_F) não se aplicam sem ressalva a este modelo.",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Na observação sobre a segunda lei, a cota η ≤ 1 − 293/T_F é derivada de ΔS_univ = Q_F/T_0 − Q_H/T_F ≥ 0. Isso pressupõe ΔS_viga = 0 no ciclo, exatamente o que a própria observação declara falso ('a força não é função de estado'). É uma conclusão apresentada como válida que contradiz a premissa do próprio texto. Deveria ser removida, ou explicitamente condicionada a um sistema consistente, mantendo apenas a cota de Clausius (η ≤ 1 − 293/363) que vale para corpo consistente."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese 7 afirma que a lei de Dulong-Petit é 'a que torna o modelo inconsistente'. Isso é falso: os termos de capacidade térmica C se cancelam em ∮dS (C·ln(363/293) − C·ln(363/293) = 0), como a própria conta da observação mostra. A inconsistência vem da força da carga (f dL = Mg·αL dT) tratada como se fosse função de estado, junto com as trocas M1↔M2 supostas sem variação de entropia. Deveria corrigir a atribuição e apontar a hipótese realmente conflitante."
+          },
+          {
+            "severity": "minor",
+            "description": "Estimativa de erro da linearização mal calculada. (αΔT)²/2 ≈ 7×10⁻⁷ é o erro relativo do comprimento final L/L0 (verificado). O erro relativo em ΔL, que é o que entra em W e η, é ≈ αΔT/2 ≈ 6×10⁻⁴ (verificado), cerca de 10³ vezes maior. A conclusão de usar ΔL = αLΔT permanece válida pela convenção do enunciado, mas a justificativa numérica está errada. Deveria corrigir o número, definir L como comprimento inicial L0 e nomear a lei exponencial corretamente (L = L0·e^{αΔT} para dL = αL dT)."
+          },
+          {
+            "severity": "minor",
+            "description": "A inconsistência do modelo é afirmada sem ser delimitada. A solução diz que o modelo não é consistente e que as cotas de 2ª lei não se aplicam 'sem ressalva', mas não discute se a premissa de ΔS = 0 nas trocas de carga (hipótese 6, sem calor e sem deslocamento) é a que falha, nem se as respostas pedidas em a) e b) continuam sendo as pretendidas dentro do modelo do enunciado. Deveria apontar a hipótese conflitante em uma frase e dizer que a e b são as respostas no modelo idealizado."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses desprezadas sem justificativa adequada. (i) Pressão atmosférica: não altera W (o trabalho atmosférico se anula no ciclo), mas altera Q_H; a área não é dada (ρ_Cu não está no enunciado), e no próprio exemplo P_atm·A ≈ 11 N contra M1·g = 100 N, embora o efeito em η seja numericamente desprezível. (ii) Empuxo da viga, já que a viga está no banho. (iii) Volume da viga desprezado frente a V (≈1% no exemplo). (iv) ρ_H2O constante, quando a densidade varia ≈3% entre 20 e 90 °C. Deveria justificar em uma linha cada ou declarar que são aproximações sem efeito na forma simbólica pedida."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha 'o trabalho não depende da área da seção' (W = F·ΔL, P = F/A, V = A·ℓ) não é mencionada. A solução usa W = ∫N dy, o que é correto, mas deveria afirmar explicitamente que A não entra no resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "Excesso de material não pedido em espaço de caderno limitado: observação termodinâmica longa, exemplo numérico com dados externos, refinamentos e cálculos de ordem de grandeza. A resposta final fica no fim do texto. Um gabarito comentado deveria trazer só o cálculo principal, a verificação da 1ª lei (Q_H − Q_F = W) e as duas respostas, com as ressalvas em uma frase cada."
+          }
+        ],
+        "summary": "A resposta final do candidato está correta e coincide com a referência. a) W = (M1−M2)·g·α·L·ΔT = 700·α·L·(M1−M2) J, positivo se M1 > M2. b) η = (M1−M2)·g·α·L / (ρ_H2O·V·c_H2O + 3Rm/M_Cu + M1·g·α·L). Conferi: ΔT = 70 K; Q = ΔU + W em cada trecho com carga; Q_H − Q_F = W; o exemplo numérico (W ≈ 0,0595 J, Q_H ≈ 2,96×10⁶ J, η ≈ 2,0×10⁻⁸) e a razão do termo M1gαL no denominador (≈4×10⁻⁸) estão corretos; a razão do peso próprio (≈2,2×10⁻⁷·L) e a cota de Clausius 1 − 293/363 ≈ 0,193 também. Todas as armadilhas da referência foram tratadas, exceto a independência da área, que não foi citada. A resolução principal tem nível de gabarito, mas a parte não pedida tem problemas reais: uma cota de 2ª lei derivada de uma premissa que a própria solução declara falsa; a atribuição errada da inconsistência a Dulong-Petit (os termos de C se cancelam); e uma estimativa de erro da linearização que vale para o comprimento final, não para ΔL (≈6×10⁻⁴, não 10⁻⁶). A tese de que o modelo não é termodinamicamente consistente é defensável, mas está mal delimitada. Nota 7,5: não chega a 9 por causa dessas afirmações falsas ou contraditórias, que um gabarito não poderia publicar."
+      }
+    }
+  ]
+}

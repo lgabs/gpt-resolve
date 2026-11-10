@@ -1,0 +1,40 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Ideia.} Toda bijeção $f$ de $\mathcal S$ se decompõe de modo único em ciclos disjuntos. Se o elemento $1$ pertence a um ciclo de comprimento $k$, então $f^{(m)}(1)=1$ se, e somente se, $k\mid m$ (pois $f^{(m)}(1)=1$ exige que $m$ seja múltiplo do período de $1$, que é $k$).
+
+\textbf{Passo 1 --- condição equivalente.} Seja $k$ o comprimento do ciclo que contém $1$, com $1\le k\le 9$. Então
+\[
+f^{(9)}(1)=1 \iff k\mid 9 \iff k\in\{1,3,9\}.
+\]
+
+\textbf{Passo 2 --- contar as bijeções em que $1$ está em um ciclo de comprimento $k$.}
+\begin{itemize}
+\item Escolhem-se os outros $k-1$ elementos do ciclo entre os $8$ restantes: $\binom{8}{k-1}$ modos.
+\item Os $k$ elementos do ciclo, com o $1$ fixado como ponto de partida, podem ser ordenados ciclicamente de $(k-1)!$ modos.
+\item Os $9-k$ elementos restantes sofrem uma permutação qualquer: $(9-k)!$ modos.
+\end{itemize}
+Logo, o número de bijeções é
+\[
+N_k=\binom{8}{k-1}\,(k-1)!\,(9-k)!=\frac{8!}{(k-1)!\,(9-k)!}\,(k-1)!\,(9-k)!=8!,
+\]
+\emph{independente de $k$}. Verificação: $\sum_{k=1}^{9}N_k=9\cdot 8!=9!$, que é o total de bijeções.
+
+\textbf{Passo 3 --- casos favoráveis.} Os valores $k=1,3,9$ são favoráveis, e os eventos são disjuntos (o ciclo de $1$ tem um único comprimento):
+\[
+N_{\text{fav}}=N_1+N_3+N_9=3\cdot 8!.
+\]
+
+\textbf{Passo 4 --- probabilidade.}
+\[
+P=\frac{3\cdot 8!}{9!}=\frac{3}{9}=\frac13 .
+\]
+
+\textbf{Conferência.}
+\begin{itemize}
+\item Casos particulares: $k=1$ equivale a $f(1)=1$, com $8!$ bijeções, de fato probabilidade $1/9$; $k=9$ corresponde aos $8!$ ciclos de comprimento $9$, também $1/9$.
+\item Uma enumeração por computador das $9!=362880$ bijeções deu $120960=3\cdot 8!$ casos com $f^{(9)}(1)=1$, ou seja, razão $1/3$.
+\end{itemize}
+
+ANSWER: $\dfrac{1}{3}$

@@ -1,0 +1,47 @@
+{
+  "question": 5,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-3-30-10-2025-2-fase-dia-3/dissertativa-5-fisica-2-fase-dia-3-ita-2026",
+  "score": 5.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "W = (M1 − M2)·g·α·L·(90 − 20) = 700·α·L·(M1 − M2) (SI, g = 10 m/s²)",
+      "key_answer": "W = 70·(M1 − M2)·g·α·L",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "É a mesma expressão. Com g = 10 m/s², 70·g = 700. As duas resoluções somam o trabalho de erguer M1 por ΔL = αLΔT e descer M2 pela mesma distância. A resolução também mostra, corretamente, que o peso próprio da viga dá trabalho líquido nulo no ciclo."
+    },
+    {
+      "item": "b",
+      "solution_answer": "η = (M1 − M2)·g·α·L / (ρ_H2O·V·c_H2O + 3mR/M_Cu) = 10·α·L·(M1 − M2) / (ρ_H2O·V·c_H2O + 3mR/M_Cu)",
+      "key_answer": "η = (M1 − M2)·g·α·L / [ρ_H2O·V·c_H2O + (m/M_Cu)·3R + M1·g·α·L + m·g·α·L/2]",
+      "verdict": "differs",
+      "correct": "key",
+      "comment": "Pela 1ª lei, o calor fornecido no aquecimento é Q_q = (ρVc + 3mR/M_Cu)ΔT + M1·g·ΔL + m·g·ΔL/2. A última parcela é a energia potencial ganha por M1 e pelo centro de massa da viga, que sobe ΔL/2. A própria resolução escreve essa expressão exata, com o termo (M1 + m/2)gΔL, igual ao gabarito. Depois ela descarta esse termo por ser desprezível e entrega uma aproximação de ordem dominante. Conferi em Python com os valores típicos da resolução (M1 = 100 kg, M2 = 50 kg, m = 7 kg, L = 1 m, V = 10 L): o termo descartado vale cerca de 3,9·10⁻⁷ do denominador, e η muda só na 7ª casa significativa (1,905423·10⁻⁷ contra 1,905422·10⁻⁷). A física da resolução está certa e a aproximação foi declarada. Mas o enunciado é literal e não dá valores numéricos, então nada autoriza cortar termos. A resposta exata pedida é a do gabarito, e a da resolução é só uma aproximação dela."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "solution",
+      "importance": "high",
+      "description": "No item b, a resolução deduz Q_H exato, com o termo (M1 + m/2)·g·α·L·ΔT, e depois o descarta. A justificativa é numérica, com valores típicos que o enunciado não fornece. A expressão final fica sem M1·g·α·L e sem m·g·α·L/2 no denominador. Um corretor do ITA pode exigir a expressão completa, como a do Poliedro. Vale perguntar ao professor se essa aproximação explícita receberia nota cheia ou parcial."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução diz que o termo mecânico é menor que correções que o modelo já ignora, como c_P − c_V do cobre (da ordem de 0,7 J/(mol·K), cerca de 80 J/K para cerca de 110 mol, contra cerca de 0,02 J/K do termo mecânico). Fisicamente faz sentido, mas mistura o modelo idealizado do enunciado (c_V = 3R, viga incompressível) com correções reais. Dentro do modelo, a 1ª lei inclui o termo mecânico de forma exata."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito inclui a energia potencial do próprio peso da viga (m·g·ΔL/2) no calor fornecido. Isso está correto: o centro de massa sobe ΔL/2 no aquecimento e desce no resfriamento. Mas é uma escolha sutil, e outras resoluções podem omitir esse termo, ou também o de M1. Não se sabe se o ITA cobra esses termos."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "Hipóteses que as duas resoluções usam sem declarar no enunciado: capacidade térmica do recipiente desprezível; dilatação da água e trabalho contra a atmosfera desprezados; viga em equilíbrio térmico com a água; uso de c_V = 3R mesmo com a viga dilatando sob pressão constante. A resolução também trata M_Cu em kg/mol. São hipóteses razoáveis e não mudam a forma das respostas."
+    }
+  ],
+  "summary": "Item a: a resolução e o gabarito coincidem. W = (M1 − M2)·g·α·L·70 = 700·α·L·(M1 − M2) J, com g = 10 m/s². Item b: as respostas diferem. A resolução deduz corretamente o calor fornecido com o termo de energia potencial (M1 + m/2)·g·α·L·ΔT, mas o despreza no resultado final, porque vale cerca de 4·10⁻⁷ do resto para valores típicos. Com isso, entrega η = (M1 − M2)gαL / (ρVc + 3mR/M_Cu). O gabarito do Poliedro mantém esses termos no denominador e dá a expressão exata pela 1ª lei. A resposta da resolução é uma aproximação de ordem dominante, numericamente indistinguível, mas formalmente incompleta. Como o enunciado é literal e sem dados numéricos, considero o gabarito certo no item b. A resolução provavelmente recebe nota parcial ou integral, conforme o critério do corretor."
+}

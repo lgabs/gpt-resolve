@@ -1,0 +1,54 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Passo 1 (forma de $p$).} O divisor $x^3-x+4$ é mônico e tem coeficientes reais, logo a divisão euclidiana em $\mathbb{R}[x]$ existe e é única: há quociente $q(x)$ e resto $r(x)$ em $\mathbb{R}[x]$ tais que
+\[
+p(x)=(x^3-x+4)\,q(x)+r(x), \qquad \operatorname{gr} r<3 .
+\]
+Aqui $r(x)=9x^2-4x+7$. Como $\operatorname{gr} p=4$ e $\operatorname{gr}(x^3-x+4)=3$, o quociente tem grau $1$: $q(x)=ax+b$, com $a,b\in\mathbb{R}$ e $a\neq 0$.
+
+\textbf{Passo 2 (expansão).} Como $(x^3-x+4)(ax+b)=ax^4+bx^3-ax^2+(4a-b)x+4b$, temos
+\begin{align*}
+p(x)&=(x^3-x+4)(ax+b)+9x^2-4x+7\\
+&=ax^4+bx^3+(9-a)x^2+(4a-b-4)x+(4b+7).
+\end{align*}
+
+\textbf{Passo 3 (relações de Girard).} Para $p(x)=c_4x^4+c_3x^3+c_2x^2+c_1x+c_0$ com $c_4\neq 0$, valem $\sum x_k=-\dfrac{c_3}{c_4}$ e $\prod x_k=\dfrac{c_0}{c_4}$; no produto o sinal é $(-1)^4=+1$. Com $c_4=a$, $c_3=b$ e $c_0=4b+7$:
+\begin{align*}
+-\frac{b}{a}&=\frac{3}{2}\quad\Rightarrow\quad b=-\frac{3a}{2},\\
+\frac{4b+7}{a}&=-\frac{5}{2}\quad\Rightarrow\quad 8b+14=-5a.
+\end{align*}
+Substituindo $b=-\frac{3a}{2}$ na segunda equação: $-12a+14=-5a$, isto é, $7a=14$. Logo $a=2$ e $b=-3$.
+
+\textbf{Passo 4 (o polinômio).} Como $a$ e $b$ ficaram determinados, $p$ é único:
+\[
+p(x)=2x^4-3x^3+7x^2+7x-5 .
+\]
+Confirmação: $(x^3-x+4)(2x-3)=2x^4-3x^3-2x^2+11x-12$; somando $9x^2-4x+7$ obtém-se $p(x)$, e o resto tem grau $2<3$. Além disso, $c_4=2\neq 0$, de modo que $\deg p=4$, como exigido.
+
+\textbf{Passo 5 (fatoração).} Pelo teorema das raízes racionais, uma raiz racional $\frac{u}{v}$ satisfaz $u\mid 5$ e $v\mid 2$; as candidatas são $\pm1,\pm5,\pm\frac12,\pm\frac52$. Testando:
+\begin{align*}
+p(-1)&=2+3+7-7-5=0,\\
+p\left(\tfrac12\right)&=\tfrac18-\tfrac38+\tfrac74+\tfrac72-5=0.
+\end{align*}
+Logo $(x+1)(2x-1)=2x^2+x-1$ divide $p(x)$, e o quociente é $x^2-2x+5$:
+\[
+p(x)=(2x^2+x-1)(x^2-2x+5)=(2x-1)(x+1)(x^2-2x+5).
+\]
+Verificação por expansão: $2x^4-4x^3+10x^2+x^3-2x^2+5x-x^2+2x-5=2x^4-3x^3+7x^2+7x-5$.
+
+\textbf{Passo 6 (raízes em $\mathbb{C}$).} Do fator quadrático, $\Delta=(-2)^2-4\cdot 1\cdot 5=-16$, logo
+\[
+x=\frac{2\pm\sqrt{-16}}{2}=\frac{2\pm 4i}{2}=1\pm 2i .
+\]
+Assim $p$ tem as quatro raízes $-1$, $\frac12$, $1+2i$ e $1-2i$, todas distintas, portanto simples. Pelo teorema fundamental da álgebra, não há outras raízes em $\mathbb{C}$.
+
+\textbf{Conferências finais.}
+\begin{itemize}
+\item Soma: $-1+\frac12+(1+2i)+(1-2i)=\frac32$, como exigido.
+\item Produto: $(-1)\cdot\frac12\cdot(1+2i)(1-2i)=-\frac12\cdot 5=-\frac52$, como exigido; aqui $(1+2i)(1-2i)=|1+2i|^2=5$.
+\item As raízes não reais formam par conjugado, como esperado, pois $p$ tem coeficientes reais.
+\end{itemize}
+
+ANSWER: as raízes de $p(x)=2x^4-3x^3+7x^2+7x-5$ em $\mathbb{C}$ são $x=-1$, $x=\frac{1}{2}$, $x=1+2i$ e $x=1-2i$.

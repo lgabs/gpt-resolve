@@ -1,0 +1,51 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Interpretação.} Sejam $r$ o raio de cada esfera menor e $R$ o raio da esfera maior. ``Inscritas'' significa que cada esfera menor está contida na maior e é tangente internamente a ela. Duas esferas menores tangentes (externamente) têm centros a distância $2r$.
+
+\textbf{1) Tetraedro dos centros.} Os centros $O_1,O_2,O_3,O_4$ formam um tetraedro regular de aresta $a=2r$.
+
+\textbf{2) Circunraio $\rho$ do tetraedro regular de aresta $a$.}
+\emph{Via cubo.} Os quatro vértices alternados de um cubo de aresta $s$ formam um tetraedro regular, pois cada aresta dele é diagonal de uma face do cubo: $a=s\sqrt2$. O centro do cubo é equidistante dos 4 vértices, logo é o circuncentro, e $\rho$ é metade da diagonal do cubo:
+\[
+\rho=\frac{s\sqrt3}{2}=\frac{a}{\sqrt2}\cdot\frac{\sqrt3}{2}=\frac{a\sqrt6}{4}.
+\]
+\emph{Via Pitágoras (conferência).} A altura do tetraedro é $h$, com $h^2=a^2-\left(\frac{a\sqrt3}{3}\right)^2=\frac{2a^2}{3}$, ou seja, $h=\frac{a\sqrt6}{3}$. O circuncentro está sobre a altura, a distância $\rho$ do vértice do topo e $h-\rho$ da base. Então $\rho^2=(h-\rho)^2+\frac{a^2}{3}$, o que dá $\rho=\frac{h^2+a^2/3}{2h}=\frac{a^2}{2h}=\frac{a\sqrt6}{4}$. Os dois caminhos concordam.
+
+Com $a=2r$:
+\[
+\rho=\frac{r\sqrt6}{2}.
+\]
+
+\textbf{3) Raio da esfera maior.} Seja $O'$ o centro da esfera maior. A tangência interna de cada esfera menor dá $O'O_i=R-r$ para $i=1,2,3,4$. Logo $O'$ é equidistante dos quatro vértices. Como os vértices de um tetraedro não são coplanares, só existe um ponto com essa propriedade, o circuncentro. Então $O'$ é o circuncentro e
+\[
+R-r=\rho=\frac{r\sqrt6}{2}\quad\Longrightarrow\quad R=r\,\frac{2+\sqrt6}{2}.
+\]
+Atenção: $R=\rho+r$, e não $R=\rho$, pois $\rho$ vai só até o \emph{centro} de cada esfera menor.
+
+\emph{Consistência.} Com esse $R$, a configuração existe. Cada ponto $P$ da esfera $i$ satisfaz $O'P\le O'O_i+O_iP\le\rho+r=R$, então a esfera menor está contida na maior. A igualdade ocorre só no ponto da semirreta $O'O_i$ a distância $R$ de $O'$, que é o ponto de tangência. As esferas menores não se sobrepõem, pois seus centros distam $2r$.
+
+\textbf{4) Razão dos volumes.} Com $V=\frac43\pi(\text{raio})^3$:
+\[
+\frac{V_{\text{maior}}}{4V_{\text{menor}}}=\frac{\frac43\pi R^3}{4\cdot\frac43\pi r^3}=\frac14\left(\frac{R}{r}\right)^3=\frac14\cdot\frac{(2+\sqrt6)^3}{8}=\frac{(2+\sqrt6)^3}{32}.
+\]
+Como $(2+\sqrt6)^3=8+3\cdot4\sqrt6+3\cdot2\cdot6+6\sqrt6=44+18\sqrt6$,
+\[
+\frac{V_{\text{maior}}}{4V_{\text{menor}}}=\frac{44+18\sqrt6}{32}=\frac{22+9\sqrt6}{16}.
+\]
+A razão não depende de $r$, como esperado: as duas figuras são semelhantes para qualquer $r$.
+
+\textbf{5) Conferência independente, com coordenadas.} Tome o cubo de vértices $(\pm1,\pm1,\pm1)$ e os centros $O_1=(1,1,1)$, $O_2=(1,-1,-1)$, $O_3=(-1,1,-1)$, $O_4=(-1,-1,1)$. Todas as arestas valem $2\sqrt2$, então $r=\sqrt2$. A origem dista $\sqrt3$ de cada $O_i$, então $R=\sqrt3+\sqrt2$. Neste caso,
+\[
+\frac{R^3}{4r^3}=\frac{(\sqrt3+\sqrt2)^3}{8\sqrt2}=\frac{9\sqrt3+11\sqrt2}{8\sqrt2}=\frac{9\sqrt6+22}{16},
+\]
+o mesmo resultado. Numericamente, $R/r\approx2{,}2247$, $(R/r)^3\approx11{,}011$ e a razão vale $\approx2{,}753$.
+
+Ordem de grandeza: a razão é maior que $1$, como deve ser, pois a esfera maior contém as quatro menores. Seu inverso, $\approx0{,}363$, mostra que as quatro esferas ocupam cerca de $36\%$ do volume da maior, valor plausível para quatro esferas tangentes dentro de uma esfera.
+
+\[
+\boxed{\dfrac{V_{\text{maior}}}{4\,V_{\text{menor}}}=\dfrac{22+9\sqrt6}{16}\approx 2{,}75}
+\]
+
+ANSWER: $\dfrac{22+9\sqrt{6}}{16}$

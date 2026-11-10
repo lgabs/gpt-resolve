@@ -1,0 +1,59 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) Retas tangentes: y = 2√6·x − 8 e y = −2√6·x − 8 (H: x²/4 − y²/32 = 1). b) Pontos de tangência: (√6, 4) para a primeira reta e (−√6, 4) para a segunda.",
+  "judge_reference": {
+    "reference_solution": "**0. Equação de H.** Os focos (±6, 0) estão no eixo x, então o eixo transverso é horizontal e o centro é a origem (ponto médio de AB). Logo c = 6. Como e = c/a = 3, temos a = 2. Então b² = c² − a² = 36 − 4 = 32. A hipérbole é\n\nx²/4 − y²/32 = 1, ou seja, 8x² − y² = 32.\n\nSubstituindo C = (0, −8): 8·0 − 64 = −64 < 32. Portanto C não está em H e fica na região entre os dois ramos (exterior à hipérbole). Por um ponto exterior passam duas tangentes, e é isso que vamos encontrar.\n\n**a) Retas tangentes por C.**\n\n*Retas verticais.* A única reta vertical por C é x = 0. Ela não toca H, pois −y² = 32 não tem solução real. Logo toda tangente por C tem a forma y = mx − 8.\n\n*Condição de tangência.* Substituindo em 8x² − y² = 32:\n\n8x² − (mx − 8)² = 32 ⟹ (8 − m²)x² + 16m·x − 96 = 0.\n\n- Se m² = 8, a reta é paralela a uma assíntota (y = ±2√2·x). O coeficiente de x² se anula, resta uma equação do 1º grau e a reta corta H em um único ponto, x = 96/(16m). Isso não é tangência: a reta atravessa o ramo. Esse caso é descartado.\n- Se m² ≠ 8, a equação é do 2º grau. A tangência exige discriminante nulo:\n\nΔ = (16m)² + 4·96·(8 − m²) = 256m² + 3072 − 384m² = 3072 − 128m² = 0 ⟹ m² = 24 ⟹ m = ±2√6.\n\nOs dois valores satisfazem m² ≠ 8. Também vale |m| = 2√6 ≈ 4,9 > b/a = 2√2, como se espera para uma tangente de hipérbole horizontal.\n\n*Conferência pela fórmula pronta.* Para a reta y = mx + k tangente a x²/a² − y²/b² = 1, a condição é k² = a²m² − b². Aqui 64 = 4m² − 32, o que dá m² = 24.\n\n**As tangentes são y = 2√6·x − 8 e y = −2√6·x − 8.**\n\n**b) Pontos de tangência.** Com Δ = 0, a raiz dupla é x₀ = −16m / (2(8 − m²)) = −8m/(8 − 24) = m/2.\n\n- Para m = 2√6: x₀ = √6 e y₀ = 2√6·√6 − 8 = 12 − 8 = 4. O ponto é (√6, 4).\n- Para m = −2√6: x₀ = −√6 e y₀ = (−2√6)(−√6) − 8 = 4. O ponto é (−√6, 4).\n\nConferência: 8·6 − 16 = 32 ✓. Como √6 ≈ 2,45 > a = 2, o ponto (√6, 4) está no ramo direito e (−√6, 4) está no ramo esquerdo. Cada tangente toca um ramo diferente.\n\n**Verificação independente (reta tangente em um ponto, ou polar).**\n\n1. A tangente a H em (x₀, y₀) é 8x₀·x − y₀·y = 32. Isso também sai da derivação implícita: 16x − 2y·y′ = 0, logo y′ = 8x₀/y₀ para y₀ ≠ 0.\n2. Impor que C = (0, −8) pertença a ela: 8y₀ = 32, ou seja, y₀ = 4. Essa é a polar de C.\n3. Em H: 8x₀² = 32 + 16 = 48 ⟹ x₀ = ±√6.\n4. As tangentes são 8(±√6)x − 4y = 32 ⟺ y = ±2√6·x − 8, o que coincide com o resultado do item a.\n5. O caso y₀ = 0 (vértices, tangentes verticais x = ±2) não passa por C. Ele não gera solução e não foi perdido.\n\nConferência numérica (Python, biblioteca padrão): Δ(m) = 3072 − 128m²; Δ = 0 em m² = 24, com pontos (±2,449490; 4) sobre 8x² − y² = 32. Para |m| um pouco menor que 2√6 a reta corta H em 2 pontos; para |m| um pouco maior, em nenhum.",
+    "final_answer": "H: x²/4 − y²/32 = 1 (a = 2, b² = 32).\na) Existem exatamente duas tangentes por C: y = 2√6·x − 8 e y = −2√6·x − 8.\nb) A reta y = 2√6·x − 8 toca H em (√6, 4), no ramo direito. A reta y = −2√6·x − 8 toca H em (−√6, 4), no ramo esquerdo.",
+    "pitfalls": [
+      "Eixo transverso: como os focos estão em (±6, 0), a hipérbole é horizontal, x²/a² − y²/b² = 1. Usar a forma vertical (y²/a² − x²/b² = 1) leva a uma resposta errada.",
+      "Parâmetros: e = c/a dá a = c/e = 2 (não 18). b² = c² − a² = 32 para hipérbole; a relação a² = b² + c² é da elipse. Errar a² ou b² muda m².",
+      "Condição de tangência de hipérbole: k² = a²m² − b². Usar a² m² + b², que é a da elipse, dá m² negativo e nenhuma tangente.",
+      "Caso m² = 8 (paralela às assíntotas y = ±2√2·x): a reta corta H em um único ponto, mas não é tangente. Ao substituir, o coeficiente de x² se anula e o discriminante do 2º grau não vale. Uma boa resolução precisa separar esse caso, em vez de contar \"uma interseção\" como tangência.",
+      "Retas verticais: x = 0 passa por C, não pode ser escrita como y = mx − 8 e não intersecta H. Precisa ser verificada e descartada explicitamente, senão a resolução perde casos.",
+      "Dois ramos: as duas tangentes tocam ramos diferentes, (√6, 4) no direito e (−√6, 4) no esquerdo. Não se deve dizer que ambas tocam o mesmo ramo, nem trocar qual ponto pertence a qual reta (m > 0 ↔ x₀ = +√6).",
+      "Pontos de tangência: com Δ = 0, a raiz dupla é x₀ = −B/(2A) = m/2. Esquecer o 2 ou o sinal de 8 − m² = −16 troca x₀ de sinal ou de módulo. O resultado deve ser conferido em 8x² − y² = 32 e na reta.",
+      "Via polar ou tangente no ponto (8x₀x − y₀y = 32): exigir C na reta dá y₀ = 4, e a resolução deve justificar a fórmula da tangente (derivação implícita ou discriminante). Declarar a polar sem justificar é incompleto. Também é preciso tratar y₀ = 0 (tangentes verticais x = ±2, que não passam por C).",
+      "Resposta incompleta: o item a pede todas as retas (são duas, ±2√6), e o item b pede os pontos para cada reta. Dar só uma das duas, ou só os valores de m sem as equações completas com o −8, perde pontos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) Retas tangentes: y = 2√6·x − 8 e y = −2√6·x − 8 (H: x²/4 − y²/32 = 1). b) Pontos de tangência: (√6, 4) para a primeira reta e (−√6, 4) para a segunda.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A fórmula da tangente em um ponto, 8x₀x − y₀y = 32, é usada na 'verificação' e para a polar sem justificativa (faltou derivação implícita ou ao menos a menção de que se trata do desdobramento da equação). Ela só serve de conferência, pois o resultado principal vem do discriminante, mas um gabarito comentado deveria justificá-la."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação pela tangente no ponto, o caso y₀ = 0 (vértices, tangentes verticais x = ±2, que não passam por C) não é mencionado. Ele não afeta o resultado, porque o método do discriminante já cobriu as verticais, mas a verificação fica incompleta como método independente."
+          },
+          {
+            "severity": "minor",
+            "description": "A condição n² = a²m² − b² é citada como conhecida, sem demonstração. Serve apenas de conferência e coincide com o discriminante, então o impacto é pequeno."
+          },
+          {
+            "severity": "minor",
+            "description": "Não diz que as duas tangentes tocam ramos diferentes: (√6,4) está no ramo direito (x ≥ 2) e (−√6,4) no esquerdo. Também não nota que C está fora de H, na região entre os ramos, o que explicaria por que há exatamente duas tangentes. O enunciado não pede isso. Seriam observações úteis de interpretação geométrica."
+          },
+          {
+            "severity": "minor",
+            "description": "Para m² = 8 o texto diz 'uma única solução' mas não calcula o ponto (x = 6/m). O caso é descartado corretamente por ser paralelo às assíntotas, mas a justificativa de que a reta atravessa o ramo e não é tangente é só afirmada. 'O caso (−√6,4) é simétrico' também é afirmado sem mostrar a reta resultante."
+          }
+        ],
+        "summary": "Conferi o enunciado original (Questão 09: focos (±6,0), e = 3, C = (0,−8)) e refiz as contas em Python. H: x²/4 − y²/32 = 1 (a = 2, b² = 32). Em (8−m²)x² + 16mx − 96 = 0 o discriminante é 3072 − 128m², que se anula em m² = 24. As tangentes são y = ±2√6·x − 8, com raiz dupla x = m/2 e pontos de tangência (±√6, 4); ambos satisfazem 8x² − y² = 32. A resposta do candidato coincide integralmente com a minha referência, nos dois itens, e está correta. O candidato tratou as armadilhas principais. Escolheu o eixo focal horizontal e calculou a e b² corretamente (a = 2, b² = c² − a² = 32). Descartou a reta vertical x = 0, mostrando que |x| ≥ 2 em H. Separou o caso m² = 8 (paralelas às assíntotas, que não são tangentes). Usou a condição k² = a²m² − b² (e não a da elipse). Obteve x_T = m/2 com o sinal certo, associou cada ponto à reta correta e conferiu em H. Fez ainda uma verificação independente pela tangente em um ponto e pela polar y = 4. A resposta é completa: dá as equações das duas retas e o ponto de tangência de cada uma. As falhas são só de rigor e acabamento. A fórmula da tangente em um ponto e a da polar são usadas sem justificativa. O caso y₀ = 0 não é mencionado na verificação. Faltou comentar que os pontos estão em ramos diferentes. Nenhuma falha afeta a correção. É uma resolução próxima de um gabarito comentado publicável."
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Fatos usados.} (i) Em equilíbrio eletrostático o campo no interior do metal é nulo, logo todo o condutor é equipotencial. (ii) Lei de Gauss numa superfície esférica dentro do metal ($E=0$): a carga total envolvida é nula, então a superfície interna de cada casca tem carga $-Q$ (induzida pela carga central $+Q$). (iii) Pela simetria esférica, cada distribuição de carga é uniforme na sua superfície; uma casca de raio $R$ com carga $q$ gera potencial $kq/R$ para $r\le R$ e $kq/r$ para $r\ge R$. Superpomos as três contribuições (carga central, superfície interna, superfície externa). Como as cascas estão muito distantes, desprezamos a influência de uma sobre a outra.
+
+\textbf{a)} Figura 1: casca neutra $\Rightarrow$ interna $-Q$ (em $r=a$) e externa $+Q$ (em $r=2a$). Em $r=a$ (superfície interna do metal):
+\[
+V(a)=\frac{kQ}{a}-\frac{kQ}{a}+\frac{kQ}{2a}=\frac{kQ}{2a},
+\]
+que é o potencial de todo o condutor (coincide com o de uma carga $+Q$ vista de fora, $kQ/r$ em $r=2a$).
+
+\textbf{b)} Figura 2: interna $-Q$ em $r=2a$, externa $+Q$ em $r=3a$. Por superposição,
+\[
+V(r)=\begin{cases}
+\dfrac{kQ}{r}-\dfrac{kQ}{2a}+\dfrac{kQ}{3a}=\dfrac{kQ}{r}-\dfrac{kQ}{6a}, & 0<r\le 2a \text{ (vácuo)},\\[2mm]
+\dfrac{kQ}{3a}\ \text{(constante)}, & 2a\le r\le 3a \text{ (metal)},\\[2mm]
+\dfrac{kQ}{r}, & r\ge 3a .
+\end{cases}
+\]
+Valores pedidos: $V(a)=\dfrac{kQ}{a}-\dfrac{kQ}{6a}=\dfrac{5kQ}{6a}$, \quad $V(2a)=V(3a)=\dfrac{kQ}{3a}$. O potencial é contínuo, diverge para $r\to 0$, decresce como hipérbole deslocada na cavidade, é constante no metal e decai como $1/r$ fora (gráfico simétrico em relação a $r=0$, pois depende só de $|r|$):
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=11cm,height=6cm,axis lines=middle,
+  xmin=-5.3,xmax=5.6,ymin=0,ymax=1.35,
+  xtick={-3,-2,-1,1,2,3},xticklabels={$-3a$,$-2a$,$-a$,$a$,$2a$,$3a$},
+  ytick={0.3333,0.8333},yticklabels={$\frac{kQ}{3a}$,$\frac{5kQ}{6a}$},
+  xlabel={$r$},ylabel={$V$},
+  every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+  every axis y label/.style={at={(current axis.above origin)},anchor=south}]
+\addplot[thick,domain=0.75:2,samples=80]{1/x-1/6};
+\addplot[thick,domain=-2:-0.75,samples=80]{-1/x-1/6};
+\addplot[thick,domain=2:3]{1/3};
+\addplot[thick,domain=-3:-2]{1/3};
+\addplot[thick,domain=3:5.3,samples=50]{1/x};
+\addplot[thick,domain=-5.3:-3,samples=50]{-1/x};
+\addplot[only marks,mark=*,mark size=1.5pt] coordinates{(1,0.8333)(-1,0.8333)(2,0.3333)(-2,0.3333)(3,0.3333)(-3,0.3333)};
+\addplot[dashed,thin] coordinates{(-1,0.8333)(1,0.8333)};
+\addplot[dashed,thin] coordinates{(1,0)(1,0.8333)};
+\addplot[dashed,thin] coordinates{(-1,0)(-1,0.8333)};
+\addplot[dashed,thin] coordinates{(2,0)(2,0.3333)};
+\addplot[dashed,thin] coordinates{(3,0)(3,0.3333)};
+\addplot[dashed,thin] coordinates{(-2,0)(-2,0.3333)};
+\addplot[dashed,thin] coordinates{(-3,0)(-3,0.3333)};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\textbf{c)} Ligadas pelo fio, as cascas formam um único condutor: mesmo potencial final $V$. Sejam $q_1$ e $q_2$ as cargas externas finais (casca menor, raio externo $2a$; casca maior, raio externo $3a$).
+
+\emph{Superfícies internas:} o fio não altera a condição $E=0$ no metal, então por Gauss continuam $-Q$ em ambas.
+
+\emph{Conservação da carga:} as cascas começam neutras e o fio (de capacitância desprezível) só transfere carga entre elas: $(q_1-Q)+(q_2-Q)=0\Rightarrow q_1+q_2=2Q$.
+
+\emph{Equipotencial:} pelo item (iii), o potencial de cada casca é o da sua carga externa (as contribuições $+Q$ e $-Q$ internas se cancelam fora da cavidade):
+\[
+\frac{kq_1}{2a}=\frac{kq_2}{3a}\;\Rightarrow\; q_2=\tfrac{3}{2}q_1
+\;\Rightarrow\; q_1=\frac{4Q}{5},\qquad q_2=\frac{6Q}{5},
+\qquad V=\frac{2kQ}{5a}.
+\]
+Ao retirar o fio, cada casca fica isolada com a carga que tinha; como já estava em equilíbrio com a mesma distribuição, nada muda.
+
+\emph{Verificações:} antes da ligação, a casca menor estava a $kQ/(2a)$ e a maior a $kQ/(3a)$; a carga positiva $Q/5$ passa da de maior para a de menor potencial (elétrons no sentido oposto), e o potencial comum $\frac{2kQ}{5a}$ fica entre $\frac{kQ}{3a}$ e $\frac{kQ}{2a}$. A divisão $q_1:q_2=2:3$ é a razão dos raios, como esperado para esferas condutoras ligadas. Cargas totais: casca menor $-Q/5$, casca maior $+Q/5$ (soma nula).
+
+\noindent ANSWER: a) $V(a)=\dfrac{kQ}{2a}$. b) Na Figura 2: $V(a)=\dfrac{5kQ}{6a}$, $V(2a)=V(3a)=\dfrac{kQ}{3a}$ ($V=\frac{kQ}{r}-\frac{kQ}{6a}$ na cavidade, constante no metal, $\frac{kQ}{r}$ fora). c) Casca menor: interna $-Q$, externa $+\dfrac{4Q}{5}$; casca maior: interna $-Q$, externa $+\dfrac{6Q}{5}$.

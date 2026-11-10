@@ -1,0 +1,127 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "(a) C5H12(g) + 8 O2(g) -> 5 CO2(g) + 6 H2O(g). (b) n(O2) = 1,6 mol e n(N2) = 6,4 mol (admissão de 8,00 mol de ar a 1 bar e 300,84 K). (c) Estequiométrico: 0,20 mol de pentano, Q = 688 kJ absorvidos por 8,6 mol de gases, ΔT = 2000 K, T_f = 2300,84 K. (d) Redução de 37% em relação à estequiométrica (pentano a 63%, x ≈ 0,127 mol), no ramo pobre, que é o econômico e respeita a combustão completa.",
+  "judge_reference": {
+    "reference_solution": "Resolução de referência, Questão 1 (ITA 2027, 2ª fase, Química). Contas conferidas em Python.\n\nDados de partida: P = 1 bar = 1,00×10⁵ Pa; V = 200 L = 0,200 m³; T₀ = 300,84 K; ar = 20% O₂ e 80% N₂ (em mol, por ser gás ideal).\n\na) Equação balanceada (pentano na fase gasosa, água como vapor, pois o calor vai para a mistura gasosa):\nC₅H₁₂(g) + 8 O₂(g) → 5 CO₂(g) + 6 H₂O(g)\nConferência: C 5=5; H 12=12; O 16=10+6.\n\nb) Quantidade total de gás do ar, pela equação de estado:\nn = PV/(RT) = (1,00×10⁵ × 0,200)/(8,31 × 300,84) ≈ 8,00 mol\n- O₂: 0,20 × 8,00 = 1,6 mol\n- N₂: 0,80 × 8,00 = 6,4 mol\n(A temperatura 300,84 K corresponde exatamente a 8,00 mol com R = 8,31 J·K⁻¹·mol⁻¹ e P = 10⁵ Pa.)\n\nc) Condição estequiométrica:\n- Combustível: 1,6 mol O₂ / 8 = 0,20 mol de C₅H₁₂. O₂ é o reagente limitante.\n- Calor liberado: Q = 0,20 mol × 3440 kJ/mol = 688 kJ = 6,88×10⁵ J.\n- Produtos: 1,0 mol CO₂ + 1,2 mol H₂O + 6,4 mol N₂ (inerte). Total: n = 8,6 mol. Não há O₂ em excesso.\n- Balanço isobárico, com todo o calor indo para os gases de combustão:\n  Q = n_prod · C_p · (T_f − T₀) → 6,88×10⁵ = 8,6 × 40 × (T_f − T₀)\n  T_f − T₀ = 2000 K → T_f = 300,84 + 2000 = 2300,84 K (≈ 2301 K).\n\nd) Seja x mol o pentano injetado (x ≤ 0,20 mol para combustão completa, pois 8x ≤ 1,6).\n- Produtos: 5x CO₂, 6x H₂O, 6,4 mol N₂ e (1,6 − 8x) mol O₂ em excesso.\n- Total de gases: n_prod = 5x + 6x + 6,4 + 1,6 − 8x = 8,0 + 3x mol.\n- Calor: Q = 3440x kJ.\n- Variação desejada: ΔT = 1600,84 − 300,84 = 1300 K.\n- Balanço: 3,44×10⁶ · x = 40 · (8,0 + 3x) · 1300\n  3,44×10⁶ x = 4,16×10⁵ + 1,56×10⁵ x\n  3,284×10⁶ x = 4,16×10⁵ → x = 0,12667 mol\n- Fração: x / 0,20 = 0,6334 → 63% da quantidade estequiométrica.\n- Variação: −36,7%, ou seja, reduzir cerca de 37% (inteiro: 37%).\n- Verificação: ΔT = 3,44×10⁶ × 0,12667 / (40 × 8,380) = 1300,0 K.\n\nEscolha da solução (economia de combustível): com x > 0,20 mol, o O₂ é limitante e a combustão deixa de ser completa. Se o pentano não queimado fosse contado nos produtos, a mesma temperatura exigiria x ≈ 4,8 mol (≈ 2400%), ou seja, mais combustível. Por isso a solução válida e econômica é a pobre (com excesso de ar), com 63% do combustível estequiométrico.\n\nResumo: a) C₅H₁₂ + 8 O₂ → 5 CO₂ + 6 H₂O; b) O₂ = 1,6 mol e N₂ = 6,4 mol; c) T ≈ 2300,84 K; d) reduzir a quantidade de pentano em cerca de 37% (passando a 63% da estequiométrica, ≈ 0,127 mol).",
+    "final_answer": "a) C₅H₁₂(g) + 8 O₂(g) → 5 CO₂(g) + 6 H₂O(g)\n\nb) n(O₂) = 1,6 mol e n(N₂) = 6,4 mol (a admissão de 200 L de ar a 1 bar e 300,84 K corresponde a 8,00 mol de gás; 20% O₂ e 80% N₂).\n\nc) T_f ≈ 2300,84 K (≈ 2301 K). Estequiometria: 0,20 mol de C₅H₁₂ liberam 688 kJ; os produtos (1,0 CO₂ + 1,2 H₂O + 6,4 N₂ = 8,6 mol) são aquecidos em ΔT = 2000 K.\n\nd) A quantidade de combustível deve ser reduzida em cerca de 37% em relação à estequiométrica, ou seja, passar a cerca de 63% dela (≈ 0,127 mol de C₅H₁₂ em vez de 0,20 mol). Com a condição de combustão completa, a solução válida é a de excesso de ar; a alternativa rica com combustível não queimado exigiria ≈ 4,8 mol e não é econômica.",
+    "pitfalls": [
+      "Unidade impressa da capacidade calorífica: 'J⁻¹·K⁻¹·mol⁻¹' é um erro de impressão. A unidade correta é J·K⁻¹·mol⁻¹ (é o que a Observação do enunciado indica). Tomada literalmente, a unidade não faz sentido dimensional.",
+      "Quantidade de gás do ar: use P em Pa (1 bar = 10⁵ Pa), V em m³ e R = 8,31 J·K⁻¹·mol⁻¹. Isso dá n = 8,00 mol e O₂ = 1,6 mol, N₂ = 6,4 mol. Se usar R = 0,0821 atm·L·K⁻¹·mol⁻¹ tratando 1 bar como 1 atm (1 bar ≈ 0,987 atm), obtém-se n ≈ 8,10 mol, O₂ ≈ 1,62 e N₂ ≈ 6,48, que arredondados dão 6,5 mol de N₂ (resposta errada).",
+      "O −3440 kJ·mol⁻¹ e a capacidade calorífica referem-se a produtos gasosos: a água deve ser escrita como H₂O(g). Se a água fosse líquida, a contagem de mols dos produtos mudaria e a capacidade calorífica dada não valeria.",
+      "Quantidade estequiométrica de combustível: o limitante é o O₂ (1,6 mol / 8 = 0,20 mol de pentano), não 1 mol. O calor liberado é 0,20 × 3440 = 688 kJ, e não 3440 kJ.",
+      "Balanço térmico: o calor deve aquecer os produtos (8,6 mol na condição estequiométrica), não os reagentes de ar (8,0 mol). Usar 8,0 mol daria T = 2450,84 K, errado. A temperatura inicial 300,84 K é a de partida, e ΔT = 2000 K sobre ela dá 2300,84 K.",
+      "Item (b) pede o número de mols de O₂ e N₂ com uma casa decimal: 1,6 e 6,4. O combustível injetado não altera esses valores.",
+      "Item (d): a composição dos produtos muda com a quantidade de combustível. Para x mol de pentano na condição pobre, n_prod = 8,0 + 3x (CO₂ 5x, H₂O 6x, N₂ 6,4 e O₂ em excesso 1,6 − 8x). Ignorar essa variação e manter 8,6 mol daria x = 0,13 mol (65%, redução de 35%). Essa resposta é um modelo simplificado e incorreto; o enunciado (misturas com quantidades variáveis de CO₂, H₂O, N₂, O₂) sinaliza que a composição deve ser considerada. A resposta correta com a composição variável é x ≈ 0,1267 mol, ou seja, 63% da estequiométrica.",
+      "Item (d): não confundir 'quantidade de combustível = 63%' com 'alteração de −37%'. O enunciado pede quanto deve ser alterada a quantidade, em número inteiro de %. A resposta é uma redução de cerca de 37% (passando a 63% da estequiométrica).",
+      "Item (d): a condição de combustão completa exige 8x ≤ 1,6, ou seja, x ≤ 0,20 mol (≤ 100% da estequiométrica). Acima disso o O₂ limita a queima, e a solução rica não é combustão completa. Se o combustível não queimado fosse contado nos produtos, haveria outra raiz com x ≈ 4,8 mol (≈ 2400%), que é a alternativa cara. A condição de economia de combustível serve para escolher a raiz pobre (menor x).",
+      "Verificação da raiz em (d): com x = 0,12667 mol, Q = 435,6 kJ, n_prod = 8,380 mol e ΔT = 435 600/(40 × 8,380) ≈ 1300,0 K. Confira a arredondamento: 63,3% arredonda para 63% e a redução de 36,7% arredonda para 37%.",
+      "Não confunda o 'ar atmosférico' com o 'gás admitido': o combustível injetado é adicionado à câmara, mas só o que sai como produto entra no balanço térmico. Os mols de produtos são calculados a partir da estequiometria, não da admissão total."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "(a) C5H12(g) + 8 O2(g) → 5 CO2(g) + 6 H2O(g). (b) n(O2) = 1,6 mol e n(N2) = 6,4 mol (ar de 8,00 mol). (c) Na estequiométrica, 0,20 mol de pentano liberam 688 kJ, que aquecem 8,6 mol de gases (ΔT = 2000 K): T_f = 2300,84 K. (d) Redução de 37% no pentano em relação à estequiométrica (fica com 63%, ≈ 0,13 mol), no ramo pobre, que é o que economiza combustível e respeita a combustão completa.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Hipótese de pentano vaporizado a 300,84 K não justificada. O pentano ferve a ~36 °C (≈309 K) a 1 bar, logo é líquido na temperatura inicial. O candidato apresenta \"admitido vaporizado\" como se fosse natural. Deveria dizer que os dados de ΔH e Cp correspondem a gases, que a vaporização é pressuposta e que sua entalpia não foi fornecida."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (d) o candidato usa corretamente n_g = 8 + 3x, mas não justifica essa escolha pela frase do enunciado \"misturas contendo quantidades variáveis de CO2, H2O, N2, O2\" e não rejeita explicitamente o modelo com 8,6 mol fixo. Esse modelo daria x = 0,13 mol exatamente (65%, redução de 35%), que é a principal armadilha numérica do item. Deveria ser citado e descartado."
+          },
+          {
+            "severity": "minor",
+            "description": "Argumento de economia confuso. O ramo rico já é excluído pela hipótese de combustão completa, e a frase final ('a condição de economia seleciona o ramo pobre') trata a economia como critério de escolha quando ela é apenas um critério secundário. Seria mais claro afirmar que, mesmo admitido, o ramo rico exige x ≈ 4,8 mol (≈24× a estequiometria)."
+          },
+          {
+            "severity": "minor",
+            "description": "Verificação de sanidade em (c) não quantificada: 'Ordem de grandeza compatível com temperaturas adiabáticas de chama de hidrocarbonetos no ar' não cita valor de referência (~2200–2300 K) e não observa que Cp = 40 J·K⁻¹·mol⁻¹ constante é idealização dada no enunciado, válida só como hipótese do problema."
+          },
+          {
+            "severity": "minor",
+            "description": "Convenção de sinal pouco clara. Declara 'q_p = ΔH' com ΔH = −3440 kJ·mol⁻¹, e depois usa Q = +688 kJ para os gases sem explicitar que o calor absorvido pelos gases é −ΔH. O resultado está correto, mas o raciocínio fica com um salto de sinal não comentado."
+          }
+        ],
+        "summary": "As quatro respostas finais estão corretas e coincidem com a referência: (a) C5H12(g) + 8 O2 → 5 CO2 + 6 H2O(g); (b) O2 = 1,6 mol e N2 = 6,4 mol; (c) Tf = 2300,84 K (ΔT = 2000 K, n_prod = 8,6 mol); (d) redução de 37% (63% da estequiométrica, ≈0,127 mol). Refiz as contas em Python: n_ar = 8,00 mol com P em Pa e R = 8,31; n = 7,99 mol com 1 bar = 0,987 atm; x = 104/821 = 0,12667 mol; ramo rico x ≈ 4,83 mol (2415%); 8,6 mol fixo daria 65% (−35%), que o candidato não cita. O candidato trata 10 das 11 armadilhas da referência: unidade impressa, Pa/m³, H2O(g), limitante O2, 8,6 mol nos produtos, uma casa decimal, −37% vs 63%, restrição x ≤ 0,20, verificação e ar × produtos. A lacuna é a rejeição explícita do modelo de 8,6 mol fixo. A nota fica abaixo de 9 por justificativas incompletas (fase do pentano, modelo de n_prod, economia e sanidade de (c)), não por erro numérico.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "(a) C5H12(g) + 8 O2(g) → 5 CO2(g) + 6 H2O(g). (b) n(O2) = 1,6 mol e n(N2) = 6,4 mol (n_ar ≈ 8,00 mol, a partir de PV = nRT com 1 bar e 200 L). (c) Estequiometria: 0,20 mol de pentano, Q = 688 kJ absorvidos por 8,6 mol de gases; ΔT = 2000 K e T_f = 2300,84 K. (d) Reduzir o pentano em 37% (-37%), ficando com 63% da quantidade estequiométrica (x ≈ 0,127 mol). Ramo rico (x ≈ 4,8 mol, ~24 vezes a estequiometria) excluído pela combustão completa e pela economia. Modelo com 8,6 mol fixos (-35%) rejeitado, pois o número de mols da mistura depende de x.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Hipótese do pentano como vapor a T_i = 300,84 K: o candidato diz que a hipótese é 'necessária' e justifica dizendo que 'os dados de ΔH e C_p referem-se a espécies gasosas'. O enunciado não diz que ΔH_c é de espécie gasosa, e o próprio argumento do candidato (pentano ferve a ~36 °C, logo é líquido a 27,7 °C) mostra que a hipótese é questionável. Deveria apresentá-la como hipótese de modelagem, sem atribuí-la aos dados, e observar que, se o pentano fosse líquido, faltaria ΔH_vap."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (b): não é dito que o combustível injetado não altera os mols de O₂ e N₂ (admissão fixa de 200 L de ar) nem que o volume do combustível é desprezado. A resposta numérica está certa, mas a armadilha da referência não é tratada explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): o O₂ como reagente limitante não é declarado; aparece só como 'com todo o O₂ consumido'. Faltou escrever que O₂ é limitante e que n_C₅H₁₂ = 1,6/8 = 0,20 mol é o estequiométrico por essa razão."
+          },
+          {
+            "severity": "minor",
+            "description": "Ramo rico de (d): o pentano não queimado é tratado como produto inerte aquecido com C_p, e a combustão parcial (CO, H₂) é ignorada. O ramo é excluído pela hipótese de combustão completa, então a resposta final não muda. Mesmo assim, os valores 4,83 mol e +2315% deveriam ser rotulados como estimativa de modelo simplificado."
+          },
+          {
+            "severity": "minor",
+            "description": "Sanidade de (c): 2300,84 K − 273,15 = 2027,7 °C, que arredonda para 2028 °C e não 2027 °C. A comparação com 2200–2300 K para chama adiabática de alcanos é conhecimento externo não citado, e não distingue o efeito da dissociação, que reduziria a temperatura real."
+          }
+        ],
+        "summary": "Verifiquei o enunciado no PDF (p. 3 impressa, com a Questão 1 e os dados 300,84 K, −3440 kJ·mol⁻¹, 40 J·K⁻¹·mol⁻¹, 1600,84 K e 200 L a 1 bar) e refiz todas as contas em Python. A resolução do candidato e a de referência concordam em todos os itens, e os dois estão corretos:\n(a) C₅H₁₂(g) + 8 O₂(g) → 5 CO₂ + 6 H₂O(g), correto.\n(b) n_ar = PV/RT = 8,00 mol com P em Pa, V em m³ e R = 8,31; O₂ = 1,6 mol e N₂ = 6,4 mol. Com 1 bar tratado como 1 atm, N₂ sairia 6,5 (armadilha), que o candidato evitou com a conferência em 0,987 atm (7,99 mol).\n(c) Estequiométrico: 0,20 mol de pentano, Q = 688 kJ, produtos 8,6 mol (1,0 CO₂ + 1,2 H₂O + 6,4 N₂), ΔT = 2000 K e T_f = 2300,84 K. Correto.\n(d) Ramo pobre: n_g = 8 + 3x e Q = 3,44×10⁶·x, o que dá x = 104/821 ≈ 0,1267 mol, 63,3% da estequiométrica, ou −36,7% ≈ −37%. Confirmei ΔT = 1300 K e O₂ remanescente de 0,59 mol. Ramo rico: x ≈ 4,83 mol (24× a estequiométrica, +2315%), que é excluído pela combustão completa e pela economia. A raiz pobre é a escolha certa. Se n_g fosse mantido em 8,6, daria 65% (−35%), que o candidato rejeitou corretamente.\nTodas as armadilhas listadas na referência foram tratadas: unidade impressa J⁻¹·K⁻¹·mol⁻¹ (identificada como erro de impressão), uso de Pa/m³/R correto, H₂O(g), O₂ limitante, balanço térmico sobre 8,6 mol de produtos, composição variável em (d), limite 8x ≤ 1,6 e escolha da raiz econômica. A resolução é clara, bem organizada e verifica os resultados. Não chega a 9 por causa de pontos de rigor: a justificativa da fase do pentano é imprecisa, a armadilha do combustível sobre o balanço de (b) não é mencionada, o O₂ limitante não é declarado em (c), o ramo rico é um modelo simplificado não rotulado, e há um arredondamento errado na sanidade. Nenhum desses pontos muda a resposta final."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "(a) C5H12(g) + 8 O2(g) -> 5 CO2(g) + 6 H2O(g). (b) n(O2) = 1,6 mol e n(N2) = 6,4 mol (admissão de 8,00 mol de ar a 1 bar e 300,84 K). (c) Estequiométrico: 0,20 mol de pentano, Q = 688 kJ absorvidos por 8,6 mol de gases, ΔT = 2000 K, T_f = 2300,84 K. (d) Redução de 37% em relação à estequiométrica (pentano a 63%, x ≈ 0,127 mol), no ramo pobre, que é o econômico e respeita a combustão completa.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (c): a equação 0 = ΔH_rx(T_i) + n_f·C_p·(T_f − T_i) usa ΔH_rx sem dizer que se refere a 0,20 mol de C5H12 (−688 kJ), e não a 1 mol. Deveria escrever explicitamente ΔH_rx(T_i) = −688 kJ para 0,20 mol, para que a conta não pareça ter misturado base por mol com base total."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c)/(d): o enunciado não informa o estado físico do pentano nem dos produtos na entalpia de combustão (−3440 kJ·mol⁻¹). A resolução assume reagente e produtos gasosos, mas a hipótese só aparece de forma parcial (a listagem da mistura gasosa), sem dizer que o valor de ΔH_c é tomado como válido para essa fase. Deveria ser listada como hipótese explícita junto às demais."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (d), ramo rico: o pentano não queimado é tratado como inerte aquecido com C_p, o que é um modelo ad hoc. A exclusão do ramo está correta, mas o valor 4,83 mol (≈24 vezes a estequiometria, +2315%) é apresentado com mais peso do que merece. Deveria ser dito que é apenas ilustrativo, ou omitido."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (d): a escolha do modelo de composição variável (n_g = 8 + 3x) em vez de n_g = 8,6 fixo está justificada, mas a justificativa aparece quase só na Observação. Como o modelo fixo dá x = 0,13 mol exatamente (65%, −35%), um corretor pode esperar esse valor. A resolução deveria citar a frase do enunciado sobre 'quantidades variáveis de CO₂, H₂O, N₂, O₂' no texto principal, para justificar por que a composição entra no balanço."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha 'ar atmosférico vs gás admitido' não é tratada explicitamente. O balanço térmico usa corretamente os mols de produtos pela estequiometria, mas faltou uma frase dizendo isso."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 1 (ITA 2027, Química). Conferi o enunciado na página 2 do PDF e refiz as contas em Python.\n\nComparação item a item com a referência: concordam em todos os itens.\n- a) C5H12(g) + 8 O2(g) → 5 CO2(g) + 6 H2O(g). Correto.\n- b) n_ar = PV/RT = 8,00 mol; O2 = 1,6 mol; N2 = 6,4 mol. Correto.\n- c) Na estequiometria, 0,20 mol de pentano liberam 688 kJ; produtos = 8,6 mol; ΔT = 2000 K; T_f = 2300,84 K. Correto.\n- d) Ramo pobre com n_g = 8 + 3x: x = 104/821 ≈ 0,1267 mol, 63,3% da estequiométrica, redução de 36,7% ≈ 37%. Refiz e confirmei. Verifiquei também que ΔT(x) é estritamente crescente no ramo pobre, que o O2 remanescente é 0,59 mol e que o ramo rico dá x ≈ 4,83 mol.\n\nÚnica ambiguidade real: se n_g fosse fixado em 8,6 mol, daria x = 0,13 mol exatamente (65%, −35%). O enunciado diz explicitamente 'misturas contendo quantidades variáveis', então o modelo com composição variável é o fisicamente consistente, e a resolução o adota corretamente. Por isso dou answer_correct = true.\n\nArmadilhas: a maioria foi tratada com rigor: unidade impressa de C_p, conversão de bar/atm/R, água como vapor, limitante O2, balanço com 8,6 mol, uma casa decimal, composição variável no item d, −37% versus 63%, restrição x ≤ 0,20, verificação da raiz. Faltou apenas a explicitação de 'ar vs gás admitido'.\n\nPontos que impedem 9: notação do Hess em (c), hipótese do estado físico de ΔH_c não listada, modelo ad hoc do ramo rico com peso excessivo, e justificativa do modelo variável (vs. 35% com n fixo) presa à observação. São ajustes de rigor e clareza, não erros de conta ou de resposta."
+      }
+    }
+  ]
+}

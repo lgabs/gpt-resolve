@@ -1,0 +1,52 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Modelo e hipóteses.} Tratamos a barra como um corpo rígido fino em repouso e o objeto $m$ e o contrapeso $m_c$ como massas puntuais presas a ela. Todas as forças são tomadas sobre o eixo da barra. Então, em relação a qualquer ponto desse eixo, só as componentes perpendiculares ao plano geram torque.
+
+Medimos as posições ao longo da barra a partir da extremidade inferior:
+\[
+x_A=d,\qquad x_B=L-d,\qquad x_{CM}=\frac L2,\qquad x_m=a,\qquad x_{m_c}=L-b .
+\]
+Como $A$ e $B$ distam $d$ das extremidades, o centro de massa da barra é o ponto médio de $AB$, e $\overline{AB}=L-2d$.
+
+Forças sobre o conjunto (barra, $m$ e $m_c$): os pesos $Mg$, $mg$ e $m_cg$; em cada apoio, a normal $N_{A}$ ou $N_{B}$, perpendicular ao plano; e o atrito estático $f_{A}$ ou $f_{B}$, paralelo ao plano e dirigido para cima, contra a tendência de escorregar. Seja $P=(M+m+m_c)g$. As reações sobre os apoios têm os mesmos módulos, pela 3ª lei de Newton.
+
+\subsection*{a) Forças normais}
+
+Resultante perpendicular ao plano:
+\[
+N_A+N_B=P\cos\theta. \tag{1}
+\]
+Torque em relação a $A$, com $N_B$ de braço $L-2d$ e as componentes $\cos\theta$ dos pesos com braços medidos ao longo da barra:
+\[
+N_B\,(L-2d)=Mg\cos\theta\Big(\frac L2-d\Big)+mg\cos\theta\,(a-d)+m_cg\cos\theta\,(L-b-d).
+\]
+Como $\frac L2-d=\frac{L-2d}{2}$, resulta
+\[
+\boxed{N_B=g\cos\theta\left[\frac M2+\frac{m\,(a-d)+m_c\,(L-b-d)}{L-2d}\right]}
+\]
+Substituindo em (1), ou tomando torques em relação a $B$, e usando $m-\frac{m(a-d)}{L-2d}=\frac{m(L-d-a)}{L-2d}$ e $m_c-\frac{m_c(L-b-d)}{L-2d}=\frac{m_c(b-d)}{L-2d}$:
+\[
+\boxed{N_A=g\cos\theta\left[\frac M2+\frac{m\,(L-d-a)+m_c\,(b-d)}{L-2d}\right]}
+\]
+
+\textit{Verificações.} (i) Somando, os termos com $m$ e $m_c$ dão $m+m_c$, e então $N_A+N_B=P\cos\theta$, como em (1). (ii) Se $m=m_c=0$, então $N_A=N_B=\tfrac12Mg\cos\theta$. (iii) Se $a=b=L/2$ (configuração simétrica), então $N_A=N_B$. (iv) A solução só vale se $N_A\ge 0$ e $N_B\ge 0$, isto é, se a barra não se desprende de um dos apoios. É para isso que serve o contrapeso. Unidades: $\mathrm{kg\cdot m/s^2}=\mathrm N$.
+
+\subsection*{b) Atrito nos apoios}
+
+Resultante paralela ao plano:
+\[
+\boxed{f_A+f_B=(M+m+m_c)\,g\sin\theta}\tag{2}
+\]
+Os atritos e as componentes $\sin\theta$ dos pesos atuam sobre o eixo da barra e não geram torque, de modo que o equilíbrio de torques não acrescenta nenhuma equação. Com apoios rígidos, a divisão de (2) entre $A$ e $B$ é hiperestática: a estática fornece só a soma, e a repartição depende das deformações nos contatos.
+
+Para obter um valor em cada apoio, adotamos a hipótese usual de que os dois contatos têm o mesmo coeficiente de atrito estático $\mu$ e a mesma razão $f/N$. Isso vale na situação-limite de escorregamento iminente, e é a repartição que exige o menor $\mu$. De fato, de $f_A\le\mu N_A$ e $f_B\le\mu N_B$ segue, somando e usando (1) e (2), $\mu\ge\tan\theta$. Para $\mu=\tan\theta$, ambas as desigualdades só se verificam como igualdades, de modo que $f_A=N_A\tan\theta$ e $f_B=N_B\tan\theta$. Logo, com $N_A$ e $N_B$ do item (a):
+\[
+\boxed{f_A=g\sin\theta\left[\frac M2+\frac{m\,(L-d-a)+m_c\,(b-d)}{L-2d}\right]},\qquad
+\boxed{f_B=g\sin\theta\left[\frac M2+\frac{m\,(a-d)+m_c\,(L-b-d)}{L-2d}\right]}
+\]
+Ambos são dirigidos para cima ao longo do plano, e $f_A+f_B=P\sin\theta$ confere com (2). Para que a barra não deslize, é necessário (e, com essa repartição, suficiente) que $\mu_e\ge\tan\theta$ em cada apoio. Independentemente da repartição, a soma dos atritos é sempre $(M+m+m_c)g\sin\theta$. No caso $\theta=0$, $f_A=f_B=0$.
+
+\medskip
+\noindent ANSWER: $N_A=g\cos\theta\left[\frac M2+\frac{m(L-d-a)+m_c(b-d)}{L-2d}\right]$, $N_B=g\cos\theta\left[\frac M2+\frac{m(a-d)+m_c(L-b-d)}{L-2d}\right]$; $f_A+f_B=(M+m+m_c)g\sin\theta$, com $f_A=N_A\tan\theta$ e $f_B=N_B\tan\theta$ (atrito para cima ao longo do plano).

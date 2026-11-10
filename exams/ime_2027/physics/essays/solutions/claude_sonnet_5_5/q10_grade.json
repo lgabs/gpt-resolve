@@ -1,0 +1,37 @@
+{
+  "question": 10,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-10-fisica-2-fase-dia-2-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "Somente a situação 2. Nas situações 1 e 4 (correntes opostas), B_z ≠ 0 no eixo e F_x tem sempre o mesmo sinal, logo não há restauração. Na situação 3, F_x = +qvB'x afasta a partícula do eixo (instável). Na situação 2, F_x = −qvB'x é restauradora.",
+      "key_answer": "Somente a situação 2 (1 e 4: B ≠ 0 no eixo; 3: a força afasta; 2: a força restaura).",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi com a figura original da p. 10. Com os fios em x = ±d/2 e as correntes para cima, B_z = (μ0 i/2π)[1/(d/2−x) − 1/(d/2+x)] ≈ 4μ0 i x/(πd²), e F_x = q v_y B_z. Na situação 2 (v_y = −v), F_x = −(4μ0 i q v/(πd²))x, que é restauradora. Na situação 3 a força tem o sinal de x e afasta a partícula. Com correntes opostas (1 e 4), os campos se somam entre os fios e B_z ≈ −B0(1+4x²/d²) nunca se anula. Assim, a força lateral já existe no eixo e tem sentido único. A resolução também acerta para qual fio a partícula é desviada (o de corrente paralela ao movimento). As justificativas coincidem com as do gabarito."
+    },
+    {
+      "item": "b",
+      "solution_answer": "p = πv/ω ≈ (πd/2)·√(π m v/(μ0 i q)), com ω² = 4μ0 i q v/(π m d²) (T = 2π/ω)",
+      "key_answer": "T = πd·√(mπ/(μ0 i q v)); p = (πd/2)·√(π m v/(μ0 i q))",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "k = 4μ0 i q v/(πd²) e T = 2π√(m/k) = πd√(πm/(μ0 i q v)), o mesmo período do gabarito. Daí p = vT/2 = (πd/2)√(πmv/(μ0 i q)). Conferi com python: com os dados do teste da resolução, πv/ω e vT/2 dão os dois 0,80261 m. Uma integração RK4 com o campo exato dos dois fios (x0 = 2 mm) deu 0,80212 m entre cruzamentos consecutivos, o mesmo valor que a resolução informa. O raio R = mv/(qB0) = 1,305 m das situações 1 e 4 também confere. A resolução não escreve o período T como expressão fechada, só como T = 2π/ω com ω dado explicitamente. Isso é equivalente, e o que se pede é p."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado define p como a distância entre dois cruzamentos do eixo y, e a figura mostra cruzamentos consecutivos, o que dá p = vT/2. Quem lesse p como o comprimento de onda completo (vT) chegaria a um valor 2 vezes maior. A resolução e o gabarito adotam a mesma leitura, a de meio período, que é a mais coerente com a figura."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução despreza a gravidade, que não é dada, e admite fios eletricamente neutros. São hipóteses implícitas razoáveis, que ela declara, e o gabarito usa as mesmas."
+    }
+  ],
+  "summary": "A resolução e o gabarito do Poliedro estão certos e coincidem nos dois itens. Em (a), a resposta é somente a situação 2, com a mesma justificativa para descartar as situações 1, 3 e 4. Em (b), p ≈ (πd/2)√(πmv/(μ0 i q)), que corresponde a T = πd√(πm/(μ0 i q v)) e p = vT/2. Refiz a conta, que confere com o enunciado original (p. 10). Uma simulação numérica com o campo exato dos dois fios confirma a fórmula com diferença de cerca de 0,06%. Não encontrei erro em nenhum dos dois."
+}

@@ -1,0 +1,90 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.4,
+  "final_answer": "A área da seção é $5(2+\\sqrt3)=10+5\\sqrt3\\approx 18{,}66$. A seção é um trapézio isósceles de bases $8$ e $2$ e altura $2+\\sqrt3$.",
+  "judge_reference": {
+    "reference_solution": "**Notação.** Base ABCDEF = A0…A5, hexágono regular de lado 4, centro O. Vértice V da pirâmide reta, com VO perpendicular à base. Como o hexágono é regular, o raio circunscrito é 4 e a diagonal maior (que passa por O) mede 8.\n\n**1) Qual face e qual plano.** Seja α o plano da seção, com α ⊃ diagonal maior, digamos A0A3. Se α é paralelo à face V A_iA_{i+1}, então α ∩ (plano da base) = reta A0A3 é paralela à reta A_iA_{i+1}, que é a interseção da face com a base. Num hexágono regular, A0A3 é paralela apenas a A1A2 e A4A5. Para as outras faces (por exemplo VA0A1) não existe plano com essas propriedades: o plano por A0 paralelo à face seria a própria face, e ela não contém A3.\nLogo α ∥ face VA1A2 (ou, simetricamente, α ∥ VA4A5). Os dois casos, e as 3 diagonais maiores, dão seções congruentes. Basta tratar α ∥ VA1A2.\n\n**2) Dados da pirâmide.** Cada face lateral é isósceles com ápice π/6. Seja M o ponto médio de A1A2. Então VM é altura e mediana da face, com ângulo π/12 em V, e VM = 2/tg(π/12). Como tg(π/12) = 2 − √3, temos VM = 2/(2 − √3) = 2(2 + √3) = 4 + 2√3.\n(Conferência por outro caminho: lei dos cossenos em VA0A1 dá 16 = l²(2 − √3), logo l² = 16(2 + √3) ≈ 59,7 > 16. A pirâmide existe, com h² = l² − 16 = 16(1 + √3). O valor de h não é necessário.)\n\n**3) Forma da seção (argumento sintético).** Seja M' o ponto médio de A4A5. Como O é o centro, O é o ponto médio de MM', e V, O, M, M' estão no plano de simetria (perpendicular a A1A2).\n- O plano α ∥ plano VA1A2 corta o plano VMM' segundo uma reta por O paralela a VM. No triângulo VMM' essa reta passa pelo ponto médio N de VM', pois O é o ponto médio de MM'. Logo ON = VM/2.\n- Como A4A5 ∥ A1A2 ∥ α, o plano α corta a face VA4A5 segundo a paralela a A4A5 por N, que é a base média de VA4A5. Ela encontra VA4 e VA5 nos pontos médios P4 e P5, e P4P5 = A4A5/2 = 2.\n- Os outros vértices de α ∩ pirâmide são A0 e A3. A interseção com as arestas VA1 e VA2 é vazia, porque A1, A2 e V ficam do mesmo lado de α. Em VA0 e VA3 a interseção é apenas A0 e A3.\n- A seção é o trapézio isósceles A0 P5 P4 A3, com bases A0A3 = 8 e P4P5 = 2.\n\n**4) Coordenadas (conferência).** Com A0 = (4, 0, 0), A1 = (2, 2√3, 0), A2 = (−2, 2√3, 0), A3 = (−4, 0, 0), A4 = (−2, −2√3, 0), A5 = (2, −2√3, 0) e V = (0, 0, h), o plano é h·y + 2√3·z = 0. Ele corta VA4 e VA5 em s = 1/2, isto é, P5 = (1, −√3, h/2) e P4 = (−1, −√3, h/2).\nA distância entre as retas paralelas A0A3 (eixo x) e P4P5 é √(3 + h²/4) = √(3 + 4 + 4√3) = √(7 + 4√3) = 2 + √3.\n\n**5) Altura do trapézio.** ON ∥ VM e VM ⊥ A1A2 ∥ A0A3 (apótema da face isósceles), logo ON ⊥ A0A3. Como O e N são pontos médios das bases do trapézio isósceles, ON é a altura:\nH = ON = VM/2 = 2 + √3.\nIsso coincide com o resultado do item 4, pois √(7 + 4√3) = 2 + √3.\n\n**6) Área.**\nS = (8 + 2)/2 · (2 + √3) = 5(2 + √3) = **10 + 5√3 ≈ 18,66**.\n\n(Verificação numérica em Python: interseção do plano com todas as arestas, área via produto vetorial, resultado 18,6603. Os lados do trapézio são 8, 2 e duas pernas de ≈ 4,788 = √(16 + 4√3). As duas faces válidas, VA1A2 e VA4A5, dão a mesma área. Para as outras 4 faces o plano não contém a diagonal.)",
+    "final_answer": "Área da seção = 5(2 + √3) = 10 + 5√3 ≈ 18,66. A seção é um trapézio isósceles de bases 8 (a diagonal maior) e 2 (base média da face oposta, com vértices nos pontos médios de duas arestas laterais) e altura 2 + √3.",
+    "pitfalls": [
+      "Mostrar que só duas faces (VA1A2 e VA4A5, cujas arestas da base são paralelas à diagonal) admitem um plano por A0A3 paralelo a elas, e que os dois casos (e as 3 diagonais) são simétricos e dão a mesma área. Para as outras faces não existe plano: o plano por A0 paralelo à face seria a própria face.",
+      "Hipóteses usadas: pirâmide reta (V sobre o centro O), hexágono regular (raio circunscrito = lado = 4, diagonal maior = 8, não 4√3, que é a diagonal menor) e face isósceles com ápice π/6 (π/6 é o ângulo no vértice V, não na base). Verificar que a pirâmide existe: l² = 16(2+√3) > 16.",
+      "Identificar corretamente a forma da seção: o plano passa por A0 e A3 e corta VA4 e VA5 nos pontos médios (fator 1/2), formando um trapézio A0 P5 P4 A3. Não é triângulo nem hexágono. É preciso justificar por que VA1 e VA2 não são cortadas, e que VA0 e VA3 só são tocadas em A0 e A3.",
+      "Justificar que P4P5 = 2: o plano paralelo à face VA1A2 passa por O e, no plano de simetria VMM', corta VM' no ponto médio N (O é ponto médio de MM'). A seção da face VA4A5 é uma base média, paralela a A4A5, de comprimento 4/2 = 2.",
+      "A altura do trapézio é medida no plano da seção: H = ON = VM/2, com ON ⊥ A0A3. Não usar h/2, VM ou o comprimento da perna como altura.",
+      "Cálculo do apótema da face: VM = 2/tg(π/12) = 2(2+√3), com tg 15° = 2 − √3 (racionalizar 1/(2−√3) = 2+√3). Via lei dos cossenos: l² = 16/(2−√3) = 16(2+√3); h² = 16(1+√3). Na via por coordenadas, √(7+4√3) = 2+√3 exige desaninhar o radical (7+4√3 = (2+√3)²).",
+      "Responder com a forma exata 10 + 5√3 (≈ 18,66), com a justificativa, e não só o número. Erros típicos: esquecer o fator 1/2 da base média (usar 4 em vez de 2 como base menor) e confundir a perna do trapézio (√(16+4√3)) com a altura."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "A seção é um trapézio isósceles de bases 8 e 2 e altura 2+√3, com área 5(2+√3) = 10+5√3 ≈ 18,66.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 2: a eliminação das faces VA1A2, VA6A1, VA3A4 e VA4A5 está mal justificada. O candidato diz que o plano 'coincidiria com o plano dela, o que não é uma seção \"paralela\"', o que depende de uma convenção sobre planos coincidentes serem ou não paralelos. A razão correta e decisiva não aparece: o plano da face que contém A1 não contém A4 (e vice-versa), então ele não pode conter a diagonal inteira. Falta também a observação de que, se π ∥ face, então a reta π∩base (A1A4) é paralela à aresta da base dessa face. A frase 'logo a face deve ter como aresta da base um lado paralelo a A1A4' sai por eliminação, não por esse argumento. O resultado é correto e o plano é construído explicitamente no passo 3, mas o gabarito deveria dar a razão limpa."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato afirma que as duas escolhas, VA2A3 e VA5A6, são simétricas, mas não diz qual simetria faz isso (reflexão y→−y, que fixa A1A4). Fixa a diagonal A1A4 sem dizer que as três diagonais maiores são equivalentes pela rotação de 60° em torno de VO. A unicidade da área, que é o que o enunciado 'uma das faces' exige, fica só afirmada."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 4: as arestas VA1 e VA4 não são tratadas explicitamente. Basta dizer que V ∉ π (h·0 + 2√3·h ≠ 0), então elas tocam π só em A1 e A4. A lista de arestas fica incompleta, embora o quadrilátero final esteja correto. Para VA2 e VA3 o argumento 'y>0, z≥0' vale, mas o mais limpo seria notar que hy+2√3z = 2√3h > 0 é constante ao longo da aresta."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência numérica ('cálculo numérico independente') é só afirmada, sem detalhe. Eu refiz a interseção do plano com todas as arestas e obtive 4 vértices e área 18,6603 = 10+5√3, então o valor está certo. A afirmação não é verificável a partir do texto. Também falta dizer que a pirâmide existe (ℓ² = 16(2+√3) > 16), embora h² > 0 já o implique."
+          },
+          {
+            "severity": "minor",
+            "description": "A solução é inteiramente por coordenadas. Não há o argumento sintético que explica por que P4P5 = 2 e H = VM/2 (O é ponto médio de MM', logo N é ponto médio de VM'). Isso não é erro, mas deixa os resultados sem interpretação geométrica. O desaninhamento √(7+4√3)=2+√3 está feito corretamente."
+          }
+        ],
+        "summary": "A resposta final do candidato, 5(2+√3) = 10+5√3 ≈ 18,66, coincide com a da minha referência e está correta. Refiz a conta em Python, só com a biblioteca padrão, que não tem numpy. Com h² = 16+16√3, o ângulo no ápice dá 30°, e o plano hy+2√3z=0 passa por A1 e A4 e é paralelo à face VA2A3. Ele corta a pirâmide em exatamente 4 pontos: A1, A4 e os pontos médios de VA5 e VA6. A área numérica é 18,66025 = 10+5√3. As contas do candidato conferem passo a passo. ℓ² = 16(2+√3) e h² = 16+16√3 estão certos. O plano hy+2√3z=0 está certo. Os parâmetros t=1/2 em VA5 e VA6 estão certos. As bases 8 e 2 estão certas. A altura √(3+h²/4) = √(7+4√3) = 2+√3 está certa. A forma da seção (trapézio isósceles, com VA2 e VA3 não cortadas) está correta e justificada por álgebra. Das armadilhas, a identificação de que só VA2A3 e VA5A6 servem, a base média de 2, a altura medida no plano da seção (distância ao eixo x, não h/2 nem a perna) e a forma exata foram tratadas. As fraquezas são de rigor e acabamento. O argumento para descartar as outras quatro faces é impreciso: falta dizer que o plano da face que contém A1 não contém A4. A simetria entre as faces e entre as três diagonais é só afirmada. As arestas VA1 e VA4 não são mencionadas explicitamente. É uma solução correta, clara e verificável, ligeiramente abaixo do nível de gabarito publicável por causa desses pequenos furos de justificativa, por isso 8,5."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.4,
+      "final_answer": "A área da seção é $5(2+\\sqrt3)=10+5\\sqrt3\\approx 18{,}66$. A seção é um trapézio isósceles de bases $8$ e $2$ e altura $2+\\sqrt3$.",
+      "review": {
+        "score": 9.4,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O plano secante é chamado de π, símbolo que também aparece como ângulo π/6 no enunciado. Isso pode confundir o leitor. Seria melhor usar α ou Π para o plano."
+          },
+          {
+            "severity": "minor",
+            "description": "A passagem 'interseção do plano com o poliedro convexo = polígono de vértices nas interseções com as arestas' é usada sem ser enunciada. A lista de arestas por sinal de f cobre todas as 12 arestas e está correta, mas uma frase de justificativa (convexidade, f afim) daria mais rigor."
+          },
+          {
+            "severity": "minor",
+            "description": "Na lei dos cossenos, o passo 1−cos(π/6) = (2−√3)/2 é omitido, e VM = 2/tg(π/12) não é apresentado como verificação cruzada. As contas estão certas: ℓ² = 16(2+√3), h² = 16(1+√3), VM = 2(2+√3). Faltou só mostrar o passo intermediário."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'Conferência' diz que os vértices por sinal de f coincidem com 'a construção sintética'. Essa construção sintética completa (plano paralelo a VM por O, base média em VA5A6) não aparece antes. O argumento sintético só entra no cálculo da altura. É uma afirmação de verificação um pouco solta."
+          },
+          {
+            "severity": "minor",
+            "description": "A exclusão das faces é correta e completa, mas poderia dizer explicitamente que as duas arestas da base paralelas a A1A4 são A2A3 e A5A6. Poderia dizer também que, para as demais faces, o plano por A1 paralelo à face coincidiria com a própria face, que não contém A4. O candidato usa só o argumento das retas na base, que basta."
+          }
+        ],
+        "summary": "A resposta final do candidato, 5(2+√3) = 10+5√3 ≈ 18,66, coincide com a minha referência. Conferi numericamente em Python puro: plano por A0A3 paralelo a VA1A2, interseção com as 12 arestas, 4 vértices, área 18,6603 = 10+5√3, h ≈ 6,6116 e H = √(3+h²/4) ≈ 3,7321 = 2+√3. O enunciado transcrito confere com o original (Q09, ITA 2027), e o ângulo de π/6 no vértice foi verificado (30°). Todos os passos do candidato são válidos: ℓ² = 16(2+√3) > 16 (a pirâmide existe), h² = 16(1+√3), VM = 2(2+√3) por √(7+4√3) = 2+√3. A escolha da diagonal por simetria está correta, e só A2A3 e A5A6 são paralelas a A1A4, o que exclui as outras quatro faces. O plano é h·y+2√3·z = 0. Os sinais de f (zero em A1, A4; positivo em V, A2, A3; negativo em A5, A6) mostram que VA2 e VA3 não são cortadas e que VA5 e VA6 são cortadas nos pontos médios. A seção é o trapézio isósceles A1N6N5A4 de bases 8 e 2. A altura vem de ON = VM/2 com ON ⊥ bases, e é confirmada por coordenadas. A área é (8+2)/2·(2+√3). Todas as armadilhas da referência foram tratadas: faces válidas e simetria, fator 1/2 da base média, altura ≠ perna ≠ h/2, desaninhar o radical, forma exata e justificativa. Os problemas restantes são só de apresentação: o uso de π para o plano, um passo da lei dos cossenos omitido, a convexidade pressuposta e uma 'conferência' um pouco solta. É praticamente um gabarito comentado publicável."
+      }
+    }
+  ]
+}

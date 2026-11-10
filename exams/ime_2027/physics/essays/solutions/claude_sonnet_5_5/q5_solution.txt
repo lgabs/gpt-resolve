@@ -1,0 +1,58 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Hipóteses e leis usadas.} Regime permanente (ciclos), fontes ideais (reservatórios térmicos), todas as grandezas em taxa (kW). Primeira lei para um ciclo: $\sum \dot Q_{\text{recebido}} = \dot W + \sum \dot Q_{\text{rejeitado}}$. Segunda lei: a taxa de geração de entropia é $\dot S_{ger} = \sum \dot Q_{rej}/T_{rej} - \dot Q_{quente}/T_{quente} \ge 0$, e o rendimento máximo (Carnot, entre $T_q$ e $T_f$) é $\eta_{\max}=1-T_f/T_q$.
+
+\medskip
+\textbf{a) Temperatura da fonte fria da empresa A.}
+
+Potência útil: $\dot W_A = 80\ \text{HP}\times \tfrac34\ \text{kW/HP}=60\ \text{kW}$.
+
+Rendimento real: $\eta_A=\dfrac{\dot W_A}{\dot Q_q}=\dfrac{60}{150}=0{,}40$.
+
+Como $\eta_A = 0{,}80\,\eta_{\max}$, temos $\eta_{\max}=\dfrac{0{,}40}{0{,}80}=0{,}50$. Com $\eta_{\max}=1-\dfrac{T}{900}$:
+\[
+1-\frac{T}{900}=0{,}50 \;\Rightarrow\; T = 450\ \text{K}.
+\]
+
+\textbf{b) Calor rejeitado no projeto A.}
+
+Pela primeira lei: $\dot Q = \dot Q_q-\dot W_A = 150-60 = 90\ \text{kW}$ (rejeitado a $450$ K).
+
+Verificação (segunda lei): $\dot S_{ger}=\dfrac{90}{450}-\dfrac{150}{900}=0{,}200-0{,}167=0{,}033\ \text{kW/K}>0$ (ciclo irreversível, coerente com $\eta<\eta_{\max}$).
+
+\medskip
+\textbf{c) Análise da proposta B.}
+
+\emph{Dados de B:} $\dot Q_q=150$ kW a $900$ K; para a fonte de $T=450$ K vão $\dot Q_1=\dot Q/2 = 45$ kW; para a fonte de $300$ K vai $\dot Q_2$.
+
+\emph{Demanda elétrica alegada:} cada residência consome $\dfrac{240\ \text{kW·h}}{720\ \text{h}}=\dfrac13\ \text{kW}$, logo
+\[
+\dot W_B = 350\cdot\frac13 \approx 116{,}7\ \text{kW}.
+\]
+
+\emph{Calor para a água:} $\dot m = 50\ \text{L/min}\cdot 1\ \text{kg/L}=\dfrac{50}{60}\ \text{kg/s}$, então
+\[
+\dot Q_{\text{água}}=\dot m\,c\,\Delta T=\frac{50}{60}\cdot 4000\cdot 10\approx 3{,}33\cdot 10^{4}\ \text{W}=33{,}3\ \text{kW}.
+\]
+Esse calor vem da rejeição para a fonte de $300$ K, isto é, $\dot Q_2\ge 33{,}3$ kW.
+
+\emph{1ª lei.} O balanço de B é $150=\dot W_B+45+\dot Q_2$, ou seja, $\dot W_B+\dot Q_2=105\ \text{kW}$. O que se promete exige
+\[
+\dot W_B+\dot Q_2 \ge 116{,}7+33{,}3 = 150\ \text{kW} > 105\ \text{kW}.
+\]
+Em termos de calor rejeitado, seriam $45+33{,}3+116{,}7 = 195\ \text{kW}$ de saída para apenas $150$ kW de entrada: viola a conservação de energia. Mesmo ignorando a água, $\dot Q_2=105-116{,}7=-11{,}7$ kW $<0$ (a máquina teria de \emph{retirar} calor da fonte de $300$ K), o que contraria o esquema e dá $\dot S_{ger}=\dfrac{45}{450}-\dfrac{11{,}7}{300}-\dfrac{150}{900}\approx-0{,}106\ \text{kW/K}<0$.
+
+\emph{2ª lei (limite máximo de B).} Com $\dot Q_2=105-\dot W_B$:
+\[
+\dot S_{ger}=\frac{45}{450}+\frac{105-\dot W_B}{300}-\frac{150}{900}\ge 0
+\;\Rightarrow\; 105-\dot W_B\ge 20
+\;\Rightarrow\; \dot W_B\le 85\ \text{kW}
+\]
+(igualdade = ciclo reversível, com $\dot Q_2=20$ kW). Logo, mesmo sem aquecer água, B atenderia no máximo $85\cdot 3 = 255<350$ residências. Com a água ($\dot Q_2\ge 33{,}3$ kW $>20$ kW, compatível com a 2ª lei), a 1ª lei limita $\dot W_B\le 105-33{,}3=71{,}7$ kW, ou seja, cerca de $215$ residências (A atenderia $60\cdot 3=180$).
+
+\textbf{Conclusão:} as afirmações do representante de B \emph{não são realistas}. Atender 350 residências ($116{,}7$ kW) e ainda aquecer $50$ L/min ($33{,}3$ kW) exigiria $150$ kW fora das fontes frias além dos $45$ kW já rejeitados, isto é, $195$ kW $>150$ kW (violação da 1ª lei); e a potência de $116{,}7$ kW excede o máximo de $85$ kW permitido pela 2ª lei para essas três fontes. O que B pode oferecer, no melhor caso, é cerca de $215$ residências mais a água aquecida.
+
+\medskip
+ANSWER: a) $T=450$ K; b) $\dot Q=90$ kW; c) não são realistas: seriam necessários $116{,}7+33{,}3+45=195$ kW $>150$ kW (1ª lei), e $\dot W_B\le 85$ kW $<116{,}7$ kW (2ª lei).

@@ -1,0 +1,53 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Eventos.} Para o computador examinado, sejam
+\begin{itemize}
+\item $I$: o computador está infectado; $\bar I$: não está infectado;
+\item $D$: o antivírus indica vírus; $\bar D$: o antivírus responde que não há vírus.
+\end{itemize}
+
+\textbf{Dados.} Pelo enunciado:
+\[
+P(I)=0{,}90,\qquad P(\bar I)=1-0{,}90=0{,}10,
+\]
+\[
+P(D\mid I)=0{,}95\ \Rightarrow\ P(\bar D\mid I)=1-0{,}95=0{,}05,
+\]
+\[
+P(D\mid \bar I)=0{,}01\ \Rightarrow\ P(\bar D\mid \bar I)=1-0{,}01=0{,}99 .
+\]
+Os complementos valem porque, dada a condição ($I$ ou $\bar I$), o programa dá exatamente uma das duas respostas, $D$ ou $\bar D$.
+
+\textbf{O que se pede.} O programa respondeu ``não infectado'', isto é, ocorreu $\bar D$. Pede-se então a probabilidade condicional $P(I\mid \bar D)$.
+
+\textbf{Probabilidade total.} Como $I$ e $\bar I$ particionam o espaço amostral,
+\[
+P(\bar D)=P(\bar D\mid I)\,P(I)+P(\bar D\mid \bar I)\,P(\bar I)
+=0{,}05\cdot 0{,}90+0{,}99\cdot 0{,}10
+=0{,}045+0{,}099=0{,}144 .
+\]
+
+\textbf{Teorema de Bayes.} Como $P(\bar D)=0{,}144>0$, a probabilidade condicional está bem definida e
+\[
+P(I\mid \bar D)=\frac{P(\bar D\mid I)\,P(I)}{P(\bar D)}
+=\frac{0{,}045}{0{,}144}
+=\frac{45}{144}
+=\frac{5}{16}
+=0{,}3125 .
+\]
+
+\textbf{Verificação.} O caso complementar dá
+\[
+P(\bar I\mid \bar D)=\frac{0{,}099}{0{,}144}=\frac{11}{16},
+\qquad \frac{5}{16}+\frac{11}{16}=1 .
+\]
+O valor também faz sentido. Antes do teste, a chance de infecção era de $90\%$. Depois de um resultado negativo ela cai para cerca de $31\%$. Mesmo assim, continua alta, porque quase todos os computadores estão infectados: nos falsos negativos ($0{,}045$) e nos verdadeiros negativos ($0{,}099$), as duas parcelas são da mesma ordem de grandeza.
+
+\textbf{Conclusão.} A probabilidade de o computador examinado estar infectado é
+\[
+P(I\mid \bar D)=\frac{5}{16}=31{,}25\%.
+\]
+
+ANSWER: $\dfrac{5}{16}=31{,}25\%$

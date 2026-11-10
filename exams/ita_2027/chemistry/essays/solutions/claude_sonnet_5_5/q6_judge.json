@@ -1,0 +1,129 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 8.8,
+  "final_answer": "(1) 2 Li(s) + 2 H2O(ℓ) → 2 LiOH(aq) + H2(g), a temperatura e pressão ambiente; (2) CH4(g) → C(s) + 2 H2(g), pirólise a cerca de 800 a 1200 °C, sem O2; (3) CH4(g) + H2O(g) → CO(g) + 3 H2(g), reforma a vapor a 700 a 1000 °C com catalisador de Ni. Mais H2 por mol de reagente total: a pirólise do CH4 (2 mol H2/mol, contra 1,5 da reforma e 0,25 da reação com Li). Por mol só de CH4, a reforma rende mais (3 contra 2).",
+  "judge_reference": {
+    "reference_solution": "**Leitura do enunciado.** Os únicos reagentes permitidos são Li, H2O e CH4, sozinhos ou combinados dois a dois. Isso dá cinco casos possíveis:\n- Li sozinho: não produz H2.\n- H2O sozinha: decomposição, que é a eletrólise.\n- CH4 sozinho: pirólise.\n- Li + H2O: reação redox.\n- CH4 + H2O: reforma a vapor.\n- Li + CH4: não há reação útil que produza H2.\n\nNão valem O2, CO2, ácidos ou outros reagentes. O eletrólito e o catalisador não são reagentes, porque não são consumidos.\n\n**Reações escolhidas** (verifiquei o balanço atômico de todas em Python):\n\n**R1. Li + H2O (par)**\n- Equação: 2 Li(s) + 2 H2O(ℓ) → 2 LiOH(aq) + H2(g).\n- Estados: Li sólido, H2O líquida, LiOH dissolvido (aq), H2 gasoso.\n- Condições: temperatura e pressão ambiente (25 °C, 1 atm), sem catalisador e com água em excesso.\n- Por que ocorre: E°(Li⁺/Li) = −3,04 V é muito menor que E(H2O/H2) = −0,83 V em meio básico, então ΔE ≈ +2,2 V e a reação é espontânea.\n- Observações: é fortemente exotérmica (≈ −2,2×10² kJ por mol de Li). O Li flutua (d = 0,53 g/cm³) e a reação é menos violenta que com Na ou K. O LiOH é solúvel (≈ 12,8 g/100 g de água), então fica em solução se houver excesso de água. A solução fica básica, com Li⁺ e OH⁻.\n- H2 por mol de reagente: 1 mol de H2 para 2 + 2 = 4 mol de reagentes, ou seja 0,25. Por mol de Li, são 0,5.\n\n**R2. CH4 + H2O (par): reforma a vapor**\n- Equação: CH4(g) + H2O(g) → CO(g) + 3 H2(g).\n- Estados: todos gasosos. A água precisa estar como vapor nessa temperatura.\n- Condições: alta temperatura, 700–1000 °C. Catalisador de Ni sobre Al2O3. Pressão da ordem de 15–30 bar na indústria. Vapor em excesso (H2O:CH4 ≈ 2,5–3) para evitar depósito de carbono.\n- Por que essas condições: a reação é endotérmica, com ΔH° = +206 kJ/mol e ΔS° = +215 J/K. Também ΔG°(298 K) = +142 kJ, então ela não ocorre à temperatura ambiente. ΔG = 0 em ≈ 960 K (≈ 690 °C), e acima disso ela é espontânea. Como Δn(gás) = +2, o equilíbrio é favorecido por baixa pressão (Le Chatelier). Pressões altas são um compromisso industrial de cinética e equipamento.\n- Variante com reação de deslocamento (shift): CO + H2O → CO2 + H2, ΔH = −41 kJ. A soma é CH4(g) + 2 H2O(g) → CO2(g) + 4 H2(g), com ΔH = +165 kJ.\n- H2 por mol de reagente: 3 mol de H2 para 1 + 1 = 2 mol de reagentes, ou seja 1,5. Por mol de CH4, são 3. Na variante com shift, são 4/3 ≈ 1,33 por mol de reagentes e 4 por mol de CH4.\n\n**R3. H2O sozinha: eletrólise**\n- Equação: 2 H2O(ℓ) → 2 H2(g) + O2(g).\n- Estados: H2O líquida, H2 e O2 gasosos.\n- Condições: corrente contínua, com tensão maior que 1,23 V (na prática ≈ 1,8–2,0 V). Eletrodos inertes (Pt ou grafite). Eletrólito para dar condutividade (Na2SO4, H2SO4 diluído ou KOH), que não é consumido.\n- Por que é necessária: ΔG° = +237 kJ/mol de H2O, e a reação não é espontânea.\n- Semirreações: no cátodo (−), 2 H2O + 2e⁻ → H2 + 2 OH⁻. No ânodo (+), 2 H2O → O2 + 4 H⁺ + 4e⁻.\n- H2 por mol de reagente: 2 mol de H2 para 2 mol de H2O, ou seja 1,0.\n\n**Alternativa válida para a 3ª reação: pirólise do metano**\n- Equação: CH4(g) → C(s) + 2 H2(g).\n- Condições: alta temperatura. ΔH = +75 kJ e ΔG = 0 em ≈ 650 °C, mas por cinética precisa de ≳ 1000 °C sem catalisador, ou 600–900 °C com Ni ou Fe.\n- Observações: não gera CO nem CO2. O carbono sai sólido (fuligem).\n- H2 por mol de reagente: 2 mol de H2 por 1 mol de CH4, ou seja 2,0.\n\n**Item iv: critério.** Calculo n(H2) ÷ n(total de reagentes consumidos), com reação completa e proporção estequiométrica.\n\n| Reação | H2 produzido (mol) | Reagentes consumidos (mol) | H2 por mol de reagente |\n|---|---|---|---|\n| 2 Li + 2 H2O → 2 LiOH + H2 | 1 | 4 | 0,25 |\n| 2 H2O → 2 H2 + O2 | 2 | 2 | 1,0 |\n| CH4 + 2 H2O → CO2 + 4 H2 | 4 | 3 | 1,33 |\n| CH4 + H2O → CO + 3 H2 | 3 | 2 | 1,5 |\n| CH4 → C + 2 H2 | 2 | 1 | 2,0 |\n\n- **Conjunto principal (R1, R2, R3):** a reforma a vapor do metano rende mais H2 por mol de reagente, com 1,5 mol de H2 por mol de reagente (3 por mol de CH4), contra 1,0 da eletrólise e 0,25 de Li + H2O. Isso vale por qualquer critério: por mol total, por mol de CH4, ou por mol de Li ou de H2O.\n- **Se o candidato usar a pirólise no lugar da eletrólise:**\n  - Por mol de reagente totalmente consumido, a pirólise (2,0) supera a reforma (1,5).\n  - Por mol de CH4, a reforma (3, ou 4 com shift) supera a pirólise (2).\n  - Portanto a resposta ao item iv depende do conjunto escolhido e do critério. O candidato deve declarar o critério usado.",
+    "final_answer": "Três reações (conjunto principal):\n1) 2 Li(s) + 2 H2O(ℓ) → 2 LiOH(aq) + H2(g). Condições: ambiente (25 °C, 1 atm), água em excesso. H2/reagente = 1/4 = 0,25.\n2) CH4(g) + H2O(g) → CO(g) + 3 H2(g). Reforma a vapor: 700–1000 °C, catalisador de Ni, 15–30 bar, excesso de vapor. Endotérmica (ΔH ≈ +206 kJ). H2/reagente = 3/2 = 1,5 (3 por mol de CH4). Com a reação de deslocamento (shift): CH4 + 2 H2O → CO2 + 4 H2, ou seja 4/3 ≈ 1,33 (4 por mol de CH4).\n3) 2 H2O(ℓ) → 2 H2(g) + O2(g). Eletrólise: corrente contínua, V > 1,23 V (na prática ≈ 2 V), eletrodos inertes e eletrólito. H2/reagente = 2/2 = 1,0.\nAlternativa válida à 3ª reação: CH4(g) → C(s) + 2 H2(g), pirólise a ≳ 650 °C termodinamicamente e ≳ 1000 °C sem catalisador. H2/reagente = 2,0.\niv) No conjunto principal, a reforma do metano com vapor é a que rende mais H2 por mol de reagente (1,5 contra 1,0 e 0,25). Se a pirólise for incluída, ela rende 2 mol de H2 por mol de CH4, o maior valor por mol total de reagentes. Por mol de CH4, porém, a reforma (3 a 4) vence. O candidato precisa declarar o critério.",
+    "pitfalls": [
+      "Li sozinho não gera H2, e Li + CH4 não é uma rota razoável. Só valem Li + H2O, CH4 + H2O, CH4 sozinho (pirólise) e H2O sozinha (eletrólise). Não se pode usar O2 (oxidação parcial), CO2 (reforma seca) ou ácidos como reagentes.",
+      "Estados físicos: Li(s), H2O(ℓ) na reação com Li e na eletrólise, mas H2O(g) na reforma a vapor porque a 700–1000 °C a água é vapor. LiOH é (aq), não (s). C da pirólise é C(s), não gás. H2 é sempre (g).",
+      "A estequiometria deve estar balanceada: 2 Li + 2 H2O → 2 LiOH + H2 (não Li + H2O → LiOH + H2). CH4 + H2O → CO + 3 H2, ou CH4 + 2 H2O → CO2 + 4 H2. Erros comuns são CH4 + H2O → CO2 + 2 H2, que está desbalanceada, ou 'CO + H2' sem coeficientes.",
+      "A reforma não ocorre à temperatura ambiente: ΔG°(298 K) ≈ +142 kJ. Exige alta T (ΔG = 0 em ≈ 960 K), catalisador de Ni e vapor em excesso. Citar só 'aquecimento' sem catalisador é incompleto. A reforma é endotérmica (ΔH ≈ +206 kJ) e, por Le Chatelier (Δn gás = +2), é favorecida por baixa pressão, embora a indústria use pressão alta por razões práticas.",
+      "Eletrólise: a água pura é mau condutor, então é preciso eletrólito inerte (que não é reagente consumido). É preciso aplicar tensão maior que 1,23 V, com eletrodos inertes e corrente contínua. Não é espontânea (ΔG° = +237 kJ/mol de H2O). Não confundir cátodo (H2) com ânodo (O2).",
+      "Li + H2O é espontânea à temperatura ambiente (ΔE ≈ +2,2 V) e dispensa catalisador. É exotérmica e produz H2 inflamável, e a solução final é básica. O Li não deve ser descrito como reagindo com explosão semelhante à do K.",
+      "Item iv: o resultado depende do critério e do conjunto escolhido. Por mol total de reagentes consumidos: pirólise 2,0 > reforma→CO 1,5 > reforma→CO2 1,33 > eletrólise 1,0 > Li + H2O 0,25. Por mol de CH4: reforma+shift 4 > reforma 3 > pirólise 2. A resposta deve explicitar o critério e a conta. No conjunto Li+H2O, reforma e eletrólise, a reforma vence por qualquer critério.",
+      "Não confundir 'por mol de reagente' com 'por massa'. O enunciado pede mol. Contar todos os reagentes da equação balanceada: no caso do Li, 1 mol de H2 vem de 4 mol de reagentes, e dizer que são 2 mol de Li é perder o denominador total.",
+      "Citar reações que exigem reagentes fora da lista (por exemplo, Li + HCl, CH4 + O2, CO + H2O sem passar pelo CH4) ou que não produzem H2(g) deve ser penalizado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.8,
+      "final_answer": "(1) 2 Li(s) + 2 H2O(ℓ) → 2 LiOH(aq) + H2(g), a temperatura e pressão ambiente; (2) CH4(g) → C(s) + 2 H2(g), pirólise a cerca de 800 a 1200 °C, sem O2; (3) CH4(g) + H2O(g) → CO(g) + 3 H2(g), reforma a vapor a 700 a 1000 °C com catalisador de Ni. Mais H2 por mol de reagente total: a pirólise do CH4 (2 mol H2/mol, contra 1,5 da reforma e 0,25 da reação com Li). Por mol só de CH4, a reforma rende mais (3 contra 2).",
+      "review": {
+        "score": 8.8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A frase de justificativa do item iv ('coerente com o limite de que 1 mol de CH4 sozinho só fornece 2 mol de H2 (4 H), enquanto o Li exige 2 mol de metal e 2 mol de água por mol de H2') não prova a ordenação pirólise > reforma. Só explica por que o Li é o pior. A comparação entre pirólise (2,0) e reforma (1,5) depende apenas da tabela. Deveria ser removida ou reescrita como: a pirólise tem um único reagente, então não há 'denominador' extra de H2O."
+          },
+          {
+            "severity": "minor",
+            "description": "A reforma a vapor não tem a análise termodinâmica quantitativa que a pirólise recebe. Falta ΔS° ≈ +215 J/K, ΔG°(298 K) ≈ +142 kJ e T de equilíbrio ≈ 960 K (≈ 690 °C), que justificariam 'por que não ocorre à temperatura ambiente'. Há só o argumento qualitativo (endotérmica, Δn(gás) = +2). Como o item iii pede 'condições básicas', isso é aceitável, mas o tratamento é desigual entre as reações 2 e 3. Também não se justifica a escolha de 700–1000 °C, que é maior que o limiar termodinâmico."
+          },
+          {
+            "severity": "minor",
+            "description": "A faixa prática da pirólise (≈ 800–1200 °C) mistura o caso com catalisador e o caso sem catalisador. Sem catalisador, a cinética exige ≳ 1000 °C. Com Ni ou Fe, 600–900 °C bastam. A frase 'catalisador permite temperaturas menores' ameniza, mas ficaria mais clara se separasse os dois casos. O cálculo de T = ΔH/ΔS ≈ 926 K (653 °C) está correto, conferido em Python."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato escolheu duas reações a partir do CH4 e deixou de fora a eletrólise da água. Isso é legítimo, mas com esse conjunto a resposta 'pirólise' ao item iv vem do critério adotado (mol total de reagentes). A resposta final traz o critério alternativo (por mol de CH4: reforma 3 > pirólise 2). O critério fica explícito, mas a resposta continua dupla. Seria melhor comentar também a comparação 'por mol de H2O' ou 'por mol de Li', em que a reforma também vence, para cobrir as leituras de 'reagente'."
+          },
+          {
+            "severity": "minor",
+            "description": "O ΔE° da reação com Li mistura E°(Li⁺/Li) = −3,04 V (padrão) com E(H2O/H2) = −0,83 V (pH 14). Como o par do Li não depende do pH, a conta vale como estimativa. Faltou dizer isso em uma linha. O cálculo é coerente com a referência e não afeta o resultado."
+          }
+        ],
+        "summary": "A resolução está correta e completa. As três reações (Li + H2O, pirólise do CH4 e reforma a vapor) usam só reagentes permitidos e estão balanceadas; conferi o balanço dos átomos e os números de ΔS e T de transição da pirólise (ΔS° = 80,8 J/K, T = 926 K ≈ 653 °C) em Python. Os estados físicos estão corretos nas armadilhas relevantes: LiOH(aq), C(s) na pirólise e H2O(g) na reforma. As condições são adequadas e as ressalvas aparecem: Li em óleo, ausência de O2, Ni/Al2O3, vapor em excesso e Le Chatelier. No item iv o candidato declara o critério (mol total de reagentes) e monta a tabela 0,25 / 2,0 / 1,5, o que coincide com a minha referência para esse conjunto de reações. Ele ainda dá o critério alternativo (por mol de CH4: reforma 3, ou 4 com shift, > pirólise 2) e a variante com shift (4/3 ≈ 1,33). As falhas são só menores: uma frase de justificativa do item iv que não sustenta a ordenação, a reforma sem ΔG e T de equilíbrio, a faixa de T da pirólise que mistura casos com e sem catalisador, e a resposta final dupla. Nenhuma armadilha importante foi pisada. Nota 8,8: muito boa e próxima de um gabarito comentado, mas ainda um pouco abaixo de 9 pela análise desigual das reações e pela frase fraca de coerência."
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.7,
+      "final_answer": "Três reações: (1) 2 Li(s) + 2 H2O(l) → 2 LiOH(aq) + H2(g), à temperatura ambiente; (2) CH4(g) → C(s) + 2 H2(g), T > 650 °C (≈ 700–900 °C com Ni/Fe, ≳ 1000 °C sem catalisador), sem O2; (3) CH4(g) + H2O(g) → CO(g) + 3 H2(g), ≈ 800–1000 °C, Ni/Al2O3. Pelo critério declarado, mol de H2 por mol total de reagentes, a pirólise do CH4 rende mais (2,0, contra 1,5 da reforma e 0,25 da reação com Li). Por mol apenas de CH4, a reforma vence (3 contra 2).",
+      "review": {
+        "score": 8.7,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item iv: a linha ANSWER crava a pirólise como resposta, com o critério '(total)' só entre parênteses. A conclusão muda conforme o critério: por mol de CH4, a reforma vence (3, ou 4 com shift, contra 2). A ressalva está no corpo do texto, mas não na resposta final. Se o gabarito oficial usar o critério por mol de CH4 ou de metano, a resposta final tem risco de ser lida como divergente. Deveria constar na ANSWER uma frase como 'por mol de CH4, a reforma rende mais (3 contra 2)'."
+          },
+          {
+            "severity": "minor",
+            "description": "A constante 'K ≈ 26 a 1100 K' não bate com os próprios dados. Com ΔH = +206 kJ e ΔS = +215 J/K, a conta dá K = exp[(215·1100 − 206000)/(8,31·1100)] ≈ 28. O valor 26 só sai com ΔS ≈ 214,6. A diferença é pequena e o texto diz 'estimado', mas é um número solto. Além disso, 'K ≫ 1' é exagero para K ≈ 26 a 1 bar. Convém dar K ≈ 28 ou omitir."
+          },
+          {
+            "severity": "minor",
+            "description": "Há assimetria no tratamento termodinâmico. Para a reforma, o candidato mostra que se usa T acima do limiar para ter K ≫ 1. Para a pirólise, só cita T > 926 K (K = 1). A 650 °C e 1 bar isso dá conversão de só ≈ 45 %, e a 700 °C, ≈ 50 %. A faixa de 700–900 °C com catalisador dá conversão alta só a pressão baixa ou com diluição, e o texto diz que 'reação completa' é uma hipótese do enunciado. Faltou dizer isso para a pirólise também."
+          },
+          {
+            "severity": "minor",
+            "description": "Reação 1: faltou a solubilidade do LiOH (≈ 12,8 g/100 g de água). Ela justifica o LiOH(aq) e o 'bastante água'. O candidato afirma 'solúvel', o que está correto e é suficiente para a prova, mas um gabarito comentado quantificaria o limite."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não considerou a eletrólise da água (2 H2O → 2 H2 + O2), a outra reação válida de reagente isolado. Não é erro: a pirólise é igualmente válida e a escolha foi justificada. Porém a comparação do item iv não mostra a eletrólise (1,0) na tabela. Isso não afeta o resultado, pois a pirólise (2,0) vence mesmo assim."
+          }
+        ],
+        "summary": "O enunciado foi conferido no PDF e a transcrição está fiel. O candidato escolheu três reações válidas com reagentes permitidos: 2 Li(s) + 2 H2O(ℓ) → 2 LiOH(aq) + H2(g), CH4(g) → C(s) + 2 H2(g) e CH4(g) + H2O(g) → CO(g) + 3 H2(g). Todas estão balanceadas, com estados corretos (H2O como vapor na reforma, LiOH(aq), C(s)). As condições são completas e termodinamicamente fundamentadas. Reação 1: ΔE° ≈ 2,2 V, ambiente, água em excesso, Li guardado em óleo. Pirólise: ΔH = +75 kJ, ΔS = +81 J/K, ΔG°(298) ≈ +51 kJ, limiar ≈ 926 K (≈ 650 °C), com a observação de que o catalisador não altera o limite termodinâmico, sem O2, Ni ou Fe. Reforma: ΔH = +206 kJ, ΔG°(298) ≈ +142 kJ, limiar ≈ 958 K, Ni/Al2O3, vapor em excesso, Le Chatelier com Δn = +2. Conferi todos esses números em Python e batem com a minha referência (926 K, 958 K, ΔG = 51 e 142 kJ), exceto K(1100 K) ≈ 28 contra os 26 do candidato. No item iv, o candidato declara o critério (mol total de reagentes) e obtém 0,25, 2,0 e 1,5, com a pirólise vencendo. Isso coincide com o ramo da minha referência em que a pirólise entra no conjunto, onde ela dá 2,0 por mol total e supera a reforma (1,5). O candidato ainda discute os outros critérios: por mol de CH4, a reforma vence (3 contra 2, e 4 com shift); por mol de H2O, a reforma (3) supera o Li (0,5); com shift são 4/3 por mol total. A divergência com o 'conjunto principal' da referência (que dá a reforma, por ter escolhido a eletrólise em vez da pirólise) se explica pela escolha do conjunto, não por erro. A resolução é rigorosa, clara e trata as armadilhas: estequiometria correta, estados, catalisador e T alta na reforma, sem reagentes fora da lista, critério explícito. As falhas são só pequenas: a ANSWER crava um critério sem repetir a ressalva de que ele muda a resposta, K ≈ 26 está um pouco fora de ≈ 28, e faltou a observação sobre conversão incompleta da pirólise perto do limiar. Nota 8,7: correta e bem fundamentada, um pouco abaixo de gabarito publicável por esses detalhes de calibragem e pelo risco do critério na resposta final.\""
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "Reações: (1) 2 Li(s) + 2 H2O(l) → 2 LiOH(aq) + H2(g), à temperatura ambiente; (2) 2 H2O(l) → 2 H2(g) + O2(g), eletrólise com tensão acima de 1,23 V, eletrodos inertes e eletrólito; (3) CH4(g) + H2O(g) → CO(g) + 3 H2(g), a 800–1000 °C com catalisador Ni/Al2O3. Rende mais H2 a reação 3 (reforma a vapor): 3 mol de H2 por mol de CH4 ou de H2O, contra 1,0 na eletrólise e 0,5 na reação com Li. Por mol total de reagentes são 1,5, 1,0 e 0,25. Ressalva: a pirólise CH4 → C + 2 H2 daria 2 por mol de CH4 e só superaria a reforma (2,0 contra 1,5) contando o mol total de reagentes.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Os valores de K e de conversão no equilíbrio da reforma (K≈28 e ≈80% a 1100 K; K≈9×10² e ≈96% a 1300 K) saem de ΔH e ΔS constantes (valores a 298 K). O cálculo interno está certo: conferi 28,1 e 0,82, e 898 e 0,96. Fisicamente, porém, são subestimados. Com a correlação da literatura (lnK = −26830/T + 30,1), K≈27 já ocorre a 1000 K e K≈3×10² a 1100 K, com conversão ≈93%. O texto apresenta esses números como fatos, e o caveat 'ΔH e ΔS constantes' aparece só antes do ΔG(298). O ideal era dizer que são estimativas grosseiras ou omitir esse detalhe, que o enunciado não pede."
+          },
+          {
+            "severity": "minor",
+            "description": "O comentário (a) sobre a pirólise afirma que a conversão de equilíbrio é só ≈44% a 650 °C e ≈70% a 800 °C. Também vem da aproximação de ΔH e ΔS constantes e está bem abaixo do real, que é ≈75–90% nessas temperaturas. Com isso, a conclusão de que a hipótese de reação completa é 'mais forte' na pirólise do que na reforma fica fraca. A observação é periférica, não altera a resposta, mas está apresentada com mais certeza do que as contas sustentam."
+          },
+          {
+            "severity": "minor",
+            "description": "Na eletrólise, as semirreações são escritas em 'meio ácido' (4H⁺ + 4e⁻ → 2H₂), mas o eletrólito sugerido inclui Na₂SO₄, que é neutro. Nesse caso o cátodo seria 2H₂O + 2e⁻ → H₂ + 2OH⁻. A equação global e o balanço não mudam. Faltou dizer que a forma da semirreação depende do eletrólito, ou escolher só H₂SO₄ para manter a coerência."
+          },
+          {
+            "severity": "minor",
+            "description": "A linha final ANSWER mistura denominadores: '1 mol (0,5 por mol de H₂O na reação 1; 1,0 na eletrólise)'. O '1 mol' é o total de H₂ produzido na reação 1, e os outros números são por mol de H₂O. Isso confunde a comparação. Seria mais limpo repetir a tabela: 0,25 / 1,0 / 1,5 por mol total de reagentes, e 3 por mol de CH₄ na reforma. O texto também diz que 'em todas as colunas' a reação 3 é a maior, quando duas das três colunas têm '–' para as reações 1 e 2."
+          },
+          {
+            "severity": "minor",
+            "description": "O item iv depende do critério, e a resolução o trata bem: tabela com três denominadores, ressalva da pirólise (2,0 > 1,5 por mol total) e variante com shift (4 por mol de CH₄). Mas chamar o critério 'mol total de reagentes' de 'artificial' é um juízo de valor. A leitura literal de 'por mol de reagente' é plausível e, nela, a pirólise vence a reforma. A resposta final do candidato é a reforma, o que bate com a referência no conjunto escolhido (Li+H₂O, eletrólise, reforma). A ressalva está presente, mas poderia ser mais neutra."
+          },
+          {
+            "severity": "minor",
+            "description": "Detalhes pequenos. (1) A água necessária para manter o LiOH dissolvido é ≈184 g que permanecem após a reação, mais ≈18 g consumidos, ou seja ≈200 g; o texto diz '≈190 g'. (2) Não há faixa de pressão industrial (15–30 bar) para a reforma; a resolução só discute qualitativamente. (3) O candidato conferiu o balanço de carga na eletrólise, mas não explicou por que Li + CH₄ não serve, o que é opcional."
+          }
+        ],
+        "summary": "Respondi que a resolução está correta e concorda com a minha referência. Conferi o enunciado no PDF (página 7) e as contas em Python. As três reações são válidas e balanceadas, usam só Li, H₂O e CH₄, e atendem aos itens i, ii e iii:\\n- 2Li(s) + 2H₂O(ℓ) → 2LiOH(aq) + H₂(g), à temperatura ambiente e com água em excesso.\\n- 2H₂O(ℓ) → 2H₂(g) + O₂(g), por eletrólise com ΔV > 1,23 V (conferi 1,228 V), eletrodos inertes e eletrólito não consumido.\\n- CH₄(g) + H₂O(g) → CO(g) + 3H₂(g), a 800–1000 °C, com Ni/Al₂O₃ e vapor em excesso.\\nO candidato trata as armadilhas principais: H₂O como vapor na reforma, LiOH em solução, balanço correto, reforma não espontânea à temperatura ambiente (ΔG°≈+142 kJ), Le Chatelier com Δn = +2, eletrólito inerte e Li espontâneo (ΔE≈+2,2 V). No item iv, a tabela dá 0,25, 1,0 e 1,5 por mol total de reagentes, e 3 por mol de CH₄ na reforma. A conclusão (reforma a vapor) bate com a referência. Ele ainda ressalva a pirólise (2,0 > 1,5 pelo critério de mol total) e a variante com shift (4 por mol de CH₄). Descontei pontos por problemas periféricos, não pela resposta:\\n- Os números de K e de conversão (K≈28 e ≈80% a 1100 K; pirólise ≈44% a 650 °C) vêm de ΔH e ΔS constantes e estão bem abaixo do real (≈93% a 1100 K).\\n- A semirreação em meio ácido não combina com o Na₂SO₄ neutro citado como eletrólito.\\n- A linha final ANSWER mistura denominadores.\\n- A pirólise é tratada como critério 'artificial', o que é um juízo editorial.\\nÉ uma resolução sólida, mas ainda não no nível de gabarito comentado (≥ 9).\""
+      }
+    }
+  ]
+}

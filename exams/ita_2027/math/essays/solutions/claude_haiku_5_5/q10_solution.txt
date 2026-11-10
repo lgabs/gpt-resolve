@@ -1,0 +1,54 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Passo 1 (simplificação de $f$).} Pela identidade do arco duplo, $\cos 2x = 2\cos^2 x - 1 = 1 - 2\operatorname{sen}^2 x$. Logo
+\[
+1+\cos 2x = 2\cos^2 x \geq 0, \qquad 1-\cos 2x = 2\operatorname{sen}^2 x \geq 0,
+\]
+e as raízes estão definidas para todo $x\in\mathbb{R}$. Como $\sqrt{a^2}=|a|$ para todo $a\in\mathbb{R}$,
+\[
+f(x)=\sqrt{2}\,\bigl(|\cos x|+|\operatorname{sen} x|\bigr)-(\operatorname{sen} x+\cos x). \tag{1}
+\]
+
+\textbf{Passo 2 (quadrantes e notação).} O ponto $(\cos x,\operatorname{sen} x)$ está no primeiro quadrante se $\cos x>0$ e $\operatorname{sen} x>0$, e no terceiro se $\cos x<0$ e $\operatorname{sen} x<0$. Os eixos não pertencem a nenhum quadrante. Assim, o primeiro quadrante é a união dos intervalos $\left(2k\pi,\,2k\pi+\tfrac{\pi}{2}\right)$ e o terceiro é a união dos intervalos $\left(2k\pi+\pi,\,2k\pi+\tfrac{3\pi}{2}\right)$, com $k\in\mathbb{Z}$. Como $\operatorname{sen}$ e $\cos$ têm período $2\pi$, também $f$ tem período $2\pi$. Basta então estudar $x\in\left(0,\tfrac{\pi}{2}\right)$ e $x\in\left(\pi,\tfrac{3\pi}{2}\right)$. Defina
+\[
+t=\operatorname{sen} x+\cos x,
+\]
+para o qual vale
+\[
+t^2=1+2\operatorname{sen} x\cos x = 1+\operatorname{sen} 2x. \tag{2}
+\]
+
+\textbf{Passo 3 (primeiro quadrante).} Aqui $|\operatorname{sen} x|+|\cos x|=\operatorname{sen} x+\cos x=t$ e $t>0$. Por (1), $f(x)=(\sqrt{2}-1)\,t$. Para $0<x<\tfrac{\pi}{2}$ temos $0<2x<\pi$, logo $0<\operatorname{sen} 2x\leq 1$. Por (2), $1<t^2\leq 2$, e como $t>0$, segue $1<t\leq\sqrt{2}$. Portanto
+\[
+0<\sqrt{2}-1<f(x)\leq(\sqrt{2}-1)\sqrt{2}=2-\sqrt{2}<1 .
+\]
+Assim, no primeiro quadrante $f$ assume apenas valores em $(0,1)$, e nenhum inteiro é atingido.
+
+\textbf{Passo 4 (terceiro quadrante).} Aqui $|\operatorname{sen} x|+|\cos x|=-(\operatorname{sen} x+\cos x)=-t$ e $t<0$. Por (1), $f(x)=-\sqrt{2}\,t-t=-(\sqrt{2}+1)\,t$. Para $\pi<x<\tfrac{3\pi}{2}$ temos $2\pi<2x<3\pi$. Como $\operatorname{sen} 2x=\operatorname{sen}(2x-2\pi)$ com $2x-2\pi\in(0,\pi)$, vale $0<\operatorname{sen} 2x\leq 1$. Por (2), $1<t^2\leq 2$, e como $t<0$, segue $-\sqrt{2}\leq t<-1$. Portanto
+\[
+\sqrt{2}+1<f(x)\leq(\sqrt{2}+1)\sqrt{2}=2+\sqrt{2}.
+\]
+Como $\sqrt{2}>1$ e $\sqrt{2}<2$, tem-se $2<\sqrt{2}+1$ e $2+\sqrt{2}<4$. Logo o único inteiro que pode ser atingido no terceiro quadrante é $k=3$.
+
+\textbf{Passo 5 (existência para $k=3$).} A função $f$ é contínua em $\mathbb{R}$, por ser composta de funções contínuas com radicandos não negativos. Temos:
+\begin{itemize}
+\item $f(\pi)=\sqrt{2}\cdot 1+\sqrt{0}-0-(-1)=\sqrt{2}+1<3$, pois $\sqrt{2}<2$;
+\item $f\!\left(\tfrac{5\pi}{4}\right)=1+1+\tfrac{\sqrt{2}}{2}+\tfrac{\sqrt{2}}{2}=2+\sqrt{2}>3$, pois $\cos\tfrac{5\pi}{2}=0$ e $\operatorname{sen}\tfrac{5\pi}{4}=\cos\tfrac{5\pi}{4}=-\tfrac{\sqrt{2}}{2}$.
+\end{itemize}
+Pelo teorema do valor intermediário, existe $x_0\in\left(\pi,\tfrac{5\pi}{4}\right)$ com $f(x_0)=3$. Esse $x_0$ está no terceiro quadrante.
+
+Explicitamente: no terceiro quadrante, $f(x)=3$ equivale a $-(\sqrt{2}+1)\,t=3$, isto é, $t=3-3\sqrt{2}$. Como $t=\sqrt{2}\operatorname{sen}\!\left(x+\tfrac{\pi}{4}\right)$, isso dá $\operatorname{sen}\!\left(x+\tfrac{\pi}{4}\right)=\tfrac{3\sqrt{2}}{2}-3$. Seja $\gamma=\arcsen\!\left(3-\tfrac{3\sqrt{2}}{2}\right)$. Como $\tfrac{\sqrt{2}}{2}<3-\tfrac{3\sqrt{2}}{2}<1$, tem-se $\tfrac{\pi}{4}<\gamma<\tfrac{\pi}{2}$. As soluções são $x=\tfrac{3\pi}{4}+\gamma$ e $x=\tfrac{7\pi}{4}-\gamma$, ambas em $\left(\pi,\tfrac{3\pi}{2}\right)$, pois $\tfrac{\pi}{4}<\gamma<\tfrac{3\pi}{4}$. Numericamente, $\gamma\approx 1{,}073$, $x\approx 3{,}429$ e $x\approx 4{,}425$.
+
+\textbf{Passo 6 (conferências).}
+\begin{itemize}
+\item Extremos dos quadrantes: $f(0)=f\!\left(\tfrac{\pi}{2}\right)=\sqrt{2}-1$ e $f(\pi)=f\!\left(\tfrac{3\pi}{2}\right)=\sqrt{2}+1$. Nenhum é inteiro, portanto a convenção sobre os eixos não altera a resposta.
+\item Coerência: em $x=\tfrac{5\pi}{4}$, $t=-\sqrt{2}$ e $t^2=2=1+\operatorname{sen}\tfrac{5\pi}{2}$, de acordo com (2). Também $f=2+\sqrt{2}$, que é o extremo superior obtido no Passo 4.
+\item Ordens de grandeza: primeiro quadrante, $f\in(0{,}41;\,0{,}59]$; terceiro quadrante, $f\in(2{,}41;\,3{,}42]$.
+\item Conferência numérica: a avaliação de $f$ nas soluções explícitas dá $f\approx 3{,}000$, e a amostragem fina de $f$ no primeiro e no terceiro quadrante reproduz os intervalos acima.
+\end{itemize}
+
+\textbf{Conclusão.} No primeiro quadrante, $f$ só assume valores em $(0,1)$, então nenhum inteiro é obtido. No terceiro quadrante, $f$ assume valores em $(\sqrt{2}+1,\,2+\sqrt{2}]\subset(2,4)$, e o único inteiro dessa faixa, $3$, é atingido. Portanto, o único inteiro procurado é $k=3$.
+
+ANSWER: $k=3$

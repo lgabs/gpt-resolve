@@ -1,0 +1,34 @@
+{
+  "question": 1,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 1 - Matemática)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-1-20-10-2026-2-fase-dia-1/dissertativa-1-matematica-2-fase-dia-1-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q1 (única)",
+      "solution_answer": "r ímpar, 1 ≤ r ≤ 9, a₁ = (87 − 9r)/2: (39,…,48) r=1; (30,…,57) r=3; (21,…,66) r=5; (12,…,75) r=7; (3,…,84) r=9; mais as 5 invertidas (r = −1, −3, −5, −7, −9). Ao todo 5 PAs crescentes, ou 10 contando as decrescentes.",
+      "key_answer": "10 PAs: as crescentes (39,…,48) r=1; (30,…,57) r=3; (21,…,66) r=5; (12,…,75) r=7; (3,…,84) r=9, e as 5 decrescentes correspondentes (r = −1, −3, −5, −7, −9).",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Reli o enunciado no PDF original (pág. 1): 'Descreva todas as progressões aritméticas de 10 números naturais cuja soma resulte em 435', com ℕ = {1,2,3,…}. A transcrição está correta. A condição S₁₀ = 5(2a₁+9r) = 435 dá 2a₁ + 9r = 87. Daí r é ímpar, e a exigência de que o menor termo seja ≥ 1 dá |r| ≤ 9. Fiz uma busca por força bruta em python (a₁ de 1 a 435, r de −100 a 100) e encontrei exatamente 10 soluções: (a₁,r) = (3,9), (12,7), (21,5), (30,3), (39,1), (48,−1), (57,−3), (66,−5), (75,−7), (84,−9). São exatamente as 10 da resolução e as 10 do gabarito. A resolução descreve as 10 sequências explicitamente (as 5 crescentes e as 5 invertidas, com razões e primeiros termos). Ela só deixa a contagem em aberto ('5 crescentes, ou 10 contando as decrescentes'), enquanto o gabarito afirma 10. Como as sequências invertidas são PAs distintas e válidas, o certo é contar 10, e a resolução de fato as inclui. Por isso o conteúdo coincide."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução fecha com uma contagem condicional: '5 PAs crescentes, ou 10 contando as decrescentes'. Como (48,47,…,39) é uma PA diferente de (39,…,48), o enunciado ('todas as PAs') pede 10, que é o que o gabarito afirma. As 10 estão descritas, mas um corretor rigoroso pode preferir uma afirmação firme ('são 10 PAs') a deixar a contagem a cargo do leitor."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "A resolução do Poliedro tem problemas de notação. Faltam parênteses em 'S_10 = (a_1 + a_10 · 10)/2' e em '(2a_1 + 9r · 10)/2'. Além disso, a lista das decrescentes aparece concatenada, sem separadores ('…40,3957,54,…'), o que parece ser artefato de extração. Nada disso afeta o resultado."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito não justifica por que a lista de razões para em r = 9. Falta a condição a₁ = (87−9r)/2 ≥ 1 ⇒ r ≤ 85/9; com r = 11 daria a₁ = −6. Também não justifica a redução das razões negativas à inversão das crescentes. A resolução conferida faz as duas justificativas de forma explícita."
+    }
+  ],
+  "summary": "A resolução e o gabarito concordam: as PAs têm razão ímpar com |r| ≤ 9 e a₁ = (87 − 9r)/2, dando 5 crescentes, (39,…,48), (30,…,57), (21,…,66), (12,…,75) e (3,…,84), mais as 5 decrescentes correspondentes, 10 no total. Confirmei por força bruta em python que existem exatamente essas 10. A resolução é mais completa que o gabarito, porque justifica a paridade, o limite r ≤ 9 e a simetria por inversão. O único reparo, menor, é que ela deixa a contagem final condicional ('5, ou 10 com as decrescentes') em vez de afirmar 10. Ainda assim, lista as 10 explicitamente. Veredito: correta, de acordo com o gabarito."
+}

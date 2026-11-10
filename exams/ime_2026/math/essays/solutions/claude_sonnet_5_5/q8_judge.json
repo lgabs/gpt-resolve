@@ -1,0 +1,55 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A única solução real do sistema é (x, y, z) = (0, 0, 0).",
+  "judge_reference": {
+    "reference_solution": "**Notação e hipótese.** Seja log o logaritmo usual (natural ou decimal; basta base b>1). Defina g(t)=log(t+√(t²+1)) e f(t)=t+g(t). O sistema é f(x)=y, f(y)=z, f(z)=x.\n\n**1. g está bem definida em todo ℝ.** Como √(t²+1)>|t|≥−t, temos t+√(t²+1)>0 para todo real t. Isso inclui t negativo.\n\n**2. g é ímpar e g(0)=0.**\n- (t+√(t²+1))(√(t²+1)−t)=(t²+1)−t²=1.\n- Logo g(−t)=log(√(t²+1)−t)=log(1/(t+√(t²+1)))=−g(t).\n- Também g(0)=log 1=0.\n\n**3. g é estritamente crescente.** Seja h(t)=t+√(t²+1). Então h'(t)=1+t/√(t²+1)>0, porque |t|<√(t²+1). Assim h é estritamente crescente, e como log é estritamente crescente (base >1), g=log∘h também é. Com g(0)=0 segue que g(t) tem o mesmo sinal de t, e g(t)=0 ⇔ t=0. (Para o log natural, g'(t)=1/√(t²+1)>0.)\n\n**4. Consequência para f.** Como g(t) tem o sinal de t:\n- f(t)>t ⇔ t>0;\n- f(t)<t ⇔ t<0;\n- f(t)=t ⇔ t=0.\nAlém disso f é estritamente crescente (soma de t e g, ambas estritamente crescentes).\n\n**5. Existência.** (x,y,z)=(0,0,0) satisfaz o sistema: 0+log(0+√1)=log 1=0 nas três equações.\n\n**6. Unicidade.** Seja (x,y,z) uma solução real qualquer, sem supor x=y=z.\n- **Caso x>0.** Então y=f(x)>x>0. Depois z=f(y)>y>0. Por fim x=f(z)>z. Resulta x>z>y>x, absurdo.\n- **Caso x<0.** Então y=f(x)<x<0. Depois z=f(y)<y. Por fim x=f(z)<z. Resulta x<z<y<x, absurdo.\n- **Logo x=0.** Então y=f(0)=0 e z=f(0)=0.\n\n**Prova alternativa (monotonicidade).**\n- Se x<y, então f(x)<f(y), isto é, y<z. Daí f(y)<f(z), isto é, z<x. Resulta x<y<z<x, absurdo.\n- Se x>y, o raciocínio é análogo e leva a x>y>z>x, absurdo.\n- Portanto x=y, e então z=f(y)=f(x)=y. Logo x=y=z.\n- Agora f(x)=x ⇔ g(x)=0 ⇔ x=0, pela injetividade de g.\n\n**Conferência numérica (python3).** Para log natural e para log₁₀: f é crescente, f(t)>t ⇔ t>0, e a única raiz de f∘f∘f(x)=x em [−100,100] é 0.\n\n**Conclusão.** O sistema tem uma única solução real: x=y=z=0.",
+    "final_answer": "Solução única: (x, y, z) = (0, 0, 0). Existência: verificação direta, pois log 1 = 0. Unicidade: f(t)=t+log(t+√(t²+1)) é estritamente crescente e ímpar, com f(t)>t ⇔ t>0. Se x>0, então x>z>y>x (absurdo). Se x<0, então x<z<y<x (absurdo). Logo x=0 e y=z=0.",
+    "pitfalls": [
+      "Chutar (0,0,0) ou supor por simetria x=y=z não prova nada: é preciso mostrar que não existem soluções não simétricas (ciclos x→y→z→x). A igualdade x=y=z precisa ser demonstrada. Só depois dela se pode concluir 'log(...)=0' a partir de f(x)=x; fazer isso antes é raciocínio circular.",
+      "Somar as três equações dá g(x)+g(y)+g(z)=0, o que sozinho não conclui x=y=z=0. É preciso usar a monotonicidade/sinal de g ou o argumento da cadeia cíclica.",
+      "Justificar que o argumento da raiz é positivo para todo real, inclusive t<0 (√(t²+1)>|t|). Sem isso o log não está bem definido e a ímparidade g(−t)=−g(t) não se justifica.",
+      "Provar a monotonicidade de g de forma rigorosa: derivada 1/√(t²+1) para o log natural, ou h'(t)=1+t/√(t²+1)>0 com log crescente. Dizer apenas 'é crescente' sem prova é lacuna. A estrita monotonicidade é essencial: com monotonicidade fraca, a cadeia x<y<z<x não seria absurda no caso de igualdades.",
+      "A hipótese sobre a base do log importa: a prova usa base >1 (natural ou decimal; o resultado vale para qualquer base >1). Para base em (0,1), g seria decrescente e f(t)=t+c·arcsinh t poderia deixar de ser monótona, então o argumento falharia. Vale mencionar que log é natural ou decimal.",
+      "Tratar os dois sinais (x>0 e x<0). O sistema é cíclico, não totalmente simétrico: só se pode reordenar por rotação (x→y→z), não trocar variáveis livremente. Um 'sem perda de generalidade x é o maior' precisa ser justificado por essa rotação.",
+      "Resolver g(x)=0 elevando ao quadrado (x+√(x²+1)=1 ⇒ √(x²+1)=1−x ⇒ x=0) funciona, mas é preciso testar a solução por causa de possíveis raízes estranhas (aqui 1−x≥0 vale). É mais limpo usar a injetividade de g com g(0)=0.",
+      "Não esquecer a parte de existência: a questão pede provar que há uma única solução, então é preciso verificar (0,0,0) no sistema, além de provar a unicidade.",
+      "Nota de processo: a escrita da memória compartilhada foi bloqueada por hook durante esta correção, e a conferência numérica precisou ser feita em Python puro (sem numpy) dentro da pasta de trabalho. Isso não afeta a resposta."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A única solução real do sistema é (x, y, z) = (0, 0, 0).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A prova de g(t)>0 para t>0 é mais longa que o necessário. Basta √(t²+1)>1 para t>0, logo t+√(t²+1)>1. A divisão em t≥1 e 0<t<1 está correta, mas é redundante e polui a leitura."
+          },
+          {
+            "severity": "minor",
+            "description": "A ímparidade é justificada de forma telegráfica: o candidato escreve o produto (−t+√(t²+1))(t+√(t²+1))=1 e conclui 'Portanto g(−t)=−g(t)'. Faltou escrever o passo log(−t+√(t²+1)) = log(1/(t+√(t²+1))) = −g(t). O argumento está correto e é verificável, só é condensado."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de base b>1 aparece só entre parênteses ('decimal ou natural'), sem observar que o resultado depende dela. O enunciado diz apenas 'log', então vale a menção explícita. Ela existe, mas é discreta."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não prova que f ou g é estritamente crescente, e não precisa. O argumento cíclico usa só f(t)>t para t>0 e f(t)<t para t<0, o que o candidato deriva corretamente do sinal de g. Um comentário dizendo que a monotonicidade é dispensável tornaria o texto mais didático, mas não é uma lacuna."
+          }
+        ],
+        "summary": "A resposta final (x,y,z)=(0,0,0) coincide com a da referência e está correta. Conferi o enunciado no PDF original (página 2, 8ª questão) e ele bate com a transcrição. A resolução é completa e rigorosa. (1) Mostra que o argumento da raiz é positivo para todo real, usando √(t²+1)>|t|≥−t. (2) Prova g(t)>0 para t>0 com base >1, deduz que g é ímpar e que g(t)<0 para t<0, e conclui f(t)>t para t>0, f(t)<t para t<0 e f(0)=0. (3) Prova a unicidade sem supor x=y=z: o caso x>0 dá x>z>y>x e o caso x<0 dá x<z<y<x, ambos absurdos, logo x=0 e y=z=0. (4) Verifica a existência substituindo (0,0,0) nas três equações. Escolher o caso por sinal de x evita a armadilha do 'sem perda de generalidade' num sistema cíclico. As demais armadilhas também foram evitadas: não houve raciocínio circular, não há soma das equações sem justificativa e g(x)=0 não foi resolvido por quadratura. A prova usa só o sinal de g, não a monotonicidade, e isso basta. As ressalvas são apenas estilísticas: a prova do sinal de g tem casos redundantes, a ímparidade é dada de forma condensada e a hipótese de base >1 é discreta. É essencialmente um gabarito publicável."
+      }
+    }
+  ]
+}

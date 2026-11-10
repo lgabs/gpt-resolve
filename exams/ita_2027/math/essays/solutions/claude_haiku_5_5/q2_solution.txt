@@ -1,0 +1,56 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{1. Domínio e sinal.} Para todo $x\in\mathbb{R}$ tem-se $2^x>0$, logo $2^x+2>2$. Como $\log_2$ é estritamente crescente e $\log_2 2=1$, segue $\log_2(2^x+2)>1>0$. Portanto o logaritmo está definido em todo $\mathbb{R}$ e $\left|\log_2(2^x+2)\right|=\log_2(2^x+2)$. A inequação equivale a
+\[
+\log_2(2^x+2)>|2x|.
+\]
+
+\textbf{2. Separação do módulo.} Para reais $a$ e $L$, vale $|a|<L \iff -L<a<L$. Com $L=\log_2(2^x+2)$, a inequação é equivalente ao sistema
+\[
+\begin{cases}
+\log_2(2^x+2)>2x & \text{(I)}\\
+\log_2(2^x+2)>-2x & \text{(II)}
+\end{cases}
+\]
+
+\textbf{3. Substituição.} Seja $t=2^x$. A função $x\mapsto t$ é uma bijeção de $\mathbb{R}$ em $(0,+\infty)$ e $2^{kx}=t^k$ para todo $k$ real inteiro. Como $\log_2$ é estritamente crescente em $(0,+\infty)$, para $y>0$ e $a\in\mathbb{R}$ vale $\log_2 y>a\iff y>2^a$.
+
+\textbf{4. Condição (I).} Temos
+\[
+\log_2(t+2)>2x \iff t+2>2^{2x}=t^2 \iff t^2-t-2<0 \iff (t-2)(t+1)<0 \iff -1<t<2.
+\]
+Como $t>0$, resulta $0<t<2$, ou seja, $2^x<2$, isto é, $x<1$.
+
+\textbf{5. Condição (II).} Temos
+\[
+\log_2(t+2)>-2x \iff t+2>2^{-2x}=\frac{1}{t^2}.
+\]
+Multiplicando por $t^2>0$, que não altera o sentido da desigualdade, obtém-se $t^3+2t^2-1>0$. Como $t=-1$ anula o polinômio, vale a fatoração $t^3+2t^2-1=(t+1)(t^2+t-1)$, verificável por expansão. Para $t>0$ tem-se $t+1>0$, logo a condição é $t^2+t-1>0$. As raízes de $t^2+t-1$ são $\frac{-1\pm\sqrt{5}}{2}$; a raiz negativa é menor que qualquer $t>0$, e como o trinômio tem concavidade para cima, para $t>0$ ele é positivo se, e somente se, $t>\frac{\sqrt{5}-1}{2}$.
+
+Seja $\varphi=\frac{1+\sqrt{5}}{2}$. Como $\varphi\cdot\frac{\sqrt{5}-1}{2}=\frac{5-1}{4}=1$, vale $\frac{\sqrt{5}-1}{2}=\frac{1}{\varphi}$. Assim
+\[
+2^x>\frac{1}{\varphi}\iff x>\log_2\frac{1}{\varphi}=-\log_2\varphi=:x_0.
+\]
+Numericamente, $\varphi\approx 1{,}618$ e $x_0\approx -0{,}694$.
+
+\textbf{6. Interseção.} A condição (I) equivale a $x<1$ e a condição (II) equivale a $x>x_0$. Como $x_0<0<1$, o conjunto solução é
+\[
+x_0<x<1 \quad\Longleftrightarrow\quad -\log_2\frac{1+\sqrt{5}}{2}<x<1.
+\]
+
+\textbf{7. Verificações.}
+\begin{itemize}
+\item \textit{Extremo superior.} Em $x=1$: $\log_2 4=2=|2\cdot 1|$, há igualdade, logo $x=1$ fica excluído (desigualdade estrita). Para $x=0{,}99$: $\log_2(2^{0,99}+2)\approx 1{,}995>1{,}98=|2x|$; para $x=1{,}01$: $\log_2(2^{1,01}+2)\approx 2{,}005<2{,}02=|2x|$. Consistente.
+\item \textit{Extremo inferior.} Em $x=x_0$: $2^{x_0}=\frac{1}{\varphi}=\varphi-1$, logo $2^{x_0}+2=\varphi+1=\varphi^2$ e $\log_2\varphi^2=2\log_2\varphi=-2x_0=|2x_0|$. Há igualdade, logo $x_0$ fica excluído.
+\item \textit{Pontos internos e externos.} Em $x=0$: $\log_2 3\approx 1{,}585>0$ (satisfaz). Em $x=-1$: $\log_2 2{,}5\approx 1{,}322<2$ (não satisfaz). Em $x=2$: $\log_2 6\approx 2{,}585<4$ (não satisfaz).
+\item \textit{Conferência numérica adicional.} Testes em 200 000 valores de $x\in[-6,6]$ coincidiram com o intervalo obtido, exceto em vizinhanças das fronteiras.
+\end{itemize}
+
+\textbf{Conclusão.} O conjunto solução é
+\[
+S=\left(\log_2\frac{\sqrt{5}-1}{2},\ 1\right)=\left(-\log_2\frac{1+\sqrt{5}}{2},\ 1\right)\approx(-0{,}694;\ 1).
+\]
+
+ANSWER: $-\log_2\frac{1+\sqrt{5}}{2}<x<1$, isto é, $x\in\left(-\log_2\frac{1+\sqrt{5}}{2},\ 1\right)$

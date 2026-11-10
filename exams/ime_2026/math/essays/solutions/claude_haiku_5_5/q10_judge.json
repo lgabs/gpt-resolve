@@ -1,0 +1,101 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "V = (π√6/108)·a³ ≈ 0,0713·a³. Soma das esferas de todos os níveis n ≥ 0 (inclui a esfera inscrita em ABCD). Se só as esferas dos novos tetraedros (n ≥ 1) fossem contadas, o resultado seria π√6a³/216.",
+  "judge_reference": {
+    "reference_solution": "**Questão 10 (IME 2026, Matemática): resolução de referência**\n\n**0. Dados do tetraedro regular ABCD (aresta a)**\n- Altura: H = a√(2/3) = a√6/3.\n- Raio da esfera inscrita: r = H/4 = a√6/12 (equivalente a a/(2√6)). Circunraio: R = 3r = a√6/4.\n- Volume: V(ABCD) = √2·a³/12.\n- Volume da esfera inscrita: V₀ = (4/3)πr³. Como r³ = a³·6√6/1728 = a³√6/288, temos V₀ = π√6·a³/216.\n\n**1. O plano tangente certo (passo decisivo)**\nUse a altura h medida a partir da base BCD (h = 0 em BCD, h = H em A). O centro O da esfera está em h = r, e a esfera ocupa a faixa 0 ≤ h ≤ 2r. Os planos paralelos a BCD tangentes à esfera estão em h = 0 (que é a própria base, excluída pelo enunciado) e em h = 2r. Portanto o plano pedido está em h = 2r = H/2.\n\n**2. Novos vértices e novos tetraedros**\n- O plano h = H/2 é paralelo a BCD e está na metade da altura. Pela homotetia de centro A e razão 1/2, ele corta AB, AC e AD exatamente nos pontos médios M_AB, M_AC e M_AD.\n- O novo tetraedro T_A = A·M_AB·M_AC·M_AD é regular, semelhante a ABCD com razão 1/2, e tem aresta a/2.\n- O mesmo vale para B, C e D: são 4 tetraedros de canto, com interiores disjuntos.\n- Verificação de volume: 4·V(ABCD)/8 + octaedro central de aresta a/2 (volume √2·a³/24) = √2·a³/24 + √2·a³/24 = √2·a³/12 = V(ABCD). ✓\n\n**3. Esferas da 1ª geração**\nCada T_X é regular de aresta a/2, então tem raio r/2 e volume V₀/8. São 4 esferas, com soma 4·V₀/8 = V₀/2.\n\n**4. Recursão (invariância por semelhança)**\nO argumento dos passos 1–2 vale para qualquer tetraedro regular: a esfera inscrita tem altura de faixa 2r = H/2, então cada tetraedro de aresta e gera 4 tetraedros regulares de aresta e/2. Por indução:\n- Geração n: 4ⁿ tetraedros de aresta a/2ⁿ, cada um com esfera de raio r/2ⁿ e volume V₀/8ⁿ.\n- Volume total da geração n: 4ⁿ·V₀/8ⁿ = V₀/2ⁿ.\n\n**5. Soma da série**\nS = Σ_{n≥0} V₀/2ⁿ = 2V₀ = 2·π√6·a³/216 = **π√6·a³/108** = (8/3)πr³.\nNumericamente, para a = 1: S ≈ 0,0712528.\n\n**6. Justificativa de não sobreposição (para somar volumes)**\nA esfera inscrita em um tetraedro T é tangente às 8 faces do octaedro central de T (as 4 faces em BCD, ACD, ABD, ABC, cortadas pelos pontos médios, e as 4 faces nos planos h_X = H/2). Isso é coerente, porque a distância de O a cada uma dessas faces é r, e o inraio do octaedro de aresta a/2 é (a/2)/√6 = r. Logo a esfera fica dentro do octaedro, e portanto disjunta dos quatro cantos (interiores disjuntos). Descendentes de T ficam nos cantos de T; descendentes de outros tetraedros da mesma geração têm interiores disjuntos deles. Assim, todas as esferas têm interiores disjuntos e a soma dos volumes é o volume ocupado.\n\n**Conferência numérica (script Python, a = 1, 8 gerações):** soma parcial = 0,0709744 = 2V₀(1 − 2⁻⁸), que converge para 0,0712528 = π√6/108. Os inraios e razões batem com r/2ⁿ e 1/2 em todas as gerações.\n\n**Resposta:** V_total = π√6·a³/108 = (8/3)π·(a√6/12)³ ≈ 0,0713·a³, incluindo a esfera original de ABCD.\n",
+    "final_answer": "Volume total ocupado por todas as esferas interiores ao tetraedro ABCD (incluindo a esfera inscrita original, como pede \"todas as esferas\"):\n\nV_total = π√6·a³/108 = (8/3)π·r³, com r = a√6/12 (raio da inscrita de ABCD). Numericamente ≈ 0,0713·a³.\n\nDados intermediários: r = a√6/12; V(ABCD) = √2·a³/12; V₀ = (4/3)πr³ = π√6·a³/216; a razão de semelhança de cada novo tetraedro é 1/2 (aresta a/2); a razão de volume das esferas por geração é 4·(1/2)³ = 1/2; Σ_{n≥0} (1/2)ⁿ = 2.\n\nCaso o enunciado seja lido como excluindo a esfera original (somente gerações n ≥ 1): V = π√6·a³/216. Essa leitura é menos natural e deve ser apontada como alternativa, mas a resposta principal é π√6·a³/108.\n\nNão há letra de alternativa (questão discursiva).",
+    "pitfalls": [
+      "Plano tangente: para cada vértice, a base oposta é a face que NÃO contém o vértice (para A, é BCD). Dos dois planos paralelos a essa face tangentes à esfera, o enunciado exclui a própria face (h = 0). O plano válido fica a h = 2r = H/2 da face, do lado do vértice. Erro comum: supor que a tangente está a distância r da base (h = r), o que não é tangência.",
+      "Razão de semelhança = 1/2, porque H = 4r. Erros comuns: 1/4 (confundir com r/H), 1/3 ou 3/4. O plano corta as arestas nos pontos médios.",
+      "Razão de volume por geração: 4 tetraedros × (1/2)³ = 1/2. Confundir razão linear (1/2) com volumétrica (1/8) ou com a contagem (4) leva a séries erradas, como 4·(1/2) = 2, que divergiria.",
+      "Esfera original: 'todas as esferas interiores ao tetraedro ABCD' inclui a inscrita em ABCD (n = 0), e a soma é Σ_{n≥0} V₀/2ⁿ = 2V₀ = π√6a³/108. Começar a soma em n = 1 dá π√6a³/216, que é a outra leitura possível e deve ser discutida explicitamente.",
+      "Não há esfera inscrita no octaedro central. O processo gera esferas somente nos tetraedros de canto (que se formam a partir de vértices). O octaedro central tem inraio r, o mesmo da esfera original, então não se deve contar uma esfera extra para ele.",
+      "Inraio: r = a√6/12 (equivalentemente a/(2√6)). Não confundir com o circunraio R = a√6/4 nem com H = a√6/3.",
+      "Aritmética de r³: r³ = a³·√6/288 e V₀ = (4/3)πr³ = π√6·a³/216. Erro comum: simplificar mal √6 ou o 1728 = 12³.",
+      "Validade da soma: as esferas não se sobrepõem (interiores disjuntos), porque a esfera de T é tangente às faces do octaedro central de T e fica dentro dele, enquanto os cantos ficam fora. Só então o volume ocupado é a soma dos volumes. Sem essa justificativa, a soma dos volumes não está automaticamente justificada.",
+      "Recursão: o processo deve ser aplicado a cada tetraedro novo, não só ao ABCD. Isso vale porque todo novo tetraedro é regular e semelhante ao anterior, então a mesma razão 1/2 se repete em todas as gerações. Deve-se mencionar essa invariância por semelhança, não só repetir a conta.",
+      "Volume do tetraedro: V(ABCD) = √2·a³/12, não confundir com o volume da esfera. Verificação útil: 4 cantos de volume V/8 mais o octaedro central de volume √2a³/24 somam V(ABCD)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "$V=\\dfrac{\\pi\\sqrt{6}}{108}\\,a^{3}\\approx 0{,}0713\\,a^{3}$. A esfera inscrita em $ABCD$ tem raio $r=\\frac{a\\sqrt6}{12}$. O plano tangente paralelo a $BCD$ passa a meia altura, então cada novo tetraedro é homotético a $ABCD$ com razão $\\frac12$. Em cada nível há $4^n$ esferas de raio $\\frac{r}{2^n}$, e a soma geométrica resulta em $\\frac83\\pi r^3=2\\cdot\\frac43\\pi r^3$.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "A não sobreposição das esferas (que justifica somar os volumes) é afirmada, não demonstrada. A frase 'A esfera de um tetraedro T está contida no octaedro central de T' não tem prova, e o octaedro não é caracterizado. Faltam: (i) a esfera de T é tangente às 8 faces do octaedro central (distância r ao centro; inraio do octaedro de aresta a/2 é (a/2)/√6 = r), logo fica dentro dele; (ii) o argumento de árvore: descendentes de T ficam nos cantos de T, disjuntos do octaedro; ramos distintos têm interiores disjuntos; para ancestral S e descendente T, a esfera de S está no octaedro de S, que é disjunto do canto de S que contém T. Sem isso, 'duas esferas quaisquer têm interiores disjuntos' não está justificado. Deve-se acrescentar esses passos."
+          },
+          {
+            "severity": "minor",
+            "description": "A invariância por semelhança não é declarada. O Passo 5 aplica 'Passos 2 a 4' a um T arbitrário, mas esses passos foram escritos para ABCD com valores concretos. Deve-se afirmar que a construção é definida só por homotetias, que todo tetraedro regular tem H = 4r, e que, portanto, a razão 1/2 e os passos valem para qualquer T regular."
+          },
+          {
+            "severity": "minor",
+            "description": "A leitura de 'todas as esferas interiores ao tetraedro ABCD' é tomada sem argumento. A soma começa em n = 0 e inclui a esfera inscrita original, mas o texto não justifica essa escolha nem menciona a alternativa (somente n ≥ 1, que daria π√6a³/216). Deve-se justificar a inclusão e registrar a outra leitura."
+          },
+          {
+            "severity": "minor",
+            "description": "A disjunção dos quatro cantos é verificada só no exemplo T_A ∩ T_B = {M_AB}, introduzido com 'por exemplo'. O argumento geral está ausente: com coordenadas baricêntricas, T_X = {λ_X ≥ 1/2}, e dois cantos distintos só se tocam no ponto médio da aresta comum. Deve-se dar esse argumento geral."
+          },
+          {
+            "severity": "minor",
+            "description": "O Passo 5 diz 'Isso vale para n=0 e n=1', o que confunde: a base da indução é n=0, e o passo indutivo já cobre n=1. Deve-se reescrever a base apenas como n=0."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'verificação numérica' (soma parcial de 200 termos = 0,0712528) está correta (confirmei: 0,07125276834), mas não mostra código nem traço e não é independente, já que a série é geométrica e a soma é a própria fórmula. Deve-se apresentá-la como checagem reproduzível ou removê-la."
+          }
+        ],
+        "summary": "Resposta final correta: V = π√6·a³/108 ≈ 0,0713·a³, incluindo a esfera inscrita de ABCD (n = 0). Coincide com a referência. Conferi: H = a√6/3, r = a√6/12, r³ = √6a³/288, Σ 4ⁿ·(4/3)π(r/2ⁿ)³ = (8/3)πr³ = π√6a³/108. O enunciado do PDF bate com a transcrição. Também montei cinco gerações com coordenadas (script em .work/q10/judge/q10_check.py): arestas a/2ⁿ, inraios r/2ⁿ, novos vértices exatamente nos pontos médios, e distância entre centros ≥ soma dos raios em todos os 1365 pares (folga mínima ≈ 0, só tangências). Os cálculos estão corretos e todas as armadilhas da referência foram tratadas: plano em h = 2r (exclui h = 0), razão 1/2 (H = 4r), razão de volume 4·(1/2)³ = 1/2, r ≠ R ≠ H, aritmética de r³, V_ABCD = √2a³/12 (verificação com π√3/9 correta), sem esfera extra no octaedro. As lacunas são de rigor e de exposição: a justificativa da não sobreposição está esboçada, a invariância por semelhança não é declarada, a leitura da esfera original não é discutida e a disjunção dos cantos é vista só num exemplo. Nota 8: quase gabarito comentado, mas a etapa que permite somar os volumes não está demonstrada.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "V = (π√6/108)·a³ ≈ 0,0713·a³. Soma das esferas de todos os níveis n ≥ 0 (inclui a esfera inscrita em ABCD). Se só as esferas dos novos tetraedros (n ≥ 1) fossem contadas, o resultado seria π√6a³/216.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A escolha de incluir a esfera inscrita original (n = 0) é a leitura literal de \"todas as esferas interiores ao tetraedro ABCD\", mas a alternativa π√6a³/216 aparece só numa frase entre parênteses dentro do Passo 7. Deveria haver um aviso explícito, junto à resposta final, sobre a ambiguidade e a outra resposta possível."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 3: o argumento de invariância por semelhança é afirmado (\"propriedades preservadas por semelhanças\") mas não demonstrado. Falta uma linha dizendo que a homotetia de centro X e razão 1/2 leva as faces de T às faces de T_X, preserva tangência e, portanto, leva a esfera inscrita de T à esfera inscrita de T_X. Essa é a ponte que sustenta a indução do Passo 6."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha do octaedro central não é tratada de forma explícita. O candidato mostra que B_T está inscrita em O_T (inraio e√6/12 = ρ_T), mas não diz que essa é a mesma esfera B_T e que o octaedro não gera nenhuma esfera extra no processo. Uma frase resolveria."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 5(a): a identidade |∇λ_X| = 1/(4ρ_T) é enunciada com justificativa curta. Deveria mostrar que λ_X é constante nos planos paralelos à face oposta, logo o gradiente é normal a ela, e que λ_X varia de 1/4 em G até 0 em distância ρ_T ao longo dessa normal."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 4 (tangências das esferas) não é usado pela prova: a não sobreposição vem do Passo 5. É uma verificação colateral correta (distância |GM| = 3r/2 = r + r/2), mas deveria ser apresentada como observação, para não parecer parte do argumento."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 1: o uso do circunraio a√3/3 da face BCD supõe que o pé da altura é o baricentro (circuncentro) de BCD. Isso é padrão, mas merece uma frase."
+          }
+        ],
+        "summary": "Resposta final idêntica à de referência: V = π√6·a³/108 = (8/3)π·r³, com r = a√6/12, incluindo a esfera inscrita original. Confirmei o enunciado no PDF (p. 2, 10ª questão). Conferi tudo com Python puro (sem numpy): H = a√6/3 e H/r = 4; V(ABCD) = √2a³/12; cada filho é regular, com aresta a/2, inraio r/2 e volume V/8; o octaedro central tem volume √2a³/24; a soma parcial até o nível 6 coincide com 2V₀(1−2⁻⁷), com limite 2V₀ = π√6a³/108; V/V(ABCD) = π√3/9; a distância entre os centros de Σ e da esfera de T_A é 3r/2. Monte Carlo com 85 bolas (níveis 0 a 3): nenhum ponto cai em duas bolas, e o volume da união bate com a soma dentro do erro estatístico. Logo a resposta está correta na leitura literal. A demonstração é rigorosa: a tangência dá h = 2r = H/2 e os pontos médios; T_A = {λ_A ≥ 1/2} com prova nos dois sentidos; a cota |λ_X − 1/4| ≤ 1/4 em B_T dá não sobreposição; os filhos de um mesmo pai se tocam só em um ponto; e a união é tratada por desdobramento em conjuntos disjuntos. Todas as armadilhas do gabarito são tratadas (plano h = 0 excluído, razão 1/2 via H = 4ρ, 4·(1/8) = 1/2 por nível, r³ = √6a³/288, invariância, não sobreposição), exceto a do octaedro, que fica implícita. Não consegui checar o gabarito oficial, pois só tenho a prova. Se o gabarito oficial contar só as esferas n ≥ 1, a resposta seria π√6a³/216; a leitura literal favorece a do candidato. A nota 9.0 vem de uma resolução correta e rigorosa, com apenas problemas de clareza e ênfase, todos menores.\""
+      }
+    }
+  ]
+}

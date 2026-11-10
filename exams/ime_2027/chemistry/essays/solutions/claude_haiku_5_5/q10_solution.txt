@@ -1,0 +1,77 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Hipóteses.}
+\begin{itemize}
+\item Sistema fechado desde a formação do mineral: nenhum ${}^{232}\mathrm{Th}$, ${}^{208}\mathrm{Pb}$ ou intermediário entra ou sai, incluindo o gás ${}^{220}\mathrm{Rn}$. Um escape de radônio faria o chumbo medido ser menor e a idade ser subestimada.
+\item Chumbo inicial nulo: todo o ${}^{208}\mathrm{Pb}$ é radiogênico, logo $N_{\mathrm{Pb}}(0)=0$.
+\item Decaimento de primeira ordem, com $\lambda$ constante.
+\item A razão molar $0{,}024$ é igual à razão entre números de átomos, pois $N_{\mathrm{A}}$ se cancela.
+\end{itemize}
+
+\textbf{Passo 1 -- Estequiometria da cadeia.} Sejam $x$ emissões $\alpha$ e $y$ emissões $\beta^-$ entre ${}^{232}\mathrm{Th}$ e ${}^{208}\mathrm{Pb}$. A emissão $\alpha$ reduz $A$ em $4$ e $Z$ em $2$; a emissão $\beta^-$ mantém $A$ e aumenta $Z$ em $1$. Logo
+\[
+4x=232-208=24,\qquad 2x-y=90-82=8,
+\]
+donde $x=6$ e $y=4$. Cada ${}^{232}\mathrm{Th}$ desintegrado produz, no fim da cadeia, exatamente um ${}^{208}\mathrm{Pb}$. Os ramos alternativos, como o do ${}^{212}\mathrm{Bi}$, têm o mesmo balanço líquido.
+
+\textbf{Passo 2 -- Intermediários desprezíveis.} As meias-vidas dos intermediários vão de $0{,}3\,\mu\mathrm{s}$ (${}^{212}\mathrm{Po}$) a $5{,}75$ anos (${}^{228}\mathrm{Ra}$), muito menores que $T_{\mathrm{Th}}$. Para $t\gg T_i$ (aqui $t\approx5\times10^{8}$ anos $\gg5{,}75$ anos), cada intermediário já atingiu o equilíbrio com o pai, com atividades iguais, $\lambda_iN_i=\lambda_{\mathrm{Th}}N_{\mathrm{Th}}$, logo $N_i\approx(T_i/T_{\mathrm{Th}})\,N_{\mathrm{Th}}$. Como $T_{\mathrm{Th}}\gg T_i$, o pai quase não varia nesse intervalo. Somando,
+\[
+\sum_i N_i\approx\frac{\sum_i T_i}{T_{\mathrm{Th}}}\,N_{\mathrm{Th}}\approx\frac{7{,}7}{1{,}41\times10^{10}}\,N_{\mathrm{Th}}\approx5\times10^{-10}\,N_{\mathrm{Th}}.
+\]
+Frente ao chumbo formado, que corresponde a cerca de $2{,}3\%$ do tório original, essa soma é desprezível (erro relativo da ordem de $10^{-8}$).
+
+\textbf{Passo 3 -- Lei do decaimento e balanço de átomos.} Para o tório,
+\[
+N_{\mathrm{Th}}(t)=N_{\mathrm{Th}}(0)\,e^{-\lambda t},\qquad \lambda=\frac{\ln 2}{T_{\mathrm{Th}}},
+\]
+pois $N(T_{\mathrm{Th}})=N(0)/2$ implica $e^{-\lambda T_{\mathrm{Th}}}=\tfrac12$. Pela conservação de átomos, desprezando os intermediários,
+\[
+N_{\mathrm{Pb}}(t)=N_{\mathrm{Th}}(0)-N_{\mathrm{Th}}(t)=N_{\mathrm{Th}}(t)\left(e^{\lambda t}-1\right).
+\]
+Dividindo por $N_{\mathrm{Th}}(t)$, o tório presente hoje, a razão medida é
+\[
+R=\frac{N_{\mathrm{Pb}}(t)}{N_{\mathrm{Th}}(t)}=e^{\lambda t}-1=0{,}024\quad\Longrightarrow\quad e^{\lambda t}=1{,}024.
+\]
+
+\textbf{Passo 4 -- Isolamento de $t$.} Tomando o logaritmo natural e usando $\lambda=\ln 2/T_{\mathrm{Th}}$,
+\[
+t=\frac{\ln(1{,}024)}{\lambda}=\frac{T_{\mathrm{Th}}}{\ln 2}\,\ln(1+R).
+\]
+
+\textbf{Passo 5 -- Cálculo.} Primeiro, $\dfrac{T_{\mathrm{Th}}}{\ln 2}=\dfrac{1{,}41\times10^{10}}{0{,}693}\approx2{,}035\times10^{10}$ anos.
+
+\emph{Valor exato.} $\ln(1{,}024)=0{,}02372$, obtido pela série $R-\tfrac{R^2}{2}+\tfrac{R^3}{3}-\dots$ com $R=0{,}024$. Logo
+\[
+t=2{,}035\times10^{10}\times0{,}02372\approx4{,}83\times10^{8}\ \text{anos}.
+\]
+
+\emph{Aproximação com a Folha de Dados.} Como $1{,}024=2^{7}/5^{3}$,
+\[
+\ln(1{,}024)=7\ln2-3\ln5\approx7(0{,}693)-3(1{,}609)=0{,}024.
+\]
+Esse $0{,}024$ coincide com $R$ apenas por arredondamento dos logaritmos, pois o valor exato é $0{,}02372$. Com a linearização $e^{\lambda t}-1\approx\lambda t$, válida porque $\lambda t\approx0{,}024\ll1$, obtém-se
+\[
+t\approx2{,}035\times10^{10}\times0{,}024\approx4{,}88\times10^{8}\ \text{anos}.
+\]
+
+\emph{Precisão.} $R$ tem dois algarismos significativos, logo $0{,}0235\le R\le0{,}0245$ e a idade fica entre $4{,}7$ e $4{,}9\times10^{8}$ anos, com incerteza de cerca de $\pm2\%$. Os dois cálculos caem nessa faixa: o exato dá $4{,}8\times10^{8}$ anos e a linearização dá $4{,}9\times10^{8}$ anos.
+
+\textbf{Passo 6 -- Verificação.}
+\begin{itemize}
+\item \textit{Unidades e reconstituição}: $\lambda=\dfrac{0{,}693}{1{,}41\times10^{10}}\approx4{,}9\times10^{-11}\ \text{ano}^{-1}$, e $\lambda t\approx4{,}9\times10^{-11}\times4{,}83\times10^{8}\approx0{,}024$ é adimensional. Além disso, $e^{0{,}02372}=1{,}0240$, que reproduz a razão medida.
+\item \textit{Erro da linearização}: $e^{\lambda t}-1\approx\lambda t$ superestima $\lambda t$ em $R-\ln(1+R)\approx R^2/2$. Isso dá um erro relativo de $R/2\approx1{,}2\%$ na idade, que explica a diferença entre $4{,}88$ e $4{,}83$.
+\item \textit{Ordem de grandeza}: $t\approx5\times10^{8}$ anos $\ll T_{\mathrm{Th}}=1{,}41\times10^{10}$ anos, e a fração de tório decaída é $R/(1+R)\approx2{,}3\%$, coerente com $\lambda t\ll1$. Como $R>0$, resulta $t>0$.
+\end{itemize}
+
+\textbf{Armadilhas e consequências numéricas.}
+\begin{itemize}
+\item Esquecer o $-1$ e usar $e^{\lambda t}=R$: $t=\dfrac{T_{\mathrm{Th}}}{\ln2}\ln(0{,}024)\approx-7{,}6\times10^{10}$ anos, negativo e impossível.
+\item Inverter a razão, com $e^{\lambda t}=1+1/R\approx42{,}7$: $t\approx7{,}6\times10^{10}$ anos, cerca de cinco meias-vidas do tório, incompatível com a pequena fração decaída.
+\item Usar $T_{1/2}({}^{238}\mathrm{U})$ no lugar do tório: $t\approx1{,}5\times10^{8}$ anos, cerca de um terço do valor correto.
+\item Esquecer $\ln 2$, com $t=T_{\mathrm{Th}}\ln(1+R)$: $t\approx3{,}3\times10^{8}$ anos, cerca de $30\%$ abaixo.
+\item Os percentuais de $\mathrm{ThO}_2$ e $\mathrm{U}_3\mathrm{O}_8$, as massas molares e as densidades não entram. A razão Th/U atual não fornece idade sem a razão ${}^{206}\mathrm{Pb}/{}^{238}\mathrm{U}$, que não foi dada.
+\end{itemize}
+
+\noindent ANSWER: $t\approx4{,}8\times10^{8}$ a $4{,}9\times10^{8}$ anos (ordem de $5\times10^{8}$ anos)

@@ -1,0 +1,62 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Substituindo $S=\\frac{z+\\bar z}{z-\\bar z}$ e $T=\\frac{z^2+\\bar z^2}{z^2-\\bar z^2}$, a equação equivale a $(S-i)(T-i)=-2$. Com $t=x/y$ (para $z=x+yi$, $xy\\neq 0$), obtém-se $(t-1)(t^2+4t+1)=0$. Logo $z=\\lambda(1+i)$, $z=\\lambda(\\sqrt{3}-2+i)$ ou $z=\\lambda(-2-\\sqrt{3}+i)$, com $\\lambda\\in\\mathbb{R}^*$. Equivalentemente, $\\arg z\\in\\{\\pi/4,\\,7\\pi/12,\\,11\\pi/12\\}$ (módulo $\\pi$), ou seja, três retas pela origem sem a origem.",
+  "judge_reference": {
+    "reference_solution": "**Questão 4 (IME 2026/2027, matemática): referência de correção**\n\n**0. Notação e domínio.** Escreva z = x + yi, com x, y reais. Então z̄ = x − yi.\n- z − z̄ = 2yi ≠ 0 ⇒ **y ≠ 0** (z não real).\n- z² − z̄² = (z − z̄)(z + z̄) = 4xyi ≠ 0 ⇒ **x ≠ 0** (z não é imaginário puro).\n- Logo o domínio é {x ≠ 0 e y ≠ 0}. A origem e os eixos ficam fora.\n\n**1. Os dois quocientes.**\n- A := (z + z̄)/(z − z̄) = 2x/(2yi) = x/(yi) = **−i·x/y** (porque 1/i = −i).\n- z² + z̄² = 2(x² − y²). Então B := (z² + z̄²)/(z² − z̄²) = 2(x² − y²)/(4xyi) = **−i·(x² − y²)/(2xy)**.\n\n**2. Substituição p = x/y** (p é finito e não nulo no domínio). Então (x² − y²)/(2xy) = (p − 1/p)/2 = (p² − 1)/(2p). Assim:\n- A = −ip e B = −i(p² − 1)/(2p).\n- i(A + B) = i·(−i)·[p + (p² − 1)/(2p)] = p + (p² − 1)/(2p), porque i·(−i) = 1.\n- AB = (−ip)(−i)(p² − 1)/(2p) = i²·(p² − 1)/2 = −(p² − 1)/2.\n\nA equação i(A + B) − AB = 1 vira\np + (p² − 1)/(2p) + (p² − 1)/2 = 1.\nMultiplicando por 2p ≠ 0: 2p² + (p² − 1) + p(p² − 1) = 2p, ou seja\n**p³ + 3p² − 3p − 1 = 0.**\n\n**3. Fatoração.** p³ + 3p² − 3p − 1 = (p − 1)(p² + 4p + 1). As raízes são\np₁ = 1, p₂ = −2 + √3, p₃ = −2 − √3.\nConferência: a soma das raízes é −3 e o produto é 1, como exigem as relações de Girard. Também vale p² = 7 ∓ 4√3 e p³ = −26 ± 15√3 para p = −2 ± √3, o que confirma a substituição.\nRota alternativa: como A − i = −i(p + 1) e B − i = −i(p² + 2p − 1)/(2p), a equação equivale a (A − i)(B − i) = −2, que dá (p + 1)(p² + 2p − 1) = 4p e recai no mesmo cúbico.\n\n**4. Voltar a z.** Como x = p·y, tem-se z = y(p + i) com y ∈ ℝ*.\n- p = 1: z = λ(1 + i), isto é, a reta y = x.\n- p = −2 + √3: z = λ(√3 − 2 + i), isto é, a reta y = −(2 + √3)x.\n- p = −2 − √3: z = λ(−2 − √3 + i), isto é, a reta y = (√3 − 2)x.\nCom λ ∈ ℝ* (λ pode ser negativo).\n\nEm polar, z = ρ·e^{iθ} com θ = arg z: como x/y = cot θ, obtém-se cot θ ∈ {1, −2 + √3, −2 − √3}, ou seja **θ ∈ {π/4, 7π/12, 11π/12} (mód. π)**. Esses ângulos diferem de 60°, então a condição é arg z ≡ π/4 (mód. π/3), equivalente a tan(3·arg z) = −1.\n\n**5. Verificação.**\n- z = 1 + i: A = −i e B = 0, logo i(−i + 0) − 0 = 1. ✔\n- Numericamente, para z = 1 + (√3 − 2)i, z = 1 − (2 + √3)i, z = (√3 − 2) + i e z = (−2 − √3) + i, e para múltiplos reais destes (inclusive negativos), |F(z) − 1| ≈ 10⁻¹⁵. Para um ponto fora das retas, como z = 1 + 2i, |F(z) − 1| ≈ 1,6. ✔\n- Os eixos x = 0 e y = 0 não são soluções: o polinômio limpo N(x,y) = −4(x − y)(x² + 4xy + y²) vale N(0,y) = 4y³ e N(x,0) = −4x³, ambos não nulos.\n\n**6. Conclusão.** O conjunto solução é a união de três retas por 0, sem a origem:\nS = {λ(1 + i), λ(√3 − 2 + i), λ(−2 − √3 + i) : λ ∈ ℝ, λ ≠ 0}.\nEle é infinito porque a equação é invariante por z ↦ λz com λ real não nulo.",
+    "final_answer": "Solução (Questão 4, IME 2026): a equação é satisfeita exatamente pelos complexos não nulos das três retas por 0 de equações y = x, y = (√3 − 2)x e y = −(2 + √3)x. Explicitamente:\n\nz = λ(1 + i), z = λ(√3 − 2 + i) ou z = λ(−2 − √3 + i), com λ ∈ ℝ, λ ≠ 0.\n\nEm forma polar: arg z ≡ π/4 (mód. π/3), isto é, θ ∈ {π/4, 7π/12, 11π/12} (mód. π), com ρ ∈ ℝ*. Equivalentemente, tan(3·arg z) = −1.\n\nPasso-chave: com p = x/y, a equação reduz-se a p³ + 3p² − 3p − 1 = 0 = (p − 1)(p² + 4p + 1), cujas raízes são 1 e −2 ± √3. Não há alternativas de múltipla escolha.",
+    "pitfalls": [
+      "Conjunto solução infinito: a equação é invariante por z ↦ λz com λ real não nulo. Responder só com z = 1 + i, ou só com as raízes do cúbico, é resposta incompleta. Também é erro dar só meias-retas (esquecer λ < 0).",
+      "Domínio: z real anula z − z̄ e z imaginário puro (x = 0) anula z² − z̄². Ambos devem ser excluídos. Com x = 0, A = 0 mas B fica indefinido, então não vale como solução.",
+      "Armadilha de cancelamento: escrever B = (z² + z̄²)/((z − z̄)(z + z̄)) e depois AB = (z² + z̄²)/(z − z̄)² só é válido com z + z̄ ≠ 0. Sem registrar x ≠ 0, a solução pode parecer válida em x = 0, que está fora do domínio.",
+      "A origem z = 0 anula o polinômio homogêneo que surge ao limpar denominadores, mas não pertence ao domínio. Deve ser excluída explicitamente.",
+      "Os eixos não são soluções espúrias do polinômio limpo N(x,y) = −4(x − y)(x² + 4xy + y²): N(0,y) = 4y³ ≠ 0 e N(x,0) = −4x³ ≠ 0. Isso deve ser checado, não presumido.",
+      "Erros de sinal frequentes: 1/i = −i (não +i); i·(−i) = 1; i² = −1; A = −ix/y; z² − z̄² = 4xyi (não 2xyi nem 0); z² + z̄² = 2(x² − y²) (não 2(x² + y²)). Qualquer um deles altera o cúbico e a resposta.",
+      "Fatoração: (p − 1)(p² + 4p + 1) tem raízes −2 ± √3, não 2 ± √3. Trocar o sinal dá retas erradas.",
+      "Mapeamento raiz↔reta exige cuidado: p = x/y, logo p = −2 + √3 corresponde a x = (√3 − 2)y, ou seja y = −(2 + √3)x, e p = −2 − √3 corresponde a y = (√3 − 2)x. O cúbico é recíproco-anti (c³P(1/c) = −P(c)), então x/y e y/x têm o mesmo conjunto de raízes, mas a associação raiz↔reta muda.",
+      "Mapeamento para ângulos: cot φ = −2 + √3 dá φ = 105° e cot φ = −2 − √3 dá φ = 165° (mód. 180°). Erro comum: usar 15° ou 75°, ou não reduzir mód. π.",
+      "Na forma polar, esquecer que ρ pode ser negativo (equivalente a arg + π) faz perder metade de cada reta. Se o aluno der só ρ > 0 e argumentos em [0, 2π), precisa listar os seis argumentos (π/4, 5π/4, 7π/12, 19π/12, 11π/12, 23π/12).",
+      "Parar em x/y = p ou em p³ + 3p² − 3p − 1 = 0 sem voltar a z é resposta incompleta. O enunciado pede os valores de z.",
+      "Verificação: vale testar z = 1 + i (A = −i, B = 0, resultado 1) e um ponto fora das retas, como z = 1 + 2i, que deve falhar."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Substituindo $S=\\frac{z+\\bar z}{z-\\bar z}$ e $T=\\frac{z^2+\\bar z^2}{z^2-\\bar z^2}$, a equação equivale a $(S-i)(T-i)=-2$. Com $t=x/y$ (para $z=x+yi$, $xy\\neq 0$), obtém-se $(t-1)(t^2+4t+1)=0$. Logo $z=\\lambda(1+i)$, $z=\\lambda(\\sqrt{3}-2+i)$ ou $z=\\lambda(-2-\\sqrt{3}+i)$, com $\\lambda\\in\\mathbb{R}^*$. Equivalentemente, $\\arg z\\in\\{\\pi/4,\\,7\\pi/12,\\,11\\pi/12\\}$ (módulo $\\pi$), ou seja, três retas pela origem sem a origem.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O converso não é justificado explicitamente. O passo 'cada raiz fornece uma reta' vale para todo λ ∈ ℝ* porque S e T dependem apenas de t = x/y (a equação é invariante por z ↦ λz, λ real não nulo). Falta uma frase dizendo isso. Ela também justificaria explicitamente que λ < 0 é válido."
+          },
+          {
+            "severity": "minor",
+            "description": "O bullet 'Estrutura' da conferência afirma que a equação equivale a cot 3θ = −1 e conclui θ = π/4 + kπ/3 sem derivação. A identidade cot 3θ = (t³−3t)/(3t²−1) está correta, mas não é citada como conhecida e as condições de validade (sin θ ≠ 0 e 3t² ≠ 1) não são discutidas. Deve-se justificar em uma linha ou remover, pois não é necessário para a resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência testa apenas λ = 1 para as retas 2 e 3, e não testa λ ≠ 1 nem λ < 0. Os valores de T ('pois (t²−1)/(2t) = √3' e '= −√3') são afirmados sem o cálculo. Deve-se mostrar a conta de (t²−1)/(2t) e checar pelo menos um múltiplo negativo de uma reta."
+          },
+          {
+            "severity": "minor",
+            "description": "A exclusão de z = 2+3i é feita pelo cúbico reduzido, não pela equação original. A conclusão é válida dada a equivalência, mas a verificação não é independente. Um ponto fora das retas testado diretamente na equação original (ex.: 1+2i, com |F−1| ≈ 1,6) seria mais convincente."
+          },
+          {
+            "severity": "minor",
+            "description": "Na forma polar, a resolução usa ρ ∈ ℝ* com θ módulo π, sem dizer que ρ < 0 equivale a θ + π. Quem usar só ρ > 0 perde metade de cada reta. Deve-se explicitar essa correspondência ou listar os seis argumentos em [0, 2π)."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à referência: z = λ(1+i), z = λ(√3−2+i) ou z = λ(−2−√3+i), com λ ∈ ℝ*. Verifiquei as contas: com t = x/y, S = −it e T = −i(t²−1)/(2t); a identidade (S−i)(T−i) = −2 está correta; t³+3t²−3t−1 = (t−1)(t²+4t+1) com raízes 1 e −2±√3 (confirmado numericamente, soma −3 e produto 1); o mapeamento raiz→reta z = y(t+i) e os ângulos 45°, 105°, 165° (cot 105° = −2+√3, cot 165° = −2−√3) estão certos. O domínio (y ≠ 0, x ≠ 0, origem, reais e imaginários puros excluídos) é justificado antes de qualquer simplificação, então não há armadilha de cancelamento. Uma varredura numérica em t confirmou que as únicas raízes são 1, −2+√3 e −2−√3. Armadilhas da referência: conjunto infinito com λ < 0 (tratado com ℝ*), domínio e origem (tratados), erros de sinal (nenhum), fatoração (correta), mapeamento raiz↔reta e ângulo (corretos), polar (tratada com ρ ∈ ℝ* e módulo π, mas sem explicitar a correspondência ρ < 0 ↔ θ+π), não parar em t (voltou a z), verificação (z = 1+i e os dois outros raios com contas exatas; 2+3i excluído pelo cúbico). Os problemas são de rigor expositivo e não afetam a resposta: o converso fica implícito, uma afirmação trigonométrica da seção 'Estrutura' não tem derivação, e algumas verificações são asserções. Nota 9: é um gabarito comentado publicável após pequenos ajustes de justificativa.\""
+      }
+    }
+  ]
+}

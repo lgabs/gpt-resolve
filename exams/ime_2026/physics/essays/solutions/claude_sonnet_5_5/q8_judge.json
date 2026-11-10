@@ -1,0 +1,54 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) Calor a retirar: 35000 + 72500 + 12500 = 120000 kcal = 4,8·10^8 J; potência frigorífica média 83,3 kW; COP de Carnot = 246/61,5 = 4, COP real = 3; potência do compressor ≈ 27,8 kW ≈ 37 HP. b) 30 HP é insuficiente (fornece só ~81% do necessário; levaria ~118 min em vez de 96 min), logo a estimativa do engenheiro não procede.",
+  "judge_reference": {
+    "reference_solution": "**Modelo.** Câmara frigorífica = refrigerador (máquina térmica operando em ciclo inverso). Fonte fria: interior da câmara, T_f = −27 °C = 246 K. Fonte quente: ambiente, T_q = 34,5 °C = 307,5 K. O compressor fornece o trabalho W. O sistema retira da câmara o calor Q_f necessário para levar o suco de 33 °C a −27 °C, e rejeita Q_q = Q_f + W ao ambiente. Hipóteses: o calor perdido por paredes, embalagem, ventiladores e abertura de portas é desprezado. A potência é a média ao longo dos 96 min. A eficiência do motor elétrico é 100%.\n\n**a) Potência do compressor**\n\n1) Calor a retirar do suco (m = 1000 kg), em três etapas:\n- Resfriamento do líquido de 33 °C a −2 °C: Q₁ = m·c_l·ΔT = 1000·1,0·35 = 35 000 kcal.\n- Solidificação a −2 °C: Q₂ = m·L = 1000·72,5 = 72 500 kcal.\n- Resfriamento do sólido de −2 °C a −27 °C: Q₃ = m·c_s·ΔT = 1000·0,5·25 = 12 500 kcal.\n\nQ_f = 35 000 + 72 500 + 12 500 = 120 000 kcal. Com 1 cal = 4 J, Q_f = 1,2·10⁵ · 4·10³ J = 4,8·10⁸ J.\n\n2) Taxa média de remoção de calor, com Δt = 96 min = 5760 s:\nP_f = Q_f/Δt = 4,8·10⁸ / 5760 = 8,33·10⁴ W ≈ 83,3 kW.\n\n3) Coeficiente de desempenho (refrigerador, não bomba de calor):\n- COP_Carnot = T_f/(T_q − T_f) = 246/(307,5 − 246) = 246/61,5 = 4.\n- COP_real = (3/4)·4 = 3.\n\n4) Potência do compressor. Como COP = P_f/P_comp:\nP_comp = P_f/COP = 83,33/3 ≈ 27,8 kW.\nEm HP (1 HP = 0,75 kW): P_comp = 27,78/0,75 ≈ **37 HP** (37,04 HP).\n\nVerificação energética: W = Q_f/3 = 40 000 kcal = 1,6·10⁸ J. O calor rejeitado ao ambiente é Q_q = Q_f + W = 160 000 kcal. Isso é compatível com a 1ª lei e com a 2ª lei (COP_real < COP_Carnot).\n\n**b) Comparação com o engenheiro**\n\nResultado: 37 HP > 30 HP, cerca de 23% acima do valor do engenheiro. A estimativa **não é procedente**: o equipamento de 30 HP não atende, e muito menos \"com folga\".\n\nQuantificação para 30 HP (22,5 kW):\n- Com COP = 3, ele remove 67,5 kW. Em 96 min isso dá 3,888·10⁸ J = 97 200 kcal, ou seja, 81% dos 120 000 kcal necessários.\n- Para retirar os 120 000 kcal, precisaria de ≈ 118,5 min, cerca de 22,5 min a mais que o previsto.\n\nOrigem provável do erro do engenheiro: usar o COP de Carnot (4) como se fosse real. Isso dá P = 83,3/4 = 20,8 kW ≈ 27,8 HP, que \"parece\" caber em 30 HP. O ciclo de Carnot é o limite ideal e fornece a potência mínima teórica. Equipamentos reais (3/4 de Carnot) precisam de mais, e o enunciado dá esse fator justamente para isso.\n\nObservação: como a análise desprezou perdas térmicas e do motor, a potência real necessária seria ainda maior. Isso reforça a conclusão: o equipamento deve ser especificado com pelo menos ~37 HP, na prática mais, com margem de segurança.",
+    "final_answer": "a) Q_f = 35 000 + 72 500 + 12 500 = 120 000 kcal = 4,8·10⁸ J. P_f = 4,8·10⁸/5760 ≈ 83,3 kW. COP_Carnot = 246/61,5 = 4, então COP_real = 3. P_comp = 83,3/3 ≈ 27,8 kW ≈ **37 HP**.\n\nb) 37 HP > 30 HP (cerca de 23% a mais). A estimativa do engenheiro **não é procedente**. Com 30 HP seriam removidos só 97 200 kcal em 96 min (81% do necessário), ou o processo levaria ≈ 118,5 min. O valor de ≈ 27,8 HP, que \"cabe\" nos 30 HP, resulta de usar o COP ideal de Carnot (4) em vez do real (3).",
+    "pitfalls": [
+      "Converter °C para K antes de calcular o COP de Carnot. Usar T_f = 246 K e T_q = 307,5 K dá COP_Carnot = 4 exato; usar 273,15 dá o mesmo resultado na prática (≈ 37,0 HP). Usar temperaturas em °C direto está errado.",
+      "Usar a fórmula de refrigerador, COP = T_f/(T_q − T_f). A de bomba de calor, T_q/(T_q − T_f), dá 5 e está errada.",
+      "Aplicar o fator 3/4 ao COP, e não à potência: COP_real = 3, não 4. Esse é o erro provável do engenheiro, que chega a ≈ 27,8 HP e conclui que 30 HP basta 'com folga'.",
+      "Somar as TRÊS parcelas de calor. O líquido de 33 a −2 °C usa c = 1,0 e ΔT = 35. O calor latente é 72,5 kcal/kg a −2 °C. O sólido de −2 a −27 °C usa c = 0,5 e ΔT = 25. Não usar um único calor específico de 33 a −27 °C e não omitir a fase sólida. Omitir parcelas subestima a potência.",
+      "Converter kcal → J (×4000), minutos → segundos (96 min = 5760 s) e kW → HP (÷0,75, pois 1 HP = 3/4 kW). A potência obtida é média e do compressor (trabalho W), não a taxa de calor removido (83,3 kW).",
+      "O trabalho do compressor não é o calor removido: W = Q_f/COP. O calor rejeitado ao ambiente é Q_q = Q_f + W = 160 000 kcal.",
+      "Hipóteses a explicitar: desprezar o calor que entra pelas paredes e pela embalagem, a potência de ventiladores e as perdas do motor; a câmara é mantida a −27 °C (fonte fria) e a potência é constante em média. Qualquer perda real aumenta a potência necessária e reforça que 30 HP é insuficiente.",
+      "Na parte (b), concluir com número e justificativa: 37 HP > 30 HP, então não há 'folga' e o equipamento é subdimensionado. Quantificar com 97 200 kcal removidas em 96 min (81%) ou ≈ 118,5 min necessários com 30 HP. Dizer só 'não procede' sem calcular não basta."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) Calor a retirar: 35000 + 72500 + 12500 = 120000 kcal = 4,8·10^8 J; potência frigorífica média 83,3 kW; COP de Carnot = 246/61,5 = 4, COP real = 3; potência do compressor ≈ 27,8 kW ≈ 37 HP. b) 30 HP é insuficiente (fornece só ~81% do necessário; levaria ~118 min em vez de 96 min), logo a estimativa do engenheiro não procede.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não apresenta o balanço de energia completo do ciclo (Q_q = Q_f + W = 160 000 kcal rejeitados ao ambiente) nem a verificação de que COP_real < COP_Carnot. O enunciado pede uma 'análise termodinâmica'. A 1ª lei só aparece para o suco e a 2ª lei só aparece de forma verbal. Deveria incluir uma linha com W = Q_f/3 = 40 000 kcal = 1,6·10⁸ J e Q_q = 160 000 kcal."
+          },
+          {
+            "severity": "minor",
+            "description": "Não discute a origem provável do erro do engenheiro. Com o COP de Carnot (4) em vez do real (3) sai ≈27,8 HP, que 'cabe' nos 30 HP. Esse é o ponto didático da parte (b) e o motivo de o enunciado dar o fator 3/4. A parte (b) está correta e quantificada, mas perde essa explicação de por que a estimativa parece plausível."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses implícitas ou pouco explícitas: eficiência do motor elétrico de 100% (a potência calculada é o trabalho W do ciclo, não a potência elétrica de entrada). A conversão °C→K usa 273 sem declarar. O congelamento é tratado como isotérmico a −2 °C, com remoção a taxa média constante."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que 'a carga térmica é maior no início do processo' é qualitativa e sem apoio numérico. Ela é plausível e reforça a conclusão, mas a potência de pico ficou sem estimativa. Além disso, a quantificação da insuficiência aparece como '23% acima' no texto e '19% abaixo' na linha ANSWER. Os dois valores estão corretos (30/37,04 = 0,81), mas poderiam ser unificados. Em 96·37,0/30 usa 37,0 arredondado, o que não altera o resultado (118,5 min)."
+          }
+        ],
+        "summary": "A resposta final coincide com a referência e eu a confirmei numericamente. Q₁ = 35 000, Q₂ = 72 500 e Q₃ = 12 500 kcal somam 120 000 kcal = 4,8·10⁸ J. Em 5760 s isso dá 83,3 kW. COP_Carnot = 246/61,5 = 4 e COP = 3. W = 27,8 kW = 37,04 HP. Com 30 HP o calor removido em 96 min seria 3,888·10⁸ J = 97 200 kcal (81%), e o tempo necessário seria ≈118,5 min. A estimativa do engenheiro não procede. Todas as armadilhas foram tratadas: as três parcelas de calor, Kelvin, a fórmula de refrigerador (não de bomba de calor), o fator 3/4 aplicado ao COP, as conversões de unidade (kcal→J, min→s, kW→HP com 1 HP = 0,75 kW) e a diferença entre calor removido e trabalho do compressor. A parte (b) é quantificada, com verificação inversa, e discute que perdas reais só aumentam a potência necessária. Os defeitos são menores: falta o balanço energético completo (Q_q = Q_f + W), falta explicar a origem provável do erro do engenheiro (usar COP = 4 dá ≈27,8 HP), e algumas hipóteses ficam implícitas, como a eficiência do motor e o uso de 273 K. É uma resolução clara, correta e bem justificada, próxima de um gabarito comentado, mas sem o último acabamento."
+      }
+    }
+  ]
+}

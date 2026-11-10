@@ -1,0 +1,122 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.0,
+  "final_answer": "(a) N_r = M[g cosθ + ω²(L/2 − a)] = (M/2)[2g cosθ + ω²(L − 2a)], componente da reação ao longo da haste com sentido −ê_r (da extremidade inferior para o pivô e, daí, para o trecho superior), ou seja, F·ê_r = −N_r. (b) cosθ = ω²(2a − L)/(2g), isto é, θ = arccos[ω²(2a − L)/(2g)], com existência para ω²|L − 2a| ≤ 2g; M se cancela.",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 3 (ITA 2026 – 2ª fase, Física) – resolução de referência\n\nConvenções. Origem O no pivô (fixo). Versor ê = (sen θ, −cos θ), do pivô para a extremidade inferior da haste (a parte de comprimento L − a, na figura). Versor ê⊥ = (cos θ, sen θ), que é ê girado de +90° (anti-horário). Com θ crescendo no sentido anti-horário, θ̈ = α (aceleração angular). A gravidade é g⃗ = (0, −g).\n\nGeometria. A extremidade superior está a distância a do pivô, na direção −ê; a inferior está a L − a, na direção +ê. O centro de massa G (haste homogênea) está no ponto médio:\n  r⃗_G = (L/2 − a) ê.\nLogo a distância pivô–G é |L/2 − a| (não L/2 e não a). Se a > L/2, G fica do outro lado do pivô; a fórmula abaixo continua válida com sinal algébrico.\n\nItem (a): componente radial da reação.\n1) Cinemática (pivô fixo): a⃗_G = α k̂ × r⃗_G − ω² r⃗_G = α(L/2 − a) ê⊥ − ω²(L/2 − a) ê.\n2) Dinâmica do centro de massa: N⃗ + M g⃗ = M a⃗_G, com N⃗ a reação do pivô.\n3) Projeção em ê (radial, ao longo da haste):\n   g⃗·ê = (0, −g)·(sen θ, −cos θ) = g cos θ;   a⃗_G·ê = −ω²(L/2 − a).\n   Logo N⃗·ê + M g cos θ = −M ω²(L/2 − a), isto é, N⃗·ê = −M[g cos θ + ω²(L/2 − a)].\n4) Tomando como positiva a componente orientada da extremidade inferior para o pivô (sentido −ê):\n   N_r = M [ g cos θ + ω²(L/2 − a) ] = (M/2)[ 2g cos θ + ω²(L − 2a) ].\nA aceleração angular α não aparece: ela só contribui para a componente tangencial.\n\nVerificações:\n- ω = 0 e θ = 0 (haste pendurada, a < L/2): N_r = Mg, para cima, que é o equilíbrio esperado.\n- a = 0 (pivô numa extremidade): N_r = M(g cos θ + ω² L/2), que é o resultado clássico.\n- Se a convenção for “positiva para fora do pivô”, o sinal de N_r troca; a magnitude é M|g cos θ + ω²(L/2 − a)|.\n\nItem (b): N_r = 0.\n  g cos θ + ω²(L/2 − a) = 0  ⇒  cos θ = ω²(2a − L)/(2g)\n  θ = arccos[ ω²(2a − L)/(2g) ]\nCondição de existência: |ω²(L − 2a)| ≤ 2g; caso contrário não há θ real. A massa M cancela.\nRamos: se a < L/2, cos θ < 0 e θ ∈ (90°, 180°]; se a > L/2, θ ∈ [0°, 90°); se a = L/2, então θ = 90° para qualquer ω, pois o centro de massa coincide com o pivô.\n\nComplemento (não pedido, usado só como controle): torque τ_z = −Mg(L/2 − a) sen θ e momento de inércia I_O = ML²/12 + M(L/2 − a)² (Steiner), o que dá\n  α = −6g(L − 2a) sen θ / [L² + 3(L − 2a)²],\n  N_t = M g sen θ · L² / [L² + 3(L − 2a)²].\nPara a = 0 isto dá N_t = Mg sen θ /4, que é o resultado clássico da haste presa por uma extremidade.\n\nConferência numérica: as expressões de N_r, N_t e α foram checadas contra a 2ª lei de Newton e contra a equação de Lagrange em 10 000 casos aleatórios (erro relativo ~1e-14). A solução de (b) foi verificada substituindo θ de volta em N_r (resíduo ~1e-15).",
+    "final_answer": "(a) Componente radial da reação do pivô, ao longo da haste (orientada da extremidade inferior para o pivô):\n    N_r = M [ g cos θ + ω²(L/2 − a) ] = (M/2)[ 2g cos θ + ω²(L − 2a) ]\n  Independe de α e do momento de inércia. Se a convenção for \"positiva para fora do pivô\", o sinal troca.\n\n(b) Ângulo que anula a componente radial:\n    cos θ = ω²(2a − L)/(2g)  ⇒  θ = arccos[ ω²(2a − L)/(2g) ]\n  Existe apenas se |ω²(L − 2a)| ≤ 2g. A massa M não aparece na resposta, pois cancela.\n  Para a < L/2, θ ∈ (90°, 180°]; para a > L/2, θ ∈ [0°, 90°); para a = L/2, θ = 90°.\n\nObservação: a questão está na página 4 do PDF, que tem 12 páginas (o enunciado indicava 4). O conteúdo de Q3 foi conferido nessa página.",
+    "pitfalls": [
+      "Distância do centro de massa ao pivô: é |L/2 − a|, não L/2 (pivô no meio) nem a. Para a > L/2 o CM muda de lado; a fórmula algébrica continua válida, mas o sentido físico muda.",
+      "Leitura de a: na figura, a é a distância do pivô à extremidade superior (esquerda), não à inferior. Se o candidato tomar a como distância à extremidade inferior, a resposta deve trocar a por L − a.",
+      "θ é medido a partir da vertical DESCENDENTE, pela parte inferior da haste. A projeção do peso na haste é Mg cos θ (não sen θ). Erros típicos: usar sen θ, ou inverter o sinal do cosseno ao tomar a vertical ascendente.",
+      "A componente radial não depende de α nem de I: a aceleração angular só entra na componente tangencial. Ainda assim, se α for calculado, I_O = ML²/12 + M(L/2 − a)² (Steiner) — não ML²/3, que vale só para pivô na extremidade.",
+      "Convenção de sinal: 'componente radial' pode ser lida com sentido para dentro ou para fora do pivô. A resposta deve declarar a convenção. A magnitude é M|g cos θ + ω²(L/2 − a)|.",
+      "Não confundir com a reação total: N = √(N_r² + N_t²). A questão pede só a componente radial.",
+      "Sinal em (b): cos θ = ω²(2a − L)/(2g), não ω²(L − 2a)/(2g). Como para a < L/2 o cosseno é negativo, o sinal define se θ fica acima ou abaixo de 90°.",
+      "Existência em (b): é preciso verificar |ω²(L − 2a)| ≤ 2g. Sem essa checagem, o candidato pode aplicar arccos a um valor maior que 1.",
+      "θ > 90° é fisicamente válido em (b): a haste é rígida e gira no plano todo, então a parte inferior pode estar acima da horizontal. Não descartar a solução por isso.",
+      "M cancela em (b). Não é erro a resposta não conter M, mesmo a questão listando M entre as variáveis. Inventar dependência em M é erro.",
+      "Caso especial a = L/2: o CM coincide com o pivô, o termo em ω some e N_r = Mg cos θ, que se anula em θ = 90°. Bom teste de consistência.",
+      "Radial significa ao longo da haste, pois o pivô está sobre a linha da haste. Não é a direção x nem y, e a resposta não deve misturar componentes cartesianas.",
+      "Pivô fixo: não há deslizamento nem condição de rolamento. O movimento do CM é só a soma da rotação em torno do pivô (ω²) com a parte tangencial (α).",
+      "Conferência dimensional: M ω² L é força e M g é força. Termos com ω² devem ser multiplicados por comprimento, não por L²."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "(a) F_r = −M[ω²(L/2 − a) + g cosθ], ou seja, a reação radial do pivô tem módulo M[ω²(L/2 − a) + g cosθ] e é dirigida para o pivô (o sinal negativo vale para o versor radial apontando do pivô para o trecho inferior da haste). (b) F_r = 0 ⇔ cosθ = ω²(2a − L)/(2g), logo θ = arccos[ω²(2a − L)/(2g)], independente de M, válido quando |ω²(2a − L)| ≤ 2g. Na figura (a < L/2) a solução é obtusa.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Em (a), o candidato escreve F_r = −M[ω²(L/2−a)+g cosθ] e diz que o módulo é M[ω²(L/2−a)+g cosθ]. Isso só vale quando o colchete é positivo. Para a > L/2 com ω alto, o colchete pode ser negativo e o módulo passa a ser M|…|. O candidato declara que a fórmula vale para a > L/2, então a afirmação é inconsistente. Correção: dizer que F_r é a projeção sobre ê (sentido do pivô para a extremidade inferior), que F_r = −M[…] e que |F_r| = M|ω²(L/2−a)+g cosθ|."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), a discussão do ramo da solução está presa à figura (a < L/2, cosθ < 0, θ obtuso). O ramo a > L/2 não aparece: cosθ > 0 e θ ∈ [0°, 90°). O enunciado pede resposta em função de a em geral. Correção: listar os três casos (a < L/2: θ ∈ (90°,180°]; a > L/2: θ ∈ [0°,90°); a = L/2: θ = 90°). O caso a = L/2 já está correto."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação 'ω = 0, θ = 0 (haste vertical, G abaixo de O)' só é verdadeira para a < L/2. Para a > L/2, G fica acima do pivô. O resultado F_r = −Mg vale em qualquer caso, mas a justificativa geométrica entre parênteses precisa de ressalva."
+          },
+          {
+            "severity": "minor",
+            "description": "Na explicação de (b), a frase 'o peso ao longo da haste fornece sozinho a força centrípeta Mω²d' é imprecisa em sinal e magnitude, já que d pode ser negativo. Correção: g cosθ = −ω²d, ou seja, a projeção do peso sobre ê equilibra a centrípeta M ω²|d| dirigida ao pivô."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato define corretamente F_r ≡ F·ê_r, mas não alerta explicitamente que F_r é só uma componente e não a reação total. A armadilha está tratada de forma implícita. Um gabarito comentado deveria dizer uma frase sobre isso."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 3 (ITA 2026, 2ª fase, Física).\n\nConfirmei o enunciado na página 4 do PDF. A figura mostra a parte superior (comprimento a) à esquerda do pivô, a parte inferior mais longa (L−a) descendo à direita e θ medido a partir da vertical descendente. A leitura do candidato (ê = (sinθ, −cosθ), r_G = (L/2 − a)ê, a distância a até a extremidade superior) está correta.\n\nRespostas finais: as duas coincidem fisicamente. Referência: N_r = M[g cosθ + ω²(L/2 − a)] no sentido do pivô (−ê). Candidato: F_r = −M[ω²(L/2 − a) + g cosθ] ao longo de ê. São o mesmo vetor com convenções de sinal opostas, e ambas as convenções estão declaradas. Em (b), ambos dão cosθ = ω²(2a − L)/(2g), com M cancelado e condição de existência |ω²(L − 2a)| ≤ 2g. O candidato está correto.\n\nConferência numérica (python, 20 000 casos aleatórios): derivei F = M a_G − M g⃗ com a_G = α×r_G + ω×(ω×r_G) e projetei em ê. O erro relativo em relação à fórmula do candidato foi ~1e−14, e o resultado é independente de α. Em (b), o resíduo de F_r ao substituir θ = arccos(...) foi ~1e−15 em 19 180 casos válidos. O exemplo numérico L = 1, a = 0,25, ω = 2, g = 10 dá cosθ = −0,1, θ ≈ 95,74° e F_r = 0, como afirmado.\n\nArmadilhas: tratadas corretamente a distância |L/2 − a| (com a > L/2 explicitado), a leitura de a, o uso de cosθ com θ pela vertical descendente, α não entrar na componente radial, a convenção de sinal (declarada, embora com uma imprecisão de módulo), a condição de existência em (b), θ > 90° como solução válida, M cancelando, o caso a = L/2 e a dimensão das expressões. A não ser confundido com a reação total está implícito.\n\nMotivo da nota 8,5 e não 9: a resposta e a justificativa são sólidas e a álgebra é limpa. Faltam três ajustes para um gabarito comentado: a frase sobre o módulo de F_r (válida só para o colchete positivo), a análise do ramo a > L/2 em (b) (θ agudo), e a ressalva geométrica na verificação com ω = 0. Nenhum desses problemas invalida a resposta.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "(a) $F_r=\\vec F\\cdot\\hat e_r=-M\\left[\\omega^2\\left(\\frac{L}{2}-a\\right)+g\\cos\\theta\\right]$, em que $\\hat e_r$ aponta do pivô para o trecho inferior. A componente dirigida ao pivô vale $M\\left[\\omega^2\\left(\\frac{L}{2}-a\\right)+g\\cos\\theta\\right]$. (b) $\\cos\\theta=\\dfrac{\\omega^2(2a-L)}{2g}$, ou seja, $\\theta=\\arccos\\left[\\dfrac{\\omega^2(2a-L)}{2g}\\right]$, com $\\omega^2|L-2a|\\le 2g$ e $M$ cancelado.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Afirmação incorreta: o texto diz que o sinal do colchete inverte 'o que pode ocorrer para a>L/2'. Isso é falso. A inversão também ocorre para a<L/2 quando g·cosθ < -ω²(L/2 − a). Exemplo: L=1, a=0,25, ω=0, θ=150°, com colchete = 10·cos150° ≈ -8,66. O que deve ser feito: remover a restrição a a>L/2 e afirmar que o sinal depende apenas de g·cosθ + ω²(L/2 − a), para qualquer a."
+          },
+          {
+            "severity": "minor",
+            "description": "Redação ambígua sobre o sentido de F_r: 'a componente aponta para o pivô' e 'o sentido real é o do pivô se o colchete for positivo' não se aplicam bem a uma força aplicada em O. Lidas como 'de G para O', as frases são falsas para a>L/2, pois aí G está do lado de −ê_r. O que deve ser feito: dizer explicitamente 'F_r<0 ⇔ F tem sentido −ê_r (da extremidade inferior para O); F_r>0 ⇔ sentido +ê_r'."
+          },
+          {
+            "severity": "minor",
+            "description": "A observação 'a configuração simétrica, com o trecho inferior à esquerda, também anula F_r' aparece sem contexto. Está correta, pois F_r depende só de cosθ, mas não está explicada. O que deve ser feito: dizer que a imagem especular tem o mesmo cosθ e, portanto, a mesma θ, e que a convenção da figura fixa θ ∈ [0, π]."
+          },
+          {
+            "severity": "minor",
+            "description": "As afirmações 'a superior está em −a·ê_r' e 'a<L/2 (caso da figura)' não são justificadas explicitamente. A figura mostra o rótulo a no trecho superior-esquerdo, visivelmente menor que o trecho inferior, mas a candidata não cita isso. A leitura de a é uma armadilha explícita do enunciado, então deveria ser apoiada na figura ao introduzir as extremidades."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta de (a) é apresentada com sinal oposto à forma usual, positiva e orientada para o pivô. A convenção está declarada, então não é erro. Recomenda-se também escrever N_r = M[g cosθ + ω²(L/2 − a)] = (M/2)[2g cosθ + ω²(L − 2a)] com o sentido explícito, para comparação direta com gabarito."
+          }
+        ],
+        "summary": "Resposta final correta e concordante com a referência: (a) F_r = −M[ω²(L/2 − a) + g cosθ], igual a N_r da referência com sinal oposto por convenção declarada; (b) cosθ = ω²(2a − L)/(2g), com existência ω²|L − 2a| ≤ 2g e M cancelando. Verifiquei numericamente com integração independente (Euler-Lagrange e diferenciação da trajetória): F_r, F_t e α conferem, e a solução de (b) anula F_r. A derivação é completa e cobre todas as armadilhas listadas (distância |L/2 − a| com sinal, leitura de a, θ medido da vertical descendente, α fora de F_r, Steiner, não confusão com reação total, sinal de cosθ, existência, θ > 90° válido, caso a = L/2). Os defeitos são de redação e de uma afirmação lateral falsa sobre a inversão de sinal (que ocorre também para a<L/2), sem efeito nas respostas. Nota 8,5: gabarito quase publicável, após corrigir as frases ambíguas e a afirmação incorreta sobre o sinal."
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.0,
+      "final_answer": "(a) N_r = M[g cosθ + ω²(L/2 − a)] = (M/2)[2g cosθ + ω²(L − 2a)], componente da reação ao longo da haste com sentido −ê_r (da extremidade inferior para o pivô e, daí, para o trecho superior), ou seja, F·ê_r = −N_r. (b) cosθ = ω²(2a − L)/(2g), isto é, θ = arccos[ω²(2a − L)/(2g)], com existência para ω²|L − 2a| ≤ 2g; M se cancela.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A 'Conferência independente' afirma que derivar numericamente a trajetória de G e aplicar o passo 1 dá os mesmos N_r e F_t, mas não mostra nenhum valor nem procedimento. A afirmação é verdadeira (verifiquei), mas não está demonstrada no texto. Deve-se mostrar os números da checagem ou remover a frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese 'θ medido a partir da vertical descendente, no sentido de +x, como na figura, logo θ∈[0,π]' é um non sequitur: medir no sentido de +x dá intervalo [0,2π). A restrição a [0,π] corresponde a supor a parte inferior do lado direito, e não à figura. Mais adiante, 'a convenção da figura fixa θ∈[0,π]' superestima o que a figura mostra. Deveria ser dito que θ é o ângulo não orientado entre a haste (parte inferior, à direita) e a vertical descendente, que a configuração espelhada corresponde a −θ, e que a resposta completa é θ = ±arccos[ω²(2a−L)/(2g)]. O '±' não aparece na resposta final."
+          },
+          {
+            "severity": "minor",
+            "description": "No Passo 3, 'O termo Mω²d é a força centrípeta de G' omite o sinal. A força centrípeta é −Mω²d ê_r, e a expressão F·ê_r = −Mω²d − Mg cosθ depende desse sinal. O sentido é corrigido na frase seguinte, mas o texto deveria escrever o termo com o sinal explícito para não gerar ambiguidade."
+          }
+        ],
+        "summary": "Resposta final correta e igual à de referência nos dois itens, com a mesma convenção de sinal: N_r > 0 quando a reação aponta no sentido do trecho inferior para o pivô (−ê_r). (a) N_r = M[g cosθ + ω²(L/2 − a)]; (b) θ = arccos[ω²(2a−L)/(2g)], com existência ω²|L−2a| ≤ 2g, M cancelando. Verifiquei com Python em 10 000 casos aleatórios (erro relativo ~1e-14) que N_r, F_t = Mg L² sinθ/[L²+3(L−2a)²] e α = −6g(L−2a)sinθ/[L²+3(L−2a)²] estão corretos. O exemplo numérico do candidato (L=1, a=0,25, ω=2, g=10 → cosθ = −0,1, θ ≈ 95,7°, N_r = 0) confere. A leitura de a como trecho superior, d = L/2 − a, o uso de cosθ, a projeção de ω² e a checagem de a = L/2 e de ω = 0 estão corretos. Todas as armadilhas da lista foram tratadas: convenção de sinal declarada, θ > 90° válido, M cancela, condição de existência, N_r diferente da reação total, I_O por Steiner. A justificativa é completa e rigorosa. Os problemas restantes são de redação e de rigor pontual (afirmação de checagem não demonstrada, non sequitur sobre o intervalo de θ, sinal do termo centrípeto não explicitado), sem impacto no conteúdo. Com esses ajustes, a resolução poderia sair como gabarito comentado.\"}]"
+      }
+    }
+  ]
+}

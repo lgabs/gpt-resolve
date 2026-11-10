@@ -1,0 +1,29 @@
+{
+  "question": 4,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-1-23-10-2025-2-fase-dia-1/dissertativa-4-matematica-2-fase-dia-1-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q4 (valores de z)",
+      "solution_answer": "z = λ(1+i), z = λ(√3−2+i) ou z = λ(−2−√3+i), λ ∈ ℝ*. Equivalentemente, arg z ∈ {π/4, 7π/12, 11π/12} (mod π): três retas pela origem, sem a origem.",
+      "key_answer": "z = a(1+i) ou z = a[1+(−2±√3)i], a ∈ ℝ*",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "Conferi o enunciado no PDF e ele bate com a transcrição. As duas resoluções chegam à mesma cúbica homogênea. Com z = x+yi, a resolução usa t = x/y e obtém t³+3t²−3t−1 = 0. O gabarito multiplica por 2ab² e obtém a³+3a²b−3ab²−b³ = 0, que é a mesma equação. Refiz à mão: (t+1)(t²+2t−1) − 4t = t³+3t²−3t−1 = (t−1)(t²+4t+1), e (a−b)(a²+4ab+b²) = a³+3a²b−3ab²−b³. A resolução fixa x/y ∈ {1, −2±√3}; o gabarito fixa y/x ∈ {1, −2±√3}. O conjunto {1, −2+√3, −2−√3} é fechado por inversão, porque (−2+√3)(−2−√3) = 1, então as retas são as mesmas. Os sinais aparecem trocados: a reta λ(√3−2+i) da resolução é a reta a(1+(−2−√3)i) do gabarito, e vice-versa. Testei numericamente em Python os três tipos de z, para vários λ, nas duas formas: em todos o lado esquerdo vale 1. Para z = 2+3i, que não é solução, o valor dá ≈ −0,028. Os ângulos 45°, 105° e 165° conferem: cot 105° = −2+√3 e cot 165° = −2−√3. As duas excluem a origem (λ ≠ 0 e a ≠ 0) e os casos com xy = 0, em que os denominadores se anulam."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito não declara as condições de existência (a ≠ 0 e b ≠ 0, para que z−z̄ e z²−z̄² não se anulem). Elas ficam implícitas: o gabarito divide por a e por b e exige a ∈ ℝ*. Também não faz falta excluir b = 0 à parte, porque com a ≠ 0 todas as soluções têm b = a·r com r ≠ 0. A transcrição tem ainda uma falha de formatação ('= 1 a/b + ...', com duas linhas coladas), sem efeito no resultado."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução escreve as soluções com x/y = −2±√3, e o gabarito com y/x = −2±√3. Os conjuntos são iguais, mas os sinais ± correspondem a retas trocadas: (√3−2+i) ∥ (1+(−2−√3)i). Quem comparar só a forma pode achar que as respostas diferem. Na forma polar, a resolução usa 'ρ ∈ ℝ*' junto com 'θ mod π', o que é redundante, mas está correto."
+    }
+  ],
+  "summary": "A resolução está correta e equivale ao gabarito do Poliedro: as duas dão as mesmas três retas pela origem, sem a origem. A resolução escreve z = λ(t+i) com t ∈ {1, −2±√3}. O gabarito escreve z = a(1+ri) com r ∈ {1, −2±√3}. As formas coincidem porque (−2+√3)(−2−√3) = 1. Conferi o enunciado no PDF, refiz as fatorações à mão e testei as soluções numericamente em Python. Não há erro de conta em nenhum dos dois; só ficam observações de redação e de forma."
+}

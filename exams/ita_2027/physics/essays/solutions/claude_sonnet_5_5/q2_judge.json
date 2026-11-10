@@ -1,0 +1,55 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "a) H_n = (0,7)^{2n} V^2/(8g) = (0,49)^n V^2/(8g). b) Δt = V/[g(1−e)] = 10V/(3g) ≈ 3,3 V/g, quando a energia chega ao mínimo (3/8) m V^2 (massa deslizando com v = (√3/2)V).",
+  "judge_reference": {
+    "reference_solution": "**Modelo e hipóteses.** Partícula de massa m lançada da origem com velocidade V a 30° com a horizontal, sob gravidade g uniforme, sem resistência do ar. O solo é horizontal e perfeitamente liso, então não há atrito nem impulso horizontal nos choques. O coeficiente de restituição e = 0,7 se aplica só à componente normal (vertical) da velocidade: |v_y depois| = e·|v_y antes|. Energia potencial nula no solo (y = 0).\n\nComponentes iniciais:\n- v_x = V cos30° = V√3/2, constante durante todo o movimento (solo liso).\n- v_y0 = V sen30° = V/2.\n\n**a) Altura máxima após n choques**\n\nEm cada choque a componente vertical é multiplicada por e. Logo, logo após o n-ésimo choque:\n\nv_y,n = eⁿ · V/2.\n\nEntre choques o movimento vertical é um lançamento vertical, com altura máxima\n\nH_n = v_y,n² / (2g) = (eⁿ V/2)² / (2g) = e²ⁿ V² / (8g).\n\nCom e = 0,7:\n\n**H_n = (0,49)ⁿ · V²/(8g)**.\n\nVerificações:\n- Para n = 0, H_0 = V²/(8g) = (V sen30°)²/(2g), a altura do lançamento original.\n- As alturas formam uma PG de razão e² = 0,49 (não e), com H_n = H_0 · 0,49ⁿ.\n\n(Numericamente, com V = 10 m/s e g = 9,8 m/s²: H_0 = 1,2755 m, H_1 = 0,625 m, H_2 = 0,306 m. Isso coincide com a fórmula.)\n\n**b) Tempo para a energia atingir o mínimo**\n\nEnergia mecânica (com y = 0 no solo). Durante o voo ela se conserva. Em cada choque a componente vertical da energia cinética diminui; a horizontal não muda. Após n choques:\n\nE_n = ½m[(V√3/2)² + (eⁿV/2)²] = (mV²/8)(3 + e²ⁿ).\n\nE_n é estritamente decrescente e tende a\n\nE_min = ½m(V cos30°)² = 3mV²/8 (ou seja, 3/4 da energia inicial ½mV²).\n\nEsse valor é o piso: sobra apenas a energia cinética horizontal, pois v_y → 0 e y → 0. Nenhum número finito de choques o atinge exatamente, mas ele é atingido em tempo finito, porque os infinitos choques se acumulam num instante finito.\n\nTempos de voo:\n- 1º voo (lançamento até o 1º choque): t_0 = 2 v_y0 / g = V/g.\n- Voo após o k-ésimo choque: t_k = 2 e^k (V/2)/g = e^k V/g.\n\nTempo total até o acúmulo dos choques (PG infinita de razão e < 1, convergente):\n\nT = (V/g)(1 + e + e² + …) = V / [g(1 − e)] = V/(0,3 g)\n\n**T = 10V/(3g) ≈ 3,33 V/g**\n\nDepois desse instante a partícula desliza sobre o solo com v = V√3/2 constante, e a energia fica em 3mV²/8.\n\nVerificação numérica (V = 10, g = 9,8): a soma de 2000 voos dá T = 3,4014 s, igual a 10V/(3g). A energia limite dá 37,5 = 3V²/8 (por unidade de massa).\n\nExtra (não pedido): alcance horizontal total = (V√3/2)·T = 5√3 V²/(3g).",
+    "final_answer": "a) H_n = e^{2n}·V²/(8g) = (0,49)ⁿ · V²/(8g), isto é, H_0·(0,49)ⁿ com H_0 = V²/(8g).\n\nb) Δt = V/[g(1−e)] = 10V/(3g) ≈ 3,33 V/g. Esse é o tempo para atingir a energia mínima E_min = 3mV²/8, só cinética horizontal, que corresponde a 3/4 da energia inicial. A energia mínima é atingida no acúmulo dos infinitos choques, em tempo finito.",
+    "pitfalls": [
+      "Aplicar e só à componente normal (vertical). A horizontal se conserva porque o solo é perfeitamente liso. Multiplicar a velocidade total por e, ou perder v_x, está errado.",
+      "A altura vai com e² por choque (H ∝ v_y²), não com e. H_n = e^{2n}·V²/(8g) = 0,49ⁿ·V²/(8g), e não 0,7ⁿ·V²/(8g).",
+      "Atenção à contagem: 'após n choques' significa o pico do voo que vem depois do n-ésimo choque; n = 0 recupera o lançamento original, H_0 = V²/(8g). Usar V² em vez de (V sen30°)² (esquecer o fator 1/4) também é erro comum.",
+      "Em (b), 'energia' é a energia mecânica (cinética + potencial). A energia cinética mínima (topo da trajetória, só v_x) ocorreria em t = V/(2g) e é uma leitura trivial e incorreta. A energia mecânica só diminui nos choques e é constante nos voos.",
+      "A energia mínima NÃO é zero. Resta a cinética horizontal ½m(V cos30°)² = 3mV²/8, ou seja, 3/4 da inicial. A energia após n choques é E_n = (mV²/8)(3 + e^{2n}) e só tende ao mínimo quando n → ∞.",
+      "Infinitos choques ocorrem em tempo finito (paradoxo de Zeno / acúmulo de choques), pois a série dos tempos de voo é uma PG convergente de razão e < 1. Isso exige e < 1; para e = 1 o tempo seria infinito.",
+      "O primeiro voo dura V/g (2V sen30°/g), não e·V/g. Os voos seguintes são eV/g, e²V/g, … Somar só alguns voos ou começar a série no termo errado dá resultado errado. A soma correta é V·(1+e+e²+…)/g = V/[g(1−e)] = 10V/(3g).",
+      "Hipóteses a declarar: partícula puntual (sem rotação), g uniforme, sem arrasto, choque instantâneo com impulso só normal e potencial nulo no solo. A dica sen θ ≈ θ das instruções gerais não se aplica a esta questão (θ = 30° não é pequeno); usar essa aproximação aqui seria erro.",
+      "O resultado final deve ser dado em termos de V e g, pois o enunciado não fornece valores numéricos para eles."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "a) H_n = (0,7)^{2n} V^2/(8g) = (0,49)^n V^2/(8g). b) Δt = V/[g(1−e)] = 10V/(3g) ≈ 3,3 V/g, quando a energia chega ao mínimo (3/8) m V^2 (massa deslizando com v = (√3/2)V).",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O item (b) não descarta explicitamente a leitura alternativa de 'energia' como energia cinética, cujo mínimo seria no topo da trajetória, em t = V/(2g). A resolução só diz 'interpretamos energia como energia mecânica total'. Faltou uma frase justificando essa escolha: a energia cinética não é monotônica e seu mínimo é recorrente (um em cada voo), então não define um instante único. A energia mecânica só varia nos choques."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que o tempo é finito é correta, mas o argumento é só a convergência da PG. Faltou dizer que Δt é o instante em que os choques se acumulam e que, a partir dele, a massa desliza com E constante. Assim E_min é atingida em Δt, e não apenas aproximada. O texto diz isso de passagem ('só é atingido no limite... no instante Δt'), mas de forma curta."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação de limites, 'e→0 ⇒ a massa fica colada ao solo' está correto. O comentário sobre e→1 ('a energia nunca diminui') poderia vir acompanhado da observação de que, nesse caso, E_min = E_0 e não há acúmulo de choques. É um detalhe de acabamento, sem erro."
+          },
+          {
+            "severity": "minor",
+            "description": "A altura é medida em relação ao solo (y=0), o potencial é nulo no solo e a partícula é puntual. Esses pontos estão implícitos no texto, mas poderiam constar da lista de hipóteses. A contagem 'após n choques' (pico do voo seguinte ao n-ésimo choque, com n=0 recuperando o lançamento) está bem explicada."
+          }
+        ],
+        "summary": "Respostas finais corretas e iguais às da referência. (a) H_n = e^{2n}V²/(8g) = (0,49)^n V²/(8g). (b) Δt = V/[g(1−e)] = 10V/(3g) ≈ 3,33 V/g. Conferi numericamente com V=10 e g=9,8: as alturas H_0..H_5 batem com a fórmula, a soma de 5000 voos dá 3,4014 s = 10V/(3g), e a energia tende a 3V²/8 por unidade de massa. A resolução trata bem as armadilhas principais. Aplica e só à componente vertical e conserva v_x, porque o solo é liso. Usa e² na altura, e não e. Não confunde V com V sen30°. Dá ao 1º voo duração V/g e aos seguintes e^k V/g, somando a PG corretamente. Mostra que E_min = 3mV²/8 (3/4 da energia inicial, não zero) e que E_n = (mV²/8)(3+e^{2n}). Explica que infinitos choques ocorrem em tempo finito. Faz verificações de consistência (n=0, e→0, e→1, unidades) e declara a hipótese de que 'energia' é a energia mecânica. As falhas são só de acabamento: não descarta explicitamente a leitura de energia cinética mínima no topo da trajetória, e o argumento de que E_min é atingida em Δt (e não só aproximada) é breve. Texto claro e organizado; quase no nível de gabarito comentado publicável.\"}"
+      }
+    }
+  ]
+}

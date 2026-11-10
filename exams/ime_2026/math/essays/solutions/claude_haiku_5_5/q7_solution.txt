@@ -1,0 +1,51 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Hipóteses de modelagem.} Adotam-se explicitamente as hipóteses abaixo, das quais depende o valor $\frac{5}{16}$:
+\begin{enumerate}
+\item Há um único teste (uma execução do antivírus) no computador examinado.
+\item Não há outra informação sobre a máquina (sintomas, histórico, outro exame). Ela é tratada como sorteada da população em que a proporção de infectados é $0{,}9$; logo $0{,}9$ é a probabilidade a priori.
+\item As taxas do enunciado valem para qualquer computador e são fixas: $P(\text{detecta}\mid I)=0{,}95$ e $P(\text{indica}\mid \overline{I})=0{,}01$.
+\item O programa responde apenas ``infectado'' ou ``não infectado'', sem resposta inconclusiva. Assim, em cada caso, ``não indica vírus'' é o complementar de ``indica vírus''.
+\end{enumerate}
+Se houvesse outra informação sobre a máquina, a probabilidade a priori mudaria e a resposta deveria ser recalculada com ela (ver a sensibilidade na conferência).
+
+\textbf{Eventos e dados.} Sejam $I$ o evento ``o computador está infectado'' e $N$ o evento ``o programa responde que o computador não está infectado'' (resultado negativo). Pede-se $P(I\mid N)$.
+\begin{itemize}
+\item $P(I)=0{,}9$ e $P(\overline{I})=1-0{,}9=0{,}1$, pois $I$ e $\overline{I}$ são complementares.
+\item $P(N\mid I)=1-0{,}95=0{,}05$, pela hipótese 4.
+\item $P(N\mid \overline{I})=1-0{,}01=0{,}99$, pela hipótese 4.
+\end{itemize}
+Atenção: $0{,}05$ é $P(N\mid I)$, a probabilidade de resposta negativa dado que há infecção. Não é a resposta, porque a pergunta inverte a condicional e pede $P(I\mid N)$. Erros comuns são responder $0{,}05$ ou responder $0{,}045$, que é apenas $P(I\cap N)$ e ainda não foi normalizado.
+
+\textbf{Passo 1 (lei da probabilidade total).} $I$ e $\overline{I}$ são disjuntos e exaustivos (cada computador está em um deles), logo formam uma partição do espaço amostral. Então
+\[
+P(N)=P(N\mid I)\,P(I)+P(N\mid \overline{I})\,P(\overline{I}).
+\]
+
+\textbf{Passo 2 (Teorema de Bayes).} Pela definição de probabilidade condicional, $P(I\mid N)=\dfrac{P(I\cap N)}{P(N)}$, válido porque $P(N)>0$ (verificado no passo 3), e $P(I\cap N)=P(N\mid I)\,P(I)$. Assim
+\[
+P(I\mid N)=\frac{P(N\mid I)\,P(I)}{P(N)}.
+\]
+O denominador é a normalização dada pelo passo 1.
+
+\textbf{Passo 3 (cálculo).}
+\begin{align*}
+P(N\mid I)\,P(I) &= 0{,}05\cdot 0{,}9 = 0{,}045,\\
+P(N\mid \overline{I})\,P(\overline{I}) &= 0{,}99\cdot 0{,}1 = 0{,}099,\\
+P(N) &= 0{,}045+0{,}099 = 0{,}144 = \frac{18}{125}>0,\\
+P(I\mid N) &= \frac{0{,}045}{0{,}144}=\frac{45}{144}=\frac{5}{16}=0{,}3125.
+\end{align*}
+Como controle, $P(\overline{I}\mid N)=\dfrac{0{,}099}{0{,}144}=\dfrac{11}{16}$ e $\dfrac{5}{16}+\dfrac{11}{16}=1$. O resultado exato é $\frac{5}{16}$, e não $\frac{1}{3}$.
+
+\textbf{Conferência.}
+\begin{itemize}
+\item \textit{Razão de chances.} A chance a priori é $\dfrac{P(I)}{P(\overline{I})}=9$, ou seja, $9{:}1$. A razão de verossimilhança é $\dfrac{P(N\mid I)}{P(N\mid \overline{I})}=\dfrac{5}{99}\approx\dfrac{1}{20}$. A chance a posteriori é $9\cdot\dfrac{5}{99}=\dfrac{5}{11}$, e $P(I\mid N)=\dfrac{5/11}{1+5/11}=\dfrac{5}{16}$. Interpretação: um resultado negativo é cerca de 20 vezes mais provável em máquina sadia do que em máquina infectada, o que reduz a chance de $9{:}1$ para $5{:}11$.
+\item \textit{Contagem (1000 computadores).} São 900 infectados e 100 sadios. Respondem ``não infectado'' $900\cdot 0{,}05=45$ infectados e $100\cdot 0{,}99=99$ sadios. Entre os $144$ negativos, $\dfrac{45}{144}=\dfrac{5}{16}$ são infectados.
+\item \textit{Casos particulares.} Se o antivírus fosse perfeito ($P(N\mid I)=0$), uma resposta negativa daria $P(I\mid N)=0$. Se ele não discriminasse nada ($P(N\mid I)=P(N\mid \overline{I})=p>0$), então $P(N)=p$ e $P(I\mid N)=\dfrac{0{,}9\,p}{p}=0{,}9$: a evidência não altera a crença a priori.
+\item \textit{Sensibilidade à hipótese 2.} Com probabilidade a priori $p$ em geral, $P(I\mid N)=\dfrac{0{,}05\,p}{0{,}05\,p+0{,}99\,(1-p)}$. Para $p=0{,}9$ isso dá $\dfrac{5}{16}$; para $p=0{,}5$ dá $\dfrac{0{,}025}{0{,}52}\approx 4{,}8\%$. Logo, a informação a priori sobre a máquina é decisiva.
+\item \textit{Unidades e ordem de grandeza.} $P(I\mid N)$ é adimensional e pertence a $[0,1]$. A probabilidade cai de $0{,}9$ para $0{,}3125$, cerca de 2,9 vezes. Ela não chega a zero porque os infectados são 9 vezes mais numerosos que os sadios a priori, e a razão de verossimilhança, de cerca de $1/20$, não é nula.
+\end{itemize}
+
+\noindent ANSWER: $P(I\mid N)=\dfrac{5}{16}=0{,}3125=31{,}25\%$

@@ -1,0 +1,51 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "x = 7. Para x > 0 inteiro, f(x) + f(-1/x) = 1 - 1/(2·3^(x-1)), que é ≥ 0,999 se e somente se x ≥ 7 (em x = 6 vale 485/486 ≈ 0,99794; em x = 7 vale 1457/1458 ≈ 0,99931). Inteiros negativos dão 1/2 e x = 0 não está no domínio. Conjunto real da solução: (-1/6, 0) ∪ (6, +∞).",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 3 (IME 2026/2027, Matemática). Resolução de referência, feita antes de ver qualquer candidato.\n\n0) Reescrita da definição\nPara n ≥ 1, g_n(x) ∈ {0, 1}. Logo (g_n(x)/3)^n = 3^(-n) se g_n(x) = 1 e = 0 se g_n(x) = 0 (pois 0^n = 0 para n ≥ 1). Assim\n  f(x) = Σ_{n ≥ 1, x > -1/n} 3^(-n),\numa soma geométrica convergente. Use Σ_{n≥1} 3^(-n) = 1/2 e Σ_{n=1}^{K} 3^(-n) = (1/2)(1 - 3^(-K)).\n\n1) Cálculo de f(x)\n- Se x ≥ 0: -1/n < 0 ≤ x para todo n, então g_n(x) = 1 para todo n e f(x) = 1/2.\n- Se x < 0: x > -1/n ⟺ 1/n > -x = |x| ⟺ n < -1/x. Com m = -1/x > 0, contribuem os inteiros positivos n < m, em número K = ⌈m⌉ - 1. Então f(x) = (1/2)(1 - 3^(-K)).\nResumo: f(x) = 1/2 se x ≥ 0; f(x) = (1/2)(1 - 3^(-K(x))) se x < 0, com K(x) = #{n ∈ Z, n ≥ 1 : n < -1/x}.\n\n2) A expressão S(x) = f(x) + f(-1/x), com x ≠ 0 (1/x precisa existir)\nObserve que S(-1/x) = f(-1/x) + f(x) = S(x): S é invariante pela involução x ↦ -1/x. Basta estudar x > 0 e transportar o resultado para x < 0.\nPara x > 0: f(x) = 1/2. O argumento -1/x é negativo, e f(-1/x) = (1/2)(1 - 3^(-K)) com K = #{n ≥ 1 : n < -1/(-1/x)} = #{n ≥ 1 : n < x} = ⌈x⌉ - 1. Logo\n  S(x) = 1/2 + (1/2)(1 - 3^(-K)) = 1 - (1/2)·3^(-K),  K = ⌈x⌉ - 1.\n\n3) Condição S(x) ≥ 0,999\n1 - (1/2)3^(-K) ≥ 999/1000 ⟺ 3^(-K) ≤ 1/500 ⟺ 3^K ≥ 500.\nComo 3^5 = 243 < 500 ≤ 729 = 3^6, isso equivale a K ≥ 6 ⟺ ⌈x⌉ ≥ 7 ⟺ x > 6.\nLogo, para x > 0, a condição vale exatamente para x > 6.\nPara x < 0, S(x) = S(-1/x), e -1/x > 6 ⟺ x ∈ (-1/6, 0) (multiplicando -1 > 6x... ou seja, -1 < 6x com x < 0).\nConjunto solução: (-1/6, 0) ∪ (6, +∞).\n\n4) Menor inteiro\nEm (-1/6, 0) não há inteiros. Em (6, +∞) os inteiros são 7, 8, 9, ... Portanto o menor inteiro é x = 7.\n\n5) Verificação direta\n- x = 7: f(7) = 1/2 (todos os g_n valem 1). Para f(-1/7), g_n(-1/7) = 1 ⟺ -1/7 > -1/n ⟺ n < 7, ou seja n = 1..6. Então f(-1/7) = Σ_{n=1}^{6} 3^(-n) = 364/729 e S(7) = 1/2 + 364/729 = 1457/1458 ≈ 0,999314 ≥ 0,999. ✓\n- x = 6: f(-1/6) = Σ_{n=1}^{5} 3^(-n) = 121/243 (n = 6 NÃO entra, pois -1/6 > -1/6 é falso). S(6) = 485/486 ≈ 0,997942 < 0,999. ✗\n- x = -1: f(-1) = 0 (nenhum n < 1), f(1) = 1/2, S(-1) = 1/2. ✗\n- Conferência computacional: script em Python com frações exatas (soma truncada em 60 termos, tolerância 3^-50) confirmou a forma fechada em 958 racionais de teste, os valores acima, e que os inteiros em [-1000, 1000] que satisfazem a condição são exatamente {7, 8, ...}, sem negativos.\n\nRESPOSTA: x = 7.",
+    "final_answer": "Resposta final: o menor inteiro é x = 7.\n\nConjunto solução de f(x) + f(-1/x) ≥ 0,999 (x ≠ 0):\n- f(x) = 1/2 para x ≥ 0 e f(x) = (1/2)(1 - 3^(-K)), com K = #{n ≥ 1 : n < -1/x}, para x < 0.\n- S(x) = f(x) + f(-1/x) é invariante por x ↦ -1/x e, para x > 0, S(x) = 1 - (1/2)·3^(-(⌈x⌉-1)).\n- S(x) ≥ 0,999 ⟺ 3^K ≥ 500 ⟺ K ≥ 6 ⟺ x > 6 (para x > 0).\n- Solução completa: (-1/6, 0) ∪ (6, +∞). Não há inteiros negativos no conjunto, e o menor inteiro positivo é 7.\n\nChecagens: S(7) = 1457/1458 ≈ 0,99931 ≥ 0,999; S(6) = 485/486 ≈ 0,99794 < 0,999.",
+    "pitfalls": [
+      "Limite estrito em x = 6: g_6(-1/6) = 0, porque a desigualdade é estrita (-1/6 > -1/6 é falso). Logo f(-1/6) soma só n = 1..5, e S(6) = 485/486 < 0,999. Responder x = 6 é erro. Vale K = ⌈x⌉ - 1 (n < x), e não ⌊x⌋.",
+      "Fator 1/2: Σ_{n≥1} 3^(-n) = 1/2, e não 1. Se o 1/2 for esquecido, a condição vira 1 - 3^(-K) ≥ 0,999 ⟺ 3^K ≥ 1000 ⟺ K ≥ 7 ⟹ x > 7 e a resposta sairia 8 (errada).",
+      "Sinal de -1/x: f(-1/x) não é f(1/x). Com f(1/x) para x > 0, teríamos S = 1 para todo x > 0, e a resposta sairia 1 (errada). Para x > 0 o segundo argumento é negativo e é ele que conta os n < x.",
+      "Domínio: x = 0 é excluído, porque 1/x não existe. Não aceitar x = 0 como candidato.",
+      "Valores negativos: o conjunto (-1/6, 0) não contém inteiros, mas é preciso justificar isso e não apenas afirmar. Inteiros negativos dão S = 1/2 (ex.: x = -1, -2, ..., -10 todos dão 0,5). Não basta presumir que negativos são irrelevantes; a simetria x ↦ -1/x mostra que o ramo negativo é a imagem do ramo x > 6.",
+      "Ler a definição corretamente: (g_n(x)/3)^n vale 3^(-n) quando g_n = 1 e 0 quando g_n = 0 (0^n = 0 para n ≥ 1). O expoente é n, e g_n não é elevado ao expoente sem cuidado.",
+      "Interpretação de 'menor valor inteiro': é o menor inteiro do conjunto solução, não o menor inteiro positivo nem o de maior módulo. Como não há negativos no conjunto, o menor inteiro e o menor inteiro positivo coincidem (7), mas isso precisa ser demonstrado.",
+      "Desigualdade estrita vs. não estrita no limiar 0,999: 3^K = 500 não tem solução inteira, então não há caso de igualdade ambíguo. A margem numérica em torno de x = 6 e x = 7 é cerca de 1e-3, então aritmética decimal aproximada funciona, mas frações exatas são mais limpas.",
+      "Séries truncadas dão valores aproximados. A forma fechada é exata (soma geométrica), e a checagem numérica deve usar frações ou tolerância explícita, não igualdade de ponto flutuante."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "x = 7. Para x > 0 inteiro, f(x) + f(-1/x) = 1 - 1/(2·3^(x-1)), que é ≥ 0,999 se e somente se x ≥ 7 (em x = 6 vale 485/486 ≈ 0,99794; em x = 7 vale 1457/1458 ≈ 0,99931). Inteiros negativos dão 1/2 e x = 0 não está no domínio. Conjunto real da solução: (-1/6, 0) ∪ (6, +∞).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item 7 (intitulado 'Verificação com x real') afirma que S = 1 − 1/(2·3^m) nos dois casos sem escrever o passo da soma geométrica para x<0 (S = 1/2 + (1/2)(1 − 3^(−m))). Também afirma 'm ≥ 6 ⟺ 1/|x| > 6' e 'm = ⌈x⌉−1 ≥ 6 ⟺ x > 6' sem justificar que #{n ≥ 1 : n < y} ≥ 6 ⟺ y > 6. Ação: escrever essas duas linhas de justificativa, ou renomear o item como derivação do conjunto solução."
+          },
+          {
+            "severity": "minor",
+            "description": "O conjunto solução real (−1/6, 0) ∪ (6, +∞) não é pedido (a questão quer só o menor inteiro). Está correto, mas aparece com justificativa compacta. Ação: justificar por completo ou marcar explicitamente como observação adicional."
+          },
+          {
+            "severity": "minor",
+            "description": "O item 8 tem trechos de enchimento: a cota 0 ≤ S ≤ 1 vem de 0 ≤ f ≤ 1/2 e não verifica a resposta. O argumento de 'menor inteiro' ficaria mais limpo com uma lista explícita: 0 excluído; inteiros ≤ −1 têm S = 1/2; para k = 1..6, S(k) = 1 − 1/(2·3^(k−1)) ≤ 485/486 < 0,999; k = 7 é o primeiro que vale. Ação: trocar o item 8 por essa conclusão em lista."
+          }
+        ],
+        "summary": "A resposta final x = 7 está correta e coincide com a referência. Conferi o enunciado no PDF (confere com a transcrição) e refiz as contas: (g_n/3)^n = g_n/3^n para n ≥ 1; f = 1/2 para x ≥ 0; para x < 0, f(x) = Σ_{n<1/|x|} 3^(−n); S(k) = 1 − 1/(2·3^(k−1)) para k ≥ 1; S ≥ 0,999 ⟺ 3^(k−1) ≥ 500 ⟺ k ≥ 7. Os valores S(6) = 485/486 ≈ 0,99794 e S(7) = 1457/1458 ≈ 0,99931 batem. Uma checagem em Python com frações exatas (soma truncada em 80 termos) mostrou que os inteiros em [−30, 30] que satisfazem a condição são exatamente 7, 8, …, 30. Também mostrou S(−k) = 1/2 para inteiros negativos e a fronteira em −1/6 e 6 consistente com (−1/6, 0) ∪ (6, ∞). (O 'False' na igualdade exata de S(7) com 1457/1458 veio da truncagem da série, não de erro da resolução; os valores em ponto flutuante batem até 1e-15.)\\n\\nA resolução do candidato trata todas as armadilhas listadas: uso de 0^n = 0 (item 1); exclusão de x = 0 por domínio (item 3); uso de f(−1/x) e não f(1/x) para x > 0, contando n < x (item 4); fator 1/2 da soma geométrica (item 6); limite estrito em n < k, com x = 6 recusado por conta direta (item 6); inteiros negativos tratados explicitamente com f = 0 e S = 1/2 (item 5); e distinção entre menor inteiro e menor inteiro positivo, com o intervalo (−1/6, 0) sem inteiros (item 7). Não há erro de conta, de domínio ou de lógica.\\n\\nAs falhas são de polimento: o item 7 e o item 8 afirmam algumas equivalências sem a justificativa completa, e o conjunto solução real é um extra não pedido. Nada disso muda a resposta. Como resolução que um professor publicaria como gabarito comentado, está no nível 9, com pequenos ajustes de redação.\""
+      }
+    }
+  ]
+}

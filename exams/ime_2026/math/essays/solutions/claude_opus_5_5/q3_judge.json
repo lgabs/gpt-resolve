@@ -1,0 +1,48 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "k = (1 − a)(1 + √a) = (1 − √a)(1 + √a)². A menor inclinação de secante é 4/[(1 − a)(1 + √a)], atingida em x = ((1 − √a)/2)².",
+  "judge_reference": {
+    "reference_solution": "**1) Forma fechada de f.** Para x ∈ [0,1), seja t = √x ∈ [0,1). Então √(xⁿ) = (√x)ⁿ = tⁿ, e a série é geométrica de razão t, com 0 ≤ t < 1, logo converge:\nf(x) = Σ_{n≥1} tⁿ = t/(1−t) = √x/(1−√x) = 1/(1−√x) − 1.\n(Em x = 0 todos os termos são nulos e f(0) = 0, o que bate com a fórmula.)\n\n**2) Coeficiente angular da secante.** Seja s = √a ∈ [0,1) e t = √x, com x ≠ a (ou seja, t ≠ s, porque √ é injetora em [0,1)). Então\nf(x) − f(a) = 1/(1−t) − 1/(1−s) = (t−s)/[(1−t)(1−s)],\nx − a = t² − s² = (t−s)(t+s).\nComo t ≠ s, podemos cancelar (t−s):\nm(x) = [f(x)−f(a)]/(x−a) = 1/[(1−s)(1−t)(t+s)].\nEsse valor é sempre positivo e está bem definido: (1−t)(t+s) > 0 para t ∈ [0,1), t ≠ s, inclusive quando s = 0, porque aí t > 0.\n\n**3) Minimização.** Como 1−s > 0 é constante, minimizar m é o mesmo que maximizar\ng(t) = (1−t)(t+s) = −t² + (1−s)t + s, com t ∈ [0,1) e t ≠ s.\ng é uma parábola com concavidade para baixo. Seu vértice fica em t* = (1−s)/2 ∈ (0, 1/2], que está dentro de [0,1). Logo t* é o máximo global de g em [0,1), e\ng(t*) = (1 − (1−s)/2)·((1−s)/2 + s) = ((1+s)/2)·((1+s)/2) = (1+s)²/4.\nAinda é preciso que t* ≠ s, isto é, que o ponto ótimo seja distinto de (a, f(a)): t* = s ⇔ (1−s)/2 = s ⇔ s = 1/3 ⇔ a = 1/9. É exatamente o valor excluído pelo enunciado. Com a ≠ 1/9, o ponto x* = ((1−√a)/2)² ≠ a é admissível e o mínimo é atingido:\nm_min = 4/[(1−s)(1+s)²] = 4/[(1−√a)(1+√a)²] = 4/[(1−a)(1+√a)].\n(Se a = 1/9, o valor 4/[(1−a)(1+√a)] seria só um ínfimo, aproximado quando x → a, que corresponde à reta tangente. Nenhuma secante o atingiria, e por isso o caso é excluído.)\n\n**4) Paralelismo.** A reta ky − 4x = 2026 tem k ≠ 0, porque senão seria vertical e não poderia ser paralela a uma secante de inclinação finita. Então y = (4/k)x + 2026/k, com coeficiente angular 4/k. Impondo 4/k = m_min:\nk = (1−√a)(1+√a)² = (1−a)(1+√a) = 1 + √a − a − a√a.\n\n**Verificação.** Para a = 0: f(x) = √x/(1−√x), e a secante pela origem tem inclinação 1/[√x(1−√x)]. Ela é mínima em √x = 1/2, ou seja, x = 1/4, com inclinação 4. Daí k = 1 = (1−0)(1+0). ✓\nTambém conferi numericamente, por varredura em x, para a = 0,01; 0,05; 0,2; 0,5; 0,8; 0,95. O x ótimo coincide com ((1−√a)/2)² e o k obtido coincide com (1−a)(1+√a). Para a = 1/9, a inclinação 4/k só se aproxima do ínfimo quando x → a.",
+    "final_answer": "k = (1−a)(1+√a) = (1−√a)(1+√a)² = 1 + √a − a − a√a, para a ∈ [0,1), a ≠ 1/9. A menor inclinação de secante é 4/[(1−a)(1+√a)], atingida em x = ((1−√a)/2)².",
+    "pitfalls": [
+      "Interpretar √(xⁿ) como (√x)ⁿ, o que dá uma série geométrica de razão √x, e não de razão x. Escrever f(x) = x/(1−x) ou algo parecido está errado.",
+      "A série começa em n = 1, então f = √x/(1−√x). Se alguém escrever 1/(1−√x), a diferença é só uma constante e não muda a inclinação, mas a resolução deve indicar a forma correta.",
+      "A convergência precisa ser justificada: a razão é √x ∈ [0,1). O caso x = 0, com f(0) = 0, é compatível com a fórmula.",
+      "Para simplificar a secante, a substituição t = √x, s = √a e a fatoração x − a = (t−s)(t+s) levam a m = 1/[(1−s)(1−t)(t+s)]. O cancelamento de (t−s) só vale porque x ≠ a.",
+      "É preciso verificar que o vértice t* = (1−√a)/2 está no domínio [0,1). Ele sempre está em (0, 1/2], então o máximo de (1−t)(t+s) é global e o mínimo da inclinação é de fato atingido; não se trata apenas de um ponto crítico.",
+      "É preciso explicar a exclusão de a = 1/9: nesse caso t* = s, ou seja, x* = a. O ótimo seria a reta tangente, e nenhuma secante atingiria o mínimo (só existe ínfimo). Uma boa resolução verifica que x* ≠ a sob a hipótese dada.",
+      "O coeficiente angular de ky − 4x = 2026 é 4/k, e não k/4 nem −4/k. Também é preciso notar que k ≠ 0, pois senão a reta seria vertical.",
+      "O caso a = 0 deve funcionar: s = 0 e t* = 1/2, o que dá k = 1. Nesse caso a inclinação m(x) → ∞ quando x → 0⁺, então o mínimo é interior. Na fórmula, s = 0 não causa divisão por zero, porque t ≠ s implica t > 0.",
+      "Resposta em formas equivalentes: (1−a)(1+√a), (1−√a)(1+√a)², 1 + √a − a − a√a. Todas devem ser aceitas. Inverter e responder k = 4/[(1−a)(1+√a)], que é a inclinação mínima e não k, é erro.",
+      "Quem deriva m(x) diretamente em x deve achar o ponto crítico em √x = (1−√a)/2. Precisa também justificar que ele é ponto de mínimo, pelo sinal da derivada ou pela concavidade de g, e conferir as fronteiras: m(x) → ∞ quando x → 1⁻, e quando x → 0 o valor é 1/[√a(1−√a)], maior que o mínimo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "k = (1 − a)(1 + √a) = (1 − √a)(1 + √a)². A menor inclinação de secante é 4/[(1 − a)(1 + √a)], atingida em x = ((1 − √a)/2)².",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato não diz explicitamente que o vértice é o máximo GLOBAL de g em [0,1). Isso fica implícito: a parábola tem concavidade para baixo e t0 está no intervalo. Uma frase como 'como t0 ∈ [0,1) e a concavidade é para baixo, g(t) < g(t0) para todo t ≠ t0' deixaria claro que o mínimo da inclinação é atingido e único, e não apenas um ponto crítico."
+          },
+          {
+            "severity": "minor",
+            "description": "Para concluir m(t) > 0, o candidato justifica só t + s > 0. Os fatores 1 − t > 0 e 1 − s > 0 também são necessários; são óbvios, porque t, s < 1, mas valia citá-los junto. Também não comenta o caso x = 0 (f(0) = 0), que é trivialmente compatível com a fórmula t/(1−t) em t = 0. Nada disso compromete o rigor."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original e a transcrição está fiel. A resposta final do candidato, k = (1−a)(1+√a) = (1−√a)(1+√a)², coincide com a da minha referência. Também conferi por varredura numérica em x, para a = 0; 0,01; 0,05; 0,2; 0,5; 0,8; 0,95: o x ótimo bate com ((1−√a)/2)² e 4/m_min bate com (1−a)(1+√a).\n\nTodas as armadilhas foram tratadas:\n- √(xⁿ) = (√x)ⁿ, o que dá uma série geométrica de razão √x ∈ [0,1), com a convergência justificada.\n- A série começa em n = 1, e a forma escrita é a correta, √x/(1−√x).\n- Com a substituição t = √x, s = √a, a fatoração x − a = (t−s)(t+s) dá m = 1/[(1−s)(1−t)(t+s)]. O cancelamento de t − s é justificado por x ≠ a.\n- O caso s = 0 foi tratado (t + s > 0 porque t ≠ s).\n- O vértice t0 = (1−s)/2 fica em (0, 1/2] ⊂ [0,1), e g(t0) = ((1+s)/2)².\n- A exclusão de a = 1/9 foi explicada: t0 = s nesse caso, o ótimo seria a reta tangente e nenhuma secante atingiria o mínimo.\n- O coeficiente angular 4/k está correto, e k ≠ 0 foi justificado.\n- A verificação em a = 0 dá k = 1.\n\nA resolução é limpa, completa e bem organizada, com qualidade de gabarito comentado. Só há ressalvas mínimas de redação: não diz explicitamente que o vértice é o máximo global de g e não cita os fatores 1 − t e 1 − s ao concluir que m > 0."
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{1. Vértices do octaedro.} Um octaedro regular é a união de duas pirâmides regulares de base quadrada $ABCD$, de centro $M$, com ápices $P$ e $Q$ em lados opostos do plano da base e $PM=QM$. Logo $M$ é ponto médio de $\overline{AC}$, de $\overline{BD}$ e de $\overline{PQ}$: vértices opostos são simétricos em relação ao centro do sólido. Como o centro é a origem $O$, os seis vértices formam três pares antípodas $\{V,-V\}$.
+
+Os pontos dados são $A_1=(5,0,0)$, $A_2=(0,5,0)$, $A_3=(0,0,5)$. Nenhum par deles é antípoda: o antípoda de $A_1$ é $(-5,0,0)$, que não coincide com $A_2$ nem com $A_3$; o mesmo vale para os demais. Logo $A_1,A_2,A_3$ estão em três pares distintos, pois dois deles no mesmo par seriam antípodas. Como há exatamente três pares, cada par contém exatamente um deles (se algum par não contivesse nenhum, os três pontos estariam em dois pares, e algum par teria dois, o que é impossível). Portanto os vértices são
+\[
+\pm 5e_1,\qquad \pm 5e_2,\qquad \pm 5e_3,\qquad e_1=(1,0,0),\ e_2=(0,1,0),\ e_3=(0,0,1).
+\]
+Conferência: a aresta $\overline{(5,0,0)(0,5,0)}$ mede $\sqrt{50}=5\sqrt2$, e a diagonal $\overline{(5,0,0)(-5,0,0)}$ mede $10=\sqrt2\cdot 5\sqrt2$, como num octaedro regular.
+
+\textbf{2. O sólido como desigualdade.} Sejam $g(x,y,z)=|x|+|y|+|z|$ e $S=\{(x,y,z)\in\mathbb{R}^3 : g(x,y,z)\le 5\}$. O sólido é o fecho convexo $K=\operatorname{conv}\{\pm5e_1,\pm5e_2,\pm5e_3\}$. Provemos $K=S$.
+\begin{itemize}
+\item[(i)] $K\subseteq S$. Seja $P=\sum_j\lambda_jV_j$, com vértices $V_j$, $\lambda_j\ge 0$ e $\sum_j\lambda_j=1$. Pela desigualdade triangular, $|P_i|=\bigl|\sum_j\lambda_j(V_j)_i\bigr|\le\sum_j\lambda_j\,|(V_j)_i|$ para cada coordenada $i$. Somando em $i$: $g(P)\le\sum_j\lambda_j\,g(V_j)=\sum_j\lambda_j\cdot 5=5$, pois $g(\pm5e_i)=5$.
+\item[(ii)] $S\subseteq K$. Seja $P=(x_1,x_2,x_3)$ com $g(P)\le 5$. Tome $s_i=1$ se $x_i\ge 0$ e $s_i=-1$ se $x_i<0$, de modo que $s_i|x_i|=x_i$. Então
+\[
+P=\sum_{i=1}^{3}\frac{|x_i|}{5}\,(5s_ie_i)+\frac{5-g(P)}{10}\,(5e_1)+\frac{5-g(P)}{10}\,(-5e_1).
+\]
+Verificação: a $i$-ésima coordenada da soma é $\frac{|x_i|}{5}\cdot 5s_i=s_i|x_i|=x_i$, e os dois últimos termos se cancelam. Os pesos são não negativos, pois $g(P)\le 5$, e somam $\frac{g(P)}{5}+2\cdot\frac{5-g(P)}{10}=1$. Logo $P\in K$.
+\end{itemize}
+Portanto $K=S$.
+
+\textbf{3. Interior e superfície.} A função $g$ é contínua.
+\begin{itemize}
+\item Se $g(P)<5$, o conjunto $\{g<5\}$ é aberto (imagem inversa de aberto por função contínua) e está contido em $S$. Logo $P$ é ponto interior.
+\item Se $g(P)=5$, então $P\in S$, mas $P$ não é interior. Seja $u=(s_1,s_2,s_3)$ com $s_i$ como acima e $\varepsilon>0$. Em cada coordenada, $|x_i+\varepsilon s_i|=|x_i|+\varepsilon$: se $x_i\ge 0$, então $x_i+\varepsilon>0$; se $x_i<0$, então $x_i-\varepsilon<0$. Logo $g(P+\varepsilon u)=5+3\varepsilon>5$, ou seja, $P+\varepsilon u\notin S$, e $P+\varepsilon u\to P$ quando $\varepsilon\to 0$. Assim $P$ está na superfície.
+\end{itemize}
+Portanto, interior $=\{g<5\}$ e superfície $=\{g=5\}$. Seja $N_k=\#\{(x,y,z)\in\mathbb{Z}^3 : g(x,y,z)=k\}$. Como $g$ é inteiro em $\mathbb{Z}^3$,
+\[
+\text{interior}=\sum_{k=0}^{4}N_k,\qquad \text{superfície}=N_5,\qquad \text{total}=\sum_{k=0}^{5}N_k.
+\]
+
+\textbf{4. Cálculo de $N_k$.} Seja $M(m)=\#\{(x,y)\in\mathbb{Z}^2 : |x|+|y|=m\}$.
+\begin{itemize}
+\item $M(0)=1$, pois só $(0,0)$ serve.
+\item Para $m\ge 1$: se $|x|=m$, então $y=0$, o que dá $2$ pontos. Se $|x|\le m-1$ (há $2m-1$ valores de $x$), então $|y|=m-|x|\ge 1$ tem exatamente $2$ soluções em $y$. Logo $M(m)=2+2(2m-1)=4m$.
+\end{itemize}
+Fixe $z=t$ com $|t|\le k$. A condição $g=k$ vira $|x|+|y|=k-|t|$, com $M(k-|t|)$ soluções. O termo $t=0$ aparece uma vez, e cada $j=|t|\in\{1,\dots,k\}$ aparece para $t=\pm j$. Logo
+\[
+N_k=\sum_{t=-k}^{k}M(k-|t|)=M(k)+2\sum_{r=0}^{k-1}M(r).
+\]
+Para $k\ge 1$, $\sum_{r=0}^{k-1}M(r)=M(0)+\sum_{r=1}^{k-1}4r=1+2k(k-1)$. Então
+\[
+N_k=4k+2\bigl(1+2k(k-1)\bigr)=4k+2+4k^2-4k=4k^2+2,
+\]
+e $N_0=1$. Assim:
+\[
+N_1=4\cdot 1+2=6,\quad N_2=4\cdot 4+2=18,\quad N_3=4\cdot 9+2=38,\quad N_4=4\cdot 16+2=66,\quad N_5=4\cdot 25+2=102.
+\]
+Logo, interior: $1+6+18+38+66=129$; superfície: $N_5=102$; total: $129+102=231$.
+
+\textbf{5. Conferência por tipos de coordenadas.} Para cada $k$, uma terna de módulos $(|x|,|y|,|z|)$ com soma $k$ corresponde a $(\text{número de permutações distintas})\cdot 2^{(\text{número de entradas não nulas})}$ pontos, pois cada entrada não nula admite sinal $\pm$. Usando todas as partições de $k$ em no máximo $3$ partes:
+\begin{itemize}
+\item $k=1$: $(1,0,0)$ dá $3\cdot 2=6$.
+\item $k=2$: $(2,0,0)$ dá $3\cdot 2=6$; $(1,1,0)$ dá $3\cdot 4=12$. Total $18$.
+\item $k=3$: $(3,0,0)$ dá $6$; $(2,1,0)$ dá $6\cdot 4=24$; $(1,1,1)$ dá $8$. Total $6+24+8=38$.
+\item $k=4$: $(4,0,0)$ dá $6$; $(3,1,0)$ dá $24$; $(2,2,0)$ dá $3\cdot 4=12$; $(2,1,1)$ dá $3\cdot 8=24$. Total $6+24+12+24=66$.
+\item $k=5$: $(5,0,0)$ dá $6$; $(4,1,0)$ dá $24$; $(3,2,0)$ dá $24$; $(3,1,1)$ dá $3\cdot 8=24$; $(2,2,1)$ dá $3\cdot 8=24$. Total $6+24+24+24+24=102$.
+\end{itemize}
+Os totais coincidem com $N_k$.
+
+\textbf{6. Fórmula geral e casos particulares.} Seja $N(n)=\#\{(x,y,z)\in\mathbb{Z}^3 : g\le n\}$. Então
+\[
+N(n)=1+\sum_{k=1}^{n}(4k^2+2)=1+\frac{2n(n+1)(2n+1)}{3}+2n=\frac{(2n+1)(2n^2+2n+3)}{3},
+\]
+pois, multiplicando por $3$, $3+2n(n+1)(2n+1)+6n=4n^3+6n^2+8n+3=(2n+1)(2n^2+2n+3)$.
+Casos particulares: $N(0)=\frac{1\cdot 3}{3}=1$ (só a origem); $N(1)=\frac{3\cdot 7}{3}=7$ (origem e os 6 vértices); $N(2)=\frac{5\cdot 15}{3}=25=1+6+18$, conferido à mão pelas contagens acima; e $N(5)=\frac{11\cdot 63}{3}=\frac{693}{3}=231$, com $2\cdot 25+2\cdot 5+3=63$.
+
+\textbf{7. Unidades e ordem de grandeza.} A resposta é uma contagem, portanto adimensional. O sólido é a união de duas pirâmides de base quadrada com diagonal $10$ (área $\frac{10\cdot 10}{2}=50$) e altura $5$, de volume $V=2\cdot\frac13\cdot 50\cdot 5=\frac{500}{3}\approx 166{,}7$. A contagem $231$ tem a mesma ordem de grandeza de $V$, e a diferença $\approx 64$ é plausível como contribuição dos pontos de fronteira. Isto é uma checagem de plausibilidade, não uma prova.
+
+Portanto há $231$ pontos com todas as coordenadas inteiras no interior ou na superfície do octaedro: $129$ no interior e $102$ na superfície.
+
+ANSWER: 231 pontos (129 no interior e 102 na superfície)

@@ -1,0 +1,60 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "tr(A·B) = C(m+n+2, n+1) para quaisquer inteiros positivos m e n (por Stifel e Vandermonde). Para m = 2^10 e n = 10^3, tr(A·B) = C(2026, 1001). Como 1013 é primo, 2026 = 2·1013 é fator de 1026·…·2026 = 1001!·C(2026,1001) e 1013 não divide 1001!, então 1013 divide C(2026, 1001). Logo o traço é divisível por 1013.",
+  "judge_reference": {
+    "reference_solution": "**Questão 7 (IME 2026/2027, Matemática): referência de resolução**\n\n**Passo 0: o que se pede.** Mostrar que tr(A·B) é divisível por 1013 quando m = 2^10 e n = 10^3.\n\n**Passo 1: forma do traço.** A tem dimensão 3×(n+2) e B tem dimensão (n+2)×3, logo A·B é 3×3 e\n\ntr(AB) = Σ_{k=1}^{3} (AB)_{kk} = Σ_{k=1}^{3} Σ_{j=1}^{n+2} a_{kj} b_{jk}.\n\nO somatório interno é sobre j ∈ {1,…,n+2}, não sobre k. Separando as três parcelas:\n\n- T1 = Σ_j C(m, j−3)·C(n, n+2−j)   (k = 1, usa a_{1j} e b_{j1})\n- T2 = Σ_j C(m, j−2)·C(n, n+2−j)   (k = 2, usa a_{2j} e b_{j2})\n- T3 = Σ_j C(m, j−1)·C(n+1, n+2−j) (k = 3, usa a_{3j} e b_{j3})\n\n**Passo 2: Stiefel (Pascal) em T1 + T2.** Para todo j inteiro, C(m, j−3) + C(m, j−2) = C(m+1, j−2). Conferência de bordas com a convenção: j = 1 dá C(m,−2)+C(m,−1) = 0 = C(m+1,−1); j = 2 dá 0 + 1 = 1 = C(m+1, 0). Assim\n\nT1 + T2 = Σ_j C(m+1, j−2)·C(n, n+2−j).\n\nFaça k = j−2, de modo que n+2−j = n−k:\n\nT1 + T2 = Σ_k C(m+1, k)·C(n, n−k).\n\n**Passo 3: Vandermonde em T1 + T2.** Use Σ_k C(p,k)·C(q, r−k) = C(p+q, r) com p = m+1, q = n, r = n. Os termos fora de 0 ≤ k ≤ n são nulos pela convenção (k = −1 dá C(m+1,−1) = 0, e k > n dá C(n, n−k) = 0), então a soma em j ∈ [1, n+2] é a soma completa. Logo\n\nT1 + T2 = C(m+n+1, n).\n\n**Passo 4: Vandermonde em T3.** Faça k = j−1, com k ∈ [0, n+1]:\n\nT3 = Σ_k C(m, k)·C(n+1, n+1−k).\n\nAqui p = m, q = n+1, r = n+1. Os termos com k < 0 ou k > n+1 são nulos. Como m > n, temos m ≥ n+1, então o índice superior k ≤ n+1 ≤ m não é truncado indevidamente. Assim\n\nT3 = C(m+n+1, n+1).\n\n**Passo 5: Stiefel final.**\n\ntr(AB) = C(m+n+1, n) + C(m+n+1, n+1) = C(m+n+2, n+1).\n\nEquivalentemente, C(m+n+2, m+1). Verificado numericamente por força bruta, com a matriz completa, para todos os pares 1 ≤ m, n < 40 (inclusive m ≤ n).\n\n**Passo 6: particularizar.** Com m = 2^10 = 1024 e n = 1000: m+n+2 = 2026 e n+1 = 1001. Logo\n\ntr(AB) = C(2026, 1001).\n\n**Passo 7: divisibilidade por 1013.** 1013 é primo (não divisível por nenhum primo ≤ 31) e 2026 = 2·1013. Use a fórmula de Legendre, v_p(N!) = Σ_{i≥1} ⌊N/p^i⌋, com p = 1013:\n\n- v_p(2026!) = ⌊2026/1013⌋ + ⌊2026/1013²⌋ = 2 + 0 = 2\n- v_p(1001!) = 0, pois 1001 < 1013\n- v_p(1025!) = ⌊1025/1013⌋ = 1\n\nComo C(2026,1001) = 2026! / (1001!·1025!), temos\n\nv_p(C(2026,1001)) = 2 − 0 − 1 = 1 ≥ 1.\n\nPortanto 1013 divide tr(AB), e exatamente uma vez. (Alternativa com Lucas: 2026 = (2,0)_{1013} e 1001 = (0,1001)_{1013}, então C(2026,1001) ≡ C(2,0)·C(0,1001) = 0 mod 1013. Alternativa com Kummer: 1001 + 1025 = 2026 tem um vai-um em base 1013, pois 1001 + 12 = 1013.)\n\nConferência numérica: tr(AB) = C(2026,1001) exatamente, e tr(AB) mod 1013 = 0.\n\n**Conclusão:** tr(A·B) = C(m+n+2, n+1) e, para m = 2^10 e n = 10^3, tr(A·B) = C(2026,1001), que é divisível por 1013.",
+    "final_answer": "tr(A·B) = C(m+n+2, n+1) = C(m+n+2, m+1), em geral (m, n inteiros positivos).\n\nPara m = 2^10 e n = 10^3: tr(A·B) = C(2026, 1001) = C(2026, 1025), e 1013 divide esse número (com v_1013 = 1). Logo a afirmação é verdadeira.\n\nResumo dos passos: Pascal para C(m,j−3)+C(m,j−2) = C(m+1,j−2); duas aplicações de Vandermonde (T1+T2 = C(m+n+1,n) e T3 = C(m+n+1,n+1)); Pascal final; e, por Legendre (2026 = 2·1013, 1001 < 1013 < 1025), v_1013(C(2026,1001)) = 2 − 0 − 1 = 1.\n\nVerificado numericamente: identidade para 1 ≤ m, n < 40, tr(AB) = C(2026,1001) e tr(AB) mod 1013 = 0.",
+    "pitfalls": [
+      "Traço de A·B: A·B é 3×3, não (n+2)×(n+2). O traço é soma de (AB)_{kk} = Σ_j a_{kj} b_{jk}, com soma interna em j ∈ [1, n+2]. Erro comum: somar a_{kk}·b_{kk} ou usar índices trocados.",
+      "Deslocamentos de índice: a_{1j} usa C(m, j−3), a_{2j} usa C(m, j−2), a_{3j} usa C(m, j−1). Em B, b_{i1} = b_{i2} usam C(n, n+2−i) e b_{i3} usa C(n+1, n+2−i). Trocar qualquer um desses deslocamentos muda a identidade final.",
+      "A convenção C(a,c) = 0 para c < 0 ou c > a é essencial. Ela permite estender as somas de Vandermonde para todos os k inteiros e verificar Pascal nas bordas (j = 1, 2). Sem ela, é preciso tratar os limites de soma à mão.",
+      "Pascal para combinar a_{1j} e a_{2j}: C(m, j−3) + C(m, j−2) = C(m+1, j−2). Não é C(m+2, ·) nem C(m, ·). Ao juntar os dois termos, o topo passa a ser m+1.",
+      "Checar que o intervalo j ∈ [1, n+2] cobre todos os termos não nulos antes de aplicar Vandermonde completa. A hipótese m > n dá m ≥ n+1, então k = j−1 ≤ n+1 ≤ m não é truncado pelo topo de C(m, ·). Vale notar que, com a convenção, a identidade tr(AB) = C(m+n+2, n+1) também se verifica para m ≤ n (checado numericamente em 1 ≤ m, n < 40). Portanto m > n é hipótese do enunciado, não condição necessária da identidade. Não invente um uso dela.",
+      "Armadilha principal da divisibilidade: 2026 = 2·1013, mas C(2026, 1013) NÃO é divisível por 1013 (dá resto 2, checado numericamente e por Lucas). O resultado depende de o índice inferior ser 1001 (ou 1025), não 1013. Um erro de deslocamento de 12 unidades no índice (n+1 ou n+2 trocado) leva a conclusão errada.",
+      "Justificar a divisibilidade, não apenas afirmá-la. 'Como 2026 = 2·1013, C(2026, k) é divisível por 1013' é falso para k = 1013 e só é verdadeiro para k fora de {0, 1013, 2026} com argumento explícito. Use Legendre (v_p(2026!) = 2, v_p(1001!) = 0, v_p(1025!) = 1), Lucas ou Kummer.",
+      "1013 precisa ser verificado como primo (não divisível por nenhum primo ≤ 31) antes de usar Legendre ou Lucas.",
+      "Cuidado com a equivalência C(2026,1001) = C(2026,1025) (simetria). Aplicar Legendre a 1025! exige cuidado: v_1013(1025!) = 1 porque 1013 ≤ 1025 < 2026.",
+      "Não é preciso calcular o número C(2026,1001) explicitamente nem usar calculadora para a prova. A solução por propriedades (Pascal, Vandermonde, Legendre) é a esperada. A conferência numérica serve só como checagem."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "tr(A·B) = C(m+n+2, n+1) para quaisquer inteiros positivos m e n (por Stifel e Vandermonde). Para m = 2^10 e n = 10^3, tr(A·B) = C(2026, 1001). Como 1013 é primo, 2026 = 2·1013 é fator de 1026·…·2026 = 1001!·C(2026,1001) e 1013 não divide 1001!, então 1013 divide C(2026, 1001). Logo o traço é divisível por 1013.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Nas bordas da relação de Stifel (Passo 2), k=0 e k=m+1, o texto diz apenas 'basta notar que C(m,-1)=C(m,m+1)=0'. Falta registrar explicitamente que C(m,0)=C(m+1,0)=1 e C(m,m)=C(m+1,m+1)=1, que são os valores que fecham a identidade nesses casos. Deveria ser: k=0 dá 0+1=1=C(m+1,0); k=m+1 dá 1+0=1=C(m+1,m+1)."
+          },
+          {
+            "severity": "minor",
+            "description": "A primalidade de 1013 é afirmada pela lista de primos até 31, sem mostrar as divisões nem indicar que é checagem direta. É trivial, mas um gabarito comentado deveria mostrar pelo menos os restos ou dizer explicitamente que a checagem foi feita."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência numérica usa um único caso (m=2, n=1). Está correta (diagonal 1, 3, 6; traço 10 = C(5,2)), mas como ilustração é fraca. A prova é geral, então isso não é erro, só poderia ser apresentado como exemplo e não como evidência de confirmação."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha principal do enunciado não é mencionada: C(2026,1013) não é divisível por 1013 (resto 2). A resolução evita essa armadilha corretamente ao usar o índice 1001, mas um gabarito comentado deveria explicar por que o argumento de Euclides depende de 1001 (ou 1025) e não de 1013."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'Observação' sobre a ordem exata 1 está compactada. O argumento é correto (o único múltiplo de 1013 em [1026,2026] é 2026, com v_1013 = 1, e v_1013(1001!) = 0), mas deveria concluir explicitamente v_1013(C) = v_1013(P) − v_1013(1001!) = 1 − 0 = 1."
+          }
+        ],
+        "summary": "A resposta final da resolução do candidato está correta e coincide com a referência: tr(AB) = C(m+n+2, n+1), e para m = 2^10 e n = 10^3 o traço é C(2026, 1001), divisível por 1013 (com ordem exata 1). Conferi o enunciado no PDF original e a transcrição confere (a_{1j}=C(m,j−3), a_{2j}=C(m,j−2), a_{3j}=C(m,j−1), b_{i1}=b_{i2}=C(n,n+2−i), b_{i3}=C(n+1,n+2−i)). Verificações com python3 com matrizes completas: a identidade vale para todos os 1 ≤ m, n ≤ 40, inclusive m ≤ n, o que confirma que a hipótese m > n não é necessária, como afirma o candidato. Para m=2, n=1, as matrizes e as diagonais de AB (1, 3, 6) batem. Para m=1024, n=1000, o traço exato é igual a C(2026,1001) e é ≡ 0 mod 1013. 1013 é primo, v_1013(C(2026,1001)) = 1 e C(2026,1001) tem 609 algarismos, como afirmado. Também conferi C(2026,1013) ≡ 2 mod 1013, e o candidato evitou corretamente essa armadilha. Quanto à conta, a sequência é correta: Stifel com a convenção (k<0, k>m+1 e bordas), Vandermonde em S_1 (a=m+1, b=n, s=n) e S_2 (a=m, b=n+1, s=n+1), Stifel final com N=m+n+1, e a divisibilidade pelo argumento de Euclides sobre 2026!/1025! = ∏_{1026}^{2026} k, com 1001! sem fator 1013. Não há erro lógico nem de conta. Os problemas restantes são de rigor e clareza: bordas de Stifel pouco explícitas, primalidade sem checagem à vista, conferência numérica de um caso só e a armadilha de 1013 não discutida. Nota 9,5: esta é uma resolução que um professor publicaria como gabarito comentado, com pequenos ajustes.\"}]"
+      }
+    }
+  ]
+}

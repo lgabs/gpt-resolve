@@ -1,0 +1,49 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{1. Modelagem.} Seja $\log_2 x_k = a + (k-1)r$, com $r>0$. Então $x_k = 2^{a}\,q^{k-1}$, onde $q = 2^{r} > 1$ (os $x_k$ formam uma PG crescente).
+
+\textbf{2. Produto dos termos de índice ímpar.} Como $\log_2(x_1x_3x_5x_7x_9) = 5a + (0+2+4+6+8)r = 5a+20r$, a condição $x_1x_3x_5x_7x_9 = 2^{45}$ dá
+\[
+5a+20r = 45 \;\Longrightarrow\; a+4r = 9 \;\Longrightarrow\; \log_2 x_5 = 9 \;\Longrightarrow\; x_5 = 2^9 = 512 .
+\]
+Logo $x_k = 512\,q^{\,k-5}$, ou seja,
+\[
+x_1,x_3,x_5,x_7,x_9 = 512\,q^{-4},\;512\,q^{-2},\;512,\;512\,q^{2},\;512\,q^{4},
+\qquad
+x_2,x_4,x_6,x_8 = 512\,q^{-3},\;512\,q^{-1},\;512\,q,\;512\,q^{3}.
+\]
+
+\textbf{3. Soma dos termos de índice par.} Seja $t = q + \dfrac1q$. Como $q>1$, vale $t>2$ (desigualdade das médias, sem igualdade, pois $q\ne1$). Usando $q^3+q^{-3} = t^3-3t$:
+\[
+x_2+x_4+x_6+x_8 = 512\left[(q^3+q^{-3})+(q+q^{-1})\right] = 512\,(t^3-2t).
+\]
+Com $x_2+x_4+x_6+x_8 = 5540$:
+\[
+512\,(t^3-2t) = 5540 \;\Longleftrightarrow\; t^3-2t = \frac{1385}{128}\approx 10{,}82 .
+\]
+A função $g(t)=t^3-2t$ é estritamente crescente para $t>2$ (pois $g'(t)=3t^2-2>0$) e $g(2)=4<\frac{1385}{128}$. Portanto há \emph{uma única} raiz $t>2$, e ela dá um único $q>1$.
+
+\textbf{4. Soma dos termos de índice ímpar.} Com $u = q^2+q^{-2} = t^2-2$ e $q^4+q^{-4}=u^2-2$:
+\[
+S = x_1+x_3+x_5+x_7+x_9 = 512\left[1+u+(u^2-2)\right] = 512\,(u^2+u-1) = 512\,(t^4-3t^2+1).
+\]
+Usando $t^3 = 2t+\frac{1385}{128}$, temos $t^4 = 2t^2+\frac{1385}{128}t$, e daí
+\[
+S = -512\,t^2 + 5540\,t + 512 .
+\]
+
+\textbf{5. Valor numérico (dado 5540 como impresso).} A raiz de $128t^3-256t-1385=0$ é $t\approx 2{,}5116$ (pelo teste das raízes racionais, ela não é racional). Daí $q\approx 2{,}0154$, $r=\log_2 q\approx 1{,}011$, $a=9-4r\approx 4{,}96$, todos coerentes com $r>0$, e
+\[
+S \approx -512\,(6{,}3081) + 5540\,(2{,}5116) + 512 \approx 11196{,}5 .
+\]
+
+\textbf{6. Observação sobre o dado (provável erro de digitação).} Para $q=2$ ($r=1$, $a=5$, $x_k=2^{k+4}$) o produto pedido vale $2^{5+7+9+11+13}=2^{45}$, como no enunciado. Nesse caso $t=\frac52$ e a soma dos pares seria $64+256+1024+4096 = \mathbf{5440}$, e não $5540$. O enunciado fica muito mais natural com 5440, o que sugere um erro de digitação. Com esse valor, $t=\frac52$ é a única raiz $t>2$ (pelo item 3) e
+\[
+S = 32+128+512+2048+8192 = 10912 \qquad(\text{conferência: } 512(t^4-3t^2+1)=512\cdot 21{,}3125 = 10912).
+\]
+
+\textbf{Conclusão.} Com os dados exatamente como impressos (5540), $S=512(t^4-3t^2+1)\approx 11196{,}5$. Se o dado fosse 5440, o resultado seria $S=10912$.
+
+ANSWER: $x_1+x_3+x_5+x_7+x_9 \approx 11196{,}5$ com o dado 5540 como impresso (com o provável dado correto 5440, o resultado seria $10912$).

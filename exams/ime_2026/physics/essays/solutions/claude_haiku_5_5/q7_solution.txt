@@ -1,0 +1,101 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Hipóteses e princípios.}
+\begin{itemize}
+\item As cargas $+Q$ são centrais e as cascas são esféricas e concêntricas com elas. Logo o campo é radial, $E=E(r)$, e a lei de Gauss dá $E(r)=\dfrac{k\,Q_{\rm env}}{r^2}$, com $Q_{\rm env}$ a carga contida na esfera de raio $r$.
+\item As hastes são isolantes (não há fuga de carga), $V(\infty)=0$, $V(r)=\displaystyle\int_r^{\infty}E(r')\,dr'$, e cada casca é inicialmente neutra.
+\item Em equilíbrio eletrostático, $\vec E=\vec 0$ no metal, o metal é equipotencial e o excesso de carga fica nas superfícies.
+\end{itemize}
+
+\textbf{a)} Figura 1 (metal entre $a$ e $2a$). Para $a<r<2a$ o campo no metal é nulo, logo $Q_{\rm env}=Q+q_{\rm int}=0$ e a superfície interna tem $-Q$. Por neutralidade, a superfície externa ($r=2a$) tem $+Q$. Para $r\ge 2a$, $Q_{\rm env}=Q$ e $V=\dfrac{kQ}{r}$. Como o metal é equipotencial, $V(a)=V(2a)$:
+\begin{align*}
+V(a)=V(2a)=\frac{kQ}{2a}.
+\end{align*}
+Conferência: na cavidade, $E=\dfrac{kQ}{r^2}$ dá $V(r)=\dfrac{kQ}{r}-\dfrac{kQ}{2a}$, que vale $\dfrac{kQ}{2a}$ em $r=a$, como exige a continuidade. Unidades: $\dfrac{\mathrm{N\,m}^2}{\mathrm{C}^2}\cdot\dfrac{\mathrm{C}}{\mathrm{m}}=\mathrm{V}$.
+
+\textbf{b)} Figura 2 (metal entre $2a$ e $3a$). Pelo mesmo raciocínio, a superfície interna ($r=2a$) tem $-Q$ e a externa ($r=3a$) tem $+Q$. As marcas $-2a$ e $-3a$ do desenho são as mesmas distâncias do outro lado do centro. Como $V$ depende só de $|r|$, o gráfico é simétrico em torno de $r=0$, e basta analisar $r\ge 0$:
+\begin{itemize}
+\item $r\ge 3a$: $Q_{\rm env}=Q$, logo $V=\dfrac{kQ}{r}$ e $V(3a)=\dfrac{kQ}{3a}$.
+\item $2a\le r\le 3a$ (metal): $E=0$, logo $V$ é constante, $V(2a)=V(3a)=\dfrac{kQ}{3a}$.
+\item $0<r<2a$ (vácuo): $Q_{\rm env}=Q$ e $E=\dfrac{kQ}{r^2}$. Integrando a partir de $2a$:
+\end{itemize}
+\begin{align*}
+V(r)&=V(2a)+\int_r^{2a}\frac{kQ}{r'^2}\,dr'=\frac{kQ}{3a}+kQ\left(\frac1r-\frac1{2a}\right)=\frac{kQ}{r}-\frac{kQ}{6a}.
+\end{align*}
+Valores pedidos:
+\begin{align*}
+V(a)&=\frac{kQ}{a}-\frac{kQ}{6a}=\frac{5kQ}{6a}, & V(2a)&=\frac{kQ}{3a}, & V(3a)&=\frac{kQ}{3a}.
+\end{align*}
+Forma do gráfico: $V$ é contínuo em $2a$ e $3a$, mas $dV/dr=-E$ salta por causa das cargas superficiais: em $r=2a$ passa de $-\dfrac{kQ}{4a^2}$ para $0$, e em $r=3a$ passa de $0$ para $-\dfrac{kQ}{9a^2}$. Para $r\to 0$, $V\to+\infty$ (carga pontual). Para $r\ge 0$, $V$ não cresce e há um patamar entre $2a$ e $3a$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.1cm,y=1.1cm,thick]
+  \fill[gray!15] (2,0) rectangle (3,3.4);
+  \fill[gray!15] (-3,0) rectangle (-2,3.4);
+  \draw[->] (-3.6,0) -- (4.0,0) node[right] {$r$};
+  \draw[->] (0,0) -- (0,3.6) node[above] {$V$};
+  \draw[blue,domain=0.3:2,samples=120] plot (\x,{1/\x-1/6});
+  \draw[blue,domain=-2:-0.3,samples=120] plot (\x,{-1/\x-1/6});
+  \draw[blue,domain=3:3.6,samples=40] plot (\x,{1/\x});
+  \draw[blue,domain=-3.6:-3,samples=40] plot (\x,{-1/\x});
+  \draw[blue] (2,{1/3}) -- (3,{1/3});
+  \draw[blue] (-3,{1/3}) -- (-2,{1/3});
+  \draw[dashed,gray] (1,0) -- (1,{5/6}) -- (0,{5/6});
+  \fill (1,{5/6}) circle (1.5pt);
+  \fill (-1,{5/6}) circle (1.5pt);
+  \fill (2,{1/3}) circle (1.5pt);
+  \fill (-2,{1/3}) circle (1.5pt);
+  \fill (3,{1/3}) circle (1.5pt);
+  \fill (-3,{1/3}) circle (1.5pt);
+  \node[below] at (1,0) {$a$};
+  \node[below] at (-1,0) {$-a$};
+  \node[below] at (2,0) {$2a$};
+  \node[below] at (-2,0) {$-2a$};
+  \node[below] at (3,0) {$3a$};
+  \node[below] at (-3,0) {$-3a$};
+  \node[above right] at (1,{5/6}) {\small $V(a)=\dfrac{5kQ}{6a}$};
+  \draw[gray,thin] (2.8,0.36) -- (2.8,0.55);
+  \node[anchor=west] at (1.6,0.62) {\small $V(2a)=V(3a)=\dfrac{kQ}{3a}$};
+  \node at (0.9,2.4) {\footnotesize vácuo};
+  \node at (2.5,2.4) {\footnotesize condutor};
+  \node at (-2.5,2.4) {\footnotesize condutor};
+  \node[anchor=west] at (0.6,3.1) {\footnotesize $V\to+\infty$ quando $r\to 0$};
+  \draw[->] (0.58,3.05) -- (0.34,3.15);
+\end{tikzpicture}
+\end{center}
+{\small Esboço: eixo horizontal em unidades de $a$ e vertical em unidades de $kQ/a$; escalas do desenho não são físicas. Faixas cinzas: condutor.}
+
+\textbf{c)} Hipóteses adicionais.
+\begin{itemize}
+\item \emph{Fio ideal.} Ligadas pelo fio, as cascas formam um único condutor, com potencial comum $V$. Adota-se que o fio não retém carga ao ser retirado (capacitância desprezada). Isso é uma idealização explícita, não uma consequência de ``muito longo'': a capacitância de um fio cresce com o comprimento. Se o fio retivesse carga $q_f$, a soma das cargas das cascas seria $-q_f$, e o resultado dependeria de $q_f$, que o enunciado não fornece.
+\item \emph{Influência mútua desprezível.} Como as cascas estão muito afastadas ($d\gg R_i$), $V_i=\dfrac{kq_i}{R_i}+\dfrac{kq_j}{d}\simeq\dfrac{kq_i}{R_i}$, em que $q_i$ é a carga líquida da casca $i$ (a carga central e a superfície interna se cancelam) e $R_1=2a$, $R_2=3a$.
+\end{itemize}
+
+\begin{enumerate}
+\item \emph{Superfícies internas.} Gauss no metal de cada casca ($E=0$) envolve $+Q$ e a superfície interna. Logo cada superfície interna tem $-Q$, independentemente do fio.
+\item \emph{Conservação.} As cascas começaram neutras e o sistema não troca carga com o exterior. Com $q_1$ (externa da casca 1, $r=2a$) e $q_2$ (externa da casca 2, $r=3a$):
+\begin{align*}
+(-Q+q_1)+(-Q+q_2)=0 \quad\Rightarrow\quad q_1+q_2=2Q.
+\end{align*}
+\item \emph{Potencial comum.} $V=\dfrac{kq_1}{2a}=\dfrac{kq_2}{3a}$, logo $q_2=\dfrac32\,q_1$.
+\item \emph{Resolução.} $q_1+\dfrac32 q_1=2Q$ dá $q_1=\dfrac{4Q}{5}$, $q_2=\dfrac{6Q}{5}$ e $V=\dfrac{2kQ}{5a}$. Em forma geral, $q_i=\dfrac{2Q\,R_i}{R_1+R_2}$.
+\end{enumerate}
+
+Sentido: antes da ligação, $\dfrac{kQ}{2a}>\dfrac{kQ}{3a}$, logo passa carga positiva $Q/5$ da casca 1 para a casca 2 (equivalentemente, elétrons da casca 2 vão para a casca 1). Ao retirar o fio, que não retém carga, as cargas não mudam.
+
+Verificações:
+\begin{itemize}
+\item Potenciais: $\dfrac{k\,(4Q/5)}{2a}=\dfrac{2kQ}{5a}=\dfrac{k\,(6Q/5)}{3a}$; cargas: $\left(-Q+\dfrac{4Q}{5}\right)+\left(-Q+\dfrac{6Q}{5}\right)=0$.
+\item Energia (não circular): com as cargas internas fixas, $U=\dfrac{kq_1^2}{4a}+\dfrac{kq_2^2}{6a}+\text{const}$, com $q_1+q_2=2Q$. Antes, $U_{\rm i}=\dfrac{5kQ^2}{12a}$; depois, $U_{\rm f}=\dfrac{2kQ^2}{5a}$. A energia cai $\dfrac{kQ^2}{60a}$, dissipada no fio. Além disso, $\dfrac{\partial U}{\partial q_1}=V_1-V_2$ e $U$ é convexa em $q_1$; logo o mínimo com carga total fixa (teorema de Thomson) é onde $V_1=V_2$, ou seja, $q_1=\dfrac{4Q}{5}$.
+\item Caso particular: se $R_1=R_2$, a fórmula dá $q_1=q_2=Q$, sem transferência, como esperado para potenciais iniciais iguais.
+\end{itemize}
+
+Resultados:
+\begin{itemize}
+\item Casca 1 (Figura 1): superfície interna ($r=a$) com $-Q$; superfície externa ($r=2a$) com $+\dfrac{4Q}{5}$; carga total $-\dfrac{Q}{5}$.
+\item Casca 2 (Figura 2): superfície interna ($r=2a$) com $-Q$; superfície externa ($r=3a$) com $+\dfrac{6Q}{5}$; carga total $+\dfrac{Q}{5}$.
+\end{itemize}
+
+ANSWER: a) $V(a)=\dfrac{kQ}{2a}$; b) $V(a)=\dfrac{5kQ}{6a}$, $V(2a)=V(3a)=\dfrac{kQ}{3a}$, com gráfico contínuo, não crescente para $r\ge 0$, patamar entre $2a$ e $3a$ e divergência em $r\to 0$; c) casca 1: interna $-Q$ e externa $+\dfrac{4Q}{5}$; casca 2: interna $-Q$ e externa $+\dfrac{6Q}{5}$ (potencial comum final $\dfrac{2kQ}{5a}$).

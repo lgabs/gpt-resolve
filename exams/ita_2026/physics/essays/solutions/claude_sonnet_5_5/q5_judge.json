@@ -1,0 +1,92 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "a) W = (M1 − M2)·g·α·L·(90 − 20) = 700·α·L·(M1 − M2) (SI, g = 10 m/s²). b) η = 10·α·L·(M1 − M2) / (ρ_H2O·V·c_H2O + 3mR/M_Cu), com M_Cu em kg/mol. Este η vale cerca de 2·10⁻⁷ para valores típicos, muito abaixo do limite de Carnot.",
+  "judge_reference": {
+    "reference_solution": "**Modelo e hipóteses**\n- Viga fina, com carga axial: só importa a dilatação linear, ΔL = α·L·ΔT, com ΔT = 90 − 20 = 70 °C = 70 K. A variação de temperatura em °C ou em K é a mesma.\n- Viga incompressível: não há encurtamento elástico sob o peso da massa. Assim, trocar M1 por M2 (ou o inverso) não muda o comprimento da viga naquele instante. Isso quer dizer que não há trabalho nem calor nessas trocas.\n- Processo quase-estático, com equilíbrio térmico entre água e viga. A força sobre a viga é F1 = M1·g durante o aquecimento e F2 = M2·g durante o resfriamento.\n- Ignoram-se a capacidade térmica do recipiente, a dilatação da água e as trocas de calor de M1 e M2, conforme o enunciado.\n\n**Descrição do ciclo no plano F × comprimento (um retângulo)**\n1. Aquecimento de 20 a 90 °C sob a carga M1·g. A viga alonga ΔL e levanta M1 de ΔL. O trabalho da viga sobre a carga é W1 = +M1·g·ΔL.\n2. A 90 °C, troca-se M1 por M2. O comprimento é constante e o trabalho é nulo.\n3. Resfriamento de 90 a 20 °C sob a carga M2·g. A viga encurta ΔL e M2 desce ΔL. Quem faz trabalho é a carga sobre a viga, então W3 = −M2·g·ΔL.\n4. A 20 °C, recoloca-se M1. O comprimento é constante e o trabalho é nulo.\n\nO peso próprio da viga e o empuxo da água são forças constantes. Como o centro de massa sobe ΔL/2 e depois desce o mesmo valor, o trabalho líquido delas no ciclo é nulo. O mesmo vale para a atmosfera sobre a superfície livre da água.\n\n**a) Trabalho por ciclo**\n\nW = W1 + W3 = (M1 − M2)·g·ΔL = (M1 − M2)·g·α·L·(90 − 20)\n\nCom g = 10 m/s²:\n\n**W = 700·α·L·(M1 − M2)** (SI: M em kg, L em m, α em °C⁻¹, W em J)\n\nEsse valor é a área do retângulo F × L, e é positivo porque M1 > M2. Esse é o motor térmico: a carga maior é levantada a quente e a menor é abaixada a frio.\n\n**b) Eficiência**\n\nη = W / Q_H, em que Q_H é o calor fornecido pela fonte na etapa de aquecimento.\n\nA fonte aquece a água e a viga de 20 a 90 °C:\n- Água: Q_água = ρ_H2O·V·c_H2O·ΔT.\n- Cobre: n = m/M_Cu mols e, por Dulong-Petit, Q_Cu = n·3R·ΔT = 3·R·m·ΔT/M_Cu.\n\nQ_H = (ρ_H2O·V·c_H2O + 3·R·m/M_Cu)·70\n\nO calor Q_C = Q_H − W é rejeitado ao ambiente no resfriamento (1ª lei, com ΔU = 0 no ciclo). Então:\n\nη = (M1 − M2)·g·α·L·70 / [70·(ρ_H2O·V·c_H2O + 3Rm/M_Cu)]\n\nO ΔT = 70 se cancela. Com g = 10 m/s²:\n\n**η = 10·α·L·(M1 − M2) / (ρ_H2O·V·c_H2O + 3·R·m/M_Cu)**\n\nUnidades: M_Cu em kg/mol (m em kg), R = 8,31 J/(mol·K), c em J/(kg·K), ρ em kg/m³ e V em m³. Assim η é adimensional.\n\n**Verificação de ordem de grandeza** (calculada em Python). Tomando viga de 1 m e 7 kg, 1 L de água, α = 1,7·10⁻⁵ °C⁻¹, M1 = 1000 kg e M2 = 200 kg:\n- W ≈ 9,5 J.\n- Q_água ≈ 2,9·10⁵ J e Q_Cu ≈ 1,9·10⁵ J.\n- η ≈ 2·10⁻⁵, muito menor que o limite de Carnot entre 363 K e 293 K, que é ≈ 19 %. O resultado é coerente.\n\n**Refinamento (não necessário para a resposta esperada).** Pela 1ª lei rigorosa, Q_H ganha o termo (M1 + m/2)·g·α·L·ΔT, que é a energia potencial ganha por M1 e pelo centro de massa da viga. Esse termo é da ordem de 10⁻⁵ de Q_H, então η não muda. É da mesma ordem das correções do tipo c_P − c_V, que a lei de Dulong-Petit já despreza. Por isso o calor aquecido é tomado como n·3R·ΔT.",
+    "final_answer": "a) W = (M1 − M2)·g·α·L·(90 − 20) = 700·α·L·(M1 − M2) (SI, com g = 10 m/s²), positivo porque M1 > M2.\n\nb) η = W/Q_H = (M1 − M2)·g·α·L / (ρ_H2O·V·c_H2O + 3·R·m/M_Cu) = 10·α·L·(M1 − M2) / (ρ_H2O·V·c_H2O + 3Rm/M_Cu). Aqui Q_H = (ρ_H2O·V·c_H2O + 3Rm/M_Cu)·70, e o fator ΔT = 70 se cancela.\n\n(Questão dissertativa: não há alternativa de múltipla escolha.)",
+    "pitfalls": [
+      "O trabalho vem só da dilatação da viga: ΔL = α·L·ΔT, com ΔT = 70 K. Não é preciso (nem correto) usar dilatação de área ou volume, porque a viga é fina e a carga é axial.",
+      "O trabalho líquido é a diferença (M1 − M2)·g·ΔL, não M1·g·ΔL. A viga levanta M1 a quente (+M1·g·ΔL) e, ao esfriar, M2 desce e realiza trabalho sobre ela (−M2·g·ΔL). Esquecer o termo de M2 é o erro mais comum. O ciclo é um retângulo no plano F × L.",
+      "As trocas de massa (M1 → M2 a 90 °C e M2 → M1 a 20 °C) não geram trabalho nem calor. A viga é incompressível e o comprimento não muda nesses instantes. Por isso o ciclo tem duas etapas a força constante e duas a comprimento constante, análogo a um ciclo isobárico/isocórico.",
+      "O peso próprio da viga, o empuxo, a pressão atmosférica e a dilatação da água não contribuem no ciclo fechado, porque são forças constantes e o estado final é igual ao inicial. Não precisam entrar em W. O trabalho de levantar a massa M1 não é perdido: ele é a saída útil.",
+      "Em Q_H, a fonte aquece a água (ρ_H2O·V·c_H2O·ΔT) e a viga de cobre (n·3R·ΔT, com n = m/M_Cu). Esquecer o calor do cobre, ou usar a massa da viga como massa de água, dá resposta errada. Dulong-Petit só serve para o cobre; o calor da água usa c_H2O.",
+      "A eficiência é W/Q_H, com Q_H o calor recebido da fonte. Não é W/(Q_H − Q_C) nem W/Q_C. O ΔT = 70 se cancela entre numerador e denominador, mas ele precisa aparecer em W e em Q_H antes do cancelamento.",
+      "Unidades: M_Cu em kg/mol se m estiver em kg (cuidado com g/mol). A razão ρ·V é a massa da água em kg. Misturar g/mol com kg faz o termo do cobre errar por um fator 1000. Como o enunciado exige expressões numéricas resolvidas, é preciso substituir g = 10 e ΔT = 70 (coeficiente 700 em W e 10 em η).",
+      "Sanidade: η resulta muito pequena (~10⁻⁵ para valores realistas) e sempre abaixo do limite de Carnot, 1 − 293/363 ≈ 19 %. Uma eficiência de ordem unitária indica erro. Como refinamento, a 1ª lei rigorosa acrescenta (M1 + m/2)·g·α·L·ΔT a Q_H, termo da ordem de 10⁻⁵ do total, desprezível. A resposta esperada é a simples, com c_V = 3R.",
+      "Hipóteses a declarar: processo quase-estático, equilíbrio térmico entre água e viga, capacidade térmica do recipiente desprezada, M1 > M2 (senão W < 0 e não há máquina). A frase \"não há troca de calor de M1 ou M2\" evita somar o aquecimento das massas a Q_H."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) W = (M1 − M2)·g·α·L·(90 − 20) = 700·(M1 − M2)·α·L (SI, g = 10 m/s²). b) η = (M1 − M2)·g·α·L / [ρ_H2O·V·c_H2O + 3mR/M_Cu + (M1 + m/2)·g·α·L] ≈ (M1 − M2)·g·α·L / (ρ_H2O·V·c_H2O + 3mR/M_Cu), pois os termos mecânicos do denominador são desprezíveis frente aos térmicos.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A conferência de unidades tem uma frase errada. O texto diz que 'Mgα L é dado em J e o denominador em J/K, o que mostra que ΔT foi cancelado'. Como α tem unidade K⁻¹, M·g·α·L vale N·m/K = J/K, e não J. Com J no numerador e J/K no denominador, η teria unidade de K, o que contradiz a própria conclusão. A frase também contradiz o '0,02 J/K' dado antes para o termo mecânico. O resultado está certo e só o argumento de verificação está errado. O correto era dizer que numerador e denominador são ambos J/K, logo η é adimensional."
+          },
+          {
+            "severity": "minor",
+            "description": "O enunciado exige expressões numéricas resolvidas, e g = 10 m/s² é dado. Em (a) o candidato substitui g e ΔT (coeficiente 700). Em (b) a resposta final deixa g simbólico, e o ideal seria η = 10·α·L·(M1−M2)/(ρVc + 3mR/M_Cu). Isso pode gerar desconto de nota na prova real."
+          },
+          {
+            "severity": "minor",
+            "description": "Só a troca M1→M2 a 90 °C é discutida (comprimento constante, sem trabalho). A troca inversa M2→M1 a 20 °C, que fecha o ciclo, não aparece na lista de etapas. Isso deixa a descrição do ciclo incompleta (faltam as duas etapas isocóricas) e o argumento de 'área do retângulo F×L' não é feito. O resultado não muda."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não declara a convenção de unidades de M_Cu (kg/mol quando m está em kg), que é fonte clássica de erro de 10³. Também não diz explicitamente que a dilatação linear basta por a viga ser fina e carregada axialmente (sem dilatação de área ou volume). Também não registra que a capacidade térmica do recipiente e a dilatação da água são desprezadas em Q_H. Só a ausência de capacidade térmica do recipiente aparece nas hipóteses."
+          },
+          {
+            "severity": "minor",
+            "description": "Rigor inconsistente em (b). O candidato deduz a fórmula 'exata' com o termo (M1+m/2)gαL, que vale ~10⁻⁸ de Q_H. Em seguida usa c_V = 3R para o cobre, o que ignora a diferença c_P − c_V (percentualmente muito maior que esse termo mecânico). Faltou notar que essa correção é de mesma ordem ou maior que o termo mecânico, o que justificaria cortá-lo desde o início. O boxe final simplificado é o esperado, então o defeito é só de apresentação. As contas numéricas de ordem de grandeza (W≈0,6 J, Q_H≈3·10⁶ J, η≈2·10⁻⁷, termo mecânico ≈0,018 J/K) conferem."
+          }
+        ],
+        "summary": "Reli o enunciado no PDF original (p. 6). A transcrição confere. Refiz as contas em Python. As respostas finais do candidato coincidem com a minha referência. (a) W = (M1−M2)·g·α·L·ΔT = 700·α·L·(M1−M2) (SI), com ΔT = 70 K e g = 10. (b) η = (M1−M2)·g·α·L / (ρVc + 3mR/M_Cu). O ΔT se cancela, e Q_H considera água (ρVcΔT) e cobre (n·3R·ΔT, n = m/M_Cu). Ambas estão corretas, e o ciclo (aquecimento sob M1 com +M1·g·ΔL, troca sem trabalho, resfriamento sob M2 com −M2·g·ΔL) é descrito corretamente.\n\nPontos fortes: o candidato trata bem as armadilhas principais. Usa só dilatação linear. Subtrai o termo de M2. Diz que a troca de massas não faz trabalho por causa da incompressibilidade. Mostra que o peso próprio do centro de massa se anula no ciclo. Tem o calor do cobre por Dulong-Petit. Define η = W/Q_H. Faz a 1ª lei de forma completa (Q_H − Q_C = W, com Q_H incluindo (M1+m/2)gΔL), o que é mais rigoroso que a referência. Verifica a ordem de grandeza contra Carnot e o caso M2 = M1.\n\nDefeitos: todos menores. Há uma frase errada na conferência de unidades (M·g·α·L é J/K, não J). Em (b), g ficou simbólico, apesar de o enunciado exigir expressões numéricas resolvidas. A etapa de troca M2→M1 a 20 °C não é descrita. Faltou declarar M_Cu em kg/mol e justificar explicitamente por que só a dilatação linear conta. A nota fica abaixo de 9 pela frase de unidades incorreta e por essas omissões de completude. A resolução não é um gabarito comentado pronto para publicar, mas está correta no essencial.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "a) W = (M1 − M2)·g·α·L·(90 − 20) = 700·α·L·(M1 − M2) (SI, g = 10 m/s²). b) η = 10·α·L·(M1 − M2) / (ρ_H2O·V·c_H2O + 3mR/M_Cu), com M_Cu em kg/mol. Este η vale cerca de 2·10⁻⁷ para valores típicos, muito abaixo do limite de Carnot.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O enunciado não diz se L é o comprimento a 20 °C. A resolução escreve L(T)=L[1+α(T−20)] sem declarar que L é o comprimento a 20 °C. A hipótese deveria estar explícita. ΔL = αLΔT é exato nesse modelo, e a contração no resfriamento tem o mesmo módulo da dilatação."
+          },
+          {
+            "severity": "minor",
+            "description": "O argumento de que forças constantes não dão trabalho líquido no ciclo cita só o peso próprio da viga. Empuxo da água, pressão atmosférica sobre a superfície livre e dilatação da água não são tratados. A dilatação da água é desprezada, mas o empuxo não aparece. A viga está sobre o piso do recipiente, possivelmente imersa. Bastava dizer que todas essas forças são constantes ou conservativas e o estado final é igual ao inicial, então o trabalho líquido é nulo."
+          },
+          {
+            "severity": "minor",
+            "description": "A desconsideração do termo mecânico (M1+m/2)gΔL em Q_H é justificada comparando-o com correções como c_P−c_V e a dilatação da água. Essa comparação é afirmada, não quantificada. A estimativa numérica de ~4·10⁻⁷ está certa (conferi: 3,9·10⁻⁷ com os valores adotados). O argumento ficaria mais sólido com a ordem de grandeza de c_P−c_V do cobre (~3% de 3R)."
+          },
+          {
+            "severity": "minor",
+            "description": "Redação mista no item (a): W1 é chamado de \"trabalho realizado sobre a carga\" e W3 de \"trabalho da viga sobre a carga\". A convenção é consistente (trabalho feito pela viga sobre a carga), mas deveria ser declarada uma vez: W é o trabalho realizado pela máquina (viga) sobre o meio externo."
+          },
+          {
+            "severity": "minor",
+            "description": "Como a prova exige expressões numéricas resolvidas, o candidato substituiu g=10 e ΔT=70, o que é correto. R e M_Cu ficam simbólicos, o que é aceitável porque o enunciado não fornece seus valores. Uma nota de uma linha com R≈8,31 J/(mol·K) e M_Cu≈63,5·10⁻³ kg/mol ajudaria o leitor. A verificação de ordem de grandeza (W≈0,6 J, Q_H≈3·10⁶ J, η≈2·10⁻⁷) está correta; refiz em Python."
+          }
+        ],
+        "summary": "As respostas finais coincidem item por item com a referência, e minha própria conferência concorda. (a) W = (M1−M2)·g·αL·ΔT = 700·α·L·(M1−M2), em SI. (b) η = 10·αL·(M1−M2)/(ρ_H2O·V·c_H2O + 3mR/M_Cu), com o ΔT=70 cancelado. Conferi o enunciado no PDF original e a transcrição está fiel. A resolução evita todas as armadilhas listadas. Usa dilatação só linear. Inclui o termo −M2·g·ΔL e descreve o ciclo como retângulo F×ℓ. Argumenta que as trocas de massa não dão trabalho nem calor, pela incompressibilidade. Soma o calor da água (ρVc) e do cobre (n·3R·ΔT). Define η=W/Q_H. Usa M_Cu em kg/mol e substitui g=10 e ΔT=70. Aponta a hipótese M1>M2 e faz verificação de unidades, de limite de Carnot e do caso M1=M2. Também é rigorosa na 1ª lei: escreve Q_H com o termo (M1+m/2)gΔL, quantifica-o (~4·10⁻⁷, refeito em Python) e só então o descarta. A resolução é clara, organizada e completa. Os problemas restantes são só detalhes de formulação: L como comprimento a 20 °C, empuxo e atmosfera não citados, justificativa qualitativa do termo desprezado e convenção de sinal do trabalho. Nenhum afeta o resultado. Está próxima de um gabarito comentado publicável."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "n = 15 (a entrada (1,3) de A^n é n(n+3)/2; vale 119 para n=14 e 135 para n=15)",
+  "judge_reference": {
+    "reference_solution": "**Resolução (Questão 02 – ITA 2026, 2ª fase, Matemática)**\n\n**1. Decomposição de A.** Escreva A = I + N, com\nN = [[0,1,2],[0,0,1],[0,0,0]].\nN é estritamente triangular superior, logo nilpotente.\n\n**2. Potências de N.**\nN² = N·N: a linha 1 de N é (0,1,2). Multiplicando pelas colunas de N, obtém-se\n- (N²)₁₁ = 0\n- (N²)₁₂ = 0·1 + 1·0 + 2·0 = 0\n- (N²)₁₃ = 0·2 + 1·1 + 2·0 = 1\n- as linhas 2 e 3 são nulas (linha 2 = (0,0,1) vezes N dá (0,0,0)).\n\nPortanto N² = [[0,0,1],[0,0,0],[0,0,0]].\nN³ = N²·N = 0, porque a linha 1 de N² é (0,0,1) e a linha 3 de N é nula.\n\n**3. Binômio de Newton.** I e N comutam, então\nAⁿ = (I+N)ⁿ = I + nN + C(n,2)N² + C(n,3)N³ + … = I + nN + C(n,2)N².\nOs termos com N^k, k ≥ 3, se anulam. A fórmula vale para todo n ≥ 1; para n = 1 e n = 2, C(n,2) é 0 e o termo some corretamente.\n\n**4. Entrada (1,3).** Em I a entrada (1,3) é 0. Em N é 2. Em N² é 1. Logo\n(Aⁿ)₁₃ = 2n + C(n,2) = 2n + n(n−1)/2 = n(n+3)/2.\n\nConferência: n=1 dá 2 (que é a₁₃ de A). n=2 dá 5. Direto, A² tem entrada (1,3) = 1·2 + 1·1 + 2·1 = 5. ✓.\n\n**5. Desigualdade.** Queremos n(n+3)/2 > 119, isto é, n² + 3n − 238 > 0.\nAs raízes de n² + 3n − 238 = 0 são n = (−3 ± √(9+952))/2 = (−3 ± √961)/2 = (−3 ± 31)/2, ou seja, n = 14 ou n = −17.\nA parábola é positiva fora das raízes, então para n ∈ ℕ a desigualdade vale se e somente se n > 14.\n\nValores de teste:\n- n = 13: 13·16/2 = 104 (não excede 119)\n- n = 14: 14·17/2 = **119** (igual a 119, **não é maior**)\n- n = 15: 15·18/2 = **135 > 119** ✓\n\nComo a sequência n(n+3)/2 é estritamente crescente em ℕ, o menor n é 15.\n\n(Verificado por multiplicação direta de matrizes em Python: entradas (1,3) de Aⁿ para n = 1…17 são 2, 5, 9, 14, 20, 27, 35, 44, 54, 65, 77, 90, 104, 119, 135, 152, 170.)\n\n**Resposta: n = 15.**",
+    "final_answer": "n = 15. A entrada (1,3) de Aⁿ é n(n+3)/2. Para n = 14 ela vale exatamente 119 (não é maior que 119) e para n = 15 vale 135 > 119.",
+    "pitfalls": [
+      "Caso de igualdade: para n = 14 a entrada (1,3) é exatamente 119, e o enunciado pede 'maior que 119' (desigualdade estrita). Responder 14 é o erro mais provável, pois a equação n(n+3)/2 = 119 tem raiz inteira (n = 14).",
+      "Justificar a fórmula fechada: usar (I+N)ⁿ = I + nN + C(n,2)N² exige que I e N comutem (sempre verdade com a identidade) e que N³ = 0. Sem verificar a nilpotência, o binômio não termina e a fórmula não fica justificada.",
+      "Calcular N² corretamente: (N²)₁₃ = 0·2 + 1·1 + 2·0 = 1. Errar esse valor (por exemplo, achar 2 ou 3) muda a fórmula. O coeficiente 2n vem da entrada 2 de N na posição (1,3), e C(n,2) vem de (N²)₁₃ = 1.",
+      "Não confundir a entrada (1,3) com outras: a entrada (1,2) de Aⁿ é n, e a (2,3) também é n. O que importa é a primeira linha e a terceira coluna.",
+      "Resolver n² + 3n − 238 > 0 pelas raízes: discriminante 961 = 31², raízes 14 e −17. Concluir 'n > 14' e, como n ∈ ℕ, o menor é 15. Esquecer que a desigualdade é estrita leva a 14.",
+      "Alternativa sem fórmula: multiplicar matrizes uma a uma até n = 15 também funciona, mas é longa e sujeita a erro de conta. Uma boa resolução deve apresentar a fórmula geral e testar n = 13, 14 e 15 ou resolver a quadrática.",
+      "Conferir a fórmula com casos pequenos (n = 1 dá 2 e n = 2 dá 5) mostra que ela está correta, inclusive nos casos em que C(n,2) é 0."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "n = 15 (a entrada (1,3) de A^n é n(n+3)/2; vale 119 para n=14 e 135 para n=15)",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na etapa 2, o texto diz que a única entrada não nula de N² é a (1,3), mas só calcula essa entrada. As outras oito entradas de N² não são mostradas. Bastaria uma frase: a primeira coluna de N é nula e as linhas 2 e 3 de N, multiplicadas por N, dão zero. A conclusão está correta. A omissão é só de explicitação."
+          },
+          {
+            "severity": "minor",
+            "description": "N³ = N·N² = 0 é afirmado sem conta. Uma justificativa curta seria que (N·N²)_{i3} = N_{i1}·1 = 0, porque a primeira coluna de N é nula. Alternativa: N é estritamente triangular superior 3×3, logo N³ = 0. Também falta mencionar que N² da expressão da entrada (1,3) tem o termo N₁₁N₁₃ = 0, que foi omitido na soma 1·1 + 2·0."
+          },
+          {
+            "severity": "minor",
+            "description": "A monotonicidade de f(n) = n(n+3) em ℕ é só declarada. É trivial, pois f é produto de fatores positivos crescentes. Para ficar mais completo, poderia resolver n² + 3n − 238 > 0 pelas raízes 14 e −17 (discriminante 961 = 31²). Isso confirmaria que 14 é raiz exata e que a desigualdade vale se e somente se n > 14. O teste de n = 13, 14 e 15 é suficiente e válido."
+          }
+        ],
+        "summary": "A resposta final n = 15 está correta e coincide com a referência. Conferi por multiplicação direta de matrizes em Python (puro, sem numpy) para n = 1…17. As entradas (1,3) são 2, 5, 9, 14, 20, 27, 35, 44, 54, 65, 77, 90, 104, 119, 135, 152, 170, que batem com n(n+3)/2. Em n = 14 a entrada vale exatamente 119, e em n = 15 vale 135. Também confirmei o enunciado no PDF original (Questão 02, mesma matriz e mesmo limite 119). A resolução decompõe A = I + N e justifica a comutação de I com N. Mostra N² e N³ = 0, e deriva (Aⁿ)₁₃ = 2n + C(n,2) = n(n+3)/2. Verifica a fórmula com n = 1 e n = 2 (inclusive o caso C(1,2) = 0). Trata explicitamente a armadilha da igualdade em n = 14, testando f(13) = 208, f(14) = 238 e f(15) = 270 contra 238. Conclui corretamente com 15. As armadilhas da referência estão cobertas: igualdade estrita, justificativa do binômio via nilpotência, (N²)₁₃ = 1 e teste de casos pequenos. Os defeitos são só de explicitação: parte das entradas de N² e a conta de N³ = 0 ficam sem mostrar, e a monotonicidade é apenas afirmada. Está próxima de um gabarito comentado, clara e bem organizada."
+      }
+    }
+  ]
+}

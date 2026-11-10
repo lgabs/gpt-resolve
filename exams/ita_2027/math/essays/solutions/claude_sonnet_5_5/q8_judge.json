@@ -1,0 +1,55 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "a) 0 < x ≤ 1 ou 9 ≤ x < 10. b) Os lados medem √10 e 3√10 (ocorre para x = 1 ou x = 9, com y = 3).",
+  "judge_reference": {
+    "reference_solution": "**Convenções.** A=(0,0), B=(10,0), C=(10,6), D=(0,6). \"Inscrito\" significa um vértice em cada lado, na ordem E∈AB, F∈BC, G∈CD, H∈DA. O enunciado só fixa E e F, então G∈CD e H∈DA são a leitura natural e devem ser declarados. Sejam E=(x,0) com 0<x<10 (x=AE) e F=(10,y) com 0<y<6 (y=BF).\n\n**Condição de existência do retângulo.**\n- EF = (10−x, y). O lado FG é perpendicular a EF e aponta para dentro do retângulo ABCD. Logo G = F + k(−y, 10−x) com k>0.\n- G∈CD (reta y=6) dá y + k(10−x) = 6, ou seja k = (6−y)/(10−x) > 0.\n- Em um paralelogramo, H = E + (G−F) = (x − ky, 6−y).\n- G = (10 − ky, 6) tem abscissa 10−ky. Ela fica em (0,10) desde que 0<ky<10. Isso vale quando H∈DA, pois então ky = x.\n- H∈AD (reta x=0) ⇔ x = ky ⇔ x(10−x) = y(6−y). (*)\n- Com (*), temos G=(10−x, 6) e H=(0, 6−y). Assim CG=AE=x, DH=BF=y, e o centro de EFGH coincide com o centro de ABCD, pois os pontos médios de EG e FH são ambos (5,3).\n- Interpretação sintética: os triângulos retângulos AEH e BFE são semelhantes (∠AEH = ∠BFE), o que dá a mesma relação (*).\n\n**a)** Completando quadrados em (*): 25 − (x−5)² = 9 − (y−3)², isto é, (x−5)² − (y−3)² = 16.\n- Logo (x−5)² = 16 + (y−3)² ≥ 16, ou seja, |x−5| ≥ 4. Com 0<x<10, isso dá x ≤ 1 ou x ≥ 9.\n- Equivalentemente, x(10−x) = y(6−y) ≤ 9, e x(10−x) ≤ 9 ⇔ (x−1)(x−9) ≥ 0.\n- Suficiência (existência). Para x∈(0,1]∪[9,10), a equação y² − 6y + x(10−x) = 0 tem raízes y = 3 ± √((x−1)(x−9)).\n- Essas raízes ficam em (0,6): √((x−1)(x−9)) < 3 ⇔ (x−1)(x−9) < 9 ⇔ x(x−10) < 0, o que é verdade em 0<x<10.\n- Então E e F são pontos interiores dos lados, como o enunciado exige, e o retângulo existe.\n- Para 1<x<9 não existe retângulo inscrito. Os extremos x=1 e x=9 são permitidos (y=3, retângulo não degenerado). Já x=0 e x=10 são excluídos pelo enunciado.\n- Para x∈(0,1)∪(9,10) há dois retângulos, com y e 6−y. Para x=1 ou x=9 há um só, com y=3.\n\n**Resposta (a):** 0 < x ≤ 1 ou 9 ≤ x < 10.\n\n**b)** Área de EFGH = área de ABCD menos os quatro triângulos de canto. Esses triângulos têm catetos (x, 6−y), (10−x, y), (x, 6−y) e (10−x, y). Então\nS = 60 − [x(6−y) + (10−x)y] = 60 − 6x − 10y + 2xy = 30 + 2(x−5)(y−3).\n- S=30 ⇔ (x−5)(y−3)=0.\n- x=5 é impossível pelo item (a), já que |x−5|≥4. Logo y=3.\n- Substituindo em (*) ou no item (a): (x−5)²=16, então x=1 ou x=9.\n- Caso x=1: E=(1,0), F=(10,3), G=(9,6), H=(0,3). EF=(9,3), então |EF|=√90=3√10. Com k=(6−3)/9=1/3, FG=(−1,3) e |FG|=√10.\n- Caso x=9: E=(9,0), F=(10,3), G=(1,6), H=(0,3). Obtêm-se |EF|=√10 e |FG|=3√10. É a imagem especular do caso anterior, com os mesmos comprimentos.\n- Conferência: 3√10·√10 = 30. Pelas diagonais: FH=10 e EG² = (10−2x)²+36 = 100 ⇒ 10−2x = ±8 ⇒ x=1 ou 9. As diagonais de um retângulo são iguais, então esse resultado concorda com o anterior.\n- Verificação numérica em Python: para todo (x,y) válido, a fórmula S=30+2(x−5)(y−3) concorda com o produto dos lados, e a busca numérica só encontra área 30 em x=1 e x=9.\n\n**Resposta (b):** os lados medem √10 e 3√10 (≈3,16 e ≈9,49), com BF=3 e x=1 ou x=9.",
+    "final_answer": "a) 0 < x ≤ 1 ou 9 ≤ x < 10, ou seja, x ∈ (0,1] ∪ [9,10). A condição é x(10−x) = y(6−y), com y = BF.\nb) Os lados medem √10 e 3√10. Isso ocorre com BF = 3 e x = 1 ou x = 9, que são configurações espelhadas com os mesmos lados.",
+    "pitfalls": [
+      "Declarar a hipótese de inscrição: G∈CD e H∈DA, um vértice por lado, na ordem E,F,G,H. O enunciado só cita E e F.",
+      "Não responder x∈(0,10). A condição de retângulo (perpendicularidade com G e H nos lados) impõe x(10−x)=y(6−y), com y=BF. Isso restringe x a (0,1]∪[9,10). Não basta dizer que E e F estão no interior dos lados.",
+      "Fazer a volta (suficiência): mostrar que, para todo x em (0,1]∪[9,10), existe y=3±√((x−1)(x−9)) estritamente em (0,6). Sem isso só se prova uma condição necessária.",
+      "Tratar as extremidades: x=1 e x=9 são válidos (y=3, retângulo não degenerado) e entram como intervalos fechados. x=0 e x=10 estão excluídos pelo enunciado (E≠A,B).",
+      "Não supor que o centro de EFGH coincide com o de ABCD antes de provar. Isso é consequência: G=(10−x,6), H=(0,6−y). Também não supor x=5 ou y=3 de saída. O caso x=5 é impossível, pois |x−5|≥4.",
+      "Não concluir que todo retângulo inscrito tem área 30 só porque o centro é o de ABCD. A área é S=30+2(x−5)(y−3), que varia. S=30 exige y=3, com x=1 ou 9.",
+      "Em (b), fatorar (x−5)(y−3)=0 em vez de dividir por um fator. Descartar x=5 usando o item (a), pois não existe retângulo com x=5. Lembrar que x=1 e x=9 dão retângulos diferentes (espelhados), com as mesmas medidas de lados.",
+      "Não existe quadrado inscrito: k=1 levaria a x=y e 6−y=10−x, o que é contraditório. Não assumir lados iguais nem lados paralelos às diagonais.",
+      "Erros de conta típicos: sinal de k ou da orientação de FG (k<0 leva G para fora do retângulo), e esquecer que a área é o produto |EF|·|FG|, não o produto dos catetos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "a) 0 < x ≤ 1 ou 9 ≤ x < 10. b) Os lados medem √10 e 3√10 (ocorre para x = 1 ou x = 9, com y = 3).",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "As respostas finais do candidato coincidem com as da minha referência e estão corretas. (a) 0<x≤1 ou 9≤x<10. (b) lados √10 e 3√10, com y=3 e x=1 ou 9 (retângulos espelhados). Conferi o enunciado no PDF original, que bate com a transcrição. Refiz a conta em Python puro (sem numpy): para x em (0,1]∪[9,10), y=3±√((x−1)(x−9)) dá um retângulo inscrito com ângulos retos, y∈(0,6) e G=(10−x,6), H=(0,6−y). A fórmula S=30+2(x−5)(y−3) vale em todos os casos testados. A área 30 só aparece em x=1 e x=9, com lados 3√10 e √10. A modelagem do candidato (E=(x,0), F=(10,y), H=(0,h), G=F+H−E, h=6−y) é limpa e declara a hipótese de inscrição (G∈CD, H∈DA). A condição de ângulo reto dá y(6−y)=x(10−x). A volta (suficiência) está feita: y(6−y) cobre (0,9], e y=3±√(9−x(10−x)) fica estritamente em (0,6), então os extremos x=1 e x=9 entram e x=0 e x=10 são excluídos pelo enunciado. A parte (b) usa a soma dos quatro triângulos de canto (catetos e áreas conferem) e fatora (x−5)(y−3)=0 em vez de dividir. Descarta x=5 pelo item (a), calcula os lados com os dois valores de x e confere com 3√10·√10=30 e com o produto escalar. Restam só lacunas menores de rigor e de acabamento.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A atribuição G∈CD e H∈DA é declarada, mas justificada só por 'E e F são consecutivos'. Não se diz por que a outra atribuição (G em DA e H em CD) não dá um retângulo convexo inscrito, e o texto não menciona que a leitura 'um vértice por lado' é a interpretação de 'inscrito'. A leitura padrão é aceita, então é uma lacuna pequena."
+          },
+          {
+            "severity": "minor",
+            "description": "Não se comenta que, para x em (0,1)∪(9,10), existem dois retângulos (y e 6−y), e que x=1 ou 9 dá um só (y=3). Também não se mostra explicitamente que H=(0,6−y) e G=(10−x,6) ficam no interior dos lados. Isso é imediato pelas faixas dadas, mas um gabarito comentado diria uma frase a respeito. Também não é dito que a escolha da raiz ± não altera o conjunto de x possíveis."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não mostra a interpretação geométrica (semelhança AEH~BFE) nem a observação de que o centro de EFGH coincide com o de ABCD. Não é exigido, e o passo analítico basta. Faltou também registrar que a fórmula da área S=30+2(x−5)(y−3) varia, de modo que a área 30 não vale para todo retângulo inscrito."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta de (b) poderia trazer os valores aproximados (≈3,16 e ≈9,49) e dizer explicitamente qual lado é EF e qual é FG em cada caso. O candidato faz isso para x=1 e x=9, mas a linha final 'lados medem √10 e 3√10' é um pouco seca."
+          }
+        ]
+      }
+    }
+  ]
+}

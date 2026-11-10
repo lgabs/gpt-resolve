@@ -1,0 +1,62 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) Afastando-se da rede: a contagem cai de 7 para 5 e depois para 3, o que só ocorre com D crescendo (as franjas de maior ordem saem pelas bordas). b) D(t1) = 0,2 sqrt(7) m ≈ 0,53 m (saem as ordens ±3). c) v = (0,3 sqrt(3) - 0,1 sqrt(7)) m/s ≈ 0,25 m/s (0,255 m/s com raízes exatas), usando D(t1+2 s) = 0,6 sqrt(3) m ≈ 1,04 m. d) Só o máximo central resta para D > 0,6 sqrt(15) m ≈ 2,32 m, logo Δs = 0,6 sqrt(15) - 0,2 sqrt(7) ≈ 1,79 m (≈ 7 s).",
+  "judge_reference": {
+    "reference_solution": "**Resolução de referência: Questão 8 (IME 2027, Física)**\n\n**Preliminares (rede e geometria)**\n- Rede com 400 linhas/mm: d = 1/400 mm = 2,5 µm = 2500 nm. Com λ = 625 nm, d/λ = 4.\n- Incidência normal, máximos de ordem m: d·sen θ_m = m·λ, logo sen θ_m = m/4.\n- Ordens m = ±4 exigem sen θ = 1 (θ = 90°, raio rasante). Esse raio nunca atinge um anteparo finito. As ordens observáveis são m = 0, ±1, ±2, ±3, ou seja, no máximo 7 máximos. Isso é coerente com a contagem inicial de 7.\n- Hipóteses da figura: anteparo paralelo à rede, centrado sobre o eixo do feixe (ordem zero no centro). D é a distância perpendicular rede–anteparo.\n- Uma ordem m incide no anteparo à altura y_m = D·tg θ_m. Com L = 1,2 m, a semialtura é L/2 = 0,6 m. A ordem é visível se D·tg θ_m ≤ 0,6 m.\n- Tangentes exatas:\n  - m = 1: sen = 1/4, cos = √15/4, tg θ₁ = 1/√15 ≈ 0,258\n  - m = 2: sen = 1/2, cos = √3/2, tg θ₂ = 1/√3 ≈ 0,577\n  - m = 3: sen = 3/4, cos = √7/4, tg θ₃ = 3/√7 ≈ 1,134\n- Como θ_m é fixado pela rede, y_m cresce linearmente com D. Quanto mais longe está o anteparo, menos ordens cabem nele. A contagem é, portanto, não crescente em D:\n  - 7 para D < D₁\n  - 5 para D₁ ≤ D < D₂\n  - 3 para D₂ ≤ D < D₃\n  - 1 para D ≥ D₃\n\n**a) Sentido do movimento**\nA contagem cai de 7 para 5 e depois para 3. Isso só é possível se D aumentar, porque as ordens saem pelas bordas do anteparo à medida que y_m = D·tg θ_m cresce. Se o anteparo se aproximasse da rede, mais ordens entrariam e a contagem aumentaria. Conclusão: o anteparo está **afastando-se** da rede, na direção de propagação do feixe.\n\n**b) Distância no instante t₁**\nEm t₁ a contagem passa de 7 para 5. Saem simetricamente as ordens ±3:\nD₁·tg θ₃ = L/2 → D₁ = 0,6/(3/√7) = 0,2·√7 ≈ 0,53 m.\nVerificação: em D₁, y₂ = 0,53·0,577 ≈ 0,31 m < 0,6 m. A ordem 2 ainda está visível, o que dá 5 máximos.\n\n**c) Módulo da velocidade**\nEm t₁ + 2 s a contagem passa de 5 para 3. Saem as ordens ±2:\nD₂·tg θ₂ = L/2 → D₂ = 0,6·√3 ≈ 1,04 m.\nO movimento é uniforme, então:\nv = (D₂ − D₁)/Δt = (0,6√3 − 0,2√7)/2 = 0,3√3 − 0,1√7 ≈ 0,255 m/s ≈ 0,25 m/s.\nCom os valores da tabela: (1,038 − 0,530)/2 = 0,254 m/s.\n\n**d) Distância percorrida até restar apenas 1 máximo**\nSó o máximo central sobra quando sai a ordem ±1:\nD₃·tg θ₁ = L/2 → D₃ = 0,6·√15 ≈ 2,32 m.\nA distância percorrida desde t₁ é:\nΔx = D₃ − D₁ = 0,6√15 − 0,2√7 ≈ 2,32 − 0,53 ≈ 1,79 m.\nComo complemento, o tempo decorrido é Δx/v ≈ 7,0 s após t₁.\n\n**Verificação numérica:** um script com contagem de ordens visíveis, varrendo D, confirmou as transições em D ≈ 0,529 m, 1,039 m e 2,324 m, com contagens 7 → 5 → 3 → 1.",
+    "final_answer": "a) Afastando-se da rede. A contagem de máximos cai de 7 para 5 e depois para 3. Isso só ocorre se o anteparo se afastar, porque as ordens saem pelas bordas quando y_m = D·tg θ_m cresce com D.\n\nb) D(t₁) = 0,2·√7 ≈ 0,53 m (distância perpendicular rede–anteparo, saída das ordens ±3).\n\nc) |v| = (0,6·√3 − 0,2·√7)/2 ≈ 0,25 m/s (valor exato 0,255 m/s; com a tabela, 0,254 m/s).\n\nd) Δx = 0,6·√15 − 0,2·√7 ≈ 1,79 m (≈ 1,8 m), correspondente à saída das ordens ±1. O tempo decorrido é de cerca de 7 s após t₁.\n\nQuestão discursiva, sem alternativas.",
+    "pitfalls": [
+      "Unidade da rede: 400 linhas/mm significa d = 1/400 mm = 2,5 µm = 2500 nm, e não 400 nm nem 1/400 m. A razão d/λ = 4 é o dado que organiza toda a questão.",
+      "Ordem máxima: m = ±4 corresponde a sen θ = 1 (θ = 90°), que nunca atinge um anteparo finito. Contar 9 máximos é erro. O máximo observável é 7, coerente com a contagem inicial do enunciado.",
+      "Semialtura: o máximo central está no centro do anteparo, então a ordem só é visível se |y| ≤ L/2 = 0,6 m. Usar L = 1,2 m como limite é erro.",
+      "Trigonometria exata: a aproximação de ângulo pequeno y = mλD/d daria D₁ = 0,8 m, D₂ = 1,2 m, D₃ = 2,4 m, v = 0,2 m/s e Δx = 1,6 m, todos errados, porque θ₃ ≈ 48,6° não é pequeno. A tabela de raízes (√7, √3, √15) indica o uso da tangente exata.",
+      "Geometria: use tg θ = y/D, com D a distância perpendicular ao plano da rede. Usar sen θ = y/D, ou a distância ao longo do raio (D/cos θ) como se fosse D, produz valores errados.",
+      "Sentido do movimento: deduza pelo comportamento da contagem. Ela diminui quando D aumenta, então o anteparo se afasta. Não chute: se o anteparo se aproximasse, entrariam mais ordens e a contagem subiria.",
+      "Simetria: as ordens +m e −m saem juntas. A passagem de 7 para 5 remove duas franjas (±3), e a passagem de 5 para 3 remove ±2. Não trate isso como uma franja só.",
+      "Interpretação de 'só 1 máximo': sobra apenas o máximo central (m = 0). O critério é a saída de ±1, e não a contagem zero.",
+      "Velocidade: v = ΔD/Δt com Δt = 2 s entre D₁ e D₂. Não use D₂/2 nem D₂ − 0, porque D₂ é a posição absoluta em relação à rede e não um deslocamento. O instante t₁ em si não é necessário para o cálculo.",
+      "Item d: a questão pede a distância percorrida, Δx = D₃ − D₁ ≈ 1,79 m, e não a posição final D₃ ≈ 2,32 m.",
+      "Arredondamento: com a tabela (duas casas), D₁ = 0,53 m, D₂ = 1,038 m, D₃ = 2,322 m, v = 0,254 m/s e Δx = 1,79 m. Os valores exatos são 0,529 m, 1,039 m, 2,324 m, 0,255 m/s e 1,795 m. Ambos devem ser aceitos.",
+      "Hipóteses a declarar: anteparo paralelo à rede, centrado no eixo do feixe (ordem zero no centro, como mostra a figura), meio é ar (λ = 625 nm sem correção de índice) e incidência normal."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) Afastando-se da rede: a contagem cai de 7 para 5 e depois para 3, o que só ocorre com D crescendo (as franjas de maior ordem saem pelas bordas). b) D(t1) = 0,2 sqrt(7) m ≈ 0,53 m (saem as ordens ±3). c) v = (0,3 sqrt(3) - 0,1 sqrt(7)) m/s ≈ 0,25 m/s (0,255 m/s com raízes exatas), usando D(t1+2 s) = 0,6 sqrt(3) m ≈ 1,04 m. d) Só o máximo central resta para D > 0,6 sqrt(15) m ≈ 2,32 m, logo Δs = 0,6 sqrt(15) - 0,2 sqrt(7) ≈ 1,79 m (≈ 7 s).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A hipótese sobre o meio não é declarada. A resolução usa λ = 625 nm diretamente sem dizer que o meio é o ar (ou que λ é o comprimento de onda no meio). A referência declara isso explicitamente. Deve-se acrescentar a hipótese 'meio = ar, λ dado no meio'."
+          },
+          {
+            "severity": "minor",
+            "description": "D não é definida como distância perpendicular. A resolução escreve 'D é a distância rede–anteparo', mas y_m = D·tgθ_m só vale para D medido perpendicularmente ao plano da rede. Como o item (b) pede exatamente essa distância, deve-se escrever 'distância perpendicular entre o plano da rede e o anteparo'."
+          },
+          {
+            "severity": "minor",
+            "description": "Afirmação excessiva na seção de verificações: 'A contagem inicial de 7 confirma d/λ = 4'. Sete máximos só implicam 3 ≤ d/λ ≤ 4 (m = 3 visível e m = 4 não visível). O valor 4 vem dos dados (400 linhas/mm e 625 nm), não só da contagem. A frase deve ser reescrita."
+          },
+          {
+            "severity": "minor",
+            "description": "Arredondamento inconsistente no item (c). O valor exato 0,2550 m/s aparece como '≈ 0,25 m/s', o que só é coerente com a aproximação pela tabela (0,254). Com duas casas decimais, 0,2550 arredondaria para 0,26. Deve-se dar 0,255 m/s e explicitar que 0,25 m/s vem da tabela."
+          },
+          {
+            "severity": "minor",
+            "description": "Vocabulário impreciso. 'Ordens visíveis' é usado antes de aplicar a condição do anteparo, quando na verdade são as ordens existentes (|sen θ| ≤ 1). 'Visível' só cabe após |y| ≤ L/2. Além disso, 'velocidade de centésimos de m/s' é impreciso, pois 0,25 m/s é da ordem de décimos de m/s."
+          }
+        ],
+        "summary": "Comparação item a item. (a) Ambas: afastando-se da rede. (b) Ambas: D(t₁) = 0,2√7 ≈ 0,53 m. (c) Ambas: v = (0,6√3 − 0,2√7)/2 ≈ 0,255 m/s (0,254 m/s com a tabela). (d) Ambas: Δs = 0,6√15 − 0,2√7 ≈ 1,79 m. Não há divergência de resposta. Refiz as contas em python3 e varri a contagem de máximos em função de D. Obtive d/λ = 4, tg θ₁ = 1/√15, tg θ₂ = 1/√3, tg θ₃ = 3/√7 e transições 7→5 em D = 0,5292 m, 5→3 em 1,0392 m e 3→1 em 2,3238 m. A resolução do candidato confere com isso e com a referência. As armadilhas foram tratadas: unidade da rede (2500 nm, d/λ = 4), ordem ±4 rasante descartada (7 máximos), semialtura L/2 = 0,6 m, tangente exata (sem aproximação de ângulo pequeno), D como distância perpendicular (implícita, não declarada), sentido do movimento deduzido pela monotonia de N(D), ordens em pares ±m, máximo central permanece, v = ΔD/Δt e Δx em vez de D₃. Faltam apenas detalhes de redação: meio não declarado, D não definida explicitamente como perpendicular, overclaim sobre d/λ = 4 nas verificações, arredondamento de v e vocabulário de 'visível'. Nenhum problema de conteúdo ou de cálculo. A resolução é correta, completa e bem justificada, e um professor a publicaria como gabarito comentado após ajustes pequenos de redação. Nota 9,0."
+      }
+    }
+  ]
+}

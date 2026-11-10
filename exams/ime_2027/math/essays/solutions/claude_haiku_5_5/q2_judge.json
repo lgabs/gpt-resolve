@@ -1,0 +1,55 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "P = 2/5 = 0,4. As raízes são z = e^{ikπ/3} para k = 1, ..., 5 (as sextas raízes da unidade, exceto 1). Só z = 1/2 ± i√3/2 satisfaz |z − 3/2| ≤ √7/2, com igualdade no bordo do disco. Logo 2 casos favoráveis em 5.",
+  "judge_reference": {
+    "reference_solution": "Questão 2 (IME 2026/2027, Matemática). Enunciado conferido na página 1 do PDF: p(z) = 1 + z + z² + z³ + z⁴ + z⁵ = 0 e a condição |z − 3/2| ≤ √7/2.\n\nITEM 1: Determinar as raízes de p(z).\n- Multiplicando por (z − 1): (z − 1)·p(z) = z⁶ − 1.\n- Antes de concluir, verificar se z = 1 é raiz: p(1) = 1+1+1+1+1+1 = 6 ≠ 0. Logo z = 1 NÃO é raiz de p, mesmo que apareça como raiz de z⁶ − 1.\n- Portanto, para z ≠ 1: p(z) = 0 ⟺ z⁶ = 1 (e z ≠ 1).\n- As raízes de p são as 5 raízes sextas da unidade diferentes de 1: z = −1, e^{±iπ/3} = 1/2 ± i√3/2, e^{±2iπ/3} = −1/2 ± i√3/2.\n- As 5 raízes são distintas (z⁶ − 1 não tem raiz múltipla), então \"escolher ao acaso uma raiz\" é uma escolha uniforme entre 5 valores.\n- Conferência numérica feita com Python: |p(z)| ~ 1e-15 nessas 5 raízes e p(1) = 6.\n\nITEM 2: Simplificar a condição geométrica.\n- Todas as raízes têm módulo 1 (|z| = 1, pois são raízes da unidade).\n- Para z = x + iy com x² + y² = 1: |z − 3/2|² = (x − 3/2)² + y² = |z|² − 3x + 9/4 = 13/4 − 3x.\n- A condição |z − 3/2| ≤ √7/2 equivale a |z − 3/2|² ≤ 7/4, ou seja 13/4 − 3x ≤ 7/4 ⟺ x ≥ 1/2.\n- Esta forma exata evita erro de arredondamento no caso de igualdade.\n\nITEM 3: Testar cada raiz.\n- z = −1 (x = −1): |−1 − 3/2|² = 25/4 > 7/4. NÃO satisfaz.\n- z = e^{iπ/3} = 1/2 + i√3/2 (x = 1/2): |−1 + i√3/2|² = 1 + 3/4 = 7/4. Igualdade, satisfaz pois a desigualdade é \"≤\" (raiz na fronteira do disco). SATISFAZ.\n- z = e^{−iπ/3} = 1/2 − i√3/2: mesmo cálculo, 7/4. SATISFAZ.\n- z = e^{2iπ/3} = −1/2 + i√3/2 (x = −1/2): |−2 + i√3/2|² = 4 + 3/4 = 19/4 > 7/4. NÃO satisfaz.\n- z = e^{−2iπ/3}: mesmo cálculo, 19/4. NÃO satisfaz.\n\nITEM 4: Probabilidade.\n- Casos favoráveis: 2 (e^{±iπ/3}). Casos totais: 5 (raízes distintas de p).\n- P = 2/5 = 0,4 (40%).\n\nObservação: a questão não traz alternativas no enunciado transcrito, então a resposta é o valor numérico 2/5.\n\nResposta final: P = 2/5.",
+    "final_answer": "Resposta: P = 2/5 (= 0,4, ou 40%).\n\nResumo: (1) Multiplicando p(z) = 1+z+…+z⁵ por (z−1) obtém-se z⁶ − 1; como p(1) = 6 ≠ 0, z = 1 não é raiz, e as raízes de p são as 5 raízes sextas da unidade diferentes de 1: −1, e^{±iπ/3}, e^{±2iπ/3}. (2) Para |z| = 1, |z − 3/2|² = 13/4 − 3x, então a condição |z − 3/2| ≤ √7/2 equivale a x ≥ 1/2. (3) Satisfazem a condição apenas e^{iπ/3} e e^{−iπ/3} (com |z − 3/2|² = 7/4, igualdade incluída). Logo P = 2/5.",
+    "pitfalls": [
+      "Esquecer de excluir z = 1: ao multiplicar por (z − 1), z⁶ − 1 = 0 tem 6 raízes, mas z = 1 não anula p(1) = 6. Incluí-la dá 3 favoráveis em 6 casos, probabilidade 1/2 (errada), pois z = 1 está dentro do disco (|1 − 3/2| = 1/2 ≤ √7/2).",
+      "Caso de fronteira: e^{±iπ/3} estão exatamente sobre a circunferência |z − 3/2| = √7/2 (|z − 3/2|² = 7/4). A desigualdade é '≤', então entram na contagem. Usar '<' daria 0 favoráveis e probabilidade 0.",
+      "Tratar a igualdade com aproximação decimal pode levar a erro (1,75 vs 1,7500000001). Usar a forma exata |z − 3/2|² = 13/4 − 3x ≤ 7/4 ⟺ x ≥ 1/2, ou aritmética com √3 exata.",
+      "Ler o disco errado: o centro é 3/2 (não −3/2 nem 1) e o raio é √7/2 (raio² = 7/4). Trocar por raio √7 ou 7/2 muda os casos favoráveis.",
+      "Denominador: são 5 raízes distintas (não 6, pois z = 1 não é raiz; não 4, pois z = −1 é raiz). Confira p(−1) = 1−1+1−1+1−1 = 0.",
+      "Não é preciso resolver a quíntica por fórmulas (Cardano/Ferrari). Basta a fatoração z⁶ − 1 = (z − 1)·p(z), que fornece as raízes diretamente.",
+      "Dizer 'raízes de módulo 1' sem justificar: aqui vale porque são raízes da unidade (z⁶ = 1). A simplificação |z − 3/2|² = 13/4 − 3x depende de |z| = 1; não aplicar isso em outros contextos sem checar.",
+      "Escolha 'ao acaso' é uniforme sobre o conjunto das 5 raízes distintas (não sobre o disco nem sobre pontos contínuos). Não há multiplicidade a considerar, pois z⁶ − 1 tem raízes simples.",
+      "Erros de sinal/parte real ao calcular Re(z) de e^{2iπ/3} = −1/2 + i√3/2: deve dar |−2 + i√3/2|² = 19/4 (não satisfaz). Confundir com e^{iπ/3} (Re = +1/2) leva a contar 4 favoráveis e P = 4/5."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "P = 2/5 = 0,4. As raízes são z = e^{ikπ/3} para k = 1, ..., 5 (as sextas raízes da unidade, exceto 1). Só z = 1/2 ± i√3/2 satisfaz |z − 3/2| ≤ √7/2, com igualdade no bordo do disco. Logo 2 casos favoráveis em 5.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na seção 4 (verificação por identidade) usa-se |z| = 1 sem justificar. Deveria dizer que |z_k| = 1 segue de z_k = e^{ikπ/3} (ou de |z|^6 = 1 para z^6 = 1). O teste direto da seção 3 não depende disso, mas a identidade fica sem a premissa explicitada."
+          },
+          {
+            "severity": "minor",
+            "description": "A seção 'Conferências' afirma uma verificação numérica (|P(z_k)| ≈ 10^-15) que não aparece na resolução. Essa afirmação não é verificável no texto e não contribui para a prova. Deve ser removida ou substituída por um argumento exato, que já existe: z^6 = 1 com z ≠ 1."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'conferem com a tabela acima' refere-se a uma tabela que não existe. Deveria apontar para o item 3 (lista de testes)."
+          },
+          {
+            "severity": "minor",
+            "description": "A checagem '0 ≤ P ≤ 1' é vazia para este problema. Deve ser cortada ou trocada por uma checagem substantiva, como a de que o total de casos é 5 e não 6 (já coberto em outro ponto do texto)."
+          }
+        ],
+        "summary": "Reli o enunciado na página 1 do PDF: a equação é 1 + z + … + z⁵ = 0 e a condição é |z − 3/2| ≤ √7/2. Recalculei tudo com python3 e com frações exatas. As raízes são e^{ikπ/3}, k = 1..5, todas simples. Para |z| = 1, |z − 3/2|² = 13/4 − 3·Re(z), então a condição equivale a Re(z) ≥ 1/2. Só z₁ = e^{iπ/3} e z₅ = e^{−iπ/3} satisfazem, com igualdade no bordo, que é incluído. Logo P = 2/5 = 0,4. A resolução do candidato chega à mesma resposta, e a minha referência também. Não há divergência de resposta.\n\nArmadilhas: o candidato tratou todas. Excluiu z = 1 (P(1) = 6 ≠ 0) e usou total de 5 casos. Tratou o bordo como incluído ao usar ≤. Leu corretamente centro 3/2 e raio² = 7/4. Usou aritmética exata, sem decimais. Testou os sinais de Re(z) para z₂, z₄ (19/4) e z₃ (25/4). Obteve as raízes por fatoração z⁶ − 1 = (z − 1)P(z), sem resolver a quíntica. Declarou a escolha uniforme sobre 5 raízes simples.\n\nNão há problemas críticos nem graves. Os pontos restantes são cosméticos ou de redação: a premissa |z| = 1 não justificada na verificação, uma afirmação numérica solta, uma referência a tabela inexistente e uma checagem vazia. Como resolução de gabarito, está publicável após esses ajustes de texto. Nota 9,5.\""
+      }
+    }
+  ]
+}

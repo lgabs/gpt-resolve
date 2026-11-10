@@ -1,0 +1,97 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "a) P_min = 35 W (energia mínima 3,6·10^4 J na bateria + 6,0·10^3 J de calor = 4,2·10^4 J em 1200 s). b) Δt_max = 14L/U = 2,24π²·10^-6 s ≈ 2,2·10^-5 s (cerca de 22 µs), com L = μ0 N² A/ℓ = 8π²·10^-7 H, M = L e ΔI = 14 A.",
+  "judge_reference": {
+    "reference_solution": "**Dados.** m = 100 g; c = 2,0 J/(g·°C); ΔT = 50 − 20 = 30 °C; bateria de 2 Ah e 5,0 V; Δt_carga = 20 min = 1200 s. Solenoide: n = 20 espiras/cm = 2000 espiras/m; r = 0,5 cm; ℓ = 2 cm, logo N = nℓ = 40 espiras e A = πr² = π·(5·10⁻³)² = 2,5·10⁻⁵ π m². Constante: μ₀ = 4π·10⁻⁷.\n\n---\n**a) Potência média mínima fornecida pelo carregador**\n\nToda a energia que o carregador entrega durante a carga vai para dois destinos: a energia armazenada na bateria e o aquecimento do aparelho. As perdas no carregador, nas bobinas ou para o ambiente só aumentam a energia necessária. Por isso o mínimo ocorre quando só esses dois destinos existem.\n\n1. Energia armazenada na bateria (descarregada → carregada):\n q = 2 Ah = 2·3600 = 7200 C\n E_bat = q·V = 7200·5,0 = 3,6·10⁴ J.\n2. Calor que elevou a temperatura do aparelho. Como c está em J/(g·°C), usa-se m em gramas:\n Q = m c ΔT = 100·2,0·30 = 6,0·10³ J.\n3. Energia mínima fornecida:\n E_min = 3,6·10⁴ + 6,0·10³ = 4,2·10⁴ J.\n4. Potência média mínima:\n P_min = E_min/Δt_carga = 4,2·10⁴/1200 = **35 W**.\n\nQualquer perda adicional dá P > 35 W. Logo P ≥ 35 W, e 35 W é o mínimo.\n\n---\n**b) Δt máximo**\n\n1. Indutância do solenoide do carregador (solenoide ideal, B = μ₀ n I):\n L = μ₀ n² A ℓ = 4π·10⁻⁷ · (2000)² · (2,5·10⁻⁵ π) · (2·10⁻²)\n L = 8·10⁻⁷ π² H ≈ 7,9·10⁻⁶ H.\n2. Acoplamento perfeito entre bobinas idênticas: todo o fluxo do carregador atravessa as N espiras do celular. Então M = √(L₁L₂) = L. Diretamente: ε = N·A·μ₀ n·(dI/dt) = μ₀ n² A ℓ·(dI/dt) = L·dI/dt.\n3. Lei de Faraday–Lenz com rampa linear (dI/dt = ΔI/Δt constante, o que dá f.e.m. constante):\n ε = M·ΔI/Δt = L·14/Δt = 5,0 V\n Δt = 14 L/5,0 = 14·8·10⁻⁷ π²/5 = 2,24·10⁻⁶ π² s\n **Δt ≈ 2,2·10⁻⁵ s ≈ 22 µs.**\n\n**Por que \"máximo\".** Δt = M ΔI/ε. Toda não idealidade reduz esse valor:\n- ΔI ≤ 14 A (a corrente varia \"entre 0 e 14 A\", e 14 A é o limite);\n- M ≤ L (acoplamento k ≤ 1);\n- o solenoide real é curto (ℓ = 2 cm, igual a duas vezes o diâmetro). Há espalhamento de fluxo nas pontas e o L real fica menor que o ideal, em torno de 0,8 L (estimativa pela fórmula de Wheeler).\n\nAssim, o valor com solenoide ideal, ΔI = 14 A e k = 1 é o teto: Δt ≤ 2,24·10⁻⁶ π² s.\n\n**Verificação de consistência (não exigida).**\n- A energia magnética por ciclo é ½ L I² = ½·7,9·10⁻⁶·14² ≈ 7,7·10⁻⁴ J.\n- Dividida por Δt dá exatamente ½ I ε = ½·14·5 = 35 W.\n- Isso é igual a ε·⟨I⟩ = 5·7 = 35 W (corrente média da rampa 0→14 A é 7 A).\n- Esse valor coincide com o resultado do item (a), o que confirma que o problema foi montado de forma coerente.",
+    "final_answer": "a) P_min = 35 W (E = 36 000 J da bateria + 6 000 J de calor = 42 000 J em 1200 s).\n\nb) L = μ₀n²Aℓ = 8·10⁻⁷π² H ≈ 7,9 µH; M = L; Δt_máx = 14L/5 = 2,24·10⁻⁶ π² s ≈ 2,2·10⁻⁵ s (≈ 22 µs).",
+    "pitfalls": [
+      "Item (a): esquecer o calor dissipado no aparelho (6 kJ) e usar só a energia da bateria (36 kJ), o que dá 30 W em vez de 35 W.",
+      "Unidades: c está em J/(g·°C), então m deve entrar em gramas (100 g). Usar 0,1 kg com esse c erra por um fator 1000. Converter Ah → C (×3600) e 20 min → 1200 s. A energia da bateria é q·V = 7200 C × 5 V = 36 kJ, não 2 Ah × 5 V = 10 \"unidades\" sem converter.",
+      "Justificar por que 35 W é o MÍNIMO: o carregador pode ter perdas (efeito Joule nas bobinas, calor para o ambiente, perdas no próprio carregador), que só aumentam a potência fornecida. O mínimo corresponde a rendimento de 100% e a todo o calor ficando no aparelho. Dizer que a potência é exatamente 35 W seria impreciso.",
+      "Interpretar corretamente a geometria: 20 espiras/cm = 2000 espiras/m, ℓ = 2 cm → N = 40; A = π(0,5 cm)² = 2,5·10⁻⁵π m² (converter cm → m e elevar o raio ao quadrado). Erros de potência de 10 são comuns, por exemplo usar o diâmetro ou esquecer o fator 10⁴ ao converter cm² → m².",
+      "Reconhecer que acoplamento perfeito entre bobinas idênticas implica M = L = μ₀n²Aℓ. Usar M = μ₀ n N A com N = nℓ dá o mesmo resultado. Não confundir L com μ₀ n I A nem esquecer um fator n ou N.",
+      "Usar a f.e.m. induzida no CELULAR, ε = M·dI/dt = 5 V, com dI/dt = 14/Δt constante (rampa linear). Não igualar a 5 V a tensão em cima do carregador, e não usar a energia ½LI² como se fosse a f.e.m.",
+      "Explicar o \"máximo possível\": ΔI ≤ 14 A, M ≤ L e o solenoide real curto (ℓ = 2·diâmetro) tem L menor que o ideal. Todos esses efeitos diminuem Δt, então o valor com solenoide ideal é um limite superior. Apresentar o resultado como igualdade sem comentar esta hipótese deixa a resolução incompleta.",
+      "Resultado numérico: a prova pede a expressão resolvida integralmente, então não basta deixar π² ou 2,24·10⁻⁶π² sem avaliar. π² ≈ 9,87 dá Δt ≈ 2,21·10⁻⁵ s. Não deixar a ordem de grandeza errada (µs, não ms nem s).",
+      "O enunciado imprime μ₀ em \"N.A⁻¹\", o que é erro de impressão; a unidade correta é N·A⁻². Usar o valor 4π·10⁻⁷ normalmente.",
+      "Checagem de sanidade útil (e boa de apresentar): ε·I_médio = 5 V × 7 A = 35 W, igual a ½LI²/Δt e à potência do item (a)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) P_min = 35 W (energia 36000 J da bateria + 6000 J de aquecimento, em 1200 s). b) L = 8π²·10⁻⁷ H ≈ 7,9·10⁻⁶ H e Δt_max = 14L/5 = 2,24π²·10⁻⁶ s ≈ 2,2·10⁻⁵ s (≈ 22 μs).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (b): o argumento de \"máximo\" é montado só em \"é preciso ε ≥ U\". Isso é meio circular, porque o enunciado já fixa ε = U. A resolução não diz que o valor com solenoide ideal, ΔI = 14 A e k = 1 é um teto, pois ΔI ≤ 14 A, M ≤ L (k ≤ 1) e o solenoide real curto tem L menor. O raciocínio da conferência (Δt maior → P < 35 W → carga em 20 min impossível) é o melhor argumento do \"máximo\", mas fica como observação lateral. Deveria ser o argumento principal, junto com a lista de não idealidades que só reduzem Δt."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de solenoide longo é chamada de \"aproximação razoável, pois ℓ/R = 4\". Na verdade ℓ = 2 cm é só duas vezes o diâmetro, e a correção de extremidade (Nagaoka) dá L real ≈ 0,8·L ideal (~20% de erro). A resolução não diz que essa idealização superestima L e Δt, ou seja, que o resultado é cota superior. Deveria dizer isso e relacionar com o termo \"máximo\" do enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (a): o cálculo Q = mcΔθ = 100·2,0·30 usa m em gramas porque c está em J/(g·°C), mas isso não é dito. Uma frase sobre a coerência de unidades evitaria a confusão kg×g. O argumento de mínimo (perdas só aumentam a energia) está bem apresentado, e a conferência 6 A·5 V + 5 W = 35 W é correta."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência em (b) afirma que a f.e.m. no primário é 5 V \"mesmo fluxo e mesmo número de espiras\" e que P = ε·Ī = 35 W. Isso vale para o caso ideal (sem resistência das bobinas, sem corrente de magnetização extra). Falta dizer que é o caso ideal, em que coincide exatamente com o mínimo de (a). Não é erro, mas é uma hipótese implícita."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta final traz 2,24π²·10⁻⁶ s ≈ 2,2·10⁻⁵ s. A prova exige expressões numéricas resolvidas integralmente, e a avaliação de π² está feita. O valor com mais algarismos (2,21·10⁻⁵ s) seria mais fiel, mas 2,2·10⁻⁵ s é aceitável (dois algarismos significativos, como os dados)."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a minha referência e estão corretas. Item (a): 35 W (3,6·10⁴ J da bateria + 6,0·10³ J de calor = 4,2·10⁴ J em 1200 s). Item (b): Δt_máx = 14L/U = 2,24π²·10⁻⁶ s ≈ 2,2·10⁻⁵ s (~22 µs), com L = μ₀N²A/ℓ = 8π²·10⁻⁷ H ≈ 7,9 µH e M = L. Refiz as contas em Python e confirmei: L = 7,896·10⁻⁶ H, Δt = 2,2108·10⁻⁵ s e P = 35 W. O enunciado do PDF confere com a transcrição. As armadilhas principais foram tratadas: o calor de 6 kJ entra no balanço de energia, Ah→C e min→s foram convertidos, a geometria está correta (N = 40, A = 2,5π·10⁻⁵ m²), M = L pelo acoplamento perfeito, e usa-se a f.e.m. no celular com dI/dt constante. A justificativa de \\\"mínimo\\\" no item (a) é clara. A conferência cruzada ε·Ī = 5·7 = 35 W liga (b) a (a) e dá coerência ao problema. A fraqueza é só a justificação do \\\"máximo\\\" em (b). O argumento principal (ε ≥ U) é meio circular. Falta dizer que ΔI ≤ 14 A, k ≤ 1 e o solenoide real curto só reduzem Δt, de modo que o valor ideal é um teto. O solenoide de ℓ = 2·diâmetro é chamado de \\\"aproximação razoável\\\" sem notar que a idealização superestima L. São lacunas de rigor e completude, sem erro de conta ou de física. Com elas, a nota fica um pouco abaixo de um gabarito comentado que se publicaria sem edição.\"}"
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "a) P_min = 35 W (energia mínima 3,6·10^4 J na bateria + 6,0·10^3 J de calor = 4,2·10^4 J em 1200 s). b) Δt_max = 14L/U = 2,24π²·10^-6 s ≈ 2,2·10^-5 s (cerca de 22 µs), com L = μ0 N² A/ℓ = 8π²·10^-7 H, M = L e ΔI = 14 A.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na conferência do item (b), a frase \"se Δt fosse maior que Δt_max... a f.e.m. cairia abaixo de 5 V e a bateria não carregaria\" é heurística e vai além do enunciado. O enunciado fixa ε = 5 V, então Δt é determinado. O \"máximo\" vem das idealizações (k ≤ 1, ΔI ≤ 14 A, solenoide ideal), não de um limiar de carga. A frase embaralha as duas interpretações. Convém dizer só que o valor ideal é um teto e que a f.e.m. de 5 V é dada."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução escreve ΔI ≤ 14 A e k ≤ 1 como se fossem desigualdades livres. O enunciado diz que a corrente varia entre 0 e 14 A e que o acoplamento é perfeito, então ΔI = 14 A e k = 1 são dados. A desigualdade só vale como argumento do \"máximo possível\". Ficaria mais limpo calcular primeiro Δt = 14L/U com esses valores e depois justificar que a não idealidade (solenoide curto) só o reduz."
+          },
+          {
+            "severity": "minor",
+            "description": "A correção de Nagaoka (\"cerca de 20%\") é citada sem fórmula nem número. O valor tabelado para ℓ/D = 2 é K ≈ 0,82, ou seja, cerca de 18%. A ordem de grandeza está certa e o argumento qualitativo (o L real é menor que o ideal) basta, mas faltou dar o valor ou marcar como estimativa."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência de potência (ε·Ī = 5·7 = 35 W) supõe primário ideal, sem perdas, com o mesmo fluxo e o mesmo N do secundário. Ela é apresentada como consistência e não como prova, o que está correto. Faltou dizer que ela só vale nessa idealização. Ela coincide com o item (a), o que é um bom teste de sanidade."
+          },
+          {
+            "severity": "minor",
+            "description": "Formatação do resultado final: no corpo aparece 2,21·10⁻⁵ s e no resumo 2,2·10⁻⁵ s, e o resultado fica na forma 2,24π²·10⁻⁶ s ≈ .... A prova pede a expressão numérica resolvida integralmente. A resolução faz isso, mas o resumo poderia trazer só o valor numérico (≈ 2,2·10⁻⁵ s) com algarismos consistentes."
+          },
+          {
+            "severity": "minor",
+            "description": "Não é comentado que o enunciado imprime a unidade de μ₀ como N·A⁻¹, enquanto a correta é N·A⁻². Usar 4π·10⁻⁷ normalmente está certo, então o impacto é nulo. Apenas uma observação de completude."
+          }
+        ],
+        "summary": "Respostas finais conferidas item por item contra o enunciado original (página 9 do PDF) e contra a minha referência, com recálculo em Python. a) 35 W: E_bat = 7200·5 = 36 kJ, Q = 100·2,0·30 = 6 kJ, total 42 kJ em 1200 s, o que dá 35 W. b) N = 40, A = 2,5π·10⁻⁵ m², L = μ₀N²A/ℓ = 8π²·10⁻⁷ H ≈ 7,9 µH, M = L, Δt = 14L/5 = 2,24π²·10⁻⁶ s ≈ 2,21·10⁻⁵ s (≈ 22 µs). O candidato e a referência coincidem nos dois itens, e as contas estão certas. Todas as armadilhas foram tratadas: o calor de 6 kJ está incluído (não dá 30 W), c é usado com m em gramas, as conversões Ah→C e min→s estão feitas, o mínimo é justificado por perdas que só aumentam a energia, a geometria (N, A, ℓ) está correta, M = kL com k = 1, a f.e.m. é a do celular com dI/dt constante, e o \\\"máximo\\\" é explicado (solenoide ideal como teto, com correção de Nagaoka ~20%). Há uma conferência de consistência (ε·Ī = 35 W) e uma estimativa de ordem de grandeza. O texto é claro, bem estruturado e quase no nível de gabarito comentado. Os defeitos são só de polimento: uma frase solta sobre \\\"a bateria não carregaria\\\", a leitura de ΔI e k como desigualdades quando são dados, a correção de Nagaoka sem número, e pequenas inconsistências de apresentação. Nenhum afeta a correção."
+      }
+    }
+  ]
+}

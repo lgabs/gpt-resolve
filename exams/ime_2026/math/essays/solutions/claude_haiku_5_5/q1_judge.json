@@ -1,0 +1,57 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "α = 3 e β = 2 (única solução, com z = 3 + 2i; verificado: z³ = −9 + 46i). Usando |z|² = 13 e α² + β² = 13 com {α², β²} = {4, 9}, a primeira equação elimina α² = 4 e dá α = 3; a segunda dá β = 2.",
+  "judge_reference": {
+    "reference_solution": "**Questão 1 (IME 2025/2026, Matemática): resolução de referência**\n\n**Item 1: expansão de z³.** Com z = α + βi, usando (x + y)³ = x³ + 3x²y + 3xy² + y³ e y = βi:\n- (βi)² = −β²\n- (βi)³ = −β³ i\n\nLogo z³ = (α³ − 3αβ²) + (3α²β − β³)i.\n\n**Item 2: sistema.** Igualando as partes real e imaginária de z³ a −9 e 46:\n- (I) α³ − 3αβ² = −9, ou seja, α(α² − 3β²) = −9\n- (II) 3α²β − β³ = 46, ou seja, β(3α² − β²) = 46\n\n**Item 3: restrições inteiras.** De (I), α divide 9. De (II), β divide 46. Portanto α ∈ {±1, ±3, ±9} e β ∈ {±1, ±2, ±23, ±46}. Isso torna a busca finita e permite provar a unicidade.\n\n**Item 4: análise caso a caso em α.** Para cada α, a equação (I) dá β²; só interessam valores de β² inteiros e positivos.\n- α = 1: 1 − 3β² = −9 ⇒ β² = 10/3. Não serve.\n- α = −1: −(1 − 3β²) = −9 ⇒ β² = −8/3. Não serve.\n- α = 3: 3(9 − 3β²) = −9 ⇒ 9 − 3β² = −3 ⇒ β² = 4 ⇒ β = ±2. Em (II): para β = 2, 2(27 − 4) = 46 ✓; para β = −2, o resultado é −46 ✗. Candidato: (3, 2).\n- α = −3: −3(9 − 3β²) = −9 ⇒ β² = 2. Não serve.\n- α = 9: 9(81 − 3β²) = −9 ⇒ β² = 82/3. Não serve.\n- α = −9: −9(81 − 3β²) = −9 ⇒ β² = 80/3. Não serve.\n\nComo a análise cobre todos os divisores de 9, o único candidato é (α, β) = (3, 2).\n\n**Item 5: verificação direta.** Para z = 3 + 2i:\n- z² = 9 + 12i + 4i² = 5 + 12i\n- z³ = (5 + 12i)(3 + 2i) = 15 + 10i + 36i − 24 = −9 + 46i ✓\n\n**Item 6: conferência pelo módulo (complementar).** |z³|² = 81 + 46² = 2197 = 13³, logo α² + β² = 13. Os pares inteiros são (±2, ±3) e (±3, ±2). Cubando os oito pares, só (3, 2) produz −9 + 46i:\n- (3, 2) ↦ −9 + 46i\n- (−3, 2) ↦ 9 + 46i\n- (3, −2) ↦ −9 − 46i\n- (−3, −2) ↦ 9 − 46i\n- (2, 3) ↦ −46 + 9i\n- (−2, 3) ↦ 46 + 9i\n- (2, −3) ↦ −46 − 9i\n- (−2, −3) ↦ 46 − 9i\n\n**Item 7: conclusão.** α = 3 e β = 2, ou seja, z = 3 + 2i. A hipótese \"não nulos\" é consistente com a solução, mas não é necessária como filtro: α = 0 daria Re = 0 ≠ −9, e β = 0 daria Im = 0 ≠ 46.\n\n**Verificação computacional.** Uma busca exaustiva em [−200, 200]² com inteiros não nulos retornou apenas (3, 2). Essa conferência é complementar; a prova analítica já está completa no Item 4.",
+    "final_answer": "α = 3 e β = 2 (z = 3 + 2i). É a única solução com α e β inteiros não nulos. Verificação: (3 + 2i)³ = −9 + 46i.",
+    "pitfalls": [
+      "Expansão de (α+βi)³: (βi)² = −β² e (βi)³ = −β³i. Esquecer o termo −3αβ² na parte real, ou trocar o sinal, produz um sistema falso.",
+      "Trocar as partes: Re(z³) = α³ − 3αβ² = −9 e Im(z³) = 3α²β − β³ = 46. Inverter essas igualdades leva a candidatos errados.",
+      "Armadilha (−3, 2): satisfaz a equação imaginária, pois 3·9·2 − 8 = 46, mas dá parte real +9, não −9. Não basta checar só uma das equações; a verificação deve ser feita nas duas, ou por substituição direta.",
+      "Conjugação não é simetria da questão: (3, −2) dá −9 − 46i, não −9 + 46i. Não concluir β = −2 por 'simetria'.",
+      "Divisores negativos: α ∈ {±1, ±3, ±9} e β ∈ {±1, ±2, ±23, ±46} devem incluir os negativos. Eliminar β = −2 precisa ser feito testando (II), não presumido.",
+      "Módulo sozinho não resolve: α² + β² = 13 dá oito pares inteiros. O sinal de Re e Im é o que seleciona (3, 2). Responder '(±2, ±3)' ou '(±3, ±2)' é incompleto.",
+      "Hipótese de inteiros é essencial: as três raízes cúbicas complexas de −9 + 46i são z₀ = 3 + 2i, z₀ω e z₀ω², com ω = e^{2πi/3}. Só z₀ tem coordenadas inteiras. Resolver só no plano real e reportar uma solução irracional não atende ao enunciado.",
+      "'α e β não nulos' é redundante: α = 0 ou β = 0 já são impossíveis pelas partes real e imaginária. Não é uma pista para excluir um caso que estaria na resposta.",
+      "Unicidade precisa de justificativa: 'chutar e verificar' sem mostrar que a lista de candidatos é exaustiva perde pontos. A limitação pelos divisores de 9 e 46 é o argumento que fecha a análise.",
+      "Erros aritméticos típicos no caso α = 3: 9 − 3β² = −3 ⇒ 3β² = 12 ⇒ β² = 4. Errar essa conta (β² = 3 ou 6) elimina a solução correta.",
+      "Substituição direta é obrigatória: uma equação isolada produz candidatos que não são soluções. A verificação z³ = −9 + 46i fecha a resposta."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "α = 3 e β = 2 (única solução, com z = 3 + 2i; verificado: z³ = −9 + 46i). Usando |z|² = 13 e α² + β² = 13 com {α², β²} = {4, 9}, a primeira equação elimina α² = 4 e dá α = 3; a segunda dá β = 2.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 6: a frase 'o sinal de β é fixado pela parte imaginária e o de α pela parte real, e a solução é única' tira a unicidade de uma verificação de sinais, mas a unicidade vem do Passo 5 (caso A impossível; caso B dá α = 3 e β = 2 de forma única). Deveria dizer isso explicitamente: −3α = −9 fixa α = 3 e 23β = 46 fixa β = 2. Além disso, 'Também conferimos os demais sinais' afirma sem mostrar as contas; ou se mostram (3, −2) ↦ −9 − 46i, (−3, 2) ↦ 9 + 46i, (−3, −2) ↦ 9 − 46i, ou se remove a afirmação."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 3: a cadeia '(α²+β²)³ = |z|⁶ = |−9+46i|²' pula o passo |z|⁶ = |z³|² e não diz de onde vem o quadrado. Deveria ser: |z|⁶ = |z³|² = |−9+46i|² = 81 + 2116 = 2197 = 13³, com (α²+β²)³ = |z|⁶ porque |z|² = α²+β². A conta está certa; falta a justificativa escrita."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 7 (ordens de grandeza) é ornamental: é uma checagem numérica aproximada que não entra na prova e não acrescenta rigor. Pode ser removida ou marcada explicitamente como conferência à parte. Não é um erro."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não comenta por que a hipótese de inteiros importa. Sobre C, z³ = −9 + 46i tem três raízes cúbicas: z₀ = 3 + 2i e z₀ω, z₀ω² (com ω = e^{2πi/3}), que valem aproximadamente −3,232 + 1,598i e 0,232 − 3,598i e não são inteiras. Um gabarito comentado deveria dizer que só z₀ tem coordenadas inteiras, para que a unicidade seja entendida como consequência do enunciado e não só da álgebra."
+          }
+        ],
+        "summary": "A resposta final do candidato, α = 3 e β = 2, está correta e coincide com a referência. Conferi no enunciado original (PDF, página 1), que é o mesmo da transcrição: z = α + βi, α e β inteiros não nulos, z³ = −9 + 46i. Com python3 (aritmética exata de gaussianos), (3+2i)³ = −9 + 46i e a busca exaustiva em [−300, 300]² devolveu só (3, 2). O desenvolvimento de z³ está certo, e as duas equações (parte real e imaginária) estão corretas e não trocadas. O módulo dá (α²+β²)³ = 2197 = 13³, logo α²+β² = 13. Com α², β² ∈ {1, 4, 9}, só {4, 9} serve. No caso α² = 4, β² = 9 a equação −23α = −9 dá α = 9/23, impossível. No caso α² = 9, β² = 4, −3α = −9 dá α = 3 e 23β = 46 dá β = 2, ambos compatíveis. Assim a análise é exaustiva e a unicidade está provada no Passo 5, sem chute. As contas (sinais, −3, 23, 9/23) foram conferidas, e as cubagens de (3,−2), (−3,2) e (−3,−2) também batem. As armadilhas da referência são tratadas: sinais na expansão, troca de partes, (−3, 2), conjugação (não concluída por simetria), ausência de justificativa só pelo módulo (os sinais vêm das equações) e a verificação direta. Os pontos a melhorar são de apresentação e de rigor pontual: o argumento de unicidade no Passo 6 está mal atribuído, a passagem do módulo não está justificada por escrito e o Passo 7 é enfeite. Nada disso muda a validade. A solução é publicável como gabarito com pequenos ajustes, por isso nota 9.\""
+      }
+    }
+  ]
+}

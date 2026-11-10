@@ -1,0 +1,58 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "Idade ≈ 4,9×10^8 anos (cerca de 490 milhões de anos), obtida de e^{λt} = 1 + 0,024 = 1,024, com ln 1,024 = 7 ln 2 − 3 ln 5 ≈ 0,024.",
+  "judge_reference": {
+    "final_answer": "Idade ≈ 4,9 × 10⁸ anos (≈ 490 milhões de anos), usando as constantes dadas (ln2 ≈ 0,693 e ln5 ≈ 1,609, que fazem ln 1,024 = 7ln2 − 3ln5 ≈ 0,024). Com logaritmos exatos, t = ln(1,024)/λ ≈ 4,82 × 10⁸ anos. Qualquer valor entre 4,8 e 4,9 × 10⁸ anos é equivalente. Os dados de % em massa de ThO₂ e U₃O₈ e a meia-vida do ²³⁸U não são necessários neste item.",
+    "reference_solution": "**Leitura do problema.** A prova (página 5, questão 10) pede uma única coisa: estimar a idade da areia monazítica a partir da razão atômica molar ²⁰⁸Pb/²³²Th = 0,024. Confirmei o enunciado contra o original; a transcrição está correta.\n\n**Hipóteses (dadas no enunciado).**\n1. Sistema fechado: nenhum ²³²Th nem ²⁰⁸Pb entrou ou saiu desde a formação do mineral.\n2. Todo o chumbo é radiogênico, ou seja, não havia ²⁰⁸Pb inicial.\n3. Cada átomo de ²³²Th que decai gera exatamente um átomo de ²⁰⁸Pb. A cadeia tem 6 α e 4 β⁻. Os intermediários têm vida curta frente a 1,41×10¹⁰ anos, e por isso a série pode ser tratada como um único decaimento ²³²Th → ²⁰⁸Pb de meia-vida 1,41×10¹⁰ anos.\n\n**Equacionamento.**\n- Seja N₀ o número inicial de átomos de ²³²Th, N o número atual e D o número atual de ²⁰⁸Pb.\n- N = N₀ e^(−λt) e D = N₀ − N, portanto N₀ = N + D.\n- Então N₀/N = e^(λt) = 1 + D/N.\n- Logo t = (1/λ)·ln(1 + D/N), com λ = ln2 / T½.\n\n**Constante de decaimento.**\n- λ = 0,693 / (1,41×10¹⁰ anos) ≈ 4,92×10⁻¹¹ ano⁻¹.\n\n**Cálculo.**\n- D/N = 0,024, então 1 + D/N = 1,024.\n- Observe que 1,024 = 2¹⁰/10³ = 2⁷/5³ = 128/125. Assim ln 1,024 = 7 ln2 − 3 ln5.\n- Com os valores dados: 7(0,693) − 3(1,609) = 4,851 − 4,827 = 0,024. Esse é o motivo de a prova fornecer ln2 e ln5.\n- t = ln(1,024)/λ = 0,024 × 1,41×10¹⁰ / 0,693 = 3,384×10⁸ / 0,693 ≈ 4,88×10⁸ anos.\n\n**Resultado.** t ≈ 4,9×10⁸ anos, isto é, cerca de 490 milhões de anos.\n\n**Conferência numérica (python).**\n- Com logaritmos exatos, ln(1,024) = 0,023717 e t = 4,824×10⁸ anos.\n- A diferença de cerca de 1,2% em relação a 4,88×10⁸ vem só do arredondamento de ln2 e ln5 dados na prova.\n- Verificação de ordem de grandeza: t/T½ ≈ 0,034, então resta ≈ 97,7% do ²³²Th (e^(−λt) = 0,9766). Isso é coerente com D/N = 1/0,9766 − 1 = 0,024.\n\n**Dados não usados.**\n- Os 9% de ThO₂, os 0,35% de U₃O₈ e T½(²³⁸U) = 4,47×10⁹ anos não entram neste item, porque a razão já é molar atômica entre isótopos.\n- Só serviriam para prever a razão ²⁰⁶Pb/²³⁸U. Esse valor é ≈ 0,078 para t ≈ 4,8×10⁸ anos, ou cerca de 9,7×10⁻⁵ mol de ²⁰⁶Pb por 100 g de amostra, contra 8,2×10⁻⁴ mol de ²⁰⁸Pb.\n- Não é preciso usar a massa molar do ThO₂ (264,04 g/mol) nem a do U₃O₈ (842,08 g/mol).",
+    "pitfalls": [
+      "Não confundir D/N com D/N₀: a razão dada é ²⁰⁸Pb/²³²Th (Th remanescente, N). O Th inicial é N₀ = N + D, então a relação é e^(λt) = 1 + D/N. Interpretar 0,024 como D/N₀ daria −ln(1−0,024)/λ ≈ 4,94×10⁸ anos (valor ligeiramente errado).",
+      "Erro grosseiro: igualar e^(λt) = 0,024, o que leva a tempo negativo. Esquecer o '+1' faz o aluno usar ln(0,024) ou ln(0,976).",
+      "Hipóteses necessárias que a resolução deve declarar: sistema fechado, Pb 100% radiogênico (sem chumbo comum/inicial), estequiometria 1 ²³²Th → 1 ²⁰⁸Pb, e intermediários de vida curta (equilíbrio secular), de modo que a série equivale a um decaimento único com T½ = 1,41×10¹⁰ anos.",
+      "A meia-vida correta é a do ²³²Th (1,41×10¹⁰ anos), não a do ²³⁸U (4,47×10⁹ anos). Usar a do ²³⁸U daria t ≈ 1,5×10⁸ anos, um valor errado por fator ≈ 3.",
+      "Os dados de composição em massa (9% de ThO₂, 0,35% de U₃O₈) e T½(²³⁸U) são distratores neste item. Converter massas em mols (264,04 e 842,08 g/mol) não é necessário, pois a razão já é atômica molar.",
+      "Papel de ln2 e ln5: 1,024 = 2⁷/5³, então ln1,024 = 7ln2 − 3ln5 = 0,024 com os valores dados. Quem usa ln(1+x) ≈ x chega ao mesmo resultado numérico (4,88×10⁸). Com logaritmos exatos o resultado é 4,82×10⁸, e ambos são aceitáveis como 'estimativa'. A resolução deve indicar a ordem de grandeza (~4,8–4,9×10⁸ anos) e a unidade (anos), não 10⁹.",
+      "Erro de unidade/expoente: T½ = 1,41×10¹⁰ e λ ≈ 4,9×10⁻¹¹ ano⁻¹. Erros típicos são usar λ = 1/T½ (sem ln2) ou deixar t em segundos sem converter.",
+      "Não usar a razão ²⁰⁶Pb/²³⁸U: ela não foi fornecida, e o enunciado só permite datar pelo par ²⁰⁸Pb/²³²Th."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "Idade ≈ 4,9×10^8 anos (cerca de 490 milhões de anos), obtida de e^{λt} = 1 + 0,024 = 1,024, com ln 1,024 = 7 ln 2 − 3 ln 5 ≈ 0,024.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A estequiometria 1 ²³²Th → 1 ²⁰⁸Pb é apenas afirmada, sem justificativa. Faltou citar a série (6 α e 4 β⁻, com 232 − 4·6 = 208) e o equilíbrio secular, de modo que o decaimento efetivo tem T½ = T½(²³²Th). A frase sobre intermediários de meia-vida curta cobre a ideia, mas sem o balanço nuclear. Um gabarito comentado deveria incluí-lo."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conferência, \"apenas 2,4% do Th ter virado Pb\" é impreciso. 0,024 é D/N, ou seja, relativo ao Th remanescente. A fração do Th inicial convertida é D/(N+D) = 0,024/1,024 ≈ 2,3%. O erro não afeta a resposta, mas confunde justamente a distinção D/N × D/N₀ que o problema testa."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase \"isso coincide com ln(1+x)≃x\" deixa a impressão de que o valor 0,024 é exato. Na verdade ln 1,024 = 0,02372, e o 0,024 vem do arredondamento de ln2 e ln5 dados. O candidato menciona a diferença de ~1% depois (4,8×10⁸ contra 4,9×10⁸), mas poderia ter explicado a origem da diferença em vez de chamá-la de coincidência."
+          },
+          {
+            "severity": "minor",
+            "description": "Não explicita o valor numérico de λ (≈ 4,92×10⁻¹¹ ano⁻¹) nem diz que o resultado está em anos por construção. A fórmula t = t½·ln(1,024)/ln2 já é suficiente. Também não discute explicitamente as armadilhas de usar T½ do ²³⁸U ou de interpretar a razão como D/N₀, embora evite ambas. É um ponto de completude didática, não de correção."
+          },
+          {
+            "severity": "minor",
+            "description": "O resultado final aparece só como ≈ 4,9×10⁸ anos, com a variante de 4,8×10⁸ anos para logaritmos exatos relegada à conferência. Seria mais claro apresentar na resposta final o intervalo 4,8–4,9×10⁸ anos, ou dizer que ambos são aceitáveis como estimativa."
+          }
+        ],
+        "summary": "A resposta final do candidato, t ≈ 4,9×10⁸ anos (≈ 490 milhões de anos), está correta e coincide com a minha referência. Conferi o enunciado no PDF original (questão 10, p. 5) e recalculei em Python. Com ln1,024 = 7ln2 − 3ln5 ≈ 0,024 obtém-se t = 1,41×10¹⁰·0,024/0,693 = 4,88×10⁸ anos. Com logaritmos exatos, t = 4,82×10⁸ anos. A resolução está bem estruturada. Declara as hipóteses (sistema fechado, Pb 100% radiogênico, intermediários de vida curta, 1 Th → 1 Pb), usa a meia-vida correta (²³²Th) e acerta o ponto central N₀ = N + D, de onde sai e^{λt} = 1 + D/N. Percebe o papel de ln2 e ln5 na fatoração 1,024 = 2⁷/5³. Faz a conferência de ordem de grandeza, nota a diferença de ~1% para o log exato e identifica corretamente os dados distratores (9% ThO₂, 0,35% U₃O₈, T½ do ²³⁸U). Os defeitos são todos menores. A estequiometria 6α+4β⁻ não é justificada, a frase \\\"2,4% do Th ter virado Pb\\\" confunde D/N com D/N₀ (o correto é ≈ 2,3%), \\\"coincide com ln(1+x)≈x\\\" é frouxo, e o valor de λ não é explicitado. Nenhum erro afeta o resultado. Está próxima de um gabarito comentado publicável, com pequenos ajustes de rigor.\"}"
+      }
+    }
+  ]
+}

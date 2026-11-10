@@ -1,0 +1,72 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Convenções e enunciado.} Confere-se o enunciado com a página 7 da prova: $a_{ij}=0$ se $j\ge i$, $a_{ij}=\alpha_j^{\,i-j-1}$ se $j<i$; $b_{ij}=1$ se $j\ge i$ e $b_{ij}=0$ se $j<i$. Usa-se $\alpha^{0}=1$ para todo $\alpha\in\mathbb{R}$, inclusive $\alpha=0$, para que $A$ esteja bem definida (por exemplo, $a_{j+1,j}=\alpha_j^{0}=1$). Denotem-se por $c_k=\sum_{i=1}^{n}a_{ik}$ a soma da coluna $k$ de $A$ e por $\sigma_j=\sum_{i=1}^{n}(AB)_{ij}$ a soma da coluna $j$ de $AB$. A hipótese é
+\[
+(H)\qquad \sigma_j=n-j,\quad j=1,\dots,n.
+\]
+
+\textbf{Passo 1: estrutura de $A$ e $B$.}
+\begin{itemize}
+\item Como $a_{ij}=0$ sempre que $j\ge i$, a matriz $A$ é triangular inferior com diagonal nula. Em particular, para todo $i\le n$ vale $n\ge i$, logo $a_{in}=0$: a coluna $n$ de $A$ é nula e $c_n=0$.
+\item $B$ é triangular superior com diagonal de uns, logo $\det B=1$.
+\end{itemize}
+
+\textbf{Passo 2: colunas de $AB$.} Como $b_{kj}=1$ exatamente quando $k\le j$,
+\[
+(AB)_{ij}=\sum_{k=1}^{n}a_{ik}\,b_{kj}=\sum_{k=1}^{j}a_{ik}.
+\]
+Somando sobre $i$ e trocando a ordem de somas finitas,
+\[
+\sigma_j=\sum_{k=1}^{j}c_k .
+\]
+Em particular, $\sigma_n=\sum_{k=1}^{n}c_k$ é a soma de todas as entradas de $A$.
+
+\textbf{Passo 3: a hipótese é inconsistente para $n\ge 2$.} Pelo Passo 2, $\sigma_n-\sigma_{n-1}=c_n=0$ para todos os $\alpha_j$. Já $(H)$ com $j=n$ e $j=n-1$ exige $\sigma_n-\sigma_{n-1}=0-1=-1$. Logo, para $n\ge 2$, nenhuma escolha de $\alpha_1,\dots,\alpha_{n-1}\in\mathbb{R}$ satisfaz $(H)$. Para $n=1$, $A=(0)$, $AB=(0)$ e $(H)$ vale, pois $\sigma_1=0=n-1$.
+
+Verificação direta com $n=3$, $\alpha_1=2$, $\alpha_2=3$ (aqui $a_{21}=\alpha_1^{0}=1$, $a_{31}=\alpha_1^{1}=2$, $a_{32}=\alpha_2^{0}=1$):
+\[
+A=\begin{pmatrix}0&0&0\\1&0&0\\2&1&0\end{pmatrix},\qquad
+B=\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix},\qquad
+AB=\begin{pmatrix}0&0&0\\1&1&1\\2&3&3\end{pmatrix}.
+\]
+As somas das colunas de $AB$ são $3,4,4$, enquanto $(H)$ exige $2,1,0$.
+
+\textbf{Item (a).} Pelo teorema de Binet, $\det(AB)=\det A\cdot\det B$, válido para quaisquer matrizes quadradas de mesma ordem. Como a coluna $n$ de $A$ é nula, toda parcela da fórmula de Leibniz para $\det A$ contém uma entrada nula, logo $\det A=0$. Portanto
+\[
+\det(AB)=0\cdot 1=0
+\]
+para todo $n$ e todos os $\alpha_j$. Esta conclusão não usa $(H)$.
+
+\textbf{Item (b).} Como $a_{ik}=0$ para $k\ge i$, tem-se $\sum_{k\le i}a_{ik}=\sum_{k=1}^{n}a_{ik}$. Logo
+\[
+\operatorname{tr}(AB)=\sum_{i=1}^{n}(AB)_{ii}=\sum_{i=1}^{n}\sum_{k=1}^{n}a_{ik}=\sum_{k=1}^{n}c_k=\sigma_n .
+\]
+Sem hipótese, o traço é a soma das entradas de $A$ e depende dos $\alpha_j$ (no exemplo acima vale $4$). A hipótese com $j=n$ fixa $\sigma_n=0$, logo o valor pedido é
+\[
+\operatorname{tr}(AB)=0 \quad\text{para todo } n,
+\]
+que não depende de $n$. Ressalva: pelo Passo 3, para $n\ge 2$ esse $0$ é o valor exigido por $(H)$, mas nenhum $\alpha_j$ satisfaz $(H)$; é um valor formal. Para $n=1$, a hipótese vale e $\operatorname{tr}(AB)=0$ de fato.
+
+\textbf{Item (c).} Para $n=5$, $(H)$ exige $\sigma_4=1$ e $\sigma_5=0$, donde $\sigma_5-\sigma_4=-1$. Mas
+\[
+\sigma_5-\sigma_4=c_5=\sum_{i=1}^{5}a_{i5}=0,
+\]
+pois $a_{i5}=0$ para todo $i\le 5$. A contradição $0=-1$ não envolve $\alpha_1,\alpha_2,\alpha_3,\alpha_4$; $\alpha_4$ aparece em $A$ apenas em $a_{54}=\alpha_4^{0}=1$. Logo não existe $(\alpha_1,\alpha_2,\alpha_3,\alpha_4)\in\mathbb{R}^4$ satisfazendo a hipótese: o conjunto pedido é vazio.
+
+\textbf{Observação (leitura alternativa, não é o enunciado impresso).} Se $b_{kj}=1$ para $j\le k$ e $b_{kj}=0$ para $j>k$, então $(AB)_{ij}=\sum_{k\ge j}a_{ik}$ e $\sigma_j=\sum_{k\ge j}c_k$. Nessa leitura:
+\begin{itemize}
+\item $AB$ é estritamente triangular inferior: se $j\ge i$, todo $k\ge j$ satisfaz $k\ge i$, logo $a_{ik}=0$ e $(AB)_{ij}=0$. Assim $\det(AB)=0$ e $\operatorname{tr}(AB)=0$ continuam valendo.
+\item Como $c_n=0$, tem-se $\sigma_n=0$ automaticamente, e $\sigma_j-\sigma_{j+1}=c_j$. Logo $(H)$ equivale a $c_j=1$ para $j=1,\dots,n-1$.
+\item Para $n=5$, $c_j=\sum_{i=j+1}^{5}\alpha_j^{\,i-j-1}$, ou seja, $c_1=1+\alpha_1+\alpha_1^2+\alpha_1^3$, $c_2=1+\alpha_2+\alpha_2^2$, $c_3=1+\alpha_3$, $c_4=1$ (com $0^0=1$).
+\begin{itemize}
+\item $c_1=1\iff\alpha_1(1+\alpha_1+\alpha_1^2)=0\iff\alpha_1=0$, pois $1+\alpha_1+\alpha_1^2=\left(\alpha_1+\tfrac{1}{2}\right)^2+\tfrac{3}{4}>0$ em $\mathbb{R}$.
+\item $c_2=1\iff\alpha_2(\alpha_2+1)=0\iff\alpha_2\in\{0,-1\}$.
+\item $c_3=1\iff\alpha_3=0$.
+\item $c_4=1$ sempre, logo $\alpha_4$ é livre em $\mathbb{R}$.
+\end{itemize}
+\end{itemize}
+Nessa leitura, o conjunto solução é $\{(0,0,0,t)\}\cup\{(0,-1,0,t)\}$ com $t\in\mathbb{R}$. A discrepância sugere um possível erro de digitação no enunciado; vale conferir o gabarito oficial com essa possibilidade em mente.
+
+ANSWER: (a) $\det(AB)=0$ para todo $n$ e todos os $\alpha_j$; (b) $\operatorname{tr}(AB)=0$ para todo $n$ (valor exigido por $\sigma_n=0$, formal para $n\ge 2$); (c) conjunto vazio: não existem $\alpha_1,\alpha_2,\alpha_3,\alpha_4\in\mathbb{R}$ satisfazendo a hipótese.

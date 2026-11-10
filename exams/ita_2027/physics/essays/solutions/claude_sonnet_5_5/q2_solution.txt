@@ -1,0 +1,47 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Resistência do ar desprezível; $g$ = aceleração da gravidade; $e=0{,}7$. Como o solo é perfeitamente liso, a força em cada choque é apenas normal (vertical). O impulso é, portanto, vertical, e $v_x$ \textbf{se conserva} ao longo de todo o movimento (também no voo, pois $a_x=0$). Na direção normal vale a definição do coeficiente de restituição: $|v_y'|=e\,|v_y|$ (afastamento $=e\cdot$ aproximação).
+
+Condições iniciais:
+\[
+v_x=V\cos30^\circ=\frac{\sqrt3}{2}V,\qquad v_{y,0}=V\,\mathrm{sen}\,30^\circ=\frac V2 .
+\]
+Entre dois choques a energia mecânica se conserva. Logo a partícula retorna ao solo com $|v_y|$ igual ao de partida, e após o $k$-ésimo choque
+\[
+v_{y,k}=e^{k}\,\frac V2 .
+\]
+
+\textbf{a) Altura máxima após $n$ choques.} No voo que se segue ao $n$-ésimo choque, a altura máxima ocorre quando $v_y=0$. Por Torricelli (ou conservação de energia na vertical),
+\[
+H_n=\frac{v_{y,n}^2}{2g}=\frac{e^{2n}V^2}{8g}
+=\frac{(0{,}49)^{n}\,V^2}{8g}.
+\]
+Verificação: $n=0$ dá $H_0=V^2\,\mathrm{sen}^2 30^\circ/(2g)=V^2/(8g)$, o resultado do lançamento oblíquo sem choque. Cada choque multiplica a altura por $e^2=0{,}49$.
+
+\textbf{b) Tempo para a energia mínima.} Tomando o solo como referência de energia potencial, a energia mecânica é
+\[
+E=\underbrace{\tfrac12 m v_x^2}_{\text{constante}}+\underbrace{\tfrac12 m v_y^2+mgy}_{\text{parte vertical}} .
+\]
+Ela é constante entre choques e diminui em cada choque, pois só a componente vertical é afetada. Após $n$ choques (no início do voo, $y=0$):
+\[
+E_n=\frac38 mV^2+\frac18 mV^2e^{2n}.
+\]
+Para $n=0$ obtém-se $E_0=\tfrac12 mV^2$, como esperado. $E_n$ decresce monotonicamente e tende a
+\[
+E_{\min}=\tfrac12 m v_x^2=\frac38\,mV^2 ,
+\]
+que é atingida quando todo o movimento vertical se extingue. A massa passa então a deslizar sobre o solo com $v=\frac{\sqrt3}{2}V$.
+
+O número de choques até esse ponto é infinito, mas o tempo total é finito. O voo $k$ ($k=0,1,2,\dots$) dura $\tau_k=2v_{y,k}/g=e^{k}V/g$. A soma é uma PG convergente ($e<1$):
+\[
+\Delta t=\sum_{k=0}^{\infty}\tau_k=\frac Vg\sum_{k=0}^{\infty}e^{k}=\frac{V}{g\,(1-e)}=\frac{V}{0{,}3\,g}=\frac{10\,V}{3\,g}\approx 3{,}3\,\frac Vg .
+\]
+
+\textbf{Conferência.} A unidade $V/g$ é de tempo. Para $e\to0$ resulta $\Delta t\to V/g$ (um único voo, e a massa fica colada ao solo). Para $e\to1$, $\Delta t\to\infty$ (sem perdas, a energia nunca diminui). Os dois limites são coerentes. A energia mínima é $\frac34$ da inicial, pois $E_{\min}/E_0=\frac{3/8}{1/2}$.
+
+\medskip
+\noindent Interpretamos ``energia'' como a energia mecânica total da massa. Seu mínimo só é atingido no limite em que os choques se acumulam, no instante $\Delta t$.
+
+ANSWER: a) $H_n=\dfrac{(0{,}7)^{2n}V^2}{8g}=\dfrac{(0{,}49)^nV^2}{8g}$; b) $\Delta t=\dfrac{V}{g(1-e)}=\dfrac{10V}{3g}$

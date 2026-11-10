@@ -1,0 +1,34 @@
+{
+  "question": 10,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 1 - Matemática)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-1-20-10-2026-2-fase-dia-1/dissertativa-10-matematica-2-fase-dia-1-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q10 — inteiros k tais que f(x)=k tem solução no 1º ou 3º quadrante",
+      "solution_answer": "k = 3 (único). No 1º quadrante, f ∈ (√2−1, 2−√2] ⊂ (0,1). No 3º quadrante, f ∈ (√2+1, 2+√2] ⊂ (2,4), e 3 é atingido em x = 3π/4 + arcsen(3 − 3√2/2) ≈ 3,429 e em x = 7π/4 − arcsen(3 − 3√2/2) ≈ 4,425.",
+      "key_answer": "k = 3",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "O enunciado confere com o original (página 10 do PDF, que traz o número impresso 11). Refiz as contas: f(x) = √2(|cos x|+|sen x|) − (sen x + cos x). No 1º quadrante, f = (√2−1)(sen x + cos x) = (2−√2)·sen(x+π/4), com valores em (√2−1, 2−√2] ≈ (0,414; 0,586]. No 3º quadrante, f = −(√2+1)(sen x + cos x) = −(2+√2)·sen(x+π/4), com valores em (√2+1, 2+√2] ≈ (2,414; 3,414]. Conferi numericamente com python, amostrando f em 400 mil pontos de cada quadrante: os extremos batem. Também avaliei f nas duas soluções explícitas e obtive f = 3,000. A resposta k = 3 está correta e coincide com o gabarito."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito escreve f(x) = √2 cos x + √2 sen x − sen x − cos x de forma geral, sem módulos, e só depois corrige o sinal caso a caso. Além disso, toma intervalos fechados (0 ≤ x ≤ π/2 e π ≤ x ≤ 3π/2), o que inclui os eixos, e mistura desigualdades estritas e não estritas (√2/2 < … depois √2−1 ≤ f). Isso não muda a resposta, porque os valores de f nos eixos (√2−1 e √2+1) não são inteiros."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito não justifica explicitamente que o valor 3 é atingido. Isso fica implícito no fato de sen(x+π/4) percorrer todo o intervalo. A resolução conferida trata esse ponto com mais rigor: usa o teorema do valor intermediário e exibe as soluções explícitas."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Imprecisões de redação na resolução, sem efeito no resultado: (i) no Passo 5, o cálculo de f(5π/4) usa cos(5π/2) = 0, o que está certo porque 2x = 5π/2, mas a frase pode confundir quem lê; (ii) a desigualdade final do Passo 3 encadeia 0 < √2−1 < f, o que está correto."
+    }
+  ],
+  "summary": "A resolução e o gabarito concordam: o único inteiro é k = 3. Refiz a conta e ela confirma isso. No 1º quadrante, f ∈ (√2−1, 2−√2] ⊂ (0,1), sem inteiros. No 3º quadrante, f ∈ (√2+1, 2+√2] ≈ (2,41; 3,41], e o 3 é atingido em x ≈ 3,429 e x ≈ 4,425. Uma amostragem numérica de f nos dois quadrantes confirmou esses intervalos. A resolução está correta, completa e mais rigorosa que o gabarito, que tem só pequenas imprecisões de notação sem efeito na resposta. Não consegui salvar uma nota de memória sobre a numeração das páginas do PDF porque a escrita foi bloqueada pela restrição de acesso."
+}

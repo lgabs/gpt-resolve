@@ -1,0 +1,61 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "$p(x)=2x^4-3x^3+7x^2+7x-5=(2x-1)(x+1)(x^2-2x+5)$. As raízes de $p$ em $\\mathbb{C}$ são $-1$, $\\frac{1}{2}$, $1+2i$ e $1-2i$, todas simples.",
+  "judge_reference": {
+    "reference_solution": "**Questão 7 (ITA 2026, 2ª fase): resolução de referência**\n\n**Enunciado conferido com o PDF (página 8).** p(x) tem grau 4, coeficientes reais, soma das raízes 3/2, produto das raízes −5/2, e resto de p(x) por x³ − x + 4 igual a 9x² − 4x + 7.\n\n**1. Forma de p(x) pela divisão euclidiana.**\nSeja q(x) = x³ − x + 4. Como deg p = 4 e deg q = 3, o quociente s(x) tem grau 1. Escreva s(x) = ax + b, com a, b reais e a ≠ 0. Esse a é o coeficiente líder de p, não zero, porque deg p = 4. Então\n\np(x) = q(x)·(ax + b) + (9x² − 4x + 7).\n\nExpandindo (x³ − x + 4)(ax + b) = ax⁴ + bx³ − ax² + (4a − b)x + 4b, obtém-se\n\np(x) = a x⁴ + b x³ + (9 − a) x² + (4a − b − 4) x + (4b + 7).\n\n**2. Relações de Girard.**\nPara ax⁴ + Bx³ + Cx² + Dx + E com grau 4: soma das raízes = −B/a e produto das raízes = +E/a (o sinal é positivo porque (−1)⁴ = 1). Aplicando:\n\n- Soma: −b/a = 3/2 ⇒ b = −3a/2.\n- Produto: (4b + 7)/a = −5/2 ⇒ 2(4b + 7) = −5a ⇒ 8b + 14 = −5a.\n\nSubstituindo b = −3a/2 na segunda equação: −12a + 14 = −5a ⇒ 7a = 14 ⇒ **a = 2**, e então **b = −3**.\n\n**3. Polinômio.**\ns(x) = 2x − 3 e\np(x) = 2x⁴ − 3x³ + 7x² + 7x − 5.\n\nConferência do resto: (x³ − x + 4)(2x − 3) = 2x⁴ − 3x³ − 2x² + 11x − 12. Somando 9x² − 4x + 7 chega-se a 2x⁴ − 3x³ + 7x² + 7x − 5. Como a divisão com resto é única e deg(9x² − 4x + 7) < 3, o resto está confirmado.\n\n**4. Raízes de p(x).**\nAs racionais candidatas são ±1, ±5, ±1/2, ±5/2.\n- p(−1) = 2 + 3 + 7 − 7 − 5 = 0. Logo (x + 1) divide p.\n- p(1/2) = 1/8 − 3/8 + 14/8 + 28/8 − 40/8 = 0. Logo (2x − 1) divide p.\n\nDividindo p por (x + 1)(2x − 1) = 2x² + x − 1 obtém-se quociente x² − 2x + 5. Verificação: (2x² + x − 1)(x² − 2x + 5) = 2x⁴ − 3x³ + 7x² + 7x − 5.\n\nPara x² − 2x + 5 = 0: Δ = 4 − 20 = −16, logo x = (2 ± 4i)/2 = 1 ± 2i.\n\nFatoração final: p(x) = (x + 1)(2x − 1)(x² − 2x + 5).\n\n**5. Verificações finais.**\n- Soma: −1 + 1/2 + (1 + 2i) + (1 − 2i) = 3/2. ✓\n- Produto: (−1)(1/2)(1 + 2i)(1 − 2i) = (−1/2)(5) = −5/2. ✓\n- Resto: p(x) − (x³ − x + 4)(2x − 3) = 9x² − 4x + 7 identicamente. ✓\n- Conferência computacional: a expansão, soma, produto e fatoração foram verificados com aritmética exata (Fraction) em Python.\n\n**Observação sobre a hipótese \"coeficientes reais\".** O sistema linear em (a, b) tem solução única também sobre ℂ, então a hipótese não é necessária para determinar p. Ela é coerente com o resultado, pois as raízes não reais 1 ± 2i formam um par conjugado.\n\n**Resposta final.** As raízes de p em ℂ são x = −1, x = 1/2, x = 1 + 2i e x = 1 − 2i, todas simples.",
+    "final_answer": "Raízes de p(x) em ℂ: x = −1, x = 1/2, x = 1 + 2i e x = 1 − 2i (todas simples).\n\nPolinômio obtido: p(x) = 2x⁴ − 3x³ + 7x² + 7x − 5 = (x + 1)(2x − 1)(x² − 2x + 5).\n\nNão se trata de questão de múltipla escolha. Desenvolvimento: p(x) = (x³ − x + 4)(2x − 3) + (9x² − 4x + 7); as relações de Girard (soma −b/a = 3/2, produto (4b + 7)/a = −5/2) dão a = 2 e b = −3.",
+    "pitfalls": [
+      "Assumir p mônico (a = 1). Com a = 1 vem b = −3/2 e o produto seria 4b + 7 = 1, não −5/2. Logo o coeficiente líder precisa ser determinado (é 2), não suposto.",
+      "Sinal do produto de Girard: em grau 4 o produto das raízes é +e/a, não −e/a. Com o sinal trocado obtém-se a = 14/17, valor feio que deve servir de alerta.",
+      "Confundir resto com o próprio polinômio ou com o quociente: p = q·s + R, com deg s = 4 − 3 = 1. O quociente é linear, e seu coeficiente líder é o de p (a ≠ 0).",
+      "Um só dado da divisão não basta. A família p = (x³ − x + 4)(ax + b) + R tem dois parâmetros, então são necessárias as duas relações de Vieta (soma e produto).",
+      "Erros de expansão: o coeficiente de x é 4a − b − 4 (o −4 vem do resto), o termo independente é 4b + 7 (o +7 vem do resto) e o coeficiente de x² é 9 − a. Um sinal trocado aqui muda a = 2.",
+      "Tentar usar as raízes de x³ − x + 4 (uma real e duas complexas, Δ = −428, todas irracionais) é desnecessário e propenso a erro. A divisão algébrica resolve sem calcular essas raízes.",
+      "Concluir que q divide p ou que as raízes de q são raízes de p. Não é o caso: o resto 9x² − 4x + 7 é não nulo. Por exemplo, q(−1) = 4 e q(1/2) = 29/8.",
+      "Dar só as raízes reais (−1 e 1/2). O enunciado pede todas as raízes em ℂ, e o fator x² − 2x + 5 fornece 1 ± 2i. Uma resposta sem elas está incompleta.",
+      "A hipótese de coeficientes reais não é necessária para a unicidade de a e b (o sistema linear tem solução única também em ℂ). Ela só é coerente com o resultado, pois 1 ± 2i é um par conjugado.",
+      "Verificar apenas p(−1) = 0 e p(1/2) = 0 não basta para justificar a fatoração completa. É preciso dividir p pelo produto (x + 1)(2x − 1) e checar o quociente x² − 2x + 5, ou multiplicar a fatoração de volta.",
+      "Conferir as relações de Vieta no polinômio final (soma 3/2 e produto −5/2) e o resto (reconstruir p = q·(2x − 3) + R) é a checagem que evita erro de sinal."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "$p(x)=2x^4-3x^3+7x^2+7x-5=(2x-1)(x+1)(x^2-2x+5)$. As raízes de $p$ em $\\mathbb{C}$ são $-1$, $\\frac{1}{2}$, $1+2i$ e $1-2i$, todas simples.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 5: a afirmação \"(x+1)(2x−1)=2x²+x−1 divide p(x)\" segue apenas de p(−1)=0 e p(1/2)=0, sem justificativa (teorema do fator para cada fator linear e não associação dos fatores, ou divisão explícita). A verificação por expansão no mesmo passo sustenta a identidade, então o erro é de rigor no encadeamento, não de conteúdo. Corrigir: citar o teorema do fator e dizer que o produto de fatores lineares distintos divide p, ou apresentar a divisão e o quociente x²−2x+5."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 5: p(1/2)=1/8−3/8+7/4+7/2−5=0 é escrito sem passos intermediários. O enunciado do próprio caderno (instrução 8) exige que expressões numéricas sejam resolvidas integralmente. Corrigir: mostrar a redução, por exemplo 1/8−3/8+14/8+28/8−40/8=0."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 1: o fato de que o coeficiente líder de p é a (portanto c4=a) fica implícito. Só aparece na expansão do Passo 2 e no uso de c4 no Passo 3. Corrigir: uma frase dizendo que o coeficiente líder de p é a."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 3: as relações de Girard são enunciadas sem dizer que as raízes são contadas com multiplicidade em ℂ. Aqui não faz diferença, pois as raízes são simples, mas o enunciado geral fica incompleto. Corrigir: acrescentar \"com raízes contadas com multiplicidade em ℂ\"."
+          },
+          {
+            "severity": "minor",
+            "description": "Armadilhas não comentadas explicitamente: a resolução não diz por que são necessárias duas relações de Vieta (a família de candidatos tem dois parâmetros), não diz que a não foi suposto igual a 1 e não observa que a hipótese de coeficientes reais não é necessária para determinar p. Não há erro nisso, mas um comentário breve deixaria a resolução no nível de gabarito comentado."
+          }
+        ],
+        "summary": "A resposta final do candidato está correta e coincide com a da referência: raízes −1, 1/2, 1+2i e 1−2i, com p(x)=2x⁴−3x³+7x²+7x−5=(x+1)(2x−1)(x²−2x+5). Conferi o enunciado na página 8 do PDF e refiz todas as contas com aritmética exata: a=2 e b=−3 pelas relações de Girard (sinal + no produto, pois o grau é 4), a expansão dos coeficientes (9−a, 4a−b−4, 4b+7), o resto 9x²−4x+7, as raízes racionais, a fatoração e as raízes 1±2i. Todas as conferências passaram. Das armadilhas da lista, o candidato evitou todas: não supôs p mônico, usou o sinal correto do produto, separou quociente linear e resto, usou as duas relações de Vieta, expandiu os termos com o resto corretamente, não recorreu às raízes do cúbico, não concluiu divisibilidade e deu as quatro raízes em ℂ. As falhas que restam são de rigor e apresentação, sem efeito no resultado. Nota 9: resolução que um professor publicaria como gabarito, com pequenos ajustes na justificativa da fatoração e na exibição de algumas contas numéricas."
+      }
+    }
+  ]
+}

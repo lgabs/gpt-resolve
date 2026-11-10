@@ -1,0 +1,38 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 10.0,
+  "final_answer": "A única solução real é (x, y, z) = (0, 0, 0). Seja f(t) = t + log(t + √(t²+1)), definida para todo t real porque √(t²+1) > |t|. O sistema fica y = f(x), z = f(y), x = f(z). Como f é estritamente crescente, x < y levaria a y < z e depois a z < x, um absurdo; o caso x > y é análogo. Então x = y = z, o que dá log(x + √(x²+1)) = 0, isto é, x = 0. Por fim, (0, 0, 0) satisfaz as três equações. O resultado vale para qualquer base de logaritmo maior que 1.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (8ª questão, p. 2): o sistema cíclico x + log(x+√(x²+1)) = y, y + log(y+√(y²+1)) = z, z + log(z+√(z²+1)) = x.\n\n**1) Domínio.** Para todo t real, √(t²+1) > √(t²) = |t| ≥ −t. Logo t + √(t²+1) > 0 e o logaritmo está definido para qualquer t. O sistema faz sentido para qualquer terna real (x, y, z).\n\n**2) A função g(t) = log(t + √(t²+1)).** A base do log é qualquer base b > 1 (natural ou decimal). Só usamos o sinal de g, que é o mesmo nas duas bases.\n- g(0) = log 1 = 0.\n- Se t > 0: t + √(t²+1) > 0 + 1 = 1, logo g(t) > 0.\n- Se t < 0: (t + √(t²+1))(√(t²+1) − t) = 1. Como √(t²+1) − t > 1 quando t < 0, temos 0 < t + √(t²+1) < 1, e então g(t) < 0. (Isso equivale a dizer que g é ímpar: g(−t) = −g(t).)\n- Conclusão: **g(t) tem o mesmo sinal de t**, e g(t) = 0 ⇔ t = 0.\n\nTambém se pode usar a derivada: g'(t) = 1/(√(t²+1)·ln b) > 0 e g(0) = 0. Em base e, g = arcsenh.\n\n**3) Reescrita do sistema.**\n- y − x = g(x)\n- z − y = g(y)\n- x − z = g(z)\n\n**4) Unicidade.**\n- Suponha x > 0. Então y − x = g(x) > 0, logo y > x > 0. Daí z − y = g(y) > 0, logo z > y > 0. Daí x − z = g(z) > 0, logo x > z. Juntando: x > z > y > x, absurdo.\n- Suponha x < 0. Pelo mesmo raciocínio: y < x < 0, depois z < y < 0, depois x < z. Juntando: x < z < y < x, absurdo.\n- Logo x = 0. Então y = x + g(x) = 0 e z = y + g(y) = 0.\n\nToda solução real é, portanto, (0, 0, 0).\n\n**Forma equivalente.** Seja f(t) = t + g(t), estritamente crescente (soma de duas funções estritamente crescentes). O sistema diz y = f(x), z = f(y), x = f(z).\n- Se x < y, aplicando f duas vezes: y < z e z < x, o que dá x < y < z < x, absurdo.\n- Se x > y, o absurdo é análogo.\n- Logo x = y = z, e x = f(x) dá g(x) = 0. Então x + √(x²+1) = 1, ou seja, √(x²+1) = 1 − x. Isso exige x ≤ 1; elevando ao quadrado, x² + 1 = 1 − 2x + x², portanto x = 0, que satisfaz x ≤ 1.\n\n**5) Existência (verificação).** Em (0, 0, 0): 0 + log(0 + √1) = 0 + log 1 = 0 nas três equações. A terna satisfaz o sistema.\n\n**Conferência numérica (python).** A equação f(f(f(x))) = x, tanto com ln quanto com log₁₀, só troca de sinal em x = 0 no intervalo [−50, 50], e f é estritamente crescente na malha.\n\n**Conclusão.** O sistema tem exatamente uma solução real: (x, y, z) = (0, 0, 0).",
+    "final_answer": "O sistema tem exatamente uma solução real: (x, y, z) = (0, 0, 0). A prova tem duas partes:\n- **Unicidade:** g(t) = log(t+√(t²+1)) tem o mesmo sinal de t. Se x > 0, as equações dão y > x, z > y e x > z, o que é absurdo; o caso x < 0 é análogo. Logo x = 0 e daí y = z = 0.\n- **Existência:** (0, 0, 0) satisfaz as três equações, pois log 1 = 0.",
+    "pitfalls": [
+      "Mostrar que (0,0,0) é solução não basta: a questão pede existência e unicidade. A unicidade precisa de prova, e a existência deve ser verificada explicitamente.",
+      "Supor x = y = z 'por simetria' sem provar. O sistema é só cíclico, e isso não implica coordenadas iguais. É preciso um argumento de monotonia ou de sinal para obter x = y = z.",
+      "Erro na monotonia: dizer que t + √(t²+1) é crescente 'por ser soma de funções crescentes'. √(t²+1) é DECRESCENTE para t < 0. A justificativa correta usa a derivada 1 + t/√(t²+1) = (√(t²+1)+t)/√(t²+1) > 0, ou a identidade t + √(t²+1) = 1/(√(t²+1) − t).",
+      "Somar as três equações dá g(x)+g(y)+g(z) = 0. Isso NÃO implica que cada termo seja nulo, porque g é ímpar e há infinitas ternas com soma zero. A soma sozinha não prova nada.",
+      "Passar de f(f(f(x))) = x para f(x) = x vale porque f é estritamente CRESCENTE. Para funções decrescentes isso falha (podem existir órbitas periódicas), então a monotonia tem de ser citada.",
+      "Domínio: é preciso (ou é bom) justificar que t + √(t²+1) > 0 para todo t real, pois √(t²+1) > |t|. Assim o sistema está definido em todo ℝ³ e não se perdem nem se criam soluções.",
+      "Ao resolver log(x+√(x²+1)) = 0, isto é, √(x²+1) = 1 − x, elevar ao quadrado exige a condição 1 − x ≥ 0. O resultado x = 0 deve ser conferido.",
+      "Base do logaritmo: o argumento vale para qualquer base b > 1 (natural ou decimal), pois só usa que log 1 = 0 e que o log é crescente. Não se deve assumir uma base específica de modo que isso afete o resultado.",
+      "A resposta é a terna (x, y, z) = (0, 0, 0), e não apenas 'x = 0'."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 10.0,
+      "final_answer": "A única solução real é (x, y, z) = (0, 0, 0). Seja f(t) = t + log(t + √(t²+1)), definida para todo t real porque √(t²+1) > |t|. O sistema fica y = f(x), z = f(y), x = f(z). Como f é estritamente crescente, x < y levaria a y < z e depois a z < x, um absurdo; o caso x > y é análogo. Então x = y = z, o que dá log(x + √(x²+1)) = 0, isto é, x = 0. Por fim, (0, 0, 0) satisfaz as três equações. O resultado vale para qualquer base de logaritmo maior que 1.",
+      "review": {
+        "score": 10,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [],
+        "summary": "Nota 10. Conferi a transcrição com o original (8ª questão, p. 2) e ela bate. As respostas finais coincidem: a solução real é única e vale (x, y, z) = (0, 0, 0). Essa resposta está correta.\n\nPassos da resolução, todos corretos:\n- **Domínio:** √(t²+1) > |t| ≥ −t, logo o logaritmo está definido em todo ℝ.\n- **Reescrita:** o sistema vira y = f(x), z = f(y), x = f(z), com f(t) = t + log(t + √(t²+1)).\n- **Monotonia de f:** o candidato não usa o argumento falso \"soma de funções crescentes\" para h(t) = t + √(t²+1). Ele calcula h'(t) = (√(t²+1) + t)/√(t²+1) > 0, compõe com o log crescente (base b > 1) e soma com t. Esse é o argumento certo.\n- **x = y = z:** se x < y, aplicar f duas vezes dá y < z e z < x, absurdo. O caso x > y é simétrico. De x = y sai z = f(y) = f(x) = y. A igualdade das coordenadas é provada, não suposta por simetria.\n- **Valor comum:** log(x + √(x²+1)) = 0 ⇔ √(x²+1) = 1 − x. O candidato impõe 1 − x ≥ 0 antes de elevar ao quadrado, obtém x = 0 e confere a condição.\n- **Existência:** verifica explicitamente que (0, 0, 0) satisfaz as três equações, porque log 1 = 0.\n- **Conclusão:** separa com clareza unicidade (itens 3 e 4) e existência (item 5).\n\nTodas as armadilhas da referência foram tratadas:\n- unicidade provada, além da existência;\n- nenhuma simetria suposta sem prova;\n- monotonia de h justificada pela derivada;\n- a soma das equações não foi usada;\n- monotonia crescente citada para fechar o ciclo;\n- domínio justificado;\n- condição 1 − x ≥ 0 imposta antes de elevar ao quadrado;\n- base genérica b > 1;\n- resposta dada como terna.\n\nA redação é clara, enxuta e no nível de um gabarito comentado. Não encontrei erro, lacuna ou salto lógico."
+      }
+    }
+  ]
+}

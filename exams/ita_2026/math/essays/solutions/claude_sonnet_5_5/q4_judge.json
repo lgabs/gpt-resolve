@@ -1,0 +1,49 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "A área vermelha total é π(α² + 32α + 528) unidades de área. Ela soma o círculo central, de área πα², e 16 anéis vermelhos, de área total π(32α + 528).",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura/enunciado (confere com o PDF, p. 5).** O alvo tem 33 círculos concêntricos de raios α, α+1, …, α+32 (o círculo k tem raio α+k, k = 0,…,32). O círculo central (k = 0) é um disco vermelho; a região entre o círculo k−1 e o círculo k (k = 1,…,32) é um anel; as cores alternam: k = 0 vermelho, k = 1 branco, k = 2 vermelho, … Logo, a região de índice k é vermelha se k é par e branca se k é ímpar. Como 32 é par, o anel mais externo (k = 32) é vermelho. Há 17 regiões vermelhas (k = 0, 2, 4, …, 32: o disco central + 16 anéis) e 16 regiões brancas (k = 1, 3, …, 31).\n\n**Áreas.**\n- Disco central: A₀ = πα².\n- Anel k (k ≥ 1): A_k = π[(α+k)² − (α+k−1)²] = π(2α + 2k − 1). (É a diferença das áreas dos dois círculos que o limitam, e não a área do círculo de raio α+k.)\n\n**Soma das áreas vermelhas.** Com k = 2j, j = 1,…,16:\nA_verm = πα² + π Σ_{j=1}^{16} (2α + 4j − 1)\n= πα² + π[16(2α − 1) + 4·(16·17/2)]\n= πα² + π[32α − 16 + 544]\n= π(α² + 32α + 528).\n\n**Verificação independente (1): soma alternada/telescópica.** A área vermelha é π[R₃₂² − R₃₁² + R₃₀² − … + R₂² − R₁² + R₀²] com R_k = α+k. Agrupando em pares, (R₂ⱼ² − R₂ⱼ₋₁²) = 2α + 4j − 1, o que dá o mesmo resultado.\n\n**Verificação independente (2): área branca e área total.** Área branca = π Σ_{k ímpar, 1..31} (2α + 2k − 1) = π(32α + 496) (pois Σ(2k−1) sobre k ímpar de 1 a 31 = 2·256 − 16 = 496). Área total = π(α+32)² = π(α² + 64α + 1024). Verifica-se que vermelho + branco = π(α² + 32α + 528) + π(32α + 496) = π(α² + 64α + 1024) ✓. Conferi também numericamente (python, com α = 1, 2, 1/2, 5): por exemplo, α = 1 dá 561π = π(1 + 32 + 528) ✓.\n\n**Resposta:** A_vermelha = π(α² + 32α + 528) unidades de área. (Equivalentemente, A_total − A_branca = π(α+32)² − π(32α+496).)",
+    "final_answer": "Área vermelha = π(α² + 32α + 528) (unidades de área). Detalhe: 17 regiões vermelhas (disco central + 16 anéis, incluindo o anel mais externo); a área branca é π(32α + 496) e a total é π(α+32)².",
+    "pitfalls": [
+      "Contagem: 33 círculos significam raios α, α+1, …, α+32 (o central conta como círculo), ou seja, só 32 anéis. Usar α+33 como raio externo ou contar 33 anéis é erro de 'off-by-one'.",
+      "Paridade/cor: o círculo central é vermelho, então as regiões de índice par (0,2,…,32) são vermelhas e as ímpares são brancas. Como 32 é par, o anel externo é vermelho: 17 regiões vermelhas (1 disco + 16 anéis) e 16 brancas. Errar isso (ex.: tratar 16 anéis vermelhos + disco como 17 e ainda inverter as cores) muda o resultado, por exemplo trocar 528 por 496.",
+      "Área de anel = diferença das áreas dos círculos (π[(α+k)² − (α+k−1)²] = π(2α+2k−1)), não a área do círculo de raio α+k. Somar as áreas dos círculos vermelhos de raios α, α+2, … sem subtrair os círculos brancos internos está errado.",
+      "O disco central é uma região vermelha com área πα², que deve ser somada à parte (não é um anel e não segue a fórmula 2α+2k−1 com k = 0, que daria −π·… incorreto).",
+      "Não supor α inteiro: α é um real positivo qualquer; a resposta é polinomial em α, sem restrição além de α > 0.",
+      "Erros aritméticos comuns na soma: Σ_{j=1}^{16} 4j = 544 e 16·(2α−1) = 32α − 16; o termo constante é 544 − 16 = 528. Bom candidato valida por α = 1 (561π) ou por vermelho + branco = π(α+32)².",
+      "Resposta deve ser dada 'em função de α' e com o fator π; não basta dar um valor numérico."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "A área vermelha total é π(α² + 32α + 528) unidades de área. Ela soma o círculo central, de área πα², e 16 anéis vermelhos, de área total π(32α + 528).",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A verificação com α=0 é fraca e circular. Ela só reavalia a mesma soma com α=0, o que não testa o modelo. Além disso, α=0 contradiz o enunciado, que pede um círculo central de raio α>0. Seria melhor um teste numérico concreto (por exemplo α=1 dá 561π) ou só a checagem vermelho + branco = área total, que o candidato já fez e é a boa verificação."
+          },
+          {
+            "severity": "minor",
+            "description": "A interpretação de que os 33 círculos incluem o central (raios α,…,α+32, com 32 anéis e o anel externo vermelho) é afirmada, mas não discutida. O enunciado é um pouco ambíguo e uma frase justificando a escolha ou apontando a consequência (17 regiões vermelhas e 16 brancas) tornaria a resposta mais robusta contra o erro de uma unidade na contagem. A contagem em si está correta."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta dizer explicitamente que há 17 regiões vermelhas (disco + 16 anéis) e 16 brancas. Isso está implícito nos índices k=2j com j=1..16, mas dizê-lo ajudaria o leitor. Também não se explica por que a fórmula do anel (2α+2k−1) não vale para k=0; o disco central é tratado à parte, o que é correto."
+          }
+        ],
+        "summary": "A resposta final do candidato, A_verm = π(α²+32α+528), coincide com a da minha referência. Conferi numericamente com frações exatas (α=0, 1/2, 1, 2, 5) e o valor bate em todos os casos. O vermelho e o branco somam sempre π(α+32)². Reli o enunciado no PDF (p. 5) e a leitura é a mesma: 33 círculos de raios α,…,α+32, com o central vermelho e as cores alternando. A modelagem está correta e todas as armadilhas foram tratadas. A contagem não tem erro de uma unidade (32 anéis, o externo vermelho). A área do anel é a diferença entre os círculos, π(2α+2k−1). O disco central é somado à parte. Σ4j=544 e o termo constante 528 estão certos. α é tratado como real positivo e a resposta está em função de α, com π e unidades. A verificação por área branca (π(32α+496)) e área total é correta e independente. As falhas são só menores: o teste com α=0 é circular e contradiz α>0, e falta justificar a leitura de que os 33 círculos incluem o central. Resolução clara, completa e quase no nível de gabarito comentado."
+      }
+    }
+  ]
+}

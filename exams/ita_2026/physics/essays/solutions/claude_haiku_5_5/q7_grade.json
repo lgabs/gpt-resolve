@@ -1,0 +1,42 @@
+{
+  "question": 7,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-3-30-10-2025-2-fase-dia-3/dissertativa-7-fisica-2-fase-dia-3-ita-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "I = x^{N+1} I_0 cos^{2N}(φ/N)",
+      "key_answer": "I_final = I0·x^(N+1)·cos^(2N)(ϕ/N)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Mesma expressão. Os dois montam a mesma recorrência: I_1 = x I_0 (o eixo do 1º polarizador é paralelo à polarização do laser, então só entra a perda) e I_k = x cos²β I_{k-1} para k = 2,…,N+1, com β = φ/N. Isso dá N+1 fatores de x e N fatores de cos²β. Conferi em Python os exemplos numéricos da resolução e todos estão corretos: N=2, x=0,8, φ=π/2 dá 0,128 I_0; N=2, x=0,9, φ=π/2, I_0=1000 W/m² dá 182,25 W/m²; N=10 e N=100 dão 284 e 0,024 W/m²."
+    },
+    {
+      "item": "b",
+      "solution_answer": "r = sqrt(P/(π x^{N+1} I_0 cos^{2N}(φ/N))) = |cos(φ/N)|^{-N} sqrt(P/(π x^{N+1} I_0)), com cos(φ/N) ≠ 0",
+      "key_answer": "r = sqrt( P / (π·I0·x^(N+1)·cos^(2N)(ϕ/N)) )",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os dois partem de P = I_final·πr² (feixe cilíndrico e homogêneo) e chegam à mesma expressão. A segunda forma da resolução, com |cos|^N fora da raiz, é equivalente. A resolução ainda trata o caso degenerado cos(φ/N) = 0, que o gabarito não menciona. Isso não muda a resposta. O exemplo numérico também confere: I ≈ 45,17 W/m² e r ≈ 4,2 mm para P = 2,5 mW."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado admite duas leituras do fator x: perda composta, aplicada em cada polarizador, ou um x único para o sistema inteiro. A resolução e o gabarito adotam a leitura composta, com x^(N+1), que é a mais natural para \"após a passagem por cada polarizador\". A resolução também cita a leitura alternativa (x I_0 cos^{2N}(φ/N)), mas deixa claro que não é a adotada. Um corretor rigoroso poderia ver nisso uma resposta \"com alternativa\", mas a resposta final é inequívoca."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Hipótese implícita, declarada na resolução e tácita no gabarito: o analisador só mede a potência e não é um polarizador adicional, ou seja, não entra nos N+1 nem aplica fator de Malus ou de perda. Isso é razoável, porque nenhum ângulo do analisador é dado."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito não trata o caso cos(φ/N) = 0, em que I = 0, P = 0 e r fica indeterminado. É só uma questão de completude e não afeta a nota."
+    }
+  ],
+  "summary": "Questão 7: a resolução bate com o gabarito do Poliedro nos dois itens. No item a, os dois dão I = x^{N+1} I_0 cos^{2N}(φ/N). No item b, dão r = √(P/(π x^{N+1} I_0 cos^{2N}(φ/N))). O enunciado transcrito confere com a página 8 do PDF. A física está correta: lei de Malus com β = φ/N entre polarizadores consecutivos, nenhum fator de cosseno no primeiro polarizador e perda x em cada um dos N+1 polarizadores. Conferi em Python todos os exemplos numéricos da resolução e estão certos. Não há divergência. As dúvidas listadas são só de interpretação (como aplicar x, o papel do analisador) e de completude."
+}

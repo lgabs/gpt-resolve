@@ -1,0 +1,121 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.0,
+  "final_answer": "(a) Meio ácido: cátodo 4H⁺ + 4e⁻ → 2H₂; ânodo 2H₂O → O₂ + 4H⁺ + 4e⁻ (meio básico: cátodo 4H₂O + 4e⁻ → 2H₂ + 4OH⁻; ânodo 4OH⁻ → O₂ + 2H₂O + 4e⁻). (b) ≈ 532 kJ por mol de H₂ (2 mol de fótons de 450 nm). (c) ≈ 1,35×10⁻² mol de H₂. (d) ≈ 1,49×10⁶ kJ com o semicondutor de 450 nm e eficiência quântica de 100%; o limite termodinâmico, independente do semicondutor, é 8,00×10⁵ kJ (n·286 kJ). (e) λ_máx ≈ 837 nm.",
+  "judge_reference": {
+    "reference_solution": "**Dados e convenções.** h = 6,63×10⁻³⁴ J·s; c = 3,0×10⁸ m/s; N_A = 6,02×10²³ mol⁻¹; M(H₂) = 2·1,01 = 2,02 g/mol. O ΔH° = +572 kJ refere-se à equação como escrita, ou seja, a 2 mol de H₂O → 2 mol de H₂ + 1 mol de O₂. Logo, são 286 kJ por mol de H₂. Conferi todas as contas com Python.\n\n**a) Semirreações.** O cátodo é onde ocorre a redução (formação de H₂). O ânodo é onde ocorre a oxidação (formação de O₂).\n\nMeio ácido:\n- Cátodo (redução): 4 H⁺ + 4 e⁻ → 2 H₂\n- Ânodo (oxidação): 2 H₂O → O₂ + 4 H⁺ + 4 e⁻\n\nMeio neutro ou básico (forma equivalente):\n- Cátodo: 4 H₂O + 4 e⁻ → 2 H₂ + 4 OH⁻\n- Ânodo: 4 OH⁻ → O₂ + 2 H₂O + 4 e⁻\n\nSoma: 2 H₂O → 2 H₂ + O₂. Os elétrons se cancelam (4 e⁻). Cada mol de H₂ exige **2 mol de e⁻**.\n\n**b) Energia da luz para 1 mol de H₂.**\n1. Energia de um fóton: E = hc/λ = (6,63×10⁻³⁴ · 3,0×10⁸)/(450×10⁻⁹) = 4,42×10⁻¹⁹ J.\n2. Energia por mol de fótons: 4,42×10⁻¹⁹ · 6,02×10²³ = 2,66×10⁵ J/mol = 266 kJ/mol.\n3. Um fóton gera um elétron, e 1 mol de H₂ exige 2 mol de e⁻. Portanto, são necessários 2 mol de fótons.\n4. E = 2 · 266 kJ ≈ **5,32×10² kJ (5,32×10⁵ J) por mol de H₂**.\n\nEsse valor é maior que a energia mínima termodinâmica, 286 kJ por mol de H₂, então a luz de 450 nm é energeticamente suficiente. O excedente de cerca de 246 kJ se perde (relaxação e calor).\n\n**c) H₂ máximo em 1 h.**\n1. Potência recebida: P = 10 W/m² · 0,2 m² = 2,0 W.\n2. Energia em 1 h: E = 2,0 · 3600 = 7,2×10³ J.\n3. Número de fótons: N = 7200/4,42×10⁻¹⁹ = 1,63×10²² fótons, ou seja, 2,71×10⁻² mol de fótons.\n4. Com eficiência quântica de 100%, são 2,71×10⁻² mol de e⁻.\n5. n(H₂) = 2,71×10⁻²/2 = **1,35×10⁻² mol**.\n\nConferência: 7200 J / 532 kJ·mol⁻¹ = 1,35×10⁻² mol.\n\nO limite fotônico (1 fóton → 1 e⁻) é mais restritivo que o limite energético. Dividir 7200 J por 286 kJ/mol daria 2,5×10⁻² mol, valor que viola a hipótese do enunciado.\n\n**d) Energia mínima para 5,65 kg de H₂.**\n1. n(H₂) = 5650 g / 2,02 g·mol⁻¹ = 2,80×10³ mol (2797 mol).\n2. A energia mínima é a entalpia da reação: 572 kJ para 2 mol de H₂, ou seja, 286 kJ/mol.\n3. E_mín = 2797 · 286 kJ ≈ **8,0×10⁵ kJ = 8,0×10⁸ J** (cerca de 800 MJ).\n\nComo se despreza o efeito da alta pressão, não se soma trabalho de compressão.\n\n*Leitura alternativa (não adotada como principal).* Se \"utilizando o semicondutor\" for lido como energia efetivamente entregue por fótons de 450 nm a 100% de eficiência quântica, o resultado é 2797 · 532 kJ ≈ 1,49×10⁶ kJ ≈ 1,5×10⁹ J. A leitura principal é a termodinâmica, porque o enunciado pede a energia \"mínima necessária\", e a diferença de redação entre b (\"fornecida pela luz\") e d (\"mínima necessária\") sugere isso. Essa escolha é uma interpretação, não algo fixado pelo enunciado.\n\n**e) Comprimento de onda máximo hipotético.**\n1. Combustão: H₂(g) + ½ O₂(g) → H₂O(ℓ), com ΔH = −286 kJ/mol. É a reação inversa da decomposição, por mol de H₂ (Hess).\n2. Energia liberada por 5,65 kg: 2797 · 286 kJ = 8,0×10⁵ kJ = 8,0×10⁸ J.\n3. Elétrons: 2 · 2797 = 5594 mol. Pela proporção 1:1, são 5594 mol de fótons, ou seja, 3,37×10²⁷ fótons.\n4. Energia por fóton: 8,0×10⁸ / 3,37×10²⁷ = 2,375×10⁻¹⁹ J.\n5. λ = hc/E = (6,63×10⁻³⁴ · 3,0×10⁸)/(2,375×10⁻¹⁹) = 8,37×10⁻⁷ m = **≈ 8,4×10² nm (837 nm)**.\n\nForma fechada, independente da massa: λ = 2·N_A·h·c / 286×10³ J = 0,1197·2 / 2,86×10⁵ = 837 nm. Isso corresponde a um gap de cerca de 1,48 eV, no infravermelho próximo.\n\nPara λ ≤ 837 nm o fóton tem energia suficiente. Por isso 837 nm é o comprimento de onda **máximo** pedido. É maior que 450 nm, o que é coerente: um semicondutor que absorva até 837 nm usa fótons menos energéticos, sem desperdício.",
+    "final_answer": "a) Cátodo (redução): 4 H⁺ + 4 e⁻ → 2 H₂ (em meio básico ou neutro: 4 H₂O + 4 e⁻ → 2 H₂ + 4 OH⁻). Ânodo (oxidação): 2 H₂O → O₂ + 4 H⁺ + 4 e⁻ (em meio básico: 4 OH⁻ → O₂ + 2 H₂O + 4 e⁻). Soma: 2 H₂O → 2 H₂ + O₂.\nb) E_fóton = 4,42×10⁻¹⁹ J, ou 266 kJ por mol de fótons. Como 1 mol de H₂ exige 2 mol de e⁻ (2 mol de fótons), a energia é ≈ 5,32×10² kJ (5,32×10⁵ J) por mol de H₂.\nc) Energia recebida = 2,0 W · 3600 s = 7,2×10³ J. Isso dá 1,63×10²² fótons, ou 2,71×10⁻² mol de e⁻. Logo n(H₂) ≈ 1,35×10⁻² mol.\nd) n(H₂) = 5650/2,02 ≈ 2,80×10³ mol. E_mín = n · 286 kJ/mol ≈ 8,0×10⁵ kJ = 8,0×10⁸ J. (Leitura alternativa, com fótons de 450 nm: ≈ 1,5×10⁶ kJ.)\ne) A energia da combustão é 8,0×10⁸ J, e são 5594 mol de fótons (3,37×10²⁷). Logo E_fóton = 2,375×10⁻¹⁹ J e λ_máx ≈ 8,4×10² nm (837 nm).",
+    "pitfalls": [
+      "ΔH° = +572 kJ·mol⁻¹ refere-se à equação como escrita (2 mol de H₂). Por mol de H₂ são 286 kJ. Usar 572 kJ por mol de H₂ erra d) e e) por fator 2.",
+      "Cada mol de H₂ precisa de 2 mol de e⁻, portanto de 2 mol de fótons (1 fóton → 1 e⁻). Esquecer o fator 2 dá 266 kJ no item b), 2,71×10⁻² mol de H₂ no item c) e λ ≈ 418 nm no item e).",
+      "Item a): cátodo é redução (H₂) e ânodo é oxidação (O₂). O meio (ácido ou básico) deve ser coerente entre as semirreações. Os elétrons devem estar balanceados (4 e⁻ em ambas) e a soma deve dar 2 H₂O → 2 H₂ + O₂.",
+      "Item b): é preciso converter a energia do fóton (J) para energia por mol de fótons usando N_A, e só depois multiplicar por 2. Observar a conversão nm → m (450×10⁻⁹ m).",
+      "Item c): a potência é por área. P = 10 W/m² · 0,2 m² = 2 W, e 1 h = 3600 s, o que dá 7200 J. Para a quantidade máxima vale o limite de contagem de fótons (1 fóton → 1 e⁻, 2 e⁻ por H₂). Dividir 7200 J por 286 kJ/mol dá 2,5×10⁻² mol, que viola a hipótese de 1 fóton por elétron. A energia excedente de cada fóton de 450 nm não gera mais H₂.",
+      "Item d): a massa molar do H₂ é 2,02 g/mol (2·1,01), não 1,01. Há ambiguidade de leitura: 'energia mínima' é a entalpia, 8,0×10⁵ kJ; já a energia efetivamente fornecida por fótons de 450 nm seria 1,49×10⁶ kJ. A resolução deve deixar clara a leitura adotada e pode citar a outra. A pressão de 700 bar é distração: o enunciado manda desprezar a compressão.",
+      "Item e): a energia da combustão é |ΔH| = 286 kJ/mol de H₂ (formação de H₂O líquida, coerente com o ΔH dado), e não −242 kJ/mol (H₂O gasosa). Os elétrons são 2 por H₂, e a proporção 1:1 dá o número de fótons. O resultado independe da massa: λ = 2 N_A h c/|ΔH| = 837 nm. Um erro comum é usar o número de mol de H₂ em vez do de elétrons como número de fótons.",
+      "O comprimento de onda é um limite máximo: fótons com λ ≤ 837 nm têm energia suficiente. Note a coerência física: 837 nm > 450 nm, e o gap equivale a ≈ 1,48 eV. O item é hipotético porque ignora perdas (sobrepotenciais, relaxação térmica).",
+      "Apresentar as expressões numéricas integralmente (exigência da prova) e usar as constantes fornecidas (h, c, N_A). Usar valores diferentes de N_A, h ou c pode deslocar o resultado de e) para 836–838 nm, o que é aceitável. Deve-se manter 2–3 algarismos significativos coerentes."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) Cátodo: 2H2O + 2e⁻ → H2 + 2OH⁻; ânodo: 2H2O → O2 + 4H⁺ + 4e⁻. b) ≈ 532 kJ por mol de H2 (2 mol de fótons de 450 nm). c) ≈ 1,35×10⁻² mol de H2. d) ≈ 1,49×10⁶ kJ (n ≈ 2,80×10³ mol de H2). e) λ máx ≈ 837 nm.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": false,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item a): o texto diz \"meio neutro/básico\", mas mistura formas de meios diferentes. O cátodo é escrito na forma básica/neutra (2H2O + 2e⁻ → H2 + 2OH⁻) e o ânodo na forma ácida (2H2O → O2 + 4H⁺ + 4e⁻). A soma está correta, e esse par é aceitável como meio neutro. Mas, rotulado como \"neutro/básico\", o ânodo deveria ser 4OH⁻ → O2 + 2H2O + 4e⁻. A referência pede meio coerente nas duas semirreações. Deveria escolher um meio e escrever o par completo (ácido: 4H⁺+4e⁻→2H2 / 2H2O→O2+4H⁺+4e⁻; básico: 4H2O+4e⁻→2H2+4OH⁻ / 4OH⁻→O2+2H2O+4e⁻), ou dizer explicitamente que é meio neutro. Também faltou dar o ânodo em meio básico no parêntese."
+          },
+          {
+            "severity": "minor",
+            "description": "Item d): a leitura adotada (energia entregue por fótons de 450 nm a 100% de eficiência quântica, 1,49×10⁶ kJ) é, a meu ver, a mais provável. \"Utilizando o semicondutor\" remete ao fóton de 450 nm do item b, e o item e) fala em \"não há perdas\" e em \"hipoteticamente\", o que contrasta com o item d. A valor termodinâmico de 8,0×10⁵ kJ é citado entre parênteses, o que é bom. Falta, porém, declarar de forma explícita que se trata de uma interpretação do enunciado. A seção Resumo/ANSWER traz só 1,49×10⁶ kJ, sem o valor alternativo de 8,0×10⁵ kJ, o que deixaria um corretor que espere o valor termodinâmico sem esse número na resposta final."
+          },
+          {
+            "severity": "minor",
+            "description": "Item e): a conta é feita por mol de H2 (corretamente, pois o resultado independe da massa). Não mostra, porém, o número total de elétrons/fótons para 5,65 kg (5594 mol ≈ 3,37×10²⁷ fótons) nem a energia por fóton (≈2,38×10⁻¹⁹ J). O enunciado pede explicitamente a quantidade de 5,65 kg e a prova exige expressões numéricas resolvidas integralmente. E_comb = 8,0×10⁵ kJ é calculada, mas não é usada na equação final. A \"conferência\" 450·532/286 usa valores arredondados (resulta em ~837,1 nm, não em 837,3) e é só aproximada."
+          },
+          {
+            "severity": "minor",
+            "description": "Armadilhas tratadas só de forma implícita. Não explica que ΔH° = +572 kJ·mol⁻¹ refere-se à equação como escrita (2 mol de H2). Isso só aparece como \"ΔH°/2 = 286\" sem justificativa. Não explica por que a combustão usa H2O(ℓ) (286 kJ) e não H2O(g) (242 kJ). No item c), não comenta que o excedente de energia de cada fóton de 450 nm não gera mais H2 (limite de contagem de fótons, e não energético). Também não descarta o erro 7200/286 kJ = 2,5×10⁻² mol. O resultado numérico está certo, mas a justificativa poderia ser mais explícita para servir de gabarito comentado."
+          }
+        ],
+        "summary": "Reconferi todas as contas com Python. Resultados do candidato: E_fóton = 4,42×10⁻¹⁹ J (266 kJ/mol de fótons); b) 532 kJ/mol de H2; c) 7,2×10³ J → 1,63×10²² fótons → 1,35×10⁻² mol de H2; n(H2 em 5,65 kg) = 2797 mol; e) λ = 837,3 nm. Todos conferem com a referência e com minha verificação, incluindo o fator 2 elétrons/H2 e o uso de 286 kJ/mol (e não 572 nem 242). Não caiu nas armadilhas principais: usou 2 mol de fótons por mol de H2, M(H2)=2,02, P=10×0,2=2 W, e λ=837 nm, coerente com ~1,48 eV por elétron. Divergência: no item d) a referência adota como principal 8,0×10⁵ kJ (ΔH, termodinâmico) e cita 1,49×10⁶ kJ como alternativa. O candidato faz o oposto (1,49×10⁶ kJ principal, 8,0×10⁵ kJ citado). Reli o enunciado: \\\"utilizando o semicondutor\\\" remete ao fóton de 450 nm, e o item e) fala em \\\"não há perdas\\\" e \\\"hipoteticamente\\\", o que só faz sentido se d) incluir as perdas do fóton de 450 nm. A leitura do candidato é, portanto, mais provável como a do gabarito oficial. Como os dois valores aparecem no corpo da resolução, a resposta é considerada correta, embora a divergência seja de interpretação. Os problemas são de rigor e apresentação: rótulo de meio inconsistente no item a), interpretação do item d) não declarada com clareza (e valor alternativo ausente do resumo final), falta o total de fótons no item e), e as armadilhas (572 vs 286, H2O(ℓ) vs (g), limite fotônico no item c) ficam implícitas. A resolução é clara, concisa e correta, mas ainda não atinge o nível de gabarito publicável (≥9) sem esses ajustes.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.3,
+      "final_answer": "(a) Meio ácido: cátodo 4H⁺ + 4e⁻ → 2H₂; ânodo 2H₂O → O₂ + 4H⁺ + 4e⁻ (meio básico: cátodo 4H₂O + 4e⁻ → 2H₂ + 4OH⁻; ânodo 4OH⁻ → O₂ + 2H₂O + 4e⁻). (b) ≈ 532 kJ por mol de H₂ (2 mol de fótons de 450 nm). (c) ≈ 1,35×10⁻² mol de H₂. (d) ≈ 1,49×10⁶ kJ com fótons de 450 nm, a 100% de eficiência quântica. O limite termodinâmico absoluto é 8,0×10⁵ kJ. (e) λ_máx ≈ 837 nm.",
+      "review": {
+        "score": 8.3,
+        "answer_correct": true,
+        "agrees_with_reference": false,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Item d): a escolha da leitura principal diverge da referência (candidato: 1,49×10⁶ kJ com fótons de 450 nm; referência: 8,0×10⁵ kJ = n·286 kJ). Reli o enunciado original e o texto é realmente ambíguo. A favor da leitura do candidato: \"utilizando o semicondutor\" e o contraste com \"hipoteticamente / sem perdas\" do item e). A favor da referência: \"energia mínima necessária\" e \"despreze os efeitos da alta pressão\", que só faz sentido como aviso para não somar trabalho de compressão. Não há como afirmar qual é o gabarito oficial. O candidato apresenta os dois valores com rótulos claros, mas destaca em caixa só 1,49×10⁶ kJ. Se o gabarito for 8,0×10⁵ kJ, a resposta principal fica errada, embora o valor certo apareça como alternativa. Seria melhor justificar com mais ênfase por que a pressão e a palavra \"mínima\" não impõem a leitura termodinâmica, ou apresentar a leitura de ΔH como resposta co-principal."
+          },
+          {
+            "severity": "minor",
+            "description": "Item d): o texto chama 8,0×10⁵ kJ de \"mínimo absoluto\" e \"limite inferior termodinâmico\", mas rotula 1,49×10⁶ kJ como a \"energia mínima\" pedida. Isso gera tensão interna, porque o enunciado pede literalmente a energia mínima. A expressão \"se não houvesse nenhuma perda de fóton\" também é imprecisa. O que se perde é o excesso de energia de cada fóton (termalização), não fótons."
+          },
+          {
+            "severity": "minor",
+            "description": "Item c): a frase \"esse valor [2,5×10⁻² mol de H₂] também violaria o limite de 2,71×10⁻² mol de elétrons\" compara grandezas diferentes (mol de H₂ com mol de e⁻). Lida literalmente, parece falsa, pois 2,5 < 2,71. O correto é explicitar que 2,5×10⁻² mol de H₂ exigiria 5,0×10⁻² mol de e⁻, maior que 2,71×10⁻² mol."
+          },
+          {
+            "severity": "minor",
+            "description": "Item e): há pequenas inconsistências de arredondamento. 2,80×10³ · 286 = 8,01×10⁵ kJ, e não 8,00×10⁵ kJ, e 8,00×10⁸/3,37×10²⁷ dá 2,374×10⁻¹⁹ J. O resultado de 837 nm não se altera. Seria mais limpo carregar n = 2797 mol, ou deduzir a forma fechada λ = 2N_A·h·c/|ΔH| = 837 nm, que mostra que o resultado independe da massa."
+          },
+          {
+            "severity": "minor",
+            "description": "Item a): o enunciado não fixa o meio, e o candidato dá as duas formas (ácida e básica), o que é correto. Não afirma qual é mais adequada. Também não diz que a soma é feita igualando os 4 e⁻ nas duas semirreações, embora isso esteja implícito, e o balanceamento está certo."
+          }
+        ],
+        "summary": "Reli o enunciado original (questão 7, p. 9) e refiz as contas em Python. Os itens a), b), c) e e) coincidem com a referência e estão corretos. a) Semirreações balanceadas em meio ácido e básico, com 4 e⁻ e soma 2H₂O → 2H₂ + O₂. b) E_fóton = 4,42×10⁻¹⁹ J, que dá 266 kJ/mol de fótons; com 2 mol de fótons por mol de H₂, E ≈ 532 kJ. c) 7,2×10³ J → 1,63×10²² fótons → 2,71×10⁻² mol de e⁻ → 1,35×10⁻² mol de H₂, com a armadilha de 7200/286000 tratada. e) λ_máx = 837 nm, usando ΔH = 286 kJ/mol de H₂ (H₂O líquida), 2 e⁻ por H₂ e fótons 1:1; a conferência por proporção está correta. O candidato também tratou as armadilhas de ΔH por 2 mol de H₂, do fator 2 de elétrons, de M(H₂) = 2,02 g/mol, da pressão como distração e de H₂O(ℓ) em vez de H₂O(g). A única divergência é a leitura principal do item d): o candidato destaca 1,49×10⁶ kJ (fótons de 450 nm), e a referência destaca 8,0×10⁵ kJ (ΔH·n). Ambos citam o outro valor como alternativa. O enunciado é genuinamente ambíguo e a leitura do candidato é defensível e explicitada, mas pode não coincidir com o gabarito. Os demais problemas são menores: rótulo ambíguo de \\\"mínimo\\\", frase confusa no item c) e arredondamentos no item e). A resolução é clara, completa e bem verificada, mas a escolha do item d) e esses detalhes de redação a deixam um pouco abaixo de um gabarito comentado pronto para publicar."
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.0,
+      "final_answer": "(a) Meio ácido: cátodo 4H⁺ + 4e⁻ → 2H₂; ânodo 2H₂O → O₂ + 4H⁺ + 4e⁻ (meio básico: cátodo 4H₂O + 4e⁻ → 2H₂ + 4OH⁻; ânodo 4OH⁻ → O₂ + 2H₂O + 4e⁻). (b) ≈ 532 kJ por mol de H₂ (2 mol de fótons de 450 nm). (c) ≈ 1,35×10⁻² mol de H₂. (d) ≈ 1,49×10⁶ kJ com o semicondutor de 450 nm e eficiência quântica de 100%; o limite termodinâmico, independente do semicondutor, é 8,00×10⁵ kJ (n·286 kJ). (e) λ_máx ≈ 837 nm.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": false,
+        "summary": "Os itens (a), (b), (c) e (e) coincidem com a minha referência e foram conferidos em Python: (b) 532 kJ por mol de H₂; (c) 1,35×10⁻² mol; (e) 837 nm. Em (a), as semirreações em meio ácido e em meio básico estão balanceadas (4 e⁻) e somam 2 H₂O → 2 H₂ + O₂. Em (d), o candidato destaca 1,49×10⁶ kJ (532 kJ/mol × 2797 mol) e cita 8,00×10⁵ kJ como limite termodinâmico. A minha referência faz o contrário. Os dois valores aparecem nas duas resoluções, então a divergência é só de qual entra como resposta principal.\n\nRefiz o item (d) e considero a leitura do candidato defensível, talvez mais provável que a da referência. O enunciado diz \"energia mínima necessária … utilizando o semicondutor\". Esse \"utilizando o semicondutor\" só faz sentido se a resposta depender do semicondutor, e o limite termodinâmico (ΔH) não depende. O item (d) também é o inverso do item (c): em (c) calcula-se o H₂ máximo com eficiência quântica de 100% e, em (d), a energia mínima de luz para uma dada massa de H₂, ou seja, 2 fótons de 450 nm por H₂. A leitura termodinâmica (8,0×10⁵ kJ) continua possível, porque \"mínima\" lembra ΔH e o enunciado fornece ΔH. Por isso não afirmo que a reposta do candidato é a única correta, mas ela é plausível e honestamente justificada.\n\nA resolução é completa, tem expressões numéricas explícitas, unidades coerentes e conferências cruzadas (7200 J / 532 kJ/mol; 450·532,2/286). Também trata as armadilhas: ΔH refere-se a 2 mol de H₂ (286 kJ/mol), 2 mol de e⁻ por H₂, 7200/286000 violando o limite de fótons, M(H₂) = 2,02, H₂O(ℓ) e não H₂O(g), os 700 bar como distração, e λ como limite máximo. Os defeitos restantes são pequenos.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (d): a resposta final traz dois valores (1,49×10⁶ kJ e 8,00×10⁵ kJ). A leitura adotada está bem justificada, mas uma banca prefere um único valor definitivo. Se o gabarito oficial for o limite termodinâmico, o valor principal do candidato pode perder pontos, e a menção ao outro só rende crédito parcial. Convém deixar o valor principal mais destacado e a alternativa apenas como observação."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (d): o argumento de que a leitura 'também dá sentido ao item e)' e de que 'isso só é um caso diferente se em d) a luz de 450 nm fornecer mais energia' é frágil. Sob a leitura termodinâmica, (e) também é um caso distinto. Esse trecho deveria ser reduzido ou apresentado como indício, não como prova. O argumento mais forte, que o candidato não destaca, é o paralelo com (c): eficiência quântica de 100% e fótons de 450 nm."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (d): 'só seria atingido se todo o excesso de energia de cada fóton fosse aproveitado, isto é, se não houvesse termalização' é uma explicação qualitativa pouco precisa. O limite termodinâmico seria atingido com fótons de energia igual a ΔH/2 por elétron (o que o item (e) calcula), não aproveitando o excesso de fótons de 450 nm."
+          },
+          {
+            "severity": "minor",
+            "description": "Exigência da prova de resolver integralmente as expressões numéricas: em (d) e (e) alguns passos usam valores intermediários arredondados (532 kJ/mol, 2,375×10⁻¹⁹ J) em vez de uma única expressão completa com h, c, N_A e λ. A forma fechada de (e) está certa. Os resultados não mudam: 1,488×10⁶ kJ com valores exatos contra 1,49×10⁶ kJ, e 837,3 nm."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (a): o candidato apresenta meio ácido e meio básico, o que é correto, mas não escolhe um como principal nem comenta qual meio é típico da célula fotoeletroquímica. É mais cuidado que erro, e não afeta a correção."
+          }
+        ]
+      }
+    }
+  ]
+}

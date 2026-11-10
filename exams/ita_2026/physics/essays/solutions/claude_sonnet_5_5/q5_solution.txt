@@ -1,0 +1,66 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Hipóteses e modelo.}
+\begin{itemize}
+\item A viga é fina e carregada só ao longo do eixo, e é incompressível. Logo seu comprimento depende apenas da temperatura, $L(T)=L\,[1+\alpha\,(T-20)]$. Só a dilatação linear conta, e a carga não a altera.
+\item Viga e água estão sempre em equilíbrio térmico, com $\Delta T = 90-20 = 70\ \mathrm{K}$. As transformações são quase estáticas, sem energia cinética.
+\item Desprezam-se a capacidade térmica do recipiente, a dilatação da água e as perdas de calor. $M_{\mathrm{Cu}}$ é usada em kg/mol, de modo que $n=m/M_{\mathrm{Cu}}$ com $m$ em kg.
+\item A viga sofre dilatação total $\Delta L=\alpha L\,\Delta T$ em cada meia volta do ciclo.
+\end{itemize}
+
+\medskip
+\textbf{a) Trabalho em um ciclo}
+
+A carga exerce sobre a viga uma força constante $F=Mg$ (peso). Em um diagrama $F\times \ell$ ($\ell$ = comprimento da viga), o ciclo tem quatro etapas:
+
+\begin{enumerate}
+\item \emph{Aquecimento} ($20\to90\,^\circ\mathrm{C}$, carga $M_1$): a viga se dilata $\Delta L$ e ergue $M_1$. O trabalho realizado sobre a carga é $W_1=+M_1 g\,\Delta L$.
+\item \emph{Troca $M_1\to M_2$} a $90\,^\circ\mathrm{C}$: o comprimento não muda, pois a viga é incompressível. Não há deslocamento, logo não há trabalho.
+\item \emph{Resfriamento} ($90\to20\,^\circ\mathrm{C}$, carga $M_2$): a viga se contrai $\Delta L$ e a carga desce essa distância. O trabalho da viga sobre a carga é $W_3=-M_2 g\,\Delta L$.
+\item \emph{Troca $M_2\to M_1$} a $20\,^\circ\mathrm{C}$: também sem deslocamento e sem trabalho. Isso fecha o ciclo.
+\end{enumerate}
+
+O ciclo é um retângulo no plano $F\times\ell$, com base $\Delta L$ e altura $(M_1-M_2)g$. O peso próprio da viga não contribui no ciclo: seu centro de massa sobe $\Delta L/2$ e depois desce $\Delta L/2$.
+
+\[
+W=M_1 g\,\Delta L-M_2 g\,\Delta L=(M_1-M_2)\,g\,\alpha L\,\Delta T .
+\]
+Com $g=10\ \mathrm{m/s^2}$ e $\Delta T=70\ \mathrm{K}$:
+\[
+\boxed{W=700\,\alpha L\,(M_1-M_2)\quad(\text{SI, em joules})}
+\]
+Como $M_1>M_2$, $W>0$: a máquina realiza trabalho útil.
+
+\medskip
+\textbf{b) Eficiência}
+
+A eficiência é $\eta=W/Q_H$, em que $Q_H$ é o calor fornecido pela fonte. Ele só é fornecido no aquecimento ($20\to90\,^\circ\mathrm{C}$). A 1ª lei dá
+\[
+Q_H=\Delta U_{\text{água}}+\Delta U_{\text{Cu}}+\underbrace{\big(M_1+\tfrac m2\big)g\,\Delta L}_{\text{energia potencial ganha}} .
+\]
+\begin{itemize}
+\item Água, de massa $\rho_{\mathrm{H_2O}}V$: $\Delta U_{\text{água}}=\rho_{\mathrm{H_2O}}\,V\,c_{\mathrm{H_2O}}\,\Delta T$.
+\item Cobre, com $n=m/M_{\mathrm{Cu}}$ mols e Dulong-Petit $c_V=3R$: $\Delta U_{\text{Cu}}=\dfrac{3mR}{M_{\mathrm{Cu}}}\,\Delta T$. Não há energia elástica, pois a viga é incompressível.
+\item O último termo vale cerca de $4\cdot10^{-7}$ do restante. Ele é menor que correções que o próprio modelo já ignora, como $c_P-c_V$ do cobre e a dilatação da água. Por isso é desprezado de forma consistente (ver a verificação numérica abaixo).
+\end{itemize}
+Assim, $Q_H\simeq\Delta T\left(\rho_{\mathrm{H_2O}}Vc_{\mathrm{H_2O}}+\dfrac{3mR}{M_{\mathrm{Cu}}}\right)$.
+
+\emph{Consistência com a 1ª lei.} No resfriamento, o calor rejeitado é $Q_C\simeq Q_H-W$. Assim $Q_H-Q_C=W$, como deve ser em um ciclo.
+
+Dividindo $W$ por $Q_H$, o fator $\Delta T$ se cancela. Com $g=10\ \mathrm{m/s^2}$:
+\[
+\boxed{\eta=\frac{(M_1-M_2)\,g\,\alpha L}{\rho_{\mathrm{H_2O}}V c_{\mathrm{H_2O}}+\dfrac{3mR}{M_{\mathrm{Cu}}}}=\frac{10\,\alpha L\,(M_1-M_2)}{\rho_{\mathrm{H_2O}}V c_{\mathrm{H_2O}}+\dfrac{3mR}{M_{\mathrm{Cu}}}}}
+\]
+
+\medskip
+\textbf{Conferência.}
+\begin{itemize}
+\item \emph{Unidades}: $(M_1-M_2)g\alpha L$ tem unidade $\mathrm{kg\cdot m\,s^{-2}\cdot K^{-1}\cdot m}=\mathrm{J/K}$. O denominador ($\rho Vc$ e $mR/M_{\mathrm{Cu}}$) também é J/K. Logo $\eta$ é adimensional. Em (a), $\alpha L\,(M_1-M_2)\cdot 700$ tem unidade $\mathrm{K^{-1}\cdot m\cdot kg\cdot(10\ m/s^2)\cdot K}$, isto é, J.
+\item \emph{Ordem de grandeza}: tome $M_1=100\ \mathrm{kg}$, $M_2=50\ \mathrm{kg}$, $m\approx7\ \mathrm{kg}$, $L=1\ \mathrm{m}$, $\alpha\approx1{,}7\cdot10^{-5}\ \mathrm{K^{-1}}$, $V=10\ \mathrm{L}$ e $M_{\mathrm{Cu}}=63{,}5\cdot10^{-3}\ \mathrm{kg/mol}$. Então $W\approx0{,}6\ \mathrm{J}$. O denominador vale $\approx4{,}2\cdot10^{4}+2{,}7\cdot10^{3}\approx4{,}5\cdot10^{4}\ \mathrm{J/K}$, e $Q_H\approx3\cdot10^{6}\ \mathrm{J}$. Portanto $\eta\approx2\cdot10^{-7}$, muito abaixo do limite de Carnot $1-293/363\approx0{,}19$. O termo mecânico $(M_1+m/2)g\alpha L\approx0{,}02\ \mathrm{J/K}$ é de fato desprezível.
+\item \emph{Caso particular}: se $M_2=M_1$, então $W=0$ e $\eta=0$. A energia gasta na subida é devolvida na descida, sem trabalho líquido.
+\item \emph{Dependência}: $W$ cresce com $\alpha$, $L$ e $M_1-M_2$. $\eta$ cai com mais água ou mais cobre, que são capacidades térmicas "inúteis" para o trabalho.
+\end{itemize}
+
+ANSWER: a) $W=(M_1-M_2)\,g\,\alpha L\,(90-20)=700\,\alpha L\,(M_1-M_2)$ (SI, com $g=10\ \mathrm{m/s^2}$); b) $\eta=\dfrac{10\,\alpha L\,(M_1-M_2)}{\rho_{\mathrm{H_2O}}V c_{\mathrm{H_2O}}+3mR/M_{\mathrm{Cu}}}$

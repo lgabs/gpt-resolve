@@ -1,0 +1,54 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) I = I_1(θ)[4 + 2√3 cos(2π a sinθ/λ)]; b) I_máx = (4+2√3) I_1 = (1+√3)² I_1 ≈ 7,46 I_1 (em sinθ = λ/a); c) I_mín = (4−2√3) I_1 = (√3−1)² I_1 ≈ 0,54 I_1 (em sinθ = λ/(2a)).",
+  "judge_reference": {
+    "reference_solution": "**Modelo.** As fontes são coerentes e estão em fase. Em P chegam duas ondas de mesma frequência, com amplitudes A1 e A2 e diferença de fase δ. Como I ∝ A², a condição I1 = I2/3 dá I2 = 3·I1 e A2 = √3·A1. Essa razão vale para qualquer P, isto é, para todo θ.\n\n**a) Intensidade resultante**\n\n1. Diferença de caminho. Com L ≫ a, os raios F1→P e F2→P são praticamente paralelos à reta que liga o ponto médio a P. Pela figura, F2 está mais longe de P, então Δ = r2 − r1 ≈ a·senθ. Conferi numericamente a geometria exata (a = 1 mm, L = 2 m, λ = 500 nm). Ela difere de a·senθ em menos de 1 parte em 10⁷ do comprimento de onda.\n2. Diferença de fase. Como as fontes estão em fase, δ = 2πΔ/λ = (2π a senθ)/λ.\n3. Superposição. Somando fasores, A² = A1² + A2² + 2A1A2 cosδ. Em intensidades:\n I = I1 + I2 + 2√(I1·I2)·cosδ = I1 + 3I1 + 2√3·I1·cosδ.\n\n**I(θ) = I1(θ)·[ 4 + 2√3 · cos( 2π a senθ / λ ) ]**\n\nForma equivalente: I = I1[(1+√3)² cos²(δ/2) + (√3−1)² sen²(δ/2)]. Conferi por soma de fasores com amplitudes 1 e √3 e a fórmula bate em todos os pontos testados.\n\n**b) Primeiro máximo local para θ > 0**\n\nO máximo ocorre quando cosδ = 1, ou seja, δ = 2πm e a·senθ = mλ. O caso m = 0 é o máximo central em θ = 0, excluído por θ > 0. Logo o primeiro máximo está em m = 1, com senθ = λ/a.\n\nI_max = I1·(4 + 2√3) = (1+√3)²·I1 ≈ 7,46·I1(θ)\n\nEsse resultado equivale a (√I1 + √I2)² = (A1 + A2)², soma das amplitudes. O valor (4 + 2√3)·I1 é o mesmo em qualquer máximo, inclusive no central. A resposta não depende de qual máximo se escolhe, desde que I1 seja calculada no ângulo daquele máximo.\n\n**c) Primeiro mínimo local para θ > 0**\n\nO mínimo ocorre quando cosδ = −1, ou seja, δ = (2m+1)π e a·senθ = (m + ½)λ. O primeiro mínimo está em m = 0, com senθ = λ/(2a).\n\nI_min = I1·(4 − 2√3) = (√3−1)²·I1 ≈ 0,536·I1(θ)\n\nEsse resultado equivale a (A2 − A1)². O mínimo não é zero porque as amplitudes são diferentes. A razão I_min/I_max = (2−√3)/(2+√3) ≈ 0,072 é a visibilidade reduzida das franjas.\n\n**Verificação numérica.** Varrendo I(θ) com I1 constante, os extremos aparecem em a·senθ/λ = 0,5 (I/I1 = 0,536) e em 1,0 (I/I1 = 7,464). Isso confirma os itens b e c.",
+    "final_answer": "a) I(θ) = I1(θ)·[4 + 2√3·cos(2π·a·senθ/λ)]\nb) Primeiro máximo (θ>0), em a·senθ = λ: I_max = (4 + 2√3)·I1(θ) = (1+√3)²·I1(θ) ≈ 7,46·I1(θ)\nc) Primeiro mínimo (θ>0), em a·senθ = λ/2: I_min = (4 − 2√3)·I1(θ) = (√3−1)²·I1(θ) ≈ 0,536·I1(θ)",
+    "pitfalls": [
+      "Não usar a fórmula de fontes iguais, I = 4·I0·cos²(δ/2). Aqui as amplitudes são diferentes (A2 = √3·A1), então o mínimo não é zero e o máximo não é 4·I1.",
+      "Intensidade ∝ amplitude². I2 = 3·I1 implica A2/A1 = √3, não 3. Errar isso leva a 10·I1 ou 2·I1 no lugar de 4 ± 2√3.",
+      "I1(θ) é a intensidade de F1 sozinha em P, não a intensidade total. A resposta final deve ser I = I1·(4 + 2√3·cosδ), com o termo de interferência 2√(I1·I2) = 2√3·I1.",
+      "Diferença de caminho Δ = a·senθ, usando L ≫ a (raios paralelos). O enunciado pede a resposta em θ, então não trocar senθ por tanθ ou y/L sem pedir pequenos ângulos. A fase é δ = 2π·a·senθ/λ; esquecer o 2π ou usar a·senθ/λ direto é erro comum.",
+      "As fontes estão em fase, então não há fase inicial extra. Máximo: a·senθ = mλ. Mínimo: a·senθ = (m+½)λ.",
+      "Para θ > 0 o primeiro máximo é m = 1 (senθ = λ/a), porque o máximo central em θ = 0 é excluído. O primeiro mínimo é m = 0 (senθ = λ/2a). O valor (4+2√3)·I1 é o mesmo em qualquer máximo.",
+      "I1 varia com θ (distância, obliquidade). Supõe-se que varie lentamente, de modo que os extremos de I coincidam com cosδ = ±1, e I1 deve ser avaliado no ângulo do extremo. Esse ponto pode ser mencionado como hipótese implícita.",
+      "Simplificação algébrica: 4 ± 2√3 = (√3 ± 1)². Valores numéricos: ≈ 7,46 e ≈ 0,536."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) I = I_1(θ)[4 + 2√3 cos(2π a sinθ/λ)]; b) I_máx = (4+2√3) I_1 = (1+√3)² I_1 ≈ 7,46 I_1 (em sinθ = λ/a); c) I_mín = (4−2√3) I_1 = (√3−1)² I_1 ≈ 0,54 I_1 (em sinθ = λ/(2a)).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A diferença de caminho Δ ≈ a·senθ é só afirmada a partir de «raios praticamente paralelos». Um gabarito comentado deveria mostrar a conta: r2² − r1² = 2·a·y, logo r2 − r1 ≈ a·y/L ≈ a·senθ para L ≫ a. Também faltou dizer que o sinal de Δ (F2 mais longe de P, pela figura) não afeta o resultado, porque cos é par."
+          },
+          {
+            "severity": "minor",
+            "description": "A razão A2/A1 = √3 vale para todo P (todo θ), e é por isso que I = I1·[4 + 2√3·cosδ] é uma função de θ com I1(θ) como fator comum. O candidato escreve «o enunciado dá I1 = I2/3» sem destacar que a razão é constante em θ. A hipótese de I1(θ) variar lentamente é mencionada, o que está certo. Faltou explicar que, com a razão constante, os extremos de I coincidem com cosδ = ±1 salvo uma correção desprezível de I1(θ)."
+          },
+          {
+            "severity": "minor",
+            "description": "Não é dito que o primeiro máximo com θ > 0 (senθ = λ/a) só existe se a ≥ λ, e que o primeiro mínimo (senθ = λ/2a) só existe se a ≥ λ/2. Isso é condição de existência, e o enunciado a pressupõe. O candidato deveria citá-la em uma linha."
+          },
+          {
+            "severity": "minor",
+            "description": "Os valores numéricos aparecem com precisões diferentes (≈0,54 e ≈7,46). É só estilo. Poderia ter mencionado a razão I_min/I_max = (2−√3)/(2+√3) ≈ 0,072 como medida da visibilidade das franjas, o que daria uma verificação extra."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (página 9). A transcrição está fiel: fontes em fase, I1 = I2/3, L ≫ a, e os três itens pedem I(θ), o primeiro máximo e o primeiro mínimo para θ > 0. As respostas finais do candidato coincidem item por item com a minha referência.\n\na) I = I1(θ)·[4 + 2√3·cos(2π·a·senθ/λ)].\nb) I_máx = (4 + 2√3)·I1 = (1+√3)²·I1 ≈ 7,46·I1, em senθ = λ/a (m = 1, porque o máximo central em θ = 0 está excluído).\nc) I_mín = (4 − 2√3)·I1 = (√3−1)²·I1 ≈ 0,536·I1, em senθ = λ/(2a) (m = 0).\n\nRefiz a álgebra e os valores numéricos e estão corretos. A soma de fasores com A2 = √3·A1 dá I = I1 + 3·I1 + 2√3·I1·cosδ. Os extremos são (A1 ± A2)². O mínimo não nulo vem das amplitudes desiguais.\n\nO candidato tratou todas as armadilhas:\n- Usou A2 = √3·A1, não 3·A1.\n- Não usou a fórmula de fontes iguais, 4·I0·cos²(δ/2).\n- Incluiu o fator 2π na fase.\n- Excluiu o máximo central em θ = 0.\n- Avaliou I1 no ângulo do extremo.\n- Explicitou a hipótese de I1(θ) variar lentamente.\n- Fez verificações coerentes: caso I2 = I1 recupera 2·I1(1 + cosδ), a média 4·I1 mostra conservação de energia, e a ordem dos extremos está certa.\n\nAs falhas são só de acabamento: Δ ≈ a·senθ é afirmada sem a dedução, a constância da razão A2/A1 em θ não é destacada, e faltam as condições de existência a ≥ λ e a ≥ λ/2. A resolução é correta, completa e clara. Fica um pouco abaixo de um gabarito comentado perfeito, por isso 9."
+      }
+    }
+  ]
+}

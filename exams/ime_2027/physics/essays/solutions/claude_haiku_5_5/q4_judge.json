@@ -1,0 +1,129 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.0,
+  "final_answer": "(a) I_Rec1 = 50 A (consumindo, entrando pelo polo positivo), I_Rec2 = 0, com I = 50 A (U = 900 V). (b) Sim: razão I/I_F = 2,5; pela curva o fusível rompe em t ≈ 1,5 s após o fechamento de S (leitura entre 1,45 s e 1,55 s). (c) Não, com a característica fornecida: no curto U = 0, I = 500 A (razão 25; o fio do curto leva 1800 A, que não passa pelo fusível), o patamar de 0,1 s dá t_rup = 100 ms > 50 ms. A conclusão depende da hipótese de patamar H, pois a figura só vai até x = 5; se a curva real caísse como 1/x² o fusível protegeria.",
+  "judge_reference": {
+    "reference_solution": "**Convenções.** Nó B = referência; V = V_A − V_B. O gerador (1000 V, 2 Ω) envia a corrente I pelo terminal positivo (superior), que passa por F e S e chega a A. Na Figura 1, as placas longas (+) das três fontes estão voltadas para A. Portanto, Rec1 e Rec2 operam como receptores: a fcem se opõe à corrente que entra por A, e vale V = f_cem + R_int·I_k.\n\nEquações (nó A, lei das malhas e nós):\n- gerador: V = 1000 − 2·I  →  I = (1000 − V)/2\n- Rec1: V = 850 + 1·I₁  →  I₁ = V − 850\n- Rec2: V = 900 + 2·I₂  →  I₂ = (V − 900)/2\n- nó A: I = I₁ + I₂\n\n**a) Correntes imediatamente após o fechamento de S.** Não há capacitor nem indutor, portanto o regime se estabelece instantaneamente e não há transitório. Substituindo:\n(1000 − V)/2 = (V − 850) + (V − 900)/2 → 1000 − V = 3V − 2600 → V = 900 V.\nEntão I = (1000 − 900)/2 = **50 A** (gerador e fusível); I₁ = 900 − 850 = **50 A** (Rec1 recebe corrente, operando como receptor); I₂ = (900 − 900)/2 = **0 A** (Rec2 fica sem corrente, porque V_AB é exatamente igual à sua fcem).\nVerificação: I = I₁ + I₂ = 50 A. Balanço de potência: o gerador entrega 1000·50 − 2·50² = 45 kW, e o Rec1 absorve 850·50 + 1·50² = 45 kW. Rec2 não troca energia.\n\n**b) Rompimento do fusível na condição de (a).** O fusível está em série com o gerador, logo é percorrido por 50 A. A razão é I/I_FUSÍVEL = 50/20 = 2,5 > 1, ou seja, há sobrecorrente e a curva da Figura 2 se aplica. A corrente é constante (não há elementos reativos), então o fusível **rompe**. Na Figura 2, o trecho inclinado vai de cerca de (1,1; 3,9 s) até (3,3; 0,1 s). Interpolando em x = 2,5 obtém-se t ≈ 1,5 s (1,49 pela reta (1; 4 s)–(10/3; 0,1 s); 1,55 pela leitura dos pontos; faixa de leitura ≈ 1,4–1,6 s). **Resposta: sim, o fusível rompe em aproximadamente 1,5 s após o fechamento de S.** O limite de 50 ms não se aplica aqui, porque 50 A não é curto-circuito.\n\n**c) Curto entre A e B no fechamento de S, com fusível novo.** Com A e B em curto, V_AB = 0.\n- Fusível (série com o gerador): I_F = (1000 − 0)/2 = **500 A**, razão 500/20 = **25**. As fcems não alteram essa corrente, porque V_AB = 0.\n- Receptores: I₁ = (0 − 850)/1 = −850 A e I₂ = (0 − 900)/2 = −450 A. Os dois passam a fornecer corrente para o curto, em sentido invertido.\n- Corrente no curto: 500 + 850 + 450 = 1800 A. Essa corrente não passa pelo fusível.\n- A razão 25 está além do eixo da Figura 2 (que vai até cerca de 5). Pela curva, a partir de 3,3 o tempo é constante em 0,1 s. Assume-se que esse patamar se mantém: t_ruptura ≈ 0,1 s = 100 ms.\n- Comparação: 100 ms > 50 ms. O fusível **não** protege a fonte: o gerador ficaria submetido a 500 A por cerca de 100 ms, o dobro do tempo tolerável.\n- Observação: com esta curva, nenhuma corrente leva o rompimento abaixo de 0,1 s. Reduzir I_F só aumentaria a razão e não baixaria o patamar. A proteção exigiria um fusível de atuação mais rápida ou um limitador de corrente.\n\nResumo: (a) I₁ = 50 A, I₂ = 0 A; (b) sim, rompe em ≈ 1,5 s; (c) não, o fusível não protege (100 ms > 50 ms).",
+    "final_answer": "a) Imediatamente após o fechamento de S: V_AB = 900 V; corrente do gerador e do fusível I = 50 A; Rec1 recebe I₁ = 50 A (operando como receptor); Rec2 tem I₂ = 0 A.\n\nb) Sim, o fusível rompe. Com I/I_FUSÍVEL = 50/20 = 2,5 (>1), a corrente é constante e a curva da Figura 2 dá t ≈ 1,5 s (faixa de leitura ≈ 1,4–1,6 s). Esse limite de 50 ms não se aplica, porque não há curto-circuito nesta condição.\n\nc) Não, o fusível não protege a fonte. Com o curto A–B, o fusível conduz I = 1000/2 = 500 A (razão 25; os receptores alimentam o curto com 1800 A no total, sem passar pelo fusível). O tempo de ruptura é o patamar de 0,1 s = 100 ms, que é maior que os 50 ms tolerados pelo gerador.",
+    "pitfalls": [
+      "Polaridade das fcems: na Figura 1, as três fontes têm o terminal + voltado para A (placa longa no topo), como o gerador. Isso faz de Rec1 e Rec2 receptores (a fcem se opõe à corrente que chega por A). Somar as fcems no mesmo sentido, ou tratar os receptores como resistores puros, leva a resultados errados.",
+      "Sinal na equação de receptor: V_AB = f_cem + R_int·I (e não f_cem − R_int·I). Erro de sinal comum que inverte o sentido das correntes.",
+      "Rec2 tem corrente nula em (a) porque V_AB = 900 V é exatamente a sua fcem. Não se deve supor que os dois receptores recebem corrente.",
+      "Verificar a 1ª lei no nó A (I = I₁ + I₂ = 50 A) e o balanço de potência (45 kW gerados = 45 kW absorvidos pelo Rec1).",
+      "O fusível vê apenas a corrente do gerador, pois está em série com a fonte. Não se deve somar as correntes dos receptores a ele.",
+      "Em (c), a corrente do curto (1800 A) não passa pelo fusível. O fusível conduz 500 A (razão 25). Quem somar 1800 A ao fusível chega a razão 90: a conclusão final não muda, mas o raciocínio está errado.",
+      "Em (c), o curto torna V_AB = 0, e os receptores passam a fornecer corrente para o curto (I₁ = −850 A, I₂ = −450 A). Não se deve zerar as fcems nesse caso.",
+      "Não comparar o tempo de (b) com os 50 ms. Os 50 ms são o limite do gerador em curto-circuito, que só vale para (c). Em (b), 50 A é sobrecarga, não curto.",
+      "Leitura da Figura 2: escala linear (não logarítmica). A razão 2,5 cai no trecho inclinado, entre 1 e 3,3. O tempo ≈ 1,5 s. O patamar é 0,1 s, não zero. Para razão < 1 não há curva, pois o fusível não atua em regime nominal.",
+      "Extrapolação em (c): a razão 25 está fora do eixo da figura (que vai até cerca de 5). Admite-se que o patamar de 0,1 s continua válido. Esta hipótese precisa ser declarada na resolução. Com os dados fornecidos, não há indicação de tempo abaixo de 0,1 s, e a conclusão de que o fusível não protege se mantém.",
+      "Reposição do fusível: o de (b) rompe em ≈ 1,5 s, então em (c) ele deve estar novo. Caso contrário, o fusível já estaria aberto e a análise de (c) não se aplicaria.",
+      "Não há transitório: o circuito é puramente resistivo com fcems constantes. As correntes são estabelecidas instantaneamente e permanecem constantes no tempo, o que permite usar a corrente de regime como corrente de ruptura em (b).",
+      "Unidades e razões: 50/20 = 2,5; 500/20 = 25; 100 ms contra 50 ms, ou seja, o dobro do tempo tolerado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "(a) Com U = V_A - V_B = 900 V, imediatamente após o fechamento de S: I = 50 A no gerador e no fusível; Rec1 consome I1 = 50 A; Rec2 fica com I2 = 0 A (a tensão de 900 V coincide com a sua fcem). (b) Sim: I/I_FUS = 50/20 = 2,5 > 1 e, pela curva, o fusível rompe em t ≈ 1,4 s após o fechamento de S (leitura gráfica, ±0,1 s). (c) Não: com curto entre A e B, a corrente no fusível é I = E/r = 500 A, com I/I_FUS = 25; a curva dá t_rup = 0,1 s = 100 ms, o dobro do limite de 50 ms. O fusível não protege a fonte.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (b): o tempo de rompimento foi lido como ≈1,4 s, usando o ponto de partida da curva em (1,1; 3,8 s). Na figura, a quina de partida está mais perto de 3,85–3,9 s. Pelo recorte da Figura 2 em 400 dpi, a reta cruza x = 2,5 em ≈1,5 s (1,49 pela referência; 1,52 pela leitura em pixels). O valor central deveria ser ≈1,5 s, com faixa de leitura 1,4–1,6 s, como na referência. A conclusão 'o fusível rompe' não muda. Deve-se corrigir o número e declarar o método de leitura (interpolação na reta, pontos lidos)."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): a conclusão 'o fusível não protege' depende de extrapolar o patamar de 0,1 s de x ≈ 3,3 até x = 25, bem além da faixa desenhada (até ≈5,2). A resolução declara isso com 'Adota-se', mas a conclusão final sai sem ressalva. Deveria dizer que o resultado vale enquanto o patamar se mantiver, e que uma curva que continuasse a cair poderia levar o rompimento abaixo de 50 ms. O argumento 'o menor tempo indicado pela curva (100 ms) já é o dobro do limite' descreve só a faixa desenhada, não o caso de 25×."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): o enunciado prevê reposição de fusível ('havendo se necessário a reposição de fusível'). A resolução não diz que o fusível está novo, isto é, que não rompeu em (b). Essa hipótese deveria ser explicitada, pois sem ela a análise de (c) não se aplica."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): o texto diz que as fcems 'apenas fazem circular 850 A e 450 A através do curto', sem sinal. Com U = 0, I₁ = −850 A e I₂ = −450 A. Ou seja, Rec₁ e Rec₂ invertem o sentido e passam a fornecer energia ao curto (corrente total no curto 1800 A). Isso não é dito. A 'Conferência' final ainda afirma que 'os receptores consomem', o que vale só para (a)."
+          },
+          {
+            "severity": "minor",
+            "description": "Armadilhas não tratadas explicitamente: (i) a escala linear da Figura 2 não é citada; (ii) não se diz que para razão < 1 não há curva nem rompimento em regime nominal (a resolução só diz 'acima dela, a curva dá um tempo finito'); (iii) o aviso de que a corrente do curto (1800 A) não passa pelo fusível aparece só em forma de componentes, sem o total."
+          }
+        ],
+        "summary": "Verifiquei o enunciado e a Figura 1 no PDF original (renderizada em 220 e 400 dpi). Os três polos positivos (placa longa) estão voltados para A, então Rec₁ e Rec₂ são receptores. A orientação usada pelo candidato e pela referência está correta. Conferi as contas com Python: (a) U = 900 V, I = I₁ = 50 A, I₂ = 0, nó A e balanço de potência (50 kW gerados = 5 kW internos + 45 kW em Rec₁) fecham. (c) I_F = 500 A, razão 25, receptores com −850 A e −450 A, total 1800 A fora do fusível. Os resultados finais do candidato coincidem com a referência nos três itens. No item (b), a diferença é de leitura: o candidato dá ≈1,4 s e a melhor leitura da curva é ≈1,5 s, dentro da faixa de incerteza de ambos. A resolução é clara, bem verificada e declara a hipótese de patamar em (c). Os problemas que impedem nota 9 são: número de (b) lido de forma levemente baixa; conclusão de (c) dependente de extrapolação sem ressalva forte; reposição de fusível não citada; sinais de (c) não explicitados, com a 'conferência' contradizendo o caso de curto; e algumas armadilhas citadas só implicitamente (escala linear, razão < 1).\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "(a) I_Rec1 = 50 A (consumindo), I_Rec2 = 0, com I = 50 A no gerador (U = 900 V; balanço de potência fecha: 50 kW = 5 kW + 42,5 kW + 2,5 kW).\n(b) Sim, o fusível rompe em t ≈ 1,5 s após o fechamento de S (razão I/I_FUS = 2,5; leitura da Figura 2 por interpolação, faixa 1,4 a 1,6 s; o valor corrigido é ≈1,5 s, não 1,4 s).\n(c) Não, o fusível não protege a fonte: com o curto, I = 500 A (razão 25), t_rup = 0,1 s = 100 ms > 50 ms. Receptores fornecem 850 A e 450 A ao curto (corrente total no curto 1800 A, mas só 500 A passam pelo fusível). A conclusão supõe que o patamar de 0,1 s se mantém para razões acima de 5, o que é extrapolação.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Em (c), a conclusão \"não protege\" depende de estender o patamar de 0,1 s da Figura 2 até x = 25, bem além do eixo (x ≤ 5). A resolução declara essa hipótese (H) e indica a condição de inversão (curva abaixo de 0,05 s em x = 25), o que é correto. Falta, porém, a justificativa física ou da própria figura para o patamar valer nesse ponto. Em curvas reais de fusível o tempo de fusão tende a continuar caindo com a corrente (aproximadamente I²t constante), então um piso horizontal é uma suposição que pode inverter a conclusão. O que deveria ser feito: dizer explicitamente que o patamar é o único dado disponível para x > 3,3 e por que se o adota (limite mínimo da característica fornecida), e apresentar \"não\" como resposta condicionada a H, não só como \"com os dados fornecidos\"."
+          },
+          {
+            "severity": "minor",
+            "description": "Leitura da Figura 2 em (b): a calibração do eixo vertical (posição do 10^-1 em relação a 1 e a 4) não é discutida, e os pontos (1,1; 3,8 s) e (3,35; 0,1 s) são estimativas sem indicar como foram obtidas. A frase \"a curva cruza x = 2,5 um pouco acima da linha horizontal de 1,5 s\" cita uma grade que não é identificada no texto. O que deveria ser feito: descrever a calibração ou a grade usada (ou remover a frase) e expressar a incerteza de leitura com base nela. O valor 1,5 s em si é consistente: as leituras das duas resoluções dão t(2,5) entre 1,48 e 1,50 s."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), \"Abaixo de 1 (corrente nominal) não há rompimento\" é atribuído à figura, mas a figura só começa em 1. O fundamento correto é a definição de I_FUSÍVEL como corrente máxima admitida. Deveria citar essa definição."
+          },
+          {
+            "severity": "minor",
+            "description": "A polaridade das fcems é lida da Figura 1 (polos positivos voltados para A) sem checagem de consistência com o enunciado. O enunciado chama Rec1 e Rec2 de receptores, o que só ocorre com o polo + voltado para A, já que o gerador empurra corrente para A. Uma frase com essa verificação reforçaria a convenção."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (c) não se repete que a corrente no fusível é constante, sem transitório, então o tempo de 100 ms é tratado como tempo de atuação em regime. Isso só está implícito no raciocínio de (b). Deveria ser citado em (c) para que o item se sustente sozinho."
+          }
+        ],
+        "summary": "Respostas finais, item por item: (a) I₁ = 50 A (consumindo), I₂ = 0 A, I = 50 A; (b) sim, o fusível rompe em ≈ 1,5 s; (c) não, o fusível não protege a fonte (I = 500 A, razão 25, t = 0,1 s = 100 ms > 50 ms, sob a hipótese de patamar). As três coincidem com a referência e não há divergência de conteúdo. Refiz as contas: U = 900 V, I = I₁ = 50 A, I₂ = 0; balanço 50 kW = 5 kW (rI²) + 42,5 kW + 2,5 kW; em curto, I = 500 A, I₁ = −850 A, I₂ = −450 A, corrente no fio 1800 A (que não passa pelo fusível); t(2,5) pela reta lida fica entre 1,48 e 1,50 s. Todas as armadilhas da referência foram tratadas, inclusive a de que o fusível vê só a corrente do gerador e a de não comparar (b) com os 50 ms. A resolução é rigorosa em (a) e (c), com a hipótese de extrapolação declarada e a condição de inversão explicitada. Não chega a 9 porque a extrapolação do patamar em (c) não tem justificativa física e a leitura da Figura 2 não descreve a calibração. Limitação: não consegui renderizar a Figura 2 em alta resolução neste ambiente. A leitura se apoia na página exibida e na concordância das duas leituras independentes, mas não a remedi pixel a pixel."
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.0,
+      "final_answer": "(a) I_Rec1 = 50 A (consumindo, entrando pelo polo positivo), I_Rec2 = 0, com I = 50 A (U = 900 V). (b) Sim: razão I/I_F = 2,5; pela curva o fusível rompe em t ≈ 1,5 s após o fechamento de S (leitura entre 1,45 s e 1,55 s). (c) Não, com a característica fornecida: no curto U = 0, I = 500 A (razão 25; o fio do curto leva 1800 A, que não passa pelo fusível), o patamar de 0,1 s dá t_rup = 100 ms > 50 ms. A conclusão depende da hipótese de patamar H, pois a figura só vai até x = 5; se a curva real caísse como 1/x² o fusível protegeria.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A justificativa da polaridade é circular. O texto diz que Rec1 e Rec2 absorvem energia 'como o enunciado afirma ao chamá-los de receptores'. O nome não determina o sentido do fluxo de energia; isso sai da solução. O correto é afirmar que, com I1 = 50 A > 0 e I2 = 0 entrando pelo polo +, Rec1 consome energia, e que essa classificação se inverte em (c). Verifiquei na renderização ampliada que as três fontes têm a placa longa voltada para A, então a convenção está correta; só a frase de justificativa precisa ser reescrita."
+          },
+          {
+            "severity": "minor",
+            "description": "O balanço de potência de (c) cobre apenas o gerador (EI = 500 kW, rI² = 500 kW, UI = 0). Um balanço completo confirmaria a distribuição de 1800 A e seria mais convincente. As fcems de Rec1 e Rec2 fornecem 850·850 = 722,5 kW e 900·450 = 405 kW, todos dissipados nas resistências internas, e o total de 500 + 722,5 + 405 = 1627,5 kW fecha com a potência dissipada. Vale acrescentar."
+          },
+          {
+            "severity": "minor",
+            "description": "A leitura do patamar como 'exatamente 0,1 s' usa o rótulo 10^-1. Na grade linear de 0,5 s, a horizontal do patamar fica um pouco abaixo de 0,1 s, mais perto de 0,13–0,14 s. Isso não muda a conclusão, porque nos dois casos 100 ms (ou ~140 ms) > 50 ms. Mas a resolução deveria declarar que usa o rótulo e que a incerteza de leitura do patamar não altera a conclusão."
+          },
+          {
+            "severity": "minor",
+            "description": "A ressalva de (c) sobre I²t constante (t ≈ 15 ms com t ∝ 1/x²) é matematicamente correta (1,5/100 = 0,015 s), e a hipótese H está bem declarada. Mas a especulação enfraquece a resposta definitiva, que o enunciado pede a partir da característica fornecida. Ela deveria ficar mais curta: a conclusão 'não protege' vale para a curva dada, que termina em 5, e uma curva do fabricante para x > 5 é a única forma de resolver o caso real."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), a afirmação 'para I ≤ I_FUSÍVEL o fusível não rompe' vem da definição de corrente nominal e não da figura, que não traz pontos para x < 1. A inferência é razoável, mas deveria ser apresentada como tal. Também falta declarar que se assume o fusível frio em t = 0+, condição implícita na leitura da curva."
+          }
+        ],
+        "summary": "Respostas finais do candidato e da referência coincidem nos três itens, e confirmei cada um por conta própria. Verifiquei a polaridade na renderização ampliada da Figura 1: as três fontes têm a placa longa voltada para A. (a) V_AB = 900 V, I = 50 A, I1 = 50 A (consome), I2 = 0; a conta com KCL e o balanço (45 kW) conferem. (b) Razão 2,5; a reta da Figura 2 cruza x = 2,5 em ~1,49–1,54 s, logo acima da grade de 1,5 s, e rompe em ≈ 1,5 s; o limite de 50 ms não se aplica. (c) Com o curto A–B: V_AB = 0, I_fusível = 500 A (razão 25), I1 = −850 A, I2 = −450 A, corrente do curto 1800 A, que não passa pelo fusível. A extrapolação do patamar de 0,1 s (100 ms > 50 ms) leva a 'não protege'; a hipótese H está declarada. A resolução trata praticamente todas as armadilhas da referência: polaridade, sinal da equação dos receptores, Rec2 em vazio, fusível vendo só a corrente do gerador, corrente do curto fora do fusível, receptores fornecendo energia em (c), fcems mantidas em (c), comparação correta de (b) com 50 ms, escala linear, reposição do fusível, ausência de transitório e unidades. Os problemas restantes são de polimento: justificativa circular da polaridade, balanço incompleto em (c), leitura do patamar pelo rótulo, e uma ressalva de I²t mais longa do que o necessário. Nenhum altera a resposta. A nota fica em 9: é um gabarito comentado publicável, com ajustes de texto.\""
+      }
+    }
+  ]
+}

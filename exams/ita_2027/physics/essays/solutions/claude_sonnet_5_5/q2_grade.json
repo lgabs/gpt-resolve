@@ -1,0 +1,42 @@
+{
+  "question": 2,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 3 - Física)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-3-22-10-2026-2-fase-dia-3/dissertativa-2-fisica-2-fase-dia-3-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "H_n = (0,7)^{2n} V²/(8g) = (0,49)^n V²/(8g)",
+      "key_answer": "h_n = (e^n V sen30°)²/(2g) = 0,7^{2n} V²/(8g)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "A resolução e o gabarito usam o mesmo raciocínio. Como o solo é liso, v_x se conserva e cada choque multiplica v_y por e, então v_{y,n} = e^n·V/2 e H_n = v_{y,n}²/(2g) = 0,49^n V²/(8g). Conferi numericamente para n = 0 a 3. A resolução também confere o caso n = 0, que dá V²/(8g), o resultado do lançamento oblíquo sem choque."
+    },
+    {
+      "item": "b",
+      "solution_answer": "Δt = V/[g(1−e)] = 10V/(3g) ≈ 3,3 V/g; nesse instante E_min = (3/8)mV² e a massa desliza com v = (√3/2)V",
+      "key_answer": "T = (2V sen30°/g)·1/(1−e) = 10V/(3g)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os dois interpretam a energia como energia mecânica total. O mínimo dessa energia é atingido depois de infinitos choques, mas em tempo finito, quando não resta velocidade vertical. Os tempos de voo formam uma PG: τ_k = 2e^k(V/2)/g = e^k V/g. A soma vale V/(0,3g) = 10V/(3g), o que conferi numericamente somando 200 termos. A resolução acrescenta o valor E_min = (3/8)mV² e verifica os limites e→0 e e→1, ambos coerentes."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado fala em \"mínimo da sua energia\" sem dizer qual energia. A resolução e o gabarito tomam a energia mecânica total, que só chega a (3/8)mV² depois de infinitos choques, em T = 10V/(3g). Se \"energia\" fosse lida como energia cinética, o valor mínimo (3/8)mV² já seria atingido pela primeira vez no topo do primeiro voo, em t = V/(2g), e se repetiria no topo de cada voo seguinte. Como o enunciado dá o coeficiente de restituição, a leitura pretendida é claramente a da energia mecânica, mas vale registrar a ambiguidade."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução diz que o mínimo \"só é atingido no limite\". Na verdade, em t = T exato a componente vertical é nula e y = 0, então E = (3/8)mV² é de fato atingida nesse instante, e depois a massa desliza. É só imprecisão de redação; a resposta não muda."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Na transcrição da resolução do gabarito faltam parênteses: aparece \"(e^nVsenθ^2)/2g\" e \"0,7^2nV^20,5^2)/2gh\". Isso parece erro de formatação do texto extraído, não de física, porque a resposta final 0,7^{2n}V²/(8g) está correta."
+    }
+  ],
+  "summary": "Questão 2 correta nos dois itens e idêntica ao gabarito do Poliedro: a) H_n = 0,49^n V²/(8g); b) Δt = V/[g(1−e)] = 10V/(3g). Conferi o enunciado no PDF original. Refiz as contas (conservação de v_x, v_y multiplicada por e a cada choque, soma em PG dos tempos de voo) e conferi numericamente com python. O único ponto a registrar é que a palavra \\\"energia\\\" no item b é ambígua: lida como energia cinética, o mínimo seria atingido já no topo do primeiro voo, em t = V/(2g). Resolução e gabarito adotam a mesma leitura (energia mecânica), que é a pretendida pela questão."
+}

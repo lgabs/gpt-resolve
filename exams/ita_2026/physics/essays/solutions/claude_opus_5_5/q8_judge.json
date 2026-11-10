@@ -1,0 +1,64 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) A potência média mínima é 35 W: (36000 J da bateria + 6000 J de calor) / 1200 s. b) O Δt máximo é L·ΔI/ε = 8π²·10⁻⁷ · 14 / 5 = 2,24π²·10⁻⁶ s ≈ 2,2·10⁻⁵ s (cerca de 22 μs).",
+  "judge_reference": {
+    "reference_solution": "**Dados (em SI)**\n- Celular: m = 100 g, c = 2,0 J/(g·°C), ΔT = 50 − 20 = 30 °C\n- Bateria: Q = 2 A·h = 2·3600 = 7200 C, U = 5,0 V\n- Tempo de carga: t = 20 min = 1200 s\n- Solenoides idênticos: n = 20 espiras/cm = 2000 espiras/m, ℓ = 2 cm = 0,02 m, então N = nℓ = 40 espiras. r = 0,5 cm = 5·10⁻³ m, então A = πr² = π·25·10⁻⁶ ≈ 7,85·10⁻⁵ m²\n- Corrente no primário: rampa linear de 0 a 14 A em Δt, ou seja ΔI = 14 A.\n\n---\n**a) Potência média mínima fornecida pelo carregador**\n\nA energia que o carregador entrega ao celular tem duas partes.\n\n1. Energia armazenada na bateria (U constante e igual a 5,0 V durante a carga):\n   E_bat = Q·U = 7200 · 5,0 = 3,6·10⁴ J (equivale a 10 Wh).\n\n2. Calor dissipado no aparelho, que o aquece de 20 °C a 50 °C:\n   Q_term = m·c·ΔT = 100 · 2,0 · 30 = 6,0·10³ J.\n\nA potência média é mínima no caso ideal. Nesse caso não há perda de calor do celular para o ambiente durante a carga, ou seja, todo o calor gerado fica no aparelho e aparece como aumento de temperatura. Também não há outras perdas, como radiação ou acoplamento imperfeito. Qualquer perda extra só aumentaria a energia necessária. Então:\n\nE_min = E_bat + Q_term = 36 000 + 6 000 = 42 000 J\n\n**P_min = E_min / t = 42 000 / 1200 = 35 W**\n\n---\n**b) Valor máximo de Δt**\n\nSolenoide do carregador, tratado como solenoide ideal (longo): B = μ₀·n·i, uniforme na seção A.\n\nO acoplamento é perfeito e as bobinas são idênticas, então todo esse fluxo atravessa as N = 40 espiras da bobina do celular. O fluxo concatenado é:\nΦ_tot = N·B·A = N·μ₀·n·A·i = M·i,\n\ncom M = μ₀·n²·A·ℓ (= L, a autoindutância de cada solenoide):\nM = 4π·10⁻⁷ · (2000)² · π·25·10⁻⁶ · 0,02 = 8π²·10⁻⁷ H ≈ 7,9·10⁻⁶ H.\n\nComo i varia linearmente, di/dt = ΔI/Δt é constante, e a f.e.m. induzida no celular é constante:\n|ε| = M·ΔI/Δt.\n\nPara a bateria carregar, a f.e.m. induzida precisa atingir a tensão da bateria: |ε| ≥ U = 5,0 V. Quanto maior Δt, menor ε. Logo o Δt máximo corresponde a ε = U, que é exatamente a condição do enunciado:\n\nΔt_max = M·ΔI/U = 8π²·10⁻⁷ · 14 / 5,0 = 2,24π²·10⁻⁶ s\n\n**Δt_max ≈ 2,2·10⁻⁵ s (≈ 22 μs)**. Com π² ≈ 10, dá 2,24·10⁻⁵ s; com o valor exato, 2,21·10⁻⁵ s.\n\n**Verificação pela energia (mostra que os dados são coerentes com o item a)**\n- Em cada ciclo, a energia magnética máxima que pode ser transferida é E_ciclo = ½·L·I² = ½ · 7,9·10⁻⁶ · 14² ≈ 7,74·10⁻⁴ J.\n- Para entregar pelo menos P_min = 35 W, é preciso que E_ciclo/Δt ≥ 35 W. Então Δt ≤ 7,74·10⁻⁴/35 ≈ 2,21·10⁻⁵ s, o mesmo resultado.\n- As duas contas concordam porque P = ε·⟨i⟩ = 5,0 · (0+14)/2 = 35 W.\n- Isso dá cerca de 5,4·10⁷ ciclos em 1200 s, ou seja, frequência da ordem de 45 kHz, um valor realista para carregadores indutivos.",
+    "final_answer": "a) P_min = (Q·U + m·c·ΔT)/t = (36 000 J + 6 000 J)/1200 s = **35 W**.\nb) Δt_max = μ₀·n²·A·ℓ·ΔI/U = 8π²·10⁻⁷ H · 14 A / 5,0 V = 2,24π²·10⁻⁶ s ≈ **2,2·10⁻⁵ s (≈ 22 μs)**.",
+    "pitfalls": [
+      "Na energia da bateria, é preciso converter a carga: 2 A·h = 7200 C. Então E = Q·U = 36 kJ. Erros comuns: usar 2 C ou multiplicar por 60 em vez de 3600.",
+      "No item (a), a energia mínima tem que somar as duas parcelas: energia química da bateria (36 kJ) mais o calor que aquece o aparelho (6 kJ). Considerar só a bateria dá 30 W; considerar só o calor dá 5 W. Os dois estão errados.",
+      "No calor, a massa e o calor específico já estão em gramas e J/(g·°C). Então Q = 100·2·30 = 6000 J, com ΔT = 30 °C (não 50 °C). Não converter só uma das grandezas para kg.",
+      "Tempo de carga: 20 min = 1200 s.",
+      "Por que 'mínimo' no item (a): o caso ideal supõe que nenhum calor é trocado com o ambiente e que não há outras perdas (radiação, acoplamento, resistência do próprio carregador). Qualquer perda real aumenta a potência necessária. Uma boa resolução deixa essa hipótese explícita.",
+      "Número de espiras: N = n·ℓ = 20 espiras/cm × 2 cm = 40, não 20. Densidade linear: n = 2000 espiras/m, não 20.",
+      "Área da seção: o dado é o raio, não o diâmetro. A = π(0,005)² ≈ 7,85·10⁻⁵ m², sem esquecer de converter cm² para m².",
+      "A f.e.m. é induzida nas N = 40 espiras da bobina do celular: ε = N·μ₀·n·A·di/dt = μ₀n²Aℓ·di/dt. Usar o fluxo de uma só espira erra por um fator 40 e dá cerca de 5,5·10⁻⁷ s.",
+      "Acoplamento perfeito com solenoides idênticos significa M = L = μ₀n²Aℓ = 8π²·10⁻⁷ H ≈ 7,9·10⁻⁶ H.",
+      "Por que 'máximo' no item (b): para carregar, a f.e.m. induzida precisa ser pelo menos a tensão da bateria (ε ≥ 5 V). Como ε = M·ΔI/Δt, isso dá Δt ≤ M·ΔI/U. Também dá para justificar pela energia: ½LI²/Δt ≥ P_min. As duas condições levam ao mesmo valor, porque 35 W = 5 V × 7 A (corrente média da rampa).",
+      "Se for usada a abordagem energética, a energia por ciclo é ½LI², não LI². O fator errado dobra o Δt.",
+      "Hipótese implícita: o solenoide é tratado como ideal (B = μ₀ n i). Na realidade ele é curto (ℓ/r = 4) e tem efeitos de borda, mas a prova espera a fórmula do solenoide longo.",
+      "O μ₀ aparece impresso com unidade N·A⁻¹; o correto é N·A⁻². Isso não altera o valor numérico.",
+      "Ordem de grandeza esperada no item (b): Δt ≈ 2,2·10⁻⁵ s, o que corresponde a cerca de 45 kHz. Respostas em ms ou em s indicam erro de unidade ou de número de espiras."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) A potência média mínima é 35 W: (36000 J da bateria + 6000 J de calor) / 1200 s. b) O Δt máximo é L·ΔI/ε = 8π²·10⁻⁷ · 14 / 5 = 2,24π²·10⁻⁶ s ≈ 2,2·10⁻⁵ s (cerca de 22 μs).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato justifica o 'máximo' de Δt principalmente por M ≤ √(L₁L₂) = L e pelo fato de o modelo ideal superestimar o campo. Só que o enunciado já dá o acoplamento como perfeito, então M = L é dado e não uma cota. A justificativa mais natural é física: para carregar, é preciso ε ≥ U, e ε = LΔI/Δt, logo Δt ≤ LΔI/U. Essa condição não aparece. A cota realmente útil, ½LI²/Δt ≥ P_min, aparece só como 'verificação'. Deveria ser apresentada como argumento principal ou junto com a condição ε ≥ U."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta justificar a frase 'cada ciclo transfere no máximo a energia magnética ½LI²_max'. Ela é aceitável no nível da prova, mas deveria vir com a hipótese explícita de que a energia transferida por ciclo é a energia armazenada no indutor no pico da corrente."
+          },
+          {
+            "severity": "minor",
+            "description": "O símbolo ε é usado para duas coisas: a tensão da bateria (nos dados e no item a, E_bat = qε) e a f.e.m. induzida no item b. Pelo enunciado as duas são iguais, mas a notação dupla atrapalha a leitura. O ideal é usar U para a bateria e ε para a f.e.m."
+          },
+          {
+            "severity": "minor",
+            "description": "O cabeçalho diz 'Dados (SI)', mas lista m em gramas e c em J/(g·°C). A conta continua certa porque as unidades se compensam, então é só uma imprecisão de rotulagem."
+          },
+          {
+            "severity": "minor",
+            "description": "O valor numérico poderia ser mais preciso: 2,21×10⁻⁵ s. A resolução escreve ≈ 2,2×10⁻⁵ s, o que é aceitável. Também não comenta a unidade de μ₀ impressa na prova (N·A⁻¹ em vez de N·A⁻²), um detalhe irrelevante para o resultado."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 9 do PDF e ele bate com a transcrição. As duas respostas finais coincidem com a minha referência e estão corretas. Refiz as contas em python.\n\n**a) 35 W.** E_bat = 7200 C × 5 V = 36 kJ e Q = 100 × 2 × 30 = 6 kJ, então P = 42 000/1200 = 35 W. O candidato deixa explícita a hipótese de que não há outras perdas (calor cedido ao ambiente, dissipação no carregador) e justifica assim o 'mínimo'.\n\n**b) 2,24π²×10⁻⁶ s ≈ 2,2×10⁻⁵ s.** L = μ₀n²πr²ℓ = 8π²×10⁻⁷ H ≈ 7,9×10⁻⁶ H, e Δt = LΔI/ε ≈ 2,21×10⁻⁵ s. O candidato também confere pela energia: ½LI²/P_min dá o mesmo valor, e ε·⟨i⟩ = 5 × 7 = 35 W. Isso mostra que os dados do problema foram escolhidos para os dois caminhos coincidirem.\n\n**Armadilhas.** Todas foram tratadas:\n- 2 Ah = 7200 C;\n- soma das duas parcelas de energia;\n- ΔT = 30 °C;\n- N = 40 espiras;\n- raio, e não diâmetro, na área da seção;\n- fator ½ na energia magnética;\n- modelo de solenoide ideal;\n- ordem de grandeza de dezenas de kHz.\n\n**Ressalvas (todas menores):**\n- O 'máximo' do item b se apoia sobretudo em M ≤ L, embora o enunciado já dê o acoplamento como perfeito. Faltou a condição física ε ≥ U para carregar, e a cota energética aparece só como 'verificação'.\n- A afirmação de que cada ciclo transfere no máximo ½LI² não vem justificada.\n- O símbolo ε é usado tanto para a tensão da bateria quanto para a f.e.m. induzida.\n- O cabeçalho diz 'Dados (SI)', mas lista grandezas em gramas.\n\nA resolução é clara, completa e tem qualidade de gabarito comentado, com pequenos ajustes de rigor e notação. Nota 9,0."
+      }
+    }
+  ]
+}

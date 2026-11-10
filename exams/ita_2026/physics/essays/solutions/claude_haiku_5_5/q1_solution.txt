@@ -1,0 +1,85 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Hipóteses, figura e convenções.}
+\begin{itemize}
+\item (i) Trilhos horizontais e $v$ constante: a aceleração do trem é só centrípeta. Como $R$ é muito maior que o trem, todas as rodas têm o mesmo centro de curvatura $C$, situado na direção do eixo. A força centrípeta $F=\dfrac{Mv^2}{R}$ é horizontal e dirigida a $C$. O trem é tratado como corpo rígido sobre o eixo, e o equilíbrio global vale para qualquer número de rodas. O tombamento não é considerado, pois a altura do centro de massa não é dada; um trem real pode ter restrição adicional de torque, o que é uma limitação do modelo.
+\item (ii) Pela figura, a face de maior raio de cada roda está voltada para o eixo, a geratriz inferior sobe para fora e o trilho apoia-se nela. Logo a normal de contato de cada roda aponta para cima e para o centro do eixo, inclinada de $\theta$ com a vertical. Chamo $E$ a roda externa (mais afastada de $C$) e $I$ a interna.
+\item (iii) O trilho só empurra: $N_w\ge 0$, e perder o contato significa $N_w=0$. O atrito estático obedece a $|f_w|\le\mu N_w$.
+\item (iv) O atrito longitudinal (na direção dos trilhos) é nulo: as rodas rolam livres, sem tração nem frenagem. Se existisse, ele reduziria a componente transversal disponível ($f_t^2+f_\ell^2\le\mu^2N^2$), só piorando a situação. As cotas abaixo, atingidas com $f_\ell=0$, continuam válidas.
+\end{itemize}
+
+\textbf{Equações.} Uso $H$ horizontal (positivo para $C$) e $V$ vertical (positivo para cima). A reação de cada roda é $\vec R_w=N_w\vec n_w+f_w\vec t_w$, com $\vec n_w$ a normal e $\vec t_w$ a geratriz inferior. Tomo $f_w>0$ quando a componente horizontal do atrito aponta para $C$:
+\[
+\vec R_E=N_E(\sin\theta,\ \cos\theta)+f_E(\cos\theta,\ -\sin\theta),\qquad
+\vec R_I=N_I(-\sin\theta,\ \cos\theta)+f_I(\cos\theta,\ \sin\theta).
+\]
+O equilíbrio do trem dá
+\[
+\sum_w H_w=\frac{Mv^2}{R},\qquad \sum_w V_w=Mg.
+\]
+
+\textbf{b) Atrito desprezível.} Com $f_E=f_I=0$:
+\[
+(N_E-N_I)\sin\theta=\frac{Mv^2}{R},\qquad (N_E+N_I)\cos\theta=Mg,
+\]
+e, portanto,
+\[
+N_I=\frac12\left(\frac{Mg}{\cos\theta}-\frac{Mv^2}{R\sin\theta}\right).
+\]
+Quando $R$ diminui, $N_I$ diminui: a roda interna é a que se levanta. $N_I\ge 0$ equivale a $\dfrac{v^2}{R}\le g\tan\theta$. No limiar $N_I=0$ e
+\[
+R_{\min}=\frac{v^2}{g\tan\theta}.
+\]
+
+\textbf{a) Atrito $\mu$.} Seja $\varphi=\arctan\mu$, com $0<\theta<90^\circ$. Suponho $\mu\tan\theta<1$, isto é, $\theta+\varphi<90^\circ$. O caso contrário é tratado no fim.
+
+\emph{Passo 1 (configuração limite).} Impondo $N_I=0$, $f_I=0$ e $f_E=\mu N_E$ (roda interna prestes a levantar, roda externa no limite de atrito), as equações de equilíbrio dão
+\[
+N_E(\cos\theta-\mu\sin\theta)=Mg,\qquad N_E(\sin\theta+\mu\cos\theta)=\frac{Mv^2}{R}.
+\]
+Com $\mu\tan\theta<1$, $N_E=\dfrac{Mg}{\cos\theta-\mu\sin\theta}>0$. Dividindo uma equação pela outra,
+\[
+\frac{v^2}{gR}=\frac{\sin\theta+\mu\cos\theta}{\cos\theta-\mu\sin\theta}=\frac{\tan\theta+\mu}{1-\mu\tan\theta}=\tan(\theta+\varphi).
+\]
+
+\emph{Passo 2 (nenhum equilíbrio admissível para $R<R_{\min}$).} Escrevo $f_w=N_w\tan\beta_w$, com $|\beta_w|\le\varphi$ por causa de $|f_w|\le\mu N_w$. Seja $\psi_w$ o ângulo de $\vec R_w$ com a vertical, positivo para $C$. Então
+\[
+\tan\psi_E=\frac{N_E\sin\theta+f_E\cos\theta}{N_E\cos\theta-f_E\sin\theta}=\tan(\theta+\beta_E),\qquad
+\tan\psi_I=\frac{-N_I\sin\theta+f_I\cos\theta}{N_I\cos\theta+f_I\sin\theta}=\tan(\beta_I-\theta),
+\]
+donde $\psi_E\in[\theta-\varphi,\ \theta+\varphi]$ e $\psi_I\in[-\theta-\varphi,\ \varphi-\theta]$. Em ambos os casos $|\psi_w|\le\theta+\varphi<90^\circ$. Logo $V_w\ge 0$ e $H_w=V_w\tan\psi_w\le V_w\tan(\theta+\varphi)$. Somando sobre as rodas,
+\[
+\frac{Mv^2}{R}=\sum_w H_w\le\tan(\theta+\varphi)\sum_w V_w=Mg\tan(\theta+\varphi)\quad\Longrightarrow\quad R\ge R_{\min}.
+\]
+Logo o passo 1 dá o máximo de $\sum H$, e para $R<R_{\min}$ não há equilíbrio com contato e sem deslizamento.
+
+\emph{Passo 3 (existência para $R>R_{\min}$).} As configurações $(N_w,f_w)$ com $N_w\ge 0$, $|f_w|\le\mu N_w$ e $\sum V_w=Mg$ formam um conjunto convexo. Dois de seus pontos são $P_0$, com $N_E=N_I=\dfrac{Mg}{2\cos\theta}$ e $f_w=0$ (então $\sum H=0$), e $P^*$ do passo 1 (com $\sum H=Mg\tan(\theta+\varphi)$). Para $R>R_{\min}$ tem-se $F=\dfrac{Mv^2}{R}\in\bigl(0,\,Mg\tan(\theta+\varphi)\bigr)$. A combinação $\lambda P^*+(1-\lambda)P_0$, com $\lambda=F/[Mg\tan(\theta+\varphi)]\in(0,1)$, é admissível, tem $\sum H=F$ e $N_E,N_I>0$. Assim as duas rodas permanecem em contato. Em $P^*$ o atrito na roda externa aponta para $C$ e para baixo, sentido que se opõe à tendência de o trem escorregar para fora da curva.
+
+\emph{Caso $\mu\tan\theta\ge 1$.} Agora $\theta+\varphi\ge 90^\circ$ e o passo 2 deixa de valer: $\psi_E$ pode ultrapassar $90^\circ$, isto é, $V_E<0$. Com os dois atritos no limite,
+\[
+\vec R_E=s\,\bigl(\sin(\theta+\varphi),\cos(\theta+\varphi)\bigr),\qquad \vec R_I=u\,\bigl(\sin(\varphi-\theta),\cos(\varphi-\theta)\bigr),\qquad s\ge 0,
+\]
+com $u=\dfrac{Mg-s\cos(\theta+\varphi)}{\cos(\varphi-\theta)}\ge 0$, pois $\cos(\theta+\varphi)\le 0<\cos(\varphi-\theta)$. Então
+\[
+\sum H=Mg\tan(\varphi-\theta)+\frac{s\sin 2\theta}{\cos(\varphi-\theta)}\longrightarrow\infty\quad (s\to\infty).
+\]
+Dentro do modelo de Coulomb há equilíbrio sem perda de contato para todo $R>0$. Esse resultado é um artefato: o trilho ``crava'' a roda externa (efeito de cunha, com força para baixo de módulo arbitrário), o que exige forças de contato ilimitadas e indeterminadas pela estática de corpo rígido. Na prática, a deformação e a resistência dos materiais limitam essas forças. Portanto, nesse regime a estática não fornece cota inferior útil: $R_{\min}=0$ só no modelo, e a hipótese de corpo rígido deixa de valer.
+
+\textbf{c) Rodas cilíndricas.} Com $\theta=0$, a normal é vertical e o atrito é horizontal:
+\[
+\sum_w N_w=Mg,\qquad \sum_w f_w=\frac{Mv^2}{R},\qquad |f_w|\le\mu N_w.
+\]
+Logo $\dfrac{Mv^2}{R}\le\mu\sum_w N_w=\mu Mg$, ou seja, $R\ge \dfrac{v^2}{\mu g}$. A desigualdade vale também com atrito longitudinal, pois $|f_t|\le\mu N$. A igualdade ocorre com $f_w=\mu N_w$ voltado para $C$ nas duas rodas, para qualquer repartição $N_E+N_I=Mg$ com $N_E,N_I>0$ (por exemplo, $N_E=N_I=\dfrac{Mg}{2}$). Aqui o limite é o atrito, não o contato: a carga se reparte com normais positivas, e nenhuma roda perde contato para qualquer $R$.
+
+\textbf{Checagens.}
+\begin{itemize}
+\item Unidades: $\dfrac{v^2}{g}$ tem dimensão de metro, e as tangentes são adimensionais.
+\item Limites: em (a), $\mu\to 0$ recupera (b) e $\theta\to 0$ recupera (c). Em (b), $\theta\to 0$ dá $R\to\infty$ (cilindros lisos não curvam) e $\theta\to 90^\circ$ dá $R\to 0$.
+\item Para $\theta+\varphi<90^\circ$ vale $\tan(\theta+\varphi)\ge\max(\tan\theta,\mu)$, logo $R_{(a)}\le\min(R_{(b)},R_{(c)})$: a inclinação do cone e o atrito somam-se para sustentar a curva.
+\item Numérico: $v=30\ \text{m/s}$, $\theta=45^\circ$, $\mu=0{,}3$: $R_{(a)}=\dfrac{900\cdot 0{,}7}{10\cdot 1{,}3}\approx 48{,}5\ \text{m}$, $R_{(b)}=90\ \text{m}$, $R_{(c)}=300\ \text{m}$.
+\item Ordem de grandeza: com $\tan\theta=0{,}05$ (conicidade $1/20$) e $\mu=0{,}3$, $R_{(a)}=\dfrac{v^2(1-0{,}015)}{0{,}35\,g}\approx 2{,}8\,\dfrac{v^2}{g}\approx 250\ \text{m}$ para $v=30\ \text{m/s}$ (cerca de $108$ km/h).
+\end{itemize}
+
+ANSWER: (a) $R_{\min}=\dfrac{v^2}{g\tan(\theta+\arctan\mu)}=\dfrac{v^2(1-\mu\tan\theta)}{g(\mu+\tan\theta)}$ para $\mu\tan\theta<1$ (para $\mu\tan\theta\ge 1$ não há cota inferior no modelo); (b) $R_{\min}=\dfrac{v^2}{g\tan\theta}$; (c) $R_{\min}=\dfrac{v^2}{\mu g}$.

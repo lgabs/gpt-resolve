@@ -1,0 +1,52 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Conjunto solução: -log_2((1+sqrt(5))/2) < x < 1, isto é, x ∈ (log_2((√5−1)/2), 1) ≈ (-0,694; 1). Obtido por: log_2(2^x+2) > 0 sempre, então a inequação equivale a log_2(2^x+2) > 2x e log_2(2^x+2) > -2x; a primeira dá x < 1 e a segunda, com t = 2^x e (t+1)(t²+t−1) > 0, dá x > -log_2((1+√5)/2). Os extremos são excluídos (há igualdade neles).",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 02 (IME 2027, Matemática): resolução de referência\n\nEnunciado (conferido na imagem renderizada da página 2 da prova, impressa com o número 3): determinar todos x ∈ ℝ tais que |log₂(2^x + 2)| > |2x|.\n\nPASSO 0. Domínio e sinal do logaritmo.\nPara todo x real, 2^x > 0, logo 2^x + 2 > 2 > 0. O logaritmo está definido em todo ℝ, sem restrição de domínio.\nComo 2^x + 2 > 2 e log₂ é estritamente crescente, log₂(2^x + 2) > 1 para todo x. Logo o módulo do logaritmo é redundante: |log₂(2^x+2)| = log₂(2^x+2). A desigualdade é equivalente a\n  log₂(2^x + 2) > |2x|.   (*)\n\nPASSO 1. Caso x ≥ 0 (|2x| = 2x).\n(*) ⟺ 2^x + 2 > 2^(2x), pois log₂ é crescente e 2x = log₂(2^(2x)).\nCom y = 2^x > 0, tem-se 2^(2x) = y². A condição é y² − y − 2 < 0 ⟺ (y − 2)(y + 1) < 0 ⟺ y < 2 (pois y + 1 > 0) ⟺ 2^x < 2 ⟺ x < 1.\nInterseção com x ≥ 0: S₁ = [0, 1).\n\nPASSO 2. Caso x < 0 (|2x| = −2x).\n(*) ⟺ log₂(2^x + 2) > −2x ⟺ 2^x + 2 > 2^(−2x).\nSeja u = 2^(−x). Como x < 0, u > 1. Então 2^x = 1/u e 2^(−2x) = u². A inequação fica 1/u + 2 > u². Multiplicando por u > 0: 1 + 2u > u³, ou seja, u³ − 2u − 1 < 0.\nFatoração: u³ − 2u − 1 = (u + 1)(u² − u − 1). Como u + 1 > 0, a condição é u² − u − 1 < 0. As raízes são (1 ± √5)/2. A raiz negativa (1 − √5)/2 é descartada por u > 0, e a condição fica 1 < u < φ, com φ = (1 + √5)/2 ≈ 1,618.\nVoltando a x: 1 < 2^(−x) < φ ⟺ 0 < −x < log₂φ ⟺ log₂(1/φ) < x < 0, com 1/φ = (√5 − 1)/2.\nLogo S₂ = (log₂((√5 − 1)/2), 0). Numericamente, log₂((√5 − 1)/2) ≈ −0,6942.\n\nPASSO 3. União.\nS = S₁ ∪ S₂ = (log₂((√5 − 1)/2), 0) ∪ [0, 1) = (log₂((√5 − 1)/2), 1). Não há lacuna, pois 0 ∈ S₁.\n\nPASSO 4. Verificação e fronteiras (desigualdade estrita, extremos excluídos).\n- x = 1: log₂(2² + 2) = log₂4 = 2 = |2·1|. Igualdade, logo x = 1 fica fora.\n- x₀ = log₂((√5 − 1)/2): 2^(x₀) = 1/φ e 1/φ + 2 = φ² = (3 + √5)/2. Então log₂(φ²) = 2log₂φ ≈ 1,3885 = |2x₀|. Igualdade, logo x₀ fica fora.\n- Testes: x = 0 → log₂3 ≈ 1,585 > 0 (vale). x = 0,5 → log₂(√2 + 2) ≈ 1,771 > 1 (vale). x = −0,3 → ≈ 1,492 > 0,6 (vale). x = −1 → log₂2,5 ≈ 1,322 < 2 (não vale). x = 2 → log₂6 ≈ 2,585 < 4 (não vale).\n- Amostragem numérica em [−5, 5] com 200 001 pontos: o conjunto de soluções coincide com o intervalo acima.\n\nRESPOSTA: x ∈ (log₂((√5 − 1)/2), 1), equivalentemente −log₂((1 + √5)/2) < x < 1, ou aproximadamente −0,6942 < x < 1.",
+    "final_answer": "Conjunto solução: S = (log₂((√5 − 1)/2), 1) = (−log₂((1 + √5)/2), 1), ou seja, aproximadamente −0,6942 < x < 1. Os extremos são excluídos, pois ambos dão igualdade. A questão é discursiva, sem alternativas.",
+    "pitfalls": [
+      "Leitura do enunciado: o expoente é 2^x (confirmado na imagem da prova). Ler como log₂(2x + 2) muda o domínio para x > −1 e o problema inteiro.",
+      "O módulo sobre o logaritmo é redundante: log₂(2^x + 2) > 1 sempre. Quem abre casos também pelo sinal do log perde tempo e pode errar.",
+      "Caso x ≥ 0: a interseção com x ≥ 0 é obrigatória. Obter x < 1 e não restringir deixaria entrar negativos que não pertencem a este caso.",
+      "Caso x < 0: é preciso usar |2x| = −2x e, portanto, 2^(−2x) = u², com u = 2^(−x). Usar 2^(2x) aqui é erro comum.",
+      "Na substituição u = 2^(−x), a restrição u > 1 vem de x < 0. A raiz negativa (1 − √5)/2 não impõe nada. Quem não enxerga a fatoração (u + 1)(u² − u − 1) tende a travar em cúbica.",
+      "O limite inferior é log₂((√5 − 1)/2) = −log₂φ ≈ −0,694, não log₂φ. Trocar o sinal é erro frequente.",
+      "Desigualdade estrita: x = 1 e x = log₂((√5−1)/2) dão igualdade (2 = 2 e 2log₂φ = 2log₂φ), então ambos ficam fora. Escrever ≤ ou incluir os extremos está errado.",
+      "A resposta é um único intervalo. Não basta 'x < 1': a parte x < 0 precisa ser resolvida, pois x = −1 falha (log₂2,5 ≈ 1,32 < 2).",
+      "Conversão de log para exponencial: log₂A > B ⟺ A > 2^B, válido por ser base maior que 1 e sem mudar o sentido, com B de qualquer sinal.",
+      "Verificação recomendada: teste x = 0, x = 0,5 e x = −1, e confirme as duas igualdades nos extremos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Conjunto solução: -log_2((1+sqrt(5))/2) < x < 1, isto é, x ∈ (log_2((√5−1)/2), 1) ≈ (-0,694; 1). Obtido por: log_2(2^x+2) > 0 sempre, então a inequação equivale a log_2(2^x+2) > 2x e log_2(2^x+2) > -2x; a primeira dá x < 1 e a segunda, com t = 2^x e (t+1)(t²+t−1) > 0, dá x > -log_2((1+√5)/2). Os extremos são excluídos (há igualdade neles).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No passo 3, a frase \"2^{kx} = t^k para todo k real inteiro\" é contraditória (\"real inteiro\"). O correto é \"para todo k real\" (vale para qualquer real k, pois 2^{kx} = (2^x)^k com 2^x > 0), ou, se a intenção era restringir, \"para k inteiro\". Corrigir a redação."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 7, a \"Conferência numérica adicional\" afirma que 200 000 valores em [-6,6] coincidiram com o intervalo \"exceto em vizinhanças das fronteiras\", sem descrever malha, critério de pertinência ou número de discrepâncias, e a exceção é vaga. Em um gabarito isso não agrega comprovação. Ou se descreve o procedimento e a contagem, ou se remove a frase. Verifiquei a afirmação por conta própria (malha de 400 001 pontos em [-6,6], 0 discrepâncias em relação a (log₂((√5-1)/2), 1)), então o problema é de comprovação, não de conteúdo."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 5, a fatoração t³+2t²-1 = (t+1)(t²+t-1) é dita \"verificável por expansão\" sem mostrar a expansão. Um gabarito comentado deveria exibir: (t+1)(t²+t-1) = t³+t²-t+t²+t-1 = t³+2t²-1. Custo de correção mínimo."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à da referência: S = (−log₂((1+√5)/2), 1), com os extremos excluídos. Enunciado confirmado na página 3 da prova: |log₂(2^x+2)| > |2x|.\n\nConferência independente:\n- Passo 1 (log > 1 sempre, módulo redundante) está correto e justificado.\n- A decomposição |2x| < L ⟺ (I) L > 2x e (II) L > −2x vale para todo x e dispensa separação de casos. A interseção final é feita de forma explícita, então as armadilhas de domínio por casos ficam resolvidas pelo método.\n- (I): t² − t − 2 < 0 com t = 2^x > 0 ⟹ 0 < t < 2 ⟹ x < 1. Correto.\n- (II): t + 2 > 1/t² ⟺ t³ + 2t² − 1 > 0; a fatoração (t+1)(t²+t−1) está correta (conferida numericamente); para t > 0 ⟺ t > (√5−1)/2 = 1/φ ⟺ x > −log₂φ. Correto. Usa 2^{−2x} = 1/t², que é a armadilha do sinal, tratada corretamente.\n- Extremos: f(1) = log₂4 − 2 = 0 exato; em x₀ = −log₂φ, L = 2log₂φ = −2x₀ = 1,388483… (igualdade confirmada numericamente, erro ~2e-16).\n- Valores citados (log₂3 ≈ 1,585; log₂2,5 ≈ 1,322; log₂6 ≈ 2,585; x = 0,99 → 1,995 vs 1,98; x = 1,01 → 2,005 vs 2,02) conferem.\n- Armadilhas: enunciado (2^x) ✓; módulo redundante ✓; sinal do limite inferior ✓; desigualdade estrita com ambos os extremos excluídos e justificados ✓; resposta em intervalo único com x = −1 testado ✓; conversão log → exponencial com sinal arbitrário de B ✓.\n\nPontos fortes: passos numerados e encadeados, justificativa de cada equivalência, uso da bijeção t = 2^x, verificações nos extremos e em pontos internos e externos. Os defeitos restantes são de redação e comprovação, não de conteúdo matemático. Nota 9: resolução publicável como gabarito comentado, após as três correções menores acima."
+      }
+    }
+  ]
+}

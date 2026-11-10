@@ -1,0 +1,48 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Cada polarizador é linear. Num polarizador ideal vale a lei de Malus: se a luz chega polarizada linearmente e faz um ângulo $\theta$ com o eixo do polarizador, sai com intensidade $I_{\text{ideal}} = I_{\text{in}}\cos^2\theta$, polarizada ao longo do eixo desse polarizador. Pelo enunciado, a intensidade real após cada polarizador é $x$ vezes a ideal ($0<x\le 1$). Os polarizadores não mudam a seção do feixe, que continua cilíndrico, homogêneo e com o mesmo raio $r$.
+
+\subsection*{a) Intensidade na saída}
+
+\textbf{1º polarizador.} O laser chega com polarização paralela ao eixo, ou seja, $\theta = 0$. O caso ideal deixaria passar $I_0\cos^2 0 = I_0$. Com perdas, a intensidade é
+\[
+I_1 = x\,I_0 .
+\]
+
+\textbf{Polarizadores $2$ a $N+1$.} A luz que sai do polarizador $k$ está polarizada ao longo do eixo dele. O eixo do polarizador seguinte está girado de $\beta$ em relação a esse, portanto
+\[
+I_{k+1} = x\,I_k\cos^2\beta .
+\]
+Esse fator aparece $N$ vezes, uma para cada um dos $N$ polarizadores depois do primeiro. Como $\beta = \phi/N$:
+\[
+I = I_{N+1} = x\,I_0\,\big(x\cos^2\beta\big)^{N}
+\;\Longrightarrow\;
+\boxed{I = I_0\,x^{N+1}\cos^{2N}\!\left(\frac{\phi}{N}\right)}
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Com $N=1$ e $x=1$, temos $I = I_0\cos^2\phi$: é a lei de Malus para dois polarizadores.
+\item Com $\phi = 0$, temos $I = x^{N+1}I_0$: só sobram as perdas dos $N+1$ polarizadores.
+\item Com $x=1$ e $N\to\infty$, vale $\cos^{2N}(\phi/N)\approx \left(1-\frac{\phi^2}{2N^2}\right)^{2N}\to 1$. Ou seja, se cada passo gira pouco o eixo, a polarização gira de $\phi$ quase sem perda. Na prática, porém, o fator $x^{N+1}$ limita o número útil de polarizadores.
+\item Como $I\le I_0$, a energia se conserva.
+\end{itemize}
+
+\subsection*{b) Raio do feixe}
+
+O feixe é homogêneo, então a intensidade (potência por unidade de área) é uniforme na seção circular de área $\pi r^2$. A potência medida pelo analisador é
+\[
+P = I\,\pi r^2 \quad\Longrightarrow\quad r = \sqrt{\frac{P}{\pi I}} .
+\]
+Substituindo o resultado do item (a):
+\[
+\boxed{r = \sqrt{\dfrac{P}{\pi\,I_0\,x^{N+1}\cos^{2N}\!\left(\phi/N\right)}}}
+\]
+
+\textbf{Unidades.} $[P]/[I] = \text{W}/(\text{W/m}^2) = \text{m}^2$, logo $r$ sai em metros.
+
+\textbf{Validade.} A expressão exige $\cos(\phi/N)\neq 0$. Se $\phi/N = 90^\circ$, nenhuma luz sai do sistema ($P=0$) e não é possível obter o raio dessa forma.
+
+ANSWER: a) $I = I_0\,x^{N+1}\cos^{2N}(\phi/N)$; b) $r = \sqrt{\dfrac{P}{\pi I_0\,x^{N+1}\cos^{2N}(\phi/N)}}$

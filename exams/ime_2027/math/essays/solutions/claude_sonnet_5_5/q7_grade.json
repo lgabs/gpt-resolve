@@ -1,0 +1,29 @@
+{
+  "question": 7,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-7-matematica-2-fase-dia-1-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "7",
+      "solution_answer": "tr(AB) = C(m+n+2, n+1) = C(2026, 1001). É divisível pelo primo 1013 porque 1001·C(2026,1001) = 2026·C(2025,1000) = 2·1013·C(2025,1000) e mdc(1013, 1001) = 1 (lema de Euclides).",
+      "key_answer": "tr(AB) = C(m+n+2, n+1) = C(2026, 1001) = 2026!/(1025!·1001!), divisível por 1013.",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "A conclusão e a fórmula fechada são iguais nas duas. Refiz as contas. Os três elementos da diagonal saem por Vandermonde: c11 = C(m+n, n−1) (k = j−3, de −2 a n−1, completo), c22 = C(m+n, n) e c33 = C(m+n+1, n+1). Aplicando Stifel duas vezes, tr = C(m+n+2, n+1). Para m = 1024 e n = 1000 isso dá C(2026, 1001). Conferi em Python a fórmula do traço, somando as entradas diretamente para todos os pares com 1 ≤ n < m ≤ 24, e também o caso real (1024, 1000): C(2026,1001) mod 1013 = 0. Confirmei ainda que 1013 é primo e que os restos listados na resolução (1,2,3,5,1,12,10,6,1,27,21) estão corretos. O argumento de divisibilidade da resolução é rigoroso. O do gabarito tem um passo falso: diz que '1013 não divide 1025!·1001!', mas 1013 ≤ 1025, logo 1013 | 1025!. O argumento certo conta expoentes: v_1013(2026!) = 2 (os fatores 1013 e 2026), v_1013(1025!) = 1 e v_1013(1001!) = 0, então v_1013(tr) = 1 ≥ 1. A conclusão do gabarito é verdadeira, mas a justificativa publicada não vale. Por isso o item fica como 'both' quanto à resposta final, e a falha do gabarito vai nas dúvidas."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "high",
+      "description": "A resolução do gabarito Poliedro afirma que 'o primo 1013 não divide 1025!·1001!'. Isso é falso: como 1013 ≤ 1025, 1013 é fator de 1025! (conferido: 1025! ≡ 0 mod 1013). O argumento certo usa expoentes (Legendre): v_1013(2026!) = 2, v_1013(1025!) = 1, v_1013(1001!) = 0, logo v_1013(C(2026,1001)) = 1. Outro caminho é o da resolução: 1001·C(2026,1001) = 2·1013·C(2025,1000) com mdc(1001, 1013) = 1. A conclusão continua certa, mas uma correção que copie o passo do gabarito estaria demonstrando com um argumento inválido. Isso pode pesar numa questão de 'mostre que'."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução diz que conferiu a fórmula numericamente em alguns pares. Isso não faz parte da demonstração e não atrapalha. A prova formal (Vandermonde com o cuidado nos limites, Stifel, primalidade de 1013 e o lema de Euclides) está completa e confere com o enunciado original."
+    }
+  ],
+  "summary": "A resolução está correta e completa. Ela chega a tr(AB) = C(m+n+2, n+1) = C(2026, 1001), a mesma expressão do gabarito Poliedro. A divisibilidade por 1013 está provada com rigor: 1013 é primo, 1001·C(2026,1001) = 2·1013·C(2025,1000) e mdc(1001, 1013) = 1. Conferi tudo em Python, tanto a fórmula do traço quanto C(2026,1001) ≡ 0 (mod 1013). O gabarito tem a conclusão certa, mas a justificativa tem um passo falso: '1013 não divide 1025!·1001!', quando na verdade 1013 | 1025!. A divisibilidade vale porque o expoente de 1013 é 2 em 2026! e 1 em 1025!·1001!. Veredito: as respostas coincidem e a resolução merece nota integral."
+}

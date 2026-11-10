@@ -1,0 +1,55 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) Y é o 3,4-dimetil-hexano na forma meso (3R,4S), desenhado em zigue-zague com cunha e tracejado e em projeção de Fischer, com os dois CH3 do mesmo lado. b) X é o 2-clorobutano, CH3CH2CHClCH3. Para formar a meso, X precisa fornecer um grupo R e um S (X racêmico).",
+  "judge_reference": {
+    "reference_solution": "**Leitura do enunciado.** A reação de um cloreto de alquila com sódio metálico em meio anidro (éter seco) é a síntese de Wurtz: 2 R–Cl + 2 Na → R–R + 2 NaCl. Os \"2 mol de X\" com \"quantidade equivalente de Na\" (2 mol) dão a estequiometria acima. Como há um único haleto X, Y é o dímero simétrico R–R, um alcano com número PAR de carbonos (2n, sendo n o número de C de R).\n\n**Condição sobre Y.** Y tem dois carbonos quirais e não desvia a luz polarizada. Uma única substância com dois estereocentros só é opticamente inativa se for meso (tem plano ou centro de simetria interno). Os dois centros quirais são imagens especulares um do outro, logo têm descritores CIP opostos (R,S). Y é, portanto, um composto meso. Não pode ser par de enantiômeros nem mistura racêmica, porque Y é uma só substância.\n\n**Menor Y possível (busca por número de carbonos).**\n- C2, C4 e C6: R = metil, etil, propil ou isopropil. Os produtos são etano, butano, hexano e 2,3-dimetilbutano. Nenhum tem carbono quiral.\n- C8 (R = butil e isômeros): os produtos possíveis são octano, 2,5-dimetil-hexano, 3,4-dimetil-hexano e 2,2,3,3-tetrametilbutano. Só o 3,4-dimetil-hexano tem carbonos quirais (C3 e C4). Cada um tem quatro grupos diferentes: H, CH3, CH2CH3 e o outro centro quiral. Ele vem de R = sec-butil (butan-2-il).\n- Logo o menor Y tem 8 C: 3,4-dimetil-hexano, CH3CH2–CH(CH3)–CH(CH3)–CH2CH3, na forma meso. Os C10 também servem (por ex. 3,6-dimetiloctano, vindo do cloreto de 2-metilbutila), mas são maiores.\n\n**a) Estrutura tridimensional de Y: meso-3,4-dimetil-hexano, (3R,4S) ≡ (3S,4R).**\n\nPrioridades CIP em C3: C4 (C,C,H) > C2 (C,H,H) > CH3 > H. Em C4: C3 > C5 > CH3 > H.\n\nProjeção de Fischer (cadeia principal na vertical; H e CH3 nas horizontais, voltados para o observador). Os dois CH3 ficam do mesmo lado, o que dá a forma meso (eritro):\n```\n          CH2CH3\n            |\n   H  ——  C3  ——  CH3      (C3 = S)\n            |\n   H  ——  C4  ——  CH3      (C4 = R)\n            |\n          CH2CH3\n```\nHá um plano de simetria horizontal entre C3 e C4. Em representação em zigue-zague (cadeia C2–C3–C4–C5 no plano, conformação anti), um CH3 está em cunha (para o observador) e o outro em tracejado (para trás). Essa conformação tem centro de inversão no meio da ligação C3–C4. Se os dois CH3 estivessem ambos em cunha, seria o par (R,R)/(S,S), quiral e ativo.\n\nSMILES: CC[C@H](C)[C@H](C)CC (3S,4R), idêntico a CC[C@@H](C)[C@@H](C)CC (3R,4S). Conferi os descritores com um cálculo geométrico 3D feito à mão em Python puro: Fischer com os dois CH3 do mesmo lado dá (3S,4R); no zigue-zague, cunha/tracejado dá (R,S).\n\n**b) Nomenclatura de X.** Como R = sec-butil, X = CH3CH2CHClCH3, o 2-clorobutano (cloreto de sec-butila).\n\nEquação: 2 CH3CH2CHClCH3 + 2 Na → CH3CH2CH(CH3)–CH(CH3)CH2CH3 + 2 NaCl.\n\nRessalva sobre X: o 2-clorobutano é quiral (C2 é estereocentro). Para obter o meso, é preciso acoplar um grupo (R)-sec-butil com um (S)-sec-butil. Isso ocorre quando X é racêmico ou equimolar em R e S, que é a leitura natural do enunciado (\"2-clorobutano\", sem descritor). Sem seletividade estereoquímica, a mistura reacional contém (R,R), (S,S) e meso, estatisticamente na proporção 1:1:2. O meso é o componente opticamente inativo Y, enquanto (R,R) e (S,S) formam um par de enantiômeros. Pode-se escrever X como (±)- ou (RS)-2-clorobutano.\n\nIdealização: a Wurtz real também dá subprodutos (butano, buteno, por desproporcionamento), ignorados na questão.",
+    "final_answer": "Reação: 2 CH3CH2CHClCH3 + 2 Na → Y + 2 NaCl (síntese de Wurtz).\na) Y = meso-3,4-dimetil-hexano, (3R,4S), CH3CH2–CH(CH3)–CH(CH3)–CH2CH3. Fischer: os dois CH3 do mesmo lado, plano de simetria entre C3 e C4. Em zigue-zague: um CH3 em cunha e o outro em tracejado. SMILES: CC[C@H](C)[C@H](C)CC. É o menor Y possível (8 C).\nb) X = 2-clorobutano (cloreto de sec-butila), usado como mistura de (R) e (S), isto é, racêmico.",
+    "pitfalls": [
+      "Reconhecer a reação como Wurtz: Y é o dímero R–R (número par de C), não um produto de substituição nem de eliminação. A estequiometria é 2 RCl + 2 Na → R–R + 2 NaCl.",
+      "Dois carbonos quirais + inativo opticamente = composto MESO. Não é mistura racêmica, porque Y é uma só substância. Precisa mostrar a configuração (3R,4S) e o elemento de simetria (plano ou centro de inversão).",
+      "Justificar que é o MENOR Y: varrer C2 a C6, que não têm carbono quiral (etano, butano, hexano, 2,3-dimetilbutano), e entre os C8 só o 3,4-dimetil-hexano tem estereocentros. Não basta apresentar o composto sem a eliminação dos menores.",
+      "Erro comum: desenhar os dois CH3 em cunha (ou ambos tracejados) no zigue-zague, o que dá o par (R,R)/(S,S), quiral e ativo. Em zigue-zague o meso tem cunha/tracejado. Em Fischer, o meso tem os dois CH3 do mesmo lado.",
+      "Confundir os isômeros de R: n-butil, isobutil e terc-butil não geram carbonos quirais no dímero. Só o sec-butil (X = 2-clorobutano) gera. Não confundir com 1-clorobutano, nem com 2-cloro-2-metilpropano ou 1-cloro-2-metilpropano.",
+      "Hipótese necessária: X (2-clorobutano) é quiral. O meso só se forma pelo acoplamento de um (R) com um (S), então X deve ser racêmico ou equimolar em R e S. Com um único enantiômero puro sairia (R,R) ou (S,S), ativo (na prática há racemização parcial). Sem seletividade, a mistura tem 25% (R,R), 25% (S,S) e 50% meso.",
+      "Nome de X pelo IUPAC: 2-clorobutano (cadeia de 4 C, Cl em C2), não 'cloreto de sec-butila' como nome IUPAC. O nome sec-butila é só usual.",
+      "Condição de validade: meio anidro (éter seco), porque Na reage com água. Os subprodutos reais da Wurtz (butano, buteno) são ignorados no enunciado idealizado.",
+      "'Estrutura tridimensional' pede indicação explícita da estereoquímica (cunha/tracejado ou Fischer ou Newman com descritores R/S). Uma fórmula plana não basta."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) Y é o 3,4-dimetil-hexano na forma meso (3R,4S), desenhado em zigue-zague com cunha e tracejado e em projeção de Fischer, com os dois CH3 do mesmo lado. b) X é o 2-clorobutano, CH3CH2CHClCH3. Para formar a meso, X precisa fornecer um grupo R e um S (X racêmico).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "A resolução está correta e coincide com a referência nos dois itens. Reação: síntese de Wurtz, 2 RCl + 2 Na → R–R + 2 NaCl. a) Y = meso-3,4-dimetil-hexano, (3R,4S), com 8 C. b) X = 2-clorobutano, que precisa ser racêmico ou equimolar em R e S para formar o meso. Conferi o enunciado no PDF (página 4, questão 8) e ele bate com a transcrição. Os descritores CIP foram checados por triplo produto em Python puro, sem RDKit: o zigue-zague do candidato (C3 com CH3 em cunha e H tracejado; C4 com H em cunha e CH3 tracejado) dá (3R,4S). A projeção de Fischer (os dois CH3 à esquerda, H à direita) também dá (3R,4S). Compilei o TikZ do zigue-zague e o desenho sai limpo, com cunhas e tracejados nos carbonos certos. As duas representações são mesmo meso, com centro de inversão no zigue-zague anti e plano horizontal no Fischer. O raciocínio de minimalidade (C6 sem quirais; entre os C8 só a sec-butila gera estereocentros) está certo. Quase todas as armadilhas foram tratadas: Wurtz, meso e não racêmica, (R,R)/(S,S) descartados, o erro de desenhar os dois CH3 em cunha, X quiral exigindo R+S, nome IUPAC de X sem usar 'cloreto de sec-butila' e estereoquímica explícita. Os defeitos são pequenos e de rigor: a varredura de Y não cita C2 e C4 (etano, butano) e a justificativa do menor Y é um pouco informal. Também falta a proporção estatística 1:1:2 e a ressalva sobre subprodutos da Wurtz.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A varredura do 'menor Y' é incompleta. Só n=3 (C6) e n=4 (C8) são listados, e os casos n=1 e n=2 (etano, butano) são omitidos. O argumento geral 'o menor R com estereocentro é sec-butila' é plausível, mas não exclui explicitamente estereocentros fora da ligação R–R (como 2-metilbutila, que dá C10, maior). Deveria dizer: os dímeros de C2 e C4 não têm quirais, e os estereocentros fora do carbono de junção exigem ≥5 C por R, logo Y ≥ 10 C."
+          },
+          {
+            "severity": "minor",
+            "description": "Redação imprecisa na 'Verificação': 'Com n=3 não há Y quiral'. Y é meso, ou seja, aquiral. O correto seria 'não há Y com carbonos quirais/estereocentros'. A verificação também não cobre n=1 e n=2."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese estereoquímica sobre X é tratada de forma breve. Diz 'X racêmico, por exemplo' e 'meso + (R,R) + (S,S)', mas não dá a proporção estatística esperada (25% / 25% / 50% de meso) e não indica a notação (±)- ou (RS)-2-clorobutano. Também não explica por que o meio é anidro (Na reage com água), nem ressalva que subprodutos reais da Wurtz (butano, buteno) são ignorados."
+          },
+          {
+            "severity": "minor",
+            "description": "A projeção de Fischer é apenas descrita como 'eclipsada, plano de simetria' e o plano não é marcado no desenho (só o rótulo 'meso'). O Fischer não traz os descritores R/S sobre os centros, que só aparecem no zigue-zague. Um traço tracejado horizontal indicando o plano de simetria deixaria a figura autoexplicativa. Não há erro, é só acabamento."
+          }
+        ]
+      }
+    }
+  ]
+}

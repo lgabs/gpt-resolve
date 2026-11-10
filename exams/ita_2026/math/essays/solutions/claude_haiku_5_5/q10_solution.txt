@@ -1,0 +1,90 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.38, line cap=round, line join=round]
+  \pgfmathsetmacro{\sqt}{sqrt(3)}
+  \pgfmathsetmacro{\Lseg}{6+6*\sqt}
+  \pgfmathsetmacro{\Lext}{\Lseg+1}
+  \pgfmathsetmacro{\cxx}{2*\sqt}
+  \pgfmathsetmacro{\dxx}{6*\sqt}
+  \pgfmathsetmacro{\pxx}{3*\sqt}
+  \pgfmathsetmacro{\rCc}{2*\sqt}
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (\Lseg,0);
+  \coordinate (C) at (\cxx,0);
+  \coordinate (D) at (\dxx,0);
+  \coordinate (P) at (\pxx,3);
+  \coordinate (Q) at (\pxx,-3);
+  \draw[thick] (-1,0) -- (\Lext,0);
+  \draw[dashed] (C) circle (\rCc);
+  \draw[dashed] (D) circle (6);
+  \draw (P) -- (Q);
+  \draw (A) -- (P) -- (B);
+  \draw (C) -- (P);
+  \draw (D) -- (P);
+  \fill (A) circle (2pt) node[below left] {$A$};
+  \fill (B) circle (2pt) node[below right] {$B$};
+  \fill (C) circle (2pt) node[below] {$C$};
+  \fill (D) circle (2pt) node[below] {$D$};
+  \fill (P) circle (2pt) node[above] {$P$};
+  \fill (Q) circle (2pt) node[below] {$Q$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Referencial.} Tomemos $A=(0,0)$ e $B=(L,0)$, com $L=m(\overline{AB})=6(1+\sqrt{3})$ cm e eixo $x$ sobre a reta $AB$. Como $C,D\in\overline{AB}$, temos $C=(c,0)$ e $D=(d,0)$ com $0\le c,d\le L$. Os raios são $r_C=m(\overline{CA})=c$ e $r_D=m(\overline{DB})=L-d$.
+
+\textbf{Simetria.} $C\neq D$, pois circunferências concêntricas não se cortam em exatamente dois pontos. Como $C$ e $D$ são equidistantes de $P$ e de $Q$, a reta $CD=AB$ é a mediatriz de $\overline{PQ}$. Logo, a menos de reflexão em $AB$,
+$$P=(p,h),\qquad Q=(p,-h),\qquad h>0,\qquad m(\overline{PQ})=2h.$$
+Seja $x=m(\overline{AP})>0$. A hipótese $m(\overline{AP})=m(\overline{PQ})$ dá $h=\dfrac{x}{2}$.
+
+\textbf{Passo 1.} Como $A=(0,0)$, $p^2+h^2=x^2$, logo $p^2=\dfrac{3x^2}{4}$.
+
+\textbf{Passo 2 (circunferência $\mathcal{C}$).} $P\in\mathcal{C}$ significa $(p-c)^2+h^2=c^2$, isto é,
+\begin{equation}
+x^2=2pc.
+\end{equation}
+Aqui $c>0$, pois se $c=0$ a circunferência degenera no ponto $A\neq P$. Como $x>0$ e $c>0$, a igualdade (1) força $p>0$, e pelo Passo 1
+\begin{equation}
+p=\frac{\sqrt{3}}{2}\,x.
+\end{equation}
+
+\textbf{Passo 3 (condição sobre $\overline{BP}$).} Temos
+$$m(\overline{BP})^2=(L-p)^2+h^2=L^2-2Lp+x^2=(2+\sqrt{3})\,x^2,$$
+logo $2Lp=L^2-(1+\sqrt{3})\,x^2$. Substituindo (2):
+$$(1+\sqrt{3})\,x^2+\sqrt{3}\,Lx-L^2=0\iff\big[(1+\sqrt{3})\,x-L\big](x+L)=0.$$
+Como $x>0$ e $x+L>0$, resta $(1+\sqrt{3})\,x=L=6(1+\sqrt{3})$, ou seja,
+$$m(\overline{AP})=m(\overline{PQ})=6\ \text{cm},\qquad h=3\ \text{cm},\qquad p=3\sqrt{3}\ \text{cm}.$$
+
+\textbf{a) Raios.}
+
+\emph{Raio de $\mathcal{C}$.} Por (1), $c=\dfrac{x^2}{2p}=\dfrac{36}{6\sqrt{3}}=2\sqrt{3}$ cm.
+
+\emph{Raio de $\mathcal{D}$.} $m(\overline{DP})=m(\overline{DB})=r_D$ dá $(p-d)^2+h^2=(L-d)^2$, isto é, $(p-L)(p+L-2d)=-h^2$. Como $p<L$, isolando $d$:
+$$r_D=L-d=\frac{(L-p)^2+h^2}{2(L-p)}=\frac{m(\overline{BP})^2}{2(L-p)}=\frac{36(2+\sqrt{3})}{2\cdot 3(2+\sqrt{3})}=6\ \text{cm},$$
+usando $L-p=6+3\sqrt{3}=3(2+\sqrt{3})$. Então $d=6\sqrt{3}$ cm.
+
+\emph{Verificação.} $0<2\sqrt{3}<6\sqrt{3}<L$, logo $C$ e $D$ estão em $\overline{AB}$. Além disso $m(\overline{CP})^2=3+9=12$ e $m(\overline{DP})^2=27+9=36$, como exigido. As circunferências são secantes, pois $|r_D-r_C|<CD=4\sqrt{3}<r_C+r_D$.
+
+\textbf{Resposta a):} $r_{\mathcal{C}}=2\sqrt{3}\ \text{cm}\approx 3{,}46\ \text{cm}$ e $r_{\mathcal{D}}=6\ \text{cm}$.
+
+\textbf{b) Área da região comum.} A corda $\overline{PQ}$ está na reta $x=x_0=3\sqrt{3}$. Os centros estão a $d_1=x_0-c=\sqrt{3}$ de $C$ e $d_2=d-x_0=3\sqrt{3}$ de $D$, em lados opostos da corda.
+
+Sejam $\pi_{\mathcal{C}}(X)=|XC|^2-R_1^2$ e $\pi_{\mathcal{D}}(X)=|XD|^2-R_2^2$, com $R_1=2\sqrt{3}$ e $R_2=6$. A função $f=\pi_{\mathcal{C}}-\pi_{\mathcal{D}}=2(d-c)\,x+\text{const}$ é estritamente crescente em $x$ e se anula em $x=x_0$ (reta $PQ$). Logo:
+\begin{itemize}
+  \item se $x\ge x_0$ e $\pi_{\mathcal{C}}\le 0$, então $\pi_{\mathcal{D}}=\pi_{\mathcal{C}}-f\le 0$;
+  \item se $x\le x_0$ e $\pi_{\mathcal{D}}\le 0$, então $\pi_{\mathcal{C}}=\pi_{\mathcal{D}}+f\le 0$.
+\end{itemize}
+Assim, a região comum é a união de dois segmentos circulares: o do disco $\mathcal{C}$ com $x\ge x_0$ e o do disco $\mathcal{D}$ com $x\le x_0$, que só se tocam na corda (área nula).
+
+Os ângulos centrais são dados por $\cos\dfrac{\theta_1}{2}=\dfrac{d_1}{R_1}=\dfrac12$ e $\cos\dfrac{\theta_2}{2}=\dfrac{d_2}{R_2}=\dfrac{\sqrt{3}}{2}$, ou seja, $\theta_1=\dfrac{2\pi}{3}$ e $\theta_2=\dfrac{\pi}{3}$. Como cada centro está do outro lado da corda, ambos os segmentos são os menores. Usando $[\text{segmento}]=\dfrac{R^2}{2}(\theta-\operatorname{sen}\theta)$:
+$$[S_1]=\frac{12}{2}\Big(\frac{2\pi}{3}-\frac{\sqrt{3}}{2}\Big)=4\pi-3\sqrt{3},\qquad [S_2]=\frac{36}{2}\Big(\frac{\pi}{3}-\frac{\sqrt{3}}{2}\Big)=6\pi-9\sqrt{3}.$$
+Logo
+$$[\text{região comum}]=10\pi-12\sqrt{3}\ \ \mathrm{cm}^2.$$
+
+\emph{Conferência.} A região é o setor de $\mathcal{C}$ ($2\pi/3$) mais o setor de $\mathcal{D}$ ($\pi/3$), menos o quadrilátero $CPDQ$, cuja área é $\dfrac{CD\cdot PQ}{2}=\dfrac{4\sqrt{3}\cdot 6}{2}=12\sqrt{3}$ (diagonais perpendiculares). Obtemos $4\pi+6\pi-12\sqrt{3}$, o mesmo resultado. Numericamente, $10\pi-12\sqrt{3}\approx 10{,}63\ \mathrm{cm}^2$, valor menor que a área do disco $\mathcal{C}$, $12\pi\approx 37{,}7\ \mathrm{cm}^2$.
+
+\textbf{Resposta b):} $(10\pi-12\sqrt{3})\ \mathrm{cm}^2\approx 10{,}63\ \mathrm{cm}^2$.
+
+\noindent ANSWER: a) $r_{\mathcal{C}}=2\sqrt{3}\ \mathrm{cm}\approx 3{,}46\ \mathrm{cm}$ e $r_{\mathcal{D}}=6\ \mathrm{cm}$; b) $(10\pi-12\sqrt{3})\ \mathrm{cm}^2\approx 10{,}63\ \mathrm{cm}^2$

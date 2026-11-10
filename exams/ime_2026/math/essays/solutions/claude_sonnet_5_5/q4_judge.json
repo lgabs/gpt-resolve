@@ -1,0 +1,55 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "z = y(1+i), z = y(√3−2+i) ou z = y(−2−√3+i), com y real não nulo (x/y = 1, −2+√3 ou −2−√3; z não pode ser real nem imaginário puro).",
+  "judge_reference": {
+    "reference_solution": "**Condições de existência.** Escreva z = x + iy, com x, y reais. A equação exige z − z̄ ≠ 0 e z² − z̄² ≠ 0.\n- z − z̄ = 2iy ≠ 0 dá y ≠ 0, ou seja, z não é real.\n- z² − z̄² = (z − z̄)(z + z̄) = 4ixy ≠ 0 dá x ≠ 0 e y ≠ 0, ou seja, z não é imaginário puro (e z ≠ 0).\n\nTodo candidato a solução tem, portanto, x ≠ 0 e y ≠ 0.\n\n**Simplificação.** Seja A = (z+z̄)/(z−z̄) e B = (z²+z̄²)/(z²−z̄²).\n- z + z̄ = 2x e z − z̄ = 2iy, logo A = x/(iy) = −i·t, com t = x/y real e não nulo.\n- z² + z̄² = 2(x² − y²) e z² − z̄² = 4ixy, logo B = (x² − y²)/(2ixy) = −i·s, com s = (t² − 1)/(2t), real.\n\nA e B são imaginários puros. Então i(A + B) = i(−i)(t + s) = t + s, e AB = (−it)(−is) = −ts, logo −AB = ts.\n\nA equação fica, em ℝ: t + s + ts = 1, isto é, (1 + t)(1 + s) = 2.\n\n**Equação em t.** Temos 1 + s = (t² + 2t − 1)/(2t). Então (1 + t)(t² + 2t − 1) = 4t.\n- Expandindo: t³ + 3t² + t − 1 = 4t, ou seja, t³ + 3t² − 3t − 1 = 0.\n- Fatorando (t = 1 é raiz): (t − 1)(t² + 4t + 1) = 0.\n- Raízes: t = 1, t = −2 + √3, t = −2 − √3. Todas são reais e não nulas, logo compatíveis com as condições de existência.\n\n**Conferência.**\n- t = 1: s = 0 e t + s + ts = 1. Aqui B = 0 é legítimo, pois o numerador se anula mas o denominador 4ixy não.\n- t = −2 + √3: s = √3 e t + s + ts = (−2 + √3) + √3 + (−2√3 + 3) = 1.\n- t = −2 − √3: s = −√3 e t + s + ts = (−2 − √3) − √3 + (2√3 + 3) = 1.\n\n**Conjunto-solução.** Como x = t·y com y real não nulo qualquer, z = y(t + i). Com k = y ∈ ℝ*:\n- z = k(1 + i)\n- z = k(√3 − 2 + i)\n- z = k(−√3 − 2 + i), com k ∈ ℝ*.\n\nSão três retas pela origem, sem a origem. Em polar, z = ρ·e^{iθ} com ρ ∈ ℝ* e θ ∈ {π/4, 7π/12, 11π/12}, isto é, ângulos de 45°, 105° e 165° módulo 180°. Como t = cot θ, temos cot 45° = 1, cot 105° = −2 + √3 e cot 165° = −2 − √3. Por exemplo, cos(7π/12) = (√2 − √6)/4 e sen(7π/12) = (√6 + √2)/4.\n\n**Segunda via (confirma o resultado).** Seja w = z/z̄. Então A = (w+1)/(w−1) e B = (w²+1)/(w²−1), com w ≠ ±1.\n- Multiplicando por (w−1)(w²−1) ≠ 0: i[(w+1)(w²−1) + (w²+1)(w−1)] − (w+1)(w²+1) = (w−1)(w²−1).\n- A soma entre colchetes vale 2w³ − 2, então 2i(w³ − 1) − (w³ + w² + w + 1) = w³ − w² − w + 1.\n- Simplificando: (i − 1)w³ = i + 1, logo w³ = (1+i)/(i−1) = −i.\n- As raízes são w = i, e^{i7π/6}, e^{−iπ/6}. Nenhuma é ±1, então são válidas.\n- Como w = e^{2iθ}, obtemos 2θ = π/2, 7π/6 e −π/6, ou seja, θ = π/4, 7π/12 e 11π/12 (mod π). Isso coincide com a primeira via.\n\nA equação é equivalente a (z/z̄)³ = −i, com z não real e não imaginário puro.\n\n**Verificação numérica (Python).** Os valores z = k(t + i) para os três t e vários k, positivos e negativos, dão LHS = 1 com erro da ordem de 1e-15. Uma varredura de todas as direções θ ∈ (0, π) encontra mínimos de |LHS − 1| apenas em 45°, 105° e 165°. Para esses z, (z/z̄)³ = −i.",
+    "final_answer": "As soluções são os complexos z = k(1 + i), z = k(√3 − 2 + i) e z = k(−√3 − 2 + i), com k ∈ ℝ* (k real não nulo).\n\nEm forma polar, z = ρ·e^{iθ} com ρ ∈ ℝ* e θ ∈ {π/4, 7π/12, 11π/12}, isto é, 45°, 105° e 165° módulo 180°.\n\nEquivalentemente, (z/z̄)³ = −i, com z não real e não imaginário puro. São três retas pela origem, sem a origem. Não há soluções reais, imaginárias puras ou nula.",
+    "pitfalls": [
+      "Condições de existência: z − z̄ ≠ 0 (z não real) e z² − z̄² = (z−z̄)(z+z̄) ≠ 0 (z não imaginário puro). Logo x ≠ 0, y ≠ 0 e z ≠ 0. Uma boa resolução declara isso e confere que as raízes encontradas respeitam essas condições.",
+      "A resposta é uma família infinita (três retas pela origem, sem a origem), não um número finito de pontos. A equação só depende de t = x/y, ou seja, da direção de z. Responder apenas z = 1 + i, sem o parâmetro real k, é resposta incompleta.",
+      "k ∈ ℝ* deve incluir valores negativos, que dão os ângulos θ + π. Escrever só ρ > 0 perde metade de cada reta se a resposta for dada em termos de ângulo módulo 2π (aí seriam 6 ângulos: π/4, 5π/4, 7π/12, 19π/12, 11π/12, 23π/12).",
+      "Sinal e redução a reais: A = (2x)/(2iy) = −i·x/y, e não +i·x/y. Como A e B são imaginários puros, i(A+B) e AB são reais e a equação complexa vira uma equação real: t + s + ts = 1. Erro de sinal em A ou B leva a um cúbico errado.",
+      "O cúbico t³ + 3t² − 3t − 1 = 0 tem três raízes reais: t = 1 e t = −2 ± √3, da fatoração (t−1)(t²+4t+1). Erro comum é achar só t = 1, ou esquecer que t² + 4t + 1 tem discriminante positivo (12).",
+      "O caso t = 1 dá B = 0 (x² = y²). Ele é válido, pois o numerador de B se anula mas o denominador 4ixy não. Não descartá-lo por B = 0.",
+      "Multiplicar pelos denominadores (ou por 2t) só é legítimo porque eles são não nulos pelas condições de existência. Ao usar w = z/z̄, é preciso excluir w = ±1 e checar que as raízes de w³ = −i (i, e^{i7π/6}, e^{−iπ/6}) não são ±1.",
+      "Passagem de w para z: w = e^{2iθ}, então θ = (arg w)/2 módulo π, não módulo 2π. Ignorar isso gera ângulos espúrios ou perda de soluções. Com t = cot θ: cot 105° = −tan 15° = −2 + √3 e cot 165° = −(2 + √3).",
+      "Uma resolução rigorosa verifica as raízes por substituição, já que há divisões e a reescrita em t usa a equivalência (1+t)(1+s) = 2 com t ≠ 0."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "z = y(1+i), z = y(√3−2+i) ou z = y(−2−√3+i), com y real não nulo (x/y = 1, −2+√3 ou −2−√3; z não pode ser real nem imaginário puro).",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A justificativa da multiplicação por 2t está meio torta. O candidato diz que ela não introduziu raízes estranhas \"pois t=0 não é raiz do cubo\". O argumento certo é que t ∈ ℝ* já vem das condições de existência, então a multiplicação por 2t é uma equivalência, e que as três raízes obtidas são não nulas. O resultado fica correto, mas a frase confunde a lógica da equivalência."
+          },
+          {
+            "severity": "minor",
+            "description": "Não afirma que A e B são imaginários puros, que é o que garante que i(A+B) e AB sejam reais e que a equação complexa se reduza a uma real. O fato aparece implícito em A = −ia e B = −ib, mas valia uma frase explícita. Não comenta também que t = 1 dá B = 0 e é legítimo, pois o numerador de B se anula mas o denominador 4ixy não. A verificação b = 0 cobre o caso sem descartá-lo, mas o ponto não é dito."
+          },
+          {
+            "severity": "minor",
+            "description": "A \"conferência numérica com valores de y positivos e negativos\" é só mencionada, sem o que foi testado nem o resultado. Também não há uma segunda via, como w = z/z̄ com w³ = −i, nem a forma compacta (z/z̄)³ = −i. Isso não faz falta para a correção, mas daria um gabarito mais completo e uma checagem independente."
+          },
+          {
+            "severity": "minor",
+            "description": "Na passagem para a forma polar, não explica que y < 0 dá a semirreta oposta (θ + π). Isso é o que justifica o ângulo módulo π e o k ∈ ℝ* com valores negativos. O enunciado final com y ∈ ℝ*, y ≠ 0, está correto e cobre as duas semirretas."
+          }
+        ],
+        "summary": "A resposta final do candidato está correta e coincide com a da referência: z = y(1+i), z = y(√3−2+i) e z = y(−2−√3+i), com y ∈ ℝ*. São três retas pela origem, sem a origem, com θ = π/4, 7π/12 e 11π/12 módulo π. Refiz a conta com Python. Para as três famílias, com y positivo e negativo, o lado esquerdo menos 1 dá erro da ordem de 1e-15, e (z/z̄)³ = −i. Uma varredura de θ em (0, π) acha zeros só em 45°, 105° e 165°, então não há soluções omitidas nem espúrias. O enunciado original confere com a transcrição. A resolução é rigorosa e limpa. Declara as condições de existência (x ≠ 0 e y ≠ 0). Calcula A = −it e B = −i(t²−1)/(2t) com os sinais certos. Reduz a equação a t + b + tb = 1, obtém o cúbico t³ + 3t² − 3t − 1 = 0, fatora em (t−1)(t²+4t+1) e acha as três raízes reais não nulas. Verifica cada raiz por substituição e inclui o parâmetro real não nulo, com valores negativos. Também liga t a cot θ corretamente: cot 105° = −(2−√3) e cot 165° = −(2+√3). Das armadilhas, a das condições de existência, a da família infinita com k ∈ ℝ*, a dos sinais, a do cúbico com três raízes, a da checagem por substituição e a do ângulo módulo π foram tratadas. A do caso B = 0 foi tratada só implicitamente. A via com w = z/z̄ não foi usada, e não era obrigatória. Restam só ressalvas menores: a justificativa um pouco confusa sobre a multiplicação por 2t, a falta de uma frase dizendo que A e B são imaginários puros, e a verificação numérica apenas citada. Um professor poderia publicar como gabarito com pequenos ajustes."
+      }
+    }
+  ]
+}

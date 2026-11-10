@@ -1,0 +1,50 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "O volume de todas as esferas é $V=\\dfrac{\\pi\\sqrt6}{108}a^3\\approx 0{,}0713\\,a^3$, cerca de 60% do volume do tetraedro. A esfera inscrita tem raio $r=\\dfrac{a\\sqrt6}{12}$. Cada nível tem 4 vezes mais esferas, com metade do raio da etapa anterior, então soma metade do volume do nível anterior. A série dá o dobro do volume da esfera inscrita.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (questão 10, página 2, sem figura).\n\n**1) Tetraedro original.** Num tetraedro regular de aresta a:\n- altura: H = a√6/3;\n- inraio: r = H/4 = a√6/12. O incentro coincide com o baricentro, que fica a H/4 de cada face.\n\n**2) O plano tangente e o novo tetraedro.** Há dois planos paralelos a BCD e tangentes à esfera inscrita, a uma distância 2r um do outro. Um deles é o próprio plano BCD, e o enunciado o exclui (\"plano distinto da base oposta\"). O outro fica a 2r = H/2 de BCD e, portanto, a H − 2r = H/2 do vértice A.\n\nEsse plano corta o tetraedro e determina um tetraedro AB'C'D' semelhante a ABCD. Ele é a imagem de ABCD pela homotetia de centro A e razão k = (H − 2r)/H = 1/2. Logo:\n- B', C' e D' são os pontos médios de AB, AC e AD;\n- o novo tetraedro é regular, com aresta a/2;\n- sua esfera inscrita tem raio r/2 e volume V₀/8, em que V₀ é o volume da esfera inscrita em ABCD.\n\n**3) As esferas não se sobrepõem.** É preciso verificar isso para poder somar os volumes.\n- Os quatro tetraedros de canto (aresta a/2) têm interiores disjuntos. Eles se tocam apenas nos pontos médios das arestas. Retirados de ABCD, sobra o octaedro regular de aresta a/2 formado pelos pontos médios das arestas.\n- A esfera inscrita em ABCD fica do lado interno dos quatro planos de corte, porque é tangente a eles e seu centro está do lado interno. Portanto ela está contida no octaedro central. De fato, ela é a esfera inscrita do octaedro, cujo inraio é (a/2)·√6/6 = a√6/12 = r.\n- A esfera grande e a esfera do tetraedro de canto em A tangenciam o plano de corte no mesmo ponto: o pé da altura vinda de A, que é o baricentro do triângulo B'C'D'. As duas ficam em lados opostos do plano, então são tangentes externamente. Conferindo: a distância entre os centros é 3r/2 = r + r/2.\n- Como o processo se repete dentro de cada tetraedro de canto, cada esfera fica dentro do octaedro central do seu tetraedro, e esses octaedros, em todos os níveis, têm interiores disjuntos. Assim o volume ocupado pelas esferas é a soma dos volumes delas.\n\n**4) Recorrência.** No nível n (n = 0 é a esfera original), cada tetraedro do nível anterior gera 4 novos, um em cada vértice:\n- número de tetraedros: 4ⁿ;\n- aresta de cada um: a/2ⁿ;\n- raio da esfera de cada um: r/2ⁿ;\n- volume de esferas no nível n: 4ⁿ · V₀/8ⁿ = V₀/2ⁿ.\n\n**5) Soma.** A série geométrica tem razão 4 · (1/2)³ = 1/2 < 1, logo converge:\n\nV_total = Σ_{n≥0} V₀/2ⁿ = V₀ · 1/(1 − 1/2) = 2V₀.\n\nCálculo de V₀:\n\nV₀ = (4/3)π(a√6/12)³ = (4/3)π · 6√6 a³/1728 = π√6 a³/216.\n\nPortanto **V_total = 2V₀ = π√6 a³/108 ≈ 0,0713 a³**.\n\nComparação com o tetraedro: V_tetra = a³√2/12, e V_total/V_tetra = π√3/9 ≈ 60,5%. O resultado é coerente: cada esfera ocupa a fração π√3/9 do seu octaedro, e a soma dos volumes dos octaedros, V_tetra/2 + V_tetra/4 + …, é o próprio V_tetra.\n\n**Conferência numérica (Python):**\n- razão da homotetia: 0,5;\n- distância entre os centros igual a R + R₁, o que confirma a tangência;\n- distância do plano de corte a BCD igual a 2r;\n- soma recursiva até 10 níveis: 0,07118 a³, contra 0,07125 a³ da fórmula (a diferença é o resto da série).",
+    "final_answer": "Volume total das esferas = 2 · V(esfera inscrita) = 2 · (4/3)π(a√6/12)³ = **π√6 a³/108** (≈ 0,0713 a³). Esse valor inclui a esfera inscrita original, de volume π√6 a³/216. As esferas criadas depois dela somam exatamente o mesmo valor, π√6 a³/216.",
+    "pitfalls": [
+      "Escolha do plano: há dois planos paralelos à base e tangentes à esfera. O enunciado exclui a própria base, então o plano útil fica a 2r da base e a H − 2r = H/2 do vértice. A razão de semelhança é 1/2, não 3/4 nem 1/4. Errar essa razão (por exemplo, colocar o plano a r da base) estraga toda a série.",
+      "Inraio correto: r = H/4 = a√6/12. Cuidado com a confusão com o circunraio (3H/4 = a√6/4) e com a conta (√6)³ = 6√6, que leva a V₀ = π√6 a³/216.",
+      "Contagem por nível: cada tetraedro gera 4 novos (um por vértice). No nível n há 4ⁿ esferas de raio r/2ⁿ, e a razão da série é 4 · (1/8) = 1/2. Quem segue só uma cadeia por vértice original (4 esferas por nível, razão 1/8) chega ao valor errado 11V₀/7.",
+      "Incluir a esfera original: 'todas as esferas interiores ao tetraedro ABCD' inclui a inscrita inicial. O total é 2V₀ = π√6 a³/108. Quem a omite obtém V₀ = π√6 a³/216 e deve perder pontos se não deixar claro o que está somando.",
+      "Justificar que não há sobreposição, para que 'volume ocupado' seja de fato a soma dos volumes. Os tetraedros de canto têm interiores disjuntos (tocam-se só nos pontos médios das arestas). A esfera de cada nível está no octaedro central do seu tetraedro (é a esfera inscrita desse octaedro). A esfera grande e a pequena são tangentes no baricentro do triângulo de corte (distância entre centros = r + r/2).",
+      "Justificar que o novo tetraedro é regular e semelhante ao original (homotetia de centro no vértice), com vértices nos pontos médios das arestas. Por isso o processo se repete de forma idêntica.",
+      "Convergência: a série geométrica de razão 1/2 < 1 converge. A soma vale V₀/(1 − 1/2), não V₀/(1 − 1/8) nem algo parecido.",
+      "Checagem de coerência: o total equivale a cerca de 60,5% do volume do tetraedro (fração π√3/9). Um resultado maior que o volume do tetraedro, a³√2/12, indica erro."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "O volume de todas as esferas é $V=\\dfrac{\\pi\\sqrt6}{108}a^3\\approx 0{,}0713\\,a^3$, cerca de 60% do volume do tetraedro. A esfera inscrita tem raio $r=\\dfrac{a\\sqrt6}{12}$. Cada nível tem 4 vezes mais esferas, com metade do raio da etapa anterior, então soma metade do volume do nível anterior. A série dá o dobro do volume da esfera inscrita.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A frase 'dois desses tetraedros de canto têm em comum no máximo um ponto médio de aresta' é só afirmada. Basta uma linha para prová-la: em coordenadas baricêntricas, o tetraedro de canto em A é {λ_A ≥ 1/2}. Como λ_A + λ_B ≤ 1, a interseção com {λ_B ≥ 1/2} se reduz ao ponto médio de AB."
+          },
+          {
+            "severity": "minor",
+            "description": "O item 3 mostra a separação entre a esfera grande e o tetraedro de canto em A e depois generaliza com 'o mesmo argumento vale em cada etapa'. O caso de esferas em níveis diferentes e em ramos diferentes da árvore ficou implícito. Faltou concluir explicitamente: duas esferas quaisquer estão em tetraedros aninhados (e a esfera do maior fica fora dos filhos dele) ou em tetraedros disjuntos de um mesmo nível ancestral. Outra saída seria observar que cada esfera é a esfera inscrita do octaedro central do seu tetraedro e que esses octaedros têm interiores disjuntos."
+          },
+          {
+            "severity": "minor",
+            "description": "O texto diz que a altura por A passa pelo incentro I, mas não justifica. A justificativa é imediata (por simetria, o incentro coincide com o baricentro, que fica sobre as quatro alturas) e deveria constar em uma frase."
+          }
+        ],
+        "summary": "Conferi o enunciado com o PDF original (questão 10, página 2) e a transcrição está correta. A resposta final do candidato, V = π√6 a³/108 ≈ 0,0713 a³, coincide com a da minha referência.\n\nRefiz as contas em Python:\n- o inraio é r = a√6/12;\n- o plano de corte fica a 2r = H/2 da base BCD, o que dá razão de homotetia 1/2;\n- (8/3)π·6√6/1728 = π√6/108;\n- a razão V/V_tetra é π√3/9 ≈ 60,5%.\n\nTambém simulei a recursão até o nível 4 (341 esferas). A soma parcial é 0,06903 a³, igual a V₀·(1 + 1/2 + … + 1/16), como esperado. A menor folga entre duas esferas é cerca de 0, ou seja, elas apenas se tangenciam e não se sobrepõem.\n\nTodas as armadilhas foram tratadas:\n- escolha do plano: o candidato exclui explicitamente a própria face e usa o plano a 2r da base;\n- inraio: deduzido pela decomposição do volume em quatro pirâmides;\n- homotetia de razão 1/2, com os novos vértices nos pontos médios, o que garante um tetraedro regular semelhante e permite repetir o processo;\n- contagem: 4ⁿ esferas no nível n, o que dá uma série de razão 1/2, cuja convergência é mencionada;\n- esfera original: incluída, com a ressalva de que o resultado seria V₀ se ela não fosse contada;\n- não sobreposição: tratada, com a tangência no ponto de contato de π_A;\n- checagem de ordem de grandeza e de dimensão: feita.\n\nOs pontos fracos são de rigor menor. O argumento de não sobreposição é compacto: a generalização para níveis e ramos diferentes ficou implícita. Duas afirmações evidentes também não foram justificadas: que os tetraedros de canto se intersectam só nos pontos médios e que I está sobre a altura. Fora isso, a resolução está correta, completa, clara e bem organizada, com qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

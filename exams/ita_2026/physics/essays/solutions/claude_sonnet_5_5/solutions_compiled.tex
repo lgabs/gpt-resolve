@@ -1,0 +1,861 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{ITA 2026 - Física\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}sonnet{-}5{-}5 (solver) + claude{-}sonnet{-}5{-}5 (judge)}%
+\date{November 10, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Modelo e hipóteses.} Como $R$ é muito maior que as dimensões do trem, todos os pontos do trem descrevem círculos de mesmo raio $R$, e o trem pode ser tratado como partícula no plano transversal aos trilhos (plano da figura). Com $v$ constante, a aceleração é só centrípeta, $a=v^{2}/R$, horizontal e dirigida ao centro $C$ da curva. Como o eixo permanece horizontal, não há rolamento do conjunto, e vale o equilíbrio de forças nesse plano. As componentes longitudinais (tração, resistência) são desprezadas. O enunciado não fornece a altura do centro de massa nem a bitola, portanto o equilíbrio de torques não entra no cálculo; ele apenas distribui as forças entre as rodas.
+
+\textbf{Forças.} A geratriz do cone forma $\theta$ com a horizontal, logo a normal ao contato forma $\theta$ com a vertical. Pela figura, o raio da roda é maior do lado interno, então a componente horizontal de $\vec N$ aponta, em cada roda, para o centro da via. Na roda externa à curva ela aponta para $C$; na roda interna, para longe de $C$. O atrito estático $\vec f$ atua ao longo da geratriz, com $|f|\le\mu N$. Seja $\varphi=\arctan\mu$. A resultante $\vec N+\vec f$ em cada roda faz com a normal um ângulo de no máximo $\varphi$.
+
+Medindo os ângulos com a vertical, positivos para o lado de $C$, as direções possíveis são:
+\[
+\text{roda externa: } \theta-\varphi\le\psi\le\theta+\varphi,\qquad
+\text{roda interna: } -\theta-\varphi\le\psi\le-\theta+\varphi .
+\]
+Os trilhos devem fornecer a força total (peso equilibrado na vertical, centrípeta na horizontal)
+\[
+F_y=Mg,\qquad F_x=\frac{Mv^{2}}{R}\ \Rightarrow\ \tan\alpha=\frac{v^{2}}{gR}.
+\]
+Todas as direções possíveis estão no setor $|\psi|\le\theta+\varphi$, que é convexo se $\theta+\varphi<90^\circ$. A soma das forças das duas rodas fica então nesse setor, e
+\[
+\tan\alpha\le\tan(\theta+\varphi).
+\]
+A igualdade só ocorre com a roda interna descarregada ($N_1=0$, logo $f_1=0$) e a roda externa no limite de atrito. É exatamente o instante em que a roda interna perde o contato. Esse é o caso crítico, e raios menores não podem ser equilibrados.
+
+\textbf{a) Atrito $\mu$.} No caso crítico só a roda externa atua, com $f=\mu N$ dirigido ao longo da geratriz. Ele se opõe à tendência de a roda subir para fora do trilho.
+\[
+\begin{aligned}
+\text{horizontal:}\quad & N\sin\theta+\mu N\cos\theta=\dfrac{Mv^{2}}{R},\\[2pt]
+\text{vertical:}\quad & N\cos\theta-\mu N\sin\theta=Mg .
+\end{aligned}
+\]
+Dividindo as duas equações:
+\[
+\frac{v^{2}}{gR}=\frac{\sin\theta+\mu\cos\theta}{\cos\theta-\mu\sin\theta}=\frac{\tan\theta+\mu}{1-\mu\tan\theta}=\tan(\theta+\varphi).
+\]
+Logo
+\[
+\boxed{R_{\min}=\frac{v^{2}}{g}\,\frac{1-\mu\tan\theta}{\mu+\tan\theta}=\frac{v^{2}}{g}\,\frac{\cos\theta-\mu\sin\theta}{\sin\theta+\mu\cos\theta}}
+\]
+Para $R\ge R_{\min}$ nenhuma roda perde o contato. Se $\mu\tan\theta\ge1$ (isto é, $\theta+\varphi\ge 90^\circ$), a condição deixa de limitar $R$.
+
+\textbf{b) Sem atrito ($\mu=0$).} Só há normais. No caso crítico, a roda externa sustenta tudo: $N\cos\theta=Mg$ e $N\sin\theta=Mv^{2}/R$. Portanto
+\[
+\boxed{R_{\min}=\frac{v^{2}}{g\tan\theta}}
+\]
+Esse resultado é o da letra (a) com $\mu=0$.
+
+\textbf{c) Rodas cilíndricas ($\theta=0$).} A normal é vertical, $N=Mg$, e a única força horizontal é o atrito estático lateral, que deve ser $\le\mu N$:
+\[
+\frac{Mv^{2}}{R}\le\mu Mg\ \Rightarrow\ \boxed{R_{\min}=\frac{v^{2}}{\mu g}}
+\]
+Esse resultado é o da letra (a) com $\theta=0$. Aqui a roda "perde o trilho" por deslizamento lateral.
+
+\textbf{Verificações.} As dimensões estão corretas: $v^{2}/g$ tem unidade de comprimento e $\mu$, $\tan\theta$ são adimensionais. Os casos limite $\mu\to0$ e $\theta\to0$ reproduzem (b) e (c). Para $\theta$ pequeno, $R_{\min}^{(a)}<R_{\min}^{(b)}$ e $R_{\min}^{(a)}<R_{\min}^{(c)}$, pois cone e atrito colaboram. Por exemplo, com $v=30\ \mathrm{m/s}$, $\theta=5^\circ$ e $\mu=0,3$, os raios mínimos são cerca de $226\ \mathrm{m}$ em (a), $1029\ \mathrm{m}$ em (b) e $300\ \mathrm{m}$ em (c). Uma amostragem numérica aleatória de $N_i$ e $f_i$ confirmou que a inclinação máxima da força total é $\tan(\theta+\varphi)$.
+
+ANSWER: a) $R_{\min}=\dfrac{v^{2}(1-\mu\tan\theta)}{g(\mu+\tan\theta)}$; b) $R_{\min}=\dfrac{v^{2}}{g\tan\theta}$; c) $R_{\min}=\dfrac{v^{2}}{\mu g}$%
+\newpage%
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Modelo e hipóteses.} Tratamos a barra como um corpo rígido fino em repouso e o objeto $m$ e o contrapeso $m_c$ como massas puntuais presas a ela. Todas as forças são tomadas sobre o eixo da barra. Então, em relação a qualquer ponto desse eixo, só as componentes perpendiculares ao plano geram torque.
+
+Medimos as posições ao longo da barra a partir da extremidade inferior:
+\[
+x_A=d,\qquad x_B=L-d,\qquad x_{CM}=\frac L2,\qquad x_m=a,\qquad x_{m_c}=L-b .
+\]
+Como $A$ e $B$ distam $d$ das extremidades, o centro de massa da barra é o ponto médio de $AB$, e $\overline{AB}=L-2d$.
+
+Forças sobre o conjunto (barra, $m$ e $m_c$): os pesos $Mg$, $mg$ e $m_cg$; em cada apoio, a normal $N_{A}$ ou $N_{B}$, perpendicular ao plano; e o atrito estático $f_{A}$ ou $f_{B}$, paralelo ao plano e dirigido para cima, contra a tendência de escorregar. Seja $P=(M+m+m_c)g$. As reações sobre os apoios têm os mesmos módulos, pela 3ª lei de Newton.
+
+\subsection*{a) Forças normais}
+
+Resultante perpendicular ao plano:
+\[
+N_A+N_B=P\cos\theta. \tag{1}
+\]
+Torque em relação a $A$, com $N_B$ de braço $L-2d$ e as componentes $\cos\theta$ dos pesos com braços medidos ao longo da barra:
+\[
+N_B\,(L-2d)=Mg\cos\theta\Big(\frac L2-d\Big)+mg\cos\theta\,(a-d)+m_cg\cos\theta\,(L-b-d).
+\]
+Como $\frac L2-d=\frac{L-2d}{2}$, resulta
+\[
+\boxed{N_B=g\cos\theta\left[\frac M2+\frac{m\,(a-d)+m_c\,(L-b-d)}{L-2d}\right]}
+\]
+Substituindo em (1), ou tomando torques em relação a $B$, e usando $m-\frac{m(a-d)}{L-2d}=\frac{m(L-d-a)}{L-2d}$ e $m_c-\frac{m_c(L-b-d)}{L-2d}=\frac{m_c(b-d)}{L-2d}$:
+\[
+\boxed{N_A=g\cos\theta\left[\frac M2+\frac{m\,(L-d-a)+m_c\,(b-d)}{L-2d}\right]}
+\]
+
+\textit{Verificações.} (i) Somando, os termos com $m$ e $m_c$ dão $m+m_c$, e então $N_A+N_B=P\cos\theta$, como em (1). (ii) Se $m=m_c=0$, então $N_A=N_B=\tfrac12Mg\cos\theta$. (iii) Se $a=b=L/2$ (configuração simétrica), então $N_A=N_B$. (iv) A solução só vale se $N_A\ge 0$ e $N_B\ge 0$, isto é, se a barra não se desprende de um dos apoios. É para isso que serve o contrapeso. Unidades: $\mathrm{kg\cdot m/s^2}=\mathrm N$.
+
+\subsection*{b) Atrito nos apoios}
+
+Resultante paralela ao plano:
+\[
+\boxed{f_A+f_B=(M+m+m_c)\,g\sin\theta}\tag{2}
+\]
+Os atritos e as componentes $\sin\theta$ dos pesos atuam sobre o eixo da barra e não geram torque, de modo que o equilíbrio de torques não acrescenta nenhuma equação. Com apoios rígidos, a divisão de (2) entre $A$ e $B$ é hiperestática: a estática fornece só a soma, e a repartição depende das deformações nos contatos.
+
+Para obter um valor em cada apoio, adotamos a hipótese usual de que os dois contatos têm o mesmo coeficiente de atrito estático $\mu$ e a mesma razão $f/N$. Isso vale na situação-limite de escorregamento iminente, e é a repartição que exige o menor $\mu$. De fato, de $f_A\le\mu N_A$ e $f_B\le\mu N_B$ segue, somando e usando (1) e (2), $\mu\ge\tan\theta$. Para $\mu=\tan\theta$, ambas as desigualdades só se verificam como igualdades, de modo que $f_A=N_A\tan\theta$ e $f_B=N_B\tan\theta$. Logo, com $N_A$ e $N_B$ do item (a):
+\[
+\boxed{f_A=g\sin\theta\left[\frac M2+\frac{m\,(L-d-a)+m_c\,(b-d)}{L-2d}\right]},\qquad
+\boxed{f_B=g\sin\theta\left[\frac M2+\frac{m\,(a-d)+m_c\,(L-b-d)}{L-2d}\right]}
+\]
+Ambos são dirigidos para cima ao longo do plano, e $f_A+f_B=P\sin\theta$ confere com (2). Para que a barra não deslize, é necessário (e, com essa repartição, suficiente) que $\mu_e\ge\tan\theta$ em cada apoio. Independentemente da repartição, a soma dos atritos é sempre $(M+m+m_c)g\sin\theta$. No caso $\theta=0$, $f_A=f_B=0$.
+
+\medskip
+\noindent ANSWER: $N_A=g\cos\theta\left[\frac M2+\frac{m(L-d-a)+m_c(b-d)}{L-2d}\right]$, $N_B=g\cos\theta\left[\frac M2+\frac{m(a-d)+m_c(L-b-d)}{L-2d}\right]$; $f_A+f_B=(M+m+m_c)g\sin\theta$, com $f_A=N_A\tan\theta$ e $f_B=N_B\tan\theta$ (atrito para cima ao longo do plano).%
+\newpage%
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{Hipóteses e geometria.} A haste é um corpo rígido e homogêneo, e o pivô é fixo. Pela figura, $a<L/2$. O centro de massa (CM) está no ponto médio da haste, a $L/2$ de uma extremidade. O pivô está a $a$ dessa extremidade, então o CM fica a
+\[
+d=\frac{L}{2}-a=\frac{L-2a}{2}
+\]
+do pivô, do lado do trecho mais longo (o que fica abaixo do pivô na figura).
+
+Seja $\hat r$ o versor ao longo da haste, do pivô para o CM, e $\hat t$ o versor perpendicular a ele. Com $x$ para a direita, $y$ para cima e $\theta$ medido a partir da vertical para baixo:
+\[
+\hat r=(\operatorname{sen}\theta,\,-\cos\theta).
+\]
+
+\textbf{a) Componente radial da reação.}
+
+Pelo teorema do movimento do CM, $\vec F_{\rm res}=M\vec a_{CM}$. Como o pivô é fixo, o CM descreve uma circunferência de raio $d$ com velocidade angular $\omega$. Sua aceleração tem duas parcelas:
+\[
+\vec a_{CM}=-\omega^{2}d\,\hat r+\alpha d\,\hat t.
+\]
+A parcela radial (centrípeta, voltada para o pivô) não depende da aceleração angular $\alpha$. Por isso não é preciso resolver a equação de torque.
+
+As forças sobre a haste são o peso $M\vec g=-Mg\,\hat y$ e a reação do pivô $\vec R=R_r\hat r+R_t\hat t$. A projeção do peso em $\hat r$ é:
+\[
+-Mg\,\hat y\cdot\hat r=+Mg\cos\theta .
+\]
+Projetando $\vec F_{\rm res}=M\vec a_{CM}$ em $\hat r$:
+\[
+R_r+Mg\cos\theta=-M\omega^{2}d
+\]
+\[
+\boxed{R_r=-M\left[\omega^{2}\,\frac{L-2a}{2}+g\cos\theta\right]}
+\]
+
+O sinal negativo indica que a componente radial aponta ao longo da haste, do CM para o pivô, isto é, em direção à extremidade curta (para cima, na figura). Seu módulo é
+\[
+|R_r|=M\left[\frac{\omega^{2}(L-2a)}{2}+g\cos\theta\right]
+\]
+quando o colchete é positivo.
+
+\emph{Conferências.}
+\begin{itemize}
+\item Para $\omega=0$ e $\theta=0$ (haste em equilíbrio, pendurada), $|R_r|=Mg$, como esperado.
+\item Para $a=0$ (pivô na extremidade), $|R_r|=M(\omega^2L/2+g\cos\theta)$, resultado conhecido.
+\item Para $a=L/2$ (pivô no CM), $d=0$ e $R_r=-Mg\cos\theta$, que é a projeção da reação $Mg\,\hat y$ em $\hat r$.
+\item Unidades: $\omega^{2}L$ tem unidade de aceleração, então $R_r$ tem unidade de força.
+\end{itemize}
+
+\textbf{b) Anulação da componente radial.}
+
+Impondo $R_r=0$:
+\[
+\omega^{2}\frac{L-2a}{2}+g\cos\theta=0
+\]
+\[
+\boxed{\cos\theta=-\frac{\omega^{2}(L-2a)}{2g}\;\Rightarrow\;\theta=\arccos\!\left[-\frac{\omega^{2}(L-2a)}{2g}\right]}
+\]
+
+Como o argumento é negativo, $\theta>90^\circ$. Isso significa que o CM está acima do nível do pivô, e a componente do peso ao longo da haste aponta para o pivô. Nesse caso, o peso sozinho fornece a força centrípeta $M\omega^{2}d$.
+
+Esse ângulo só existe se $\left|\cos\theta\right|\le 1$, isto é, se
+\[
+\omega^{2}(L-2a)\le 2g .
+\]
+Caso contrário, $R_r$ nunca se anula.
+
+\emph{Conferência.} Para $\theta=180^\circ$ (CM diretamente acima do pivô), a condição vira $\omega^{2}d=g$. Nessa posição o peso, voltado para o pivô, é exatamente a força centrípeta, o que é consistente. O resultado não depende de $M$.
+
+\medskip
+\noindent ANSWER: a) $R_r=-M\left[\dfrac{\omega^{2}(L-2a)}{2}+g\cos\theta\right]$ (eixo radial do pivô para o CM). O módulo é $M\left[\dfrac{\omega^{2}(L-2a)}{2}+g\cos\theta\right]$, dirigido ao longo da haste, do CM para o pivô. b) $\theta=\arccos\!\left[-\dfrac{\omega^{2}(L-2a)}{2g}\right]$, que existe se $\omega^{2}(L-2a)\le 2g$.%
+\newpage%
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Como $M\gg m$, a estrela está praticamente fixa em um dos focos da elipse, $F_\pm=(\pm c,0)$, com $c=\sqrt{a^2-b^2}$. A fragmentação ocorre por forças internas. Logo, a única força externa é a gravitacional da estrela, e o centro de massa (CM) do par segue a trajetória que o objeto original teria, ou seja, a elipse
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1 .
+\]
+Isso supõe que os efeitos de maré (diferença do campo entre os fragmentos) sejam desprezados, que é a idealização do enunciado. Com $m_1=4m_2$ e $m_1+m_2=m$, tem-se $m_1=\tfrac{4m}{5}$ e $m_2=\tfrac{m}{5}$.
+
+\textbf{a) Cálculo de $y_2$.}
+\begin{align*}
+x_{CM}&=\frac{m_1\cdot\frac{3a}{4}+m_2\,a}{m_1+m_2}=\frac{4\cdot\frac{3a}{4}+a}{5}=\frac{4a}{5},\\
+y_{CM}&=\frac{4\cdot\frac{b}{4}+y_2}{5}=\frac{b+y_2}{5}.
+\end{align*}
+Impondo que o CM esteja na elipse:
+\[
+\frac{16}{25}+\frac{(b+y_2)^2}{25\,b^2}=1\;\Rightarrow\;(b+y_2)^2=9b^2\;\Rightarrow\;b+y_2=\pm 3b .
+\]
+\[
+\boxed{y_2=2b\quad\text{ou}\quad y_2=-4b}
+\]
+Os dois valores são compatíveis com os dados. Eles geram $y_{CM}=+\tfrac{3b}{5}$ e $y_{CM}=-\tfrac{3b}{5}$, respectivamente.
+
+\textbf{b) Menor energia potencial.} A energia potencial do sistema (estrela + fragmentos) soma os três pares:
+\[
+U=-\frac{GMm_1}{r_1}-\frac{GMm_2}{r_2}-\frac{Gm_1m_2}{d},
+\]
+em que $r_1$ e $r_2$ são as distâncias dos fragmentos à estrela e $d=\overline{P_1P_2}$. Os fragmentos estão fixados em $P_1$ e $P_2$. Portanto, $U$ é mais negativa quando $r_1$, $r_2$ e $d$ são os menores possíveis. As incógnitas são o foco ocupado pela estrela e o valor de $y_2$.
+
+\begin{itemize}
+\item \emph{Foco.} Como $x_1=\tfrac{3a}{4}>0$ e $x_2=a>0$, vale $(x-c)^2<(x+c)^2$. Os dois fragmentos ficam mais perto de $F_+=(c,0)$, então a estrela deve estar nele.
+\item \emph{Sinal de $y_2$.} Para $|y_2|=2b$ em vez de $4b$, $r_2^2=(a-c)^2+y_2^2$ é menor. Também $d^2=\tfrac{a^2}{16}+\left(y_2-\tfrac b4\right)^2$ é menor, pois $\tfrac{7b}{4}<\tfrac{17b}{4}$. Logo, $y_2=2b$ minimiza $U$.
+\end{itemize}
+
+Com a estrela em $(c,0)$ e $P_2=(a,2b)$:
+\begin{align*}
+r_1&=\sqrt{\left(\tfrac{3a}{4}-c\right)^2+\tfrac{b^2}{16}}=\tfrac14\sqrt{25a^2-24ac-15b^2},\\
+r_2&=\sqrt{(a-c)^2+4b^2}=\sqrt{2a^2-2ac+3b^2},\\
+d&=\sqrt{\left(\tfrac a4\right)^2+\left(\tfrac{7b}{4}\right)^2}=\tfrac14\sqrt{a^2+49b^2}.
+\end{align*}
+Substituindo $m_1=\tfrac{4m}{5}$ e $m_2=\tfrac m5$, e usando $\dfrac{m_1}{r_1}=\dfrac{16m}{5\sqrt{25a^2-24ac-15b^2}}$ e $\dfrac{m_1m_2}{d}=\dfrac{16m^2}{25\sqrt{a^2+49b^2}}$:
+\[
+\boxed{U_{\min}=-\frac{GMm}{5}\left[\frac{16}{\sqrt{25a^2-24ac-15b^2}}+\frac{1}{\sqrt{2a^2-2ac+3b^2}}\right]-\frac{16\,G\,m^2}{25\sqrt{a^2+49b^2}},\quad c=\sqrt{a^2-b^2}}
+\]
+
+\textbf{Conferência.}
+\begin{itemize}
+\item \emph{Unidades:} $GMm/\text{comprimento}$ tem unidade de energia (J).
+\item \emph{Sinal:} $U<0$, como esperado para um sistema ligado.
+\item \emph{Ordem de grandeza:} o último termo (interação entre os fragmentos) é menor que o primeiro por um fator da ordem de $m/M\ll1$. Assim, $U_{\min}\approx-\dfrac{GMm}{5}\left[\dfrac{16}{\sqrt{25a^2-24ac-15b^2}}+\dfrac{1}{\sqrt{2a^2-2ac+3b^2}}\right]$.
+\item \emph{Caso particular} $b=a$ (círculo, $c=0$, estrela no centro): $r_1=\tfrac{\sqrt{10}}{4}a$ e $r_2=\sqrt5\,a$. Esses valores coincidem com $|OP_1|$ e $|OP_2|$ calculados diretamente.
+\item \emph{Verificação numérica:} comparei as quatro combinações (dois focos, dois valores de $y_2$) com valores arbitrários de $a$, $b$, $m$ e $M$. A mínima foi sempre a escolhida acima, e a expressão fechada reproduziu o cálculo direto.
+\end{itemize}
+
+ANSWER: a) $y_2=2b$ ou $y_2=-4b$. b) $U_{\min}=-\dfrac{GMm}{5}\left[\dfrac{16}{\sqrt{25a^2-24ac-15b^2}}+\dfrac{1}{\sqrt{2a^2-2ac+3b^2}}\right]-\dfrac{16Gm^2}{25\sqrt{a^2+49b^2}}$, com $c=\sqrt{a^2-b^2}$. Ela ocorre para $y_2=2b$ e a estrela no foco $(c,0)$.%
+\newpage%
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Hipóteses e modelo.}
+\begin{itemize}
+\item A viga é fina e carregada só ao longo do eixo, e é incompressível. Logo seu comprimento depende apenas da temperatura, $L(T)=L\,[1+\alpha\,(T-20)]$. Só a dilatação linear conta, e a carga não a altera.
+\item Viga e água estão sempre em equilíbrio térmico, com $\Delta T = 90-20 = 70\ \mathrm{K}$. As transformações são quase estáticas, sem energia cinética.
+\item Desprezam-se a capacidade térmica do recipiente, a dilatação da água e as perdas de calor. $M_{\mathrm{Cu}}$ é usada em kg/mol, de modo que $n=m/M_{\mathrm{Cu}}$ com $m$ em kg.
+\item A viga sofre dilatação total $\Delta L=\alpha L\,\Delta T$ em cada meia volta do ciclo.
+\end{itemize}
+
+\medskip
+\textbf{a) Trabalho em um ciclo}
+
+A carga exerce sobre a viga uma força constante $F=Mg$ (peso). Em um diagrama $F\times \ell$ ($\ell$ = comprimento da viga), o ciclo tem quatro etapas:
+
+\begin{enumerate}
+\item \emph{Aquecimento} ($20\to90\,^\circ\mathrm{C}$, carga $M_1$): a viga se dilata $\Delta L$ e ergue $M_1$. O trabalho realizado sobre a carga é $W_1=+M_1 g\,\Delta L$.
+\item \emph{Troca $M_1\to M_2$} a $90\,^\circ\mathrm{C}$: o comprimento não muda, pois a viga é incompressível. Não há deslocamento, logo não há trabalho.
+\item \emph{Resfriamento} ($90\to20\,^\circ\mathrm{C}$, carga $M_2$): a viga se contrai $\Delta L$ e a carga desce essa distância. O trabalho da viga sobre a carga é $W_3=-M_2 g\,\Delta L$.
+\item \emph{Troca $M_2\to M_1$} a $20\,^\circ\mathrm{C}$: também sem deslocamento e sem trabalho. Isso fecha o ciclo.
+\end{enumerate}
+
+O ciclo é um retângulo no plano $F\times\ell$, com base $\Delta L$ e altura $(M_1-M_2)g$. O peso próprio da viga não contribui no ciclo: seu centro de massa sobe $\Delta L/2$ e depois desce $\Delta L/2$.
+
+\[
+W=M_1 g\,\Delta L-M_2 g\,\Delta L=(M_1-M_2)\,g\,\alpha L\,\Delta T .
+\]
+Com $g=10\ \mathrm{m/s^2}$ e $\Delta T=70\ \mathrm{K}$:
+\[
+\boxed{W=700\,\alpha L\,(M_1-M_2)\quad(\text{SI, em joules})}
+\]
+Como $M_1>M_2$, $W>0$: a máquina realiza trabalho útil.
+
+\medskip
+\textbf{b) Eficiência}
+
+A eficiência é $\eta=W/Q_H$, em que $Q_H$ é o calor fornecido pela fonte. Ele só é fornecido no aquecimento ($20\to90\,^\circ\mathrm{C}$). A 1ª lei dá
+\[
+Q_H=\Delta U_{\text{água}}+\Delta U_{\text{Cu}}+\underbrace{\big(M_1+\tfrac m2\big)g\,\Delta L}_{\text{energia potencial ganha}} .
+\]
+\begin{itemize}
+\item Água, de massa $\rho_{\mathrm{H_2O}}V$: $\Delta U_{\text{água}}=\rho_{\mathrm{H_2O}}\,V\,c_{\mathrm{H_2O}}\,\Delta T$.
+\item Cobre, com $n=m/M_{\mathrm{Cu}}$ mols e Dulong-Petit $c_V=3R$: $\Delta U_{\text{Cu}}=\dfrac{3mR}{M_{\mathrm{Cu}}}\,\Delta T$. Não há energia elástica, pois a viga é incompressível.
+\item O último termo vale cerca de $4\cdot10^{-7}$ do restante. Ele é menor que correções que o próprio modelo já ignora, como $c_P-c_V$ do cobre e a dilatação da água. Por isso é desprezado de forma consistente (ver a verificação numérica abaixo).
+\end{itemize}
+Assim, $Q_H\simeq\Delta T\left(\rho_{\mathrm{H_2O}}Vc_{\mathrm{H_2O}}+\dfrac{3mR}{M_{\mathrm{Cu}}}\right)$.
+
+\emph{Consistência com a 1ª lei.} No resfriamento, o calor rejeitado é $Q_C\simeq Q_H-W$. Assim $Q_H-Q_C=W$, como deve ser em um ciclo.
+
+Dividindo $W$ por $Q_H$, o fator $\Delta T$ se cancela. Com $g=10\ \mathrm{m/s^2}$:
+\[
+\boxed{\eta=\frac{(M_1-M_2)\,g\,\alpha L}{\rho_{\mathrm{H_2O}}V c_{\mathrm{H_2O}}+\dfrac{3mR}{M_{\mathrm{Cu}}}}=\frac{10\,\alpha L\,(M_1-M_2)}{\rho_{\mathrm{H_2O}}V c_{\mathrm{H_2O}}+\dfrac{3mR}{M_{\mathrm{Cu}}}}}
+\]
+
+\medskip
+\textbf{Conferência.}
+\begin{itemize}
+\item \emph{Unidades}: $(M_1-M_2)g\alpha L$ tem unidade $\mathrm{kg\cdot m\,s^{-2}\cdot K^{-1}\cdot m}=\mathrm{J/K}$. O denominador ($\rho Vc$ e $mR/M_{\mathrm{Cu}}$) também é J/K. Logo $\eta$ é adimensional. Em (a), $\alpha L\,(M_1-M_2)\cdot 700$ tem unidade $\mathrm{K^{-1}\cdot m\cdot kg\cdot(10\ m/s^2)\cdot K}$, isto é, J.
+\item \emph{Ordem de grandeza}: tome $M_1=100\ \mathrm{kg}$, $M_2=50\ \mathrm{kg}$, $m\approx7\ \mathrm{kg}$, $L=1\ \mathrm{m}$, $\alpha\approx1{,}7\cdot10^{-5}\ \mathrm{K^{-1}}$, $V=10\ \mathrm{L}$ e $M_{\mathrm{Cu}}=63{,}5\cdot10^{-3}\ \mathrm{kg/mol}$. Então $W\approx0{,}6\ \mathrm{J}$. O denominador vale $\approx4{,}2\cdot10^{4}+2{,}7\cdot10^{3}\approx4{,}5\cdot10^{4}\ \mathrm{J/K}$, e $Q_H\approx3\cdot10^{6}\ \mathrm{J}$. Portanto $\eta\approx2\cdot10^{-7}$, muito abaixo do limite de Carnot $1-293/363\approx0{,}19$. O termo mecânico $(M_1+m/2)g\alpha L\approx0{,}02\ \mathrm{J/K}$ é de fato desprezível.
+\item \emph{Caso particular}: se $M_2=M_1$, então $W=0$ e $\eta=0$. A energia gasta na subida é devolvida na descida, sem trabalho líquido.
+\item \emph{Dependência}: $W$ cresce com $\alpha$, $L$ e $M_1-M_2$. $\eta$ cai com mais água ou mais cobre, que são capacidades térmicas "inúteis" para o trabalho.
+\end{itemize}
+
+ANSWER: a) $W=(M_1-M_2)\,g\,\alpha L\,(90-20)=700\,\alpha L\,(M_1-M_2)$ (SI, com $g=10\ \mathrm{m/s^2}$); b) $\eta=\dfrac{10\,\alpha L\,(M_1-M_2)}{\rho_{\mathrm{H_2O}}V c_{\mathrm{H_2O}}+3mR/M_{\mathrm{Cu}}}$%
+\newpage%
+\section*{Questão 6}
+
+\section*{Solução}
+
+Convenção (Gauss): $\dfrac1f=\dfrac1p+\dfrac1{p'}$; $p>0$ para objeto real, $p'>0$ para imagem real, $p'<0$ para imagem virtual; aumento linear transversal $A=-p'/p$. Lentes delgadas, aproximação paraxial.
+
+\subsection*{a) Comprimento do tubo}
+
+A imagem final deve se formar ``a longas distâncias'', isto é, no infinito (luneta afocal, para observação com o olho relaxado). Para isso, o raio vindo de um objeto celeste (no infinito) deve sair da ocular paralelo. Então:
+\begin{itemize}
+\item a objetiva conjuga ao objeto no infinito uma imagem intermediária no seu plano focal imagem, a $f_1$ da objetiva;
+\item essa imagem intermediária faz o papel de objeto da ocular. Para que a imagem final esteja no infinito ($p_2'\to\infty$), ela deve estar no plano focal objeto da ocular, isto é, $p_2=f_2$.
+\end{itemize}
+Os dois planos focais coincidem, logo
+\[
+L=f_1+f_2=80+5{,}0=85\ \mathrm{cm}.
+\]
+
+\subsection*{b) Aumento angular e orientação}
+
+Seja $\theta$ o ângulo (pequeno) sob o qual o objeto celeste é visto a olho nu. A imagem intermediária, no plano focal da objetiva, tem altura (invertida)
+\[
+h=-f_1\tan\theta\approx -f_1\,\theta .
+\]
+Essa imagem está no foco da ocular, de onde os raios saem paralelos, formando o ângulo
+\[
+\theta'\approx\frac{h}{f_2}=-\frac{f_1}{f_2}\,\theta .
+\]
+Portanto
+\[
+G=\frac{\theta'}{\theta}=-\frac{f_1}{f_2}=-\frac{80}{5{,}0}=-16 .
+\]
+O módulo $|G|=16$ indica que o objeto parece 16 vezes maior angularmente. O sinal negativo indica que a imagem final é \textbf{invertida} em relação ao objeto (característica da luneta astronômica de duas lentes convergentes).
+
+\subsection*{c) Objeto a $40$ cm da objetiva}
+
+Agora o objeto está a distância finita, e o tubo mantém $L=85$ cm.
+
+\emph{Objetiva} ($p_1=40$ cm $<f_1$):
+\[
+\frac1{p_1'}=\frac1{f_1}-\frac1{p_1}=\frac1{80}-\frac1{40}=-\frac1{80}\ \Rightarrow\ p_1'=-80\ \mathrm{cm}.
+\]
+A imagem intermediária é virtual (mesmo lado do objeto, a $80$ cm antes da objetiva) e direita, com
+\[
+A_1=-\frac{p_1'}{p_1}=+\frac{80}{40}=+2 .
+\]
+
+\emph{Ocular}: a imagem intermediária é objeto real para a ocular, à distância
+\[
+p_2=L+|p_1'|=85+80=165\ \mathrm{cm}.
+\]
+Então
+\[
+\frac1{p_2'}=\frac1{f_2}-\frac1{p_2}=\frac1{5}-\frac1{165}=\frac{33-1}{165}=\frac{32}{165}
+\ \Rightarrow\ p_2'=\frac{165}{32}\ \mathrm{cm}\approx 5{,}2\ \mathrm{cm}>0,
+\]
+\[
+A_2=-\frac{p_2'}{p_2}=-\frac{165/32}{165}=-\frac1{32}.
+\]
+
+\emph{Resultado}: o aumento linear total é
+\[
+A=A_1A_2=(+2)\left(-\frac1{32}\right)=-\frac1{16}=-0{,}0625 .
+\]
+
+\textbf{Conclusão:} a imagem final é \textbf{real}, formada a $p_2'=165/32\approx5{,}2$ cm \emph{depois} da ocular (lado oposto ao da objetiva; a $\approx 90$ cm da objetiva), \textbf{invertida} ($A<0$) e \textbf{menor} que o objeto: tem $1/16$ da altura dele ($|A|\approx 0{,}063$). Como é real e próxima da ocular, pode ser recolhida num anteparo, mas não é a imagem ``no infinito'' da observação normal.
+
+\emph{Verificações:} (i) se o objeto fosse levado ao infinito, $p_1'\to f_1$, $p_2=f_2$ e $p_2'\to\infty$, recuperando o item (a). (ii) A objetiva sozinha amplia ($|A_1|=2$), mas a ocular, com o objeto virtual-intermediário muito além de $f_2$, reduz fortemente ($|A_2|=1/32$), o que é coerente com $|A|<1$. (iii) Unidades: $p$ e $p'$ em cm, $A$ adimensional.
+
+ANSWER: a) $L=85$ cm; b) $G=-16$ (imagem invertida, ampliada 16 vezes angularmente); c) imagem real, a $\approx 5{,}2$ cm após a ocular, invertida, com $A=-1/16$, portanto menor que o objeto.%
+\newpage%
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} O feixe é homogêneo (intensidade uniforme na seção reta), todo o feixe atinge o analisador e vale a lei de Malus para a luz já polarizada que incide em cada polarizador. Supomos também $\cos\beta>0$, isto é, $\beta=\phi/N<90^\circ$.
+
+\medskip
+\textbf{a) Intensidade após o sistema.}
+
+\emph{1º polarizador.} A luz incide com polarização paralela ao eixo. No caso ideal, nada seria perdido e a intensidade seria $I_0$. Com perdas por reflexão e absorção, a intensidade que sai é
+\[
+I_1 = x\,I_0 .
+\]
+
+\emph{Polarizadores seguintes ($k=2,\dots,N+1$).} A luz que chega ao polarizador $k$ está polarizada segundo o eixo do polarizador $k-1$, que forma o ângulo $\beta$ com o eixo do polarizador $k$. Pela lei de Malus, no caso ideal a intensidade seria $I_{k-1}\cos^2\beta$. Com as perdas, ela é
+\[
+I_k = x\,I_{k-1}\cos^2\beta .
+\]
+
+\emph{Recorrência.} Há $N$ polarizadores além do primeiro, então
+\[
+I = I_{N+1}= x\,I_0\,\bigl(x\cos^2\beta\bigr)^{N}= I_0\,x^{N+1}\cos^{2N}\beta .
+\]
+Como $\beta=\phi/N$,
+\[
+\boxed{I = I_0\,x^{\,N+1}\,\cos^{2N}\!\left(\frac{\phi}{N}\right)}
+\]
+
+\medskip
+\textbf{b) Raio do feixe.}
+
+A intensidade é uniforme, então a potência que atravessa a seção reta, de área $A=\pi R^2$, é $P = I\,A = I\,\pi R^2$. Logo
+\[
+R=\sqrt{\frac{P}{\pi I}}
+\]
+e, substituindo $I$ do item (a),
+\[
+\boxed{R=\sqrt{\frac{P}{\pi\, I_0\, x^{\,N+1}\cos^{2N}(\phi/N)}}
+=\frac{1}{x^{(N+1)/2}\cos^{N}(\phi/N)}\sqrt{\frac{P}{\pi I_0}}}
+\]
+
+\medskip
+\textbf{Verificações.}
+\begin{itemize}
+\item Unidades: $P/(\pi I)$ tem unidade $\mathrm{W}/(\mathrm{W/m^2})=\mathrm{m^2}$, então $R$ está em metros.
+\item Caso ideal ($x=1$) com $N=1$ (dois polarizadores): $I=I_0\cos^2\phi$, que é a lei de Malus.
+\item $\phi=0$ (eixos paralelos): $I=I_0x^{N+1}$, apenas as perdas dos $N+1$ polarizadores.
+\item $N\to\infty$ com $\phi$ fixo: $\cos^{2N}(\phi/N)\approx 1-\phi^2/N\to 1$, então $I\to I_0 x^{N+1}$. A rotação gradual não causa perda por Malus, só as perdas por reflexão e absorção, que crescem com o número de polarizadores.
+\item Como $x<1$ e $\cos\beta<1$, vale $I<I_0$ e portanto $R>\sqrt{P/(\pi I_0)}$, coerente com o feixe ter perdido intensidade para a mesma potência medida.
+\end{itemize}
+
+ANSWER: a) $I=I_0\,x^{N+1}\cos^{2N}(\phi/N)$; b) $R=\sqrt{\dfrac{P}{\pi I_0\,x^{N+1}\cos^{2N}(\phi/N)}}$
+%
+\newpage%
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Dados.} $m=100\ \mathrm{g}$, $c=2{,}0\ \mathrm{J/(g\,^\circ C)}$, $\Delta\theta=50-20=30\ ^\circ\mathrm{C}$. A bateria tem $q=2\ \mathrm{Ah}$ e $U=5{,}0\ \mathrm{V}$. O tempo de carga é $\Delta t_{\text{carga}}=20\ \mathrm{min}=1200\ \mathrm{s}$.
+
+\subsection*{a) Potência média mínima do carregador}
+
+\textbf{Raciocínio.} Pela conservação da energia, o carregador fornece no mínimo a energia que fica armazenada na bateria mais a energia térmica que aquece o aparelho. Perdas adicionais (resistência das bobinas, irradiação, aquecimento do próprio carregador) só aumentam a energia fornecida. Por isso a soma abaixo é um \emph{mínimo}.
+
+\begin{itemize}
+\item Carga da bateria: $q = 2\ \mathrm{A\cdot h} = 2\cdot 3600\ \mathrm{C} = 7200\ \mathrm{C}$.
+\item Energia armazenada, com a bateria inicialmente descarregada e $U$ constante: $E_{\text{bat}} = qU = 7200\cdot 5{,}0 = 3{,}6\cdot 10^{4}\ \mathrm{J}$.
+\item Energia térmica: $Q = mc\,\Delta\theta = 100\cdot 2{,}0\cdot 30 = 6{,}0\cdot 10^{3}\ \mathrm{J}$. Aqui $m$ entra em gramas, por coerência com $c$ em $\mathrm{J/(g\,^\circ C)}$.
+\end{itemize}
+
+\[
+E_{\min}=E_{\text{bat}}+Q = 3{,}6\cdot10^{4}+0{,}6\cdot10^{4}=4{,}2\cdot 10^{4}\ \mathrm{J},
+\qquad
+P_{\min}=\frac{E_{\min}}{\Delta t_{\text{carga}}}=\frac{4{,}2\cdot 10^{4}}{1200}=35\ \mathrm{W}.
+\]
+
+\emph{Conferência.} A corrente média na bateria é $7200/1200=6\ \mathrm{A}$, o que dá $6\cdot 5=30\ \mathrm{W}$ úteis. Somando $6000/1200=5\ \mathrm{W}$ de aquecimento, obtém-se $35\ \mathrm{W}$.
+
+\subsection*{b) Máximo valor de $\Delta t$}
+
+\textbf{Geometria (solenoide ideal).} Usa-se $B=\mu_0 nI$ uniforme no interior, com todo o fluxo atravessando todas as espiras.
+
+\begin{itemize}
+\item $n=20\ \mathrm{espiras/cm}=2000\ \mathrm{m^{-1}}$ e $\ell=2\ \mathrm{cm}$, logo $N=n\ell=40$ espiras.
+\item $A=\pi R^{2}=\pi(5\cdot 10^{-3})^{2}=2{,}5\pi\cdot10^{-5}\ \mathrm{m^{2}}$.
+\end{itemize}
+
+\textbf{Indutância.} O fluxo concatenado é $N\,BA=LI$, portanto
+
+\[
+L=\frac{\mu_0 N^{2}A}{\ell}
+=\frac{4\pi\cdot10^{-7}\cdot 1600\cdot 2{,}5\pi\cdot 10^{-5}}{2\cdot10^{-2}}
+=8\pi^{2}\cdot 10^{-7}\ \mathrm{H}\approx 7{,}9\cdot10^{-6}\ \mathrm{H}.
+\]
+
+\textbf{F.e.m. induzida.} Pela lei de Faraday--Lenz, a f.e.m. na bobina do celular é $\varepsilon=M\,|dI/dt|$, em que $M=k\sqrt{L_1L_2}=kL$ é a indutância mútua e $k\le 1$ é o coeficiente de acoplamento. Em cada ciclo a corrente varia linearmente em $\Delta I\le 14\ \mathrm{A}$, logo $|dI/dt|=\Delta I/\Delta t$ é constante. O enunciado fixa $\varepsilon=U$, então
+
+\[
+\frac{kL\,\Delta I}{\Delta t}=U
+\quad\Longrightarrow\quad
+\Delta t=\frac{kL\,\Delta I}{U}\le\frac{14\,L}{U}.
+\]
+
+\textbf{Por que este é o máximo.} Para $U$ fixo, $\Delta t$ cresce com $k$, com $L$ e com $\Delta I$. O valor máximo ocorre quando os três assumem seus tetos:
+\begin{itemize}
+\item $\Delta I=14\ \mathrm{A}$, a excursão máxima da corrente;
+\item $k=1$, o acoplamento perfeito dado no enunciado, que dá $M=L$;
+\item $L$ do solenoide ideal. Como $\ell$ é só duas vezes o diâmetro, a correção de extremidade (Nagaoka) reduziria $L$ real em cerca de $20\%$. A idealização superestima $L$ e, portanto, também $\Delta t$.
+\end{itemize}
+Qualquer não idealidade apenas diminui $\Delta t$. Assim, o valor calculado com solenoide ideal é um teto, que é o que o enunciado pede (``máximo possível'').
+
+\[
+\Delta t_{\max}=\frac{14\,L}{U}=\frac{14\cdot 8\pi^{2}\cdot10^{-7}}{5{,}0}=2{,}24\pi^{2}\cdot10^{-6}\ \mathrm{s}\approx 2{,}21\cdot10^{-5}\ \mathrm{s}\ (\approx 22\ \mu\mathrm{s}).
+\]
+
+\textbf{Conferência com o item (a).} No caso ideal (bobinas sem resistência e sem perdas), o primário tem o mesmo fluxo e o mesmo número de espiras que o secundário. Sua f.e.m. própria é então $5\ \mathrm{V}$, constante, e a corrente média é $\bar I=7\ \mathrm{A}$. A potência média é $\bar P=\varepsilon\bar I=5\cdot 7=35\ \mathrm{W}$, exatamente o mínimo do item (a). Se $\Delta t$ fosse maior que $\Delta t_{\max}$ com os mesmos $L$, $k$ e $\Delta I$, a f.e.m. cairia abaixo de $5\ \mathrm{V}$ e a bateria não carregaria. Ordem de grandeza: $L\sim10^{-5}\ \mathrm{H}$ e $\Delta I=14\ \mathrm{A}$ exigem ciclos de dezenas de microssegundos para induzir alguns volts, o que é coerente.
+
+\textbf{Resultados:}
+\[
+\text{a) } P_{\min}=35\ \mathrm{W};\qquad \text{b) } \Delta t_{\max}=2{,}24\pi^{2}\cdot10^{-6}\ \mathrm{s}\approx 2{,}2\cdot 10^{-5}\ \mathrm{s}.
+\]
+
+ANSWER: a) $35\ \mathrm{W}$; b) $\Delta t_{\max}=2{,}24\pi^{2}\cdot 10^{-6}\ \mathrm{s}\approx 2{,}2\cdot10^{-5}\ \mathrm{s}$ (cerca de $22\ \mu\mathrm{s}$)%
+\newpage%
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{Modelo.} A luz solar incide perpendicularmente à grade (incidência normal). Para uma grade de difração com incidência normal, os máximos de ordem $m$ ocorrem nas direções $\theta_m$ dadas por
+\[
+d\,\operatorname{sen}\theta_m = m\lambda ,
+\]
+em que $d$ é a distância entre ranhuras consecutivas. Cada cor é tratada como uma onda de comprimento de onda $\lambda$ bem definido. O anteparo (solo) é horizontal e está a $H = 20\ \mathrm{cm}$ da grade. A distância $x$ de um máximo ao ponto central (ponto diretamente abaixo da grade, que corresponde ao máximo de ordem zero) vem da geometria:
+\[
+\operatorname{tg}\theta = \frac{x}{H}.
+\]
+Como $H$ é de poucos centímetros e $x$ é comparável a $H$, o ângulo não é pequeno. Por isso não se pode usar $\operatorname{sen}\theta \approx \operatorname{tg}\theta$ e é preciso usar a trigonometria exata.
+
+\medskip
+\textbf{a) Distância entre as ranhuras.}
+
+Para o laranja ($\lambda_L = 600\ \mathrm{nm}$, $m=1$), $x_L = 20\ \mathrm{cm} = H$. Então
+\[
+\operatorname{tg}\theta_L = \frac{x_L}{H} = \frac{20}{20} = 1 \;\Rightarrow\; \theta_L = 45^\circ ,
+\qquad \operatorname{sen}\theta_L = \frac{\sqrt2}{2}.
+\]
+Da condição de máximo com $m=1$:
+\[
+d = \frac{\lambda_L}{\operatorname{sen}\theta_L} = \frac{600\ \mathrm{nm}}{\sqrt2/2} = 600\sqrt2\ \mathrm{nm}
+\approx 8{,}5\cdot 10^{2}\ \mathrm{nm} \approx 8{,}5\cdot 10^{-7}\ \mathrm{m}.
+\]
+(Isso corresponde a cerca de $1{,}2\cdot 10^{3}$ ranhuras por milímetro, valor típico de grades comerciais.)
+
+\medskip
+\textbf{b) Primeiro máximo do violeta.}
+
+A grade é a mesma, logo $d = 600\sqrt2\ \mathrm{nm}$. Para o violeta ($\lambda_V = 400\ \mathrm{nm}$, $m=1$):
+\[
+\operatorname{sen}\theta_V = \frac{\lambda_V}{d} = \frac{400}{600\sqrt2} = \frac{\sqrt2}{3}\approx 0{,}471 .
+\]
+Esse valor é menor que $1$, então o máximo de primeira ordem existe. Calculando a tangente:
+\[
+\cos\theta_V = \sqrt{1-\frac{2}{9}} = \frac{\sqrt7}{3}
+\;\Rightarrow\;
+\operatorname{tg}\theta_V = \frac{\sqrt2/3}{\sqrt7/3} = \sqrt{\frac{2}{7}} = \frac{\sqrt{14}}{7}\approx 0{,}535 .
+\]
+Portanto
+\[
+x_V = H\,\operatorname{tg}\theta_V = 20\cdot\frac{\sqrt{14}}{7}\ \mathrm{cm}\approx 10{,}7\ \mathrm{cm}.
+\]
+
+\medskip
+\textbf{Verificações.}
+\begin{itemize}
+\item Unidades: $d$ em nm (ou m) e $x$ em cm, como esperado.
+\item Sentido físico: $\lambda_V<\lambda_L \Rightarrow \theta_V<\theta_L$ (o violeta é menos desviado que o laranja). De fato $\theta_V = \operatorname{arcsen}(0{,}471)\approx 28^\circ < 45^\circ$ e $x_V = 10{,}7\ \mathrm{cm} < 20\ \mathrm{cm}$.
+\item Aproximação de ângulos pequenos: daria $x_V = 20\cdot 400/600 \approx 13{,}3\ \mathrm{cm}$, resultado impreciso, pois $\theta_L = 45^\circ$ não é pequeno. A resposta correta é $10{,}7\ \mathrm{cm}$.
+\item Ordens existentes: $d/\lambda_L = \sqrt2 \approx 1{,}41 < 2$, então só há máximo de primeira ordem para o laranja, o que é consistente com o enunciado.
+\end{itemize}
+
+\medskip
+ANSWER: a) $d = 600\sqrt2\ \mathrm{nm}\approx 8{,}5\cdot 10^{-7}\ \mathrm{m}$; b) $x_V = \dfrac{20\sqrt{14}}{7}\ \mathrm{cm}\approx 10{,}7\ \mathrm{cm}$.%
+\newpage%
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Trabalhamos no referencial da Terra $S$, no qual o sistema Solar e Sirius estão em repouso, separados por $D = 8{,}6$ anos-luz. O tamanho do sistema Solar é desprezível diante de $D$. As trajetórias são paralelas e próximas, então as duas naves passam pela fronteira no mesmo evento $(t_0=0,\ x=0)$. Usamos $c = 1$ ano-luz/ano. Os movimentos são retilíneos e uniformes, logo vale a relatividade restrita com referenciais inerciais.
+
+\textbf{a) Tempo na Terra}
+
+\emph{1) Emissão do sinal.} A nave 1 chega a Sirius em
+\[
+t_1=\frac{D}{v_1}=\frac{8{,}6}{0{,}8}=10{,}75\ \text{anos}.
+\]
+Esse é o instante da emissão. Ela ocorre em $x=D=8{,}6$ al.
+
+\emph{2) Posição da nave 2 nesse instante.}
+\[
+x_2(t_1)=v_2t_1=0{,}6\cdot 10{,}75=6{,}45\ \text{al}.
+\]
+A nave 2 está atrás da nave 1, a $8{,}6-6{,}45=2{,}15$ al dela.
+
+\emph{3) Propagação do sinal.} O sinal viaja a $c$ em direção à Terra, ou seja, ao encontro da nave 2. Com $t$ medido desde $t_0$, as posições são
+\[
+x_{\text{sinal}}(t)=D-c\,(t-t_1),\qquad x_2(t)=v_2\,t .
+\]
+O encontro ocorre quando $x_{\text{sinal}}=x_2$:
+\[
+8{,}6-(t-10{,}75)=0{,}6\,t\ \Rightarrow\ 1{,}6\,t=19{,}35
+\ \Rightarrow\ t=\frac{19{,}35}{1{,}6}=12{,}09375\ \text{anos}.
+\]
+Conferência: $t=t_1+\dfrac{2{,}15}{c+v_2}=10{,}75+\dfrac{2{,}15}{1{,}6}=10{,}75+1{,}34375$, o mesmo valor.
+
+\[
+\boxed{\Delta t_{\text{Terra}}=\frac{387}{32}\ \text{anos}\approx 12{,}1\ \text{anos}}
+\]
+
+\textbf{b) Tempo próprio da nave 2}
+
+A nave 2 se move com velocidade constante em $S$. O tempo que seus astronautas medem entre dois eventos sobre ela, a saída da fronteira e a recepção do sinal, é o tempo próprio:
+\[
+\gamma_2=\frac{1}{\sqrt{1-(v_2/c)^2}}=\frac{1}{\sqrt{1-0{,}36}}=\frac{1}{0{,}8}=1{,}25 ,
+\qquad
+\Delta\tau_2=\frac{\Delta t}{\gamma_2}=0{,}8\cdot 12{,}09375=9{,}675\ \text{anos}.
+\]
+
+\emph{Verificação independente (transformação de Lorentz para o referencial da nave 2).} Para a emissão, $(t,x)=(10{,}75;\ 8{,}6)$:
+\[
+t'=\gamma_2\!\left(t-\frac{v_2x}{c^2}\right)=1{,}25\,(10{,}75-5{,}16)=6{,}9875\ \text{anos},
+\qquad
+x'=\gamma_2\,(x-v_2t)=1{,}25\,(8{,}6-6{,}45)=2{,}6875\ \text{al}.
+\]
+Nesse referencial a nave 2 está em repouso na origem e o sinal percorre $x'=2{,}6875$ al a $c$, em $2{,}6875$ anos. A recepção ocorre em
+\[
+\tau_2=t'+\frac{x'}{c}=6{,}9875+2{,}6875=9{,}675\ \text{anos},
+\]
+o que concorda com o resultado anterior.
+
+\[
+\boxed{\Delta\tau_2=9{,}675\ \text{anos}\approx 9{,}7\ \text{anos}}
+\]
+
+\textbf{Análise.} $\Delta\tau_2<\Delta t$, como esperado para um relógio em movimento. A ordem de grandeza é plausível, pois a viagem é de cerca de uma dezena de anos. O tempo medido na Terra é um pouco maior que o de ida da nave 1, $10{,}75$ anos, porque o sinal ainda precisa alcançar a nave 2.
+
+ANSWER: a) $\Delta t = 12{,}09375$ anos ($\approx 12{,}1$ anos); b) $\Delta\tau_2 = 9{,}675$ anos ($\approx 9{,}7$ anos)%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 1: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) R\_min = v$^2$(1 - $\mu$ tan$\theta$) / {[} g(tan$\theta$ + $\mu$) {]} = v$^2$ / {[} g tan($\theta$ + arctan $\mu$) {]}. Vale se $\mu$ tan$\theta$ < 1; se $\mu$ tan$\theta$ $\geq$ 1 não há raio mínimo.\newline%
+b) R\_min = v$^2$ / (g tan$\theta$).\newline%
+c) R\_min = v$^2$ / ($\mu$ g).\newline%
+\newline%
+Em todos os casos a massa M cancela. A perda de contato em (a) e (b) é a da roda interna (N\_I = 0).\par %
+As respostas finais do candidato coincidem com as da minha referência nos três itens: (a) R\_min = v$^2$(1-$\mu$ tan$\theta$)/{[}g($\mu$+tan$\theta$){]} = v$^2$/{[}g tan($\theta$+arctan $\mu$){]}; (b) v$^2$/(g tan$\theta$); (c) v$^2$/($\mu$g). Refiz o problema e confirmei: pela figura (conferida no enunciado original), o raio é maior do lado do eixo, então a normal fica inclinada $\theta$ da vertical e aponta para dentro. Só a roda externa empurra o trem para o centro da curva. Uma varredura numérica aleatória sobre cargas e atritos deu máximo de a/g $\approx$ tan($\theta$+$\varphi$), nos dois casos testados, e os números do candidato (226 / 1029 / 300 m) conferem. A justificativa é boa e até mais limpa que a da referência. A direção da força de cada roda fica em um setor convexo |$\psi$| $\leq$ $\theta$+$\varphi$, logo tan$\alpha$ $\leq$ tan($\theta$+$\varphi$). A igualdade exige N\_I=0 e f\_E=$\mu$N\_E, que é a perda de contato da roda interna. O candidato trata as armadilhas: leitura de $\theta$ e da orientação do cone, roda interna como a que descola, indeterminação estática, atrito com termo vertical (não usa N=Mg/cos$\theta$), verificações $\mu$$\to$0 e $\theta$$\to$0, e hipóteses sobre torques, altura do CM e bitola. Os defeitos são só de acabamento: sentido do atrito pouco explícito, suficiência não demonstrada, validade $\mu$ tan$\theta$<1 dita de forma vaga e fora da resposta final, comparação restrita sem necessidade a $\theta$ pequeno, e terminologia 'lado interno' versus 'roda interna' ambígua. Nenhum falha de física ou de conta. Está perto de um gabarito comentado publicável, e dou nota 9 por esses detalhes de rigor."%
+\begin{itemize}%
+\item%
+{[}minor{]} Item (a): o sentido do atrito não é dito explicitamente. O texto diz só que f 'se opõe à tendência de a roda subir para fora do trilho'. Só as equações revelam que f aponta ao longo da geratriz, para dentro e para baixo (componentes f cos$\theta$ horizontal e -f sin$\theta$ vertical). O trecho deveria dizer isso, porque o sentido oposto daria (tan$\theta$-$\mu$)/(1+$\mu$ tan$\theta$) e é a armadilha central do item. A conclusão sai correta, pois o argumento do setor fixa o extremo $\psi$=$\theta$+$\varphi$.%
+\item%
+{[}minor{]} Falta mostrar a suficiência. A resolução afirma 'para R $\geq$ R\_min nenhuma roda perde o contato', mas só prova a necessidade (tan$\alpha$ $\leq$ tan($\theta$+$\varphi$)). Faltou dizer que todo tan$\alpha$ $\in$ {[}0, tan($\theta$+$\varphi$)) é realizável com N\_E, N\_I > 0, por exemplo f=0 e N\_I pequeno cobrem {[}0, tan$\theta$), e N\_I$\to$0 com f\_E crescendo cobre o resto. Faltou também dizer que, como altura do CM e bitola não são dados, R\_min é o raio abaixo do qual nenhuma distribuição de cargas serve.%
+\item%
+{[}minor{]} A condição de validade $\mu$ tan$\theta$ < 1 aparece só em uma frase vaga ('a condição deixa de limitar R') e não consta na linha ANSWER. Deveria dizer que, para $\theta$+$\varphi$ $\geq$ 90$^\circ$, não existe raio mínimo (a roda se crava, R\_min$\to$0) e a fórmula daria valor negativo ou infinito.%
+\item%
+{[}minor{]} A comparação entre os itens é restrita sem necessidade: 'para $\theta$ pequeno, R\_a < R\_b e R\_a < R\_c'. Como tan($\theta$+$\varphi$) > tan$\theta$ e > tan$\varphi$ sempre que $\theta$+$\varphi$ < 90$^\circ$, a desigualdade vale em geral. O exemplo numérico (226 m, 1029 m, 300 m com v=30 m/s, $\theta$=5$^\circ$, $\mu$=0,3) está correto; conferi.%
+\item%
+{[}minor{]} Ambiguidade de terminologia: 'o raio da roda é maior do lado interno' (lado do eixo) convive com 'roda interna/externa à curva'. Isso confunde a leitura. Seria melhor dizer 'lado voltado para o eixo' e 'roda interna à curva'. A expressão 'não há rolamento do conjunto' também é pouco clara (quer dizer sem giro em torno do eixo longitudinal).%
+\item%
+{[}minor{]} Item (c): escreve 'N=Mg' sem explicar que é N\_E+N\_I=Mg e que o atrito total satisfaz f\_E+f\_I $\leq$ $\mu$(N\_E+N\_I). Não diz que o resultado independe da divisão de carga entre as rodas. Já 'tratar o trem como partícula' e 'amostragem numérica aleatória confirmou' são afirmações soltas, sem detalhe. Não prejudicam a correção.%
+\end{itemize}%
+\subsection*{Questão 2: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) N\_A = g cos$\theta$$\cdot${[} M(L-2d)/2 + m(L-a-d) + m\_c(b-d) {]}/(L-2d)\newline%
+   N\_B = g cos$\theta$$\cdot${[} M(L-2d)/2 + m(a-d) + m\_c(L-b-d) {]}/(L-2d)\newline%
+   (N\_A + N\_B = (M+m+m\_c) g cos$\theta$; é preciso N\_A, N\_B $\geq$ 0.)\newline%
+\newline%
+b) Rigorosamente só a soma é determinada: f\_A + f\_B = (M+m+m\_c) g sen$\theta$, paralela ao plano e para cima. O problema é hiperestático para a divisão entre os apoios. Com a hipótese natural de mesma razão f/N nos dois apoios (mesmo $\mu$): f\_A = N\_A tan$\theta$ = g sen$\theta$$\cdot${[} M(L-2d)/2 + m(L-a-d) + m\_c(b-d) {]}/(L-2d) e f\_B = N\_B tan$\theta$ = g sen$\theta$$\cdot${[} M(L-2d)/2 + m(a-d) + m\_c(L-b-d) {]}/(L-2d). A condição para não deslizar é $\mu$ $\geq$ tan$\theta$. A divisão igual, f\_A = f\_B = (M+m+m\_c) g sen$\theta$/2, vale só sob outra hipótese (rigidez tangencial igual).\par %
+Resposta correta e equivalente à referência.\newline%
+\newline%
+**Conferência.** Conferi o enunciado em alta resolução (a lista de parâmetros inclui d, como na transcrição). Refiz as contas em Python puro com 2000 sorteios aleatórios: as fórmulas de N\_A e N\_B batem com o equilíbrio de forças e de torques com erro de ordem 1e{-}13. N\_A + N\_B = (M+m+m\_c) g cos$\theta$ e N\_A tan$\theta$ + N\_B tan$\theta$ = (M+m+m\_c) g sen$\theta$.\newline%
+\newline%
+**a)** N\_A = g cos$\theta${[}M/2 + (m(L-d-a) + m\_c(b-d))/(L-2d){]} e N\_B = g cos$\theta${[}M/2 + (m(a-d) + m\_c(L-b-d))/(L-2d){]}. São algebricamente idênticas às da referência.\newline%
+{-} Braços corretos: L/2-d, a-d, L-b-d em relação a A; AB = L-2d.\newline%
+{-} Hipótese de barra fina declarada: só as componentes cos$\theta$ geram torque.\newline%
+{-} Soma das normais e caso m = m\_c = 0 verificados; N $\geq$ 0 citado, com a função do contrapeso.\newline%
+\newline%
+**b)** Reconhece que o problema é hiperestático. A estática dá só f\_A + f\_B = (M+m+m\_c) g sen$\theta$, para cima ao longo do plano.\newline%
+{-} Declara a hipótese de mesmo $\mu$ e mesma razão f/N.\newline%
+{-} Prova que, em $\mu$ = tan$\theta$, as duas desigualdades f\_i $\leq$ $\mu$N\_i viram igualdades, logo f\_i = N\_i tan$\theta$.\newline%
+{-} Não usa $\mu$N\_i como resposta, não usa $\mu$ como parâmetro dado e verifica que cada atrito fica dentro do seu limite.\newline%
+{-} Confere f\_A + f\_B com (2) e o caso $\theta$ = 0.\newline%
+\newline%
+**Armadilhas.** Todas as armadilhas centrais foram tratadas: cos$\theta$ nas normais, braços e subtração de d, linhas de ação do atrito, hiperestaticidade, hipótese de divisão declarada, N $\geq$ 0 e sentido do atrito.\newline%
+\newline%
+**Ressalvas.** Não vi erro de conta nem erro conceitual grave. A única imprecisão de conteúdo é o \textbackslash{}"necessário em cada apoio\textbackslash{}" com $\mu$ possivelmente diferente. As demais faltas são de acabamento: alternativa f\_A = f\_B não mencionada, validade e L > 2d pouco explícitas, sentido das reações sobre os apoios e aviso de hipótese ausente na linha ANSWER. Nota 9: correta e bem argumentada, e um professor publicaria com ajustes pequenos."%
+\begin{itemize}%
+\item%
+{[}minor{]} A frase final do item (b), "é necessário (e, com essa repartição, suficiente) que $\mu$\_e $\geq$ tan$\theta$ em cada apoio", só é verdadeira se os dois apoios tiverem o mesmo $\mu$, como o texto supôs antes. Com $\mu$\_A $\neq$ $\mu$\_B a condição geral é $\mu$\_A N\_A + $\mu$\_B N\_B $\geq$ (M+m+m\_c) g sen$\theta$, e um dos $\mu$ pode ficar abaixo de tan$\theta$. Deveria ter escrito essa condição geral e depois a particularização para $\mu$ igual. A notação também muda de $\mu$ para $\mu$\_e sem aviso.%
+\item%
+{[}minor{]} A repartição f\_i = N\_i tan$\theta$ é declarada como hipótese e justificada pela situação{-}limite ($\mu$ = tan$\theta$), mas o texto não diz que, para $\mu$ > tan$\theta$, a estática não a impõe. Também não cita a alternativa comum f\_A = f\_B = (M+m+m\_c) g sen$\theta$/2 (rigidez tangencial igual), que só coincide com a adotada se N\_A = N\_B. Apenas aponta que a repartição "depende das deformações nos contatos". A linha ANSWER final traz f\_A = N\_A tan$\theta$ e f\_B = N\_B tan$\theta$ sem o aviso de que é hipótese. Um gabarito comentado deveria repetir esse aviso ali.%
+\item%
+{[}minor{]} A condição de validade N\_A, N\_B $\geq$ 0 é citada só qualitativamente (verificação iv). Faltou dizer que ela é automática com as cargas entre os apoios (d $\leq$ a e b $\leq$ L-d) e que só restringe se m estiver além de B ou m\_c além de A, que é o papel do contrapeso. A hipótese L > 2d, necessária para dividir por L-2d, também não é declarada, embora a figura a deixe evidente.%
+\item%
+{[}minor{]} A verificação (iii) (a = b = L/2 $\Rightarrow$ N\_A = N\_B) é correta, mas fraca e chamada de "configuração simétrica": nesse caso m e m\_c estão ambos no centro da barra. O caso a = b = d, que dá N\_A = g cos$\theta$ (M/2 + m) e N\_B = g cos$\theta$ (M/2 + m\_c), seria um teste mais informativo dos braços (a-d, L-b-d, b-d, L-d-a).%
+\item%
+{[}minor{]} A 3ª lei é citada só pelo módulo. A pergunta pede as forças sobre os apoios, e o texto não explicita que elas têm sentido oposto: normal sobre os apoios apontando para dentro do plano e atrito sobre os apoios apontando ao longo do plano, para baixo. Também não declara que a espessura da barra é desprezada nem que, com espessura finita, a componente paralela dos pesos alteraria as normais, embora "todas as forças sobre o eixo da barra" já dê o modelo.%
+\end{itemize}%
+\subsection*{Questão 3: nota 9,2 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) R\_r = M{[} g cos $\theta$ + $\omega$$^2$(L/2 - a) {]} = M{[} g cos $\theta$ + $\omega$$^2$(L - 2a)/2 {]}, dirigida ao longo da haste, do CM para o pivô (sentido centrípeto, tração). Com r? apontando do pivô para o CM, N\_r = -M{[} g cos $\theta$ + $\omega$$^2$(L/2 - a) {]}.\newline%
+\newline%
+b) cos $\theta$ = -$\omega$$^2$(L - 2a)/(2g), ou seja, $\theta$ = arccos{[} -$\omega$$^2$(L - 2a)/(2g) {]} (com 90$^\circ$ < $\theta$ $\leq$ 180$^\circ$). Independe de M. Só existe solução se $\omega$$^2$(L - 2a) $\leq$ 2g. Para $\omega$ maior, a componente radial nunca se anula.\par %
+Conferi o enunciado e a figura no PDF original. O pivô fica a a da extremidade curta, que sobe para a esquerda. A parte longa desce para a direita, e $\theta$ é medido a partir da vertical para baixo. Portanto a < L/2 e d = L/2 - a, como o candidato e a referência assumem.\newline%
+\newline%
+Refiz o cálculo por conta própria, com Newton para o CM e a equação de torque com I = ML$^2$/12 + Md$^2$. Comparei para vários $\theta$ e $\omega$ com M = 2, L = 1, a = 0,1 e g = 10, e a fórmula N\_r = -M{[}$\omega$$^2$(L-2a)/2 + g cos$\theta${]} bateu com erro numérico $\approx$ 1e{-}15. Para $\omega$ = 3 rad/s, o ângulo cos$\theta$ = -0,36 ($\theta$ $\approx$ 111,1$^\circ$) anula a componente radial. As duas resoluções coincidem nos itens (a) e (b).\newline%
+\newline%
+(a) R\_r = -M{[}$\omega$$^2$(L-2a)/2 + g cos$\theta${]}, com r? do pivô para o CM. O módulo M{[}g cos$\theta$ + $\omega$$^2$(L-2a)/2{]} aponta do CM para o pivô, igual à referência. O candidato evita todas as armadilhas:\newline%
+{-} usa d = L/2 - a;\newline%
+{-} inclui o peso projetado Mg cos$\theta$ com o sinal certo;\newline%
+{-} diz a convenção de sinal;\newline%
+{-} não usa I, $\alpha$ nem energia.\newline%
+\newline%
+(b) cos$\theta$ = -$\omega$$^2$(L-2a)/(2g), com $\theta$ > 90$^\circ$ e a condição de existência $\omega$$^2$(L-2a) $\leq$ 2g. O sinal negativo está certo, a independência de M é notada, e o teste $\theta$ = 180$^\circ$ ($\omega$$^2$d = g) é coerente.\newline%
+\newline%
+Os defeitos são só de acabamento:\newline%
+{-} casos limite de (b) pouco explicitados ($\omega$ = 0, $\omega$\_máx, faixa de $\theta$);\newline%
+{-} conferências parcialmente soltas;\newline%
+{-} falta dizer que o módulo vira compressão para 90$^\circ$ < $\theta$ < $\theta$*;\newline%
+{-} faltou uma frase sobre a independência entre $\omega$ e $\theta$.\newline%
+\newline%
+A resolução está correta, completa e bem apresentada, próxima de um gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} O item (b) não fecha todos os casos limite. Faltam $\omega$ = 0, que dá $\theta$ = 90$^\circ$, e a faixa completa 90$^\circ$ < $\theta$ $\leq$ 180$^\circ$. Também não dá a forma explícita $\omega$ $\leq$ $\surd$(2g/(L-2a)), nem diz que no limite a haste fica na vertical com o CM no topo. Há só uma menção parcial no teste $\theta$ = 180$^\circ$. O resultado vale, mas faltou explicitar que o arccos, com argumento em {[}-1, 0{]}, dá uma solução única em {[}90$^\circ$, 180$^\circ${]}.%
+\item%
+{[}minor{]} A hipótese a < L/2 é lida da figura, o que é correto. Falta observar que a fórmula com d = (L-2a)/2 vale também com sinal (d < 0 se a > L/2, ou d = 0 se a = L/2). O candidato só testa a = L/2 como caso particular. Isso mostraria que o resultado não depende de a ser o trecho curto.%
+\item%
+{[}minor{]} As conferências são um pouco soltas. 'Resultado conhecido' para a = 0 não é justificado. O teste a = L/2 diz 'projeção da reação Mg $\hat y$ em r?' sem explicar que, com d = 0, a reação equilibra o peso. Os testes $\theta$ = $\pi$ (R = M($\omega$$^2$d - g)) e $\omega$ = 0, $\theta$ = $\pi$/2 (R\_r = 0) seriam mais informativos.%
+\item%
+{[}minor{]} O candidato não diz explicitamente por que $\omega$ e $\theta$ são independentes, isto é, por que não se usa energia nem a equação de torque. Diz só que $\alpha$ não entra na componente radial. A condição inicial não foi dada, então a conservação de energia não seria cabível. Uma frase sobre isso fecharia a única armadilha conceitual restante. O versor t? também é citado sem fixar o sentido, o que é inofensivo porque só a projeção radial importa.%
+\item%
+{[}minor{]} A resposta final do item (a) é dada em duas formas, com sinal (r? do pivô para o CM) e em módulo. A convenção está explícita, mas a linha ANSWER poderia destacar uma forma só. O módulo M{[}$\omega$$^2$(L-2a)/2 + g cos$\theta${]} vale 'quando o colchete é positivo'. Faltou dizer que, se for negativo, o pivô empurra a haste ao longo dela (compressão), o que é o caso 90$^\circ$ < $\theta$ < $\theta$* do item (b).%
+\end{itemize}%
+\subsection*{Questão 4: nota 9,2 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) y$_{2}$ = 2b ou y$_{2}$ = -4b (duas soluções, pois o CM em (4a/5, $\pm$3b/5) fica sobre a elipse).\newline%
+\newline%
+b) A menor energia ocorre com y$_{2}$ = 2b e a estrela no foco (+$\surd$(a$^2$-b$^2$), 0). Com c = $\surd$(a$^2$-b$^2$):\newline%
+\newline%
+U\_min = -(GMm/5)$\cdot${[} 16/$\surd$(25a$^2$ - 15b$^2$ - 24ac) + 1/$\surd$(2a$^2$ + 3b$^2$ - 2ac) {]} - 16Gm$^2$/(25$\surd$(a$^2$ + 49b$^2$)),\newline%
+\newline%
+ou seja, U\_min = -GM$\cdot$m$_{1}$/r$_{1}$ - GM$\cdot$m$_{2}$/r$_{2}$ - G$\cdot$m$_{1}$m$_{2}$/d$_{1}$$_{2}$ com m$_{1}$ = 4m/5, m$_{2}$ = m/5, r$_{1}$ = ¼$\surd$(25a$^2$-15b$^2$-24ac), r$_{2}$ = $\surd$(2a$^2$+3b$^2$-2ac) e d$_{1}$$_{2}$ = ¼$\surd$(a$^2$+49b$^2$). O termo m$_{1}$--m$_{2}$ é desprezível frente aos termos com a estrela (ordem m/M), por M ? m.\par %
+Resposta final correta e igual à de referência nos dois itens. (a) O CM fica em (4a/5, (b+y2)/5) e está sobre a elipse, o que dá (b+y2)$^2$=9b$^2$. Portanto y2=2b ou y2=-4b, e a candidata apresenta as duas raízes. (b) A energia é a soma dos três pares (estrela--m1, estrela--m2 e m1--m2), com m1=4m/5 e m2=m/5. A candidata compara os focos e as raízes de y2 e conclui que o mínimo ocorre com a estrela em (+c,0) e y2=2b. As distâncias r1=¼$\surd$(25a$^2$-24ac-15b$^2$), r2=$\surd$(2a$^2$-2ac+3b$^2$) e d=¼$\surd$(a$^2$+49b$^2$) estão corretas, e a expressão final de U\_min coincide com a da referência. Conferi numericamente com 6 sorteios de a e b: o mínimo entre as quatro combinações é sempre (F?, y2=2b), a fórmula fechada bate com o cálculo direto, e o CM cai exatamente sobre a elipse nas duas raízes. A candidata declara a hipótese física central (forças internas, CM na elipse original, efeitos de maré desprezados), evita as armadilhas principais (CM com pesos 4/5 e 1/5, duas raízes, dois focos, termo de interação mútua incluído e comentado como O(m/M), sinal negativo, m=5m2) e entrega boa clareza e unidades. As falhas são só de rigor e de acabamento: a separabilidade da minimização não está explícita, falta mencionar que P1 não está sobre a elipse, a verificação numérica é só afirmada, e o comentário sobre 'sistema ligado' é impreciso. Nada disso afeta a correção. A resolução é publicável como gabarito comentado, com pequenos ajustes."\}%
+\begin{itemize}%
+\item%
+{[}minor{]} A minimização no item (b) está correta, mas o texto não diz de forma explícita que as escolhas são separáveis: r1 depende só do foco, d depende só de y2, e r2 depende dos dois e é mínima com F=(+c,0) e |y2|=2b ao mesmo tempo. O leitor precisa deduzir isso. Convém acrescentar uma frase dizendo que cada um dos três termos negativos é minimizado pela mesma combinação (F?, y2=2b), então o mínimo é global.%
+\item%
+{[}minor{]} A resolução não trata a armadilha de P1 não estar sobre a elipse. Ela não comete o erro, pois só impõe a condição ao CM. Falta dizer que (3/4)$^2$+(1/4)$^2$=10/16$\neq$1, ou seja, que P1 está no interior da elipse, e que P2=(a,2b) ou (a,-4b) fica fora dela, o que é aceitável. Isso evitaria dúvida sobre por que só o CM é restrito.%
+\item%
+{[}minor{]} A verificação numérica (quatro combinações, valores arbitrários) é apenas afirmada, sem exibir valores. Refiz com 6 sorteios de a, b, e o mínimo é sempre F=(+c,0) com y2=2b. A fórmula fechada coincide com o cálculo direto até a 6ª casa decimal. A afirmação é verdadeira, mas um exemplo numérico explícito (por exemplo a=5, b=3, c=4) daria mais rigor.%
+\item%
+{[}minor{]} Na conferência, 'U<0 como esperado para um sistema ligado' é impreciso. O sinal negativo de U (zero no infinito) não implica sistema ligado, pois isso depende da energia total. O teste do círculo b=a (c=0) é só um caso{-}limite, já que 'focos no eixo x' pressupõe a>b. A hipótese a>b, que garante c=$\surd$(a$^2$-b$^2$) real, devia ser dita de forma explícita no início.%
+\item%
+{[}minor{]} A resolução fixa a posição da estrela como um dos focos e explica bem a hipótese de CM sobre a elipse e de desprezar efeitos de maré. Porém não justifica que M?m permite considerar a estrela fixa também na energia. Isso é inofensivo. A resposta final inclui o termo m1--m2 e comenta que ele é da ordem de m/M, o que está correto e completo.%
+\end{itemize}%
+\subsection*{Questão 5: nota 9,0 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) W = (M1 - M2)$\cdot$g$\cdot$$\alpha$$\cdot$L$\cdot$(90 - 20) = 700$\cdot$$\alpha$$\cdot$L$\cdot$(M1 - M2) (SI, com g = 10 m/s$^2$), positivo porque M1 > M2.\newline%
+\newline%
+b) $\eta$ = W/Q\_H = (M1 - M2)$\cdot$g$\cdot$$\alpha$$\cdot$L / ($\rho$\_H2O$\cdot$V$\cdot$c\_H2O + 3$\cdot$R$\cdot$m/M\_Cu) = 10$\cdot$$\alpha$$\cdot$L$\cdot$(M1 - M2) / ($\rho$\_H2O$\cdot$V$\cdot$c\_H2O + 3Rm/M\_Cu). Aqui Q\_H = ($\rho$\_H2O$\cdot$V$\cdot$c\_H2O + 3Rm/M\_Cu)$\cdot$70, e o fator $\Delta$T = 70 se cancela.\newline%
+\newline%
+(Questão dissertativa: não há alternativa de múltipla escolha.)\par %
+As respostas finais coincidem item por item com a referência, e minha própria conferência concorda. (a) W = (M1-M2)$\cdot$g$\cdot$$\alpha$L$\cdot$$\Delta$T = 700$\cdot$$\alpha$$\cdot$L$\cdot$(M1-M2), em SI. (b) $\eta$ = 10$\cdot$$\alpha$L$\cdot$(M1-M2)/($\rho$\_H2O$\cdot$V$\cdot$c\_H2O + 3mR/M\_Cu), com o $\Delta$T=70 cancelado. Conferi o enunciado no PDF original e a transcrição está fiel. A resolução evita todas as armadilhas listadas. Usa dilatação só linear. Inclui o termo -M2$\cdot$g$\cdot$$\Delta$L e descreve o ciclo como retângulo F$\times$?. Argumenta que as trocas de massa não dão trabalho nem calor, pela incompressibilidade. Soma o calor da água ($\rho$Vc) e do cobre (n$\cdot$3R$\cdot$$\Delta$T). Define $\eta$=W/Q\_H. Usa M\_Cu em kg/mol e substitui g=10 e $\Delta$T=70. Aponta a hipótese M1>M2 e faz verificação de unidades, de limite de Carnot e do caso M1=M2. Também é rigorosa na 1ª lei: escreve Q\_H com o termo (M1+m/2)g$\Delta$L, quantifica{-}o (\textasciitilde{}4$\cdot$10$^{-}$$^{7}$, refeito em Python) e só então o descarta. A resolução é clara, organizada e completa. Os problemas restantes são só detalhes de formulação: L como comprimento a 20 $^\circ$C, empuxo e atmosfera não citados, justificativa qualitativa do termo desprezado e convenção de sinal do trabalho. Nenhum afeta o resultado. Está próxima de um gabarito comentado publicável.%
+\begin{itemize}%
+\item%
+{[}minor{]} O enunciado não diz se L é o comprimento a 20 $^\circ$C. A resolução escreve L(T)=L{[}1+$\alpha$(T-20){]} sem declarar que L é o comprimento a 20 $^\circ$C. A hipótese deveria estar explícita. $\Delta$L = $\alpha$L$\Delta$T é exato nesse modelo, e a contração no resfriamento tem o mesmo módulo da dilatação.%
+\item%
+{[}minor{]} O argumento de que forças constantes não dão trabalho líquido no ciclo cita só o peso próprio da viga. Empuxo da água, pressão atmosférica sobre a superfície livre e dilatação da água não são tratados. A dilatação da água é desprezada, mas o empuxo não aparece. A viga está sobre o piso do recipiente, possivelmente imersa. Bastava dizer que todas essas forças são constantes ou conservativas e o estado final é igual ao inicial, então o trabalho líquido é nulo.%
+\item%
+{[}minor{]} A desconsideração do termo mecânico (M1+m/2)g$\Delta$L em Q\_H é justificada comparando{-}o com correções como c\_P-c\_V e a dilatação da água. Essa comparação é afirmada, não quantificada. A estimativa numérica de \textasciitilde{}4$\cdot$10$^{-}$$^{7}$ está certa (conferi: 3,9$\cdot$10$^{-}$$^{7}$ com os valores adotados). O argumento ficaria mais sólido com a ordem de grandeza de c\_P-c\_V do cobre (\textasciitilde{}3\% de 3R).%
+\item%
+{[}minor{]} Redação mista no item (a): W1 é chamado de "trabalho realizado sobre a carga" e W3 de "trabalho da viga sobre a carga". A convenção é consistente (trabalho feito pela viga sobre a carga), mas deveria ser declarada uma vez: W é o trabalho realizado pela máquina (viga) sobre o meio externo.%
+\item%
+{[}minor{]} Como a prova exige expressões numéricas resolvidas, o candidato substituiu g=10 e $\Delta$T=70, o que é correto. R e M\_Cu ficam simbólicos, o que é aceitável porque o enunciado não fornece seus valores. Uma nota de uma linha com R$\approx$8,31 J/(mol$\cdot$K) e M\_Cu$\approx$63,5$\cdot$10$^{-}$$^3$ kg/mol ajudaria o leitor. A verificação de ordem de grandeza (W$\approx$0,6 J, Q\_H$\approx$3$\cdot$10$^{6}$ J, $\eta$$\approx$2$\cdot$10$^{-}$$^{7}$) está correta; refiz em Python.%
+\end{itemize}%
+\subsection*{Questão 6: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) L = f1 + f2 = 85 cm.\newline%
+b) G = -f1/f2 = -16 (|G| = 16). A imagem é invertida.\newline%
+c) A objetiva (objeto dentro de f1) forma uma imagem virtual e direita, a 80 cm antes dela, com A1 = +2. A ocular conjuga a partir dela (p2 = 165 cm) uma imagem final REAL e INVERTIDA, a 165/32 $\approx$ 5,16 cm depois da ocular ($\approx$ 90,2 cm depois da objetiva). A ampliação linear total é -1/16, então a imagem é MENOR que o objeto (1/16 do tamanho).\par %
+As respostas finais do candidato coincidem item a item com a minha referência, e eu as confirmei de forma independente. Conferi o enunciado no PDF (página 7) e refiz as contas com frações exatas em Python. Os resultados foram: L = 85 cm; G = -16 (invertida); p1' = -80 cm, A1 = +2, p2 = 165 cm, p2' = 165/32 $\approx$ 5,16 cm, A2 = -1/32 e A = -1/16. A posição da imagem a partir da objetiva é 2885/32 $\approx$ 90,2 cm, o que bate com o "$\approx$ 90 cm" do candidato. A resolução declara a convenção de sinais, lê "longas distâncias" como imagem final no infinito (luneta afocal) e evita as armadilhas centrais. Ela usa L = f1 + f2, e não f1 - f2 (luneta de Galileu). Mantém o sinal de G como parte da resposta. Reconhece que o objeto em 40 cm está dentro de f1, o que dá imagem intermediária virtual e direita. Calcula p2 = L + |p1'| = 165 cm, sem cair no erro de p2 = 5 cm. Classifica o resultado como real, invertido e menor (1/16). Dá a posição em relação à ocular e à objetiva e declara que L = 85 cm é mantido. Os problemas restantes são só de polimento: faltou a ressalva sobre L para imagem final a distância finita e a justificativa de que refocalizar não resolve o item c. Há também um deslize de terminologia na verificação (ii) e a ampliação em cascata não é justificada. Nenhum deles afeta o resultado, e a resolução é publicável como gabarito comentado, com pequenos ajustes.%
+\begin{itemize}%
+\item%
+{[}minor{]} Não justifica a hipótese de que o tubo permanece com L = 85 cm no item (c). Diz apenas que "o tubo mantém L = 85 cm". Faltou explicar que refocalizar não ajudaria: para levar a imagem final ao infinito, a ocular teria de ficar 5 cm depois de I1, isto é, 75 cm antes da objetiva, o que é impossível. Essa observação explicaria por que a imagem final é real e não mais virtual no infinito.%
+\item%
+{[}minor{]} No item (a), não comenta que L = f1 + f2 vale para a imagem final exatamente no infinito (olho relaxado). Para imagem final a distância finita (por exemplo, no ponto próximo), L seria ligeiramente menor que 85 cm. A leitura de "longas distâncias" como infinito é declarada, mas a ressalva sobre a alternativa não aparece.%
+\item%
+{[}minor{]} Na verificação (ii), a expressão "objeto virtual{-}intermediário" é ambígua. "Objeto virtual" é termo técnico para raios convergentes, e aqui a imagem intermediária virtual é objeto REAL da ocular, como o próprio candidato disse corretamente mais acima. O texto não está errado, mas a terminologia pode confundir um leitor ou corretor.%
+\item%
+{[}minor{]} A ampliação linear total A = A1$\cdot$A2 é usada sem uma frase de justificativa (a imagem da primeira lente é o objeto da segunda, e as ampliações transversais se multiplicam). Também não explicita que a inversão final vem só da ocular, já que A1 > 0.%
+\item%
+{[}minor{]} No item (b), não diz explicitamente que a imagem final é virtual e está no infinito. Dá apenas o sentido (invertida). Também não nomeia o instrumento como luneta kepleriana, nem contrasta com a de Galileu (L = f1 - f2, imagem direita). Isso é menor, pois o enunciado só pede o sinal e a orientação.%
+\end{itemize}%
+\subsection*{Questão 7: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) I = I$_{0}$ $\cdot$ x\^{}(N+1) $\cdot$ cos\^{}(2N)($\varphi$/N)\newline%
+\newline%
+b) R = $\surd$( P / ($\pi$ I) ) = $\surd$( P / {[} $\pi$ I$_{0}$ x\^{}(N+1) cos\^{}(2N)($\varphi$/N) {]} ) = (1/{[}x\^{}((N+1)/2) cos\^{}N($\varphi$/N){]}) $\cdot$ $\surd$(P/($\pi$ I$_{0}$))\par %
+As respostas finais coincidem com a minha referência nos dois itens: (a) I = I$_{0}$$\cdot$x\^{}(N+1)$\cdot$cos\^{}(2N)($\varphi$/N); (b) R = $\surd$(P/($\pi$I)) = $\surd$(P/{[}$\pi$ I$_{0}$ x\^{}(N+1) cos\^{}(2N)($\varphi$/N){]}). Reli o enunciado no PDF (página 8) e a transcrição confere. Conferi numericamente a fórmula fechada contra uma simulação sequencial de Malus com o fator x em cada polarizador, para três conjuntos de parâmetros, e I e R concordam até a precisão de máquina. O raciocínio está correto: 1º polarizador só com x, pois a luz já é paralela ao eixo e cos$^2$0 = 1; N degraus seguintes com x$\cdot$cos$^2$$\beta$ cada; $\beta$ = $\varphi$/N; P = I$\cdot$$\pi$R$^2$. As armadilhas centrais foram tratadas: contagem N+1 contra N, x do 1º polarizador incluído, sem fator 1/2, Malus entre polarizadores consecutivos e não $\varphi$, e raiz com os expoentes (N+1)/2 e N corretos. As verificações de unidade e de limites são pertinentes e corretas, e a apresentação é clara e organizada. Descontos pequenos: hipóteses implícitas (seção do feixe constante, analisador recolhe tudo) não declaradas com todas as letras, falta o domínio de validade (cos($\varphi$/N) $\neq$ 0, 0 < x $\leq$ 1), e a distinção intensidade/amplitude para x não foi discutida. Nenhum erro de conta, de física ou de resposta, então a resolução é publicável como gabarito comentado, com pequenos ajustes de rigor.%
+\begin{itemize}%
+\item%
+{[}minor{]} A hipótese de que os polarizadores não alteram a seção do feixe (o raio é o mesmo na entrada e no analisador) e de que o analisador recolhe o feixe inteiro só aparece de forma implícita. O texto fala em "todo o feixe atinge o analisador" e em "intensidade uniforme", mas o item (b) depende de A = $\pi$R$^2$ ser a mesma em todo o sistema. Deveria declarar isso explicitamente, junto com a hipótese de polarizadores sem refração ou difração apreciável.%
+\item%
+{[}minor{]} Não declara o domínio de validade: 0 < x $\leq$ 1, N $\geq$ 1 inteiro, cos($\varphi$/N) $\neq$ 0 e P > 0. Para $\beta$ = 90$^\circ$ tem{-}se I = 0 e R indeterminado. A hipótese cos$\beta$ > 0 foi imposta, o que é aceitável, mas sem explicar que em (a) o expoente par torna o sinal irrelevante, e que só a segunda forma de R, com cos\^{}N, precisaria de módulo.%
+\item%
+{[}minor{]} Não explicita que x é fração da INTENSIDADE (e não da amplitude do campo), nem que o fator 1/2 de luz não polarizada não se aplica porque o laser já entra polarizado. O tratamento está correto, pois x multiplica a intensidade e cos$^2$0 = 1 no 1º polarizador, mas essas duas armadilhas conhecidas não foram nomeadas.%
+\item%
+{[}minor{]} A justificativa de $\beta$ = $\varphi$/N é só indireta ("Há N polarizadores além do primeiro"). Seria mais claro dizer que N+1 polarizadores definem N degraus angulares, de modo que $\varphi$ = N$\beta$. Isso reforçaria a distinção entre N+1 fatores x e N fatores cos$^2$$\beta$.%
+\item%
+{[}minor{]} A verificação "x<1 e cos$\beta$<1 $\Rightarrow$ I<I$_{0}$" é formalmente estrita só se x<1 ou $\beta$$\neq$0. O caso x = 1 e $\varphi$ = 0 dá I = I$_{0}$, e a verificação não o menciona. Não há verificação numérica explícita no texto, embora as checagens de limites (N=1, x=1; $\varphi$=0; N$\to$$\infty$) estejam corretas.%
+\end{itemize}%
+\subsection*{Questão 8: nota 9,0 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) P\_min = 35 W (E = 36 000 J da bateria + 6 000 J de calor = 42 000 J em 1200 s).\newline%
+\newline%
+b) L = $\mu$$_{0}$n$^2$A? = 8$\cdot$10$^{-}$$^{7}$$\pi$$^2$ H $\approx$ 7,9 µH; M = L; $\Delta$t\_máx = 14L/5 = 2,24$\cdot$10$^{-}$$^{6}$ $\pi$$^2$ s $\approx$ 2,2$\cdot$10$^{-}$$^{5}$ s ($\approx$ 22 µs).\par %
+Respostas finais conferidas item por item contra o enunciado original (página 9 do PDF) e contra a minha referência, com recálculo em Python. a) 35 W: E\_bat = 7200$\cdot$5 = 36 kJ, Q = 100$\cdot$2,0$\cdot$30 = 6 kJ, total 42 kJ em 1200 s, o que dá 35 W. b) N = 40, A = 2,5$\pi$$\cdot$10$^{-}$$^{5}$ m$^2$, L = $\mu$$_{0}$N$^2$A/? = 8$\pi$$^2$$\cdot$10$^{-}$$^{7}$ H $\approx$ 7,9 µH, M = L, $\Delta$t = 14L/5 = 2,24$\pi$$^2$$\cdot$10$^{-}$$^{6}$ s $\approx$ 2,21$\cdot$10$^{-}$$^{5}$ s ($\approx$ 22 µs). O candidato e a referência coincidem nos dois itens, e as contas estão certas. Todas as armadilhas foram tratadas: o calor de 6 kJ está incluído (não dá 30 W), c é usado com m em gramas, as conversões Ah$\to$C e min$\to$s estão feitas, o mínimo é justificado por perdas que só aumentam a energia, a geometria (N, A, ?) está correta, M = kL com k = 1, a f.e.m. é a do celular com dI/dt constante, e o \textbackslash{}"máximo\textbackslash{}" é explicado (solenoide ideal como teto, com correção de Nagaoka \textasciitilde{}20\%). Há uma conferência de consistência ($\varepsilon$$\cdot$? = 35 W) e uma estimativa de ordem de grandeza. O texto é claro, bem estruturado e quase no nível de gabarito comentado. Os defeitos são só de polimento: uma frase solta sobre \textbackslash{}"a bateria não carregaria\textbackslash{}", a leitura de $\Delta$I e k como desigualdades quando são dados, a correção de Nagaoka sem número, e pequenas inconsistências de apresentação. Nenhum afeta a correção.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na conferência do item (b), a frase "se $\Delta$t fosse maior que $\Delta$t\_max... a f.e.m. cairia abaixo de 5 V e a bateria não carregaria" é heurística e vai além do enunciado. O enunciado fixa $\varepsilon$ = 5 V, então $\Delta$t é determinado. O "máximo" vem das idealizações (k $\leq$ 1, $\Delta$I $\leq$ 14 A, solenoide ideal), não de um limiar de carga. A frase embaralha as duas interpretações. Convém dizer só que o valor ideal é um teto e que a f.e.m. de 5 V é dada.%
+\item%
+{[}minor{]} A resolução escreve $\Delta$I $\leq$ 14 A e k $\leq$ 1 como se fossem desigualdades livres. O enunciado diz que a corrente varia entre 0 e 14 A e que o acoplamento é perfeito, então $\Delta$I = 14 A e k = 1 são dados. A desigualdade só vale como argumento do "máximo possível". Ficaria mais limpo calcular primeiro $\Delta$t = 14L/U com esses valores e depois justificar que a não idealidade (solenoide curto) só o reduz.%
+\item%
+{[}minor{]} A correção de Nagaoka ("cerca de 20\%") é citada sem fórmula nem número. O valor tabelado para ?/D = 2 é K $\approx$ 0,82, ou seja, cerca de 18\%. A ordem de grandeza está certa e o argumento qualitativo (o L real é menor que o ideal) basta, mas faltou dar o valor ou marcar como estimativa.%
+\item%
+{[}minor{]} A conferência de potência ($\varepsilon$$\cdot$? = 5$\cdot$7 = 35 W) supõe primário ideal, sem perdas, com o mesmo fluxo e o mesmo N do secundário. Ela é apresentada como consistência e não como prova, o que está correto. Faltou dizer que ela só vale nessa idealização. Ela coincide com o item (a), o que é um bom teste de sanidade.%
+\item%
+{[}minor{]} Formatação do resultado final: no corpo aparece 2,21$\cdot$10$^{-}$$^{5}$ s e no resumo 2,2$\cdot$10$^{-}$$^{5}$ s, e o resultado fica na forma 2,24$\pi$$^2$$\cdot$10$^{-}$$^{6}$ s $\approx$ .... A prova pede a expressão numérica resolvida integralmente. A resolução faz isso, mas o resumo poderia trazer só o valor numérico ($\approx$ 2,2$\cdot$10$^{-}$$^{5}$ s) com algarismos consistentes.%
+\item%
+{[}minor{]} Não é comentado que o enunciado imprime a unidade de $\mu$$_{0}$ como N$\cdot$A$^{-}$$^{1}$, enquanto a correta é N$\cdot$A$^{-}$$^2$. Usar 4$\pi$$\cdot$10$^{-}$$^{7}$ normalmente está certo, então o impacto é nulo. Apenas uma observação de completude.%
+\end{itemize}%
+\subsection*{Questão 9: nota 9,3 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) d = 600$\surd$2 nm $\approx$ 8,5$\cdot$10$^{-}$$^{7}$ m ($\approx$ 0,85 $\mu$m; $\approx$ 1,18$\cdot$10$^3$ ranhuras/mm).\newline%
+b) x\_v = 20$\surd$(2/7) cm = (20$\surd$14)/7 cm $\approx$ 10,7 cm do ponto central.\par %
+Reli o enunciado no PDF e ele confere com a transcrição. Refiz as contas em Python: d = 600$\surd$2 nm $\approx$ 848,5 nm; sen $\theta$\_V = $\surd$2/3, $\theta$\_V $\approx$ 28,13$^\circ$; x\_V = 20$\cdot$$\surd$(2/7) = 20$\surd$14/7 cm $\approx$ 10,69 cm. A resolução do candidato coincide com a minha referência nos dois itens, tanto na forma exata quanto no valor numérico: a) d = 600$\surd$2 nm $\approx$ 8,5$\cdot$10$^{-}$$^{7}$ m; b) x\_V = 20$\surd$14/7 cm $\approx$ 10,7 cm. Todas as armadilhas foram tratadas: não usou a aproximação de pequenos ângulos (e calculou o valor errado de 13,3 cm só como contraexemplo), usou sen $\theta$ = $\surd$2/2 em vez de x/H = 1, reaproveitou o d do item (a), converteu sen em tg via cos $\theta$ = $\surd$7/3, deu a forma exata e a numérica, e checou x\_V < x\_L e a existência apenas da ordem m = 1 para o laranja. A estrutura é clara e os passos são completos e corretos. Os defeitos são só de redação: a justificativa de por que o ângulo não é pequeno, o adjetivo 'impreciso' e a falta de declarações explícitas sobre a normal e o meio. Nada compromete a correção, e a resolução é quase publicável como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A justificativa para descartar a aproximação de pequenos ângulos está mal formulada: 'H é de poucos centímetros e x é comparável a H'. O argumento correto é que tg$\theta$\_L = x/H = 1, isto é, $\theta$\_L = 45$^\circ$. O 'poucos centímetros' não tem relação com o critério. O texto deveria dizer que o ângulo é grande porque x/H = 1.%
+\item%
+{[}minor{]} Nas verificações, o resultado de pequenos ângulos (13,3 cm) é chamado de 'impreciso'. Ele está errado em cerca de 25\% (13,3 contra 10,7 cm), e a aproximação também daria d = 600 nm no item (a). Seria mais rigoroso dizer 'incorreto' e citar as duas consequências.%
+\item%
+{[}minor{]} Não declara explicitamente que $\theta$ é medido em relação à normal da grade (a vertical), que o meio é o ar (n $\approx$ 1) e que o ponto central é o pé da vertical. Isso está implícito na geometria e na frase 'ponto diretamente abaixo da grade', mas um gabarito comentado diria de forma explícita. Também não registra que sen $\theta$ $\neq$ x/H, isto é, que o seno usa a hipotenusa. O cálculo sen 45$^\circ$ = $\surd$2/2 está correto.%
+\item%
+{[}minor{]} No item (a), a resposta numérica aparece apenas como $\approx$ 8,5$\cdot$10$^{-}$$^{7}$ m. Falta a forma 0,85 $\mu$m ou o valor mais preciso ($\approx$ 848,5 nm). Isso é cosmético, pois a forma exata 600$\surd$2 nm está presente, como a prova exige.%
+\end{itemize}%
+\subsection*{Questão 10: nota 9,2 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) $\Delta$t\_Terra = 387/32 anos $\approx$ 12,09 anos ($\approx$ 12,1 anos).\newline%
+b) $\Delta$$\tau$\_nave2 = 0,8 $\times$ 387/32 = 387/40 anos = 9,675 anos $\approx$ 9,7 anos.\newline%
+(Hipóteses: Sirius em repouso em relação ao Sistema Solar, distância de 8,6 a.l. medida no referencial da Terra, tamanho do Sistema Solar desprezado, as duas naves partindo do mesmo ponto em t0.)\par %
+Conferi o enunciado no PDF original (página 11) e refiz as contas em Python. O candidato chega ao mesmo resultado da minha referência nos dois itens: (a) $\Delta$t = 387/32 = 12,09375 anos $\approx$ 12,1 anos e (b) $\Delta$$\tau$$_{2}$ = 387/40 = 9,675 anos $\approx$ 9,7 anos. Os passos intermediários também coincidem: t$_{1}$ = 10,75; x$_{2}$(t$_{1}$) = 6,45; separação de 2,15 al; encontro em t = 19,35/1,6; $\gamma$$_{2}$ = 5/4; na transformação de Lorentz, t? = 6,9875 e x? = 2,6875. Conferi numericamente t? e x?, e o invariante dá $\tau$ = 9,675.\textbackslash{}n\textbackslash{}nA resolução declara as hipóteses necessárias: referencial da Terra, Sirius em repouso, D como comprimento próprio, sistema Solar desprezível e naves no mesmo evento em t$_{0}$. Evita as armadilhas principais: não usa o tempo próprio da nave 1, não trata a nave 2 como parada, trata corretamente o sentido do sinal (indo ao encontro da nave 2) e usa $\gamma$$_{2}$ em vez de $\gamma$$_{1}$. Também dá duas verificações independentes e entrega as expressões numéricas completas, como a prova exige.\textbackslash{}n\textbackslash{}nFicam só ressalvas menores de rigor conceitual: a interpretação de \textbackslash{}"tempo na Terra\textbackslash{}" como tempo coordenado e a natureza da soma c+v$_{2}$ como taxa de fechamento ficam implícitas, e a seção de análise é rasa. Não há erro de conta, de física nem item sem resposta. É uma resolução de nível de gabarito comentado, com um pouco menos de explicitação conceitual do que o ideal.%
+\begin{itemize}%
+\item%
+{[}minor{]} O candidato não diz explicitamente que "tempo transcorrido na Terra" é o tempo coordenado do referencial S, com relógios sincronizados. Esse tempo não é o instante em que um observador terrestre veria ou receberia o evento, o que incluiria atrasos de propagação da luz. Essa ambiguidade é uma armadilha da questão e valia uma frase de declaração. A resolução usa a leitura correta, mas apenas de forma implícita.%
+\item%
+{[}minor{]} Na conferência de (a), o tempo de aproximação 2,15/(c+v$_{2}$) usa a soma c+0,6c = 1,6c sem comentário. Falta dizer que essa soma é uma taxa de fechamento num único referencial (S), e não uma velocidade relativa, de modo que a composição relativística de velocidades não se aplica. Um leitor que confunde os dois conceitos pode estranhar o passo. O cálculo está correto, mas a justificativa conceitual não aparece.%
+\item%
+{[}minor{]} Em (b), a justificativa de $\Delta$$\tau$ = $\Delta$t/$\gamma$$_{2}$ é só resumida. Ela vale porque os dois eventos (fronteira em t$_{0}$ e recepção do sinal) estão na linha de universo da nave 2, que tem velocidade constante. A resolução diz "dois eventos sobre ela", o que cobre a ideia. A segunda verificação por Lorentz compensa. Não há conferência pelo invariante t$^2$-x$^2$ = 93,61, mas ela é dispensável.%
+\item%
+{[}minor{]} A "Análise" final é superficial. O comentário de que o tempo da Terra é "um pouco maior que o de ida da nave 1, 10,75 anos" pode confundir. Os 10,75 anos são o tempo da Terra para a nave 1, não o tempo próprio dela (6,45 anos). A frase é correta, mas imprecisa. Valeria dizer "tempo da Terra até a emissão".%
+\end{itemize}%
+\end{document}

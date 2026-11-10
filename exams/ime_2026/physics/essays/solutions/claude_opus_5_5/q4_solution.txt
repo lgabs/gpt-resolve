@@ -1,0 +1,54 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} As fontes são ideais e idênticas, todas com a mesma polaridade (como na figura). O circuito só tem resistores, sem capacitores nem indutores. Por isso, ao fechar cada chave, o novo regime estacionário se estabelece no mesmo instante e as correntes ficam constantes em cada intervalo. Pela conservação da energia, toda a potência que entra na malha infinita é dissipada nos seus resistores.
+
+\textbf{1) Resistência equivalente da malha infinita.} Vista a partir de $S_0$, a malha começa com um $R_2$ em série seguido de um $R_2$ em derivação. Depois dessa primeira célula, o que sobra é de novo uma malha infinita idêntica à original, de resistência $R$. Logo
+\[
+R = R_2 + \frac{R_2 R}{R_2 + R}
+\;\Longrightarrow\;
+R^2 - R_2 R - R_2^2 = 0
+\;\Longrightarrow\;
+R = \frac{1+\sqrt{5}}{2}\,R_2 .
+\]
+Tomamos a raiz positiva, pois $R>0$. Com $R_2 = (\sqrt5 - 1)\,\Omega$:
+\[
+R = \frac{(\sqrt5+1)(\sqrt5-1)}{2}\,\Omega = \frac{5-1}{2}\,\Omega = 2\,\Omega .
+\]
+
+\textbf{2) Associação dos ramos geradores.} Com $n$ ramos idênticos $(V, R_1)$ ligados em paralelo e tensão $U$ entre os fios, cada ramo fornece $i = (V-U)/R_1$. A corrente total é então $I = n(V-U)/R_1$, ou seja, $U = V - I\,\dfrac{R_1}{n}$. O conjunto equivale a uma única fonte $V$ com resistência interna $R_1/n$. Assim, a corrente e a potência na malha são
+\[
+I_n = \frac{V}{R_1/n + R}, \qquad P_n = I_n^2\,R .
+\]
+
+\textbf{3) Os três intervalos.}
+\begin{itemize}
+\item $0 \le t < 20$ s (só $S_0$ fechada, $n=1$). As chaves $S_1$ e $S_2$ abertas isolam os ramos 1 e 2.
+\[
+I_1 = \frac{40}{6+2} = 5\ \text{A}, \quad P_1 = 5^2\cdot 2 = 50\ \text{W}, \quad E_1 = 50\cdot 20 = 1000\ \text{J}.
+\]
+\item $20 \le t < 40$ s ($S_0$ e $S_1$ fechadas, $n=2$, $R_1/2 = 3\,\Omega$):
+\[
+I_2 = \frac{40}{3+2} = 8\ \text{A}, \quad P_2 = 8^2\cdot 2 = 128\ \text{W}, \quad E_2 = 128\cdot 20 = 2560\ \text{J}.
+\]
+\item $40 \le t \le 60$ s (todas fechadas, $n=3$, $R_1/3 = 2\,\Omega$):
+\[
+I_3 = \frac{40}{2+2} = 10\ \text{A}, \quad P_3 = 10^2\cdot 2 = 200\ \text{W}, \quad E_3 = 200\cdot 20 = 4000\ \text{J}.
+\]
+\end{itemize}
+
+\textbf{4) Energia total na malha.}
+\[
+E = E_1 + E_2 + E_3 = 1000 + 2560 + 4000 = 7560\ \text{J} \approx 7{,}56\ \text{kJ}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Unidades: $[\text{V}/\Omega] = \text{A}$ e $[\text{A}^2\,\Omega\,\text{s}] = \text{J}$.
+\item Coerência física: a cada chave fechada a resistência interna equivalente cai ($6 \to 3 \to 2\ \Omega$), então a corrente na malha cresce ($5 \to 8 \to 10$ A), como esperado.
+\item Limite: a potência fica abaixo da máxima transferível com $n=3$, que é $V^2/(4R) = 200$ W. Esse valor é atingido no último intervalo justamente porque $R_1/3 = R = 2\,\Omega$ (casamento de resistências).
+\item Ordem de grandeza: potências de centenas de watts durante 60 s dão alguns kJ, o que é compatível.
+\end{itemize}
+
+ANSWER: $E = 7560\ \text{J}$ (aproximadamente $7{,}56$ kJ)

@@ -1,0 +1,65 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "k = 3 (único inteiro). No primeiro quadrante f(x) está em (√2−1, 2−√2], isto é, em (0,1), e não atinge inteiros. No terceiro quadrante f(x) está em (√2+1, 2+√2], que contém 3 e só ele como inteiro; 3 é atingido, por exemplo, em x = 3π/4 + arcsen(3 − 3√2/2) ≈ 3,429.",
+  "judge_reference": {
+    "reference_solution": "Questão 10 (ITA 2027, 2ª fase, Matemática): resolução de referência, feita antes de ver qualquer resolução de candidato.\n\n1. Simplificação de f\nComo 1 + cos 2x = 2cos²x e 1 − cos 2x = 2sen²x, tem-se\n√(1 + cos 2x) = √(2cos²x) = √2·|cos x| e √(1 − cos 2x) = √2·|sen x|.\nOs radicandos são sempre ≥ 0, então f está definida em todo ℝ e\n  f(x) = √2(|sen x| + |cos x|) − sen x − cos x.\nSó os radicais recebem módulo; os termos −sen x − cos x não recebem.\n\n2. Primeiro quadrante, 0 < x < π/2 (sen x > 0 e cos x > 0)\nf(x) = (√2 − 1)(sen x + cos x) = (√2 − 1)·√2·sen(x + π/4) = (2 − √2)·sen(x + π/4).\nPara x ∈ (0, π/2), x + π/4 ∈ (π/4, 3π/4), logo sen(x + π/4) ∈ (√2/2, 1]. Portanto\n  f(x) ∈ (√2 − 1, 2 − √2] ≈ (0,414; 0,586].\nNão há inteiro nessa faixa. Se os eixos fossem incluídos no quadrante, os extremos continuariam não sendo inteiros (f(0) = f(π/2) = √2 − 1).\n\n3. Terceiro quadrante, π < x < 3π/2 (sen x < 0 e cos x < 0)\n|sen x| + |cos x| = −(sen x + cos x), logo\n  f(x) = −√2(sen x + cos x) − (sen x + cos x) = −(√2 + 1)(sen x + cos x) = −(2 + √2)·sen(x + π/4).\nPara x ∈ (π, 3π/2), x + π/4 ∈ (5π/4, 7π/4), logo sen(x + π/4) ∈ [−1, −√2/2). Portanto\n  f(x) ∈ (√2 + 1, 2 + √2] ≈ (2,414; 3,414].\nO máximo 2 + √2 é atingido em x = 5π/4 (interior ao quadrante). Como f é contínua e o intervalo (π, 3π/2) é conexo, f assume todos os valores dessa faixa. O único inteiro na faixa é k = 3.\n\n4. Existência para k = 3 (solução explícita)\nBasta sen(x + π/4) = −3/(2 + √2) = −(6 − 3√2)/2 ≈ −0,8787.\nSeja θ = arcsin((6 − 3√2)/2) ∈ (0, π/2), com θ ≈ 1,0731 rad. Em y = x + π/4 ∈ (5π/4, 7π/4), a equação sen y = −sen θ tem as soluções y = π + θ e y = 2π − θ. Logo\n  x₁ = 3π/4 + θ ≈ 3,4293 rad e x₂ = 7π/4 − θ ≈ 4,4247 rad,\nambas no terceiro quadrante (e x + 2πn também, pela periodicidade de 2π). Verificação numérica em Python: f(x₁) = f(x₂) = 3 com erro da ordem de 10⁻¹⁵. A identidade f = √2(|sen| + |cos|) − sen − cos também foi conferida numericamente em 200 000 pontos aleatórios (erro máximo ≈ 1,4·10⁻¹¹).\n\n5. Verificações complementares\n- Amostragem densa confirmou as faixas: Q1 ≈ [0,4142; 0,5858] e Q3 ≈ [2,4142; 3,4142], com inteiros atingidos apenas k = 3 na Q3 e nenhum na Q1.\n- Quadrantes 2 e 4 (fora do enunciado) dariam k = 1 e k = 2, o que mostra a importância de restringir ao 1º e 3º quadrantes.\n\n6. Conclusão\nOs inteiros k para os quais f(x) = k tem ao menos uma solução no 1º ou no 3º quadrante são apenas k = 3.",
+    "final_answer": "Resposta: k = 3 (conjunto unitário {3}).\n\n- 1º quadrante: f(x) = (2 − √2)·sen(x + π/4) assume valores em (√2 − 1, 2 − √2] ≈ (0,414; 0,586]. Nenhum inteiro.\n- 3º quadrante: f(x) = −(2 + √2)·sen(x + π/4) assume valores em (√2 + 1, 2 + √2] ≈ (2,414; 3,414]. Único inteiro: 3.\n- Solução explícita para f(x) = 3 no 3º quadrante: x = 3π/4 + arcsin((6 − 3√2)/2) (≈ 3,4293 rad) e x = 7π/4 − arcsin((6 − 3√2)/2) (≈ 4,4247 rad), mais os translados por 2πn.",
+    "pitfalls": [
+      "Módulos ao extrair raízes: √(1 + cos 2x) = √2·|cos x| e √(1 − cos 2x) = √2·|sen x|, e não √2·cos x e √2·sen x. Sem o módulo, obtém-se f = (√2 − 1)(sen x + cos x) em todo ℝ; no 3º quadrante essa expressão varia em (−(2 − √2), −(√2 − 1)) ≈ (−0,586; −0,414), não tem inteiros, e a resposta sairia errada (conjunto vazio).",
+      "Não estender a fórmula do 1º quadrante ao 3º: lá o coeficiente é (√2 − 1) com sinal positivo, mas no 3º quadrante ele vira −(2 + √2) e a faixa passa a (√2 + 1, 2 + √2].",
+      "Aplicar o módulo só aos radicais: os termos −sen x − cos x não têm módulo. Tratar todos os termos como absolutos é outro erro de análise por quadrante.",
+      "Faixa do 1º quadrante ≈ (0,414; 0,586]: não contém inteiros. Erro comum é achar que k = 0 ou k = 1 servem porque f 'parece pequena'.",
+      "Faixa do 3º quadrante ≈ (2,414; 3,414]: o único inteiro é 3. O máximo 2 + √2 é atingido no interior (x = 5π/4) e não é inteiro; o mínimo 1 + √2 não é inteiro. Não confundir extremos com inteiros próximos.",
+      "A existência de solução exige argumento de continuidade (a imagem de um intervalo contínuo é um intervalo) ou uma solução explícita. Checar apenas os extremos da faixa não basta.",
+      "Restrição aos quadrantes: nos quadrantes 2 e 4 a função assume valores em (≈0,414; √6], o que inclui k = 1 e k = 2. Quem ignorar o recorte pedido responderá {1, 2, 3}, que está errado.",
+      "Bordas dos quadrantes: os eixos não pertencem ao interior de um quadrante. A resposta não muda se as bordas forem incluídas, porque os valores de borda (√2 − 1, √2 + 1) não são inteiros.",
+      "Domínio: os radicandos 1 ± cos 2x são sempre não negativos, então f está definida em todo ℝ e não há restrição de domínio a considerar.",
+      "Forma da resposta: o pedido é 'todos os inteiros k', e a resposta é o conjunto {3}. Não listar k = 1 ou k = 2 sem justificativa, e não apresentar intervalos no lugar de inteiros.",
+      "Periodicidade: f tem período 2π, portanto as soluções se repetem a cada 2π. Para k = 3 há duas soluções no 3º quadrante em cada período, e basta exibir uma para provar existência."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "k = 3 (único inteiro). No primeiro quadrante f(x) está em (√2−1, 2−√2], isto é, em (0,1), e não atinge inteiros. No terceiro quadrante f(x) está em (√2+1, 2+√2], que contém 3 e só ele como inteiro; 3 é atingido, por exemplo, em x = 3π/4 + arcsen(3 − 3√2/2) ≈ 3,429.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 5 (solução explícita): γ = arcsen(3 − 3√2/2) é positivo, mas a equação exige sen(x+π/4) = 3√2/2 − 3 < 0. As soluções x = 3π/4+γ e x = 7π/4−γ estão corretas (sen(π+γ) = −sen γ), mas o passo que conecta uma coisa à outra não aparece. Deveria constar: sen(x+π/4) = −sen γ, logo x+π/4 ∈ {π+γ, 2π−γ} dentro de (5π/4, 7π/4)."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 5, bullet de f(5π/4): a justificativa 'pois cos 5π/2 = 0' não explica que 2x = 2·(5π/4) = 5π/2 é o argumento de cos(2x), e a desigualdade 2+√2 > 3 usa √2 > 1 sem dizê-lo. Ambas as conclusões são verdadeiras, mas o texto é cifrado para quem lê."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 5: 't = 3−3√2' vem de −(√2+1)t = 3 com t = −3/(√2+1) = −3(√2−1). A conta do denominador deveria aparecer, porque é o único passo algébrico não mostrado da parte explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 1: a passagem √(2cos²x) = √2·|cos x| está comprimida a partir de '√(a²) = |a|', que não se aplica diretamente ao radicando 2cos²x. Deveria escrever √2·√(cos²x) = √2·|cos x| (e o análogo para sen x)."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 6: a conferência dos eixos verifica f(0), f(π/2), f(π), f(3π/2), que são de fato os únicos pontos novos gerados pela inclusão dos eixos (por periodicidade). O texto não afirma nem justifica essa completude, então 'a convenção sobre os eixos não altera a resposta' fica sem o argumento de cobertura."
+          },
+          {
+            "severity": "minor",
+            "description": "Forma da resposta: o enunciado pede 'todos os inteiros k', e a resolução conclui 'o único inteiro procurado é k=3' / 'ANSWER: k=3'. É equivalente e aceitável, mas apresentar como conjunto {3} seria mais fiel ao pedido."
+          }
+        ],
+        "summary": "Resposta final correta e igual à referência: k = 3 (conjunto {3}). Conferi o enunciado no PDF original (p. 11), que confere com a transcrição. Refiz as contas: a identidade f = √2(|sen x|+|cos x|) − sen x − cos x vale com erro ≈ 5·10⁻¹¹ em 200 000 pontos; no 1º quadrante a imagem é ≈ [0,41421; 0,58579]; no 3º, ≈ [2,41422; 3,41421]; γ ≈ 1,07309 dá x₁ ≈ 3,42928 e x₂ ≈ 4,42470, ambos no 3º quadrante com f = 3 (erro ~10⁻¹⁵); f(0)=f(π/2)=√2−1, f(π)=f(3π/2)=√2+1, f(5π/4)=2+√2. Todas as armadilhas da lista de referência foram tratadas: módulo só nos radicais, fórmulas separadas por quadrante, bordas dos eixos, domínio, periodicidade, existência por TVI e por solução explícita, e exclusão de k = 1, 2 pela restrição de quadrantes. Não há erro de conta, de hipótese ou de caso. Os pontos a melhorar são de exposição: o passo de sinal na solução explícita (γ > 0 com sen(x+π/4) < 0), algumas justificativas comprimidas (f(5π/4), √(2cos²x), t = 3−3√2) e o argumento de completude na conferência dos eixos. Nenhum é major. Resolução publicável como gabarito comentado com pequenos ajustes, por isso nota 9."
+      }
+    }
+  ]
+}

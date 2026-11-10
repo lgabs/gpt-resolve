@@ -1,0 +1,69 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{Hipóteses e referencial.} A haste é rígida, fina e homogênea (massa $M$, comprimento $L$) e gira no plano $xy$ em torno do pivô fixo $O$. O pivô é ideal, sem atrito, e não exerce torque. O ar é desprezado. As forças externas são o peso $M\vec g$, com $\vec g=-g\,\hat y$, e a reação $\vec F$ do pivô, aplicada em $O$. O ângulo $\theta$ é medido a partir da vertical descendente, no sentido de $+x$, como na figura, logo $\theta\in[0,\pi]$. Põe-se $\omega=\dot\theta$ e $\alpha=\ddot\theta$. Como só $\omega^2$ aparece na componente radial, o sinal de $\omega$ não afeta o item (a).
+
+\textbf{Geometria.} Pela figura, o trecho rotulado $a$ é o superior, visivelmente mais curto que o inferior. Assim, a extremidade superior está a distância $a$ de $O$ e a inferior, a distância $L-a$. Usam-se os versores
+\[
+\hat e_r=\sin\theta\,\hat x-\cos\theta\,\hat y,\qquad \hat e_t=\cos\theta\,\hat x+\sin\theta\,\hat y,
+\]
+ortonormais, com $\hat e_r$ apontando de $O$ para o trecho inferior. Vale $\hat e_t=\hat z\times\hat e_r$, $\dot{\hat e}_r=\dot\theta\,\hat e_t$ e $\dot{\hat e}_t=-\dot\theta\,\hat e_r$. As extremidades estão em $-a\,\hat e_r$ e $(L-a)\,\hat e_r$. Por homogeneidade, o centro de massa $G$ é o ponto médio da haste:
+\[
+\vec r_G=d\,\hat e_r,\qquad d=\frac{(L-a)+(-a)}{2}=\frac{L}{2}-a,
+\]
+válido para qualquer $a$ (com $d<0$ se $a>L/2$).
+
+\textbf{Passo 1 -- Teorema do centro de massa.} A soma das forças externas é igual a $M\vec a_G$:
+\[
+\vec F+M\vec g=M\vec a_G.
+\]
+
+\textbf{Passo 2 -- Aceleração de $G$.} Derivando duas vezes $\vec r_G=d\,\hat e_r$, com $d$ constante:
+\[
+\vec a_G=d\,\ddot\theta\,\hat e_t-d\,\dot\theta^2\,\hat e_r=\alpha d\,\hat e_t-\omega^2 d\,\hat e_r.
+\]
+
+\textbf{Passo 3 -- Componente radial (item a).} Multiplica-se o passo 1 escalarmente por $\hat e_r$. Como $\hat e_t\cdot\hat e_r=0$, tem-se $\vec a_G\cdot\hat e_r=-\omega^2 d$. Como $\hat y\cdot\hat e_r=-\cos\theta$, tem-se $\vec g\cdot\hat e_r=g\cos\theta$. Logo
+\[
+\vec F\cdot\hat e_r=-M\omega^2 d-Mg\cos\theta.
+\]
+A componente radial é tomada com sentido $-\hat e_r$, isto é, do trecho inferior em direção ao pivô e, daí, ao longo do trecho superior:
+\[
+N_r=-\vec F\cdot\hat e_r=M\left[g\cos\theta+\omega^2\left(\frac{L}{2}-a\right)\right]=\frac{M}{2}\left[2g\cos\theta+\omega^2(L-2a)\right].
+\]
+Assim, $N_r>0$ quando a reação aponta no sentido $-\hat e_r$, e $N_r<0$ quando aponta no sentido $+\hat e_r$. O sinal de $N_r$ é o do colchete $g\cos\theta+\omega^2(L/2-a)$, para qualquer $a$. Por exemplo, com $a<L/2$, $\omega=0$ e $\theta=150^\circ$, tem-se $N_r=Mg\cos150^\circ<0$. O termo $M\omega^2 d$ é a força centrípeta de $G$, que aponta para $O$ (sentido $-\hat e_r$ se $d>0$ e $+\hat e_r$ se $d<0$). O termo $Mg\cos\theta$ é a projeção do peso sobre a haste. Como $\alpha$ aparece somente em $\hat e_t$, o torque não é necessário para o item (a).
+
+\textbf{(b) Anulamento de $N_r$.} Com $N_r=0$, a massa $M$ se cancela:
+\[
+\cos\theta=\frac{\omega^2(2a-L)}{2g}.
+\]
+A solução existe se $|\cos\theta|\le 1$, isto é, $\omega^2|L-2a|\le 2g$. Como $\arccos$ toma valores em $[0,\pi]$, que é a faixa de $\theta$ dada pela figura,
+\[
+\theta=\arccos\left[\frac{\omega^2(2a-L)}{2g}\right].
+\]
+Se o trecho inferior estivesse à esquerda, isto é, $\theta\to-\theta$, o cosseno seria o mesmo, pois $N_r$ depende apenas de $\cos\theta$. A configuração espelhada também anula $N_r$, e a convenção da figura fixa $\theta\in[0,\pi]$.
+
+Os três casos são:
+\begin{itemize}
+\item $a<L/2$ (caso da figura): $\cos\theta<0$, logo $\theta\in(90^\circ,180^\circ]$. A condição de existência é $\omega^2(L-2a)\le 2g$.
+\item $a>L/2$: $\cos\theta>0$, logo $\theta\in[0^\circ,90^\circ)$. A condição de existência é $\omega^2(2a-L)\le 2g$.
+\item $a=L/2$: $G$ coincide com $O$ e $\theta=90^\circ$ para qualquer $\omega$.
+\end{itemize}
+Nos dois primeiros casos, $\cos\theta=-\omega^2 d/g$. Logo a altura de $G$ acima de $O$ é $-d\cos\theta=\omega^2 d^2/g\ge 0$. Nesse instante, a componente do peso ao longo da haste fornece sozinha a força centrípeta $M\omega^2|d|$.
+
+\textbf{Observação: $N_r$ não é a reação total.} A reação total é $\vec F=-N_r\,\hat e_r+F_t\,\hat e_t$, com $F_t=\vec F\cdot\hat e_t=M(\alpha d+g\sin\theta)$. Para obter $\alpha$, toma-se o torque em relação a $O$, onde a reação não atua. Pelo teorema dos eixos paralelos, $I_O=M\left(\dfrac{L^2}{12}+d^2\right)$. O torque do peso é $\vec\tau_O=d\,\hat e_r\times(-Mg\,\hat y)=-Mgd\sin\theta\,\hat z$. Logo $\alpha=-\dfrac{12\,g\,d\sin\theta}{L^2+12d^2}$ e
+\[
+F_t=\frac{Mg\,L^2\sin\theta}{L^2+3(L-2a)^2}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Unidades: $\omega^2 L$ e $g$ são acelerações (m/s$^2$), logo $M[\ldots]$ é força (N). Em (b), $\omega^2(2a-L)/(2g)$ é adimensional.
+\item $\omega=0$ com a haste pendurada ($\theta=0$, $d>0$): $N_r=Mg$, com sentido $-\hat e_r$, ou seja, para cima. O pivô sustenta o peso, como na estática. Em (b), $\omega=0$ dá $\theta=90^\circ$, em que o peso é perpendicular à haste.
+\item $a=L/2$: $G$ coincide com $O$, $N_r=Mg\cos\theta$ e $N_r=0$ em $\theta=90^\circ$ para qualquer $\omega$.
+\item Numérico: para $L=1\ \mathrm{m}$, $a=0,25\ \mathrm{m}$, $\omega=2\ \mathrm{rad/s}$ e $g=10\ \mathrm{m/s^2}$, tem-se $d=0,25\ \mathrm{m}$, $\cos\theta=\dfrac{4(0,5-1)}{20}=-0,1$, $\theta\approx 95,7^\circ$ e $N_r=M[10(-0,1)+4(0,25)]=0$.
+\item Conferência independente: derivando numericamente a trajetória de $G$ e aplicando o passo 1, obtêm-se os mesmos $N_r$ e $F_t$.
+\end{itemize}
+
+ANSWER: (a) $N_r=M\left[g\cos\theta+\omega^2\left(\frac{L}{2}-a\right)\right]$, componente ao longo da haste com sentido $-\hat e_r$, isto é, $\vec F\cdot\hat e_r=-N_r$; (b) $\theta=\arccos\left[\dfrac{\omega^2(2a-L)}{2g}\right]$, com $\omega^2\,|L-2a|\le 2g$.

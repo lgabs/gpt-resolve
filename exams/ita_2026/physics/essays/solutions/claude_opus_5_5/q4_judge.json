@@ -1,0 +1,57 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) Como m1 = 4m/5 e m2 = m/5, o centro de massa fica em (4a/5, (b+y2)/5). Ele continua sobre a elipse, o que dá y2 = 2b ou y2 = -4b. b) A energia é mínima quando a estrela está no foco (c, 0), com c = sqrt(a²-b²), e quando y2 = 2b. Nesse caso, U_min = -(GMm/5)[16/sqrt((3a-4c)²+b²) + 1/sqrt((a-c)²+4b²)] - 16Gm²/(25 sqrt(a²+49b²)). O último termo, da interação entre m1 e m2, é desprezível porque M ≫ m.",
+  "judge_reference": {
+    "reference_solution": "**Hipóteses e modelo**\n- O objeto se separa por causa de forças internas, então essas forças não mudam o movimento do centro de massa (CM). Admite-se, como o enunciado pede, que nesse instante o CM de m₁ e m₂ está sobre a elipse original. Em rigor, o CM só seguiria exatamente a órbita antiga se a força externa sobre o par fosse igual à de uma massa pontual m colocada no CM, isto é, com campo aproximadamente uniforme. É a hipótese usual desse tipo de questão.\n- Conservação da massa: m₁ + m₂ = m e m₁ = 4m₂, logo m₂ = m/5 e m₁ = 4m/5.\n- Elipse com centro na origem e focos no eixo x: x²/a² + y²/b² = 1, focos em (±c, 0), com c = √(a² − b²).\n- Como M ≫ m, a estrela fica fixa em um dos focos. O enunciado não diz em qual foco ela está.\n\n**a) y₂**\nCentro de massa:\nx_CM = [4m₂·(3a/4) + m₂·a]/(5m₂) = (3a + a)/5 = 4a/5\ny_CM = [4m₂·(b/4) + m₂·y₂]/(5m₂) = (b + y₂)/5\n\nComo o CM está na elipse:\n(4/5)² + y_CM²/b² = 1 ⇒ y_CM² = 9b²/25 ⇒ y_CM = ±3b/5.\n\nLogo (b + y₂)/5 = ±3b/5 e:\n- y_CM = +3b/5 ⇒ **y₂ = 2b**\n- y_CM = −3b/5 ⇒ **y₂ = −4b**\n\nAs duas posições são compatíveis com os dados. O CM fica em (4a/5, 3b/5) ou em (4a/5, −3b/5).\n\n**b) Menor energia potencial gravitacional do sistema {M, m₁, m₂}**\nCom referência no infinito:\nU = −GMm₁/r₁ − GMm₂/r₂ − Gm₁m₂/d,\nem que r₁ e r₂ são as distâncias da estrela a P₁ e P₂, e d = |P₁P₂|.\n\nU é negativa. A \"menor\" energia é a mais negativa, ou seja, aquela com as massas mais próximas. Comparamos as 4 combinações possíveis: estrela em (+c, 0) ou (−c, 0), e y₂ = 2b ou −4b.\n- Escolha do foco: x₁ = 3a/4 > 0 e x₂ = a > 0. Com c > 0, temos (3a/4 − c)² < (3a/4 + c)² e (a − c)² < (a + c)². Então o foco (+c, 0) deixa a estrela mais perto das duas partes.\n- Escolha de y₂: com y₂ = 2b, r₂ e d ficam menores do que com y₂ = −4b, e r₁ não depende de y₂. Logo y₂ = 2b.\n\nDistâncias na configuração ótima (estrela em (c, 0), P₁ = (3a/4, b/4), P₂ = (a, 2b)):\n- r₁ = √[(3a/4 − c)² + b²/16] = (1/4)√[(3a − 4c)² + b²] = (1/4)√(25a² − 24ac − 15b²)\n- r₂ = √[(a − c)² + 4b²] = √(2a² − 2ac + 3b²)\n- d = √[(a/4)² + (7b/4)²] = (1/4)√(a² + 49b²)\n\nSubstituindo m₁ = 4m/5 e m₂ = m/5:\n\n**U_min = −(GMm/5)·[ 16/√((3a − 4c)² + b²) + 1/√((a − c)² + 4b²) ] − 16Gm²/[25√(a² + 49b²)]**, com c = √(a² − b²).\n\nForma equivalente: U_min = −(GMm/5)[16/√(25a² − 24a√(a²−b²) − 15b²) + 1/√(2a² − 2a√(a²−b²) + 3b²)] − 16Gm²/(25√(a² + 49b²)).\n\nComo M ≫ m, o termo de interação entre m₁ e m₂ é da ordem de m/M em relação aos outros e pode ser desprezado:\nU_min ≈ −(GMm/5)[16/√((3a − 4c)² + b²) + 1/√((a − c)² + 4b²)].\n\nConferência numérica (python, G = 1, M = 1000, m = 1, vários pares (a, b), inclusive a = b):\n- o CM (4a/5, 3b/5) satisfaz a equação da elipse;\n- entre as 4 combinações, o mínimo é sempre foco (+c, 0) com y₂ = 2b;\n- o valor coincide com a fórmula acima. Exemplo: a = 1, b = 0,6 dá U = −5224,19 nas duas contas.\n\nCaso particular: se a = b (círculo), c = 0 e os focos coincidem com o centro. A fórmula continua valendo.",
+    "final_answer": "a) Com o CM das partes sobre a elipse, o CM fica em (4a/5, ±3b/5). Então y₂ = 2b (CM em (4a/5, 3b/5)) ou y₂ = −4b (CM em (4a/5, −3b/5)).\n\nb) O mínimo ocorre com a estrela no foco (c, 0) mais próximo das partes, c = √(a² − b²), e com y₂ = 2b:\nU_min = −(GMm/5)[16/√((3a − 4c)² + b²) + 1/√((a − c)² + 4b²)] − 16Gm²/(25√(a² + 49b²)).\nComo M ≫ m, o último termo (interação m₁–m₂) é desprezível:\nU_min ≈ −(GMm/5)[16/√(25a² − 24a√(a²−b²) − 15b²) + 1/√(2a² − 2a√(a²−b²) + 3b²)].",
+    "pitfalls": [
+      "Hipótese central: o CM de m₁ e m₂ continua sobre a elipse original porque a separação vem de forças internas. A resolução deve dizer isso. Em rigor, isso só vale com campo aproximadamente uniforme, mas é a hipótese que o enunciado pretende.",
+      "Esquecer que y₂ tem duas soluções: y_CM = ±3b/5 dá y₂ = 2b ou y₂ = −4b. Dar só uma, sem discutir a outra, deixa o item (a) incompleto.",
+      "Calcular mal o CM: m₁ = 4m₂ dá x_CM = 4a/5 e y_CM = (b + y₂)/5. Errar o peso (usar m₂ = 4m₁, por exemplo) muda tudo.",
+      "Pôr a estrela no centro da elipse (origem) em vez de em um foco. A estrela fica no foco, em (±c, 0), com c = √(a² − b²).",
+      "Não discutir qual foco ocupa a estrela. O enunciado não diz, e a palavra 'menor' pede que se escolha o foco (+c, 0), que fica mais perto das duas partes.",
+      "Interpretar 'menor energia potencial' como menor em módulo. A energia é negativa, então a menor é a mais negativa: massas mais próximas, ou seja, foco (+c, 0) com y₂ = 2b.",
+      "Calcular a energia como −GMm/r_CM, isto é, tratar o sistema como massa pontual no CM (r_CM = a − 4c/5). Isso está errado, porque as partes estão a distâncias bem diferentes da estrela, comparáveis a a e b.",
+      "Usar massas erradas na energia. É preciso usar m₁ = 4m/5 e m₂ = m/5 (conservação da massa), e não m₁ = 4m.",
+      "Termo de interação m₁–m₂ (−Gm₁m₂/d, com d = √(a² + 49b²)/4): o ideal é incluí-lo ou dizer explicitamente que ele é desprezível porque M ≫ m. Os dois caminhos são aceitáveis se justificados.",
+      "Erros algébricos nas distâncias. O correto é r₁² = (3a/4 − c)² + b²/16 = (25a² − 24ac − 15b²)/16 e r₂² = (a − c)² + 4b² = 2a² − 2ac + 3b²; não se pode trocar c² por a² + b².",
+      "Deixar a resposta em função de c sem dizer que c = √(a² − b²), ou não verificar o caso limite a = b (círculo), em que a fórmula continua valendo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) Como m1 = 4m/5 e m2 = m/5, o centro de massa fica em (4a/5, (b+y2)/5). Ele continua sobre a elipse, o que dá y2 = 2b ou y2 = -4b. b) A energia é mínima quando a estrela está no foco (c, 0), com c = sqrt(a²-b²), e quando y2 = 2b. Nesse caso, U_min = -(GMm/5)[16/sqrt((3a-4c)²+b²) + 1/sqrt((a-c)²+4b²)] - 16Gm²/(25 sqrt(a²+49b²)). O último termo, da interação entre m1 e m2, é desprezível porque M ≫ m.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na verificação de sinal, o candidato escreve que U_min < 0 'como deve ser para um sistema ligado'. U < 0 decorre só da escolha da referência no infinito: a energia potencial gravitacional é sempre negativa, mesmo num sistema não ligado. Depois da fragmentação, nem se sabe se as partes continuam ligadas. Bastava dizer que U < 0 porque a referência está no infinito."
+          },
+          {
+            "severity": "minor",
+            "description": "A referência U = 0 no infinito não é dita explicitamente; ela fica implícita no uso de −GMm/r. Para o rigor de um gabarito, convém declará-la, porque a interpretação de 'menor energia' como 'mais negativa' depende dela."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'o termo m₁–m₂ é da ordem de m/M em relação aos outros' é um pouco imprecisa. A razão é (m/M)·(r/d), e aqui d e r são da mesma ordem, então a conclusão vale. Mesmo assim, uma linha justificando que d e r são comparáveis deixaria o argumento completo. O candidato manteve o termo na resposta exata, o que é a escolha mais segura."
+          },
+          {
+            "severity": "minor",
+            "description": "O teste do caso circular confere só r₁ e r₂, não o valor de U_min nem o de d. É uma verificação parcial, sem impacto na correção."
+          }
+        ],
+        "summary": "O enunciado transcrito confere com o PDF (p. 5). A resolução do candidato coincide com a minha referência nos dois itens.\n\n(a) Ele diz explicitamente a hipótese central: a separação vem de forças internas e o CM fica sobre a elipse, com a ressalva sobre a idealização. Calcula as massas certas (m₁ = 4m/5, m₂ = m/5) e o CM (4a/5, (b+y₂)/5), e encontra as duas soluções y₂ = 2b ou y₂ = −4b, ambas declaradas compatíveis.\n\n(b) Ele escreve U com os três pares de interação e interpreta 'menor' como 'mais negativa'. Prova que o foco (+c, 0) reduz r₁ e r₂ ao mesmo tempo, porque x > 0 implica (x−c)² < (x+c)². Também mostra que y₂ = 2b reduz r₂ e d (r₁ não depende de y₂). Assim, não precisa comparar valores numéricos entre configurações. As distâncias estão corretas e c = √(a²−b²) está explicitado. As formas alternativas dos radicandos, 25a²−24ac−15b² e 2a²−2ac+3b², estão certas. O termo m₁–m₂ aparece na resposta exata e depois é desprezado com justificativa.\n\nConferi em Python, para vários pares (a, b), inclusive a = b:\n- o CM (4a/5, ±3b/5) satisfaz a equação da elipse;\n- entre as 4 combinações, o mínimo é sempre foco (+c, 0) com y₂ = 2b;\n- a fórmula fechada coincide com o cálculo direto. Exemplo: a = 1, b = 0,6 dá −5224,19 com G = 1, M = 1000, m = 1;\n- as identidades dos radicandos valem.\n\nA resolução trata todas as armadilhas: hipótese do CM, duas raízes de y₂, estrela no foco e não no centro, escolha do foco, sinal da energia, não usar massa pontual no CM, massas corretas, termo de interação e caso circular. Só há imprecisões menores de redação: a menção a 'sistema ligado', a referência no infinito não declarada e a ordem de grandeza do termo m₁–m₂ um pouco vaga. É uma resolução de nível gabarito comentado."
+      }
+    }
+  ]
+}

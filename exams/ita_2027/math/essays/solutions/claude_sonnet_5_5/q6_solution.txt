@@ -1,0 +1,52 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Convenção.} Como $\mathbb{N}=\{1,2,3,\dots\}$, todas as variáveis são inteiras e $x_i\ge 1$.
+
+\textbf{1. Redução do sistema.} As variáveis $x_3,x_4,x_5$ aparecem sempre na combinação $x_3+x_4+x_5$. Definimos $S=x_3+x_4+x_5$. O sistema fica
+\[
+\begin{cases}
+x_1+x_2+S+3x_6=30 & (\mathrm{I})\\
+x_1+2x_2+2S+4x_6=52 & (\mathrm{II})\\
+2x_1+2x_2+3S+7x_6=76 & (\mathrm{III})
+\end{cases}
+\]
+São 3 equações nas 4 incógnitas $x_1,x_2,S,x_6$, o que deixa um grau de liberdade.
+
+\textbf{2. Resolução em função de $x_6$.}
+\begin{itemize}
+\item $(\mathrm{II})-(\mathrm{I})$: $\;x_2+S+x_6=22$, ou seja, $x_2=22-S-x_6$.
+\item Substituindo em $(\mathrm{I})$: $x_1=30-x_2-S-3x_6=30-(22-S-x_6)-S-3x_6=8-2x_6$.
+\item Substituindo $x_1$ e $x_2$ em $(\mathrm{III})$:
+\[
+2(8-2x_6)+2(22-S-x_6)+3S+7x_6=60+S+x_6=76 \;\Rightarrow\; S+x_6=16 .
+\]
+\end{itemize}
+Logo
+\[
+S=16-x_6,\qquad x_2=22-16=6,\qquad x_1=8-2x_6 .
+\]
+
+\textbf{3. Restrições.} Precisamos de $x_6\ge1$ e $x_1=8-2x_6\ge 1$, isto é, $x_6\le 3$ (pois $x_6$ é inteiro). Também $x_2=6\ge 1$ vale sempre. Como $x_3,x_4,x_5\ge1$, é necessário $S\ge 3$, e $S=16-x_6\ge 13$ vale para $x_6\le 3$. Portanto $x_6\in\{1,2,3\}$.
+
+\textbf{4. Contagem.} Fixado $x_6$, os valores $x_1$, $x_2$ e $S$ ficam determinados. Resta contar as ternas $(x_3,x_4,x_5)$ de inteiros positivos com soma $S$. Pelo método das ``estrelas e barras'', o número delas é $\binom{S-1}{2}$.
+
+\[
+\begin{array}{c|c|c|c|c}
+x_6 & x_1 & x_2 & S & \binom{S-1}{2}\\\hline
+1 & 6 & 6 & 15 & \binom{14}{2}=91\\
+2 & 4 & 6 & 14 & \binom{13}{2}=78\\
+3 & 2 & 6 & 13 & \binom{12}{2}=66
+\end{array}
+\]
+
+\textbf{5. Total.}
+\[
+91+78+66=235 .
+\]
+
+\textbf{Verificação.} Para $x_6=1$, $x_1=x_2=6$ e $S=15$:
+$6+6+15+3=30$; $6+12+30+4=52$; $12+12+45+7=76$. As três equações são satisfeitas. Uma contagem por força bruta no computador também resultou em $235$ sêxtuplas.
+
+ANSWER: $235$

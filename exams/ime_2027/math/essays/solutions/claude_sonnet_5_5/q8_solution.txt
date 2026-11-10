@@ -1,0 +1,51 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Condições de validade.} Para $k=1,\dots,n$ os cossenos $\cos(k\alpha)$ e $\cos((k+1)\alpha)$ têm índices entre $1$ e $n+1$, logo são não nulos pela hipótese. Além disso, $\operatorname{sen}\alpha\neq0$ e $\cos\alpha\neq 0$ (caso $j=1$) dão $\operatorname{sen}2\alpha=2\operatorname{sen}\alpha\cos\alpha\neq 0$. Assim, todos os denominadores que aparecem abaixo são não nulos.
+
+\textbf{Passo 1 -- Simplificar cada termo.} Pela fórmula $\cos p+\cos q=2\cos\frac{p+q}{2}\cos\frac{p-q}{2}$, com $p=(2k+1)\alpha$ e $q=\alpha$:
+\[
+\cos\alpha+\cos((2k+1)\alpha)=2\cos((k+1)\alpha)\cos(k\alpha)\neq 0 .
+\]
+Logo
+\[
+\frac{1}{\cos\alpha+\cos((2k+1)\alpha)}=\frac{1}{2\cos(k\alpha)\cos((k+1)\alpha)} .
+\]
+
+\textbf{Passo 2 -- Escrever o termo como diferença de tangentes.} Para $A,B$ com $\cos A\cos B\neq0$ vale
+\[
+\operatorname{tg}A-\operatorname{tg}B=\frac{\operatorname{sen}A\cos B-\operatorname{sen}B\cos A}{\cos A\cos B}=\frac{\operatorname{sen}(A-B)}{\cos A\cos B}.
+\]
+Com $A=(k+1)\alpha$ e $B=k\alpha$, temos $A-B=\alpha$:
+\[
+\operatorname{tg}((k+1)\alpha)-\operatorname{tg}(k\alpha)=\frac{\operatorname{sen}\alpha}{\cos(k\alpha)\cos((k+1)\alpha)} .
+\]
+Como $\operatorname{sen}\alpha\ne0$, podemos dividir por $2\operatorname{sen}\alpha$:
+\[
+\frac{1}{\cos\alpha+\cos((2k+1)\alpha)}=\frac{\operatorname{tg}((k+1)\alpha)-\operatorname{tg}(k\alpha)}{2\operatorname{sen}\alpha}.
+\]
+
+\textbf{Passo 3 -- Soma telescópica.}
+\[
+S_n=\frac{1}{2\operatorname{sen}\alpha}\sum_{k=1}^{n}\Big[\operatorname{tg}((k+1)\alpha)-\operatorname{tg}(k\alpha)\Big]=\frac{\operatorname{tg}((n+1)\alpha)-\operatorname{tg}\alpha}{2\operatorname{sen}\alpha}.
+\]
+
+\textbf{Passo 4 -- Fechar.} Usando de novo a identidade do Passo 2, com $A=(n+1)\alpha$ e $B=\alpha$ (então $A-B=n\alpha$):
+\[
+\operatorname{tg}((n+1)\alpha)-\operatorname{tg}\alpha=\frac{\operatorname{sen}(n\alpha)}{\cos((n+1)\alpha)\cos\alpha}.
+\]
+Portanto
+\[
+S_n=\frac{\operatorname{sen}(n\alpha)}{2\operatorname{sen}\alpha\cos\alpha\,\cos((n+1)\alpha)}=\frac{\operatorname{sen}(n\alpha)}{\operatorname{sen}(2\alpha)\cos((n+1)\alpha)},
+\]
+que é a identidade pedida. $\blacksquare$
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Para $n=1$: o lado esquerdo é $\dfrac{1}{2\cos\alpha\cos2\alpha}$. O lado direito é $\dfrac{\operatorname{sen}\alpha}{2\operatorname{sen}\alpha\cos\alpha\cos2\alpha}$, que é igual.
+\item Para $n=0$ (soma vazia): ambos os lados valem $0$.
+\item Uma checagem numérica com valores aleatórios de $\alpha$ e $n$ confirmou a igualdade.
+\end{itemize}
+
+ANSWER: Demonstrado: como $\cos\alpha+\cos((2k+1)\alpha)=2\cos(k\alpha)\cos((k+1)\alpha)$ e $\dfrac{1}{2\cos k\alpha\cos (k+1)\alpha}=\dfrac{\operatorname{tg}((k+1)\alpha)-\operatorname{tg}(k\alpha)}{2\operatorname{sen}\alpha}$, a soma telescopa e resulta $S_n=\dfrac{\operatorname{sen}(n\alpha)}{\operatorname{sen}(2\alpha)\cos((n+1)\alpha)}$.

@@ -1,0 +1,58 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) CH4 + 2 O2 → CO2 + 2 H2O(g), ΔHc = −800 kJ/mol (H2O(g): −241 kJ/mol); b) 240,75 g de CH4 e 960 g de O2; c) ≈ 0,644 g de CH4(g) na pré-câmara (Q_pré = 32,1 kJ); d) 200 g de CH4(l).",
+  "judge_reference": {
+    "reference_solution": "**Leitura do enunciado (conferida com o PDF, p. 10).** O requisito I diz que a combustão é completa e gera apenas produtos gasosos. Logo, a água sai como H2O(g), não como H2O(l). Esse é o ponto central do item (a), e o resto da questão depende dele.\n\n**a) Equação balanceada e entalpia de combustão**\n\nCH4(g) + 2 O2(g) → CO2(g) + 2 H2O(g)\n\nOs dados são de H2O(l), então é preciso vaporizar a água formada. Entalpia de vaporização: H2O(l) → H2O(g), ΔH = +45 kJ/mol.\n\n- Passo 1, com água líquida: ΔH(líq) = [ΔHf(CO2) + 2·ΔHf(H2O,l)] − [ΔHf(CH4) + 2·ΔHf(O2)] = [−393 + 2(−286)] − [−75 + 0] = −965 + 75 = −890 kJ/mol de CH4.\n- Passo 2, com água gasosa: ΔH(gás) = −890 + 2·(45) = −800 kJ/mol de CH4.\n- Conferência: ΔHf(H2O,g) = −286 + 45 = −241 kJ/mol. Então ΔH = −393 + 2(−241) + 75 = −800 kJ/mol.\n\n**ΔH_comb = −800 kJ/mol de CH4 (reação exotérmica, 800 kJ liberados por mol).**\n\n**b) Massas de combustível e oxidante para 12 MJ na câmara**\n\n- Calor a ser gerado: 12 MJ = 12 000 kJ.\n- n(CH4) = 12 000 / 800 = 15 mol.\n- M(CH4) = 12,01 + 4·1,01 = 16,05 g/mol, então m(CH4) = 15 · 16,05 = **240,75 g** (≈ 2,4·10² g).\n- Pela estequiometria 1:2, n(O2) = 30 mol. Com M(O2) = 32,00 g/mol, m(O2) = 30 · 32,00 = **960 g**.\n\n**c) Massa de CH4(g) injetada na pré-câmara**\n\nQuem é bombeado é o combustível que será queimado na câmara principal, ou seja, os 240,75 g do item (b). O CH4 da pré-câmara entra já vaporizado (CH4(g) na figura) e não passa pela bomba.\n\n- Energia que a turbobomba precisa gerar: E = 40 J/g · 240,75 g = 9 630 J.\n- Eficiência de 30%: Q_pré = E / 0,30 = 9 630 / 0,30 = 32 100 J = 32,1 kJ.\n- A pré-câmara também queima CH4 até CO2 e H2O(g), com ΔH = −800 kJ/mol. Então n_pré = 32,1 / 800 = 0,040125 mol.\n- m_pré = 0,040125 · 16,05 ≈ **0,644 g** (≈ 0,64 g).\n\nSe usarmos M = 16 g/mol: 15 · 16 = 240 g, E = 9 600 J, Q = 32 000 J, n = 0,04 mol e m = 0,64 g. O resultado é o mesmo, dentro de 1%.\n\n**d) Massa mínima de CH4(l) para refrigerar a tubeira**\n\n- Calor absorvido pela tubeira: 0,25% de 12 MJ = 0,0025 · 12·10⁶ J = 3,0·10⁴ J = 30 kJ.\n- Cada grama de CH4 pode absorver, no máximo, q = c·ΔT = (5/3) J/(g·K) · (188 − 98) K = (5/3) · 90 = 150 J/g. Essa conta ignora a mudança de fase, como o enunciado manda.\n- m_mín = 30 000 / 150 = **200 g**.\n\nIsso é \"mínimo\" porque o metano sai da tubeira na temperatura máxima permitida (188 K). Qualquer saída a temperatura menor exigiria mais massa. Os 200 g são menores que os 240,75 g que seguem para a câmara, então o requisito é compatível com o fluxo total de combustível.",
+    "final_answer": "a) CH4(g) + 2 O2(g) → CO2(g) + 2 H2O(g); ΔH_comb = −800 kJ/mol de CH4 (−890 kJ/mol seria com H2O(l); soma-se 2·45 kJ para a água gasosa).\nb) m(CH4) = 15 mol · 16,05 g/mol ≈ 240,75 g (≈ 240 g); m(O2) = 30 mol · 32,00 g/mol = 960 g.\nc) m(CH4) na pré-câmara ≈ 0,644 g (≈ 0,64 g). Q_pré = 40 · 240,75 / 0,30 = 32,1 kJ; 32,1 / 800 = 0,0401 mol.\nd) m_mín(CH4(l)) = 30 000 J / (150 J/g) = 200 g.",
+    "pitfalls": [
+      "Item (a): o enunciado diz que a combustão gera apenas produtos gasosos, então a água é H2O(g). Usar −890 kJ/mol (H2O líquida) é o erro mais provável. É preciso somar 2 × 45 kJ/mol para chegar a −800 kJ/mol. Esse erro se propaga para (b) (216 g em vez de 240,75 g) e para (c).",
+      "Sinal e unidades: a entalpia de combustão é negativa (exotérmica), mas nas contas de (b) e (c) usa-se o módulo. Converter 12 MJ para 12 000 kJ, 0,25% de 12 MJ para 30 kJ (30 000 J), e não misturar kJ com J ao lidar com 40 J/g.",
+      "Item (b): pedem massas (g), não mols. A razão estequiométrica 1:2 dá 30 mol de O2, ou 960 g. Responder só 15 mol e 30 mol perde pontos. A massa de CH4 depende da M adotada (16 ou 16,05 g/mol), e ambas são aceitáveis se declaradas.",
+      "Item (c): a bomba pressuriza apenas o CH4 que vai para a câmara principal (240,75 g do item b). O CH4 da pré-câmara entra já vaporizado e não é bombeado. A energia útil é 30% do calor da pré-câmara, então Q_pré = E/0,30 e não E·0,30. Erro comum: multiplicar por 0,30, ou esquecer de converter o calor da pré-câmara em massa de CH4 com ΔH = −800 kJ/mol.",
+      "Item (c), leitura alternativa: se alguém incluir o CH4 da pré-câmara na massa bombeada, a solução vira uma equação circular e dá 0,646 g, diferença de 0,3%. A leitura do enunciado e da figura é a de que a bomba trabalha só sobre o combustível da câmara principal. A resolução deve declarar a hipótese adotada.",
+      "Item (c): o calor da pré-câmara não entra nos 12 MJ, que são só da câmara principal. Não se deve subtrair o CH4 da pré-câmara dos 15 mol do item (b). O CH4 da pré-câmara é adicional e minúsculo (~0,64 g contra 240 g).",
+      "Item (d): usar ΔT = 188 − 98 = 90 K (não 188 K) e c = 5/3 J/(g·K), o que dá 150 J/g. Não incluir calor de vaporização (o enunciado manda desprezar). A palavra 'mínima' corresponde ao aquecimento até o máximo de 188 K. Não usar a massa de 240,75 g do item (b) como resposta.",
+      "Os dados termodinâmicos são tomados como independentes de T e P, por isso ΔH = −800 kJ/mol vale tanto na câmara quanto na pré-câmara. A pré-câmara tem mistura rica em O2 (excesso), e o O2 extra é só oxidante que segue para a câmara principal. Isso não altera o calor por mol de CH4 queimado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) CH4 + 2 O2 → CO2 + 2 H2O(g), ΔHc = −800 kJ/mol (H2O(g): −241 kJ/mol); b) 240,75 g de CH4 e 960 g de O2; c) ≈ 0,644 g de CH4(g) na pré-câmara (Q_pré = 32,1 kJ); d) 200 g de CH4(l).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (c): a hipótese central, de que a bomba trabalha só sobre os 240,75 g que vão para a câmara principal, aparece como afirmação e não como hipótese explícita. O texto não diz que o CH4 da pré-câmara entra já vaporizado (CH4(g) na figura) e não é bombeado. Também não menciona a leitura alternativa, em que o metano da pré-câmara entra na massa bombeada e o resultado sai 0,646 g (cerca de 0,3% de diferença). Um gabarito comentado deveria declarar a hipótese e dizer que a alternativa praticamente não muda o resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): o texto assume que o calor da pré-câmara vale 800 kJ/mol, com H2O(g), mas não diz que esse calor não entra nos 12 MJ da câmara principal. Também não diz que o CH4 da pré-câmara é adicional aos 15 mol do item (b), e não parte deles. O argumento do excesso de O2 só justifica a combustão completa. Falta mencionar que, com dados independentes de T e P, o ΔH por mol de CH4 é o mesmo nas duas câmaras."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (a): o enunciado dá H2O(l) e a água gasosa foi obtida corretamente (−286 + 45 = −241). O texto não faz a conferência com H2O(l) (−890 kJ/mol, que sairia da mesma conta sem a água vaporizada). Também não alerta que usar −890 é o erro previsível, e que ele se propagaria para (b) com 216 g de CH4 e para (c). Uma frase explicando por que a água sai como gás deixaria a justificativa mais didática."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (b): a massa de CH4 depende da massa molar adotada (16,05 ou 16 g/mol). O texto declara 16,05 nas hipóteses, o que é correto, mas não registra que o valor arredondado (≈240 g) também seria aceitável. Item (d): a razão de ΔT = 90 K ser o aquecimento máximo está dita, mas a ideia de que a saída a temperatura menor exigiria mais massa poderia ser explicitada. O texto usa 'Q' para o calor da tubeira e, antes, para o calor da pré-câmara, o que é pouco prejudicial."
+          },
+          {
+            "severity": "minor",
+            "description": "A linha ANSWER final do item (a) omite os estados físicos de CH4, O2 e CO2 e só indica (g) na água. O corpo da solução tem a equação completa, então o dano é pequeno."
+          }
+        ],
+        "summary": "Reli o enunciado no PDF (p. 10) e refiz as contas em python. A resolução do candidato está correta em todos os itens e coincide com a minha referência. (a) CH4 + 2 O2 → CO2 + 2 H2O(g), com ΔH = −800 kJ/mol. O candidato lê corretamente que 'apenas produtos gasosos' implica água gasosa e usa ΔHf(H2O,g) = −241. (b) 15 mol de CH4 = 240,75 g e 30 mol de O2 = 960 g. (c) 40·240,75 = 9630 J; dividido por 0,30 dá 32,1 kJ; dividido por 800 kJ/mol dá 0,040125 mol, ou 0,644 g. O candidato divide por 0,30 (não multiplica), converte o calor em massa de CH4 e bombeia só o combustível da câmara principal. Esse valor é o mesmo da referência. A leitura alternativa, circular, daria 0,646 g, diferença de 0,3%. (d) 0,25% de 12 MJ = 30 kJ; c·ΔT = (5/3)·90 = 150 J/g; m_mín = 200 g. A transição de fase é ignorada e a mínima corresponde ao aquecimento até 188 K. A apresentação é clara, com unidades conferidas, contas integralmente resolvidas e uma verificação de coerência (200 g < 240,75 g; 0,27% de combustível na pré-câmara). Os pontos fracos são de rigor expositivo: a hipótese de que a bomba não atua sobre o CH4 da pré-câmara não é declarada como hipótese, a leitura alternativa não é mencionada, e a armadilha de −890 kJ/mol não é comentada. Nada disso altera nenhum resultado. Nota 9 por estar no nível de um gabarito comentado, faltando só essas explicitações.\""
+      }
+    }
+  ]
+}

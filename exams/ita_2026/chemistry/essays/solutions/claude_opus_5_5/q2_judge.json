@@ -1,0 +1,56 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A unidade de k (min⁻¹) indica primeira ordem. a) n(H2O2) = 0,050 mol, logo n(O2) = 0,025 mol e V = nRT/P = 0,025·0,0821·298 ≈ 0,612 L (≈ 612 mL). b) [H2O2] = 0,5·e^(−0,0693·5) = 0,5·0,707 ≈ 0,354 mol/L (t½ = 10 min, então 5 min é meia meia-vida).",
+  "judge_reference": {
+    "reference_solution": "**Dados:** V(solução) = 100 mL = 0,100 L; [H₂O₂]₀ = 0,5 mol·L⁻¹; k = 0,0693 min⁻¹; reação 2 H₂O₂(aq) → 2 H₂O(l) + O₂(g); R = 8,21×10⁻² atm·L·K⁻¹·mol⁻¹; T = 25 °C = 298 K; P = 1 atm.\n\n---\n\n### a) Volume de O₂ ao término da reação\n\n1. Quantidade inicial de H₂O₂:\n   n(H₂O₂) = [H₂O₂]₀ · V = 0,5 mol·L⁻¹ × 0,100 L = 0,050 mol.\n\n2. \"Ao término da reação\" significa que todo o H₂O₂ foi consumido (t → ∞, decomposição completa e irreversível). O catalisador acelera a reação, mas não muda quanto produto se forma. Pela estequiometria, 2 mol de H₂O₂ dão 1 mol de O₂:\n   n(O₂) = n(H₂O₂)/2 = 0,050/2 = 0,025 mol.\n\n3. Equação dos gases ideais, a 25 °C e 1 atm (que **não** é CNTP):\n   V(O₂) = n·R·T/P = (0,025 × 0,0821 × 298)/1 = 0,6116 L.\n\n   **V(O₂) ≈ 0,61 L (≈ 612 mL)**\n\n   Com T = 298,15 K o resultado é 0,612 L. Usar o volume molar 24,5 L·mol⁻¹ dá 0,6125 L. Tudo isso é o mesmo valor.\n\n   Hipóteses: o O₂ se comporta como gás ideal; despreza-se a solubilidade do O₂ na água e a pressão de vapor da água (o volume é de O₂ seco).\n\n---\n\n### b) [H₂O₂] restante após 5 min\n\n1. **Ordem da reação:** a unidade de k é min⁻¹, isto é, (tempo)⁻¹. Essa unidade só aparece em reações de **1ª ordem**. Assim, −d[H₂O₂]/dt = k[H₂O₂], e a lei integrada é:\n   [H₂O₂] = [H₂O₂]₀ · e^(−kt), ou ln([H₂O₂]₀/[H₂O₂]) = kt.\n\n2. Substituindo t = 5 min:\n   kt = 0,0693 min⁻¹ × 5 min = 0,3465.\n   [H₂O₂] = 0,5 · e^(−0,3465) = 0,5 × 0,707 = 0,3535 mol·L⁻¹.\n\n   **[H₂O₂] ≈ 0,35 mol·L⁻¹ (0,354 mol·L⁻¹)**\n\n3. **Verificação pela meia-vida:** t₁/₂ = ln2/k = 0,693/0,0693 = 10 min. Logo 5 min equivalem a meia meia-vida, e\n   [H₂O₂] = [H₂O₂]₀ · (1/2)^(5/10) = 0,5/√2 = 0,5 × 0,707 = 0,354 mol·L⁻¹. O resultado confere.\n\n   A prova fornece e^(−0,3465) = 0,707, e 0,3465 é exatamente k·t desta questão. Isso confirma o que a banca espera: k vale para o consumo de H₂O₂ e a cinética é de 1ª ordem.\n\n   Hipótese: o volume da solução fica constante em 100 mL. A variação de volume pela água formada e pelo H₂O₂ consumido é desprezível.\n\n   Valores complementares (opcionais): restam 0,0354 mol de H₂O₂ em 100 mL. Até 5 min reagiram cerca de 29,3% do H₂O₂, formando 0,0073 mol de O₂ (≈ 0,18 L a 25 °C e 1 atm).",
+    "final_answer": "a) n(H₂O₂) = 0,050 mol, então n(O₂) = 0,025 mol. V = nRT/P = 0,025 × 0,0821 × 298/1 ≈ 0,61 L (≈ 612 mL) de O₂ a 25 °C e 1 atm.\nb) A unidade min⁻¹ indica 1ª ordem: [H₂O₂] = 0,5·e^(−0,0693×5) = 0,5 × 0,707 ≈ 0,35 mol·L⁻¹ (0,354 mol·L⁻¹). Pela meia-vida: t₁/₂ = 10 min, logo 0,5/√2.",
+    "pitfalls": [
+      "Ordem da reação: a resolução precisa deduzir a 1ª ordem pela unidade de k (min⁻¹) e usar [A] = [A]₀e^(−kt). Usar lei de ordem zero ([A] = [A]₀ − kt = 0,153 M) ou de 2ª ordem (1/[A] = 1/[A]₀ + kt, dando ≈ 0,426 M) é erro conceitual. Essas leis exigiriam k em mol·L⁻¹·min⁻¹ ou L·mol⁻¹·min⁻¹.",
+      "Coeficiente estequiométrico na lei de velocidade: se o aluno definir v = −(1/2)d[H₂O₂]/dt = k[H₂O₂], o expoente vira 2kt e o resultado é 0,25 M. Isso diverge do esperado. A convenção usual para a decomposição do H₂O₂ é k referido ao consumo de H₂O₂, e a constante fornecida e^(−0,3465) = 0,707 confirma que a resposta esperada é 0,354 M. Uma resolução que chega a 0,25 M sem justificar isso no enunciado deve ser penalizada.",
+      "Estequiometria 2:1 no item a: n(O₂) = n(H₂O₂)/2 = 0,025 mol. Esquecer o fator 1/2 dá 1,22 L, o dobro do correto.",
+      "Condições do gás: são 25 °C e 1 atm, não CNTP. Usar 22,4 L·mol⁻¹ dá 0,56 L, o que está errado. T deve estar em kelvin (298 K). Usar T = 25 dá um valor absurdo (~0,05 L).",
+      "'Ao término da reação' significa conversão completa (t → ∞). O volume de O₂ não depende de k nem do catalisador, que só afeta a velocidade. Calcular o O₂ formado até 5 min no item a está errado.",
+      "Unidades de tempo coerentes: k está em min⁻¹ e t = 5 min, então kt = 0,3465, sem fator 60. Também não se deve confundir ln com log (a prova dá ln X = 2,3 log X).",
+      "Item b pede concentração (mol·L⁻¹), não quantidade de matéria. A resposta é ≈ 0,35 mol·L⁻¹. 0,0354 mol só é aceitável se vier acompanhado da concentração.",
+      "Hipóteses que uma boa resolução cita: O₂ como gás ideal e seco (despreza-se a pressão de vapor e a solubilidade do O₂ na água) e volume da solução constante (100 mL).",
+      "Instrução 8 da prova: as expressões numéricas devem ser resolvidas por completo. É preciso mostrar 0,025 × 0,0821 × 298 = 0,61 L e 0,5 × 0,707 = 0,354 M, e não deixar a resposta como expressão indicada.",
+      "Precisão: aceitar 0,61–0,612 L (ou 611–612 mL) no item a e 0,35–0,354 mol·L⁻¹ no item b. Usar 298,15 K ou o volume molar 24,5 L/mol não muda o resultado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A unidade de k (min⁻¹) indica primeira ordem. a) n(H2O2) = 0,050 mol, logo n(O2) = 0,025 mol e V = nRT/P = 0,025·0,0821·298 ≈ 0,612 L (≈ 612 mL). b) [H2O2] = 0,5·e^(−0,0693·5) = 0,5·0,707 ≈ 0,354 mol/L (t½ = 10 min, então 5 min é meia meia-vida).",
+      "review": {
+        "agrees_with_reference": true,
+        "answer_correct": true,
+        "score": 9.5,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item a: o candidato considera o O₂ gás ideal e despreza a solubilidade, mas não diz que o volume é de O₂ seco, isto é, que se despreza a pressão de vapor da água a 25 °C. Bastava uma frase dizendo que o volume pedido é o do O₂ puro (seco)."
+          },
+          {
+            "severity": "minor",
+            "description": "Item b: falta dizer que o volume da solução fica constante em 100 mL. Sem isso, não se justifica tratar [H₂O₂] como grandeza que só varia pela reação. Basta uma linha registrando essa hipótese."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conferência pela meia-vida, a frase 'O resultado fica entre 0,5 e 0,25 mol L⁻¹, que é o valor esperado em t = t₁/₂' é ambígua: dá a entender que o resultado (0,354) é o valor em t₁/₂, quando quem é o valor em t₁/₂ é 0,25. Além disso, a conferência por 2^(−1/2) ≈ 0,707 só repete o dado da prova, então é coerente mas não é uma verificação independente. Deveria dizer: 'fica entre 0,5 (t = 0) e 0,25 (t = t₁/₂)'."
+          },
+          {
+            "severity": "minor",
+            "description": "O volume molar de 24,5 L/mol a 25 °C e 1 atm, usado na conferência do item a, não vem da prova. Como serve só de checagem e coincide com nRT/P, não pesa, mas convém indicar que sai de RT/P = 0,0821·298 ≈ 24,5 L/mol."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 4 do PDF: ele é igual à transcrição.\n\n**Respostas finais, item por item.** As do candidato coincidem com as da minha referência:\n- **a)** V(O₂) = 0,025·0,0821·298 ≈ 0,612 L. O valor exato da conta é 0,6116 L.\n- **b)** [H₂O₂] = 0,5·e^(−0,3465) = 0,5·0,707 ≈ 0,354 mol·L⁻¹. O valor exato é 0,3535 mol·L⁻¹.\n\nRefiz as contas em python3 e não há erro numérico.\n\n**Armadilhas tratadas.** O candidato cobriu todas:\n- Deduz a 1ª ordem pela unidade de k e explica isso pela análise dimensional de v = k[H₂O₂].\n- Diz explicitamente que k se refere ao consumo de H₂O₂. Assim evita a armadilha do fator 2 que levaria a 0,25 M.\n- Aplica a estequiometria 2:1 e obtém 0,025 mol de O₂.\n- Usa 298 K e nRT/P em vez de 22,4 L, e ainda compara com o valor nas CNTP.\n- Interpreta 'ao término da reação' como conversão completa e observa que o catalisador não muda a quantidade de produto.\n- Calcula kt = 0,3465 sem fator 60 e usa o dado e^(−0,3465) = 0,707 fornecido pela prova.\n- Dá a resposta em concentração.\n- Resolve todas as expressões numéricas, como pede a instrução 8.\n- Confere o resultado pela meia-vida (t₁/₂ = 10 min).\n\n**Falhas.** São apenas de rigor e redação:\n- Não diz que o O₂ é seco (despreza a pressão de vapor da água).\n- Não diz que o volume da solução fica constante.\n- Há uma frase ambígua na conferência pela meia-vida.\n\n**Avaliação geral.** A resolução é clara, bem organizada e tem nível de gabarito comentado."
+      }
+    }
+  ]
+}

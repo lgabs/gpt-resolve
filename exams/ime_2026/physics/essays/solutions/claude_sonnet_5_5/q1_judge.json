@@ -1,0 +1,97 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.3,
+  "final_answer": "a) −2 m < x < 4 m (com E < 32/3 J); b) E_sup = E_p(4) = 32/3 J ≈ 10,67 J (supremo, não atingido); c) v(0) = −√(2E/m); v sobe, anula-se no retorno (x_t < −2), vale +v₀ em x = 0 (t₂ = 2t₁), cai até o mínimo v_min = √(2(E−32/3)/m) > 0 em x = 4 e depois cresce sem limite, com assíntota vertical em tempo finito (t* ≈ 4,70 s para m = 1 kg e E = 12 J). A partícula escapa e não volta.",
+  "judge_reference": {
+    "reference_solution": "**Hipóteses**: massa m > 0 constante (não é dada, então o gráfico do item c fica em função de m e E); força conservativa e única relevante; E = ½mv² + Ep(x) constante; unidades SI. Conferência: −dEp/dx = −(4x − x²) = −4x + x² = F ✓.\n\n## Preliminares: equilíbrios e forma do poço\n- F = 0 ⇒ x(x − 4) = 0 ⇒ x = 0 ou x = 4.\n- Ep'' = 4 − 2x. Em x = 0, Ep'' = 4 > 0: mínimo, equilíbrio estável, Ep(0) = 0. Em x = 4, Ep'' = −4 < 0: máximo, equilíbrio instável, Ep(4) = 32 − 64/3 = **32/3 J**.\n- Para x → −∞, Ep → +∞ (parede íngreme à esquerda). Para x → +∞, Ep → −∞ (queda sem fim à direita).\n- Sinal de F: F > 0 para x < 0 e para x > 4 (empurra para a direita). F < 0 para 0 < x < 4 (empurra para 0). Em x < 0 e em 0 < x < 4 a força aponta para x = 0, e é isso que cria o poço. Em x > 4 a força expulsa a partícula.\n\n## Pontos de retorno\nEp(x) = E ⇔ 2x² − x³/3 = E ⇔ g(x) = x³ − 6x² + 3E = 0.\ng'(x) = 3x² − 12x tem raízes 0 e 4. Logo g(0) = 3E (máximo local) e g(4) = 3E − 32 (mínimo local).\n- 0 < E < 32/3: g(0) > 0 e g(4) < 0, então há 3 raízes reais: x_L < 0 < x_R < 4 < x₃.\n- E > 32/3: g(4) > 0, só resta 1 raiz real, negativa.\n- E = 32/3: raiz dupla em x = 4.\n\nComo g(−2) = −8 − 24 + 3E = 3E − 32, para E = 32/3 vale x³ − 6x² + 32 = (x − 4)²(x + 2). As raízes são x = 4 (dupla) e x = −2. Verificação: Ep(−2) = 8 + 8/3 = 32/3 ✓.\n\n## a) Intervalo de posições do movimento oscilatório\nHá movimento oscilatório quando a partícula fica confinada entre dois pontos de retorno, no poço em torno de x = 0. Isso ocorre para 0 < E < 32/3 J.\n\nPara cada E, a partícula oscila entre x_L(E) e x_R(E), com x_L ∈ (−2, 0) e x_R ∈ (0, 4). Quando E → 0⁺ ambos tendem a 0; quando E → 32/3, x_L → −2 e x_R → 4. Como x_L cresce e x_R decresce quando E diminui, a união de todas as órbitas oscilatórias é\n\n**−2 m < x < 4 m.**\n\nDetalhes:\n- Os extremos são abertos. x = −2 só é ponto de retorno para E = 32/3, e x = 4 é o equilíbrio instável.\n- A região x ≥ x₃ > 4 também é energeticamente permitida, mas é inacessível a partir do poço (a barreira em x = 4 separa as regiões) e é ilimitada. Não é oscilação.\n\n## b) Supremo da energia\nO movimento é limitado no poço se, e só se, E < Ep(máx) = Ep(4):\n\n**E_sup = 32/3 J ≈ 10,7 J.**\n\nFaixa oscilatória: 0 < E < 32/3 J. O mínimo do poço é Ep(0) = 0, e E = 0 é a partícula parada em x = 0.\n\nJustificativa de \"supremo\" (e não máximo): para E = 32/3 J, a partícula partindo de x ∈ (−2, 4) tende a x = 4 sem nunca chegar. Perto de 4, Ep ≈ 32/3 − 2(x − 4)², logo v ∝ |x − 4| e o tempo ∫dx/|x − 4| diverge (logaritmicamente). Não há período, então E = 32/3 não é oscilatório. O valor não é atingido, mas é a menor cota superior: é um supremo.\nPara E > 32/3 a partícula passa sobre a barreira e não volta.\n\n## c) Gráfico v(t) para E > E_sup, em x = 0 com v < 0\nNotação: v₀ = √(2E/m). Como Ep(0) = 0, toda a energia é cinética em x = 0 e v(0) = −v₀. A inclinação do gráfico é dv/dt = F/m. Para E > 32/3 há só um ponto de retorno, x_L < −2 (raiz real única de g).\n\n1. **0 < t < t₁ (indo para a esquerda).** Em t = 0, F(0) = 0, então a tangente é horizontal em v = −v₀. Para x < 0, F > 0: o módulo de v diminui, e a inclinação cresce (x se afasta de 0 e F aumenta). A curva é côncava para cima. A partícula chega a x_L < −2 em t₁ com v = 0 e inclinação máxima F(x_L)/m. É um ponto de inflexão.\n2. **t₁ < t < 2t₁ (voltando para x = 0).** A curva é côncava para baixo. Pela simetria temporal do movimento em x < 0, v(t₁ + τ) = −v(t₁ − τ): o trecho é simétrico (ímpar) em relação a (t₁, 0). Em t = 2t₁ a partícula passa por x = 0 com v = +v₀ (mesmo módulo, por conservação de energia) e tangente horizontal (F = 0).\n3. **0 < x < 4.** F < 0 e v diminui de +v₀ até v_min = √(2(E − 32/3)/m) > 0 em x = 4. A queda mais íngreme é em x = 2 (F = −4, inflexão). Em x = 4 a tangente é horizontal e v tem um mínimo local estritamente positivo. A partícula atravessa a barreira sem inverter o sentido, e v nunca volta a zero.\n4. **x > 4.** F > 0 e crescente (∼x²). v cresce de forma côncava para cima. Como v² = (2/m)(E − 2x² + x³/3) ≈ (2/3m)x³, tem-se v ∝ x^{3/2}. Então ∫dx/v converge e x → ∞ em tempo finito t*: o gráfico tem **assíntota vertical** v → +∞ em t = t*. Isso é uma idealização newtoniana, sem limite relativístico.\n\nNão há periodicidade: o movimento é um espalhamento, com uma única reflexão na parede esquerda e fuga para +∞.\n\nEsboço (fora de escala; tempo →, v para cima):\n```\n v\n |                                                  |\n |                                                  |\n |                                                .'\n |        +v0 ___                               .'\n |          .'   '.                          _.-'\n |        .'       '.__               __.--''\n | 0 ----+------------ '-------.__.--'   <- v_min > 0 em x=4\n |      .'t1       2t1\n |  -v0 _ (t=0, tangente horizontal)\n```\nExemplo numérico de conferência (RK4, m = 1 kg, E = 15 J): v₀ = 5,48 m/s; t₁ ≈ 0,643 s com x_L ≈ −2,325 m; volta a x = 0 em ≈ 1,286 s (= 2t₁) com v = +5,48 m/s; em x = 4, t ≈ 2,26 s e v_min = 2,94 m/s (√(2·(15 − 32/3)) = 2,944 ✓); t* ≈ 4,1 s, com v ≈ 7·10⁴ m/s em x ≈ 2000 m. Os cálculos de raízes, da fatoração e de F = −dEp/dx foram verificados em Python.",
+    "final_answer": "a) −2 m < x < 4 m. Para 0 < E < 32/3 J, a partícula oscila entre x_L(E) ∈ (−2, 0) e x_R(E) ∈ (0, 4), raízes de x³ − 6x² + 3E = 0.\nb) E_sup = Ep(4) = 32/3 J ≈ 10,7 J (supremo, não máximo: com E = 32/3 J a partícula só chega a x = 4 em tempo infinito).\nc) v(0) = −v₀ = −√(2E/m), com tangente horizontal. v sobe até 0 no ponto de retorno x_L < −2 (inflexão, simetria ímpar em torno de t₁). Em t = 2t₁ passa por x = 0 com v = +v₀ e tangente horizontal. Depois decresce até um mínimo positivo v_min = √(2(E − 32/3)/m) em x = 4 (tangente horizontal), sem zerar. Em seguida cresce sem limite, com v ∝ x^{3/2}, e tem assíntota vertical em um tempo finito t*. O movimento não é periódico.",
+    "pitfalls": [
+      "O item (a) não tem E dado. O intervalo pedido é a união das regiões de oscilação para todos os E permitidos (−2 < x < 4), e não os pontos de retorno de um E particular. Encontrar o −2 exige resolver Ep = 32/3 e fatorar x³ − 6x² + 32 = (x − 4)²(x + 2). A raiz dupla em 4 serve de checagem.",
+      "Em (a), os extremos são abertos: −2 e 4 só são atingidos em E = 32/3, que não é oscilatório. A região x ≥ x₃ > 4, com Ep ≤ E, também é energeticamente permitida mas é ilimitada e inacessível a partir do poço. Não pode entrar no intervalo.",
+      "Em (b), E_sup = Ep(máximo local) = 32/3 J, calculado em x = 4 (raiz de F = 0 com Ep'' < 0), e não o valor da energia em x = 0 ou em outro ponto. Deve-se justificar por que é supremo e não máximo: em E = 32/3 o movimento é assintótico (separatriz) e leva tempo infinito, sem período. Também há o limite inferior E > 0 (mínimo do poço Ep(0) = 0).",
+      "Em (c), esboçar uma senoide/oscilação periódica é erro: com E > E_sup a partícula faz uma única reflexão na parede esquerda, passa pela barreira e escapa para +∞.",
+      "Conferir o sinal inicial: a velocidade em t = 0 é negativa (direita para a esquerda), igual a −√(2E/m), porque Ep(0) = 0. O mesmo módulo reaparece, com sinal +, quando a partícula volta a x = 0.",
+      "As tangentes horizontais vêm de dv/dt = F/m = 0 em x = 0 (nos dois instantes) e em x = 4. Em x = 4 a velocidade tem mínimo local positivo √(2(E − 32/3)/m). Erro comum: fazer v ir a zero em x = 4 ou na barreira (isso só ocorre para E ≤ 32/3), ou omitir esse mínimo.",
+      "Depois da barreira a força é F = x² − 4x > 0 e cresce, então a velocidade não satura (não há velocidade terminal). Como v ∝ x^{3/2}, a partícula alcança x → ∞ em tempo finito, com assíntota vertical em v(t). Esboçar v tendendo a um valor constante ou crescendo só linearmente é impreciso. Vale mencionar que é idealização não relativística.",
+      "O trecho em x < 0 é simétrico no tempo: v é ímpar em torno de t₁ (instante de v = 0), com inflexão em t₁ e inclinação máxima F(x_L)/m. O ponto de retorno x_L(E) < −2 aumenta em módulo com E, sendo a raiz real única de x³ − 6x² + 3E = 0. A concavidade é para cima antes de t₁ e para baixo depois.",
+      "A massa não é dada: os valores do gráfico devem ser expressos em função de m e E (v₀ = √(2E/m)). Um esboço qualitativo com os pontos notáveis rotulados é o esperado. Não inventar um valor numérico para m."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) −2 m < x < 4 m (poço de potencial entre x = −2 e o máximo em x = 4); b) E_sup = E_p(4) = 32/3 J ≈ 10,67 J; c) v(0) = −v0 = −√(2E/m) (mínimo local, tangente horizontal), v sobe, cruza 0 no ponto de retorno (x_t < −2), atinge +v0 em x = 0 (máximo local), cai até o mínimo v_min = √(2(E − 32/3)/m) > 0 em x = 4 e depois cresce sem limite, sem voltar a ser negativo (a partícula escapa para +∞).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (c): a assíntota vertical do esboço (linha pontilhada em t = 3,78 s, rótulo \"v→∞\") está no lugar errado. Com m = 1 kg e E = 12 J, a própria curva do candidato tem v(3,75) = 13,3 m/s, finito. Refiz a integral ∫dx/v e um RK4 direto: o tempo de explosão é t* ≈ 4,70 s (RK4 chega a x = 1000 m em t = 4,625 s). A linha foi posta onde a curva sai do quadro (ymax = 13), e o t* verdadeiro cai fora do xmax = 4,2 do eixo. Os pontos da curva estão corretos; só a guia e o rótulo enganam. Deveria prolongar o eixo de t até ~4,8 s e pôr a assíntota em ~4,7 s, ou desenhar a seta de saída do quadro sem uma linha pontilhada em tempo falso."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): o texto não afirma a simetria ímpar de v(t) em torno de t₁ (v(t₁+τ) = −v(t₁−τ)), logo t₂ = 2t₁. Os valores numéricos 0,65 s e 1,31 s mostram isso, mas não há justificativa. Também faltam o ponto de inflexão em t₁ (v'' = F'v/m = 0 quando v = 0) e a inflexão em x = 2, onde F = −4 dá a queda mais íngreme entre x = 0 e x = 4. As concavidades por trecho só aparecem implicitamente no desenho. Convém citar essas propriedades, pois são elas que determinam a forma do gráfico pedido."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (a): a frase \"para x ≥ 4 a partícula, se lá estivesse, não voltaria ao poço\" é imprecisa. Para E < 32/3 a região 4 ≤ x < x₃ é proibida (E_p > E). A região permitida é x ≥ x₃ > 4, ilimitada e desconexa do poço. O candidato não diz isso explicitamente nem nomeia o intervalo como a união das órbitas oscilatórias para 0 < E < 32/3. Os extremos abertos e a separatriz em x = 4 estão bem tratados, e a monotonicidade de E_p em (−2,0) e (0,4) justifica x₁ ∈ (−2,0) e x₂ ∈ (0,4)."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (b): a justificativa de \"supremo\" (separatriz com tempo infinito) está correta. Mas a divergência logarítmica do tempo só aparece de passagem, na conferência, sem a expansão E_p ≈ 32/3 − 2(x−4)² e v ∝ |x−4| que a demonstraria. O limite inferior E > 0 (mínimo do poço) aparece só no enunciado de \"0 < E < 32/3\"."
+          },
+          {
+            "severity": "minor",
+            "description": "Apresentação da figura: o eixo t está no fundo (v = −6,5), e as guias tracejadas de t₂ e t₃ param na altura da curva, longe dos rótulos. A linha cinza em v = 0 faz papel de eixo temporal. A curva é truncada em t = 3,75 s. Usar E = 12 J, perto do limiar, é boa escolha para tornar v_min visível. O texto avisa que o gráfico é qualitativo e que m não é dado, mas um desenho com v₀ e v_min rotulados em função de m e E seria mais fiel ao que se pede."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a referência nos três itens: a) −2 m < x < 4 m; b) E_sup = 32/3 J ≈ 10,67 J (supremo, com E = 32/3 J só assintótico); c) v(0) = −√(2E/m), v sobe passando por zero no retorno x_t < −2, chega a +v₀ em x = 0, cai até v_min = √(2(E−32/3)/m) > 0 em x = 4 e depois cresce sem limite em tempo finito (v ∝ x^{3/2}), sem voltar. Conferi com Python: a fatoração (x−4)²(x+2), E_p(4) = 32/3 e as curvaturas v'' = F'v/m (mínimo em t = 0, máximo em x = 0, mínimo em x = 4) estão certas. Um RK4 em Python puro reproduziu os números do candidato para E = 12 J e m = 1 kg (v₀ = 4,90, v_min = 1,633, t₁ = 0,653, t₂ = 1,307, t₃ = 2,613) e as amostras da curva (por exemplo v(1,0) = 3,80, v(3,4) = 4,94, v(3,7) = 11,37). O TikZ compila e o formato qualitativo está correto. O raciocínio é bem estruturado e as armadilhas centrais foram evitadas: extremos abertos, justificativa do supremo, sinal inicial negativo, v_min positivo, sem oscilação periódica, assíntota por tempo finito, m não inventado. Defeito principal: a assíntota vertical foi desenhada em t = 3,78 s, mas o tempo de explosão real é ≈ 4,70 s (refeito por integração de ∫dx/v e por RK4 direto; a referência dá 4,1 s para E = 15 J, consistente). Faltam também a simetria ímpar em torno de t₁ (t₂ = 2t₁), as inflexões e as concavidades escritas, e há pequenas imprecisões em (a) sobre a região x ≥ x₃. É uma resolução correta e quase publicável, mas a figura tem um erro quantitativo visível e o texto omite propriedades que fixam o formato do gráfico, então fica abaixo de 9. Não consegui salvar a nota de memória da equipe: o hook de acesso negou escrita e leitura fora da pasta de trabalho e da prova.\"}"
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.3,
+      "final_answer": "a) −2 m < x < 4 m (com E < 32/3 J); b) E_sup = E_p(4) = 32/3 J ≈ 10,67 J (supremo, não atingido); c) v(0) = −√(2E/m); v sobe, anula-se no retorno (x_t < −2), vale +v₀ em x = 0 (t₂ = 2t₁), cai até o mínimo v_min = √(2(E−32/3)/m) > 0 em x = 4 e depois cresce sem limite, com assíntota vertical em tempo finito (t* ≈ 4,70 s para m = 1 kg e E = 12 J). A partícula escapa e não volta.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "As respostas finais do candidato coincidem com a minha referência nos três itens: a) −2 m < x < 4 m, com extremos abertos; b) E_sup = 32/3 J, supremo e não máximo; c) a partícula é refletida uma única vez em x_t < −2, v(0) = −√(2E/m), passa por x = 0 em t₂ = 2t₁ com +v₀ e chega a x = 4 com v_min = √(2(E−32/3)/m) > 0 e tangente horizontal. Depois v cresce com v ∝ x^{3/2} e tem assíntota vertical em tempo finito t*, sem periodicidade.\n\nRefiz as contas e confirmei:\n- a identidade E_p − 32/3 = −(x−4)²(x+2)/3;\n- as concavidades, pela fórmula v'' = F'(x)·v/m (mínimo em t=0, inflexão em t₁, máximo em x=0, inflexão em x=2, mínimo em x=4);\n- o expoente v ∝ (t*−t)^{−3};\n- por RK4 em Python puro, com m=1 e E=12: t₁=0,6533, x_t=−2,107, t₂=1,3066=2t₁, v=4,899 em x=0, t_i=1,7588 com v=3,651, t₃=2,613 com v_min=1,633, e t*≈4,668+0,035≈4,703;\n- os pontos plotados (v=3,80 em t=1,0; 2,738 em t=2,0; 4,94 em t=3,4; 15,78 em t=3,8), todos conferem.\n\nTodas as armadilhas da referência foram tratadas: extremos abertos, região x ≥ x₃ ilimitada e inacessível, justificativa de \"supremo\" pelo tempo logarítmico divergente, sinal inicial de v, v_min positivo, ausência de velocidade terminal, simetria ímpar em torno de t₁ e idealização não relativística. A resolução é rigorosa, bem organizada e verificada numericamente. Os problemas restantes são só de acabamento.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No esboço em TikZ, a curva sai do quadro em t≈3,8 s (v≈16 m/s), enquanto a assíntota pontilhada está em t*≈4,70 s. Visualmente a curva não parece se aproximar da assíntota, e a explicação fica só no texto. Seria melhor usar um eixo v truncado com seta ou \"//\", ou uma escala não linear, para mostrar a curva colando na reta vertical em t*.",
+            "suggestion": "Estender os pontos até perto de t* e cortar o eixo v, ou desenhar a curva subindo junto à assíntota."
+          },
+          {
+            "severity": "minor",
+            "description": "O esboço é feito com valores numéricos (m=1 kg, E=12 J), enquanto o enunciado não dá m nem E. O texto avisa que o gráfico é qualitativo, mas o gráfico em si não diz isso e o eixo mostra valores como 4,9 e 1,63 com rótulos simbólicos. Há risco de o leitor tomar m=1 e E=12 como dados do problema.",
+            "suggestion": "Escrever na legenda da figura \"ilustração com m=1 kg, E=12 J; forma qualitativa válida para qualquer m e E>32/3 J\"."
+          },
+          {
+            "severity": "minor",
+            "description": "No item b, o limite inferior E>0 da faixa oscilatória aparece sem justificativa explícita. Falta dizer que, para E<0, a região permitida é apenas x>6, ilimitada, e que E=0 é só o equilíbrio em x=0. Ela está implícita em Ep(0)=0 ser o mínimo do poço.",
+            "suggestion": "Acrescentar uma frase: E<Ep(0)=0 não permite movimento no poço, e E=0 é a partícula parada em x=0."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência de ordem de grandeza com o período de pequenas oscilações (π s) é vaga: diz \"compatível com t₁ e t₃\" sem quantificar. O poço é anarmônico para E=12 J e t₃ está bem fora do regime harmônico. Não prejudica a resposta, mas é um argumento fraco.",
+            "suggestion": "Cortar ou reformular como simples checagem de ordem de grandeza de t₁ (quarto de período ≈ 0,78 s)."
+          },
+          {
+            "severity": "minor",
+            "description": "O item a mostra a união (−2,4) dizendo que x₁ e x₂ variam monotonicamente com E, mas a monotonicidade só vem implícita nos intervalos de crescimento e decrescimento de Ep. Não é erro, só um passo um pouco telegráfico.",
+            "suggestion": "Explicitar que Ep é bijetora em (−2,0) e em (0,4), de modo que x₁(E) e x₂(E) percorrem todos esses intervalos quando E varia em (0,32/3)."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.2,
+  "final_answer": "a) Calor a retirar do suco: Q = 35 000 + 72 500 + 12 500 = 120 000 kcal = 4,8 x 10^8 J. Taxa média: 83,3 kW. COP de Carnot do refrigerador: 246/61,5 = 4; COP real = 3/4 de 4 = 3 (abaixo de 4, coerente com a 2ª lei). Potência do compressor: Ẇ = 83,3/3 ≈ 27,8 kW ≈ 37 HP (exato 1000/27 HP).\nb) A estimativa de 30 HP não é procedente. Esse compressor forneceria 3 x 22,5 = 67,5 kW, apenas 81% dos 83,3 kW exigidos, e congelaria a tonelada em cerca de 118,5 min, e não em 96 min. Não há folga: faltam cerca de 7 HP. O valor de 30 HP pode ter vindo de usar o COP de bomba de calor (3,75 → 29,6 HP). Como as perdas reais aumentam a potência, 37 HP é piso, e o projeto deve ter margem acima disso.\n\nANSWER: a) Ẇ ≈ 27,8 kW ≈ 37 HP (exato 1000/27 HP); b) 30 HP não é procedente, pois fornecem apenas cerca de 81% da potência necessária e congelariam a tonelada em cerca de 118,5 min.",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA — Questão 8 (Física, Concurso IME 2025/2026, 2ª fase). Valor: 1,0. Conferida no PDF original (página 8) e com contas em Python (frações exatas).\n\nDADOS CONVERTIDOS\n- m = 1 t = 1000 kg\n- Fonte quente (ambiente): T_H = 34,5 °C = 307,5 K\n- Fonte fria (interior da câmara): T_C = −27 °C = 246 K; ΔT_CH = 61,5 K\n- Δt = 96 min = 5760 s\n- 1 kcal = 1000 cal = 1000 × 4 J = 4000 J\n- 1 HP = 3/4 kW = 750 W\n\na) ANÁLISE TERMODINÂMICA E POTÊNCIA DO COMPRESSOR\n\n1) Calor a remover do suco. O processo tem três etapas. O suco é o corpo que é resfriado e a câmara é a fonte fria.\n- Etapa 1, líquido de 33 °C a −2 °C (sensível):\n  Q₁ = m·c_L·ΔT = 1000 × 1,0 × [33 − (−2)] = 35 000 kcal\n- Etapa 2, solidificação a −2 °C (latente):\n  Q₂ = m·L_s = 1000 × 72,5 = 72 500 kcal\n- Etapa 3, sólido de −2 °C a −27 °C (sensível):\n  Q₃ = m·c_S·ΔT = 1000 × 0,5 × [−2 − (−27)] = 12 500 kcal\n- Calor total removido da câmara:\n  Q_L = 35 000 + 72 500 + 12 500 = 120 000 kcal = 1,2×10⁵ × 4000 J = 4,8×10⁸ J\n\n2) Ciclo de refrigeração.\n- Primeira lei: Q_H = Q_L + W, em que W é o trabalho do compressor e Q_H é o calor rejeitado ao ambiente.\n- COP do refrigerador de Carnot: COP_C = T_C/(T_H − T_C) = 246/61,5 = 4.\n  Atenção: é o COP de refrigerador (calor retirado do frio no numerador), não o de bomba de calor, que seria T_H/(T_H − T_C) = 5.\n- COP real = (3/4)·COP_C = (3/4)·4 = 3.\n- Verificação da segunda lei: COP real = 3 < 4 = COP de Carnot. Coerente.\n\n3) Trabalho e potência.\n- W = Q_L / COP_real = 4,8×10⁸ / 3 = 1,6×10⁸ J = 160 MJ\n- Potência média de acionamento ao longo dos 96 min:\n  P = W/Δt = 1,6×10⁸ / 5760 ≈ 2,78×10⁴ W ≈ 27,8 kW\n- Em HP: P = 27,8 kW / 0,75 kW/HP ≈ 37,0 HP (37,04 HP)\n- Verificação: calor rejeitado Q_H = Q_L + W = 6,4×10⁸ J, o que dá cerca de 111 kW térmicos. Esse valor não é a potência do compressor.\n\nResultado do item a): P_compressor ≈ 37 HP (cerca de 28 kW). O resultado é potência média, porque a duração de 96 min é o único dado de tempo disponível.\n\nb) COMPARAÇÃO COM O ENGENHEIRO E PROCEDÊNCIA\n\n- 30 HP = 22,5 kW. Em 96 min, 30 HP fornecem W' = 22 500 × 5760 = 1,296×10⁸ J.\n- São necessários 1,6×10⁸ J. Faltam 3,0×10⁷ J, cerca de 19% (30/37 ≈ 0,81).\n- Para que 30 HP bastassem, o COP real deveria ser ≥ 4,8×10⁸/1,296×10⁸ ≈ 3,70. Isso equivale a cerca de 93% do COP de Carnot, o que é inviável na prática. Alternativamente, o congelamento levaria cerca de 118,5 min.\n- A estimativa do engenheiro não tem folga. Ela já é ideal, pois não considera rendimento do motor elétrico, troca de calor pelas paredes da câmara, carga térmica do ambiente nem partida. Todos esses fatores aumentam a potência necessária.\n- Possível origem do erro do engenheiro (hipótese, não dado): ignorar o fator 3/4 dá 27,8 HP (Carnot ideal); usar o COP de bomba de calor com 3/4 dá 29,6 HP. Ambos ficam perto de 30 HP.\n- Conclusão: a estimativa não é procedente. O compressor precisa de no mínimo cerca de 37 HP, e na prática deve-se especificar um motor acima disso.\n\nRESPOSTAS FINAIS\na) Q_L = 1,2×10⁵ kcal = 4,8×10⁸ J; COP real = 3; W = 1,6×10⁸ J; P ≈ 27,8 kW ≈ 37 HP.\nb) 30 HP não atendem ao requisito. A estimativa não é procedente: faltam cerca de 19% de potência, e a potência necessária é de no mínimo cerca de 37 HP.",
+    "final_answer": "a) Calor a remover do suco: Q_L = 35 000 + 72 500 + 12 500 = 120 000 kcal = 4,8×10⁸ J. COP de Carnot de refrigerador = T_C/(T_H − T_C) = 246/61,5 = 4; COP real = 3/4 × 4 = 3. Trabalho do compressor W = Q_L/3 = 1,6×10⁸ J. Potência média em 96 min (5760 s): P ≈ 27,8 kW ≈ 37 HP (37,0 HP).\n\nb) 30 HP não atendem. Em 96 min entregariam 1,30×10⁸ J, contra 1,60×10⁸ J necessários (déficit de cerca de 19%). A estimativa do engenheiro não é procedente, pois a potência mínima é de cerca de 37 HP, antes de qualquer perda ou margem de projeto.",
+    "pitfalls": [
+      "Conversão kcal→J: 1 kcal = 1000 cal = 4000 J, não 4 J. Esquecer o fator 1000 dá 0,037 HP.",
+      "As três etapas são obrigatórias: líquido sensível (35 000 kcal), solidificação latente (72 500 kcal) e sólido sensível (12 500 kcal), total 120 000 kcal. Omitir a etapa sólida dá cerca de 33 HP; omitir a líquida dá cerca de 26 HP.",
+      "Calor latente: é liberado em −2 °C, o ponto de congelamento, e não em −27 °C. O calor específico sólido vale só abaixo de −2 °C.",
+      "Carnot exige temperaturas absolutas: T_C = 246 K e T_H = 307,5 K. Usar °C dá COP negativo ou sem sentido.",
+      "Fonte quente = ambiente a 34,5 °C, e não a temperatura inicial do suco (33 °C). Fonte fria = câmara a −27 °C, e não o suco.",
+      "COP de refrigerador (T_C/(T_H−T_C) = 4), não o de bomba de calor (T_H/(T_H−T_C) = 5). Com o COP de bomba de calor o resultado dá 29,6 HP, perto dos 30 HP do engenheiro, mas está errado.",
+      "O fator 3/4 deve ser aplicado: COP real = 3. Ignorá-lo (Carnot ideal) dá 27,8 HP, que é o erro provável do engenheiro.",
+      "Potência do compressor é W = Q_L/COP, e não Q_H. Usar Q_H = 6,4×10⁸ J dá 148 HP; usar Q_L/Δt sem COP dá 111 HP.",
+      "Tempo: 96 min = 5760 s. Usar 96 s dá resultado absurdo (2222 HP).",
+      "Conversão de potência: 1 HP = 0,75 kW (dado), e não 746 W. Com 746 W dá 37,2 HP, e a conclusão não muda.",
+      "Usar o dado 1 cal = 4 J. Trocar por 4,184 J altera o resultado sem justificativa.",
+      "Potência média versus de pico: os dados dão só o tempo total, então a resposta é a potência média. O pico depende da taxa de remoção de calor, que não é dada.",
+      "Verificação da segunda lei: COP real = 3 < COP de Carnot = 4. Um COP real maior que o de Carnot indicaria erro conceitual.",
+      "No item b), não basta dizer que 'é possível' ou 'é impossível'. É preciso comparar numericamente: 30 HP fornecem 1,30×10⁸ J contra 1,60×10⁸ J necessários, cerca de 19% a menos. O COP mínimo para 30 HP seria 3,70 (93% de Carnot), ou o tempo subiria para 118,5 min.",
+      "A estimativa é ideal. Perdas do motor, troca de calor pelas paredes e partida só aumentam a potência, então a 'folga' do engenheiro é inexistente, e não suficiente.",
+      "Hipótese sobre o erro do engenheiro (não é dado): ignorar o fator 3/4 dá 27,8 HP e usar COP de bomba de calor com 3/4 dá 29,6 HP. Ambos ficam perto de 30 HP, mas o resultado correto é 37 HP."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) Calor a extrair do suco: Q = 1,2×10^5 kcal = 4,8×10^8 J (sensível líquido 35 000 kcal + latente 72 500 kcal + sensível sólido 12 500 kcal). Em 96 min, a potência frigorífica é ≈ 83,3 kW. COP de Carnot = 246/61,5 = 4; COP real = 3/4 × 4 = 3. Potência do compressor: Ẇ = 83,3/3 ≈ 27,8 kW ≈ 37 HP (exato 1000/27 HP).\nb) Os 30 HP do engenheiro (22,5 kW) fornecem apenas cerca de 81% da potência necessária; a tonelada levaria ≈ 118,5 min para congelar. A estimativa não é procedente: falta folga, e o valor mínimo recomendado é ≈ 37 HP.\n\nANSWER: a) ≈ 37 HP (≈ 27,8 kW); b) 30 HP não é suficiente — estimativa não procedente.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Hipótese (ii) chama o processo de 'regime estacionário'. Isso está mal aplicado: o suco esfria e muda de fase, então o processo é transitório. O que o candidato assume é apenas potência constante do compressor, igual à média no intervalo Δt. Deveria ser: 'o processo é transitório; adota-se potência constante, igual à média em Δt'."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa de usar potência média é implícita. A resolução não diz que a média é a única resposta possível porque o enunciado dá só a duração total, sem perfil temporal de carga. Deveria haver uma frase explicando isso, como faz a referência."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa 'Pela 1ª lei, o calor total retirado é a soma de três etapas' é imprecisa. A soma vem do balanço de energia do suco, com calores sensíveis e latente, e não da 1ª lei como princípio do ciclo. Também não se define a convenção de sinal: Q é tomado como calor retirado, positivo. Deveria ser dito explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "A segunda lei é aplicada só de forma implícita. O texto diz que nenhum refrigerador real excede o COP de Carnot, mas não compara explicitamente COP real = 3 com COP de Carnot = 4. Deveria haver a frase 'COP real 3 < 4, coerente com a 2ª lei'."
+          },
+          {
+            "severity": "minor",
+            "description": "No item b, a discussão sobre a origem do erro do engenheiro cobre só uma hipótese: o Carnot ideal, sem o fator 3/4, dá 27,8 HP. Falta o caso mais provável de o 30 HP ter sido obtido: usar o COP de bomba de calor com o fator 3/4, o que dá T_H/(T_H−T_C)·3/4 = 3,75 e 29,6 HP. Deveria ser mencionado e rejeitado com justificativa, porque essa é a armadilha que mais aproxima o resultado de 30 HP."
+          },
+          {
+            "severity": "minor",
+            "description": "No item b, a estimativa é descrita como 'ideal', e a hipótese (iv) afirma que não há perdas além do COP real. Mas a resolução não volta a isso para enumerar as perdas reais que aumentam W: rendimento do motor elétrico, ganho de calor pelas paredes, carga térmica do ambiente e partida. Isso faria 37 HP aparecer como piso, e não como valor de projeto. A conclusão final já recomenda margem, então o problema é de completude, não de conclusão."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à da referência. Conferi o enunciado na página 8 do PDF e refiz todas as contas em Python com frações exatas. Resultados: Q = 35 000 + 72 500 + 12 500 = 120 000 kcal = 4,8×10⁸ J; COP_Carnot(refrigerador) = 246/61,5 = 4; COP real = 3; Ẇ = 250/9 kW ≈ 27,8 kW = 1000/27 ≈ 37,04 HP; Q̇_Q = 111,1 kW, razão 4/3; 30 HP = 22,5 kW, que dão 67,5 kW de capacidade (81% dos 83,3 kW exigidos); t = 64000/9 s ≈ 118,5 min (+23%); COP mínimo para 30 HP = 3,70 (92,6% de Carnot); Carnot ideal = 27,8 HP, com folga de 8% em 30 HP; sensibilidade com 273,15 K = 4,002. Todos os números batem com a resolução do candidato.\n\nComparação item por item. (a) Calor 120 000 kcal, COP real 3 e ≈37 HP: iguais. (b) 30 HP não procedente, com déficit de ~19% e tempo de ~118,5 min: iguais.\n\nArmadilhas: tratadas corretamente kcal→J (4000 J), as três etapas, latente em −2 °C, conversão para Kelvin, fonte quente (34,5 °C) e fonte fria (−27 °C), COP de refrigerador (4) e não de bomba de calor (5), fator 3/4, W em vez de Q_H (com verificação de Q_Q), 96 min = 5760 s, 1 HP = 0,75 kW, 1 cal = 4 J. A parte b é quantitativa.\n\nProblemas são de rigor e completude, sem erro de resultado: 'regime estacionário' mal aplicado; justificativa da média e da soma de calores pouco precisa; segunda lei só implícita; origem provável do 30 HP (bomba de calor com 3/4 → 29,6 HP) não discutida; perdas reais não enumeradas. Nota 8,5: publicável com pequenos ajustes, mas não chega a 9 por causa desses pontos, que um professor corrigiria.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.2,
+      "final_answer": "a) Calor a retirar do suco: Q = 35 000 + 72 500 + 12 500 = 120 000 kcal = 4,8 x 10^8 J. Taxa média: 83,3 kW. COP de Carnot do refrigerador: 246/61,5 = 4; COP real = 3/4 de 4 = 3 (abaixo de 4, coerente com a 2ª lei). Potência do compressor: Ẇ = 83,3/3 ≈ 27,8 kW ≈ 37 HP (exato 1000/27 HP).\nb) A estimativa de 30 HP não é procedente. Esse compressor forneceria 3 x 22,5 = 67,5 kW, apenas 81% dos 83,3 kW exigidos, e congelaria a tonelada em cerca de 118,5 min, e não em 96 min. Não há folga: faltam cerca de 7 HP. O valor de 30 HP pode ter vindo de usar o COP de bomba de calor (3,75 → 29,6 HP). Como as perdas reais aumentam a potência, 37 HP é piso, e o projeto deve ter margem acima disso.\n\nANSWER: a) Ẇ ≈ 27,8 kW ≈ 37 HP (exato 1000/27 HP); b) 30 HP não é procedente, pois fornecem apenas cerca de 81% da potência necessária e congelariam a tonelada em cerca de 118,5 min.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Parte b, mistura de unidades sem rótulo: \"faltam cerca de 16 kW (19%)\" é o déficit de calor extraído da câmara (potência térmica), enquanto \"faltando cerca de 7 HP em relação a 37 HP\" é o déficit de potência de eixo do compressor. Os dois valores estão corretos (16 kW térmicos / COP 3 ≈ 5,3 kW de eixo ≈ 7 HP), mas sem rótulo o leitor pode achar que são inconsistentes. Deveria ser feito: rotular \"16 kW térmicos de carga extraída\" e \"7 HP de potência de eixo\", ou usar apenas uma grandeza na conclusão."
+          },
+          {
+            "severity": "minor",
+            "description": "A análise de idealização não menciona explicitamente que, num ciclo real, o evaporador deve estar abaixo de −27 °C e o condensador acima de 34,5 °C. Assim, o COP de Carnot calculado com as temperaturas da câmara e do ambiente é um limite superior. O enunciado já fixa o fator 3/4 em relação a essas temperaturas, então a conta está correta, mas a resolução deveria dizer que as diferenças de temperatura do evaporador e do condensador são uma das irreversibilidades que o fator 3/4 representa e que reforçam o caráter de piso de 37 HP. Deveria ser feito: acrescentar uma frase na hipótese (ii) ou na lista de perdas reais."
+          },
+          {
+            "severity": "minor",
+            "description": "Afirmação de grau sem base: \"Esta é a confusão que mais reproduz o número 30 HP\". Os dados não dizem o que o engenheiro fez, e a comparação entre hipóteses não foi feita. Deveria ser feito: trocar por algo como \"uma das confusões que reproduzem o número 30 HP\", já que a origem do erro é apenas hipótese, como a própria resolução reconhece na frase seguinte."
+          }
+        ],
+        "summary": "Refiz as contas com frações exatas e python3 -I. Todos os números batem: Q = 35 000 + 72 500 + 12 500 = 120 000 kcal = 4,8×10⁸ J; COP_C = 246/61,5 = 4 (refrigerador, não bomba de calor); COP real = 3 < 4 (2ª lei ok); W = Q/COP = 1,6×10⁸ J; Q̇_F = 83,3 kW; Ẇ = 27,78 kW = 1000/27 ≈ 37,04 HP; Q̇_Q = 111,1 kW. Na parte b: 30 HP = 22,5 kW dá capacidade de 67,5 kW (81% dos 83,3 kW); t = 118,5 min (+23%); COP necessário 3,70 (92,6% de Carnot); folga de Carnot ideal 8%; com COP de bomba de calor, 29,6 HP e folga de 1,25%; 273,15 K dá COP ≈ 4,002. A referência e o candidato concordam em todos os itens finais, então não há divergência a resolver: a resposta correta é ≈37 HP, e 30 HP não são procedentes. Armadilhas: o candidato tratou todas as listadas (kcal→J com fator 1000, três etapas, latente em −2 °C, temperaturas absolutas em K, fonte quente 34,5 °C, COP de refrigerador, fator 3/4, Q_L em vez de Q_H, 96 min = 5760 s, 1 HP = 0,75 kW, potência média, verificação da 2ª lei, comparação numérica do item b). A justificativa é forte: hipóteses explícitas, balanço de energia, conferências de 1ª lei e de ordem de grandeza, e tratamento correto de perdas e hipóteses do erro do engenheiro, rotuladas como hipótese. Os problemas restantes são de clareza e completude menores (unidades térmicas e de eixo misturadas na parte b, idealização de evaporador e condensador não citada, superlativo sem base). Nenhum problema de conteúdo afeta a resposta. Um professor publicaria como gabarito comentado com pequenas edições, por isso nota 9,2.\""
+      }
+    }
+  ]
+}

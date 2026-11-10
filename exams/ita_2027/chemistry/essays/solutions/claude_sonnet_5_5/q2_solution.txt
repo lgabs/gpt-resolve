@@ -1,0 +1,67 @@
+\section*{Questão 2}
+
+\section*{Solução}
+\pgfplotsset{compat=1.14}
+
+\textbf{1. Dados e hipóteses.} Volume inicial da solução: $V_0=A\,h=1\ \text{dm}^2\times 10\ \text{dm}=10\ \text{dm}^3=10\ \text{L}$. A massa de soluto é $m=0{,}2\times 80=16$ g, logo $c_0=\dfrac{0{,}2\ \text{mol}}{10\ \text{L}}=0{,}020\ \text{mol/L}=1{,}6\ \text{g/L}$. A solubilidade é $4\ \text{g/L}=\dfrac{4}{80}=0{,}050\ \text{mol/L}$. Como $1{,}6<4$ g/L, todo o soluto está inicialmente dissolvido.
+
+Hipóteses: soluto molecular (não eletrólito, $i=1$) e solução diluída ideal, de modo que vale a lei de van't Hoff, $\pi=cRT$. A membrana só deixa passar solvente. O solvente é incompressível e o volume do soluto é desprezível. Como a compressão é reversível, a pressão aplicada é $P_{atm}+\pi$, em que $\pi$ é a pressão osmótica \emph{instantânea} da solução, que varia ao longo do processo.
+
+\textbf{2. Relação entre o deslocamento e o volume.} Se o êmbolo desce $x$ dm, passam para o compartimento do solvente $A\,x=x$ L de solvente. O soluto permanece, então
+\[
+V(x)=(10-x)\ \text{L},\qquad c(x)=\frac{n}{V}=\frac{0{,}2}{10-x}\ \text{mol/L},
+\]
+enquanto a solução não estiver saturada. O êmbolo do solvente sobe, mas o solvente puro continua sob $P_{atm}$, o que não altera $\pi$.
+
+Com $RT=0{,}0821\times 305=25{,}04\ \text{atm}\cdot\text{L}\cdot\text{mol}^{-1}$:
+
+\textbf{3. Região I (solução insaturada).} Para $0\le x\le x_s$,
+\[
+\pi(x)=c\,RT=\frac{0{,}2\times 25{,}04}{10-x}=\frac{5{,}008}{10-x}\ \text{atm}.
+\]
+Em $x=0$: $\pi_0=0{,}020\times 25{,}04\approx 0{,}50$ atm.
+
+\textbf{4. Início da saturação.} A saturação ocorre quando $c=0{,}050$ mol/L:
+\[
+\frac{0{,}2}{10-x_s}=0{,}050\ \Rightarrow\ 10-x_s=4\ \text{L}\ \Rightarrow\ x_s=6\ \text{dm},\qquad
+\pi_s=0{,}050\times 25{,}04\approx 1{,}25\ \text{atm}.
+\]
+
+\textbf{5. Região II (solução saturada).} Para $6\le x\le 9$ dm, o soluto em excesso precipita e fica retido, pois a membrana não o deixa passar. A solução permanece saturada, com $c=0{,}050$ mol/L constante, então
+\[
+\pi=0{,}050\times 25{,}04\approx 1{,}25\ \text{atm (constante)}.
+\]
+Em $x=9$ dm, $V=1$ L dissolve $0{,}05$ mol (4 g), e $0{,}15$ mol (12 g) estão precipitados. Sem a precipitação, $\pi\to\infty$ quando $x\to 10$ dm, o que seria fisicamente absurdo.
+
+\textbf{6. Valores e gráfico.}
+\begin{center}
+\begin{tabular}{c|ccccccccccc}
+$x$ (dm) & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ \hline
+$V$ (L) & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1\\
+$\pi$ (atm) & 0,50 & 0,56 & 0,63 & 0,72 & 0,83 & 1,00 & 1,25 & 1,25 & 1,25 & 1,25
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=0.85\linewidth,height=6.4cm,
+ xlabel={Deslocamento do êmbolo $x$ (dm)},ylabel={$\pi$ (atm)},
+ xmin=0,xmax=9.5,ymin=0,ymax=1.5,xtick={0,1,...,9},ytick={0,0.25,...,1.5},
+ grid=both,minor tick num=0,
+ yticklabel style={/pgf/number format/.cd,fixed,precision=2,use comma}]
+\addplot[domain=0:6,samples=61,thick,blue]{5.0081/(10-x)};
+\addplot[thick,blue] coordinates {(6,1.252) (9,1.252)};
+\addplot[only marks,mark=*,mark size=1.8pt,black] coordinates {(0,0.5008)(6,1.252)(9,1.252)};
+\draw[dashed] (axis cs:6,0) -- (axis cs:6,1.252);
+\node[anchor=north west,font=\scriptsize] at (axis cs:0.1,0.5008) {0,50};
+\node[anchor=south east,font=\scriptsize] at (axis cs:5.9,1.28) {1,25 (saturação)};
+\node[anchor=north,font=\scriptsize,rotate=90] at (axis cs:6.35,0.55) {início da precipitação};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+O gráfico é um ramo de hipérbole, $\pi=5{,}008/(10-x)$, de $0{,}50$ atm em $x=0$ até $1{,}25$ atm em $x=6$ dm, seguido de um patamar horizontal em $1{,}25$ atm até $x=9$ dm.
+
+\textbf{7. Conferência.} A unidade de $cRT$ é $\text{mol/L}\cdot\text{atm}\,\text{L}\,\text{mol}^{-1}\text{K}^{-1}\cdot\text{K}=\text{atm}$. A curva é contínua em $x=6$ dm, com $\pi$ crescente e proporcional a $1/V$. A ordem de grandeza está coerente, pois $0{,}02$ mol/L dá cerca de $0{,}5$ atm ($1$ mol/L daria cerca de $25$ atm). Aumentar $c$ em $2{,}5$ vezes, de $0{,}02$ para $0{,}05$ mol/L, aumenta $\pi$ na mesma razão, de $0{,}50$ para $1{,}25$ atm.
+
+ANSWER: $\pi(x)=\dfrac{5{,}008}{10-x}$ atm para $0\le x\le 6$ dm (de $0{,}50$ a $1{,}25$ atm; hipérbole) e $\pi=1{,}25$ atm constante para $6\le x\le 9$ dm (solução saturada, soluto precipitando).

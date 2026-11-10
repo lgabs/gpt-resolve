@@ -1,0 +1,55 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Modelo e hipóteses.} Como $R$ é muito maior que as dimensões do trem, todos os pontos do trem descrevem círculos de mesmo raio $R$, e o trem pode ser tratado como partícula no plano transversal aos trilhos (plano da figura). Com $v$ constante, a aceleração é só centrípeta, $a=v^{2}/R$, horizontal e dirigida ao centro $C$ da curva. Como o eixo permanece horizontal, não há rolamento do conjunto, e vale o equilíbrio de forças nesse plano. As componentes longitudinais (tração, resistência) são desprezadas. O enunciado não fornece a altura do centro de massa nem a bitola, portanto o equilíbrio de torques não entra no cálculo; ele apenas distribui as forças entre as rodas.
+
+\textbf{Forças.} A geratriz do cone forma $\theta$ com a horizontal, logo a normal ao contato forma $\theta$ com a vertical. Pela figura, o raio da roda é maior do lado interno, então a componente horizontal de $\vec N$ aponta, em cada roda, para o centro da via. Na roda externa à curva ela aponta para $C$; na roda interna, para longe de $C$. O atrito estático $\vec f$ atua ao longo da geratriz, com $|f|\le\mu N$. Seja $\varphi=\arctan\mu$. A resultante $\vec N+\vec f$ em cada roda faz com a normal um ângulo de no máximo $\varphi$.
+
+Medindo os ângulos com a vertical, positivos para o lado de $C$, as direções possíveis são:
+\[
+\text{roda externa: } \theta-\varphi\le\psi\le\theta+\varphi,\qquad
+\text{roda interna: } -\theta-\varphi\le\psi\le-\theta+\varphi .
+\]
+Os trilhos devem fornecer a força total (peso equilibrado na vertical, centrípeta na horizontal)
+\[
+F_y=Mg,\qquad F_x=\frac{Mv^{2}}{R}\ \Rightarrow\ \tan\alpha=\frac{v^{2}}{gR}.
+\]
+Todas as direções possíveis estão no setor $|\psi|\le\theta+\varphi$, que é convexo se $\theta+\varphi<90^\circ$. A soma das forças das duas rodas fica então nesse setor, e
+\[
+\tan\alpha\le\tan(\theta+\varphi).
+\]
+A igualdade só ocorre com a roda interna descarregada ($N_1=0$, logo $f_1=0$) e a roda externa no limite de atrito. É exatamente o instante em que a roda interna perde o contato. Esse é o caso crítico, e raios menores não podem ser equilibrados.
+
+\textbf{a) Atrito $\mu$.} No caso crítico só a roda externa atua, com $f=\mu N$ dirigido ao longo da geratriz. Ele se opõe à tendência de a roda subir para fora do trilho.
+\[
+\begin{aligned}
+\text{horizontal:}\quad & N\sin\theta+\mu N\cos\theta=\dfrac{Mv^{2}}{R},\\[2pt]
+\text{vertical:}\quad & N\cos\theta-\mu N\sin\theta=Mg .
+\end{aligned}
+\]
+Dividindo as duas equações:
+\[
+\frac{v^{2}}{gR}=\frac{\sin\theta+\mu\cos\theta}{\cos\theta-\mu\sin\theta}=\frac{\tan\theta+\mu}{1-\mu\tan\theta}=\tan(\theta+\varphi).
+\]
+Logo
+\[
+\boxed{R_{\min}=\frac{v^{2}}{g}\,\frac{1-\mu\tan\theta}{\mu+\tan\theta}=\frac{v^{2}}{g}\,\frac{\cos\theta-\mu\sin\theta}{\sin\theta+\mu\cos\theta}}
+\]
+Para $R\ge R_{\min}$ nenhuma roda perde o contato. Se $\mu\tan\theta\ge1$ (isto é, $\theta+\varphi\ge 90^\circ$), a condição deixa de limitar $R$.
+
+\textbf{b) Sem atrito ($\mu=0$).} Só há normais. No caso crítico, a roda externa sustenta tudo: $N\cos\theta=Mg$ e $N\sin\theta=Mv^{2}/R$. Portanto
+\[
+\boxed{R_{\min}=\frac{v^{2}}{g\tan\theta}}
+\]
+Esse resultado é o da letra (a) com $\mu=0$.
+
+\textbf{c) Rodas cilíndricas ($\theta=0$).} A normal é vertical, $N=Mg$, e a única força horizontal é o atrito estático lateral, que deve ser $\le\mu N$:
+\[
+\frac{Mv^{2}}{R}\le\mu Mg\ \Rightarrow\ \boxed{R_{\min}=\frac{v^{2}}{\mu g}}
+\]
+Esse resultado é o da letra (a) com $\theta=0$. Aqui a roda "perde o trilho" por deslizamento lateral.
+
+\textbf{Verificações.} As dimensões estão corretas: $v^{2}/g$ tem unidade de comprimento e $\mu$, $\tan\theta$ são adimensionais. Os casos limite $\mu\to0$ e $\theta\to0$ reproduzem (b) e (c). Para $\theta$ pequeno, $R_{\min}^{(a)}<R_{\min}^{(b)}$ e $R_{\min}^{(a)}<R_{\min}^{(c)}$, pois cone e atrito colaboram. Por exemplo, com $v=30\ \mathrm{m/s}$, $\theta=5^\circ$ e $\mu=0,3$, os raios mínimos são cerca de $226\ \mathrm{m}$ em (a), $1029\ \mathrm{m}$ em (b) e $300\ \mathrm{m}$ em (c). Uma amostragem numérica aleatória de $N_i$ e $f_i$ confirmou que a inclinação máxima da força total é $\tan(\theta+\varphi)$.
+
+ANSWER: a) $R_{\min}=\dfrac{v^{2}(1-\mu\tan\theta)}{g(\mu+\tan\theta)}$; b) $R_{\min}=\dfrac{v^{2}}{g\tan\theta}$; c) $R_{\min}=\dfrac{v^{2}}{\mu g}$

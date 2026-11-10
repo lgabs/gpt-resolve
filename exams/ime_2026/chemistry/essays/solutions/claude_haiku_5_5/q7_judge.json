@@ -1,0 +1,140 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 8.5,
+  "final_answer": "42 placas solares fotovoltaicas. Modelo: energia = ΔH_r(T_fus) + ΔH_fus do cobre, com T_fus = 1296,5 K (G_S = G_L), ΔH_r = +24,0 kJ por mol de malaquita (H2O(g)), ΔH_fus = 12,96 kJ/mol de Cu e n_Cu ≈ 3357,6 mol. Energia ≈ 83,8 MJ em 1 h, N ≥ 41,9, logo N_min = 42.",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 7 (IME 2025/2026, química): resolução de referência\n\nDados: M(Cu) = 63,5 g/mol (tabela: 63,546); 1 placa = 2 MJ/h = 2000 kJ/h. Objetivo: número mínimo de placas para gerar 213,36 kg = 213 360 g de Cu(l) em 1 h.\n\nITEM 1 — Reação global e quantidades de matéria\nSomando as três etapas (o CuO se cancela entre a 1ª e a 2ª; a 3ª converte Cu(s) em Cu(l)):\n  Cu2CO3(OH)2(s) + C(grafite) → 2 Cu(l) + H2O(g) + 2 CO2(g)\nBalanceamento: Cu 2=2; C 2=2; O 5=5; H 2=2.\nn(Cu) = 213 360 / 63,5 = 3360 mol de Cu.\nComo cada malaquita fornece 2 Cu: n(malaquita) = 1680 mol.\n\nITEM 2 — ΔH da reação global (Lei de Hess, só com dados da folha)\nΔH = Σ ΔHf(produtos) − Σ ΔHf(reagentes)\n   = [−242,0 + 2(−394,0) + 2(0)] − [−1054,0 + 0]\n   = −1030,0 + 1054,0 = +24,0 kJ por mol de malaquita (endotérmica, como diz o enunciado).\nΔHf(Cu) = 0 por ser elemento. H2O entra como vapor (T de reação > 373 K). ΔHf(CuO) não é dado e não é necessário, pois a equação global já fornece o caminho.\n\nITEM 3 — Temperatura de fusão do cobre (G_S = G_L)\nG_L − G_S = (5194,3 + 7770,5) + (120,0 − 130,0)·T = 12 964,8 − 10,0·T\nOs termos −24,1·T·lnT, −2,7×10², 1,3×10⁻⁷·T³ e 52478/T são iguais nas duas expressões e se cancelam.\nNo equilíbrio sólido–líquido (1 atm): T_fus = 12 964,8 / 10,0 = 1296,5 K (dentro da faixa 298–1358 K).\nAtenção: T_fus NÃO é 1358 K (valor real/limite superior da faixa).\nCoerência: a inclinação −10,0 corresponde a −ΔS_fus = −10,0 J/(mol·K), o valor da folha. Isso mostra que G está em J/mol, apesar do \"kJ/mol\" do enunciado.\n\nITEM 4 — Entalpia de fusão do cobre\nΔH_fus = T_fus·ΔS_fus = 1296,5 K × 10,0 J/(mol·K) = 12 965 J/mol ≈ 12,96 kJ/mol de Cu.\nVerificação: ΔG_fus(T_fus) = 0.\n\nITEM 5 — Energia necessária\nBalanço: reação global (ΔH constante, hipótese iii) + fusão de 2 mol de Cu por mol de malaquita.\nPor mol de malaquita: ΔH = +24,0 + 2 × 12,96 = +49,93 kJ.\nE = 1680 mol × 49,93 kJ/mol = 83 882 kJ ≈ 83,9 MJ em 1 h.\nConferência por mol de Cu: 24,0/2 + 12,96 = 24,96 kJ/mol × 3360 mol = 83,9 MJ.\n\nITEM 6 — Número de placas\nN = 83,9 MJ / 2 MJ/placa = 41,9 placas. Como o número deve ser inteiro e atender à energia, o mínimo é 42 placas.\nVerificação: 42 placas = 84 MJ/h ≥ 83,9 MJ; 41 placas = 82 MJ/h são insuficientes.\n\nHipóteses adotadas: fusão a 1 atm na T_fus; ΔH de reação constante (hipótese iii), sem correção de calor sensível; aproveitamento integral (sem perdas); \"mínimo\" = energia ideal.\n\nRESPOSTA: 42 placas solares fotovoltaicas.",
+    "final_answer": "Resposta final: 42 placas solares fotovoltaicas (número mínimo, operando por 1 h). Não é questão de múltipla escolha.\n\nResultados intermediários:\n- Reação global: Cu2CO3(OH)2(s) + C(grafite) → 2 Cu(l) + H2O(g) + 2 CO2(g)\n- n(Cu) = 3,36 × 10³ mol; n(malaquita) = 1,68 × 10³ mol\n- ΔH da reação global = +24,0 kJ por mol de malaquita (endotérmica)\n- T_fus obtida de G_S = G_L: 1296,5 K (não 1358 K)\n- ΔH_fus(Cu) = 12,96 kJ/mol\n- Energia total ≈ 83,9 MJ em 1 h; 83,9 / 2 = 41,9 → mínimo inteiro = 42 placas.",
+    "pitfalls": [
+      "T_fus não é 1358 K. Igualando G_S = G_L obtém-se 12 964,8 = 10,0·T, logo T_fus = 1296,5 K. Usar 1358 K (limite da faixa ou valor real) dá ΔH_fus = 13,58 kJ/mol, E = 85,95 MJ e 43 placas (errado).",
+      "Não esquecer a fusão. A reação global termina em Cu(l), mas a Lei de Hess com ΔHf(Cu) = 0 não contabiliza a fusão. Sem somar 2 × ΔH_fus por malaquita, a energia cai para 40,3 MJ e o resultado seria 21 placas (errado).",
+      "Fator estequiométrico 2:1. Cada malaquita fornece 2 Cu, então n(malaquita) = 3360/2 = 1680 mol e a fusão ocorre 2 vezes por malaquita. Usar 3360 mol de malaquita (80,6 MJ) leva a 41 placas; fundir só 1 mol de Cu por malaquita leva a 62,1 MJ e 32 placas (errados).",
+      "Estado físico da água: use H2O(g), não H2O(l). Com H2O(l) (−285,8 kJ/mol) a reação daria ΔH = −19,8 kJ, exotérmica, o que contradiz o enunciado. A discrepância serve como verificação do cálculo.",
+      "Unidades do enunciado. Ele diz que G está 'em kJ/mol', mas o termo constante 12 964,8 só é coerente com ΔS_fus = 10,0 J/(mol·K) da folha se G estiver em J/mol. Tomar kJ literalmente daria ΔH_fus ≈ 12 965 kJ/mol (absurdo). A temperatura T_fus não depende da unidade, porque é o zero de G_L − G_S.",
+      "Arredondamento. 'Mínimo' significa teto: 41,9 placas exige 42. Truncar para 41 dá 82 MJ/h, insuficiente para 83,9 MJ.",
+      "Massa molar do Cu. Com 63,5 g/mol obtém-se 3360 mol; com 63,546 g/mol, 3357,6 mol. Ambos levam a 42 placas. Não arredonde cedo demais.",
+      "Distratores da folha. ΔG_f de CO2(aq), H2O(l), HCO3⁻(aq) e a constante de Henry pertencem a outra questão (CO2 em água). ΔG_f e S° de malaquita, CuO e CO2(g) não são dados. Por isso não é possível calcular ΔG_rxn ou ΔS_rxn nem justificar espontaneidade. A questão não pede isso.",
+      "ΔHf(CuO) não está na folha. Resolver etapa por etapa exigiria um valor externo. A equação global, por Hess, dá o mesmo resultado sem CuO.",
+      "Calor sensível do Cu (hipótese iii). Com ΔH constante, não se corrige ΔH para 1296,5 K e não se soma aquecimento. Se alguém incluir o aquecimento do Cu de 298 K a 1296,5 K, com Cp obtido de G (H = G − T·dG/dT), acrescenta cerca de 23,2 kJ/mol de Cu. O total fica perto de 162 MJ e 81 placas. Esse caso extrapola as hipóteses e não é a leitura de referência; se aparecer, deve ser declarado como premissa.",
+      "Termo 'impresso' −2,7×10² na G do cobre. Na folha ele aparece sem T (no formato SGTE usual seria −2,65×10⁻³·T²). É irrelevante para T_fus e ΔH_fus, porque cancela em G_L − G_S. Só afetaria o aquecimento sensível (cerca de 4,2 kJ/mol). Não é preciso 'corrigir' para resolver a questão.",
+      "Premissas operacionais. Cu líquido a 1 atm exige T ≥ T_fus. A conta supõe 100% de aproveitamento da placa (2 MJ/h é média) e energia ideal, sem perdas."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 4.0,
+      "final_answer": "Número mínimo de placas solares: 81. Energia necessária ≈ 161,8 MJ em 1 h: ΔH_r = +24,0 kJ por mol de malaquita (+12,0 kJ por mol de Cu); aquecimento do Cu sólido de 298 K até T_fus = 1296,5 K (23,2 kJ/mol); fusão (12,96 kJ/mol); n_Cu ≈ 3357,6 mol. Como 80 placas dão 160 MJ, insuficientes, o mínimo é 81.",
+      "review": {
+        "score": 4,
+        "answer_correct": false,
+        "agrees_with_reference": false,
+        "issues": [
+          {
+            "severity": "critical",
+            "description": "Resposta final errada (81 placas em vez de 42). A divergência está em um único termo: o candidato soma 23,2 kJ/mol de aquecimento sensível do Cu (298 K até 1296,5 K), que responde por cerca de 75% da energia total (161,8 MJ contra 83,9 MJ). Recalculei: ΔH_r e ΔH_fus usados em conjunto dão 1680 × (24,0 + 2 × 12,96) = 83,9 MJ, ou seja 41,9 → 42 placas. O termo extra é o que muda o resultado. Deveria ser feito: adotar o modelo consistente com os dados e a hipótese iii (E = n_malaquita·ΔH_r + n_Cu·ΔH_fus, sem calor sensível), declarando a premissa; ou, se o calor sensível for considerado, aplicá-lo a todas as espécies envolvidas."
+          },
+          {
+            "severity": "major",
+            "description": "Tratamento de estado inconsistente. A resolução diz que o estado final tem Cu(l) a 1296,5 K, mas aquece só o cobre a partir de 298 K e deixa CO2(g) e H2O(g) implicitamente a 298 K (nenhum calor sensível deles é incluído). Um estado final coerente exige o aquecimento de todos os produtos e, se aplicável, dos reagentes. Os dados da folha não trazem Cp de malaquita, grafite, CO2 nem H2O, então só o termo do cobre é calculável, e isso é uma escolha arbitrária, não uma consequência das hipóteses."
+          },
+          {
+            "severity": "major",
+            "description": "A hipótese (c) é usada para descartar o calor sensível dos compostos e, no item 5, o candidato soma o calor sensível do Cu sem justificar por que o cobre fica de fora da hipótese (c). Se a justificativa fosse 'a hipótese iii cobre só compostos, e Cu é elemento', ela não aparece no texto. Além disso, ΔH_r constante só implica ΔCp_r = 0 (a diferença líquida de Cp entre produtos e reagentes se anula), não que o calor sensível seja irrelevante para a energia total. A resolução não faz essa distinção, então a justificativa fica incoerente."
+          },
+          {
+            "severity": "major",
+            "description": "A resolução trata 'ΔH_r + fusão = 42 placas' como uma omissão típica ('Omissões típicas: ... daria 42'). Isso inverte a leitura: esse é o modelo que usa só os dados fornecidos e as hipóteses do enunciado de forma consistente. A própria resolução reconhece que o aquecimento do cobre é o único termo sensível que ela calcula e não discute os demais, o que deveria ter levado a rever a escolha."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha de H2O(g) (ΔHf = −242,0 kJ/mol) em vez de H2O(l) não é justificada. A escolha está certa, porque a água sai como vapor em T > 373 K e H2O(l) tornaria a reação exotérmica (−19,8 kJ), em contradição com o enunciado. Vale registrar esse argumento como verificação."
+          },
+          {
+            "severity": "minor",
+            "description": "O termo constante −2,7×10² aparece na G do cobre sem T (no formato SGTE seria −2,65×10⁻³·T²). O candidato usa esse termo na H_S(T) como constante −270 J/mol sem comentar. Não afeta T_fus nem ΔH_fus, porque cancela em G_L − G_S, mas um comentário curto seria esperado num gabarito comentado."
+          },
+          {
+            "severity": "minor",
+            "description": "Acertos verificados: reação global e balanceamento; ΔH_r = +24,0 kJ/mol de malaquita; G_L − G_S = 12964,8 − 10,0·T e T_fus = 1296,5 K (não 1358 K, armadilha tratada); ΔH_fus = 12,96 kJ/mol; fusão incluída; fator 2:1 de Cu por malaquita; unidades J/mol tratadas explicitamente; H_S(T) = G − T·dG/dT correto (conferido numericamente, ΔH_sens = 23,2 kJ/mol); arredondamento para cima (80,9 → 81). Esses itens estão bem feitos, mas não compensam o erro do item final."
+          }
+        ],
+        "summary": "Comparação item por item: reação global, ΔH_r = +24,0 kJ/mol de malaquita, T_fus = 1296,5 K e ΔH_fus = 12,96 kJ/mol coincidem com a referência e com minha conferência. A divergência está só no balanço energético. A referência usa E = n_malaquita·ΔH_r + n_Cu·ΔH_fus = 83,9 MJ, que dá 41,9 → 42 placas. O candidato soma também 23,2 kJ/mol de aquecimento sensível do cobre (calculado corretamente a partir de G), chegando a 161,8 MJ e 81 placas. Meu julgamento é que 42 é a resposta sustentada pelos dados e pela hipótese iii. O termo sensível do Cu é o único calculável a partir da folha, mas aquecer só o cobre e ignorar CO2, H2O e os reagentes é inconsistente com o estado final declarado e com a própria hipótese (c) da resolução. A referência já havia identificado essa variante e a rejeitado pelo mesmo motivo. Ressalva: não tenho o gabarito oficial; a conclusão se apoia na consistência dos dados e das hipóteses, não numa fonte externa. Nota 4: a estrutura e a maioria dos itens intermediários estão corretos e bem verificados, mas a resposta final é errada e a justificativa do termo extra é incoerente.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "42 placas solares fotovoltaicas. Modelo: energia = ΔH_r(T_fus) + ΔH_fus do cobre, com T_fus = 1296,5 K (G_S = G_L), ΔH_r = +24,0 kJ por mol de malaquita (H2O(g)), ΔH_fus = 12,96 kJ/mol de Cu e n_Cu ≈ 3357,6 mol. Energia ≈ 83,8 MJ em 1 h, N ≥ 41,9, logo N_min = 42.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O termo constante '−2,7×10²' da G do cobre aparece sem T no enunciado (na forma SGTE usual seria −2,65×10⁻³·T²). O candidato não sinaliza isso. O termo não afeta T_fus nem ΔH_fus, porque cancela em G_L−G_S, mas afeta o aquecimento sensível de Cu que ele calcula (cerca de 23,2 kJ/mol; cerca de 4,2 kJ/mol dependem dessa forma). Deveria haver uma nota sobre a possível inconsistência de digitação."
+          },
+          {
+            "severity": "minor",
+            "description": "A premissa de aproveitamento integral da placa (2 MJ/h é média, sem perdas, energia ideal) não aparece entre as hipóteses (a)–(f). Ela só aparece implicitamente na conta. Deveria ser declarada, porque o 'mínimo' depende dela."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese (b)/(d) admite que malaquita, C, CO2 e H2O já entram a T_fus (≈1296 K), o que omite o calor sensível dos reagentes de 298 K a T_fus. Esse termo pode superar os 24 kJ/mol da reação. O candidato reconhece a omissão e restringe o resultado a 'mínimo compatível com os dados', o que é aceitável. Mas o rótulo final 'energia mínima de cerca de 83,8 MJ' sugere mais do que o modelo entrega. Deveria dizer explicitamente que é um limite inferior de um modelo ideal."
+          },
+          {
+            "severity": "minor",
+            "description": "Inconsistência de massa molar: o candidato usa M = 63,546 g/mol (n(Cu) = 3357,6 mol; malaquita 1678,8 mol) e depois diz que isso é 'equivalente a 3360 mol'. Não é exatamente equivalente. Deveria escolher uma massa molar e manter a escolha em todo o texto. Ambas levam a 42 placas."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase final sobre ΔC_p,r está confusa: 'A hipótese (iii) implica ΔC_p,r = 0, o que não anula o calor sensível: apenas o torna igual para reagentes e produtos'. ΔC_p,r = 0 significa que ΔH_r não varia com T. Não significa que o calor sensível seja igualado. Deveria ser reescrita com precisão."
+          },
+          {
+            "severity": "minor",
+            "description": "Faltam menções explícitas de que ΔH_f(CuO) não é dado e não é necessário (o cancelamento do CuO aparece, mas sem essa observação) e de que os dados de CO2(aq), HCO3⁻, H2O(l) e a constante de Henry da folha são distratores pertencentes à questão 9. Isso é um detalhe de completude, não um erro."
+          }
+        ],
+        "summary": "Resposta final 42 placas: correta. Confirmei a transcrição no PDF original e refiz as contas em Python. ΔH_r = +24,0 kJ por mol de malaquita (com H2O(g); com H2O(l) daria −19,8). T_fus = 12964,8/10,0 = 1296,5 K, não 1358 K. ΔH_fus = 12,96 kJ/mol, e o intercepto de G_L−G_S é exatamente ΔH_fus, independente de T. Com M = 63,546 g/mol: E ≈ 83,8 MJ, N = 41,9 → 42 (com M = 63,5 g/mol, E ≈ 83,9 MJ, mesmo resultado). Com 1358 K o resultado seria 43 placas. O candidato tratou corretamente as armadilhas: T_fus, fusão incluída, fator 2:1, H2O(g), unidade J/mol (com justificativa pela inclinação −ΔS_fus), arredondamento para cima, massa molar, cancelamento do CuO e comparação com o aquecimento sensível (≈23,2 kJ/mol, levando a 81 placas). Esse modelo alternativo foi rejeitado com justificativa razoável. Os números intermediários conferem. As lacunas são de premissas e clareza (termo −2,7×10² sem T, eficiência integral não declarada, modelo de alimentação a T_fus, frase confusa sobre ΔC_p, massa molar usada de forma inconsistente), sem erro de resultado. Nota 8,5: gabarito quase publicável, mas com ajustes de premissas e redação.\""
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.0,
+      "final_answer": "42 placas solares fotovoltaicas. Modelo: T_fus = 12964,8/10,0 = 1296,5 K (cruzamento de G_S e G_L); ΔH_fus = 12,96 kJ/mol (intercepto de G_L − G_S, independente de T); ΔH_r = +24,0 kJ por mol de malaquita (+12,0 kJ por mol de Cu, com H2O(g)); n_Cu = 3360 mol (M = 63,5 g/mol). Energia total ≈ 83,9 MJ em 1 h, logo N ≥ 41,9 → N_min = 42 (limite inferior do modelo ideal, sem aquecimento sensível dos reagentes).",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Premissa sobre calor sensível mal fundamentada. A hipótese (b) diz que o aquecimento de malaquita, C, CO2, H2O e Cu 'não entra, pois a folha não fornece Cp'. Isso é falso para o cobre: o Cp do Cu é derivável de G_S e G_L, e o próprio candidato deriva H_S no fim do texto. Além disso, a hipótese (b) afirma que reações e fusão ocorrem a T_fus, o que exigiria aquecer os reagentes até T_fus, e isso não é contabilizado. A exclusão é um modelo defensável (hipótese iii, ausência de Cp dos compostos), mas deveria ser declarada como premissa explícita com a justificativa correta: Cp do Cu existe, mas não há Cp dos compostos, então a soma parcial seria inconsistente. Na prática, a diferença é 42 versus 81 placas, e o candidato a quantificou, o que atenua o problema."
+          },
+          {
+            "severity": "minor",
+            "description": "O texto diz que 1358 K 'é apenas o limite superior da faixa', sem mencionar que 1357,8 K é o ponto de fusão real do cobre. O dado da folha dá 1296,5 K, cerca de 61 K abaixo do valor real. Esta é exatamente a armadilha da questão, e o candidato deveria registrar a discrepância e dizer que prevalece o modelo do enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "A premissa operacional 'Cu líquido a 1 atm exige T ≥ T_fus' não é declarada. Ela aparece só implicitamente na discussão de estabilidade de G_L e G_S."
+          },
+          {
+            "severity": "minor",
+            "description": "A expressão 'limite inferior do modelo' (também na linha de ANSWER) é ambígua. O que é cota inferior é a energia real, não a contagem de placas. Seria mais claro escrever 'calor sensível desprezado' como premissa."
+          },
+          {
+            "severity": "minor",
+            "description": "O possível erro de digitação em −2,7×10² (provavelmente −2,7×10⁻³T²) é apontado, mas não quantificado. Ele altera o calor sensível do Cu em ~4,3 kJ/mol. Como o candidato exclui o calor sensível, isso não muda a resposta, mas a observação ficaria mais completa com o número."
+          }
+        ],
+        "summary": "Resposta final correta (42 placas), idêntica à referência, e todos os números intermediários conferem com meu recálculo (n(Cu)=3360 mol; ΔH_r=+24,0 kJ/mol de malaquita com H2O(g); T_fus=1296,5 K, não 1358 K; ΔH_fus=12,96 kJ/mol; E=83,88 MJ; 41,94 → 42). O candidato tratou as armadilhas: fusão incluída, fator 2:1, H2O(g), unidade J/mol, arredondamento para cima, massa molar, distratores da folha e ΔHf(CuO). Também verificou a identidade ΔH = ΔG − T·dΔG/dT e quantificou a alternativa com calor sensível (~23,2 kJ/mol de Cu, 81 placas). O principal defeito é de fundamentação: a exclusão do calor sensível é justificada com 'a folha não fornece Cp', o que não vale para o Cu, cujo Cp o próprio candidato deriva. Também faltam a menção ao ponto de fusão real do Cu (1357,8 K) e a premissa T ≥ T_fus. Com isso, a resolução é muito boa, mas ainda não chega a um gabarito publicável sem ajustes na hipótese (b).\""
+      }
+    }
+  ]
+}

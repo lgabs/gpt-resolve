@@ -1,0 +1,82 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "E = 7560 J (≈ 7,56 kJ): R_eq = 2 Ω; potências de 50 W, 128 W e 200 W em três intervalos de 20 s (n = 1, 2, 3 ramos em paralelo).",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura (conferida no PDF original).** As três chaves estão em série no fio superior: S₂ liga o ramo 2 ao nó do ramo 1, S₁ liga o ramo 1 ao nó do ramo 0, e S₀ liga o nó do ramo 0 à malha. Cada ramo é uma fonte V em série com R₁. A malha começa com um R₂ em série (logo depois de S₀), seguido de um R₂ em paralelo (vertical), e assim por diante. Como a ordem de fechamento é S₀ (0 s), S₁ (20 s) e S₂ (40 s), cada fechamento acrescenta um ramo V–R₁ em paralelo com os anteriores, ligado à malha. Os circuitos são resistivos puros, então vale o regime permanente em cada intervalo, sem transitórios.\n\n**1) Resistência de entrada da malha infinita.** Seja R_in a resistência vista dos terminais logo após S₀, incluindo o primeiro R₂ em série. Acrescentar uma seção à escada infinita não altera R_in, então a escada é autossimilar:\n\nR_in = R₂ + (R₂·R_in)/(R₂ + R_in)\n\nMultiplicando por (R₂ + R_in), obtém-se R_in² − R₂·R_in − R₂² = 0. A raiz positiva é R_in = R₂(1+√5)/2. Com R₂ = √5 − 1, temos R_in = (√5−1)(√5+1)/2 = (5−1)/2 = **2 Ω**. (A raiz negativa é descartada.)\n\n**2) Equivalente de Thévenin da fonte em cada intervalo.** Com n ramos fechados, as n fontes iguais V em paralelo, cada uma com R₁ em série, equivalem a uma fonte V em série com R₁/n.\n\n**3) Potência dissipada na malha.** A potência dissipada em toda a malha, incluindo o primeiro R₂ em série, é a potência que entra pelos terminais: P = I²·R_in, com I = V/(R₁/n + R_in).\n\n- **0 < t < 20 s (só S₀, n = 1):** R_eq = 6 Ω, I = 40/(6+2) = 5 A, P = 25·2 = 50 W, E₁ = 50·20 = 1000 J.\n- **20 < t < 40 s (S₀ e S₁, n = 2):** R_eq = 3 Ω, I = 40/(3+2) = 8 A, P = 64·2 = 128 W, E₂ = 128·20 = 2560 J.\n- **40 < t < 60 s (S₀, S₁ e S₂, n = 3):** R_eq = 2 Ω, I = 40/(2+2) = 10 A, P = 100·2 = 200 W, E₃ = 200·20 = 4000 J.\n\n**4) Energia total.** E = 1000 + 2560 + 4000 = **7560 J** (≈ 7,56 kJ).\n\n**Verificações.**\n- Numericamente, a escada truncada em 80 seções dá R_in = 2,000 Ω.\n- Somando resistor a resistor na escada infinita, a razão de tensão entre nós consecutivos é α = (3−√5)/2. A soma dá exatamente 50 W, 128 W e 200 W nos três intervalos, igual a V_in²/R_in, com V_in = 10, 16 e 20 V.\n- Balanço de potência com n = 3: a fonte fornece 40·10 = 400 W. R₁/n dissipa 10²·2 = 200 W e a malha dissipa 200 W.",
+    "final_answer": "Energia total dissipada na malha entre 0 e 60 s: E = 1000 J + 2560 J + 4000 J = 7560 J (≈ 7,56 kJ). Resistência de entrada da malha: R_in = 2 Ω. Potências por intervalo: 50 W (0–20 s), 128 W (20–40 s) e 200 W (40–60 s).",
+    "pitfalls": [
+      "Calcular R_in da malha infinita por autossimilaridade: R_in = R₂ + R₂·R_in/(R₂+R_in), o que leva a R_in² − R₂R_in − R₂² = 0. Descartar a raiz negativa. Com R₂ = √5−1 o resultado é exatamente 2 Ω. Errar a equação, por exemplo esquecendo o primeiro R₂ em série, dá outro valor de R_in.",
+      "O R_in inclui o primeiro R₂ em série logo após S₀. Pedem a energia dissipada em toda a malha, então a potência é P = I²·R_in. Não se deve contar R₁ nem tirar o primeiro R₂.",
+      "Fontes iguais em paralelo, cada uma com seu R₁, equivalem a V em série com R₁/n (Thévenin), e não a V com R₁ em série com n·V nem a V com n·R₁. O valor de V não muda com n. Só a resistência equivalente da fonte muda: 6, 3 e 2 Ω.",
+      "Chaves em série no fio superior: o resultado só vale porque a ordem de fechamento é S₀, S₁, S₂. Fechar S₂ antes de S₁ ou S₀ não ligaria ramo nenhum à malha. A resolução deve dizer que, em 0–20 s, os ramos 1 e 2 ficam isolados e sem corrente, e que em 20–40 s o ramo 2 continua isolado.",
+      "Cada intervalo dura 20 s, e o último vai de 40 s a 60 s. Somar as três energias parciais (1000 + 2560 + 4000), sem usar uma potência única nem esquecer o intervalo 20–40 s.",
+      "Hipóteses a explicitar: fontes e chaves ideais, circuito puramente resistivo (sem transitório, regime permanente instantâneo) e chaves que não voltam a abrir.",
+      "Erro comum: usar V²/R_in com V = 40 V diretamente nos terminais da malha. A tensão nos terminais é menor por causa do divisor com R₁/n (10 V, 16 V e 20 V)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "E = 7560 J (7,56 kJ): R_eq = 2 Ω; potências 50 W, 128 W e 200 W em três intervalos de 20 s.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "A resolução não explica a topologia das chaves. No PDF, S2, S1 e S0 estão em série no fio superior, então S2 e S1 só ligam seus ramos à malha se as chaves anteriores já estiverem fechadas. O texto afirma 'com n chaves fechadas, há n ramos ... em paralelo' sem justificar. Isso só vale por causa da ordem S0→S1→S2. Faltou dizer que em 0–20 s os ramos 1 e 2 ficam isolados e sem corrente, e que em 20–40 s o ramo 2 continua isolado. Esse é o ponto de leitura da figura que o enunciado cobra, e um gabarito comentado deveria registrá-lo. A frase literal 'n chaves fechadas ⇒ n ramos conectados' é falsa em geral, por exemplo com S2 fechada sozinha. Corrigir descrevendo a conexão de cada ramo a cada instante."
+          },
+          {
+            "severity": "minor",
+            "description": "Não explicita que a potência dissipada em toda a malha infinita, incluindo o primeiro R₂ em série, é a potência que entra nos terminais (P = I²·R_eq). O texto diz que R_eq inclui todos os R₂, mas não justifica a igualdade entre a potência de entrada e a soma sobre infinitos resistores. Bastaria citar a conservação de energia em regime permanente, com série convergente. Também não diz que R₁/n fica fora da malha e que a energia dissipada em R₁ não entra na conta."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência independente (Millman) cobre apenas n = 2. Nada confere n = 1 e n = 3, nem faz um balanço de potência da fonte (por exemplo, n = 3: 400 W fornecidos = 200 W em R₁/n + 200 W na malha). A única outra 'verificação' é o teto de 800 W, que é fraco. A frase 'as unidades são W·s = J' é trivial e não acrescenta verificação."
+          },
+          {
+            "severity": "minor",
+            "description": "As hipóteses são enunciadas de forma enxuta. Aparecem 'puramente resistivo' e 'sem transitório', mas não 'fontes e chaves ideais, fechamento instantâneo' nem 'chaves não reabrem'. A justificativa de Thévenin ('isso vale porque as fontes são iguais') é imprecisa: a equivalência V em série com R₁/n vem de n ramos idênticos em paralelo, com V_th = V e R_th = R₁/n. Não é detalhe sem importância, porque com fontes diferentes V_th mudaria."
+          }
+        ],
+        "summary": "Conferi a figura no PDF original: S2, S1 e S0 estão em série no fio superior, seguidas de R₂ em série e R₂ em paralelo, repetidos. Refiz as contas em Python. A resistência de entrada da escada é R_in = 2 Ω (a equação autossimilar converge para 2,0). As potências são 50, 128 e 200 W e a energia total é 7560 J. A resposta final da candidata (7560 J ≈ 7,56 kJ) é correta e coincide com a minha referência em todos os itens intermediários (R_eq = 2 Ω, I = 5, 8 e 10 A, P = 50, 128 e 200 W, 3 intervalos de 20 s). A resolução é limpa, clara e sem erro de conta. Trata bem as armadilhas principais: o primeiro R₂ em série entra em R_eq, o equivalente de Thévenin é V com R₁/n (e não n·V), soma-se intervalo a intervalo, e há conferência por Millman em n = 2 (U = 16 V, 128 W). A falha de rigor é não tratar explicitamente a topologia das chaves em série e o papel da ordem de fechamento, o que deixa a afirmação 'n chaves ⇒ n ramos em paralelo' sem justificativa. Faltam também checagens para n = 1 e 3, nem um balanço de potência da fonte, e as hipóteses são incompletas. Como a resposta final está certa mas o trecho de leitura da figura é o ponto sensível da questão e ficou implícito, dou 8,5: muito boa, mas ainda não no nível de gabarito comentado (≥ 9).\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "E = 7560 J (≈ 7,56 kJ): R_eq = 2 Ω; potências de 50 W, 128 W e 200 W em três intervalos de 20 s (n = 1, 2, 3 ramos em paralelo).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A numeração dos ramos (1, 2, 3, com o ramo 3 mais próximo da escada) não coincide com a numeração das chaves (S₂, S₁, S₀). Isso pode confundir o leitor: S₀ liga o ramo 3, e não o ramo 0. Seria mais limpo nomear os ramos como B₀, B₁, B₂ seguindo o índice da chave que os liga."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação do balanço de potência, a expressão \"potência da fonte é nV·I_n/n = V·I_n\" está escrita de forma pouco clara. O que se quer dizer é que cada fonte entrega V·(I_n/n), e que o total é V·I_n. Isso é só notação e não afeta nenhum resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação por Millman parte do mesmo equivalente de Thévenin da etapa 3, então não é independente. A verificação realmente independente é a soma resistor a resistor da escada (0,427/(1−q²) = 0,5 S), que está correta. O balanço de potência confirma as contas, mas também usa o mesmo I_n."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução diz que o primeiro R₂ em série faz parte da \"malha\" e deixa isso explícito, o que é correto e coerente com a figura. Faltou uma frase curta justificando por que R₁/n fica de fora (é resistência interna da fonte, não da malha). Há essa justificativa implícita, mas ela poderia ser mais direta."
+          }
+        ],
+        "summary": "A resposta final do candidato, E = 7560 J, está correta e coincide com a minha referência. Conferi a figura no PDF: as chaves S₂, S₁ e S₀ estão em série no fio superior, e cada ramo V–R₁ liga-se ao nó entre chaves. Por isso a ordem de fechamento S₀→S₁→S₂ acrescenta um ramo em paralelo a cada 20 s. Refiz as contas em Python. Com a escada truncada em 200 seções, R_in = 2,000 Ω. Os valores por intervalo são 5 A / 50 W, 8 A / 128 W e 10 A / 200 W, e a soma é 20·378 = 7560 J. A resolução trata todas as armadilhas. R_in vem da autossimilaridade, com a raiz negativa descartada. O primeiro R₂ em série está incluído na malha e R₁/n está fora. O equivalente de Thévenin é V em série com R₁/n. A resolução explica que os ramos fora do caminho ficam isolados nos intervalos iniciais. Soma as três energias parciais e declara as hipóteses (regime permanente instantâneo, chaves ideais, sem reabertura). As verificações estão corretas: Millman dá 10, 16 e 20 V; o balanço de potência fecha em 200, 320 e 400 W; a convergência da série dá q = (3−√5)/2 e 0,427/(1−q²) = 0,5 S; o teto de 800 W está certo. Os defeitos são só de notação e clareza (numeração dos ramos versus chaves, uma expressão confusa no balanço). É próxima de um gabarito comentado publicável."
+      }
+    }
+  ]
+}

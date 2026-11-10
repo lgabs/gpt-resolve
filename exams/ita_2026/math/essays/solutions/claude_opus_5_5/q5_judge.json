@@ -1,0 +1,52 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A razão é (2+√6)³/32 = (22+9√6)/16 ≈ 2,75. Isso porque R = r(2+√6)/2, já que R − r é o raio circunscrito do tetraedro regular de aresta 2r, que vale r√6/2.",
+  "judge_reference": {
+    "reference_solution": "**Questão 05 — Resolução de referência**\n\nConferi o enunciado com o original (p. 6), e a transcrição está correta. A questão não tem figura.\n\n**1. Notação e interpretação**\n- Seja r o raio de cada uma das quatro esferas menores, com centros O₁, O₂, O₃, O₄.\n- Seja R o raio da esfera maior, com centro O.\n- \"Tangentes duas a duas\": as esferas são idênticas, então a tangência entre elas só pode ser externa. Logo, para todo i ≠ j, m(OᵢOⱼ) = r + r = 2r. O tetraedro O₁O₂O₃O₄ é regular, com aresta a = 2r. Isso confirma a hipótese do enunciado.\n- \"Inscritas na esfera maior\": cada esfera menor está dentro da maior e é tangente internamente a ela. Logo m(OOᵢ) = R − r para i = 1, 2, 3, 4.\n\n**2. Posição do centro O**\nComo m(OO₁) = m(OO₂) = m(OO₃) = m(OO₄) = R − r, o ponto O é equidistante dos quatro vértices do tetraedro. Os quatro vértices não são coplanares, então existe um único ponto com essa propriedade: o circuncentro do tetraedro. No tetraedro regular, ele coincide com o baricentro. Portanto R − r = ρ, onde ρ é o raio da esfera circunscrita ao tetraedro regular de aresta a.\n\n**3. Cálculo de ρ (circunraio do tetraedro regular de aresta a)**\nHá dois caminhos.\n\n(a) Pela altura:\n- A altura do tetraedro é h = a√6/3.\n- O baricentro divide a altura na razão 3 : 1 a partir do vértice. Logo ρ = (3/4)h = a√6/4.\n- Verificação por Pitágoras: o circunraio da face é a/√3. A distância do centro à face é h/4 = a√6/12. Então ρ² = a²/3 + a²·6/144 = a²/3 + a²/24 = 9a²/24 = 3a²/8, e ρ = a√6/4. ✓\n\n(b) Pelo cubo:\n- Tome vértices alternados de um cubo de lado ℓ. A aresta do tetraedro é a diagonal de face, a = ℓ√2.\n- O circunraio é metade da diagonal do cubo: ρ = ℓ√3/2 = (a/√2)(√3/2) = a√6/4. ✓\n\nCom a = 2r: ρ = 2r√6/4 = r√6/2.\n\n**4. Raio da esfera maior**\nR = r + ρ = r + r√6/2 = r(2 + √6)/2.\n\n**5. Razão pedida**\nV_maior / (4·V_menor) = [(4/3)πR³] / [4·(4/3)πr³] = R³/(4r³) = (1/4)·[(2 + √6)/2]³ = (2 + √6)³/32.\n\nExpandindo o cubo:\n(2 + √6)³ = 8 + 3·4·√6 + 3·2·6 + 6√6 = 8 + 12√6 + 36 + 6√6 = 44 + 18√6.\n\nPortanto:\nRazão = (44 + 18√6)/32 = **(22 + 9√6)/16 ≈ 2,753**.\n\n**Conferência numérica (Python)**\n- Com r = 1, montei os 4 centros como vértices alternados de um cubo de lado √2. As 6 arestas medem 2.\n- A distância do baricentro aos vértices é 1,224745 = √6/2.\n- R = 2,224745.\n- R³/4 = 2,752838 = (22 + 9√6)/16. ✓\n\n**Sanidade:** a razão é maior que 1, como deve ser. As esferas menores ocupam cerca de 36% do volume da maior (1/2,753 ≈ 0,363).",
+    "final_answer": "A razão entre o volume da esfera maior e a soma dos volumes das quatro menores é (2 + √6)³/32 = (44 + 18√6)/32 = (22 + 9√6)/16 ≈ 2,753.\n\nResultados intermediários: a aresta do tetraedro dos centros é 2r, o circunraio do tetraedro é r√6/2 e o raio da esfera maior é R = r(2 + √6)/2.",
+    "pitfalls": [
+      "Aresta do tetraedro: como as esferas são tangentes externamente, a distância entre centros é 2r, e não r. Usar a = r dá R = r(1 + √6/4) e uma razão errada de ≈ 1,33.",
+      "Esquecer de somar r: o raio da esfera maior é R = ρ + r (circunraio do tetraedro dos centros mais o raio da menor), e não apenas ρ = r√6/2. Usar só ρ dá razão ≈ 0,46 < 1, o que é absurdo.",
+      "Confundir os raios notáveis do tetraedro regular: circunraio a√6/4, inraio a√6/12, altura a√6/3 e meia-esfera tangente às arestas a√2/4. Usar o inraio ou a altura muda o resultado.",
+      "Dividir a altura na razão errada: o baricentro fica a 3/4 da altura a partir do vértice. Usar 2/3, a razão do triângulo, é erro comum.",
+      "Justificar que o centro da esfera maior é o circuncentro (= baricentro) do tetraedro: a tangência interna dá m(OOᵢ) = R − r para todo i, logo O é equidistante dos 4 vértices não coplanares. Uma boa resolução deve explicitar isso, nem que seja por simetria.",
+      "Interpretar 'inscritas' como tangência interna à esfera maior, com distância entre centros R − r e não R + r.",
+      "Esquecer o fator 4 no denominador (soma das QUATRO esferas). Sem ele, a razão vira R³/r³ = (22 + 9√6)/4 ≈ 11,01.",
+      "Inverter a razão: o pedido é V_maior / soma das menores, e a inversa daria 16/(22 + 9√6) ≈ 0,363.",
+      "Erro na expansão de (2 + √6)³: o correto é 44 + 18√6. Erros típicos são esquecer o termo 3·2·(√6)² = 36 ou o termo (√6)³ = 6√6.",
+      "A instrução 8 da prova exige resolver integralmente as expressões numéricas. Deixar a resposta como ((2 + √6)/2)³/4 sem simplificar pode sofrer desconto. A forma esperada é (22 + 9√6)/16 ou equivalente simplificada, como (44 + 18√6)/32 ou (2 + √6)³/32."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A razão é (2+√6)³/32 = (22+9√6)/16 ≈ 2,75. Isso porque R = r(2+√6)/2, já que R − r é o raio circunscrito do tetraedro regular de aresta 2r, que vale r√6/2.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No passo 1, o candidato afirma que as esferas menores são tangentes externamente, mas não diz por quê. Duas esferas idênticas não podem ser tangentes internamente, porque isso as faria coincidir. Bastava uma frase dizendo isso. A omissão é trivial e não compromete o raciocínio."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 3, o candidato afirma que 'O circuncentro O está sobre AG' sem justificar. A justificativa completa é curta: O é equidistante de B, C e D, então está na reta perpendicular ao plano BCD que passa pelo circuncentro G da face. Essa reta é a reta AG. Ele também usa m(OG) = h − ρ, o que supõe O entre A e G. Isso não afeta a conta, porque (h−ρ)² = (ρ−h)², mas a resolução não comenta o ponto."
+          },
+          {
+            "severity": "minor",
+            "description": "A letra O é usada para o centro da esfera maior (passo 2) e de novo para o circuncentro (passo 3). O passo 2 mostrou que os dois pontos coincidem, então não há erro. Só seria mais claro dizer isso explicitamente ao reaproveitar a letra."
+          }
+        ],
+        "summary": "Conferi o enunciado na p. 6 do PDF, e a transcrição está correta. A resposta final do candidato é (2+√6)³/32 = (22+9√6)/16 ≈ 2,753, igual à da minha referência. Verifiquei em Python que ρ = (h² + a²/3)/(2h) = a√6/4, que (2+√6)³ = 44+18√6 e que R³/(4r³) = 2,752838.\n\nA estrutura da resolução é exemplar:\n- **Aresta:** a = 2r, justificada pela tangência externa.\n- **Centro da esfera maior:** a tangência interna dá OA = OB = OC = OD = R − r. Como os quatro vértices não são coplanares, O é o circuncentro, e esse argumento cobre explicitamente a armadilha da justificativa do centro.\n- **Circunraio:** deduzido do zero, sem fórmula decorada. A altura vem de Pitágoras com GB = a√3/3. Depois, Pitágoras no triângulo OGB dá ρ = a√6/4, o que evita confundir o circunraio com o inraio ou com a altura e também evita usar a razão 2/3 no lugar de 3/4.\n- **Raio da esfera maior:** R = r + ρ, sem esquecer de somar r.\n- **Razão:** o fator 4 do denominador está presente, a razão não foi invertida e o cubo foi expandido corretamente.\n- **Forma final:** a resposta está totalmente simplificada, como pede a instrução 8.\n- **Verificação final:** a razão é adimensional, é maior que 1 e dá uma ocupação de cerca de 36%, que é plausível.\n\nTodas as armadilhas da minha lista foram tratadas. Encontrei apenas três lacunas menores de redação: a tangência externa não foi justificada, não se explicou por que o circuncentro está na reta AG e a letra O foi reutilizada sem aviso. Nenhuma afeta a correção, e a resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

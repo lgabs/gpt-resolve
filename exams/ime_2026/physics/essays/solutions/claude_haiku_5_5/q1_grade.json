@@ -1,0 +1,55 @@
+{
+  "question": 1,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-2-24-10-2025-2-fase-dia-2/dissertativa-1-fisica-2-fase-dia-2-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "-2 m < x < 4 m, com movimento oscilatório para 0 < E < 32/3 J; os extremos ficam de fora.",
+      "key_answer": "-2 < x < 4 (m): é o poço de potencial em torno do equilíbrio estável x = 0. Em x = 4 o equilíbrio é instável, e x = -2 tem a mesma Ep que x = 4 (32/3 J).",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Mesmo intervalo aberto. Conferi as contas: Ep(4) = 32 - 64/3 = 32/3 e Ep(-2) = 8 + 8/3 = 32/3. A fatoração x³ - 6x² + 32 = (x-4)²(x+2) também confere. A resolução justifica melhor a parte de 'posições possíveis': para cada x0 em (-2, 4) existe uma energia E < 32/3 J em que x0 fica na componente limitada que contém a origem. Ela também mostra que os extremos exigiriam E ≥ 32/3 J."
+    },
+    {
+      "item": "b",
+      "solution_answer": "E_sup = Ep(4) = 32/3 J ≈ 10,7 J. É supremo e não é atingido; o período diverge como (√m/2)·ln[1/(E_sup - E)].",
+      "key_answer": "E_sup = 32/3 J (≈ 10,7 J), igual a Ep(4) = Ep(-2).",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Mesmo valor e mesma unidade. A resolução acrescenta a análise do caso E = E_sup (x = 4 só é alcançado em tempo infinito, então não há periodicidade) e a divergência logarítmica do período. Conferi numericamente com m = 1: t(L→2) - (1/4)·ln(1/δ) → 2,1089 para δ = 10⁻² a 10⁻⁶, como ela afirma."
+    },
+    {
+      "item": "c",
+      "solution_answer": "v(0) = -v0, com v0 = √(2E/m), em mínimo de tangente horizontal. v cresce até 0 em t1 (retorno em x_t < -2, ponto de inflexão) e chega a +v0 em t2 = 2t1 (x = 0, máximo local). Depois cai até um mínimo v4 > 0 em t3 (x = 4) e cresce sem limite, com assíntota vertical em t* finito. A curva é antissimétrica em torno de (t1, 0) e não é periódica.",
+      "key_answer": "Começa em v = -V0. Anula-se em T1 (retorno em x < 0), passa por +V0 em T2 = 2T1 (x = 0), cai até um mínimo positivo em T3 (x = 4) e depois cresce sem limite, porque F > 0 para x > 4.",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os esboços têm a mesma forma qualitativa. Refiz por RK4 o exemplo numérico da resolução (m = 1 kg, E = 16 J) e ele confere: v0 = 5,66 m/s, x_t = -2,39 m, t1 = 0,640 s, t2 = 1,280 s, t3 = 2,192 s, v4 = 3,27 m/s, v(3 s) = 12,6 m/s e t* ≈ 3,975 s (≈ 3,98 s). Os pontos do gráfico TikZ também batem. A tangente horizontal em t = 0, t2 e t3 e a inflexão em t1 estão corretas, porque dv/dt = F(x)/m e d²v/dt² = F'(x)·v/m. A resolução detalha mais que o gabarito: a fuga ocorre em tempo finito, com assíntota vertical."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Na resolução do gabarito, a linha do item (b) foi transcrita como 'E_sup = 2(4)^2 - (4(4)^3)/3'. O fator 4 a mais em '4(4)^3' deve ser erro de digitação ou de transcrição, porque o resultado declarado, 32/3 J, está correto: 32 - 64/3."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "A transcrição do gráfico do gabarito diz que a curva 'cruza o eixo t em T1 com inclinação máxima'. Isso vale só localmente, no trecho até T3: T1 é ponto de inflexão. Para t > T3 a inclinação cresce sem limite. Não afeta a resposta."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A massa da partícula não é dada. Por isso o esboço do item (c) só pode ser qualitativo, e a resolução usou m = 1 kg e E = 16 J como exemplo ilustrativo. Também não está explícito se o intervalo do item (a) deve ser aberto ou fechado. Ambos responderam com o intervalo aberto, o que é coerente com a energia estritamente menor que E_sup."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução vai muito além do pedido: assintótica do período, fuga em tempo finito, prova de unicidade e simetria. Está tudo correto, mas é longa para uma prova discursiva. O cálculo assintótico do período, que conferi numericamente, é material extra e não muda as respostas."
+    }
+  ],
+  "summary": "A resolução está correta e coincide com o gabarito do Poliedro nos três itens. No item (a), os dois dão -2 m < x < 4 m. No item (b), os dois dão E_sup = 32/3 J ≈ 10,7 J. No item (c), o esboço v×t tem a mesma forma nos dois: começa em -v0, anula-se no retorno em x < -2, passa por +v0 em x = 0 em T2 = 2T1, tem um mínimo positivo em x = 4 e depois cresce sem limite. Refiz as contas e a integração numérica, e elas confirmam o exemplo numérico da resolução e a constante do período assintótico. Não encontrei erros na resolução. No gabarito há só um provável erro de digitação na conta do item (b), que não altera o resultado."
+}

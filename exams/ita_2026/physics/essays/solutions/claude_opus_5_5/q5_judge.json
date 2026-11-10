@@ -1,0 +1,58 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) W = (M1 − M2)·g·α·L·ΔT = 700·α·L·(M1 − M2) J, em unidades SI, com ΔT = 70 K. b) η = (M1 − M2)·g·α·L / (ρ_H2O·V·c_H2O + 3·R·m/M_Cu + M1·g·α·L) ≈ 10·α·L·(M1 − M2) / (ρ_H2O·V·c_H2O + 3·R·m/M_Cu), porque o termo M1·g·α·L é desprezível.",
+  "judge_reference": {
+    "reference_solution": "**Modelo físico.** A substância de trabalho é a viga de cobre. Como ela é incompressível, a carga não a deforma elasticamente: o comprimento só muda com a temperatura, L(T) = L[1 + α(T − 20 °C)], com L medido a 20 °C. O ciclo tem quatro etapas:\n\n1. A 20 °C, com M₁ sobre a viga, a fonte é ligada e o banho e a viga vão de 20 °C a 90 °C sob a força constante F₁ = M₁g. A viga se dilata de\n   ΔL = αLΔT = αL·(90 − 20) = 70αL (ΔT = 70 °C = 70 K)\n   e ergue M₁ por ΔL. A viga realiza o trabalho W₁ = +M₁gΔL.\n2. A 90 °C, M₁ é trocada por M₂ instantaneamente, na mesma altura L + ΔL. A viga não se move, então não há trabalho.\n3. Com a fonte desligada, o sistema esfria de 90 °C a 20 °C sob F₂ = M₂g. A viga se contrai de ΔL e M₂ desce ΔL. O trabalho é W₂ = −M₂gΔL.\n4. A 20 °C, M₂ é trocada por M₁ na altura L. Não há trabalho, e o ciclo recomeça.\n\nNo diagrama força × comprimento, o ciclo é um retângulo de lados (M₁ − M₂)g e ΔL.\n\n**a) Trabalho total por ciclo**\n\nW = W₁ + W₂ = (M₁ − M₂)gΔL\n\n**W = 70αL(M₁ − M₂)g = 700αL(M₁ − M₂)**, em J no SI, com g = 10 m/s² e α em K⁻¹.\n\nOutros trabalhos se anulam no ciclo fechado:\n- a subida e a descida do centro de massa da própria viga (±mgΔL/2);\n- o trabalho contra a atmosfera na expansão de volume da viga (3α) e da água (±p₀ΔV);\n- o piso do recipiente é fixo e não realiza trabalho.\n\nO resultado é positivo porque M₁ > M₂: a máquina entrega trabalho.\n\n**b) Eficiência**\n\nO calor entra somente na etapa 1, fornecido pela fonte ao banho. No resfriamento, todo o calor é rejeitado ao ambiente, a 20 °C. Por ciclo, a fonte precisa aquecer de 20 °C a 90 °C:\n- a água, de massa ρ_{H₂O}V: Q_água = ρ_{H₂O}Vc_{H₂O}ΔT;\n- a viga, com n = m/M_Cu mols e, por Dulong-Petit, capacidade molar 3R. Para sólidos, c_P ≈ c_V, então Q_Cu = (m/M_Cu)·3R·ΔT.\n\nQ_in = ΔT[ρ_{H₂O}Vc_{H₂O} + 3Rm/M_Cu] = 70[ρ_{H₂O}Vc_{H₂O} + 3Rm/M_Cu]\n\nη = W/Q_in = 70αL(M₁ − M₂)g / {70[ρ_{H₂O}Vc_{H₂O} + 3Rm/M_Cu]}\n\n**η = (M₁ − M₂)gαL / (ρ_{H₂O}Vc_{H₂O} + 3Rm/M_Cu) = (M₁ − M₂)gαL·M_Cu / (ρ_{H₂O}Vc_{H₂O}M_Cu + 3Rm)**, com g = 10 m/s².\n\nA eficiência não depende de ΔT, e a expressão é adimensional: o numerador e os dois termos do denominador estão em J/K.\n\n**Observações de rigor**\n\n(i) Pela 1ª lei aplicada exatamente à viga, o calor de entrada também incluiria o trabalho M₁gΔL (e p₀ΔV). Esse termo é desprezível perto de 3nRΔT, da ordem de 10⁻⁵ em termos relativos.\n\n(ii) Se a máquina for definida só pela viga, ignorando o banho, obtém-se η_viga = (M₁ − M₂)gαL·M_Cu/(3Rm). Essa leitura não usa c_{H₂O}, ρ_{H₂O} e V, que o enunciado fornece. Como o enunciado diz que a fonte fornece energia \"ao banho\", a leitura esperada inclui a água.\n\n**Ordem de grandeza** (valores ilustrativos: m = 1 kg, L = 1 m, α = 17×10⁻⁶ K⁻¹, M₁ − M₂ = 100 kg, V = 1 L):\n- ΔL ≈ 1,2 mm e W ≈ 1,2 J;\n- Q_in ≈ 3,2×10⁵ J e η ≈ 3,7×10⁻⁶;\n- só a viga: η_viga ≈ 4,3×10⁻⁵;\n- Carnot entre 293 K e 363 K: ≈ 19 %.\n\nA máquina, portanto, tem eficiência muito baixa. Faz sentido: quase todo o calor fica na água e na energia interna do cobre e é rejeitado no resfriamento.",
+    "final_answer": "a) W = (M₁ − M₂)g·αL·ΔT, com ΔT = 70 K, ou seja, W = 70αL(M₁ − M₂)g = 700αL(M₁ − M₂) J no SI. É o trabalho líquido realizado pela viga: ela ergue M₁ por ΔL = 70αL e deixa M₂ descer o mesmo ΔL.\n\nb) η = W/Q_fonte, com Q_fonte = 70(ρ_{H₂O}Vc_{H₂O} + 3Rm/M_Cu). Assim, η = (M₁ − M₂)gαL / (ρ_{H₂O}Vc_{H₂O} + 3Rm/M_Cu) = 10αL(M₁ − M₂)·M_Cu / (ρ_{H₂O}Vc_{H₂O}M_Cu + 3Rm), com g = 10.\n\nLeitura alternativa, se a máquina for só a viga: η_viga = (M₁ − M₂)gαL·M_Cu/(3Rm). Em ambos os casos a eficiência é muito pequena (~10⁻⁶ a 10⁻⁵), bem abaixo da de Carnot (~19 %).",
+    "pitfalls": [
+      "Trabalho líquido: é preciso descontar o trabalho negativo da descida de M₂ (−M₂gΔL). Escrever só W = M₁gΔL está errado.",
+      "Usar o coeficiente linear (ΔL = αLΔT) para o deslocamento das massas. Usar 3α (volumétrico) ou 2α está errado: a expansão radial não move as cargas.",
+      "ΔT = 90 − 20 = 70 °C = 70 K. Não usar 90 K, 363 K nem a temperatura absoluta na dilatação.",
+      "Interpretar 'incompressível': a troca de M₁ por M₂ não deforma a viga elasticamente, então não há energia elástica no ciclo. As trocas de massa ocorrem sem deslocamento e sem trabalho.",
+      "Lei de Dulong-Petit: 3R é capacidade molar, então Q_Cu = (m/M_Cu)·3R·ΔT. Erro comum: usar m·3R ou esquecer de dividir por M_Cu.",
+      "c_V × c_P: o processo é a força constante, não a volume constante. Para sólidos c_P ≈ c_V, e a diferença (incluindo o termo M₁gΔL na 1ª lei) é desprezível, da ordem de 10⁻⁵. Uma boa resolução justifica a aproximação.",
+      "Calor de entrada: a fonte aquece o banho (água + viga), e todo esse calor é rejeitado no resfriamento. O enunciado fornece c_{H₂O}, ρ_{H₂O} e V justamente para isso: Q_in deve incluir ρ_{H₂O}Vc_{H₂O}ΔT. Considerar só o calor da viga é uma interpretação que ignora dados e merece no máximo crédito parcial, salvo se bem justificada.",
+      "Calor específico da água é por massa: massa de água = ρ_{H₂O}V. Não misturar com a base molar do cobre.",
+      "Não responder com a eficiência de Carnot (1 − 293/363 ≈ 19 %). O ciclo não é reversível de Carnot; ela é só um limite superior.",
+      "Trabalhos que se cancelam no ciclo: subida e descida do CM da própria viga, trabalho contra a atmosfera na expansão de volume (viga e água) e o empuxo. Uma resolução completa menciona isso ou ao menos não os soma de forma errada.",
+      "Conferir a dimensão: η deve ser adimensional, com (M₁ − M₂)gαL em J/K, assim como ρVc e 3Rm/M_Cu.",
+      "Deixar o resultado em forma literal coerente, com g = 10 m/s² se substituído. O enunciado não dá valores numéricos para α, L, m etc., então não se deve inventá-los na resposta final."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) W = (M1 − M2)·g·α·L·ΔT = 700·α·L·(M1 − M2) J, em unidades SI, com ΔT = 70 K. b) η = (M1 − M2)·g·α·L / (ρ_H2O·V·c_H2O + 3·R·m/M_Cu + M1·g·α·L) ≈ 10·α·L·(M1 − M2) / (ρ_H2O·V·c_H2O + 3·R·m/M_Cu), porque o termo M1·g·α·L é desprezível.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O rigor é desigual no calor absorvido. O candidato inclui o termo exato M₁gαLΔT (trabalho de erguer M₁), mas omite contribuições da mesma ordem: a subida do centro de massa da própria viga (mgαLΔT/2), o trabalho p₀ΔV contra a atmosfera (que ele descarta explicitamente) e a variação do empuxo. Como depois todos esses termos são desprezados, o resultado final não muda. Ainda assim, ou se incluem todos os termos de ordem αL, ou se desprezam todos de uma vez com uma única justificativa."
+          },
+          {
+            "severity": "minor",
+            "description": "No item a), ele não comenta que o trabalho do peso da própria viga (±mgΔL/2) se anula no ciclo. Comenta apenas o trabalho contra a atmosfera. Seria preciso mencionar esse cancelamento para justificar por que só M₁ e M₂ entram no trabalho líquido."
+          },
+          {
+            "severity": "minor",
+            "description": "Ele afirma c_P ≃ c_V para o sólido sem estimativa quantitativa. A aproximação é padrão e correta nesse nível, mas uma frase sobre a ordem de grandeza da diferença deixaria a justificativa completa. O candidato estima apenas o termo mecânico M₁gαL, cuja comparação (3,4×10⁻³ J/K contra 4,2×10³ J/K) está correta."
+          },
+          {
+            "severity": "minor",
+            "description": "Ele não discute a leitura alternativa em que a máquina seria só a viga (η = (M₁−M₂)gαL·M_Cu/(3Rm)), nem explica por que o enunciado, ao fornecer c_H₂O, ρ_H₂O e V e dizer que a fonte fornece energia 'ao banho', leva a incluir a água. A escolha está certa, mas faltou uma linha de justificativa."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (pág. 6), e a transcrição está fiel.\n\n**a) Trabalho total.** O candidato obtém W = (M₁−M₂)gαLΔT = 700αL(M₁−M₂) J (SI), resultado idêntico ao da referência e correto. O ciclo está bem modelado:\n- é um retângulo no plano F × comprimento, percorrido no sentido horário (W > 0);\n- as trocas de massa ocorrem sem deslocamento, então não realizam trabalho;\n- o deslocamento usa o coeficiente linear, ΔL = αLΔT com ΔT = 70 K;\n- o trabalho líquido desconta a descida de M₂;\n- a análise dimensional está certa.\n\n**b) Eficiência.** O calor de entrada inclui a água (ρVcΔT) e o cobre por Dulong-Petit com base molar (3Rm/M_Cu·ΔT), com a observação de que c_P ≃ c_V. Ele também soma o termo exato da 1ª lei, M₁gαLΔT. Com isso, η = (M₁−M₂)gαL/(ρVc + 3Rm/M_Cu + M₁gαL). Essa expressão é a forma mais exata da resposta da referência, que menciona esse termo como desprezível na sua observação (i). Depois ele mostra numericamente que o termo é desprezível e chega à mesma expressão aproximada da referência.\n\n**Verificações.** Conferi todas com python:\n- M₁gαL = 3,4×10⁻³ J/K;\n- η ≈ 3,7×10⁻⁷, coerente com o \"~10⁻⁷\" do candidato;\n- Carnot ≈ 0,19;\n- o balanço Q_abs − Q_ced = W está certo, inclusive no sinal do trabalho de M₂ no resfriamento.\n\n**Armadilhas.** Todas as principais foram evitadas: trabalho líquido, uso de α (e não 3α), ΔT = 70 K, interpretação de \"incompressível\", divisão por M_Cu, inclusão da água, não usar Carnot como resposta e adimensionalidade.\n\n**Problemas.** São só pontos menores de rigor:\n- o termo M₁gαL é incluído, mas outros da mesma ordem (peso da própria viga, p₀ΔV, empuxo) não;\n- falta mencionar que o trabalho do peso da viga se anula no ciclo;\n- não discute a interpretação em que só a viga é a máquina.\n\nÉ uma resolução de nível de gabarito comentado."
+      }
+    }
+  ]
+}

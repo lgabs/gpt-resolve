@@ -1,0 +1,56 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses e convenções.}
+\begin{itemize}
+\item A reação é tratada como irreversível. O catalisador está em concentração constante e seu efeito fica todo em $k$: ele acelera a reação, mas não altera a estequiometria nem a quantidade final de O$_2$.
+\item \textit{Convenção de velocidade:} $v=-\dfrac{d[\mathrm{H_2O_2}]}{dt}=k\,[\mathrm{H_2O_2}]$. A própria prova indica essa convenção. Com $v=-\tfrac{1}{2}\dfrac{d[\mathrm{H_2O_2}]}{dt}$, a constante efetiva seria $2k$ e a concentração em 5 min seria $0{,}5\cdot e^{-0{,}693}=0{,}25\ \mathrm{mol\cdot L^{-1}}$. A tabela, porém, traz $e^{-0{,}3465}$, que é exatamente $e^{-kt}$ com $kt=0{,}0693\cdot 5=0{,}3465$.
+\item \textit{Volume constante:} $V=0{,}100\ \mathrm{L}$. A água formada (no máximo $0{,}050$ mol, cerca de $0{,}9$ mL) altera o volume em cerca de $1\,\%$, dentro da precisão dos dados.
+\item \textit{Gás:} o O$_2$ formado é puro e sai da solução como gás ideal. Não há correção de pressão de vapor da água, pois a prova não fornece esse dado. A solubilidade do O$_2$ em água é desprezada, pelo mesmo motivo.
+\end{itemize}
+
+Quantidade inicial de H$_2$O$_2$:
+\[
+n_0=[\mathrm{H_2O_2}]_0\,V=0{,}5\ \mathrm{mol\cdot L^{-1}}\cdot 0{,}100\ \mathrm{L}=0{,}050\ \mathrm{mol}
+\]
+
+\textbf{1. Ordem da reação.} O coeficiente $2$ da equação não define a ordem, que é determinada experimentalmente. Admitindo lei de potência $v=k\,[\mathrm{H_2O_2}]^{n}$, sem dependência de O$_2$ e com catalisador em concentração fixa, a unidade de $k$ é $(\mathrm{mol\cdot L^{-1}})^{1-n}\cdot\mathrm{min^{-1}}$, pois $v$ está em $\mathrm{mol\cdot L^{-1}\cdot min^{-1}}$. Como $k$ é dada em $\mathrm{min^{-1}}$, tem-se $n=1$. A ordem zero exigiria $k$ em $\mathrm{mol\cdot L^{-1}\cdot min^{-1}}$, e a ordem dois, em $\mathrm{L\cdot mol^{-1}\cdot min^{-1}}$. Ambas são incompatíveis com o dado.
+
+\textbf{2. Lei integrada.} Com $[\mathrm{A}]=[\mathrm{H_2O_2}]$ e $-\dfrac{d[\mathrm{A}]}{dt}=k\,[\mathrm{A}]$, separam-se as variáveis e integra-se de $t=0$ ($[\mathrm{A}]_0$) até $t$ ($[\mathrm{A}]$):
+\begin{align*}
+\int_{[\mathrm{A}]_0}^{[\mathrm{A}]}\frac{d[\mathrm{A}]}{[\mathrm{A}]}&=-k\int_0^{t}dt\\
+\ln\frac{[\mathrm{A}]}{[\mathrm{A}]_0}&=-kt\\
+[\mathrm{A}]&=[\mathrm{A}]_0\,e^{-kt}
+\end{align*}
+Para $t=0$ recupera-se $[\mathrm{A}]_0$. A exponencial decresce, como exige $d[\mathrm{A}]/dt<0$ com $k>0$. A meia-vida dá outra checagem:
+\[
+t_{1/2}=\frac{\ln 2}{k}=\frac{0{,}693}{0{,}0693}\ \mathrm{min}=10\ \mathrm{min}
+\]
+Em $t_{1/2}$, $[\mathrm{A}]=0{,}25\ \mathrm{mol\cdot L^{-1}}$, a metade da concentração inicial.
+
+\textbf{a) Volume de O$_2$ ao término da reação.} Pela estequiometria, 2 mol de H$_2$O$_2$ produzem 1 mol de O$_2$, logo
+\[
+n_{\mathrm{O_2}}=\frac{n_0-n_{\mathrm{H_2O_2}}(t)}{2}
+\]
+Pela lei exponencial, $[\mathrm{A}]\to 0$ somente para $t\to\infty$. Toma-se como término o consumo praticamente total: em $t=100$ min ($10$ meias-vidas) resta $2^{-10}\approx 0{,}1\,\%$ do reagente, erro inferior à precisão dos dados. Assim,
+\[
+n_{\mathrm{O_2}}=\frac{0{,}050}{2}\ \mathrm{mol}=0{,}025\ \mathrm{mol}
+\]
+Esse valor não depende de $k$, pois o catalisador altera apenas o tempo necessário.
+
+Gás ideal, com $T=25+273=298$ K e $P=1$ atm:
+\[
+V=\frac{n_{\mathrm{O_2}}\,R\,T}{P}=\frac{0{,}025\cdot 8{,}21\times10^{-2}\cdot 298}{1}\ \mathrm{L}\approx 0{,}612\ \mathrm{L}\approx 612\ \mathrm{mL}
+\]
+Unidades: $\mathrm{mol\cdot(atm\cdot L\cdot K^{-1}\cdot mol^{-1})\cdot K/atm=L}$.
+
+Conferências: em CNTP, $0{,}025\cdot 22{,}4=0{,}56$ L; corrigido para 298 K, $0{,}56\cdot 298/273\approx 0{,}61$ L. Com $R=8{,}31$ J$\cdot$K$^{-1}\cdot$mol$^{-1}$ e $1$ atm $=1{,}01325\times10^{5}$ N$\cdot$m$^{-2}$, obtém-se $0{,}611$ L, com diferença de $0{,}1\,\%$ devida ao arredondamento de $R$.
+
+\textbf{b) Concentração de H$_2$O$_2$ em 5 min.} O produto $kt=0{,}0693\ \mathrm{min^{-1}}\cdot 5\ \mathrm{min}=0{,}3465$ é adimensional, pois o minuto se cancela. Logo
+\[
+[\mathrm{H_2O_2}]=0{,}5\cdot e^{-0{,}3465}\ \mathrm{mol\cdot L^{-1}}=0{,}5\cdot 0{,}707\ \mathrm{mol\cdot L^{-1}}\approx 0{,}354\ \mathrm{mol\cdot L^{-1}}
+\]
+Conferências: $0{,}3465=\tfrac{1}{2}\ln 2$, pois $5$ min é metade de $t_{1/2}$. Logo $e^{-0{,}3465}=2^{-1/2}=1/\sqrt{2}\approx 0{,}707$, valor coincidente com o da tabela. O resultado está entre $0{,}5$ (em $t=0$) e $0{,}25$ (em $t_{1/2}$). Restam cerca de $71\,\%$ do reagente, com consumo de $0{,}146\ \mathrm{mol\cdot L^{-1}}$, menos da metade, como esperado para $t<t_{1/2}$.
+
+ANSWER: a) $V(\mathrm{O_2})\approx 0{,}612\ \mathrm{L}$ (cerca de 612 mL, correspondente a $0{,}025$ mol de O$_2$ a $25\,^{\circ}\mathrm{C}$ e 1 atm); b) $[\mathrm{H_2O_2}]\approx 0{,}354\ \mathrm{mol\cdot L^{-1}}$ após 5 min.

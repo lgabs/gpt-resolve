@@ -1,0 +1,24 @@
+{
+  "question": 8,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-8-matematica-2-fase-dia-1-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Única (demonstração da identidade)",
+      "solution_answer": "Identidade demonstrada: S_n = sen(nα)/(sen(2α)·cos((n+1)α)). Usa prostaférese, cos α + cos(2k+1)α = 2cos(kα)cos((k+1)α); telescopagem de sen α/(cos(kα)cos((k+1)α)) = tg((k+1)α) − tg(kα); diferença de tangentes; e sen 2α = 2 sen α cos α. Também trata o caso n = 0.",
+      "key_answer": "Demonstração: S_n = sen(nα)/(sen(2α)·cos((n+1)α)), por prostaférese, telescopagem com tangentes e tg x − tg y = sen(x−y)/(cos x cos y).",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "O enunciado confere com o PDF original (p. 2, 8ª questão). A resolução segue o mesmo caminho do gabarito, com cada passo justificado. (1) Com P = α e Q = (2k+1)α, o denominador vira 2cos((k+1)α)cos(kα), o que está correto. (2) Como sen α = sen((k+1)α − kα), a identidade telescópica vale, e as divisões são permitidas porque k e k+1 estão em {1,…,n+1}. (3) A soma dá S_n = (tg((n+1)α) − tg α)/(2 sen α). (4) Essa diferença de tangentes é igual a sen(nα)/(cos((n+1)α)cos α), o que leva ao resultado. Conferi numericamente em Python com (n, α) = (1, π/6), (2, π/8), (3, π/3), (3, 0,71), (5, 0,37) e (7, 1,3): os dois lados coincidem. Todos os valores intermediários citados na resolução também estão corretos: 4,388842, −6,273816 e 0,987037 para α = 0,71; 0,76537 + 1,84776 = 2,61313 para α = π/8; −2 + 1 + 1 = 0 para α = π/3. A discussão sobre por que as hipóteses são necessárias também está certa: com α = π e n = 1, S_1 = −1/2, mas o lado direito fica 0/0; com α = π/4 e n = 1, os dois lados ficam indefinidos."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado não diz se 0 ∈ ℕ. A resolução trata n = 0 à parte (soma vazia, os dois lados valem 0), e o gabarito supõe implicitamente n ≥ 1. Isso não afeta a nota."
+    }
+  ],
+  "summary": "A resolução e o gabarito Poliedro coincidem. Os dois demonstram S_n = sen(nα)/(sen(2α)cos((n+1)α)) pelo mesmo caminho: prostaférese, telescopagem com tangentes e diferença de tangentes. A resolução está correta e completa: justifica cada divisão pelas hipóteses, trata o caso n = 0 e mostra que as hipóteses são necessárias. As verificações numéricas que ela traz foram reconferidas em Python e estão certas. Não encontrei erro em nenhum dos dois."
+}

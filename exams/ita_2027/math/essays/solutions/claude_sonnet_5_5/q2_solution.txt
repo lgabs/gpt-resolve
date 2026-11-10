@@ -1,0 +1,60 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Passo 1 (retirar o módulo do logaritmo).} Para todo $x\in\mathbb{R}$ temos $2^x>0$, logo $2^x+2>2$ e, como $\log_2$ é crescente,
+\[
+\log_2(2^x+2)>\log_2 2=1>0 .
+\]
+Assim $|\log_2(2^x+2)|=\log_2(2^x+2)$ e a desigualdade equivale a
+\[
+\log_2(2^x+2)>|2x| .
+\]
+Como $|2x|\ge 0$ e $\log_2$ é crescente, aplicar $2^{(\cdot)}$ nos dois lados preserva o sentido da desigualdade:
+\[
+2^x+2>2^{|2x|}.
+\]
+Façamos $t=2^x>0$ e separemos em casos conforme o sinal de $x$.
+
+\textbf{Passo 2: caso $x\ge 0$.} Aqui $|2x|=2x$ e $2^{2x}=t^2$, com $t\ge 1$. A desigualdade fica
+\[
+t+2>t^2 \iff t^2-t-2<0 \iff (t-2)(t+1)<0 .
+\]
+Como $t+1>0$, isso equivale a $t<2$, isto é, $2^x<2$, ou seja, $x<1$. Combinando com $x\ge 0$:
+\[
+0\le x<1 .
+\]
+
+\textbf{Passo 3: caso $x<0$.} Aqui $|2x|=-2x$ e $2^{-2x}=t^{-2}$, com $0<t<1$. A desigualdade fica
+\[
+t+2>\frac1{t^2}\iff t^3+2t^2-1>0 \qquad (\text{multiplicamos por } t^2>0).
+\]
+Observando que $t=-1$ é raiz, fatoramos:
+\[
+t^3+2t^2-1=(t+1)(t^2+t-1).
+\]
+Como $t+1>0$, resta $t^2+t-1>0$. As raízes de $t^2+t-1$ são $\dfrac{-1\pm\sqrt5}{2}$; como $t>0$, a condição é
+\[
+t>\frac{\sqrt5-1}{2}.
+\]
+Note que $0<\dfrac{\sqrt5-1}{2}<1$ (pois $2<\sqrt5<3$), então esse limite está dentro do intervalo $0<t<1$. Como $t=2^x$ é crescente,
+\[
+x>\log_2\!\left(\frac{\sqrt5-1}{2}\right)=-\log_2\!\left(\frac{1+\sqrt5}{2}\right),
+\]
+onde usamos $\dfrac{\sqrt5-1}{2}=\dfrac{1}{(1+\sqrt5)/2}$ (pois $(\sqrt5-1)(\sqrt5+1)=4$). Esse número é negativo ($\approx -0{,}694$). Combinando com $x<0$:
+\[
+-\log_2\!\left(\frac{1+\sqrt5}{2}\right)<x<0 .
+\]
+
+\textbf{Passo 4 (união e verificação).} Unindo os dois casos (o ponto $x=0$ pertence à solução, pois $\log_2 3>0$):
+\[
+-\log_2\!\left(\frac{1+\sqrt5}{2}\right)<x<1 .
+\]
+\emph{Conferência.} Em $x=1$: $\log_2 4=2=|2x|$, igualdade, logo $x=1$ não pertence à solução (desigualdade estrita). No outro extremo, $t=\frac{\sqrt5-1}{2}$ satisfaz $t^2+t=1$, donde $t+2=t^{-2}$ e vale também a igualdade, logo o extremo é excluído. Testes: $x=-0{,}69$ dá $\log_2(2^{-0,69}+2)\approx1{,}390>1{,}38$ (vale); $x=-0{,}70$ dá $\approx1{,}387<1{,}40$ (não vale); $x=0{,}5$ dá $\log_2(2^{0,5}+2)\approx1{,}77>1$ (vale); $x=2$ dá $\log_2 6\approx2{,}58<4$ (não vale). Uma varredura numérica em $[-5,5]$ confirmou o intervalo.
+
+Conjunto solução:
+\[
+S=\left(\log_2\frac{\sqrt5-1}{2},\,1\right)=\left(-\log_2\frac{1+\sqrt5}{2},\,1\right)\approx(-0{,}694;\;1).
+\]
+
+ANSWER: $-\log_2\!\left(\dfrac{1+\sqrt5}{2}\right)<x<1$, isto é, $x\in\left(\log_2\dfrac{\sqrt5-1}{2},\,1\right)$.

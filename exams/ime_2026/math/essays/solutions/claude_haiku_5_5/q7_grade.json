@@ -1,0 +1,29 @@
+{
+  "question": 7,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-1-23-10-2025-2-fase-dia-1/dissertativa-7-matematica-2-fase-dia-1-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q7 — P(infectado | antivírus respondeu 'não infectado')",
+      "solution_answer": "5/16 = 0,3125 = 31,25%",
+      "key_answer": "5/16",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz a conta por Bayes: P(N|I)=0,05, P(N|Ī)=0,99, P(I)=0,9 e P(Ī)=0,1. Daí P(N)=0,045+0,099=0,144 e P(I|N)=0,045/0,144=5/16. Conferi em python com frações exatas e o resultado é 5/16. O enunciado do PDF bate com a transcrição. As verificações extras da resolução também estão corretas: razão de chances 9·5/99=5/11, contagem com 1000 computadores (45 de 144) e sensibilidade com p=0,5, que dá ≈4,8%."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Há um erro de digitação no denominador da resolução do gabarito: está escrito '0,9·0,05 + 0,01·0,99', mas o correto é '0,9·0,05 + 0,1·0,99'. Com 0,01, a conta daria 0,045/0,0549 ≈ 0,82, não 5/16. A resposta final do gabarito (5/16) está certa; só a expressão intermediária está errada. Além disso, as barras de complemento se perderam na transcrição: 'P(B/A)' aparece três vezes, no lugar de P(B|A), P(B|Ā) e P(B̄|A). Isso não muda a nota."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução trata 'não indica vírus' como o complementar de 'indica vírus' (resposta binária, P(N|I)=1−0,95). É a leitura padrão e a mesma do gabarito, e a resolução declara essa hipótese. A seção de hipóteses e a análise de sensibilidade vão além do que a questão pede, mas não contêm erro."
+    }
+  ],
+  "summary": "A resolução e o gabarito do Poliedro dão a mesma resposta, P(I|N)=5/16=0,3125. Refiz a conta por Bayes e cheguei a 0,045/0,144=5/16, então os dois estão certos. O enunciado do PDF confere com a transcrição. A única falha que encontrei está no desenvolvimento do gabarito: o denominador traz 0,01·0,99 no lugar de 0,1·0,99. Isso não afeta a resposta final, que está correta."
+}

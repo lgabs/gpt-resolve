@@ -1,0 +1,87 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "a) i_min = 1,25 A (em t = 0); b) E = 56,25 J; c) F(5 s) = 2,8125 N = 45/16 N, para a direita (mesmo sentido de F na Figura 1).",
+  "judge_reference": {
+    "reference_solution": "**Convenções e leitura das figuras (verificadas no original)**\n\n- Eixos: x para a direita (trilhos), z para cima (B), y para dentro da página (profundidade). O trilho \"de cima\" na figura é o de trás (y maior); o de baixo é o da frente.\n- O terminal A está ligado ao trilho de trás, o terminal B ao da frente, e a seta de i (para a direita no fio de A) indica i > 0 saindo de A. Logo, para i > 0 a corrente atravessa a barra de trás para a frente (sentido −y).\n- v > 0 e F > 0 apontam para a direita (setas da Fig. 1).\n- Fig. 2: reta V_AB = 10 − 2i. Em i = 0 vale 10 V, então a fonte equivale a ε = 10 V em série com r = 10 V / 5 A = 2 Ω (resistência interna). A barra tem R = 2 Ω. A resistência total do circuito é 4 Ω.\n- Fig. 3: de 0 a 2 s, v vai de −2 a 2 m/s, com a = +2 m/s². De 2 a 4 s, v = 2 m/s e a = 0. De 4 a 6 s, v vai de 2 a 0, com a = −1 m/s². Em t = 5 s, v = 1 m/s e a = −1 m/s².\n\n**Sinal da fem motora**\n\n- Nas cargas da barra, a força de Lorentz tem a direção de v × B. Para v = +v x̂ e B = B ẑ, resulta x̂ × ẑ = −ŷ, isto é, de trás para a frente.\n- Esse é o mesmo sentido de i > 0. Portanto, para v > 0 a fem motora ε_m = BLv = 2,5·v soma-se à da fonte. Para v < 0 ela se subtrai.\n- A força magnética sobre a barra é F_mag = i L × B = i·L·(−ŷ) × B ẑ = −B L i x̂. Ela aponta para a esquerda quando i > 0. Isso é coerente com a lei de Lenz: a parcela da corrente devida ao movimento para a direita freia a barra.\n\n**Equação do circuito**\n\n- Soma das fems: 10 + 2,5·v = (2 + 2)·i.\n- Logo i(v) = 2,5 + 0,625·v (em A, com v em m/s).\n- Verificação de validade: v ∈ [−2, 2] dá i ∈ [1,25; 3,75] A, dentro da faixa 0 ≤ i ≤ 5 A em que a característica da Fig. 2 vale. Nunca há inversão de corrente.\n\n**a) Menor módulo de corrente**\n\n- i cresce linearmente com v, então o mínimo ocorre no menor v, que é v = −2 m/s em t = 0.\n- i_min = 2,5 − 0,625·2 = **1,25 A**.\n- Valores de referência: em t = 1 s (v = 0), i = 2,5 A; em t = 2 a 4 s, i = 3,75 A.\n- A corrente nunca se anula, pois isso exigiria v = −4 m/s.\n\n**b) Energia dissipada na resistência interna, 2 s ≤ t ≤ 4 s**\n\n- Aqui v = 2 m/s é constante, então i = 2,5 + 1,25 = 3,75 A é constante.\n- P_r = r·i² = 2·(3,75)² = 28,125 W.\n- E = P_r·Δt = 28,125 · 2 = **56,25 J** (= 225/4 J).\n- Conferência: com a = 0, F = B L i = 2,5·3,75 = 9,375 N para a direita. Nesse trecho a fonte fornece 10·3,75 = 37,5 W. O Joule total é 4·3,75² = 56,25 W, dos quais 28,125 W ficam na fonte e 28,125 W na barra. Falta fechar a conta: 37,5 W (fonte) + 9,375·2 = 18,75 W (mecânica) = 56,25 W. Fecha.\n\n**c) F(t) em t = 5 s**\n\n- v = 1 m/s, então i = 2,5 + 0,625 = 3,125 A.\n- F_mag = B L i = 2,5·1·3,125 = 7,8125 N, para a esquerda.\n- Segunda lei de Newton na direção x, com a = −1 m/s²: F − B L i = m a.\n- F = m a + B L i = 5·(−1) + 7,8125 = **+2,8125 N = 45/16 N ≈ 2,81 N**.\n- O sinal positivo significa que F aponta **para a direita**, o mesmo sentido da seta F da Fig. 1.\n- Conferência de potência em t = 5 s: F·v + ε·i = 2,8125 + 31,25 = 34,0625 W. Já m a v + (r + R) i² = −5 + 39,0625 = 34,0625 W. Os dois lados coincidem.\n\nNota (inercial/dinâmica): a barra é freada de 2 para 0 m/s em 2 s, o que exigiria força líquida de 5 N para a esquerda. A força magnética (7,81 N para a esquerda) já excede isso, e por isso o operador ainda precisa empurrar para a direita com 2,81 N.",
+    "final_answer": "a) i_min = 1,25 A (em t = 0, quando v = −2 m/s).\nb) E = 56,25 J (= 225/4 J), com i = 3,75 A e r = 2 Ω durante 2 s.\nc) |F| = 2,8125 N (= 45/16 N ≈ 2,81 N), para a direita (sentido positivo de v e da seta F na Fig. 1).\n\nModelo usado: fonte com ε = 10 V e r = 2 Ω; barra com 2 Ω; fem motora BLv = 2,5·v somando-se à da fonte para v > 0; i = 2,5 + 0,625·v.",
+    "pitfalls": [
+      "Extrair o modelo da fonte da Fig. 2: V_AB = 10 − 2i dá ε = 10 V e r = 10/5 = 2 Ω. Não confundir a resistência interna da fonte (2 Ω) com a da barra (2 Ω). A resistência total da malha é 4 Ω, mas o item (b) pede só a dissipação na resistência interna da fonte.",
+      "Definir o sinal da fem motora a partir da Fig. 1. O terminal A (positivo, pois V_AB(0) = 10 V) vai ao trilho de trás, e i > 0 atravessa a barra de trás para a frente. Com B para cima e v para a direita, v × B aponta no mesmo sentido, então a fem motora SOMA com a fonte para v > 0 e SUBTRAI para v < 0 (t < 1 s). A equação correta é 10 + 2,5v = 4i, isto é, i = 2,5 + 0,625v.",
+      "O item (a) NÃO valida o sinal: com o sinal oposto o mínimo também seria 1,25 A (em v = +2, t entre 2 e 4 s). Com o sinal errado, (b) daria 6,25 J e (c) daria 9,6875 N para a esquerda. Quem acerta (a) por coincidência pode errar (b) e (c).",
+      "Em (a), o mínimo não está em v = 0 (t = 1 s, i = 2,5 A) nem em t = 6 s. Como i é função afim crescente de v, o mínimo está em v = −2 (t = 0). Também é preciso justificar que i não se anula nem muda de sinal (exigiria v = −4 m/s) e que a corrente permanece na faixa 0 a 5 A, onde a característica da Fig. 2 vale.",
+      "Em (b), i é constante porque v é constante, então E = r·i²·Δt = 2·3,75²·2 = 56,25 J. Erros comuns: usar 4 Ω (112,5 J, que é o Joule total), usar V_AB·i·Δt (68,75... não é dissipação interna; V_AB = 2,5 V na barra), usar i = 2,5 A (ignorando a fem motora) ou i = 1,25 A (sinal trocado).",
+      "Em (c), a força F não é apenas m·a. É preciso incluir a força magnética: F = m a + B L i, com a = −1 m/s² (declive do gráfico de 4 a 6 s) e v(5 s) = 1 m/s, que entra em i = 3,125 A. Erros típicos: F = ma = 5 N para a esquerda (esquecendo a força magnética); usar i = 2,5 A (esquecendo a fem motora), que daria 1,25 N; errar o sinal de a.",
+      "Direção da força magnética: i de trás para a frente com B vertical para cima dá força para a esquerda (x̂ negativo), oposta a v > 0, como exige a lei de Lenz para a parcela induzida. Como a força magnética (7,81 N) supera os 5 N necessários para frear a barra, F resulta positiva, para a direita, apesar de a barra estar desacelerando. Informar módulo e sentido, como pede o enunciado.",
+      "Convenção de v: a Fig. 3 usa o sentido positivo de v como o da seta v da Fig. 1 (direita). Em t < 1 s a barra se move para a esquerda, e a fem motora se opõe à fonte. Também se desprezam a autoindutância e o atrito, e B é uniforme. A velocidade é imposta pelo gráfico, e F(t) é o que a realiza."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) i_mín = 1,25 A (em t = 0); b) E = 56,25 J; c) F(5 s) = 2,8125 N (45/16 N), para a direita (mesmo sentido de F na figura).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No item (a), o candidato escreve: \"Em t=0 a barra se move contra o sentido de F_m, e sua fem se opõe à da fonte\". Isso está errado. Em t=0, v=-2 m/s (esquerda) e F_m = -iLB x̂ (esquerda, 3,125 N), então a barra se move NO sentido de F_m. Ela funciona como motor, com contra-fem que se opõe à da fonte. A segunda metade da frase está certa, mas a primeira contradiz o que o próprio candidato disse na modelagem (para v>0 a barra se move contra F_m e age como gerador). Não afeta nenhum valor numérico. Deveria ser \"no mesmo sentido de F_m (regime de motor)\"."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não explicita as hipóteses físicas usadas: autoindutância desprezível, B uniforme, trilhos longos o bastante e velocidade imposta pelo gráfico. Também não diz que a corrente nunca se anula ou muda de sinal. Isso só aparece implicitamente, na faixa 1,25–3,75 A dentro de 0–5 A. Um gabarito comentado diria isso (a corrente só se anularia em v=-4 m/s)."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não observa que o item (a) sozinho não confirma o sinal da fem motora: com o sinal oposto o mínimo também seria 1,25 A, em v=+2. A escolha do sinal só é justificada via produto vetorial e Lenz, o que está correto. Faltou uma frase dizendo que a escolha é decisiva para (b) e (c), que dariam 6,25 J e 9,6875 N se o sinal fosse oposto."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (c), uma checagem de potência em t=5 s (F·v + ε·i = m·a·v + (r+R)i²) deixaria a resposta mais robusta. O candidato só verifica t=0 e o trecho de 2 a 4 s, o que é suficiente, mas não cobre o instante pedido."
+          }
+        ],
+        "summary": "As três respostas finais do candidato batem com as da minha referência e com a minha própria conferência numérica em Python: a) 1,25 A (em t=0), b) 56,25 J, c) 2,8125 N = 45/16 N para a direita. Reli a Figura 1 no PDF original. A fonte A é positiva e liga ao trilho do fundo (o de cima no desenho), então i>0 atravessa a barra de trás para a frente. Com B para cima, v×B tem o mesmo sentido de i, e a fem motora soma-se à da fonte para v>0. Isso dá i = 2,5 + 0,625·v, como o candidato obteve, e a força magnética aponta para a esquerda. As principais armadilhas foram tratadas: ε=10 V e r=2 Ω extraídos da reta da Fig. 2, sem confundir r com R; resistência total de 4 Ω, com só r contando em (b); sinal da fem motora derivado de produto vetorial e coerente com Lenz; faixa de validade 0–5 A verificada; F = ma + BLi com a=-1 m/s² e a conclusão de que F é positivo (direita). Os balanços de potência em (b) e as checagens em t=0 e em 2–4 s estão corretos. A resolução é clara e bem estruturada. Os problemas são menores: uma frase errada em (a) (a barra em t=0 se move no mesmo sentido de F_m, não contra ele), hipóteses não declaradas (autoindutância, B uniforme), e falta de uma observação sobre a armadilha do sinal. Está um pouco abaixo de um gabarito publicável por causa do deslize conceitual na frase citada."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "a) i_min = 1,25 A (em t = 0); b) E = 56,25 J; c) F(5 s) = 2,8125 N = 45/16 N, para a direita (mesmo sentido de F na Figura 1).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A orientação do referencial é afirmada sem justificativa explícita. O texto diz que ŷ aponta para o trilho do fundo e que (x̂,ŷ,ẑ) é dextrógiro, mas não diz que x é para a direita, z para cima e que, nessa perspectiva, y fica para dentro da página. A conclusão está correta (conferi a figura ampliada: A liga ao trilho de trás, B ao da frente, i sai de A). Faltou uma frase para o leitor poder verificar sem refazer a geometria."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (a), a análise de que o mínimo está em t=0 é correta, mas a justificativa é curta. Seria mais completo listar i(t=0)=1,25 A, i(t=1)=2,5 A e i=3,75 A de 2 a 4 s, e tratar o trecho 4–6 s (v de 2 a 0, i de 3,75 a 2,5 A, sempre ≥ 2,5 A). O texto só diz 'para t ≥ 1 s, v ≥ 0 e i ≥ 2,5 A', o que basta."
+          },
+          {
+            "severity": "minor",
+            "description": "A observação sobre o sinal oposto da fem motora afirma que (b) daria 6,25 J (confere: i=1,25 A, 2·1,25²·2 = 6,25 J) e que (c) 'mudaria', sem dar o valor. É um comentário lateral e não afeta a resposta, mas o parecer fica mais útil se citar os valores trocados, ou se omitir o assunto."
+          },
+          {
+            "severity": "minor",
+            "description": "A seção 5 ('casos particulares') repete F em t=0 e em 2–4 s sem acrescentar verificação nova. O comentário 'coerente com a barra sendo acelerada para a direita' é vago, porque em t=0 a barra ainda se move para a esquerda, com a>0. Dá para cortar ou melhorar a frase."
+          },
+          {
+            "severity": "minor",
+            "description": "O item (b) poderia dizer explicitamente que r=2 Ω (fonte) e R=2 Ω (barra) são resistências distintas, e que 112,5 J seria o Joule total e não a dissipação na fonte. O balanço de potência final (37,5 + 18,75 = 56,25 W, metade em r) cobre isso implicitamente, então é só um acabamento."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a minha referência nos três itens: a) i_min = 1,25 A (t=0); b) E = 56,25 J; c) F = 2,8125 N (45/16 N) para a direita. Refiz as contas em Python e conferi a Figura 1 ampliada no PDF original. O terminal A liga ao trilho de trás e i>0 atravessa a barra no sentido −y. Com B para cima e v>0 para a direita, v×B aponta para −y, no mesmo sentido de i, então a fem motora soma com a da fonte para v>0 e subtrai para v<0. A força magnética sobre a barra é para a esquerda. O modelo i = (10+2,5v)/4 está correto, e as demais contas também (i=3,75 A em 2–4 s; i=3,125 A e F_m=7,8125 N em t=5 s; a=−1 m/s²). O candidato tratou bem as armadilhas: separou r e R (4 Ω só no Joule total), justificou o sinal da fem por produto vetorial e por Lenz, notou que (a) não valida o sinal, checou a faixa 0–5 A da Fig. 2 e que i nunca se anula (exigiria v=−4 m/s), incluiu a força magnética em (c) e deu módulo e sentido. Fez dois balanços de potência (2–4 s e t=5 s) que fecham exatamente, e declarou as hipóteses (autoindutância e atrito desprezíveis, B uniforme). Os defeitos restantes são só de acabamento: o referencial é afirmado de forma enxuta, a seção de casos particulares é pouco informativa e a observação sobre o sinal oposto é incompleta. É um texto quase publicável como gabarito comentado.\""
+      }
+    }
+  ]
+}

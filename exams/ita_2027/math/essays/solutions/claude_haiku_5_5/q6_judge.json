@@ -1,0 +1,84 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "Há 235 sêxtuplas de naturais (com ℕ = {1,2,3,...}, como fixa a prova). O sistema equivale a x2 = 6, x1 = 8 − 2x6 e x3 + x4 + x5 = 16 − x6; positividade força x6 ∈ {1,2,3}, e estrelas e barras dão C(14,2) + C(13,2) + C(12,2) = 91 + 78 + 66 = 235. Se 0 fosse natural, o resultado seria 605.",
+  "judge_reference": {
+    "reference_solution": "**Convenção da prova:** ℕ = {1, 2, 3, ...}, portanto xᵢ ≥ 1 para i = 1,…,6. Zero não é natural nesta prova.\n\n**1. Eliminação (sistema equivalente)**\nSejam (E1), (E2), (E3) as três equações.\n- (E2) − (E1): x₂ + x₃ + x₄ + x₅ + x₆ = 22. (A)\n- (E3) − 2·(E1): (3−2)(x₃+x₄+x₅) + (7−6)x₆ = 76 − 60, ou seja x₃ + x₄ + x₅ + x₆ = 16. (B)\n- (A) − (B): x₂ = 6.\n- De (B): x₃ + x₄ + x₅ = 16 − x₆.\n- Em (E1): x₁ = 30 − 6 − (16 − x₆) − 3x₆ = 8 − 2x₆.\n\nAs operações são invertíveis (E2 = E1 + (A) e E3 = 2·E1 + (B)), então o sistema original é equivalente a\nx₂ = 6, x₁ = 8 − 2x₆, x₃ + x₄ + x₅ = 16 − x₆.\nAs soluções inteiras ficam parametrizadas por (x₆, x₃, x₄), com x₅ = 16 − x₆ − x₃ − x₄.\n\n**2. Condições de positividade (xᵢ ≥ 1)**\n- x₂ = 6 ≥ 1: sempre vale.\n- x₁ = 8 − 2x₆ ≥ 1 ⇔ 2x₆ ≤ 7 ⇔ x₆ ≤ 3. Com x₆ ≥ 1, temos x₆ ∈ {1, 2, 3}. O caso x₆ = 4 daria x₁ = 0, excluído.\n- Para x₆ ≤ 3, a soma x₃ + x₄ + x₅ = 16 − x₆ ≥ 13 é compatível com três parcelas ≥ 1.\n\n**3. Contagem**\nPara cada x₆, o número de ternas (x₃, x₄, x₅) ∈ ℕ³ com soma m = 16 − x₆ é C(m−1, 2). Justificativa: com yᵢ = xᵢ − 1 ≥ 0, tem-se y₃ + y₄ + y₅ = m − 3, cujo número de soluções não negativas é C((m−3)+2, 2) = C(m−1, 2).\n\n| x₆ | x₁ | x₂ | m = x₃+x₄+x₅ | C(m−1, 2) |\n|----|----|----|--------------|-----------|\n| 1  | 6  | 6  | 15           | C(14,2) = 91 |\n| 2  | 4  | 6  | 14           | C(13,2) = 78 |\n| 3  | 2  | 6  | 13           | C(12,2) = 66 |\n\nTotal: 91 + 78 + 66 = **235**.\n\nCada sêxtupla corresponde a exatamente uma escolha de (x₆, x₃, x₄, x₅), e vice-versa, então não há contagem repetida nem divisão por simetrias (as sêxtuplas são ordenadas).\n\n**4. Verificação**\n- Exemplo (2, 6, 1, 1, 11, 3): E1: 2+6+1+1+11+9 = 30 ✓; E2: 2+12+2+2+22+12 = 52 ✓; E3: 4+12+3+3+33+21 = 76 ✓.\n- Força bruta em Python (xᵢ ∈ {1,…,30}, x₅ isolado por E1 e E2, E3 conferidas): 235 sêxtuplas, com distribuição (91, 78, 66) por x₆. As identidades x₂ = 6, x₁ = 8 − 2x₆ e x₃+x₄+x₅ = 16 − x₆ valem em todas.\n- Referência de contraste: se ℕ incluísse 0, a contagem seria 605 (x₆ ∈ {0,…,4}, com C(m+2,2) por caso). Não é o caso desta prova.\n\n**Resposta final: 235.** Questão dissertativa, sem alternativas.",
+    "final_answer": "Resposta: 235 sêxtuplas ordenadas de naturais (ℕ = {1,2,3,...}, conforme a convenção da prova).\n\nResumo: o sistema equivale a x₂ = 6, x₁ = 8 − 2x₆ e x₃ + x₄ + x₅ = 16 − x₆. A condição x₁ ≥ 1 restringe x₆ ∈ {1, 2, 3}. Para cada valor, a contagem de ternas positivas é C(14,2) = 91 (x₆ = 1), C(13,2) = 78 (x₆ = 2) e C(12,2) = 66 (x₆ = 3). Total: 235, confirmado por força bruta. Se ℕ incluísse o zero, a resposta seria 605, que não é a resposta desta prova.",
+    "pitfalls": [
+      "Convenção de ℕ: a prova define ℕ = {1, 2, 3, ...}, então todas as xᵢ ≥ 1. Usar ℕ com zero incluiria x₆ = 4 (com x₁ = 0) e daria 605 em vez de 235. Uma boa resolução deve citar explicitamente a convenção.",
+      "Sistema subdeterminado (3 equações, 6 incógnitas): não é 'sistema indeterminado, logo infinitas soluções, logo não contável'. A contagem é finita porque as restrições de positividade limitam os parâmetros. Deve-se parametrizar e impor as restrições.",
+      "Passo-chave de eliminação: (E3) − 2·(E1) dá coeficientes 3−2 = 1 em x₃, x₄, x₅, 7−6 = 1 em x₆, e termo independente 76−60 = 16. Erros aqui mudam toda a parametrização (ex.: x₃+x₄+x₅ = 16 + x₆, ou x₆ com coeficiente errado).",
+      "x₂ = 6 é fixo e independe de x₆ e das demais variáveis. Quem não o descobre tende a parametrizar x₂ como variável livre e contar errado.",
+      "Limite superior de x₆: vem de x₁ = 8 − 2x₆ ≥ 1, ou seja x₆ ≤ 3. Erros comuns são usar x₆ ≤ 4 (que dá x₁ = 0, excluído) ou x₆ ≤ 16 (vindo da soma x₃+x₄+x₅ ≥ 0, que não é a restrição ativa).",
+      "Estrelas e barras com parcelas positivas: o número de soluções de x₃+x₄+x₅ = m em ℕ³ é C(m−1, 2), não C(m, 2) nem C(m+2, 2) (estas valem para parcelas não negativas). Com m = 15, a resposta correta é C(14,2) = 91; C(15,2) = 105 e C(17,2) = 136 estão errados aqui.",
+      "Ordenação e unicidade: as sêxtuplas são ordenadas, então não se divide por permutações. Cada solução é determinada por (x₆, x₃, x₄), com x₅ = 16 − x₆ − x₃ − x₄; não há dupla contagem nem simetria a explorar entre x₁, x₂ e x₃..x₅.",
+      "Verificação obrigatória: substitua uma sêxtupla nas três equações (ex.: (2,6,1,1,11,3) satisfaz as três). Erros de sinal ou coeficiente, como o 2x₁ da terceira equação, aparecem aqui."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "Há 235 sêxtuplas. O sistema é equivalente a x_2 = 6, x_1 = 8 - 2x_6 e x_3 + x_4 + x_5 = 16 - x_6. Com x_k naturais (ℕ = {1,2,3,...}), x_6 ∈ {1,2,3}, e a contagem é C(14,2) + C(13,2) + C(12,2) = 91 + 78 + 66 = 235. Se 0 fosse natural, a resposta seria 605, mas não é a convenção da prova.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na seção 'Verificação', o marcador 'Ordem de grandeza' não verifica nada: a cota 3·91 = 273 não confirma 235. Deveria ser removido ou trocado por uma checagem real, como refazer a soma dos três casos por outro método ou testar um caso de borda."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'Uma enumeração exaustiva das sêxtuplas também fornece 235' é uma afirmação sem nenhum passo mostrado. Num gabarito comentado, ou se mostra a enumeração (ou a busca por força bruta) ou se retira a frase. O valor é verdadeiro: força bruta independente dá 235."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação ambígua no Passo 4: k aparece como número de variáveis em 'y_1+⋯+y_k=n' e também como índice em 'y_k = x_k − 1 para k=3,4,5' e em 'Com k=3'. Usar outra letra para o número de variáveis (por exemplo r)."
+          },
+          {
+            "severity": "minor",
+            "description": "A recíproca do Passo 2 está comprimida. A frase '(A) e (B) seguem das três igualdades acima' deveria ser explicitada por substituição: x2+x3+x4+x5+x6 = 6+(16−x6)+x6 = 22 e x3+x4+x5+x6 = 16, depois E2 = (A)+(E1) e E3 = (B)+2(E1)."
+          },
+          {
+            "severity": "minor",
+            "description": "O sistema tem 3 equações e 6 incógnitas, e a resolução não diz explicitamente por que a contagem é finita. A finitude vem das restrições de positividade (x1 ≥ 1 limita x6 ≤ 3, e a soma x3+x4+x5 fixa as demais). Isso está implícito e deveria ser uma frase explícita."
+          }
+        ],
+        "summary": "A resposta final 235 está correta. Confirmei o enunciado no PDF (questão 6, página 7) e o resultado com duas contagens independentes: a fórmula (235 com ℕ = {1,2,...}; 605 se incluísse o zero) e força bruta direta sobre as três equações originais (235). A redução é válida: E2−E1 dá x2+...+x6 = 22, E3−2E1 dá x3+x4+x5+x6 = 16, daí x2 = 6, x1 = 8−2x6 e x3+x4+x5 = 16−x6. Os coeficientes estão todos corretos. A restrição x1 ≥ 1 leva a x6 ∈ {1,2,3}. Estrelas e barras com parcelas positivas dá C(14,2)=91, C(13,2)=78 e C(12,2)=66, com total 235. A convenção ℕ = {1,2,...} é citada explicitamente, e o exemplo (2,6,1,1,11,3) satisfaz as três equações. A observação sobre o caso com zero (605) também está correta. Pelo rigor e pela clareza, é próxima de um gabarito comentado. Os problemas restantes são de acabamento: uma seção de verificação com afirmações não demonstradas, uma letra k usada em dois sentidos, uma recíproca comprimida e a falta de uma frase explícita sobre a finitude. Por isso a nota é 8,5, e não 9.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "Há 235 sêxtuplas de naturais (com ℕ = {1,2,3,...}, como fixa a prova). O sistema equivale a x2 = 6, x1 = 8 − 2x6 e x3 + x4 + x5 = 16 − x6; positividade força x6 ∈ {1,2,3}, e estrelas e barras dão C(14,2) + C(13,2) + C(12,2) = 91 + 78 + 66 = 235. Se 0 fosse natural, o resultado seria 605.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No 'Caso de borda' (Verificação), a frase 'x6=3 fornece x1=2, o menor valor permitido' é imprecisa. Pela positividade, o menor valor permitido para x1 é 1, mas x1 = 8 − 2x6 é sempre par, então x1 = 1 nunca é atingido. Deveria dizer 'menor valor atingível' e justificar pela paridade. Isso deixa mais limpo por que o corte x6 ≤ 3 é exato."
+          },
+          {
+            "severity": "minor",
+            "description": "A unicidade está implícita na bijeção do Passo 5, mas a resolução não diz explicitamente que as sêxtuplas são ordenadas e que, por isso, não há divisão por permutações nem simetrias a explorar entre x1, x2 e x3..x5. Uma frase explícita fecharia a armadilha 'ordenação'."
+          },
+          {
+            "severity": "minor",
+            "description": "Na 'Contagem complementar', a expressão 'Pelo mesmo raciocínio' é vaga. O passo de identificar as quádruplas de N^4 com soma 16 às soluções de (B) com x6 ≥ 1, e a troca x6 = t + 3 (t ≥ 1) que leva a soma 13, deveriam ser escritos com uma linha de justificativa. A conta está correta: C(15,3) = 455, C(12,3) = 220, 455 − 220 = 235."
+          }
+        ],
+        "summary": "Parecer: a resolução do candidato está correta, completa e rigorosa. Nota 9,5. Pode ser publicada como gabarito comentado, com ressalvas de redação.\n\nConferência do enunciado: o PDF (página 7) confirma o sistema, com 3x6, 4x6 e 7x6, e a convenção ℕ = {1, 2, 3, ...} (página 2). A transcrição de referência está correta.\n\nComparação item a item com a referência (sem divergências de conteúdo):\n- Convenção ℕ = {1,2,...}: ambas corretas.\n- x2 = 6: ambas corretas.\n- x1 = 8 − 2x6: ambas corretas. Verifiquei (E1)−(A): x1 + 2x6 = 8.\n- x3 + x4 + x5 = 16 − x6: ambas corretas.\n- x6 ∈ {1,2,3}: ambas corretas. x6 = 4 dá x1 = 0.\n- Contagem por caso C(m−1,2) = 91, 78, 66: ambas corretas.\n- Total 235: ambas corretas. Força bruta em Python (xi ∈ {1..30}) dá 235, com distribuição 91/78/66 por x6. Com zero, dá 605, como nas duas resoluções.\n- Eliminação: os coeficientes de (E2)−(E1) e (E3)−2(E1) estão corretos. Os termos independentes são 22 e 16.\n\nArmadilhas:\n- Convenção: citada na hipótese e na observação sobre o zero (605). Tratada.\n- Sistema subdeterminado: a finitude é justificada no Passo 3 pela positividade. Tratada.\n- Eliminação: correta. Tratada.\n- x2 = 6 fixo: tratado.\n- Limite de x6 vindo de x1 ≥ 1: x6 ≤ 3, com x6 = 4 excluído explicitamente. Tratado.\n- Estrelas e barras com parcelas positivas, C(m−1,2): derivado com y = x − 1. Tratado.\n- Ordenação: tratada implicitamente pela bijeção, mas sem frase explícita. Ver issue menor.\n- Verificação: exemplo (2,6,1,1,11,3) conferido nas três equações. Contagem complementar 455 − 220 = 235 conferida. Tratada.\n\nOs problemas listados são apenas de redação e precisão. Não há erro de conta, lacuna de caso ou salto lógico. A recíproca do Passo 2 está bem feita.Avaliação concluída. A resolução do candidato chega à resposta correta, 235, e a justifica com rigor. Dei nota 9,5. Os problemas restantes são apenas de redação e precisão.\n\n- **Enunciado:** conferi no PDF (página 7). O sistema e a convenção ℕ = {1, 2, 3, …} batem com a transcrição.\n- **Resposta:** a força bruta confirma 235, com distribuição 91/78/66 por x₆. Com zero incluído, dá 605, como nas duas resoluções.\n- **Comparação com a referência:** não há divergência de conteúdo em nenhum item (x₂ = 6, x₁ = 8 − 2x₆, x₃ + x₄ + x₅ = 16 − x₆, x₆ ∈ {1, 2, 3}, contagens por caso e total).\n- **Armadilhas:** todas foram tratadas. Ficou só a unicidade (ordenação), que está implícita na bijeção, sem frase explícita.\n\nOs três problemas listados são menores: a frase \"menor valor permitido\" para x₁ = 2 (o correto é \"menor valor atingível\", pela paridade), a falta de uma frase explícita sobre ordenação, e a justificativa vaga da contagem complementar. Não há problemas graves.\n\n<br>\n\n\n<invoke name=\"Bash\">\n<parameter name=\"command\">echo \"Questão 6 avaliada: nota 9.5, resposta 235 correta, concorda com a referência.\" ",
+        "description": "Confirm evaluation recorded"
+      }
+    }
+  ]
+}

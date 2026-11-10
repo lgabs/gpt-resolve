@@ -1,0 +1,49 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+Seja $P(x)=x^4+(2x+7)^3+14x^3+\frac{147}{2}x^2+\frac{7^3}{2}x+\frac{7^4}{16}$. A equação dada é $P(x)=0$, com $P$ polinômio de grau 4 e coeficientes reais. Note que $7^3=343$ e $7^4=2401$.
+
+\textbf{Passo 1 (agrupamento).} Seja $w=x^2+7x$. Então
+\begin{align*}
+w^2&=x^4+14x^3+49x^2,\\
+\frac{49}{2}\,w&=\frac{49}{2}x^2+\frac{343}{2}x.
+\end{align*}
+Somando e usando $49+\frac{49}{2}=\frac{147}{2}$, obtemos
+$$w^2+\frac{49}{2}w=x^4+14x^3+\frac{147}{2}x^2+\frac{343}{2}x.$$
+Logo a equação é equivalente a
+$$w^2+\frac{49}{2}w+(2x+7)^3+\frac{7^4}{16}=0. \qquad (1)$$
+
+\textbf{Passo 2 (substituição).} Seja $s=2x+7$. A correspondência $x\mapsto s$ é afim e bijetora de $\mathbb{R}$ em $\mathbb{R}$, portanto as soluções reais em $x$ correspondem exatamente às soluções reais em $s$. Além disso, $s^2=4x^2+28x+49=4w+49$, ou seja, $w=\frac{s^2-49}{4}$. Trata-se de identidade algébrica, não de restrição.
+
+\textbf{Passo 3 (simplificação).} Como $w+\frac{49}{2}=\frac{s^2+49}{4}$, usando diferença de quadrados:
+$$w^2+\frac{49}{2}w=w\Big(w+\frac{49}{2}\Big)=\frac{(s^2-49)(s^2+49)}{16}=\frac{s^4-7^4}{16}.$$
+
+\textbf{Passo 4 (equação em $s$).} Substituindo em (1):
+$$\frac{s^4-7^4}{16}+s^3+\frac{7^4}{16}=0\iff\frac{s^4+16s^3}{16}=0\iff s^3(s+16)=0.$$
+Como $s$ é real e um produto de reais é nulo se, e somente se, um fator é nulo, temos $s=0$ (multiplicidade 3) ou $s=-16$.
+
+\textbf{Passo 5 (retorno a $x$).} Da relação $x=\frac{s-7}{2}$:
+\begin{align*}
+s=0&\Rightarrow x=-\frac{7}{2}=-3{,}5,\\
+s=-16&\Rightarrow x=-\frac{23}{2}=-11{,}5.
+\end{align*}
+
+\textbf{Passo 6 (conferência).} Reunindo os termos de $P$ com $(2x+7)^3=8x^3+84x^2+294x+343$:
+$$P(x)=x^4+22x^3+\frac{315}{2}x^2+\frac{931}{2}x+\frac{7889}{16}.$$
+Multiplicando por 16 e comparando com $(2x+7)^3(2x+23)=(8x^3+84x^2+294x+343)(2x+23)=16x^4+352x^3+2520x^2+7448x+7889$, obtemos
+$$P(x)=\frac{(2x+7)^3(2x+23)}{16},$$
+que confirma as raízes: $-\frac{7}{2}$ (tripla) e $-\frac{23}{2}$ (simples), todas reais.
+
+Verificações adicionais:
+\begin{itemize}
+\item Relações de Girard: a soma das raízes com multiplicidade é $3\left(-\frac{7}{2}\right)-\frac{23}{2}=-22$, igual a $-22$, o oposto do coeficiente de $x^3$. O produto é $\left(-\frac{7}{2}\right)^3\left(-\frac{23}{2}\right)=\frac{7^3\cdot 23}{16}=\frac{7889}{16}$, igual ao termo independente.
+\item Substituição direta em $x=-\frac{7}{2}$ (aqui $2x+7=0$): $\frac{2401}{16}-\frac{2401}{4}+\frac{7203}{8}-\frac{2401}{4}=\frac{2401-9604+14406-9604}{16}=-\frac{2401}{16}=-\frac{7^4}{16}$.
+\item Substituição direta em $x=-\frac{23}{2}$ (aqui $(2x+7)^3=(-16)^3=-4096$): $\frac{279841-65536-340676+155526-31556}{16}=-\frac{2401}{16}$.
+\end{itemize}
+
+\textbf{Conclusão.} Como $P$ tem grau 4 e a fatoração já esgota suas raízes, todas reais, o conjunto solução real é
+$$S=\left\{-\frac{23}{2},\,-\frac{7}{2}\right\}=\{-11{,}5;\,-3{,}5\}.$$
+A raiz $-\frac{7}{2}$ é tripla em $P$, mas aparece uma única vez no conjunto solução.
+
+ANSWER: $S=\left\{-\frac{23}{2},\,-\frac{7}{2}\right\}$, ou seja, $x=-11{,}5$ ou $x=-3{,}5$

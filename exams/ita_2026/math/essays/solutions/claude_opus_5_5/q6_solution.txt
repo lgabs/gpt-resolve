@@ -1,0 +1,56 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Estrutura de $A$, $B$ e $AB$.} $A$ é estritamente triangular inferior. A coluna $k$ de $A$ tem, a partir da linha $k+1$, os elementos $1,\ \alpha_k,\ \alpha_k^2,\dots,\alpha_k^{\,n-k-1}$ (usando $\alpha_k^0=1$). Logo a soma dos elementos da coluna $k$ de $A$ é
+\[
+c_k=\sum_{i=k+1}^{n}\alpha_k^{\,i-k-1}=1+\alpha_k+\cdots+\alpha_k^{\,n-k-1}\ \ (n-k \text{ parcelas}),\qquad c_{n-1}=1,\quad c_n=0 .
+\]
+Como $b_{kj}=1$ exatamente quando $k\le j$,
+\[
+(AB)_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj}=\sum_{k=1}^{j}a_{ik},
+\]
+ou seja, a coluna $j$ de $AB$ é a soma das colunas $1,\dots,j$ de $A$. A soma dos seus elementos é, portanto, $S_j=c_1+\cdots+c_j$.
+
+\textbf{Sobre a hipótese.} A coluna $n$ de $A$ é nula, então as colunas $n-1$ e $n$ de $AB$ são iguais e $S_{n-1}=S_n$. Lida ao pé da letra (``coluna $j$ de $AB$''), a hipótese exigiria $1=S_{n-1}=S_n=0$, o que é impossível. Ela exigiria também $c_{n-1}=S_{n-1}-S_{n-2}=-1$, mas $c_{n-1}=1$. A única leitura consistente, que é também a que faz o item b) depender de $n$, é que a soma da coluna $j$ de $A$ vale $n-j$:
+\[
+c_j=n-j,\qquad j=1,\dots,n .
+\]
+Essa leitura é compatível com $c_n=0$ e $c_{n-1}=1$, que valem automaticamente. É a leitura adotada a seguir.
+
+\textbf{a)} $A$ é triangular com diagonal nula, então $\det A=0$. $B$ é triangular com diagonal formada por $1$'s, então $\det B=1$. Pelo teorema de Binet,
+\[
+\det(AB)=\det A\cdot\det B=0\cdot 1=0 .
+\]
+Esse resultado não depende dos $\alpha_j$ nem da hipótese.
+
+\textbf{b)} Como $a_{ik}=0$ para $k\ge i$, temos $(AB)_{ii}=\sum_{k=1}^{i}a_{ik}=\sum_{k=1}^{n}a_{ik}$, que é a soma da linha $i$ de $A$. Logo o traço é a soma de todos os elementos de $A$:
+\[
+\mathrm{tr}(AB)=\sum_{i=1}^{n}\sum_{k=1}^{n}a_{ik}=\sum_{j=1}^{n}c_j=\sum_{j=1}^{n}(n-j)=0+1+\cdots+(n-1)=\frac{n(n-1)}{2}.
+\]
+
+\textbf{c)} Para $n=5$,
+\[
+A=\begin{pmatrix}
+0&0&0&0&0\\
+1&0&0&0&0\\
+\alpha_1&1&0&0&0\\
+\alpha_1^2&\alpha_2&1&0&0\\
+\alpha_1^3&\alpha_2^2&\alpha_3&1&0
+\end{pmatrix},
+\]
+e as condições $c_j=5-j$ ficam:
+\begin{itemize}
+\item coluna 5: $0=0$ e coluna 4: $1=1$. São identidades, então $\alpha_4\in\mathbb{R}$ é livre.
+\item coluna 3: $1+\alpha_3=2$, logo $\alpha_3=1$.
+\item coluna 2: $1+\alpha_2+\alpha_2^2=3$, ou seja, $\alpha_2^2+\alpha_2-2=(\alpha_2-1)(\alpha_2+2)=0$, logo $\alpha_2=1$ ou $\alpha_2=-2$.
+\item coluna 1: $1+\alpha_1+\alpha_1^2+\alpha_1^3=4$, ou seja, $\alpha_1^3+\alpha_1^2+\alpha_1-3=(\alpha_1-1)(\alpha_1^2+2\alpha_1+3)=0$. O fator quadrático tem $\Delta=4-12=-8<0$, então não tem raiz real, e $\alpha_1=1$.
+\end{itemize}
+Verificação para $\alpha_2=-2$: $1+(-2)+(-2)^2=3=5-2$.
+
+Portanto, $(\alpha_1,\alpha_2,\alpha_3,\alpha_4)=(1,\,1,\,1,\,t)$ ou $(1,\,-2,\,1,\,t)$, com $t\in\mathbb{R}$ qualquer. Isso usa a convenção $0^0=1$ em $a_{54}=\alpha_4^0$; sem essa convenção, exclui-se $t=0$.
+
+\emph{Observação.} Na leitura literal (colunas de $AB$), nenhuma escolha dos $\alpha_j$ satisfaz a hipótese, e o item c) não teria solução. O item a) daria $0$ do mesmo modo.
+
+\medskip
+ANSWER: a) $\det(AB)=0$; b) $\mathrm{tr}(AB)=\dfrac{n(n-1)}{2}$; c) $\alpha_1=1$, $\alpha_2\in\{1,-2\}$, $\alpha_3=1$, $\alpha_4\in\mathbb{R}$ qualquer. Obtido lendo a hipótese como ``soma da coluna $j$ de $A$ igual a $n-j$'', a única leitura consistente.

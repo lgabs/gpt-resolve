@@ -1,0 +1,81 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{1. Fatoração de $q$.} Desenvolvendo,
+\[
+(x+1)^2(x-2)=(x^2+2x+1)(x-2)=x^3-2x^2+2x^2-4x+x-2=x^3-3x-2=q(x).
+\]
+Logo $q(x)=(x+1)^2(x-2)$, com raízes $-1$ (dupla) e $2$. Além disso, $q'(x)=3x^2-3$ e $q'(-1)=0$.
+
+\textbf{2. Condições necessárias.} Suponha $p(x)=q(x)\,s(x)$, com $s$ polinomial. Então:
+\begin{itemize}
+\item $p(2)=q(2)\,s(2)=0$, pois $q(2)=0$;
+\item $p(-1)=q(-1)\,s(-1)=0$, pois $q(-1)=0$;
+\item $p'(x)=q'(x)\,s(x)+q(x)\,s'(x)$; em $x=-1$ as duas parcelas se anulam, pois $q'(-1)=0$ e $q(-1)=0$. Logo $p'(-1)=0$.
+\end{itemize}
+Portanto $p(2)=p(-1)=p'(-1)=0$ é condição necessária para $q\mid p$. A suficiência, para o valor de $a$ obtido, será confirmada no passo 4 por divisão explícita.
+
+\textbf{3. Cálculo de $a$.} Temos $p'(x)=7x^6+18ax^5-5x^4-20ax^3+21x^2-14ax+9$. Separando as parcelas sem $a$ e as parcelas com $a$:
+\begin{align*}
+p(2)&=(128-32+56+18)+a\,(192-80-28+1)=170+85a=85(a+2),\\
+p(-1)&=(-1+1-7-9)+a\,(3-5-7+1)=-16-8a=-8(a+2),\\
+p'(-1)&=(7-5+21+9)+a\,(-18+20+14)=32+16a=16(a+2).
+\end{align*}
+As três condições se reduzem a $a+2=0$. Logo $a=-2$ é o único valor possível, e é real.
+
+\textbf{4. Divisão de $p$ por $q$ para $a=-2$.} Com $a=-2$,
+\[
+p(x)=x^7-6x^6-x^5+10x^4+7x^3+14x^2+9x-2.
+\]
+Aplicamos o algoritmo da divisão, eliminando em cada passo o termo de maior grau do resto:
+\begin{itemize}
+\item $x^4\,q(x)=x^7-3x^5-2x^4$; resto: $-6x^6+2x^5+12x^4+7x^3+14x^2+9x-2$;
+\item $-6x^3\,q(x)=-6x^6+18x^4+12x^3$; resto: $2x^5-6x^4-5x^3+14x^2+9x-2$;
+\item $2x^2\,q(x)=2x^5-6x^3-4x^2$; resto: $-6x^4+x^3+18x^2+9x-2$;
+\item $-6x\,q(x)=-6x^4+18x^2+12x$; resto: $x^3-3x-2$;
+\item $1\cdot q(x)=x^3-3x-2$; resto: $0$.
+\end{itemize}
+O quociente é $s(x)=x^4-6x^3+2x^2-6x+1$ e o resto é nulo. Portanto
+\[
+p(x)=(x^3-3x-2)\,(x^4-6x^3+2x^2-6x+1),
+\]
+ou seja, $p$ é divisível por $q$ para $a=-2$. Isso confirma a suficiência.
+
+\textbf{5. Raízes de $s$.} Como $s(0)=1\neq0$, nenhuma raiz de $s$ é nula, e podemos dividir por $x^2$ sem perder raízes. Com $t=x+\dfrac{1}{x}$ e a identidade $x^2+\dfrac{1}{x^2}=t^2-2$,
+\[
+\frac{s(x)}{x^2}=\left(x^2+\frac{1}{x^2}\right)-6\left(x+\frac{1}{x}\right)+2=(t^2-2)-6t+2=t^2-6t=t\,(t-6).
+\]
+Logo $s(x)=0$ se, e somente se, $t=0$ ou $t=6$:
+\begin{itemize}
+\item $t=0$: $x^2+1=0$, donde $x=\pm i$;
+\item $t=6$: $x^2-6x+1=0$, com $\Delta=36-4=32$, donde $x=\dfrac{6\pm4\sqrt{2}}{2}=3\pm2\sqrt{2}$.
+\end{itemize}
+Estas quatro raízes são distintas e $s$ é mônico de grau $4$. Assim $s(x)=(x^2+1)(x^2-6x+1)$.
+
+\textbf{6. Fatoração completa e multiplicidades.} Para $a=-2$,
+\[
+p(x)=(x+1)^2\,(x-2)\,(x^2+1)\,(x^2-6x+1),
+\]
+de grau $2+1+2+2=7$. Para fixar as multiplicidades exatas, note que
+\[
+s(-1)=1+6+2+6+1=16\neq0,\qquad s(2)=16-48+8-12+1=-35\neq0.
+\]
+Logo $-1$ não é raiz de $s$ e tem multiplicidade exatamente $2$. (A condição $p'(-1)=0$ do passo 2 garantia apenas multiplicidade $\geq 2$.) O número $2$ tem multiplicidade exatamente $1$. As raízes de $s$ são simples e diferentes de $-1$ e de $2$ (note $3-2\sqrt{2}\approx0{,}172$ e $3+2\sqrt{2}\approx5{,}828$).
+
+Portanto, para $a=-2$, as raízes de $p$ são:
+\begin{itemize}
+\item reais: $-1$ (multiplicidade $2$), $2$, $3+2\sqrt{2}$ e $3-2\sqrt{2}$;
+\item não reais: $i$ e $-i$.
+\end{itemize}
+São seis raízes distintas, ou sete contando multiplicidades.
+
+\textbf{7. Conferências.}
+\begin{itemize}
+\item \emph{Relações de Vieta.} Para $p$ mônico de grau $7$, o coeficiente de $x^6$ é $-e_1$ e o termo constante é $-e_7$, onde $e_1$ é a soma e $e_7$ o produto das raízes com multiplicidade. Como o coeficiente de $x^6$ é $-6$ e o termo constante é $-2$, devemos ter $e_1=6$ e $e_7=2$. Direto: $-1-1+2+i-i+(3+2\sqrt{2})+(3-2\sqrt{2})=6$, e $(-1)(-1)(2)\cdot[i(-i)]\cdot[(3+2\sqrt{2})(3-2\sqrt{2})]=2\cdot1\cdot1=2$. Confere.
+\item \emph{Coeficiente de $x^5$.} Deve ser $e_2=-1$, pois o coeficiente de $x^5$ em $p$ é $-1$. A soma dos quadrados das raízes é $1+1+4+(-1)+(-1)+\big[(3+2\sqrt{2})^2+(3-2\sqrt{2})^2\big]=6-2+34=38$. Então $e_2=\dfrac{e_1^2-\sum r_k^2}{2}=\dfrac{36-38}{2}=-1$. Confere.
+\item \emph{Valores numéricos.} Em $x=0$: $p(0)=-2$, e a forma fatorada dá $1\cdot(-2)\cdot1\cdot1=-2$. Em $x=1$: $p(1)=1-6-1+10+7+14+9-2=32$, e a forma fatorada dá $2^2\cdot(-1)\cdot2\cdot(-4)=32$. Confere.
+\item \emph{Ordem de grandeza e simetria.} $3+2\sqrt{2}\approx5{,}828$ e $3-2\sqrt{2}\approx0{,}172$ são inversos entre si (produto $1$), como exige a simetria palindrômica de $s$. As raízes $\pm i$ formam um par conjugado, como ocorre com coeficientes reais.
+\end{itemize}
+
+ANSWER: $a=-2$; as raízes de $p$ são $-1$ (dupla), $2$, $i$, $-i$, $3+2\sqrt{2}$ e $3-2\sqrt{2}$ (seis distintas; sete contando multiplicidade).

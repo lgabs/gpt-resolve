@@ -1,0 +1,47 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "784 sequências estritamente crescentes (a<b<c em ℕ, com a+b+c=100). As 4851 soluções ordenadas positivas, menos as 147 com dois termos iguais, dão 4704; dividindo por 3! = 6, obtêm-se 784.",
+  "judge_reference": {
+    "final_answer": "784 sequências estritamente crescentes (a, b, c) de naturais (ℕ = {1, 2, 3, …}) com a + b + c = 100.",
+    "reference_solution": "**Questão 08 – Resolução de referência**\n\nConferi o enunciado no original (p. 9): \"Quantas sequências estritamente crescentes de três números naturais é possível construir de forma que a soma dos três números é igual a 100?\" Não há figura. Pela convenção da prova, ℕ = {1, 2, 3, …}.\n\nQueremos o número de ternos (a, b, c) ∈ ℕ³ com 1 ≤ a < b < c e a + b + c = 100.\n\n**Método 1 – contagem direta, fixando o menor termo**\n\n1. Fixe a. Como c = 100 − a − b, a condição c > b equivale a 2b < 100 − a, ou seja, b ≤ ⌊(99 − a)/2⌋. Junto com b ≥ a + 1, o número de valores de b é\n N(a) = ⌊(99 − a)/2⌋ − a, desde que esse valor seja ≥ 1.\n2. Faixa de a: precisamos de a + 1 ≤ ⌊(99 − a)/2⌋. Isso dá 2a + 2 ≤ 99 − a, logo 3a ≤ 97, e então 1 ≤ a ≤ 32. (Também se vê pela cota 3a < a + b + c = 100, que dá a ≤ 33; mas a = 33 obrigaria b + c = 67 com 34 ≤ b < c, o que é impossível, porque 34 + 35 = 69 > 67.)\n3. Separando pela paridade de a, com k = 1, …, 16:\n - a = 2k − 1 (ímpar): N = ⌊(100 − 2k)/2⌋ − (2k − 1) = 51 − 3k;\n - a = 2k (par): N = ⌊(99 − 2k)/2⌋ − 2k = 49 − 3k.\n Cada par (a = 2k − 1, a = 2k) contribui com 100 − 6k. A sequência dos N(a) é 48, 46, 45, 43, 42, 40, …, 4, 3, 1.\n4. Total: Σ_{k=1}^{16} (100 − 6k) = 1600 − 6·(16·17/2) = 1600 − 816 = **784**.\n\n**Método 2 – contagem com ordem e divisão por 3!**\n\n1. Soluções ordenadas de a + b + c = 100 em inteiros positivos (estrelas e barras): C(99, 2) = 4851.\n2. Soluções com os três termos iguais: exigiriam 3a = 100, o que não é possível. Não há nenhuma.\n3. Soluções com exatamente dois termos iguais, por exemplo a = b ≠ c: c = 100 − 2a ≥ 1 dá 1 ≤ a ≤ 49, e c ≠ a vale sempre (a = 100/3 não é inteiro). São 49 soluções para cada um dos 3 pares de posições, ou seja, 3·49 = 147.\n4. Soluções com termos dois a dois distintos: 4851 − 147 = 4704. Cada conjunto {a, b, c} aparece em 3! = 6 ordens, e exatamente uma delas é crescente.\n5. Total: 4704 / 6 = **784**.\n\n**Método 3 – mudança de variáveis (conferência)**\n\nFaça a = x, b = x + y, c = x + y + z, com x, y, z ≥ 1. A equação fica 3x + 2y + z = 100. Para cada par (x, y) com 3x + 2y ≤ 99 existe um único z ≥ 1. Para cada x de 1 a 32, há ⌊(99 − 3x)/2⌋ valores de y, e a soma dá 784. Outra forma: com a' = a − 1, b' = b − 2, c' = c − 3, obtemos partições de 97 em 3 partes positivas, cujo número é o inteiro mais próximo de 97²/12 = 784,08, ou seja, 784.\n\nA enumeração computacional (python3, laço sobre 1 ≤ a < b < c) também dá 784.\n\n**Resposta: 784 sequências.**",
+    "pitfalls": [
+      "Convenção ℕ = {1, 2, 3, …} (dada na própria prova): o 0 NÃO entra. Se o candidato incluir o 0, aparecem as 49 sequências (0, b, 100 − b) com 1 ≤ b ≤ 49, e o resultado vira 833. Isso está errado.",
+      "Coincidência perigosa: 833 também é o número de partições de 100 em 3 partes positivas não necessariamente distintas (inteiro mais próximo de 100²/12). Quem usa a fórmula de partições sem impor partes distintas chega a 833 por outro caminho errado. Para partes distintas, é preciso deslocar para 97 (inteiro mais próximo de 97²/12 = 784).",
+      "'Estritamente crescente' fixa a ordem: cada conjunto {a, b, c} gera uma única sequência. Não se multiplica por 3! (o erro dá 4704) nem se usa diretamente C(99, 2) = 4851 (que conta soluções ordenadas, com repetição e em qualquer ordem).",
+      "Dividir 4851 por 6 sem antes tirar os casos com termos repetidos dá um valor não inteiro (808,5). É preciso remover as 3·49 = 147 soluções com dois termos iguais e verificar que não existe solução com os três iguais (100 não é múltiplo de 3).",
+      "Na contagem dos casos a = b: c = 100 − 2a ≥ 1 dá a ≤ 49, ou seja, 49 casos por par de posições (não 50, porque c = 0 não é natural). São 3 pares de posições.",
+      "No método direto: a desigualdade c > b é estrita, logo b ≤ ⌊(99 − a)/2⌋ (e não ⌊(100 − a)/2⌋). Errar o piso por 1 de acordo com a paridade de a é o erro mais comum.",
+      "Faixa do menor termo: 1 ≤ a ≤ 32. A cota grosseira a < 100/3 permite a = 33, mas a = 33 não gera nenhuma sequência. Incluir esse termo com contagem negativa ou nula, mal calculada, altera o total.",
+      "A soma das parcelas exige organizar a paridade (51 − 3k para a ímpar e 49 − 3k para a par, k = 1..16). Contas mal resolvidas são penalizadas pela instrução 8 da prova: as expressões numéricas devem ser resolvidas integralmente.",
+      "Uma boa resolução deve justificar a bijeção ou o fator de divisão (cada conjunto de 3 elementos distintos corresponde a exatamente uma sequência crescente) e chegar ao número 784, não deixar a resposta como expressão."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "784 sequências estritamente crescentes (a<b<c em ℕ, com a+b+c=100). As 4851 soluções ordenadas positivas, menos as 147 com dois termos iguais, dão 4704; dividindo por 3! = 6, obtêm-se 784.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No caso par (a = 2k), o candidato escreve direto (49 − k) − 2k sem dizer que ⌊(99 − 2k)/2⌋ = 49 − k porque 99 − 2k é ímpar. Já no caso ímpar ele tira o piso sem comentar (ali 99 − a é par, então está certo). Bastava uma linha explicando por que o piso some ou vira 49 − k em cada paridade."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato afirma, sem mostrar a conta, que a quantidade é positiva se e somente se 3a + 3 ≤ 100. A afirmação está certa: ⌊(99 − a)/2⌋ ≥ a + 1 equivale a (99 − a)/2 ≥ a + 1, porque a + 1 é inteiro, e isso dá 3a ≤ 97. Faltou escrever essa passagem, que justifica parar em a = 32 e explica por que a = 33 não gera sequência."
+          }
+        ],
+        "summary": "Conferi o enunciado na p. 9 do PDF e a transcrição está fiel. A resposta final do candidato, 784, é igual à minha e também ao resultado de uma enumeração por computador que rodei em python3. A resposta está correta.\n\n**Método principal (barras e bolinhas):**\n- O candidato usa a convenção ℕ = {1, 2, 3, …} da prova e justifica que cada conjunto de três elementos distintos corresponde a exatamente uma sequência crescente.\n- Calcula C(99,2) = 4851 e mostra que não existe solução com os três termos iguais, porque 3 não divide 100.\n- Conta 49 soluções com dois termos iguais para cada uma das 3 posições do termo diferente, ou seja, 147. O 49 vem de c = 100 − 2a ≥ 1, e ele confere que c ≠ a.\n- Chega a 4704 soluções com termos distintos e divide por 3! = 6. Todas as contas estão resolvidas até o fim, como pede a instrução 8.\n\n**Conferência por contagem direta:**\n- Usa a cota correta b ≤ ⌊(99 − a)/2⌋, que vem da desigualdade estrita c > b, e a faixa 1 ≤ a ≤ 32.\n- Separa por paridade: 51 − 3k para a ímpar e 49 − 3k para a par. As somas 408 e 376 batem com as minhas, e os casos extremos (a = 1 com 47 sequências; a = 32 só com (32, 33, 35)) também.\n\n**Armadilhas:** todas foram tratadas. O 0 ficou de fora (nada de 833), não multiplicou por 3! (nada de 4704) e não dividiu 4851 direto por 6 (nada de 808,5). Contou 49 casos de termos repetidos, não 50, e acertou o piso por paridade e a exclusão de a = 33.\n\n**Problemas encontrados:** só dois, de redação, e ambos menores. Ele não explica o piso no caso par e não mostra a conta da equivalência que dá a ≤ 32.\n\nDo jeito que está, a resolução pode ser publicada como gabarito comentado."
+      }
+    }
+  ]
+}

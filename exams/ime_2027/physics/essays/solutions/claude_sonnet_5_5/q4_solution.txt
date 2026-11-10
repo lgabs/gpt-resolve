@@ -1,0 +1,54 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses e leitura das figuras.} Os elementos são ôhmicos, com fem e fcem constantes e sem indutores nem capacitores. Logo a corrente se estabelece instantaneamente, e as correntes em $t=0^+$ são as de regime. Chave e fusível são ideais (resistência nula). O fusível é novo e frio em $t=0$, inclusive no item (c), onde ele é reposto. Assim, a curva da Figura 2 vale a partir do fechamento de S, para corrente constante.
+
+Na Figura 1, em cada uma das três baterias o traço maior (polo $+$) está voltado para o nó $A$. Defino $V=V_A-V_B$. O gerador fornece $I$ de seu polo $+$ até $A$, e cada receptor recebe corrente $i_k$ de $A$ para $B$, entrando pelo seu polo $+$. Os receptores opõem-se ao gerador. As equações são
+\[
+V=1000-2I,\qquad V=\varepsilon_k'+R_k\,i_k\quad (k=1,2),\qquad I=i_1+i_2\ \ (\text{lei dos nós em }A).
+\]
+
+\subsection*{a) Correntes nos receptores}
+\[
+\frac{1000-V}{2}=(V-850)+\frac{V-900}{2}
+\;\Longrightarrow\; 4V=3600
+\;\Longrightarrow\; V=900\ \text{V}
+\]
+(conferência por Millman: $V=\dfrac{1000/2+850/1+900/2}{1/2+1/1+1/2}=900$ V). Então
+\[
+i_1=\frac{900-850}{1}=50\ \text{A},\qquad i_2=\frac{900-900}{2}=0,\qquad I=\frac{1000-900}{2}=50\ \text{A}=i_1+i_2 .
+\]
+Como $V_{AB}=900\ \text{V}$ é exatamente a fcem do Rec$_2$, não há ddp sobre sua resistência. Esse é o limiar entre operar como receptor ($i_2>0$) e como gerador ($i_2<0$), e a solução é única. \textbf{Rec$_1$: 50 A (de $A$ para $B$); Rec$_2$: 0.}
+
+\emph{Balanço de potência.} O gerador fornece $1000\cdot 50=50$ kW. Ele dissipa $2\cdot 50^2=5$ kW internamente. O Rec$_1$ absorve $850\cdot50+1\cdot50^2=42{,}5+2{,}5=45$ kW. Como $5+45=50$ kW, o balanço fecha.
+
+\subsection*{b) Rompimento do fusível}
+O fusível está em série só com o gerador. Como o circuito é de regime, $I=50$ A fica constante e a curva se aplica diretamente:
+\[
+\frac{I}{I_{\text{FUSÍVEL}}}=\frac{50}{20}=2{,}5>1{,}1 ,
+\]
+em que $1{,}1$ é a assíntota vertical, abaixo da qual o fusível nunca rompe. Portanto \textbf{o fusível rompe}. O ponto $2{,}5$ está no trecho inclinado, que vai de $(1{,}1;\,3{,}8\ \text{s})$ a $(3{,}35;\,0{,}1\ \text{s})$ (leitura da grade, incerteza de cerca de $0{,}05$ na razão e $0{,}1$ s no tempo). Sua inclinação é
+\[
+m=\frac{0{,}1-3{,}8}{3{,}35-1{,}1}\approx-1{,}64\ \text{s por unidade de razão},
+\qquad
+t\approx 3{,}8-1{,}64\,(2{,}5-1{,}1)\approx 1{,}5\ \text{s}.
+\]
+Isso concorda com a grade, pois a curva passa por $(2{,}5;\ 1{,}5\ \text{s})$. Com o extremo em $3{,}3$, obtém-se $1{,}45$ s. Logo $t\approx1{,}5$ s ($1{,}4$ a $1{,}6$ s). Os $50$ ms do gerador não se aplicam aqui, pois não há curto-circuito. A carga puxa $2{,}5$ vezes a corrente de projeto e o fusível abre o circuito após cerca de $1{,}5$ s. Por isso ele precisa ser reposto.
+
+\subsection*{c) Curto-circuito entre $A$ e $B$}
+Com o curto, $V_{AB}=0$. O fusível carrega apenas a corrente do gerador, cujo único elemento resistivo no laço gerador--F--S--curto é a resistência interna:
+\[
+I_{cc}=\frac{1000-0}{2}=500\ \text{A},\qquad \frac{I_{cc}}{I_{\text{FUSÍVEL}}}=\frac{500}{20}=25 .
+\]
+Os receptores também ficam em curto ($i_1=-850$ A, $i_2=-450$ A), mas essas correntes circulam em seus próprios laços, fechados pelo curto, e não passam por F.
+
+A razão $25$ está além do trecho desenhado (que termina em $5$). \emph{Hipótese:} o patamar horizontal da curva, $10^{-1}$ s, vale para todas as razões acima de $3{,}35$. Esse é o único comportamento indicado pelos dados (tempo mínimo de atuação do fusível). Então
+\[
+t_{\text{rompimento}}=10^{-1}\ \text{s}=100\ \text{ms}>50\ \text{ms}.
+\]
+O gerador só suporta o curto por $50$ ms, mas o fusível só abre após $100$ ms. Entre $50$ e $100$ ms o gerador permanece com $500$ A, que é $25$ vezes a corrente de projeto. A energia dissipada nele é $2\cdot500^2\cdot0{,}1=50$ kJ, o dobro dos $25$ kJ de $50$ ms. \textbf{O fusível não protege o gerador.} Seria preciso um dispositivo com $t<50$ ms para $I/I_{\text{FUSÍVEL}}=25$.
+
+\emph{Verificação.} As unidades são V, $\Omega$, A, W e s. Em (b), com razão $2{,}5$, $t\approx1{,}5$ s. Em (c), com razão $25$, $t=0{,}1$ s. Razão maior dá tempo menor, como a curva exige. O valor $1000/2=500$ A é a ordem de grandeza esperada para uma fonte de baixa resistência interna.
+
+ANSWER: a) $i_1=50$ A e $i_2=0$ (corrente total $I=50$ A, $V_{AB}=900$ V); b) $I/I_{\text{FUSÍVEL}}=2{,}5$, o fusível rompe em $t\approx1{,}5$ s; c) $I_{cc}=500$ A (razão $25$), $t_{\text{rompimento}}=100$ ms $>50$ ms, logo o fusível não protege o gerador.

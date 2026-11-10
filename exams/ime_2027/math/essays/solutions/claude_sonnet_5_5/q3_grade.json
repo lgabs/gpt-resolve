@@ -1,0 +1,29 @@
+{
+  "question": 3,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-3-matematica-2-fase-dia-1-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Questão 3 (menor inteiro x com f(x)+f(−1/x) ≥ 0,999)",
+      "solution_answer": "x = 7",
+      "key_answer": "x = 7",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz a questão e a resposta é 7. A condição g_n(x)=1 equivale a x > −1/n. Para x ≥ 0 isso vale para todo n, então f(x)=1/2. Para x inteiro ≥ 1, g_n(−1/x)=1 só quando n < x; assim f(−1/x)=(1−3^{1−x})/2 e a soma dá 1 − 3^{1−x}/2. A desigualdade vira 3^{x−1} ≥ 500, logo x−1 ≥ 6 e x ≥ 7. Valores: h(6)=1−1/486≈0,99794 (não serve) e h(7)=1−1/1458≈0,99931 (serve). Para x inteiro ≤ −1: f(x)=0 e f(−1/x)=1/2, então a soma é 0,5. Em x=0 a expressão f(−1/x) não existe. Conferi com frações exatas em Python para x de −5 a 9, e o primeiro inteiro que satisfaz é 7. Conferi também o enunciado transcrito com o PDF e está fiel."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito do Poliedro diz que x ∈ ℤ+ sem justificar. Como a pergunta é o MENOR inteiro, falta mostrar que nenhum inteiro negativo serve. Para x ≤ −1, f(x)=0 e f(−1/x)=1/2, e a soma 0,5 não atinge 0,999. Também falta dizer que x=0 fica fora porque −1/x não existe. A resolução conferida faz essa análise; o gabarito pula. Isso pode pesar numa correção rigorosa da justificativa, mas não muda a resposta."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "No caso x=n, a resolução usa que g_x(−1/x)=0, porque a desigualdade é estrita (−1/x < −1/n). Isso decide se o último termo entra na soma, e ela trata corretamente. Se essa fronteira fosse tratada errado, a resposta mudaria para x=6."
+    }
+  ],
+  "summary": "A resolução e o gabarito chegam ao mesmo resultado, x = 7, e os dois estão certos. Refiz a conta, f(x)+f(−1/x) = 1 − 3^{1−x}/2 para x ≥ 1, e conferi com frações exatas em Python: o primeiro inteiro que satisfaz a desigualdade é 7. A resolução está mais completa que o gabarito. Ela justifica que inteiros negativos dão soma 0,5 e que x=0 fica fora do domínio, coisa que o Poliedro só afirma sem justificar."
+}

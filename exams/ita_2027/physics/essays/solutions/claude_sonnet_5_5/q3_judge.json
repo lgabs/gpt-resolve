@@ -1,0 +1,86 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "a) d = sqrt(R^2 + (2hR/g)·sqrt(mu_e^2 g^2 − alpha^2 R^2)). b) t_para = sqrt(2h/g) + sqrt(R)·(mu_e^2 g^2 − alpha^2 R^2)^(1/4)·[1/(alpha R) + 1/(mu_c g)]. Isto vale a soma do tempo sobre o disco t1 = Q/(alpha·sqrt(R)), da queda sqrt(2h/g) e do deslizamento v/(mu_c g), com Q = (mu_e^2 g^2 − alpha^2 R^2)^(1/4) e v = Q·sqrt(R).",
+  "judge_reference": {
+    "reference_solution": "**Hipóteses e convenções**\n- A massa é puntiforme e está sobre a borda do carrossel (r = R, z = h). O carrossel parte do repouso e tem α constante, logo ω(t) = αt.\n- O sentido de giro só afeta o sinal da coordenada x do ponto de queda. Distância e tempos não dependem dele. Adoto α em +z (anti-horário), com a massa inicialmente em (0, R, h).\n- O coeficiente μ_e vale entre massa e carrossel. O coeficiente μ_c vale só entre massa e solo. Não há atrito com o ar.\n- Condição de validade: αR < μ_e g. Caso contrário, a massa já escorrega em t = 0 com v = 0 (ver armadilhas).\n\n**1) Quando a massa deixa de acompanhar o carrossel**\nNa vertical não há aceleração, então N = mg e a força de atrito estático máxima é μ_e·mg.\nEnquanto a massa acompanha o disco, a aceleração tem duas componentes:\n- tangencial: a_t = αR;\n- centrípeta: a_c = ω²R = α²t²R.\n\nO atrito estático é a única força horizontal. Ele precisa fornecer o vetor soma, porque as duas componentes são perpendiculares:\nf = m·√(a_t² + a_c²) = mR·√(α² + α⁴t⁴) ≤ μ_e m g.\n\nO deslizamento começa quando a igualdade é atingida, em t = t_s:\nR·√(α² + α⁴t_s⁴) = μ_e g, o que dá α⁴t_s⁴ = (μ_e g/R)² − α².\n\nPortanto:\n- ω_s = α t_s = [(μ_e g/R)² − α²]^{1/4}\n- t_s = (1/α)·[(μ_e g/R)² − α²]^{1/4}\n- v = ω_s R, com v² = R·√(μ_e²g² − α²R²).\n\nA massa está na borda. Quando o atrito não basta, a resultante não equilibrada, vista do disco, aponta para fora e para trás. A massa sai do disco imediatamente, sem deslizar sobre ele. Por isso μ_c não é usado nessa fase.\n\nEla sai com velocidade horizontal v, tangente à circunferência (perpendicular ao raio), sem componente radial e sem componente vertical.\n\n**a) Ponto de contato com o solo**\nO voo é um lançamento horizontal a partir de h:\n- t_q = √(2h/g);\n- deslocamento horizontal ao longo da tangente: s = v·t_q.\n\nComo a tangente é perpendicular ao raio no ponto de saída, a distância do ponto de queda ao eixo (a origem está no solo, sob o centro) é pitagórica:\n\nd = √(R² + s²) = √(R² + v²·2h/g)\nd = R·√(1 + (2h/g)·√((μ_e g/R)² − α²))\nd = √(R² + (2hR/g)·√(μ_e²g² − α²R²))\n\nEssa expressão é exata. O resultado não depende do ângulo θ_s = αt_s²/2 percorrido antes de sair, e a aproximação sen θ ≈ θ não é necessária.\n\nPara quem quiser as coordenadas, com g_s = α t_s²/2 = θ_s:\nP = (−R sen θ_s − s cos θ_s, R cos θ_s − s sen θ_s, 0).\nVerifiquei que |P| = d.\n\n**b) Instante em que a massa para**\nO tempo total é t = t_s + t_q + t_d, em que t_d é a duração do deslizamento no solo.\n\nModelo padrão (resposta principal): na chegada ao solo, a componente vertical é anulada (sem quicar) e a velocidade horizontal v se mantém. Isso equivale a desprezar o impulso horizontal do atrito durante o choque.\n- Após o choque: N = mg e a desaceleração é μ_c g.\n- t_d = v/(μ_c g).\n\nt = t_s + √(2h/g) + v/(μ_c g)\nt = [(μ_e g/R)² − α²]^{1/4}·(1/α + R/(μ_c g)) + √(2h/g)\n\nRefinamento (atrito impulsivo no choque): durante o impacto a massa já desliza, então atua μ_c·N. O impulso vertical vale m·g·t_q, e o impulso horizontal de atrito é μ_c·m·g·t_q. A velocidade horizontal logo após o choque é:\nv' = v − μ_c g t_q = v − μ_c√(2gh).\n\n- Se v > μ_c√(2gh): t_d = v'/(μ_c g) = v/(μ_c g) − t_q. O tempo total fica t = t_s + v/(μ_c g) = [(μ_e g/R)² − α²]^{1/4}·(1/α + R/(μ_c g)). Isto é, o modelo padrão menos t_q.\n- Se v ≤ μ_c√(2gh): a massa para no próprio choque, e t = t_s + t_q.\n\nO enunciado diz que a massa \"realiza um deslizamento\", o que é coerente com v' > 0. Não consigo confirmar qual modelo o gabarito oficial adota. Uma boa resolução deve declarar explicitamente a hipótese usada.\n\n**Verificação numérica** (R = 2 m, α = 0,5 rad/s², μ_e = 0,5, μ_c = 0,3, h = 1,2 m, g = 9,8 m/s²):\n- t_s = 3,0974 s e v = 3,0974 m/s.\n- Bisseção na condição de atrito confirmou t_s.\n- t_q = 0,4949 s.\n- d = 2,5198 m, igual a √(R² + (v·t_q)²) e igual ao módulo da posição calculada por integração da trajetória.\n- t_padrão = 4,646 s.\n- Refinamento: v' = 1,642 m/s e t = 4,151 s. Uma simulação de contato sem quique com atrito de Coulomb reproduziu v − μ_c g t_q com erro da ordem de 1e-9.\n\nChecagens de limite:\n- α → 0: v → √(μ_e g R), o caso puramente centrípeto.\n- αR → μ_e g: v → 0, d → R e t_s → 0.",
+    "final_answer": "Condição de validade: αR < μ_e g.\n\nInstante e velocidade de saída do carrossel:\n- t_s = (1/α)·[(μ_e g/R)² − α²]^{1/4}\n- v = R·[(μ_e g/R)² − α²]^{1/4}, ou seja, v² = R·√(μ_e²g² − α²R²).\n\na) d = √(R² + (2h/g)·v²) = R·√(1 + (2h/g)·√((μ_e g/R)² − α²)) = √(R² + (2hR/g)·√(μ_e²g² − α²R²)).\n\nb) Modelo padrão (velocidade horizontal v preservada na chegada ao solo, depois desliza com desaceleração μ_c g):\nt = t_s + √(2h/g) + v/(μ_c g) = [(μ_e g/R)² − α²]^{1/4}·(1/α + R/(μ_c g)) + √(2h/g).\n\nRefinamento (atrito impulsivo no choque):\n- Se v > μ_c√(2gh), então t = t_s + v/(μ_c g), que é o resultado padrão menos √(2h/g).\n- Se v ≤ μ_c√(2gh), então t = t_s + √(2h/g).\n\nO enunciado não define o modelo do choque, e não consegui confirmar qual deles o gabarito oficial usa. A resolução deve declarar a hipótese usada.",
+    "pitfalls": [
+      "Condição de escorregamento: o atrito estático deve fornecer a soma vetorial das acelerações tangencial (αR) e centrípeta (ω²R = α²t²R), que são perpendiculares. Erro comum: usar só αR ou só ω²R, em vez de m·R·√(α² + α⁴t⁴) = μ_e m g, com N = mg.",
+      "Validade: é preciso αR < μ_e g. Se αR ≥ μ_e g, a massa escorrega em t = 0 com v ≈ 0 e cai quase verticalmente, e a fórmula com a raiz quarta perde o sentido (a quantidade sob a raiz fica negativa). Uma boa resolução declara essa condição.",
+      "A massa está na borda: ao faltar atrito ela sai do disco imediatamente. Não há fase de deslizamento sobre o carrossel, e μ_c vale só entre massa e solo. Erro comum: usar μ_c no disco.",
+      "A velocidade de saída é puramente tangencial e horizontal, v = ω_s R, com ω_s = α t_s. Não há componente radial nem vertical inicial. O voo tem tempo √(2h/g), independente de v.",
+      "Item (a): a distância ao eixo/origem é pitagórica, d = √(R² + (v t_q)²), porque a tangente é perpendicular ao raio. Não depende do ângulo θ_s já percorrido, e a aproximação sen θ ≈ θ não é necessária. Erros comuns: responder só v·t_q ou só R, ou supor que a massa sai sempre de (0, R) e deixar de justificar a ortogonalidade (o resultado coincide, mas as coordenadas não).",
+      "A origem está no solo, sob o centro do disco. A distância pedida é horizontal, medida no solo (z = 0), não a distância 3D ao ponto de partida.",
+      "O sentido de giro (sinal de α) só muda o sinal da coordenada x do ponto de queda. Distância e tempos não mudam.",
+      "Item (b): o tempo é a soma de três parcelas, t_s + t_q + t_d, contadas desde t = 0. Erro comum: esquecer t_s ou o tempo de voo, ou dar apenas a duração do deslizamento.",
+      "Atrito no choque: o enunciado não define o modelo. No modelo padrão (v horizontal preservada), t_d = v/(μ_c g). Com o atrito cinético atuando também durante o impacto, v' = v − μ_c√(2gh), e o tempo total passa a ser t_s + v/(μ_c g), isto é, menor em √(2h/g). Se v ≤ μ_c√(2gh), a massa para no choque. A resolução deve declarar a hipótese e, se possível, comentar a outra.",
+      "Após o choque, N = mg e a desaceleração é μ_c g, em linha reta no sentido da velocidade tangencial. O tempo de parada é v/(μ_c g), com v = R·[(μ_e g/R)² − α²]^{1/4}. Confira a análise dimensional: (μ_e g/R)² − α² tem unidade s⁻⁴.",
+      "Checagens de limite úteis: α → 0 dá v → √(μ_e g R) (caso só centrípeto). αR → μ_e g dá v → 0, d → R e t_s → 0."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) d = sqrt(R^2 + (2hR/g)·sqrt(μ_e²g² − α²R²)); b) t_para = (1/α)·sqrt(A/R) + sqrt(2h/g) + sqrt(AR)/(μ_c g), com A = sqrt(μ_e²g² − α²R²) (a massa desprende-se em t_1 = (1/α)·sqrt(A/R) com v = sqrt(AR); assume-se μ_e g > αR e que a velocidade horizontal se conserva no choque com o solo).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (b) adota o modelo padrão do choque (velocidade horizontal v conservada, impulso de atrito desprezado) e declara isso, mas não comenta o modelo alternativo. Com atrito cinético atuando durante o impacto, v' = v − μ_c√(2gh) e o tempo total passa a t_s + v/(μ_c g), isto é, √(2h/g) menor; se v ≤ μ_c√(2gh) a massa para no choque. O enunciado não define o modelo, então um gabarito comentado deveria ao menos citar essa ressalva. A resposta boxed é a esperada para a leitura mais provável do enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa da saída do carrossel é imprecisa. O texto diz que 'o atrito máximo não fornece a força centrípeta necessária'. O critério correto, usado nas contas, é que o atrito máximo μ_e·mg não fornece a força total (tangencial + centrípeta). Também faltou dizer explicitamente que μ_c vale só entre massa e solo e, por isso, não há fase de deslizamento sobre o disco. 'Deixa o carrossel imediatamente' fica sem argumento, pois a massa está na borda e a resultante relativa aponta para fora. Seria preciso explicitar isso."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (a) a ortogonalidade entre o raio e a tangente é afirmada, mas as coordenadas (x,y) do ponto de queda não são dadas. Eram dispensáveis para a distância, porém ajudariam a verificar o resultado, e o enunciado traz a dica sen θ≈θ. A resolução diz que d independe de θ = αt₁²/2, mas não comenta que a aproximação de ângulo pequeno não é necessária."
+          },
+          {
+            "severity": "minor",
+            "description": "O movimento após o choque não é descrito: reta no sentido da velocidade tangencial, com N = mg. A forma boxed de (b) depende de A, definido fora da caixa; escrever tudo explicitamente em termos de μ_e, g, R, α deixaria a resposta autocontida. A verificação numérica só confere o critério de atrito em t₁ e não o resultado final de (a) e (b)."
+          }
+        ],
+        "summary": "As respostas finais do candidato coincidem com as da referência nos dois itens. Refiz as contas em Python: com R=2, α=0,5, μ_e=0,5, μ_c=0,3, h=1,2, g=9,8, obtive t_1=v=3,0974, t_q=0,4949, d=2,5198 e t_padrão=4,646 s, iguais aos da referência. O exemplo numérico do candidato (g=10, R=2, α=1) também confere: R√(α²+ω⁴)=5=μ_e g. Os principais pontos estão certos. O critério de escorregamento usa a soma vetorial das acelerações tangencial e centrípeta. A condição de validade μ_e g > αR está declarada. A saída é tangencial e horizontal. A distância é obtida por Pitágoras, sem depender do ângulo nem do sentido de giro. O tempo total é a soma de três parcelas. O limite αR→μ_e g e a análise dimensional estão corretos. A hipótese sobre o choque (v conservada) é explícita. Os descontos vêm de lacunas de rigor e completude: não discute o modelo alternativo de atrito impulsivo no impacto, a justificativa da saída imediata do disco é imprecisa ('força centrípeta' em vez da força total), μ_c não é explicitamente excluído do disco, e a resposta de (b) depende de A definido fora da caixa. Esses pontos não afetam o resultado. A solução é correta e bem organizada, mas ainda não chega a gabarito comentado com nota 9 ou mais.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "a) d = sqrt(R^2 + (2hR/g)·sqrt(mu_e^2 g^2 − alpha^2 R^2)). b) t_para = sqrt(2h/g) + sqrt(R)·(mu_e^2 g^2 − alpha^2 R^2)^(1/4)·[1/(alpha R) + 1/(mu_c g)]. Isto vale a soma do tempo sobre o disco t1 = Q/(alpha·sqrt(R)), da queda sqrt(2h/g) e do deslizamento v/(mu_c g), com Q = (mu_e^2 g^2 − alpha^2 R^2)^(1/4) e v = Q·sqrt(R).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "As respostas finais do candidato coincidem com as da minha referência nos dois itens. Confirmei o enunciado no PDF e refiz as contas em Python, com os mesmos números do exemplo do candidato.\n\nItem (a): d = √(R² + (2hR/g)·√(μ_e²g² − α²R²)).\n- O critério de escorregamento usa a soma vetorial das acelerações tangencial (αR) e centrípeta (ω²R): R√(α²+ω⁴) = μ_e g, com N = mg. Está correto.\n- Q² = √(μ_e²g² − α²R²), ω₁ = Q/√R, t₁ = Q/(α√R) e v = Q√R. Todas as passagens algébricas conferem.\n- A massa sai pela tangente, e a distância pitagórica √(R² + s²) é justificada pela ortogonalidade entre raio e tangente. A independência de θ₁ e a dispensa de sen θ ≈ θ são explicadas.\n- Numericamente, (x_f, y_f) = (−0,2246; −2,5098) e d = 2,5198 m, que coincide com a fórmula fechada.\n\nItem (b): t = √(2h/g) + √R·(μ_e²g² − α²R²)^{1/4}·[1/(αR) + 1/(μ_c g)].\n- Equivale algebricamente à forma da referência: Q/√R·(1/α + R/(μ_c g)) + t_q. O valor numérico é 4,646 s, igual ao da referência.\n- O candidato declara o modelo de choque (velocidade horizontal v preservada). Comenta a alternativa com atrito impulsivo, v' = v − μ_c√(2gh), que dá t = t₁ + v/(μ_c g), e o caso em que a massa para no choque (v ≤ μ_c√(2gh)). Isso coincide com o que a referência apresenta.\n\nArmadilhas tratadas:\n- Soma vetorial das acelerações.\n- Condição de validade αR < μ_e g.\n- Saída imediata da borda, sem deslizar no disco, e μ_c usado só no solo.\n- Velocidade de saída tangencial e horizontal.\n- Soma de três tempos, contados desde t = 0.\n- Distância horizontal pitagórica.\n- Sentido de giro irrelevante.\n- Análise dimensional e limites.\n\nDescontos pequenos:\n- Justificativa frágil para o modelo escolhido em (b).\n- Alternativa comentada sem valor numérico.\n- Condição de validade fora da linha ANSWER.\n\nNão consegui confirmar qual modelo de choque o gabarito oficial adota. O candidato escolheu o mais provável e explicitou a hipótese.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Em (b), a justificativa do modelo de choque é fraca: \"Adotamos que a componente horizontal v se conserva (impulso de atrito desprezado), conforme o enunciado: 'realiza um deslizamento'\". O enunciado não diz que o impulso de atrito é desprezado. A expressão \"realiza um deslizamento\" é compatível com os dois modelos (até favorece o impulsivo). Deveria ser apresentada como hipótese simplificadora (atrito só atua após o impacto), não como consequência do enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta final em caixa de (b) usa o modelo padrão, e o enunciado não o fixa. O candidato menciona o modelo alternativo (atrito impulsivo, t = t₁ + v/(μ_c g)) só como uma \"Ressalva\" curta, sem valor numérico (4,151 s no exemplo) e sem verificar no exemplo qual das condições vale (v = 3,10 > μ_c√(2gh) = 1,46 m/s). A ressalva poderia ser mais completa e estar mais visível."
+          },
+          {
+            "severity": "minor",
+            "description": "A condição de validade μ_e g > αR aparece só nas hipóteses e não na linha ANSWER. Os limites mostram o comportamento em αR → μ_e g, mas não o que a fórmula perde quando αR ≥ μ_e g (radicando negativo, escorregamento em t = 0)."
+          },
+          {
+            "severity": "minor",
+            "description": "O argumento da saída do disco (item 2) é correto, mas conciso. Falta dizer explicitamente que, no limiar, o atrito estático máximo é paralelo a a_p. A passagem \"o atrito (oposto ao deslizamento relativo, portanto paralelo a a_p)\" é um pouco circular, mas leva à conclusão certa."
+          }
+        ]
+      }
+    }
+  ]
+}

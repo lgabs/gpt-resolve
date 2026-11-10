@@ -1,0 +1,61 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Modelo e hipóteses.} Pela figura, as placas são verticais e a mola é horizontal, normal às placas. Além do enunciado, adoto as hipóteses usuais de modelagem: (i) fios flexíveis, de massa desprezível, que apenas conduzem carga e não exercem força horizontal; o peso das placas é paralelo a elas e é sustentado pelos fios, logo não entra no balanço normal; (ii) mola ideal de massa desprezível, com $F=k\Delta$ para compressão $\Delta$ (linearidade); (iii) chaves, fonte, fios e voltímetro ideais, sem dissipação elétrica (o voltímetro não drena carga). Como $d\ll a$, cada placa é um plano infinito, com campo uniforme entre elas e sem efeito de borda; a capacitância das placas com separação $x$ é $C_p(x)=\varepsilon_0A/x$. Por hipótese, $C_p(d)=C$, logo $\varepsilon_0A=Cd$. Em $t_3$ o enunciado afirma equilíbrio: usamos conservação de carga e equilíbrio de forças, sem resolver o transitório.
+
+\textbf{Estado em $t_2$.} Com $S_1$ fechada até a carga completa, a corrente é nula, não há queda em $R$ e $V_C=\varepsilon$; a armadura superior de $C$ tem carga $C\varepsilon$. Ao abrir $S_1$, o ramo $R$–$\varepsilon$ deixa de pertencer ao circuito: não há mais fonte nem resistor no caminho, portanto não se aplica $\tau=RC$ ao processo seguinte. As placas estão neutras, separadas por $d$, com a mola em seu comprimento natural (força nula). O voltímetro lê $V(t_2)=\varepsilon$.
+
+\textbf{Passo 1: conservação de carga e $V(x)$.} Ao fechar $S_2$, a armadura superior de $C$ e a placa 1 formam um nó isolado: fios, voltímetro e chaves ideais, e nenhuma fonte ligada. Sua carga total, $C\varepsilon$, se conserva. Seja $q$ a carga que passa de $C$ para a placa 1, que fica com $+q$; a placa 2 fica com $-q$, pois as placas são neutras no total. A armadura superior de $C$ fica com $C\varepsilon-q$. Como $C$ e as placas estão em paralelo entre os mesmos dois nós, ambos têm a mesma tensão $V$:
+
+\[ V=\frac{C\varepsilon-q}{C}\qquad (1) \]
+
+\[ V=\frac{q}{C_p(x)}=\frac{q\,x}{Cd}\qquad (2) \]
+
+De (1), $q=C(\varepsilon-V)$; em (2), $Vd=(\varepsilon-V)x$. Assim
+
+\[ V(x)=\frac{\varepsilon\,x}{x+d},\qquad q(x)=\frac{C\varepsilon\,d}{x+d}. \]
+
+Como $dV/dx=\varepsilon d/(x+d)^2>0$, $V$ é biunívoca em $x$. Logo após fechar $S_2$ as placas ainda não se moveram ($x=d$), e $V=\varepsilon/2$ (dois capacitores iguais dividem a carga igualmente). Como $V(t_3)=\varepsilon/4<\varepsilon/2$, a separação diminuiu: $x_3<d$.
+
+\textbf{Item a.} Em (1), com $V_3=\varepsilon/4$:
+
+\[ \frac{\varepsilon}{4}=\frac{C\varepsilon-q_3}{C}\quad\Rightarrow\quad q_3=\frac{3}{4}\,C\varepsilon. \]
+
+Essa é a carga que sai da armadura superior de $C$ e vai para a placa 1 (restam $C\varepsilon/4$ em $C$).
+
+\textbf{Item b.} $V(x_3)=\varepsilon/4$ dá $4x_3=x_3+d$, logo $x_3=d/3$. Conferência: $C_p(x_3)=3C$ e $q_3=C_p V_3=3C\varepsilon/4$. Com comprimento natural $d$, a mola fica comprimida de
+
+\[ \Delta=d-x_3=\frac{2}{3}\,d. \]
+
+\textbf{Item c.} Cada placa tem densidade $\sigma=q/A$ e está no campo de plano infinito da outra, de módulo $\sigma/(2\varepsilon_0)$. A força atrativa sobre cada placa é
+
+\[ F=\sigma\cdot\frac{\sigma}{2\varepsilon_0}\cdot A=\frac{q^2}{2\varepsilon_0A}=\frac{q^2}{2Cd}. \]
+
+Em $t_3$: $F=\dfrac{(3C\varepsilon/4)^2}{2Cd}=\dfrac{9\,C\varepsilon^2}{32\,d}$.
+
+Equilíbrio normal de cada placa: a mola ideal, de massa nula e comprimida, empurra cada placa para fora com $k\Delta$; a atração elétrica $F$ puxa cada placa para dentro. Logo $k\Delta=F$ (por placa, não $2F$):
+
+\[ k=\frac{F}{\Delta}=\frac{9\,C\varepsilon^2}{32\,d}\cdot\frac{3}{2d}=\frac{27\,C\varepsilon^2}{64\,d^2}=\frac{27\,\varepsilon_0a^2\,\varepsilon^2}{64\,d^3}. \]
+
+\textbf{Verificação da força pela energia.} Com a carga total $C\varepsilon$ conservada, a energia elétrica é $U_e=\dfrac{(C\varepsilon)^2}{2(C+C_p)}=\dfrac{C\varepsilon^2x}{2(x+d)}$. Então
+
+\[ \frac{dU_e}{dx}=\frac{C\varepsilon^2d}{2(x+d)^2}=\frac{q(x)^2}{2\varepsilon_0A}=F(x). \]
+
+A igualdade é um argumento de envelope: a carga se redistribui até $V_C=V_{\text{placas}}$, isto é, minimiza $W(q,x)=\dfrac{(C\varepsilon-q)^2}{2C}+\dfrac{q^2x}{2\varepsilon_0A}$ em $q$ (supondo redistribuição elétrica quase estática, sempre no mínimo). Então $dU_e/dx=\partial W/\partial x|_q=q^2/(2\varepsilon_0A)$.
+
+\textbf{Estabilidade (breve).} Com $0<x$, a energia efetiva é $U(x)=U_e(x)+\frac{k}{2}(d-x)^2$, com
+
+\[ U'(x)=\frac{C\varepsilon^2d}{2(x+d)^2}-k(d-x),\qquad U''(x)=k-\frac{C\varepsilon^2d}{(x+d)^3}. \]
+
+O equilíbrio exige $k(d-x)(x+d)^2=C\varepsilon^2d/2$. A função $h(x)=(d-x)(x+d)^2$ tem $h'(x)=(x+d)(d-3x)$, com máximo em $x=d/3$, onde $h=32d^3/27$. Portanto há equilíbrio se, e somente se, $k\geq k_c=\dfrac{27\,C\varepsilon^2}{64\,d^2}$. O valor obtido é exatamente $k_c$, e então $U'=U''=0$ em $x=d/3$: o equilíbrio em $t_3$ é o limiar de estabilidade. Para $k>k_c$ há dois equilíbrios, sendo $x>d/3$ estável ($U''>0$) e $x<d/3$ instável; para $k<k_c$ não há equilíbrio e as placas colapsam. Em $k=k_c$, $U'\geq 0$ com zero único em $d/3$: na dinâmica conservativa, as placas passam por $d/3$ com velocidade não nula e colapsam; parar exatamente ali exige dissipação mecânica ajustada. Isso não altera os resultados de a), b) e c).
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Unidades: $q^2/(2Cd)$ tem unidade $\text{C}^2/(\text{F}\cdot\text{m})=\text{J}/\text{m}=\text{N}$; como $C\varepsilon^2$ é energia, $k$ está em $\text{J}/\text{m}^2=\text{N}/\text{m}$.
+\item Sinais: $F$ é atrativa, $\Delta>0$ (compressão), e $x_3<d$ é compatível com $V(x)$ crescente.
+\item Casos-limite: em $x=d$, $V=\varepsilon/2$ e $q=C\varepsilon/2$; em $x\to0$, $C_p\to\infty$, $V\to0$ e $q\to C\varepsilon$. Ambos satisfazem (1) e (2).
+\item Aritmética exata com $C=\varepsilon=d=1$: $x=1/3$ dá $V=1/4$, $q=3/4$, $F=9/32$, $k=27/64$, $dU_e/dx=9/32$ e $U'=U''=0$.
+\end{itemize}
+
+ANSWER: a) $q=\frac{3}{4}\,C\varepsilon$; b) $\Delta=\frac{2}{3}\,d$ (compressão; placas a $d/3$); c) $k=\frac{27\,C\varepsilon^2}{64\,d^2}=\frac{27\,\varepsilon_0 a^2\,\varepsilon^2}{64\,d^3}$

@@ -1,0 +1,42 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Modelo e hipóteses.} Referencial no ponto de lançamento, com eixo $x$ horizontal (em direção ao alvo) e eixo $y$ vertical para cima. Sem resistência do ar, o foguete está sujeito apenas ao peso, com $\vec{g}$ constante: o movimento horizontal é uniforme e o vertical é uniformemente variado. Com $\theta = 45^\circ$ tem-se $\tan\theta = 1$ e $\cos^2\theta = \frac{1}{2}$. O alvo está em $x_A = 2000$ m e $y_A = 1000$ m.
+
+Das equações $x = v\cos\theta\,t$ e $y = v\sin\theta\,t - \frac{g\,t^2}{2}$, eliminando $t$, obtém-se a equação da trajetória:
+\[
+y = x\tan\theta - \frac{g\,x^2}{2\,v^2\cos^2\theta} \;\Rightarrow\; y = x - \frac{g\,x^2}{v^2}\qquad (\theta = 45^\circ).
+\]
+
+\textbf{Verificação do projeto.} Com $v_0 = 200$ m/s, o ápice tem altura $H = \dfrac{v_0^2\sin^2\theta}{2g} = \dfrac{200^2\cdot\frac{1}{2}}{20} = 1000$ m e abscissa $x_V = \dfrac{v_0^2\sin 2\theta}{2g} = 2000$ m. Isso coincide com o alvo, como afirma o enunciado, o que confirma o modelo.
+
+\textbf{a) Velocidade de lançamento.} Na falha, o ângulo continua $45^\circ$ e a velocidade passa a ser $v$. Na vertical do alvo ($x = 2000$ m), o foguete está a $y = 1000 + 360 = 1360$ m. Substituindo na equação da trajetória:
+\[
+1360 = 2000 - \frac{10\,(2000)^2}{v^2} \;\Rightarrow\; \frac{4\cdot 10^{7}}{v^2} = 640 \;\Rightarrow\; v^2 = 6{,}25\cdot 10^{4}\ \text{m}^2/\text{s}^2 \;\Rightarrow\; v = 250\ \text{m/s}.
+\]
+Conferência dimensional: $\dfrac{g\,x^2}{v^2}$ tem unidades $\dfrac{\text{m}}{\text{s}^2}\cdot\dfrac{\text{m}^2}{\text{m}^2/\text{s}^2} = \text{m}$.
+
+Como a equação é linear em $1/v^2$, a solução positiva é única. Para confirmar que o foguete ainda sobe, calcula-se a velocidade vertical na vertical do alvo, usando $v_y^2 = (v\sin\theta)^2 - 2g\,\Delta y$:
+\[
+v_y^2 = \frac{v^2}{2} - 2\cdot 10\cdot 1360 = 31250 - 27200 = 4050 \;\Rightarrow\; v_y = \sqrt{4050}\approx 64\ \text{m/s} > 0.
+\]
+Coerentemente, o ápice da nova trajetória está em $x_V = \dfrac{v^2}{2g} = 3125$ m (além do alvo) e em $H' = \dfrac{v^2}{4g} = 1562{,}5$ m (acima de 1360 m).
+
+\textbf{b) Temperatura na câmara.} A temperatura absoluta é proporcional a $v^2$, logo $\dfrac{T}{T_0} = \left(\dfrac{v}{v_0}\right)^2$. A proporcionalidade vale para a escala absoluta (kelvin), não para graus Celsius. Assim,
+\[
+T = 2560\cdot\left(\frac{250}{200}\right)^2 = 2560\cdot\frac{25}{16} = 4000\ \text{K}.
+\]
+
+\textbf{c) Trabalho no aquecimento.} O processo é isobárico com gás ideal. Pela primeira lei da termodinâmica, $Q = \Delta U + W$, em que $W$ é o trabalho realizado pelo gás. O calor recebido a pressão constante é
+\[
+Q = m\,c_p\,\Delta T = 2{,}0\cdot 1{,}0\cdot(4000 - 2560) = 2880\ \text{kJ}, \qquad \Delta T = 1440\ \text{K}.
+\]
+Portanto,
+\[
+W = Q - \Delta U = 2880 - 2016 = 864\ \text{kJ} = 8{,}64\cdot 10^{5}\ \text{J}.
+\]
+
+Verificação pela relação de Mayer: $c_v = \dfrac{\Delta U}{m\,\Delta T} = \dfrac{2016}{2{,}0\cdot 1440} = 0{,}70$ kJ/(kg$\cdot$K) e $c_p - c_v = 0{,}30$ kJ/(kg$\cdot$K). Então $W = p\,\Delta V = nR\,\Delta T = m(c_p - c_v)\Delta T = 2{,}0\cdot 0{,}30\cdot 1440 = 864$ kJ, o mesmo resultado. Além disso, $\gamma = c_p/c_v \approx 1{,}43$, valor compatível com gás ideal ($1 < \gamma < 5/3$). O sinal é positivo: pela lei de Gay-Lussac, $V \propto T$, o gás se expande e realiza trabalho sobre a vizinhança. Ordem de grandeza: $W \sim 10^6$ J, equivalente a $30\%$ do calor recebido.
+
+ANSWER: a) $v = 250$ m/s; b) $T = 4000$ K; c) $W = 864$ kJ (trabalho realizado pelos gases, positivo)

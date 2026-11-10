@@ -1,0 +1,127 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "a) $\\tan\\theta=\\dfrac{\\sin(\\pi/n)}{\\cos(\\pi/n)-\\sqrt{3}/2}=\\dfrac{2\\sin(\\pi/n)}{2\\cos(\\pi/n)-\\sqrt{3}}$ (para $n\\neq 6$); b) $n\\geq 7$, isto é, $n\\in\\{7,8,9,\\dots\\}$. Para $n\\le 5$ o $\\tan\\theta$ seria negativo, e $n=6$ é rasância (o feixe só tangencia o cilindro interno, sem reflexão efetiva), por isso excluído.",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 10 (IME 2026, Física, 2ª fase): RESOLUÇÃO DE REFERÊNCIA\n\nNotação\n- O: eixo comum. r: raio do cilindro interno (face externa espelhada). R: raio do cilindro externo (face interna espelhada). k = r/R = √3/2.\n- θ: ângulo entre o feixe e a reta radial em B, medido com o prolongamento de OB para fora de B. Pela lei da reflexão, é também o ângulo de incidência em B com a normal radial.\n- ψ: ângulo de incidência no cilindro externo, em C (ponto seguinte de reflexão).\n- Δ: ângulo central entre dois pontos de reflexão consecutivos, por exemplo A→B, B→C, C→D.\n\nPasso 1 (parâmetro de impacto). Numa reflexão em uma circunferência, a normal é radial, passa por O, e a distância de O à reta do raio não muda (a reta refletida é simétrica da incidente em relação a OP). Logo, o parâmetro de impacto p é invariante. Em B, p = r sinθ. Em C, p = R sinψ. Portanto\n  sinψ = (r/R) sinθ = (√3/2) sinθ.\n\nPasso 2 (triângulo OBC). Os ângulos internos são: em O, Δ; em B, OBC = 180° − θ, porque θ é medido com o prolongamento radial externo; em C, ψ. Soma = 180°, então\n  Δ = θ − ψ.\n(Confere com a lei dos senos: r/sinψ = R/sin(180° − θ), que dá sinψ = (r/R) sinθ.)\n\nPasso 3 (fechamento após uma volta). Todos os segmentos (A→B, B→C, C→D, ...) varrem o mesmo Δ, pela simetria das reflexões. O sentido de rotação não muda, porque o momento angular do raio em torno de O (L = p·v) é conservado na reflexão radial. Em uma volta completa há n reflexões no cilindro interno e n no externo (A é uma reflexão externa), isto é, 2n segmentos. Então\n  2n·Δ = 2π  ⇒  Δ = π/n.\n\nPasso 4 (equação). De θ − ψ = π/n, ψ = θ − π/n, e\n  sin(θ − π/n) = (√3/2) sinθ\n  sinθ cos(π/n) − cosθ sin(π/n) = (√3/2) sinθ\n  sinθ [cos(π/n) − √3/2] = sin(π/n) cosθ.\n\nITEM a)\n  tanθ = sin(π/n) / [cos(π/n) − √3/2] = 2 sin(π/n) / [2 cos(π/n) − √3].\n\nITEM b) Condições de validade.\n- Para haver reflexão real em B, 0 < θ < 90°, logo tanθ > 0. Isso exige cos(π/n) > √3/2, ou seja π/n < π/6, ou n > 6.\n- Alternativa, mais robusta: g(θ) = θ − arcsin(k sinθ) é crescente em (0, π/2), porque g' = 1 − k cosθ/√(1 − k² sin²θ) > 0 (pois k < 1). Além disso g(0) = 0 e g(π/2) = π/2 − arcsin(√3/2) = π/6. Então Δ = π/n ∈ (0, π/6), o que equivale a n > 6. Para cada n ≥ 7 há exatamente um θ ∈ (0, 90°), e ψ = θ − π/n > 0 vale automaticamente.\n- n = 6: o denominador se anula, tanθ → ∞, θ = 90°. O feixe tangencia o cilindro interno (corda tangente de comprimento 2√(R² − r²) = R, que subtende 60°, e forma o hexágono regular degenerado). Não há reflexão genuína em B, então exclui-se n = 6.\n- n ≤ 5: o denominador é negativo, tanθ < 0, o que exigiria incidência obtusa (impossível). Equivalentemente, Δ = π/n ≥ π/6 é inatingível.\n\nResposta (b): n ∈ {7, 8, 9, ...}, isto é, todo natural n ≥ 7, sem cota superior. Exemplos: n = 7 → tanθ ≈ 12,42 (θ ≈ 85,40°); n = 8 → tanθ ≈ 6,61 (θ ≈ 81,40°); n = 10 → tanθ ≈ 3,63 (θ ≈ 74,61°). Para n → ∞, θ → 0 (feixe quase radial).\n\nVerificação (conferida por cálculo):\n1. Bisseção de arccos(k sinθ) − (π/2 − θ) = π/n reproduz a fórmula fechada (diferença ~1e-16) para n = 7…12.\n2. Simulação numérica da trajetória com reflexões especulares: a incidência no cilindro interno coincide com θ (ex.: n = 7 → 85,3955°; ψ = 59,6813° = θ − 180°/7). Após 2n segmentos o ângulo acumulado é exatamente 360°, e posição e direção retornam ao estado inicial (erro ~1e-14). Os valores n = 7, 8, 10 e 13 foram testados.",
+    "final_answer": "a) tanθ = sin(π/n) / [cos(π/n) − √3/2] = 2 sin(π/n) / [2 cos(π/n) − √3]\n\nb) n ∈ {7, 8, 9, ...}, ou seja, todos os naturais n ≥ 7 (sem limite superior). O caso n = 6 é degenerado (θ = 90°, feixe tangente ao cilindro interno) e fica excluído; para n ≤ 5 não há solução física.\n\n(Referência para correção: a Questão 10 não é de múltipla escolha. Dois casos de conferência: n = 7 → tanθ ≈ 12,42; n = 8 → tanθ ≈ 6,61.)",
+    "pitfalls": [
+      "Identificação de θ: é o ângulo de incidência em B com a normal radial (o ângulo com a reta radial). Não é o ângulo central Δ, nem o complemento 90° − θ (que seria o ângulo com a tangente). Na figura, θ fica entre o feixe e o prolongamento de OB para fora de B; por isso o ângulo interno OBC vale 180° − θ, e não θ. Trocar isso inverte a relação Δ = θ − ψ.",
+      "Razão dos raios: a conservação do parâmetro de impacto dá sinψ = (r/R) sinθ, com r/R = √3/2 (não R/r). Erro comum: escrever sinθ = (r/R) sinψ, o que leva a outra equação.",
+      "Contagem de segmentos: em uma volta há n reflexões em cada espelho, ou seja 2n segmentos (A→B, B→C, ...), cada um com ângulo central Δ = π/n. O erro comum é impor 2π/n por reflexão ou por segmento, ou tomar n como número total de reflexões (2n).",
+      "A reflexão em A (ponto de partida, sobre o cilindro externo) conta como uma das n reflexões externas da órbita fechada. Se for desconsiderada, a contagem muda e a relação deixa de valer para o n do enunciado.",
+      "Sobreposição após 'uma volta' significa avanço angular total de 2π (órbita fechada), e não π nem meia volta. O raio gira sempre no mesmo sentido, porque o momento angular em torno de O se conserva na reflexão radial. Por isso os Δ se somam sem cancelamento.",
+      "Condição de validade do tanθ: a expressão só é física se tanθ > 0, ou seja cos(π/n) > √3/2 e n > 6. Não basta achar a fórmula; é preciso discutir o domínio de n.",
+      "Caso de borda n = 6: o denominador se anula e θ = 90°. O raio tangencia o cilindro interno (corda tangente de comprimento R, que subtende 60°, formando um hexágono regular degenerado). Não há reflexão genuína em B, então a resposta correta é n ≥ 7 e n = 6 deve ser excluído ou mencionado como caso limite.",
+      "Casos n ≤ 5: o denominador fica negativo, tanθ < 0, o que exigiria incidência obtusa. Isso é impossível, porque o ângulo de incidência fica entre 0 e 90°. Argumento alternativo: Δ = θ − arcsin(k sinθ) cresce de 0 até π/6 quando θ vai de 0 a 90°, então Δ = π/n exige n > 6.",
+      "Item b) pede os 'valores possíveis': é um conjunto infinito (todo n ≥ 7), e não um único valor. Responder um n fixo ou um conjunto finito está errado.",
+      "Sinal no denominador: a forma correta é cos(π/n) − √3/2 (subtração). Usar + √3/2 ou sin(2π/n) em vez de sin(π/n) muda a resposta.",
+      "Verificação recomendada: para n = 7, tanθ ≈ 12,42 (θ ≈ 85,40°), ψ ≈ 59,68°, e Δ = 180°/7. Uma simulação com reflexões especulares confirma o fechamento após 360°."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) tanθ = sin(π/n) / (cos(π/n) − √3/2) = 2 sin(π/n) / (2 cos(π/n) − √3). b) n ≥ 7 (n ∈ {7, 8, 9, …}); n = 6 é o caso degenerado de rasância (θ = 90°) e n ≤ 5 dá tanθ ≤ 0.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A condição física 0<θ<π/2 é apenas declarada, não justificada. A razão é que o feixe chega a B vindo da região entre os cilindros, o que exige cosθ>0. Se θ fosse obtuso, o segmento BA ficaria dentro do cilindro interno. Essa é a única base para excluir n ≤ 5 (onde tanθ<0), e a solução só diz 'sem solução com θ∈(0,π/2)'. Deve-se acrescentar uma frase explicando por que θ não pode ser obtuso."
+          },
+          {
+            "severity": "minor",
+            "description": "'0<α<θ, pois R>r' não é justificado. Sinα < sinθ implica α<θ apenas se α e θ forem agudos, e a agudeza de α não é argumentada. Deve-se dizer que α é ângulo de incidência, logo está em (0, π/2)."
+          },
+          {
+            "severity": "minor",
+            "description": "A contagem de reflexões não explicita que o ponto A é uma das n reflexões externas da órbita fechada. O texto diz 'n reflexões em cada espelho, logo 2n reflexões alternadas e 2n segmentos' sem dizer que A entra na contagem. É a armadilha que a referência destaca. Deve-se escrever que A é uma das n reflexões externas, por isso há 2n segmentos."
+          },
+          {
+            "severity": "minor",
+            "description": "O Passo 4 é informal. A congruência entre OAB e OBC e o fato de C estar do outro lado de OB são afirmados sem dizer que C é a imagem especular de A em relação à reta OB. Essa é a justificativa direta: ela dá OC=R, AB=BC e rotação no mesmo sentido. O 'por indução' também não é formalizado. Além disso, o fechamento da direção após 2n segmentos segue da simetria especular, e o texto não o diz."
+          },
+          {
+            "severity": "minor",
+            "description": "'cosθ=0 só ocorre para n=6' é afirmado sem prova, embora seja imediato: cosθ=0 substituído na equação dá cos(π/n)=√3/2, logo n=6. Uma linha bastaria."
+          },
+          {
+            "severity": "minor",
+            "description": "'Traçando a trajetória numericamente, para n=7 o feixe faz 14 reflexões... confirma o Passo 4' é uma alegação de verificação sem método nem resultados detalhados. Deve-se apresentar a verificação (ângulo de incidência em B igual a θ, 14 reflexões, avanço de 360°) ou removê-la. Confirmei de forma independente que a afirmação é verdadeira para n=7: 14 reflexões, 360°, incidência em B de 85,3955° e em A de 59,6813°."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à da referência. a) tanθ = sen(π/n)/(cos(π/n) − √3/2) = 2 sen(π/n)/(2 cos(π/n) − √3). b) n ≥ 7, sem limite superior. Conferi o enunciado original (página 10): r/R = √3/2, n reflexões em cada espelho e sobreposição após uma volta, como transcrito. Refiz as contas em python: n = 7 dá tanθ ≈ 12,417 (θ ≈ 85,40°) e n = 8 dá tanθ ≈ 6,615 (θ ≈ 81,40°), ambos batendo com o candidato. Simulei a trajetória com reflexões especulares, sem usar as fórmulas fechadas, para n = 7, 8, 9, 10 e 13: em todos os casos o feixe fecha após 2n reflexões, com avanço de 360° e direção de volta à inicial, e o ângulo de incidência em B coincide com θ. O candidato trata bem as armadilhas principais: parâmetro de impacto invariante (argumento correto, reflexão em reta que passa por O); sinα = (r/R) sinθ com a razão certa; OBA = π − θ tratado corretamente; Δ = π/n com 2n segmentos; sinal do denominador; exclusão de n = 6 (rasância) e de n ≤ 5 (tanθ<0); e o caso infinito em b). Não há erro de conta nem de resultado. Os problemas são de rigor: premissas físicas (θ agudo, α agudo) e passos de fechamento e indução são afirmados sem justificativa suficiente, e há uma alegação de verificação numérica sem detalhe. Nenhum problema é crítico ou grave. Nota 8: resolução sólida e quase publicável como gabarito, mas não atinge 9 enquanto essas lacunas não forem fechadas.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "a) tan θ = sen(π/n) / (cos(π/n) − √3/2) = 2 sen(π/n) / (2 cos(π/n) − √3), para n ≠ 6. b) n ≥ 7, isto é, n ∈ {7, 8, 9, …}, sem limite superior. Para n = 7: tan θ ≈ 12,42 e θ ≈ 85,4°.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Erro numérico na conferência de n=7: a resolução dá sinα≈0,8628, mas sin(59,6813°)=0,86323, que também é igual a (√3/2)·sinθ com θ=85,3955°. A identidade (1) está certa; só o valor impresso está errado na 4ª casa decimal. Deveria ser corrigido para ≈0,8632."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 5 (fechamento após uma volta) é afirmado em poucas frases. Falta explicitar: (i) 'sobreposição' significa mesmo ponto e mesma direção de saída com avanço angular total 2π; (ii) N deve ser par porque o retorno é ao espelho externo onde está A; (iii) N=2n decorre de 'n reflexões em cada espelho' e não de um argumento geométrico sobre A; (iv) N=2n é o primeiro retorno (mínimo). A cadeia lógica está correta, mas um gabarito comentado deveria mostrar essas quatro etapas."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'verificação numérica por simulação' (n=7, 8, 9, 13, retorno a A após 2π) é citada sem nenhum número intermediário, como erro de fechamento ou ângulo de incidência em B. Eu rodei a simulação e o resultado confere (erro de fechamento ~1e-15, incidência em B = θ, pontos em múltiplos de π/n). Ou a resolução mostra esses valores, ou a menção deve ser removida, para que o leitor não tenha de confiar em afirmação não verificável."
+          },
+          {
+            "severity": "minor",
+            "description": "Exclusão de n=6 (item b) é correta (cosθ=0, θ=π/2, rasância), mas a justificativa é só 'rasância, excluído'. Falta a geometria: a tangente ao cilindro interno tem metade igual a √(R²−r²)=R/2, a corda AA' subtende 60° e AB subtende 30°, e a órbita degenera em reflexões só no espelho externo, sem reflexão efetiva em B. Sem isso, o caso de borda fica menos convincente do que o restante da resolução."
+          },
+          {
+            "severity": "minor",
+            "description": "Sentido de rotação (armadilha da conservação de momento angular, que impede cancelamento dos Δφ) é tratado só implicitamente: Passo 3 mostra α<θ, logo Δφ>0, e Passo 4 mostra φ_k=kΔφ. A conclusão é correta e a derivação de Passo 4 é até mais rigorosa que a da referência, mas uma frase explícita ligando os dois passos ajudaria."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à referência: a) tanθ = sin(π/n)/(cos(π/n) − √3/2) = 2sin(π/n)/(2cos(π/n) − √3); b) n ≥ 7, sem limite superior. Refiz as contas em Python: n=7 dá tanθ=12,4167, θ=85,3955°, α=59,6813°; n=8 dá tanθ=6,6146; n≤5 dá tanθ<0; n=6 é o denominador nulo. Simulei reflexões especulares: a trajetória fecha após 2n reflexões (erro ~1e-15) para n=7, 8, 9 e 13. Varri g(θ)=θ−arcsin((√3/2)sinθ), que cresce de 0 a π/6 em (0,π/2), então n≤6 não tem solução interior.\n\nPontos fortes: a periodicidade é provada em Passo 4 pela relação P_{k+1}=S_k(P_{k−1}), o que é mais rigoroso que o argumento de simetria da referência, e dela saem Δφ constante e alternância de raios. Passo 3 garante cosθ≥0 e α<θ. Passo 6 justifica a divisão por cosθ. O item b) inclui a recíproca via lei dos senos e convexidade, para mostrar que o segmento fica no anel. Todas as armadilhas da lista foram tratadas, inclusive a da contagem 2n, a do sinal do denominador e a do domínio de n.\n\nFalhas são de acabamento: um erro numérico na conferência (sinα≈0,8628 em vez de 0,8632), o fechamento após uma volta afirmado em uma frase, a simulação citada sem números e o caso n=6 sem a geometria. Nota 8,5: é quase um gabarito comentado, mas não chega a 9 por causa do erro numérico e da justificativa curta do fechamento."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "a) $\\tan\\theta=\\dfrac{\\sin(\\pi/n)}{\\cos(\\pi/n)-\\sqrt{3}/2}=\\dfrac{2\\sin(\\pi/n)}{2\\cos(\\pi/n)-\\sqrt{3}}$ (para $n\\neq 6$); b) $n\\geq 7$, isto é, $n\\in\\{7,8,9,\\dots\\}$. Para $n\\le 5$ o $\\tan\\theta$ seria negativo, e $n=6$ é rasância (o feixe só tangencia o cilindro interno, sem reflexão efetiva), por isso excluído.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 5: a conclusão 'Logo N=2n' é afirmada a partir de uma lista de pontos (P_0, P_2, ..., P_{2n-2} com ângulos 2jπ/n) que já pressupõe N=2n, o que é circular na forma. O argumento direto seria: pela alternância R/r, há N/2 reflexões em cada espelho por volta; como são n, N=2n. Deve ser reescrito dessa forma."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 3: a conclusão '0<θ<π/2' é registrada antes de excluir cosθ=0. O argumento só fornece cosθ ≥ 0; o caso cosθ=0 (θ=π/2, que leva a n=6) só é tratado depois, no Passo 6 e no item b. O Passo 3 deveria registrar cosθ ≥ 0 e tratar o caso de borda ali mesmo."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 4: a identidade P_{k+1}=S_k(P_{k-1}) é afirmada com base em 'S_k(P_{k-1}) está sobre o raio de saída', sem justificar por que é o primeiro ponto de interseção. Falta a frase que conclui: S_k(P_{k-1}) está no círculo oposto a P_k (S_k preserva |·|) e o raio de saída intercepta esse círculo em um único ponto com s>0 dentro da coroa."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 'Conferências': 'a equação (4) é homogênea em ângulos' não é verificação dimensional válida (funções trigonométricas são adimensionais e não há o que checar). O 'teste em (1)' para n=7 reutiliza a própria equação deduzida, não é verificação independente. Deveria ser substituído por uma verificação geométrica, por exemplo reflexões sucessivas para n=7 mostrando fechamento após 14 reflexões com passo 180°/7."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à de referência. a) tanθ = sin(π/n)/(cos(π/n) − √3/2) = 2sin(π/n)/(2cos(π/n) − √3), para n ≠ 6. b) n ≥ 7, sem cota superior. O caso n = 6 é excluído (θ = 90°, rasância, sem reflexão efetiva em B) e n ≤ 5 é impossível (tanθ < 0). O enunciado no PDF (p. 10) coincide com a transcrição: r/R = √3/2 e θ é medido entre o feixe e o prolongamento radial de OB.\n\nConferência independente: resolvi sin(θ − π/n) = (√3/2) sinθ numericamente. Para n = 3, 4, 5 não há solução em (π/n, π/2). Para n ≥ 7 há solução única, com n = 7 dando tanθ = 12,4167 (θ = 85,3955°) e n = 8 dando tanθ = 6,6146. Δ(θ) = θ − arcsin(k sinθ) é estritamente crescente em (0, π/2), com Δ(π/2) = π/6. Simulei reflexões especulares: para n = 7, 8, 10 e 13 a trajetória fecha exatamente após 2n reflexões, com passo angular de módulo π/n e volta total de 360°. Com θ perturbado em 1e-4 não há fechamento. A geometria de n = 6 também confere (AB = R/2, ∠AOB = 30°).\n\nArmadilhas: todas tratadas corretamente. θ é identificado por ∠OBA = π − θ; sinα = (r/R)sinθ; há 2n segmentos, com A contado como reflexão externa; uma volta é 2π; tanθ > 0 exige n ≥ 7; o caso n = 6 é tratado; n ≤ 5 é excluído; b é um conjunto infinito; o sinal do denominador está certo.\n\nRigor: a existência é provada por construção de triângulo, a monotonicidade de ρ ao longo do segmento é mostrada e φ_k = kΔφ sai por indução. Os problemas são de redação e de verificação, não de conteúdo, e impedem a nota 9: um passo de contagem está formulado de modo circular, a condição cosθ > 0 é usada antes de ser estabelecida, e a seção de conferências contém um 'teste' que não é independente nem dimensional. Nota 8,5."
+      }
+    }
+  ]
+}

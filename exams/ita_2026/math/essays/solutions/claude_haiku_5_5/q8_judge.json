@@ -1,0 +1,56 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "784 sequências estritamente crescentes de três números naturais com soma 100. Verificado por soma em paridade, por simetria (4851 − 3·49 = 4704 = 6·784), pela fórmula de partições em partes distintas e por força bruta.",
+  "judge_reference": {
+    "reference_solution": "**Questão 08 – resolução de referência (conferida por força bruta e por dois métodos independentes)**\n\n**Interpretação.** Uma sequência estritamente crescente (a, b, c) satisfaz a < b < c, então ela é determinada pelo conjunto {a, b, c}, e cada conjunto gera exatamente uma sequência. Como a ordem já está fixada, não há multiplicação por permutações. O problema pede o número de ternos de naturais a < b < c com a + b + c = 100, usando ℕ = {1, 2, 3, …} conforme a convenção da prova.\n\n**Passo 1 – Eliminar as desigualdades.** Como a < b < c são inteiros, escreva b = a + d e c = b + e, com d ≥ 1 e e ≥ 1. Então c = a + d + e e\n\na + b + c = 3a + 2d + e = 100, com a, d, e inteiros, a ≥ 1, d ≥ 1, e ≥ 1.\n\nEssa correspondência (a, b, c) ↔ (a, d, e) é biunívoca.\n\n**Passo 2 – Faixa de a.** Como d ≥ 1 e e ≥ 1, devemos ter 3a + 2 + 1 ≤ 100, isto é 3a ≤ 97, logo a ≤ 32. Assim a ∈ {1, …, 32}.\n\n**Passo 3 – Contar (d, e) para cada a fixado.** Com a fixo, e = 100 − 3a − 2d. A condição e ≥ 1 equivale a 2d ≤ 99 − 3a, ou seja d ≤ ⌊(99 − 3a)/2⌋. Como d ≥ 1, o número de escolhas de d é\n\nN(a) = ⌊(99 − 3a)/2⌋  (sempre ≥ 1 para 1 ≤ a ≤ 32).\n\n**Passo 4 – Somar.** O total é N = Σ_{a=1}^{32} ⌊(99 − 3a)/2⌋. Os valores são:\n\na: 1→48, 2→46, 3→45, 4→43, 5→42, 6→40, 7→39, 8→37, 9→36, 10→34, 11→33, 12→31, 13→30, 14→28, 15→27, 16→25, 17→24, 18→22, 19→21, 20→19, 21→18, 22→16, 23→15, 24→13, 25→12, 26→10, 27→9, 28→7, 29→6, 30→4, 31→3, 32→1.\n\nSomando: N = 784.\n\n**Passo 5 – Verificação por fórmula.** O número de partições de n em 3 partes distintas positivas é round((n − 3)²/12). Para n = 100: (97)²/12 = 9409/12 ≈ 784,08, logo 784. Confere com o Passo 4.\n\n**Passo 6 – Verificação independente (inclusão-exclusão).** Os ternos não decrescentes a ≤ b ≤ c com soma 100 são as partições de 100 em 3 partes positivas, em número round(100²/12) = round(833,33) = 833. Dentre eles, os que têm duas partes iguais têm a forma {x, x, y} com 2x + y = 100, x ≥ 1, y ≥ 1, ou seja x ∈ {1, …, 49}: são 49 casos. Não há ternos com as três partes iguais, pois 3 ∤ 100. Logo 833 − 49 = 784.\n\n**Passo 7 – Verificação por ordenações.** Triplas ordenadas de naturais com soma 100 são C(99, 2) = 4851. As com entradas repetidas são 3 · 49 = 147 (cada {x, x, y} tem 3 arranjos). As com entradas distintas somam 4851 − 147 = 4704 = 6 · 784, o que confirma 784.\n\n**Passo 8 – Força bruta.** Enumerando a < b com c = 100 − a − b e c > b, obtém-se 784 (conferido em Python).\n\n**Resposta:** 784 sequências.",
+    "final_answer": "Resposta final: 784 sequências estritamente crescentes (a < b < c) de três números naturais (ℕ = {1, 2, 3, …}) com a + b + c = 100.\n\nVerificações: (i) soma Σ_{a=1}^{32} ⌊(99 − 3a)/2⌋ = 784; (ii) round((100 − 3)²/12) = round(9409/12) = 784; (iii) 833 partições não estritas − 49 com duas partes iguais = 784; (iv) força bruta = 784.",
+    "pitfalls": [
+      "Convenção de ℕ da prova: ℕ = {1, 2, 3, …}. Com a ≥ 1 a contagem é finita. Sem limite inferior (inteiros negativos) haveria infinitas soluções. Se o aluno usar ℕ com zero, a resposta muda para 833, não 784. Esse 833 coincide com a contagem não estrita, o que pode induzir a erro de raciocínio.",
+      "'Estritamente' crescente significa a < b < c, não a ≤ b ≤ c. Permitir partes iguais dá 833 (partições de 100 em 3 partes, round(100²/12) = 833). Esse é o erro mais comum.",
+      "Não multiplicar por 3! = 6: uma sequência estritamente crescente corresponde a um único conjunto, então cada terno conta uma vez. Multiplicar por 6 daria 4704, que é o número de sequências em ordem arbitrária de valores distintos.",
+      "Dividir C(99, 2) = 4851 por 6 não é válido: dá 808,5. Ternos com entradas repetidas precisam ser tratados separadamente. Corretamente, 4851 − 3·49 = 4704 = 6·784.",
+      "Limite de a: a ∈ {1, …, 32}, não 33. Como d ≥ 1 e e ≥ 1, vale 3a ≤ 97, então a = 33 é impossível (3·33 + 2 + 1 = 102 > 100).",
+      "Desigualdades estritas viram d ≥ 1 e e ≥ 1, não d ≥ 0 e e ≥ 0. Usar ≥ 0 permite b = a ou c = b e volta a contar 833.",
+      "Piso na contagem de d: N(a) = ⌊(99 − 3a)/2⌋. A paridade alterna com a (ex.: a = 1 dá 48, a = 2 dá 46, não 46,5). Não usar divisão exata, nem arredondamento para cima. Confirme que N(a) ≥ 1 em toda a faixa.",
+      "Fórmula round((n − 3)²/12) vale para partes distintas. Confundir com round(n²/12) (caso não estrito, 833) é um erro comum. Como a fórmula não é de memória confiável, use-a apenas como conferência, e a resolução deve mostrar a contagem.",
+      "Instrução 8 da prova: expressões numéricas devem ser resolvidas integralmente. A resposta final deve ser o inteiro 784. Deixar round(9409/12), ⌊…⌋ ou C(99,2)/6 sem calcular perde nota.",
+      "Ao aplicar inclusão-exclusão, o caso de três partes iguais só existe se 3 | n. Aqui 3 ∤ 100, então não há subtração desse caso. Quem esquece essa verificação erra em casos como n = 99."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "784 sequências estritamente crescentes de três números naturais com soma 100. Verificado por soma em paridade, por simetria (4851 − 3·49 = 4704 = 6·784), pela fórmula de partições em partes distintas e por força bruta.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Conferência 2 enuncia a 'fórmula conhecida' round((n−3)²/12) para partições em três partes distintas sem demonstração nem referência. O resultado é verdadeiro (a força bruta dá 784 para n=100), mas é uma afirmação geral não justificada. Deveria ser marcada explicitamente como resultado conhecido e usada só como conferência, ou ser substituída por uma verificação própria."
+          },
+          {
+            "severity": "minor",
+            "description": "Conferência 2 deixa 9409/12 como fração e chega a 784 por aproximação decimal ('≈ 784,08'). Isso contraria a instrução 8 da prova (expressões numéricas devem ser resolvidas integralmente). Deveria escrever 9409 = 12·784 + 1, logo 9409/12 = 784 + 1/12, cujo inteiro mais próximo é 784."
+          },
+          {
+            "severity": "minor",
+            "description": "Conferência 3 apresenta os valores de N(a) com reticências ('48, 46, 45, 43, …, 3, 1') e afirma que o agrupamento a=2j+1 com a=2j+2 forma uma PA de 16 termos sem mostrar a conta. Faltam as expressões gerais: para a=2j+1, ⌊(99−a)/2⌋ − a = 48 − 3j; para a=2j+2, vale 46 − 3j; a soma é 94 − 6j, com j=0..15. Também falta justificar 'positivos apenas para a ≤ 32': basta 97 ≥ 3a."
+          },
+          {
+            "severity": "minor",
+            "description": "Conferência 1 resume a inclusão-exclusão em 'dois empates implicam três iguais, logo não há interseções'. Está correto, mas condensado demais. Deveria dizer que as interseções duas a duas são todas {a=b=c}, que é vazio porque 3 ∤ 100, e por isso subtrair 3·49 = 147 sem correção."
+          }
+        ],
+        "summary": "Resposta final do candidato: 784. Minha resolução de referência também dá 784, então coincidem. Conferi por força bruta em Python: com ℕ = {1,2,3,…} o total é 784; se o zero fosse admitido, daria 833 (49 sequências extras com a=0). Verifiquei também a transformação x=a−1, y=b−a−1, z=c−b−1 (bijeção com N₀³, 3x+2y+z=94), a soma Σ(48−3k)+Σ(46−3k)=408+376=784, e a contagem de soluções de 3x+2y+z=94, que dá 784.\n\nA resolução principal (Passos 1–3) é completa e rigorosa: a substituição que elimina as desigualdades está correta, a faixa x ≤ 31 está justificada, a separação em pares e ímpares cobre x=0..31 exatamente uma vez e os termos conferem. As três conferências independentes também estão corretas, mas são apresentadas com menos rigor do que a parte principal (fórmula citada sem justificativa, aproximação decimal contra a instrução 8, PA afirmada com reticências).\n\nArmadilhas da referência: todas tratadas. ℕ começando em 1 com a observação do caso com zero (833); estritamente crescente com b ≥ a+1 e c ≥ b+1; sem multiplicar por 3!, com justificativa; 4704/6 tratado corretamente (não C(99,2)/6); limite a ≤ 32; desigualdades viram ≥ 0 nas novas variáveis; piso com paridade; fórmula (n−3)²/12 usada no lugar certo; 3 ∤ 100 verificado explicitamente; expressões finais inteiras, exceto a aproximação da conferência 2.\n\nNota 9: a resolução seria publicável como gabarito comentado. Os problemas são de apresentação nas conferências, não na resposta nem na prova principal."
+      }
+    }
+  ]
+}

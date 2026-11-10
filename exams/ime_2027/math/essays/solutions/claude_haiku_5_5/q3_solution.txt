@@ -1,0 +1,63 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{1. Simplificação de $f$.} Para $n\ge 1$, $g_n(x)\in\{0,1\}$, logo $\left(\frac{g_n(x)}{3}\right)^n=\frac{g_n(x)}{3^n}$ (pois $0^n=0$ e $1^n=1$). A série converge absolutamente, por comparação com $\sum 3^{-n}$, e
+\[
+f(x)=\sum_{\substack{n\ge 1\\ x>-1/n}}\frac{1}{3^n}.
+\]
+
+\textbf{2. Valores de $f$.}
+\begin{itemize}
+\item Se $x\ge 0$, então $x\ge 0>-1/n$ para todo $n\ge 1$; logo todos os termos aparecem e
+\[
+f(x)=\sum_{n=1}^{\infty}\frac{1}{3^n}=\frac{1/3}{1-1/3}=\frac12 .
+\]
+\item Se $x<0$, então $-x>0$ e
+\[
+x>-\frac1n\iff -x<\frac1n\iff n<\frac{1}{|x|}.
+\]
+Logo $f(x)=\sum_{1\le n<1/|x|}3^{-n}$.
+\end{itemize}
+
+\textbf{3. Domínio.} A expressão $f(-1/x)$ exige $x\ne 0$. Logo $x=0$ não é admissível.
+
+\textbf{4. Expressão de $S(x)=f(x)+f(-1/x)$.}
+\begin{itemize}
+\item Se $x>0$, então $-1/x<0$ e $\left|-1/x\right|=1/x$. Pelo item 2, $f(-1/x)=\sum_{1\le n<x}3^{-n}$. Como $f(x)=\frac12$,
+\[
+S(x)=\frac12+\sum_{1\le n<x}\frac{1}{3^n}.
+\]
+\item Se $x<0$, então $-1/x>0$, logo $f(-1/x)=\frac12$ e $S(x)=\frac12+\sum_{1\le n<1/|x|}\frac{1}{3^n}$.
+\end{itemize}
+
+\textbf{5. Inteiros negativos.} Se $x\in\mathbb{Z}$ e $x\le -1$, então $1/|x|\le 1$, e não existe $n\ge 1$ com $n<1/|x|$. Assim $f(x)=0$ e $S(x)=\frac12<0{,}999$. Esses inteiros não servem. O caso $x=0$ já foi excluído no item 3.
+
+\textbf{6. Inteiros positivos.} Seja $k\ge 1$ inteiro. Os $n\ge 1$ com $n<k$ são $n=1,\dots,k-1$. Pela soma parcial da progressão geométrica de primeiro termo $\frac13$ e razão $\frac13$,
+\[
+\sum_{n=1}^{m}\frac{1}{3^n}=\frac{1}{2}\left(1-\frac{1}{3^{m}}\right).
+\]
+Com $m=k-1$,
+\[
+S(k)=\frac12+\frac12\left(1-\frac{1}{3^{k-1}}\right)=1-\frac{1}{2\cdot 3^{k-1}}.
+\]
+A condição $S(k)\ge 0{,}999$ equivale a $\frac{1}{2\cdot 3^{k-1}}\le\frac{1}{1000}$, isto é, $3^{k-1}\ge 500$. Como $3^5=243<500\le 729=3^6$ e $j\mapsto 3^j$ é crescente, a condição vale exatamente quando $k-1\ge 6$, ou seja, $k\ge 7$.
+
+Conferência direta nos casos de fronteira:
+\begin{itemize}
+\item $k=6$: $f(-1/6)=\sum_{n=1}^{5}3^{-n}=\frac{121}{243}$ e $S(6)=\frac12+\frac{121}{243}=\frac{485}{486}\approx 0{,}997942<0{,}999$. Não serve.
+\item $k=7$: $f(-1/7)=\sum_{n=1}^{6}3^{-n}=\frac{364}{729}$ e $S(7)=\frac12+\frac{364}{729}=\frac{1457}{1458}\approx 0{,}999314\ge 0{,}999$. Serve.
+\end{itemize}
+
+\textbf{7. Verificação com $x$ real.} Nos dois casos, $S=1-\frac{1}{2\cdot 3^{m}}$, em que $m$ é o número de inteiros $n\ge 1$ com $n<x$ (se $x>0$) ou com $n<1/|x|$ (se $x<0$). Então $S\ge 0{,}999$ equivale a $m\ge 6$.
+\begin{itemize}
+\item Para $x>0$: $m=\lceil x\rceil-1\ge 6$ equivale a $x>6$.
+\item Para $x<0$: $m\ge 6$ equivale a $1/|x|>6$, isto é, $-\frac16<x<0$.
+\end{itemize}
+O conjunto solução real é $\left(-\frac16,0\right)\cup(6,+\infty)$. O intervalo $\left(-\frac16,0\right)$ não contém inteiros, e o menor inteiro do conjunto é $7$.
+
+\textbf{8. Conferências finais.} Como $0\le f\le\frac12$, temos $0\le S\le 1$, e os valores obtidos respeitam isso. Para $k=1$, a soma é vazia e $S(1)=\frac12$, coerente com a fórmula $1-\frac{1}{2\cdot 3^0}$. Para $k=2$, $S(2)=\frac56$. A folga $1-S(k)=\frac{1}{2\cdot 3^{k-1}}$ cai por um fator $3$ a cada unidade de $k$, e a tolerância $10^{-3}$ só é atingida em $k=7$, pois $3^6=729$.
+
+\textbf{Resposta.} O menor inteiro é $x=7$, com $f(7)+f\left(-\frac17\right)=\frac12+\frac{364}{729}=\frac{1457}{1458}\approx 0{,}999314$.
+
+ANSWER: $x = 7$

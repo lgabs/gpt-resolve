@@ -1,0 +1,91 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.3,
+  "final_answer": "a) |V_o| = (V_s/4)|Gε + αΔT|, em qualquer braço onde esteja o extensômetro único. b) Quatro extensômetros: R2 e R3 em pontos de tração e R1 e R4 em pontos de compressão (ou o inverso), sem nenhum R0 fixo. Resulta |V_o| = V_s G |ε|, quatro vezes o item a), com o termo αΔT cancelado em primeira ordem.",
+  "judge_reference": {
+    "reference_solution": "**Conferência da figura.** Losango A (topo), B (direita), C (base), D (esquerda). R1 liga A–D, R2 liga A–B, R3 liga D–C e R4 liga B–C. A fonte está entre A e C. Ampliei o símbolo da bateria: a placa longa (terminal +) fica em cima, ligada a A. Logo V_A = V_s e V_C = 0. O voltímetro é ideal e não puxa corrente, então D e B são dois divisores de tensão independentes. A fonte é ideal e mantém V_s constante.\n\n**Tensão de saída geral.**\nV_D = V_s·R3/(R1+R3) e V_B = V_s·R4/(R2+R4).\nV_o = V_D − V_B = V_s·[R3/(R1+R3) − R4/(R2+R4)] = V_s·(R2R3 − R1R4)/[(R1+R3)(R2+R4)].\n\nEscreva R_i = R0(1+x_i), com x_i = ΔR_i/R0 pequeno. Para um extensômetro, x_i = Gε_i + αΔT. Para um resistor fixo, x_i = 0. Linearizando:\nR3/(R1+R3) = (1+x3)/(2+x1+x3) ≈ ½ + (x3−x1)/4.\nR4/(R2+R4) ≈ ½ + (x4−x2)/4.\nLogo **V_o ≈ (V_s/4)(x2 + x3 − x1 − x4)**.\n\nOs braços opostos são R1–R4 e R2–R3. Braços opostos somam seus efeitos (R2 e R3 entram com +; R1 e R4 entram com −). Braços adjacentes se subtraem.\n\n**a) Um extensômetro e três resistores R0.** Seja x = Gε + αΔT.\n\nExemplo com o extensômetro em R1: R1 = R0(1+x) e R2 = R3 = R4 = R0.\nV_o = V_s·(R0² − R0²(1+x)) / [R0(2+x)·2R0] = −V_s·x / [2(2+x)] = −(V_s/4)·x/(1 + x/2).\nCom (1+x/2)⁻¹ ≈ 1 − x/2 e descartando x², fica V_o ≈ −(V_s/4)·x.\n\nPara o extensômetro em R2 ou R3, o resultado é +V_s·x/[2(2+x)] ≈ +V_s·x/4. Em R4 o resultado é −V_s·x/4, como em R1. Em qualquer braço, o módulo é o mesmo:\n\n**|V_o| = (V_s/4)·|Gε + αΔT|**\n\nO erro exato da linearização é de segunda ordem. Conferi numericamente (V_s = 10 V, G = 2, α = 4·10⁻³, ε = 10⁻⁴, ΔT = 0,5): o exato dá 5,494 mV e a fórmula linear dá 5,500 mV.\n\nCom um só extensômetro, o termo térmico αΔT soma-se ao mecânico Gε e não dá para separá-los. É isso que motiva o item (b).\n\n**b) Máxima precisão com compensação térmica.** Todos os dispositivos estão à mesma temperatura, então ΔT é igual para todos. Cada extensômetro em um ponto com deformação ε_i tem x_i = Gε_i + αΔT. Os pontos disponíveis têm ε_i = +ε (tração) ou −ε (compressão), com ε > 0.\n\nV_o = (V_s·G/4)(ε2 + ε3 − ε1 − ε4) + (V_s/4)·αΔT·(n2 + n3 − n1 − n4), onde n_i = 1 se o braço i é extensômetro e 0 se é R0.\n\n- **Compensação térmica:** exige n2 + n3 = n1 + n4. O efeito térmico de um extensômetro só é cancelado por outro extensômetro no braço oposto ao seu par somador, ou seja, em braço adjacente com sinal oposto. Um resistor R0 não tem o mesmo ΔR térmico e não compensa.\n- **Sensibilidade máxima:** |ε2 + ε3 − ε1 − ε4| ≤ 4ε, pela desigualdade triangular. A igualdade só ocorre com os quatro braços ativos e ε2 = ε3 = −ε1 = −ε4.\n\nConfiguração ótima (quatro extensômetros):\n- **R1: extensômetro em ponto de compressão (ε1 = −ε).**\n- **R2: extensômetro em ponto de tração (ε2 = +ε).**\n- **R3: extensômetro em ponto de tração (ε3 = +ε).**\n- **R4: extensômetro em ponto de compressão (ε4 = −ε).**\n\nResultado: V_o = V_s·G·ε. A sensibilidade é 4 vezes a do item (a) e o termo αΔT se cancela (2 − 2 = 0). Nenhum resistor R0 fixo é usado.\n\nA configuração espelhada (R1 e R4 em tração; R2 e R3 em compressão) é equivalente: dá V_o = −V_s·G·ε, mesmo módulo e sinal trocado. Com a polaridade da figura, a primeira configuração dá V_o > 0.\n\nVerificação exata. Com ΔT = 0, V_D = V_s(1+Gε)/2 e V_B = V_s(1−Gε)/2, então V_o = V_s·Gε exatamente, sem linearizar. Com ΔT ≠ 0, V_o = V_s·Gε/(1+αΔT) ≈ V_s·Gε·(1 − αΔT). O resíduo é do tipo ε·αΔT, que o enunciado manda desprezar.\n\nUma varredura numérica sobre as 81 combinações (resistor, extensômetro em tração ou em compressão, em cada braço) confirma o resultado. Com cancelamento térmico, a melhor combinação é [R1, R2, R3, R4] = [C, T, T, C] ou [T, C, C, T], com |V_o| = V_s·G·ε. Uma meia ponte (por exemplo R2 em tração e R4 em compressão, R1 e R3 fixos) também compensa a temperatura, mas rende só V_s·G·ε/2.",
+    "final_answer": "a) |V_o| = (V_s/4)·|Gε + αΔT|. A fórmula vale para o extensômetro em qualquer um dos quatro braços. O sinal de V_o é + se o extensômetro estiver em R2 ou R3, e − se estiver em R1 ou R4. O resultado exato é V_s·|x|/[2(2+x)], com x = Gε + αΔT.\n\nb) Os quatro dispositivos devem ser extensômetros, nenhum resistor R0 fixo:\n- R1 em compressão;\n- R2 em tração;\n- R3 em tração;\n- R4 em compressão.\n\nResultado: V_o = V_s·G·ε, com a temperatura cancelada (4 vezes a sensibilidade do item a). A configuração espelhada (R1 e R4 em tração, R2 e R3 em compressão) dá V_o = −V_s·G·ε, mesmo módulo e sinal trocado, e também é válida.",
+    "pitfalls": [
+      "Polaridade da fonte: na figura a placa longa (+) da bateria fica no topo, ligada a A, e C é a referência (0 V). Isso fixa V_D = V_s·R3/(R1+R3) e V_B = V_s·R4/(R2+R4). Com a polaridade invertida, o sinal de V_o inverte.",
+      "Hipóteses a declarar: voltímetro ideal (sem corrente em D–B, então os dois divisores são independentes), fonte ideal, regime linear, e mesma ΔT em todos os dispositivos no item (b).",
+      "Item (a): o enunciado pede o módulo porque o sinal depende do braço. R2 e R3 dão V_o > 0; R1 e R4 dão V_o < 0. O módulo é V_s·|x|/4 em qualquer braço, com x = Gε + αΔT.",
+      "Erro comum no item (a): esquecer que a ponte divide por 4 e escrever V_s·x/2 ou V_s·x. O denominador correto é 2(2+x) = 4(1+x/2); só depois se usa (1+x/2)⁻¹ ≈ 1 − x/2 e se descarta x².",
+      "No item (a), um extensômetro não separa deformação de temperatura: V_o depende de Gε + αΔT. Uma boa resolução comenta que isso contamina a medida de ε e motiva o item (b).",
+      "Regra dos braços: V_o ≈ (V_s/4)(x2 + x3 − x1 − x4). Braços opostos (R1–R4 e R2–R3) somam; braços adjacentes se subtraem. Pôr dois extensômetros adjacentes com o mesmo tipo de deformação (por exemplo R1 e R2 ambos em tração) anula o sinal mecânico em vez de somá-lo.",
+      "Compensação térmica: os efeitos αΔT só se cancelam se n2 + n3 = n1 + n4 (n_i = 1 para extensômetro). Um resistor R0 fixo ao lado de um extensômetro NÃO compensa a temperatura. Duas ligações opostas em tração, como R2 e R3, somam também o termo térmico.",
+      "Máxima sensibilidade: usar os 4 braços ativos, com ε2 = ε3 = +ε e ε1 = ε4 = −ε (ou o espelho). Dá V_o = V_s·G·ε, 4 vezes o item (a), com o termo térmico cancelado. A meia ponte (2 extensômetros) compensa a temperatura mas rende só V_s·G·ε/2, e não é a resposta de máxima precisão.",
+      "A resposta correta aceita as duas configurações espelhadas (R2 e R3 em tração com R1 e R4 em compressão, ou o contrário). Só muda o sinal de V_o. Uma resolução que dê só uma deve justificar pela polaridade, sem apresentar a outra como errada.",
+      "O cancelamento é de primeira ordem. Com ΔT ≠ 0, V_o = V_s·Gε/(1+αΔT) ≈ V_s·Gε(1 − αΔT); o resíduo ε·αΔT é desprezado por instrução do enunciado. Não dizer que o cancelamento é exato sem ressalva.",
+      "Justificar por que o arranjo é o máximo: |ε2 + ε3 − ε1 − ε4| ≤ 4ε (desigualdade triangular), com igualdade só na configuração acima. Apenas afirmar a configuração sem argumento deixa a resolução incompleta.",
+      "Na ponte da figura, V_o = V_D − V_B. Cuidado para não trocar D e B ou os índices de R3 e R4 ao escrever os divisores, pois isso inverte o sinal e a identificação dos braços opostos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) |V_o| = (V_s/4)·|Gε + αΔT| (qualquer que seja o braço do extensômetro). b) Quatro extensômetros: os braços opostos R2 e R3 em pontos do mesmo tipo (p. ex. tração) e R1 e R4 em pontos do tipo contrário (compressão), ou o inverso. Resulta |V_o| = V_s·G·|ε|, quatro vezes o item (a), e o efeito térmico se cancela. Nenhum resistor R0 constante é usado.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Observação numérica do item (a) errada por um fator 10. Para G≈2 e ε=10⁻³ (x=2·10⁻³), o valor exato é V_s·x/[2(2+x)] e o linear é V_s·x/4. O erro relativo é x/2 = 10⁻³, não 'da ordem de 10⁻⁴'. Refiz a conta: o exato dá 4,995·10⁻⁴ V_s e o linear 5·10⁻⁴ V_s. A afirmação não afeta o resultado, mas num gabarito comentado é um erro factual. Corrigir para ~10⁻³, ou omitir a frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência numérica sobre as 3⁴ combinações é descrita sem a restrição necessária: 'o máximo de |V_o| é V_sG|ε|, obtido só nessas duas configurações'. Com ΔT≠0 e sem exigir cancelamento térmico, combinações como (R2,R3 em tração, R1,R4 = R0) dão |V_o| = V_s(Gε+αΔT)/2, que pode ser maior (rodei com αΔT=2·10⁻³ e Gε=2·10⁻⁴). A afirmação só vale com ΔT=0 ou entre as combinações com compensação térmica (n2+n3=n1+n4). Deveria dizer isso."
+          },
+          {
+            "severity": "minor",
+            "description": "A compensação térmica não entra como critério de projeto: o candidato maximiza só a sensibilidade a ε, e depois verifica que o termo αΔT cancela. A condição geral n2+n3 = n1+n4 não é enunciada. Falta dizer que um R0 fixo ao lado de um extensômetro não compensa a temperatura e que dois extensômetros em braços opostos somam o termo térmico. A resposta final está correta porque a configuração é única, mas a justificativa do 'minimizando o efeito térmico' fica menos explícita que o ideal."
+          },
+          {
+            "severity": "minor",
+            "description": "O item (a) não mostra nenhum caso explícito (por exemplo, extensômetro em R1 com R2=R3=R4=R0) nem a forma exata V_s·|x|/[2(2+x)]. O resultado sai da fórmula linear geral, o que é válido, mas um gabarito comentado ficaria mais convincente mostrando um braço e a passagem por (1+x/2)⁻¹≈1−x/2."
+          },
+          {
+            "severity": "minor",
+            "description": "O cancelamento térmico é ressalvado como 'em primeira ordem' no item de sensibilidade, mas a conclusão da montagem diz apenas 'sem dependência de ΔT'. Não se escreve o resíduo V_o = V_sGε/(1+αΔT) ≈ V_sGε(1−αΔT), que é do tipo εαΔT e é desprezado por instrução do enunciado. A ressalva existe, mas está fraca."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a referência nos dois itens. (a) |V_o| = (V_s/4)|Gε+αΔT|, com o sinal + para R2 ou R3 e − para R1 ou R4. (b) Quatro extensômetros, sem R0 fixo: R2 e R3 em tração e R1 e R4 em compressão, ou o espelho. O resultado é V_o = V_sGε, 4 vezes o item (a), com αΔT cancelado em primeira ordem. Conferi no enunciado original que a figura tem a placa longa da bateria em cima, ligada a A, e que V_o = V_D − V_B. Os divisores V_D = V_sR3/(R1+R3) e V_B = V_sR4/(R2+R4) estão certos. Refiz a linearização e confirmei V_o ≈ (V_s/4)(x2+x3−x1−x4). Uma varredura numérica própria sobre as 81 combinações confirma que as configurações [C,T,T,C] e [T,C,C,T] dão a máxima sensibilidade com compensação térmica. As armadilhas principais foram tratadas: polaridade declarada com a ressalva de que só o sinal muda, fator 1/4 correto, módulo independente do braço, limitação do extensômetro único, desigualdade triangular com o caso de igualdade, meia ponte comparada (V_sGε/2) e configuração espelhada aceita como válida. Os defeitos são todos menores: o erro de um fator 10 no erro relativo da linearização (10⁻³, não 10⁻⁴), a descrição da varredura numérica sem a restrição de compensação térmica, a condição n2+n3=n1+n4 e o papel do R0 fixo não explicitados, e a ausência de um caso explícito no item (a). É uma resolução sólida e quase de gabarito, mas as imprecisões na parte de verificação impedem a nota 9.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.3,
+      "final_answer": "a) |V_o| = (V_s/4)|Gε + αΔT|, em qualquer braço onde esteja o extensômetro único. b) Quatro extensômetros: R2 e R3 em pontos de tração e R1 e R4 em pontos de compressão (ou o inverso), sem nenhum R0 fixo. Resulta |V_o| = V_s G |ε|, quatro vezes o item a), com o termo αΔT cancelado em primeira ordem.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A varredura numérica das 3^4 combinações é citada como confirmação, mas sem resultado nem tabela. Eu a refiz e ela confirma: a melhor combinação compensada é [C,T,T,C] ou [T,C,C,T], com |Vo| = Vs·G·ε. O argumento analítico (desigualdade triangular com igualdade só em s2=s3=−s1=−s4) já basta. A citação da varredura é só enfeite. Convém deixar claro que a prova é a desigualdade, não o código."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de fonte ideal (Vs constante, sem resistência interna) não é declarada de forma explícita no modelo. Voltímetro ideal, polaridade, regime linear e mesma ΔT estão declarados. A falta é pequena e a fonte ideal vem do enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que a meia ponte é a melhor entre as montagens compensadas, além da ponte completa, fica um pouco imprecisa. Na varredura há também montagens com 3 ou 4 extensômetros compensadas que rendem Vs·G·ε/2, por exemplo [T,T,T,C]. O valor Vs·G·ε/2 está certo. Bastava dizer que o segundo melhor valor é metade do máximo, sem sugerir que a meia ponte é o único exemplo."
+          },
+          {
+            "severity": "minor",
+            "description": "O parágrafo de ordem de grandeza do item (a), com G≈2 e ε=10⁻³, não foi pedido e não acrescenta nada à resposta. Os números estão corretos: valor linear 5·10⁻⁴·Vs, exato 4,995·10⁻⁴·Vs, erro relativo x/2. O comentário de que a temperatura soma como deformação, e portanto motiva o item (b), é bom."
+          }
+        ],
+        "summary": "Verifiquei a figura no PDF original: a placa longa (+) da bateria está em cima, ligada a A, e C é a referência. A modelagem do candidato está correta: V_D = Vs·R3/(R1+R3) e V_B = Vs·R4/(R2+R4). A linearização dá Vo ≈ (Vs/4)(x2+x3−x1−x4), que é a mesma da minha referência. Item (a): |Vo| = (Vs/4)|Gε+αΔT|, com o resultado exato −Vs·x/[2(2+x)] e os sinais por braço (R2 e R3 com +, R1 e R4 com −) corretos. A conta exata e a numérica com x=2·10⁻³ conferem. Item (b): os quatro dispositivos são extensômetros, com R2 e R3 em tração e R1 e R4 em compressão (ou o espelho), o que dá Vo = Vs·G·ε com a temperatura cancelada. Isso coincide com a referência e com minha varredura de 81 combinações. A resolução trata todas as armadilhas: polaridade da fonte, módulo no item (a), temperatura contaminando a medida com um só extensômetro, regra dos braços opostos e adjacentes, R0 ao lado de extensômetro não compensando a temperatura, meia ponte com metade da sensibilidade, desigualdade triangular como prova de máximo, e cancelamento só em primeira ordem com Vo = Vs·Gε/(1+αΔT). Apresenta as duas configurações espelhadas sem chamar a outra de errada. Só há detalhes menores, como a varredura citada sem mostrar resultados e a fonte ideal não declarada. É uma resolução rigorosa e completa, no nível de gabarito comentado.\"}"
+      }
+    }
+  ]
+}

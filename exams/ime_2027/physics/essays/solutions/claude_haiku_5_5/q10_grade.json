@@ -1,0 +1,42 @@
+{
+  "question": 10,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-2-27-10-2026-2-fase-dia-2/dissertativa-10-fisica-2-fase-dia-2-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "Somente a Situação 2 (correntes iguais e no mesmo sentido, partícula descendo). Nas Situações 1 e 4, B no plano médio é diferente de zero e a força horizontal tem sinal fixo. Na Situação 3, a partícula sobe e o equilíbrio é instável.",
+      "key_answer": "Somente a situação 2",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi a resolução. Com correntes opostas (Situações 1 e 4), o campo no plano médio é B_z(0) = −2μ0 i/(πd), diferente de zero. Assim já existe força horizontal no eixo, sempre no mesmo sentido, e não há restauração. Com correntes iguais (Situações 2 e 3), o campo é B_z ≈ (4μ0 i/(πd²))·x e a força horizontal é F_x = q·ẏ·B_z. Na Situação 2, a partícula desce (ẏ = −v), então F_x = −k·x e a força é restauradora. Na Situação 3, ela sobe, então F_x = +k·x e a partícula se afasta do eixo. A justificativa física também confere: uma carga positiva descendo equivale a uma corrente para baixo, antiparalela às dos fios, e por isso é repelida pelo fio mais próximo. A figura do PDF confere com a transcrição. A resolução justifica cada uma das quatro situações, como o enunciado pede."
+    },
+    {
+      "item": "b",
+      "solution_answer": "p ≈ (πd/2)·√(πmv/(μ0 i q)) = πv/ω, com ω = (2/d)·√(μ0 i q v/(πm))",
+      "key_answer": "T = πd·√(πm/(μ0 i q v)); p = (πd/2)·√(πmv/(μ0 i q))",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz a conta. A constante elástica efetiva é k = 4μ0 i q v/(πd²), logo ω² = 4μ0 i q v/(πmd²) e T = 2π/ω = πd·√(πm/(μ0 i q v)). O passo é a distância entre dois cruzamentos sucessivos do eixo y, ou seja, meio período: p = v·T/2 = (πd/2)·√(πmv/(μ0 i q)). Essa é exatamente a expressão do gabarito. Também conferi numericamente (RK4 com o campo exato dos dois fios, m/q = 1e-8 kg/C, i = 10 A, d = 1 cm, v = 1 m/s, x0 = 10 μm): o espaçamento médio entre cruzamentos foi 0,78516 mm, contra 0,78540 mm da fórmula. O desvio relativo de −3,0·10⁻⁴ coincide com a correção de segunda ordem −(3/16)(ωA/v)² que a resolução deduziu e que também verifiquei analiticamente. O T do gabarito confere com 2π/ω."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado não fornece g. A resolução e o gabarito desprezam o peso, o que é razoável, mas é uma hipótese implícita. A resolução a declara e estima o efeito (g/(ωv) ~ 10⁻³ no exemplo numérico)."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "Na figura, o passo p corresponde a meio período da oscilação em x (dois cruzamentos sucessivos do eixo y). Resolução e gabarito adotam essa leitura (p = vT/2). Quem tomasse p como o período completo (vT) teria resposta com o dobro do valor."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução traz material além do pedido: integral primeira exata, órbitas das Situações 1 e 3, correção de segunda ordem e integração numérica. Conferi e está tudo correto. Só a correção −(3/16)(ωA/v)² ignora os termos de ordem (A/a)², que são desprezíveis quando κ = 4πmv/(μ0 i q) ≪ 1, como no exemplo. Nada disso afeta a resposta final."
+    }
+  ],
+  "summary": "A resolução confere com o gabarito Poliedro nos dois itens, e os dois estão corretos. No item (a), só a Situação 2 serve: as Situações 1 e 4 têm campo diferente de zero no eixo e a 3 é instável. No item (b), p = (πd/2)·√(πmv/(μ0 i q)), que é meio período do MHS horizontal vezes v. Refiz a dedução e uma integração numérica com o campo exato, e o resultado da fórmula se confirmou com desvio de 3·10⁻⁴, que é exatamente a correção de segunda ordem prevista. A resolução justifica cada situação, como o item (a) exige. Não encontrei erro."
+}

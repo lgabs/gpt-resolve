@@ -1,0 +1,31 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{1. Identificação do sólido.} Num octaedro regular centrado na origem, os vértices formam pares antípodas $\pm\vec v$, com $|\vec v|=R$. Aqui $R=5$. Os três vértices dados distam entre si
+$$m=\sqrt{5^2+5^2}=5\sqrt2\neq 10=2R,$$
+logo nenhum par deles é antípoda. Os outros três vértices são, portanto, os simétricos $(-5,0,0)$, $(0,-5,0)$ e $(0,0,-5)$. O octaedro tem vértices $(\pm5,0,0)$, $(0,\pm5,0)$ e $(0,0,\pm5)$. A aresta mede $5\sqrt2=R\sqrt2$, como deve ser num octaedro regular de circunraio $R$.
+
+O sólido (interior mais superfície) é a envoltória convexa desses seis pontos. Cada uma das oito faces está num plano do tipo $\pm x\pm y\pm z=5$, por exemplo $x+y+z=5$ pelos pontos $(5,0,0)$, $(0,5,0)$, $(0,0,5)$. O sólido é a interseção dos oito semiespaços $\pm x\pm y\pm z\le 5$ que contêm a origem. Isso equivale a
+$$|x|+|y|+|z|\le 5 .$$
+
+\textbf{2. Contagem.} Procuramos os $(x,y,z)\in\mathbb Z^3$ com $|x|+|y|+|z|\le5$. Fixe $(x,y)$ e seja $s=|x|+|y|$, com $0\le s\le5$. Então $|z|\le 5-s$, o que dá $2(5-s)+1=11-2s$ valores inteiros de $z$.
+
+Número de pares inteiros $(x,y)$ com $|x|+|y|=s$:
+\begin{itemize}
+\item $s=0$: apenas $(0,0)$, ou seja, $1$ par;
+\item $s\ge1$: são os pontos inteiros do losango de lado $s$, que são $4s$ pares. De fato, $x=-s,\dots,s$ dá $2$ valores de $y$ para $|x|<s$ e $1$ para $|x|=s$, ou seja, $2(2s-1)+2=4s$.
+\end{itemize}
+
+Logo
+$$N=1\cdot 11+\sum_{s=1}^{5}4s\,(11-2s)=11+4\left(11\sum_{s=1}^{5}s-2\sum_{s=1}^{5}s^2\right).$$
+Com $\sum s=15$ e $\sum s^2=55$:
+$$N=11+4\,(165-110)=11+220=231 .$$
+
+\textbf{3. Verificação por camadas.} Os pontos com $|x|+|y|+|z|=k$ são $4k^2+2$ para $k\ge1$ (e $1$ para $k=0$). Para $k=1,\dots,5$ isso dá $6,\ 18,\ 38,\ 66,\ 102$. Então
+$$1+6+18+38+66+102=231 .$$
+O valor concorda com o anterior, e $102$ desses pontos estão na superfície ($k=5$). Para $n=1$ e $n=2$ a fórmula geral $\frac{(2n+1)(2n^2+2n+3)}{3}$ dá $7$ e $25$, valores que conferem com a contagem direta. Para $n=5$ ela dá $\frac{11\cdot 63}{3}=231$. Uma enumeração computacional também resultou em $231$.
+
+\textbf{Resposta:} o sólido contém $231$ pontos de coordenadas inteiras, sendo $129$ no interior e $102$ na superfície.
+
+ANSWER: 231

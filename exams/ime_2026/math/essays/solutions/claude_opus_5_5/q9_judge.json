@@ -1,0 +1,46 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "r = a(\\sqrt{3}-1)(2-\\sqrt{2})/2 = a(2\\sqrt{3}+\\sqrt{2}-\\sqrt{6}-2)/2 ≈ 0,214a",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (página 2, 9ª questão, valor 1,0). A questão não tem figura.\n\n**1) Coordenadas e simetria (BM = DN)**\nTome A = (0,0), B = (a,0), C = (a,a), D = (0,a).\n- M está em BC, então M = (a, m), com 0 ≤ m ≤ a e BM = m.\n- N está em CD, então N = (n, a), com 0 ≤ n ≤ a e DN = n.\n\nComo AMN é equilátero, AM = AN:\n- AM² = a² + m²\n- AN² = a² + n²\n\nDaí m² = n². Como m, n ≥ 0, vale m = n. Sintético: os triângulos retângulos ABM e ADN têm hipotenusas iguais (AM = AN) e um cateto igual (AB = AD), logo são congruentes (caso cateto-hipotenusa) e BM = DN.\n\nChame x = BM = DN. Então CM = CN = a − x.\n\n**2) Cálculo de x**\nCom M = (a, x) e N = (x, a), MN² = 2(a − x)². Impondo AM = MN:\n\na² + x² = 2(a − x)²\n⟹ x² − 4ax + a² = 0\n⟹ x = (2 ± √3)a.\n\n- A raiz (2 + √3)a ≈ 3,73a é maior que a, então M estaria fora do lado BC. Descarte.\n- Fica x = (2 − √3)a ≈ 0,268a, que pertence a [0, a].\n\nA configuração existe e é única.\n\nRota alternativa: os ângulos BAM e DAN são iguais e somam 90° − 60° = 30°, então cada um mede 15°. Logo x = a·tg 15° = (2 − √3)a.\n\n**3) O triângulo CMN**\nO ângulo em C é reto. Os catetos são CM = CN = L, com\nL = a − (2 − √3)a = (√3 − 1)a.\nA hipotenusa é MN = L√2 = (√6 − √2)a.\nConferência: AM² = a² + (2 − √3)²a² = (8 − 4√3)a² = MN². ✓\n\n**4) Raio do círculo inscrito**\nPara um triângulo retângulo, r = (cateto₁ + cateto₂ − hipotenusa)/2. Então:\nr = (2L − L√2)/2 = L(2 − √2)/2 = (√3 − 1)(2 − √2)a/2.\n\nConferência por r = Área/semiperímetro:\n- Área = L²/2\n- p = L(2 + √2)/2\n- r = L/(2 + √2) = L(2 − √2)/2 ✓\n\nExpandindo:\n**r = (√3 − 1)(2 − √2)a/2 = (2√3 + √2 − √6 − 2)a/2 ≈ 0,2144a.**\n\nFiz uma verificação numérica com a = 1:\n- AM = AN = MN ≈ 1,03528\n- Área/p ≈ 0,214413, igual ao valor da fórmula fechada.",
+    "final_answer": "r = (√3 − 1)(2 − √2)·a/2 = a(2√3 + √2 − √6 − 2)/2 = (√3 − 1)a/(2 + √2) ≈ 0,2144·a.\nValores intermediários: BM = DN = (2 − √3)a; CM = CN = (√3 − 1)a; MN = (√6 − √2)a. O triângulo CMN é retângulo isósceles em C.",
+    "pitfalls": [
+      "É preciso justificar BM = DN, que decorre de AM = AN com AB = AD (congruência cateto-hipotenusa, ou m² = n² com m, n ≥ 0). Assumir a simetria sem justificativa é uma lacuna.",
+      "A equação x² − 4ax + a² = 0 tem duas raízes. É preciso descartar x = (2 + √3)a, porque M sairia do lado BC (x > a), e ficar com x = (2 − √3)a.",
+      "Erro comum com ângulos: o ângulo BAM mede 15° (os 30° que sobram de 90° − 60° se dividem igualmente entre BAM e DAN), e não 30°. Também se costuma confundir tg 15° = 2 − √3 com outros valores.",
+      "Responder CM = CN = (2 − √3)a, trocando BM por CM. O correto é CM = a − BM = (√3 − 1)a.",
+      "É preciso reconhecer que CMN é retângulo em C (e isósceles) e usar corretamente r = (b + c − hipotenusa)/2 ou r = Área/semiperímetro. Usar o perímetro no lugar do semiperímetro dá a metade do valor correto.",
+      "A hipotenusa é MN = √2(√3 − 1)a = (√6 − √2)a e também é igual ao lado do triângulo equilátero. Vale conferir que AM² = (8 − 4√3)a² = MN².",
+      "Formas equivalentes da resposta devem ser aceitas: (√3−1)(2−√2)a/2, (2√3+√2−√6−2)a/2 e (√3−1)a/(2+√2), todas ≈ 0,2144a.",
+      "Hipótese de validade: M e N estão sobre os lados (segmentos). Há existência e unicidade da configuração com 0 < x < a, então CMN não é degenerado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "r = a(\\sqrt{3}-1)(2-\\sqrt{2})/2 = a(2\\sqrt{3}+\\sqrt{2}-\\sqrt{6}-2)/2 ≈ 0,214a",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na justificativa de r = (b+c−h)/2, a resolução diz que as tangentes a partir do vértice reto medem r, mas não diz explicitamente que as tangentes traçadas de M e de N somam a hipotenusa h (propriedade das tangentes iguais). O passo é padrão, mas deveria ser escrito em uma linha."
+          },
+          {
+            "severity": "minor",
+            "description": "CMN é declarado retângulo isósceles (não degenerado) antes de se mostrar que x < a. A conclusão está correta e o valor x ≈ 0,268a confirma logo depois; bastaria uma menção explícita de que 0 < x < a garante que a configuração existe, é única e não é degenerada."
+          }
+        ],
+        "summary": "A resposta coincide com a referência: r = a(√3−1)(2−√2)/2 = a(2√3+√2−√6−2)/2 ≈ 0,2144a. A conferência numérica em python3 com a = 1 dá AM = AN = MN ≈ 1,035276 e S/p ≈ 0,214413. Todas as armadilhas foram tratadas: BM = DN por cateto-hipotenusa, descarte da raiz (2+√3)a > a, ângulo de 15° como conferência, CM = (√3−1)a sem troca com BM, fórmula do raio justificada geometricamente e verificada por S/p com o semiperímetro correto, e hipotenusa MN = (√6−√2)a. Há apenas duas pequenas omissões de rigor: a soma das tangentes de M e N igual à hipotenusa não é dita explicitamente, e a não degenerescência é comentada só depois de usada. A resolução é clara, completa e tem dupla verificação; tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

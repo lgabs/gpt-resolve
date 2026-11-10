@@ -1,0 +1,42 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Ideia.} Escrevemos $A=I+N$ com $N$ nilpotente. Como $I$ comuta com $N$, o binômio de Newton aplica-se a $(I+N)^n$ e a soma tem poucos termos.
+
+\textbf{1) Decomposição.}
+\[
+A=I+N,\qquad N=\begin{bmatrix}0&1&2\\0&0&1\\0&0&0\end{bmatrix}.
+\]
+
+\textbf{2) Potências de $N$.} Calculando,
+\[
+N^2=\begin{bmatrix}0&0&1\\0&0&0\\0&0&0\end{bmatrix},
+\]
+pois a única entrada não nula é a $(1,3)$, igual a $N_{12}N_{23}+N_{13}N_{33}=1\cdot 1+2\cdot 0=1$. Então $N^3=N\cdot N^2=0$ e $N^k=0$ para todo $k\ge 3$.
+
+\textbf{3) Binômio de Newton.} Como $IN=NI$, para todo $n\in\mathbb{N}$,
+\[
+A^n=(I+N)^n=\sum_{k=0}^{n}\binom{n}{k}N^k=I+nN+\binom{n}{2}N^2 ,
+\]
+em que só sobrevivem os termos com $k\le 2$ (com $\binom{n}{2}=0$ para $n=1$, o que está correto).
+
+\textbf{4) Entrada $(1,3)$.} As entradas $(1,3)$ de $I$, $N$ e $N^2$ valem $0$, $2$ e $1$. Logo
+\[
+(A^n)_{13}=2n+\binom{n}{2}=2n+\frac{n(n-1)}{2}=\frac{n(n+3)}{2}.
+\]
+Verificação: $n=1$ dá $2$, que é a entrada $a_{13}$ de $A$. $n=2$ dá $5$, e de fato $(A^2)_{13}=1\cdot 2+1\cdot 1+2\cdot 1=5$.
+
+\textbf{5) Condição pedida.} Queremos
+\[
+\frac{n(n+3)}{2}>119\iff n(n+3)>238 .
+\]
+A função $f(n)=n(n+3)$ é estritamente crescente para $n\in\mathbb{N}$, então basta achar o primeiro $n$ que satisfaz a desigualdade:
+\[
+f(13)=13\cdot 16=208<238,\qquad f(14)=14\cdot 17=238 \ \text{(igualdade, não é ``maior que'')},\qquad f(15)=15\cdot 18=270>238 .
+\]
+Para $n=14$ a entrada vale exatamente $119$, que não é maior que $119$. Para $n=15$ a entrada vale $\dfrac{270}{2}=135>119$. Pela monotonicidade, nenhum $n<15$ serve.
+
+\textbf{Conclusão.} O menor $n$ é $15$, e nesse caso a entrada $(1,3)$ de $A^{15}$ vale $135$.
+
+ANSWER: $n=15$

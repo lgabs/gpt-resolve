@@ -1,0 +1,65 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Condições de existência.} Escrevemos $z=x+yi$, com $x,y\in\mathbb{R}$. Então
+\begin{align*}
+z+\bar z&=2x, \qquad z-\bar z=2yi, \qquad z^2-\bar z^2=(z-\bar z)(z+\bar z)=4xyi,\\
+z^2+\bar z^2&=(z+\bar z)^2-2z\bar z=4x^2-2(x^2+y^2)=2(x^2-y^2).
+\end{align*}
+Os denominadores devem ser não nulos: $z-\bar z\neq 0\Rightarrow y\neq 0$ e $z^2-\bar z^2\neq 0\Rightarrow x\neq 0$. Logo $xy\neq 0$; em particular, $z=0$, $z$ real e $z$ imaginário puro são excluídos.
+
+\textbf{Passo 1 (simplificar as frações).} Sejam $S=\dfrac{z+\bar z}{z-\bar z}$ e $T=\dfrac{z^2+\bar z^2}{z^2-\bar z^2}$. Então
+\begin{align*}
+S&=\frac{2x}{2yi}=-i\,\frac{x}{y},\\
+T&=\frac{2(x^2-y^2)}{4xyi}=-i\,\frac{x^2-y^2}{2xy}.
+\end{align*}
+Seja $t=\dfrac{x}{y}\in\mathbb{R}^*$. Como $\dfrac{y}{x}=\dfrac1t$, vale $\dfrac{x^2-y^2}{2xy}=\dfrac12\left(t-\dfrac1t\right)=\dfrac{t^2-1}{2t}$. Logo
+\[
+S=-it,\qquad T=-i\,\frac{t^2-1}{2t}.
+\]
+
+\textbf{Passo 2 (reescrever a equação).} A equação é $i(S+T)-ST=1$. Como
+\[
+(S-i)(T-i)=ST-i(S+T)+i^2=ST-i(S+T)-1,
+\]
+temos $i(S+T)-ST=-(S-i)(T-i)-1$. Assim a equação equivale a $-(S-i)(T-i)-1=1$, isto é,
+\[
+(S-i)(T-i)=-2.
+\]
+
+\textbf{Passo 3 (substituir).} Temos
+\[
+S-i=-i(t+1),\qquad T-i=-i\left(\frac{t^2-1}{2t}+1\right)=-i\,\frac{t^2+2t-1}{2t}.
+\]
+Portanto $(S-i)(T-i)=(-i)^2\dfrac{(t+1)(t^2+2t-1)}{2t}=-\dfrac{(t+1)(t^2+2t-1)}{2t}$, e a equação fica $\dfrac{(t+1)(t^2+2t-1)}{2t}=2$. Como $t\neq 0$, obtemos
+\[
+(t+1)(t^2+2t-1)=4t.
+\]
+
+\textbf{Passo 4 (resolver em $t$).} Como $(t+1)(t^2+2t-1)=t^3+3t^2+t-1$, a equação é
+\[
+t^3+3t^2-3t-1=0 \iff (t-1)(t^2+4t+1)=0,
+\]
+pois $(t-1)(t^2+4t+1)=t^3+3t^2-3t-1$. As raízes são $t_1=1$, $t_2=-2+\sqrt{3}\approx -0{,}268$ e $t_3=-2-\sqrt{3}\approx -3{,}732$. Todas são não nulas, logo são admissíveis.
+
+\textbf{Passo 5 (voltar a $z$).} De $t=\dfrac{x}{y}$ segue $x=ty$, isto é, $z=y(t+i)$ com $y\in\mathbb{R}^*$ arbitrário. Cada raiz fornece, portanto, uma reta pela origem, privada da origem. Em forma polar, $z=\rho(\cos\theta+i\sin\theta)$ dá $t=\cot\theta$. Como
+\[
+\cot\frac{\pi}{4}=1,\qquad \cot\frac{7\pi}{12}=-\tan\frac{\pi}{12}=-2+\sqrt{3},\qquad \cot\frac{11\pi}{12}=-\cot\frac{\pi}{12}=-2-\sqrt{3},
+\]
+o conjunto solução é
+\begin{align*}
+z&=\lambda(1+i), & z&=\lambda(\sqrt{3}-2+i), & z&=\lambda(-2-\sqrt{3}+i), & \lambda&\in\mathbb{R}^*.
+\end{align*}
+Equivalentemente, $z=\rho\,e^{i\theta}$ com $\rho\in\mathbb{R}^*$ e $\theta\in\left\{\dfrac{\pi}{4},\dfrac{7\pi}{12},\dfrac{11\pi}{12}\right\}$ (módulo $\pi$), ou seja, $\theta=45^\circ,\,105^\circ,\,165^\circ$. Há infinitas soluções: são três retas pela origem, sem a origem.
+
+\textbf{Conferência.}
+\begin{itemize}
+\item Para $z=1+i$: $S=\dfrac{2}{2i}=-i$, $z^2=2i$, $\bar z^2=-2i$, logo $T=0$ e $i(S+T)-ST=i(-i)=1$. \checkmark
+\item Para $z=(\sqrt{3}-2)+i$ (com $t=\sqrt{3}-2$): $S=i(2-\sqrt{3})$ e $T=-i\sqrt{3}$, pois $\dfrac{t^2-1}{2t}=\sqrt{3}$. Então $i(S+T)=2\sqrt{3}-2$, $ST=2\sqrt{3}-3$ e $i(S+T)-ST=1$. \checkmark
+\item Para $z=(-2-\sqrt{3})+i$ (com $t=-2-\sqrt{3}$): $S=i(2+\sqrt{3})$ e $T=i\sqrt{3}$, pois $\dfrac{t^2-1}{2t}=-\sqrt{3}$. Então $i(S+T)=-2-2\sqrt{3}$, $ST=-2\sqrt{3}-3$ e $i(S+T)-ST=1$. \checkmark
+\item Caso excluído: $z=2+3i$ não é solução, pois $t=\frac{2}{3}$ não é raiz de $t^3+3t^2-3t-1$ (o valor é $-\frac{37}{27}\neq 0$).
+\item Estrutura: com $t=\cot\theta$, a equação equivale a $\cot 3\theta=-1$, pois $\cot 3\theta=\dfrac{t^3-3t}{3t^2-1}$. Resolvendo, $\theta=\dfrac{\pi}{4}+k\dfrac{\pi}{3}$, o que coincide com os três ângulos obtidos.
+\end{itemize}
+
+ANSWER: $z=\lambda(1+i)$, $z=\lambda(\sqrt{3}-2+i)$ ou $z=\lambda(-2-\sqrt{3}+i)$, com $\lambda\in\mathbb{R}^*$ (três retas pela origem, sem a origem).

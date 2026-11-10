@@ -1,0 +1,57 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "235 sêxtuplas ordenadas.",
+  "judge_reference": {
+    "reference_solution": "**Convenção decisiva.** O cabeçalho da prova define ℕ = {1, 2, 3, …}. Logo x₁,…,x₆ são inteiros ≥ 1 (o zero NÃO é permitido).\n\n**1) Reduzir o sistema.** Chamo as equações de (E1), (E2), (E3):\n- (E1) x₁ + x₂ + x₃ + x₄ + x₅ + 3x₆ = 30\n- (E2) x₁ + 2x₂ + 2x₃ + 2x₄ + 2x₅ + 4x₆ = 52\n- (E3) 2x₁ + 2x₂ + 3x₃ + 3x₄ + 3x₅ + 7x₆ = 76\n\nSeja S = x₃ + x₄ + x₅.\n\n- (E2) − (E1): x₂ + x₃ + x₄ + x₅ + x₆ = 22, ou seja, x₂ + S + x₆ = 22. (E4)\n- (E3) − 2·(E1): 2x₁+2x₂+3S+7x₆ − (2x₁+2x₂+2S+6x₆) = S + x₆ = 76 − 60 = 16. (E5)\n- (E4) − (E5): **x₂ = 6**. Esse valor é fixo e já é ≥ 1.\n- De (E5): **S = 16 − x₆**.\n- Em (E1): x₁ + 6 + S + 3x₆ = 30. Substituindo S: x₁ + 6 + 16 − x₆ + 3x₆ = 30, logo **x₁ = 8 − 2x₆**.\n\nAs três equações originais ficam equivalentes a: x₂ = 6, x₁ = 8 − 2x₆ e x₃ + x₄ + x₅ = 16 − x₆. Essa equivalência vale porque o sistema é linear e as combinações usadas são invertíveis: (E1), (E4), (E5) reconstroem (E1), (E2), (E3). Há então 3 equações independentes em 6 incógnitas, com 3 graus de liberdade: x₆, x₄ e x₅, por exemplo.\n\n**2) Restrições de positividade.**\n- x₁ ≥ 1 ⇒ 8 − 2x₆ ≥ 1 ⇒ x₆ ≤ 3 (x₁ é par, então x₁ ≥ 2 e x₆ ≤ 3). Com x₆ ≥ 1, temos x₆ ∈ {1, 2, 3}, com x₁ = 6, 4, 2 respectivamente.\n- x₃, x₄, x₅ ≥ 1 exige S ≥ 3, ou seja, 16 − x₆ ≥ 3. Isso vale com folga para x₆ ≤ 3.\n\n**3) Contagem.** Para cada x₆, (x₁, x₂) fica determinado. O número de ternas (x₃, x₄, x₅) de inteiros positivos com soma S é C(S−1, 2) (estrelas e barras).\n\n| x₆ | x₁ | x₂ | S = 16−x₆ | nº de (x₃,x₄,x₅) |\n|---|---|---|---|---|\n| 1 | 6 | 6 | 15 | C(14,2) = 91 |\n| 2 | 4 | 6 | 14 | C(13,2) = 78 |\n| 3 | 2 | 6 | 13 | C(12,2) = 66 |\n\nTotal: 91 + 78 + 66 = **235**.\n\n**4) Verificação.** Uma busca exaustiva em python3 (todas as sêxtuplas de inteiros ≥ 1 que satisfazem as 3 equações) deu exatamente 235 soluções. A distribuição foi (x₆=1, x₁=6): 91; (x₆=2, x₁=4): 78; (x₆=3, x₁=2): 66. Em todas, x₂ = 6. Exemplo: (6,6,5,5,5,1) dá 6+6+15+3 = 30; 6+12+30+4 = 52; 12+12+45+7 = 76. ✓\n\n**Observação (variante com zero).** Se o zero fosse permitido (ℕ₀), x₆ iria de 0 a 4 e a contagem seria Σ C(18−k, 2), k = 0..4, que dá 153+136+120+105+91 = 605. Esse valor NÃO responde à questão, porque a prova adota ℕ sem o zero.",
+    "final_answer": "235 sêxtuplas. Pela convenção da prova, ℕ = {1, 2, 3, …}. Todas têm x₂ = 6 e x₁ = 8 − 2x₆, com x₆ ∈ {1, 2, 3} e x₃ + x₄ + x₅ = 16 − x₆. Contagem: 91 + 78 + 66 = 235.",
+    "pitfalls": [
+      "Convenção de ℕ: a prova diz ℕ = {1, 2, 3, …}, então o zero é proibido. Quem usa ℕ₀ chega a 605 (x₆ de 0 a 4, com C(S+2,2)), que está errado para este enunciado.",
+      "Escolher bem as combinações lineares: (E2)−(E1) e (E3)−2(E1) eliminam x₁ e depois x₂ e dão x₂ = 6 de imediato. É preciso notar que x₃, x₄, x₅ só aparecem pela soma S, e que a questão vira contar composições de S.",
+      "Passar de 3 equações em 6 incógnitas para uma contagem exige parametrizar por x₆ e cortar o intervalo de x₆ pela positividade de x₁ (x₆ ≤ 3). Esquecer essa cota ou usar x₁ ≥ 0 (x₆ = 4, x₁ = 0) infla a resposta.",
+      "Fórmula de estrelas e barras com variáveis positivas: o número de soluções de x₃+x₄+x₅ = S com xᵢ ≥ 1 é C(S−1, 2), não C(S+2, 2). Confundir as duas versões é o erro mais comum.",
+      "Não esquecer a condição x₂ = 6 ≥ 1 (satisfeita) e que x₁ = 8 − 2x₆ é sempre par: x₆ = 4 daria x₁ = 0, que não é natural.",
+      "Mostrar que a redução é equivalente ao sistema original, e não apenas implicada por ele, para garantir que toda solução do sistema reduzido é solução do original. Uma verificação numérica de uma sêxtupla ajuda a confirmar.",
+      "Resposta numérica final deve ser 235; somar 91 + 78 + 66 sem erro aritmético (C(14,2)=91, C(13,2)=78, C(12,2)=66)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "235 sêxtuplas ordenadas.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A equivalência entre o sistema original e o reduzido não é declarada. Os passos (II)−(I), a substituição em (I) e a substituição em (III) são todos reversíveis, então a redução é de fato equivalente. O texto só mostra a direção 'sistema ⇒ valores' e não diz que a recíproca vale. Isso importa porque a contagem exige que toda terna com soma S forneça uma solução do original. Falta uma frase como 'as passagens são reversíveis, logo toda (x1,x2,x3,x4,x5,x6) com x2=6, x1=8−2x6 e x3+x4+x5=16−x6 resolve o sistema original'."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha do zero e do caso x6=4 não é tratada de forma explícita. O texto afirma x6 ≤ 3 porque x1 = 8−2x6 ≥ 1, o que está correto, mas não diz que x6=4 daria x1=0, excluído pela convenção ℕ={1,2,…}. Também não comenta que a variante com ℕ₀ daria 605 (conferi por força bruta: 605). Um gabarito comentado destacaria isso, já que é o erro mais provável."
+          },
+          {
+            "severity": "minor",
+            "description": "Estrelas e barras é citado sem justificativa. Bastaria a substituição yi = xi − 1 ≥ 0, que leva a y3+y4+y5 = S−3 e ao número C(S−3+2, 2) = C(S−1, 2). A fórmula está correta e os valores 91, 78 e 66 estão certos, mas a passagem é só afirmada."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação numérica está incompleta. O texto verifica só x6=1, x1=x2=6 e S=15, sem exibir uma sêxtupla concreta, como (6,6,5,5,5,1). A 'contagem por força bruta' é só mencionada, sem o código ou a distribuição por x6. Seria mais convincente exibir também a distribuição (91, 78, 66) obtida no computador ou checar um caso de borda, como x6=3 com x1=2."
+          },
+          {
+            "severity": "minor",
+            "description": "O texto diz que as 3 equações em 4 incógnitas (x1, x2, S, x6) deixam 'um grau de liberdade'. Isso vale para o sistema em S, mas o sistema original tem 3 graus de liberdade nas 6 variáveis: x6 e a escolha da terna com soma S. A frase, como está, pode confundir o leitor. Convém esclarecer que a multiplicidade vem da composição de S."
+          }
+        ],
+        "summary": "Resposta final 235, que coincide com a referência e com a minha conferência. Refiz por força bruta (python3, rodado na pasta de trabalho): com ℕ={1,2,3,…} há 235 sêxtuplas, distribuídas em (x6=1, x1=6, x2=6): 91; (x6=2, x1=4, x2=6): 78; (x6=3, x1=2, x2=6): 66. Com ℕ₀ seriam 605, valor incorreto para este enunciado. O enunciado original (Questão 06) bate com a transcrição e a convenção ℕ={1,2,3,…} vem do cabeçalho. A resolução está correta e bem organizada. Adota a convenção certa, agrupa x3+x4+x5=S, resolve o sistema com a álgebra correta (x2=6, x1=8−2x6, S=16−x6) e confere a conta de (III), que dá 60+S+x6. Limita x6 a {1,2,3}, aplica corretamente C(S−1,2) e soma 91+78+66=235 sem erro aritmético. Os defeitos são só de rigor e de comentário. Falta declarar que a redução é uma equivalência, justificar estrelas e barras, citar explicitamente o caso x6=4 (x1=0) e a variante ℕ₀ (605), e dar uma verificação mais completa, com uma sêxtupla explícita e a distribuição da força bruta. Nada disso compromete a correção. É um gabarito sólido, quase publicável, ao qual faltam esses pequenos acabamentos."
+      }
+    }
+  ]
+}

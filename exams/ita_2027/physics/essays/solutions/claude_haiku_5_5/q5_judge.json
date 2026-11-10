@@ -1,0 +1,141 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "a) p' = -n2 R p/(n1 R + (n2 - n1) p), imagem virtual do lado de n1. Posições verticais y'± = ± n1 R h/(n1 R + (n2 - n1) p), imagem direta (fator m = n1R/(n1R+(n2-n1)p) vezes h). b) Primeira franja (R→∞): y1 = λ0 (n1 D + n2 p)/(2 n1 n2 h) ≈ λ0 D/(2 n2 h), com λ0 o comprimento de onda no vácuo. Equivalentemente, y1 = λ1 (n1 D + n2 p)/(2 n2 h) com λ1 = λ0/n1 o comprimento de onda no meio das fontes.",
+  "judge_reference": {
+    "reference_solution": "**Convenções e hipóteses**\n\n- Vértice O na origem, eixo x horizontal, luz da esquerda (n1) para a direita (n2). Fontes objeto: S± = (−p, ±h).\n- O centro C está em x = −R, do lado de n1. Logo a superfície é côncava vista de n1. Com n2 > n1 ela é divergente (potência negativa).\n- Convenção de Gauss (raio positivo se o centro estiver do lado de saída): R_G = −R.\n- Paraxial: h ≪ p, y ≪ D, ângulos pequenos. λ ≪ p garante a validade geométrica.\n- As fontes estão em fase (o enunciado não diz o contrário). λ é tomado como comprimento de onda no vácuo, λ0; a alternativa com λ no meio n1 está indicada no item b.\n\n**a) Imagem das fontes**\n\nEquação do dioptro esférico paraxial: n1/s + n2/s' = (n2 − n1)/R_G, com s = p e R_G = −R:\n\nn2/p' = (n1 − n2)/R − n1/p\n\n$$p' = -\\frac{n_2 R\\,p}{n_1 R + (n_2-n_1)\\,p}$$\n\n- p' < 0: a imagem é virtual e fica do lado n1, junto das fontes. Como n2 > n1, o denominador é positivo para quaisquer R, p > 0, então a imagem é sempre virtual. Sua distância à interface é |p'| = n2Rp/[n1R + (n2−n1)p].\n- Aumento lateral: m = −n1 p'/(n2 p) = n1R/[n1R + (n2−n1)p] > 0, ou seja, imagem direita.\n- Posições verticais: y'± = ±h' = ± n1 R h/[n1R + (n2−n1)p]. A fração que multiplica h depende só de n1, n2, R, p. A posição em si também depende de h, que é o fator de escala.\n\nChecagens: n1 = n2 dá p' = −p e m = 1 (sem interface). R → ∞ dá p' = −n2p/n1 (profundidade aparente) e m = 1. p → ∞ dá p' → −n2R/(n2−n1), o foco-imagem do dioptro.\n\n**b) Franja de interferência com R → ∞**\n\nCom R → ∞ a interface é plana. As imagens virtuais estão em x' = −n2p/n1 com y' = ±h (m = 1). Então:\n\n- a separação entre as duas fontes virtuais é 2h (cada fonte está a h do eixo, em semiplanos opostos);\n- a distância ao longo do eixo até a tela é L = D + n2p/n1 = D − p'.\n\nDiferença de caminho óptico. Pelo Fermat, em paraxial, o caminho óptico de uma fonte de altura y_S até P = (D, y) é n1 p + n2 D + n1n2 (y − y_S)²/[2(n1D + n2p)] (termo transversal). Subtraindo as duas fontes:\n\nΔOPL = 2 n1 n2 h y / (n1D + n2p) = n2 · (2hy/L)\n\nIsso bate com a imagem virtual: o caminho geométrico 2hy/L, na meio n2, é multiplicado por n2.\n\nMáximos: |ΔOPL| = m λ0, com m = 0 no centro (y = 0). A primeira franja luminosa é m = 1:\n\n$$y_1 = \\frac{\\lambda_0 L}{2 n_2 h} = \\frac{\\lambda_0\\,(n_1 D + n_2 p)}{2\\,n_1 n_2\\, h}$$\n\nEquivalentemente, y1 = λ2 L/(2h), com λ2 = λ0/n2 o comprimento de onda em n2.\n\nComo p ≪ D é hipótese do enunciado, a forma usual é y1 ≈ λ0 D/(2 n2 h). O termo n2p/n1 é a correção.\n\nSe λ for o comprimento de onda no meio n1 (λ0 = n1 λ), então y1 = λ(n1D + n2p)/(2 n2 h).\n\nExtensão para R finito (só como conferência, não pedida): y1 = λ0 (D − p')/(2 n2 h') = λ0 [R(n1D + n2p) + (n2 − n1) p D] / (2 n1 n2 R h).\n\n**Verificação numérica (Python puro, scripts em .work/q5/judge_blind/scripts/)**\n\n- Traçado exato de raios pela esfera: p' e h' reproduzidos com erro ~10⁻⁵ relativo, para ângulos ~10⁻³.\n- Fermat exato na interface plana: y1 reproduzido com erro ~10⁻⁶ relativo, em três conjuntos de parâmetros.\n- Fermat exato na esfera (R finito): a fórmula geral reproduz y1 com erro ~10⁻⁶.",
+    "final_answer": "**a)** Imagem virtual, do lado das fontes (n1), com\n\np' = −n2·R·p / [n1·R + (n2 − n1)·p]\n\nDistância à interface: |p'| = n2Rp/[n1R + (n2−n1)p].\n\nPosições verticais das imagens (imagens direitas):\n\ny'± = ± n1·R·h / [n1·R + (n2 − n1)·p]\n\nOu seja, y'/h = n1R/[n1R + (n2 − n1)p]. Esta resposta depende de h como fator de escala.\n\n**b)** Com R → ∞, a distância entre o ponto central e a primeira franja luminosa é\n\ny1 = λ·(D + n2·p/n1) / (2·n2·h) = λ·(n1·D + n2·p) / (2·n1·n2·h) ≈ λD/(2·n2·h), para p ≪ D.\n\nAqui λ é o comprimento de onda no vácuo. Se λ for o comprimento de onda no meio n1, a resposta é y1 = λ(n1D + n2p)/(2·n2·h).\n\nNão há alternativa de múltipla escolha.",
+    "pitfalls": [
+      "Convenção de sinal: o centro C está do lado de n1 (lado da incidência), então R entra com sinal negativo na fórmula de Gauss. Usar +R inverte a natureza do dioptro e dá p' e a posição das imagens erradas.",
+      "A imagem é sempre virtual, do lado das fontes (p' < 0), porque n2 > n1 torna o dioptro divergente. A distância até a tela é D + |p'|, não D − |p'|. Esse é o ponto central da questão: a tela não está a D das fontes.",
+      "Na Gauss, o aumento lateral m = −n1p'/(n2p) é positivo: as imagens são direitas, e h' = m·h tem o mesmo sinal de h.",
+      "O enunciado pede as posições verticais 'em função de n1, n2, R e p', mas a posição carrega o fator h. A resposta correta é y' = ±h·n1R/[n1R + (n2−n1)p].",
+      "A separação entre as fontes virtuais é 2h, não h, porque as fontes estão em semiplanos opostos, cada uma a distância h do eixo. Usar h como separação dobra a interfranja.",
+      "A diferença de caminho óptico precisa do fator n2: a diferença geométrica 2hy/L deve ser multiplicada por n2 (ou λ2 = λ0/n2 deve ser usado). Esquecer o n2 gera erro de 50% no resultado, por exemplo λL/(2h).",
+      "O comprimento de onda λ é ambíguo: vácuo ou meio n1? A resposta muda por um fator n1. Quem resolver deve declarar a hipótese (aqui, λ0 = vácuo) e, se possível, dar as duas formas.",
+      "'Primeira franja luminosa' é o máximo de ordem m = 1 (interfranja), não o máximo central e não a primeira franja escura (que vem em (m + 1/2)λ0). A distância ao centro é simétrica.",
+      "A aproximação p ≪ D permite escrever L ≈ D, mas o termo n2p/n1 é a correção exata. Com n2/n1 = 1,5 e p/D = 0,01, ele muda o resultado em ~1,5%. Quem simplifica deve justificar.",
+      "Fases iniciais: o enunciado não diz que as fontes estão em fase. Supõe-se que sim (máximo central em y = 0). Se estivessem defasadas de π, o centro seria escuro e as franjas se deslocariam.",
+      "Verificação de limites: R → ∞ dá p' = −n2p/n1 e m = 1; n1 = n2 dá p' = −p (sem interface, a imagem coincide com a fonte); p → ∞ dá o foco-imagem −n2R/(n2−n1).",
+      "Não confundir R (raio, distância C–vértice) com a distância de C à fonte, nem a distância D (interface–tela) com a distância fonte–tela.",
+      "Caso finito (não pedido no item b, mas útil para conferir): y1 = λ0(D − p')/(2n2h') com h' = m·h. Esse resultado foi verificado numericamente por Fermat exato na esfera."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) p' = -n2·R·p / (n1·R + (n2 - n1)·p): imagem virtual, do lado de n1, a |p'| da interface (para R → ∞, |p'| = n2·p/n1). As imagens das fontes ficam em y' = ±h', com h' = n1·R·h / (n1·R + (n2 - n1)·p) (ampliação transversal m = h'/h, igual a 1 quando R → ∞).\n\nb) Com R → ∞, as imagens são duas fontes coerentes separadas por 2h, a uma distância L = D + n2·p/n1 ≈ D da tela, e o comprimento de onda em n2 é λ·n1/n2 (λ no meio n1). A primeira franja luminosa está a y1 = λ(n1·D + n2·p)/(2·n2·h) ≈ n1·λ·D/(2·n2·h) do ponto central.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Justificativa errada da coerência das imagens: o texto diz que S'± são coerentes 'pois têm origem comum e sofrem a mesma refração'. As duas fontes são fontes distintas, declaradas coerentes no enunciado; as imagens herdam essa relação de fase porque a refração a preserva. Deve-se corrigir a justificativa, não a conclusão."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de fontes em fase é afirmada como fato ('As fontes estão em fase') sem ser declarada como hipótese. O enunciado não a dá explicitamente, mas o 'ponto luminoso central' do item (b) a sugere. Deveria ser declarada e justificada assim, pois uma defasagem deslocaria o máximo central."
+          },
+          {
+            "severity": "minor",
+            "description": "Convenção de λ escolhida sem argumento ('adota-se que λ é o comprimento de onda no meio das fontes'). A forma com λ0 (vácuo) aparece só numa frase, sem o passo λ0 = n1·λ. O ANSWER traz apenas a forma em n1. Recomendo expressar o resultado em λ0 (y1 = λ0(n1D+n2p)/(2n1n2h)) e dar as duas formas explicitamente no ANSWER. A física é a mesma; a referência usa λ0 como manchete."
+          },
+          {
+            "severity": "minor",
+            "description": "O fator n2 do caminho óptico é tratado só implicitamente, via λ2 = λ n1/n2. Falta escrever OPL = n2·Δ_geom = mλ0. Também falta justificar que a imagem virtual reproduz a diferença de OPL: a contribuição da interface é a mesma para as duas fontes (simetria em ±h), então a constante se cancela. Verifiquei numericamente que a equivalência vale (erro ~1e-7), mas o texto não a demonstra."
+          },
+          {
+            "severity": "minor",
+            "description": "Colisão de notação: r é usado como raio orientado (-R) no item (a) e r1, r2 como distâncias no item (b). Não altera o resultado, mas dificulta a leitura."
+          }
+        ],
+        "summary": "Resolução correta e bem estruturada, perto de gabarito comentado. Conferi a figura e o enunciado na página 5 do PDF (Questão 5; a página 6 é a Questão 6). Verifiquei numericamente com scripts independentes: (a) p' e y' por traçado exato de raios no dioptro esférico, com erro relativo ~1e-9 em cinco casos (incluindo n1≠1 e R pequeno); (b) y1 por Fermat exato na interface plana, com erro ~4e-7 em cinco casos, e a diferença de caminho óptico obtida pelas imagens virtuais coincide com a exata a ~1e-7. Item a: p' = −n2Rp/[n1R+(n2−n1)p] e y'± = ±n1Rh/[n1R+(n2−n1)p] coincidem com a referência. Item b: a divergência com a referência é só convenção de λ. O candidato usa λ no meio n1 e declara a escolha; a referência usa λ0 no vácuo. As duas formas são algebricamente iguais (λ_n1 = λ0/n1), e a referência também dá a forma do candidato como alternativa. Não há erro de física. Armadilhas tratadas: sinal do raio (centro do lado de n1), imagem sempre virtual, L = D + n2p/n1 (não D − |p'|), aumento positivo, dependência de h, separação 2h, fator n2 (implícito), ambiguidade de λ, primeira franja m = 1, aproximação p ≪ D. Não tratadas: hipótese de fase inicial (não declarada) e checagem do limite p → ∞. Nota 8: não 9 porque um gabarito comentado precisaria justificar explicitamente a fase, a equivalência de OPL com n2 e a escolha de λ, e corrigir a justificativa de coerência. Nenhum problema crítico ou grave. Não consegui salvar memória do grading porque o hook bloqueou o acesso ao diretório de memória."
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "a) p' = -n2·R·p / [n1·R + (n2-n1)·p] (imagem virtual, do lado de n1, a distância |p'| da interface). As imagens verticais são y'± = ± m·h, com m = n1·R / [n1·R + (n2-n1)·p] (imagem direta; m = 1 para R→∞). b) Para R→∞, as imagens são fontes coerentes separadas por 2h, a uma distância L = D + n2·p/n1 ≈ D da tela. A primeira franja luminosa está a y1 = λ0·(n1·D + n2·p)/(2·n1·n2·h) ≈ λ0·D/(2·n2·h) do centro, com λ0 o comprimento de onda no vácuo. Se λ for o comprimento de onda em n1, y1 ≈ n1·λ·D/(2·n2·h).\n\nANSWER: a) p' = -n2 R p/[n1 R + (n2-n1) p] (virtual, do lado de n1); y'± = ± n1 R h/[n1 R + (n2-n1) p]. b) y1 = λ0(n1 D + n2 p)/(2 n1 n2 h) ≈ λ0 D/(2 n2 h), com λ0 no vácuo (ou ≈ n1 λ D/(2 n2 h) se λ for o comprimento de onda em n1).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Convenção de λ: o texto diz que λ0 (vácuo) é 'tomado como o λ do enunciado', mas o enunciado não especifica meio. Atribuir ao enunciado uma escolha que é hipótese do candidato é imprecisão. Deve-se declarar explicitamente como escolha (ou justificar a convenção de vácuo) e pôr as duas formas com o mesmo peso na linha ANSWER, notando que o fator n1 só importa se n1 ≠ 1."
+          },
+          {
+            "severity": "minor",
+            "description": "O passo central da interferência é afirmado, não derivado: 'a frente de onda refratada é esférica com centro em S′' e 'c± constante em P', seguido de 'c+ = c−' por simetria. Para um gabarito comentado, o caminho óptico deveria ser mostrado. Por Fermat na interface plana: OPL(S→P) = n1p + n2D + n1n2(y−y_S)²/[2(n1D+n2p)]. Essa forma dá diretamente ΔOPL = 2n1n2hy/(n1D+n2p), confirma o fator n2 e mostra que c± não depende de P."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação: P = (D, y) é definido com x = D medido a partir da interface, mas logo depois ℓ± = √(L² + (y∓h)²) usa L como distância horizontal de S′ até P. Deve-se escrever P = (L, y) em relação a S′, ou definir a origem em S′, para que a geometria fique consistente."
+          },
+          {
+            "severity": "minor",
+            "description": "A aproximação L = D + n2p/n1 ≈ D não é quantificada. A correção relativa é n2p/(n1D): cerca de 1,5% para n2/n1 = 1,5 e p/D = 0,01, como verifiquei. O texto deveria dizer o tamanho da correção e quando ela pode ser desprezada, em vez de só afirmar 'p ≪ D'."
+          },
+          {
+            "severity": "minor",
+            "description": "O exemplo numérico de verificação usa h = p = 1 mm, fora do regime paraxial implícito (h ≪ p). O resultado de (b) ainda confere com Fermat exato, porque com D ≫ p os raios relevantes são quase normais à interface, mas o exemplo deveria usar h ≪ p para não sugerir que a aproximação foi violada. Os números foram feitos à mão, sem checagem computacional."
+          },
+          {
+            "severity": "minor",
+            "description": "A natureza divergente do dioptro (potência (n2−n1)/R_G < 0, com R_G = −R) não é dita explicitamente. A convenção de sinal é tratada implicitamente pelas coordenadas, o que está correto, mas a armadilha clássica (usar +R) merece uma frase explícita, para o leitor ver que o candidato a evitou de propósito."
+          },
+          {
+            "severity": "minor",
+            "description": "Verificações de limite incompletas: testa n1 = n2 e R → ∞, mas não p → ∞, onde p′ → −n2R/(n2−n1) (foco-imagem do dioptro). Esse limite conferiria a expressão geral com um caso independente."
+          },
+          {
+            "severity": "minor",
+            "description": "Frase imprecisa na parte de coerência: 'a refração não altera a diferença de fase constante entre elas'. A coerência se preserva porque a relação de fase é independente do tempo. A diferença de fase em P é dada pelo caminho óptico, não por 'não alteração' na refração. Deve-se reescrever com essa precisão."
+          }
+        ],
+        "summary": "A resposta final do candidato coincide com a referência nos dois itens e está correta. (a) p′ = −n2Rp/[n1R + (n2−n1)p], imagem virtual do lado de n1, e y′± = ±n1Rh/[n1R + (n2−n1)p] (imagem direta). (b) y1 = λ0(n1D + n2p)/(2n1n2h) ≈ λ0D/(2n2h), com λ0 no vácuo, e a forma alternativa com λ no meio n1 (y1 = λ(n1D + n2p)/(2n2h)). Verifiquei de forma independente. Em (a), traçado exato de raios pela esfera (Decimal, 60 dígitos) dá erros relativos que caem com (h/p)², o que confirma que as fórmulas são o limite paraxial correto. Em (b), Fermat exato na interface plana reproduz a fórmula completa com erro de ~10⁻⁷, e a versão aproximada desvia pela correção n2p/(n1D), como o candidato afirma. O enunciado do PDF confere com a transcrição. Todas as armadilhas da referência foram tratadas: sinal de R (pelas coordenadas), imagem virtual com distância D + |p′| à tela, aumento positivo, h como fator de escala, separação 2h, fator n2 na diferença de caminho, ambiguidade de λ com as duas formas, primeira franja em m = 1 e fase inicial nula (justificada pelo 'ponto luminoso central'). Não há erro conceitual nem numérico. Os problemas restantes são de rigor e apresentação: o passo do caminho óptico é afirmado sem derivação, há uma colisão de notação em P/L, a aproximação p ≪ D não é quantificada, a convenção de λ é atribuída indevidamente ao enunciado, e o exemplo numérico sai do regime paraxial. Nota 8,5: resolução sólida e correta que ficaria próxima de gabarito comentado após pequenos ajustes, mas não chega a 9 por causa da derivação não mostrada do caminho óptico e da notação inconsistente."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "a) p' = -n2 R p/(n1 R + (n2 - n1) p), imagem virtual do lado de n1. Posições verticais y'± = ± n1 R h/(n1 R + (n2 - n1) p), imagem direta (fator m = n1R/(n1R+(n2-n1)p) vezes h). b) Primeira franja (R→∞): y1 = λ0 (n1 D + n2 p)/(2 n1 n2 h) ≈ λ0 D/(2 n2 h), com λ0 o comprimento de onda no vácuo. Equivalentemente, y1 = λ1 (n1 D + n2 p)/(2 n2 h) com λ1 = λ0/n1 o comprimento de onda no meio das fontes.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A conferência de sinal afirma que 'usar +R trocaria o sinal de todos os resultados'. Isso é falso: com R→−R na fórmula, p' = −10 cm (e não −6 cm) e m = 1,33 (e não 0,8). Uma convenção errada muda a natureza do dioptro (convergente) e os módulos, não só o sinal. Deve ser reescrito como: 'usar +R inverte a natureza do dioptro (passa a convergente) e dá p' e m errados'."
+          },
+          {
+            "severity": "minor",
+            "description": "A descrição 'o raio de S+ que passa por C' está imprecisa. C fica atrás de S, do lado oposto à superfície, e o raio que sai de S em direção à superfície não passa por C. O raio está sobre a reta CS, prolongada além de S, e é normal à superfície no ponto P≈(0, Rh/(R−p)). O argumento está correto, mas deve ser escrito assim."
+          },
+          {
+            "severity": "minor",
+            "description": "'Amplitudes iguais por simetria' não é consequência de simetria geométrica. Igualdade de amplitudes é uma hipótese (fontes idênticas) e deve ser declarada como tal."
+          },
+          {
+            "severity": "minor",
+            "description": "A fase inicial é justificada apenas como 'hipótese explícita', sem usar o próprio enunciado. O item b fala em 'ponto luminoso central', o que já fixa Δφ0 ∈ 2πℤ. Essa é a hipótese mínima necessária, mais fraca que φ0 = 0. O texto deveria citar esse trecho do enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha de λ0 (vácuo) como forma principal não é justificada. O enunciado fala no 'comprimento de onda λ' das fontes, que estão em n1, o que poderia sugerir λ1 como leitura natural. A forma com λ2 = λ0/n2, a mais usual em Young, aparece só na interpretação e não no ANSWER. O texto deveria justificar a escolha ou apresentar as formas equivalentes no mesmo nível."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à referência nos dois itens. Verifiquei de forma independente: (a) traçado exato de raios pela esfera com Snell vetorial. p' e y'± batem com as fórmulas (erro relativo ~1e-7) em quatro conjuntos de parâmetros; (b) Fermat exato no dioptro plano. y1 bate com λ0(n1D+n2p)/(2n1n2h) (erro ~1e-6), e a versão sem n2 dá erro de 50%, o que confirma a armadilha. Os exemplos numéricos conferem (p' = −6 cm, m = 0,8; y1 ≈ 1,69 mm contra 1,67 mm na aproximação). A dedução por Snell paraxial em (a) e pelo estacionário de Fermat em (b) é rigorosa. As armadilhas da referência estão tratadas (convenção de sinal, imagem virtual com L = D + n2p/n1, dependência de h, separação 2h, fator n2, ambiguidade de λ, limites, p≪D com a correção de 1,5%). Não há problemas críticos nem maiores. Os descontos são por: uma afirmação falsa na conferência de sinal, uma descrição geométrica imprecisa do raio 'que passa por C', justificativas frouxas de simetria e de fase (que o enunciado já fornece) e a escolha de λ0 não argumentada. Obs.: não salvei nada na memória de equipe, porque o acesso a esse diretório foi bloqueado no ambiente e a instrução era usar apenas a prova e a pasta de trabalho.\""
+      }
+    }
+  ]
+}

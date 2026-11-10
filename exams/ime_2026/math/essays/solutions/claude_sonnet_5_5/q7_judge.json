@@ -1,0 +1,49 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "P(infectado | antivírus disse \"não infectado\") = 5/16 = 0,3125 = 31,25%",
+  "judge_reference": {
+    "reference_solution": "**Leitura do enunciado (conferida com a prova original, 7ª questão, p. 2).**\nEventos: I = \"o computador está infectado\"; N = \"o antivírus responde que NÃO há vírus\" (resultado negativo); P = \"o antivírus indica vírus\" (positivo), com P = complemento de N.\n\nDados:\n- P(I) = 0,90, logo P(Iᶜ) = 0,10.\n- P(P | I) = 0,95 (sensibilidade), logo P(N | I) = 1 − 0,95 = 0,05 (falso negativo).\n- P(P | Iᶜ) = 0,01 (falso positivo), logo P(N | Iᶜ) = 1 − 0,01 = 0,99.\n\nPede-se P(I | N), a probabilidade de o computador estar infectado dado que o antivírus respondeu \"não infectado\".\n\n**1) Probabilidade total de resultado negativo.** I e Iᶜ formam uma partição do espaço amostral, então:\nP(N) = P(N|I)·P(I) + P(N|Iᶜ)·P(Iᶜ) = 0,05·0,90 + 0,99·0,10 = 0,045 + 0,099 = 0,144 = 18/125.\n\n**2) Teorema de Bayes.**\nP(I | N) = P(N|I)·P(I) / P(N) = 0,045 / 0,144 = 45/144 = 5/16 = 0,3125.\n\n**3) Verificação com uma população de 1000 computadores.**\n- 900 estão infectados. Desses, 5% (45) recebem resposta \"negativo\".\n- 100 não estão infectados. Desses, 99% (99) recebem \"negativo\".\n- Total de negativos: 45 + 99 = 144. Destes, 45 são infectados, e 45/144 = 5/16.\n\nConferido com frações exatas em Python: P(N) = 18/125 e P(I|N) = 5/16.\n\n**Resposta: P(I | N) = 5/16 = 31,25%.**\n\nComentário: o resultado é surpreendente à primeira vista. O antivírus é muito bom, mas a prevalência de infecção é alta (90%). Por isso, mesmo com um teste negativo, restam 31,25% de chance de infecção. Os poucos falsos negativos (45) ainda pesam diante dos verdadeiros negativos (99), que são poucos porque só há 100 computadores sadios.",
+    "final_answer": "P(computador infectado | antivírus respondeu \"não infectado\") = 5/16 = 0,3125 = 31,25%.",
+    "pitfalls": [
+      "Responder a probabilidade condicional errada: a pergunta é P(infectado | resultado NEGATIVO). Calcular P(infectado | resultado POSITIVO) é o erro típico de pressa; isso daria 855/856 ≈ 99,88%, e não 5/16.",
+      "Usar as probabilidades complementares de forma correta: o enunciado dá a sensibilidade P(+|I)=0,95 e a taxa de falso positivo P(+|Iᶜ)=0,01. Para o resultado negativo é preciso usar P(−|I)=0,05 (falso negativo) e P(−|Iᶜ)=0,99 (especificidade). Usar 0,95 e 0,01 diretamente no numerador/denominador é erro comum.",
+      "Não ignorar a probabilidade a priori de 90%: responder 5% (taxa de falso negativo) ou 1% confunde P(N|I) com P(I|N). É preciso aplicar Bayes com a prevalência P(I)=0,9.",
+      "Denominador: deve ser a probabilidade total P(N)=0,045+0,099=0,144, somando os dois ramos (infectado e não infectado) da partição. Esquecer o ramo dos sadios (0,99·0,10) daria P=1.",
+      "Interpretação das frases do enunciado: 'detecta a presença de vírus em computador infectado com prob. 95%' é P(+|I); 'indica a presença de vírus quando não está infectado com prob. 1%' é P(+|Iᶜ). Hipótese implícita: o resultado do antivírus depende só do estado real do computador (as probabilidades condicionais valem para o computador analisado).",
+      "Aritmética e simplificação: 0,045/0,144 = 45/144 = 5/16 (dividindo por 9). Conferir que é 31,25%, e que um resultado numérico sem a fração simplificada também é aceitável se estiver correto.",
+      "Boa resolução deve declarar os eventos, a partição, o uso do Teorema de Bayes e, de preferência, uma verificação por contagem (ex.: 1000 computadores → 45 de 144 negativos são infectados)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "P(infectado | antivírus disse \"não infectado\") = 5/16 = 0,3125 = 31,25%",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não declara a hipótese implícita de que o antivírus tem resposta binária (indica ou não indica vírus). É essa hipótese que justifica P(N|I)=1−0,95 e P(N|Ī)=1−0,99. Também não diz que as probabilidades condicionais valem para o computador analisado e que a resposta do antivírus depende só do estado real da máquina. Bastava uma frase, ou definir o evento P (positivo) e escrever N = P̄."
+          },
+          {
+            "severity": "minor",
+            "description": "Não menciona nem descarta o erro típico de calcular P(I|positivo) (≈ 855/856) ou de confundir P(N|I)=5% com P(I|N). A conferência por contagem e a checagem pelo complementar (5/16 + 11/16 = 1) cobrem parte disso. Uma observação explícita sobre qual condicional se pede deixaria o gabarito mais didático."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação por contagem usa 1000 computadores sem dizer que é só uma ilustração por frequências, equivalente a Bayes. Não afeta a correção. O rigor da frase 'Ordem de grandeza' também é só qualitativo, sem citar a razão de verossimilhança 0,05/0,99."
+          }
+        ],
+        "summary": "Conferi o enunciado da 7ª questão no PDF original (p. 2) e ele coincide com a transcrição. Refiz a conta com frações exatas em Python. P(N) = 0,05·0,9 + 0,99·0,1 = 0,144 = 18/125 e P(I|N) = 0,045/0,144 = 5/16 = 0,3125 = 31,25%. O valor errado P(I|positivo) seria 855/856. A resposta final do candidato (5/16 = 31,25%) é idêntica à minha referência e está correta. A resolução declara os eventos. Usa corretamente os complementares P(N|I)=0,05 e P(N|Ī)=0,99 em vez de 0,95 e 0,01. Justifica a partição {I, Ī}, aplica a lei da probabilidade total e o teorema de Bayes sem erro de conta e simplifica a fração. Traz ainda três conferências: complementar 11/16, plausibilidade e contagem em 1000 computadores. Trata as armadilhas principais: condicional certa (resultado negativo), complementares, priori de 90% e denominador com os dois ramos. Os defeitos são só de acabamento: falta explicitar a hipótese de resposta binária e a independência condicional, e falta comentar o erro típico P(I|+). Está próxima de um gabarito comentado publicável."
+      }
+    }
+  ]
+}

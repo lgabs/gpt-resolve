@@ -1,0 +1,59 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "(a) E = E0[1+(-1)^n] cos(kx − ωt) ẑ: onda progressiva em +x, amplitude 2E0 (n par) ou 0 (n ímpar). (b) n par: interferência construtiva total (d = múltiplo de λ); n ímpar: destrutiva total (d = múltiplo ímpar de λ/2). (c) B = −B0 cos(kx − ωt) ŷ, com B0 = 2E0/c para n par (sentido −y quando E aponta em +z, de modo que E×B aponta em +x); B = 0 para n ímpar.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** o texto transcrito confere com a página 9 do PDF (Questão 9, numerada \"10\" no rodapé). Não há figura.\n\n**Dados.** E = E₀{cos[k(x+d) − ωt] + cos(kx − ωt)} ẑ, com kd = nπ (n = 0, 1, 2, …), no vácuo, c = ω/k.\n\n---\n**a) Reescrevendo E como onda progressiva em +x**\n\nUso cos A + cos B = 2 cos[(A+B)/2] cos[(A−B)/2], com A = kx + kd − ωt e B = kx − ωt:\n- (A+B)/2 = kx − ωt + kd/2\n- (A−B)/2 = kd/2\n\nLogo\nE = 2E₀ cos(kd/2) cos(kx − ωt + kd/2) ẑ.\n\nCom kd = nπ:\n\n**E = 2E₀ cos(nπ/2) · cos(kx − ωt + nπ/2) ẑ.**\n\nA fase é (kx − ωt) + constante. Isso é uma onda progressiva no sentido +x, com velocidade de fase ω/k = c. A amplitude, 2E₀|cos(nπ/2)|, depende só de E₀ e n.\n\nForma ainda mais simples. Como kd = nπ, cos[k(x+d) − ωt] = cos(kx − ωt + nπ) = (−1)ⁿ cos(kx − ωt). Então\n\n**E = E₀[1 + (−1)ⁿ] cos(kx − ωt) ẑ.**\n\nAmplitude: E_res = E₀[1 + (−1)ⁿ].\n- n par: E_res = 2E₀, e E = 2E₀ cos(kx − ωt) ẑ.\n- n ímpar: E_res = 0, e E ≡ 0.\n\nAs duas formas coincidem. Em 2E₀cos(nπ/2)cos(kx−ωt+nπ/2), para n par = 2m o fator cos(nπ/2) = (−1)ᵐ é cancelado pelo fator (−1)ᵐ que vem de cos(kx−ωt+mπ). Para n ímpar, cos(nπ/2) = 0. Conferi numericamente (n = 0…6, vários x e t) que as três expressões são idênticas.\n\n---\n**b) Tipo de interferência**\n\nA defasagem entre as ondas é Δφ = kd = nπ. Equivale a uma diferença de caminho d = nλ/2, pois k = 2π/λ.\n\n- **n par** (n = 2m, Δφ = 2mπ, d = mλ): as ondas estão em fase. Interferência **construtiva total**, amplitude 2E₀, e intensidade 4× a de uma onda isolada (I ∝ E²).\n- **n ímpar** (Δφ = (2m+1)π, d = (2m+1)λ/2): as ondas estão em oposição de fase. Interferência **destrutiva total**, com campo nulo em todo x e t. Isso vale porque as duas amplitudes são iguais (E₀).\n\nComo kd só admite múltiplos inteiros de π, não ocorre interferência parcial. Só aparecem os dois extremos.\n\n---\n**c) Campo magnético**\n\nPara onda plana no vácuo: B ⟂ E ⟂ direção de propagação, |B| = |E|/c, e o vetor de Poynting S ∝ E × B aponta em +x.\n\nCom E ∥ +ẑ e S ∥ +x̂, é preciso ẑ × B̂ = x̂. Como ẑ × (−ŷ) = x̂, B aponta em **−ŷ** quando E aponta em +ẑ.\n\nConferência por Faraday. Com E_z = A cos(kx − ωt), (∇×E)_y = −∂E_z/∂x = −∂B_y/∂t, logo ∂B_y/∂t = ∂E_z/∂x = −Ak sen(kx − ωt). Integrando em t, B_y = −(Ak/ω) cos(kx − ωt) = −(A/c) cos(kx − ωt). Verifiquei também numericamente.\n\nResultado, com B₀ a amplitude do campo resultante:\n\n**B = −B₀ cos(kx − ωt) ŷ, com B₀ = E_res/c = 2E₀/c (n par).**\n\n- O campo B está em fase com E e é perpendicular a ele e ao eixo x. Fica paralelo ao eixo y, no sentido −ŷ quando E está em +ẑ.\n- n ímpar: E_res = 0, logo B = 0 (B₀ = 0).\n- Forma geral: B = −(E₀/c)[1 + (−1)ⁿ] cos(kx − ωt) ŷ.\n\nSe B₀ fosse entendido como a amplitude de cada onda isolada (E₀/c), o resultado seria −B₀[1+(−1)ⁿ] cos(kx − ωt) ŷ. A leitura natural do enunciado (\"possui amplitude de módulo B₀\") é B₀ como amplitude do campo resultante.",
+    "final_answer": "a) E = 2E₀cos(nπ/2)·cos(kx − ωt + nπ/2) ẑ, que é igual a E₀[1+(−1)ⁿ]cos(kx − ωt) ẑ. É uma onda progressiva em +x (fase kx − ωt + const.) com amplitude E₀[1+(−1)ⁿ], isto é, 2E₀ para n par e 0 para n ímpar.\n\nb) n par (d = mλ, defasagem 2mπ): interferência construtiva total, amplitude 2E₀. n ímpar (d = (2m+1)λ/2, defasagem (2m+1)π): interferência destrutiva total, campo nulo. Não há interferência parcial.\n\nc) B = −B₀ cos(kx − ωt) ŷ, com B₀ = E_res/c = 2E₀/c para n par. B é perpendicular a E e ao eixo x, está em fase com E, e aponta em −ŷ quando E aponta em +ẑ, de modo que E × B aponta em +x̂. Para n ímpar, B = 0.",
+    "pitfalls": [
+      "Sentido de propagação: cos[k(x+d) − ωt] continua sendo onda em +x. O termo +kd é só uma defasagem constante, não uma onda em −x. A fase kx − ωt + const. é o que indica +x.",
+      "Soma-produto: o fator 2E₀cos(nπ/2) pode ser negativo (n = 2, 6, …). A 'amplitude' como módulo é 2E₀|cos(nπ/2)|, e o sinal vai para a fase. Para n par o sinal é cancelado por (−1)^{n/2} vindo de cos(kx−ωt+nπ/2). Por isso a forma E₀[1+(−1)ⁿ]cos(kx−ωt) é a mais limpa e evita erro de sinal.",
+      "Não escrever amplitude 2E₀ para todo n. Para n ímpar cos(nπ/2) = 0 e o campo é identicamente nulo (não é 'amplitude pequena').",
+      "O item (a) pede amplitude só em função de E₀ e n. Deixar kd, d ou λ na resposta final não atende ao enunciado.",
+      "Item (b): kd = nπ só permite construtiva total (n par) ou destrutiva total (n ímpar). Dizer 'parcial' está errado. A destrutiva é total porque as amplitudes são iguais. Relacionar com d = nλ/2 (diferença de caminho) mostra domínio do conceito.",
+      "Caso n = 0: leva a d = 0, que contradiz 'd constante positiva'. As duas ondas são idênticas (construtiva trivial, amplitude 2E₀). Vale comentar, mas não é motivo para descartar n par.",
+      "Item (c): a orientação precisa ser coerente com a propagação. Com E ∥ +ẑ e propagação em +x, B está em −ŷ (ẑ × ŷ = −x̂ daria propagação em −x). Erro comum: responder +ŷ. Conferir por Faraday (∂B_y/∂t = ∂E_z/∂x) ou por E × B ∥ k.",
+      "Relação de módulos: B₀ = E_res/c, e não E₀/c, porque o enunciado fala do campo resultante. Com n ímpar, B₀ = 0, então B também some. Se o candidato interpretar B₀ como amplitude de cada onda, deve declarar isso explicitamente e escrever o fator [1+(−1)ⁿ].",
+      "B é paralelo ao eixo y (ŷ), em fase com E (cos(kx−ωt)), e não defasado de 90°. O campo B também é função de x e t como onda progressiva."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "(a) E = E0[1+(-1)^n] cos(kx − ωt) ẑ: onda progressiva em +x, amplitude 2E0 (n par) ou 0 (n ímpar). (b) n par: interferência construtiva total (d = múltiplo de λ); n ímpar: destrutiva total (d = múltiplo ímpar de λ/2). (c) B = −B0 cos(kx − ωt) ŷ, com B0 = 2E0/c para n par (sentido −y quando E aponta em +z, de modo que E×B aponta em +x); B = 0 para n ímpar.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No item (b), a lista de valores de d para n par começa em d = 0, que contradiz o enunciado (d é constante positiva). O n = 0 aparece também na conferência final sem comentar que é o caso degenerado (ondas idênticas, d = 0). Bastava uma nota dizendo que n = 0 é só o limite trivial, e que n par com n ≥ 2 corresponde a d > 0."
+          },
+          {
+            "severity": "minor",
+            "description": "O item (b) não diz explicitamente que a defasagem é Δφ = kd = nπ nem que não existe interferência parcial. Só aparecem os dois extremos, porque kd é múltiplo inteiro de π e as amplitudes são iguais. O candidato escreve 'em fase' e 'oposição de fase' e cita d = nλ/2, o que basta para a resposta, mas a justificativa fica um pouco menos explícita do que poderia."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (a), a observação de que o termo +kd é só uma defasagem constante, e não uma onda em −x, está implícita (cos(kx − ωt + nπ)) em vez de dita. O argumento de propagação em +x (velocidade de fase ω/k = c > 0) está correto. Seria mais didático acrescentar uma frase sobre isso."
+          },
+          {
+            "severity": "minor",
+            "description": "A amplitude no item (a) é dada como E₀[1+(−1)ⁿ], correta e livre de sinal. A forma alternativa 2E₀cos(nπ/2) é mencionada como 'coincide para todo n', sem explicar o cancelamento de sinal para n = 2, 6, … (o fator (−1)^{n/2} de cos(nπ/2) é cancelado pelo de cos(kx−ωt+nπ/2)). O candidato afirma a equivalência sem demonstrar. Verifiquei numericamente que vale, então é só uma lacuna de rigor."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (c), o sinal de B₀ e o caso n ímpar estão tratados. A ambiguidade 'B₀ é a amplitude do campo resultante' contra 'B₀ é a amplitude de cada onda' é explicitada, o que é bom. A resposta final em ANSWER escolhe a primeira leitura, a mais natural. Resta apenas que o texto não afirma com clareza qual leitura é a adotada como principal antes da caixa final. Isso é irrelevante para a correção."
+          }
+        ],
+        "summary": "Verifiquei o enunciado no PDF original (Questão 9, sem figura) e refiz as contas. As respostas finais do candidato coincidem com as da minha referência nos três itens.\n\na) E = E₀[1+(−1)ⁿ]cos(kx−ωt) ẑ. É onda progressiva em +x (fase kx−ωt, v = ω/k = c), com amplitude 2E₀ para n par e 0 para n ímpar. O candidato também apresenta a forma soma-produto 2E₀cos(nπ/2)cos(kx−ωt+nπ/2). Conferi numericamente, para n = 0…8 com valores aleatórios de k, ω, x e t, que as duas formas e a expressão original são idênticas (erro da ordem de 1e-14).\n\nb) n par dá construtiva total e n ímpar dá destrutiva total. Está correto e bem relacionado a d = nλ/2, com intensidade 4× no caso construtivo e campo nulo em todo x e t no destrutivo.\n\nc) Pela lei de Faraday, ∂B_y/∂t = ∂E_z/∂x, o que dá B_y = −(E_m/c)cos(kx−ωt). Portanto B = −B₀cos(kx−ωt) ŷ, com B₀ = 2E₀/c para n par e B = 0 para n ímpar. A orientação (−ŷ para E em +ẑ, E×B em +x̂, em fase com E) está correta. O candidato ainda declara a leitura alternativa de B₀ e dá a forma geral com o fator [1+(−1)ⁿ].\n\nAs armadilhas da minha referência foram tratadas:\n- propagação em +x;\n- sinal da forma soma-produto, resolvido pela forma (−1)ⁿ;\n- não afirmar 2E₀ para todo n;\n- amplitude só em função de E₀ e n;\n- destrutiva é total, não parcial;\n- sinal −ŷ;\n- B₀ = E_res/c;\n- B em fase com E.\n\nA única fraqueza é o tratamento superficial do n = 0 (d = 0 contradiz d > 0) e algumas justificativas implícitas. A resolução é limpa, correta e completa, perto do nível de um gabarito comentado, e um pouco mais densa do que o necessário em alguns pontos."
+      }
+    }
+  ]
+}

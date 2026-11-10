@@ -1,0 +1,50 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "k = 3 (único inteiro). No 1º quadrante f ∈ (√2−1, 2−√2]; no 3º quadrante f ∈ (√2+1, 2+√2], que contém apenas o inteiro 3.",
+  "judge_reference": {
+    "reference_solution": "**Resolução (feita de forma independente, com conferência numérica).**\n\n**1) Simplificação de f.** Pelas identidades 1 + cos 2x = 2cos²x e 1 − cos 2x = 2sen²x:\n√(1+cos 2x) = √2·|cos x| e √(1−cos 2x) = √2·|sen x|.\nLogo f(x) = √2(|sen x| + |cos x|) − (sen x + cos x).\n(O módulo é essencial: √(cos²x) = |cos x|, não cos x.)\n\nSeja s = sen x + cos x = √2·sen(x + π/4).\n\n**2) Primeiro quadrante (0 < x < π/2).** Aqui sen x > 0 e cos x > 0, então |sen x| + |cos x| = s e\nf(x) = (√2 − 1)·s.\nPara x ∈ (0, π/2), x + π/4 ∈ (π/4, 3π/4), então sen(x + π/4) ∈ (√2/2, 1] e s ∈ (1, √2].\nComo f é contínua e crescente em s, a imagem é f ∈ (√2 − 1, (√2 − 1)√2] = (√2 − 1, 2 − √2] ≈ (0,414; 0,586].\nEsse intervalo está contido em (0, 1), então não contém nenhum inteiro. Não há k no 1º quadrante.\n(Se os eixos fossem incluídos: f(0) = f(π/2) = √2 − 1 ≈ 0,414, ainda não inteiro; a imagem fica [√2 − 1, 2 − √2].)\n\n**3) Terceiro quadrante (π < x < 3π/2).** Aqui sen x < 0 e cos x < 0, então |sen x| + |cos x| = −s e\nf(x) = −√2·s − s = −(√2 + 1)·s = (√2 + 1)·(−s).\nPara x ∈ (π, 3π/2), x + π/4 ∈ (5π/4, 7π/4), então sen(x + π/4) ∈ [−1, −√2/2) e s ∈ [−√2, −1), isto é, −s ∈ (1, √2].\nA imagem é f ∈ ((√2 + 1), (√2 + 1)√2] = (√2 + 1, 2 + √2] ≈ (2,414; 3,414].\nO único inteiro nesse intervalo é 3, pois 2 < √2 + 1 ≈ 2,414 e 2 + √2 ≈ 3,414 < 4.\n(Incluindo os eixos: f(π) = f(3π/2) = √2 + 1 ≈ 2,414, não inteiro; a imagem vira [√2 + 1, 2 + √2], e o resultado não muda.)\n\n**4) k = 3 é de fato atingido.** f(x) = 3 ⇔ −s = 3/(√2 + 1) = 3(√2 − 1) ≈ 1,2426 ∈ (1, √2], ok.\nEquivalentemente sen(x + π/4) = −3(√2 − 1)/√2 = (3√2 − 6)/2 ≈ −0,8787 ∈ [−1, −√2/2), ok.\nExistem duas soluções no 3º quadrante, simétricas em relação a x = 5π/4: x = 5π/4 ± δ, com δ = arccos(...) pequeno. Numericamente, x ≈ 3,4293 (≈1,0916π) e x ≈ 4,4247 (≈1,4084π), ambos em (π, 3π/2 ≈ 4,712), com f = 3,000000.\nPelo teorema do valor intermediário (f contínua no intervalo conexo) o argumento da imagem também se justifica sem resolver explicitamente.\n\n**5) Conclusão.** Apenas k = 3. (Verificação numérica: em [0, π/2] a imagem é [0,4142; 0,5858]; em [π, 3π/2] é [2,4142; 3,4142].)",
+    "final_answer": "k = 3 (único inteiro). No 1º quadrante f ∈ (√2−1, 2−√2] ≈ (0,41; 0,59], sem inteiros; no 3º quadrante f ∈ (√2+1, 2+√2] ≈ (2,41; 3,41], que contém apenas o inteiro 3, atingido em duas soluções (x ≈ 1,09π e x ≈ 1,41π).",
+    "pitfalls": [
+      "Esquecer o módulo: √(1+cos2x) = √2|cos x| e √(1−cos2x) = √2|sen x|. Usar √2 cos x e √2 sen x sem módulo dá a expressão errada em quadrantes onde sen ou cos são negativos.",
+      "A expressão de f muda conforme o quadrante: no 1º, f = (√2−1)(sen x+cos x); no 3º, f = −(√2+1)(sen x+cos x). Aplicar a fórmula do 1º quadrante ao 3º dá valores negativos e perde o k=3.",
+      "Determinar corretamente a imagem de s = sen x + cos x = √2 sen(x+π/4) em cada quadrante: (1, √2] no 1º e [−√2, −1) no 3º. Errar o intervalo de x+π/4 leva a um intervalo errado para f.",
+      "Concluir que não existe inteiro no 1º quadrante exige mostrar que a imagem (√2−1, 2−√2] ⊂ (0,1). Em particular k = 0 e k = 1 não são atingidos.",
+      "No 3º quadrante, justificar que 2 < √2+1 e 2+√2 < 4 (≈ 3,414), para que só o 3 caiba; e mostrar que 3 está de fato na imagem (3(√2−1) ≈ 1,243 está em (1, √2]), ou seja, existe solução. Uma resolução que só diz 'k entre 2,41 e 3,41' sem verificar o extremo e a pertinência de 3 fica incompleta.",
+      "Fronteira dos quadrantes: nos eixos f vale √2−1 (x=0, π/2) e √2+1 (x=π, 3π/2), ambos não inteiros, então considerar os quadrantes abertos ou fechados não altera a resposta; vale comentar isso.",
+      "Não confundir com os outros quadrantes: no 2º e 4º f vai de √2−1 até √6 ≈ 2,449, onde k=1 e k=2 seriam atingidos, mas a questão pede só 1º ou 3º quadrante, então 1 e 2 NÃO são resposta.",
+      "Elevar ao quadrado para resolver f = 3 cria soluções estranhas; a abordagem por s = √2 sen(x+π/4) e pela análise de imagem é mais segura."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "k = 3 (único inteiro). No 1º quadrante f ∈ (√2−1, 2−√2]; no 3º quadrante f ∈ (√2+1, 2+√2], que contém apenas o inteiro 3.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A ausência de inteiros na imagem do 1º quadrante e a unicidade do 3 no 3º quadrante se apoiam só em aproximações decimais (≈0,414–0,586 e ≈2,414–3,414). Faltou a justificativa exata: 0 < √2−1 e 2−√2 < 1, e 2 < √2+1 e 2+√2 < 4. Bastava observar que 1 < √2 < 2. As desigualdades são triviais, mas um gabarito comentado deveria escrevê-las."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação de k=3 aparece apenas um valor de x (≈3,43), obtido por 3π/4 + arcsin(...). Não é dito que x+π/4 = π + arcsin(c) cai em (5π/4, 7π/4), nem que há uma segunda solução simétrica em torno de 5π/4 (x≈4,42). A existência é garantida pelo argumento de continuidade, então a omissão não afeta a correção. A conferência numérica foi só citada (\"conferindo numericamente, f(x)=3\"), sem mostrar a conta."
+          },
+          {
+            "severity": "minor",
+            "description": "Não comenta que, nos 2º e 4º quadrantes, f assume valores como 1 e 2, que ficam fora do pedido. Também não explica por que a identidade \\|·\\| muda a expressão de f de um quadrante para outro. Os pontos centrais, o uso do módulo e a mudança de sinal de f nos dois quadrantes, estão corretos e explícitos. Seria apenas um comentário didático adicional."
+          }
+        ],
+        "summary": "A resposta final k = 3 (único inteiro) está correta e coincide com a minha referência. Conferi numericamente: em [0, π/2] a imagem de f é [0,4142; 0,5858], em [π, 3π/2] é [2,4142; 3,4142], e x = 3π/4 + arcsin(3(2−√2)/2) ≈ 3,4293 está em (π, 3π/2) com f(x) = 3,000000. A resolução trata corretamente a armadilha principal (√(cos²x) = |cos x|), obtendo f = (√2−1)s no 1º quadrante e f = −(√2+1)s no 3º. As imagens de s = √2·sen(x+π/4) estão certas: (1, √2] no 1º e [−√2, −1) no 3º. Ela justifica por continuidade que todo valor do intervalo é atingido, verifica explicitamente que k = 3 é atingido e comenta as fronteiras (eixos: √2−1 e √2+1, não inteiros). Não há erro de conta nem de lógica. As falhas são só de acabamento: os limites do intervalo são justificados por decimais em vez de desigualdades exatas, e a segunda solução simétrica não é mencionada. A resolução é clara, completa e próxima de um gabarito comentado."
+      }
+    }
+  ]
+}

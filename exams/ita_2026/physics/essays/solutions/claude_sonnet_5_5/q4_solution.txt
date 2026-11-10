@@ -1,0 +1,56 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Como $M\gg m$, a estrela está praticamente fixa em um dos focos da elipse, $F_\pm=(\pm c,0)$, com $c=\sqrt{a^2-b^2}$. A fragmentação ocorre por forças internas. Logo, a única força externa é a gravitacional da estrela, e o centro de massa (CM) do par segue a trajetória que o objeto original teria, ou seja, a elipse
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1 .
+\]
+Isso supõe que os efeitos de maré (diferença do campo entre os fragmentos) sejam desprezados, que é a idealização do enunciado. Com $m_1=4m_2$ e $m_1+m_2=m$, tem-se $m_1=\tfrac{4m}{5}$ e $m_2=\tfrac{m}{5}$.
+
+\textbf{a) Cálculo de $y_2$.}
+\begin{align*}
+x_{CM}&=\frac{m_1\cdot\frac{3a}{4}+m_2\,a}{m_1+m_2}=\frac{4\cdot\frac{3a}{4}+a}{5}=\frac{4a}{5},\\
+y_{CM}&=\frac{4\cdot\frac{b}{4}+y_2}{5}=\frac{b+y_2}{5}.
+\end{align*}
+Impondo que o CM esteja na elipse:
+\[
+\frac{16}{25}+\frac{(b+y_2)^2}{25\,b^2}=1\;\Rightarrow\;(b+y_2)^2=9b^2\;\Rightarrow\;b+y_2=\pm 3b .
+\]
+\[
+\boxed{y_2=2b\quad\text{ou}\quad y_2=-4b}
+\]
+Os dois valores são compatíveis com os dados. Eles geram $y_{CM}=+\tfrac{3b}{5}$ e $y_{CM}=-\tfrac{3b}{5}$, respectivamente.
+
+\textbf{b) Menor energia potencial.} A energia potencial do sistema (estrela + fragmentos) soma os três pares:
+\[
+U=-\frac{GMm_1}{r_1}-\frac{GMm_2}{r_2}-\frac{Gm_1m_2}{d},
+\]
+em que $r_1$ e $r_2$ são as distâncias dos fragmentos à estrela e $d=\overline{P_1P_2}$. Os fragmentos estão fixados em $P_1$ e $P_2$. Portanto, $U$ é mais negativa quando $r_1$, $r_2$ e $d$ são os menores possíveis. As incógnitas são o foco ocupado pela estrela e o valor de $y_2$.
+
+\begin{itemize}
+\item \emph{Foco.} Como $x_1=\tfrac{3a}{4}>0$ e $x_2=a>0$, vale $(x-c)^2<(x+c)^2$. Os dois fragmentos ficam mais perto de $F_+=(c,0)$, então a estrela deve estar nele.
+\item \emph{Sinal de $y_2$.} Para $|y_2|=2b$ em vez de $4b$, $r_2^2=(a-c)^2+y_2^2$ é menor. Também $d^2=\tfrac{a^2}{16}+\left(y_2-\tfrac b4\right)^2$ é menor, pois $\tfrac{7b}{4}<\tfrac{17b}{4}$. Logo, $y_2=2b$ minimiza $U$.
+\end{itemize}
+
+Com a estrela em $(c,0)$ e $P_2=(a,2b)$:
+\begin{align*}
+r_1&=\sqrt{\left(\tfrac{3a}{4}-c\right)^2+\tfrac{b^2}{16}}=\tfrac14\sqrt{25a^2-24ac-15b^2},\\
+r_2&=\sqrt{(a-c)^2+4b^2}=\sqrt{2a^2-2ac+3b^2},\\
+d&=\sqrt{\left(\tfrac a4\right)^2+\left(\tfrac{7b}{4}\right)^2}=\tfrac14\sqrt{a^2+49b^2}.
+\end{align*}
+Substituindo $m_1=\tfrac{4m}{5}$ e $m_2=\tfrac m5$, e usando $\dfrac{m_1}{r_1}=\dfrac{16m}{5\sqrt{25a^2-24ac-15b^2}}$ e $\dfrac{m_1m_2}{d}=\dfrac{16m^2}{25\sqrt{a^2+49b^2}}$:
+\[
+\boxed{U_{\min}=-\frac{GMm}{5}\left[\frac{16}{\sqrt{25a^2-24ac-15b^2}}+\frac{1}{\sqrt{2a^2-2ac+3b^2}}\right]-\frac{16\,G\,m^2}{25\sqrt{a^2+49b^2}},\quad c=\sqrt{a^2-b^2}}
+\]
+
+\textbf{Conferência.}
+\begin{itemize}
+\item \emph{Unidades:} $GMm/\text{comprimento}$ tem unidade de energia (J).
+\item \emph{Sinal:} $U<0$, como esperado para um sistema ligado.
+\item \emph{Ordem de grandeza:} o último termo (interação entre os fragmentos) é menor que o primeiro por um fator da ordem de $m/M\ll1$. Assim, $U_{\min}\approx-\dfrac{GMm}{5}\left[\dfrac{16}{\sqrt{25a^2-24ac-15b^2}}+\dfrac{1}{\sqrt{2a^2-2ac+3b^2}}\right]$.
+\item \emph{Caso particular} $b=a$ (círculo, $c=0$, estrela no centro): $r_1=\tfrac{\sqrt{10}}{4}a$ e $r_2=\sqrt5\,a$. Esses valores coincidem com $|OP_1|$ e $|OP_2|$ calculados diretamente.
+\item \emph{Verificação numérica:} comparei as quatro combinações (dois focos, dois valores de $y_2$) com valores arbitrários de $a$, $b$, $m$ e $M$. A mínima foi sempre a escolhida acima, e a expressão fechada reproduziu o cálculo direto.
+\end{itemize}
+
+ANSWER: a) $y_2=2b$ ou $y_2=-4b$. b) $U_{\min}=-\dfrac{GMm}{5}\left[\dfrac{16}{\sqrt{25a^2-24ac-15b^2}}+\dfrac{1}{\sqrt{2a^2-2ac+3b^2}}\right]-\dfrac{16Gm^2}{25\sqrt{a^2+49b^2}}$, com $c=\sqrt{a^2-b^2}$. Ela ocorre para $y_2=2b$ e a estrela no foco $(c,0)$.

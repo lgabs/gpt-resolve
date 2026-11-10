@@ -1,0 +1,93 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses e referencial.} Barras retas, articuladas nas extremidades e de peso desprezado: cada barra transmite apenas esforço normal ao longo do seu eixo (treliça ideal). Carga $P$ aplicada somente no nó C. Apoios A e B articulados (duas reações incógnitas cada). Pequenas deformações, de modo que a geometria não se altera. Convenção: $N>0$ tração e $N<0$ compressão. Origem em A, eixo $x$ para a direita, eixo $y$ para cima; momentos positivos no sentido anti-horário.
+
+\textbf{Geometria.} Pelas cotas, $A$ e $B$ distam 3 m entre si, $C$ dista 3 m de $A$ (à esquerda), $D$ e $E$ estão 4 m acima de $A$ e $B$, e $F$ está 4 m acima de $CDE$:
+\[
+A(0,0),\quad B(3,0),\quad C(-3,4),\quad D(0,4),\quad E(3,4),\quad F(0,8)\qquad(\text{em m}).
+\]
+Comprimentos: $AD=BE=DF=4$ m, $CD=DE=AB=3$ m, $AE=CF=EF=5$ m (triângulos 3-4-5). Cossenos diretores usados: de $C$ para $F$, $\left(\tfrac35,\tfrac45\right)$; de $E$ para $F$, $\left(-\tfrac35,\tfrac45\right)$; de $E$ para $A$, $\left(-\tfrac35,-\tfrac45\right)$.
+
+Estaticidade: $j=6$ nós, $m=8$ barras e $r=4$ reações, logo $m+r=12=2j$: 12 equações e 12 incógnitas. O sistema é isostático desde que seja estável (ver item c).
+
+\textbf{a) Reações.} Como o guindaste está em repouso, valem $\sum F=0$ e $\sum M=0$ para o conjunto:
+\begin{align*}
+\sum F_x=0 &\;\Rightarrow\; R_{Ax}+R_{Bx}=0\\
+\sum M_A=0 &\;\Rightarrow\; (-3)(-P)+3R_{By}=0 \;\Rightarrow\; R_{By}=-P=-100\ \text{kN}\\
+\sum F_y=0 &\;\Rightarrow\; R_{Ay}+R_{By}-P=0 \;\Rightarrow\; R_{Ay}=2P=200\ \text{kN}
+\end{align*}
+Essas equações não dão $R_{Ax}$ isoladamente. Corte as barras AD, AE e BE e isole o conjunto CDEF (método das seções). Não há força horizontal externa e só a barra AE tem componente horizontal, logo $\sum F_x=0$ dá
+\[
+-\tfrac35N_{AE}=0\;\Rightarrow\;N_{AE}=0.
+\]
+No nó A, $\sum F_x=0$ dá $R_{Ax}+\tfrac35N_{AE}=0$, logo $R_{Ax}=0$ e, por $R_{Ax}+R_{Bx}=0$, $R_{Bx}=0$.
+
+Resultado: $R_A=200\ \text{kN}$, vertical, para cima; $R_B=100\ \text{kN}$, vertical, para baixo.
+
+Verificação: $\sum F_y=200-100-100=0$ e, com polo em E, $\sum M_E=(-6)(-100)+(-3)(200)+0=600-600=0$. Como $R_B$ aponta para baixo, o guindaste tenderia a tombar para a esquerda, girando em torno de A; por isso o apoio B deve ser ancorado, capaz de resistir a arrancamento. Conferência pela lei da alavanca em torno de A: $R_B=P\cdot\dfrac{3}{3}=P$.
+
+\textbf{b) Esforços normais.}
+
+\emph{Corte CDEF.} Momentos em E (AE e BE passam por E e não entram):
+\[
+\sum M_E=0\;\Rightarrow\;(-6)(-P)+(-3)(-N_{AD})=0\;\Rightarrow\;N_{AD}=-2P=-200\ \text{kN}\ (\text{compressão}).
+\]
+\[
+\sum F_y=0\;\Rightarrow\;-P-N_{AD}-N_{BE}=0\;\Rightarrow\;N_{BE}=100\ \text{kN}\ (\text{tração}).
+\]
+
+\emph{Método dos nós.} Em cada nó, barra tracionada puxa o nó no sentido da barra; barra comprimida empurra. Usa-se $\sum F_x=\sum F_y=0$.
+
+Nó C (carga $P$ para baixo):
+\[
+\sum F_y=0:\ \tfrac45N_{CF}-P=0\;\Rightarrow\;N_{CF}=\tfrac54P=125\ \text{kN}\ (\text{tração}).
+\]
+\[
+\sum F_x=0:\ \tfrac35N_{CF}+N_{CD}=0\;\Rightarrow\;N_{CD}=-\tfrac34P=-75\ \text{kN}\ (\text{compressão}).
+\]
+
+Nó F (sem carga externa):
+\[
+\sum F_x=0:\ -\tfrac35N_{CF}+\tfrac35N_{EF}=0\;\Rightarrow\;N_{EF}=125\ \text{kN}\ (\text{tração}).
+\]
+\[
+\sum F_y=0:\ -\tfrac45\left(N_{CF}+N_{EF}\right)-N_{DF}=0\;\Rightarrow\;N_{DF}=-200\ \text{kN}\ (\text{compressão}).
+\]
+
+Nó E (sem carga externa):
+\[
+\sum F_y=0:\ \tfrac45N_{EF}-N_{BE}=0\;\Rightarrow\;N_{BE}=100\ \text{kN}\ (\text{tração, confere com o corte}).
+\]
+\[
+\sum F_x=0:\ -\tfrac35N_{EF}-N_{DE}=0\;\Rightarrow\;N_{DE}=-75\ \text{kN}\ (\text{compressão}).
+\]
+
+Verificação nos nós D e A: $\sum F_y(D)=N_{DF}-N_{AD}=-200+200=0$; $\sum F_x(D)=-N_{CD}+N_{DE}=75-75=0$; $\sum F_y(A)=R_{Ay}+N_{AD}=200-200=0$. Os seis nós estão em equilíbrio.
+
+\begin{center}
+\begin{tabular}{lcc}
+Barra & Esforço $N$ (kN) & Natureza \\
+\hline
+CD & $-75$ & compressão \\
+CF & $125$ & tração \\
+DF & $-200$ & compressão \\
+AD & $-200$ & compressão \\
+AE & $0$ & nulo \\
+DE & $-75$ & compressão \\
+BE & $100$ & tração \\
+EF & $125$ & tração \\
+\end{tabular}
+\end{center}
+
+\textbf{c) Função da barra AE.} Sob o carregamento dado, $N_{AE}=0$, porque não há ação horizontal. A barra é, ainda assim, indispensável por razão cinemática:
+\begin{itemize}
+\item Sem AE, as barras AD e BE (verticais, 4 m) e DE e AB (horizontais, 3 m) formam um paralelogramo articulado ADEB. O conjunto CDEF poderia deslocar-se lateralmente, em primeira ordem, sem alongar nenhuma barra. A contagem fica $m+r=7+4=11<12$: a estrutura seria hipostática (mecanismo).
+\item Com AE, o quadrilátero fica dividido em dois triângulos rígidos, ADE (lados 4, 3 e 5, retângulo em D) e ABE (lados 3, 4 e 5, retângulo em B). A estrutura torna-se indeformável e isostática, com $m+r=12$.
+\item Função: barra de contraventamento (estabilização lateral). Ela não sustenta o peso $P$, mas trabalha quando surge uma força horizontal $H$ sobre o conjunto (vento, oscilação da carga etc.). O equilíbrio horizontal de CDEF dá $H-\tfrac35N_{AE}=0$, ou seja, $N_{AE}=\tfrac53H$: tração se $H$ apontar para a direita e compressão se apontar para a esquerda.
+\end{itemize}
+
+\textbf{Conferências.} Os maiores esforços são $2P=200$ kN (DF e AD), da mesma ordem de grandeza da carga. Os esforços são proporcionais a $P$ (sistema linear) e se anulam se $P=0$. A solução satisfaz o equilíbrio de todos os nós e o equilíbrio global de forças e de momentos.
+
+ANSWER: $R_A=200\,\text{kN}$ (vertical, para cima) e $R_B=100\,\text{kN}$ (vertical, para baixo), sem componentes horizontais; $N_{CD}=75\,\text{kN}$ (compressão), $N_{CF}=125\,\text{kN}$ (tração), $N_{DF}=200\,\text{kN}$ (compressão), $N_{AD}=200\,\text{kN}$ (compressão), $N_{AE}=0$, $N_{DE}=75\,\text{kN}$ (compressão), $N_{BE}=100\,\text{kN}$ (tração), $N_{EF}=125\,\text{kN}$ (tração); AE é barra de contraventamento: sem força sob $P$, mas indispensável para impedir o mecanismo horizontal.

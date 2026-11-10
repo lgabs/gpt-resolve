@@ -1,0 +1,64 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) Pela identidade soma-produto, $\\vec{E}=2E_0\\cos\\frac{n\\pi}{2}\\cos\\left(kx-\\omega t+\\frac{n\\pi}{2}\\right)\\hat{z}$. É uma onda progressiva no sentido $x>0$, com amplitude $2E_0\\left|\\cos\\frac{n\\pi}{2}\\right|$, igual a $2E_0$ para $n$ par e nula para $n$ ímpar.\n\nb) Diferença de fase $\\Delta\\varphi=kd=n\\pi$. Para $n$ par (d múltiplo inteiro de λ) a interferência é construtiva; para $n$ ímpar (d múltiplo ímpar de λ/2) é destrutiva, com cancelamento total.\n\nc) $\\vec{B}=-\\frac{2E_0\\cos(n\\pi/2)}{c}\\cos\\left(kx-\\omega t+\\frac{n\\pi}{2}\\right)\\hat{y}$, com $B_0=\\frac{2E_0}{c}\\left|\\cos\\frac{n\\pi}{2}\\right|$. Para $n$ par, $\\vec{B}=-B_0\\cos(kx-\\omega t)\\hat{y}$ com $B_0=2E_0/c$. A orientação é $-\\hat{y}$, perpendicular a $\\vec{E}$ e à propagação.",
+  "judge_reference": {
+    "reference_solution": "**Questão 9: resolução de referência (resolvida às cegas, antes de ver qualquer resolução de candidato)**\n\n**a)** Use a identidade cos A + cos B = 2 cos[(A+B)/2] cos[(A−B)/2], com A = k(x+d) − ωt e B = kx − ωt:\n\n- (A+B)/2 = kx − ωt + kd/2\n- (A−B)/2 = kd/2 = nπ/2\n\nLogo:\n\nE⃗ = 2E₀ cos(nπ/2) cos(kx − ωt + nπ/2) ẑ\n\nO argumento tem a forma kx − ωt + φ, com φ = nπ/2 constante. Portanto é uma onda progressiva que se propaga no sentido +x, com velocidade de fase ω/k. A amplitude é 2E₀ cos(nπ/2), ou em módulo 2E₀|cos(nπ/2)|, que depende só de E₀ e n. Explicitamente: 2E₀ para n par e 0 para n ímpar. O \"x > 0\" do enunciado indica o sentido de propagação (+x), não uma restrição de domínio.\n\n**b)** As duas ondas têm a mesma frequência e a mesma direção, e a diferença de fase entre elas, em qualquer ponto, é Δφ = k(x+d) − kx = kd = nπ.\n\n- **n par** (n = 0, 2, 4, …): Δφ = 2mπ, as ondas estão em fase e a interferência é **construtiva** (reforço, amplitude máxima 2E₀). Para n ≡ 2 (mod 4) o coeficiente 2E₀cos(nπ/2) é −2E₀, mas isso é só uma fase de π absorvida no cosseno. O campo resultante é 2E₀ cos(kx − ωt), ainda construtivo.\n- **n ímpar** (1, 3, 5, …): Δφ = (2m+1)π, as ondas estão em oposição de fase e a interferência é **destrutiva total**: E⃗ ≡ 0 para todo x e t.\n\nEm termos de d, com k = 2π/λ temos d = nπ/k = nλ/2. Então n par corresponde a d múltiplo inteiro de λ, e n ímpar a d múltiplo ímpar de λ/2. Como d > 0 é dado, n = 0 (que exigiria d = 0) é só o caso limite trivial, em que E = 2E₀ cos(kx − ωt).\n\n**c)** No vácuo, a onda plana progressiva satisfaz B⃗ = (1/c) k̂ × E⃗, com k̂ = x̂ e c = ω/k. Com E⃗ = E_R cos(…) ẑ e E_R = 2E₀cos(nπ/2):\n\nB⃗ = (1/c) x̂ × [2E₀cos(nπ/2) cos(kx − ωt + nπ/2) ẑ] = −(2E₀cos(nπ/2)/c) cos(kx − ωt + nπ/2) ŷ,\n\nusando x̂ × ẑ = −ŷ.\n\n- **n par**: cos(nπ/2) cos(kx − ωt + nπ/2) = cos(kx − ωt) (verificado para n ≡ 0 e n ≡ 2 mod 4). Então B⃗ = −(2E₀/c) cos(kx − ωt) ŷ, com amplitude **B₀ = 2E₀/c** e orientação **−ŷ**. Conferência: E⃗ × B⃗ = (E ẑ) × (−B ŷ) = EB x̂, o fluxo de energia (Poynting) está no sentido +x, como deve ser.\n- **n ímpar**: E⃗ = B⃗ = 0 e B₀ = 0.\n\nForma geral com módulo: B₀ = 2E₀|cos(nπ/2)|/c, e B⃗ ⊥ E⃗ ⊥ x̂, com B⃗ ∥ −ŷ quando o campo não é nulo.\n\n**Verificação numérica:** a identidade de soma de cossenos foi conferida em python3 em pontos amostrais para n = 0…8 (erro máximo ≈ 1e-14). A amplitude 2cos(nπ/2) assume os valores +2, 0, −2, 0, … (módulo 2 para n par e 0 para n ímpar).",
+    "final_answer": "**a)** E⃗ = 2E₀ cos(nπ/2) cos(kx − ωt + nπ/2) ẑ. É uma onda progressiva que se propaga no sentido +x, com amplitude 2E₀|cos(nπ/2)|, que vale 2E₀ para n par e 0 para n ímpar.\n\n**b)** n par (n = 0, 2, 4, …): interferência construtiva, com reforço e amplitude máxima 2E₀ (diferença de fase kd = nπ, múltiplo de 2π). n ímpar (1, 3, 5, …): interferência destrutiva total, com E⃗ ≡ 0 (diferença de fase kd = nπ, ímpar múltiplo de π). Equivalentemente, d = nλ/2.\n\n**c)** B⃗ = −(2E₀cos(nπ/2)/c) cos(kx − ωt + nπ/2) ŷ. Para n par, B⃗ = −(2E₀/c) cos(kx − ωt) ŷ, com B₀ = 2E₀/c e orientação −ŷ (perpendicular a E⃗ e a x̂, com E⃗ × B⃗ no sentido +x). Para n ímpar, B⃗ = 0.",
+    "pitfalls": [
+      "Identidade de soma de cossenos: a metade da diferença é (A−B)/2 = kd/2 = nπ/2, e não kd. Usar cos(kd) = cos(nπ) leva à conclusão errada de que a amplitude sempre alterna de sinal, sem zerar nunca.",
+      "Amplitude é grandeza não negativa: 2E₀cos(nπ/2) é negativa para n ≡ 2 (mod 4). O sinal deve ser absorvido na fase (deslocamento de π) ou escrito com módulo 2E₀|cos(nπ/2)|. Não se deve afirmar que a amplitude é negativa nem que o caso n ≡ 2 (mod 4) é destrutivo: ele é construtivo, pois as ondas estão em fase.",
+      "Em a), a frase 'sentido x > 0' significa propagação no sentido positivo do eixo x (argumento kx − ωt), não uma restrição de domínio em x. A onda resultante é progressiva e não estacionária, porque as duas parcelas se propagam no mesmo sentido (+x). Invocar ondas estacionárias é erro.",
+      "Em b), a interferência depende da diferença de fase Δφ = kd = nπ e não de d diretamente. n par ⇒ Δφ múltiplo de 2π (construtiva); n ímpar ⇒ Δφ múltiplo ímpar de π (destrutiva). Inverter essa correspondência é erro comum.",
+      "Caso n = 0: exige d = 0, o que contradiz d > 0 do enunciado. Fisicamente considere n ≥ 1, embora a fórmula também valha no limite (E = 2E₀cos(kx − ωt)). Não é necessário excluir n = 0 da expressão, mas convém comentar.",
+      "Em b) e c), para n ímpar o campo resultante é identicamente nulo: não há onda, B₀ = 0 e a 'orientação' de B não tem sentido físico. Não descreva uma onda de amplitude nula propagando-se.",
+      "Em c), a amplitude de B é E_amp/c, com c = ω/k (vácuo), e não E₀/c. É preciso usar a amplitude do campo resultante, 2E₀|cos(nπ/2)|, e não a de uma onda isolada. Esquecer o fator 2 da superposição é erro frequente. Para n par, B₀ = 2E₀/c.",
+      "Orientação de B: a relação é B⃗ = (1/c) k̂ × E⃗ com k̂ = x̂ e E⃗ ∥ ẑ, o que dá B⃗ ∥ −ŷ (x̂ × ẑ = −ŷ). Escrever +ŷ é erro de sinal comum. Confira pelo vetor de Poynting: E⃗ × B⃗ deve apontar em +x.",
+      "Coerência: as ondas precisam ter a mesma ω e diferença de fase constante (kd fixo) para que a superposição produza um padrão estável. Esse pressuposto é o que permite identificar o tipo de interferência sem depender do tempo.",
+      "Ao escrever cos(nπ/2) cos(kx − ωt + nπ/2) para n par, a simplificação para cos(kx − ωt) depende da paridade de n (n ≡ 0 ou 2 mod 4 dão a mesma função resultante, com sinais compensados pela fase). Não generalize essa simplificação para n ímpar, onde o produto é nulo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) Pela identidade soma-produto, $\\vec{E}=2E_0\\cos\\frac{n\\pi}{2}\\cos\\left(kx-\\omega t+\\frac{n\\pi}{2}\\right)\\hat{z}$. É uma onda progressiva no sentido $x>0$, com amplitude $2E_0\\left|\\cos\\frac{n\\pi}{2}\\right|$, igual a $2E_0$ para $n$ par e nula para $n$ ímpar.\n\nb) Diferença de fase $\\Delta\\varphi=kd=n\\pi$. Para $n$ par (d múltiplo inteiro de λ) a interferência é construtiva; para $n$ ímpar (d múltiplo ímpar de λ/2) é destrutiva, com cancelamento total.\n\nc) $\\vec{B}=-\\frac{2E_0\\cos(n\\pi/2)}{c}\\cos\\left(kx-\\omega t+\\frac{n\\pi}{2}\\right)\\hat{y}$, com $B_0=\\frac{2E_0}{c}\\left|\\cos\\frac{n\\pi}{2}\\right|$. Para $n$ par, $\\vec{B}=-B_0\\cos(kx-\\omega t)\\hat{y}$ com $B_0=2E_0/c$. A orientação é $-\\hat{y}$, perpendicular a $\\vec{E}$ e à propagação.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item c): o parágrafo 'As equações de Maxwell no vácuo são lineares, então o campo magnético total é a soma dos campos de cada onda. Basta, portanto, fixar a orientação e a relação de amplitude.' fica desconexo, porque a dedução seguinte aplica a lei de Faraday diretamente ao campo total e não usa o princípio da superposição. Deveria ser removido, ou reescrito como consequência explícita: B_total = Σ(1/c) x̂×E_i = (1/c) x̂×E_total."
+          },
+          {
+            "severity": "minor",
+            "description": "Item c): a dedução por Faraday assume como ansatz que B_y = B_m cos u, com a mesma fase do campo elétrico, sem derivar essa forma. Deveria integrar ∂B_y/∂t = ∂E_z/∂x em t, obtendo B_y = −(E_m/c) cos u + f(x), e justificar f = 0 (não há campo estático na onda). Também falta justificar que (∇×E)_y = −∂E_z/∂x, isto é, que ∂E_x/∂z = 0."
+          },
+          {
+            "severity": "minor",
+            "description": "Item c): a transversalidade (E ⊥ B, B ⊥ x̂, logo B_x = B_z = 0) é afirmada como propriedade padrão, sem derivação. Uma linha fecharia o argumento: (∇×E)_z = 0 ⇒ ∂B_z/∂t = 0; (∇×E)_x = 0 e ∇·B = 0 ⇒ B_x constante, portanto nulo para uma onda. Hoje o B = B_y ŷ é aceito sem prova."
+          },
+          {
+            "severity": "minor",
+            "description": "Tratamento de n = 0: as Hipóteses dizem 'como d > 0, tem-se n ≥ 1', mas o item b) trata n = 0 como 'caso-limite' que 'interfere construtivamente, em concordância com a regra', e ainda o chama de excluído. A formulação deveria ser uma só: n ≥ 1 fisicamente, com n = 0 mencionado em uma frase como limite d → 0 (E = 2E0 cos(kx−ωt))."
+          },
+          {
+            "severity": "minor",
+            "description": "Item b): a coerência aparece como hipótese (mesma ω), mas o texto não explicita que a diferença de fase constante Δφ = kd = nπ, independente de t, é o que torna o padrão estacionário e permite classificar a interferência sem depender do tempo. Deveria haver uma frase fazendo essa ligação."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação e verificação: B_m aparece com sinal negativo e depois B_0 como módulo, o que pode confundir. Sugestão: usar B_m só para a forma com sinal, ou sinalizar a troca. A 'Conferência' do item a) verifica apenas n = 1; acrescentar n = 2 (2E0 cos(kx−ωt)) fortaleceria o caso par, que é o relevante para o item c)."
+          }
+        ],
+        "summary": "Nota 9,0. Resposta final correta e igual à referência nos três itens. a) E = 2E0 cos(nπ/2) cos(kx−ωt+nπ/2) ẑ, onda progressiva em +x, amplitude 2E0|cos(nπ/2)|. b) n par: construtiva; n ímpar: destrutiva, com E ≡ 0. c) B = −(2E0 cos(nπ/2)/c) cos(kx−ωt+nπ/2) ŷ, B0 = 2E0|cos(nπ/2)|/c, orientação −ŷ. Conferi no enunciado original (página 10) e numericamente com python3: a identidade soma-produto vale com erro ≈ 3e-14 para n = 0…12; a amplitude numérica bate com 2E0|cos(nπ/2)|; B = −E_z/c satisfaz a lei de Faraday e a de Ampère-Maxwell (resíduo relativo ≈ 1e-8, erro de diferença finita); o vetor de Poynting aponta em +x; 2/c ≈ 6,67 nT por V/m. Todas as armadilhas listadas foram tratadas: (A−B)/2 = kd/2 = nπ/2; amplitude não negativa; 'x>0' como sentido de propagação e não como restrição de domínio; onda progressiva, sem invocar onda estacionária; Δφ = kd = nπ; n ímpar com campo nulo; fator 2 em B0; sinal de B conferido por x̂×ẑ = −ŷ e pelo Poynting; simplificação dependente da paridade de n. Os problemas que restam são de rigor e redação, sem erro matemático ou físico: a frase de linearidade desconexa, a integração de Faraday feita por ansatz, a transversalidade afirmada sem prova, a dupla formulação sobre n = 0 e a falta de ligação explícita entre coerência e padrão estacionário. Uma resolução que um professor publicaria com pequenos ajustes.\""
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "Massa mínima de ácido acético por piscina ≈ 7,2 kg (120 mol), obtida com pH = 4, [H+] = [A-] = 1,0×10^-4 mol/L, [HA] = 5,0×10^-4 mol/L e C = 6,0×10^-4 mol/L.",
+  "judge_reference": {
+    "reference_solution": "**Modelo e hipóteses (necessárias para a resolução ser válida)**\n- Efluente de pH neutro, tratado como água sem capacidade tamponante: sem bases ou sais ácidos/básicos relevantes além do sal do metal pesado, que é ignorado no equilíbrio. T = 25 °C e atividades iguais às concentrações.\n- Volume constante em 200.000 L, pois o ácido adicionado (~7 kg, cerca de 7 L de ácido glacial) é desprezível.\n- \"Massa mínima\": é a que leva o pH exatamente a 4, porque a precipitação exige pH ≤ 4. Quanto mais ácido, menor o pH.\n- Ka = 2,0×10⁻⁵ é a constante de dissociação do CH₃COOH: CH₃COOH ⇌ H⁺ + CH₃COO⁻.\n\n**1) Concentração de H⁺ alvo**\npH = 4 ⇒ [H⁺] = 1,0×10⁻⁴ mol/L.\n\n**2) Balanço de carga**\n[H⁺] = [CH₃COO⁻] + [OH⁻]. Em pH 4, [OH⁻] = 10⁻¹⁰ mol/L, que é desprezível (0,1 % de 10⁻⁴ em relação ao 10⁻⁴, ou seja, 10⁻⁶ em termos relativos). Logo [CH₃COO⁻] ≈ 1,0×10⁻⁴ mol/L.\n\n**3) Ácido não dissociado pelo equilíbrio**\nKa = [H⁺][CH₃COO⁻]/[CH₃COOH]\n[CH₃COOH]_eq = (10⁻⁴)(10⁻⁴)/(2,0×10⁻⁵) = 5,0×10⁻⁴ mol/L.\n\n**4) Concentração analítica (total) de ácido**\nC = [CH₃COOH]_eq + [CH₃COO⁻] = 5,0×10⁻⁴ + 1,0×10⁻⁴ = 6,0×10⁻⁴ mol/L.\nO grau de ionização é α = 1/6 ≈ 17 %.\n\nVerificação por Henderson–Hasselbalch: pKa = 5 − log 2 = 4,699. Então pH = pKa + log([A⁻]/[HA]) ⇒ [A⁻]/[HA] = 10^(4−4,699) = 0,20. Com [A⁻] = 10⁻⁴ resulta [HA] = 5×10⁻⁴, o mesmo valor.\n\n**5) Quantidade de matéria e massa**\nn = C·V = 6,0×10⁻⁴ × 2,0×10⁵ = 120 mol.\nM(CH₃COOH = C₂H₄O₂) = 2(12,011) + 4(1,0079) + 2(15,999) ≈ 60,05 g/mol (≈ 60 g/mol).\nm = 120 × 60,05 ≈ 7,2×10³ g ≈ **7,2 kg** (com M = 60: 7200 g).\n\n**Conferência numérica (balanço de carga completo com Kw)**\n- Com 120 mol: pH = 3,99999976 ≈ 4,000.\n- Com 100 mol (resposta errada): pH = 4,04, o que não precipita.\n- Com 119 mol: pH = 4,002.\nIsso confirma que o mínimo é ≈ 120 mol.\n\n**Resposta:** cerca de 7,2 kg de ácido acético por piscina (≈ 120 mol).",
+    "final_answer": "m(CH₃COOH) mínima ≈ 7,2 kg por piscina (n ≈ 120 mol; C total = 6,0×10⁻⁴ mol/L, sendo 5,0×10⁻⁴ mol/L de ácido não dissociado + 1,0×10⁻⁴ mol/L de acetato; M ≈ 60,05 g/mol ⇒ ≈ 7,2×10³ g).",
+    "pitfalls": [
+      "Erro mais comum: usar Ostwald/aproximação [H⁺] = √(Ka·C), que dá C = [H⁺]²/Ka = 5×10⁻⁴ mol/L, 100 mol e ≈ 6,0 kg. A aproximação só vale com α < 5 %, e aqui α ≈ 17 %. Deve-se somar o ácido já dissociado (10⁻⁴ mol/L) ao não dissociado (5×10⁻⁴). Com 100 mol, o pH final é 4,04 > 4 e o contaminante não precipita.",
+      "Interpretação de 'mínima': o pH-alvo é exatamente 4 (limite de precipitação, pH ≤ 4). Usar pH < 4 ou uma folga arbitrária superestima a massa.",
+      "Hipótese necessária e que deve ser explicitada: o efluente é neutro e sem tamponamento (não consome H⁺), de modo que [H⁺] = [CH₃COO⁻] vem só do ácido adicionado. Se houvesse bases ou tampões, a massa seria maior. O pH 7 inicial da água, com 10⁻⁷ mol/L de H⁺, é desprezível frente a 10⁻⁴ mol/L.",
+      "A autoionização da água ([OH⁻] = 10⁻¹⁰ em pH 4) é desprezível e pode ser ignorada, o que deve ser justificado. A variação de volume pela adição do ácido (~7 L em 200.000 L) também é desprezível.",
+      "Confundir 'constante de dissociação' com Kb, ou usar pKa incorretamente. Com os dados da folha, pKa = 5 − log 2 = 4,70, e a razão [A⁻]/[HA] em pH 4 é 0,2.",
+      "Erros de unidade e massa molar: V = 200.000 L (não 200 L); M(C₂H₄O₂) ≈ 60 g/mol, e não a do íon acetato (59) nem a do ácido acético glacial confundida com volume. O resultado final deve sair em massa (≈ 7,2 kg), não em mol ou em litros de solução.",
+      "Ignorar o resto do enunciado como distrator: o tipo de metal pesado e o sal não entram no cálculo, pois o enunciado só dá o limite de pH. Não se deve considerar precipitação consumindo H⁺ nem hidrólise do sal, que não são dadas."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "Massa mínima de ácido acético por piscina ≈ 7,2 kg (120 mol), obtida com pH = 4, [H+] = [A-] = 1,0×10^-4 mol/L, [HA] = 5,0×10^-4 mol/L e C = 6,0×10^-4 mol/L.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A 'Conferência' é parcialmente circular. Recuperar Ka a partir de [H⁺]=10⁻⁴, [A⁻]=10⁻⁴ e [HA]=5×10⁻⁴ usa a mesma equação que gerou [HA], então não é uma verificação independente. Faltou uma checagem independente, como Henderson–Hasselbalch (pKa=5−log2≈4,70, razão [A⁻]/[HA]=0,2) ou resolver o balanço de carga completo para n=120 mol e mostrar pH≈4,000. Também falta mostrar, por exemplo, que com 100 mol o pH seria ≈4,04 e não precipitaria."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que 'adicionar menos que essa massa deixaria pH>4' e que por isso 120 mol é o mínimo é só afirmada. Falta uma frase dizendo que [H⁺] cresce monotonicamente com C (a função C(pH) é monótona), o que justifica que o pH=4 define o mínimo."
+          },
+          {
+            "severity": "minor",
+            "description": "O uso de Kw=10⁻¹⁴ (para [OH⁻]=10⁻¹⁰) pressupõe T=25 °C, mas isso não está escrito nas hipóteses. A folha de dados não fornece Kw."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese (ii), de que o volume do ácido adicionado é desprezível, é enunciada mas não quantificada. Bastaria dizer que são ~7 kg, cerca de 7 L de ácido glacial, frente a 200.000 L. O ponto sobre o pH 7 inicial (H⁺ ≈ 10⁻⁷ mol/L) também não é comentado explicitamente. Ele já está contido no balanço de carga completo, mas valia dizer que é irrelevante frente a 10⁻⁴."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução avisa que desprezar a parte ionizada é um erro, mas não mostra o resultado do erro típico. A aproximação de Ostwald, [H⁺]=√(Ka·C), daria C=5×10⁻⁴ mol/L, 100 mol e ≈6,0 kg, com pH final 4,04>4. Mostrar isso reforçaria o caráter de gabarito comentado. Além disso, 'erro grave' é forte para um desvio de ~17%."
+          }
+        ],
+        "summary": "Reli o enunciado da 4ª questão no PDF original e a transcrição confere. Refiz a conta: pH=4 dá [H⁺]=10⁻⁴ mol/L. O balanço de carga, com [OH⁻]=10⁻¹⁰ desprezível, dá [A⁻]≈10⁻⁴ mol/L, e Ka dá [HA]=(10⁻⁴)²/(2×10⁻⁵)=5×10⁻⁴ mol/L. Então C=6,0×10⁻⁴ mol/L e n=C·V=120 mol (o balanço de carga completo numérico dá 119,9999 mol). Com M≈60,05 g/mol, m≈7,2×10³ g ≈ 7,2 kg. O resultado do candidato (120 mol, ≈7,2 kg) coincide com a minha referência e está correto. As armadilhas principais foram evitadas: ele soma o ácido ionizado ao não ionizado, em vez de usar a aproximação de Ostwald, que dá 6,0 kg e deixaria pH≈4,04. Usa pH=4 exato como caso-limite para 'mínima', explicita a hipótese de efluente neutro sem tampão e de volume constante, justifica desprezar [OH⁻], usa V=200.000 L, a massa molar correta do CH₃COOH e dá a resposta em massa. A estrutura é clara (hipóteses, equilíbrio, balanço de carga, balanço de massa, massa) e as contas estão corretas. Os pontos a corrigir são só de rigor e acabamento: a conferência é circular e não há teste independente (Henderson–Hasselbalch ou o caso de 100 mol); a monotonicidade que sustenta o 'mínimo' é só afirmada; T=25 °C para Kw não é declarada; o volume do ácido não é quantificado; e o erro típico de Ostwald não é mostrado numericamente. Nenhum afeta o resultado. É praticamente um gabarito comentado publicável, com ressalvas menores."
+      }
+    }
+  ]
+}

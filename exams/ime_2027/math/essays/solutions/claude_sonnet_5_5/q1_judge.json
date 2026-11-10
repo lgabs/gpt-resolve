@@ -1,0 +1,87 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "$12\\sqrt{3}-18 \\approx 2{,}785$ (união dos hexágonos de área $\\tfrac{3\\sqrt3}{2}$ cada, menos a interseção, um dodecágono regular de apótema $\\tfrac{\\sqrt3}{2}$ e área $18-9\\sqrt3$).",
+  "judge_reference": {
+    "reference_solution": "**Configuração.** z^12 = 1 dá z_k = cis(2πk/12) = cis(30°·k), k = 0,…,11, todos sobre a circunferência unitária. Hexágono P: vértices z_0, z_2, …, z_10, nos ângulos 0°, 60°, 120°, …. Hexágono I: vértices z_1, z_3, …, z_11, nos ângulos 30°, 90°, 150°, …. São dois hexágonos regulares de circunraio R = 1, um girado de 30° em relação ao outro.\n\n**Estratégia.** Inclusão–exclusão: Área(P ∪ I) = Área(P) + Área(I) − Área(P ∩ I).\n\n**1) Área de cada hexágono.** Hexágono regular de lado 1 (lado = circunraio): A = 6·(√3/4)·1² = 3√3/2. Logo Área(P) + Área(I) = 3√3. O apótema de cada hexágono é a = √3/2.\n\n**2) A interseção P ∩ I.**\n- P é convexo, então é a interseção dos 6 semiplanos de seus lados. Os lados de P têm pontos médios nos ângulos 30°, 90°, 150°, …. Portanto as normais externas apontam nessas direções, a distância √3/2 do centro.\n- Os lados de I têm normais nos ângulos 0°, 60°, 120°, …, também a distância √3/2.\n- P ∩ I é a interseção de 12 semiplanos, com normais a cada 30° e todos à mesma distância √3/2 da origem. Ou seja, é o dodecágono regular circunscrito à circunferência de raio √3/2.\n- Nenhuma reta é redundante. O ponto de tangência da reta de normal θ está a distância √3/2 na direção θ, e sua projeção sobre qualquer outra normal θ' vale (√3/2)·cos(θ−θ') ≤ √3/2. Logo ele pertence a todos os outros semiplanos, e cada reta contribui com um lado.\n\nÁrea de um n-ágono regular de apótema a: n·a²·tan(π/n). Com n = 12, a² = 3/4 e tan 15° = 2 − √3:\n\nÁrea(P ∩ I) = 12·(3/4)·(2 − √3) = 9(2 − √3) = 18 − 9√3 ≈ 2,4115.\n\n**3) União.**\nÁrea(P ∪ I) = 3√3 − (18 − 9√3) = 12√3 − 18 = 6(2√3 − 3) ≈ 2,7846.\n\n**Conferência por decomposição (independente).** A união é o dodecágono central mais 12 \"pontas\" triangulares, 6 de P (fora de I) e 6 de I (fora de P).\n- Ponta com vértice em (1,0), base sobre a reta x = √3/2 (lado de I). Altura h = 1 − √3/2.\n- Ângulo interno do hexágono no vértice = 120°, semiângulo 60°. Base s = 2h·tan 60° = 2√3(1 − √3/2) = 2√3 − 3. Isso coincide com o lado do dodecágono, 2a·tan 15° = √3(2 − √3).\n- Área da ponta = ½·s·h = ½(2√3 − 3)(1 − √3/2) = 7√3/4 − 3.\n- Total = (18 − 9√3) + 12(7√3/4 − 3) = 18 − 9√3 + 21√3 − 36 = 12√3 − 18 ✓.\n\n**Conferência numérica (Python).** Recorte de polígonos (Sutherland–Hodgman): interseção com 12 vértices, área 2,41154 = 18 − 9√3; união 2,78461 = 12√3 − 18. Monte Carlo com 2·10⁶ pontos: 2,7840. Tudo consistente.\n\n**Sanidade.** A união (≈ 2,785) é maior que um hexágono (≈ 2,598) e menor que o dodecágono convexo de circunraio 1 (área 3, a envoltória convexa da união).\n\n**Resposta:** Área(P ∪ I) = 12√3 − 18 = 6(2√3 − 3) ≈ 2,78 (unidades de área, com |z| = 1).",
+    "final_answer": "Área(P ∪ I) = 12√3 − 18 = 6(2√3 − 3) ≈ 2,785. (Cada hexágono tem área 3√3/2; a interseção é um dodecágono regular de apótema √3/2 e área 18 − 9√3.)",
+    "pitfalls": [
+      "Somar as áreas dos dois hexágonos (3√3 ≈ 5,196) sem subtrair a interseção. É preciso usar inclusão–exclusão, pois os hexágonos se sobrepõem muito.",
+      "Confundir a união com o dodecágono regular inscrito de circunraio 1 (área 3). Esse dodecágono é a envoltória convexa da união, não a união: as 12 pontas da estrela só chegam aos vértices z_k, e entre elas há reentrâncias.",
+      "Achar que a interseção é um hexágono, ou um dodecágono de circunraio 1. A interseção é um dodecágono regular de APÓTEMA √3/2 (o apótema do hexágono). Seu circunraio é (√3/2)/cos 15° ≈ 0,897, não 1.",
+      "Justificar por que a interseção é um dodecágono regular: 12 semiplanos com normais a cada 30°, todos a distância √3/2, e nenhum redundante. Não basta afirmar isso por 'simetria' sem argumento.",
+      "Usar a fórmula certa para o dodecágono pelo apótema, n·a²·tan(π/n), e não pela fórmula do circunraio (½·n·R²·sen(2π/n)), com o valor de a ou R trocado. Também é preciso saber que tan 15° = 2 − √3.",
+      "Rotulação: assumir z_k = cis(2πk/12) (índices em ordem angular), que é o que torna P e I hexágonos regulares girados de 30°. O resultado não depende de por qual raiz a contagem começa, por simetria. Também notar que |z| = 1 vem de z^12 = 1.",
+      "Erro na decomposição por pontas: a ponta é um triângulo isósceles de ângulo de 120° no hexágono, com base igual ao lado do dodecágono e altura 1 − √3/2. Esquecer que são 12 pontas (6 de P e 6 de I), ou errar a base, dá resultado errado.",
+      "Resposta final deve vir simplificada e com valor numérico de controle: 12√3 − 18 ≈ 2,785, entre a área do hexágono (2,598) e a do dodecágono de circunraio 1 (3)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 7.0,
+      "final_answer": "Área da união $=12\\sqrt{3}-18\\approx 2{,}785$ (hexágonos de área $\\tfrac{3\\sqrt3}{2}$ cada; interseção = dodecágono regular de apótema $\\tfrac{\\sqrt3}{2}$, área $18-9\\sqrt3$).",
+      "review": {
+        "score": 7,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "O passo central, que nenhuma das 12 retas é redundante, está justificado com um argumento falho. O candidato escreve que os vértices do dodecágono ficam a distância a/cos15° < 1, 'portanto de fato dentro dos dois hexágonos'. Estar a distância menor que 1 (o circunraio) não implica estar dentro do hexágono, cujo apótema é √3/2 ≈ 0,866. Na verdade os vértices a 0,897 estão exatamente sobre a fronteira de um dos hexágonos: na direção 15° o hexágono tem raio de fronteira (√3/2)/cos15°. O resultado é verdadeiro, mas a justificativa é um non sequitur. Deveria usar a projeção do ponto de tangência (ou do vértice) sobre as outras normais: (a/cos15°)·cos(θ+15°−θ') ≤ a, já que cos45°/cos15° < 1. Ou então dizer que o ponto de tangência da reta de normal θ satisfaz (√3/2)·cos(θ−θ') ≤ √3/2 para todas as outras retas."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'conferência independente' não é independente nem está bem escrita. A primeira expressão, 1/12(2·3√3/2 − 2(18−9√3)·1/2·2), é confusa. A segunda, (1/6)(3√3/2 − (18−9√3)), só reaproveita A_P e A(P∩I), isto é, a mesma inclusão–exclusão. Não calcula a ponta geometricamente (ângulo de 120° no vértice, altura 1−√3/2, base 2√3−3, área 7√3/4−3 ≈ 0,0311). O valor numérico 0,031 está certo, mas a checagem não testa de fato a resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato diz que uma contagem numérica por malha fina deu ≈ 2,7846, mas não mostra método nem código, então a afirmação não é verificável. Fica como apelo à autoridade."
+          },
+          {
+            "severity": "minor",
+            "description": "A rotulação z_k = e^{ikπ/6} é assumida sem comentário. Faltou dizer que |z|=1 decorre de z^12=1, que os índices seguem a ordem angular e que o resultado não depende de por qual raiz a contagem começa. É esse fato que garante que P e I são hexágonos regulares girados de 30°."
+          },
+          {
+            "severity": "minor",
+            "description": "A observação final chama a área de 'adimensional' e, na mesma frase, de 'unidades de comprimento ao quadrado'. Há uma imprecisão de linguagem. Bastava dizer 'unidades de área, com |z|=1'. Também tan15° = 2−√3 é usado sem uma linha de dedução, o que é aceitável, mas seria mais completo."
+          }
+        ],
+        "summary": "A resposta final, 12√3 − 18 ≈ 2,785, está correta e coincide com a minha referência. Conferi por recorte de polígonos em Python: união 2,78461, interseção 2,41154 com 12 vértices, e ponta (A_hex − A_int)/6 = 0,03109 = 7√3/4 − 3. A estrutura é boa: inclusão–exclusão, hexágonos de área 3√3/2, interseção como 12 semiplanos com normais a cada 30° e todos a distância √3/2, área n·a²·tan(π/n) com tan15° = 2−√3, e sanidade 2,598 < 2,785 < 3. Evita as armadilhas principais: não soma só os hexágonos, não confunde a união com o dodecágono de circunraio 1 e usa a fórmula pelo apótema. A fraqueza está no rigor. A não redundância das 12 retas, que a questão exige justificar, é defendida com o argumento errado 'distância < 1 ⇒ dentro dos hexágonos'. Além disso, a verificação 'independente' é só a mesma inclusão–exclusion reescrita, com uma expressão confusa. A conferência numérica por malha é citada sem evidência, e a rotulação z_k não é discutida. Como a justificativa tem uma falha lógica no passo-chave, a nota fica em 7, não em 9 ou mais.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "$12\\sqrt{3}-18 \\approx 2{,}785$ (união dos hexágonos de área $\\tfrac{3\\sqrt3}{2}$ cada, menos a interseção, um dodecágono regular de apótema $\\tfrac{\\sqrt3}{2}$ e área $18-9\\sqrt3$).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A afirmação de que P∖D é exatamente a união de 6 pontas triangulares (e I∖D idem, sem sobreposição entre as 12) é usada na verificação do passo 5 e na decomposição final, mas é apenas enunciada. Faltou uma frase dizendo que cada reta x·u_m = a de I corta exatamente um vértice de P, e vice-versa. Isso é evidente pela figura, mas é um pequeno salto de rigor."
+          },
+          {
+            "severity": "minor",
+            "description": "A observação sobre a numeração (\"um hexágono regular inscrito... só pode ser uma das duas classes alternadas\") é curta. O argumento completo seria: P e I são complementares entre as 12 raízes, então são as duas classes alternadas, e o resultado não depende de onde a contagem começa. A ideia está certa, mas a justificativa é condensada."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência de sanidade cita que 3 é a área do dodecágono inscrito de raio 1 e que ele contém a união. Não diz explicitamente que ele é a envoltória convexa da união, nem que o circunraio da interseção é a/cos15° ≈ 0,897, não 1. Isso afasta a confusão típica, mas só implicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência por contagem de células (\"≈ 2,7846\") é relatada sem código ou detalhes. Com h=0,004 reproduzi um valor consistente (≈ 2,789, erro de grade), então não há problema de correção. O leitor, porém, não consegue verificá-la. A frase \"essa conta não usa A_P nem A_D\" também é um leve exagero, porque a base 2a·tan15° vem da geometria do dodecágono. Ela não usa as áreas, e o cruzamento A_D + 6T = A_P continua sendo uma verificação legítima."
+          }
+        ],
+        "summary": "A resposta final, 12√3 − 18 ≈ 2,785, coincide com a da minha referência e confere numericamente: recalculei A_D = 18 − 9√3, T = 7√3/4 − 3, A_D + 6T = 3√3/2 e A_D + 12T = 12√3 − 18, e uma grade com h=0,004 deu ≈ 2,789, dentro do erro de grade. A resolução trata bem as armadilhas. Posiciona as raízes com |z| = 1 e z_k = e^{ikπ/6}. Usa inclusão–exclusão. Mostra que P∩I é o dodecágono regular de apótema √3/2, com 12 semiplanos de normais a cada 30° à mesma distância e nenhum redundante (T_m·u_n = a·cos(30°(m−n)) < a para n ≠ m). Aplica corretamente n·a²·tan(π/n) com tan15° = 2 − √3. Faz uma verificação independente por pontas (triângulo isósceles de 120°, base 2√3 − 3, altura 1 − √3/2). Essa verificação confirma tanto A_D quanto o resultado final (A_D + 6T = A_P). Tem sanidade numérica (2,598 < 2,785 < 3) e é clara e bem organizada. Os defeitos são pequenos: faltam algumas frases de rigor (as pontas como P∖D, a rotulação) e a conferência por células não é reproduzível. É uma resolução de nível de gabarito comentado.\""
+      }
+    }
+  ]
+}

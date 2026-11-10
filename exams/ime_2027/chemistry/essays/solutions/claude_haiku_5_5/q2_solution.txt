@@ -1,0 +1,107 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\noindent\textbf{Hipóteses e convenções.}
+\begin{itemize}
+  \item Gás ideal, $n = 1$ mol, com $PV = RT$ em cada estado de equilíbrio.
+  \item Para gás ideal, $U = U(T)$ (lei de Joule), com $C_V > 0$, ou seja, $U$ cresce estritamente com $T$.
+  \item Etapas I e III: quase-estáticas (lentas), com a pressão do gás igual à externa a cada instante. Logo $W = \int P\,dV$ com $P = RT/V$. Como são isotermas, $\Delta U = 0$.
+  \item Etapas II e IV: $Q = 0$ (enunciado) e irreversíveis. Os estados intermediários não são de equilíbrio, então $P$ não tem valor definido nesses trechos e $\int P\,dV$ não se aplica. Usa-se a primeira lei.
+  \item Convenção: $W$ é o trabalho realizado pelo gás e $Q$ é o calor recebido, com $Q = \Delta U + W$. Em trechos irreversíveis, $W = \int P_{ext}\,dV$. Numa compressão $W < 0$ e numa expansão $W > 0$.
+\end{itemize}
+
+Estados: $1 = (P_1,V_1,T_1)$, $2 = (P_2,V_2,T_2)$, $3 = (P_3,V_3,T_3)$, $4 = (P_4,V_4,T_4)$. As etapas I e III são isotermas, logo $T_2 = T_1$ e $T_4 = T_3$. Também $P_1V_1 = RT_1$ e $P_4V_4 = RT_3$. Pelo sentido de cada etapa: $V_2 < V_1$ (I comprime), $V_3 < V_2$ (II comprime), $V_4 > V_3$ (III expande) e $V_1 > V_4$ (IV expande até o estado 1).
+
+Na etapa II, $W_2 < 0$ (compressão), e a primeira lei com $Q_2 = 0$ dá $\Delta U_2 = -W_2 > 0$. Com $C_V > 0$, isso implica $T_3 > T_1$.
+
+\noindent\textbf{a) Esboço do gráfico $P \times V$.}
+\begin{itemize}
+  \item \textbf{Etapa I} ($1 \to 2$): isoterma quase-estática a $T_1$, ramo da hipérbole $PV = P_1V_1$ (Boyle). Compressão: $V_2 < V_1$ e $P_2 > P_1$.
+  \item \textbf{Etapa II} ($2 \to 3$): compressão rápida, com $Q = 0$ e irreversível. Os estados intermediários não são de equilíbrio, então não existe curva $P \times V$ para o trecho. Ele é representado apenas por um segmento tracejado ligando os extremos 2 e 3. Não se desenha a adiabática reversível $PV^{\gamma} = \text{cte}$, cuja inclinação $-\gamma P/V$ é mais íngreme que a da isoterma, $-P/V$, pois $\gamma > 1$; esse não é o trajeto percorrido. Resultados: $T_3 > T_1$, $V_3 < V_2$ e $P_3 = RT_3/V_3 > RT_1/V_2 = P_2$.
+  \item \textbf{Etapa III} ($3 \to 4$): isoterma quase-estática a $T_3$, hipérbole $PV = RT_3$, acima da de $T_1$ porque $T_3 > T_1$. Expansão: $V_4 > V_3$ e $P_4 < P_3$.
+  \item \textbf{Etapa IV} ($4 \to 1$): expansão rápida, com $Q = 0$ e irreversível, também representada por segmento tracejado. Como o estado final é 1, $V_1 > V_4$. Além disso, $P_4/P_1 = (T_3/T_1)(V_1/V_4) > 1$, logo $P_1 < P_4$.
+\end{itemize}
+
+Assim, $V_3 < V_2 < V_1$ e $V_3 < V_4 < V_1$. $P_1$ é a menor pressão e $P_3$ a maior. Os dados não fixam a ordem entre $V_2$ e $V_4$, nem entre $P_2$ e $P_4$. A figura mostra um caso possível.
+
+\begin{center}
+\begin{tikzpicture}[x=0.6cm, y=0.1cm, >=stealth, thick]
+  % eixos
+  \draw[->] (0,0) -- (13.2,0) node[right] {$V$};
+  \draw[->] (0,0) -- (0,46) node[above] {$P$};
+  % projecoes dos estados sobre o eixo V
+  \draw[dotted] (3,0) -- (3,40);
+  \draw[dotted] (4,0) -- (4,30);
+  \draw[dotted] (5,0) -- (5,12);
+  \draw[dotted] (12,0) -- (12,5);
+  \node[below] at (3,0) {$V_3$};
+  \node[below] at (4,0) {$V_4$};
+  \node[below] at (5,0) {$V_2$};
+  \node[below] at (12,0) {$V_1$};
+  \node[left] at (0,5) {$P_1$};
+  \node[left] at (0,12) {$P_2$};
+  \node[left] at (0,30) {$P_4$};
+  \node[left] at (0,40) {$P_3$};
+  % etapas I e III: isotermas quase-estaticas (curvas P x V)
+  \draw[blue!70!black, domain=5:12, samples=60] plot (\x,{60/\x});
+  \draw[blue!70!black, domain=3:4, samples=30] plot (\x,{120/\x});
+  % etapas II e IV: trajetos irreversiveis com Q=0, sem curva P x V (segmento tracejado entre os extremos)
+  \draw[red!70!black, dashed, ->] (5,12) -- (3,40);
+  \draw[red!70!black, dashed, ->] (4,30) -- (12,5);
+  % estados
+  \fill (12,5) circle (2pt) node[above right] {$1$};
+  \fill (5,12) circle (2pt) node[left] {$2$};
+  \fill (3,40) circle (2pt) node[above] {$3$};
+  \fill (4,30) circle (2pt) node[above right] {$4$};
+  % rotulos das etapas
+  \node[blue!70!black] at (8,11) {I};
+  \node[red!70!black] at (5.1,19) {II};
+  \node[blue!70!black] at (4,37) {III};
+  \node[red!70!black] at (8.2,24) {IV};
+\end{tikzpicture}
+\end{center}
+
+\noindent Legenda: em azul, as isotermas quase-estáticas (etapas I e III), que são curvas $P \times V$. Em vermelho tracejado, as etapas II e IV: trajetos irreversíveis com $Q = 0$, sem curva $P \times V$ definida. O tracejado não representa trabalho, ou seja, a área sob ele não é $W_2$ nem $W_4$. Os valores são ilustrativos ($nRT_1 = 60$ e $nRT_3 = 120$, em unidades de $P \times V$). O percurso $1 \to 2 \to 3 \to 4 \to 1$ é horário, mas isso não indica motor: com estes valores, $W_1 + W_3 = 60\ln\frac{5}{12} + 120\ln\frac{4}{3} \approx -18$, negativo, porque $V_2V_4 \neq V_1V_3$ (ver verificações).
+
+\noindent\textbf{b) Demonstração de $W_{tot} = W_1 + W_3$.}
+
+\noindent\emph{Etapas I e III (isotermas quase-estáticas).} Com $P = RT/V$ e $\Delta U = 0$, pela primeira lei $Q = W$ nessas etapas:
+
+\begin{align*}
+W_1 &= \int_{V_1}^{V_2} \frac{RT_1}{V}\,dV = RT_1\ln\frac{V_2}{V_1} = P_1V_1\ln\frac{V_2}{V_1} \quad (<0),\\
+W_3 &= \int_{V_3}^{V_4} \frac{RT_3}{V}\,dV = RT_3\ln\frac{V_4}{V_3} = P_4V_4\ln\frac{V_4}{V_3} \quad (>0).
+\end{align*}
+
+\noindent\emph{Etapas II e IV (irreversíveis, $Q = 0$).} A primeira lei dá $W = -\Delta U$ em cada trecho, qualquer que seja o caminho. Não se usa $\int P\,dV$ aqui:
+
+\begin{align*}
+W_2 &= -\Delta U_2 = -\bigl[U(T_3) - U(T_1)\bigr], \\
+W_4 &= -\Delta U_4 = -\bigl[U(T_1) - U(T_3)\bigr],
+\end{align*}
+
+com $T_2 = T_1$ e $T_4 = T_3$. Somando:
+
+\begin{align*}
+W_2 + W_4 = -\bigl[U(T_3) - U(T_1)\bigr] - \bigl[U(T_1) - U(T_3)\bigr] = 0.
+\end{align*}
+
+Equivalentemente: $U$ é função de estado e o ciclo volta ao estado 1, logo $\Delta U_1 + \Delta U_2 + \Delta U_3 + \Delta U_4 = 0$. Como $\Delta U_1 = \Delta U_3 = 0$ (isotermas), vem $\Delta U_2 + \Delta U_4 = 0$, ou seja, $W_2 + W_4 = 0$. A energia ganha na compressão rápida é devolvida na expansão rápida. Não é preciso conhecer $C_V$ nem o caminho real de II e IV. Só $C_V > 0$ foi usado, para ordenar $T_3 > T_1$.
+
+Portanto:
+
+\begin{align*}
+W_{tot} &= W_1 + W_2 + W_3 + W_4 = W_1 + W_3 \\
+&= P_1V_1\ln\frac{V_2}{V_1} + P_4V_4\ln\frac{V_4}{V_3}.
+\end{align*}
+
+\noindent\textbf{Verificações.}
+\begin{itemize}
+  \item \emph{Balanço do ciclo:} com $\Delta U_{\text{ciclo}} = 0$, $Q_2 = Q_4 = 0$ e $Q_1 = W_1$, $Q_3 = W_3$ nas isotermas, obtém-se $W_{tot} = Q_{tot} = Q_1 + Q_3 = W_1 + W_3$. O resultado coincide.
+  \item \emph{Sinais:} $W_2 < 0$ e $W_4 > 0$ têm o mesmo módulo, $U(T_3) - U(T_1)$, o que é coerente com $T_3 > T_1$. Também $W_1 < 0 < W_3$, como indicam a compressão e a expansão isotérmicas.
+  \item \emph{Unidades e ordem de grandeza:} $RT$ tem unidade de J se $R$ está em J\,mol$^{-1}$\,K$^{-1}$ e $T$ em K, com $n = 1$ mol. O logaritmo é adimensional. Para $T_1 = 300$ K, $RT_1 \approx 2{,}5$ kJ, então as parcelas são da ordem de kJ, moduladas pelo logaritmo da razão de volumes.
+  \item \emph{Caso reversível (consistência):} se II e IV fossem adiabáticas reversíveis, $dU = -P\,dV$ daria $\int \frac{C_V}{T}\,dT + R\ln V = \text{cte}$ em cada trecho. Escrevendo isso para 2 $\to$ 3 (de $T_1$ a $T_3$) e para 4 $\to$ 1 (de $T_3$ a $T_1$) e somando, obtém-se $V_2V_4 = V_1V_3$, isto é, $V_4/V_3 = V_1/V_2$. Então $W_{tot} = R(T_3 - T_1)\ln\frac{V_1}{V_2} > 0$, sinal de motor. A figura não satisfaz $V_2V_4 = V_1V_3$ ($20 \neq 36$), por isso seu $W_{tot}$ é negativo.
+  \item \emph{Casos particulares:} a identidade $W_2 + W_4 = 0$ vale para qualquer caminho em II e IV, desde que $Q = 0$ e $U = U(T)$. A irreversibilidade altera o diagrama e os volumes, mas não o balanço de trabalho.
+\end{itemize}
+
+\noindent ANSWER: $W_{tot} = W_1 + W_3 = P_1V_1\ln\frac{V_2}{V_1} + P_4V_4\ln\frac{V_4}{V_3}$, pois $W_2 + W_4 = 0$ (para $n = 1$ mol, equivale a $RT_3\ln\frac{V_4}{V_3} - RT_1\ln\frac{V_1}{V_2}$).

@@ -1,0 +1,29 @@
+{
+  "question": 3,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-3-matematica-2-fase-dia-1-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Questão 3 (menor inteiro x com f(x)+f(-1/x) ≥ 0,999)",
+      "solution_answer": "x = 7 (S(7) = 1457/1458 ≈ 0,99931; S(6) = 485/486 ≈ 0,99794)",
+      "key_answer": "x = 7",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz a conta. Para x ≥ 0 todos os g_n valem 1, então f(x) = 1/2. Para x inteiro positivo k, g_n(-1/k) = 1 exatamente quando n < k, o que dá S(k) = 1 − 1/(2·3^(k−1)). A condição S(k) ≥ 0,999 equivale a 3^(k−1) ≥ 500, logo k ≥ 7. Para inteiros x ≤ −1, f(x) = 0 e S = 1/2. Conferi em python com frações exatas: S(6) ≈ 0,99794 e S(7) ≈ 0,99931. O enunciado do PDF bate com a transcrição."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito parte de x ∈ ℤ+ sem justificar. Falta descartar os inteiros negativos (para x ≤ −1, f(x) = 0 e f(−1/x) = 1/2, então S = 1/2 < 0,999) e excluir x = 0, que torna f(−1/x) indefinida. Como o enunciado pede o menor inteiro, numa correção rigorosa essa omissão poderia custar parte da nota. A resolução trata esses dois casos explicitamente."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado não diz que x = 0 está fora do domínio da expressão, mas isso decorre de −1/x. Também não fica claro se \"menor valor inteiro\" admite negativos. Isso não muda a resposta, porque nenhum inteiro ≤ 0 satisfaz a desigualdade."
+    }
+  ],
+  "summary": "A resolução e o gabarito Poliedro dão a mesma resposta, x = 7, e ela está certa. Para x inteiro positivo, S(x) = 1 − 1/(2·3^(x−1)) ≥ 0,999 vale se e só se 3^(x−1) ≥ 500, ou seja, x ≥ 7. Os inteiros negativos dão S = 1/2. A resolução é mais completa que o gabarito: descarta os inteiros negativos, exclui x = 0 e ainda encontra o conjunto solução real (−1/6, 0) ∪ (6, +∞). O gabarito supõe x > 0 sem justificar."
+}

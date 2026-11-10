@@ -1,0 +1,57 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "$V=\\dfrac{\\pi\\sqrt{6}}{108}\\,a^{3}\\approx 0{,}0713\\,a^{3}$. Isso é o dobro do volume da esfera inscrita em $ABCD$ (raio $a\\sqrt6/12$), pois a geração $n$ tem $4^n$ esferas de volume $V_0/8^n$, e a série tem razão $1/2$.",
+  "judge_reference": {
+    "reference_solution": "**Resultado:** V = π√6·a³/108.\n\n**1. Raio da esfera inscrita e altura.**\n- Altura do tetraedro regular de aresta a: h = a√6/3.\n- O centro da esfera inscrita é o baricentro e fica a h/4 de cada face. Logo r = h/4 = a√6/12 e h = 4r.\n- Volume da esfera inscrita: V₀ = (4/3)π r³. Como r³ = a³·6√6/1728 = a³√6/288, vem V₀ = π√6·a³/216.\n\n**2. O primeiro tetraedro novo.**\n- Pelo vértice A há dois planos paralelos a BCD e tangentes à esfera. Um é o próprio plano BCD, que é a base oposta. O \"plano distinto da base oposta\" é o outro, que fica do lado de A.\n- Esse plano está a 2r da base, pois o diâmetro da esfera separa os dois planos tangentes. Então ele está a h − 2r = 2r = h/2 de A.\n- Um plano paralelo a BCD corta AB, AC e AD na mesma razão. Aqui a razão é (h/2)/h = 1/2, ou seja, nos pontos médios.\n- O novo tetraedro A A′B′C′ é a imagem de ABCD pela homotetia de centro A e razão 1/2. É regular, de aresta a/2, e sua esfera inscrita tem raio r/2.\n- O mesmo vale para B, C e D. Ficam 4 tetraedros regulares de aresta a/2, cada um com uma esfera de raio r/2, ou seja, de volume V₀/8.\n\n**3. Recorrência.**\n- Cada tetraedro novo é regular e semelhante ao original, com razão 1/2. O processo, aplicado a ele, gera 4 tetraedros de razão 1/2 em relação a ele.\n- No nível n existem 4ⁿ tetraedros de aresta a/2ⁿ, cada um com esfera de raio r/2ⁿ e volume V₀/8ⁿ.\n- Volume do nível n: Vₙ = 4ⁿ·V₀/8ⁿ = V₀/2ⁿ. O nível 0 é a esfera inscrita original.\n\n**4. As esferas não se sobrepõem.**\n- Os 4 tetraedros de canto têm interiores disjuntos. Dois deles, em A e B por exemplo, só se tocam no ponto médio de AB, porque cada um ocupa a/2 da aresta.\n- Dentro de um tetraedro de canto, o mesmo argumento vale para os seus 4 filhos.\n- A esfera inscrita original fica abaixo do plano tangente, e o tetraedro de canto fica acima dele. Elas só se tocam em um ponto: o ponto de tangência com o plano é o centro da face do tetraedro de canto, que é também o ponto onde a esfera inscrita dele toca essa face. Portanto as esferas são tangentes, mas têm interiores disjuntos.\n- Cada esfera está contida no seu tetraedro, que está contido em ABCD. Assim os volumes se somam sem desconto.\n\n**5. Soma da série.**\nV = Σₙ₌₀^∞ V₀/2ⁿ = V₀/(1 − 1/2) = 2V₀ = 2·π√6·a³/216 = **π√6·a³/108**.\n\n**6. Conferência.**\n- O volume do tetraedro é a³/(6√2). A fração ocupada é 2V₀ ÷ [a³/(6√2)] = π√3/9 ≈ 0,6046, valor plausível e menor que 1.\n- Verifiquei com coordenadas em Python puro, com a = 1. A razão do corte ao longo das arestas é 0,5 em todos os níveis, e h/r = 4. As arestas dos níveis 1 a 5 são 1/2, 1/4, …\n- Todas as esferas até o nível 5 (1365 esferas) estão dentro do tetraedro original e são disjuntas no interior. A menor folga entre duas esferas é 0 a menos de 10⁻¹⁶, o que confirma as tangências. A soma parcial até o nível 5 é 0,07014, contra o limite 0,071253 = π√6/108.\n\n**Observação sobre a leitura.** Em \"todas as esferas interiores ao tetraedro ABCD\", a esfera inscrita original está incluída. Isso dá 2V₀. Se alguém excluísse a esfera inicial, o resultado seria V₀ = π√6·a³/216. O enunciado fala da esfera inscrita no tetraedro ABCD e depois \"todas as esferas interiores\", então a leitura natural inclui a original.",
+    "final_answer": "V = π√6·a³/108, isto é, 2·(4/3)π(a√6/12)³. Esse valor inclui a esfera inscrita original (volume π√6·a³/216) e todas as esferas das gerações seguintes. A fração do volume do tetraedro ocupada pelas esferas é π√3/9 ≈ 60,5%.",
+    "pitfalls": [
+      "O 'plano distinto da base oposta' é o plano tangente do lado do vértice, a 2r da base. Escolher a base BCD, que também é tangente, não gera o novo tetraedro. Como h = 4r, esse plano está a h/2 de A e passa pelos pontos médios de AB, AC e AD. A razão de semelhança é 1/2, não 1/3 nem outro valor tirado de r/h mal calculado.",
+      "Raio da inscrita: r = a√6/12 (r = h/4, h = a√6/3). Errar essa relação ou o cubo de r contamina tudo. Correto: r³ = a³√6/288 e V₀ = π√6·a³/216.",
+      "Contagem e razão da série. A cada geração o número de esferas quadruplica (4ⁿ) e o volume de cada uma é dividido por 8, então a razão é 4/8 = 1/2. Esquecer o fator 4 (um tetraedro por vértice) leva à razão 1/8 e a um resultado errado.",
+      "A esfera inscrita original conta como 'esfera interior ao ABCD' (termo n = 0). Somar só a partir de n = 1 dá V₀, em vez de 2V₀. Vale deixar explícita a leitura adotada e mencionar a alternativa.",
+      "É preciso justificar que as esferas não se sobrepõem para somar volumes. Os tetraedros de canto só se tocam em pontos médios de arestas. A esfera original é tangente ao plano de corte, no centro da face do tetraedro de canto, onde toca a inscrita dele. Todas são tangentes ou disjuntas, nunca sobrepostas.",
+      "A convergência da série geométrica (razão 1/2 < 1) e o uso de 'indefinidamente' como limite devem ser citados. A soma é V₀/(1 − 1/2).",
+      "Mostrar que os novos tetraedros são regulares (homotetia de centro A, razão 1/2), de modo que a recorrência se aplica sem refazer as contas. Sem isso o argumento de auto-semelhança fica sem base."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "$V=\\dfrac{\\pi\\sqrt{6}}{108}\\,a^{3}\\approx 0{,}0713\\,a^{3}$. Isso é o dobro do volume da esfera inscrita em $ABCD$ (raio $a\\sqrt6/12$), pois a geração $n$ tem $4^n$ esferas de volume $V_0/8^n$, e a série tem razão $1/2$.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A contagem 4^n é usada sem ser deduzida explicitamente. O texto diz que 'o processo se repete dentro dele de forma idêntica', mas não afirma que cada tetraedro regular gera exatamente 4 filhos de razão 1/2 em relação a ele. É isso que justifica 4^n tetraedros de aresta a/2^n. Convém escrever uma frase de recorrência: cada tetraedro gera 4, cada um semelhante a ele com razão 1/2."
+          },
+          {
+            "severity": "minor",
+            "description": "A tangência entre a esfera inscrita original e as esferas dos tetraedros de canto não é mencionada. A solução só diz que a esfera 'não invade' (região λ_i ≤ 1/2). O argumento de interiores disjuntos está correto. Faltou dizer que elas são tangentes no centro da face de corte. Verifiquei que a esfera original tem topo a h/2 e a esfera do canto tem base a h/2, então se tocam em um ponto. Dizer isso mostraria que a soma sem desconto vale mesmo no caso-limite de contato."
+          },
+          {
+            "severity": "minor",
+            "description": "A região λ_A ≥ 1/2 para o tetraedro do vértice A (homotético de razão 1/2) e a região λ_i ≤ 1/2 para a esfera são afirmadas sem derivação. São fatos imediatos (a distância ao plano BCD é proporcional a λ_A, e o plano tangente está a h/2), mas poderiam ser justificados em uma linha."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação de que todas as esferas estão no interior de ABCD é apenas afirmada no passo 5. Poderia citar que cada esfera está contida em seu tetraedro, e que os tetraedros estão aninhados em ABCD pelas homotetias."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência 'fração ≈ 60%, plausível para esferas empacotadas' é qualitativa. Não dá a fração exata π√3/9 ≈ 0,6046, que seria uma verificação mais convincente. Os valores numéricos citados (0,0713 e 0,1179) estão corretos."
+          }
+        ],
+        "summary": "A resposta final do candidato, V = π√6·a³/108, coincide com a minha referência. Conferi numericamente: r = a√6/12, V0 = π√6·a³/216 e 2·V0 ≈ 0,07125·a³, com fração ≈ 0,6046 do volume do tetraedro (π√3/9). O enunciado original foi relido e a leitura 'todas as esferas interiores', que inclui a esfera inscrita original, é a natural. A solução trata bem as armadilhas. Escolhe o plano tangente do lado do vértice, a h/2 de A (a base BCD também é tangente e é excluída), e usa h = 4r para obter os pontos médios e a homotetia de razão 1/2. Mostra que os novos tetraedros são regulares, de aresta a/2. Calcula a razão da série como 4/8 = 1/2 e soma a partir de n = 0. Justifica a não sobreposição com coordenadas baricêntricas (λ_A ≥ 1/2 para os cantos, que só se tocam nos pontos médios das arestas; esfera original em λ_i ≤ 1/2). Cita a convergência da série e menciona a leitura alternativa (sem a esfera original, V0). Os defeitos são só de explicitação: a recorrência 4^n está implícita, a tangência entre a esfera original e as esferas de canto não é descrita, algumas afirmações geométricas aparecem sem derivação, e a conferência numérica é mais qualitativa do que a da referência. Não encontrei erro de conta nem de lógica. É uma resolução bem próxima do nível de gabarito comentado."
+      }
+    }
+  ]
+}

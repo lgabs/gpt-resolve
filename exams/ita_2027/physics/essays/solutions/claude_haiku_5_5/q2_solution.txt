@@ -1,0 +1,61 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses e referencial.} Massa tratada como ponto material, de modo que o choque não induz rotação (o impulso do solo passa pelo centro de massa). Resistência do ar desprezada; $g$ constante; solo horizontal, fixo e liso, em $y=0$, com a origem $O$ sobre ele; $x$ horizontal e $y$ vertical; energia potencial gravitacional referida ao solo; choques instantâneos; coeficiente de restituição $e=0{,}7$ em todos os choques. Como o solo está em repouso, a restituição de Newton para a componente normal é $|v'_y| = e\,|v_y|$, com inversão do sentido.
+
+\textbf{1) Velocidade inicial.}
+\begin{align*}
+v_{x0} &= V\cos 30^\circ = \frac{\sqrt{3}}{2}V, & v_{y0} &= V\operatorname{sen}30^\circ = \frac{V}{2}.
+\end{align*}
+
+\textbf{2) Componente horizontal.} No voo, a única força é o peso, que é vertical. No choque, o solo liso só pode exercer força normal, logo $\Delta p_x = 0$. Portanto $v_x = \frac{\sqrt{3}}{2}V$ é constante para todo $t$.
+
+\textbf{3) Componente vertical.} Seja $u_k$ o módulo da velocidade vertical logo após o evento $k$, sendo $k=0$ o lançamento e $k\ge 1$ o $k$-ésimo choque. Tem-se $u_0 = V/2$. No voo, $a_y=-g$ e, pela conservação da energia mecânica (ou por Torricelli), ao voltar a $y=0$ a massa tem velocidade de módulo $u_k$ dirigida para baixo. Esse é o módulo da velocidade de impacto do choque seguinte. Pela restituição, a velocidade após esse choque é $u_{k+1} = e\,u_k$. Por indução,
+\begin{align*}
+u_n = e^{n}\,u_0 = e^{n}\frac{V}{2}.
+\end{align*}
+
+\textbf{4) Item a: altura máxima após $n$ choques.} Após o $n$-ésimo choque, a massa sobe até o ápice, onde $v_y=0$. Por Torricelli, com aceleração $-g$ e $y=0$ no choque,
+\begin{align*}
+0 = u_n^2 - 2gH_n \quad\Rightarrow\quad H_n = \frac{u_n^2}{2g} = \frac{e^{2n}V^2}{8g} = \frac{(0{,}49)^{n}\,V^2}{8g}.
+\end{align*}
+Equivalentemente, $H_n = \dfrac{e^{2n}V^2\operatorname{sen}^2 30^\circ}{2g}$. A altura depende de $e^2$, pois a restituição reduz a velocidade vertical por $e$ e, portanto, a energia cinética vertical por $e^2$. A componente horizontal não interfere, já que $y$ depende apenas de $v_y$. Para $n=0$, $H_0 = V^2/(8g)$ é a altura do primeiro arco. Como os arcos decrescem monotonicamente, $H_n$ também é a altura máxima de todo o movimento posterior ao $n$-ésimo choque.
+
+\textbf{5) Energia mecânica.} Tome $E = \frac{1}{2}m\left(v_x^2+v_y^2\right)+mgy$. Durante o voo, $E$ se conserva, pois só atua o peso. No $n$-ésimo choque, somente $v_y$ muda: a energia cinética vertical passa de $\frac{1}{2}m\,u_{n-1}^2$ para $\frac{1}{2}m\,e^2u_{n-1}^2$. A perda $\frac{1}{2}m(1-e^2)u_{n-1}^2$ é positiva, de modo que $E$ decresce em degraus. Imediatamente após o $n$-ésimo choque ($y=0$),
+\begin{align*}
+E_n = \frac{m}{2}\left(\frac{3}{4}V^2 + \frac{e^{2n}V^2}{4}\right) = \frac{mV^2}{8}\left(3+e^{2n}\right).
+\end{align*}
+Verificação: $E_0 = \frac{1}{2}mV^2$.
+
+Por que a energia total: a potencial $mgy$ é nula no lançamento e em cada choque, logo seu mínimo se repete sem definir um instante próprio. A cinética atinge $\frac{3}{8}mV^2$ em cada ápice ($v_y=0$), também de forma recorrente. Só a energia total decresce monotonicamente e se estabiliza.
+
+Como $e^{2n}>0$ para todo $n$ finito, $E_n > E_{\min}$ sempre, e
+\begin{align*}
+\lim_{n\to\infty}E_n = E_{\min} = \frac{3}{8}mV^2 = \frac{3}{4}E_0 = E_0\cos^2 30^\circ.
+\end{align*}
+Esse valor é a energia cinética horizontal, que não se dissipa no solo liso. O mínimo é atingido no instante limite $t_\infty$, ponto de acumulação dos choques, que ocorre em tempo finito. Para $t\ge t_\infty$ a componente vertical está nula, a massa desliza sobre o solo liso com $v_x$ constante e $E = \frac{3}{8}mV^2$ se mantém.
+
+\textbf{6) Item b: intervalo de tempo.} Cada arco é parabólico e simétrico: a subida e a descida duram $u_k/g$ cada. O arco que começa no evento $k$ dura
+\begin{align*}
+\tau_k = \frac{2u_k}{g} = \frac{2}{g}\,e^{k}\frac{V}{2} = e^{k}\frac{V}{g}.
+\end{align*}
+O $n$-ésimo choque ocorre em
+\begin{align*}
+t_n = \sum_{k=0}^{n-1}\tau_k = \frac{V}{g}\,\frac{1-e^{n}}{1-e},
+\end{align*}
+com $t_1 = V/g$, que é o primeiro voo. Como $0<e<1$, a série geométrica converge e o mínimo de energia é atingido em
+\begin{align*}
+\Delta t = t_\infty = \frac{V}{g}\sum_{k=0}^{\infty}e^{k} = \frac{V}{g(1-e)} = \frac{V}{0{,}3\,g} = \frac{10}{3}\,\frac{V}{g}\approx 3{,}33\,\frac{V}{g}.
+\end{align*}
+A massa $m$ não aparece em $\Delta t$: a aceleração vertical é $-g$ para qualquer $m$, e $e$ é adimensional.
+
+\textbf{7) Verificações.}
+\begin{itemize}
+\item Unidades: $[H_n] = \dfrac{(\mathrm{m/s})^2}{\mathrm{m/s^2}} = \mathrm{m}$, $[\Delta t] = \dfrac{\mathrm{m/s}}{\mathrm{m/s^2}} = \mathrm{s}$, $[E] = \mathrm{kg\,(m/s)^2} = \mathrm{J}$.
+\item Casos particulares: para $e=1$, $H_n = V^2/(8g)$ e $E_n = \frac{1}{2}mV^2$ são constantes e $t_\infty\to\infty$, como em quicadas elásticas. Para $e=0$, $H_n=0$ para $n\ge 1$, $E_1 = E_{\min}$ e $\Delta t = V/g$, que é o primeiro pouso.
+\item Monotonia: $H_n$ e $E_n$ decrescem com $n$, e $E_{\min}/E_0 = \cos^2 30^\circ = 3/4$ coincide com a fração horizontal da energia inicial.
+\item Ordem de grandeza: com $V=10\,\mathrm{m/s}$ e $g=10\,\mathrm{m/s^2}$, tem-se $H_0 = 1{,}25\,\mathrm{m}$, $H_1 \approx 0{,}61\,\mathrm{m}$, $H_2 \approx 0{,}30\,\mathrm{m}$ e $\Delta t \approx 3{,}3\,\mathrm{s}$.
+\end{itemize}
+
+ANSWER: (a) $H_n = \dfrac{(0{,}49)^{n}\,V^2}{8g} = \dfrac{e^{2n}V^2\operatorname{sen}^2 30^\circ}{2g}$, com $e=0{,}7$ e $H_0 = \dfrac{V^2}{8g}$; (b) $\Delta t = \dfrac{V}{g(1-0{,}7)} = \dfrac{10\,V}{3\,g}\approx 3{,}33\,\dfrac{V}{g}$, instante em que a energia atinge o mínimo $E_{\min} = \dfrac{3}{8}mV^2$ (no limite de infinitos choques).

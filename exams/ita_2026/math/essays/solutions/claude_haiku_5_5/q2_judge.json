@@ -1,0 +1,51 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "n = 15. A entrada da primeira linha e terceira coluna de A^n é a_n = n(n+3)/2 (provada por indução). A condição a_n > 119 equivale a (n-14)(n+17) > 0, ou seja n > 14. Para n = 14 a entrada vale exatamente 119, que não é maior que 119; para n = 15 vale 135.",
+  "judge_reference": {
+    "reference_solution": "**Questão 02 — Resolução de referência**\n\nEnunciado (conferido na prova, p. 3): A = [[1,1,2],[0,1,1],[0,0,1]]. Determinar o menor n ∈ ℕ tal que a entrada (1,3) de Aⁿ, que chamaremos aₙ, seja maior que 119.\n\n**1. Decomposição de A.** Escreva A = I + N, com N = [[0,1,2],[0,0,1],[0,0,0]].\n- N² = [[0,0,1],[0,0,0],[0,0,0]]\n- N³ = N²·N = 0 (N é nilpotente).\n\n**2. Potência de A pelo binômio.** I e N comutam (I é a identidade), então vale (I+N)ⁿ = Σₖ C(n,k)·Nᵏ. Como N³ = 0, sobram apenas os três primeiros termos:\nAⁿ = I + n·N + C(n,2)·N² = [[1, n, 2n + C(n,2)], [0, 1, n], [0, 0, 1]],\nonde C(n,2) = n(n−1)/2. Para n = 1 a fórmula também vale, pois C(1,2) = 0.\n\n**3. Entrada (1,3).** Da matriz acima:\naₙ = 2n + n(n−1)/2 = (n² + 3n)/2 = n(n+3)/2.\n\n**4. Verificação independente (recorrência).** Usando Aⁿ = Aⁿ⁻¹·A, a entrada (1,3) é\naₙ = (Aⁿ⁻¹)₁₁·2 + (Aⁿ⁻¹)₁₂·1 + (Aⁿ⁻¹)₁₃·1 = 2 + (n−1) + aₙ₋₁ = aₙ₋₁ + n + 1,\ncom a₀ = 0 (A⁰ = I). Somando: aₙ = Σₖ₌₁ⁿ (k+1) = n(n+1)/2 + n = n(n+3)/2, coincidindo com o passo 3.\nConferência direta: A² tem (1,3) = [1,1,2]·[2,1,1] = 2+1+2 = 5 = 2·5/2. ✓\n\n**5. Resolução da inequação.** aₙ > 119 ⟺ n(n+3) > 238 ⟺ n² + 3n − 238 > 0 ⟺ (n − 14)(n + 17) > 0.\nComo n ∈ ℕ, então n + 17 > 0, logo a condição equivale a n > 14, isto é, n ≥ 15.\n(As raízes são 14 e −17; a raiz −17 não pertence a ℕ.)\n\n**6. Conferência numérica e minimalidade.**\n- a₁₃ = 13·16/2 = 104 ≤ 119\n- a₁₄ = 14·17/2 = 119, que NÃO é maior que 119\n- a₁₅ = 15·18/2 = 135 > 119\n\nA sequência aₙ é estritamente crescente para n ≥ 1 (produto de fatores positivos crescentes), então todos os n ≤ 14 falham e n = 15 é o menor valor que satisfaz a condição.\n\n**Resposta:** n = 15 (com (A¹⁵)₁₃ = 135; e (A¹⁴)₁₃ = 119 não supera 119).\nObs.: a questão é dissertativa, não há alternativas.\n\nOs cálculos foram conferidos por multiplicação exata de matrizes para n = 1..20 em Python (inteiros): a fórmula n(n+3)/2 bate com todas as entradas, e o primeiro n com entrada > 119 é 15.",
+    "final_answer": "n = 15.\n\nResumo: A = I + N, com N nilpotente (N³ = 0). Assim Aⁿ = I + nN + C(n,2)N², e a entrada (1,3) de Aⁿ é aₙ = n(n+3)/2. A condição aₙ > 119 equivale a (n−14)(n+17) > 0, logo n > 14 para n ∈ ℕ. Como a₁₄ = 119 (não supera 119) e a₁₅ = 135, o menor n é 15.",
+    "pitfalls": [
+      "Desigualdade estrita: a₁₄ = 14·17/2 = 119 exatamente, e o enunciado pede 'maior que 119'. Responder n = 14 (usando ≥) está errado.",
+      "Esquecer o termo C(n,2)·N² do binômio e usar só a linha 2n: resulta em 2n > 119, ou seja n = 60, resposta errada. A entrada (1,3) tem contribuição quadrática de C(n,2) vinda de N².",
+      "Erro na identidade binomial: usar C(n+1,2) ou n(n+1)/2 em vez de n(n−1)/2 muda a fórmula. Valide com n = 1 (deve dar 2) e n = 2 (deve dar 5).",
+      "Índice da entrada: 'primeira linha e terceira coluna' é (1,3). A entrada (3,1) de Aⁿ é sempre 0 (A é triangular superior), então nunca superaria 119; a questão não faria sentido com esse índice.",
+      "A não é diagonalizável: tem único autovalor 1 (triangular com diagonal de 1s) e N ≠ 0. Não é válido usar Aⁿ = PDⁿP⁻¹ com D = I nem fórmulas de autovalores distintos.",
+      "Raiz espúria: as raízes de n² + 3n − 238 = 0 são 14 e −17. A raiz −17 não está em ℕ e deve ser descartada explicitamente; o conjunto solução em ℕ é n ≥ 15.",
+      "Minimalidade: não basta testar alguns valores. Para concluir que 15 é o menor, é preciso justificar que aₙ é crescente em ℕ (ou que aₙ ≤ 119 para todo n ≤ 14), senão a resposta fica incompleta.",
+      "Regra da prova (item 8): expressões numéricas devem ser resolvidas integralmente. Escreva 14·17/2 = 119 e 15·18/2 = 135 como inteiros, sem deixar C(14,2) ou aproximações decimais sem simplificar.",
+      "Confundir (1,2) com (1,3): a entrada (1,2) de Aⁿ é n, enquanto (1,3) é n(n+3)/2. Trocar uma pela outra leva a uma inequação diferente."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "n = 15. A entrada da primeira linha e terceira coluna de A^n é a_n = n(n+3)/2 (provada por indução). A condição a_n > 119 equivale a (n-14)(n+17) > 0, ou seja n > 14. Para n = 14 a entrada vale exatamente 119, que não é maior que 119; para n = 15 vale 135.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A checagem de 'ordem de grandeza' (a_n ≈ n²/2, n² ≈ 238, 'coerente com o resultado') é falsa como verificação. Com a aproximação n²/2 > 119 obtém-se n > 15,4, o que apontaria para n = 16. Só há concordância com n = 15 ao incluir o termo linear 3n/2. Deve ser removida ou reescrita de modo a não sugerir uma confirmação que a aproximação não dá."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'As entradas (1,2) e (2,3) de A^{n+1} são n+1, logo a forma vale para n+1' não menciona explicitamente as demais entradas (zeros e uns). Elas aparecem nos itens de linha acima, mas o fechamento da indução poderia dizer que as demais entradas coincidem com a forma pelas contas das três linhas."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta usa a convenção ℕ = {1,2,...}, coerente com o enunciado, mas não a explicita. A base da indução em n = 1 depende dela. Uma menção curta evitaria ambiguidade para quem lê com ℕ incluindo 0."
+          }
+        ],
+        "summary": "Resposta final conferida: n = 15, igual à referência, e correta. Refiz no Python (inteiros, n = 1..30): a forma [[1,n,n(n+3)/2],[0,1,n],[0,0,1]] confere com A^n, o primeiro n com entrada (1,3) > 119 é 15, e (A^14)_13 = 119 (não estritamente maior). A indução do candidato está completa: a base n = 1 dá a_1 = 2, o passo calcula corretamente A^n·A (colunas (1,0,0), (1,1,0), (2,1,1)) e a identidade a_n + n + 2 = (n+1)(n+4)/2 = a_{n+1} vale. A equivalência a_n > 119 ⟺ (n−14)(n+17) > 0 é exata para todo n ∈ ℕ, então a minimalidade vem direto, sem depender de monotonicidade (mais forte que a argumentação da referência). Armadilhas: desigualdade estrita tratada (a_14 = 119 excluído); raiz −17 descartada; índice (1,3) usado; itens 8 atendido (14·17/2 = 119 e 15·18/2 = 135 escritos como inteiros). Os problemas são apenas menores: a checagem de ordem de grandeza é enganosa (n²/2 sugeriria 16), e o fechamento da indução poderia ser mais explícito. Texto de nível de gabarito comentado, com nota 9 pelas falhas menores de redação.\"}"
+      }
+    }
+  ]
+}

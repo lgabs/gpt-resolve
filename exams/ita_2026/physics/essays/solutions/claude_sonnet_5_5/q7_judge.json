@@ -1,0 +1,59 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) I = I_0 x^{N+1} cos^{2N}(φ/N); b) R = sqrt( P / (π I_0 x^{N+1} cos^{2N}(φ/N)) )",
+  "judge_reference": {
+    "reference_solution": "**Hipóteses (o enunciado as autoriza):** o feixe é cilíndrico e homogêneo, de raio R e área A = πR². Os polarizadores não alteram a seção do feixe e o analisador recolhe o feixe inteiro. O laser é totalmente polarizado, paralelo ao eixo do 1º polarizador. x é a fração da INTENSIDADE transmitida em relação ao caso ideal, a cada polarizador.\n\n**Passo 0 – ângulo entre polarizadores consecutivos.** São N+1 polarizadores, então há N \"degraus\" de ângulo β entre eles. Como φ = Nβ, tem-se β = φ/N.\n\n**a) Intensidade após o sistema**\n\n1) 1º polarizador. A luz já é polarizada paralelamente ao eixo, então a lei de Malus dá cos²0 = 1. No caso ideal sairia I₀. Com perdas (reflexão e absorção), sai I₁ = x·I₀.\n\n2) Polarizadores 2 a N+1. Cada um tem o eixo a β do anterior. A luz que chega a ele está polarizada ao longo do eixo do anterior, pois o polarizador anterior \"repolariza\" o feixe. Aplica-se Malus entre eixos consecutivos, e cada passagem ainda multiplica por x:\nI_{k+1} = x · I_k · cos²β, para k = 1, …, N.\n\n3) Compondo os N degraus:\nI_{N+1} = x I₀ · (x cos²β)^N = I₀ x^{N+1} cos^{2N}β.\n\nCom β = φ/N:\n\n**I = I₀ · x^{N+1} · cos^{2N}(φ/N)**\n\nEquivalente: I = I₀ [x cos²(φ/N)]^N · x. Na prática cos^{2N}(φ/N) = |cos(φ/N)|^{2N}.\n\n**b) Raio do feixe**\n\nA potência registrada é a intensidade vezes a área do feixe homogêneo: P = I·A = I·πR². Logo R = √(P/(πI)). Substituindo I:\n\n**R = √( P / [ π I₀ x^{N+1} cos^{2N}(φ/N) ] ) = (1 / [x^{(N+1)/2} cos^N(φ/N)]) · √(P/(π I₀))**\n\n**Verificações.**\n- Dimensão: P/(πI) tem unidade W/(W/m²) = m², então R sai em metros.\n- Caso N = 1 e x = 1: I = I₀cos²φ (Malus com um único analisador a φ), como esperado.\n- x = 1 e N → ∞: cos^{2N}(φ/N) → 1 (≈ e^{−φ²/N}). Girar a polarização em muitos passos pequenos é quase sem perda no caso ideal, mas com x < 1 o fator x^{N+1} → 0 domina.\n- Conferi numericamente (script em Python que aplica Malus e o fator x polarizador a polarizador) que a fórmula fechada coincide com a simulação sequencial. Por exemplo, N = 3, φ = 60°, x = 0,9, I₀ = 2 dá I ≈ 0,9035 pelas duas vias. O mesmo vale para o raio com P e I₀ numéricos.",
+    "final_answer": "a) I = I₀ · x^(N+1) · cos^(2N)(φ/N)\n\nb) R = √( P / (π I) ) = √( P / [ π I₀ x^(N+1) cos^(2N)(φ/N) ] ) = (1/[x^((N+1)/2) cos^N(φ/N)]) · √(P/(π I₀))",
+    "pitfalls": [
+      "Contagem de polarizadores: são N+1 polarizadores, mas só N ângulos relativos β. O resultado correto é x^(N+1)·cos^(2N)β. Erros típicos: x^N, ou cos^(2(N+1)), ou cos^(2N)φ.",
+      "O 1º polarizador também introduz o fator x, pois o enunciado diz \"após a passagem por cada polarizador\". Como a luz já é paralela ao eixo, a lei de Malus dá cos²0 = 1 e não há perda por Malus, apenas por x. Quem esquece o x do 1º polarizador obtém x^N.",
+      "Laser já polarizado: não se aplica o fator 1/2 que vale para luz não polarizada incidindo no 1º polarizador.",
+      "Malus em cadeia: o ângulo relevante em cada etapa é β, entre polarizadores consecutivos, e não φ nem kβ medido a partir do 1º. Escrever I₀cos²φ ignora que cada polarizador repolariza o feixe. Deve-se escrever β = φ/N, dado que φ = Nβ.",
+      "x é fração da INTENSIDADE (potência por área), não da amplitude do campo. Tratá-lo como amplitude daria x^(2(N+1)). Cada polarizador contribui com x·cos²β na intensidade.",
+      "No item b, usar P = I·A com A = πR² (feixe cilíndrico homogêneo, seção constante). Não confundir raio com diâmetro, nem usar I₀ no lugar da intensidade final I. R deve sair em função de P, I₀, φ, x, N. O 1/2 do expoente do x e do cos aparece ao tirar a raiz: x^((N+1)/2) e cos^N.",
+      "Condições de validade: 0 < x ≤ 1; N ≥ 1 inteiro; cos(φ/N) ≠ 0, isto é, φ/N ≠ 90°. Por exemplo, N = 1 e φ = 90° dá I = 0, e R fica indeterminado ou infinito para qualquer P > 0. Como P é potência medida, supõe-se P > 0 e I > 0. Por causa da raiz, cos^(2N) = |cos|^(2N), e o resultado independe do sinal de cos(φ/N).",
+      "Hipóteses implícitas que convém declarar: os polarizadores não alteram o raio do feixe (sem refração ou difração apreciável) e o analisador recolhe todo o feixe. Os polarizadores ideais e as perdas estão todas contidas em x.",
+      "Sanidade: para N = 1 e x = 1 recupera-se a lei de Malus, I = I₀cos²φ. Para N grande, cos^(2N)(φ/N) → 1, mas x^(N+1) → 0 se x < 1, então muitos polarizadores têm custo em transmissão."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) I = I_0 x^{N+1} cos^{2N}(φ/N); b) R = sqrt( P / (π I_0 x^{N+1} cos^{2N}(φ/N)) )",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A hipótese de que os polarizadores não alteram a seção do feixe (o raio é o mesmo na entrada e no analisador) e de que o analisador recolhe o feixe inteiro só aparece de forma implícita. O texto fala em \"todo o feixe atinge o analisador\" e em \"intensidade uniforme\", mas o item (b) depende de A = πR² ser a mesma em todo o sistema. Deveria declarar isso explicitamente, junto com a hipótese de polarizadores sem refração ou difração apreciável."
+          },
+          {
+            "severity": "minor",
+            "description": "Não declara o domínio de validade: 0 < x ≤ 1, N ≥ 1 inteiro, cos(φ/N) ≠ 0 e P > 0. Para β = 90° tem-se I = 0 e R indeterminado. A hipótese cosβ > 0 foi imposta, o que é aceitável, mas sem explicar que em (a) o expoente par torna o sinal irrelevante, e que só a segunda forma de R, com cos^N, precisaria de módulo."
+          },
+          {
+            "severity": "minor",
+            "description": "Não explicita que x é fração da INTENSIDADE (e não da amplitude do campo), nem que o fator 1/2 de luz não polarizada não se aplica porque o laser já entra polarizado. O tratamento está correto, pois x multiplica a intensidade e cos²0 = 1 no 1º polarizador, mas essas duas armadilhas conhecidas não foram nomeadas."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa de β = φ/N é só indireta (\"Há N polarizadores além do primeiro\"). Seria mais claro dizer que N+1 polarizadores definem N degraus angulares, de modo que φ = Nβ. Isso reforçaria a distinção entre N+1 fatores x e N fatores cos²β."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação \"x<1 e cosβ<1 ⇒ I<I₀\" é formalmente estrita só se x<1 ou β≠0. O caso x = 1 e φ = 0 dá I = I₀, e a verificação não o menciona. Não há verificação numérica explícita no texto, embora as checagens de limites (N=1, x=1; φ=0; N→∞) estejam corretas."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a minha referência nos dois itens: (a) I = I₀·x^(N+1)·cos^(2N)(φ/N); (b) R = √(P/(πI)) = √(P/[π I₀ x^(N+1) cos^(2N)(φ/N)]). Reli o enunciado no PDF (página 8) e a transcrição confere. Conferi numericamente a fórmula fechada contra uma simulação sequencial de Malus com o fator x em cada polarizador, para três conjuntos de parâmetros, e I e R concordam até a precisão de máquina. O raciocínio está correto: 1º polarizador só com x, pois a luz já é paralela ao eixo e cos²0 = 1; N degraus seguintes com x·cos²β cada; β = φ/N; P = I·πR². As armadilhas centrais foram tratadas: contagem N+1 contra N, x do 1º polarizador incluído, sem fator 1/2, Malus entre polarizadores consecutivos e não φ, e raiz com os expoentes (N+1)/2 e N corretos. As verificações de unidade e de limites são pertinentes e corretas, e a apresentação é clara e organizada. Descontos pequenos: hipóteses implícitas (seção do feixe constante, analisador recolhe tudo) não declaradas com todas as letras, falta o domínio de validade (cos(φ/N) ≠ 0, 0 < x ≤ 1), e a distinção intensidade/amplitude para x não foi discutida. Nenhum erro de conta, de física ou de resposta, então a resolução é publicável como gabarito comentado, com pequenos ajustes de rigor."
+      }
+    }
+  ]
+}

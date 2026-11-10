@@ -1,0 +1,97 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "(a) Após o n-ésimo choque, a velocidade vertical é u_n = (0,7)^n V/2 e a altura máxima do arco seguinte é H_n = (0,7)^{2n} V^2/(8g) = (0,49)^n V^2/(8g), com H_0 = V^2/(8g) (lançamento). (b) A componente horizontal é constante, a energia total decresce em degraus e tende a E_min = 3mV^2/8 = (3/4)E_0. O mínimo é atingido no limite de infinitos choques, no instante Δt = V/[g(1-0,7)] = 10V/(3g) ≈ 3,33 V/g, sem depender de m.",
+  "judge_reference": {
+    "reference_solution": "**Questão 2 (IME 2027, Física): resolução de referência**\n\n**Hipóteses.** Ponto material; sem resistência do ar; g constante; origem no solo (y = 0); choques instantâneos. O solo é perfeitamente liso, logo o impulso do solo em cada choque é só vertical e a componente horizontal da velocidade se conserva. O coeficiente de restituição e = 0,7 atua sobre a componente normal: |v_y após| = e·|v_y antes|.\n\n**Condições iniciais.**\n- v_x = V cos30° = (√3/2)V, constante para sempre.\n- v_y0 = V sen30° = V/2.\n- Altura do 1º voo: H₀ = v_y0²/(2g) = V²/(8g).\n- Tempo do 1º voo: T₁ = 2v_y0/g = V/g.\n\n**Sequência de choques.** Após o k-ésimo choque, a velocidade vertical é u_k = e^k·V/2 (para cima). Por indução, u_{k+1} = e·u_k, pois a energia se conserva no voo entre choques. O voo seguinte tem:\n- altura máxima h_k = u_k²/(2g) = e^{2k}·V²/(8g);\n- duração T_{k+1} = 2u_k/g = e^k·V/g.\n\n**a) Altura máxima após n choques.** A altura máxima após o n-ésimo choque (apogeu do voo n+1) é\n\nh_n = e^{2n}·V²/(8g) = (0,49)ⁿ·V²/(8g) = h₀·(0,7)^{2n}.\n\nVerificação: h₀ = V²/(8g) (sem choques). A altura depende de e², não de e.\n\n**b) Intervalo de tempo até o mínimo da energia.**\n\nEnergia mecânica após n choques, com referência zero no solo, medida no apogeu:\n\nE_n = ½m v_x² + m g h_n = (mV²/8)·(3 + e^{2n}).\n\n- E₀ = ½mV², como esperado.\n- Em cada choque a energia cai: E_n − E_{n+1} = (1 − e²)·m g h_n > 0.\n- O mínimo é E_min = (3/8)mV² = ½m(V cos30°)², atingido no limite n → ∞. Só a energia vertical se dissipa; a horizontal permanece, pois o solo é liso. A massa não para: segue com v_x = (√3/2)V.\n\nInstante do n-ésimo choque:\n\nt_n = Σ_{k=0}^{n−1} T_{k+1} = (V/g)·Σ_{k=0}^{n−1} eᵏ = (V/g)·(1 − eⁿ)/(1 − e).\n\nQuando o número de choques tende a infinito, a série é geométrica convergente:\n\nt_∞ = V/[g(1 − e)] = V/(0,3·g) = 10V/(3g) ≈ 3,33·V/g.\n\nEsse é o intervalo de tempo até o mínimo da energia (limite dos choques). Ele não depende de m.\n\n**Checagem numérica** (V = g = 1, e = 0,7, rodada em Python): alturas 0,125; 0,06125; 0,030012; …, com h_n = 0,49ⁿ/8. Energias 0,5; 0,43625; …, convergindo a 0,375 = 3/8. Instantes de choque 1; 1,7; 2,19; …, convergindo a 3,3333 = 10/3.\n\n**Resposta final.** a) h_n = (0,7)^{2n}·V²/(8g) = (0,49)ⁿ·V²/(8g). b) Δt = V/[g(1 − 0,7)] = 10V/(3g).",
+    "final_answer": "a) Altura máxima após n choques: h_n = e^{2n}·V²/(8g) = (0,7)^{2n}·V²/(8g) = (0,49)ⁿ·V²/(8g). Com n = 0, recupera a altura inicial V²/(8g).\n\nb) Intervalo de tempo até a energia atingir seu mínimo (limite de n → ∞, quando os choques cessam): Δt = V/[g(1 − e)] = V/(0,3·g) = 10V/(3g). Nesse limite a energia mecânica tende a E_min = (3/8)mV², que é só a energia cinética horizontal residual. Não é um valor atingido em tempo finito.\n\nNão há múltipla escolha nesta questão.",
+    "pitfalls": [
+      "Solo perfeitamente liso: o impulso do solo nos choques é só vertical, então v_x = V cos30° se conserva para sempre. Não aplicar e à velocidade total nem supor perda horizontal.",
+      "O mínimo da energia não é zero. A massa não para: fica com energia cinética horizontal ½m(V cos30°)² = (3/8)mV². Responder 'a massa para e a energia vai a zero' está errado.",
+      "O coeficiente de restituição multiplica a componente normal da velocidade: v' = e·v. Assim a altura cai com e², e não com e: h_n = e^{2n}·h₀. Confundir com h_n = e^n·h₀ é erro comum.",
+      "Componente vertical inicial: V sen30° = V/2, não V cos30°. Altura do 1º voo: V²/(8g). Tempo do 1º voo: 2(V/2)/g = V/g.",
+      "Índice: 'altura após n choques' é o apogeu do voo que começa no n-ésimo choque, ou seja h_n = e^{2n}h₀. Com n = 0 vale o lançamento. Não confundir com o apogeu anterior ao n-ésimo choque (h_{n−1}).",
+      "Os tempos de voo formam PG: T_{k+1} = e^k·V/g. Somar a série infinita dá V/[g(1 − e)] = 10V/(3g). Somar só até n dá tempo finito que não é o mínimo da energia. Usar 2V/g ou V sen30°/g erra o fator de voo.",
+      "A energia cai a cada choque (E_n − E_{n+1} = (1 − e²)·m g h_n), mas o mínimo só é atingido assintoticamente. A resposta de b) é um limite (série convergente), não um instante após um número finito de choques.",
+      "Não confundir o mínimo da energia total com o da energia potencial. A potencial é zero no solo e volta a zero a cada choque, e isso não define um intervalo de tempo. O enunciado pede o intervalo até o mínimo da energia, que é o instante em que os choques cessam.",
+      "A resposta final de b) não depende de m, e a referência zero de energia (solo) muda só o valor de E_min, não o tempo.",
+      "Hipóteses a declarar: ponto material, choques instantâneos, sem resistência do ar, g constante, origem no solo, sem rotação induzida pelo impulso (solo liso)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) Altura máxima após o n-ésimo choque: H_n = (0,49)^n V^2/(8g) = e^{2n} V^2 sen^2(30°)/(2g), com H_0 = V^2/(8g) antes do 1º choque. b) Δt = V/[g(1-e)] = 10V/(3g) ≈ 3,33 V/g, instante em que a energia atinge o mínimo E_min = 3mV^2/8 (limite de infinitos choques verticais; a componente horizontal √3V/2 é conservada pois o solo é liso).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Em 3) a relação v_yn = e^n·V/2 é afirmada sem o passo indutivo. Falta escrever v_{k+1} = e·v_k, justificando que a velocidade de impacto é igual à de lançamento do voo anterior (energia conservada no voo). Essa justificativa só aparece depois, de forma implícita, no item 6. Deveria constar no item 3, para que a fórmula de v_yn seja derivada e não apenas apresentada."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'Esses valores também foram conferidos por simulação numérica dos choques' não tem respaldo no texto: não há código, tabela de saída nem método. Os números em si estão corretos (com V=g=10: H_0=1,25; H_1≈0,61; H_2≈0,30; Δt≈3,33 s, que reproduzi). Deve-se remover a afirmação ou mostrar o cálculo. Em gabarito comentado, verificação alegada sem evidência é um problema."
+          },
+          {
+            "severity": "minor",
+            "description": "A independência de Δt em relação a m é a armadilha listada na referência, mas não é mencionada. Deveria haver uma frase dizendo que m não aparece em Δt, pois a massa cancela na dinâmica."
+          },
+          {
+            "severity": "minor",
+            "description": "Não se justifica por que o mínimo pedido é o da energia mecânica total, e não o da potencial (que volta a zero a cada choque) ou o da cinética. O texto apenas diz 'Energia mecânica'. Deveria haver uma linha dizendo que a energia potencial não define um intervalo de tempo útil, e que o mínimo da total ocorre em t_∞."
+          },
+          {
+            "severity": "minor",
+            "description": "Depois de t_∞ a massa não para: continua no solo com v_x = (√3/2)V constante, e E permanece em 3/8·mV². O texto diz 'resta apenas a energia cinética horizontal', mas não afirma explicitamente que o movimento continua nem que o mínimo é mantido a partir de t_∞. Esse é o ponto que separa 'instante em que o mínimo é atingido' de 'limite'."
+          },
+          {
+            "severity": "minor",
+            "description": "As hipóteses não declaram 'sem rotação induzida pelo impulso do solo'. Só 'ponto material' implica isso, mas a referência pede a hipótese explicitamente, pois o solo liso pode induzir rotação se a massa tiver dimensão."
+          }
+        ],
+        "summary": "Resposta final correta nos dois itens e idêntica à referência. (a) H_n = e^{2n}V²/(8g) = (0,49)^n·V²/(8g), com H_0 = V²/(8g). (b) Δt = V/[g(1−e)] = 10V/(3g). Conferi as contas: com V=g=1, as alturas são 0,125; 0,06125; 0,030012…; as energias 0,5; 0,43625; … → 0,375 = 3/8; os instantes de choque 1; 1,7; 2,19… → 10/3. Todas as armadilhas principais foram tratadas: solo liso com v_x conservada; mínimo de energia não nulo (3/8·mV², horizontal residual); altura com e² e não com e; v_y0 = V·sen30°; tempos de voo em PG e soma infinita; mínimo atingido assintoticamente, em tempo finito; índice de H_n (n=0 é o lançamento). Verifiquei também os casos-limite (e=0 dá t=V/g, e=1 dá t→∞) e as unidades. Não há erro de conta nem de física. As falhas são de rigor e completude, não de resultado: falta o passo indutivo de v_yn, há uma afirmação de simulação sem evidência, e faltam quatro pontos que a referência trata explicitamente (independência de m, escolha da energia total, continuidade do movimento após t_∞, hipótese de ausência de rotação). Nota 8,5: resolução quase publicável como gabarito comentado, mas abaixo de 9 por essas lacunas de justificativa.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "(a) Após o n-ésimo choque, a velocidade vertical é u_n = (0,7)^n V/2 e a altura máxima do arco seguinte é H_n = (0,7)^{2n} V^2/(8g) = (0,49)^n V^2/(8g), com H_0 = V^2/(8g) (lançamento). (b) A componente horizontal é constante, a energia total decresce em degraus e tende a E_min = 3mV^2/8 = (3/4)E_0. O mínimo é atingido no limite de infinitos choques, no instante Δt = V/[g(1-0,7)] = 10V/(3g) ≈ 3,33 V/g, sem depender de m.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Após t_∞ a resolução afirma que a massa desliza com v_x constante, mas não justifica explicitamente que a trajetória converge ao solo. Deveria mostrar que H_n → 0 e u_n = e^n V/2 → 0, logo y(t) → 0 e v_y(t) → 0 quando t → t_∞. Hoje isso fica só implícito."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha da energia mecânica total como 'a energia' é justificada apenas pela recorrência da cinética e do potencial. Faltou fechar o argumento: se fosse só a cinética, o mínimo 3/8 mV² já ocorreria no primeiro ápice, em t = V/(2g), o que mostra que a leitura correta é a energia total. Essa comparação deveria estar explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "A obtenção de infinitos choques em tempo finito (acumulação de Zeno) é uma consequência do modelo ideal de choques instantâneos com e constante. Deveria ser declarada como idealização, já que a resposta de b) depende dela."
+          },
+          {
+            "severity": "minor",
+            "description": "Na seção 5 a energia é descrita como 'decresce monotonicamente', mas ela é constante entre choques e cai em degraus; 'não crescente, em degraus' é mais preciso. Também convém dizer explicitamente que Δt é contado a partir do lançamento (t = 0)."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa 'o impulso do solo passa pelo centro de massa' para a ausência de rotação é desnecessária para ponto material. Não é erro, mas é redundante e pouco rigorosa."
+          }
+        ],
+        "summary": "Respostas finais idênticas às da referência, e ambas corretas. Verifiquei por simulação dos choques (python3, n = 0..8): H_n, t_n e E_n batem com as fórmulas do candidato; t_∞ = 10V/(3g) ≈ 3,33 V/g; E_min = 3/8 mV² = E_0 cos²30°. a) h_n = e^{2n}V²/(8g) = (0,49)^n V²/(8g). b) Δt = V/[g(1−e)] = 10V/(3g). As armadilhas foram tratadas: solo liso com v_x conservada; altura com e² (e^{2n}, não e^n); distinção entre energia total e potencial; mínimo de energia não nulo; série geométrica dos tempos de voo; e b) como limite que é atingido em t_∞ finito e mantido depois. As lacunas são de rigor e clareza, não de conteúdo. Nota 9: publicável como gabarito comentado, com polimentos pequenos."
+      }
+    }
+  ]
+}

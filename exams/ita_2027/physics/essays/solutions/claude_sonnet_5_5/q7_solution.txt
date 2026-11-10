@@ -1,0 +1,55 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Modelo.} O voltímetro é ideal (resistência infinita), logo não há corrente no ramo $DB$. Assim $R_1$ e $R_3$ estão em série entre $A$ e $C$, e $R_2$ e $R_4$ também. Pela figura, o terminal positivo da fonte (placa maior) está em $A$, então $V_A=V_s$ e $V_C=0$. Se a polaridade fosse a oposta, só o sinal de $V_o$ mudaria, e não o módulo nem as conclusões. Cada ramo é um divisor de tensão:
+\[
+V_D=V_s\,\frac{R_3}{R_1+R_3},\qquad V_B=V_s\,\frac{R_4}{R_2+R_4}.
+\]
+
+\textbf{Linearização.} Escrevo $R_i=R_0(1+x_i)$ com $|x_i|\ll 1$. Para resistor constante, $x_i=0$. Para extensômetro, $x_i=G\varepsilon_i+\alpha\Delta T$. Usando $(1+x)^{-1}\approx 1-x$ e desprezando produtos de pequenas quantidades:
+\[
+V_D=\frac{V_s}{2}\,(1+x_3)\Big[1+\frac{x_1+x_3}{2}\Big]^{-1}\approx\frac{V_s}{2}\,(1+x_3)\Big[1-\frac{x_1+x_3}{2}\Big]\approx\frac{V_s}{2}\Big[1+\frac{x_3-x_1}{2}\Big],
+\]
+e, analogamente, $V_B\approx\dfrac{V_s}{2}\Big[1+\dfrac{x_4-x_2}{2}\Big]$. Portanto
+\[
+\boxed{V_o=V_D-V_B\approx\frac{V_s}{4}\,\big(x_2+x_3-x_1-x_4\big)}
+\]
+Com $x_i=0$ para todo $i$ obtém-se $V_o=0$ (ponte equilibrada), como esperado.
+
+\textbf{a)} Seja o extensômetro em $R_1$ e $R_2=R_3=R_4=R_0$, com $x=G\varepsilon+\alpha\Delta T$. Então $V_B=V_s/2$ e
+\[
+V_D=\frac{V_s}{2+x}=\frac{V_s}{2}\Big(1+\frac{x}{2}\Big)^{-1}\approx\frac{V_s}{2}\Big(1-\frac{x}{2}\Big)
+\;\Rightarrow\; V_o=V_D-V_B\approx-\frac{V_s}{4}\,x .
+\]
+(O resultado exato é $V_o=-V_s\,x/[2(2+x)]$.) Se o extensômetro estivesse em $R_3$, resultaria $V_o=+V_s x/4$. Em $R_2$ o sinal é $+$ e em $R_4$ é $-$, o que também decorre da fórmula geral. Em qualquer braço o módulo é o mesmo:
+\[
+|V_o|=\frac{V_s}{4}\,\big|G\varepsilon+\alpha\Delta T\big|.
+\]
+Ordem de grandeza: para $G\approx2$ e $\varepsilon=10^{-3}$, $x=2\cdot10^{-3}$. O valor linear é $5\cdot10^{-4}\,V_s$ e o exato é $4{,}995\cdot10^{-4}\,V_s$, com erro relativo $x/2=10^{-3}$, coerente com o regime linear.
+
+Observação: a temperatura entra exatamente como a deformação, então um único extensômetro não separa $\varepsilon$ de $\Delta T$. Esse problema é resolvido no item b).
+
+\textbf{b)} Seja $s_i=+1$ (extensômetro em ponto de tração), $-1$ (extensômetro em ponto de compressão) ou $0$ (resistor $R_0$). Como $|\varepsilon_i|=|\varepsilon|$ e $\Delta T$ é o mesmo para todos, $x_i=s_i G\varepsilon+|s_i|\,\alpha\Delta T$. Substituindo em $V_o$:
+\[
+V_o=\frac{V_s}{4}\Big[G\varepsilon\,\underbrace{(s_2+s_3-s_1-s_4)}_{\text{sensibilidade a }\varepsilon}+\alpha\Delta T\,\underbrace{(|s_2|+|s_3|-|s_1|-|s_4|)}_{\text{sensibilidade a }\Delta T}\Big].
+\]
+Há dois critérios de projeto.
+\begin{itemize}
+\item \emph{Compensação térmica:} $|s_2|+|s_3|=|s_1|+|s_4|$, isto é, o número de extensômetros nos braços $R_2,R_3$ deve ser igual ao número nos braços $R_1,R_4$. Um extensômetro ao lado de um $R_0$ fixo não compensa $\Delta T$. Por exemplo, $R_2$ e $R_3$ extensômetros com $R_1=R_4=R_0$ dão $V_o=\tfrac{V_s}{2}(G\varepsilon+\alpha\Delta T)$, em que $\Delta T$ soma e não se distingue de $\varepsilon$.
+\item \emph{Sensibilidade máxima a $\varepsilon$:} como $|s_i|\le1$, vale $|s_2+s_3-s_1-s_4|\le4$. A igualdade exige $s_2=s_3=-s_1=-s_4=\pm1$. Então os quatro dispositivos são extensômetros, e esse caso já satisfaz a compensação térmica.
+\end{itemize}
+Entre as montagens compensadas, a meia ponte (dois extensômetros em braços adjacentes, em pontos de tipos opostos, os outros dois $R_0$) dá $|V_o|=V_sG|\varepsilon|/2$. A ponte completa dá o dobro disso. Uma varredura numérica das $3^4$ combinações, restrita às compensadas termicamente, confirma esse máximo.
+
+\textbf{Montagem.} Os quatro dispositivos são extensômetros, sem nenhum $R_0$:
+\begin{itemize}
+\item $R_2$ e $R_3$ (braços opostos) em pontos de \textbf{tração};
+\item $R_1$ e $R_4$ (braços opostos) em pontos de \textbf{compressão}.
+\end{itemize}
+Os braços adjacentes ficam sempre em tipos diferentes. A montagem espelhada ($R_1,R_4$ em tração e $R_2,R_3$ em compressão) é equivalente e só inverte o sinal de $V_o$. Então $x_2=x_3=G\varepsilon+\alpha\Delta T$ e $x_1=x_4=-G\varepsilon+\alpha\Delta T$, o que dá
+\[
+V_o=\frac{V_s}{4}\,4G\varepsilon=V_s\,G\,\varepsilon .
+\]
+Isso é quatro vezes o sinal do item a), e a parcela $\alpha\Delta T$ se cancela. Sem aproximação, os divisores dão $V_o=V_sG\varepsilon/(1+\alpha\Delta T)\approx V_sG\varepsilon(1-\alpha\Delta T)$. O resíduo é do tipo $\varepsilon\alpha\Delta T$, desprezível pelo enunciado. Ele só altera levemente o ganho e não cria um sinal de deslocamento (\emph{offset}) térmico.
+
+ANSWER: a) $|V_o|=\dfrac{V_s}{4}\,|G\varepsilon+\alpha\Delta T|$. b) Os quatro dispositivos devem ser extensômetros, sem $R_0$ fixo: $R_2$ e $R_3$ em pontos de tração e $R_1$ e $R_4$ em pontos de compressão (ou o inverso). Isso dá $|V_o|=V_sG|\varepsilon|$, sem efeito de $\Delta T$ em primeira ordem.

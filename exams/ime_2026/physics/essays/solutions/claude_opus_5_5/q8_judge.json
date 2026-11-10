@@ -1,0 +1,50 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) O calor a retirar do suco é Q_F = 1000·(1·35 + 72,5 + 0,5·25) kcal = 1,2·10^5 kcal = 4,8·10^8 J. O COP de Carnot é 246/61,5 = 4, então o COP do equipamento é 3. O trabalho fica W = Q_F/3 = 1,6·10^8 J, e a potência é P = W/5760 s ≈ 27,8 kW ≈ 37 HP. b) 37 HP > 30 HP, então a estimativa do engenheiro não procede: com 30 HP o congelamento levaria cerca de 118,5 min, e não 96 min. Os 37 HP já são um mínimo, porque as perdas foram desprezadas.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição bate com a página 8 da prova original, e a questão não tem figura.\n\n## a) Análise termodinâmica e potência do compressor\n\n**1) Calor retirado do suco (1ª lei aplicada ao produto).** A massa é m = 1 t = 1000 kg. O suco esfria de 33 °C até −27 °C em três etapas.\n\n- **Resfriamento do líquido, de 33 °C a −2 °C:**\n  Q₁ = m·c_L·ΔT₁ = 1000 · 1,0 · 35 = 35 000 kcal\n- **Solidificação a −2 °C:**\n  Q₂ = m·L = 1000 · 72,5 = 72 500 kcal\n- **Resfriamento do sólido, de −2 °C a −27 °C:**\n  Q₃ = m·c_S·ΔT₃ = 1000 · 0,5 · 25 = 12 500 kcal\n\nSomando: Q_F = Q₁ + Q₂ + Q₃ = 120 000 kcal = 1,2·10⁸ cal = 4,8·10⁸ J (usando 1 cal = 4 J).\n\nEsse calor sai na duração Δt = 96 min = 5760 s. A taxa média de retirada de calor da fonte fria é:\n\nQ̇_F = 4,8·10⁸ / 5760 ≈ 8,33·10⁴ W ≈ 83,3 kW\n\n**2) Desempenho do refrigerador.**\n- A fonte fria é a câmara: T_F = −27 °C = 246 K.\n- A fonte quente é o ambiente: T_Q = 34,5 °C = 307,5 K.\n- Então T_Q − T_F = 61,5 K.\n\nO COP de Carnot de um **refrigerador** é:\n\nCOP_Carnot = T_F/(T_Q − T_F) = 246/61,5 = 4\n\nCom 273,15 K o valor seria 4,002, e o resultado praticamente não muda.\n\nO COP real do equipamento é COP = (3/4)·4 = 3.\n\n**3) Trabalho e potência.**\n- Trabalho de acionamento: W = Q_F/COP = 4,8·10⁸/3 = 1,6·10⁸ J\n- Calor rejeitado ao ambiente: Q_Q = Q_F + W = 6,4·10⁸ J\n\nPotência média do compressor:\n\nP = W/Δt = 1,6·10⁸/5760 ≈ 2,78·10⁴ W = 27,8 kW\n\nEm HP, com 1 HP = 0,75 kW:\n\n**P = 27,78/0,75 = 1000/27 ≈ 37 HP**\n\n## b) Comparação com os 30 HP do engenheiro\n\nA potência necessária, cerca de 37 HP, é **maior** que os 30 HP propostos. A estimativa do engenheiro **não procede**. O compressor de 30 HP não atende \"com folga\"; na verdade não atende:\n\n- 30 HP = 22,5 kW. Com COP = 3, ele retira 67,5 kW, e não os 83,3 kW exigidos.\n- Com 30 HP, o congelamento levaria Δt' = 1,6·10⁸ J / 22 500 W ≈ 7,1·10³ s ≈ 118,5 min, e não 96 min. São cerca de 23 % a mais de tempo.\n- Para 30 HP bastarem em 96 min, o COP teria de ser 83,3/22,5 ≈ 3,70. Isso equivale a cerca de 93 % do COP de Carnot, bem acima dos 75 % informados.\n- Os 30 HP só bastariam para uma máquina **ideal de Carnot** (COP = 4, P ≈ 27,8 HP), e mesmo assim com folga pequena. Uma máquina real nunca atinge o desempenho de Carnot (2ª lei).\n- O cálculo acima é um **limite inferior** da potência real, por três motivos:\n  - ele despreza o calor que entra pelas paredes da câmara vindo do ambiente a 34,5 °C;\n  - despreza o resfriamento do ar, das embalagens e da estrutura;\n  - despreza as perdas do motor e do compressor.\n\nA potência real deve ser maior que 37 HP. Um projeto sensato especificaria algo como 40 HP ou mais, com margem de segurança.\n\n**Conclusão:** P ≈ 37 HP > 30 HP. O equipamento proposto é subdimensionado e a afirmação do engenheiro é improcedente.",
+    "final_answer": "a) O calor retirado do suco é Q_F = 35 000 + 72 500 + 12 500 = 120 000 kcal = 4,8·10⁸ J. O COP de Carnot do refrigerador é 246/61,5 = 4, e o COP real é 3. O trabalho vale W = 1,6·10⁸ J em 5760 s, o que dá P ≈ 27,8 kW ≈ 37 HP (exatamente 1000/27 ≈ 37,04 HP).\n\nb) 37 HP > 30 HP, então a estimativa do engenheiro não procede: 30 HP não atende, nem \"com folga\". Com 30 HP o processo levaria cerca de 118,5 min, e não 96 min. Os 30 HP só bastariam para uma máquina ideal de Carnot (cerca de 27,8 HP). Perdas reais, como infiltração de calor e ineficiências, exigem potência ainda maior que 37 HP.",
+    "pitfalls": [
+      "Considerar as três etapas: resfriar o líquido (ΔT = 35 °C, de 33 até −2), solidificar (calor latente) e resfriar o sólido (ΔT = 25 °C, de −2 até −27). Esquecer o calor latente ou usar um único calor específico para todo o intervalo dá um resultado errado.",
+      "A massa é 1 tonelada = 1000 kg. Use as conversões dadas na prova (1 cal = 4 J; 1 HP = 3/4 kW = 750 W), e não 4,186 J nem 746 W.",
+      "O COP de Carnot exige temperaturas absolutas: T_F = 246 K e T_Q = 307,5 K. Usar °C na razão T_F/(T_Q − T_F) é erro grave. Só a diferença T_Q − T_F = 61,5 vale tanto em °C quanto em K. Com 273,15 K o COP fica 4,002 e a resposta não muda (cerca de 37 HP).",
+      "Usar o COP de refrigerador, T_F/(T_Q − T_F) = 4, e não o de bomba de calor, T_Q/(T_Q − T_F) = 5. Com o COP errado (0,75·5 = 3,75) sai cerca de 29,6 HP, o que 'confirmaria' falsamente os 30 HP.",
+      "Aplicar o fator 3/4: o COP real é 3. Usar o COP de Carnot sem o fator dá cerca de 27,8 HP e leva à conclusão errada de que 30 HP bastam.",
+      "As fontes térmicas são a câmara a −27 °C (fria) e o ambiente a 34,5 °C (quente). Não se usa a temperatura variável do suco nem o ponto de congelamento como T_F. O suco entra a 33 °C, abaixo do ambiente, então todo esse calor precisa ser bombeado.",
+      "A potência é média: trabalho total dividido por 96 min = 5760 s. Não se pode confundir o calor retirado (cerca de 83,3 kW) com a potência do compressor (cerca de 27,8 kW), nem com o calor rejeitado (Q_Q = Q_F + W = 6,4·10⁸ J, cerca de 111 kW).",
+      "No item b, a conclusão tem de ser explícita: 37 HP > 30 HP, logo a estimativa não procede. Boas respostas quantificam a diferença (o tempo com 30 HP seria cerca de 118,5 min; o COP necessário seria cerca de 3,7, ou 93 % do de Carnot) e notam que perdas reais (infiltração pelas paredes, embalagens, eficiência do motor) aumentam ainda mais a potência necessária. Isso torna 37 HP um limite inferior."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) O calor a retirar do suco é Q_F = 1000·(1·35 + 72,5 + 0,5·25) kcal = 1,2·10^5 kcal = 4,8·10^8 J. O COP de Carnot é 246/61,5 = 4, então o COP do equipamento é 3. O trabalho fica W = Q_F/3 = 1,6·10^8 J, e a potência é P = W/5760 s ≈ 27,8 kW ≈ 37 HP. b) 37 HP > 30 HP, então a estimativa do engenheiro não procede: com 30 HP o congelamento levaria cerca de 118,5 min, e não 96 min. Os 37 HP já são um mínimo, porque as perdas foram desprezadas.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A conversão para HP escreve P = 27,8/0,75 HP = 1000/27 HP. Isso iguala um quociente com valor arredondado (≈ 37,07) a uma fração exata (≈ 37,04). Não muda o resultado, mas o rigor pede escrever P = (1,6·10⁸/5760)/750 = 1000/27 ≈ 37 HP, ou usar '≈' em vez de '='."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução usa 273 K (−27 °C = 246 K; 34,5 °C = 307,5 K) sem dizer que adota essa aproximação. Uma frase bastaria, por exemplo: com 273,15 K o COP fica ≈ 4,002 e o resultado não muda."
+          },
+          {
+            "severity": "minor",
+            "description": "A discussão do item b poderia ser mais completa, mas isso é opcional. Faltou dizer que os 30 HP só bastariam se a máquina fosse ideal (Carnot, ≈ 27,8 HP). Faltou também dizer que, para 30 HP bastarem em 96 min, o COP teria de ser ≈ 3,7, ou seja ≈ 93 % do de Carnot, acima dos 75 % informados. O que está na resolução já sustenta bem a conclusão."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 8 do PDF original, e a transcrição está fiel. Refiz as contas em python. A resolução do candidato está correta e coincide com a minha referência em todos os itens.\n\n**Item a: correto, ≈ 37 HP**\n- As três etapas estão presentes: 35 000 + 72 500 + 12 500 = 1,2·10⁵ kcal = 4,8·10⁸ J, usando 1 cal = 4 J como manda a prova.\n- O COP é o de refrigerador, calculado com temperaturas absolutas: β_C = 246/61,5 = 4. Com o fator 3/4, o COP real é β = 3.\n- O trabalho é W = 1,6·10⁸ J. A potência média é W/5760 s ≈ 27,8 kW = 1000/27 HP ≈ 37 HP, usando 1 HP = 0,75 kW.\n- O candidato também calcula o calor rejeitado, Q_Q = 6,4·10⁸ J, e confere a ordem de grandeza: 83 kW / 3 ≈ 28 kW.\n\n**Item b: correto e bem argumentado**\n- A conclusão é explícita: 37 HP > 30 HP, logo a estimativa não procede.\n- A diferença é quantificada: 30 HP fica 19 % abaixo do necessário e entrega 81 % do trabalho exigido em 96 min. O tempo com 30 HP seria ≈ 118,5 min. Conferi todos esses valores.\n- O candidato observa que 37 HP é um limite inferior, porque a conta despreza a infiltração pelas paredes, a massa térmica da câmara e da embalagem e o rendimento do motor.\n\n**Armadilhas:** todas foram evitadas.\n- Considerou as três etapas, incluindo o calor latente.\n- Usou kelvin.\n- Usou o COP de refrigerador, e não o de bomba de calor.\n- Aplicou o fator 3/4.\n- Usou como fontes térmicas a câmara e o ambiente.\n- Tratou a potência como média e não a confundiu com Q̇_F nem com Q̇_Q.\n- Deu uma conclusão explícita no item b.\n\n**Restrições:** só há detalhes menores.\n- A igualdade 27,8/0,75 = 1000/27 mistura um valor arredondado com uma fração exata.\n- A aproximação de 273 K não é comentada.\n- Faltou a observação opcional de que 30 HP só bastariam para uma máquina ideal de Carnot.\n\nA resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

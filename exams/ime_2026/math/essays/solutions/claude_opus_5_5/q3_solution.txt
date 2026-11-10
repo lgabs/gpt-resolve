@@ -1,0 +1,44 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{1) Forma fechada de $f$.} Para $x\in[0,1)$, seja $t=\sqrt{x}\in[0,1)$. Como $\sqrt{x^n}=(\sqrt{x})^n=t^n$, a série é geométrica com razão $t$, e $0\le t<1$, logo converge:
+\[
+f(x)=\sum_{n=1}^{\infty}t^n=\frac{t}{1-t}=\frac{\sqrt{x}}{1-\sqrt{x}} .
+\]
+
+\textbf{2) Coeficiente angular da secante.} Sejam $s=\sqrt{a}\in[0,1)$ e $t=\sqrt{x}\in[0,1)$. Como $x\neq a$, temos $t\neq s$. Então
+\[
+f(x)-f(a)=\frac{t}{1-t}-\frac{s}{1-s}=\frac{t(1-s)-s(1-t)}{(1-t)(1-s)}=\frac{t-s}{(1-t)(1-s)},
+\qquad x-a=t^2-s^2=(t-s)(t+s).
+\]
+Como $t\neq s$, podemos cancelar o fator $t-s$:
+\[
+m(t)=\frac{f(x)-f(a)}{x-a}=\frac{1}{(1-s)\,(1-t)(t+s)} .
+\]
+Note que $t+s>0$: se fosse $t+s=0$, teríamos $t=s=0$, o que contraria $t\neq s$. Assim $m(t)>0$.
+
+\textbf{3) Minimização.} Como $1-s>0$ é constante, minimizar $m$ equivale a maximizar
+\[
+g(t)=(1-t)(t+s)=-t^2+(1-s)t+s,\qquad t\in[0,1),\ t\neq s ,
+\]
+com $g(t)>0$ nesse intervalo. O gráfico de $g$ é uma parábola com concavidade para baixo. Seu vértice é
+\[
+t_0=\frac{1-s}{2}\in\left(0,\tfrac12\right]\subset[0,1),
+\qquad
+g(t_0)=\left(1-\frac{1-s}{2}\right)\left(\frac{1-s}{2}+s\right)=\left(\frac{1+s}{2}\right)^2 .
+\]
+Esse máximo só é atingido por uma reta secante se $t_0\neq s$. Temos $t_0=s\iff s=\tfrac13\iff a=\tfrac19$, que é exatamente o caso excluído pelo enunciado. Se fosse $a=\tfrac19$, o ``mínimo'' corresponderia à reta tangente e nenhuma secante o atingiria. Portanto, para $a\neq\tfrac19$, a secante de menor coeficiente angular existe, passa pelo ponto de abscissa $x_0=t_0^2=\left(\frac{1-\sqrt a}{2}\right)^2$, e tem
+\[
+m_{\min}=\frac{1}{(1-s)\left(\frac{1+s}{2}\right)^2}=\frac{4}{(1-s)(1+s)^2}=\frac{4}{(1-a)(1+\sqrt a)} .
+\]
+
+\textbf{4) Condição de paralelismo.} Como $m_{\min}$ é finito e positivo, a reta $ky-4x=2026$ não pode ser vertical, logo $k\neq0$. Ela se escreve $y=\frac{4}{k}x+\frac{2026}{k}$ e tem coeficiente angular $\frac4k$. Retas paralelas têm o mesmo coeficiente angular:
+\[
+\frac{4}{k}=\frac{4}{(1-a)(1+\sqrt a)}\ \Longrightarrow\ k=(1-a)(1+\sqrt a)=(1-\sqrt a)(1+\sqrt a)^2 .
+\]
+
+\textbf{Verificação.} Para $a=0$: $f(x)/x=\dfrac{1}{\sqrt x\,(1-\sqrt x)}$ é mínimo em $\sqrt x=\tfrac12$ e vale $4$. Daí $\frac4k=4$, ou seja, $k=1$, o que coincide com a fórmula $(1-0)(1+0)=1$. Além disso, $k>0$ para todo $a\in[0,1)$, o que é coerente com $m_{\min}>0$.
+
+\medskip
+ANSWER: $k=(1-a)(1+\sqrt{a})=(1-\sqrt a)(1+\sqrt a)^2$

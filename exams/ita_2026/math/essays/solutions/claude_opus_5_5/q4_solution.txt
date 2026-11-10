@@ -1,0 +1,49 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{1. Modelagem.} Os 33 círculos são concêntricos, com raios em progressão aritmética de razão $1$:
+\[
+r_k=\alpha+k,\qquad k=0,1,2,\dots,32 ,
+\]
+em que $r_0=\alpha$ é o círculo central (vermelho) e $r_{32}=\alpha+32$ é o maior círculo, a borda do alvo. Para $k=1,\dots,32$, chamamos de \emph{anel $k$} a coroa circular entre $r_{k-1}$ e $r_k$. São, portanto, 32 anéis.
+
+Como as cores se alternam e o centro é vermelho, o anel $1$ é branco, o anel $2$ é vermelho, e assim por diante. Logo,
+\[
+\text{anel } k \text{ é vermelho} \iff k \text{ é par}, \qquad k\in\{2,4,\dots,32\},
+\]
+o que dá $16$ anéis vermelhos. Também há $16$ anéis brancos, com $k$ ímpar.
+
+\textbf{2. Área de uma coroa.} A coroa entre os raios $R>r$ tem área $\pi(R^2-r^2)=\pi(R-r)(R+r)$. Para o anel $k=2j$, com $j=1,\dots,16$, temos $R-r=1$, então
+\[
+A_{2j}=\pi\big[(\alpha+2j)^2-(\alpha+2j-1)^2\big]=\pi\,(2\alpha+4j-1).
+\]
+
+\textbf{3. Soma.} A área vermelha é a do círculo central somada às áreas dos 16 anéis vermelhos:
+\[
+A_V=\pi\alpha^2+\pi\sum_{j=1}^{16}(2\alpha+4j-1)
+=\pi\alpha^2+\pi\Big(16\cdot 2\alpha+4\cdot\frac{16\cdot 17}{2}-16\Big).
+\]
+Como $4\cdot 136=544$ e $544-16=528$, obtemos
+\[
+A_V=\pi\big(\alpha^2+32\alpha+528\big).
+\]
+
+\textbf{4. Verificação.} Calculando a área branca do mesmo modo, com $k=2j-1$:
+\[
+A_B=\pi\sum_{j=1}^{16}\big[(\alpha+2j-1)^2-(\alpha+2j-2)^2\big]=\pi\sum_{j=1}^{16}(2\alpha+4j-3)=\pi(32\alpha+496).
+\]
+Somando as duas áreas:
+\[
+A_V+A_B=\pi(\alpha^2+64\alpha+1024)=\pi(\alpha+32)^2,
+\]
+que é exatamente a área do maior círculo. A conta está consistente.
+
+Duas observações confirmam o resultado. Primeiro, $A_V-A_B=\pi(\alpha^2+32)>0$: isso é coerente, pois o vermelho tem a mesma quantidade de anéis que o branco, cada anel vermelho fica uma unidade mais para fora do que o branco anterior, e o vermelho ainda tem o disco central. Segundo, no caso particular $\alpha=1$, a fórmula dá $A_V=561\pi$. Somando diretamente, $\pi\big[1+\sum_{j=1}^{16}(4j+1)\big]=\pi(1+544+16)=561\pi$, o mesmo valor.
+
+\textbf{Resposta:} a área total em vermelho é
+\[
+A_V=\pi\left(\alpha^2+32\alpha+528\right)\ \text{unidades de área}.
+\]
+
+ANSWER: $A_{\text{vermelha}}=\pi\left(\alpha^{2}+32\alpha+528\right)$ unidades de área.

@@ -1,0 +1,103 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "a) α = 1, β = 2, γ = −1. b) k = 1,25×10⁻² L·mol⁻¹·s⁻¹ (= k₁k₂/k₃). c) Lei completa ν₀ = (k₁k₂/k₃)·[A][B]²/([C] + (k₂/k₃)[B]); na faixa dos dados, com (k₂/k₃)[B] ≪ [C], ν₀ = 1,25×10⁻²·[A][B]²/[C] (mol·L⁻¹·s⁻¹). d) Ordem global = 2. Observação: o valor impresso do experimento 4 (1,28×10⁻⁶) é inconsistente com qualquer lei de potência racional; o valor compatível é 1,28×10⁻³ (hipótese de erro de potência de dez, a conferir na errata). Os itens a) a d) não dependem desse dado.",
+  "judge_reference": {
+    "reference_solution": "**0. Verificação dos dados (antes de resolver)**\nA transcrição confere com a página 4 da prova (o ν₀ do experimento 4 está impresso como 1,28×10⁻⁶).\n- Esse valor não é compatível com nenhuma lei de potência de ordens racionais. ν₄/ν₁ = 1,024 = 2⁷/5³, mas 8^α·16^β·2^γ = 2^(3α+4β+γ) só produz potências de 2.\n- Se o dado for tomado literalmente, resulta log₂(1,024) = 7 − 3·log₂5 ≈ 0,0342 (com ln2 ≃ 0,693 e ln5 ≃ 1,609: (7·0,693 − 3·1,609)/0,693 ≈ 0,035). Resolvendo o sistema, obtém-se α ≈ −1,49, β ≈ 1,00, γ ≈ 0,49, ordem global ≈ 0. São ordens irracionais, e α negativo não tem sentido químico. Além disso, a análise abaixo mostra que α deve ser 1.\n- Os experimentos 1, 2 e 3 fecham exatamente com (α, β, γ) = (1, 2, −1). O experimento 4 só fecha se ν₄ = 1,25×10⁻⁶ × 1024 = 1,28×10⁻³ mol·L⁻¹·s⁻¹, ou seja, há um erro de potência de 10³ na impressão.\n- Adoto essa leitura e a declaro como hipótese. Não tenho acesso ao gabarito oficial.\n\n**1. Dedução mecanística (forma da lei)**\n- v_I = k₁[A][B]; v_II = k₂[X][B]; v_III = k₃[X][C].\n- P só é formado na Etapa II, com coeficiente 1: ν_P = d[P]/dt = k₂[X][B].\n- Para o intermediário X, usa-se a aproximação do estado estacionário (válida após o período de indução, pois em t = 0 se tem [X] = 0):\n  d[X]/dt = k₁[A][B] − k₂[X][B] − k₃[X][C] ≈ 0 ⇒ [X] = k₁[A][B]/(k₂[B] + k₃[C]).\n- Portanto: ν_P = k₁k₂[A][B]²/(k₂[B] + k₃[C]).\n- Essa expressão se reduz à forma empírica no limite k₃[C] ≫ k₂[B] (C consome X muito mais rápido que B). Nesse caso ν_P ≈ (k₁k₂/k₃)·[A][B]²/[C].\n- Consequências: [A] entra linearmente em [X], logo α = 1 em qualquer regime. β fica entre 1 e 2, e γ fica entre −1 e 0. O γ é negativo porque C consome X sem gerar P (efeito inibidor).\n\n**a) Ordens α, β, γ**\nRazões em relação ao experimento 1 (exp. 2: ×2, ×4, ×8; exp. 3: ×4, ×2, ×16; exp. 4: ×8, ×16, ×2):\n- Exp. 2: 2^α·4^β·8^γ = 4 ⇒ α + 2β + 3γ = 2.\n- Exp. 3: 4^α·2^β·16^γ = 1 ⇒ 2α + β + 4γ = 0.\n- Com α = 1 (exigido pelo mecanismo): 2β + 3γ = 1 e β + 4γ = −2 ⇒ β = 2 e γ = −1.\n- Verificação no exp. 4: 8·16²·2⁻¹ = 1024, logo ν₄ = 1024·ν₁ = 1,28×10⁻³ (confirma a hipótese do erro de impressão).\nResposta: α = 1, β = 2, γ = −1.\n\n**b) Constante cinética**\nν₁ = k·[A][B]²/[C] = k·(1,0×10⁻²)(1,0×10⁻²)²/(1,0×10⁻²) = k·1,0×10⁻⁴ ⇒ k = 1,25×10⁻² L·mol⁻¹·s⁻¹.\nChecagens: exp. 2 → k·4,0×10⁻⁴ = 5,00×10⁻⁶ ✓; exp. 3 → k·1,0×10⁻⁴ = 1,25×10⁻⁶ ✓; exp. 4 → k·0,1024 = 1,28×10⁻³ ✓ (com a correção).\nUnidades: a ordem global é 2, então [k] = (mol·L⁻¹·s⁻¹)/(mol·L⁻¹)² = L·mol⁻¹·s⁻¹ (M⁻¹·s⁻¹).\nResposta: k = 1,25×10⁻² L·mol⁻¹·s⁻¹.\n\n**c) Lei cinética completa**\nν_P = 1,25×10⁻² · [A]·[B]²/[C] (mol·L⁻¹·s⁻¹, com concentrações em mol·L⁻¹).\nVálida no regime k₃[C] ≫ k₂[B], com k = k₁k₂/k₃. A forma geral do mecanismo é ν_P = k₁k₂[A][B]²/(k₂[B] + k₃[C]).\n\n**d) Ordem global**\nn = α + β + γ = 1 + 2 − 1 = 2 (reação de segunda ordem). A ordem em relação a C é −1.",
+    "final_answer": "Não há alternativas de múltipla escolha. Respostas finais (com ν₀ do experimento 4 corrigido para 1,28×10⁻³ mol·L⁻¹·s⁻¹, pois o valor impresso 1,28×10⁻⁶ é inconsistente com qualquer lei de potência):\n\na) α = 1, β = 2, γ = −1.\nb) k = 1,25×10⁻² L·mol⁻¹·s⁻¹ (equivalente a M⁻¹·s⁻¹).\nc) ν_P = 1,25×10⁻² · [A]·[B]²/[C] (mol·L⁻¹·s⁻¹, com concentrações em mol·L⁻¹), válida no limite k₃[C] ≫ k₂[B], onde k = k₁k₂/k₃.\nd) Ordem global = 2 (segunda ordem: 1 + 2 − 1).\n\nSe o dado 1,28×10⁻⁶ for lido literalmente, o sistema dá α ≈ −1,49, β ≈ 1,00, γ ≈ 0,49, ordem global ≈ 0 e k ≈ 1,25×10⁻⁶. Essa leitura é rejeitada: ordens irracionais e α negativo são incompatíveis com o mecanismo, e nenhuma ordem racional reproduz 1,024.",
+    "pitfalls": [
+      "DADO INCONSISTENTE no experimento 4: ν₀ impresso = 1,28×10⁻⁶, mas com (1, 2, −1) o valor previsto é 1,28×10⁻³ (exatamente 1024 × ν₁). A razão ν₄/ν₁ = 1,024 = 2⁷/5³ não é potência de 2, então nenhuma ordem racional a reproduz. Uma boa resolução deve detectar isso, declarar a hipótese (erro de potência de 10³) e mostrar a verificação; não deve simplesmente aceitar o valor impresso.",
+      "Armadilha numérica com ln 2 e ln 5 (dados na Folha de Dados): usar log no experimento 4 dá 3α + 4β + γ ≈ 0,035 ≈ 0, o que leva a α ≈ −1,5, β ≈ 1, γ ≈ 0,5 (ordem global 0). Esses números parecem 'bater' aproximadamente, mas são fisicamente inaceitáveis. Não aceitar α = −3/2.",
+      "α = 1 é obrigatório pelo mecanismo: X é formado só na Etapa I (∝ [A]) e [X] = k₁[A][B]/(k₂[B]+k₃[C]) é linear em [A] em qualquer regime. Qualquer α diferente de 1 deve ser rejeitado como erro de análise.",
+      "Os experimentos 2 e 3 (com α = 1) determinam β e γ sem precisar do experimento 4: β = 2 e γ = −1. Essa é a checagem independente que sustenta a resposta.",
+      "γ negativo (−1): C não aparece na equação de P, mas inibe a formação de P ao consumir o intermediário X (Etapa III). Erros comuns: γ = 0 (ignorar C), γ = +1 (tratar C como reagente) ou deduzir ordens pelos coeficientes estequiométricos da equação global.",
+      "Ordem global = α + β + γ = 2, e não a soma dos módulos (4) nem a soma com γ = 0 (3). Ordens não são coeficientes estequiométricos; β = 2 vem de B aparecer nas Etapas I e II, não de um coeficiente.",
+      "Unidades de k: com ordem global 2, [k] = L·mol⁻¹·s⁻¹ (M⁻¹·s⁻¹). Não escrever s⁻¹ nem mol·L⁻¹·s⁻¹. Calcular k com concentrações em mol·L⁻¹ e ν em mol·L⁻¹·s⁻¹.",
+      "A lei empírica é um limite, não a lei exata do mecanismo. Pela aproximação do estado estacionário, ν_P = k₁k₂[A][B]²/(k₂[B]+k₃[C]). Com r = k₂/k₃, a razão exata ν₂/ν₁ = 8(r+1)/(r+2), que vale 4 apenas quando r → 0, ou seja, k₃[C] ≫ k₂[B]. Assim, k = k₁k₂/k₃ só vale nesse limite, e a condição de validade deve ser explicitada.",
+      "Não confundir ν_P com −d[A]/dt ou −d[B]/dt. O coeficiente de P é 1, então ν_P = d[P]/dt = k₂[X][B]. O consumo de A e B não segue diretamente a lei de P, porque X também é consumido na Etapa III sem gerar P.",
+      "O 'velocidade inicial' é conceitualmente delicado: em t = 0 tem-se [X] = 0, logo o mecanismo prevê ν_P = 0 nesse instante. A expressão de estado estacionário só vale após o período de indução. Uma resolução rigorosa menciona isso.",
+      "Se as Etapas I e II fossem reversíveis, ou se o intermediário não atingisse estado estacionário, a forma da lei mudaria. Os passos são tratados como irreversíveis (enunciado).",
+      "A questão não tem figuras; os dados estão só na tabela. Verificar as contas: exp. 2 → 2·4²/8 = 4 (razão de 5,00/1,25); exp. 3 → 4·2²/16 = 1 (razão de 1,25/1,25)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) α = 1, β = 2, γ = -1.\nb) k = 1,25×10⁻² L·mol⁻¹·s⁻¹ (equivalente a M⁻¹·s⁻¹).\nc) ν₀ = 1,25×10⁻² [A][B]²/[C] (concentrações em mol·L⁻¹).\nd) Ordem global = 2 (α + β + γ = 1 + 2 - 1 = 2).\n\nObservação: o valor impresso do experimento 4 (ν₀ = 1,28×10⁻⁶) é incompatível com a lei obtida, que prevê 1,28×10⁻³ (diferença exata de 10³). A resposta usa os experimentos 1 a 3 e o mecanismo, que não dependem desse dado; vale conferir com o original ou a errata.\n\nANSWER: α = 1, β = 2, γ = -1; k = 1,25×10⁻² L·mol⁻¹·s⁻¹; ν₀ = k[A][B]²/[C]; ordem global = 2.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Inconsistência entre 'velocidade inicial' e o estado estacionário. A hipótese diz que, 'por se tratar da velocidade inicial, só entram as concentrações iniciais', mas o passo 4 usa o estado estacionário de [X], que só vale após o período de indução (em t=0 tem-se [X]=0, logo ν_P=0). A resposta menciona isso só entre parênteses e continua chamando de ν₀ a taxa quase-estacionária calculada com [A], [B], [C] iniciais, sem declarar que o consumo dos reagentes é desprezível nesse intervalo. Deveria: dizer que ν₀ é a taxa inicial do regime quase-estacionário (após indução curta), declarar a hipótese de consumo desprezível de reagentes e observar que, em t=0, a lei prevê ν_P=0."
+          },
+          {
+            "severity": "minor",
+            "description": "O dado do experimento 4 é tratado como fato: o ANSWER diz que o valor impresso 1,28×10⁻⁶ 'contém erro de potência de dez', e o texto diz que o valor 'indica' o erro. Não há declaração de hipótese, e a resposta não justifica por que o erro estaria em ν₄ e não nas concentrações do experimento 4 (os experimentos 2 e 3 fecham exatamente com a lei, o que isola o experimento 4; a diferença de exatamente 10³ é a evidência). Deveria: declarar a correção como hipótese, justificar a atribuição ao ν₄ e indicar que a errata deve ser conferida, sem afirmar como fato."
+          },
+          {
+            "severity": "minor",
+            "description": "O argumento contra ordens não inteiras é incompleto. 'Expoentes inteiros só produzem potências inteiras de 2' não exclui ordens racionais. O argumento completo é que 1,024 = 2⁷/5³ e log₂5 é irracional, logo nenhum expoente racional reproduz a razão. Além disso, a resposta não trata a armadilha numérica: com ln2≃0,693 e ln5≃1,609 da Folha de Dados, a equação (III) dá valores quase inteiros (α≈−1,49, β≈1,00, γ≈0,49, próximos de −3/2, 1, 1/2), que parecem 'bater' e precisam ser rejeitados explicitamente (α=−3/2 não tem sentido químico e não é compatível com o mecanismo)."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 3, os valores α≈−1,49, β≈1,00 e γ≈0,49 são afirmados sem a conta. Falta mostrar log₂(1,024)≈0,0342 e a fórmula γ=(10−3·log₂1,024)/20 que segue de (I), (II) e (III). Deveria: escrever a dedução para que o leitor possa conferir o resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses do mecanismo incompletas. A resposta não declara que as etapas são irreversíveis (a equação de d[X]/dt depende disso). Também não justifica ν_P = d[P]/dt com coeficiente 1 para P nem observa que ν_P ≠ −d[A]/dt e −d[B]/dt, porque X também é consumido na etapa III. Deveria: listar essas hipóteses e a justificativa estequiométrica."
+          },
+          {
+            "severity": "minor",
+            "description": "A cadeia lógica do item a) fica implícita. α=1 vem do mecanismo (ν∝[A]), e com α=1 as equações (I) e (II) fixam β=2 e γ=−1 sem depender do experimento 4. A resposta diz que os expoentes 'não dependem desse dado', mas a leitura só aparece depois da forma limite. Deveria: explicitar essa cadeia em uma sequência curta: mecanismo → α=1 → (I) e (II) → β, γ → exp. 4 apenas como checagem."
+          },
+          {
+            "severity": "minor",
+            "description": "No item c), a 'lei cinética completa' aparece só na forma limite ν₀=1,25×10⁻²·[A][B]²/[C]. A forma geral ν₀=(k₁k₂/k₃)·[A][B]²/([C]+ε[B]), com ε=k₂/k₃, e sua condição de validade (ε[B]≪[C]) aparecem só no passo 4 e em 'casos particulares'. Deveria: repetir a forma geral e a condição de validade no próprio item c)."
+          }
+        ],
+        "summary": "Comparação item por item: (a) α=1, β=2, γ=−1 (candidato e referência iguais); (b) k=1,25×10⁻² L·mol⁻¹·s⁻¹ (iguais; recalculei: ν₁/([A][B]²/[C])=1,25×10⁻⁶/10⁻⁴); (c) ν₀=1,25×10⁻²·[A][B]²/[C] (iguais); (d) ordem global 2 (iguais). Conferi o enunciado original na página 4: o ν₀ do experimento 4 está impresso como 1,28×10⁻⁶. A razão ν₄/ν₁=1,024=2⁷/5³ não é potência racional de 2, então nenhuma lei de potência racional a reproduz. Com a lei encontrada, o valor esperado é 1,28×10⁻³, que difere do impresso exatamente por 10³. Verifiquei que os experimentos 2 e 3 fecham exatamente com (1,2,−1) e que |ε|≲10⁻² é compatível com a precisão de três algarismos. Não há divergência entre as respostas finais, e a correção está verificada. A resolução é rigorosa, com dedução mecanística correta, checagens numéricas e tratamento do dado inconsistente. As lacunas são: a inconsistência entre 'velocidade inicial' e estado estacionário (major), a afirmação do erro do experimento 4 como fato em vez de hipótese, o argumento incompleto contra ordens racionais e a armadilha do ln não tratada explicitamente, além de hipóteses de irreversibilidade e de estequiometria não declaradas. Nenhum problema é crítico, e a nota fica em 8: justificativa forte, mas não ainda no nível de gabarito comentado publicável sem ajustes.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "a) α = 1, β = 2, γ = −1. b) k = 1,25×10⁻² L·mol⁻¹·s⁻¹ (= k₁k₂/k₃). c) Lei completa ν₀ = (k₁k₂/k₃)·[A][B]²/([C] + (k₂/k₃)[B]); na faixa dos dados, com (k₂/k₃)[B] ≪ [C], ν₀ = 1,25×10⁻²·[A][B]²/[C] (mol·L⁻¹·s⁻¹). d) Ordem global = 2. Observação: o valor impresso do experimento 4 (1,28×10⁻⁶) é inconsistente com qualquer lei de potência racional; o valor compatível é 1,28×10⁻³ (hipótese de erro de potência de dez, a conferir na errata). Os itens a) a d) não dependem desse dado.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 2: a frase 'ambas exigem ε=0' é uma igualdade exata, mas logo depois a conclusão usa uma tolerância |ε|≲10⁻² que não é derivada. Deveria mostrar a propagação do erro dos três algarismos: razões 4,00 e 1,00 com incerteza relativa de ~0,5% (de 1,25 e 5,00) dão 2|ε| ≲ 0,02, ou seja |ε| ≲ 10⁻². A bound está certa, mas falta a conta."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipótese H5: o argumento para atribuir o erro a ν₀,₄ e não às concentrações do experimento 4 é heurístico (coincidência da mantissa 1,28 = 1,25×1,024). O argumento decisivo está ausente: todas as razões de concentração do experimento 4 em relação ao 1 são potências de 2 (8, 16, 2), e 1,024 = 2⁷/5³ exige um fator 5⁻³ que nenhuma troca plausível de concentração produz. Deveria estar escrito assim."
+          },
+          {
+            "severity": "minor",
+            "description": "Em 'Casos particulares', a 'ordem de grandeza' 1,25×10⁻²·10⁻²·10⁻⁴/10⁻² = 1,25×10⁻⁶ reutiliza o k obtido do experimento 1, então é circular e não é checagem independente. Deve ser removida ou substituída por uma verificação real."
+          },
+          {
+            "severity": "minor",
+            "description": "O experimento 4 não é usado como teste de ε. Com ν₀,₄ corrigido, a razão 1024(1+ε)/(1+8ε) fixa |ε| ≲ 10⁻³ (mais apertado que os experimentos 2 e 3). Além disso, no experimento 4 ε[B]/[C] = 8ε, então o regime da lei simples não está verificado nesse ponto. A frase do item c) ('verificado nos experimentos 1 a 3') é precisa, mas o Passo 4 diz que o experimento 4 'confirma' a correção, o que depende de ε≈0 e não é discutido."
+          },
+          {
+            "severity": "minor",
+            "description": "O ramo 'valor impresso tomado literalmente' é mais longo do que o necessário. As formas fechadas em log₂5 e a prova de irracionalidade estão corretas (verifiquei numericamente: α≈−1,491, β≈1,003, γ≈0,495), mas um gabarito comentado daria os valores numéricos e o motivo da rejeição (ordens irracionais, α≠1 do mecanismo, terno (−3/2, 1, 1/2) dá razão 1 e não 1,024)."
+          }
+        ],
+        "summary": "Resposta final do candidato idêntica à de referência e correta, verificada por mim: a) α=1, β=2, γ=−1; b) k=1,25×10⁻² L·mol⁻¹·s⁻¹ (k=k₁k₂/k₃); c) ν₀=1,25×10⁻²·[A][B]²/[C], com a lei completa ν₀=(k₁k₂/k₃)[A][B]²/([C]+(k₂/k₃)[B]); d) ordem global 2. Conferi com python: razões de expoentes (I) e (II), determinante 20 da matriz (1,2,3),(2,1,4),(3,4,1), k por experimento (1,25×10⁻² nos exp. 1–3), razão ν₄/ν₁ = 1,024 = 2⁷/5³, e as fórmulas do ramo literal (γ=(10−3L)/20, β=(4−2γ)/3, α=2−2β−3γ) e suas formas fechadas. A transcrição confere com a imagem da página 4 (ν₀,₄ = 1,28×10⁻⁶). Armadilhas tratadas: erro de potência em ν₀,₄ (declarado como hipótese, com verificação de que a e b a d não dependem dele); rejeição do ramo com ln2/ln5 e de α=−3/2; período de indução e ν=0 em t=0; ν_P≠−d[A]/dt; γ negativo por consumo de X; limite [C]→0 correto (ν→k₁[A][B]); unidades de k. O ponto forte é que o candidato mostra pelos dados 2 e 3 que ε≈0, e não só o assume. Não há falhas críticas nem maiores. As fraquezas são de rigor e apresentação (tolerância não derivada, argumento de H5 incompleto, uma checagem circular, e um ramo literal excessivamente longo). Nota 9,0: publicável como gabarito comentado depois de pequenos ajustes.\"}"
+      }
+    }
+  ]
+}

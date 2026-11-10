@@ -1,0 +1,51 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "$x\\in\\left(\\log_2\\frac{\\sqrt5-1}{2},\\,1\\right)=\\left(-\\log_2\\frac{1+\\sqrt5}{2},\\,1\\right)\\approx(-0{,}694;\\,1)$",
+  "judge_reference": {
+    "final_answer": "S = { x ∈ ℝ : log₂((√5 − 1)/2) < x < 1 } = ( −log₂ φ , 1 ), com φ = (1+√5)/2. Equivalentemente, log₂(√5 − 1) − 1 < x < 1, ou seja, aproximadamente −0,694 < x < 1. Os dois extremos ficam de fora, porque nos dois a igualdade vale.",
+    "reference_solution": "**Passo 0 – Eliminar o módulo do logaritmo.**\nPara todo x real, 2^x > 0. Logo 2^x + 2 > 2 > 1 e log₂(2^x + 2) > 1 > 0. Então |log₂(2^x+2)| = log₂(2^x+2), e a desigualdade equivale a\n\n log₂(2^x + 2) > |2x|.\n\nSeja t = 2^x > 0. O lado direito tem |2x| = 2x se x ≥ 0 e |2x| = −2x se x < 0. Separo os dois casos. Em cada um uso que 2^y é estritamente crescente: log₂(A) > B ⟺ A > 2^B, com A > 0.\n\n**Caso 1: x ≥ 0 (t ≥ 1).**\nA desigualdade vira log₂(2^x+2) > 2x ⟺ 2^x + 2 > 2^(2x) ⟺ t + 2 > t² ⟺ t² − t − 2 < 0 ⟺ (t − 2)(t + 1) < 0.\nComo t + 1 > 0, isso dá t < 2, ou seja, 2^x < 2 e x < 1.\nCombinando com x ≥ 0, resulta **0 ≤ x < 1**.\n\n**Caso 2: x < 0 (0 < t < 1).**\nA desigualdade vira log₂(2^x+2) > −2x ⟺ 2^x + 2 > 2^(−2x) ⟺ t + 2 > 1/t².\nComo t² > 0, multiplico por t² sem inverter o sinal: t³ + 2t² − 1 > 0.\nFatoração: t³ + 2t² − 1 = (t + 1)(t² + t − 1). Conferindo: (t+1)(t²+t−1) = t³ + t² − t + t² + t − 1 = t³ + 2t² − 1. ✓. (t = −1 é raiz de t³+2t²−1: −1+2−1 = 0.)\nComo t + 1 > 0, resta t² + t − 1 > 0. As raízes são t = (−1 ± √5)/2. Para t > 0, o sinal positivo ocorre quando t > (√5 − 1)/2 (≈ 0,618), que está em (0,1).\nLogo 2^x > (√5 − 1)/2, ou seja, x > log₂((√5 − 1)/2) = log₂(√5 − 1) − 1 ≈ −0,694.\nCombinando com x < 0, resulta **log₂((√5−1)/2) < x < 0**.\n\n**Passo final – União.**\nOs dois casos se encontram em x = 0, que pertence ao Caso 1 (log₂3 ≈ 1,58 > 0 = |0|). A união é\n\n S = ( log₂((√5−1)/2) , 1 ).\n\nNote que (√5−1)/2 = 1/φ, com φ = (1+√5)/2, então o extremo esquerdo é −log₂ φ.\n\n**Verificação dos extremos (ambos excluídos, igualdade).**\n- x = 1: log₂(2+2) = 2 = |2·1|. Igualdade, não vale \">\".\n- x = −log₂ φ: 2^x = 1/φ = φ − 1, então 2^x + 2 = φ + 1 = φ² e log₂(φ²) = 2 log₂ φ = |2x|. Igualdade, não vale \">\".\n\n**Verificações numéricas.**\nUma varredura de x em [−10, 10] com passo 10⁻⁵ achou exatamente um intervalo contíguo, de aproximadamente −0,69424 a 0,99999. Alguns pontos testados:\n- x = 0, −0,69 e 0,999 satisfazem a desigualdade.\n- x = −0,70, 1,001, −50 e 50 não a satisfazem.\n\n**Interpretação gráfica (sanidade).**\nf(x) = log₂(2^x+2) é crescente, tende a 1 quando x → −∞ e é assintótica a x quando x → +∞. Já g(x) = |2x| é uma \"V\" que cresce mais rápido nos dois lados. Por isso só há um intervalo limitado entre os dois cruzamentos, em x = −log₂ φ e x = 1.",
+    "pitfalls": [
+      "Notar que o módulo externo é inútil: 2^x + 2 > 2 implica log₂(2^x+2) > 1 > 0. Quem tenta dividir em casos por esse módulo faz trabalho desnecessário ou erra o sinal.",
+      "O módulo |2x| exige dois casos (x ≥ 0 e x < 0). Resolver só x ≥ 0 e concluir 'x < 1' dá um conjunto errado, que inclui todos os x negativos, mas para x muito negativo a desigualdade é falsa (log₂(2^x+2) → 1 enquanto |2x| → ∞).",
+      "No Caso 2 aparece o cúbico t³ + 2t² − 1 = 0. O ponto-chave é perceber a raiz t = −1 e fatorar como (t+1)(t²+t−1); sem isso o aluno trava. A raiz t = −1 e a raiz negativa (−1−√5)/2 devem ser descartadas por t = 2^x > 0.",
+      "Ao passar de log₂(A) > B para A > 2^B usa-se que a função 2^y é crescente e que A > 0 (sempre verdade aqui). Ao multiplicar por t² (>0) o sentido da desigualdade se mantém.",
+      "Substituição t = 2^x: no Caso 1 vale t ≥ 1, no Caso 2 vale 0 < t < 1. A restrição de t precisa ser combinada com a condição sobre x no final. No Caso 2, (√5−1)/2 ≈ 0,618 está em (0,1), então o limite é de fato atingido dentro do domínio do caso.",
+      "Os extremos são excluídos (desigualdade estrita). Em x = 1 e em x = −log₂ φ há igualdade, o que confirma que os extremos estão certos. Incluí-los é erro comum.",
+      "x = 0 pertence ao conjunto (log₂ 3 > 0) e o ponto de junção entre os casos não pode ser perdido nem duplicado.",
+      "Forma da resposta: log₂((√5−1)/2) = log₂(√5−1) − 1 = −log₂((1+√5)/2) ≈ −0,694. Todas são equivalentes. Dar apenas a aproximação numérica sem a forma exata é incompleto.",
+      "Não aproximar a solução por tentativa numérica sem prova: a questão pede justificativa, e os dois cruzamentos têm de ser provados únicos (aqui o fatoramento e a monotonicidade fazem isso)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "$x\\in\\left(\\log_2\\frac{\\sqrt5-1}{2},\\,1\\right)=\\left(-\\log_2\\frac{1+\\sqrt5}{2},\\,1\\right)\\approx(-0{,}694;\\,1)$",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A verificação do extremo esquerdo diz que t²+t=1 implica t+2=t^{-2}, mas não mostra a passagem. Falta escrever que t²(t+2)=t³+2t²=t(t²+t)+t²=t+t²=1. É um passo de uma linha, mas um gabarito comentado deveria incluí-lo."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência numérica aparece como complemento ('varredura em [-5,5]') e não entra na prova. A justificativa das extremidades e da unicidade dos cruzamentos vem corretamente das equivalências encadeadas e da fatoração, então não há lacuna lógica. Seria melhor não mencionar a varredura, ou dizer que ela é só sanidade, já que ela cobre apenas [-5,5]."
+          },
+          {
+            "severity": "minor",
+            "description": "Não há comentário explícito de que, para x muito negativo, o lado esquerdo tende a 1 e |2x| tende a infinito. Esse comentário daria uma sanidade gráfica e justificaria por que o conjunto é limitado à esquerda. A prova algébrica já cobre isso, pois t>(√5−1)/2 exclui x muito negativo."
+          }
+        ],
+        "summary": "A resposta final do candidato, S = (log₂((√5−1)/2), 1) = (−log₂((1+√5)/2), 1) ≈ (−0,694; 1), coincide com a da minha referência e com a varredura numérica que refiz. Essa varredura, de −10 a 10 com passo 10⁻⁴, deu o intervalo contíguo de −0,6942 a 0,9999. Os valores numéricos citados pelo candidato (1,390>1,38 em x=−0,69; 1,387<1,40 em x=−0,70; log₂6≈2,58<4) conferem. O argumento é rigoroso e todos os passos são equivalências: o módulo externo é eliminado porque o logaritmo é maior que 1, e a desigualdade vira 2^x+2>2^{|2x|}. Em seguida, os dois casos x≥0 e x<0 são tratados com t=2^x, e as restrições de t (t≥1 e 0<t<1) são combinadas ao final. A fatoração (t+1)(t²+t−1) é correta, a raiz negativa é descartada por t>0, e se verifica que (√5−1)/2 está em (0,1). Os extremos x=1 e x=−log₂φ são corretamente excluídos por igualdade, e x=0 é incluído. Todas as armadilhas da referência foram tratadas. As ressalvas são só de apresentação: um passo algébrico da igualdade no extremo esquerdo não foi escrito, e a varredura numérica foi citada como evidência, mas sem peso lógico."
+      }
+    }
+  ]
+}

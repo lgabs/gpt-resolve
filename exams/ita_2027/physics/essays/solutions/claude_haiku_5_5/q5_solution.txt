@@ -1,0 +1,74 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Hipóteses e convenções.}
+\begin{itemize}
+\item Paraxial: raios próximos ao eixo, $\sin\theta\approx\tan\theta\approx\theta$, e lei de Snell $n_1 i=n_2 r$, com $i$ e $r$ medidos a partir da normal. Vale $\lambda\ll p\ll D$ (óptica geométrica), $h\ll p$ e $h\ll D$.
+\item Coordenadas: origem no vértice, $x$ no sentido da luz, $y$ para cima. Pela figura, $C=(-R,0)$ está do lado de $n_1$; a superfície é $(x+R)^2+y^2=R^2$ e as fontes são $S_\pm=(-p,\pm h)$.
+\item Sinal de $R$: o centro está do lado incidente, logo $R_G=-R$ na convenção de dioptro, e a potência $(n_2-n_1)/R_G=-(n_2-n_1)/R$ é negativa. A superfície é divergente. Usar $+R$ trocaria o sinal de todos os resultados.
+\item Fontes coerentes, em fase (fase inicial nula) e com amplitudes iguais por simetria. A fase nula é a condição para o ponto central estar sobre o eixo; é hipótese explícita.
+\item O enunciado não diz em qual meio $\lambda$ é medido. Dou o resultado com $\lambda_0$ (vácuo) e com $\lambda_1=\lambda_0/n_1$ (meio das fontes). As duas formas são equivalentes.
+\end{itemize}
+
+\textbf{a) Posição horizontal da imagem.} Seja $Q=(x_Q,y_Q)$ o ponto em que o raio que sai de $(-p,0)$ atinge a superfície. Como $x_Q=-R+\sqrt{R^2-y_Q^2}\approx -y_Q^2/(2R)$ é de segunda ordem, $Q\approx(0,y_Q)$. Com as inclinações paraxiais:
+\begin{itemize}
+\item raio incidente: $\alpha_i=y_Q/p$;
+\item normal, na direção de $\overrightarrow{CQ}\approx(R,y_Q)$: $\alpha_N=y_Q/R$;
+\item raio refratado, que cruza o eixo em $(p',0)$: $\alpha_r=-y_Q/p'$.
+\end{itemize}
+Logo, medidos no mesmo sentido, $i=\alpha_i-\alpha_N=y_Q\left(\dfrac1p-\dfrac1R\right)$ e $r=\alpha_r-\alpha_N=-y_Q\left(\dfrac1{p'}+\dfrac1R\right)$. Pela lei de Snell, $n_1 i=n_2 r$. Dividindo por $y_Q\neq0$:
+\[
+\frac{n_1}{p}+\frac{n_2}{p'}=\frac{n_1-n_2}{R}
+\qquad\Rightarrow\qquad
+p'=-\frac{n_2\,R\,p}{n_1R+(n_2-n_1)\,p}.
+\]
+Como $n_2>n_1$ e $R,p>0$, o denominador é positivo e $p'<0$. A imagem é virtual, do lado de $n_1$ (mesmo lado das fontes), à distância $|p'|$ da interface.
+
+Checagens: para $n_1=n_2$, $p'=-p$ (sem interface). Para $R\to\infty$, $p'=-n_2p/n_1$ (dioptro plano; a imagem fica mais afastada por $n_2/n_1$). Para $p\to\infty$, $p'\to -n_2R/(n_2-n_1)$, a posição do foco-imagem virtual do dioptro divergente. Exemplo: $n_1=1$, $n_2=1{,}5$, $R=10\,\mathrm{cm}$ e $p=5\,\mathrm{cm}$ dão $p'=-6\,\mathrm{cm}$, e $\dfrac15+\dfrac{1{,}5}{-6}=-0{,}05=\dfrac{1-1{,}5}{10}$.
+
+\textbf{Posições verticais.} O raio de $S_+$ que passa por $C$ incide normalmente (a normal passa por $C$) e não se desvia. Sua reta é $SC$: $y=\dfrac{h\,(x+R)}{R-p}$. Pelo estigmatismo paraxial, os prolongamentos dos raios refratados de $S_+$ concorrem em $S'_+$, e este raio é um deles. Logo $S'_+$ está nessa reta, em $x=p'$:
+\[
+y'_+=\frac{h\,(p'+R)}{R-p}.
+\]
+Como $p'+R=\dfrac{n_1R\,(R-p)}{n_1R+(n_2-n_1)\,p}$, obtém-se
+\[
+y'_+=m\,h,\qquad m=\frac{n_1R}{n_1R+(n_2-n_1)\,p}.
+\]
+Pela simetria em relação ao eixo, $y'_-=-m\,h$. Assim,
+\[
+y'_\pm=\pm\frac{n_1R}{n_1R+(n_2-n_1)\,p}\,h.
+\]
+O fator $m$ depende só de $n_1$, $n_2$, $R$ e $p$; $h$ é a posição dada das fontes. Conferência: $m=-n_1p'/(n_2p)$, que é o aumento transversal da equação do dioptro. Como $m>0$, a imagem é direta. Para $R\to\infty$, $m=1$. No exemplo, $m=0{,}8$.
+
+\textbf{b) Franja luminosa para $R\to\infty$.} A interface é plana. Calculo a diferença de caminho óptico diretamente, pelo princípio de Fermat. Seja $S=(-p,y_S)$ uma fonte, $P=(D,y)$ um ponto da tela e $Q=(0,u)$ o ponto de incidência na interface. Com $\sqrt{a^2+s^2}\approx a+\dfrac{s^2}{2a}$ para $s\ll a$:
+\[
+F(u)=n_1\sqrt{p^2+(u-y_S)^2}+n_2\sqrt{D^2+(y-u)^2}\approx n_1p+n_2D+\frac{A}{2}(u-y_S)^2+\frac{B}{2}(y-u)^2,
+\]
+com $A=n_1/p$ e $B=n_2/D$. O raio real é estacionário em $u$, ou seja, $A(u-y_S)=B(y-u)$. Então $u-y_S=\dfrac{B(y-y_S)}{A+B}$ e $y-u=\dfrac{A(y-y_S)}{A+B}$, e
+\[
+\mathrm{OPL}(S\to P)=n_1p+n_2D+\frac{AB}{2(A+B)}(y-y_S)^2=n_1p+n_2D+\frac{n_1n_2\,(y-y_S)^2}{2\,(n_1D+n_2p)},
+\]
+pois $\dfrac{AB}{A+B}=\dfrac{n_1n_2}{n_1D+n_2p}$. Conferência: para $n_1=n_2=n$, o último termo é $n(y-y_S)^2/[2(D+p)]$, a expansão do caminho reto $n\sqrt{(D+p)^2+(y-y_S)^2}$.
+
+Para $y_S=\pm h$:
+\[
+\Delta\mathrm{OPL}=\mathrm{OPL}(S_-\to P)-\mathrm{OPL}(S_+\to P)=\frac{n_1n_2\left[(y+h)^2-(y-h)^2\right]}{2(n_1D+n_2p)}=\frac{2\,n_1n_2\,h\,y}{n_1D+n_2p}.
+\]
+As fontes são coerentes e em fase, e a diferença de fase em $P$ é $\Delta\varphi=k_0\,\Delta\mathrm{OPL}$, com $k_0=2\pi/\lambda_0$, constante no tempo. Com amplitudes iguais, $I\propto\cos^2(\Delta\varphi/2)$. Há máximos quando $\Delta\mathrm{OPL}=m\lambda_0$, com $m\in\mathbb{Z}$:
+\[
+y_m=\frac{m\,\lambda_0\,(n_1D+n_2p)}{2\,n_1n_2\,h}.
+\]
+O máximo central é $m=0$, em $y=0$. A primeira franja luminosa é $m=\pm1$, à distância
+\[
+y_1=\frac{\lambda_0\,(n_1D+n_2p)}{2\,n_1n_2\,h}.
+\]
+Interpretação: com $L=D+\dfrac{n_2p}{n_1}=\dfrac{n_1D+n_2p}{n_1}$, a distância das imagens $(-n_2p/n_1,\pm h)$ à tela, tem-se $y_1=\dfrac{\lambda_2L}{2h}$, com $\lambda_2=\lambda_0/n_2$. É a fenda dupla de Young com fontes virtuais separadas por $2h$.
+
+Como $p\ll D$, $L\approx D$ e $y_1\approx\dfrac{\lambda_0D}{2n_2h}$. A correção relativa é $n_2p/(n_1D)$, que vale $1{,}5\%$ para $n_2/n_1=1{,}5$ e $p/D=0{,}01$. Validade: $y_1\ll L$ exige $\lambda_2\ll 2h$, e $h\ll p$ mantém as fontes paraxiais.
+
+Exemplo: $\lambda_0=500\,\mathrm{nm}$, $n_1=1$, $n_2=1{,}5$, $p=1\,\mathrm{cm}$, $D=1\,\mathrm{m}$ e $h=0{,}1\,\mathrm{mm}$, com $h\ll p\ll D$ e $\lambda\ll p$. Então $\lambda_2\approx333\,\mathrm{nm}$, $L=1{,}015\,\mathrm{m}$, $y_1\approx1{,}69\,\mathrm{mm}$ pela fórmula completa e $1{,}67\,\mathrm{mm}$ pela aproximada. Além disso, $\lambda_2/(2h)\approx1{,}7\times10^{-3}\ll1$.
+
+Verificações: $\lambda_0D/(n_2h)$ tem unidade de metro. Sem interface ($n_1=n_2=n$), $y_1=\lambda_n(D+p)/(2h)$, o resultado de Young com a tela a $D+p$ das fontes. Com $\lambda_1=\lambda_0/n_1$, $y_1=\dfrac{\lambda_1(n_1D+n_2p)}{2n_2h}\approx\dfrac{n_1\lambda_1D}{2n_2h}$.
+
+ANSWER: a) $p'=-\dfrac{n_2Rp}{n_1R+(n_2-n_1)p}$ (imagem virtual, do lado de $n_1$); posições verticais $y'_\pm=\pm\dfrac{n_1R}{n_1R+(n_2-n_1)p}\,h$ (imagem direta). b) $y_1=\dfrac{\lambda_0(n_1D+n_2p)}{2n_1n_2h}\approx\dfrac{\lambda_0D}{2n_2h}$, com $\lambda_0$ o comprimento de onda no vácuo; equivalentemente, $y_1=\dfrac{\lambda_1(n_1D+n_2p)}{2n_2h}\approx\dfrac{n_1\lambda_1D}{2n_2h}$, com $\lambda_1=\lambda_0/n_1$ o comprimento de onda no meio das fontes.

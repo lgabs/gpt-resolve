@@ -1,0 +1,70 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{1. Posição das raízes e dos hexágonos.} Se $z^{12}=1$, então $|z|=1$, e as raízes são $z_k=e^{\,ik\pi/6}$ ($k=0,\dots,11$), numeradas no sentido anti-horário a partir de $z_0=1$. Elas são os vértices de um dodecágono regular inscrito na circunferência unitária, com arcos de $30^\circ$ entre vértices consecutivos. Assim, $\mathcal P$ tem vértices nos ângulos $0^\circ,60^\circ,\dots,300^\circ$, e $\mathcal I$ tem vértices em $30^\circ,90^\circ,\dots,330^\circ$. Portanto $\mathcal I$ é $\mathcal P$ girado de $30^\circ$. (O resultado não depende de onde começa a numeração: um hexágono regular inscrito na circunferência unitária e com vértices entre as 12 raízes só pode ser uma das duas classes alternadas.) Cada hexágono tem lado $1$ e apótema $a=\frac{\sqrt3}{2}$.
+
+\textbf{2. Área de cada hexágono.}
+\[
+A_{\mathcal P}=A_{\mathcal I}=6\cdot\frac{\sqrt3}{4}\cdot1^2=\frac{3\sqrt3}{2}.
+\]
+
+\textbf{3. A interseção é um dodecágono regular.} Seja $u_m=(\cos30^\circ m,\ \sin30^\circ m)$, com $m=0,\dots,11$.
+\begin{itemize}
+\item $\mathcal P$ é a interseção dos semiplanos $X\cdot u_m\le a$ com $m$ ímpar, pois suas normais externas estão em $30^\circ+60^\circ k$.
+\item $\mathcal I$ é a interseção dos semiplanos $X\cdot u_m\le a$ com $m$ par, pois suas normais externas estão em $60^\circ k$.
+\end{itemize}
+Logo
+\[
+\mathcal D:=\mathcal P\cap\mathcal I=\{X:\ X\cdot u_m\le a,\ m=0,\dots,11\}.
+\]
+
+\emph{Nenhuma das 12 retas é redundante.} O ponto $T_m=a\,u_m$ cumpre
+\[
+T_m\cdot u_n=a\cos\bigl(30^\circ(m-n)\bigr)\le a,
+\]
+com igualdade só se $n=m$. Então $T_m\in\mathcal D$, está sobre a reta $m$ e está estritamente dentro dos outros 11 semiplanos. Perto de $T_m$, $\mathcal D$ coincide com o semiplano $m$, e a reta $m$ contribui com um lado de comprimento positivo.
+
+Logo $\mathcal D$ é um polígono convexo de 12 lados, todos tangentes à circunferência de centro $O$ e raio $a$ em pontos $T_m$ igualmente espaçados de $30^\circ$. Os vértices são $V_m$, de direção $30^\circ m+15^\circ$ e distância $a/\cos15^\circ$ de $O$. Portanto $\mathcal D$ é um dodecágono regular de apótema $a$.
+
+Ele tem $12$ triângulos isósceles de altura $a$ e base $2a\tan15^\circ$. Como
+\[
+\tan15^\circ=\tan(45^\circ-30^\circ)=\frac{\sqrt3-1}{\sqrt3+1}=2-\sqrt3,
+\]
+temos
+\[
+A_{\mathcal D}=12\,a^2\tan15^\circ=12\cdot\frac34\,(2-\sqrt3)=18-9\sqrt3 .
+\]
+
+\textbf{4. União (inclusão--exclusão).}
+\[
+A(\mathcal P\cup\mathcal I)=A_{\mathcal P}+A_{\mathcal I}-A_{\mathcal D}
+=3\sqrt3-(18-9\sqrt3)=12\sqrt3-18 .
+\]
+
+\textbf{5. Verificação por outro caminho (as pontas da estrela).} Considere o vértice $z_0=(1,0)$ de $\mathcal P$. Ele está fora de $\mathcal I$, além da reta $x=a$, que é um lado de $\mathcal I$. Os vértices $V_{\pm}$ do dodecágono em $\pm15^\circ$ têm $x=\frac{a}{\cos15^\circ}\cos15^\circ=a$. Eles também estão sobre os dois lados de $\mathcal P$ que passam por $z_0$, pois a projeção sobre as normais $\pm30^\circ$ vale $\frac{a}{\cos15^\circ}\cos15^\circ=a$.
+
+Assim, a ``ponta'' em $z_0$ é o triângulo isósceles $z_0V_+V_-$, com:
+\begin{itemize}
+\item base $2a\tan15^\circ=\sqrt3(2-\sqrt3)=2\sqrt3-3$;
+\item altura $1-a=1-\frac{\sqrt3}{2}$;
+\item ângulo de $120^\circ$ no ápice, o ângulo interno do hexágono. De fato, metade da base dividida pela altura dá $\frac{(2\sqrt3-3)/2}{1-\sqrt3/2}=\sqrt3=\tan60^\circ$.
+\end{itemize}
+A área é
+\[
+T=\tfrac12(2\sqrt3-3)\Bigl(1-\tfrac{\sqrt3}{2}\Bigr)=\frac{7\sqrt3}{4}-3\approx0{,}0311 .
+\]
+Essa conta não usa $A_{\mathcal P}$ nem $A_{\mathcal D}$. Cada hexágono é $\mathcal D$ mais $6$ pontas, então
+\[
+A_{\mathcal D}+6T=18-9\sqrt3+\frac{21\sqrt3}{2}-18=\frac{3\sqrt3}{2}=A_{\mathcal P},
+\]
+o que confirma $A_{\mathcal D}$. A união é $\mathcal D$ mais as $12$ pontas (6 de $\mathcal P$ e 6 de $\mathcal I$, sem sobreposição):
+\[
+A(\mathcal P\cup\mathcal I)=A_{\mathcal D}+12T=18-9\sqrt3+21\sqrt3-36=12\sqrt3-18 .
+\]
+
+\textbf{6. Conferência numérica.} Com $\sqrt3\approx1{,}7321$: $A_{\mathcal P}\approx2{,}598$, $A_{\mathcal D}\approx2{,}412$ e $A_{\mathcal P\cup\mathcal I}\approx2{,}785$. Vale $2{,}598<2{,}785<3$, e $3$ é a área do dodecágono regular inscrito de raio $1$, que contém a união. Contei também as células de lado $0{,}001$ cujo centro está em $\mathcal P$ ou em $\mathcal I$, testando as 12 desigualdades $X\cdot u_m\le a$. A área obtida foi $\approx2{,}7846$.
+
+A área está em unidades de área, na escala $|z|=1$.
+
+ANSWER: $12\sqrt{3}-18$ (aproximadamente $2{,}785$)

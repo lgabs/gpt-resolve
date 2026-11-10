@@ -1,0 +1,95 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "Identidade demonstrada: $S_n=\\dfrac{\\operatorname{sen}(n\\alpha)}{\\operatorname{sen}(2\\alpha)\\cos((n+1)\\alpha)}$. A prova usa $\\cos\\alpha+\\cos(2k+1)\\alpha=2\\cos(k\\alpha)\\cos((k+1)\\alpha)$, a telescopagem $\\frac{\\operatorname{sen}\\alpha}{\\cos(k\\alpha)\\cos((k+1)\\alpha)}=\\tan((k+1)\\alpha)-\\tan(k\\alpha)$ e a diferença de tangentes. As hipóteses são exatamente as condições para os dois lados estarem definidos. Conferido com $n=1$, $\\alpha=\\pi/6$ ($2/\\sqrt3$), $n=2$, $\\alpha=\\pi/8$ ($1/\\cos(3\\pi/8)\\approx 2{,}61313$), $n=3$, $\\alpha=\\pi/3$ ($0$) e $n=0$ ($0$).",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 8 (IME 2026/2027, Matemática) - referência de correção\n\nEnunciado: sen α ≠ 0 e cos(jα) ≠ 0 para j = 1, ..., n+1. Mostrar que\nS_n = Σ_{k=1}^{n} 1/(cos α + cos((2k+1)α)) = sen(nα) / (sen(2α)·cos((n+1)α)).\n\nITEM 1 - Soma para produto no denominador\nCom A = α e B = (2k+1)α: (A+B)/2 = (k+1)α e (A−B)/2 = −kα. Como cos é par,\ncos α + cos((2k+1)α) = 2·cos(kα)·cos((k+1)α).\n\nITEM 2 - Os termos estão definidos\nCada termo exige cos(kα)·cos((k+1)α) ≠ 0 para k = 1..n. Isso segue de cos(kα) ≠ 0 (j = k ∈ {1..n}) e cos((k+1)α) ≠ 0 (j = k+1 ∈ {2..n+1}). Ou seja, a hipótese é exatamente a condição para a soma existir.\n\nITEM 3 - Identidade telescópica\nPara cos(kα)·cos((k+1)α) ≠ 0:\ntan((k+1)α) − tan(kα) = sen((k+1)α − kα) / (cos((k+1)α)·cos(kα)) = sen α / (cos(kα)·cos((k+1)α)).\nLogo\n1/(cos α + cos((2k+1)α)) = 1/(2·cos(kα)·cos((k+1)α)) = [tan((k+1)α) − tan(kα)] / (2·sen α).\nAqui usa-se sen α ≠ 0.\n\nITEM 4 - Soma telescópica\nS_n = [tan((n+1)α) − tan α] / (2·sen α).\nOs termos intermediários se cancelam. As tangentes estão definidas pois cos(jα) ≠ 0 para j = 1..n+1.\n\nITEM 5 - Simplificação de tan((n+1)α) − tan α\ntan((n+1)α) − tan α = [sen((n+1)α)·cos α − cos((n+1)α)·sen α] / (cos((n+1)α)·cos α) = sen(nα) / (cos((n+1)α)·cos α).\n\nITEM 6 - Conclusão\nS_n = sen(nα) / (2·sen α·cos α·cos((n+1)α)) = sen(nα) / (sen(2α)·cos((n+1)α)). ∎\n\nITEM 7 - Validade do lado direito\nsen(2α) = 2 sen α cos α é não nulo, pois sen α ≠ 0 e cos α ≠ 0 (j = 1). cos((n+1)α) ≠ 0 pela hipótese com j = n+1. Logo o denominador do lado direito é não nulo.\n\nVERIFICAÇÃO ALTERNATIVA POR INDUÇÃO (sem tangentes)\nSeja R_m = sen(mα) / (sen(2α)·cos((m+1)α)). Base: R_0 = 0 = S_0 (soma vazia). Se N começa em 1, a base é n = 1: S_1 = 1/(2·cos α·cos 2α) = R_1.\nPasso: R_n − R_{n−1} = [sen(nα)cos(nα) − sen((n−1)α)cos((n+1)α)] / (sen(2α)·cos((n+1)α)·cos(nα)).\nUsando sen X cos Y = ½[sen(X+Y) + sen(X−Y)]: sen(nα)cos(nα) = ½ sen(2nα) e sen((n−1)α)cos((n+1)α) = ½[sen(2nα) − sen(2α)].\nO numerador vale ½ sen(2α), donde R_n − R_{n−1} = 1/(2·cos(nα)·cos((n+1)α)) = 1/(cos α + cos((2n+1)α)), que é o n-ésimo termo de S_n. ∎\n\nCHECAGEM NUMÉRICA (python3)\nTestadas 2000 combinações aleatórias de (n, α) que satisfazem as hipóteses: erro relativo máximo ≈ 4e-8, compatível com arredondamento em casos quase singulares. Também conferidos os passos soma→produto e telescópico (erro ~1e-14) e o passo indutivo (erro ~1e-11). Caso α = π/3, n = 3: S_3 = 0 = RHS.",
+    "final_answer": "A identidade é verdadeira sob as hipóteses dadas:\n\nS_n = Σ_{k=1}^{n} 1/(cos α + cos((2k+1)α)) = sen(nα) / (sen(2α)·cos((n+1)α)).\n\nPassos-chave: cos α + cos((2k+1)α) = 2 cos(kα) cos((k+1)α); então 1/(cos α + cos((2k+1)α)) = [tan((k+1)α) − tan(kα)]/(2 sen α). Somando por telescopagem, S_n = [tan((n+1)α) − tan α]/(2 sen α) = sen(nα)/(2 sen α cos α cos((n+1)α)) = sen(nα)/(sen 2α · cos((n+1)α)).\n\nNão é questão de múltipla escolha. Todas as condições são usadas: sen α ≠ 0 divide na telescopagem e garante sen 2α ≠ 0 junto com cos α ≠ 0; cos(jα) ≠ 0 para j = 1..n+1 garante que os termos, as tangentes e o denominador da direita estejam definidos.",
+    "pitfalls": [
+      "Hipóteses usadas de fato: sen α ≠ 0 é necessária (divisão por sen α na telescopagem e sen 2α ≠ 0 no lado direito). Se sen α = 0 (α = mπ), o lado direito vira 0/0 e não faz sentido, embora o lado esquerdo seja definido.",
+      "cos(jα) ≠ 0 para j = 1..n+1 é exatamente a condição para todos os denominadores da soma serem não nulos, pois cos α + cos((2k+1)α) = 2 cos(kα)cos((k+1)α). Não basta supor só cos((n+1)α) ≠ 0 ou só cos α ≠ 0.",
+      "cos α ≠ 0 (j = 1) não é só 'para as tangentes': ela garante sen 2α = 2 sen α cos α ≠ 0. Sem ela o lado direito é indefinido.",
+      "cos((n+1)α) ≠ 0 (j = n+1) é necessária para o lado direito e para tan((n+1)α) aparecer na telescopagem. Não é apenas conveniente.",
+      "Erro de fator: na telescopagem o resultado é [tan((n+1)α) − tan α]/(2 sen α), com o 2 do produto 2 cos(kα)cos((k+1)α). Esquecer o 2 leva a uma resposta com fator 2 errado.",
+      "Erro de sinal ao fatorar: (A−B)/2 = −kα, e cos(−kα) = cos(kα) porque cos é par. Uma troca de sinal aqui invalida o passo da telescopagem.",
+      "Erro de índice (off-by-one): a soma vai de k = 1 a n, então os extremos da telescopagem são tan((n+1)α) e tan α, não tan(nα) e tan(0).",
+      "Não confundir sen(2α) com 2 sen α: a fórmula final tem sen(2α) = 2 sen α cos α no denominador. Cancelar sen α ou cos α indevidamente, ou escrever sen(2α) como 2 sen(α), é erro comum.",
+      "Igualdade de tangentes: tan((n+1)α) − tan α = sen(nα)/(cos((n+1)α) cos α) usa a identidade do seno da diferença com denominador cos((n+1)α)cos α. Ela só vale quando esses cossenos são não nulos, o que as hipóteses garantem.",
+      "Caso n = 0, se N incluir 0: a soma é vazia (= 0) e o lado direito é sen(0)/(...) = 0, então vale. Mas as hipóteses para n = 0 se reduzem a sen α ≠ 0 e cos α ≠ 0 (j = 1). Se N começa em 1, o caso n = 0 não entra.",
+      "Verificação com caso degenerado: α = π/4 e n = 1 mostram que a hipótese cos(jα) ≠ 0 não é supérflua. Ali cos 2α = 0 e o termo k = 1 (cos α + cos 3α = 0) é indefinido. Já α = π/3 e n = 3 satisfazem as hipóteses e dão S_3 = 0 = RHS, o que é um bom teste de sanidade.",
+      "Prova por indução é alternativa válida. Nela, o passo R_n − R_{n−1} = 1/(cos α + cos((2n+1)α)) é simples, mas exige cos(nα) ≠ 0 e cos((n+1)α) ≠ 0, e a base precisa ser declarada (R_0 = 0 ou n = 1)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "A identidade é verdadeira. Usando $\\cos\\alpha+\\cos(2k+1)\\alpha=2\\cos(k\\alpha)\\cos((k+1)\\alpha)$ e $\\dfrac{1}{\\cos(k\\alpha)\\cos((k+1)\\alpha)}=\\dfrac{\\tan((k+1)\\alpha)-\\tan(k\\alpha)}{\\operatorname{sen}\\alpha}$, a soma telescopa para $S_n=\\dfrac{\\tan((n+1)\\alpha)-\\tan\\alpha}{2\\operatorname{sen}\\alpha}=\\dfrac{\\operatorname{sen}(n\\alpha)}{\\operatorname{sen}(2\\alpha)\\cos((n+1)\\alpha)}$. As hipóteses garantem que todos os denominadores são não nulos. Conferido em n=0, em n=1 com α=π/6 e numericamente.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 4 usa cos α ≠ 0 para dividir a diferença de tangentes sem citar a hipótese (j=1). Só na Passo 5 aparece a referência 'hipóteses com j=1'. Deveria dizer 'cos α ≠ 0 (j=1)' já no Passo 4."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 2: 'Como sen α ≠ 0, podemos isolar a parcela' é vago. O ponto em que sen α ≠ 0 entra (divisão por sen α para obter 1/(2 cos kα cos(k+1)α) = [tan((k+1)α) − tan kα]/(2 sen α)) deveria aparecer como passo explícito."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'Como α é um ângulo em radianos, ambos os lados da identidade são adimensionais' é irrelevante e assume algo que o enunciado não diz (que α está em radianos). Uma identidade trigonométrica não depende de unidades. Deveria ser removida."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não discute a necessidade das hipóteses, que é a principal armadilha de rigor deste enunciado: sen α = 0 deixaria o lado direito como 0/0; cos((n+1)α) = 0 deixaria o lado direito indefinido. O exemplo α = π/4, n = 1 (cos 2α = 0 e o termo k=1 indefinido) mostraria que a hipótese j=n+1 não é supérflua. O exemplo α = π/6, n = 1 mostra só que a hipótese não é restritiva demais, o que é correto mas não é o mesmo ponto."
+          },
+          {
+            "severity": "minor",
+            "description": "Caso n=0: diz 'Consistente' mas não verifica que o denominador sen(2α)cos α do lado direito é não nulo (isso vem de j=1), e a verificação para n=1 não mostra a simplificação sen α/(sen 2α cos 2α) = 1/(2 cos α cos 2α). Ambas são pequenas lacunas de verificação."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência numérica para n=3 e α=0,71 é só afirmada, sem valores nem a checagem de cos(jα) ≠ 0 para j=1..4. Conferi: S_3 ≈ R_3 ≈ −0,897937, então a afirmação está correta, mas deveria mostrar os termos ou ao menos as hipóteses."
+          }
+        ],
+        "summary": "Resposta final correta e igual à da referência: S_n = sen(nα)/(sen(2α)cos((n+1)α)). Conferi a identidade simbolicamente e numericamente. Os passos centrais estão certos: cos α + cos(2k+1)α = 2cos(kα)cos((k+1)α) com o sinal de (A−B)/2 tratado pela paridade do cosseno; a telescopagem sen α/(cos kα cos(k+1)α) = tan((k+1)α) − tan kα; o fator 2 preservado; os extremos tan((n+1)α) e tan α corretos; e a identidade final de tangentes com sen 2α = 2 sen α cos α. Testes: 20.000 casos aleatórios válidos com erro relativo máximo de 1e-5, concentrado em casos quase singulares (min|cos jα| ~ 1e-5), o que é erro de ponto flutuante; α=π/3, n=3 dá 0 = 0; α=π/6, n=1 dá 2/√3 nos dois lados; n=0 dá 0. Todas as hipóteses são usadas e cada denominador é justificado. Não há erro de conta, de índice ou de hipótese. Os problemas são de rigor e polimento, todos menores: cos α ≠ 0 sem citar j=1 no Passo 4; divisão por sen α descrita de forma vaga; observação sobre radianos desnecessária e assumida; ausência de discussão sobre a necessidade das hipóteses (sen α ≠ 0, j=n+1), que é a armadilha de rigor deste enunciado; verificação de n=0 e n=1 um pouco incompleta; e checagem numérica não mostrada. A resolução é correta, completa e clara, e está próxima de um gabarito comentado. Falta só o polimento listado para chegar a 9.\"}"
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "Identidade demonstrada: $S_n=\\dfrac{\\operatorname{sen}(n\\alpha)}{\\operatorname{sen}(2\\alpha)\\cos((n+1)\\alpha)}$. A prova usa $\\cos\\alpha+\\cos(2k+1)\\alpha=2\\cos(k\\alpha)\\cos((k+1)\\alpha)$, a telescopagem $\\frac{\\operatorname{sen}\\alpha}{\\cos(k\\alpha)\\cos((k+1)\\alpha)}=\\tan((k+1)\\alpha)-\\tan(k\\alpha)$ e a diferença de tangentes. As hipóteses são exatamente as condições para os dois lados estarem definidos. Conferido com $n=1$, $\\alpha=\\pi/6$ ($2/\\sqrt3$), $n=2$, $\\alpha=\\pi/8$ ($1/\\cos(3\\pi/8)\\approx 2{,}61313$), $n=3$, $\\alpha=\\pi/3$ ($0$) e $n=0$ ($0$).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O caso n=0 aparece como observação opcional, 'Caso n=0 (se 0∈ℕ)', enquanto a conclusão principal diz 'Fica demonstrada a identidade para n≥1'. Na convenção brasileira usual ℕ = {0,1,2,...}, então n=0 faz parte do enunciado. O caso está correto (soma vazia = 0 = sen(0)/(...)), mas deveria ser tratado como parte da demonstração, com o enunciado final cobrindo n ∈ ℕ inteiro. Correção: enunciar a conclusão para todo n ∈ ℕ, incluindo n=0, e manter o caso como base."
+          },
+          {
+            "severity": "minor",
+            "description": "Na última bullet de 'Por que as hipóteses são necessárias', 'cos α=0 anula cos α+cos3α=2cos α cos2α e torna indefinido o lado direito' omite que o lado esquerdo também fica indefinido, pois o denominador do termo k=1 se anula. Correção: dizer explicitamente que ambos os lados são indefinidos."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação numérica com n=3, α=0,71 mostra cos(jα) apenas para j=1..4, com 4 casas decimais, mas os termos k=2 e k=3 exigem cos5α ≈ -0,917755 e cos7α ≈ 0,254771, que não aparecem. Os termos com 6 casas (4,388842; -6,273816; 0,987037) não são reproduzíveis a partir dos dados mostrados. Conferi com python: os valores estão corretos, e a soma -0,897937 coincide com o lado direito. Correção: listar cos5α e cos7α e indicar a precisão usada."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'as hipóteses são exatamente as condições para os dois lados estarem definidos' está correta, mas comprimida. Para ficar auto-suficiente, deveria dizer: o lado esquerdo está definido ⇔ cos(jα)≠0 para j=1..n+1 (n≥1); o lado direito está definido ⇔ sen α≠0, cos α≠0 e cos((n+1)α)≠0; a conjunção das duas condições coincide com as hipóteses dadas."
+          }
+        ],
+        "summary": "Resposta final idêntica à da referência: S_n = sen(nα)/(sen(2α)·cos((n+1)α)) é verdadeira sob as hipóteses. Não há divergência entre as duas resoluções. Refiz as contas: a fatoração soma→produto (erro ~4e-14), o passo telescópico (3) (erro ~4e-12) e a identidade geral (3000 combinações aleatórias, erro relativo máx. ~5e-9) estão corretos. Conferi todos os casos particulares do candidato (α=π/6, π/8, π/3, 0,71, π/4 e π para n=1): os valores estão corretos, incluindo S_3=0 em α=π/3 e S_1=-1/2 em α=π. A demonstração é completa e rigorosa: fatoração com cos par (sinal correto), telescopagem com extremos T_{n+1} e T_1, uso de sen α≠0 na divisão, diferença de tangentes com denominador não nulo, sen2α=2 sen α cos α com fator 2 correto, validade do lado direito e caso n=0. Todas as armadilhas do gabarito estão tratadas, exceto a prova alternativa por indução, que é opcional. Os problemas restantes são de apresentação (caso n=0 com ressalva desnecessária, um caso incompleto sobre cos α=0, uma verificação numérica não reproduzível e uma frase comprimida). Nenhum afeta a validade. Nota 9.0: publicável como gabarito comentado após pequenos ajustes.\""
+      }
+    }
+  ]
+}

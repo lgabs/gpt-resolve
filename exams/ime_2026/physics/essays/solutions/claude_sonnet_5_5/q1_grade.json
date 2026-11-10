@@ -1,0 +1,55 @@
+{
+  "question": 1,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-2-24-10-2025-2-fase-dia-2/dissertativa-1-fisica-2-fase-dia-2-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "-2 m < x < 4 m (poço em torno do equilíbrio estável x = 0, com E < 32/3 J; extremos excluídos)",
+      "key_answer": "-2 < x < 4 (m): a partícula fica presa no poço em torno de x = 0; x = 4 é equilíbrio instável e x = -2 tem a mesma Ep que x = 4",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Mesmo intervalo aberto e mesma justificativa: equilíbrios em F=0 (x=0 estável, x=4 instável) e Ep(x) − 32/3 = −(x−4)²(x+2)/3, então Ep(−2) = Ep(4) = 32/3 J. Conferi a identidade numericamente (erro de 3e-14). O enunciado bate com o PDF original."
+    },
+    {
+      "item": "b",
+      "solution_answer": "E_sup = Ep(4) = 32/3 J ≈ 10,67 J (supremo, não atingido)",
+      "key_answer": "E_sup = 32/3 J (≈ 10,7 J) = Ep(4) = Ep(−2)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Ep(4) = 32 − 64/3 = 32/3 J. A diferença 10,67 contra 10,7 é só arredondamento. Na resolução escrita do gabarito aparece “2(4)² − (4(4)³)/3”, com um fator 4 a mais (erro de digitação), mas o resultado final 32/3 J está certo."
+    },
+    {
+      "item": "c",
+      "solution_answer": "v(0) = −v0 = −√(2E/m) (mínimo local); v sobe e se anula no retorno x_t < −2 em t1 (inflexão, inclinação máxima); chega a +v0 em x = 0 em t2 = 2t1 (máximo local); cai, com inflexão em x = 2, até o mínimo v_min = √(2(E−32/3)/m) > 0 em x = 4 (t3); depois cresce sem limite, com assíntota vertical em tempo finito t*. A partícula escapa e não volta.",
+      "key_answer": "Começa em −V0, |v| diminui até v = 0 em T1 (retorno em x < 0, inclinação máxima); sobe até +V0 em T2 = 2T1 (x = 0); cai até um mínimo positivo em T3 (x = 4, passa sem parar porque E > E_sup); depois cresce sem limite, cada vez mais íngreme.",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os dois esboços têm a mesma forma: −v0 → 0 (T1) → +v0 (T2 = 2T1) → mínimo positivo em x = 4 → crescimento ilimitado. A resolução vai além e detalha concavidades, a inflexão em x = 2 (F′(2) = 0) e o valor v_min = √(2(E−32/3)/m). Conferi os números do esboço (m = 1 kg, E = 12 J) com RK4 próprio: x_t = −2,107 m, t1 = 0,653 s, t2 = 1,307 s com v = 4,899 m/s, t_i = 1,759 s com v = 3,651 m/s, t3 = 2,613 s com v = 1,633 m/s, v(3,8 s) = 15,78 m/s e t* = t3 + ∫₄^∞ dx/v = 4,701 s. Tudo coincide com o texto. A assíntota em tempo finito também está certa: para x grande, v ~ x^{3/2}, a integral ∫dx/v converge e v ∝ (t*−t)^{−3}. Isso é compatível com o “cresce sem limite” do gabarito."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Na resolução do item b, o gabarito escreve “E_sup = 2(4)² − (4(4)³)/3”, com um fator 4 a mais no termo cúbico. Pela expressão como está escrita, daria 32 − 256/3 < 0. É erro de digitação, porque o resultado declarado (32/3 J) está certo."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "No item a, “intervalo de posições possíveis” pode ser lido como intervalo aberto ou fechado. Os dois textos dão o intervalo aberto (−2, 4), que é o certo: com E = 32/3 J a partícula tende assintoticamente a x = 4 e não oscila. Ainda assim, um corretor poderia aceitar [−2, 4]."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "No item c, a resolução diz que v → ∞ em tempo finito t* (assíntota vertical). Isso está matematicamente certo para F = x² − 4x, mas vai além do que o gabarito pede (“cresce sem limite”). Não há conflito: é um detalhe a mais, que a própria resolução marca como idealização."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "O esboço numérico usa m = 1 kg e E = 12 J, valores que o enunciado não dá (a massa não é fornecida). A resolução deixa claro que o gráfico é qualitativo e vale para qualquer m e qualquer E > 32/3 J."
+    }
+  ],
+  "summary": "A resolução e o gabarito do Poliedro concordam nos três itens. a) −2 m < x < 4 m. b) E_sup = 32/3 J ≈ 10,67 J. c) O esboço de v×t tem a mesma forma nos dois: v começa em −v0, anula-se no retorno (x < −2), vale +v0 em T2 = 2T1, cai até um mínimo positivo em x = 4 e depois cresce sem limite. Refiz as contas: a identidade Ep − 32/3 = −(x−4)²(x+2)/3 confere, e os instantes e velocidades do esboço da resolução batem com uma integração RK4 independente. A resolução é mais detalhada que o gabarito: concavidades, inflexão em x = 2, valor de v_min e assíntota em tempo finito. O único deslize encontrado é um erro de digitação na conta do item b do gabarito (fator 4 a mais), sem efeito no resultado final."
+}

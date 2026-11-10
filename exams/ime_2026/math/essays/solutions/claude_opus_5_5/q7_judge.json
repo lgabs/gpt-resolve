@@ -1,0 +1,47 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Pelo teorema de Bayes, P(infectado | resposta \"não infectado\") = (0,90·0,05)/(0,90·0,05 + 0,10·0,99) = 0,045/0,144 = 5/16 = 31,25%.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição está igual ao original (pág. 2, 7ª questão, valor 1,0). Não há figura.\n\n**Eventos**\n- I: o computador está infectado; Iᶜ: não está infectado.\n- D: o antivírus indica a presença de vírus; Dᶜ: o antivírus responde que o computador NÃO está infectado.\n\n**Dados (lidos como probabilidades condicionais)**\n- P(I) = 0,90, logo P(Iᶜ) = 0,10.\n- \"Detecta a presença de vírus em um computador infectado com probabilidade de 95%\": P(D | I) = 0,95, logo P(Dᶜ | I) = 0,05 (falso negativo).\n- \"Indica a presença de vírus quando o computador não está infectado com probabilidade de 1%\": P(D | Iᶜ) = 0,01, logo P(Dᶜ | Iᶜ) = 0,99.\n\nHipótese implícita: para cada computador o programa dá uma de duas respostas (\"infectado\" ou \"não infectado\"). Assim D e Dᶜ são complementares em cada caso condicional.\n\n**Pergunta:** o programa respondeu \"não infectado\", ou seja, ocorreu Dᶜ. Queremos P(I | Dᶜ).\n\n**Probabilidade total de uma resposta negativa**\nP(Dᶜ) = P(Dᶜ | I)·P(I) + P(Dᶜ | Iᶜ)·P(Iᶜ)\n= 0,05·0,90 + 0,99·0,10\n= 0,045 + 0,099\n= 0,144 (= 18/125).\n\n**Teorema de Bayes**\nP(I | Dᶜ) = P(Dᶜ | I)·P(I) / P(Dᶜ) = 0,045 / 0,144 = 45/144 = **5/16 = 0,3125 = 31,25%**.\n\n(Conferido com frações exatas em Python: (9/200)/(18/125) = 5/16.)\n\n**Árvore equivalente, com 1000 computadores:**\n- 900 estão infectados. O programa responde \"não infectado\" em 5% deles, ou seja, 45.\n- 100 não estão infectados. O programa responde \"não infectado\" em 99% deles, ou seja, 99.\n- Total de respostas \"não infectado\": 144. Destas, 45 vêm de computadores infectados, então a probabilidade é 45/144 = 5/16.\n\n**Comentário:** mesmo com resposta negativa, a chance de infecção ainda é de cerca de 31%. Isso acontece porque a probabilidade a priori de infecção (90%) é muito alta. O teste reduz a chance de 90% para 31,25%, mas não a leva a valores pequenos.",
+    "final_answer": "P(infectado | programa responde \"não infectado\") = 0,045/0,144 = 5/16 = 0,3125, ou seja, 31,25%.",
+    "pitfalls": [
+      "Calcular a condicional errada: a pergunta usa a resposta NEGATIVA (Dᶜ). Calcular P(I|D) = 855/856 ≈ 99,9% está errado.",
+      "Ler os 1% como falso positivo P(D|Iᶜ) = 0,01. Isso NÃO é P(Iᶜ|D) nem P(Iᶜ). Também não se deve confundir os 95% com P(I|D).",
+      "Usar os complementares corretos: P(Dᶜ|I) = 0,05 e P(Dᶜ|Iᶜ) = 0,99. Usar 0,01 no lugar de 0,99 no denominador é erro comum.",
+      "Responder com a probabilidade conjunta P(I ∩ Dᶜ) = 0,045 (4,5%), sem dividir por P(Dᶜ) = 0,144.",
+      "Responder apenas 5% = P(Dᶜ|I), ignorando a probabilidade a priori de 90%. Essa é a falácia da taxa-base, no sentido inverso.",
+      "Achar que 95% e 1% são complementares entre si (95% + 1% ≠ 100%). Os dois se referem a populações diferentes: infectados e não infectados.",
+      "Somar errado no denominador: 0,045 + 0,099 = 0,144, e não 0,14 nem 0,099.",
+      "Simplificar corretamente: 45/144 = 5/16. A resposta final pode vir como fração exata ou como 31,25%. Arredondamentos como ≈31% são aceitáveis se o valor exato estiver indicado.",
+      "Uma boa resolução deve explicitar a hipótese de que a resposta do programa só tem dois resultados possíveis, para justificar os complementares, e mostrar a probabilidade total antes de aplicar Bayes."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Pelo teorema de Bayes, P(infectado | resposta \"não infectado\") = (0,90·0,05)/(0,90·0,05 + 0,10·0,99) = 0,045/0,144 = 5/16 = 31,25%.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No comentário final, 0,045 e 0,099 aparecem como 'falsos negativos' e 'verdadeiros negativos' sem dizer que são probabilidades conjuntas, P(I∩D̄) e P(Ī∩D̄), e não taxas condicionais. A taxa de falso negativo é P(D̄|I) = 0,05. Deveria vir rotulado assim: 'P(I∩D̄) = 0,045 e P(Ī∩D̄) = 0,099'."
+          },
+          {
+            "severity": "minor",
+            "description": "Os dados são escritos direto como P(D|I) = 0,95 e P(D|Ī) = 0,01, sem uma frase dizendo que as porcentagens do enunciado são probabilidades condicionais e não P(I|D) etc. A notação deixa a leitura clara, mas uma linha de justificativa deixaria a resolução no nível de gabarito comentado."
+          }
+        ],
+        "summary": "Conferi a transcrição com o PDF original (pág. 2, 7ª questão, valor 1,0) e ela está correta.\n\n**Resposta final:** o candidato chega a P(I|D̄) = 0,045/0,144 = 5/16 = 31,25%, o mesmo valor da minha referência. Refiz a conta em Python com frações exatas: 9/200 ÷ 18/125 = 5/16, e o complementar dá 11/16. A resposta está correta.\n\n**Armadilhas:** nenhuma ficou de fora.\n- Calcula a condicional certa, a da resposta negativa D̄, e não P(I|D).\n- Usa os complementos certos, P(D̄|I) = 0,05 e P(D̄|Ī) = 0,99. Justifica isso dizendo explicitamente que o programa só dá duas respostas possíveis.\n- Monta a probabilidade total antes de aplicar Bayes, e a soma está certa: 0,045 + 0,099 = 0,144.\n- Não para na conjunta 0,045 nem em 5%. Não trata 95% e 1% como complementares entre si.\n- Simplifica 45/144 corretamente para 5/16.\n- Confere que P(Ī|D̄) = 11/16 e que 5/16 + 11/16 = 1.\n- Verifica que P(D̄) > 0, o que deixa a condicional bem definida.\n- Comenta por que o resultado faz sentido: a probabilidade cai de 90% para 31%, mas continua alta por causa da taxa-base.\n\n**Defeitos:** só dois, ambos menores e de redação. No comentário final, as probabilidades conjuntas 0,045 e 0,099 são chamadas de 'falsos negativos' e 'verdadeiros negativos' sem dizer que são conjuntas. Também falta uma frase dizendo que as porcentagens do enunciado são lidas como probabilidades condicionais.\n\nA resolução está correta, completa, rigorosa e clara, e serve como gabarito comentado."
+      }
+    }
+  ]
+}

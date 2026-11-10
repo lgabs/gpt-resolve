@@ -1,0 +1,64 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "A seção é o trapézio ADXY, com bases AD = 8 e XY = 2 (X e Y são os pontos médios de SE e SF) e altura 2+$\\sqrt{3}$. Área = $10+5\\sqrt{3}=5(2+\\sqrt{3})\\approx 18{,}66$ unidades de área.",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 9: RESOLUÇÃO DE REFERÊNCIA\n\nItem 1. Dimensões da pirâmide.\n- A base é o hexágono regular ABCDEF de lado 4, com centro O. O circunraio vale OA = 4 (igual ao lado), o apótema vale 2√3, a diagonal maior AD vale 8 e a diagonal menor vale 4√3.\n- A pirâmide é reta, logo o pé da altura é O. O vértice superior V forma um ângulo de 30° entre as arestas laterais. Cada face lateral é isósceles, com lados iguais às arestas laterais (L) e base igual ao lado do hexágono (4).\n- Lei dos cossenos em VAB: 4² = 2L² − 2L²·cos30° = L²(2 − √3). Logo L² = 16/(2 − √3) = 16(2 + √3) = 32 + 16√3 e L = 2(√6 + √2) ≈ 7,73.\n- Altura: h² = L² − OA² = 32 + 16√3 − 16 = 16(1 + √3), logo h = 4√(1 + √3) ≈ 6,61.\n- Conferência: o apótema da pirâmide vale s = √(L² − 4) = √(28 + 16√3) = 4 + 2√3, e s² = h² + (2√3)² = 16 + 16√3 + 12 = 28 + 16√3. Confere.\n\nItem 2. Escolha do plano.\n- Coordenadas: O = (0,0,0), A = (4,0,0), B = (2,2√3,0), C = (−2,2√3,0), D = (−4,0,0), E = (−2,−2√3,0), F = (2,−2√3,0) e V = (0,0,h).\n- A diagonal AD é paralela a BC e a EF (todas são paralelas ao eixo x).\n- Um plano que contém AD e é paralelo a uma face lateral só existe se AD for paralela ao plano dessa face. As faces VAB, VCD, VDE e VFA não têm nenhuma direção paralela a AD, portanto não geram solução. As faces VBC e VEF contêm BC ∥ EF ∥ AD, portanto geram exatamente um plano cada.\n- Os dois casos são simétricos pela reflexão y ↦ −y (B↔F, C↔E) e têm a mesma área. Tomemos o plano Π paralelo a VBC.\n- Normal da face VBC: n = VB × BC ∝ (0, h, 2√3). Como Π contém A (e também D), a equação de Π é h·y + 2√3·z = 0.\n\nItem 3. Forma da seção.\n- Seja g(X) = h·y + 2√3·z. Temos g(A) = g(D) = 0; g(B) = g(C) = g(V) = 2√3·h > 0; g(E) = g(F) = −2√3·h < 0.\n- As arestas cortadas por Π são VE e VF (troca de sinal). Nas arestas da base, Π toca apenas nos vértices A e D. Logo a seção é o quadrilátero ADPQ, com P ∈ VE e Q ∈ VF.\n- Ponto em VE: X(t) = V + t(E − V) = (−2t, −2√3·t, h(1 − t)). Impondo g = 0 obtemos 2√3·h − 4√3·h·t = 0, logo t = 1/2. Assim P = (−1, −√3, h/2) é o ponto médio de VE. Analogamente Q = (1, −√3, h/2) é o ponto médio de VF.\n- PQ = 2 (base média do triângulo VEF, igual a EF/2) e PQ ∥ AD.\n- A seção é o trapézio ADPQ, com bases AD = 8 e PQ = 2.\n\nItem 4. Altura do trapézio.\n- AD está sobre a reta y = 0, z = 0. PQ está sobre a reta y = −√3, z = h/2. Ambas são paralelas ao eixo x.\n- A distância entre elas, no espaço, é d = √((√3)² + (h/2)²) = √(3 + 4 + 4√3) = √(7 + 4√3) = 2 + √3, pois (2 + √3)² = 7 + 4√3.\n\nItem 5. Área.\n- S = (AD + PQ)/2 · d = (8 + 2)/2 · (2 + √3) = 5(2 + √3) = 10 + 5√3 ≈ 18,66.\n\nConferências.\n(a) Projeção ortogonal sobre a base: o trapézio tem vértices A(4,0), D(−4,0), P′(−1,−√3), Q′(1,−√3), com área (8 + 2)/2 · √3 = 5√3. O cosseno do ângulo θ entre Π e a base é 2√3/√(h² + 12) = 2√3/(4 + 2√3) = 2√3 − 3. Então S = 5√3/(2√3 − 3) = 10 + 5√3. Confere.\n(b) Verificação numérica em Python (coordenadas explícitas, interseção do plano com as 12 arestas, área do polígono): S = 18,660254 para VBC e para VEF. Para os demais faces laterais o plano pela diagonal AD não existe. 10 + 5√3 = 18,660254. Confere.\n\nResposta: S = 10 + 5√3 unidades de área, ou aproximadamente 18,66.",
+    "final_answer": "Área da seção = 10 + 5√3 ≈ 18,66 unidades de área.\n\nA seção é o trapézio ADPQ, com bases AD = 8 (diagonal maior da base) e PQ = 2 (base média de VEF, com P e Q pontos médios de VE e VF), e altura 2 + √3. Há dois planos possíveis, um paralelo à face VBC e outro paralelo à face VEF. Eles são simétricos e dão a mesma área, então a resposta é única.\n\nDados intermediários: aresta lateral L = 2(√6 + √2) = √(32 + 16√3); altura da pirâmide h = 4√(1 + √3).\n\nNão é questão de múltipla escolha.",
+    "pitfalls": [
+      "Dados inconsistentes com ângulo de 60°: se o ângulo no vértice fosse 60°, então L = 4 e h = 0 (pirâmide degenerada). O ângulo de 30° é necessário, e serve de checagem: o raio do hexágono (4) tem de ser menor que a aresta lateral.",
+      "O ângulo de π/6 está no vértice superior V (entre as arestas laterais), e não na base do triângulo. Os lados iguais do triângulo são as arestas laterais (L), e a base é o lado do hexágono (4).",
+      "Em hexágono regular, o circunraio é igual ao lado (4), e não o apótema (2√3). Usar o apótema para calcular a altura dá h² = L² − 12, que está errado.",
+      "A altura é h = 4√(1 + √3), obtida por h² = L² − 16. Não confundir h com o apótema s = 4 + 2√3 da face lateral.",
+      "A diagonal maior do hexágono de lado 4 mede 8 (= 2·lado). A diagonal menor mede 4√3. Confundir as duas muda toda a resposta.",
+      "A pirâmide é reta, então o pé da altura é o centro do hexágono. Sem isso o problema não tem solução única.",
+      "O plano deve ser paralelo ao plano da face lateral (não só a uma aresta). Para ser paralelo a uma face e conter AD, AD precisa ser paralela ao plano da face. Só VBC e VEF satisfazem isso, pois BC ∥ EF ∥ AD. As faces VAB, VCD, VDE e VFA não geram seção.",
+      "A seção não passa pelo vértice V. Ela é um trapézio ADPQ com P e Q nos pontos médios de VE e VF. Não é triângulo, paralelogramo nem retângulo.",
+      "A base menor do trapézio é PQ = 2 (metade de EF), e não 4. A base maior é AD = 8.",
+      "A altura do trapézio é a distância no espaço entre as retas AD e PQ: √(3 + (h/2)²) = 2 + √3. Não usar a distância projetada √3 nem h/2.",
+      "Simplificação correta: √(7 + 4√3) = 2 + √3, porque (2 + √3)² = 7 + 4√3.",
+      "Conferência independente: a área da projeção sobre a base é 5√3, e cos θ = 2√3 − 3 entre o plano Π e a base. Então S = 5√3/(2√3 − 3) = 10 + 5√3. A racionalização é (2√3 + 3)/3.",
+      "Há dois planos possíveis (paralelos a VBC e a VEF), mas são simétricos e dão a mesma área. Não há duas respostas diferentes.",
+      "Não confundir a área da seção com a área lateral, a área total ou o volume da pirâmide."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "A seção é o trapézio ADXY, com bases AD = 8 e XY = 2 (X e Y são os pontos médios de SE e SF) e altura 2+$\\sqrt{3}$. Área = $10+5\\sqrt{3}=5(2+\\sqrt{3})\\approx 18{,}66$ unidades de área.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 3 (escolha da face): a conclusão de que SBC e SEF servem é implícita. Falta escrever explicitamente que BC ⊂ SBC e BC ∥ AD, logo AD ∥ SBC (e o análogo com EF em SEF). A frase \"o único plano paralelo a σ que passa pelo vértice comum\" é ambígua, pois o vértice comum é A. O que deveria ser feito: enunciar a condição necessária (AD paralela ao plano da face) e a verificação para SBC e SEF."
+          },
+          {
+            "severity": "minor",
+            "description": "Não há checagem de consistência do ângulo de 30°. A resolução não observa que a aresta lateral L precisa ser maior que o circunraio R = 4, ou seja, H² > 0. Com 60° teríamos L = 4 e H = 0, pirâmide degenerada, que é uma das armadilhas do enunciado. Está implícito em H² = 16(1+√3) > 0, mas não é discutido. O que deveria ser feito: acrescentar uma linha de consistência no passo 1."
+          },
+          {
+            "severity": "minor",
+            "description": "Identificação do polígono ADXY sem justificativa completa. Afirma-se 'o quadrilátero ADXY' sem dizer que a ordem dos vértices vem das faces cortadas (base, SDE, SEF, SFA) e sem justificar a convexidade (interseção de sólido convexo com plano). Além disso, 'ADXY é um trapézio' só segue se AD e XY forem lados opostos, o que a ordem dos vértices deveria explicitar. O que deveria ser feito: uma frase com a sequência de faces cortadas."
+          },
+          {
+            "severity": "minor",
+            "description": "Conferência (a): cos θ é usado sem explicitar a fórmula cos θ = |n_z|/|n| com n = (0, H, 2√3), que é o ângulo entre as normais. O que deveria ser feito: escrever a fórmula antes de substituir os valores."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'ordem de grandeza' (comparar 18,66 com a área da base 41,57 e dizer que a altura 3,73 é 'coerente') não é verificação independente, pois não testa nada. O que deveria ser feito: removê-la ou substituí-la por uma checagem real, como a área projetada 5√3 ser menor que a área real e a razão cos θ."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 9. A resposta final do candidato, 10+5√3 = 5(2+√3) ≈ 18,66 u.a., está correta e coincide com a referência item a item (plano Hy+2√3z=0 paralelo a SBC ou SEF, seção trapezoidal com bases AD = 8 e XY = 2, altura 2+√3).\n\nVerificação feita: (i) reli o enunciado no PDF da prova (página 10), que confere com a transcrição; (ii) rodei script numérico independente no diretório de trabalho: L² = 16(2+√3), H² = 16(1+√3), ângulo ASB = 30,000°, interseção do plano com as 12 arestas e área do polígono = 18,660254 para as faces SBC e SEF (as outras faces não admitem plano pela diagonal AD); 10+5√3 = 18,660254; distância entre as retas AD e XY = 2+√3; cos θ = 2√3−3, e 5√3/(2√3−3) = 10+5√3. Todas as contas do candidato conferem, inclusive as simplificações √(7+4√3) = 2+√3 e √(28+16√3) = 2(2+√3). Também conferi a simetria: a reflexão em y = 0 troca B↔F e C↔E, então SBC e SEF dão a mesma área.\n\nArmadilhas da referência: 13 de 14 foram tratadas corretamente (ângulo no vértice S, circunraio 4 e não apótema, diagonal maior 8, pirâmide reta, plano paralelo à face e não à aresta, seção que não passa por S, PQ/XY = 2, distância 3D entre as retas, simplificação do radical, conferência por projeção, dois planos simétricos). A única não discutida é a checagem de degenerescência do caso de 60°.\n\nPontos que impedem nota mais alta são apenas de exposição e rigor secundário, sem erro matemático: a escolha da face é compacta, a ordem dos vértices não é justificada, cos θ não tem a fórmula escrita e a 'ordem de grandeza' não verifica nada. Nota 9: a resolução é clara, completa e publicável como gabarito comentado após pequenos ajustes.\""
+      }
+    }
+  ]
+}

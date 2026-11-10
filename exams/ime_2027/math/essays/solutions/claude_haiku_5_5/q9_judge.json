@@ -1,0 +1,73 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Quatro pontos: (2*sqrt(3), 1/7), (2*sqrt(3), -1/7), (-2*sqrt(3), 1/7) e (-2*sqrt(3), -1/7), aproximadamente (±3,46; ±0,14). Obtidos a partir do lugar geométrico de M: 4x^2/49 + y^2 = 1 (excluídos os pontos (±7/2, 0)), com c = 2*sqrt(3) pois 2c = 4*sqrt(3).",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA - IME 2026/2027, Matemática, Questão 9\n\nResolvi por conta própria antes de consultar qualquer resolução de candidato. Conferi as contas numericamente em Python puro (10.000 pontos da elipse; sympy não estava instalado).\n\n0) Dados da elipse\nx² + 4y² = 16  <=>  x²/16 + y²/4 = 1.\na² = 16, b² = 4, a = 4, b = 2. O eixo maior é horizontal, pois a² > b².\nSemidistância focal: c_foc² = a² - b² = 12, então c_foc = 2√3 e os focos são (±2√3, 0).\nO enunciado diz que 2c é a distância entre os focos. Logo 2c = 4√3 e c = 2√3.\nAs retas pedidas são x = ±2√3 (≈ ±3,464).\n\n1) Normal no ponto P = (x0, y0), com x0² + 4y0² = 16\nO gradiente de F(x,y) = x² + 4y² - 16 é (2x0, 8y0), paralelo a (x0, 4y0).\nReta normal: (x, y) = (x0, y0) + t·(x0, 4y0).\nEquivalentemente: inclinação da normal = 4y0/x0 e da tangente = -x0/(4y0). A forma paramétrica evita divisão por zero quando x0 = 0.\n\n2) Ponto Q (normal ∩ eixo x)\nFazendo y = 0: y0 + 4y0·t = 0, logo t = -1/4. Isso exige y0 ≠ 0, pois o enunciado supõe um único Q.\nEntão x = x0 - x0/4 = 3x0/4, e Q = (3x0/4, 0).\nConferência pela subnormal: na elipse, a subnormal vale (a² - b²)·x0/a² = (12/16)·x0 = 3x0/4. Confere.\nCaso excluído: y0 = 0, isto é P = (±4, 0). Aí a normal é o próprio eixo x e Q não é único. Esses dois P devem ser excluídos.\n\n3) Ponto médio M de PQ\nM = ((x0 + 3x0/4)/2, (y0 + 0)/2) = (7x0/8, y0/2). Chamando M = (X, Y): x0 = 8X/7 e y0 = 2Y.\n\n4) Lugar geométrico de M\nSubstituindo em x0² + 4y0² = 16: (64/49)X² + 16Y² = 16. Dividindo por 16: 4X²/49 + Y² = 1.\nOu seja, x²/(49/4) + y² = 1: elipse com semieixos 7/2 (horizontal) e 1 (vertical).\nOs pontos (±7/2, 0) são imagem de P = (±4, 0) e ficam excluídos.\nCorrespondência: P percorre a elipse menos (±4,0), e M percorre o lugar menos (±7/2, 0), bijetivamente.\nCasos de conferência: P = (0, ±2) tem normal vertical x = 0, Q = (0,0), M = (0, ±1), que pertence ao lugar.\nCálculo geral alternativo: com k = (a² - b²)/a² = 3/4, o lugar tem semieixos a(1+k)/2 = 7/2 e b/2 = 1. Confere.\n\n5) Interseções com x = ±c = ±2√3\nPara X = ±2√3: 4·12/49 + Y² = 1, logo 48/49 + Y² = 1, Y² = 1/49, Y = ±1/7.\nPontos: (2√3, 1/7), (2√3, -1/7), (-2√3, 1/7), (-2√3, -1/7).\nNenhum deles é (±7/2, 0), então nenhum é excluído. Como 2√3 < 7/2 (12 < 49/4), as retas cortam a curva em dois pontos cada.\nVerificação com P: para M = (2√3, 1/7), P = (16√3/7, 2/7). Então x0² + 4y0² = 768/49 + 16/49 = 16, ok. Q = (12√3/7, 0), e o ponto médio é (2√3, 1/7), ok.\n\nResposta: os pontos são (2√3, ±1/7) e (-2√3, ±1/7), quatro no total. Questão discursiva, sem alternativas.",
+    "final_answer": "Quatro pontos, com as retas x = +c e x = -c, onde c = 2√3 (semidistância focal, pois 2c = 4√3 é a distância entre os focos):\n\n- Em x = +2√3: (2√3, 1/7) e (2√3, -1/7)\n- Em x = -2√3: (-2√3, 1/7) e (-2√3, -1/7)\n\nBase: o lugar geométrico de M é a elipse 4x²/49 + y² = 1 (semieixos 7/2 e 1), excluídos os pontos (±7/2, 0), imagem de P = (±4, 0). Com Q = (3x0/4, 0) e M = (7x0/8, y0/2), substituindo x = ±2√3 obtém-se Y² = 1/49.",
+    "pitfalls": [
+      "c é a SEMIdistância focal: 2c = distância entre os focos, então c = 2√3, não 4√3. Não confunda c com 2c nem com √12 sem dividir.",
+      "Normalize a elipse para x²/16 + y²/4 = 1. Sem isso é fácil inverter a² e b² (a² = 4, b² = 16 dá c² < 0, sem focos reais). O eixo maior é horizontal.",
+      "Direção da normal: (x0, 4y0), não (x0, y0) e não a tangente. A inclinação da normal é 4y0/x0 e a da tangente é -x0/(4y0). Erros de sinal ou de fator 4 mudam Q.",
+      "Q = (3x0/4, 0). Confira pela subnormal (a² - b²)x0/a² = 3x0/4. Erro comum: tomar Q = (x0/4, 0) ou (x0 - 4y0..., 0) por fórmulas trocadas.",
+      "Caso P = (±4, 0): a normal é o eixo x, Q não é único e o ponto médio não está definido. Esses P devem sair do domínio, e (±7/2, 0) devem sair do lugar geométrico. Resposta sem essa ressalva fica incompleta.",
+      "Caso x0 = 0 (P = (0, ±2)): a normal é vertical e a inclinação 4y0/x0 não existe. Use a forma paramétrica ou trate o caso à parte. Nesse caso M = (0, ±1), que pertence ao lugar.",
+      "Ponto médio: M = ((x0 + Q_x)/2, (y0 + 0)/2) = (7x0/8, y0/2). Não use Q_x/2 nem esqueça o y0/2.",
+      "Equação do lugar: 64X²/49 + 16Y² = 16 dá 4X²/49 + Y² = 1, com semieixo horizontal 7/2 e não 2√3 nem 4. Erros de fator aqui propagam até o fim.",
+      "Margem pequena: 2√3 ≈ 3,464 < 7/2 = 3,5. As retas cortam a elipse nos pontos com Y = ±1/7. Um erro de conta pode dar Y² < 0 ou tangência falsa.",
+      "Não esqueça os quatro pontos: ±2√3 e ±1/7 geram 2 pontos em cada reta, totalizando 4.",
+      "Verifique a resposta de volta: para M = (2√3, 1/7), P = (16√3/7, 2/7) está na elipse (768/49 + 16/49 = 16), e o ponto médio de P e Q = (12√3/7, 0) é (2√3, 1/7)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Quatro pontos: (2*sqrt(3), 1/7), (2*sqrt(3), -1/7), (-2*sqrt(3), 1/7) e (-2*sqrt(3), -1/7), aproximadamente (±3,46; ±0,14). Obtidos a partir do lugar geométrico de M: 4x^2/49 + y^2 = 1 (excluídos os pontos (±7/2, 0)), com c = 2*sqrt(3) pois 2c = 4*sqrt(3).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 1: a tangente (4y0,−x0) é obtida de 2x+8yy'=0, que só determina a direção dividindo por y. A justificativa não cobre y0=0 (tangente vertical em (±4,0)). Deveria partir do gradiente (2x0,8y0): (4y0,−x0) é perpendicular a ele para todo P da elipse. A checagem de ortogonalidade está correta, só a derivação é fraca."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 1: 'a normal tem direção (x0,4y0), que é não nulo pois P≠(0,0)' dá um motivo impreciso. O correto é que (x0,4y0)=(0,0) forçaria P=(0,0), que não pertence à elipse (0≠16)."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não declara que o eixo maior é horizontal (a²=16 associado a x), nem que os focos são (±2√3,0). O enunciado não exige isso, mas a conta c=√(a²−b²) e a interpretação do lugar dependem dessa orientação. O gabarito de referência trata isso explicitamente como armadilha de normalização."
+          },
+          {
+            "severity": "minor",
+            "description": "Convenção de c: a resolução escreve c=√(a²−b²)=2√3 (semidistância focal padrão) e só depois 2c=4√3. Está correto, mas deveria dizer uma vez que, pela definição do enunciado (2c = distância entre focos), c=2√3, não 4√3, para não haver ambiguidade."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 4: 'A correspondência é biunívoca' é afirmada sem argumento explícito. Bastava dizer que P↦M é a aplicação afim invertível (x,y)↦(7x/8, y/2), que leva a elipse menos (±4,0) sobre o lugar menos (±7/2,0)."
+          },
+          {
+            "severity": "minor",
+            "description": "O caso x0=0 (normal vertical, Q=(0,0), M=(0,±1)) aparece só na verificação final. Deveria ser citado no passo 1 ou 2 como coberto pela forma paramétrica, que evita a inclinação indefinida."
+          },
+          {
+            "severity": "minor",
+            "description": "A fórmula x_Q=(a²−b²)x0/a² é apresentada como 'forma geral' sem demonstração. Serve como conferência, então deveria ser rotulada como checagem (sub-normal), ou demonstrada."
+          },
+          {
+            "severity": "minor",
+            "description": "Em 'Ordem de grandeza e unidades': a frase 'as coordenadas são adimensionais' é uma afirmação não justificada e desnecessária, e 'perto dos vértices' é vago. Deveria ser removida ou justificada. Não afeta a correção."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à de referência: quatro pontos (±2√3, ±1/7). Confirmei o enunciado no PDF original (p. 2, Questão 9); a transcrição confere. Refiz as contas: c=2√3 (2c=4√3 é a distância focal); normal com direção (x0,4y0); Q=(3x0/4,0); M=(7x0/8,y0/2); lugar geométrico 4X²/49+Y²=1, menos (±7/2,0); com X²=12, Y²=1/49. Verifiquei com 200 mil pontos da elipse (erro ~1e-16 na equação do lugar, Q exato) e em aritmética exata com frações. Todas as armadilhas do gabarito estão tratadas: semidistância focal, normalização, direção da normal, Q pela sub-normal, exclusão de (±4,0) e (±7/2,0), caso x0=0 (na verificação), ponto médio, folga 12<49/4, os quatro pontos e verificação de volta. Não encontrei erro de conta nem salto lógico que mude o resultado. Os problemas são de rigor e clareza: derivação da tangente que divide por y, justificativa vaga de não nulidade, eixo maior não declarado, biunivocidade afirmada sem argumento e observação de adimensionalidade desnecessária. Nota 9: uma resolução que um professor publicaria como gabarito comentado, depois dos ajustes de rigor listados.\""
+      }
+    }
+  ]
+}

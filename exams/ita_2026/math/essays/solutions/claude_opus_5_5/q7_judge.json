@@ -1,0 +1,51 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "p(x) = 2x^4 - 3x^3 + 7x^2 + 7x - 5. Raízes: 1/2, -1, 1+2i e 1-2i.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A página 8 do PDF original confere com a transcrição: p tem grau 4 e coeficientes reais, a soma das raízes é 3/2, o produto é −5/2 e o resto de p(x) ÷ (x³ − x + 4) é 9x² − 4x + 7.\n\n**1) Montar p(x).**\nO divisor x³ − x + 4 tem grau 3 e p tem grau 4, então o quociente tem grau 1: q(x) = αx + β, com α ≠ 0. Como o divisor é mônico, α é o coeficiente líder de p. Ele **não** é necessariamente 1.\n\np(x) = (x³ − x + 4)(αx + β) + 9x² − 4x + 7\n= αx⁴ + βx³ − αx² + (4α − β)x + 4β + 9x² − 4x + 7\n= αx⁴ + βx³ + (9 − α)x² + (4α − β − 4)x + (4β + 7).\n\n**2) Relações de Girard** (p = a₄x⁴ + a₃x³ + a₂x² + a₁x + a₀):\n- Soma das raízes: −a₃/a₄ = −β/α = 3/2, logo β = −3α/2.\n- Produto das raízes (grau par, sinal +): a₀/a₄ = (4β + 7)/α = −5/2, logo 4β + 7 = −5α/2.\n\nSubstituindo β: −6α + 7 = −5α/2. Daí 7 = 6α − 5α/2 = 7α/2, então **α = 2** e **β = −3**. Como α ≠ 0, o grau 4 está garantido e a solução é única.\n\np(x) = 2x⁴ − 3x³ + (9 − 2)x² + (8 + 3 − 4)x + (−12 + 7)\n**p(x) = 2x⁴ − 3x³ + 7x² + 7x − 5.**\n\nVerificações:\n- Soma: −(−3)/2 = 3/2 ✓.\n- Produto: −5/2 ✓.\n- A divisão longa por x³ − x + 4 dá quociente 2x − 3 e resto 9x² − 4x + 7 ✓.\n\n**3) Raízes.**\nCandidatas racionais: ±1, ±5, ±1/2, ±5/2.\n- p(1/2) = 2/16 − 3/8 + 7/4 + 7/2 − 5 = (1 − 3 + 14 + 28 − 40)/8 = 0, então x = 1/2 é raiz.\n- Dividindo por (2x − 1): p(x) = (2x − 1)(x³ − x² + 3x + 5).\n- Em x = −1: −1 − 1 − 3 + 5 = 0, então x = −1 é raiz, e x³ − x² + 3x + 5 = (x + 1)(x² − 2x + 5).\n- x² − 2x + 5 = 0 tem Δ = 4 − 20 = −16, logo x = (2 ± 4i)/2 = 1 ± 2i.\n\nPortanto p(x) = 2(x − 1/2)(x + 1)(x − 1 − 2i)(x − 1 + 2i).\n\nConferência final:\n- Soma: 1/2 − 1 + (1 + 2i) + (1 − 2i) = 3/2 ✓.\n- Produto: (1/2)(−1)(1 + 4) = −5/2 ✓.\n- As raízes complexas vêm em par conjugado, o que é coerente com coeficientes reais.\n\nConferi numericamente (aritmética exata com frações e avaliação complexa): p se anula em 1/2, −1, 1 + 2i e 1 − 2i, e o resto da divisão por x³ − x + 4 é exatamente 9x² − 4x + 7.\n\n**Resposta:** as raízes de p em ℂ são 1/2, −1, 1 + 2i e 1 − 2i, todas simples, com p(x) = 2x⁴ − 3x³ + 7x² + 7x − 5.",
+    "final_answer": "p(x) = 2x⁴ − 3x³ + 7x² + 7x − 5 = (2x − 1)(x + 1)(x² − 2x + 5). Quociente da divisão: 2x − 3. Raízes em ℂ: x = 1/2, x = −1, x = 1 + 2i e x = 1 − 2i, todas simples.",
+    "pitfalls": [
+      "Supor p mônico é o erro principal. Com α = 1 e β = −3/2, o produto das raízes daria 4β + 7 = 1, e não −5/2: contradição. O coeficiente líder α precisa ficar livre, e a resposta é α = 2.",
+      "O quociente tem grau 1 (αx + β). Como o divisor é mônico, α é o coeficiente líder de p. Usar um quociente de grau errado ou esquecê-lo invalida a solução.",
+      "Sinais de Girard no grau 4: soma = −a₃/a₄ e produto = +a₀/a₄, com sinal + porque o grau é par. Se usar −a₀/a₄, chega-se a α = 14/17 e a um polinômio errado.",
+      "Erros de expansão em (x³ − x + 4)(αx + β): o termo em x é (4α − β)x e o termo independente é 4β. Depois soma-se o resto: coeficiente de x² igual a 9 − α, de x igual a 4α − β − 4 e termo independente 4β + 7.",
+      "É preciso conferir α ≠ 0, para garantir o grau 4, e notar que o sistema tem solução única, então p fica totalmente determinado.",
+      "Na pesquisa de raízes racionais, com coeficiente líder 2, as candidatas incluem ±1/2 e ±5/2. Quem testa só os inteiros pode não achar a raiz 1/2.",
+      "A pergunta pede as raízes em ℂ. Parar nas raízes reais (1/2 e −1) e não resolver x² − 2x + 5 = 0 deixa a resposta incompleta: faltam 1 ± 2i. Raízes complexas em par conjugado são coerentes com coeficientes reais.",
+      "Não confundir as raízes de p com as do divisor x³ − x + 4: elas não têm relação direta. A informação do resto só serve para montar a identidade da divisão.",
+      "Uma boa resolução confere o resultado: soma 3/2, produto −5/2 e resto 9x² − 4x + 7 (quociente 2x − 3). Pela instrução 8, as expressões numéricas têm de ser resolvidas até o fim."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "p(x) = 2x^4 - 3x^3 + 7x^2 + 7x - 5. Raízes: 1/2, -1, 1+2i e 1-2i.",
+      "review": {
+        "agrees_with_reference": true,
+        "answer_correct": true,
+        "score": 9.5,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No Briot–Ruffini com 1/2, os coeficientes 2, −2, 6, 10 formam o quociente por (x − 1/2), que é 2x³ − 2x² + 6x + 10. O texto passa direto para (2x − 1)(x³ − x² + 3x + 5) sem dizer que tirou o fator 2. A conta está certa, mas a passagem fica implícita. Bastaria escrever p = (x − 1/2)·2(x³ − x² + 3x + 5) = (2x − 1)(x³ − x² + 3x + 5)."
+          },
+          {
+            "severity": "minor",
+            "description": "Faltam duas observações, ambas implícitas e corretas. Primeira: o sistema linear em (a, b) tem solução única, então p fica determinado. Segunda: o teorema das raízes racionais só se aplica porque p tem coeficientes inteiros, o que só se sabe depois de achar a = 2. Isso não afeta a correção."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação do resto, a diferença p − (2x⁴ − 3x³ − 2x² + 11x − 12) aparece só com o resultado, sem a conta termo a termo. Conferi: 7 − (−2) = 9, 7 − 11 = −4 e −5 − (−12) = 7. Está correto, só um pouco seco diante da instrução 8."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 8 do PDF e ele bate com a transcrição. A resposta final do candidato coincide com a minha referência: p(x) = 2x⁴ − 3x³ + 7x² + 7x − 5, com raízes 1/2, −1, 1 + 2i e 1 − 2i. Refiz as contas com aritmética exata. O quociente (x³ − x + 4)(2x − 3) dá 2x⁴ − 3x³ − 2x² + 11x − 12, e a diferença com p é exatamente 9x² − 4x + 7. As quatro raízes anulam p. Os dois Briot–Ruffini (2, −2, 6, 10 | 0 e 1, −2, 5 | 0) estão corretos.\n\nTodas as armadilhas foram tratadas:\n- O coeficiente líder ficou livre: a ≠ 0, sem supor p mônico.\n- O quociente tem o grau certo (grau 1) e a expansão está correta: 9 − a, 4a − b − 4 e 4b + 7.\n- Os sinais de Girard estão certos (produto +a₀/a₄, porque o grau é par).\n- A lista de candidatas racionais inclui ±1/2 e ±5/2.\n- As raízes complexas foram calculadas.\n- O resultado foi verificado: soma, produto, par conjugado e resto.\n\nA exposição é limpa e no padrão de gabarito comentado. Só há pequenas passagens implícitas: o fator 2 ao passar de (x − 1/2) para (2x − 1), e não comentar que a solução de (a, b) é única. Nota 9,5."
+      }
+    }
+  ]
+}

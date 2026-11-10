@@ -1,0 +1,49 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+Como $f$ é escolhida ao acaso, todas as $9!$ bijeções de $\mathcal{S}$ em $\mathcal{S}$ são equiprováveis. Logo
+\[
+P=\frac{N}{9!}, \qquad N=\#\{f \text{ bijetora} : f^{(9)}(1)=1\}.
+\]
+
+\textbf{Passo 1: comprimento do ciclo de $1$.} Considere os dez valores $f^{(0)}(1)=1,\ f^{(1)}(1),\ \dots,\ f^{(9)}(1)$, todos em $\mathcal{S}$, que tem 9 elementos. Pelo princípio da casa dos pombos, existem $0\le i<j\le 9$ com $f^{(i)}(1)=f^{(j)}(1)$. Como $f^{(i)}$ é injetiva e $f^{(j)}(1)=f^{(i)}\big(f^{(j-i)}(1)\big)$, obtemos $f^{(j-i)}(1)=1$. Portanto existe o menor inteiro $L\ge 1$ com $f^{(L)}(1)=1$, e $L\le 9$. Os valores $1,f(1),\dots,f^{(L-1)}(1)$ são distintos: se $f^{(a)}(1)=f^{(b)}(1)$ com $0\le a<b<L$, a mesma injetividade daria $f^{(b-a)}(1)=1$ com $0<b-a<L$, o que contradiz a minimalidade de $L$. Assim $L$ é o comprimento do ciclo de $f$ que contém $1$.
+
+\textbf{Passo 2: caracterização de $f^{(m)}(1)=1$.} Afirmo que $f^{(m)}(1)=1 \iff L\mid m$. Escreva $m=qL+r$ com $0\le r<L$. Como $f^{(L)}(1)=1$, vale $f^{(qL)}(1)=1$ (por indução em $q$), e $f^{(m)}=f^{(r)}\circ f^{(qL)}$. Logo
+\[
+f^{(m)}(1)=f^{(r)}\big(f^{(qL)}(1)\big)=f^{(r)}(1).
+\]
+Se $L\mid m$, então $r=0$ e $f^{(m)}(1)=1$. Reciprocamente, se $f^{(m)}(1)=1$, então $f^{(r)}(1)=1$ com $0\le r<L$; pela minimalidade de $L$, $r=0$, ou seja, $L\mid m$.
+
+Para $m=9$: $f^{(9)}(1)=1 \iff L\in\{1,3,9\}$, que são os divisores de $9$.
+
+\textbf{Passo 3: número de bijeções com ciclo de $1$ de comprimento $L$.} Fixe $L\in\{1,\dots,9\}$ e seja $N_L$ o número de bijeções cujo ciclo de $1$ tem comprimento $L$. Para cada uma delas, os elementos $a_1=1$ e $a_{k+1}=f(a_k)$ ($k=1,\dots,L-1$) são distintos, com $f(a_L)=1$. Assim, cada bijeção determina:
+\begin{itemize}
+\item[(i)] uma sequência ordenada $(a_2,\dots,a_L)$ de $L-1$ elementos distintos de $\{2,\dots,9\}$, em número de $8\cdot 7\cdots(9-L+1)=\dfrac{8!}{(9-L)!}$;
+\item[(ii)] a restrição de $f$ ao conjunto $R$ dos $9-L$ elementos restantes. Como $f$ leva $A=\{a_1,\dots,a_L\}$ em $A$ e é bijetiva, ela leva $R$ bijetivamente em $R$. Há $(9-L)!$ escolhas.
+\end{itemize}
+Reciprocamente, cada par (sequência, permutação de $R$) define uma única bijeção, com $f(a_k)=a_{k+1}$, $f(a_L)=1$ e $f|_R$ dada, cujo ciclo de $1$ tem comprimento $L$. Essa correspondência é bijetiva, logo
+\[
+N_L=\frac{8!}{(9-L)!}\cdot(9-L)!=8!
+\]
+para todo $L$. Como conferência, $\sum_{L=1}^{9}N_L=9\cdot 8!=9!$.
+
+\textbf{Passo 4: probabilidade.} Os casos favoráveis são $L=1,3,9$. Então
+\[
+N=N_1+N_3+N_9=3\cdot 8!,
+\qquad
+P=\frac{3\cdot 8!}{9!}=\frac{3}{9}=\frac{1}{3}.
+\]
+Equivalentemente, cada valor de $L$ tem probabilidade $1/9$, e três deles são favoráveis.
+
+\textbf{Conferência.}
+\begin{itemize}
+\item Caso $L=1$: $f(1)$ é uniforme em $\mathcal{S}$, logo $P(f(1)=1)=1/9$, o que coincide com $N_1/9!=8!/9!$.
+\item Caso análogo menor: $\mathcal{S}=\{1,2,3\}$ e $f^{(3)}(1)=1$. A fórmula dá $\#\{L\le 3 : L\mid 3\}/3=2/3$. Listando as 6 bijeções, são favoráveis a identidade, $(2\,3)$, $(1\,2\,3)$ e $(1\,3\,2)$, ou seja, 4 casos, e $4/6=2/3$. As transposições $(1\,2)$ e $(1\,3)$ dão $f^{(3)}(1)=2$ e $f^{(3)}(1)=3$, respectivamente, e não são favoráveis.
+\item Uma enumeração completa das $9!$ bijeções confirma $N=120960=3\cdot 8!$.
+\item Ordem de grandeza: $1/3\approx 0,33$, cerca de $33\%$. É razoável, pois há três valores possíveis de $L$ favoráveis, cada um com probabilidade $1/9$.
+\end{itemize}
+
+Resposta: a probabilidade é $\dfrac{1}{3}$.
+
+ANSWER: $\dfrac{1}{3}$

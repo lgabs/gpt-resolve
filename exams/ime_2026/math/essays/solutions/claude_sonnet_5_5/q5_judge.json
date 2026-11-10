@@ -1,0 +1,53 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Prova: o produto vale 3 mais a soma de a/b+b/a, a/c+c/a e b/c+c/b. Cada par é pelo menos 2, pois x/y+y/x-2=(x-y)^2/(xy)≥0. Logo o produto é ≥ 3+6 = 9, com igualdade se e somente se a=b=c.",
+  "judge_reference": {
+    "final_answer": "Demonstrado: (a+b+c)(1/a+1/b+1/c) ≥ 9 para todos a, b, c > 0, com igualdade se, e somente se, a = b = c. (Identidade útil: o produto vale 9 + (a−b)²/(ab) + (b−c)²/(bc) + (c−a)²/(ca).)",
+    "reference_solution": "**Enunciado (conferido com o original, 5ª questão, valor 1,0):** sendo a, b, c reais positivos, provar que (a+b+c)(1/a + 1/b + 1/c) ≥ 9.\n\n**Resolução 1 (expansão + (x−y)² ≥ 0) — caminho mais elementar e completo.**\n\n1) Expandindo o produto:\n(a+b+c)(1/a+1/b+1/c) = (a/a + b/b + c/c) + (a/b + b/a) + (b/c + c/b) + (c/a + a/c) = 3 + (a/b + b/a) + (b/c + c/b) + (c/a + a/c).\n\n2) Lema: para x, y > 0, x/y + y/x ≥ 2.\nProva: x/y + y/x − 2 = (x² + y² − 2xy)/(xy) = (x − y)²/(xy). Como (x−y)² ≥ 0 e xy > 0, a fração é ≥ 0. Logo x/y + y/x ≥ 2, com igualdade ⇔ x = y.\n\n3) Aplicando o lema aos pares (a,b), (b,c), (c,a), todos positivos:\nproduto ≥ 3 + 2 + 2 + 2 = 9.\n\nForma exata (identidade): (a+b+c)(1/a+1/b+1/c) = 9 + (a−b)²/(ab) + (b−c)²/(bc) + (c−a)²/(ca). Cada parcela é ≥ 0 porque os denominadores são positivos. (Verifiquei numericamente a identidade com frações exatas em 10⁵ triplas aleatórias.)\n\n4) Igualdade: ocorre se, e somente se, as três parcelas se anulam, isto é, a = b, b = c, c = a, ou seja, a = b = c. Nesse caso o produto é (3a)(3/a) = 9.\n\n**Resolução 2 (MA ≥ MG, alternativa).**\nComo a, b, c > 0: a+b+c ≥ 3·(abc)^{1/3} e 1/a+1/b+1/c ≥ 3·(1/(abc))^{1/3}. Ambos os lados são positivos, então podemos multiplicar as desigualdades: produto ≥ 9·(abc)^{1/3}·(abc)^{−1/3} = 9. Igualdade ⇔ a=b=c.\n\n**Resolução 3 (Cauchy–Schwarz, alternativa).**\n(Σ (√a)²)(Σ (1/√a)²) ≥ (Σ √a·(1/√a))² = 3² = 9.\n\n**Observação sobre o uso da hipótese de positividade:** ela é essencial (i) para que 1/a, 1/b, 1/c existam, (ii) para que xy > 0 no lema (preservando o sentido da desigualdade ao dividir) e (iii) para poder multiplicar desigualdades de membros positivos na Resolução 2. Para reais de sinais mistos a desigualdade é falsa (ex.: a=1, b=1, c=−1 dá (1)(1)=1 < 9).",
+    "pitfalls": [
+      "Hipótese de positividade deve ser usada explicitamente: ao passar de x/y + y/x − 2 = (x−y)²/(xy) para ≥ 0 é preciso xy > 0. Sem isso a afirmação é falsa (contraexemplo a=b=1, c=−1 dá produto 1 < 9). Resolução que não menciona onde a>0 entra é incompleta.",
+      "Em uma prova de 'prove que', não basta testar valores numéricos (ex.: a=b=c=1 dá 9) nem afirmar 'por MA-MG' sem aplicar corretamente: é preciso desenvolver o argumento (expansão, lema ou MA≥MG nas duas somas e multiplicar).",
+      "Ao usar MA ≥ MG nas duas somas e multiplicar as desigualdades, é preciso justificar que todos os termos são positivos (só então se pode multiplicar desigualdades); erro comum é omitir isso ou aplicar MA-MG a números não positivos.",
+      "Erro de expansão comum: esquecer os três termos 'a/a + b/b + c/c = 3' ou contar errado os 6 termos cruzados (são três pares x/y + y/x).",
+      "Erro comum: dividir por xy (ou multiplicar por abc) sem notar que o sinal é positivo; ou 'cancelar' desigualdades de forma ilegítima (por exemplo, dizer a+b+c ≥ 3 ou 1/a+1/b+1/c ≥ 3 sem a condição abc=1).",
+      "Mencionar a condição de igualdade (a=b=c) é desejável, mas não é pedida; tratar o caso de igualdade corretamente mostra que 9 é a melhor constante. Dizer que a igualdade ocorre 'quando a+b+c=3' ou similar é erro.",
+      "Evitar prova circular ou apelar para Cauchy–Schwarz/MA-MG sem citá-los como resultados conhecidos; em prova do IME é seguro apresentar a demonstração elementar via (x−y)² ≥ 0 e, se usar MA-MG ou Cauchy, citar explicitamente a desigualdade e as hipóteses."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Prova: o produto vale 3 mais a soma de a/b+b/a, a/c+c/a e b/c+c/b. Cada par é pelo menos 2, pois x/y+y/x-2=(x-y)^2/(xy)≥0. Logo o produto é ≥ 3+6 = 9, com igualdade se e somente se a=b=c.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "O enunciado confere com o original (5ª questão, valor 1,0). A resolução do candidato é correta, completa e rigorosa. Ela segue o mesmo caminho elementar da minha Resolução 1: expansão, lema x/y + y/x ≥ 2 via (x−y)²/(xy) ≥ 0, e aplicação aos três pares. A expansão traz os três termos a/a+b/b+c/c = 3 e os três pares cruzados, sem esquecer nem duplicar nenhum. A positividade é usada de forma explícita nos pontos certos: \"como xy>0\" no lema e \"todos de números positivos\" na aplicação. A condição de igualdade a=b=c está correta e justificada. A verificação numérica (a=b=c=1 dá 9; (1,2,4) dá 49/4 = 12,25) está correta; conferi por Python, e a identidade 9 + Σ(x−y)²/(xy) vale em 10⁵ triplas racionais. A observação por MA–MG está correta e justifica que os fatores são positivos antes de multiplicar. Todas as armadilhas listadas foram evitadas: expansão certa, divisão por xy>0 justificada, nada de \"a+b+c ≥ 3\" sem condição, e MA–MG citado com hipóteses. Restam só detalhes menores de apresentação.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A linha ANSWER final usa x e y em Σ(x/y + y/x) sem defini-los naquele contexto (seriam os pares (a,b), (a,c), (b,c)). Isso é só notação resumida, pois o corpo da solução define tudo. Seria mais limpo escrever os três pares explicitamente ou usar a identidade 9 + (a−b)²/(ab) + (b−c)²/(bc) + (c−a)²/(ca)."
+          },
+          {
+            "severity": "minor",
+            "description": "Na 'outra prova' por MA–MG, a conclusão '≥ 9' é afirmada sem mostrar o cancelamento 3·∛(abc)·3/∛(abc) = 9. A conta é trivial, mas um gabarito comentado a escreveria. Também não explicita que a segunda desigualdade vem de aplicar MA–MG a 1/a, 1/b, 1/c, que são positivos. Como é só uma observação extra, o impacto é mínimo."
+          },
+          {
+            "severity": "minor",
+            "description": "Na condição de igualdade, o 'se e somente se as três desigualdades forem igualdades' se apoia implicitamente em que uma soma de termos não negativos só se anula se cada um se anula. Poderia ficar explícito, por exemplo com a identidade exata 9 + Σ(x−y)²/(xy). Não há erro, apenas falta uma frase."
+          },
+          {
+            "severity": "minor",
+            "description": "Não menciona por que a positividade é indispensável, por exemplo com o contraexemplo a=b=1, c=−1, que dá produto 1<9. Isso não é exigido, mas reforçaria o uso consciente da hipótese."
+          }
+        ]
+      }
+    }
+  ]
+}

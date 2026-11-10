@@ -1,0 +1,83 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Notação e hipóteses.} Seja $a_k=\log_2 x_k$. Como $x_k>0$, temos $x_k=2^{a_k}$, e $y\mapsto 2^y$ é injetiva: igualdades entre potências de $2$ equivalem a igualdades entre expoentes. Por hipótese, $(a_1,\dots,a_9)$ é progressão aritmética de razão $d>0$, isto é, $a_k=a_5+(k-5)d$.
+
+\textbf{Passo 1: o valor de $x_5$.} Pelo produto dado,
+\[
+2^{45}=x_1x_3x_5x_7x_9=2^{a_1+a_3+a_5+a_7+a_9}\quad\Rightarrow\quad a_1+a_3+a_5+a_7+a_9=45.
+\]
+Os índices ímpares correspondem a $a_5-4d,\ a_5-2d,\ a_5,\ a_5+2d,\ a_5+4d$. Os desvios se cancelam, logo $5a_5=45$, $a_5=9$ e $x_5=2^9=512$.
+
+\textbf{Passo 2: escrever tudo em $t=2^d$.} Como $x_k=2^{9+(k-5)d}=512\,t^{\,k-5}$, com $t>1$ pois $d>0$:
+\[
+E:=x_2+x_4+x_6+x_8=512\left(t^{3}+t+t^{-1}+t^{-3}\right),
+\]
+\[
+O:=x_1+x_3+x_5+x_7+x_9=512\left(t^{4}+t^{2}+1+t^{-2}+t^{-4}\right).
+\]
+
+\textbf{Passo 3: a variável $p=t+t^{-1}$.} Usando $t\cdot t^{-1}=1$ e $(u+v)^2=u^2+2uv+v^2$ com $uv=1$:
+\[
+t^2+t^{-2}=p^2-2,\qquad t^3+t^{-3}=p^3-3p,\qquad t^4+t^{-4}=(p^2-2)^2-2=p^4-4p^2+2.
+\]
+Logo $\dfrac{E}{512}=p^3-2p$ e $\dfrac{O}{512}=p^4-3p^2+1$. Como $p\cdot\dfrac{E}{512}=p^4-2p^2$, obtemos a identidade, válida para todo $t>0$:
+\[
+O=p\,E-512\,(p^2-1).
+\]
+
+\textbf{Passo 4: correspondência entre $d$ e $p$.} Para $t>0$, $p-2=\dfrac{(t-1)^2}{t}$, logo $p\ge 2$, com $p>2$ para $t\ne 1$. Reciprocamente, dado $p>2$, a equação $s^2-ps+1=0$ tem duas raízes reais positivas distintas, $t$ e $t^{-1}$ (relações de Girard: produto $1$, soma $p$, discriminante $p^2-4>0$), e exatamente uma delas é maior que $1$. Assim, $p>2$ determina $t>1$ e $d=\log_2 t$ de modo único. Além disso, $E$ e $O$ são invariantes por $t\mapsto t^{-1}$, que corresponde à reversão $k\leftrightarrow 10-k$ dos índices (esta preserva as somas dos índices ímpares e dos pares). Logo a hipótese $d>0$ apenas fixa a orientação da progressão e não altera $E$ nem $O$.
+
+\textbf{Passo 5: equação para $p$ com $E=5540$.} Como $\dfrac{5540}{512}=\dfrac{1385}{128}$, a condição $E=5540$ equivale a
+\[
+f(p):=128p^3-256p-1385=0.
+\]
+Temos $f(2)=-873<0<1303=f(3)$, logo há raiz em $(2,3)$. A derivada $f'(p)=384p^2-256$ se anula em $\pm\sqrt{2/3}$. Assim, $f$ é crescente em $(-\infty,-\sqrt{2/3}]$, decrescente em $[-\sqrt{2/3},\sqrt{2/3}]$ e crescente em $[\sqrt{2/3},\infty)$. Como $f(-\sqrt{2/3})=\dfrac{512}{3}\sqrt{\dfrac23}-1385<0$ (pois $\dfrac{512}{3}\sqrt{\dfrac23}<171$), $f$ só tem zero no último intervalo, e ele está em $(2,3)$. Portanto $p\approx 2{,}5116$ é a única raiz real, e pelo Passo 3,
+\[
+O=5540\,p-512\,p^2+512.
+\]
+
+\textbf{Passo 6: $O$ é irracional.} Pelo teorema das raízes racionais, uma raiz racional irredutível $a/b$ satisfaz $a\mid 1385=5\cdot 277$ (277 é primo) e $b\mid 128$. Dentro de $(2,3)$ restam $\dfrac52$ e $\dfrac{277}{128}$, e nenhuma é raiz:
+\[
+f\!\left(\tfrac52\right)=-25\neq 0,\qquad f\!\left(\tfrac{277}{128}\right)=\frac{277^3}{128^2}-554-1385=-\frac{10514643}{16384}\neq 0.
+\]
+Assim, a cúbica $f$ não tem raiz racional e é irredutível sobre $\mathbb{Q}$. Se fosse $O=q\in\mathbb{Q}$, então $p$ seria raiz de $512p^2-5540p+(q-512)=0$, equação quadrática com coeficientes racionais e coeficiente líder não nulo. Isso daria $[\mathbb{Q}(p):\mathbb{Q}]\le 2$, contradição. Logo $O$ é irracional e, em particular, não inteiro.
+
+\textbf{Passo 7: forma fechada e valores numéricos.} Escreva $p=k\cosh\varphi$ com $k=\dfrac{2\sqrt6}{3}$, de modo que $k^2=\dfrac83$. Pela identidade $\cosh^3\varphi=\dfrac{\cosh 3\varphi+3\cosh\varphi}{4}$,
+\[
+p^3-2p=\frac{k^3}{4}\cosh 3\varphi+k\left(\frac{3k^2}{4}-2\right)\cosh\varphi=\frac{k^3}{4}\cosh 3\varphi,
+\]
+pois $\dfrac{3k^2}{4}-2=0$. Com $k^3=\dfrac{16\sqrt6}{9}$, a equação $p^3-2p=\dfrac{1385}{128}$ vira
+\[
+\cosh 3\varphi=\frac{4\cdot 1385}{128\,k^3}=\frac{4155\sqrt6}{1024}\approx 9{,}9391.
+\]
+Como o argumento é $\ge 1$, $\varphi=\frac13\operatorname{arccosh}\dfrac{4155\sqrt6}{1024}$ é real e dá uma raiz real da cúbica. Pela unicidade do Passo 5,
+\[
+p=\frac{2\sqrt6}{3}\cosh\!\left(\frac13\operatorname{arccosh}\frac{4155\sqrt6}{1024}\right)\approx 2{,}51160.
+\]
+Daí $t=\dfrac{p+\sqrt{p^2-4}}{2}\approx 2{,}015427$ e $d=\log_2 t\approx 1{,}01109$, que não é inteiro. Os termos são
+\[
+x_1\approx 31{,}031,\quad x_2\approx 62{,}542,\quad x_3\approx 126{,}048,\quad x_4\approx 254{,}040,\quad x_5=512,
+\]
+\[
+x_6\approx 1031{,}899,\quad x_7\approx 2079{,}717,\quad x_8\approx 4191{,}519,\quad x_9\approx 8447{,}703.
+\]
+Conferência: $x_2+x_4+x_6+x_8\approx 5540$ e $O\approx 31{,}031+126{,}048+512+2079{,}717+8447{,}703\approx 11196{,}5$. Além disso, $x_1x_3x_5x_7x_9=512^5=2^{45}$ para qualquer $t$, pois os expoentes de $t$ ($-4,-2,0,2,4$) se cancelam.
+
+\textbf{Passo 8: o dado impresso e a leitura provável.} Para $d$ inteiro, $E=512\left(2^{3d}+2^{d}+2^{-d}+2^{-3d}\right)$ assume os valores $2048$ ($d=0$), $5440$ ($d=\pm1$), $34952$ ($d=\pm2$), $266305$ ($d=\pm3$), e assim por diante. Nenhum deles é $5540$. O mais próximo é $5440$, que difere só no algarismo das centenas. Isso é indício forte de erro de digitação, mas não prova, e o caderno oficial imprime 5540, de modo que a discrepância está no próprio documento. Com $E=5440$, temos $\dfrac{E}{512}=\dfrac{85}{8}$ e
+\[
+8p^3-16p-85=(2p-5)(4p^2+10p+17)=0.
+\]
+O fator quadrático tem discriminante $100-272<0$, logo $p=\dfrac52$ é a única raiz real (e $p>2$). Então $t+t^{-1}=\dfrac52$ dá $2t^2-5t+2=0$, isto é, $(2t-1)(t-2)=0$. Com $t>1$, temos $t=2$ e $d=1$. Pelo Passo 3,
+\[
+O=5440\cdot\frac52-512\cdot\frac{25}{4}+512=13600-3200+512=10912.
+\]
+
+\textbf{Passo 9: verificação direta do caso $E=5440$.} Com $t=2$, $x_k=2^{k+4}$, ou seja, $x_1,\dots,x_9=2^5,\dots,2^{13}$, e $\log_2 x_k=k+4$ é progressão aritmética de razão $1>0$. Produto dos ímpares: $2^{5+7+9+11+13}=2^{45}$. Soma dos pares: $64+256+1024+4096=5440$. Soma dos ímpares: $32+128+512+2048+8192=10912$.
+
+\textbf{Passo 10: casos-limite e ordens de grandeza.} Para $d\to0^+$, temos $p\to2$, $E\to2048$ e $O\to2560$, que são os valores do caso degenerado $d=0$. Isso é coerente com $E$ crescente em $d$, já que $5540>2048$. Em ambos os casos $x_9$ domina a soma (cerca de $8{,}4\cdot10^3$), e $O\approx 1{,}1\cdot10^4$. Todos os $x_k$ são positivos e a grandeza pedida é adimensional.
+
+\textbf{Conclusão.} A resposta rigorosa ao enunciado impresso ($E=5540$) é $O=5540p-512p^2+512\approx 11196{,}5$, com $p\approx 2{,}5116$ a única raiz real de $128p^3-256p-1385=0$. Esse valor é irracional. A intenção mais provável da banca é $E=5440$, o único valor próximo obtido com $d$ inteiro. Nesse caso, a resposta pretendida é $10912$.
+
+ANSWER: pelo enunciado impresso ($x_2+x_4+x_6+x_8=5540$), $x_1+x_3+x_5+x_7+x_9=5540p-512p^2+512\approx 11196{,}5$, com $p\approx 2{,}5116$ raiz real única de $128p^3-256p-1385=0$ (valor irracional); para o valor provavelmente pretendido, $x_2+x_4+x_6+x_8=5440$, a resposta é $10912$.

@@ -1,0 +1,76 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+Sejam $a_1, a_2, \ldots, a_{10}$ os termos da progressão aritmética (PA), todos em $\mathbb{N}$, e seja $r$ a razão. Como $a_1$ e $a_2$ são naturais, $r = a_2 - a_1 \in \mathbb{Z}$, e o termo geral é
+\[
+a_k = a_1 + (k-1)\,r, \qquad k = 1, \ldots, 10.
+\]
+
+\textbf{Passo 1 (equação da soma).} Em uma PA finita, a soma é a média dos extremos vezes o número de termos:
+\[
+S = \frac{(a_1 + a_{10})\cdot 10}{2} = 5\,(a_1 + a_{10}).
+\]
+Como $S = 435$, segue $a_1 + a_{10} = 87$. Como $a_{10} = a_1 + 9r$, isso equivale a
+\[
+2a_1 + 9r = 87. \tag{1}
+\]
+(Conferência: $S = 10a_1 + 45r = 435$ é a mesma equação multiplicada por $5$.)
+
+\textbf{Passo 2 (paridade de $r$).} Em (1), $2a_1$ é par e $87$ é ímpar, logo $9r$ é ímpar. Como $9$ é ímpar, $r$ é ímpar. Reciprocamente, se $r$ é ímpar, então $87 - 9r$ é par e
+\[
+a_1 = \frac{87 - 9r}{2}
+\]
+é inteiro. Logo, a PA é determinada pela razão $r$, que deve ser ímpar.
+
+\textbf{Passo 3 (condição de naturalidade).} A função $k \mapsto a_k$ é afim, portanto monótona, e todos os termos estão entre $a_1$ e $a_{10}$. Como $a_1$ e $r$ são inteiros, todos os termos são inteiros. Assim, todos são naturais (inteiros $\geq 1$) se e somente se $a_1 \geq 1$ e $a_{10} \geq 1$. Por (1), $a_{10} = 87 - a_1$, e a condição fica $1 \leq a_1 \leq 86$. Em termos de $r$, com $r$ inteiro:
+\begin{itemize}
+\item $a_1 \geq 1 \iff 87 - 9r \geq 2 \iff 9r \leq 85$. Como $85 < 90 = 9\cdot 10$, isso equivale a $r \leq 9$.
+\item $a_{10} \geq 1 \iff a_1 \leq 86 \iff 87 - 9r \leq 172 \iff 9r \geq -85$. Como $-85 > -90 = 9\cdot(-10)$, isso equivale a $r \geq -9$.
+\end{itemize}
+Portanto $-9 \leq r \leq 9$.
+
+\textbf{Passo 4 (conjunto de razões).} Combinando a paridade com $-9 \leq r \leq 9$, obtemos
+\[
+r \in \{-9, -7, -5, -3, -1, 1, 3, 5, 7, 9\},
+\]
+dez valores, e cada um define exatamente uma PA, com primeiro termo $a_1 = \frac{87-9r}{2}$ e termo geral
+\[
+a_k = \frac{87 - 9r}{2} + (k-1)\,r = \frac{87 + (2k-11)\,r}{2}, \qquad k = 1, \ldots, 10.
+\]
+
+Explicitamente, para cada razão (os termos seguem $a_k = a_1 + (k-1)r$):
+
+\begin{center}
+\begin{tabular}{c|c|l}
+$r$ & $a_1$ & termos \\ \hline
+$9$ & $3$ & $3, 12, 21, 30, 39, 48, 57, 66, 75, 84$ \\
+$7$ & $12$ & $12, 19, 26, 33, 40, 47, 54, 61, 68, 75$ \\
+$5$ & $21$ & $21, 26, 31, 36, 41, 46, 51, 56, 61, 66$ \\
+$3$ & $30$ & $30, 33, 36, 39, 42, 45, 48, 51, 54, 57$ \\
+$1$ & $39$ & $39, 40, 41, 42, 43, 44, 45, 46, 47, 48$ \\
+$-1$ & $48$ & $48, 47, 46, 45, 44, 43, 42, 41, 40, 39$ \\
+$-3$ & $57$ & $57, 54, 51, 48, 45, 42, 39, 36, 33, 30$ \\
+$-5$ & $66$ & $66, 61, 56, 51, 46, 41, 36, 31, 26, 21$ \\
+$-7$ & $75$ & $75, 68, 61, 54, 47, 40, 33, 26, 19, 12$ \\
+$-9$ & $84$ & $84, 75, 66, 57, 48, 39, 30, 21, 12, 3$
+\end{tabular}
+\end{center}
+
+\textbf{Passo 5 (verificação).} Para todo $r$, $S = 10a_1 + 45r = 5(87 - 9r) + 45r = 435$. Exemplos: para $r = 9$, $(3 + 84)\cdot 5 = 435$; para $r = -1$, $(48 + 39)\cdot 5 = 435$. Além disso, $a_k + a_{11-k} = 87$ para todo $k$, em particular $a_5 + a_6 = 87$, de modo que a média dos termos é $\frac{a_5 + a_6}{2} = 43{,}5 = \frac{435}{10}$.
+
+\textbf{Casos de fronteira e exclusões.}
+\begin{itemize}
+\item $r = 11$ daria $a_1 = -6$, e $r = -11$ daria $a_1 = 93$ e $a_{10} = 93 - 99 = -6$. Ambos têm termos não naturais, o que confirma que $-9 \leq r \leq 9$ é exatamente o intervalo válido.
+\item $r = 0$ é impossível: é par, e daria $10a_1 = 435$, com $a_1 = 43{,}5$ não inteiro. Razões pares são excluídas em geral pelo Passo 2; por exemplo, $r = 10$ daria $a_1 = -\frac{3}{2}$.
+\item Se $0$ fosse considerado natural, a condição do Passo 3 seria $0 \leq a_1 \leq 87$, isto é, $9r \leq 87$ e $9r \geq -87$. Como $87 < 90$ e $-87 > -90$, para $r$ inteiro isso ainda dá $-9 \leq r \leq 9$. O conjunto de razões, e portanto de PAs, não muda.
+\end{itemize}
+
+\textbf{Progressões como conjuntos.} Se $r$ é válida, a PA de razão $-r$ e primeiro termo $\frac{87 + 9r}{2}$ é a mesma PA lida em ordem inversa, pois seu primeiro termo é $a_{10}$. Assim, cada par $\{r, -r\}$ fornece o mesmo conjunto de números. Um conjunto de números distintos tem uma única ordenação crescente, cuja diferença comum é $|r|$; logo conjuntos com $|r|$ diferentes são distintos. Como $r \neq 0$, há $5$ valores possíveis de $|r|$, e portanto $5$ conjuntos. Em ordem crescente, para as razões $1, 3, 5, 7, 9$:
+\[
+\{39, 40, \ldots, 48\}, \quad \{30, 33, \ldots, 57\}, \quad \{21, 26, \ldots, 66\}, \quad \{12, 19, \ldots, 75\}, \quad \{3, 12, \ldots, 84\}.
+\]
+
+\textbf{Conclusão.} Há exatamente $10$ progressões aritméticas ordenadas de $10$ naturais com soma $435$, uma para cada $r \in \{\pm 1, \pm 3, \pm 5, \pm 7, \pm 9\}$, dadas por $a_k = \frac{87 + (2k-11)\,r}{2}$. Como conjuntos de números, são $5$.
+
+ANSWER: Há 10 progressões aritméticas ordenadas, $a_k = \frac{87 + (2k-11)\,r}{2}$ para $k = 1, \ldots, 10$, com $r \in \{\pm 1, \pm 3, \pm 5, \pm 7, \pm 9\}$ e primeiro termo $a_1 = \frac{87 - 9r}{2}$. Como conjuntos de números, são 5, uma para cada $|r| \in \{1, 3, 5, 7, 9\}$.

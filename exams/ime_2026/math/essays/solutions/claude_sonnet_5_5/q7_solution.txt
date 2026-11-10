@@ -1,0 +1,39 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Eventos.} Seja $I$ o evento ``o computador está infectado'' e $N$ o evento ``o antivírus responde que o computador não está infectado''. A pergunta pede $P(I\mid N)$.
+
+\textbf{Dados.}
+\[
+P(I)=0{,}90,\qquad P(\overline{I})=1-0{,}90=0{,}10 .
+\]
+O antivírus detecta o vírus em um computador infectado com probabilidade $0{,}95$. Logo, a probabilidade de ele \emph{não} detectar, estando o computador infectado, é o complementar:
+\[
+P(N\mid I)=1-0{,}95=0{,}05 .
+\]
+O antivírus indica vírus em um computador não infectado com probabilidade $0{,}01$ (falso positivo). Logo:
+\[
+P(N\mid \overline{I})=1-0{,}01=0{,}99 .
+\]
+
+\textbf{Teorema de Bayes.} Os eventos $I$ e $\overline{I}$ formam uma partição do espaço amostral, ambos com probabilidade positiva. Pela lei da probabilidade total,
+\[
+P(N)=P(N\mid I)\,P(I)+P(N\mid \overline{I})\,P(\overline{I})
+=0{,}05\cdot 0{,}90+0{,}99\cdot 0{,}10=0{,}045+0{,}099=0{,}144 .
+\]
+O teorema de Bayes dá então
+\[
+P(I\mid N)=\frac{P(N\mid I)\,P(I)}{P(N)}=\frac{0{,}045}{0{,}144}=\frac{45}{144}=\frac{5}{16}=0{,}3125 .
+\]
+
+\textbf{Conferência.}
+\begin{itemize}
+\item Complementar: $P(\overline{I}\mid N)=\dfrac{0{,}099}{0{,}144}=\dfrac{11}{16}$, e $\dfrac{5}{16}+\dfrac{11}{16}=1$.
+\item Ordem de grandeza: a probabilidade \emph{a priori} de infecção é $90\%$. Uma resposta ``negativo'' é evidência contra a infecção, pois $P(N\mid I)=0{,}05\ll P(N\mid\overline I)=0{,}99$. Por isso a probabilidade cai de $90\%$ para $31{,}25\%$, o que é coerente.
+\item Ela continua alta, apesar do antivírus ser bom, porque a taxa de infecção inicial é muito alta. Entre $1000$ computadores, $900$ são infectados e $45$ deles recebem ``negativo''. Dos $100$ não infectados, $99$ recebem ``negativo''. Assim, entre os $144$ negativos, $45$ são infectados, e $\frac{45}{144}=\frac{5}{16}$.
+\end{itemize}
+
+\textbf{Resposta.} A probabilidade de o computador estar infectado, dado que o antivírus respondeu que não está, é $\dfrac{5}{16}=0{,}3125=31{,}25\%$.
+
+ANSWER: $\dfrac{5}{16}=0{,}3125=31{,}25\%$

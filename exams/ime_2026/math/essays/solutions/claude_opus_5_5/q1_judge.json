@@ -1,0 +1,46 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "α = 3 e β = 2 (z = 3 + 2i)",
+  "judge_reference": {
+    "final_answer": "α = 3 e β = 2, ou seja, z = 3 + 2i. É a única solução com α e β inteiros não nulos. As outras duas raízes cúbicas de −9 + 46i, z·ω e z·ω², não têm coordenadas inteiras.",
+    "reference_solution": "**Questão 1 – Resolução de referência**\n\n**1) Expansão e sistema.**\nz³ = (α + βi)³ = α³ + 3α²(βi) + 3α(βi)² + (βi)³ = (α³ − 3αβ²) + (3α²β − β³)i.\n\nIgualando a −9 + 46i (α e β são reais):\n (I) α(α² − 3β²) = −9\n (II) β(3α² − β²) = 46\n\n**2) Módulo.**\n|z|³ = |z³| = √(81 + 2116) = √2197 = √(13³). Então |z|² = α² + β² = 13.\n\n**3) Candidatos inteiros.**\nCom α, β ∈ ℤ \\ {0} e α² + β² = 13, as únicas decomposições são 4 + 9 e 9 + 4. Logo {|α|, |β|} = {2, 3}.\nPor (I), α divide 9. Como α ≠ ±2, temos α = ±3 e, portanto, β = ±2.\n\n**4) Sinais.**\nEm (I): α(9 − 12) = −3α = −9, logo α = 3.\nEm (II): β(27 − 4) = 23β = 46, logo β = 2.\n\n**Outra forma, sem usar o módulo:**\n- Por (I), α | 9, então α ∈ {±1, ±3, ±9}.\n- Por (II), β | 46, então β ∈ {±1, ±2, ±23, ±46}.\n- Testando os casos, só o par (3, 2) satisfaz as duas equações.\n- Também dá para escrever (I) como α² − 3β² = −9/α. Assim, α = ±1 e α = ±9 levam a equações sem solução inteira, e α = ±3 leva a β² = 4.\n\n**5) Verificação.**\n(3 + 2i)² = 9 + 12i − 4 = 5 + 12i.\n(5 + 12i)(3 + 2i) = 15 + 10i + 36i − 24 = −9 + 46i. ✓\n\n**6) Unicidade.**\n- A equação w³ = −9 + 46i tem exatamente três raízes complexas: 3 + 2i, (3 + 2i)ω e (3 + 2i)ω², com ω = (−1 + i√3)/2.\n- Numericamente, as outras duas valem ≈ −3,232 + 1,598i e ≈ 0,232 − 3,598i. Elas não têm partes inteiras.\n- Portanto a hipótese \"α, β inteiros\" seleciona uma única raiz.\n\n**Resposta: α = 3, β = 2 (z = 3 + 2i).**",
+    "pitfalls": [
+      "Erro de sinal na expansão: (βi)² = −β² e (βi)³ = −β³i. Errar isso troca os sinais do sistema (por exemplo, a parte real vira α³ + 3αβ²).",
+      "Usar só α² + β² = 13 e parar aí. Isso gera 8 candidatos (±2, ±3) e (±3, ±2), e só (3, 2) funciona. Exemplos: (2 + 3i)³ = −46 + 9i, (−3 − 2i)³ = 9 − 46i e (3 − 2i)³ = −9 − 46i. A boa resolução precisa eliminar os sinais e a troca α↔β usando as equações (I) e (II).",
+      "Esquecer os divisores negativos ao usar α | 9 e β | 46. Não dá para supor α, β > 0 sem justificar.",
+      "Achar 3 + 2i por tentativa e não justificar que é a única solução. É preciso esgotar os candidatos por divisibilidade e/ou módulo.",
+      "Tratar a unicidade de forma errada: −9 + 46i tem três raízes cúbicas complexas. A unicidade vem apenas da hipótese de α e β inteiros. Afirmar que a raiz cúbica é única, ou listar as três como resposta, é erro.",
+      "Calcular o módulo errado: |z³|² = 81 + 2116 = 2197 = 13³. Assim |z|² = 13, e não |z| = 13 ou |z|² = 2197^(1/2).",
+      "A hipótese 'não nulos' não muda nada aqui, porque α = 0 ou β = 0 não satisfazem o sistema. Mesmo assim, uma resolução completa não deve contradizê-la.",
+      "Não verificar no final que (3 + 2i)³ = −9 + 46i. Pede-se confirmação explícita."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "α = 3 e β = 2 (z = 3 + 2i)",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na Observação, o candidato afirma que as duas outras raízes cúbicas não têm partes inteiras, mas só calcula uma delas, (3+2i)·e^{2πi/3}. Conferi numericamente: a outra vale ≈ 0,232 − 3,598i e também não tem partes inteiras, então a afirmação está certa, mas ficou sem prova para essa raiz. Bastaria escrever também (3+2i)·e^{−2πi/3} = (−3+2√3)/2 − ((3√3+2)/2)i. Isso não compromete a resolução, porque a unicidade já foi provada nos passos 3–4 e a Observação é só um complemento."
+          },
+          {
+            "severity": "minor",
+            "description": "A passagem de |z|³ = √(13³) para |z| = √13 poderia ser escrita de forma explícita: |z|³ = 13^{3/2}, logo |z| = 13^{1/2}. É um detalhe de redação, sem erro."
+          }
+        ],
+        "summary": "Enunciado conferido no PDF original (questão 1, página 1); bate com a transcrição. O candidato chega a α = 3 e β = 2, a mesma resposta da referência, e ela está correta. Conferi com python3: (3+2i)³ = −9+46i, e uma busca exaustiva com α, β inteiros não nulos entre −50 e 50 só encontra (3, 2).\n\nA resolução é completa e rigorosa:\n- Expande o cubo com os sinais corretos e iguala partes real e imaginária, obtendo (I) e (II).\n- Calcula o módulo corretamente: |z³|² = 2197 = 13³, logo α² + β² = 13.\n- Esgota os quadrados possíveis: só 4 + 9 serve, então {α², β²} = {4, 9}.\n- Elimina os 8 candidatos de sinal e de troca α↔β usando (I) e (II). No caso α² = 4, (I) dá α = 9/23, que não é inteiro. No caso α² = 9, (I) e (II) fixam α = 3 e β = 2, inclusive os sinais, porque com os quadrados fixados as equações ficam lineares em α e em β.\n- Verifica explicitamente que (3+2i)³ = −9+46i.\n- Trata bem a unicidade: diz que existem três raízes cúbicas e que só a hipótese de α e β inteiros seleciona uma.\n\nTodas as armadilhas que listei foram evitadas: sinais da expansão, valor do módulo, eliminação dos sinais pelas equações, unicidade bem formulada e verificação final. A armadilha dos divisores negativos não se aplica, porque o candidato não usa divisibilidade.\n\nSó há dois detalhes menores de redação, nenhum de conteúdo. A resolução tem qualidade de gabarito comentado."
+      }
+    }
+  ]
+}

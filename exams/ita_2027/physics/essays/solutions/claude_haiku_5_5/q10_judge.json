@@ -1,0 +1,66 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) Pela conservação de momento e energia relativística (espalhamento Compton), $\\nu'=\\dfrac{m_ec^2\\,\\nu}{m_ec^2+h\\nu(1-\\cos\\theta)}$, equivalente a $\\dfrac{1}{\\nu'}-\\dfrac{1}{\\nu}=\\dfrac{h}{m_ec^2}(1-\\cos\\theta)$.\n\nb) Pelo Doppler relativístico, $\\nu_O=\\nu'\\sqrt{\\dfrac{1-\\beta}{1+\\beta}}$, a condição $\\nu_O=\\nu$ dá $|V|=c\\,\\dfrac{\\nu^2-\\nu'^2}{\\nu^2+\\nu'^2}$. Com $y=h\\nu(1-\\cos\\theta)$, isso vale $V=c\\,\\dfrac{y(2m_ec^2+y)}{2m_e^2c^4+2m_ec^2\\,y+y^2}$. O observador deve estar na mesma reta do fóton espalhado, mas se mover em sentido oposto ao dele. Um observador que acompanha o fóton só o veria mais desviado para o vermelho.",
+  "judge_reference": {
+    "reference_solution": "**Questão 10: resolução de referência (feita por mim, antes de ver qualquer candidato)**\n\nNotação: fóton incidente com energia hν e momento hν/c, na direção x. Fóton espalhado com frequência ν′, desviado de θ. Elétron de massa m_e, inicialmente em repouso, com momento p_e e ângulo de recuo φ. Não há aproximação: o elétron é tratado com E_e = √(p_e²c² + m_e²c⁴).\n\n**a) Frequência do fóton espalhado**\n\nConservação de energia:\nhν + m_e c² = hν′ + E_e   (1)\n\nConservação de momento:\n- x: hν/c = (hν′/c)cosθ + p_e cosφ   (2)\n- y: 0 = (hν′/c)senθ − p_e senφ   (3)\n\nEliminando φ entre (2) e (3):\np_e²c² = h²ν² + h²ν′² − 2h²νν′cosθ   (4)\n\nDe (1), E_e = m_e c² + h(ν − ν′). Elevando ao quadrado e usando E_e² = p_e²c² + m_e²c⁴ com (4):\n(m_e c² + h(ν−ν′))² = h²(ν² + ν′² − 2νν′cosθ) + m_e²c⁴\n\nExpandindo, o lado esquerdo fica 2m_e c² h(ν−ν′) + h²(ν−ν′)². Como h²(ν−ν′)² = h²(ν² + ν′²) − 2h²νν′, sobra:\n2m_e c² h(ν−ν′) = 2h²νν′(1 − cosθ)\n⇒ m_e c²(ν − ν′) = hνν′(1 − cosθ)\n\nDividindo por m_e c² νν′:\n1/ν′ − 1/ν = (h/(m_e c²))(1 − cosθ)\n\nEsta é a fórmula de Compton escrita em frequência (equivalente a λ′ − λ = (h/m_e c)(1 − cosθ)). Portanto:\n\n**ν′ = m_e c² ν / [m_e c² + hν(1 − cosθ)] = ν / [1 + (hν/(m_e c²))(1 − cosθ)]**\n\nVerificações: θ = 0 dá ν′ = ν. Para θ ≠ 0, ν′ < ν. Também vale ν′ = ν/[1 + (2hν/(m_e c²))sen²(θ/2)]. A nota \"senθ ≈ θ\" da prova não se aplica aqui, pois θ é geral.\n\n**b) Velocidade do observador O**\n\nSeja β = V/c, com V medido no sentido de propagação do fóton espalhado. O Doppler relativístico para a luz, medido por um observador que se move com velocidade V nessa mesma direção, é:\n\nν_O = ν′ √[(1 − β)/(1 + β)]\n\nImpondo ν_O = ν e definindo K = ν/ν′ = 1 + hν(1 − cosθ)/(m_e c²) > 1:\n\n√[(1 − β)/(1 + β)] = K ⇒ (1 − β)/(1 + β) = K² ⇒ β = (1 − K²)/(1 + K²)\n\nLogo:\n\nV = −c (K² − 1)/(K² + 1) = −c (ν² − ν′²)/(ν² + ν′²)\n\nEm módulo, com α = hν(1 − cosθ)/(m_e c²):\n\n**|V| = c (ν² − ν′²)/(ν² + ν′²) = c [(m_e c² + hν(1 − cosθ))² − (m_e c²)²] / [(m_e c² + hν(1 − cosθ))² + (m_e c²)²] = c·α(2 + α)/(2 + 2α + α²)**\n\nSentido: o sinal negativo, em relação ao sentido de propagação do fóton espalhado, indica que O deve se mover no sentido contrário ao do fóton, na mesma reta. Se O acompanhasse o fóton (β ≥ 0), a razão √[(1−β)/(1+β)] seria ≤ 1 e ν_O ≤ ν′ < ν, ou seja, sempre haveria desvio para o vermelho. Para obter ν_O = ν é preciso um observador que se aproxima da fonte de onde o fóton espalhado vem.\n\nVerificações:\n- |V| < c sempre, portanto a solução é fisicamente admissível e é única (a equação em β é linear).\n- Equivalente elegante: |V|/c = tanh(ln(ν/ν′)).\n- θ → 0 dá V → 0.\n- hν ≪ m_e c² dá |V| ≈ hν(1 − cosθ)/(m_e c), o limite não relativístico.\n- Caso numérico: hν = m_e c²/2 e θ = 90° dão ν′/ν = 2/3, K = 3/2 e |V| = 5c/13 ≈ 0,385c (conferido em Python, com conservação de energia e momento residual nulo).\n\n**Respostas finais:**\n- (a) ν′ = m_e c² ν / [m_e c² + hν(1 − cosθ)]\n- (b) |V| = c(ν² − ν′²)/(ν² + ν′²), com O se movendo no sentido oposto ao do fóton espalhado.",
+    "final_answer": "(a) ν′ = m_e c² ν / [m_e c² + hν(1 − cosθ)] = ν / [1 + (hν/(m_e c²))(1 − cosθ)], equivalente a 1/ν′ − 1/ν = (h/(m_e c²))(1 − cosθ).\n\n(b) Pelo Doppler relativístico, a condição ν_O = ν leva a √[(1−β)/(1+β)] = ν/ν′, com β = V/c. Assim |V| = c(ν² − ν′²)/(ν² + ν′²) = c[(m_e c² + hν(1−cosθ))² − (m_e c²)²]/[(m_e c² + hν(1−cosθ))² + (m_e c²)²]. O sinal é negativo em relação ao sentido de propagação do fóton espalhado: O deve se mover no sentido contrário ao do fóton (V = −c(ν²−ν′²)/(ν²+ν′²) no eixo do fóton). Um observador que acompanhe o fóton sempre o veria em frequência menor que ν.",
+    "pitfalls": [
+      "Compton com m_e em vez de m_e c² (energia de repouso): a dimensão fica errada. A fórmula correta é ν′ = m_e c² ν / [m_e c² + hν(1−cosθ)].",
+      "Trocar frequência por comprimento de onda sem cuidado: Compton é λ′ − λ = (h/m_e c)(1−cosθ), e em frequência é 1/ν′ − 1/ν. Não escrever ν′ − ν = −(h/m_e c²)(...) de forma linear.",
+      "Tratar o elétron como não relativístico na dedução: a conservação exata usa E_e = √(p²c² + m²c⁴). Esquecer o termo de repouso m_e c² em (1) ou errar a expansão de (m_e c² + h(ν−ν′))² leva a resultado errado.",
+      "Erro de álgebra ao eliminar φ: a identidade h²(ν−ν′)² = h²(ν²+ν′²) − 2h²νν′ é o passo que gera o termo (1−cosθ). Sem ele não se chega à forma final.",
+      "Confundir o ângulo θ do fóton com o ângulo de recuo φ do elétron. O enunciado dá θ do fóton; φ não é pedido e não entra em ν′.",
+      "Aplicar 'senθ ≈ θ' (nota da prova) ao item a): a aproximação vale só para θ ≪ 1 e não é pedida. Resultado geral deve manter cosθ.",
+      "Item b): usar Doppler clássico ν_O = ν′(1 ∓ V/c) em vez do relativístico. A versão clássica dá |V| ≈ hν(1−cosθ)/(m_e c) só ao primeiro ordem. Para hν ~ m_e c² o erro é grande (ex.: 0,385c exato contra um valor aproximado bem diferente), pois V não é ≪ c.",
+      "Sinal e direção no item b): 'na mesma direção do fóton' literal dá ν_O ≤ ν′ < ν, impossível para ν_O = ν. O observador deve ir no sentido oposto (V negativo no eixo do fóton). Ignorar isso ou dar V positivo sem justificar é erro conceitual.",
+      "Inverter a razão no Doppler: usar √[(1+β)/(1−β)] com ν′/ν em vez de ν/ν′ troca o sinal de V ou a razão. Teste: K = ν/ν′ > 1 deve dar |V| > 0 e V < c.",
+      "Referencial: ν′ é medido no referencial do laboratório (onde o elétron estava inicialmente em repouso). O observador O é outro referencial inercial, e a frequência original ν é a do laboratório.",
+      "Esquecer a condição |V| < c: a expressão obtida sempre satisfaz |V| < c, o que serve de checagem. O caso θ = 0 dá V = 0, trivial.",
+      "Manter c explícito nas respostas: V deve sair como fração de c (ex.: 5c/13 no caso hν = m_e c²/2, θ = 90°)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) Pela conservação de momento e energia relativística (espalhamento Compton), $\\nu'=\\dfrac{m_ec^2\\,\\nu}{m_ec^2+h\\nu(1-\\cos\\theta)}$, equivalente a $\\dfrac{1}{\\nu'}-\\dfrac{1}{\\nu}=\\dfrac{h}{m_ec^2}(1-\\cos\\theta)$.\n\nb) Pelo Doppler relativístico, $\\nu_O=\\nu'\\sqrt{\\dfrac{1-\\beta}{1+\\beta}}$, a condição $\\nu_O=\\nu$ dá $|V|=c\\,\\dfrac{\\nu^2-\\nu'^2}{\\nu^2+\\nu'^2}$. Com $y=h\\nu(1-\\cos\\theta)$, isso vale $V=c\\,\\dfrac{y(2m_ec^2+y)}{2m_e^2c^4+2m_ec^2\\,y+y^2}$. O observador deve estar na mesma reta do fóton espalhado, mas se mover em sentido oposto ao dele. Um observador que acompanha o fóton só o veria mais desviado para o vermelho.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Em (b), o eixo x foi definido em (a) como a direção do fóton incidente, mas em (b) 'p_x = hν'/c' refere-se à componente do fóton espalhado ao longo de sua própria direção. O eixo do boost não é redefinido explicitamente. Deve-se declarar: 'tome x' ao longo do fóton espalhado', e então E' = γ(E − β c p_x') com p_x' = hν'/c."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (a), passo 3, o cancelamento é compactado demais. Não aparece a linha intermediária 2mc²h(ν−ν') + h²(ν²+ν'²) − 2h²νν' = h²(ν²+ν'²) − 2h²νν'cosθ, que é onde o termo −2h²νν' se combina com o termo em cosθ. Um gabarito comentado deveria mostrar essa linha."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (a), a conservação do momento é usada direto pela lei dos cossenos, sem escrever p_e = p − p' e suas componentes. A justificativa é correta mas implícita (o ângulo entre p e p' é θ). Vale uma linha a mais."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), a resposta final dá apenas |V| e descreve o sentido em palavras. A pergunta pede a velocidade V (grandeza com sinal). O gabarito comentado deveria dar V = −c(ν²−ν'²)/(ν²+ν'²) no eixo do fóton espalhado, e explicitar já no início que 'mesma direção' só admite solução no sentido oposto."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), não se afirma que V é medido no referencial do laboratório (o referencial de ν e ν'), nem que a solução é única. A unicidade segue da equação linear em β, e a checagem V < c aparece só como verificação (ii)."
+          },
+          {
+            "severity": "minor",
+            "description": "Verificação (v): o valor exato é V/c = 0,03347 (≈ 0,0335c), e não 0,033c. A ordem de grandeza ≈ 1·10⁷ m/s está correta, mas o arredondamento deveria ser 0,0335c."
+          }
+        ],
+        "summary": "Resolução correta e bem fundamentada. Nota 9. As respostas finais coincidem com a referência nos dois itens. (a) ν' = mc²ν/[mc² + hν(1−cosθ)] é confirmada pela conferência numérica: o resíduo de E² − p²c² − m²c⁴ é da ordem de 1e-16 para vários ν e θ. (b) |V| = c(ν²−ν'²)/(ν²+ν'²) é confirmada: com β = −V/c, o Doppler relativístico reproduz ν_O = ν com erro ≤ 1e-16. A forma em hν e θ, a forma equivalente com sen²(θ/2), os casos 3c/5 (hν = mc², θ = 90°) e 5c/13 (hν = mc²/2, θ = 90°) e o limite não relativístico foram todos conferidos. O enunciado do PDF (página 11) confere com a transcrição. Armadilhas da referência tratadas: mc² em vez de m; Compton em 1/ν' − 1/ν e em λ; recuo relativístico com E_e exata; cancelamento algébrico correto; senθ ≈ θ não aplicado; Doppler relativístico (não clássico); sentido oposto justificado e a leitura literal de 'mesma direção' descartada; razão ν/ν' correta; |V| < c verificado; c explícito. Os problemas restantes são de clareza e notação: o eixo do boost em (b) não é redefinido; a eliminação em (a) está compactada; a resposta final de (b) dá |V| sem o sinal no eixo do fóton; falta dizer que V é medido no laboratório; e há um arredondamento impreciso em (v). Nenhum afeta a correção."
+      }
+    }
+  ]
+}

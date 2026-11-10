@@ -1,0 +1,29 @@
+{
+  "question": 1,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-1-matematica-2-fase-dia-1-ita-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Questão 1 — número de pontos de coordenadas inteiras no interior e na superfície do octaedro",
+      "solution_answer": "231 pontos (129 no interior e 102 na superfície)",
+      "key_answer": "231 pontos",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "O enunciado transcrito confere com o PDF original. O octaedro é |x|+|y|+|z| ≤ 5. A resolução conta por camadas de nível, com N_k = 4k²+2 para k ≥ 1 e N_0 = 1. O gabarito conta por cortes z = constante e obtém 61, 41, 25, 13, 5 e 1 pontos para |z| = 0, 1, …, 5, com total 2(1+5+13+25+41)+61 = 231. Contei por força bruta em Python e obtive 231 no total, 129 com soma < 5 e 102 com soma = 5. Os cortes por z também dão 61, 41, 25, 13, 5, 1, como no gabarito. A fórmula fechada N(n) = (2n+1)(2n²+2n+3)/3 dá 231 para n = 5. A divisão em interior e superfície é um detalhe a mais e está correta."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resposta final declarada diz que a contagem foi 'conferida por força bruta', mas o texto da resolução não mostra nenhuma verificação desse tipo. Só aparecem a contagem por tipos de coordenadas e a fórmula fechada. Isso não afeta o resultado: a força bruta que fiz aqui confirma 231, 129 e 102."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "O item 7 compara a contagem com o volume (500/3 ≈ 166,7) e diz que a diferença de cerca de 64 é 'plausível como contribuição dos pontos de fronteira'. É uma heurística sem rigor, e a própria resolução diz que é só uma checagem de plausibilidade. Não compromete a resposta."
+    }
+  ],
+  "summary": "A resolução está certa e coincide com o gabarito Poliedro: 231 pontos, sendo 129 no interior e 102 na superfície. Ela identifica o sólido como |x|+|y|+|z| ≤ 5 com justificativa completa (vértices antípodas, fecho convexo, interior e fronteira). A contagem por camadas (N_k = 4k²+2) e a conferência por tipos de coordenadas batem com o método do gabarito, por cortes em z (2(1+5+13+25+41)+61), e com uma contagem por força bruta em Python. Não há divergência. As ressalvas são só de redação: a resolução cita uma conferência por força bruta que não aparece no texto."
+}

@@ -1,0 +1,58 @@
+{
+  "question": 7,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-3-28-10-2026-2-fase-dia-3/dissertativa-7-quimica-2-fase-dia-3-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "α = 1, β = 2, γ = −1 (adota ν₀ do exp. 4 = 1,28×10⁻³, supondo erro de expoente na impressão)",
+      "key_answer": "α = 1, β = 2, γ = −1 (supondo erro de digitação: 1,28·10⁻³ em vez de 1,28·10⁻⁶)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi o enunciado no PDF (p. 4): a tabela traz mesmo ν₄ = 1,28×10⁻⁶. As razões em relação ao exp. 1 dão α+2β+3γ=2 e 2α+β+4γ=0. O exp. 4 dá 3α+4β+γ=log₂(ν₄/ν₁). O determinante é 20 (conferido). Com ν₄ = 1,28×10⁻³ a razão é 1024 = 2¹⁰ e a solução é exatamente (1, 2, −1). Com o valor impresso sai (−1,49; 1,00; 0,49), que não tem sentido físico. A resolução e o gabarito fazem a mesma correção. A resolução ainda confirma o resultado pelo estado estacionário: no limite k₃[C] ≫ k₂[B], as razões 4, 1 e 1024 batem com os experimentos 2 e 3 e com o exp. 4 corrigido."
+    },
+    {
+      "item": "b",
+      "solution_answer": "k = 1,25×10⁻² L·mol⁻¹·s⁻¹",
+      "key_answer": "k = 1,25·10⁻² L·mol⁻¹·s⁻¹",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Pelo exp. 1, k = ν₀[C]/([A][B]²) = (1,25×10⁻⁶·10⁻²)/(10⁻²·10⁻⁴) = 1,25×10⁻². A unidade sai (mol L⁻¹ s⁻¹)(mol L⁻¹)/(mol L⁻¹)³ = L mol⁻¹ s⁻¹. Usando esse k, os exp. 2 e 3 dão 5,00×10⁻⁶ e 1,25×10⁻⁶ (iguais à tabela) e o exp. 4 dá 1,28×10⁻³ (igual ao valor corrigido)."
+    },
+    {
+      "item": "c",
+      "solution_answer": "ν₀ = 1,25×10⁻² [A][B]²/[C] (concentrações em mol/L, ν₀ em mol L⁻¹ s⁻¹)",
+      "key_answer": "v = k[A][B]²[C]⁻¹",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "É a mesma lei. A resolução apenas substitui o valor numérico de k, e [C]⁻¹ equivale a 1/[C]."
+    },
+    {
+      "item": "d",
+      "solution_answer": "ordem global = 1 + 2 − 1 = 2",
+      "key_answer": "ordem global = 2",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "α+β+γ = 2, coerente com a unidade L mol⁻¹ s⁻¹ de k."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "high",
+      "description": "Pelo PDF original, a tabela impressa traz ν₀ = 1,28×10⁻⁶ mol L⁻¹ s⁻¹ no exp. 4. Com esse valor os expoentes saem não inteiros (α ≈ −1,49; β ≈ 1,00; γ ≈ 0,49). Só com 1,28×10⁻³ (razão 2¹⁰ = 1024) se chega a (1, 2, −1). A resolução e o gabarito fazem a mesma correção. Convém o professor verificar se a banca publicou errata ou se vai aceitar outras abordagens: usar o valor literal, ou usar só os exp. 1 a 3 com o mecanismo, que já bastam para chegar a (1, 2, −1) se a ordem em A for 1."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução justifica o expoente negativo por inibição: C compete por X na etapa III, e γ = −1 vem do estado estacionário no limite k₃[C] ≫ k₂[B]. Isso pressupõe k₃/k₂ ≫ 8 também no exp. 4, em que [B]/[C] = 8. É uma hipótese implícita razoável, mas não é dita explicitamente."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Há um deslize de redação na eliminação: '2·(2/1 da 2ª)−(1ª)'. A conta está certa: 2·(2ª eq.) − (1ª eq.) dá 3α + 5γ = −2."
+    }
+  ],
+  "summary": "A resolução está correta e coincide com o Poliedro nos quatro itens: α = 1, β = 2, γ = −1; k = 1,25×10⁻² L·mol⁻¹·s⁻¹; ν = k[A][B]²/[C]; ordem global 2. Os dois partem da mesma hipótese de erro de impressão no ν₀ do exp. 4 (1,28×10⁻³ em vez do impresso 1,28×10⁻⁶). O valor impresso está mesmo no PDF e, usado literalmente, gera expoentes não inteiros. Conferi em Python o determinante (20), a solução do sistema, o valor de k e as velocidades previstas. A dedução por estado estacionário que a resolução apresenta confirma o resultado de forma independente. O único ponto a levar ao professor é como a banca vai tratar o dado inconsistente do enunciado."
+}

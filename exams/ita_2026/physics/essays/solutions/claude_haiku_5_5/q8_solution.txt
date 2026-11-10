@@ -1,0 +1,67 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Dados e hipóteses.} Bateria: $Q = 2\,\text{Ah} = 7{,}2\times10^{3}\,\text{C}$, com $V = 5{,}0\,\text{V}$ constante durante a carga. Celular: $m = 0{,}10\,\text{kg}$, $c = 2{,}0\times10^{3}\,\text{J/(kg}\,^\circ\text{C)}$ e $\Delta\theta = 30\,^\circ\text{C}$. Tempo de carga: $T = 20\,\text{min} = 1200\,\text{s}$. Carregador: $n = 2{,}0\times10^{3}\,\text{espiras/m}$, $\ell = 2{,}0\times10^{-2}\,\text{m}$, $r = 5{,}0\times10^{-3}\,\text{m}$, $A = \pi r^2$, $N = n\ell = 40$ espiras. A prova imprime $\mu_0 = 4\pi\times10^{-7}\,\text{N}\cdot\text{A}^{-1}$; a unidade correta é $\text{N}\cdot\text{A}^{-2} = \text{H/m}$ (erro de impressão), e é esse o valor usado.
+
+Hipóteses:
+\begin{itemize}
+\item (H1) Bobinas sem resistência; a f.e.m. induzida tem módulo $V$, como dado do enunciado.
+\item (H2) Solenoide ideal: $B = \mu_0 n I$ uniforme no interior, com efeitos de borda desprezados (quantificados nas verificações).
+\item (H3) Modelo de ciclo ideal para a parte b: ciclos encadeados, sem intervalos; a corrente parte de zero em cada rampa, e a energia transferida ao celular em cada ciclo não excede a energia magnética $\tfrac12 L I_0^2$ armazenada no solenoide do carregador no pico da rampa, com $I_0 = 14\,\text{A}$.
+\end{itemize}
+
+\textbf{a) Potência média mínima.}
+
+Pelo balanço energético, a energia que o carregador deve fornecer é a soma da energia armazenada na bateria e do calor absorvido pelo aparelho:
+\begin{align*}
+E_{\text{bat}} &= QV = 7{,}2\times10^{3}\,\text{C}\times5{,}0\,\text{V} = 3{,}6\times10^{4}\,\text{J},\\
+E_{\text{term}} &= mc\,\Delta\theta = 0{,}10\,\text{kg}\times2{,}0\times10^{3}\,\tfrac{\text{J}}{\text{kg}\,^\circ\text{C}}\times30\,^\circ\text{C} = 6{,}0\times10^{3}\,\text{J},\\
+E_{\text{tot}} &= E_{\text{bat}} + E_{\text{term}} = 4{,}2\times10^{4}\,\text{J}.
+\end{align*}
+O carregador fornece $E_{\text{carr}} = E_{\text{tot}} + E_{\text{perd}}$, com $E_{\text{perd}} \ge 0$ (efeito Joule, radiação, etc.). A potência média ao longo de $T$ é
+\begin{align*}
+P_{\text{med}} = \frac{E_{\text{carr}}}{T} \ge \frac{E_{\text{tot}}}{T} = \frac{4{,}2\times10^{4}\,\text{J}}{1{,}2\times10^{3}\,\text{s}} = 35\,\text{W}.
+\end{align*}
+O mínimo ocorre no caso sem perdas. O resultado não depende da geometria dos solenoides.
+
+\textbf{b) Valor máximo de $\Delta t$.}
+
+\textit{Passo 1: autoindutância.} Pela lei de Ampère (H2), $B = \mu_0 n I$ no interior. Cada espira tem fluxo $\Phi = BA$, logo $L = N\Phi/I = \mu_0 n^2 \ell A$:
+\begin{align*}
+L = 4\pi\times10^{-7}\,\text{H/m}\,(2{,}0\times10^{3}\,\text{m}^{-1})^2\,(2{,}0\times10^{-2}\,\text{m})\,(25\pi\times10^{-6}\,\text{m}^2) = 8\pi^2\times10^{-7}\,\text{H} \approx 7{,}9\times10^{-6}\,\text{H}.
+\end{align*}
+Conferência: $[\mu_0 n^2\ell A] = \text{H/m}\cdot\text{m}^{-2}\cdot\text{m}\cdot\text{m}^2 = \text{H}$.
+
+\textit{Passo 2: energia máxima por ciclo.} Pela hipótese (H3), no pico da rampa a energia magnética armazenada é a cota por ciclo:
+\begin{align*}
+E_{\max} = \tfrac12 L I_0^2 = \tfrac12\,8\pi^2\times10^{-7}\,\text{H}\times(14\,\text{A})^2 = 784\,\pi^2\times10^{-7}\,\text{J} \approx 7{,}7\times10^{-4}\,\text{J}.
+\end{align*}
+
+\textit{Passo 3: cota energética.} Seja $N_c$ o número de ciclos e $E_c \le E_{\max}$ a energia entregue por ciclo. A energia total exige $N_c E_c \ge E_{\text{tot}}$, isto é, $N_c \ge E_{\text{tot}}/E_c$. Os ciclos encadeados ocupam $N_c\,\Delta t \le T$. Logo
+\begin{align*}
+\Delta t \le \frac{T}{N_c} \le \frac{T\,E_c}{E_{\text{tot}}} \le \frac{T\,E_{\max}}{E_{\text{tot}}} = \frac{E_{\max}}{P_{\min}},
+\end{align*}
+usando $E_{\text{tot}}/T = P_{\min}$ do item a. Numericamente,
+\begin{align*}
+\Delta t \le \frac{784\,\pi^2\times10^{-7}\,\text{J}}{35\,\text{W}} = 2{,}24\,\pi^2\times10^{-6}\,\text{s} \approx 2{,}2\times10^{-5}\,\text{s}.
+\end{align*}
+
+\textit{Passo 4: o limite é atingido.} Pela lei de Faraday, em módulo, a f.e.m. na bobina do celular é $|\varepsilon| = |M|\,|dI/dt| = |M|\,\dfrac{14\,\text{A}}{\Delta t}$, pois a rampa é linear. Com acoplamento perfeito, $|M| = L$ (solenoides idênticos, $k = 1$). Impondo $|\varepsilon| = V$:
+\begin{align*}
+\Delta t = \frac{14\,\text{A}\,L}{V} = \frac{14\,\text{A}\times8\pi^2\times10^{-7}\,\text{H}}{5{,}0\,\text{V}} = 2{,}24\,\pi^2\times10^{-6}\,\text{s} \approx 2{,}2\times10^{-5}\,\text{s}.
+\end{align*}
+Este valor coincide com a cota do passo 3, que portanto é atingida. A coincidência decorre dos dados: $P_{\min} = \tfrac12 I_0 V = 35\,\text{W}$, de modo que $E_{\max}/P_{\min} = LI_0/V$. Não é uma lei geral.
+
+Além disso, $|M| \le L$ para qualquer acoplamento, pois $W = \tfrac12 L I_1^2 + M I_1 I_2 + \tfrac12 L I_2^2 \ge 0$ para quaisquer correntes; com $I_2 = \mp I_1$, obtém-se $(L \mp M) I_1^2 \ge 0$. Como $\Delta t = 14|M|/V$, qualquer acoplamento imperfeito daria $\Delta t$ menor, e o máximo corresponde ao acoplamento perfeito.
+
+\textit{Verificações.}
+\begin{itemize}
+\item Unidades: $\left[\dfrac{LI_0}{V}\right] = \dfrac{\text{H}\cdot\text{A}}{\text{V}} = \dfrac{\text{V}\cdot\text{s}}{\text{A}}\cdot\dfrac{\text{A}}{\text{V}} = \text{s}$, e $[E_{\max}/P_{\min}] = \text{J}/\text{W} = \text{s}$.
+\item Sinais: só módulos entram nas contas. A lei de Lenz define apenas o sentido da corrente induzida, não o valor de $\Delta t$.
+\item Balanço: $N_c \approx E_{\text{tot}}/E_{\max} \approx 5{,}4\times10^{7}$ ciclos, e $N_c\,\Delta t = 1200\,\text{s}$, com $E_c = E_{\max}$.
+\item Ordens de grandeza: $\Delta t \approx 22\,\mu\text{s} \ll T$. A frequência de chaveamento $1/\Delta t \approx 45\,\text{kHz}$ está na faixa de dezenas a centenas de kHz dos carregadores indutivos reais.
+\item Correção de borda: para $\ell/d = 2$, a fórmula de Wheeler, $L \approx r^2N^2/(9r + 10\ell)$ (com $r$ e $\ell$ em polegadas, resultado em $\mu\text{H}$), dá $L \approx 6{,}4\,\mu\text{H}$, cerca de $19\%$ abaixo do valor ideal. Como $\Delta t_{\max} \propto L$, o valor ideal é uma cota superior, e para o solenoide real $\Delta t_{\max} \approx 1{,}8\times10^{-5}\,\text{s}$. A resposta do modelo ideal é $2{,}2\times10^{-5}\,\text{s}$.
+\end{itemize}
+
+ANSWER: a) $35\,\text{W}$; b) $\Delta t_{\max} = \dfrac{14\,\text{A}\,L}{V} = \dfrac{14\,\text{A}\times8\pi^2\times10^{-7}\,\text{H}}{5{,}0\,\text{V}} \approx 2{,}2\times10^{-5}\,\text{s}$ (cerca de $22\,\mu\text{s}$)

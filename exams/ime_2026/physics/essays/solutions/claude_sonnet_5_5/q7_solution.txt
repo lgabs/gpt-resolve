@@ -1,0 +1,81 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Eletrostática com condutores em equilíbrio: $\vec E=\vec 0$ e potencial constante no interior do metal. Cada carga central $+Q$ está no centro, logo há simetria esférica e vale a lei de Gauss. As cascas estão muito distantes, então cada uma não influencia a outra (a menos de efeitos desprezíveis). $V(\infty)=0$.
+
+\textbf{Cargas induzidas (Figuras 1 e 2).} Uma superfície gaussiana dentro do metal tem $\vec E=\vec 0$, portanto envolve carga total nula: a superfície interna da casca tem carga $-Q$. Como a casca é neutra, a superfície externa tem $+Q$. Fora da casca, de raio externo $R$, o campo é o de uma carga $+Q$ no centro, $E=kQ/r^2$, e $V(r)=kQ/r$ para $r\ge R$. Dentro do metal, $V=V(R)=kQ/R$.
+
+\subsection*{a) Figura 1 ($R=2a$)}
+O ponto $r=a$ está na superfície interna do condutor, que está no mesmo potencial do metal, $V(2a)=kQ/(2a)$. Conferindo por superposição das três distribuições (carga central, $-Q$ em $r=a$ e $+Q$ em $r=2a$):
+\[
+V(a)=\frac{kQ}{a}-\frac{kQ}{a}+\frac{kQ}{2a}.
+\]
+\[
+\boxed{V(a)=\dfrac{kQ}{2a}}
+\]
+
+\subsection*{b) Figura 2 ($R_{\text{int}}=2a$, $R_{\text{ext}}=3a$)}
+\begin{itemize}
+\item $r\ge 3a$: $V=kQ/r$, com $V(3a)=\dfrac{kQ}{3a}$.
+\item $2a\le r\le 3a$ (metal): $V=\dfrac{kQ}{3a}$, constante. Assim $V(2a)=\dfrac{kQ}{3a}$.
+\item $0<r\le 2a$ (cavidade): o campo é o da carga central, então $V(r)=\dfrac{kQ}{r}+C$. A continuidade em $r=2a$ dá $\dfrac{kQ}{2a}+C=\dfrac{kQ}{3a}$, ou seja $C=-\dfrac{kQ}{6a}$. Logo
+\[
+V(r)=\frac{kQ}{r}-\frac{kQ}{6a},\qquad V(a)=\frac{5kQ}{6a}.
+\]
+\end{itemize}
+Resumo: $V(a)=\dfrac{5kQ}{6a}$, $V(2a)=V(3a)=\dfrac{kQ}{3a}$. O potencial é função par de $r$ (simetria esférica) e diverge em $r\to0$, onde está a carga puntiforme. Esboço, com $V$ em unidades de $kQ/a$ e $r$ em unidades de $a$:
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.88\textwidth, height=6.2cm,
+  axis lines=middle,
+  xmin=-4.2, xmax=4.2, ymin=0, ymax=2.1,
+  xtick={-3,-2,-1,1,2,3},
+  xticklabels={$-3a$,$-2a$,$-a$,$a$,$2a$,$3a$},
+  ytick=\empty,
+  xlabel={$r$}, ylabel={$V$},
+  xlabel style={at={(ticklabel* cs:1)},anchor=west},
+  ylabel style={at={(ticklabel* cs:1)},anchor=south},
+  clip=true, samples=80, thick]
+\addplot[domain=0.42:2,blue] {1/x-1/6};
+\addplot[domain=-2:-0.42,blue] {-1/x-1/6};
+\addplot[domain=2:3,blue] {1/3};
+\addplot[domain=-3:-2,blue] {1/3};
+\addplot[domain=3:4.2,blue] {1/x};
+\addplot[domain=-4.2:-3,blue] {-1/x};
+\addplot[dashed,gray] coordinates {(-1,0)(-1,0.8333)};
+\addplot[dashed,gray] coordinates {(1,0)(1,0.8333)};
+\addplot[dashed,gray] coordinates {(2,0)(2,0.3333)};
+\addplot[dashed,gray] coordinates {(3,0)(3,0.3333)};
+\addplot[dashed,gray] coordinates {(-2,0)(-2,0.3333)};
+\addplot[dashed,gray] coordinates {(-3,0)(-3,0.3333)};
+\addplot[only marks,mark=*,mark size=2pt] coordinates {(1,0.8333)(-1,0.8333)(2,0.3333)(-2,0.3333)(3,0.3333)(-3,0.3333)};
+\node[anchor=south west,font=\small] at (axis cs:1,0.8333) {$\dfrac{5kQ}{6a}$};
+\node[anchor=south west,font=\small] at (axis cs:2.2,0.3333) {$\dfrac{kQ}{3a}$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection*{c) Figura 3}
+Cada casca começa neutra e o fio é muito longo (carga nele desprezível), de modo que a carga total das duas cascas se conserva: $q_1+q_2=0$, onde $q_1$ (casca menor, $R_1=2a$) e $q_2$ (casca maior, $R_2=3a$) são as cargas finais totais das cascas. Em equilíbrio, as duas ficam no mesmo potencial. Como cada casca está longe da outra, o potencial de cada uma é o de uma esfera de raio externo $R$ com carga total (central + casca) no centro:
+\[
+V_1=\frac{k(Q+q_1)}{2a},\qquad V_2=\frac{k(Q+q_2)}{3a}.
+\]
+Impondo $V_1=V_2$ e $q_2=-q_1$:
+\[
+3(Q+q_1)=2(Q-q_1)\;\Rightarrow\; 5q_1=-Q\;\Rightarrow\; q_1=-\frac{Q}{5},\quad q_2=+\frac{Q}{5}.
+\]
+Antes do contato $V_1=\dfrac{kQ}{2a}>V_2=\dfrac{kQ}{3a}$, e o sentido do fluxo é coerente: carga positiva $Q/5$ passa da casca menor para a maior (os elétrons fazem o caminho inverso).
+
+Após retirar o fio, as cargas ficam isoladas e nada muda. Pela lei de Gauss, a superfície interna de cada casca continua com $-Q$, pois a carga central não muda. A superfície externa recebe o restante:
+\begin{itemize}
+\item Casca menor: interna $-Q$; externa $q_1-(-Q)=Q-\dfrac{Q}{5}=+\dfrac{4Q}{5}$.
+\item Casca maior: interna $-Q$; externa $q_2-(-Q)=\dfrac{Q}{5}+Q=+\dfrac{6Q}{5}$.
+\end{itemize}
+
+\textbf{Conferência.} $V_1=\dfrac{k(4Q/5)}{2a}=\dfrac{2kQ}{5a}=\dfrac{k(6Q/5)}{3a}=V_2$, valor entre $\dfrac{kQ}{3a}$ e $\dfrac{kQ}{2a}$, como esperado. As cargas externas somam $2Q$ e as internas $-2Q$, compatível com a conservação da carga e com as duas cargas centrais.
+
+\medskip
+\noindent ANSWER: a) $V(a)=\dfrac{kQ}{2a}$; b) $V(a)=\dfrac{5kQ}{6a}$, $V(2a)=V(3a)=\dfrac{kQ}{3a}$ (gráfico acima); c) casca menor: interna $-Q$, externa $+\dfrac{4Q}{5}$; casca maior: interna $-Q$, externa $+\dfrac{6Q}{5}$.

@@ -1,0 +1,128 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.2,
+  "final_answer": "a) $V(a)=\\dfrac{kQ}{2a}$. b) $V(a)=\\dfrac{5kQ}{6a}$, $V(2a)=V(3a)=\\dfrac{kQ}{3a}$; gráfico contínuo, não crescente para $r\\ge 0$, com patamar entre $2a$ e $3a$ e divergência em $r\\to 0$. c) Casca 1: interna $-Q$, externa $+\\dfrac{4Q}{5}$ (carga líquida $-\\dfrac{Q}{5}$). Casca 2: interna $-Q$, externa $+\\dfrac{6Q}{5}$ (carga líquida $+\\dfrac{Q}{5}$). Potencial comum final $\\dfrac{2kQ}{5a}$.",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 7 – RESOLUÇÃO DE REFERÊNCIA\n\nConvenções: r = distância ao centro comum; k = constante eletrostática do meio. A carga central +Q é fixa por haste isolante e não muda. Em equilíbrio eletrostático, o campo é nulo dentro do metal, logo a casca é equipotencial. Para cargas com simetria esférica, E(r) = k·Q_env(r)/r², onde Q_env é a carga contida na esfera de raio r. Potencial nulo no infinito.\n\n(a) Figura 1 (cavidade de raio a; casca de a a 2a)\n- Gauss numa esfera de raio dentro do metal: Q + q_int = 0, logo a superfície interna (r = a) tem −Q.\n- A casca é neutra inicialmente, logo a superfície externa (r = 2a) tem +Q.\n- Para r ≥ 2a: Q_env = Q − Q + Q = Q, então V(r) = kQ/r.\n- Como a casca é equipotencial, V(a) = V(2a) = kQ/(2a).\nResposta: V(r = a) = kQ/(2a).\n\n(b) Figura 2 (cavidade de raio 2a; casca de 2a a 3a)\n- Superfície interna (r = 2a): −Q. Superfície externa (r = 3a): +Q.\n- Para r ≥ 3a: V = kQ/r, logo V(3a) = kQ/(3a).\n- Casca (2a ≤ r ≤ 3a): E = 0, potencial constante = kQ/(3a).\n- Cavidade (0 < r < 2a): E = kQ/r² (Q_env = Q). Integrando a partir de 2a:\n  V(r) = kQ/(3a) + kQ(1/r − 1/(2a)) = kQ/r − kQ/(6a).\n  Checagem: em r = 2a, V = kQ/(2a) − kQ/(6a) = kQ/(3a), coincide com a casca (continuidade).\n- Valores destacados:\n  V(a) = kQ/a − kQ/(6a) = 5kQ/(6a) ≈ 0,83 kQ/a\n  V(2a) = kQ/(3a)\n  V(3a) = kQ/(3a)\n- Esboço (r ≥ 0):\n  • 0 < r < 2a: ramo de hipérbole V = kQ/r − kQ/(6a), decrescente, tendendo a +∞ quando r → 0 (carga pontual).\n  • 2a ≤ r ≤ 3a: patamar horizontal em kQ/(3a).\n  • r ≥ 3a: V = kQ/r, decrescente, tendendo a 0 no infinito.\n  O gráfico é contínuo, com quinas (não suave) em r = 2a e r = 3a. A derivada salta de −kQ/(4a²) para 0 em 2a e de 0 para −kQ/(9a²) em 3a, por causa das cargas superficiais −Q e +Q.\n\n(c) Cascas ligadas por fio longo, depois retirado\nHipóteses: (i) o fio não guarda carga líquida relevante ao ser retirado (não há dado sobre ele); (ii) as cascas estão tão distantes que a influência mútua é desprezível (o potencial de cada casca é o gerado pela própria distribuição).\n- Cargas internas: a cavidade de cada casca contém só a carga central +Q, então, por Gauss, a superfície interna de cada casca tem −Q, qualquer que seja a ligação. Logo q_int1 = q_int2 = −Q.\n- Carga total dos dois cascos: inicialmente 0 (ambas neutras), e se conserva. Logo a soma das cargas externas é +2Q.\n- Ambas as cascas no mesmo potencial V. Para r igual ao raio externo, a carga envolvida pelo sistema da casca é só a carga externa q_ext (a +Q central é anulada pelo −Q interno), então:\n  V = k·q_ext1/(2a) = k·q_ext2/(3a)\n- Com q_ext1 + q_ext2 = 2Q:\n  q_ext1 = 2aV/k, q_ext2 = 3aV/k ⇒ 5aV/k = 2Q ⇒ V = 2kQ/(5a)\n  q_ext1 = 4Q/5, q_ext2 = 6Q/5.\n- Resultado:\n  Casca da Figura 1 (a a 2a): superfície interna (r = a) = −Q; superfície externa (r = 2a) = +4Q/5. Carga líquida = −Q/5.\n  Casca da Figura 2 (2a a 3a): superfície interna (r = 2a) = −Q; superfície externa (r = 3a) = +6Q/5. Carga líquida = +Q/5.\n- Verificação: soma das cargas = −Q/5 + Q/5 = 0; potenciais iguais: k(4Q/5)/(2a) = k(6Q/5)/(3a) = 2kQ/(5a).\n\nVerificação numérica feita em Python (frações exatas, k = Q = a = 1): V(a) na Figura 1 = 1/2; na Figura 2, V(a) = 5/6, V(2a) = V(3a) = 1/3; em (c), q_ext = 4/5 e 6/5, V = 2/5, somas conferidas.",
+    "final_answer": "a) Figura 1: V(r = a) = kQ/(2a). (r = a está na superfície interna da casca, que é equipotencial e tem V = kQ/(2a).)\n\nb) Figura 2 (r ≥ 0):\n- 0 < r < 2a: V(r) = kQ/r − kQ/(6a) (cavidade, não é constante)\n- 2a ≤ r ≤ 3a: V = kQ/(3a) (patamar da casca)\n- r ≥ 3a: V = kQ/r (tende a 0 no infinito)\nPontos destacados: V(a) = 5kQ/(6a); V(2a) = kQ/(3a); V(3a) = kQ/(3a). O gráfico é contínuo, com quinas em 2a e 3a e diverge em r → 0.\n\nc) Após curto-circuito e retirada do fio (potencial comum V = 2kQ/(5a)):\n- Casca da Figura 1 (a a 2a): superfície interna = −Q; superfície externa = +4Q/5 (carga líquida −Q/5).\n- Casca da Figura 2 (2a a 3a): superfície interna = −Q; superfície externa = +6Q/5 (carga líquida +Q/5).\nNão há questão de múltipla escolha.",
+    "pitfalls": [
+      "Condutor é equipotencial: o potencial em r = a (superfície interna da casca da Figura 1) é o potencial da casca, kQ/(2a). Escrever kQ/a (só a carga central) é erro.",
+      "Na cavidade o potencial não é constante: na Figura 2, V(a) = 5kQ/(6a), não kQ/(3a). Confundir o potencial da cavidade com o da casca é erro comum.",
+      "Casca neutra: a carga envolvida para r > 3a (ou r > 2a no caso da Figura 1) é Q, porque o +Q externo compensa o −Q interno. Não usar 2Q.",
+      "Gráfico: r é a distância radial (r ≥ 0). Os rótulos −2a e −3a da figura só mostram a simetria do desenho e não criam ramo para r negativo. A curva tem patamar entre 2a e 3a, quinas (não é suave) em 2a e 3a, e diverge em r → 0 por causa da carga pontual.",
+      "Gráfico: os valores pedidos são V(a) = 5kQ/(6a), V(2a) = kQ/(3a) e V(3a) = kQ/(3a). Conferir a continuidade em 2a (kQ/(2a) − kQ/(6a) = kQ/(3a)).",
+      "Em (c), a carga interna de cada casca continua −Q após a ligação, pois a cavidade contém só a carga central (Gauss). Não redistribuir a carga interna.",
+      "Em (c), a carga total dos dois cascos é nula (ambas neutras), então as externas somam +2Q, não zero.",
+      "Em (c), a partilha de +2Q entre as superfícies externas é proporcional ao raio externo (V = k·q/R, com R = 2a e 3a), não é igual nem proporcional aos raios internos. Resultado: 4Q/5 e 6Q/5.",
+      "Em (c), ao aplicar V = k·q_ext/R, não somar a carga central: V = k(Q + q_ext)/R é erro, porque a carga central é anulada pela carga interna −Q.",
+      "Em (c), após retirar o fio, cada casca fica com carga líquida não nula (−Q/5 e +Q/5). Só a soma é zero. Erro comum: supor que cada casca volta a ficar neutra.",
+      "Hipóteses que devem ser declaradas: o fio não guarda carga relevante ao ser retirado (não há dado sobre ele); as cascas são tão distantes que a influência mútua (termo k·q/d) é desprezível; as hastes isolantes mantêm +Q fixo e não há fuga de carga.",
+      "Potencial de referência: V(∞) = 0. Ele é usado ao integrar a partir do infinito e fixa V(3a) = kQ/(3a) na Figura 2 e V = kQ/(2a) na Figura 1."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) V(a) = kQ/(2a) (Figura 1). b) Figura 2: V(a) = 5kQ/(6a) (cavidade, V = kQ/r - kQ/(6a) para r ≤ 2a); V(2a) = V(3a) = kQ/(3a), com patamar no metal (2a ≤ r ≤ 3a) e V = kQ/r para r ≥ 3a; gráfico decrescente, contínuo e divergente em r → 0. c) Após ligar as cascas e retirar o fio: casca 1 (Figura 1) tem -Q na superfície interna (r = a) e +4Q/5 na externa (r = 2a); casca 2 (Figura 2) tem -Q na superfície interna (r = 2a) e +6Q/5 na externa (r = 3a). Potencial comum 2kQ/(5a); cargas totais -Q/5 e +Q/5.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Hipóteses: a frase 'As cascas são esféricas e concêntricas' está errada. As duas cascas não são concêntricas entre si (a Figura 3 mostra duas cascas separadas e distantes). Cada uma é concêntrica apenas com a sua própria carga +Q. Deve-se corrigir para 'cada casca é concêntrica com sua própria carga +Q'."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (c), a hipótese 'o fio tem carga desprezível' é declarada, mas sem justificativa. O enunciado não dá dados do fio, e 'muito longo' sugere que a capacidade do fio pode não ser trivial. Deveria ser explicitado como suposição necessária para a resposta ser única ('admite-se que o fio não retém carga líquida relevante ao ser retirado'). Também falta declarar 'sem fuga de carga' pelas hastes isolantes."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), o gráfico é descrito como 'decrescente', mas o patamar entre 2a e 3a tem inclinação nula. O termo correto é 'não crescente'."
+          },
+          {
+            "severity": "minor",
+            "description": "Armadilha da referência não tratada explicitamente: o eixo da Figura 2 tem rótulos −2a e −3a. A resolução não diz que r é distância radial (r ≥ 0) e que esses rótulos não criam ramos para r < 0. O domínio do esboço começa em 0 apenas implicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Verificações fracas em (c). 'V = 2kQ/(5a) está entre kQ/(3a) e kQ/(2a), como deve ocorrer numa média ponderada' é uma checagem de cota, e a afirmação sobre média ponderada não é justificada. A checagem por capacitância (C = 2a/k e 3a/k em paralelo) usa o mesmo modelo de esferas isoladas, por isso é um recálculo algébrico e não uma verificação independente. Deveria verificar-se a igualdade de potenciais com as cargas finais, ou dizer que a checagem é apenas de consistência."
+          },
+          {
+            "severity": "minor",
+            "description": "Esboço em (b): o ramo hiperbólico começa em r ≈ 0,45 e a assíntota em r → 0 aparece apenas no texto, não no desenho. Não é erro, mas poderia ser indicada no próprio gráfico."
+          }
+        ],
+        "summary": "Resposta final correta nos três itens e idêntica à referência. Confirmei o enunciado no PDF (figuras, rótulos e observações batem com a transcrição) e refiz as contas com frações exatas. (a) V(a) = kQ/(2a). (b) V(a) = 5kQ/(6a), V(2a) = V(3a) = kQ/(3a); a continuidade em 2a vale, e as inclinações −kQ/(4a²) e −kQ/(9a²) estão corretas. (c) Superfícies internas −Q em cada casca; externas +4Q/5 (casca 1) e +6Q/5 (casca 2); V comum = 2kQ/(5a); cargas líquidas −Q/5 e +Q/5, com soma zero. A direção do fluxo de elétrons (casca 2 para a casca 1, pois V1 = kQ/(2a) > V2 = kQ/(3a)) está descrita corretamente. Armadilhas da referência tratadas: potencial do condutor é o da casca (não kQ/a); potencial na cavidade não é constante; Q_env = Q para r > R (não 2Q); carga interna fixa em −Q por Gauss; soma das cargas externas +2Q; partilha proporcional aos raios externos; cada casca fica com carga líquida não nula; V(∞) = 0. Pontos fracos, todos menores: a frase 'cascas concêntricas' está errada; a hipótese de carga desprezível do fio não é justificada, apesar de 'muito longo'; 'decrescente' é impreciso; os rótulos −2a/−3a não são tratados e a ausência de fuga de carga não é declarada; as checagens de (c) são fracas. Com pequenos ajustes, é um gabarito comentado publicável.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "a) V(a) = kQ/(2a). b) V(a) = 5kQ/(6a), V(2a) = V(3a) = kQ/(3a); V é contínuo, não crescente, com patamar entre 2a e 3a e tende a +infinito quando r tende a 0. c) Casca 1: superfície interna -Q e externa +4Q/5 (carga total -Q/5). Casca 2: superfície interna -Q e externa +6Q/5 (carga total +Q/5). Potencial comum após o curto: 2kQ/(5a). Hipótese adotada: o fio não retém carga relevante.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (c), hipótese do fio: o candidato declara que o fio não retém carga relevante, mas justifica com 'capacitância desprezível' sem tratar a palavra 'muito longo' do enunciado. Um fio longo tem capacitância que cresce com o comprimento, então é justamente o caso em que ele poderia reter carga. Deveria dizer que adota um fio ideal, sem carga retida ao ser retirado, como idealização necessária porque o enunciado não dá dados do fio, e comentar que a capacitância do fio é o que tornaria o resultado dependente de dados ausentes."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c), influência mútua: a hipótese de cascas muito afastadas (desprezar o termo k·q/d) aparece só no preâmbulo. Ao usar V = k·q_i/R_i para cada casca isolada, o texto não liga explicitamente a fórmula a essa hipótese. Deveria dizer que cada casca tem o seu próprio potencial porque a influência mútua é desprezível."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (b), rótulos negativos e esboço: o tratamento dos rótulos −2a e −3a cabe em uma frase. Deveria explicitar que o gráfico é para r ≥ 0 e que, se o eixo for estendido, V(−r) = V(r) e o gráfico fica simétrico em torno de r = 0. O esboço começa em r = 0,3 e não mostra a divergência; é aceitável como esboço, mas a divergência em r → 0 deveria ser afirmada no próprio gráfico ou na legenda."
+          },
+          {
+            "severity": "minor",
+            "description": "Verificações de (c) fracas: o 'caso simétrico' é trivial, e a checagem por esferas isoladas é circular (o próprio texto admite). Uma verificação melhor, no mesmo modelo, é a energia eletrostática: U = Σ k·q_i²/(2R_i) + constante. Com q1 = Q e q2 = Q, U_i = 5kQ²/(12a); com q1 = 4Q/5 e q2 = 6Q/5, U_f = 2kQ²/(5a). A energia cai com a ligação, e a partilha é o mínimo de U com carga total fixa, que por Lagrange dá V1 = V2. Isso confirma a resposta de forma não circular."
+          }
+        ],
+        "summary": "Resposta final correta nos três itens e idêntica à referência: (a) V(a) = kQ/(2a); (b) V(a) = 5kQ/(6a), V(2a) = V(3a) = kQ/(3a), com gráfico contínuo, não crescente, patamar entre 2a e 3a e divergência em r → 0; (c) casca 1: interna −Q e externa +4Q/5 (líquida −Q/5); casca 2: interna −Q e externa +6Q/5 (líquida +Q/5).\n\nConferi o enunciado no PDF: a transcrição é fiel e as marcações são −2a, −a, a, 2a (Figura 1) e −3a, −2a, 2a, 3a (Figura 2). Refiz as contas com frações exatas. A integração numérica do campo da Figura 2 confere a função por partes, com diferença residual de 0,003 a 0,007, atribuível à discretização perto das descontinuidades do campo em 2a e 3a.\n\nArmadilhas da referência tratadas: potencial da casca versus potencial da cavidade (a casca é equipotencial, e V(a) = 5kQ/(6a) na cavidade); neutralidade da casca com Q_env = Q para r > R_ext; r ≥ 0 e rótulos negativos; continuidade em 2a e 3a e quinas (saltos de dV/dr corretos); carga interna fixa em −Q por Gauss; soma das cargas externas igual a 2Q; partilha proporcional ao raio externo; V = k·q_ext/R sem somar a carga central; carga líquida não nula em cada casca após retirar o fio; hipóteses declaradas (fio, afastamento, sem fuga de carga); V(∞) = 0.\n\nNão há erros críticos nem maiores. Os pontos fracos são de justificativa e de verificação, por isso a nota fica abaixo de 9: a hipótese do fio é declarada, mas mal justificada diante de 'muito longo'; a influência mútua não é ligada explicitamente à fórmula; o tratamento de r < 0 é curto; e as verificações finais são em parte circulares, quando uma checagem por energia seria mais forte."
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.2,
+      "final_answer": "a) $V(a)=\\dfrac{kQ}{2a}$. b) $V(a)=\\dfrac{5kQ}{6a}$, $V(2a)=V(3a)=\\dfrac{kQ}{3a}$; gráfico contínuo, não crescente para $r\\ge 0$, com patamar entre $2a$ e $3a$ e divergência em $r\\to 0$. c) Casca 1: interna $-Q$, externa $+\\dfrac{4Q}{5}$ (carga líquida $-\\dfrac{Q}{5}$). Casca 2: interna $-Q$, externa $+\\dfrac{6Q}{5}$ (carga líquida $+\\dfrac{Q}{5}$). Potencial comum final $\\dfrac{2kQ}{5a}$.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Em (c), na seção de hipóteses, o texto diz que \"q_i é a carga líquida da casca i\". Isso está errado: q_i é a carga da superfície externa, que é a carga envolvida para r > R_i. A carga líquida da casca é q_i − Q, ou seja, −Q/5 e +Q/5 no resultado final, como o próprio candidato escreve depois. Deveria ser: \"q_i é a carga da superfície externa (= carga envolvida para r > R_i)\"."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), o esboço estende o gráfico também para r < 0, espelhando as marcas −2a e −3a da figura. A justificativa (V depende só de |r|) está correta e os valores não mudam. Mas r é distância radial e o domínio físico é r ≥ 0, como usa a referência. Deveria ficar explícito que o ramo negativo é apenas o espelhamento para leitura do desenho, ou o esboço deveria mostrar só r ≥ 0."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), a continuidade em r = 2a não é conferida explicitamente. Ela decorre da integração a partir de V(2a) = kQ/(3a). Faltou a checagem independente kQ/(2a) − kQ/(6a) = kQ/(3a), que a referência faz e que era a armadilha pedida no enunciado do critério."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação energética de (c), U_i = 5kQ²/(12a) só é válido porque, antes da ligação, q1 = q2 = Q (superfícies externas com +Q, cascas neutras com −Q internas). Esse estado inicial não está escrito, então o leitor precisa reconstruí-lo."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução é correta, mas longa para um gabarito. Seções como 'Sentido', a verificação energética com teorema de Thomson, o 'caso particular' e a digressão sobre capacitância do fio (afirmação sem demonstração) poderiam ser enxutas ou fundamentadas em uma linha, sem perda do argumento central."
+          }
+        ],
+        "summary": "A resolução do candidato está correta e completa. As respostas finais coincidem item por item com a referência: (a) V(a) = kQ/(2a); (b) V(a) = 5kQ/(6a), V(2a) = V(3a) = kQ/(3a), com patamar entre 2a e 3a e divergência em r → 0; (c) casca 1: interna −Q e externa +4Q/5; casca 2: interna −Q e externa +6Q/5. Conferi o enunciado no PDF e as contas com frações exatas em Python: V(a) = 1/2 na Figura 1; 5/6, 1/3 e 1/3 na Figura 2; derivadas −1/4 → 0 em 2a e 0 → −1/9 em 3a; q1 = 4/5, q2 = 6/5, V = 2/5 nos dois; U_i = 5/12 e U_f = 2/5, com ΔU = 1/60; mínimo numérico de U em q1 = 0,8. Todas as armadilhas da referência foram tratadas: condutor equipotencial, cavidade com potencial não constante, casca neutra com Q_env = Q, carga interna mantida em −Q, partição do +2Q proporcional aos raios externos, V = kq/R sem somar a carga central, casca final não neutra, e hipóteses declaradas (fio sem carga, influência mútua desprezível, hastes isolantes, V(∞) = 0). Não encontrei erros major ou critical. Os problemas são de clareza e notação: um rótulo errado para q_i, o ramo de r < 0 no gráfico sem justificativa explícita de que é só espelhamento, a continuidade em 2a não checada de forma independente, o estado inicial da energia não escrito e texto longo. Com esses ajustes, um professor publicaria o texto como gabarito comentado. A nota é 9,2."
+      }
+    }
+  ]
+}

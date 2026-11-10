@@ -1,0 +1,88 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "a) CH3COOH + C2H5OH ⇌ CH3COOC2H5 + H2O (todos líquidos, 1:1:1:1); b) α(ácido) = 1,6/4,0 = 0,40 (40%); c) Kc = (1,6·1,6)/(2,4·0,4) = 8/3 ≈ 2,67 (adimensional, V se cancela)",
+  "judge_reference": {
+    "final_answer": "a) CH3COOH(l) + CH3CH2OH(l) ⇌ CH3COOCH2CH3(l) + H2O(l) (esterificação de Fischer; já balanceada, proporção 1:1:1:1).\nb) Grau de equilíbrio do ácido acético: α = 1,6/4 = 0,40 (40 %).\nc) Kc = [acetato de etila][H2O]/([ácido][etanol]) = (1,6·1,6)/(2,4·0,4) = 8/3 ≈ 2,67 (adimensional). O volume se cancela porque Δn = 0. Com as massas atômicas exatas da tabela (60,05 e 46,07 g/mol) o resultado seria ≈ 2,69, ou seja, o mesmo valor dentro da arredondagem.",
+    "reference_solution": "**Dados e quantidades iniciais**\n\nMassas molares (C = 12, H = 1, O = 16; a tabela dá 12,011, 1,0079 e 15,999, o que muda pouco):\n- CH3COOH (C2H4O2): 60 g/mol\n- CH3CH2OH (C2H6O): 46 g/mol\n\nn(ácido acético) = 240/60 = 4,0 mol\nn(etanol) = 92/46 = 2,0 mol\n\n**a) Equação**\n\nO ácido acético reage com o etanol e forma éster e água. O enunciado diz \"1,6 mol de cada produto\", o que confirma que são dois produtos formados em igual quantidade, acetato de etila e água. É a esterificação de Fischer, reversível:\n\nCH3COOH(l) + CH3CH2OH(l) ⇌ CH3COOCH2CH3(l) + H2O(l)\n\nJá está balanceada, com proporção 1 : 1 : 1 : 1. Há 2 C + 2 C = 4 C, 4 H + 6 H = 10 H e 2 O + 1 O = 3 O em cada lado.\n\n**b) Grau de equilíbrio para o ácido acético**\n\nTabela de quantidade de matéria (mol):\n\n| | ácido | etanol | éster | água |\n|---|---|---|---|---|\n| início | 4,0 | 2,0 | 0 | 0 |\n| variação | −1,6 | −1,6 | +1,6 | +1,6 |\n| equilíbrio | 2,4 | 0,4 | 1,6 | 1,6 |\n\nGrau de equilíbrio (fração do reagente consumido até o equilíbrio):\n\nα(ácido) = n reagido / n inicial = 1,6/4,0 = 0,40, ou seja, 40 %.\n\n(Para o etanol, que é o reagente limitante, seria α = 1,6/2,0 = 0,80. O enunciado pede o do ácido.)\n\n**c) Constante de equilíbrio**\n\nTodas as espécies estão na fase líquida (\"somente o equilíbrio líquido-líquido\"), no mesmo recipiente fechado. Não há fase vapor a considerar, nem perda de éster ou etanol por volatilização. Como o sistema é um líquido homogêneo, a água entra na expressão de K, porque é produto e não solvente em excesso. Em termos de concentração:\n\nKc = [éster][H2O] / ([ácido][etanol])\n\nCom [i] = n_i/V:\n\nKc = (n_éster·n_água/V²) / (n_ácido·n_etanol/V²)\n\nComo Δn = (1 + 1) − (1 + 1) = 0, o volume V se cancela, e Kc = Kn. Isso dispensa o valor de V, que o enunciado não fornece (o \"volume constante\" só garante que V é o mesmo no equilíbrio). Então:\n\nKc = (1,6 × 1,6)/(2,4 × 0,4) = 2,56/0,96 = 8/3 ≈ 2,67\n\nKc é adimensional (ou com unidade (mol/L)⁰). O mesmo valor sai em fração molar, já que n_total = 6 mol é constante e Kx = 8/3.\n\nConferência: o equilíbrio é favorável aos produtos (K > 1), mas não completo. O ácido, em excesso, deixa 2,4 mol, e o etanol cai de 2,0 para 0,4 mol.\n\nVerificação numérica (python): com massas arredondadas K = 8/3 = 2,667; com as massas exatas da tabela, 240/60,05 = 3,9966 mol e 92/46,07 = 1,9970 mol, K ≈ 2,69 e α ≈ 0,400. A diferença vem só da arredondagem. O gabarito esperado é 0,40 e 8/3 ≈ 2,67.",
+    "pitfalls": [
+      "Conversão de massa em mol: 240 g de CH3COOH = 4 mol (M = 60) e 92 g de etanol = 2 mol (M = 46). Confundir as massas molares (por exemplo usar 46 para o ácido) leva a todos os valores errados.",
+      "A equação precisa ter os dois produtos corretos: acetato de etila (CH3COOCH2CH3, o 'éster') e água, com seta de equilíbrio (⇌). Escrever só uma seta simples ou omitir a água é erro; a estequiometria é 1:1:1:1 e já está balanceada.",
+      "Grau de equilíbrio pedido é o do ÁCIDO ACÉTICO: 1,6/4 = 0,40. Usar o etanol (reagente limitante) dá 0,80. Também é erro calcular o grau sobre os produtos, ou dar 1,6/6.",
+      "O grau de equilíbrio é fração do reagente consumido (n reagido / n inicial), não a fração em relação ao total de mols nem o rendimento teórico (rendimento = 1,6/2,0 = 80 %, referido ao limitante).",
+      "Tabela de equilíbrio: sobram 2,4 mol de ácido (4 − 1,6) e 0,4 mol de etanol (2 − 1,6). Um erro comum é subtrair 1,6 de 2 e de 4 trocados, ou esquecer de descontar do ácido.",
+      "Água DEVE entrar em Kc. O sistema é um líquido homogêneo em que a água é produto em quantidade comparável aos demais, e não solvente em grande excesso. Excluí-la daria K = 1,6/(2,4·0,4) ≈ 1,67, errado.",
+      "Como Δn = 0, o volume se cancela e Kc = Kn = 8/3. Não se deve inventar um volume nem concluir que falta dado. O 'volume constante' e 'T e P constantes' servem para garantir que Kc seja único e que a mesma quantidade de matéria possa ser usada como concentração.",
+      "'Somente equilíbrio líquido-líquido' significa ignorar vapor (recipiente fechado, sem perda de etanol, éster ou água para a fase gasosa); não é pedido K em pressões parciais (Kp). A constante é adimensional.",
+      "Arredondamento: usando as massas da tabela (60,05 e 46,07) obtém-se K ≈ 2,69 e α ≈ 0,400. Aceitar 2,67 (= 8/3) como resposta de referência, sem penalizar 2,67–2,69 se o raciocínio estiver correto."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) CH3COOH + C2H5OH ⇌ CH3COOC2H5 + H2O; b) grau de equilíbrio do ácido acético = 1,6/4,0 = 0,40 (40 %); c) Kc = (1,6·1,6)/(2,4·0,4) = 8/3 ≈ 2,67 (adimensional).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na parte (a), a conferência do balanceamento está errada: o candidato escreve \"Cada lado tem 4 C, 8 H e 3 O\". O correto é 4 C, 10 H e 3 O. Reagentes: C2H4O2 + C2H6O = C4H10O3. Produtos: C4H8O2 + H2O = C4H10O3. A equação está balanceada, mas o item (a) pede justamente o balanceamento, e a verificação dada tem um número falso (8 H). Um gabarito publicável não pode ter esse erro. Corrigir para 10 H."
+          },
+          {
+            "severity": "minor",
+            "description": "A \"Conferência\" com a literatura (Kc ≈ 4 em mistura equimolar) não é reconciliada com o resultado: 2,67 ≠ 4, e a frase sobre o excesso de ácido deslocar o equilíbrio mistura rendimento com constante. K não depende da composição inicial, e a diferença se deve a temperatura, meio e não idealidade. Dizer apenas que \"a ordem de grandeza é coerente\" é frouxo, e a referência à literatura é uma afirmação externa não verificável. Deveria ser removida ou formulada com mais cuidado."
+          },
+          {
+            "severity": "minor",
+            "description": "A \"contraprova\" x²/[(4−x)(2−x)] = 8/3 é a mesma expressão reescrita, não uma verificação independente. Uma checagem melhor seria somar as massas ou os mols (6 mol totais, conservação de C), ou refazer com as massas molares da tabela."
+          },
+          {
+            "severity": "minor",
+            "description": "Não comenta o arredondamento das massas molares. Com 60,05 e 46,07 g/mol da tabela, K ≈ 2,69 e α ≈ 0,400, e o texto não diz que 2,67 e 2,69 são equivalentes. Também não declara explicitamente a hipótese de solução ideal (atividades ≈ concentrações) para justificar Kc, nem que as condições (ii) e (iii) garantem que Kc seja único e que V seja o mesmo no equilíbrio."
+          },
+          {
+            "severity": "minor",
+            "description": "A equação não traz os estados físicos (l), embora o enunciado enfatize o equilíbrio líquido-líquido. A referência os indica. Não é erro, mas seria mais completo."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a minha referência nos três itens, e conferi as contas e o enunciado original (6ª questão, p. 3). (a) CH3COOH + C2H5OH ⇌ CH3COOC2H5 + H2O, com proporção 1:1:1:1. (b) α(ácido) = 1,6/4,0 = 0,40. (c) Kc = 2,56/0,96 = 8/3 ≈ 2,67, adimensional. Os mols iniciais (4,0 e 2,0), a tabela de equilíbrio (2,4; 0,4; 1,6; 1,6) e o cancelamento de V por Δn = 0 estão corretos. As armadilhas principais foram tratadas: grau referido ao ácido e não ao etanol (80% citado como rendimento sobre o limitante), água incluída em Kc por ser sistema líquido homogêneo, e nenhum volume inventado. A resolução é organizada e clara. O problema mais visível é a conferência do balanceamento, que diz \\\"8 H\\\" em vez de 10 H, um erro factual no item que pede o balanceamento. Há ainda uma conferência com a literatura (Kc ≈ 4) mal fundamentada e uma contraprova circular, além de pequenas omissões (arredondamento 2,67 vs 2,69, hipótese de solução ideal, símbolos (l)). A resposta final está certa e o raciocínio é sólido, mas o deslize numérico explícito no balanceamento e as conferências fracas impedem que seja um gabarito comentado publicável sem revisão. Nota 8,5.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "a) CH3COOH + C2H5OH ⇌ CH3COOC2H5 + H2O (todos líquidos, 1:1:1:1); b) α(ácido) = 1,6/4,0 = 0,40 (40%); c) Kc = (1,6·1,6)/(2,4·0,4) = 8/3 ≈ 2,67 (adimensional, V se cancela)",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A condição (i), \"somente equilíbrio líquido-líquido\", é interpretada como \"fase líquida única e homogênea\". Isso está certo, mas o texto não diz expressamente que a fase vapor é desprezada, isto é, que não há perda de etanol, éster ou água por volatilização no recipiente fechado. Isso explicaria por que as quantidades em mol da tabela valem para a fase líquida. Seria bom escrever isso numa frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A inclusão da água em Kc é justificada (solução ideal, atividades ≈ concentrações, água como produto em quantidade comparável). Falta, porém, citar o erro típico a evitar: excluir a água daria K ≈ 1,67, o que é errado neste sistema homogêneo sem excesso de solvente. Faltou esse contraste, que reforçaria o argumento."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação \"Q = 0 < Kc\" no início é trivial e pouco informativa, porque Q = 0 sempre que não há produtos. Não prejudica a solução. A verificação da raiz do quadrático (x = 1,6 e x = 8, com 8 descartada) é mais útil. Vale ressaltar que ela só confere a consistência de Kc com o dado do enunciado, e não é uma prova independente de Kc."
+          },
+          {
+            "severity": "minor",
+            "description": "Não define explicitamente \"grau de equilíbrio\" como fração do reagente consumido, com o nome da convenção. Dá a fórmula n consumido / n inicial e comenta que o etanol daria 80 %. O trecho é suficiente, mas poderia ser mais formal."
+          }
+        ],
+        "summary": "Conferi o enunciado original da 6ª questão (página 3) e ele bate com a transcrição. Refiz as contas em Python: n(ác) = 4,0 mol e n(et) = 2,0 mol; equilíbrio com 2,4 / 0,4 / 1,6 / 1,6 mol; α(ácido) = 1,6/4,0 = 0,40; Kc = 2,56/0,96 = 8/3 ≈ 2,667. Com as massas molares da tabela (60,05 e 46,07 g/mol) dá K ≈ 2,69 e α ≈ 0,400. O candidato coincide com a minha referência nos três itens. (a) Equação da esterificação de Fischer, 1:1:1:1, com seta de equilíbrio, balanço de átomos conferido (4 C, 10 H, 3 O de cada lado). (b) α = 0,40 para o ácido, com o contraste correto com o etanol (80 %). (c) Kc = 8/3 ≈ 2,67, com água incluída, volume cancelado por Δn = 0 e Kc adimensional. As verificações extras estão corretas: conservação de massa (332 g = 332 g), conservação de C (12 mol), quadrático 5x² − 48x + 64 = 0 com raízes 1,6 e 8 (8 descartada) e nota sobre arredondamento. Todas as armadilhas da referência foram tratadas: massas molares, produtos, ácido (não etanol) no grau, água em K, volume que se cancela e arredondamento 2,67–2,69. A resolução é correta, completa, bem organizada e quase no nível de gabarito comentado. Faltam só detalhes pequenos: dizer explicitamente que a fase vapor é desprezada e citar o valor errado (≈ 1,67) que sairia sem a água.\""
+      }
+    }
+  ]
+}

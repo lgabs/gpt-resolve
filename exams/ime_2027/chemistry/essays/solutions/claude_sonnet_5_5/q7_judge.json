@@ -1,0 +1,82 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.3,
+  "final_answer": "α = 1, β = 2, γ = −1; k = 1,25×10⁻² L·mol⁻¹·s⁻¹; ν₀ = 1,25×10⁻² [A][B]²/[C]; ordem global = 2. O sistema 3×3 usa o exp. 4 com o expoente corrigido (1,28×10⁻³ em vez do impresso 1,28×10⁻⁶). O mecanismo, no limite k₃[C] ≫ k₂[B], confirma o resultado.",
+  "judge_reference": {
+    "final_answer": "a) α = 1, β = 2, γ = −1.\nb) k = 1,25×10⁻² L·mol⁻¹·s⁻¹. Esse valor é k = k₁k₂/k₃ no limite k₃[C] ≫ k₂[B].\nc) ν₀ = 1,25×10⁻² · [A][B]²/[C] = 1,25×10⁻² [A][B]²[C]⁻¹.\nd) Ordem global = 1 + 2 − 1 = 2. A reação é de segunda ordem, e a unidade de k é a de segunda ordem.\n\nRessalva: o valor impresso para ν₀ no experimento 4 (1,28×10⁻⁶) é quase certamente um erro de impressão do expoente. O valor consistente é 1,28×10⁻³ (ver pitfalls). Não consegui conferir com o gabarito oficial.",
+    "reference_solution": "**Dados (conferidos na p. 4 do PDF).**\n- Exp. 1: [A]=[B]=[C]=1,0×10⁻²; ν=1,25×10⁻⁶.\n- Exp. 2: 2,0×10⁻² / 4,0×10⁻² / 8,0×10⁻²; ν=5,00×10⁻⁶.\n- Exp. 3: 4,0×10⁻² / 2,0×10⁻² / 1,6×10⁻¹; ν=1,25×10⁻⁶.\n- Exp. 4: 8,0×10⁻² / 1,6×10⁻¹ / 2,0×10⁻²; ν=1,28×10⁻⁶ (ver nota abaixo).\n\n**a) Expoentes α, β, γ**\n\nNenhum par de experimentos varia uma só concentração. Por isso é preciso montar um sistema com as razões em relação ao exp. 1, usando potências de 2. Como são três incógnitas, são necessários os experimentos 2, 3 e 4.\n\n- Exp.2/Exp.1: [A]×2, [B]×4, [C]×8 e ν×4. Então 2^α·4^β·8^γ = 2², ou seja, **α + 2β + 3γ = 2** (I).\n- Exp.3/Exp.1: [A]×4, [B]×2, [C]×16 e ν×1. Então 2α + β + 4γ = 0 (II).\n- Exp.4/Exp.1: [A]×8, [B]×16, [C]×2 e ν×(1,28×10⁻³/1,25×10⁻⁶) = 1024 = 2¹⁰. Então 3α + 4β + γ = 10 (III).\n\nResolução:\n- 2(I) − (II) dá 3β + 2γ = 4.\n- 3(I) − (III) dá 2β + 8γ = −4, ou seja, β + 4γ = −2.\n- Substituindo β = −2 − 4γ em 3β + 2γ = 4: −6 − 12γ + 2γ = 4, logo γ = −1.\n- Então β = 2 e, por (I), α = 2 − 4 + 3 = 1.\n\nVerificação: (II) dá 2 + 2 − 4 = 0 ✓ e (III) dá 3 + 8 − 1 = 10 ✓.\n\n**α = 1, β = 2, γ = −1.**\n\n**Nota sobre o exp. 4.** Com o valor impresso, 1,28×10⁻⁶, a razão é 1,024 e (III) vira 3α+4β+γ = log₂1,024 = 0,034. O sistema então dá α ≈ −1,49, β ≈ 1,003 e γ ≈ 0,495. Isso não tem sentido físico e contradiz o mecanismo, porque A é reagente da etapa I, que alimenta P, e não pode ter ordem negativa. Os dígitos \"1,28\" são exatamente os previstos pela lei (1, 2, −1): 1,25×10⁻²·(8×10⁻²)(1,6×10⁻¹)²/(2×10⁻²) = 1,28×10⁻³. Logo, o expoente impresso (−6) deve ser −3.\n\n**Coerência com o mecanismo (aproximação do estado estacionário para X).**\n- k₁[A][B] = (k₂[B] + k₃[C])[X], logo [X] = k₁[A][B]/(k₂[B] + k₃[C]).\n- ν_P = k₂[X][B] = k₁k₂[A][B]²/(k₂[B] + k₃[C]).\n- Se k₃[C] ≫ k₂[B], isto é, se o X é consumido principalmente por C, então ν = (k₁k₂/k₃)[A][B]²/[C]. É exatamente α=1, β=2, γ=−1.\n- Na unidade-limite oposta (k₂[B] ≫ k₃[C]) seria ν = k₁[A][B], o que os dados não mostram.\n- A expressão completa não é uma lei de potência. Os dados (razões 4 e 1 nos exps. 2 e 3) só são reproduzidos no limite k₃[C] ≫ k₂[B]. Esse é o regime em que a lei empírica vale.\n\n**b) Constante k**\n\nDo exp. 1: k = ν/([A][B]²[C]⁻¹) = 1,25×10⁻⁶ / (1,0×10⁻² · (1,0×10⁻²)² / 1,0×10⁻²) = 1,25×10⁻⁶ / 1,0×10⁻⁴ = **1,25×10⁻² L·mol⁻¹·s⁻¹**.\n\nUnidade: (mol·L⁻¹·s⁻¹)/(mol²·L⁻²) = L·mol⁻¹·s⁻¹ (= M⁻¹·s⁻¹).\n\nConferência nos outros experimentos:\n- Exp. 2: 1,25×10⁻²·(2×10⁻²)(4×10⁻²)²/(8×10⁻²) = 5,00×10⁻⁶ ✓.\n- Exp. 3: 1,25×10⁻²·(4×10⁻²)(2×10⁻²)²/(1,6×10⁻¹) = 1,25×10⁻⁶ ✓.\n- Exp. 4: 1,28×10⁻³ (com o valor corrigido).\n\nInterpretação: k = k₁k₂/k₃, uma constante composta.\n\n**c) Lei cinética completa**\n\nν₀ = 1,25×10⁻² · [A][B]²[C]⁻¹ = 1,25×10⁻² [A][B]²/[C], com ν em mol·L⁻¹·s⁻¹ e as concentrações em mol·L⁻¹. A espécie C atua como inibidora (γ < 0): ela captura o intermediário X e retarda a formação de P.\n\n**d) Ordem global**\n\nn = α + β + γ = 1 + 2 − 1 = **2** (segunda ordem). Isso é coerente com a unidade de k, L·mol⁻¹·s⁻¹. A ordem é 1 em A, 2 em B e −1 em C.",
+    "pitfalls": [
+      "O valor impresso de ν₀ no exp. 4 (1,28×10⁻⁶) parece erro de impressão do expoente; o consistente é 1,28×10⁻³. Com o valor literal, o sistema dá α≈−1,49, β≈1,003 e γ≈0,495, expoentes sem sentido e com ordem negativa em A. Uma boa resolução deve notar a inconsistência e dizer qual valor adotou. Não pude confirmar com o gabarito oficial.",
+      "Nenhum par de experimentos varia só uma concentração, então o método clássico de isolamento não funciona. É preciso montar um sistema 3×3 com as razões (potências de 2) e usar os três experimentos 2, 3 e 4. Só com os exps. 1–3 haveria infinitas soluções, por exemplo (1,2,−1) e (−4,0,2).",
+      "Não se pode tomar os expoentes pela estequiometria nem pela molecularidade de uma etapa. A lei empírica vem dos dados, e o mecanismo serve de verificação. As etapas II e III não dão diretamente a lei de P, porque X é intermediário e é preciso eliminá-lo por estado estacionário.",
+      "γ = −1 é negativo, o que é admissível: C inibe a reação. Esquecer o sinal, ou tratar γ como 0 ou +1, leva a k e a unidades errados.",
+      "A unidade de k depende do expoente negativo: L·mol⁻¹·s⁻¹ (segunda ordem global), não L²·mol⁻²·s⁻¹. A ordem global é 1+2−1 = 2, e não 1+2+1 = 4 nem 3.",
+      "O mecanismo completo, ν = k₁k₂[A][B]²/(k₂[B]+k₃[C]), só se reduz à lei de potência no limite k₃[C] ≫ k₂[B]. Isso explica por que a lei empírica vale 'em determinadas condições'. Em consequência, k = k₁k₂/k₃ é uma constante composta, e a lei não vale fora desse regime.",
+      "Conferir a lei obtida em todos os experimentos (k = 1,25×10⁻² reproduz 1, 2 e 3 exatamente) é essencial para detectar o dado inconsistente do exp. 4."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "α = 1, β = 2, γ = −1; k = 1,25×10⁻² L·mol⁻¹·s⁻¹; v₀ = 1,25×10⁻² [A][B]²/[C]; ordem global = 2. Os experimentos 1 a 3 e o mecanismo (estado estacionário, limite k₃[C] ≫ k₂[B]) fixam esses valores. O experimento 4 só é consistente com 1,28×10⁻³ mol·L⁻¹·s⁻¹. O valor impresso, 1,28×10⁻⁶, parece erro de expoente.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "As respostas finais do candidato coincidem item a item com a referência e estão corretas: α=1, β=2, γ=−1; k=1,25×10⁻² L·mol⁻¹·s⁻¹; ν₀=1,25×10⁻²[A][B]²/[C]; ordem global 2. Conferi no PDF original que o exp. 4 traz de fato 1,28×10⁻⁶. Refiz o sistema 3×3: com 1,28×10⁻³ a solução é exatamente (1, 2, −1). Com o valor literal sai (−1,49; 1,003; 0,495), como o candidato e a referência afirmam. As contas de k, das razões, da conferência nos exps. 2 e 3 e das unidades estão certas. O candidato tratou bem as armadilhas: notou o typo e disse qual valor adotou, usou o estado estacionário, descartou o limite (i) com números, aceitou γ<0 como inibição e obteve a unidade certa de k (sem usar a estequiometria como ordem). A fraqueza é estrutural: o candidato monta só duas equações, deixa uma família de soluções e escolhe (1,2,−1) pelo mecanismo. O exp. 4 entra apenas como \"verificação\", com o valor reconstruído a partir do próprio resultado, o que é circular. Um gabarito comentado deveria usar o exp. 4 (corrigido) como a terceira equação, 3α+4β+γ=10, resolver o 3×3 e mostrar que a solução é única. O mecanismo ficaria como confirmação. Além disso, o argumento \"únicos inteiros compatíveis\" está frouxo. Por isso a nota fica abaixo de 9, mesmo com resposta certa e boa análise do typo.",
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Os expoentes não saem dos dados. O candidato usa só as razões 2/1 e 3/1, obtém uma família de soluções (α=(−2−5γ)/3, β=(4−2γ)/3) e escolhe (1,2,−1) pelo mecanismo. O exp. 4 serve só como \"verificação\", e o valor usado ali (1,28×10⁻³) foi obtido a partir da própria lei (1,2,−1). O argumento é circular: o typo é inferido da lei, e a lei é inferida do mecanismo. O independente é a coincidência da mantissa, que o candidato cita mas não destaca. Deveria escrever a terceira equação, 3α+4β+γ=10 (razão 1024=2¹⁰ com o exp. 4 corrigido), resolver o 3×3 mostrando a unicidade de (1,2,−1), e só então citar o mecanismo como confirmação. Seria mostrar também que o sistema com o valor literal não dá solução aceitável."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase \"esses valores são os únicos inteiros compatíveis com o mecanismo\" está frouxa. Na família de soluções inteiras (γ≡2 mod 3), a restrição α≥0 só elimina (−4,0,2). Ficam (6,4,−4), (11,6,−7) etc., que só são excluídos porque o mecanismo admite apenas os limites (1,1,0) e (1,2,−1). Isso devia ser dito explicitamente, ou, melhor, substituído pelo uso do exp. 4."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação \"o modelo completo só reproduz exatamente as razões 4 e 1 no limite (ii)\" é correta, mas fica sem demonstração. Com r=k₃/k₂, a razão exp.2/exp.1 vale 8(1+r)/(1+2r), que só é 4 quando r→∞. A razão exp.3/exp.1 vale 8(1+r)/(1+8r), que só é 1 no mesmo limite. Uma linha mostrando isso fecharia o argumento e explicaria por que a lei de potência vale \"em determinadas condições\"."
+          },
+          {
+            "severity": "minor",
+            "description": "Detalhe de apresentação. O candidato não diz explicitamente que k (do exp. 1) e a conferência nos exps. 2 e 3 independem do typo do exp. 4. Não indica que, se o gabarito oficial usasse o valor literal, o resultado mudaria. O γ≈0,49 do valor literal está truncado (0,495). São imprecisões menores."
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.3,
+      "final_answer": "α = 1, β = 2, γ = −1; k = 1,25×10⁻² L·mol⁻¹·s⁻¹; ν₀ = 1,25×10⁻² [A][B]²/[C]; ordem global = 2. O sistema 3×3 usa o exp. 4 com o expoente corrigido (1,28×10⁻³ em vez do impresso 1,28×10⁻⁶). O mecanismo, no limite k₃[C] ≫ k₂[B], confirma o resultado.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A notação da eliminação na seção 3 é confusa: \"2·(2/1 da 2ª) − (1ª)\" mistura o rótulo da razão (2/1) com o número da equação. O correto seria \"2·(eq. 2) − (eq. 1)\". A álgebra está certa: 3α+5γ=−2, e −5α−15γ=10 dá α+3γ=−2. Só a escrita atrapalha a leitura de um gabarito comentado."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução adota ν₄=1,28×10⁻³ e justifica bem (mantissa 1,25×1,024, razão exata 2¹⁰, expoentes absurdos com o valor literal). Falta dizer com franqueza que a hipótese de erro de impressão não foi confirmada pelo gabarito oficial e que a resposta final depende dela. Falta também o argumento decisivo, que a seção 4 só deixa implícito: os exps. 1–3 mais o mecanismo já fixam (1,2,−1) e predizem ν₄=1,28×10⁻³, ou seja, a resposta não depende do dado suspeito. Isso deveria ser dito em uma frase explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "A comparação com o valor literal dá α≈−1,49, β≈1,00, γ≈0,495, mas não nota que isso é praticamente (−3/2, 1, 1/2), a solução exata de ν₄=ν₁. Seria a leitura alternativa de quem tomasse 1,28×10⁻⁶ como ruído experimental de 1,25×10⁻⁶. Ela continua descartada pelo mecanismo, porque dá α<0, mas citá-la e descartá-la explicitamente tornaria a justificativa mais completa."
+          },
+          {
+            "severity": "minor",
+            "description": "A aproximação de estado estacionário é aplicada à velocidade \"inicial\" (ν₀) sem comentar a tensão aparente. A justificativa dada (indução curta, [X]₀=0) é razoável, mas uma frase a mais deixaria o argumento mais rigoroso. A referência faz o mesmo."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a referência nos quatro itens: α=1, β=2, γ=−1; k=1,25×10⁻² L·mol⁻¹·s⁻¹ (=k₁k₂/k₃); ν₀=1,25×10⁻²·[A][B]²/[C]; ordem global 2. Refiz tudo e está correto. O sistema 3×3 tem determinante 20 e solução única (1,2,−1) com ν₄/ν₁=1024. Com o valor literal 1,28×10⁻⁶ sai (−1,49; 1,003; 0,495), exatamente como a candidata afirma. As razões do mecanismo 8(1+r)/(1+2r), 8(1+r)/(1+8r) e 1024(1+r)/(8+r) estão certas: r=0 dá 8, 8, 128 e r→∞ dá 4, 1, 1024. Os exps. 2 e 3 só são reproduzidos com r→∞, o que fixa (1,2,−1) independentemente do exp. 4. Conferi no PDF que o exp. 4 vem impresso com 1,28×10⁻⁶, e a candidata identificou a inconsistência, adotou 1,28×10⁻³ e justificou bem (mantissa 1,25×1,024; razão 2¹⁰; α<0 impossível). Também mostrou o resultado literal para comparação. Todas as armadilhas foram tratadas: não usou a estequiometria, resolveu o sistema com os três experimentos, aceitou γ negativo, deu a unidade correta de k e a ordem 2 (não 4), explicou o regime k₃[C]≫k₂[B] e verificou k em todos os experimentos. A estrutura é limpa e rigorosa, no nível de um gabarito comentado. Os defeitos são só de acabamento: notação confusa em um passo de eliminação, falta de uma ressalva explícita de que a correção do exp. 4 não foi confirmada pelo gabarito oficial e de que o mecanismo prediz 1,28×10⁻³ sem depender do dado impresso, e a leitura alternativa (−3/2, 1, 1/2) não foi mencionada."
+      }
+    }
+  ]
+}

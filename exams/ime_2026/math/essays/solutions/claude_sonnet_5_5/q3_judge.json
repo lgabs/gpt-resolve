@@ -1,0 +1,54 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "$k=(1-\\sqrt{a})(1+\\sqrt{a})^{2}=(1-a)(1+\\sqrt{a})$, pois $f(x)=\\frac{\\sqrt{x}}{1-\\sqrt{x}}$ e o menor coeficiente angular da secante é $\\frac{4}{(1-\\sqrt a)(1+\\sqrt a)^2}$, atingido em $x=\\left(\\frac{1-\\sqrt a}{2}\\right)^2$.",
+  "judge_reference": {
+    "reference_solution": "**Passo 1 – Forma fechada de f.**\nPara x ∈ [0,1), √(xⁿ) = (√x)ⁿ. A série é geométrica de razão t = √x ∈ [0,1), logo converge e\nf(x) = t/(1−t), com t = √x. (Como a série começa em n = 1, não há o termo 1: f(0) = 0.)\n\n**Passo 2 – Coeficiente angular da secante.**\nSeja s = √a ∈ [0,1) e t = √x ∈ [0,1), com t ≠ s (equivale a x ≠ a, pois √ é injetiva).\nf(x) − f(a) = t/(1−t) − s/(1−s) = [t(1−s) − s(1−t)] / [(1−t)(1−s)] = (t−s)/[(1−t)(1−s)].\nx − a = t² − s² = (t−s)(t+s).\nCancelando (t−s) ≠ 0:\nm(t) = 1 / [ (1−s)(1−t)(t+s) ], para t ∈ [0,1), t ≠ s.\nObserve que m > 0 sempre (todos os fatores são positivos).\n\n**Passo 3 – Minimizar m.**\nComo (1−s) > 0 é constante e (1−t)(t+s) > 0, minimizar m equivale a maximizar h(t) = (1−t)(t+s) = −t² + (1−s)t + s.\nPor AM–GM (ou pelo vértice da parábola): (1−t)(t+s) ≤ [((1−t)+(t+s))/2]² = (1+s)²/4, com igualdade se, e somente se, 1−t = t+s, isto é, t* = (1−s)/2.\n- t* ∈ [0, 1/2] ⊂ [0,1): pertence ao domínio, para todo a ∈ [0,1).\n- t* ≠ s ⇔ (1−s)/2 ≠ s ⇔ s ≠ 1/3 ⇔ a ≠ 1/9. É exatamente a hipótese do enunciado: nesse caso o ponto ótimo é admissível (x* = (1−√a)²/4 ≠ a), e o mínimo é atingido por uma secante verdadeira.\n- Quando t → 1⁻, h → 0 e m → +∞, então não há problema de fronteira; o mínimo global de m em [0,1)∖{s} existe e é atingido em t*.\n\nValor mínimo: m_min = 1 / [ (1−s)·(1+s)²/4 ] = 4 / [ (1−√a)(1+√a)² ].\n\n**Passo 4 – Paralelismo com a reta ky − 4x = 2026.**\nPara k ≠ 0, a reta é y = (4/k)x + 2026/k, com coeficiente angular 4/k. (Se k = 0 a reta é vertical, x = −2026/4, e não pode ser paralela a uma secante, que tem inclinação finita.)\nIgualando: 4/k = 4 / [(1−√a)(1+√a)²] ⇒\nk = (1−√a)(1+√a)² = (1−a)(1+√a).\nComo a ∈ [0,1), k > 0, em particular k ≠ 0, consistente.\n\n**Verificações.**\n- a = 0: m(t) = 1/[t(1−t)], mínimo 4 em t = 1/2 (x = 1/4); k = 1 e 4/k = 4. ✓\n- Conferência numérica (varredura em x ∈ [0,1)): a = 0,04 → mín. 3,472222 = 4/1,152 (x = 0,16); a = 0,5 → 4,686292 = 4/0,85355; a = 0,9 → 20,5267 = 4/0,19487. Todos batem com a fórmula, e o x do mínimo coincide com (1−√a)²/4.\n- a = 1/9: x* = a, a secante degenera na tangente; o valor 27/8 = 3,375 é só ínfimo, nunca atingido (numericamente o mínimo se aproxima de 3,375 sem alcançá-lo). Por isso o enunciado exclui esse valor.\n\n**Resposta:** k = (1−√a)(1+√a)² = (1−a)(1+√a).",
+    "final_answer": "k = (1 − √a)(1 + √a)² = (1 − a)(1 + √a), para a ∈ [0,1), a ≠ 1/9. (Coeficiente angular mínimo da secante: 4/[(1−√a)(1+√a)²] = 4/k, atingido em x = (1−√a)²/4.)",
+    "pitfalls": [
+      "Reconhecer a série como geométrica de razão √x (começa em n=1): f(x)=√x/(1−√x). Errar o somatório (por ex. incluir o termo n=0, dando 1/(1−√x)) muda f por uma constante, o que não altera a secante, mas mostra falta de cuidado.",
+      "Fazer a substituição t=√x, s=√a e fatorar x−a=(t−s)(t+s). O cancelamento de (t−s) só vale porque x≠a. Sem isso a secante fica uma expressão pesada em x e a. A secante fica m = 1/[(1−s)(1−t)(t+s)].",
+      "Minimizar m = maximizar (1−t)(t+s) em t∈[0,1) (por AM–GM ou vértice). Não derivar f em x e igualar a zero: isso é o coeficiente da tangente, não da secante.",
+      "Condição de validade: o ponto ótimo t*=(1−s)/2 está sempre em [0,1/2]⊂[0,1), mas só é admissível se t*≠s, isto é, a≠1/9. Em a=1/9 o ótimo seria x=a (não há secante) e o mínimo não é atingido, só o ínfimo (tangente). Uma boa resolução deve explicar por que o enunciado exclui a=1/9.",
+      "Verificar que o mínimo existe: m→+∞ quando t→1⁻ e m é contínua em [0,1)∖{s}, então o mínimo é global e vem do máximo de h.",
+      "Coeficiente angular de ky−4x=2026 é 4/k (exige k≠0; k=0 daria reta vertical, impossível). Erro comum: usar k/4 ou −4/k. Aqui k>0 sempre, consistente com m>0.",
+      "Na resposta final, deixar em função de a (não de √a ou t): k=(1−√a)(1+√a)²=(1−a)(1+√a). Erros de álgebra comuns: esquecer o quadrado em (1+√a), ou escrever k=(1−a)(1+a).",
+      "Testar casos particulares: a=0 dá k=1 (secante mínima 4, em x=1/4). Esse teste detecta erros de fator 2 em t*=(1−s)/2 e em (1+s)²/4."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "$k=(1-\\sqrt{a})(1+\\sqrt{a})^{2}=(1-a)(1+\\sqrt{a})$, pois $f(x)=\\frac{\\sqrt{x}}{1-\\sqrt{x}}$ e o menor coeficiente angular da secante é $\\frac{4}{(1-\\sqrt a)(1+\\sqrt a)^2}$, atingido em $x=\\left(\\frac{1-\\sqrt a}{2}\\right)^2$.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A justificativa de a ≠ 1/9 é imprecisa. O candidato diz que, para a = 1/9, \"o mínimo seria atingido em x = a\". Na verdade, nesse caso o mínimo não é atingido por nenhuma secante, e o ínfimo 27/8 corresponde à tangente. Convém dizer que m(t) → 27/8 quando t → s, sem nunca assumir esse valor. Numericamente, para a = 1/9 + 0,001, o mínimo é 3,37501, muito próximo de 27/8 = 3,375."
+          },
+          {
+            "severity": "minor",
+            "description": "A globalidade do mínimo fica só implícita. O candidato não diz explicitamente que o máximo da parábola em [0,1) é global, nem que t₀ ≠ s mantém esse máximo no domínio sem o ponto t = s. Também não menciona que m → +∞ quando t → 1⁻. A prova vale, pois o vértice pertence ao domínio, mas uma frase a mais o tornaria rigoroso."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência numérica é relatada sem dados. O candidato cita a = 0, 0,04, 0,25, 0,5 e 0,81, mas só mostra o caso a = 0. Refiz a varredura e todos concordam com 4/k: a = 0,04 dá 3,47222 em x = 0,16; a = 0,25 dá 3,55556 em x = 0,0625; a = 0,5 dá 4,68629; a = 0,81 dá 11,0803 em x = 0,0025. Mostrar um ou dois valores numéricos reforçaria o argumento."
+          },
+          {
+            "severity": "minor",
+            "description": "Faltam duas observações cosméticas. Não se diz que f(0) = 0, já que a série começa em n = 1. Também não se explica que (1−√a)(1+√a)² = (1−a)(1+√a) vem de (1−√a)(1+√a) = 1−a. A conta está correta nos dois pontos, mas ficou sem comentário."
+          }
+        ],
+        "summary": "A resposta final do candidato, k = (1−√a)(1+√a)² = (1−a)(1+√a), coincide com a da minha referência e está correta. Conferi o enunciado no PDF original. Refiz a conta com a substituição t = √x, s = √a, que dá m(t) = 1/[(1−s)(1−t)(t+s)]. O mínimo é 4/[(1−√a)(1+√a)²], atingido em t = (1−s)/2. Uma varredura numérica em x para a = 0, 0,04, 0,25, 0,5, 0,81 e 0,1 confirmou o valor mínimo e o ponto x = ((1−√a)/2)². Para a = 1/9 + 0,001, o mínimo se aproxima de 27/8. A solução é completa e bem estruturada: forma fechada geométrica, simplificação do fator t−s, minimização por parábola, domínio e t₀ ≠ s ⇔ a ≠ 1/9, inclinação 4/k com o caso k = 0 descartado e teste em a = 0. Das armadilhas da referência, tratou a série começando em n = 1, o cancelamento de t−s, a secante em vez da tangente, a inclinação 4/k e a forma final em função de a. Ficaram só parcialmente tratadas a explicação de por que a = 1/9 é excluído, onde o ínfimo não atingido não é mencionado, e a argumentação de existência do mínimo global. Os problemas são todos menores e de rigor expositivo, sem erro matemático. A resolução é próxima do nível de gabarito comentado."
+      }
+    }
+  ]
+}

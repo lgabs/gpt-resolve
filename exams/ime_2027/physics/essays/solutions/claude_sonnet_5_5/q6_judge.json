@@ -1,0 +1,60 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "a) v = 68 m/s; b) R = 5√3 ≈ 8,66 m; c) T ≈ 1,07×10³ N (≈ 1068 N); d) V submerso ≈ 5,5×10⁻² m³ (≈ 55 L)",
+  "judge_reference": {
+    "reference_solution": "**Modelo físico.** O objeto faz um MCU horizontal na superfície, com o fio esticado até o centro do fundo (pêndulo cônico \"invertido\"). O observador O está no mesmo plano horizontal da trajetória. Para a fonte em movimento e o observador parado, com ar parado, vale f_obs = f0·v_som/(v_som − v_r). Aqui v_r é a componente da velocidade da fonte, no instante da emissão, na direção que vai da posição de emissão até O (positiva se a fonte se aproxima).\n\n**a) Velocidade escalar (ponto A).**\n- A reta AO é horizontal e o diâmetro AB é vertical na vista superior, logo AO é tangente à circunferência em A.\n- Com sentido anti-horário, em A a velocidade aponta para a direita, isto é, para O. A fonte se aproxima com v_r = v, e f_A = 5f0/4 > f0 é coerente.\n- f0·v_som/(v_som − v) = 5f0/4 → v_som − v = (4/5)·340 = 272 → **v = 68 m/s**.\n\n**b) Raio da trajetória (ponto B).**\n- Em B (topo), a velocidade aponta para a esquerda, sentido oposto a O. Mas a linha de visão BO não é a direção da velocidade.\n- Tomando a origem em B: O está a d = 10 m na horizontal e 2R na vertical (AB = 2R é o diâmetro). Logo BO = √(4R² + d²).\n- A componente de v ao longo de BO é v·cosα, com cosα = d/BO, e é de afastamento. Como f_B = 10f0/11 < f0, o sinal confere.\n- f0·v_som/(v_som + v cosα) = 10f0/11 → v_som + v cosα = 374 → v cosα = 34 m/s.\n- Com v = 68: cosα = 1/2 → BO = 2d = 20 m.\n- 4R² + 100 = 400 → R² = 75 → **R = 5√3 m ≈ 8,66 m**.\n- Verificação numérica: com R = 5√3 e v = 68, as frequências em A e B saem 1,25 f0 e 0,9091 f0, como no enunciado.\n\n**c) Tração no fio.**\n- Geometria: a projeção horizontal do fio é R, então sen θ = R/L = √3/2, ou seja, θ = 60° com a vertical e cos θ = 1/2. A profundidade da piscina é L cos θ = 5 m.\n- Forças no objeto: peso mg (para baixo), empuxo E (para cima) e tração T ao longo do fio, apontando para o ponto de fixação no fundo. A tração tem componente horizontal para o eixo (T sen θ) e componente vertical para baixo (T cos θ).\n- Horizontal (resultante centrípeta): T sen θ = m v²/R = √3·68²/(5√3) = 4624/5 = 924,8 N.\n- T = 924,8/(√3/2) = 1849,6/√3 = 1,6·(34²/√3) = 1,6·667,4 → **T ≈ 1,07×10³ N (≈ 1067,8 N)**.\n- Forma exata: T = 9248√3/15 N.\n\n**d) Volume submerso.**\n- Vertical (sem aceleração vertical): E = mg + T cos θ = 10√3 + T/2 = 17,32 + 533,92 ≈ 551,2 N.\n- Forma exata: E = 4774√3/15 N.\n- E = ρ g V_sub → V_sub = 551,2/(1000·10) → **V_sub ≈ 5,5×10⁻² m³ ≈ 55 L**, mais precisamente 0,0551 m³.",
+    "final_answer": "a) v = 68 m/s.\nb) R = 5√3 m ≈ 8,66 m (o fio faz 60° com a vertical, e a profundidade da piscina é 5 m).\nc) T = 1849,6/√3 = 1,6·667,4 ≈ 1,07×10³ N (≈ 1067,8 N).\nd) V_sub = (mg + T cos 60°)/(ρg) ≈ 551,2 N/10⁴ ≈ 5,5×10⁻² m³ ≈ 55 L.",
+    "pitfalls": [
+      "Ponto A: AO é tangente à circunferência em A (AO ⟂ AB). No sentido anti-horário a velocidade em A aponta para O, então a fonte se aproxima com v inteira e f > f0. Se o candidato errar o sentido de giro, obtém afastamento em A, contradizendo 5f0/4 > f0. Use esse teste de coerência.",
+      "Ponto B: a velocidade é perpendicular a AB e a linha de visão BO é oblíqua. Só a componente v·cosα = v·d/BO entra no Doppler. Usar a velocidade inteira em B dá v = 34 m/s, que contradiz os 68 m/s de A. Essa é a armadilha central do item b.",
+      "Geometria de B: AB = 2R (diâmetro, não R), então BO² = (2R)² + d² e cosα = d/BO. O resultado d/BO = 1/2 dá BO = 20 m e R² = 75 (não R = 10 nem R = 5√3/2). O observador está no plano da trajetória, então não há componente vertical na linha de visão.",
+      "O Doppler usa a posição e a velocidade da fonte no instante da emissão, não da recepção. O sinal sobe em A (aproximação) e desce em B (afastamento).",
+      "Relação R–L: o fio é inclinado e R = L sen θ, com θ medido em relação à vertical. Daí θ = 60° (sen θ = √3/2, cos θ = 1/2). Confundir θ com o ângulo em relação à horizontal troca sen e cos e dá resultados errados em T e E.",
+      "Tração ≠ força centrípeta: a resultante centrípeta é só a componente horizontal T sen θ = mv²/R = 924,8 N. Portanto T = mv²/(R sen θ) ≈ 1068 N, não 924,8 N. O peso (17,3 N) é desprezível frente a T, mas entra no equilíbrio vertical.",
+      "O fio está preso ao fundo e o objeto está acima do ponto de fixação, então a tração puxa o objeto para BAIXO e para dentro. Equilíbrio vertical correto: E = mg + T cos θ. Erros comuns: E = mg (o objeto não flutuaria livremente) ou E = T cos θ − mg.",
+      "O volume pedido é o submerso, V_sub = E/(ρg), com ρ = 1000 kg/m³ e g = 10 m/s². Não é o volume total da casca, e o enunciado diz que V_sub é constante e que as dimensões do objeto só contam no empuxo.",
+      "Uso dos dados: 34²/√3 = 667,4 serve para T = 1,6·667,4 e para T cos θ = 0,8·667,4 ≈ 533,9 N, o que confirma que a geometria pretendida é θ = 60°. A pequena diferença entre 1067,84 e 1067,87 N vem só do arredondamento do dado.",
+      "Hipóteses: ar parado, observador parado, MCU (módulo de v constante), sem resistência da água, fio esticado (T > 0) e dimensões desprezadas, exceto no empuxo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "a) v = 68 m/s; b) R = 5√3 ≈ 8,66 m; c) T ≈ 1,07×10³ N (≈ 1068 N); d) V submerso ≈ 5,5×10⁻² m³ (≈ 55 L)",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item b: a frase \"B está a 2R de altura em relação a A\" usa \"altura\" para uma distância no plano da vista superior (o observador está no mesmo plano horizontal da trajetória). Isso pode confundir com altura vertical. Deveria dizer \"B está a 2R de A, medido ao longo do diâmetro AB, perpendicular a AO\", e escrever BO² = d² + (2R)² com um esboço ou a justificativa de que AO ⟂ AB."
+          },
+          {
+            "severity": "minor",
+            "description": "Item a: a tangência de AO à circunferência em A e o sentido da velocidade aparecem na seção \"Geometria\", mas a justificativa é curta. O sentido anti-horário só é checado pelo sinal f > f₀. Falta dizer explicitamente que a velocidade em A é paralela a AO. O ponto B também fica sem o teste de coerência f < f₀. Está correto, mas poderia ser mais explícito."
+          },
+          {
+            "severity": "minor",
+            "description": "Item c: o resultado é dado em T ≈ 1,07×10³ N (2 algarismos), embora a conta intermediária já mostre 1067,8 N, usando o dado 34²/√3 = 667,4 que a prova fornece. O ideal seria destacar T ≈ 1,068×10³ N (ou a forma exata 9248√3/15 N). Também não separa nem mostra T sen θ = mv²/R = 924,8 N, que é um bom passo de verificação contra a armadilha \"T = força centrípeta\"."
+          },
+          {
+            "severity": "minor",
+            "description": "Item d: o sentido da tração (para baixo e para dentro) e a posição do objeto acima do ponto de fixação são afirmados sem justificativa. O argumento vem só da figura. Uma frase dizendo que o fio liga a superfície ao fundo, e portanto puxa o objeto para baixo, tornaria E = mg + T cos θ mais convincente. Não aparece a forma exata E = 4774√3/15 N, mas isso é opcional."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência diz que o volume submerso de 55 L \"é coerente com uma casca esférica oca\". Isso é razoável, mas é só uma observação qualitativa. Não é um erro, apenas um comentário sem verificação numérica (por exemplo, o volume total do objeto não é dado)."
+          }
+        ],
+        "summary": "Os quatro itens batem com a minha resolução de referência: a) v = 68 m/s; b) R = 5√3 m ≈ 8,66 m; c) T ≈ 1,07×10³ N (1067,8 N); d) V_sub ≈ 5,5×10⁻² m³ (≈ 55 L). Refiz tudo numericamente e confirmei os valores. Os dois Doppler dão exatamente 5f₀/4 e 10f₀/11, o ângulo do fio com a vertical é 60°, T = 1067,87 N e E = 551,25 N (V = 0,05513 m³). Conferi também o enunciado e a figura originais: A está na base do círculo, AO é tangente, o giro anti-horário aponta a velocidade em A para O, e o fio sobe do fundo (sobre o eixo) até o objeto na superfície. A candidata tratou bem as armadilhas centrais. Usou só a componente v·cosα em B, com cosα = d/√(d²+4R²) e AB = 2R, e obteve cosα = 1/2. Tomou o Doppler no instante da emissão. Usou R = L sen θ com θ medido em relação à vertical. Separou a tração da força centrípeta (T sen θ = mv²/R) e aplicou E = mg + T cos θ com a tração puxando para baixo. Calculou o volume submerso com ρ = 1000 e g = 10, e usou bem o dado 34²/√3 = 667,4. Os problemas restantes são só de apresentação: a palavra \\\"altura\\\" ambígua, a justificativa curta da geometria e do sentido, o arredondamento do T final e a ausência das formas exatas. A resolução é correta, bem organizada e quase no nível de gabarito comentado."
+      }
+    }
+  ]
+}

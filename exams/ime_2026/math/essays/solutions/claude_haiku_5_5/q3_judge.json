@@ -1,0 +1,104 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "$k=(1-a)(1+\\sqrt{a})=(1-\\sqrt{a})(1+\\sqrt{a})^2$, para $a\\in[0,1)$, $a\\neq\\frac{1}{9}$. A secante de menor inclinação liga $(a,f(a))$ a $x^*=\\frac{(1-\\sqrt{a})^2}{4}$ e tem coeficiente $\\frac{4}{k}$.",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA — Questão 3 (IME 2025/2026)\n\nEnunciado: f(x) = Σ_{n≥1} √(xⁿ) em [0,1); a ∈ [0,1), a ≠ 1/9; entre as secantes por (a,f(a)) e (x,f(x)), x ≠ a, a de menor coeficiente angular é paralela a ky − 4x = 2026. Pede-se k em função de a.\n\n1) Forma fechada de f. Para x ∈ [0,1), √(xⁿ) = (√x)ⁿ. Com t = √x ∈ [0,1), a soma é geométrica de razão t:\n   f(x) = t/(1 − t) = √x / (1 − √x), e f(0) = 0.\n   A série converge para x<1 (t<1) e diverge em x = 1, por isso o domínio é [0,1).\n\n2) Substituições. Seja b = √a ∈ [0,1) e s = √x ∈ [0,1), com a = b² e x = s². Então:\n   - a ≠ 1/9 ⇔ b ≠ 1/3;\n   - x ≠ a ⇔ s ≠ b.\n\n3) Coeficiente angular da secante. m = [f(x) − f(a)]/(x − a).\n   Seja g(s) = s/(1 − s). Então g(s) − g(b) = (s − b)/[(1 − s)(1 − b)] e x − a = (s − b)(s + b).\n   Como s ≠ b, cancela-se (s − b):\n       m(s) = 1 / [(1 − b)(1 − s)(s + b)],  s ∈ [0,1), s ≠ b.\n\n4) Minimização. Seja h(s) = (1 − s)(s + b). Em todo o domínio h(s) > 0 (1 − s > 0 e s + b > 0; a única exceção, s + b = 0, ocorre em a = 0, s = 0, que é x = a e está excluída). Como 1 − b > 0, m = 1/[(1 − b)h(s)], logo minimizar m equivale a maximizar h.\n   h(s) = −s² + (1 − b)s + b é uma parábola com concavidade para baixo.\n   h′(s) = 1 − b − 2s = 0 ⇒ s* = (1 − b)/2 ∈ (0, 1/2] ⊂ [0,1).\n   Em s*: 1 − s* = (1 + b)/2 e s* + b = (1 + b)/2, logo h(s*) = (1 + b)²/4, que é o máximo global de h.\n\n5) Papel da hipótese a ≠ 1/9. O ponto de máximo coincide com s = b quando (1 − b)/2 = b, isto é, b = 1/3, a = 1/9. Nesse caso o ótimo corresponderia a x = a, que é excluído. Para a = 1/9 a inclinação tende a f′(1/9) = 27/8 pelos dois lados, mas nenhuma secante a atinge: há ínfimo, não mínimo. Para a ≠ 1/9 tem-se s* ∈ [0,1) e s* ≠ b, logo o mínimo é atingido.\n\n6) Inclinação mínima. Usando (1 − b)(1 + b) = 1 − a:\n   m_min = 1 / [(1 − b)(1 + b)²/4] = 4 / [(1 − b)(1 + b)²] = 4 / [(1 − a)(1 + √a)].\n   O outro ponto da secante ótima é x* = (s*)² = (1 − √a)²/4.\n   Observação: x* > a ⇔ a < 1/9, e x* < a ⇔ a > 1/9. A secante ótima pode estar à direita ou à esquerda de a.\n\n7) Paralelismo. A reta ky − 4x = 2026 (com k ≠ 0) equivale a y = (4/k)x + 2026/k, com coeficiente angular 4/k. O termo 2026 é só intercepto e não influi no paralelismo. Igualando as inclinações:\n   4/k = 4 / [(1 − a)(1 + √a)]  ⇒  k = (1 − a)(1 + √a).\n   Como k > 0 para todo a ∈ [0,1), a reta é sempre bem definida.\n\n8) Conferências.\n   - a = 0: k = 1, m_min = 4, atingido em x = 1/4 (f(1/4) = 1, f(0) = 0, razão 1/(1/4) = 4). Confere.\n   - a = 1/4: k = (3/4)(3/2) = 9/8, m_min = 32/9, atingido em x = 1/16. f(1/16) = 1/3 e f(1/4) = 1, então m = (1/3 − 1)/(1/16 − 1/4) = (−2/3)/(−3/16) = 32/9 = 4/k. Confere.\n   - Varredura numérica (grade fina em x) para a ∈ {0; 0,01; 0,05; 0,25; 0,5; 0,7; 0,9; 0,99} reproduz a fórmula de m_min dentro da resolução da grade.\n   - Forma fechada conferida contra a soma truncada da série para x ∈ {0,03; 0,0625; 0,25; 0,5; 0,9}.\n   - Para a = 1/9 a fórmula daria k = 32/27 (m = 27/8 = f′(1/9)), mas essa secante não existe: é o caso excluído.\n\nRESPOSTA FINAL: k = (1 − a)(1 + √a) = 1 + √a − a − a√a, para a ∈ [0,1), a ≠ 1/9.\nEquivalentemente, k = (1 − √a)(1 + √a)². Menor coeficiente angular: 4/[(1 − a)(1 + √a)].",
+    "final_answer": "k = (1 − a)(1 + √a) = 1 + √a − a − a√a (equivalentemente (1 − √a)(1 + √a)²), para a ∈ [0,1) com a ≠ 1/9.\n\nResumo das etapas:\n- f(x) = √x/(1 − √x) (soma geométrica de razão √x).\n- Com b = √a e s = √x: m(s) = 1/[(1 − b)(1 − s)(s + b)], s ≠ b.\n- Mínimo de m ⇔ máximo de (1 − s)(s + b), atingido em s* = (1 − b)/2, valor (1 + b)²/4.\n- Inclinação mínima: m_min = 4/[(1 − a)(1 + √a)], atingida em x* = (1 − √a)²/4.\n- Reta ky − 4x = 2026 tem inclinação 4/k. Igualando: k = (1 − a)(1 + √a).\n- a = 1/9 é excluído porque o ótimo cairia em x = a; nesse caso o valor 27/8 é apenas um ínfimo, não atingido.",
+    "pitfalls": [
+      "Soma da série: √(xⁿ) = x^{n/2}, a razão da progressão é √x, não x. Usar Σxⁿ = x/(1 − x) produz f errada.",
+      "Forma fechada: f(x) = √x/(1 − √x) só vale para x ∈ [0,1). Em x = 1 a série diverge, por isso o domínio é [0,1). Não considerar x = 1 como ponto válido.",
+      "Trocar máximo por mínimo: m = 1/[(1 − b)(1 − s)(s + b)], então minimizar m é maximizar (1 − s)(s + b). Errar esse sentido inverte o resultado.",
+      "Erro de variável: o vértice é em s* = (1 − √a)/2 = √x*, portanto x* = (1 − √a)²/4. Confundir s com x leva a um x* incorreto.",
+      "Não assumir x > a. O ponto ótimo está à direita de a quando a < 1/9 e à esquerda quando a > 1/9 (ex.: a = 0,25 dá x* = 1/16 < a; a = 0,01 dá x* ≈ 0,2025 > a). Impor x > a elimina casos válidos.",
+      "Justificar a hipótese a ≠ 1/9 corretamente: não é para evitar divisão por zero. O ótimo s* coincide com b = √a exatamente quando b = 1/3. Nesse caso o ponto ótimo seria x = a, excluído. O valor 27/8 = f′(1/9) é apenas ínfimo, não mínimo atingido.",
+      "Casos de borda: a = 0 (b = 0) faz s + b = s se anular em s = 0, que corresponde a x = a e está excluído. O ótimo s* = 1/2 é interior e a fórmula continua válida, com k = 1.",
+      "Inversão no paralelismo: o coeficiente angular de ky − 4x = 2026 é 4/k, não k/4. Logo k = 4/m_min, e não m_min/4 nem 4·m_min. A resposta k = 4/[(1 − a)(1 + √a)] é um erro comum (inverte a fração).",
+      "A constante 2026 é intercepto e não afeta o paralelismo. Também é preciso ter k ≠ 0 para que a equação seja uma reta; isso vale sempre, pois k > 0 em [0,1).",
+      "Sinal das inclinações: f é estritamente crescente em [0,1), então todas as secantes têm inclinação positiva. O 'menor' coeficiente é o menor valor positivo, atingido em interior do domínio e não nos extremos.",
+      "Justificar que o ponto crítico é mínimo global: h(s) é uma parábola com concavidade para baixo e s* ∈ [0,1), logo s* é máximo global de h no domínio. Basta derivar sem justificar a natureza do extremo perde rigor.",
+      "Formas equivalentes: (1 − a)(1 + √a) = (1 − √a)(1 + √a)². Aceitar qualquer forma equivalente, mas conferir a equivalência algébrica.",
+      "Conferência numérica recomendada: a = 0 dá k = 1 (secante a x = 1/4); a = 1/4 dá k = 9/8 (secante a x = 1/16, inclinação 32/9)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "k = (1-a)(1+sqrt(a)), equivalentemente k = (1-sqrt(a))(1+sqrt(a))^2. Obtido com f(x) = sqrt(x)/(1-sqrt(x)), declividade mínima 4/((1-sqrt(a))(1+sqrt(a))^2) atingida em x = (1-sqrt(a))^2/4 (válida para a ≠ 1/9, exatamente o valor excluído pelo enunciado).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Texto em inglês no passo 3: \"se $a>0$ then $s>0$\". Trocar por \"então\"."
+          },
+          {
+            "severity": "minor",
+            "description": "O passo 5 não diz que o termo 2026 é apenas o intercepto e não influi no paralelismo. A referência faz essa observação. Acrescentar uma frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação \"x* ≠ a\" no passo 4 não é justificada. Deveria dizer que t* ≠ s e que t ↦ t² é injetora em [0,1), logo x* ≠ a."
+          },
+          {
+            "severity": "minor",
+            "description": "A unicidade da secante de menor inclinação não é afirmada. Como o vértice de P é único, há exatamente uma secante ótima e k fica determinado sem ambiguidade. Deveria ser dito explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "O caso a = 1/9 está correto, mas é raso. Diz que o ínfimo não é atingido sem mostrar por quê. Faltaria: P(t) → P(t*) quando t → s pelos dois lados; o valor limite 4/((1−s)(1+s)²) = 27/8 = f′(1/9); e que a secante limite seria a de x = a, excluída pela hipótese."
+          },
+          {
+            "severity": "minor",
+            "description": "A \"varredura numérica\" da seção de verificações é citada sem malha, sem faixa de x e sem tolerância, então não é verificável pelo texto. Ou reportar os parâmetros ou remover a afirmação. Refiz a checagem por conta própria e a fórmula bate."
+          },
+          {
+            "severity": "minor",
+            "description": "A checagem de limite para a→1⁻ (\"coerente com o crescimento de f perto de x=1\") é vaga. Deveria comparar explicitamente m_min = 4/k ≈ 2/(1−a) → ∞ com f(x) = √x/(1−√x) → ∞ quando x → 1⁻."
+          }
+        ],
+        "summary": "A resposta final do candidato, k = (1−a)(1+√a) = (1−√a)(1+√a)², está correta e concorda com a referência. Conferi o enunciado no PDF original e refiz as contas no script judge/verify_q3.py. A identidade m = 1/((1−s)(1−t)(t+s)) vale exatamente em racionais. A minimização numérica bate com 4/((1−s)(1+s)²) e com o vértice t* = (1−s)/2. A equivalência das duas formas de k e a série truncada conferem, e para a = 1/9 o vértice cai em t = s. As armadilhas principais foram tratadas: soma geométrica de razão √x, bijeção x↔√x, sentido max/min, x* = (1−√a)²/4, borda a = 0 (t + s > 0), inclinação 4/k, hipótese a ≠ 1/9 justificada pelo vértice cair em x = a, e k ≠ 0. Não há erro crítico nem major. Os pontos a corrigir são de rigor e redação (x* ≠ a não justificado, unicidade implícita, papel do 2026 não dito, caso a = 1/9 raso, verificações numéricas sem parâmetros, uma palavra em inglês). Nota 8,5: acima de 7 porque a justificativa é sólida, abaixo de 9 pelas lacunas de rigor listadas."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "$k=(1-a)(1+\\sqrt{a})=(1-\\sqrt{a})(1+\\sqrt{a})^2$, para $a\\in[0,1)$, $a\\neq\\frac{1}{9}$. A secante de menor inclinação liga $(a,f(a))$ a $x^*=\\frac{(1-\\sqrt{a})^2}{4}$ e tem coeficiente $\\frac{4}{k}$.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A derivada f'(x) = 1/(2√x(1−√x)²), usada para justificar que 27/8 é o limite da inclinação em a = 1/9, é afirmada sem derivação. O valor está correto, mas um gabarito deveria derivar: d/dt[t/(1−t)] = 1/(1−t)² e dt/dx = 1/(2√x)."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa da hipótese a ≠ 1/9 termina com um non sequitur: 'essa tangente não é secante com x ≠ a, e por isso a hipótese é necessária'. A razão real é que, para a = 1/9, o ótimo cairia em x = a (excluído), então o mínimo não existe e só há ínfimo 27/8. Esse argumento já aparece antes na frase 'O ínfimo não é atingido'; o final deveria apoiar-se nele."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha 'não assumir x > a' é tratada corretamente (a solução não assume o lado), mas o texto não registra que o parceiro ótimo x* = (1−√a)²/4 fica à direita de a se a < 1/9 e à esquerda se a > 1/9 (x* > a ⇔ √a < 1/3). O exemplo a = 1/4, com x* = 1/16 < a, ilustra isso e poderia ser comentado."
+          },
+          {
+            "severity": "minor",
+            "description": "O domínio [0,1) é usado sem comentário sobre a divergência em x = 1 (série Σ1 divergente). É trivial, mas a convergência deveria ser dita para t = √x < 1, já que x = 1 é excluído pelo enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação de a → 1⁻, a conclusão 'o resultado é consistente' é dada sem mostrar a cadeia: m_min = (f(a) − f(x*))/(a − x*), com f(x*) → 0 e a − x* → 1, o que leva a m_min/f(a) → 1. A conta 4/(√a(1+√a)²) → 1 está correta, mas a justificativa é só indicada. A bullet 'Adimensionalidade' é vazia (todas as quantidades são números puros) e deveria ser removida ou substituída por uma checagem útil."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 3 (IME 2025/2026). Confirmei o enunciado no PDF original (f: [0,1) → R, a ∈ [0,1), a ≠ 1/9, reta ky − 4x = 2026). A resposta final do candidato, k = (1−a)(1+√a) = (1−√a)(1+√a)², está CORRETA e coincide com a da referência. Refiz as contas com python3: (i) a forma fechada f(x) = √x/(1−√x) bate com a soma truncada da série; (ii) a varredura numérica do mínimo de (f(x)−f(a))/(x−a) em x ∈ [0,1) reproduz 4/[(1−a)(1+√a)] com x* = (1−√a)²/4 para a ∈ {0; 0,01; 0,05; 0,25; 0,5; 0,7; 0,9}; (iii) para a = 9/25 a declividade exata em x* = 1/25 é 125/32 = 4/k, com k = 128/125; (iv) para a = 1/9 o valor 4/[(1−s)(1+s)²] é 27/8 = f′(1/9), e as secantes se aproximam de 27/8 sem atingi-lo. A cadeia algébrica do candidato também confere: m = 1/[(1−s)(1−t)(t+s)] e a reescrita (1−t)(t+s) = c² − (t−t*)², com c = (1+s)/2 e t* = (1−s)/2, estão corretas. O candidato trata de forma rigorosa, e até melhor que a referência, os pontos centrais: positividade de t+s (incluindo a = 0), monotonicidade em v = (t−t*)² como prova de mínimo global e único, a exclusão de k = 0 por reta vertical, e a hipótese a ≠ 1/9 como ínfimo não atingido. Todas as armadilhas da lista de referência foram tratadas, exceto o comentário explícito sobre o lado de x* em relação a a. Não encontrei erros críticos ou maiores. Os problemas são de acabamento e justificativa: derivada sem derivação, uma frase de conclusão mal apoiada para a = 1/9, comentário faltando sobre o lado de x*, e uma verificação assintótica e uma bullet vazia. Nota 9: uma resolução correta, rigorosa e bem organizada, que um professor publicaria como gabarito comentado com pequenas edições.\""
+      }
+    }
+  ]
+}

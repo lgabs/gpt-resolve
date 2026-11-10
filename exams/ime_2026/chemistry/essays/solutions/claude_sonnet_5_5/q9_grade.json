@@ -1,0 +1,60 @@
+{
+  "question": 9,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-3-25-10-2025-2-fase-dia-3/dissertativa-9-quimica-2-fase-dia-3-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "[CO2] ≈ 1,8×10^-5 mol/L (p_CO2 = 5,45×10^-4 atm; lei de Henry com k_H = 3,3×10^-2 mol/(atm·L))",
+      "key_answer": "[CO2] ≈ 1,8·10^-5 mol/L (P_CO2 = 545·10^-6 atm; S = k_H·P)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Recalculei: 3,3×10^-2 × 5,45×10^-4 = 1,7985×10^-5 ≈ 1,8×10^-5 mol/L. Os dois tomam P_atm = 1 atm e usam a constante de Henry dada para 300 K como se valesse a 25 °C. O enunciado conferido no PDF (p. 4) bate com a transcrição."
+    },
+    {
+      "item": "b",
+      "solution_answer": "ΔG° = +36,3 kJ/mol; K ≈ 4,3×10^-7 (ln K ≈ −14,68); [H+] ≈ 2,8×10^-6 mol/L; pH ≈ 5,56 ≈ 5,6",
+      "key_answer": "ΔG° = +36,3 kJ/mol; K = e^(−14,68); 2pH ≈ 11,11; pH ≈ 5,6",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "ΔG° = −586,8 + 237,1 + 386,0 = +36,3 kJ/mol. ln K = −36300/(8,3·298) = −14,676, então log K ≈ −6,37 e K ≈ 4,2–4,3×10^-7. Com [H+]² = K·[CO2], o pH dá 5,559; com 1,8×10^-5 arredondado, 2pH = 11,115 (o gabarito escreve 11,11). Se incluo Kw ([H+]² = K·c + Kw), o pH fica em 5,559, sem mudança. A resolução se justifica um pouco melhor: verifica que [OH−] e a 2ª ionização são desprezíveis."
+    },
+    {
+      "item": "c",
+      "solution_answer": "O pH diminui: ΔH° = +7,6 kJ/mol (ionização endotérmica), K cresce com T (van't Hoff) e, com [CO2] fixa, [H+] = √(K[CO2]) aumenta",
+      "key_answer": "O pH diminui: ΔH° = +7,6 kJ/mol, reação endotérmica; com o aumento de T, K e [H+] aumentam e o pH cai",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "ΔH° = −692,0 + 413,8 + 285,8 = +7,6 kJ/mol > 0. Pela equação de van't Hoff, K aumenta com T; como [CO2] fica constante, [H+] aumenta e o pH diminui. A estimativa de ordem de grandeza da resolução está certa: de 298 K para 308 K, ln(K2/K1) ≈ 0,10, o que dá ΔpH ≈ −0,02. A observação sobre a solubilidade do gás (ΔH_dissolução = −19,8 kJ/mol) está correta e corretamente posta de lado pelo enunciado."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A constante de Henry vem da folha de dados para 300 K, mas o item (a) pede 25 °C (298 K). A resolução e o gabarito a usam sem correção; a resolução declara essa hipótese. O enunciado também não dá a pressão atmosférica total, e os dois assumem P = 1 atm."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Erro de digitação no gabarito, item (c): escreve ΔH_f°[CO3^-(aq)] em vez de ΔH_f°[HCO3^-(aq)]. O valor usado (−692,0) é o do HCO3^-, então o resultado não muda. No item (b), a equação da reação também saiu truncada (\"H^+ + HCO\")."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito escreve 2pH = 11,11, mas a soma −0,954 − 0,301 + 6 + 6,37 dá 11,115. É só arredondamento: pH ≈ 5,56 ≈ 5,6 nos dois."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução dá K ≈ 4,3×10^-7, obtido de 10^-6,37. O valor direto e^(−14,676) = 4,23×10^-7 ≈ 4,2×10^-7. A diferença é só de arredondamento e não afeta o pH (5,56)."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "No item (c), os dois desprezam a variação de ΔH° com T e o efeito de Kw, o que é razoável para um raciocínio qualitativo. A resolução justifica por que Kw não importa."
+    }
+  ],
+  "summary": "Questão 9: a resolução bate com o gabarito do Poliedro nos três itens, e as duas estão certas. Refiz as contas em Python: (a) [CO2] = 1,8×10^-5 mol/L; (b) ΔG° = +36,3 kJ/mol, K ≈ 4,2×10^-7, pH ≈ 5,56 ≈ 5,6; (c) ΔH° = +7,6 kJ/mol, ionização endotérmica, então o pH diminui. A resolução se justifica melhor que o gabarito: confere as aproximações (Kw e 2ª ionização) e estima o tamanho do efeito. O gabarito só tem erros de digitação que não mudam nada (\\\"CO3^-\\\" no lugar de \\\"HCO3^-\\\" e uma equação truncada). A única hipótese que vale citar é o uso da constante de Henry de 300 K a 25 °C, adotada pelos dois."
+}

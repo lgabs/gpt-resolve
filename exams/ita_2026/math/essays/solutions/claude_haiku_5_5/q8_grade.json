@@ -1,0 +1,29 @@
+{
+  "question": 8,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-8-matematica-2-fase-dia-1-ita-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Questão 8 (número de sequências estritamente crescentes de três naturais com soma 100)",
+      "solution_answer": "784 sequências",
+      "key_answer": "784 sequências",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi o enunciado na página 9 do PDF, e a transcrição está fiel. A convenção da prova define ℕ = {1,2,3,…}, então a, b, c ≥ 1. Uma força bruta em Python (1 ≤ a < b < c, a+b+c = 100) dá 784. Admitindo o zero, daria 833, o mesmo valor que a resolução cita na Observação. O caminho do gabarito está certo: com a = x+1, b = y+1, c = z+1, sai x+y+z = 97, que tem C(99,2) = 4851 soluções. As soluções com dois valores iguais são 3·49 = 147 (2x+z = 97 com x ∈ {0,…,48}), e não há solução com os três iguais porque 3 não divide 97. Então (4851−147)/6 = 784. A resolução usa outro caminho: muda para 3x+2y+z = 94 e separa x em pares e ímpares, chegando a 408+376 = 784. Também confere o resultado de outras três formas: por simetria; pela fórmula round((n−3)²/12) = round(784,08) = 784; e somando pelo menor termo, com parcelas 48, 46, 45, 43, …, 3, 1, que agrupadas em pares dão a progressão 94, 88, …, 4 de soma 784. Todas as contas intermediárias estão certas."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito escreve \"x ≠ y ≠ z\" querendo dizer x, y, z distintos dois a dois. Isso é só uma imprecisão de notação e não afeta a conta: a subtração de 3·49 trata exatamente os casos com algum par igual."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resposta final declarada diz que o resultado foi \"verificado por força bruta\", mas o texto da resolução não mostra essa verificação. A conferência é válida (eu a refiz e obtive 784), mas na prova ela não contaria como argumento. As outras três conferências escritas estão corretas."
+    }
+  ],
+  "summary": "A resolução e o gabarito do Poliedro dão a mesma resposta, 784 sequências, e as duas estão certas. Refiz por força bruta e por C(99,2) − 3·49 = 4704 = 6·784, e o resultado bate. A convenção da prova (ℕ começa em 1) tira qualquer ambiguidade sobre o zero; com o zero seriam 833. Não há erro de conta em nenhum dos dois, só detalhes de redação."
+}

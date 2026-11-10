@@ -1,0 +1,104 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.3,
+  "final_answer": "a) i₁ = 50 A e i₂ = 0 (I = 50 A, V_AB = 900 V); b) I/I_FUS = 2,5 > 1,1, o fusível rompe em t ≈ 1,5 s; c) I_cc = 500 A (razão 25), patamar de 100 ms > 50 ms, logo o fusível não protege o gerador.",
+  "judge_reference": {
+    "reference_solution": "**Modelo e leitura das figuras**\n\n- Na Figura 1, as três fontes têm o terminal positivo (traço longo) voltado para o nó A. Logo os receptores se opõem à corrente do gerador, o que justifica o nome \"força contra-eletromotriz\".\n- O circuito é puramente resistivo (não há L nem C). Assim, \"imediatamente após o fechamento\" significa que as correntes já assumem seus valores de regime, sem transitório. Desprezam-se as resistências do fusível e da chave.\n- O fusível está em série só com o gerador (entre o gerador e o nó A). Portanto, a corrente no fusível é a corrente I do gerador, igual a I₁ + I₂.\n\n**a) Correntes nos receptores**\n\nSeja V = V_AB. As equações dos ramos são:\n- gerador: I = (1000 − V)/2\n- Rec₁: I₁ = (V − 850)/1\n- Rec₂: I₂ = (V − 900)/2\n- nó A: I = I₁ + I₂\n\nSubstituindo: (1000 − V)/2 = (V − 850) + (V − 900)/2. Multiplicando por 2: 1000 − V = 2V − 1700 + V − 900, logo 4V = 3600 e V = 900 V.\n\nConferência pelo método de Millman: V_A = (1000/2 + 850/1 + 900/2)/(1/2 + 1 + 1/2) = 1800/2 = 900 V.\n\nResultados:\n- **I₁ = (900 − 850)/1 = 50 A**, no sentido de A para B, ou seja, Rec₁ está recebendo energia.\n- **I₂ = (900 − 900)/2 = 0**. A tensão V_AB é exatamente igual à fcem de Rec₂, então ele fica no limiar de condução, sem corrente.\n- I = 50 A no gerador, que é igual a I₁ + I₂.\n\nBalanço de potência:\n- gerador: 1000 × 50 = 50 kW\n- perda no gerador: 2 × 50² = 5 kW\n- Rec₁: 850 × 50 + 1 × 50² = 42,5 + 2,5 = 45 kW\n- Rec₂: 0\n- total: 5 + 45 = 50 kW ✓\n\n**b) Rompimento do fusível**\n\n- A corrente no fusível é I = 50 A, então I/I_FUS = 50/20 = 2,5.\n- Esse valor é maior que 1,1, a assíntota vertical da curva (abaixo dela o fusível não rompe nunca). Portanto o fusível vai romper.\n- A razão 2,5 está no trecho retilíneo inclinado da curva. Esse trecho vai de aproximadamente (1,1; 3,8 s) até aproximadamente (3,3 a 3,35; 0,1 s).\n- Na grade ampliada, a reta passa pelo cruzamento (2,5; 1,5 s).\n- Conferência por interpolação linear: t = 3,8 − (3,7/2,25)·(2,5 − 1,1) ≈ 1,50 s. Usando o extremo 3,3 em vez de 3,35, obtém-se ≈ 1,45 s.\n- **O fusível rompe em t ≈ 1,5 s após o fechamento de S** (leitura aceitável de 1,4 a 1,6 s).\n- Durante esse intervalo I permanece em 50 A, pois as fcem e as resistências são constantes. Por isso a curva \"tempo × I/I_FUS\", definida para corrente constante, se aplica diretamente.\n- Os 50 ms do enunciado não entram aqui, porque não há curto-circuito.\n- Depois do rompimento, o ramo do gerador abre. Se os receptores fossem baterias reais, circularia entre eles uma corrente local de (900 − 850)/(1 + 2) ≈ 16,7 A. Essa corrente não passa pelo fusível e não faz parte da pergunta.\n\n**c) Curto-circuito entre A e B ao fechar S (fusível novo)**\n\n- Com o curto, V_AB = 0 e o único caminho do gerador passa por F, S e pelo curto:\n I_cc = 1000/2 = **500 A**.\n- Os receptores ficam em curto, e suas malhas locais (850 A em Rec₁ e 450 A em Rec₂) não passam pelo fusível. Elas não entram na corrente do fusível.\n- A razão é I/I_FUS = 500/20 = **25**, muito acima do fim do trecho inclinado (≈ 3,3). Estamos no patamar horizontal da curva: t_rompimento = 10⁻¹ s = **100 ms**.\n- A reposição do fusível garante que ele esteja frio e íntegro em t = 0, de modo que a curva vale desde o instante do fechamento.\n- O gerador suporta no máximo 50 ms em curto. Como 100 ms > 50 ms, **o fusível NÃO consegue proteger o gerador**. Ele ficaria sujeito a 500 A por cerca do dobro do tempo admissível.\n- Observação: com essa característica, o tempo mínimo de atuação é 0,1 s para qualquer razão acima de ≈ 3,3. Mudar I_FUSÍVEL não resolveria, porque a corrente de curto seguiria acima desse limiar, a menos que se escolhesse um fusível tão grande que o levasse de volta ao trecho inclinado, o que só aumentaria o tempo. É necessário outro tipo de fusível, mais rápido (≤ 50 ms), ou outro dispositivo de proteção, como disjuntor ou fusível ultrarrápido.\n- A conclusão pressupõe que o patamar de 0,1 s continua além de I/I_FUS = 5, que é o fim do gráfico. A figura mostra o patamar constante e a questão pede essa extrapolação.",
+    "final_answer": "a) I₁ = 50 A (V_AB = 900 V; sentido de A para B, Rec₁ recebendo energia) e I₂ = 0 (a tensão em Rec₂ é igual à sua fcem). A corrente do gerador e do fusível é I = 50 A.\n\nb) I/I_FUS = 50/20 = 2,5 > 1,1, então o fusível rompe. Pela curva, o rompimento ocorre em t ≈ 1,5 s após fechar S.\n\nc) Em curto A–B, I_cc = 1000/2 = 500 A, e a razão I/I_FUS = 25 está no patamar da curva, onde t = 0,1 s = 100 ms. Como 100 ms é maior que os 50 ms que o gerador suporta, o fusível NÃO protege a fonte.",
+    "pitfalls": [
+      "Polaridade: as três fontes têm o + voltado para A. Os receptores se opõem ao gerador (fcem). Se Rec₂ for tratado como gerador ou se o sinal da fcem for invertido, o resultado muda.",
+      "Rec₂ tem corrente exatamente zero, pois V_AB = 900 V = fcem de Rec₂. Convém justificar que isso é o limiar e que não há inversão de sentido: um receptor não conduz corrente contrária e, aqui, I₂ = 0 não gera inconsistência. Não escrever 'Rec₂ está em curto' ou 'Rec₂ fornece corrente'.",
+      "O circuito é resistivo, então 'imediatamente após' não exige transitório. Não inventar indutâncias nem capacitâncias.",
+      "A corrente no fusível é a do gerador, I = I₁ + I₂ = 50 A, e não I₁ ou I₂ isoladamente.",
+      "A razão a usar na curva é I/I_FUS = 50/20 = 2,5. Não usar I = 50 A direto no eixo, nem tratar I_FUSÍVEL = 20 A como se fosse o limite de rompimento: a assíntota está em ≈ 1,1 × 20 = 22 A.",
+      "Leitura do gráfico: o eixo vertical é linear, e '10⁻¹' significa 0,1 s = 100 ms. A grade tem divisões de 0,5 em cada eixo, e a reta passa por (2,5; 1,5 s). Interpolar entre os cantos (≈1,1; 3,8 s) e (≈3,3–3,35; 0,1 s) dá 1,45–1,50 s. Ler 'tempo = 2,5' ou confundir os eixos é erro comum.",
+      "Em (b), a restrição de 50 ms do gerador em curto-circuito NÃO se aplica, pois não há curto. A resposta de (b) é 'sim, rompe, em ≈ 1,5 s'.",
+      "Em (c), o fusível está antes do nó A (entre gerador e A), então só a corrente do gerador, 1000/2 = 500 A, passa por ele. As correntes de malha dos receptores em curto (850 A e 450 A) não passam pelo fusível. Somá-las (1800 A) é erro, embora não mude a conclusão, pois também cairia no patamar.",
+      "Em (c), a razão 25 está fora do trecho desenhado, que vai só até 5. É preciso declarar a hipótese de que o patamar de 0,1 s continua. Concluir 100 ms > 50 ms, logo NÃO protege, e não 'protege porque rompe em 0,1 s'.",
+      "Unidades: 0,1 s = 100 ms, comparado com 50 ms. Não confundir com 10 ms, nem dizer que 100 ms 'é rápido o bastante'.",
+      "Reposição do fusível: ele está novo e frio em t = 0, então a curva vale desde o fechamento. Sem isso, o fusível aquecido em (a) poderia romper mais cedo.",
+      "Com essa característica, o tempo mínimo é 0,1 s para qualquer razão acima de ≈ 3,3. Trocar apenas a corrente nominal do fusível não resolve o problema do curto; é preciso um fusível ou dispositivo mais rápido. Conclusão útil, mas não exigida.",
+      "Sobre (b): após o rompimento, se os receptores fossem baterias reais, circularia ≈ 16,7 A entre eles fora do fusível. Isso não altera a resposta e não deve ser confundido com a corrente no fusível."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) I_Rec1 = 50 A e I_Rec2 = 0 (V_AB = 900 V; corrente total 50 A). b) I/I_fus = 2,5, então o fusível rompe após cerca de 1,5 s. c) Em curto, I = 500 A (razão 25), t de rompimento = 0,1 s = 100 ms > 50 ms; o fusível não protege o gerador.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (c): a razão I/I_FUS = 25 fica bem além do fim do gráfico, que termina em 5. O candidato só escreve 'Como 25 > 3,35, a curva está no patamar horizontal' e não declara a hipótese de que o patamar de 0,1 s se estende além de 5. Esse é o passo que sustenta a conclusão de 100 ms, então deveria vir como hipótese explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): o candidato não diz que o fusível reposto está novo e frio em t = 0, de modo que a curva vale desde o fechamento de S. O enunciado menciona a reposição justamente por isso. O candidato só escreve 'precisa ser reposto' no fim do item (b)."
+          },
+          {
+            "severity": "minor",
+            "description": "A polaridade lida na Figura 1 não é justificada. O candidato escreve 'a corrente entra pelo polo positivo' e usa i_k=(V−ε_k')/R_k, mas não diz que os polos + dos três elementos estão voltados para A, nem que por isso os receptores se opõem ao gerador. Também não diz que I₁ flui de A para B, com Rec₁ recebendo energia."
+          },
+          {
+            "severity": "minor",
+            "description": "Em I₂ = 0 o candidato diz que não há sinal negativo e que 'a hipótese de receptor é coerente'. Falta dizer que V_AB = fcem de Rec₂, que é o limiar de condução. Sem isso, a frase fica vaga. Não há erro."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): o candidato não explicita que as correntes de malha local dos receptores curto-circuitados (850 A em Rec₁ e 450 A em Rec₂) não passam pelo fusível, que está em série só com o gerador. A conta 1000/2 = 500 A está certa e o texto 'os receptores ficam curto-circuitados' sugere isso, mas o raciocínio fica implícito."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (b): não é dito que a corrente se mantém em 50 A durante todo o 1,5 s. É isso que permite aplicar diretamente a curva tempo × I/I_FUS, que vale para corrente constante. O candidato só afirma de início que a fem é constante e o circuito resistivo. Também não é dito que os 50 ms do gerador não se aplicam aqui, pois não há curto-circuito."
+          },
+          {
+            "severity": "minor",
+            "description": "Detalhes de rigor. A chave S não é declarada ideal, só o fusível. A inclinação m ≈ −1,64 's' deveria ser s por unidade de razão, e os pontos lidos no gráfico aparecem sem a incerteza de leitura. A seção 'Verificação' é genérica e não traz um balanço de potência, que a referência fez (50 kW = 5 kW + 45 kW)."
+          }
+        ],
+        "summary": "As respostas finais do candidato coincidem com as da minha referência nos três itens, e as conferi por conta própria. (a) V_AB = 900 V, I₁ = 50 A, I₂ = 0, I = 50 A (Millman confere). (b) I/I_FUS = 2,5 > 1,1, então o fusível rompe. A interpolação entre (1,1; 3,8 s) e (3,35; 0,1 s) dá ≈ 1,50 s, ou ≈ 1,45 s com o extremo em 3,3, compatível com a grade do gráfico. (c) I_cc = 500 A, razão 25, patamar de 0,1 s = 100 ms > 50 ms, logo o fusível não protege o gerador. Reli o enunciado no PDF e a leitura do circuito e da curva está coerente. O raciocínio é correto, enxuto e sem erros de conta ou de física. As armadilhas principais foram evitadas: o fusível está em série só com o gerador, a razão usada é 2,5 e não 50 A direto, a assíntota está em 1,1, o eixo é linear com 10⁻¹ s = 0,1 s, a comparação é 100 ms contra 50 ms, e não há somas indevidas de correntes. Faltam justificativas explícitas que um gabarito comentado traria. A principal é a hipótese de que o patamar de 0,1 s continua além de razão 5, já que o gráfico termina ali e a razão do curto é 25. Também faltam a menção ao fusível novo e frio em t = 0, a polaridade lida na figura e o sentido de I₁. Tampouco está dito que as correntes locais dos receptores em curto não passam pelo fusível, nem que os 50 ms não se aplicam ao item (b). São lacunas de rigor e de completude, não erros. Nota 8,5: correta e clara, mas abaixo do nível de gabarito publicável por esses buracos de justificativa em (c) e na leitura da figura."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.3,
+      "final_answer": "a) i₁ = 50 A e i₂ = 0 (I = 50 A, V_AB = 900 V); b) I/I_FUS = 2,5 > 1,1, o fusível rompe em t ≈ 1,5 s; c) I_cc = 500 A (razão 25), patamar de 100 ms > 50 ms, logo o fusível não protege o gerador.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Em (a), o candidato descreve I₂ = 0 como o \"limiar entre operar como receptor (i₂>0) e como gerador (i₂<0)\". Falta dizer explicitamente que um receptor real (fcem não reversível) não conduz corrente contrária, e que por isso I₂ = 0 é consistente, sem que Rec₂ forneça corrente. A frase não está errada, mas fica próxima da armadilha \"Rec₂ fornece corrente\"."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (c), o candidato escreve i₁ = −850 A e i₂ = −450 A para os receptores em curto. Isso trata os receptores como fontes ideais reversíveis. A conclusão não muda, porque essas correntes não passam por F. Faltou uma ressalva de que isso é só o modelo de fem constante, ou dizer que as correntes locais são irrelevantes para o fusível."
+          },
+          {
+            "severity": "minor",
+            "description": "O parágrafo \"Verificação\" traz um argumento fraco: \"500 A é a ordem de grandeza esperada para uma fonte de baixa resistência interna\". Isso não valida nada. Seria melhor conferir, por exemplo, que 25 > 3,35 está no patamar, ou refazer a leitura da curva."
+          },
+          {
+            "severity": "minor",
+            "description": "A leitura do gráfico usa 3,35 como fim do trecho inclinado e depois 3,3 como alternativa, sem escolher um valor. A faixa de 1,4 a 1,6 s cobre a incerteza e a resposta de 1,5 s bate com o cruzamento da grade em (2,5; 1,5 s). Falta só justificar a escolha do extremo."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (c), o candidato não observa que trocar I_FUSÍVEL não resolveria o problema, porque o tempo mínimo da curva é 0,1 s para razões acima de ≈3,3. Isso não era exigido, mas fecharia a análise. O candidato mencionou apenas a necessidade de um dispositivo com t < 50 ms."
+          }
+        ],
+        "summary": "Resolução do candidato correta e completa, com respostas finais idênticas às da referência nos três itens. Conferi o enunciado e as figuras no PDF original e refiz as contas em Python. (a) V_AB = 900 V, I₁ = 50 A (de A para B), I₂ = 0 e I = 50 A no gerador. O balanço de potência fecha em 50 kW, e a conferência por Millman também dá 900 V. (b) I/I_FUS = 2,5 > 1,1, então o fusível rompe. A interpolação linear entre (1,1; 3,8 s) e (3,3–3,35; 0,1 s) dá 1,45–1,50 s, o que concorda com o cruzamento da grade em (2,5; 1,5 s). O candidato declara a incerteza (1,4–1,6 s) e diz que os 50 ms não se aplicam, pois não há curto. (c) I_cc = 1000/2 = 500 A, razão 25, patamar de 0,1 s = 100 ms > 50 ms, então o fusível não protege o gerador. A conta de energia (50 kJ contra 25 kJ) está correta. Quase todas as armadilhas foram tratadas: polaridade e fcem, circuito resistivo sem transitório, corrente no fusível igual à do gerador, razão usada no eixo, 0,1 s = 100 ms, receptores em curto fora do fusível, hipótese explícita de extrapolação do patamar além de 5, e fusível novo e frio em t = 0. Os defeitos são só de acabamento: um parágrafo de verificação fraco, o sinal negativo das correntes dos receptores em curto sem ressalva, e a justificativa não explícita de que um receptor não conduz corrente contrária em I₂ = 0. Está perto de um gabarito comentado publicável.\""
+      }
+    }
+  ]
+}

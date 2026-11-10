@@ -1,0 +1,53 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "231 pontos de coordenadas inteiras (129 no interior e 102 na superfície)",
+  "judge_reference": {
+    "reference_solution": "**1. Identificar o sólido.**\nUm octaedro regular com centro O na origem tem 3 diagonais principais (segmentos entre vértices opostos). Elas são iguais, perpendiculares duas a duas e se cortam em O, que é o ponto médio de cada uma.\n\nOs vértices dados A=(5,0,0), B=(0,5,0) e C=(0,0,5) estão a distância 5 de O. Além disso, d(A,B)=d(B,C)=d(A,C)=5√2 = 5·√2, o que é a distância entre vértices adjacentes de um octaedro de circunraio 5, já que a aresta vale R√2. Logo OA, OB e OC são perpendiculares e não há par antípoda entre eles. Eles ficam em três diagonais distintas, e cada uma tem o outro extremo no simétrico em relação a O.\n\nOs 6 vértices são, portanto, (±5,0,0), (0,±5,0) e (0,0,±5). As distâncias entre eles são só 5√2 (arestas, 12 pares) e 10 (diagonais, 3 pares), o que confirma a regularidade.\n\nO sólido (interior mais superfície) é a envoltória convexa desses pontos:\n  |x| + |y| + |z| ≤ 5.\n\nEsta é a bola de raio 5 na norma ℓ¹. As faces são os planos ±x±y±z=5, em 8 triângulos equiláteros de lado 5√2.\n\n**2. Contar os pontos (x,y,z) ∈ ℤ³ com |x|+|y|+|z| ≤ 5.**\n\n*Método A: fatiar por z.* Para |z| = j, precisamos de |x|+|y| ≤ m, com m = 5−j. O número de pares inteiros com |x|+|y| ≤ m é 2m²+2m+1.\n- z=0: m=5 → 61\n- |z|=1 (2 valores): m=4 → 41 cada, 82\n- |z|=2: m=3 → 25 cada, 50\n- |z|=3: m=2 → 13 cada, 26\n- |z|=4: m=1 → 5 cada, 10\n- |z|=5: m=0 → 1 cada, 2\n\nSoma: 61+82+50+26+10+2 = **231**.\n\n*Método B: pelo número de coordenadas não nulas (conferência).* Com j coordenadas não nulas, há C(3,j) escolhas de posições e 2^j escolhas de sinais. As soluções inteiras positivas de a₁+…+a_j ≤ 5 são C(5,j).\n- j=0: 1\n- j=1: 3·2·5 = 30\n- j=2: 3·4·10 = 120\n- j=3: 1·8·10 = 80\n\nSoma: 1+30+120+80 = **231**.\n\n*Método C: camadas |x|+|y|+|z| = k.* Há 1 ponto para k=0 e 4k²+2 pontos para k≥1: 6, 18, 38, 66, 102. Soma: 1+6+18+38+66+102 = 231. A fórmula do octaedral central é (2n+1)(2n²+2n+3)/3, e com n=5 dá 11·63/3 = 231.\n\nConferência por força bruta em Python: 231 no total, 102 na superfície (k=5) e 129 no interior (k≤4).\n\n**3. Resposta:** 231 pontos de coordenadas inteiras, sendo 129 no interior e 102 na superfície. A pergunta pede interior e superfície juntos.",
+    "final_answer": "231 pontos (129 no interior estrito + 102 na superfície). O octaedro é |x|+|y|+|z| ≤ 5, com vértices (±5,0,0), (0,±5,0), (0,0,±5).",
+    "pitfalls": [
+      "Justificar que o octaedro é único: os três vértices dados são mutuamente perpendiculares a partir de O e distam 5√2 entre si, então não são antípodas. Os outros três vértices são (−5,0,0), (0,−5,0), (0,0,−5), e a regularidade se confere pelas distâncias (5√2 nas arestas, 10 nas diagonais). Não basta 'assumir' o octaedro sem esse argumento.",
+      "Escrever a região corretamente como |x|+|y|+|z| ≤ 5 (norma ℓ¹), com desigualdade não estrita. Confundir com |x|,|y|,|z| ≤ 5 (cubo, 1331 pontos) ou com x²+y²+z² ≤ 25 (esfera) é erro comum.",
+      "A pergunta inclui interior e superfície: a resposta é 231, não 129 (só interior) nem 102 (só superfície). Os pontos das arestas e dos vértices estão em |x|+|y|+|z|=5 e devem entrar.",
+      "Contar só o primeiro octante e multiplicar por 8: C(8,3)=56 e 56·8=448 está errado, pois conta várias vezes os pontos com alguma coordenada nula (planos e eixos coordenados). É preciso tratar as coordenadas nulas à parte, como no método B, ou fatiar por z.",
+      "Não incluir a origem nem os pontos com coordenadas negativas. O centro (0,0,0) conta, e cada z entre −5 e 5 contribui.",
+      "Usar o volume (4/3)·5³ = 500/3 ≈ 166,7 como estimativa da contagem de pontos inteiros. O número de pontos da rede não é o volume. Neste caso, o volume dá resultado bem menor que 231.",
+      "Erros de aritmética na fórmula 2m²+2m+1 para pares com |x|+|y| ≤ m (61, 41, 25, 13, 5, 1) e na contagem das fatias simétricas z=±j, em que só z=0 não é dobrado. Conferir por dois métodos independentes (fatias, número de coordenadas não nulas ou camadas 4k²+2) dá 231."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "231 pontos de coordenadas inteiras (129 no interior e 102 na superfície)",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O texto diz que os pares com |x|+|y|=s são \"os pontos inteiros do losango de lado s\". O quadrado de vértices (±s,0),(0,±s) tem lado s√2, não s. Além disso, só o contorno é contado, não o interior. A contagem 4s está certa, e a justificativa logo depois (2(2s−1)+2) também. O erro é só de redação. O correto seria \"pontos inteiros do contorno do losango de semidiagonal s\"."
+          },
+          {
+            "severity": "minor",
+            "description": "A fórmula 4k²+2 de pontos por camada, e portanto o número 102 na superfície, aparece sem dedução. O candidato só a confere por n=1 e n=2 e pelo total. A divisão em 129 interiores e 102 na superfície depende dela, e a resolução principal não a obtém diretamente. Bastava uma linha: para k≥1, 6 vértices com uma coordenada não nula, 12k−12 pontos com duas, e 8·C(k−1,2) com três, o que soma 4k²+2. Outra opção era dizer que a superfície é a diferença entre o total para n=5 e o total para n=4."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato afirma que o sólido é a interseção dos oito semiespaços ±x±y±z≤5 e equivale a |x|+|y|+|z|≤5, mas não justifica por que as oito faces são exatamente esses planos. Seria suficiente notar que cada face é um triângulo com um vértice em cada eixo semirreto, ou que |x|+|y|+|z|≤5 é a envoltória convexa dos seis pontos. A afirmação está correta."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase \"uma enumeração computacional também resultou em 231\" é citada sem código nem saída. Isso é inofensivo, porque a conferência por camadas já dá 231, mas não acrescenta evidência verificável."
+          }
+        ],
+        "summary": "Respondeu 231, que está correto, e concorda com minha referência: 231 no total, sendo 129 no interior e 102 na superfície. Conferi o enunciado no PDF (questão 01, octaedro regular com vértices (5,0,0), (0,5,0), (0,0,5), pedindo pontos no interior e na superfície). Também conferi a contagem por força bruta em Python, que deu 231, 102 na superfície e 129 no interior. As camadas 6, 18, 38, 66, 102 e a fórmula do octaedral central (7, 25, 231) também batem. A resolução trata bem as armadilhas da questão. Justifica que o octaedro é único, pois os três vértices dados distam 5√2 ≠ 10 e portanto não são antípodas, e então os outros três vértices são os simétricos. Escreve a região como |x|+|y|+|z|≤5, com desigualdade não estrita, e inclui interior e superfície, separando 129 e 102. Conta a origem e os sinais negativos. A conta principal (fatiar por s=|x|+|y|, com 4s pares e 11−2s valores de z, dando 11+4(165−110)=231) está correta. A verificação por camadas é um segundo método, e a resolução é clara. Os defeitos são só de rigor e de redação: \\\"losango de lado s\\\" é impreciso, a fórmula 4k²+2 não é deduzida e a equivalência com os oito semiespaços fica sem justificativa. A resolução ficaria pronta para gabarito comentado com pequenos ajustes.\"}"
+      }
+    }
+  ]
+}

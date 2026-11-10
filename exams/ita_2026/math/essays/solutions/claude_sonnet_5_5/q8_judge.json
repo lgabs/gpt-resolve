@@ -1,0 +1,53 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "784 sequências estritamente crescentes (a<b<c, naturais positivos, soma 100).",
+  "judge_reference": {
+    "reference_solution": "**Transcrição conferida com a prova original (p. 9):** \"Quantas sequências estritamente crescentes de três números naturais é possível construir de forma que a soma dos três números é igual a 100?\". Pela convenção da prova, ℕ = {1, 2, 3, …}, ou seja, o 0 não é natural.\n\n**Reformulação.** Queremos contar as ternas (a, b, c) com 1 ≤ a < b < c e a + b + c = 100. Uma sequência estritamente crescente é determinada pelo conjunto {a, b, c}, porque a ordem é imposta. Logo, contamos conjuntos de 3 naturais distintos com soma 100.\n\n**Método 1 – fixar o menor termo a.**\n- Dado a, temos b + c = 100 − a, com a < b < c.\n- Como b < c, vale 2b < 100 − a, isto é, b ≤ ⌊(99 − a)/2⌋. Também b ≥ a + 1.\n- O número de valores de b é N(a) = ⌊(99 − a)/2⌋ − a, e c = 100 − a − b fica determinado. Então c > b automaticamente.\n- Precisamos de N(a) ≥ 1, ou seja, (99 − a)/2 ≥ a + 1, o que dá a ≤ 97/3 e portanto a ≤ 32. Para a = 33, N = 33 − 33 = 0, e para a maior ainda N < 0, então esses casos não contam.\n- **a ímpar** (a = 2k − 1, k = 1, …, 16): N = (50 − k) − (2k − 1) = 51 − 3k. Os valores são 48, 45, …, 3. É uma PA de 16 termos com soma (48 + 3)·16/2 = 408.\n- **a par** (a = 2k, k = 1, …, 16): N = (49 − k) − 2k = 49 − 3k. Os valores são 46, 43, …, 1. É uma PA de 16 termos com soma (46 + 1)·16/2 = 376.\n- Total: 408 + 376 = **784**.\n\n**Método 2 – deslocamento (confirmação).** Seja a = x, b = x + y, c = x + y + z, com x, y, z ≥ 1. Então 3x + 2y + z = 100.\n- Para cada par (x, y) com 3x + 2y ≤ 99, o valor de z é único.\n- Isso equivale a contar as partições de 97 em exatamente 3 partes (subtraindo (0, 1, 2) de (a, b, c)). O número delas é o inteiro mais próximo de 97²/12 = 784,08…, ou seja, 784.\n\n**Método 3 – complementar (verificação independente).**\n- O total de ternas ordenadas de inteiros positivos com soma 100 é C(99, 2) = 4851.\n- Ternas com exatamente dois termos iguais (a, a, c): c = 100 − 2a ≥ 1 dá a ≤ 49, e c ≠ a sempre, porque 100 não é múltiplo de 3. São 49 ternas para cada posição do termo diferente, ou 3·49 = 147 ao todo.\n- Ternas com os três iguais: não existem, pois 100/3 ∉ ℕ.\n- Ternas com termos todos distintos: 4851 − 147 = 4704. Cada conjunto aparece 3! = 6 vezes, então 4704/6 = **784**.\n\nOs três métodos coincidem, e a enumeração por computador também deu 784.\n\n**Resposta: 784 sequências.**",
+    "final_answer": "784 sequências (usando ℕ = {1, 2, 3, …}, convenção da prova).",
+    "pitfalls": [
+      "Convenção de ℕ: a prova define ℕ = {1, 2, 3, …}, então o 0 não é permitido. Se o candidato incluir o 0, obtém 784 + 49 = 833, resposta errada para esta prova. 833 também é o número de partições de 100 em 3 partes positivas, não necessariamente distintas.",
+      "'Estritamente crescente' exige termos distintos. Contar partições de 100 em 3 partes positivas (round(100²/12) = 833) inclui casos com termos repetidos, como (1, 1, 98). Isso é um erro comum; é preciso excluir esses casos ou usar o deslocamento (0, 1, 2).",
+      "Sequência estritamente crescente equivale a conjunto: não se deve contar ternas ordenadas (C(99, 2) = 4851) nem multiplicar por 3!. Ao dividir por 6, é preciso antes retirar as ternas com dois termos iguais (3·49 = 147). Dividir 4851 por 6 diretamente não dá inteiro.",
+      "Limite do menor termo: a ≤ 32. Para a = 33 o número de escolhas é 0 (33 + 34 + 35 = 102 > 100), e um erro de off-by-one no limite do somatório é comum. O limite superior de b é ⌊(99 − a)/2⌋, que exige b < c estrito, e não ⌊(100 − a)/2⌋.",
+      "A paridade de a muda a contagem (⌊(99 − a)/2⌋). Quem ignora o piso e usa (99 − a)/2 − a erra os termos com a par ou ímpar, e é preciso somar as duas PAs separadamente (408 e 376).",
+      "Usar a fórmula round(n²/12) sem justificar o deslocamento n → n − 3 = 97 é fraco. Como a prova é dissertativa, o candidato deve justificar a bijeção ou fazer a soma explícita, e não apenas afirmar 'partições em 3 partes'.",
+      "Em prova dissertativa, a resposta numérica precisa vir com a contagem completa, sem enumeração parcial nem 'por inspeção'. Uma boa resolução apresenta a conta por casos (ou o deslocamento) e, de preferência, uma verificação independente, como a complementar 4851 = 6·784 + 3·49."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "784 sequências estritamente crescentes (a<b<c, naturais positivos, soma 100).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A verificação usa a fórmula round((n−3)²/12) para partições em três parcelas distintas sem justificar. A justificativa seria subtrair (0,1,2) de (a,b,c), o que dá partições de n−3 em 3 partes positivas, contadas por round((n−3)²/12). Como a contagem principal já é explícita, isso só enfraquece a parte de verificação, não a prova. A fórmula está correta e a conta 97²/12 ≈ 784,08 também."
+          },
+          {
+            "severity": "minor",
+            "description": "Cita 'enumeração direta por computador' como verificação. Numa prova dissertativa sem computador isso não é argumento válido. Seria melhor trocar por uma checagem independente, como o método complementar 4851 − 3·49 = 4704 = 6·784, ou a checagem de 3a+2d ≤ 99 por outro caminho."
+          },
+          {
+            "severity": "minor",
+            "description": "Não comenta explicitamente por que o 0 fica excluído, além de citar ℕ = {1,2,3,…}. Também não diz que 100 não é múltiplo de 3, que garante que não há terna com três termos iguais. Nenhum dos dois é necessário para a prova, mas um gabarito comentado poderia mencionar o contraste com 833 (partições sem exigir parcelas distintas) para mostrar que o 0 e o 'estritamente' foram tratados."
+          },
+          {
+            "severity": "minor",
+            "description": "Em 'Passo 3', a passagem de 'd ≥ 1 e d ≤ ⌊(99−3a)/2⌋' para 'a ≤ 32' está correta (99−3a ≥ 2 ⇒ a ≤ 32), mas o limite poderia vir acompanhado do caso a = 33 (99−99 = 0 valores) para fechar a checagem de off-by-one. É só uma questão de clareza."
+          }
+        ],
+        "summary": "A resposta 784 está correta e coincide com a referência. Conferi por enumeração em Python (784) e pelas somas parciais, 408 para a ímpar e 376 para a par. A transcrição do enunciado confere com a p. 9 da prova. A resolução é bem estruturada: usa ℕ = {1,2,…} da prova e justifica que sequência estritamente crescente equivale a conjunto, sem contagem dupla. A reparametrização d=b−a, e=c−b dá a bijeção com 3a+2d+e=100, e eliminar e leva a 3a+2d ≤ 99. O piso ⌊(99−3a)/2⌋ está certo, o limite a ≤ 32 também (sem off-by-one), e as duas PAs por paridade de a estão corretas (16 termos cada). A contagem explícita já basta como prova, então as fraquezas ficam na parte de verificação: a fórmula round((n−3)²/12) é citada sem justificar o deslocamento, e a 'enumeração por computador' não é argumento de prova escrita. Falta também uma checagem independente, como a complementar 4851 = 6·784 + 3·49. Nenhum erro de conta ou lógica. Nota 9, não 10, só pela verificação pouco rigorosa e por não explicitar a exclusão do 0 e dos casos repetidos (contraste com 833)."
+      }
+    }
+  ]
+}

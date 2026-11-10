@@ -1,0 +1,56 @@
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Vácuo, ondas planas, linearmente polarizadas em $\hat z$, de mesma amplitude $E_0$ e coerentes; $kd=n\pi$, com $n=0,1,2,\dots$
+
+\subsection*{a) Reescrevendo $\vec E$}
+
+Como $k(x+d)=kx+n\pi$, usamos $\cos(\theta+n\pi)=(-1)^n\cos\theta$ com $\theta=kx-\omega t$:
+\[
+\vec E=E_0\left[\cos(kx-\omega t+n\pi)+\cos(kx-\omega t)\right]\hat z
+=E_0\left[1+(-1)^n\right]\cos(kx-\omega t)\,\hat z .
+\]
+
+(Pela identidade de soma de cossenos, o resultado equivalente é $\vec E=2E_0\cos\frac{n\pi}{2}\cos\!\left(kx-\omega t+\frac{n\pi}{2}\right)\hat z$, que coincide com o acima para todo $n$ inteiro.)
+
+A fase $kx-\omega t$ é constante em $x=(\omega/k)\,t+\text{const.}$ Logo, a velocidade de fase é $\omega/k=c>0$ e a onda se propaga no sentido $x>0$. Sua amplitude depende apenas de $E_0$ e $n$:
+\[
+\boxed{E_{\text{res}}=E_0\left[1+(-1)^n\right]=\begin{cases}2E_0,& n\ \text{par}\\[2pt] 0,& n\ \text{ímpar}\end{cases}}
+\]
+
+\subsection*{b) Tipo de interferência}
+
+Como $k=2\pi/\lambda$, a condição $kd=n\pi$ equivale a $d=n\lambda/2$.
+
+\begin{itemize}
+\item $n$ \textbf{par} ($d=0,\lambda,2\lambda,\dots$): as ondas estão em fase. A interferência é \textbf{construtiva total}, com amplitude $2E_0$ e intensidade $4$ vezes a de uma onda isolada ($I\propto E^2$).
+\item $n$ \textbf{ímpar} ($d=\lambda/2,3\lambda/2,\dots$): as ondas estão em oposição de fase. A interferência é \textbf{destrutiva total}, e o campo resultante é nulo em todo ponto e instante.
+\end{itemize}
+
+\subsection*{c) Campo magnético}
+
+Seja $E_z(x,t)=E_m\cos(kx-\omega t)$, com $E_m=E_0[1+(-1)^n]$. Como $\vec E$ só tem componente $z$ e depende só de $x$ e $t$, a lei de Faraday, $\nabla\times\vec E=-\partial\vec B/\partial t$, dá
+\[
+(\nabla\times\vec E)_y=-\frac{\partial E_z}{\partial x}
+\;\Rightarrow\;
+\frac{\partial B_y}{\partial t}=\frac{\partial E_z}{\partial x}=-kE_m\,\mathrm{sen}(kx-\omega t),
+\]
+e as demais componentes de $\vec B$ são nulas. Integrando em $t$ (sem campo estático):
+\[
+B_y=-\frac{k}{\omega}E_m\cos(kx-\omega t)=-\frac{E_m}{c}\cos(kx-\omega t),
+\qquad \frac{\omega}{k}=c .
+\]
+
+Portanto $\vec B$ é perpendicular a $\vec E$ e à direção de propagação, e está em fase com $\vec E$. Ele aponta no sentido de $-\hat y$ quando $E_z>0$, de modo que $\vec E\times\vec B$ aponta em $+\hat x$ (verificação: $\hat z\times(-\hat y)=+\hat x$).
+
+A amplitude do campo magnético resultante é $B_0=E_m/c=2E_0/c$ para $n$ par. Então
+\[
+\boxed{\vec B=-B_0\cos(kx-\omega t)\,\hat y,\qquad B_0=\frac{2E_0}{c}\quad(n\ \text{par})}
+\]
+
+Para $n$ ímpar, $E_m=0$ e, portanto, $\vec B=\vec 0$ (isto é, $B_0=0$). De forma geral, $\vec B=-\dfrac{E_0}{c}\left[1+(-1)^n\right]\cos(kx-\omega t)\,\hat y$. Se $B_0$ designasse a amplitude de cada onda componente ($E_0/c$), teríamos $\vec B=-B_0[1+(-1)^n]\cos(kx-\omega t)\,\hat y$.
+
+\textbf{Conferência.} $n=0$ ($d=0$): as ondas coincidem e $\vec E=2E_0\cos(kx-\omega t)\hat z$, como em (a). $n=1$: $\cos(\theta+\pi)+\cos\theta=0$. As unidades estão corretas: $E_0/c$ tem unidade de campo magnético (T), e $|\vec E|/|\vec B|=c$.
+
+ANSWER: (a) $\vec E=E_0[1+(-1)^n]\cos(kx-\omega t)\,\hat z$, onda progressiva em $+x$ com amplitude $2E_0$ ($n$ par) ou $0$ ($n$ ímpar); (b) $n$ par: interferência construtiva total, $n$ ímpar: destrutiva total; (c) $\vec B=-B_0\cos(kx-\omega t)\,\hat y$, com $B_0=2E_0/c$ ($n$ par), e $\vec B=0$ para $n$ ímpar.

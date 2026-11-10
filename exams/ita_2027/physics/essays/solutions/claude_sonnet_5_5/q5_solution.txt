@@ -1,0 +1,71 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Convenções e hipóteses.} Luz se propaga da esquerda para a direita, com o vértice $V$ na origem e o eixo de simetria como eixo $x$. O centro de curvatura $C$ está em $x=-R$ (do lado de $n_1$) e as fontes em $x=-p$, a alturas $\pm h$. Vale a aproximação paraxial (ângulos pequenos, $\mathrm{sen}\,\theta\approx\theta\approx\mathrm{tg}\,\theta$), e $\lambda\ll p$ garante a validade da óptica geométrica.
+
+\subsection*{a) Posição da imagem}
+
+\textbf{Posição horizontal $p'$.} Tome uma fonte sobre o eixo. Um raio sai dela e atinge a interface a uma altura $y$ pequena.
+\begin{itemize}
+\item Inclinação do raio incidente: $\alpha_1=y/p$.
+\item A normal nesse ponto passa por $C$, logo sua inclinação é $\varphi=y/R$.
+\item Ângulo de incidência: $\theta_1=\alpha_1-\varphi=y\left(\dfrac1p-\dfrac1R\right)$.
+\item Lei de Snell paraxial: $n_1\theta_1=n_2\theta_2$, logo $\theta_2=\dfrac{n_1}{n_2}\theta_1$.
+\item Inclinação do raio refratado: $\alpha_2=\varphi+\theta_2$, ou seja,
+\[
+\frac{\alpha_2}{y}=\frac1R+\frac{n_1}{n_2}\left(\frac1p-\frac1R\right)=\frac{n_1}{n_2p}+\frac{n_2-n_1}{n_2R}>0 .
+\]
+\end{itemize}
+O raio refratado sobe com inclinação $\alpha_2$ a partir da altura $y$. Ele cruza o eixo em $x=-y/\alpha_2$, e esse é o ponto $p'$ (o resultado independe de $y$, logo há formação de imagem). Assim $n_2/p'=-n_1/p-(n_2-n_1)/R$, ou seja,
+\[
+\frac{n_1}{p}+\frac{n_2}{p'}=-\frac{n_2-n_1}{R}
+\qquad\Longrightarrow\qquad
+\boxed{\,p'=-\,\frac{n_2\,R\,p}{n_1R+(n_2-n_1)\,p}\,}
+\]
+Como $n_2>n_1$, o denominador é positivo e $p'<0$. A imagem é \emph{virtual}, fica no lado de $n_1$ (à esquerda do vértice), a uma distância $|p'|=\dfrac{n_2Rp}{n_1R+(n_2-n_1)p}$ da interface.
+
+\textbf{Posições verticais.} Considere o raio da fonte superior (altura $h$) que incide no vértice, onde a normal é o próprio eixo.
+\begin{itemize}
+\item Incidência: $\theta_1=h/p$.
+\item Refração: $n_1\theta_1=n_2\theta_2$, logo $\theta_2=\dfrac{n_1h}{n_2p}$. O raio desce com essa inclinação.
+\item O prolongamento para trás desse raio, em $x=p'$, está à altura $h'=\theta_2\,|p'|$.
+\end{itemize}
+Substituindo $|p'|$:
+\[
+\boxed{\,y'_{\pm}=\pm\,h'=\pm\,\frac{n_1\,R\,h}{n_1R+(n_2-n_1)\,p}\,}
+\]
+Equivalentemente, a ampliação é $m=-\dfrac{n_1p'}{n_2p}=\dfrac{n_1R}{n_1R+(n_2-n_1)p}$, com $0<m\le1$. As imagens são direitas, menores que os objetos, e ficam no mesmo semiplano de cada fonte.
+
+\emph{Conferências.} Para $n_2=n_1$ obtém-se $p'=-p$ e $h'=h$. Para $p\to0$, $h'=h$. Para $p\to\infty$, $p'\to-n_2R/(n_2-n_1)$, que é o foco virtual de uma superfície divergente. Um traçado numérico exato de raios (com $n_1=1$, $n_2=1,5$, $R=10$, $p=5$) deu $p'=-6,0000$ e $h'/h=0,8000$, em acordo com as fórmulas.
+
+\subsection*{b) Interferência para $R\to\infty$}
+
+Com $R\to\infty$ a interface é plana. De (a), $p'=-\dfrac{n_2}{n_1}p$ e $h'=h$. Os raios que entram em $n_2$ parecem vir de duas fontes virtuais coerentes, em fase, em $y=\pm h$. Elas estão a $n_2p/n_1$ à esquerda da interface, separadas por $d=2h$.
+
+A distância dessas fontes à tela é $L=D+\dfrac{n_2}{n_1}p\approx D$, pois $p\ll D$.
+
+A frequência não muda na refração. Tomando $\lambda$ como o comprimento de onda no meio $n_1$ (onde estão as fontes), em $n_2$ tem-se $\lambda_2=\dfrac{n_1}{n_2}\lambda$.
+
+Para um ponto da tela à altura $y$, com $y,h\ll L$, a diferença de percurso é
+\[
+\delta=\sqrt{L^2+(y+h)^2}-\sqrt{L^2+(y-h)^2}\approx\frac{2hy}{L}\approx\frac{2hy}{D}.
+\]
+Em $y=0$ tem-se $\delta=0$, que é o máximo central (ponto luminoso central). A primeira franja luminosa ocorre em $\delta=\lambda_2$:
+\[
+\frac{2h\,y_1}{D}=\frac{n_1}{n_2}\lambda
+\qquad\Longrightarrow\qquad
+\boxed{\,y_1=\frac{n_1}{n_2}\,\frac{\lambda D}{2h}\,}
+\]
+
+\emph{Verificação independente.} Pelo princípio de Fermat, o caminho óptico de uma fonte a $h$ até $y$ na tela, passando pela interface plana, é $n_1p+n_2D+\dfrac{n_1n_2(y-h)^2}{2(n_1D+n_2p)}$. Isso equivale a uma fonte em $n_2$ a distância $L$, como usado acima.
+
+\emph{Observações.}
+\begin{itemize}
+\item Dimensionalmente, $y_1$ é um comprimento.
+\item Para $n_2=n_1$, recupera-se o resultado de Young, $\lambda D/(2h)$.
+\item A franja se afasta menos do centro em $n_2>n_1$, pois $\lambda_2<\lambda$.
+\item Se $\lambda$ fosse o comprimento de onda no vácuo, bastaria trocar $n_1\lambda$ por $\lambda$, obtendo $y_1=\lambda D/(2n_2h)$.
+\end{itemize}
+
+ANSWER: (a) $p'=-\dfrac{n_2Rp}{n_1R+(n_2-n_1)p}$ (imagem virtual, no lado de $n_1$); imagens em $y'=\pm\dfrac{n_1Rh}{n_1R+(n_2-n_1)p}$. (b) $y_1=\dfrac{n_1\lambda D}{2n_2h}$.

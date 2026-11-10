@@ -1,0 +1,51 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A desigualdade está provada. Ao expandir, o produto fica 3 + (a/b + b/a) + (a/c + c/a) + (b/c + c/b). Para x, y > 0, vale x/y + y/x − 2 = (x − y)²/(xy) ≥ 0. Daí, (a+b+c)(1/a+1/b+1/c) − 9 = (a−b)²/(ab) + (a−c)²/(ac) + (b−c)²/(bc) ≥ 0, ou seja, o produto é ≥ 9. A igualdade vale se e somente se a = b = c.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (Questão 5, valor 1,0): para a, b, c reais positivos, provar que (a+b+c)(1/a+1/b+1/c) ≥ 9.\n\n---\n\n### Resolução principal (expansão e x + 1/x ≥ 2)\n\n**Passo 1. Expandir o produto.** O produto tem 9 termos:\n(a+b+c)(1/a+1/b+1/c) = (a/a + b/b + c/c) + (a/b + b/a) + (a/c + c/a) + (b/c + c/b)\n= 3 + (a/b + b/a) + (b/c + c/b) + (c/a + a/c).\n\n**Passo 2. Lema.** Para x, y > 0, x/y + y/x ≥ 2, e a igualdade vale se e somente se x = y.\nProva: x/y + y/x − 2 = (x² + y² − 2xy)/(xy) = (x − y)²/(xy).\n- O numerador satisfaz (x − y)² ≥ 0.\n- O denominador satisfaz xy > 0, e é aqui que a positividade entra.\n\nLogo a diferença é ≥ 0, e ela é zero exatamente quando x = y.\n\n**Passo 3. Somar.** Aplicando o lema aos pares (a,b), (b,c) e (c,a), que são todos positivos:\n(a+b+c)(1/a+1/b+1/c) ≥ 3 + 2 + 2 + 2 = 9. ∎\n\n**Igualdade.** A igualdade exige igualdade nas três aplicações do lema, ou seja, a = b, b = c e c = a. Assim, vale \"= 9\" se e somente se a = b = c.\n\n**Forma compacta (identidade exata).** Os mesmos passos dão:\n(a+b+c)(1/a+1/b+1/c) − 9 = [c(a−b)² + a(b−c)² + b(c−a)²] / (abc) ≥ 0.\n- Cada parcela do numerador é ≥ 0, porque a, b, c > 0.\n- O denominador é abc > 0.\n\nConferi essa identidade numericamente em Python, com 200 mil triplas aleatórias: o erro relativo máximo foi ~3·10⁻¹⁵ e o menor valor observado de E − 9 foi ≥ 0.\n\n---\n\n### Soluções alternativas válidas\n\n**(A) MA–MG.** Como a, b, c > 0:\n- a + b + c ≥ 3·∛(abc) > 0;\n- 1/a + 1/b + 1/c ≥ 3·∛(1/(abc)) = 3/∛(abc) > 0.\n\nAs duas desigualdades têm lados positivos, então podemos multiplicá-las membro a membro: o produto é ≥ 9·∛(abc)/∛(abc) = 9. A igualdade ocorre quando a = b = c.\n\n**(B) Cauchy–Schwarz.** Tome os vetores u = (√a, √b, √c) e v = (1/√a, 1/√b, 1/√c). Eles existem porque a, b, c > 0.\n(|u|²)(|v|²) ≥ (u·v)² = (1 + 1 + 1)² = 9.\nA igualdade vale se e somente se u ∥ v, isto é, a = b = c.\n\n**(C) MA–MH.** (a+b+c)/3 ≥ 3/(1/a+1/b+1/c). Multiplicando pelo denominador positivo, obtém-se o resultado.\n\n**(D) Rearranjo ou Chebyshev.** Também funcionam, desde que a desigualdade usada seja enunciada com suas hipóteses.",
+    "final_answer": "A desigualdade vale para todos a, b, c > 0. Pela expansão, (a+b+c)(1/a+1/b+1/c) = 3 + (a/b+b/a) + (b/c+c/b) + (c/a+a/c). Cada par é ≥ 2, porque x/y + y/x − 2 = (x−y)²/(xy) ≥ 0 com xy > 0. Logo o produto é ≥ 9.\n\nDe forma equivalente, (a+b+c)(1/a+1/b+1/c) − 9 = [c(a−b)² + a(b−c)² + b(c−a)²]/(abc) ≥ 0.\n\nA igualdade (= 9) vale se e somente se a = b = c. Também são aceitáveis provas por MA–MG (multiplicando duas desigualdades com lados positivos), por Cauchy–Schwarz ou por MA–MH.\n\nNão é questão de múltipla escolha; é uma demonstração.",
+    "pitfalls": [
+      "Uso da positividade: o lema x/y + y/x ≥ 2 só vale se xy > 0. Com sinais mistos a desigualdade é falsa: a = 1, b = −1/2, c = 1 dá (3/2)(0) = 0 < 9. Uma boa prova diz explicitamente onde usa a, b, c > 0.",
+      "Multiplicar desigualdades membro a membro (rota MA–MG) só é válido quando os dois lados das duas desigualdades são não negativos. A prova deve justificar isso; não basta multiplicar.",
+      "MA–MG e Cauchy–Schwarz (com √a, 1/√a) precisam de números positivos. Citar o teorema sem verificar a hipótese é uma falha de rigor, ainda que pequena.",
+      "Raciocínio de trás para frente: partir de '... ≥ 9' e chegar a algo verdadeiro (por exemplo, soma de quadrados ≥ 0) só prova o resultado se cada passo for reversível (equivalências ⇔). Implicações num só sentido (⇒) a partir da tese não provam nada.",
+      "Verificar casos particulares (por exemplo, a = b = c = 1 dá 9) ou argumentar 'por simetria o mínimo está em a = b = c' NÃO é prova. Função simétrica não tem, em geral, extremo no ponto simétrico.",
+      "Rota por cálculo ou por normalização: fixar a + b + c = 1 (ou abc = 1) é legítimo porque a expressão é homogênea de grau 0, mas isso precisa ser dito. Achar ponto crítico (Lagrange/derivadas) não prova mínimo global sem argumento adicional (por exemplo, comportamento na fronteira, onde a expressão → ∞).",
+      "Erro de expansão: o produto tem 9 termos (3 iguais a 1 e 3 pares recíprocos). Um termo esquecido ou trocado invalida a cadeia.",
+      "Caso de igualdade: não é exigido pelo enunciado, mas uma resolução completa costuma mencionar que = 9 se e somente se a = b = c. Afirmar desigualdade estrita (> 9) para todo a, b, c é ERRADO.",
+      "Usar desigualdades conhecidas (MA–MG, MA–MH, Cauchy–Schwarz) é aceitável em prova do IME desde que sejam enunciadas corretamente. Usar o próprio resultado (por exemplo, 'pela desigualdade MA–MH' na forma que já é a tese) como 'lema conhecido' sem justificar pode ser visto como circular e deve perder pontos se nenhum argumento for apresentado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A desigualdade está provada. Ao expandir, o produto fica 3 + (a/b + b/a) + (a/c + c/a) + (b/c + c/b). Para x, y > 0, vale x/y + y/x − 2 = (x − y)²/(xy) ≥ 0. Daí, (a+b+c)(1/a+1/b+1/c) − 9 = (a−b)²/(ab) + (a−c)²/(ac) + (b−c)²/(bc) ≥ 0, ou seja, o produto é ≥ 9. A igualdade vale se e somente se a = b = c.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No passo 3, o texto diz 'Aplicando o lema aos pares... obtemos a identidade'. O lema, porém, é uma desigualdade, e a identidade vem da conta feita dentro da prova dele: x/y + y/x − 2 = (x−y)²/(xy). A lógica está certa, mas a redação mistura duas coisas. Deveria dizer 'usando a identidade obtida na prova do lema' ou então somar diretamente as três desigualdades do lema (3 + 2 + 2 + 2 = 9)."
+          },
+          {
+            "severity": "minor",
+            "description": "Na observação por MA–MG, o 'somente se' da igualdade não é justificado. Faltou dizer que, como os dois lados de cada desigualdade são positivos, o produto só dá 9 se valer a igualdade nas duas, e isso exige a = b = c. Como é só uma prova alternativa e a prova principal trata a igualdade com rigor, o impacto é pequeno."
+          },
+          {
+            "severity": "minor",
+            "description": "Há texto de bastidor que não faz parte de uma prova: 'Conferi o enunciado na prova original'. A seção 'Verificação' com casos numéricos (as contas estão certas: 9 e 11) não acrescenta nada à demonstração. Não está errada, mas deveria ser removida ou dita explicitamente como checagem e não como argumento. O texto não a apresenta como prova, então não perde rigor."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (Questão 5, valor 1,0) e ele bate com a transcrição.\n\n**Resposta final.** O candidato chega a E − 9 = (a−b)²/(ab) + (a−c)²/(ac) + (b−c)²/(bc) ≥ 0, com igualdade se e somente se a = b = c. Isso equivale à minha referência: multiplicando por abc, dá [c(a−b)² + b(a−c)² + a(b−c)²]/(abc). Conferi a identidade com aritmética racional exata em 20 mil triplas aleatórias, sem nenhuma discrepância. O exemplo numérico a=1, b=2, c=3 dá 11, também correto. As respostas coincidem.\n\n**Armadilhas.**\n- **Positividade:** está explícita no lema (xy > 0) e na aplicação a pares de números positivos.\n- **Expansão:** os 9 termos estão corretos, com 3 iguais a 1 e 3 pares recíprocos.\n- **Raciocínio de trás para frente:** não ocorre; a prova parte da expansão e chega à tese.\n- **Casos particulares:** aparecem só como verificação, não como argumento.\n- **Igualdade:** está tratada corretamente (a = b = c), sem afirmar desigualdade estrita.\n- **Rota MA–MG:** cita a hipótese de positividade e justifica a multiplicação membro a membro pela positividade dos lados.\n\n**Problemas encontrados.** São apenas de redação:\n- no passo 3, a frase 'aplicando o lema obtemos a identidade' confunde a desigualdade do lema com a identidade algébrica obtida na prova dele;\n- na prova alternativa por MA–MG, o 'somente se' da igualdade não é justificado;\n- há comentários de bastidor ('conferi o enunciado') e uma seção de verificação numérica dispensável.\n\n**Avaliação geral.** A prova está correta, completa e rigorosa, no nível de gabarito comentado. Nota 9,5."
+      }
+    }
+  ]
+}

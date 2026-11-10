@@ -1,0 +1,63 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) L = 85 cm. b) G = -16 (módulo 16; imagem invertida). c) Imagem final real, a 165/32 ≈ 5,2 cm depois da ocular (≈ 90 cm da objetiva), invertida, com aumento linear A = -1/16, ou seja, menor que o objeto (1/16 do tamanho).",
+  "judge_reference": {
+    "reference_solution": "**Convenção e modelo.** As duas lentes são convergentes (f1 = +80 cm e f2 = +5,0 cm), então a luneta é do tipo kepleriana. Uso a equação de Gauss 1/p + 1/p' = 1/f e a ampliação linear A = −p'/p. Nessa convenção, p' > 0 indica imagem real, atrás da lente, e p' < 0 indica imagem virtual, do mesmo lado do objeto. A frase \"imagens formadas a longas distâncias do observador\" é lida como imagem final no infinito, ou seja, luneta afocal e olho relaxado.\n\n**a) Comprimento do tubo**\n\n- Um astro está praticamente no infinito (p1 → ∞). A objetiva conjuga então uma imagem intermediária real e invertida no seu plano focal, a p1' = f1 = 80 cm.\n- Para a imagem final ficar no infinito, a imagem intermediária deve estar no foco objeto da ocular, ou seja, a p2 = f2 = 5,0 cm dela.\n- Os dois focos coincidem, então L = f1 + f2 = 80 + 5,0 = **85 cm**.\n\n**b) Aumento angular e orientação**\n\n- Seja θ o ângulo sob o qual o astro é visto a olho nu. A imagem intermediária tem altura y = −f1·tg θ ≈ −f1·θ. O sinal negativo indica imagem invertida.\n- A ocular tem essa imagem no seu foco. Os raios emergem paralelos, inclinados de θ' ≈ y/f2 em relação ao eixo.\n- Portanto G = θ'/θ = −f1/f2 = −80/5,0 = **−16**.\n- O módulo é 16: o astro é visto sob um ângulo 16 vezes maior. O sinal negativo indica que a imagem final é **invertida** em relação ao objeto. Ela é virtual e está no infinito.\n\n**c) Objeto a 40 cm da objetiva**\n\nHipótese: o tubo é rígido e permanece com L = 85 cm, sem refocalização.\n\n1. **Objetiva.** O objeto está a p1 = 40 cm, dentro da distância focal (40 < 80 cm), então a objetiva age como lupa.\n   - 1/p1' = 1/80 − 1/40 = −1/80, logo p1' = −80 cm.\n   - A1 = −p1'/p1 = +80/40 = +2.\n   - A imagem intermediária é **virtual, direita e com o dobro do tamanho**. Ela fica 80 cm antes da objetiva, no lado do objeto.\n2. **Ocular.** A imagem I1 está 80 cm antes da objetiva e a ocular está 85 cm depois dela. Logo p2 = L − p1' = 85 + 80 = 165 cm.\n   - Para a ocular, I1 é um objeto real, pois os raios divergem a partir dele.\n   - 1/p2' = 1/5 − 1/165 = (33 − 1)/165 = 32/165, logo p2' = 165/32 ≈ 5,16 cm.\n   - p2' > 0, então a imagem é **real**, formada a ≈ 5,16 cm depois da ocular, ou seja, ≈ 90,2 cm depois da objetiva.\n   - A2 = −p2'/p2 = −(165/32)/165 = −1/32.\n3. **Total.** A = A1·A2 = 2·(−1/32) = **−1/16 = −0,0625**.\n\n**Resposta do item c.** A imagem final é **real** e **invertida**. Fica a ≈ 5,2 cm atrás da ocular (165/32 cm). Seu tamanho é 1/16 do objeto, ou seja, é **menor** que o objeto. Ela pode ser projetada num anteparo.\n\n**Conferência.** Refiz as contas com frações exatas em Python, pela equação de Gauss e por matrizes ABCD. Os resultados concordam: p1' = −80 cm, A1 = 2, p2 = 165 cm, p2' = 165/32 cm e A = −1/16.\n\n**Observação.** Não é possível refocalizar para levar a imagem final ao infinito. Seria preciso colocar a ocular 5 cm depois de I1, isto é, 75 cm antes da objetiva, o que é fisicamente impossível. Por isso a imagem final é real, e não mais virtual no infinito.",
+    "final_answer": "a) L = f1 + f2 = 85 cm.\nb) G = −f1/f2 = −16 (|G| = 16). A imagem é invertida.\nc) A objetiva (objeto dentro de f1) forma uma imagem virtual e direita, a 80 cm antes dela, com A1 = +2. A ocular conjuga a partir dela (p2 = 165 cm) uma imagem final REAL e INVERTIDA, a 165/32 ≈ 5,16 cm depois da ocular (≈ 90,2 cm depois da objetiva). A ampliação linear total é −1/16, então a imagem é MENOR que o objeto (1/16 do tamanho).",
+    "pitfalls": [
+      "Interpretar 'imagens formadas a longas distâncias' como imagem final no infinito (luneta afocal, olho relaxado). É isso que dá L = f1 + f2 = 85 cm. Como as duas distâncias focais são positivas, o modelo é o de Kepler. Erros típicos: L = 75 cm (f1 − f2, que é a luneta de Galileu), L = 80 cm ou L = 5 cm. Convém dizer que, para imagem final a distância finita, L seria ligeiramente menor que 85 cm.",
+      "Aumento angular: G = −f1/f2 = −16, e não f2/f1 = 1/16. O sinal negativo é parte da resposta: indica imagem invertida. Dar só '16' ou dizer que a imagem é direita está errado. O G = −16 vale apenas para objeto no infinito e imagem no infinito. Não deve ser aplicado ao item c.",
+      "Item c: o objeto a 40 cm está DENTRO da distância focal da objetiva (40 < 80 cm). A imagem intermediária é virtual e direita (p1' = −80 cm, A1 = +2), e não real e invertida. Errar esse sinal derruba todo o item.",
+      "Armadilha de sinal. Se alguém toma p1' = +80 cm, obtém p2 = 85 − 80 = 5 cm = f2 e conclui, erradamente, que a imagem final está no infinito. O correto é p2 = L − p1' = 85 − (−80) = 165 cm. A imagem virtual I1 é objeto REAL para a ocular, porque os raios divergem a partir dela.",
+      "Hipótese necessária: o tubo mantém L = 85 cm, sem refocalizar. Refocalizar não resolveria, pois a ocular teria de ficar 75 cm antes da objetiva. Essa hipótese deve ser declarada.",
+      "Classificação final: real (p2' = 165/32 ≈ 5,16 cm > 0, atrás da ocular), invertida (A1·A2 = 2·(−1/32) < 0) e menor (|A| = 1/16 < 1). A inversão vem só da ocular, pois A1 é positivo. O 'maior ou menor' do enunciado compara tamanhos lineares, e a resposta é 'menor'. Não confundir com o aumento angular de 16 da luneta para astros.",
+      "Deixar a posição em função da objetiva ou da ocular sem dizer qual. Convém dar as duas: 5,16 cm depois da ocular e ≈ 90,2 cm depois da objetiva (85 + 165/32 = 2885/32 cm). A prova exige expressões numéricas resolvidas, então escrever 165/32 ≈ 5,16 cm, e não deixar a conta indicada.",
+      "Explicitar a convenção de sinais (p' > 0 real, p' < 0 virtual, A = −p'/p) e justificar o uso da ampliação linear em cascata (A = A1·A2)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) L = 85 cm. b) G = -16 (módulo 16; imagem invertida). c) Imagem final real, a 165/32 ≈ 5,2 cm depois da ocular (≈ 90 cm da objetiva), invertida, com aumento linear A = -1/16, ou seja, menor que o objeto (1/16 do tamanho).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "As respostas finais do candidato coincidem item a item com a minha referência, e eu as confirmei de forma independente. Conferi o enunciado no PDF (página 7) e refiz as contas com frações exatas em Python. Os resultados foram: L = 85 cm; G = −16 (invertida); p1' = −80 cm, A1 = +2, p2 = 165 cm, p2' = 165/32 ≈ 5,16 cm, A2 = −1/32 e A = −1/16. A posição da imagem a partir da objetiva é 2885/32 ≈ 90,2 cm, o que bate com o \"≈ 90 cm\" do candidato. A resolução declara a convenção de sinais, lê \"longas distâncias\" como imagem final no infinito (luneta afocal) e evita as armadilhas centrais. Ela usa L = f1 + f2, e não f1 − f2 (luneta de Galileu). Mantém o sinal de G como parte da resposta. Reconhece que o objeto em 40 cm está dentro de f1, o que dá imagem intermediária virtual e direita. Calcula p2 = L + |p1'| = 165 cm, sem cair no erro de p2 = 5 cm. Classifica o resultado como real, invertido e menor (1/16). Dá a posição em relação à ocular e à objetiva e declara que L = 85 cm é mantido. Os problemas restantes são só de polimento: faltou a ressalva sobre L para imagem final a distância finita e a justificativa de que refocalizar não resolve o item c. Há também um deslize de terminologia na verificação (ii) e a ampliação em cascata não é justificada. Nenhum deles afeta o resultado, e a resolução é publicável como gabarito comentado, com pequenos ajustes.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Não justifica a hipótese de que o tubo permanece com L = 85 cm no item (c). Diz apenas que \"o tubo mantém L = 85 cm\". Faltou explicar que refocalizar não ajudaria: para levar a imagem final ao infinito, a ocular teria de ficar 5 cm depois de I1, isto é, 75 cm antes da objetiva, o que é impossível. Essa observação explicaria por que a imagem final é real e não mais virtual no infinito.",
+            "fix": "Acrescentar uma frase dizendo que não existe refocalização fisicamente possível que leve a imagem final ao infinito neste caso."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (a), não comenta que L = f1 + f2 vale para a imagem final exatamente no infinito (olho relaxado). Para imagem final a distância finita (por exemplo, no ponto próximo), L seria ligeiramente menor que 85 cm. A leitura de \"longas distâncias\" como infinito é declarada, mas a ressalva sobre a alternativa não aparece.",
+            "fix": "Incluir uma nota curta: para imagem a distância finita, L < 85 cm; aqui se adota imagem no infinito, conforme o enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação (ii), a expressão \"objeto virtual-intermediário\" é ambígua. \"Objeto virtual\" é termo técnico para raios convergentes, e aqui a imagem intermediária virtual é objeto REAL da ocular, como o próprio candidato disse corretamente mais acima. O texto não está errado, mas a terminologia pode confundir um leitor ou corretor.",
+            "fix": "Escrever \"imagem intermediária (virtual, mas objeto real para a ocular) muito além de f2\"."
+          },
+          {
+            "severity": "minor",
+            "description": "A ampliação linear total A = A1·A2 é usada sem uma frase de justificativa (a imagem da primeira lente é o objeto da segunda, e as ampliações transversais se multiplicam). Também não explicita que a inversão final vem só da ocular, já que A1 > 0.",
+            "fix": "Acrescentar uma linha justificando a cascata e comentando que o sinal negativo vem de A2."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (b), não diz explicitamente que a imagem final é virtual e está no infinito. Dá apenas o sentido (invertida). Também não nomeia o instrumento como luneta kepleriana, nem contrasta com a de Galileu (L = f1 − f2, imagem direita). Isso é menor, pois o enunciado só pede o sinal e a orientação.",
+            "fix": "Mencionar \"imagem virtual no infinito, invertida\" e citar de passagem o contraste com a luneta de Galileu."
+          }
+        ]
+      }
+    }
+  ]
+}

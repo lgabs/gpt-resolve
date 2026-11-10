@@ -1,0 +1,51 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+Seja $D(n)=n^2-2n-27=(n-1)^2-28$. Para $n$ inteiro, $D(n)\neq 0$, pois $(n-1)^2=28$ não tem solução inteira (28 não é quadrado perfeito). Logo a fração está definida para todo $n\in\mathbb{Z}$.
+
+\textbf{1) Divisão de polinômios.} Calculando
+\[
+(2n-1)(n^2-2n-27)=2n^3-4n^2-54n-n^2+2n+27=2n^3-5n^2-52n+27,
+\]
+obtemos
+\[
+2n^3-5n^2-52n+90=(2n-1)(n^2-2n-27)+63 .
+\]
+Portanto
+\[
+\frac{2n^3-5n^2-52n+90}{n^2-2n-27}=2n-1+\frac{63}{n^2-2n-27}.
+\]
+
+\textbf{2) Condição de integralidade.} Como $2n-1$ é inteiro para todo $n$ inteiro, o quociente é inteiro se, e somente se, $\dfrac{63}{D(n)}$ é inteiro, isto é, se, e somente se,
+\[
+D(n)\ \text{divide}\ 63,\qquad D(n)\in\{\pm1,\pm3,\pm7,\pm9,\pm21,\pm63\}.
+\]
+
+\textbf{3) Teste dos divisores.} Como $D(n)=(n-1)^2-28$, temos $(n-1)^2=28+D(n)$, que deve ser quadrado perfeito (e não negativo). Analisando cada divisor $d$ de $63$:
+
+\begin{center}
+\begin{tabular}{c|cccccccccccc}
+$d$ & $1$ & $-1$ & $3$ & $-3$ & $7$ & $-7$ & $9$ & $-9$ & $21$ & $-21$ & $63$ & $-63$\\ \hline
+$28+d$ & $29$ & $27$ & $31$ & $25$ & $35$ & $21$ & $37$ & $19$ & $49$ & $7$ & $91$ & $-35$\\
+quadrado perfeito? & não & não & não & \textbf{sim} & não & não & não & não & \textbf{sim} & não & não & não
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item $d=-3$: $(n-1)^2=25\Rightarrow n-1=\pm5\Rightarrow n=6$ ou $n=-4$.
+\item $d=21$: $(n-1)^2=49\Rightarrow n-1=\pm7\Rightarrow n=8$ ou $n=-6$.
+\end{itemize}
+
+\textbf{4) Verificação.}
+\begin{itemize}
+\item $n=8$: $D=21$ e $2n-1=15$, logo o quociente é $15+3=18$.
+\item $n=-6$: $D=21$ e $2n-1=-13$, logo o quociente é $-13+3=-10$.
+\item $n=6$: $D=-3$ e $2n-1=11$, logo o quociente é $11-21=-10$.
+\item $n=-4$: $D=-3$ e $2n-1=-9$, logo o quociente é $-9-21=-30$.
+\end{itemize}
+Todos são inteiros. Uma busca computacional em $-2000\le n\le 2000$ confirma que esses são os únicos valores.
+
+\textbf{Resposta:} $n\in\{-6,\,-4,\,6,\,8\}$.
+
+ANSWER: $n\in\{-6,-4,6,8\}$

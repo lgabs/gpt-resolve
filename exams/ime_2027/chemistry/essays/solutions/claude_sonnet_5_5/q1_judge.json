@@ -1,0 +1,53 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "Massa de MnO2 ≈ 0,87 g (0,0100 mol). Reações: MnO2 + 4 HCl → MnCl2 + Cl2 + 2 H2O e Cl2 + 2 NaBr → 2 NaCl + Br2.",
+  "judge_reference": {
+    "reference_solution": "**Dados (tabela da prova):** Na = 22,990; Br = 79,904; Mn = 54,938; O = 15,999.\n\n**1) Reações envolvidas (a ordem lógica é: produzir Cl₂ → usar Cl₂ para deslocar Br₂)**\n\n(i) Produção de cloro a partir da pirolusita (MnO₂ + HCl concentrado, a quente), uma reação redox:\nMnO₂ + 4 HCl → MnCl₂ + Cl₂ + 2 H₂O\n(Mn: +4 → +2, reduz; Cl: −1 → 0, oxida. Dos 4 HCl, 2 atuam como redutor, formando Cl₂, e 2 ficam como Cl⁻ no MnCl₂.)\n\n(ii) Deslocamento do bromo pelo cloro (o Cl₂ é mais reativo/oxidante que o Br₂):\nCl₂ + 2 NaBr → 2 NaCl + Br₂\n(Equação iônica: Cl₂ + 2 Br⁻ → 2 Cl⁻ + Br₂.)\n\n**2) Estequiometria**\n\nMassas molares:\n- NaBr = 22,990 + 79,904 = 102,894 g/mol (≈ 103 g/mol)\n- MnO₂ = 54,938 + 2·15,999 = 86,936 g/mol (≈ 87 g/mol)\n\nQuantidade de NaBr:\nn(NaBr) = 2,06 / 102,894 ≈ 2,00·10⁻² mol (≈ 0,0200 mol)\n\nPela reação (ii), 1 Cl₂ libera o Br de 2 NaBr:\nn(Cl₂) = n(NaBr)/2 ≈ 1,00·10⁻² mol\n\nPela reação (i), a proporção MnO₂ : Cl₂ é 1 : 1:\nn(MnO₂) = n(Cl₂) ≈ 1,00·10⁻² mol\n\nMassa de MnO₂:\nm(MnO₂) = 1,00·10⁻² mol × 86,936 g/mol ≈ 0,87 g\n\nCadeia direta: 2,06 g NaBr × (1 mol NaBr/102,894 g) × (1 mol Cl₂/2 mol NaBr) × (1 mol MnO₂/1 mol Cl₂) × (86,936 g/mol) = 0,870 g.\n\n(Verificação numérica em python: 0,8703 g. Com massas arredondadas 103 e 87 dá exatamente 0,87 g. Esse mesmo Cl₂ libera ≈ 1,60 g de Br₂, o que fecha com a conservação de massa.)\n\n**Resposta:** aproximadamente 0,87 g de MnO₂ (≈ 1,0·10⁻² mol), supondo rendimento de 100 % e HCl em excesso.",
+    "final_answer": "m(MnO₂) ≈ 0,87 g (0,0100 mol). Reações: MnO₂ + 4 HCl → MnCl₂ + Cl₂ + 2 H₂O e Cl₂ + 2 NaBr → 2 NaCl + Br₂. Estequiometria: 2,06 g NaBr ≈ 0,0200 mol → 0,0100 mol Cl₂ → 0,0100 mol MnO₂ → 0,87 g (rendimento 100 %, HCl em excesso).",
+    "pitfalls": [
+      "O enunciado pede explicitamente as reações envolvidas: são DUAS (MnO₂ + HCl → Cl₂, e Cl₂ + NaBr → Br₂). Omitir qualquer uma perde pontos.",
+      "Balancear corretamente MnO₂ + 4 HCl → MnCl₂ + Cl₂ + 2 H₂O. Erro comum: escrever 2 HCl ou ignorar a água; o Mn vai de +4 a +2 (produto MnCl₂, não MnCl₄ nem Mn metálico). A proporção MnO₂ : Cl₂ é 1 : 1, o que não depende de ter o HCl balanceado, mas a equação precisa estar correta.",
+      "Balancear Cl₂ + 2 NaBr → 2 NaCl + Br₂. Erro comum: usar a razão 1 : 1 entre NaBr e Cl₂, o que dobra a resposta (≈ 1,74 g em vez de 0,87 g). Cada Cl₂ libera só 1 Br₂, isto é, o Br de 2 NaBr.",
+      "Não confundir 'HCl necessário' com 'MnO₂ necessário': 4 mol de HCl por mol de MnO₂ não entram no cálculo da massa pedida, e o HCl é reagente em excesso (concentrado).",
+      "Massas molares: NaBr = 102,894 (≈ 103) e MnO₂ = 86,936 (≈ 87). Não usar Mn = 55 + O₂ = 32 sem somar, nem MnO (71) no lugar de MnO₂. O enunciado dá 2,06 g porque 2,06/103 = 0,0200 mol, número redondo.",
+      "Hipóteses a declarar: rendimento de 100 % nas duas etapas, todo o Cl₂ produzido é usado na reação com NaBr (sem perdas por escape de gás) e HCl em excesso. Reação (i) exige aquecimento, pois a frio a reação é lenta.",
+      "Apresentar a resposta com unidade e número razoável de algarismos significativos (0,87 g). Respostas como 0,87 mg ou 8,7 g indicam erro de potência de 10."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "Massa de MnO2 ≈ 0,87 g (0,0100 mol). Reações: MnO2 + 4 HCl → MnCl2 + Cl2 + 2 H2O e Cl2 + 2 NaBr → 2 NaCl + Br2.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A \"Conferência\" final é quase circular. Ela só recalcula a razão de massas 86,94/(2·102,9) ≈ 0,42 e multiplica por 2,06 g. Além disso, 0,42 × 2,06 = 0,865 g, não 0,87 g, por causa do arredondamento de 0,4224 para 0,42. Seria melhor usar uma verificação independente, como a massa de Br₂ liberada (~1,60 g) por conservação de massa, ou manter 0,4224."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa de que Cl₂ desloca Br₂ (\"Cl₂ é mais oxidante\") é só afirmada. Falta citar a posição na família dos halogênios, a ordem de reatividade ou os potenciais de redução (E°(Cl₂/Cl⁻) > E°(Br₂/Br⁻)). Como o enunciado pede as reações envolvidas, um professor gostaria dessa justificativa em uma linha."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato escreve \"balanceada em átomos e em carga\" para uma equação molecular neutra, o que é trivial. Além disso, não escreve as semirreações nem a equação iônica (Cl₂ + 2Br⁻ → 2Cl⁻ + Br₂), que dariam mais rigor ao balanceamento redox. A equação em si está correta."
+          },
+          {
+            "severity": "minor",
+            "description": "As hipóteses (rendimento de 100%, HCl em excesso, todo o Cl₂ aproveitado) aparecem, mas de forma esparsa. Falta declarar que não há perda de Cl₂ por escape. Também falta uma menção explícita de que, na prática, usa-se um pequeno excesso de Cl₂ para garantir o deslocamento total, e que o valor pedido é o estequiométrico mínimo. O aquecimento é citado só no cabeçalho da reação."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF original (1ª questão, p. 2) e ele coincide com a transcrição. Refiz a conta em Python: n(NaBr) = 2,06/102,894 = 0,02002 mol, n(Cl₂) = 0,01001 mol e m(MnO₂) = 0,8703 g, o que dá ≈ 0,87 g. A resposta final do candidato é idêntica à da minha referência e está correta, tanto no valor quanto nas reações: MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O e Cl₂ + 2NaBr → 2NaCl + Br₂. As duas reações estão balanceadas, com o Mn indo de +4 a +2 e a razão 1 Cl₂ : 2 NaBr, o que evita o erro do fator 2 (1,74 g). O candidato evita todas as armadilhas listadas: não usa MnO ou massas molares mal somadas, não mistura a quantidade de HCl com a de MnO₂, declara rendimento de 100% e HCl em excesso, e dá a unidade correta. Ele ainda acrescenta a reação global MnO₂ + 4HCl + 2NaBr → MnCl₂ + 2NaCl + Br₂ + 2H₂O, com razão 1:2, como checagem cruzada. A resolução é clara, organizada e completa, e só tem falhas menores: a conferência final é pouco independente (e 0,42 × 2,06 = 0,865), a justificativa do deslocamento Cl₂/Br₂ é só afirmada, e as hipóteses poderiam ser mais explícitas. Está perto de um gabarito comentado publicável."
+      }
+    }
+  ]
+}

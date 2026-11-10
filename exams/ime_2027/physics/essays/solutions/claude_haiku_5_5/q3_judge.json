@@ -1,0 +1,98 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "a) N = 3,0·10² N (300 N), vertical, para cima, sem componente horizontal (T₀ = W/2 = 300 N pelo torque em relação ao pino). b) ΔT = 100 °C (100 K), pois T = T₀(1 + αΔT) e a ruptura exige T = 1,001 T₀. c) Rompimento em t = 3·10⁴ s, ou seja, 37,5 % do dia, no ramo crescente da irradiância (entre 25 % e 50 %), com Q = 5·10⁶ J absorvidos.",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA - IME 2027, Física, 3ª questão (resolvida sem consultar resoluções de candidatos)\n\n0) Grandezas derivadas\n- Volume: V = 2 m x 0,25 m x 0,05 m = 0,025 m³. Massa: m = 2000 x 0,025 = 50 kg (constante; a dilatação só reduz a densidade).\n- Gravidade do planeta: g = GM/R² = 12 m/s². Peso: P = mg = 600 N (constante).\n- Calor específico: c = 1,0 J/(g·°C) = 1000 J/(kg·°C). Logo m·c = 5·10⁴ J/°C.\n- Área absorvedora: apenas a face superior, A = 2 m x 0,25 m = 0,5 m² (lateral e base excluídas).\n- Escala temporal: 1% do dia = 800 s. Amanhecer = 25% do dia = 2·10⁴ s.\n\nModelo mecânico\n- Pino fixo em x = 0 (apoio à esquerda). Haste vertical fixa; argola fixa em x = L = 2 m.\n- Argola sem atrito: a força que ela aplica na barra é perpendicular ao eixo, isto é, vertical. Haste e argola sem massa, logo a tração da haste é T = F.\n- Dilatação linear: comprimento atual L_obj = L(1 + αΔT), com α = 10⁻⁵ °C⁻¹.\n- O peso atua no centro de massa, em x_cm = L_obj/2 (massa homogênea).\n- Não há forças horizontais; a reação no pino é vertical.\n\na) Reação no apoio da esquerda ao amanhecer (ΔT = 0, L_obj = L)\n- Momentos em relação ao pino: F·L = P·(L/2), logo F = P/2 = 300 N.\n- Equilíbrio vertical: R + F = P, logo R = 600 - 300 = 300 N, vertical para cima, sem componente horizontal.\n- Tração inicial da haste: T₀ = 300 N. Limite de ruptura: T_max = 1,001·T₀ = 300,3 N (0,1% a mais = fator 1,001).\n\nb) Variação de temperatura até a ruptura\n- Durante a dilatação, o momento em torno do pino dá F·L = P·L(1 + αΔT)/2, logo F(ΔT) = T₀(1 + αΔT).\n- Ruptura: F = 1,001·T₀, logo 1 + αΔT = 1,001, αΔT = 10⁻³, ΔT = 10⁻³/10⁻⁵ = 100 °C.\n- Variação de temperatura: +100 °C (equivale a +100 K).\n\nc) Instante do rompimento (em % do dia)\n- Calor necessário: Q = m·c·ΔT = 50 x 1000 x 100 = 5·10⁶ J (absorção total e sem perdas).\n- Irradiância no ramo crescente, com x em % do dia, 25 <= x <= 50: I(τ) = 4000·(τ - 25)/25 W/m².\n- Energia por unidade de área de 25% a x, com dt = 800 dτ: ∫I dt = 800·(4000/25)·(x - 25)²/2 = 6,4·10⁴·(x - 25)² J/m².\n- Energia absorvida pela face superior: E = 0,5 x 6,4·10⁴·(x - 25)² = 3,2·10⁴·(x - 25)² J.\n- Igualando a Q: (x - 25)² = 5·10⁶ / 3,2·10⁴ = 156,25, logo x - 25 = 12,5 e x = 37,5%.\n- Verificações: 37,5 está em [25; 50], portanto no ramo crescente válido. A energia total até 50% seria 2·10⁷ J, maior que 5·10⁶ J, então a ruptura ocorre antes do pico. Tempo decorrido desde o amanhecer: 12,5 x 800 = 1,0·10⁴ s (cerca de 2,8 h).\n\nHipóteses adotadas: calor totalmente absorvido e sem perdas; temperatura uniforme no objeto; área absorvedora constante (a variação de área por dilatação é de ordem αΔT = 10⁻³, desprezível); haste e argola não se dilatam.",
+    "final_answer": "a) Reação no apoio da esquerda ao amanhecer: R = 300 N, vertical, para cima, sem componente horizontal. A haste tem tração inicial T₀ = 300 N.\n\nb) Variação de temperatura até o rompimento da haste: ΔT = +100 °C (equivale a +100 K). A condição é 1 + αΔT = 1,001, com α = 10⁻⁵ °C⁻¹.\n\nc) Rompimento da haste em 37,5% do dia, cerca de 1,0·10⁴ s (aproximadamente 2,8 h) após o amanhecer, no ramo crescente da irradiância.",
+    "pitfalls": [
+      "Área absorvedora: usar apenas a face superior, 2 m x 0,25 m = 0,5 m². Não usar as áreas laterais, a base, nem 2 x 0,05 m.",
+      "Conversão de unidades: 25 cm = 0,25 m e 5 cm = 0,05 m. Volume 0,025 m³ e massa 50 kg.",
+      "Calor específico: 1,0 J/(g·°C) = 1000 J/(kg·°C). Confundir isso com 1 J/(kg·°C) dá ΔT errado por um fator 1000.",
+      "Gravidade do planeta: g = GM/R² = 12 m/s², não 9,8 nem 10. Peso P = 600 N.",
+      "A massa não muda na dilatação, então o peso fica constante mesmo com a densidade caindo.",
+      "A tração não é constante. A argola fica fixa em x = L, mas o centro de massa se desloca para a direita (L_obj/2), e o braço do peso cresce. Por isso F = T₀(1 + αΔT). Assumir tração constante em 300 N é o erro central.",
+      "O fator correto é a expansão LINEAR (1 + αΔT). Usar a expansão volumétrica (1 + 3αΔT) daria ΔT = 33,3 °C, errado.",
+      "Interpretar '0,1% a mais' como fator 1,001 (não 0,1). Isso leva a αΔT = 10⁻³ e ΔT = 100 °C, valor redondo que confirma a leitura.",
+      "A força da argola é vertical porque é sem atrito. Portanto o apoio do pino não tem componente horizontal, e a reação é 300 N para cima.",
+      "Na letra a) a reação é pedida ao amanhecer: R = P - T₀ = 300 N, para cima. Não confundir com a reação no instante do rompimento (≈ 299,7 N) nem com o peso (600 N).",
+      "Escala temporal: 1% do dia = 800 s, dado pela duração 8·10⁴ s. Não usar 864 s (dia de 24 h).",
+      "A energia é integral da irradiância sobre a área no tempo. Não usar a irradiância média do dia nem o triângulo completo (até 75%).",
+      "Verificar o ramo: 37,5% está no trecho crescente (25% a 50%). A energia até 50% é 2·10⁷ J, maior que Q = 5·10⁶ J, então a ruptura ocorre antes do pico.",
+      "A resposta da letra c) é o horário em % do dia (37,5%). O tempo decorrido após o amanhecer é 1,0·10⁴ s. Não confundir os dois.",
+      "Hipóteses implícitas: absorção integral sem perdas (Q = mcΔT), temperatura uniforme e área absorvedora praticamente constante. Essas hipóteses devem ser declaradas na resolução."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) N = 300 N (3,0 x 10^2 N), vertical e para cima, sem componente horizontal (a haste sustenta T0 = 300 N). b) ΔT = 100 °C (100 K), pois a tração vale T = T0(1 + αΔT) e deve atingir 1,001 T0. c) O rompimento ocorre em t = 3 x 10^4 s, isto é, 37,5 % do dia (Q = 5 x 10^6 J absorvidos na face superior de 0,5 m², durante a rampa crescente).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A hipótese de temperatura uniforme no objeto não é declarada. Q = m·c·ΔT e L' = L(1+αΔT) pressupõem um único ΔT para todo o corpo. Deve ser acrescentada explicitamente à lista de hipóteses (a referência a aponta como hipótese implícita que precisa ser declarada)."
+          },
+          {
+            "severity": "minor",
+            "description": "A massa da argola e da haste e a ausência de dilatação dessas peças não são declaradas. A passagem 'força da haste sobre a argola = T' → 'força da argola sobre o objeto = T' (usada em (a) e (b) ao tratar T0 diretamente como força sobre o objeto) só vale com a argola de massa desprezível. Deve-se escrever: 'argola e haste de massa desprezível e sem dilatação; a força da argola sobre o objeto tem módulo T'."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), afirma-se que o braço da tração permanece L sem explicar o motivo. O objeto desliza pela argola, então o ponto de contato muda em relação ao corpo, mas a argola é fixa no espaço em x = L. A frase deve dizer que o braço é a posição fixa da argola, e não um ponto material do objeto."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência de (c), 'A potência média no intervalo de 10^4 s é ½·2000·0,5 = 500 W', é cifrada. Deveria ser escrita como potência média = (½ · 2000 W/m²) · 0,5 m² = 500 W, com unidades explícitas."
+          }
+        ],
+        "summary": "Verifiquei o enunciado no PDF original e refiz as contas em python3. As três respostas finais coincidem com a referência e com a minha verificação: a) N = 300 N, vertical para cima, sem componente horizontal (torque em torno do pino: T0·L = W·L/2, com W = 600 N); b) ΔT = +100 °C (100 K), pois T = T0(1+αΔT) e 1+αΔT = 1,001; c) rompimento em 37,5 % do dia (t = 3·10⁴ s). Conferi a integral numericamente: a energia absorvida em t = 3·10⁴ s é 5·10⁶ J, e até o pico (50 %) é 2·10⁷ J, então a ruptura ocorre no ramo crescente.\n\nArmadilhas tratadas: área absorvedora de 0,5 m² (só a face superior); conversão de unidades (25 cm, 5 cm, V = 0,025 m³, m = 50 kg); c = 1000 J/(kg·°C); g = GM/R² = 12 m/s²; massa constante; tração não constante, pois o braço do peso cresce (T = T0(1+αΔT)); dilatação linear e não volumétrica; fator 1,001; integral da irradiância com escala temporal correta; verificação do ramo; distinção entre horário em % e tempo decorrido. A argumentação é consistente e a estrutura é limpa.\n\nPontos que impedem a nota máxima são todos menores: hipóteses não declaradas (temperatura uniforme; argola e haste de massa desprezível e sem dilatação), a passagem de T para a força sobre o objeto implícita, a justificativa do braço fixo em (b) só afirmada e a conferência de (c) cifrada. Uma resolução de gabarito comentado deveria declarar essas hipóteses. Nota 8,5.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "a) N = 3,0·10² N (300 N), vertical, para cima, sem componente horizontal (T₀ = W/2 = 300 N pelo torque em relação ao pino). b) ΔT = 100 °C (100 K), pois T = T₀(1 + αΔT) e a ruptura exige T = 1,001 T₀. c) Rompimento em t = 3·10⁴ s, ou seja, 37,5 % do dia, no ramo crescente da irradiância (entre 25 % e 50 %), com Q = 5·10⁶ J absorvidos.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Parte a): a redação \"N no pino (para cima, por H3)\" atribui o sentido vertical à H3, mas H3 diz que a articulação pode reagir em qualquer direção. O sentido deveria ser adotado como convenção e confirmado pelo sinal do resultado (N = W − T₀ = +300 N). O resultado está certo; só a justificativa está mal apoiada."
+          },
+          {
+            "severity": "minor",
+            "description": "H4: a afirmação de que o contato argola-objeto \"se faz por faces horizontais\" é uma leitura da figura que não é justificada no texto. Deveria ser declarada como idealização: argola retangular sem atrito, com reação normal às faces horizontais, portanto vertical. É isso que sustenta a componente horizontal nula no pino."
+          },
+          {
+            "severity": "minor",
+            "description": "H2 (temperatura uniforme) é declarada sem justificativa física. Uma frase bastaria, por exemplo: condução rápida no metal e absorção em face fina, de modo que o gradiente térmico é desprezível. Hipóteses não justificadas são exatamente o tipo de falha que se busca."
+          },
+          {
+            "severity": "minor",
+            "description": "Parte c), área: a variação de área (2αΔT ≈ 0,2%) é calculada, mas o efeito sobre o resultado é apenas afirmado como \"desprezível\". Faltaria propagar: Q varia 0,2%, logo Δt varia ≈ 0,1% de 10⁴ s ≈ 10 s, ou seja ≈ 0,01 ponto percentual do dia. Uma linha fecharia o argumento."
+          },
+          {
+            "severity": "minor",
+            "description": "Parte c), conferência: a expressão \"P̄ = ½ (2000 W/m²)·(0,5 m²) = 500 W\" traz um ½ sem explicação. Deveria dizer que é a média de uma rampa linear de 0 a 2000 W/m². O número está certo."
+          },
+          {
+            "severity": "minor",
+            "description": "A conversão 1% do dia = 800 s nunca é explicitada. O candidato usa 8·10⁴ s e 0,25·8·10⁴ = 2·10⁴ s diretamente, o que está correto. Um gabarito comentado deveria mostrar a escala de 800 s para o leitor conferir 37,5% ↔ 3·10⁴ s."
+          }
+        ],
+        "summary": "Respostas finais: idênticas à referência e confirmadas por recálculo. (a) N = 300 N, vertical, para cima, sem componente horizontal (T₀ = 300 N). (b) ΔT = +100 °C, com 1 + αΔT = 1,001. (c) Rompimento em 37,5% do dia (t = 3·10⁴ s, após 10⁴ s de aquecimento, no ramo crescente). Conferi no enunciado original as dimensões, a Figura 1 (pino à esquerda, haste vertical à direita) e a Figura 2 (pico de 4000 W/m² em 50%). Recalculei: m = 50 kg, W = 600 N, A = 0,5 m², Q = 5·10⁶ J, (t − t₀)² = 10⁸ s², energia até o pico = 2·10⁷ J > Q. Tudo confere.\n\nPontos fortes: a tração variável T = T₀(1 + αΔT) é derivada corretamente, com o braço do peso L'/2 e o braço da argola fixo em L. Os itens da lista de armadilhas foram tratados: área de 0,5 m² apenas na face superior, conversões de cm e de cal/g para J/kg (c = 1000 J/(kg·°C)), g = 12 m/s², massa constante, expansão linear e não volumétrica, fator 1,001, força da argola vertical, ramo crescente com checagem de energia, e distinção entre horário em % e tempo decorrido. As hipóteses estão listadas, e as conferências (deslizamento de 2 mm, independência de m, W e L, 0,2% na área, unidades) são corretas.\n\nPela exigência de nota ≥ 9 para gabarito comentado, a resolução chega lá. Os problemas restantes são de justificativa e de acabamento, sem erro de conta nem de conceito. Nota 9,0.\""
+      }
+    }
+  ]
+}

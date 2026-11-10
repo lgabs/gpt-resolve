@@ -1,0 +1,93 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "(a) $V_{\\max}=192\\sqrt{3}\\ \\text{cm}^3\\approx 332{,}55\\ \\text{cm}^3$. (b) Altura $h=4\\sqrt{3}\\ \\text{cm}\\approx 6{,}93\\ \\text{cm}$ e base quadrada de lado $4\\sqrt{3}\\ \\text{cm}\\approx 6{,}93\\ \\text{cm}$; o ótimo é o cubo de aresta $4\\sqrt{3}\\ \\text{cm}$ inscrito na esfera.",
+  "judge_reference": {
+    "reference_solution": "**Questão 10: prisma quadrangular reto inscrito (ou contido) em esfera de raio R = 6 cm**\n\n**Notação.** Seja O o centro da esfera, com O = (0,0,0), e eixo z perpendicular às bases. As bases estão em z = z₁ e z = z₂ = z₁ + h, com h > 0 a altura. Como o prisma é reto, os vértices de cima e de baixo têm a mesma projeção (q₁, …, q₄) ⊂ ℝ² no plano xy. A base é o quadrilátero Q = q₁q₂q₃q₄. A esfera é convexa, então o prisma está contido na bola fechada se e somente se os 8 vértices estão na bola:\n  |q_i|² + z₁² ≤ 36 e |q_i|² + z₂² ≤ 36, para i = 1..4.\n\n**Passo 1 (condição de contenção).** Como z₂ − z₁ = h, vale max(|z₁|, |z₂|) ≥ h/2. Logo, para todo i,\n  |q_i|² ≤ 36 − max(z₁², z₂²) ≤ 36 − h²/4 =: ρ².\nExiste solução só se h ≤ 12. A igualdade no passo exige z₁ = −h/2 e z₂ = h/2 (prisma simétrico em relação ao plano equatorial).\n\n**Passo 2 (área máxima da base).** Os quatro vértices estão no disco de raio ρ. Para qualquer quadrilátero ABCD (convexo ou côncavo), a fórmula de Gauss dá S = ½|(C−A)×(D−B)| ≤ ½|AC|·|BD|. Cada diagonal é corda do disco, então |AC|, |BD| ≤ 2ρ, e portanto\n  S ≤ ½(2ρ)(2ρ) = 2ρ².\nA igualdade ocorre se e somente se AC e BD são diâmetros do disco e perpendiculares, ou seja, a base é um quadrado inscrito na circunferência de raio ρ (lado ρ√2).\n\n**Passo 3 (otimização em h).** Para qualquer prisma reto contido na esfera,\n  V = S·h ≤ 2ρ²·h = 2(36 − h²/4)·h = 72h − h³/2, com 0 < h ≤ 12.\nSeja f(h) = 72h − h³/2. Então f′(h) = 72 − (3/2)h² = 0 ⇒ h² = 48 ⇒ h = 4√3 ≈ 6,93 cm (está em (0, 12], e f″ = −3h < 0, então é máximo). Temos\n  f(4√3) = 288√3 − (4√3)³/2 = 288√3 − 96√3 = 192√3.\n\n**Verificação das condições de igualdade.** Com h = 4√3: ρ² = 36 − 12 = 24, então ρ = 2√6 cm. A base é um quadrado inscrito nesse círculo, com diagonal 2ρ = 4√6 e lado 4√6/√2 = 4√3 cm. As bases estão em z = ∓2√3. O prisma é um cubo de aresta 4√3 cm. Conferência: diagonal espacial = 4√3·√3 = 12 = 2R, e V = (4√3)³ = 192√3 cm³.\n\n**Caminho alternativo (pela face da base na esfera).** Suponha que a face F com 4 vértices na esfera seja uma base, situada a distância d de O. Então o círculo de interseção tem raio r = √(36 − d²), e a base é um quadrilátero inscrito nele, com área ≤ 2r². A outra base precisa satisfazer r² + t² ≤ 36, isto é, |t| ≤ d, logo h ≤ 2d. Assim V ≤ 2r²·2d = 4r²√(36 − r²). Com u = r², g(u) = 4u√(36 − u) tem g′ = 0 ⇔ 4(36 − u) = 2u ⇔ u = 24. Obtém-se V = 4·24·√12 = 192√3, o mesmo resultado, com r = 2√6, d = 2√3, h = 2d = 4√3.\n\n**Caso em que a face da hipótese é lateral.** A cota do Passo 1–3 vale para qualquer prisma reto contido na esfera, independentemente de qual face tem os vértices na esfera. O máximo global (o cubo) tem todas as faces com 4 vértices na esfera, então satisfaz a hipótese. Logo o máximo sob a hipótese também é 192√3.\n\nVerificação numérica independente (busca estocástica sobre prismas retos com vértices na bola): o volume chega a ≈ 331,7 com área de base ≈ 47, convergindo para 192√3 ≈ 332,55 e área 48, com z₁ ≈ −h/2.\n\n**Respostas.**\n(a) V_max = 192√3 cm³ ≈ 332,55 cm³.\n(b) Altura h = 4√3 cm ≈ 6,93 cm; base quadrada de lado 4√3 cm (a = b = 4√3 cm); o prisma ótimo é um cubo de aresta 4√3 cm.",
+    "final_answer": "(a) V_max = 192√3 cm³ ≈ 332,55 cm³.\n\n(b) Altura h = 4√3 cm ≈ 6,93 cm; base quadrada de lado 4√3 cm (dimensões a = b = 4√3 cm, diagonal da base 4√6 cm). O prisma ótimo é um cubo de aresta 4√3 cm, com os 8 vértices sobre a esfera (diagonal espacial 12 cm = 2R).\n\nResultado robusto: vale tanto se a face com 4 vértices na esfera for base quanto lateral, e tanto se \"contido\" for interpretado como \"todos os vértices na esfera\" quanto como \"vértices na bola\".",
+    "pitfalls": [
+      "Altura não é livre: a outra base também deve estar dentro da esfera. Se a face com os 4 vértices sobre a esfera está a distância d do centro, a altura satisfaz h ≤ 2d (a outra base deve estar em |z| ≤ d). Sem essa restrição, o problema não tem máximo.",
+      "Não assumir que a base é quadrada ou retangular sem justificativa: a base é um quadrilátero inscrito no círculo de interseção, e a prova de que o quadrado maximiza a área (S ≤ ½|AC|·|BD| ≤ 2ρ², com igualdade quando as diagonais são diâmetros perpendiculares) é parte obrigatória da resolução.",
+      "O círculo determinado pela face não é necessariamente um círculo máximo: r = √(36 − d²). Tomar r = 6 (diagonal igual ao diâmetro) dá altura nula e volume zero, o que é um caso degenerado e não o máximo.",
+      "Maximizar em u = r² (ou em h), não em r. Para g(u) = 4u√(36 − u), o ponto crítico é u = 24, ou seja, r² = 24 e r = 2√6. Confundir r com r² (ou com 24) é erro comum.",
+      "Troca de comprimentos: lado do quadrado = diagonal/√2 = 2r/√2 = r√2 = 4√3 cm. Não confundir com a diagonal 2r = 4√6 cm nem com o raio r = 2√6 cm.",
+      "Fator 2 na altura: h = 2d = 4√3 cm, não d = 2√3 cm. A altura total do prisma é a distância entre as duas bases, não a distância de uma base ao centro.",
+      "A face da hipótese pode ser lateral (um retângulo com diagonal igual à corda do círculo), não apenas uma base. A resposta final não muda, mas a solução deve tratar o caso ou usar a cota geral de contenção (válida para qualquer face). Supor só base sem justificar é lacuna.",
+      "Não afirmar que 'completamente contido' implica que todos os 8 vértices estão na esfera: em geral isso é falso. O máximo, porém, é o cubo com os 8 vértices na esfera, então não há conflito com a resposta.",
+      "Verificação de consistência: o resultado é um cubo, então a diagonal espacial deve ser 2R = 12 (4√3·√3 = 12) e o volume (4√3)³ = 192√3. Essa checagem pega erros de fator.",
+      "Unidades: comprimentos em cm e volume em cm³. O valor 192√3 ≈ 332,55 cm³."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 7.0,
+      "final_answer": "(a) $V_{\\max}=192\\sqrt{3}\\ \\text{cm}^3\\approx 332{,}55\\ \\text{cm}^3$. (b) O prisma ótimo é um cubo: altura $h=4\\sqrt{3}\\ \\text{cm}\\approx 6{,}93\\ \\text{cm}$ e base quadrada de lado $4\\sqrt{3}\\ \\text{cm}\\approx 6{,}93\\ \\text{cm}$.",
+      "review": {
+        "score": 7,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Caso da face lateral não tratado. O enunciado diz 'uma das faces do prisma', mas a resolução escreve 'a base 𝓑 que contém os quatro vértices sobre 𝒮' e prova tudo a partir daí, sem justificar que a face é base. Base e face lateral não são simétricas, então não há WLOG. Se a face com os quatro vértices sobre a esfera for lateral (retângulo com dois vértices em cada base, centrado no círculo de interseção, com z = ∓h/2), os Passos 2–4 não se aplicam. A correção é provar a cota para qualquer prisma reto contido na bola (a base cabe no disco de raio ρ com ρ² ≤ 36 − h²/4, área ≤ 2ρ², logo V ≤ 72h − h³/2 ≤ 192√3), o que dispensa a hipótese sobre a face, ou tratar o caso lateral separadamente. O resultado final não muda, mas a otimalidade não está provada para todas as configurações admitidas."
+          },
+          {
+            "severity": "minor",
+            "description": "Convexidade da base (Passo 1) justificada de forma vaga ('vértices sobre uma circunferência estão em posição convexa'). Deveria dizer que um quadrilátero simples com vértices numa circunferência é convexo, porque seus vértices aparecem na ordem cíclica, e lembrar que a base de um prisma é polígono simples."
+          },
+          {
+            "severity": "minor",
+            "description": "A fórmula S = ½·d₁·d₂·sen φ para quadrilátero convexo é usada sem justificativa nem referência. É resultado conhecido, mas o rigor pedido exige pelo menos um esboço (decompor pela diagonal e somar as distâncias dos outros dois vértices à diagonal)."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação ambígua: 𝒮 aparece como superfície ('vértices sobre 𝒮', 'π∩𝒮 é um círculo') e como bola ('prisma contido em 𝒮', |Q|² ≤ R²). Deveria distinguir superfície esférica e bola fechada."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'Verificação independente' (diagonal 2a²+h² ≤ 144 com AM-GM) vale apenas para bases quadradas. Não é verificação independente do máximo geral, e deveria ser rotulada como checagem de caso particular. A conta de AM-GM está correta."
+          },
+          {
+            "severity": "minor",
+            "description": "Admissibilidade (Passo 6): afirma que todos os oito vértices estão a distância 6 sem dizer que a outra base está em z = +x₀ (|t+h| = x₀). Isso decorre da igualdade h = 2x₀ com base simétrica, mas deveria ser explicitado."
+          },
+          {
+            "severity": "minor",
+            "description": "A unicidade 'a menos de congruência' é afirmada sem argumento. Falta observar que t = −x₀ é forçado pela desigualdade |t+h| ≤ |t| (t = +x₀ daria |t+h| = 3x₀ > x₀), e que a escolha de lado é única."
+          }
+        ],
+        "summary": "Respostas idênticas à referência e ambas corretas: (a) V_max = 192√3 cm³ ≈ 332,55 cm³; (b) h = 4√3 cm e base quadrada de lado 4√3 cm (o ótimo é um cubo). Conferi o enunciado no PDF ('uma das faces') e refiz as contas com python: f(x) = 4x(36 − x²) tem máximo em x = 2√3 com f = 192√3; base quadrada com diagonal 4√6 tem lado 4√3; h = 2x₀ = 4√3; vértices a distância 6 do centro; cota de quadrado 2a² + h² ≤ 144 com AM-GM dá a²h ≤ 48^{3/2} = 192√3. Uma busca numérica com face lateral sobre a esfera deu 332,552, consistente com 192√3. A cota analítica geral (ρ² ≤ 36 − h²/4, área ≤ 2ρ², V ≤ 72h − h³/2 ≤ 192√3) vale para qualquer face, então o resultado não muda. O problema está na justificativa: a prova de otimalidade só cobre o caso em que a face com quatro vértices sobre a esfera é base, e esse caso é assumido sem justificativa (armadilha que a referência marcava). Das armadilhas, oito estão tratadas corretamente (altura não livre, base quadrada justificada, caso degenerado x→0, lado vs. diagonal, fator 2 na altura, 'contido' tratado como vértices na bola, verificação do cubo, unidades); a face lateral não. Nota 7: resposta certa e cadeia majoritariamente rigorosa, mas com lacuna real de caso, o que impede o nível de gabarito comentado (≥ 9).\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "(a) $V_{\\max}=192\\sqrt{3}\\ \\text{cm}^3\\approx 332{,}55\\ \\text{cm}^3$. (b) Altura $h=4\\sqrt{3}\\ \\text{cm}\\approx 6{,}93\\ \\text{cm}$ e base quadrada de lado $4\\sqrt{3}\\ \\text{cm}\\approx 6{,}93\\ \\text{cm}$; o ótimo é o cubo de aresta $4\\sqrt{3}\\ \\text{cm}$ inscrito na esfera.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 5 afirma que o máximo 'é único' e que 'todos os cubos inscritos são congruentes'. A unicidade vale apenas a menos de rotação em torno do eixo z (a orientação do quadrado na base). O texto deveria dizer 'único a menos de rotação em torno do eixo z'."
+          },
+          {
+            "severity": "minor",
+            "description": "A fórmula do cadarço (Passo 2) só dá a área para polígono simples (não autointersectante). A resolução diz 'polígono simples, convexo ou não', mas não fixa na notação que 'quadrilátero da base' significa polígono simples de 4 lados. Essa hipótese deveria ser declarada explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Na seção 'Conferências', a frase 'a razão cubo/esfera esperada para um cubo inscrito' não é justificada e não acrescenta verificação. Deveria ser removida ou justificada. A checagem AM-GM vale só para base quadrada e não substitui o Passo 2; está corretamente rotulada como conferência."
+          }
+        ],
+        "summary": "Verifiquei o enunciado no PDF (página 3) e a transcrição confere. As duas respostas finais coincidem e estão corretas: (a) V_max = 192√3 cm³ ≈ 332,55 cm³; (b) h = 4√3 cm e base quadrada de lado 4√3 cm, ou seja, o cubo de aresta 4√3 cm. A solução do candidato é uma prova completa e rigorosa. A cota S ≤ 2r² vale para qualquer quadrilátero simples com vértices num disco de raio r (Passo 2, com igualdade só para quadrado). A cota r² ≤ R² − h²/4 vem de M ≥ h²/4 (Passo 3). A identidade (h−4√3)²(h+8√3) = 2[192√3 − (72h − h³/2)] está correta e fecha a otimização em h sem cálculo. A admissibilidade (8 vértices a distância 6 do centro e convexidade de K) fecha o caso de existência. Conferi numericamente: as identidades e a cota de área por amostragem; a subida de encosta sobre prismas com 8 vértices na bola chegou a 330,8, abaixo de 332,55, sem violar a cota; o cubo tem todos os vértices a 6 cm e V = 332,553755. Todas as armadilhas da lista foram tratadas: altura não livre, base não assumida quadrada, r² em vez de r, lado versus diagonal, fator 2 na altura, face lateral, 'contido' versus vértices, consistência do cubo e unidades. Os problemas restantes são de precisão de linguagem (unicidade a menos de rotação, hipótese de quadrilátero simples declarada implicitamente, uma frase de conferência sem justificativa). Nenhum afeta a correção, por isso a nota é 9,5: publicável como gabarito comentado após pequenos ajustes de redação.\""
+      }
+    }
+  ]
+}

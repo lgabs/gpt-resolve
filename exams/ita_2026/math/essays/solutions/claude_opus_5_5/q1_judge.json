@@ -1,0 +1,50 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "O octaedro é |x|+|y|+|z| ≤ 5. Ele contém 231 pontos de coordenadas inteiras: 102 na superfície e 129 no interior.",
+  "judge_reference": {
+    "reference_solution": "**Questão 01: resolução de referência**\n\nConferi a transcrição com o original (p. 2) e ela está fiel. A questão não tem figura.\n\n**1) Qual é o octaedro (por que ele fica determinado)**\nOs três vértices dados, A=(5,0,0), B=(0,5,0) e C=(0,0,5), estão todos à distância 5 do centro O. Logo o raio circunscrito é R = 5. Num octaedro regular de raio circunscrito R, dois vértices distintos só podem estar em uma de duas situações:\n- adjacentes, à distância R√2;\n- opostos, à distância 2R.\n\nAqui m(AB) = m(BC) = m(CA) = 5√2 = R√2. Então A, B e C são dois a dois adjacentes: formam uma face, e OA, OB e OC são mutuamente perpendiculares.\n\nO octaedro regular tem simetria central em relação ao seu centro. Por isso cada vértice V tem como oposto o vértice −V. Os outros três vértices são, portanto, (−5,0,0), (0,−5,0) e (0,0,−5). O sólido é o fecho convexo de {±5e₁, ±5e₂, ±5e₃}, ou seja:\n\n  O = {(x,y,z) ∈ ℝ³ : |x| + |y| + |z| ≤ 5}.\n\nPara conferir: no 1º octante, a face é o triângulo x+y+z = 5 com x, y, z ≥ 0. As outras 7 faces vêm das trocas de sinal. Cada uma é um triângulo equilátero de lado 5√2.\n\n- Interior: |x|+|y|+|z| < 5.\n- Superfície: |x|+|y|+|z| = 5.\n\n**2) Contagem por camadas z = k**\nFixe z = k inteiro, com |k| ≤ 5, e seja m = 5 − |k|. Queremos o número de pares inteiros (x,y) com |x| + |y| ≤ m. Chamo esse número de N(m).\n\n- O ponto com |x|+|y| = 0 é só a origem: 1 ponto.\n- Para j ≥ 1, os pontos com |x|+|y| = j são 4j:\n  - 4 pontos sobre os eixos;\n  - 4(j−1) fora dos eixos, pois há j−1 escolhas de |x| ∈ {1,…,j−1} e 4 escolhas de sinais.\n\nSomando: N(m) = 1 + Σ_{j=1}^{m} 4j = 1 + 2m(m+1) = 2m² + 2m + 1.\n\nValores de N(m):\n\n| m | 0 | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|---|\n| N(m) | 1 | 5 | 13 | 25 | 41 | 61 |\n\nTotal de pontos:\n- camada k = 0: 61 pontos;\n- camadas k = ±1, …, ±5: duas de cada, ou seja 2·(41+25+13+5+1) = 2·85 = 170 pontos;\n- total: 61 + 170 = **231**.\n\n**3) Separação entre interior e superfície (verificação)**\n- Superfície, |x|+|y|+|z| = 5:\n  - os 6 vértices (±5,0,0), etc.;\n  - pontos com exatamente uma coordenada nula: 3 escolhas da coordenada nula × 4 pares (a,b) com a,b ≥ 1 e a+b = 5 × 4 sinais = 48;\n  - pontos sem coordenada nula: C(4,2) = 6 soluções positivas de a+b+c = 5, vezes 8 sinais = 48.\n  - Soma: 6 + 48 + 48 = 102 (fórmula geral: 4n² + 2).\n- Interior, |x|+|y|+|z| ≤ 4: N(4) + 2(N(3)+N(2)+N(1)+N(0)) = 41 + 2·44 = 129.\n- 129 + 102 = 231 ✓.\n\nTambém confere com a fórmula fechada (2n+1)(2n²+2n+3)/3 para n = 5: 11·63/3 = 231. Uma contagem por força bruta em Python também deu 231 (102 na superfície e 129 no interior).\n\n**Resposta:** 231 pontos de coordenadas inteiras: 129 no interior e 102 na superfície.",
+    "final_answer": "231 pontos de coordenadas inteiras no sólido |x|+|y|+|z| ≤ 5 (129 no interior e 102 na superfície).",
+    "pitfalls": [
+      "Justificar que o octaedro fica determinado. As distâncias ao centro (5) e entre os vértices (5√2 = R√2) mostram que os três vértices dados são adjacentes dois a dois. A simetria central do octaedro regular dá os outros vértices: −(5,0,0), −(0,5,0), −(0,0,5). Assumir direto |x|+|y|+|z| ≤ 5 sem nenhuma justificativa é uma lacuna (pequena).",
+      "Descrever o sólido corretamente como |x|+|y|+|z| ≤ 5, com 8 faces x±y±z = 5. É errado confundi-lo com o cubo |x|,|y|,|z| ≤ 5 (1331 pontos) ou com a esfera de raio 5.",
+      "Ler 'no interior e na superfície' como a união dos dois conjuntos: deve-se contar o sólido fechado, com fronteira incluída. Contar só o interior dá 129; contar só a superfície dá 102. Ler como interseção (conjunto vazio) não faz sentido.",
+      "Na contagem de cada camada, não errar a quantidade de pontos com |x|+|y| = j. São 4j para j ≥ 1 e 1 para j = 0. Erros comuns: contar 4j+1, ou contar duas vezes os pontos sobre os eixos ao multiplicar por 4 os sinais quando alguma coordenada é zero.",
+      "Contar as camadas simetricamente: k = 0 uma vez e k = ±1, …, ±5 duas vezes cada. É erro contar a camada central duas vezes (daria 292) ou esquecer as camadas com z negativo (daria 146).",
+      "Não se pode usar estrelas e barras direto em x+y+z ≤ 5 e multiplicar por 8. Isso conta várias vezes os pontos com coordenadas nulas (8·56 = 448 está errado). As coordenadas nulas precisam de tratamento separado.",
+      "A instrução 8 da prova exige expressões numéricas resolvidas por inteiro. A resposta final precisa ser o número 231, não uma soma ou fórmula deixada em aberto.",
+      "Uma verificação cruzada é desejável: 129 + 102 = 231, ou a fórmula (2n+1)(2n²+2n+3)/3 com n = 5."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "O octaedro é |x|+|y|+|z| ≤ 5. Ele contém 231 pontos de coordenadas inteiras: 102 na superfície e 129 no interior.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato afirma, sem demonstrar, que o fecho convexo dos 6 vértices é limitado pelos 8 planos ±x±y±z=5 e que, portanto, o sólido é |x|+|y|+|z|≤5. O resultado é padrão e está certo, mas uma linha bastaria para justificá-lo. No 1º octante, a face é o plano x+y+z=5 que passa pelos três vértices, e a origem fica do lado x+y+z<5. O mesmo vale nos outros octantes por troca de sinais. Outra opção é usar a desigualdade triangular |x|+|y|+|z| ≤ Σλᵢ·5 para combinações convexas."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'Os 12 segmentos entre eles são arestas' é apresentada como fato, sem dizer por que os pares não opostos (e só eles) formam arestas. Isso não afeta o raciocínio principal, porque a simetria central já determina os 6 vértices. Essa parte serve só como verificação de consistência."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência do interior ('pelo mesmo método: 41+2(25+13+5+1)') é só indicada, sem explicar que corresponde a N(4)+2[N(3)+…+N(0)]. Para quem corrige, a correspondência é óbvia. Mesmo assim, uma palavra deixaria a leitura imediata."
+          }
+        ],
+        "summary": "Conferi o enunciado no original (p. 2) e a transcrição está fiel. A resposta final, 231, coincide com a minha referência e com a força bruta em Python (231 no total: 102 na superfície e 129 no interior).\n\nO sólido fica identificado corretamente e de forma limpa. A simetria central do octaedro regular leva os três vértices dados aos seus opostos, o que fornece os 6 vértices distintos ±5eᵢ. Esse argumento dispensa até a análise de adjacência que usei na referência. O candidato ainda confere que as arestas medem 5√2 e que a face ABC é equilátera, e chega a 𝒪 = {|x|+|y|+|z| ≤ 5}. Interior (desigualdade estrita) e superfície (igualdade) estão bem distinguidos, e a frase 'no interior e na superfície' foi lida como o sólido fechado, que é a leitura correta.\n\nA contagem por camadas também está certa. A dedução N(k) = Σ(2(k−|x|)+1) = 2k²+2k+1 foi feita por um caminho diferente do meu (somando sobre x, e não por anéis de 4j pontos), e todas as passagens estão corretas. A camada z=0 aparece uma vez e as camadas z=±1,…,±5 aparecem duas vezes cada: 61 + 2·85 = 231. Não houve contagem dupla dos pontos com coordenada nula nem uso indevido de estrelas e barras. A resposta é um número fechado, como pede a instrução 8.\n\nA verificação cruzada foi feita. A superfície dá 2+2(4+8+12+16)+20 = 102, o interior dá 129, e 102+129 = 231. Todas as armadilhas que listei foram tratadas.\n\nSó há lacunas pequenas de rigor: a igualdade entre o fecho convexo e |x|+|y|+|z|≤5 e a identificação das arestas foram afirmadas sem demonstração. A redação é clara e organizada, publicável como gabarito comentado."
+      }
+    }
+  ]
+}

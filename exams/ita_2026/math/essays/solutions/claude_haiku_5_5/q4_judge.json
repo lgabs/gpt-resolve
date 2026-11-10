@@ -1,0 +1,54 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "A área total em vermelho é S(α) = π(α² + 32α + 528) unidades de área (α > 0). Os 33 círculos têm raios α, α+1, …, α+32; são vermelhos o disco central e os anéis A₂, A₄, …, A₃₂. Conferido: a área branca é π(32α + 496) e a soma com a vermelha dá π(α+32)², a área do círculo externo.",
+  "judge_reference": {
+    "reference_solution": "Questão 4 (ITA 2026, 2ª fase, Matemática). Resolução de referência.\n\nHipóteses: α > 0 (é o raio do disco central). Não é preciso que α seja inteiro.\n\n1) Modelagem\n- Os 33 círculos têm raios r_j = α + j, para j = 0, 1, ..., 32. O círculo de índice 0 é o central.\n- Regiões: o disco D_0 (raio α), pintado de vermelho pelo enunciado, e os 32 anéis A_k, para k = 1, ..., 32, onde A_k é a região entre os círculos de raios α+k−1 e α+k.\n- As cores alternam a partir do centro. Como D_0 é vermelho, A_1 é branco, A_2 é vermelho, e assim por diante. Logo A_k é vermelho se, e somente se, k é par.\n- Os anéis vermelhos são A_2, A_4, ..., A_32, ou seja, 16 anéis.\n\n2) Área de um anel\n- Área(A_k) = π[(α+k)² − (α+k−1)²] = π(2α + 2k − 1).\n- Esta é a diferença das áreas dos discos, não π·(largura)·(raio).\n\n3) Soma da área vermelha\n- S = πα² + Σ_{k par, 2 ≤ k ≤ 32} π(2α + 2k − 1).\n- Faça k = 2j, com j = 1, ..., 16. O termo fica π(2α + 4j − 1).\n- Σ_{j=1}^{16} (2α + 4j − 1) = 16(2α − 1) + 4·Σ_{j=1}^{16} j = 32α − 16 + 4·136 = 32α + 528.\n- Conferência como progressão aritmética: primeiro termo 2α+3 (j=1), último termo 2α+63 (j=16), 16 termos. Soma = 16·((2α+3)+(2α+63))/2 = 16(2α+33) = 32α + 528.\n- Logo S = πα² + π(32α + 528).\n\n4) Resposta\n- S(α) = π(α² + 32α + 528) = π[(α+16)² + 272], para α > 0.\n\n5) Verificações\n- Área total do alvo: π(α+32)². Área branca: π(α+32)² − S = π(32α + 496), que coincide com a soma direta dos 16 anéis brancos (Σ_{j=1}^{16} (2α+4j−3) = 32α + 496).\n- Caso α = 1: S = 561π, total = 1089π, branca = 528π. Confere.\n- Conferido também por contagem exata em Python (frações) para vários valores de α.\n\nInterpretação alternativa: se \"33 círculos\" fosse lido como 33 anéis além do central (34 circunferências), a resposta não mudaria. Os anéis vermelhos continuam sendo os de índice par até 32, e o 33º anel tem índice ímpar, logo é branco.",
+    "final_answer": "Área total vermelha = π(α² + 32α + 528) = π[(α+16)² + 272], para α > 0.\n\nResumo: o disco central (raio α) é vermelho e contribui com πα². Os anéis vermelhos são os de índice par, A_2, A_4, ..., A_32, num total de 16. Cada anel A_k tem área π(2α + 2k − 1). Somando os 16 anéis vermelhos e acrescentando o disco central, obtém-se π(α² + 32α + 528). Não há alternativa de múltipla escolha.",
+    "pitfalls": [
+      "Disco central: ele é vermelho e entra na soma (πα²). Esquecê-lo leva a π(32α+528).",
+      "Paridade das cores: o primeiro anel, ao redor do centro, é branco, pois o centro é vermelho e as cores alternam. Os vermelhos são os de índice PAR (k = 2, 4, ..., 32). Se os ímpares forem tomados como vermelhos, sai π(α²+32α+496), que é o erro mais comum.",
+      "Quantidade de anéis vermelhos: são 16 (k = 2, 4, ..., 32). Não são 15 nem 17.",
+      "Área do anel: é a diferença de áreas dos discos, π[(α+k)²−(α+k−1)²] = π(2α+2k−1). Não use π·1·(raio), nem π(2α+2k), nem a área de um disco inteiro.",
+      "Modelagem dos raios: os raios formam PA (α+j), mas as áreas não formam PA com a mesma razão. Não some raios no lugar de áreas.",
+      "Índice dos anéis: a conta correta usa k = 2j com j = 1..16, ou seja, termo π(2α+4j−1), e não π(2α+2j−1).",
+      "Aritmética da soma: Σ_{j=1}^{16} j = 136 (não 128 nem 153). Então 4·136 = 544 e 16·(−1) = −16, o que dá 528. Os coeficientes são 32α (de 16·2α) e 528.",
+      "Forma final: a resposta é uma expressão em α e deve vir com π e totalmente expandida, π(α²+32α+528). Deixar somatório, omitir π ou não simplificar perde pontos, conforme a instrução 8 da prova.",
+      "Hipótese de validade: α > 0, pois é raio. A fórmula é polinomial e vale para qualquer α real positivo, não apenas inteiro. Em α = 0 o disco degenera, então é preciso declarar α > 0.",
+      "Interpretação de '33 círculos': inclui o círculo central, logo há 32 anéis. Se for lido como 33 anéis além do centro, a resposta não muda, pois o 33º anel tem índice ímpar e é branco. Vale justificar a leitura adotada.",
+      "Confusão de cores: não responder a área branca (π(32α+496)) nem a área total (π(α+32)²). Use a área total apenas como conferência: vermelho + branco = π(α+32)².",
+      "Verificação recomendada: para α = 1, a área vermelha deve ser 561π (total 1089π, branca 528π)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "A área total em vermelho é S(α) = π(α² + 32α + 528) unidades de área (α > 0). Os 33 círculos têm raios α, α+1, …, α+32; são vermelhos o disco central e os anéis A₂, A₄, …, A₃₂. Conferido: a área branca é π(32α + 496) e a soma com a vermelha dá π(α+32)², a área do círculo externo.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A leitura de \"33 círculos\" é apenas declarada (\"contando o central\"), sem justificativa no texto e sem mencionar a leitura alternativa (34 circunferências, isto é, 33 anéis além do central). A resposta é invariante nessa leitura, pois os anéis vermelhos continuam sendo A_2,...,A_32 e o 33º anel tem índice ímpar (branco). Deveria haver uma frase dizendo isso, porque o enunciado admite essa ambiguidade. Verificado em python: para α=1, 7/3 e 50, as duas leituras dão o mesmo valor vermelho."
+          },
+          {
+            "severity": "minor",
+            "description": "Na seção de área vermelha, a frase \"o termo 2α−1 é somado 16 vezes\" descreve mal a separação da soma. O termo é 2α+4j−1, e o correto seria Σ(2α−1) + 4Σj = 16(2α−1) + 4·136. O resultado 32α+528 está certo, mas a justificativa escrita está imprecisa."
+          },
+          {
+            "severity": "minor",
+            "description": "A restrição α>0 aparece apenas no início (\"Seja α>0 o raio...\") e não é repetida no bloco ANSWER. Também não há menção explícita de que a fórmula polinomial vale para qualquer α real positivo, inclusive não inteiro. A dedução é geral, então o problema é só de acabamento."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à da referência: S_vermelho(α) = π(α² + 32α + 528) = π[(α+16)² + 272], para α > 0. Reli o enunciado no PDF (página 5, Questão 04) e confere com a transcrição. Conferi as contas com python3 usando frações para α ∈ {1, 1/2, 3/7, 5, 10/3, 100}: a área vermelha, a branca (π(32α+496)) e a total (π(α+32)²) batem em todos os casos, e a leitura alternativa de 34 circunferências dá o mesmo resultado. Todas as contas intermediárias do candidato conferem: A_k = π(2α+2k−1), A_2 = 5π em α=1, Σj = 136, S_B = π(32α+496), S_V − S_B = π(α²+32) e diferença de cada par (A_2j, A_2j−1) igual a 2π. Armadilhas tratadas: disco central incluído (πα²), paridade das cores (vermelhos são os de índice par), 16 anéis vermelhos, área do anel como diferença de áreas, aritmética da soma, forma final expandida com π, verificação numérica em α=1 (561π), e área branca e total separadas da resposta pedida. Os três problemas são menores: a leitura de \\\"33 círculos\\\" não é justificada nem a invariância é mencionada, uma frase sobre a soma está imprecisa, e α>0 não é repetido no bloco ANSWER. Resolução publicável como gabarito comentado, com pequenos ajustes de redação.\"}"
+      }
+    }
+  ]
+}

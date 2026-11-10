@@ -1,0 +1,29 @@
+{
+  "question": 10,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-1-23-10-2025-2-fase-dia-1/dissertativa-10-matematica-2-fase-dia-1-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q10 — volume total das esferas interiores ao tetraedro ABCD",
+      "solution_answer": "V = (π√6/108)·a³ ≈ 0,0713·a³ (soma de todos os níveis n ≥ 0, com a esfera inscrita em ABCD)",
+      "key_answer": "V = 2·v0 = (π√6/108)·a³, com v0 = π√6·a³/216",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "As duas dão a mesma resposta pelo mesmo caminho. H = a√6/3, r = H/4 = a√6/12. O plano paralelo a BCD e tangente à esfera fica à altura 2r = H/2 e passa pelos pontos médios das arestas AB, AC e AD. Cada novo tetraedro é semelhante ao anterior com razão 1/2. Por isso, a cada nível o número de esferas é multiplicado por 4 e o volume de cada esfera por 1/8. A soma é v0·Σ(1/2)^n = 2v0. Conferi em Python: v0 = 4π r³/3 = π√6a³/216 ≈ 0,035626·a³; V = π√6a³/108 ≈ 0,071253·a³; r³ = √6a³/288; V/V_ABCD = π√3/9 ≈ 0,6046 < 1. A transcrição do enunciado bate com o PDF original (página 2). A resolução também prova que as esferas não se sobrepõem (Passo 5), o que o gabarito só supõe. Isso não muda o resultado."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado pede o volume de 'todas as esferas interiores ao tetraedro ABCD'. A resolução e o gabarito incluem a esfera inscrita original (n = 0) e chegam a 2v0 = π√6a³/108. Se alguém contasse só as esferas criadas pelo processo (n ≥ 1), o resultado seria v0 = π√6a³/216. A redação favorece incluir a primeira esfera, e a resolução registra essa escolha de forma explícita."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito soma os volumes sem justificar que as esferas não se sobrepõem. As esferas só se tocam em pontos: a esfera inscrita fica em λ_X ≤ 1/2 e os filhos ficam em λ_X ≥ 1/2. A conclusão está certa, mas falta esse passo, que a resolução demonstra no Passo 5."
+    }
+  ],
+  "summary": "A Questão 10 está correta e bate com o gabarito do Poliedro Resolve: V = π√6·a³/108 ≈ 0,0713·a³. As duas usam o mesmo raciocínio. Primeiro, r = a√6/12. Depois, o plano tangente passa pelos pontos médios das arestas e cria tetraedros de razão 1/2. A cada nível, o número de esferas vezes 4 e o volume de cada esfera vezes 1/8 dão razão 1/2, e a soma fica 2v0. Conferi as contas em Python e o enunciado com o PDF original. O único ponto de leitura é incluir ou não a esfera inscrita original. As duas a incluem, como o enunciado sugere, e a resolução avisa que, sem ela, o resultado seria a metade."
+}

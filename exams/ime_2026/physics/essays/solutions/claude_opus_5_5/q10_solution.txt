@@ -1,0 +1,64 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Reflexão especular: o ângulo de incidência é igual ao de reflexão, ambos medidos em relação à normal. Num espelho cilíndrico a normal é a direção radial. Como o feixe está num plano perpendicular ao eixo, o problema é plano: temos duas circunferências concêntricas de centro $O$, com $OA=R$ e $OB=r$. Seja $\varphi=\angle AOB$ o ângulo central subtendido pelo trecho $AB$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+\coordinate (O) at (0,0);
+\coordinate (B) at (1.5,0);
+\coordinate (A) at ({2.4*cos(32)},{2.4*sin(32)});
+\coordinate (H) at ({2.4*cos(32)},0);
+\draw (2.4,0) arc (0:70:2.4);
+\draw (1.5,0) arc (0:70:1.5);
+\draw (O) -- (A) node[midway,above left]{$R$};
+\draw (O) -- (B) node[midway,below]{$r$};
+\draw[dashed] (B) -- (2.9,0);
+\draw[dashed] (A) -- (H);
+\draw[thick] (A) -- (B);
+\fill (O) circle (1.2pt) node[below left]{$O$};
+\fill (A) circle (1.2pt) node[above right]{$A$};
+\fill (B) circle (1.2pt) node[below]{$B$};
+\fill (H) circle (1.2pt) node[below]{$H$};
+\draw (0.6,0) arc (0:32:0.6);
+\node at ({0.85*cos(16)},{0.85*sin(16)}) {$\varphi$};
+\draw (1.8,0) arc (0:67:0.3);
+\node at ({1.5+0.45*cos(30)},{0.45*sin(30)}) {$\theta$};
+\end{tikzpicture}
+
+{\small Figura fora de escala: $H$ é o pé da perpendicular baixada de $A$ sobre a reta $OB$.}
+\end{center}
+
+\textbf{1. A trajetória se repete.} Em cada ponto de reflexão $P$, o raio refletido é o simétrico do raio incidente em relação à reta $OP$. Em $B$, portanto, o trecho seguinte $BA'$ é a imagem de $BA$ pela simetria em relação a $OB$, e então $\angle BOA'=\angle AOB=\varphi$. O mesmo vale em $A'$ (simetria em relação a $OA'$), e assim por diante. Além disso, a reflexão preserva a distância da reta do raio ao centro, $d=r\sin\theta<r$. Assim, todo raio que sai do espelho externo atinge o interno, e todo raio que sai do interno (que é convexo) atinge o externo. As reflexões se alternam entre os dois espelhos, cada trecho subtende o mesmo ângulo central $\varphi$, e o ângulo de incidência em todos os pontos do espelho interno é $\theta$.
+
+\textbf{2. Condição de fechamento.} Com $n$ reflexões em cada espelho em uma volta, há $2n$ trechos, cada um de ângulo central $\varphi$. Como os raios se sobrepõem após exatamente uma volta,
+\[
+2n\varphi=2\pi\quad\Longrightarrow\quad \varphi=\frac{\pi}{n}.
+\]
+
+\textbf{a)} No triângulo retângulo $OHA$: $OH=R\cos\varphi$ e $AH=R\sin\varphi$. O feixe chega a $B$ vindo de fora do cilindro interno, logo $\theta<90^\circ$. Então $H$ fica no prolongamento de $OB$ além de $B$, com $BH=R\cos\varphi-r$. Como $BH$ está sobre a normal em $B$, $\theta=\angle ABH$. No triângulo retângulo $BHA$:
+\[
+\tan\theta=\frac{AH}{BH}=\frac{R\sin\varphi}{R\cos\varphi-r}=\frac{\sin(\pi/n)}{\cos(\pi/n)-r/R}.
+\]
+Com $r/R=\sqrt{3}/2$:
+\[
+\boxed{\tan\theta=\frac{\sin(\pi/n)}{\cos(\pi/n)-\frac{\sqrt{3}}{2}}=\frac{2\sin(\pi/n)}{2\cos(\pi/n)-\sqrt{3}}}
+\]
+(adimensional, como deve ser).
+
+\textbf{b)} Para que haja reflexão de fato em $B$, o feixe precisa chegar ao espelho interno por fora e não rasante, ou seja, $0<\theta<90^\circ$. Como o numerador $\sin(\pi/n)$ é positivo, isso equivale a $\tan\theta>0$:
+\[
+\cos\frac{\pi}{n}>\frac{\sqrt{3}}{2}=\cos\frac{\pi}{6}
+\;\Longrightarrow\;\frac{\pi}{n}<\frac{\pi}{6}
+\;\Longrightarrow\; n>6 .
+\]
+\begin{itemize}
+\item $n=6$: $\cos(\pi/6)=\sqrt{3}/2$ e $\theta=90^\circ$. A trajetória seria o hexágono regular inscrito no cilindro externo, cujo apótema é $R\cos 30^\circ=r$: os lados apenas tangenciam o cilindro interno. A incidência é rasante e não há reflexão no espelho interno, então $n=6$ deve ser excluído.
+\item $n\le 5$: $\cos(\pi/n)<\sqrt{3}/2$, ou seja, $R\cos\varphi<r$. A corda que fecha o polígono passaria por dentro do cilindro interno, o que é impossível.
+\end{itemize}
+Para todo $n\ge 7$ existe um $\theta\in(0^\circ,90^\circ)$ que satisfaz o item a). Não há limite superior: quando $n\to\infty$, $\theta\to 0$ e o feixe fica quase radial. Conferência numérica: $n=7$ dá $\tan\theta\approx 12{,}4$ ($\theta\approx 85{,}4^\circ$, quase rasante, como esperado perto do limite); $n=12$ dá $\tan\theta\approx 2{,}59$ ($\theta\approx 68{,}9^\circ$).
+
+Portanto $n\in\{7,8,9,\dots\}$, isto é, $n\ge 7$.
+
+ANSWER: a) $\tan\theta=\dfrac{\sin(\pi/n)}{\cos(\pi/n)-\sqrt{3}/2}=\dfrac{2\sin(\pi/n)}{2\cos(\pi/n)-\sqrt{3}}$;\quad b) $n\in\mathbb{N}$ com $n\ge 7$ (isto é, $n=7,8,9,\dots$).

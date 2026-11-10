@@ -1,0 +1,134 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.0,
+  "final_answer": "a) T_fA = 450 K (η_A = 0,40 = 0,80·η_C com η_C = 0,50). b) Q_fA = 90 kW (reversível daria 75 kW; geração de entropia 1/30 kW/K ≈ 33,3 W/K). c) Não realistas. Para 350 residências são necessários 116,7 kW, acima do limite absoluto de 100 kW (no máximo 300 residências; no caso reversível com a repartição dada, 85 kW ou 255 residências). O aquecimento de 50 L/min em +10 K é compatível com a 2ª lei apenas se a água entrar abaixo de 290 K, condição não informada, e consome 33,3 kW do calor a 300 K; juntos, o máximo cai para 215 residências.",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA - IME 2026/2027, Física, Questão 5 (discursiva, valor 1,0). Resolvida a partir do enunciado e da figura; contas conferidas em Python com frações exatas.\n\nDADOS CONVERTIDOS\n- Empresa A: W_A = 80 HP x 3/4 kW/HP = 60 kW (potência útil). Q_H = 150 kW a T_H = 900 K.\n- Empresa B: mesma fonte quente (900 K, 150 kW). Rejeita Q_450 = (1/2) x Q_F(A) = 45 kW para a fonte de 450 K, e Q_300 (incógnita) para a fonte de 300 K.\n- Água: 50 L/min = 50 kg/min = 5/6 kg/s; ΔT = +10 K; c = 4000 J/(kg·K).\n- Residência: 240 kWh/mês ÷ 720 h = 1/3 kW de potência média.\n\nITEM a) Temperatura da fonte fria da empresa A\n1) Eficiência real: η_A = W/Q_H = 60/150 = 0,40 (40%).\n2) Máximo admissível entre 900 K e T_F: Carnot, η_C = 1 - T_F/900.\n3) Enunciado: η_A = 0,8 · η_C, logo η_C = 0,40/0,80 = 0,50.\n4) Então 1 - T_F/900 = 0,5, e T_F = 450 K (177 °C).\nVerificação: η_A = 40% < 50% = η_C, coerente com irreversibilidade.\n\nITEM b) Taxa de calor rejeitada para a fonte fria (empresa A)\n1) Primeira lei: Q_F = Q_H - W = 150 - 60 = 90 kW.\n2) Segunda lei (checagem): o mínimo possível seria Q_H · T_F/T_H = 150 · 450/900 = 75 kW; 90 ≥ 75, OK.\n3) Geração de entropia: 90/450 - 150/900 = 1/30 kW/K ≈ 33 W/K > 0 (processo irreversível, consistente).\nResposta: Q_F = 90 kW.\n\nITEM c) Realismo das alegações da empresa B\n(i) Demanda de 350 residências, em potência média: E = 350 x 240 kWh = 84 000 kWh/mês; P_méd = 84 000/720 = 350/3 ≈ 116,7 kW.\n(ii) Calor para a água: Q_água = ṁ·c·ΔT = (5/6) · 4000 · 10 = 100/3 ≈ 33,3 kW. Como é subproduto da rejeição à fonte de 300 K, Q_300 ≥ 33,3 kW.\n(iii) Balanço de energia da máquina B: W_B = 150 - 45 - Q_300.\n(iv) Segunda lei (Clausius), com Q_300 incógnito: 150/900 - 45/450 - Q_300/300 ≤ 0, logo Q_300 ≥ 20 kW e W_B ≤ 85 kW (mesmo sem a água).\n(v) Limite absoluto independente: nenhum sumidouro está abaixo de 300 K, então Q_out ≥ Q_H · 300/900 = 50 kW e W ≤ 100 kW (equivale a Carnot entre 900 K e 300 K, η = 2/3). Vale para qualquer arranjo com sumidouros a T ≥ 300 K.\n(vi) Com a água (Q_300 = 100/3 kW): W_B = 150 - 45 - 100/3 = 215/3 ≈ 71,7 kW, que alimenta no máximo 215 residências (cada uma a 1/3 kW médios).\n(vii) Confronto: demanda 116,7 kW versus oferta de no máximo 100 kW (limite absoluto), 85 kW (sem água) ou 71,7 kW (com água). Déficit de 45 kW, cerca de 39% da demanda. Mesmo sem a água, 350 residências são inviáveis (no máximo 255 sem água; 215 com a água).\n(viii) Ressalva sobre a água: um reservatório a 300 K só consegue aquecer água até 300 K. Um aumento de 10 K exige água entrando a no máximo 290 K e saindo a 300 K, o que só ocorre em troca de calor quase reversível (área infinita). Ou seja, mesmo a parcela de água é idealizada.\nConclusão: as alegações são NÃO realísticas. A demanda de 350 residências já excede o limite termodinâmico de 100 kW, e a água reduz ainda mais a potência disponível.\n\nFINAL: a) 450 K; b) 90 kW; c) não realístico (demanda 116,7 kW > limite de 100 kW; com a água a oferta cai para 71,7 kW, ou 215 residências).",
+    "final_answer": "a) T_F = 450 K (177 °C). Derivação: W = 80 HP x 0,75 = 60 kW; η_real = 60/150 = 40%; η_real = 0,8·η_Carnot, logo η_Carnot = 50% = 1 - T_F/900, donde T_F = 450 K.\n\nb) Q_F = 150 - 60 = 90 kW (taxa de calor rejeitada à fonte fria de 450 K). Consistente com a segunda lei: 90 kW ≥ 75 kW (mínimo reversível).\n\nc) Não realístico. Demanda de 350 residências = 84 000 kWh/mês ÷ 720 h ≈ 116,7 kW médios. Calor para a água: (50/60 kg/s)·4000·10 ≈ 33,3 kW, que precisa sair pela fonte de 300 K. Na máquina B, Q_450 = 45 kW, então W = 150 - 45 - Q_300. Limites: W ≤ 100 kW (Carnot 900 K / 300 K, limite absoluto), W ≤ 85 kW sem a água (Clausius), e W = 71,7 kW com a água, o que atende no máximo 215 residências. Logo a potência é insuficiente em qualquer cenário. Além disso, aquecer água em +10 K com uma fonte a 300 K exige água a ≤ 290 K e troca quase reversível. Não há alternativas de múltipla escolha; a resposta é discursiva.",
+    "pitfalls": [
+      "Conversão HP-kW: o enunciado dá 1 HP = 3/4 kW, logo 80 HP = 60 kW. Não usar 746 W/HP (daria 59,7 kW) nem tomar 80 kW.",
+      "'80% do máximo admissível' refere-se ao rendimento de Carnot, não a 80% do calor. O correto é η_real = 0,8·(1 - T_F/T_H), com η_real = W/Q_H = 0,40, o que dá η_C = 0,50 e T_F = 450 K. Tomar η = 0,8 diretamente leva a resultado absurdo.",
+      "Q_F da empresa A não é Q_H·T_F/T_H (75 kW, que seria reversível). A primeira lei dá Q_F = Q_H - W = 90 kW. A diferença de 15 kW é a irreversibilidade.",
+      "Não confundir energia com potência: 240 kWh/mês por residência, com 720 h/mês, dá 1/3 kW médios por residência. Comparar 350 x 240 kWh com kW é erro de unidade.",
+      "Vazão de água: 50 L/min = 50 kg/min = 5/6 kg/s (dividir por 60). Potência = 33,3 kW. Erros comuns: esquecer a conversão min→s ou o ΔT.",
+      "O calor enviado à água é parte do Q_300 e sai do balanço de energia (W = Q_H - ΣQ_out). Não é 'de graça': cada kW térmico desviado para a água reduz a potência elétrica.",
+      "Q_300 não é dado; deve-se obtê-lo pela desigualdade de Clausius (com temperaturas absolutas): 150/900 - 45/450 - Q_300/300 ≤ 0, o que dá Q_300 ≥ 20 kW e W ≤ 85 kW. Sinal e unidades importam.",
+      "Armadilha de usar o Carnot errado para B: Carnot entre 900 K e 450 K dá 50%, mas B também rejeita para 300 K. O limite correto para qualquer arranjo com sumidouros a T ≥ 300 K é W ≤ 150·(1 - 300/900) = 100 kW. Essa é a prova decisiva, independente da água.",
+      "A demanda de 350 residências (116,7 kW médios) já excede o limite absoluto de 100 kW, mesmo sem a água. A conclusão é robusta: 350 residências são inviáveis.",
+      "Com a água, W = 71,7 kW = 215/3 kW, o que atende 215 residências (255 sem a água; 300 pelo limite absoluto). Calcular residências como 71,7/0,33 com arredondamento para cima (216) é erro; o número é exatamente 215.",
+      "Consumo médio versus pico: o dado é consumo mensal, então a potência média é a exigência mínima. A pico seria maior e o veredito não muda.",
+      "Realismo da água: um reservatório a 300 K só aquece água até 300 K. Um aumento de +10 K exige água a ≤ 290 K e troca quase reversível (área infinita). Isso é ressalva adicional, não o argumento principal.",
+      "Verificação de consistência: η_B = 71,7/150 ≈ 47,8%, abaixo do Carnot 900/300 (66,7%). Geração de entropia da B: 45/450 + 33,3/300 - 150/900 ≈ 0,044 kW/K > 0.",
+      "Item c) pede argumento conclusivo: a resposta precisa dizer explicitamente 'não realístico' e justificar por primeira lei (balanço) e segunda lei (Clausius e Carnot), não só por contas isoladas."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 7.5,
+      "final_answer": "ANSWER: a) T_fA = 450 K (fonte fria da empresa A); b) 90 kW rejeitados à fonte fria pela máquina A; c) Não são realistas. Atender 350 residências exige 116,7 kW, acima do limite de 100 kW para qualquer ciclo entre 900 K e 300 K. No caso ideal, B fornece no máximo 85 kW (255 residências). Com o aquecimento de água (33,3 kW rejeitados a 300 K), o trabalho cai para 71,7 kW, ou seja, cerca de 215 residências. O aquecimento de água em si é compatível com a 2ª lei.",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Análise da água do item c) fisicamente incorreta. A resolução afirma que a água sai 'a cerca de 310 K (média de 305 K)' e conclui que o aquecimento é 'fisicamente plausível'. Isso é impossível: calor rejeitado a uma fonte de 300 K não pode elevar a água acima de 300 K. Para ganhar +10 K, a água deve entrar a no máximo 290 K e sair a no máximo 300 K, o que exige troca de calor com diferença de temperatura nula no fim (área infinita no limite reversível). Logo, a parcela da água é idealizada, não plausível. Deveria ser removido o cenário de 305/310 K (número que não consta do enunciado) e substituído por essa restrição, com a conclusão de que a alegação sobre a água também não é realista na prática. O veredito final do item não muda, mas a conclusão sobre a água está errada."
+          },
+          {
+            "severity": "minor",
+            "description": "Q_300 tratado como igualdade (Q_f2 = 100/3 kW), embora o enunciado só diga que a água é subproduto da rejeição à fonte de 300 K. O correto é Q_300 ≥ 33,3 kW, o que dá W_B ≤ 71,7 kW e no máximo 215 residências. O texto 'o trabalho cai para 71,7 kW, ou 215 residências' deveria dizer 'no máximo'."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese T_i ≥ 300 K usada no limite de 100 kW é aplicada sem justificativa explícita. Ela vale aqui porque as únicas fontes frias de B são 450 K e 300 K, e isso deveria ser dito."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução adota potência média (hipóteses), mas não comenta que o consumo de pico seria maior e reforçaria o veredito. Isso fica implícito e deveria ser explicitado."
+          }
+        ],
+        "summary": "A resposta final está correta nos três itens e coincide com a referência: a) T_F = 450 K (η_real = 0,40 = 0,8·η_C, logo η_C = 0,50); b) Q_F = 90 kW (1ª lei, com a checagem de Clausius e o mínimo reversível de 75 kW); c) não realístico. Revisei as contas com frações exatas e o enunciado no PDF. Todas conferem: W_A = 60 kW, Q_450 = 45 kW, Q_água = 100/3 kW, demanda de 350 residências = 116,7 kW, limite absoluto de 100 kW, máximo ideal de 85 kW (255 residências, atingido por dois ciclos de Carnot), e 215 residências com a água. Os pontos fortes são a conversão de unidades, a decomposição de η_A, o uso correto de Clausius com temperaturas absolutas e a derivação do limite de 2/3 independente da fonte de 450 K. A principal falha é a análise da água no item c): a resolução admite saída a 310 K de água aquecida por uma fonte de 300 K, o que é fisicamente impossível, e conclui que é 'plausível', quando a referência mostra que é idealizada. Também faltou rigor em tratar 71,7 kW como limite superior e em justificar T_i ≥ 300 K. Por isso a nota fica abaixo de 9: um professor corrigiria a conclusão sobre a água antes de publicar o gabarito.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "a) T_fA = 450 K (η_A = 0,40 = 0,80·η_C, com η_C = 0,50). b) Q̇_fA = 90 kW rejeitados à fonte fria (1ª lei: 150 − 60). c) Não são realistas. Atender 350 residências exige 116,7 kW, acima do limite absoluto de 100 kW (η ≤ 2/3). Mesmo no caso ideal, com a fonte de 450 K, o máximo é 85 kW (255 residências). O aquecimento de água exige pelo menos 33,3 kW rejeitados a 300 K. Ele só é termicamente compatível se a água entrar em no máximo 290 K menos o pinch, e reduz o máximo a 71,7 kW (no máximo 215 residências).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item c, parcela da água: o veredito 'não é realista como afirmado' não é conclusivo, como o enunciado exige. A própria análise mostra que a 2ª lei permite a água entrando a até ~290,2 K (no limite reversível; com 290 K de entrada e 300 K de saída a geração de entropia é 113 − 111 ≈ 1,9 W/K > 0). A temperatura de entrada não é dada, e a saída exata em 300 K exige área infinita. O correto seria dizer: viável apenas se a água entrar abaixo de ~290 K (≈17 °C) menos o pinch, o que não está garantido. A inviabilidade decisiva é a da potência, e isso deveria ficar explícito."
+          },
+          {
+            "severity": "minor",
+            "description": "Digressão sobre o trocador (θ = 300 − T, θ_saída = θ_entrada·e^(−UA/ṁc)) ocupa espaço desproporcional a um item de 1,0 ponto e usa hipóteses não declaradas: U constante, reservatório isotérmico e regime permanente. A fórmula está correta sob essas hipóteses, mas elas precisam ser ditas ou o trecho deve ser reduzido a um parágrafo."
+          },
+          {
+            "severity": "minor",
+            "description": "Conversão da vazão escrita de forma compacta: 'ṁ = 50 L/min · 1 kg/L = 5/6 kg/s' omite a divisão por 60 (min → s). O resultado está certo, mas esse passo de unidade é uma armadilha listada e deveria aparecer explicitamente (50 kg/min = 50/60 kg/s)."
+          },
+          {
+            "severity": "minor",
+            "description": "Terminologia: 'o máximo ideal cai para 71,7 kW' é impreciso. 71,7 kW é um limite superior obtido com a 1ª lei e Clausius com Q̇_300 = 100/3 kW. Esse ponto é irreversível (1/6 − 1/10 − 1/9 = −2/45 < 0), então não é um máximo 'ideal'. Deveria ser chamado de limite superior."
+          },
+          {
+            "severity": "minor",
+            "description": "Imprecisão no caso da água: 'a entrada deve ser de no máximo 290 K − ΔT_p' não define ΔT_p (que é 300 − T_saída) e não aproveita que ΔT = +10 K é exato, de modo que T_entrada = 290 K − ΔT_p exatamente. Definir ΔT_p e escrever a igualdade."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase final de c, 'As duas alegações não podem ser cumpridas juntas', é imprecisa. A alegação das 350 residências já é inviável sozinha (116,7 kW > 100 kW). O correto é: cada alegação é inviável por si, e juntas reduzem o máximo a 215 residências."
+          },
+          {
+            "severity": "minor",
+            "description": "Item b: a 2ª lei aparece como '150/900 − 90/450 = −1/30 < 0, consistente', mas a geração de entropia (1/30 kW/K ≈ 33 W/K) não é quantificada nem nomeada como tal. Isso não afeta a resposta, mas é uma verificação que um gabarito comentado explicitaria."
+          }
+        ],
+        "summary": "Resposta final correta e alinhada à referência: a) T_F = 450 K; b) Q̇_F = 90 kW; c) não realistas. Antes de avaliar, reli o enunciado original (página 5 de exam.pdf), que coincide com a transcrição, e refiz as contas com frações exatas. Confirmei: η_A = 0,40, η_C = 0,50, T_F = 450 K, Q_F = 90 kW (mínimo reversível 75 kW); Q̇_450 = 45 kW; Clausius dá Q̇_300 ≥ 20 kW e Ẇ_B ≤ 85 kW; limite absoluto 150·(1 − 300/900) = 100 kW; demanda 350·240/720 = 116,7 kW; água 5/6 kg/s × 4000 × 10 = 33,3 kW; com a água Ẇ_B ≤ 71,7 kW, ou 215 residências; Clausius com a água = −2/45 < 0; dois Carnot em paralelo (90 kW→450 K e 60 kW→300 K) atingem 85 kW. O caso da água também confere: 113,0 W/K contra 111,1 W/K e saída de 300 K ≈ 26,85 °C. Todas as armadilhas listadas foram tratadas: conversão HP (3/4 kW), 80% sobre Carnot, Q_F = 90 e não 75, energia versus potência, calor da água como parte de Q_300, Clausius com Q_300 incógnita e temperaturas absolutas, limite absoluto para B (não Carnot 900/450), média versus pico, 215 residências sem arredondar para cima e a restrição de 290 K. Não há erro de conta nem de conceito. A nota fica abaixo de 9 por três motivos: o veredito sobre a água é condicional e apresentado como conclusão, há uma digressão de trocador com hipóteses não declaradas, e há imprecisões de linguagem ('máximo ideal', 'não podem ser cumpridas juntas', ΔT_p indefinido). Nada disso muda a resposta, e a argumentação de potência é sólida e conclusiva por si só."
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.0,
+      "final_answer": "a) T_fA = 450 K (η_A = 0,40 = 0,80·η_C com η_C = 0,50). b) Q_fA = 90 kW (reversível daria 75 kW; geração de entropia 1/30 kW/K ≈ 33,3 W/K). c) Não realistas. Para 350 residências são necessários 116,7 kW, acima do limite absoluto de 100 kW (no máximo 300 residências; no caso reversível com a repartição dada, 85 kW ou 255 residências). O aquecimento de 50 L/min em +10 K é compatível com a 2ª lei apenas se a água entrar abaixo de 290 K, condição não informada, e consome 33,3 kW do calor a 300 K; juntos, o máximo cai para 215 residências.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No item c), o veredito sobre a água é hedged (\"não é garantido\"), enquanto o enunciado pede argumento conclusivo. A análise em si está certa: com área finita, T_e = 300 − 10/(1 − e^(−NTU)) < 290 K, e o enunciado não dá T_e. O problema é só de formulação. Sugestão: dizer explicitamente \"viável apenas se T_e < 290 K − ΔT_p, dado ausente e irrelevante para o veredito, porque a potência já inviabiliza a proposta\"."
+          },
+          {
+            "severity": "minor",
+            "description": "O valor 71,7 kW é chamado de \"limite superior, não um máximo reversível\" sem mostrar que é atingível. Ele é atingível com ciclo irreversível: dissipar 13,3 kW de trabalho como atrito a 300 K leva Q_300 a 33,3 kW e W a 71,7 kW. Uma frase bastaria para fechar a tightness do limite."
+          },
+          {
+            "severity": "minor",
+            "description": "O termo \"pinch\" é usado para ΔT_p = 300 − T_s, que é a diferença terminal na saída da água. Em trocadores, \"pinch\" tem sentido próprio. Sugestão: chamar de \"diferença terminal (approach)\"."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase \"a 2ª lei não impõe restrição extra\" aparece logo antes da exigência T_e < 290 K. Essa exigência vem da transferência de calor com área finita e reservatório isotérmico (lei de resfriamento), não da 2ª lei. A ressalva da 2ª lei (σ ≥ 0 via ln x ≥ 1 − 1/x) está correta, mas a origem da restrição deveria estar nomeada com clareza."
+          },
+          {
+            "severity": "minor",
+            "description": "Não há verificação explícita de consistência para B com água: η_B = 71,7/150 ≈ 47,8% < 2/3. A referência faz essa conferência. Não é obrigatório, mas reforçaria o item c). A geração de entropia de B (≈ 44 W/K) está calculada corretamente."
+          }
+        ],
+        "summary": "Respostas finais: a) 450 K, b) 90 kW e c) não realistas. Coincidem item a item com a referência, e confirmei todas as contas em Python com frações exatas. Não há divergência de resposta.\n\nConferências: η_A = 60/150 = 0,40 e η_C = 0,50, logo T_F = 450 K. Q_F = 90 kW, com mínimo reversível de 75 kW e σ = 100/3 W/K. Em B: Q_450 = 45 kW; Clausius dá Q_300 ≥ 20 kW e W ≤ 85 kW; limite absoluto de 100 kW (300 residências). A demanda é 350/3 ≈ 116,7 kW, e η necessária ≈ 77,8% > 2/3. Água: 5/6 kg/s × 4000 × 10 = 100/3 kW; W = 215/3 kW, o que dá 215 residências; Clausius com água dá −2/45, ou seja σ ≈ 44 W/K. A análise de trocador também confere: com NTU = 10, T_e = 290,0 K.\n\nPonto em que a resolução é mais precisa que a referência: a referência diz que a água exige troca \"quase reversível\". Com área finita, basta T_e < 290 K − ΔT_p. Só a saída exatamente a 300 K exige área infinita. O candidato está certo.\n\nCobertura de armadilhas: HP→kW (3/4), 80% sobre Carnot, Q_F ≠ 75 kW, energia vs potência, conversão de vazão, água como parte de Q_300, Clausius com temperaturas absolutas, Carnot 900/450 não usado isoladamente, 215 e não 216, média vs pico. Todas tratadas. Falta apenas a conferência de η_B com água.\n\nJustificativa: a conclusão de c) é robusta, vinda da 1ª lei (balanço), da 2ª lei (Clausius e Carnot) e de um limite absoluto independente da repartição. Os problemas listados são de redação e de fechamento (tightness, nomenclatura, hedge sobre a água), não de conteúdo. Com esses ajustes, a resolução é publicável como gabarito comentado."
+      }
+    }
+  ]
+}

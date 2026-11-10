@@ -1,0 +1,66 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Dados e estado inicial.} Com vácuo acima do pistão e o recipiente de massa desprezível, a única força para baixo sobre o pistão é o peso de $m+M$. No equilíbrio inicial,
+\[
+P_iA=(m+M)g,\qquad V_i=Ah_i .
+\]
+Sem a areia, o equilíbrio exige $P_fA=mg$. Para o gás monoatômico, $U=\tfrac32 nRT=\tfrac32 PV$ e $\gamma=c_p/c_v=\tfrac53$.
+
+\medskip
+\textbf{a) Retirada lenta (quase estática).}
+
+As paredes e o pistão são adiabáticos, logo $Q=0$. A retirada grão a grão mantém o gás em equilíbrio a cada instante e sem dissipação. O processo é, portanto, adiabático reversível:
+\[
+PV^{\gamma}=\text{cte}\;\Rightarrow\;P_i\,(Ah_i)^{5/3}=P_f\,(Ah_f)^{5/3}.
+\]
+Com $P_i/P_f=(m+M)/m$:
+\[
+\boxed{h_f=h_i\left(\frac{m+M}{m}\right)^{3/5}=h_i\left(1+\frac{M}{m}\right)^{3/5}}
+\]
+Verificação: para $M=0$ obtém-se $h_f=h_i$. Para $M>0$, $h_f>h_i$, pois o gás expande ao diminuir a carga.
+
+\medskip
+\textbf{b) Retirada instantânea.}
+
+Logo após a retirada, o gás ainda está a $P_i$, mas o pistão pesa só $mg$. A força resultante para cima é $Mg$, e o pistão sobe acelerado. Ele ultrapassa a posição de equilíbrio $h_f$ e para momentaneamente em $h_{max}$, onde $v=0$. Neste ponto a pressão do gás \emph{não} é $mg/A$, pois o pistão está sendo freado, com aceleração para baixo.
+
+\emph{Hipóteses.} Não há atrito nem vácuo a dissipar energia. O pistão é muito mais lento que as moléculas, então o gás tem $P$ e $T$ uniformes a cada instante. Sem dissipação no gás, a evolução após o desequilíbrio inicial é adiabática reversível, com $PV^{5/3}=\text{cte}$. Isso fixa o estado do gás em $h_{max}$:
+\[
+P_{max}=P_i\left(\frac{h_i}{h_{max}}\right)^{5/3}.
+\]
+
+\emph{Energia.} Tomando gás e pistão como sistema, com $Q=0$ e nada acima do pistão, a energia interna do gás converte-se em energia potencial do pistão. Em $h_{max}$ a energia cinética é nula:
+\[
+\Delta U+mg\,(h_{max}-h_i)=0 .
+\]
+Com $U=\tfrac32PV$:
+\[
+\tfrac32\left(P_iAh_i-P_{max}Ah_{max}\right)=mg\,(h_{max}-h_i).
+\]
+Substituindo $P_iA=(m+M)g$ e $P_{max}$, e simplificando $g$:
+\[
+\tfrac32 (m+M)h_i\left[1-\left(\frac{h_i}{h_{max}}\right)^{2/3}\right]=m\,(h_{max}-h_i),
+\]
+ou seja,
+\[
+\boxed{\,3\,(m+M)\,h_i\left[1-\left(\frac{h_i}{h_{max}}\right)^{2/3}\right]=2\,m\,(h_{max}-h_i)\,}
+\]
+
+A raiz $h_{max}=h_i$ é trivial (instante inicial, $v=0$); a solução procurada é a raiz $h_{max}>h_i$. Com $y=(h_{max}/h_i)^{1/3}$, e cancelando o fator $(y-1)$, a equação vira o polinômio
+\[
+2m\,y^4+2m\,y^3+2m\,y^2-3\,(m+M)\,y-3\,(m+M)=0 .
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item $M\to0$: $h_{max}\to h_i$. Sem desequilíbrio, o pistão não se move.
+\item $M\ll m$: com $h_{max}=h_i(1+\varepsilon)$, a expansão a segunda ordem dá $\varepsilon\approx \dfrac{6M}{5m}$. Isso é o dobro do deslocamento até o equilíbrio, $h_f/h_i-1\approx \dfrac{3M}{5m}$, como num oscilador quase harmônico que parte do repouso.
+\item $M\gg m$: $h_{max}\approx \dfrac{3(m+M)}{2m}\,h_i$, ou seja, $\tfrac32P_iV_i\approx mg\,\Delta h$. O gás cede quase toda a sua energia interna ao pistão.
+\item $h_{max}>h_f$ sempre (por exemplo, $m=M$: $h_f\approx1,52\,h_i$ e $h_{max}\approx2,26\,h_i$). O pistão oscila entre $h_i$ e $h_{max}$ em torno de $h_f$. A conferência numérica, integrando a equação de movimento do pistão, reproduz esses valores.
+\item Unidades: todos os termos da equação têm dimensão de comprimento, e $(m+M)/m$ é adimensional.
+\end{itemize}
+
+\medskip
+ANSWER: a) $h_f=h_i\,(1+M/m)^{3/5}$; \quad b) $3(m+M)\,h_i\left[1-(h_i/h_{max})^{2/3}\right]=2m\,(h_{max}-h_i)$, com $h_{max}>h_i$.

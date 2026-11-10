@@ -1,0 +1,152 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.0,
+  "final_answer": "a) $N_A=\\dfrac{g\\cos\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m\\,(L-a-d)+m_c\\,(b-d)\\right]$ e $N_B=\\dfrac{g\\cos\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m\\,(a-d)+m_c\\,(L-b-d)\\right]$, com $N_A+N_B=(M+m+m_c)\\,g\\cos\\theta$.\nb) $f_A+f_B=(M+m+m_c)\\,g\\sin\\theta$ pela estática. A repartição individual exige a hipótese explícita de mobilização uniforme do atrito, $f_i=N_i\\tan\\theta$ (reação vertical em cada apoio): $f_A=N_A\\tan\\theta$ e $f_B=N_B\\tan\\theta$. Ela exige $\\mu_s\\ge\\tan\\theta$ e $L>2d$.",
+  "judge_reference": {
+    "reference_solution": "**Questão 2 (ITA 2026, 2ª fase, Física) - resolução de referência**\n\n**Convenções e hipóteses.** Tomo s como coordenada ao longo da barra, com s = 0 na extremidade inferior e s = L na superior.\n- Apoio A em s = d; apoio B em s = L − d (d é medido sobre a barra, a partir de cada extremidade).\n- Centro de massa da barra (homogênea) em s = L/2.\n- Massa m em s = a (a partir da extremidade inferior).\n- Contrapeso m_c em s = L − b (b é medido a partir da extremidade superior).\n- Referencial: u ao longo do plano (subida), n normal ao plano. As normais N_A e N_B apontam para fora do plano. As forças de atrito f_A e f_B são paralelas ao plano, no sentido de subida, pois a barra tende a descer.\n- Cada peso m_i g tem componente normal m_i g cosθ (para dentro do plano) e componente paralela m_i g sinθ (descendo).\n- Hipótese necessária: todas as forças de contato e os pesos atuam no plano que contém a eixo da barra, isto é, a altura do centro de massa acima dos apoios é desprezível. Essa hipótese é a única que faz os dados do enunciado bastarem. Se houvesse altura h, apareceria um momento adicional proporcional a h(M+m+m_c)g sinθ, que altera N_A e N_B.\n\n**Item a) Forças normais.**\n\nEquilíbrio na direção normal ao plano:\nN_A + N_B = (M + m + m_c) g cosθ   (1)\n\nMomentos em relação a um eixo horizontal perpendicular à barra, contido no plano inclinado e passando pela extremidade inferior. Só as componentes normais produzem momento, porque as componentes paralelas atuam sobre a linha da barra e têm braço nulo:\nN_A·d + N_B·(L − d) = g cosθ [ M·L/2 + m·a + m_c·(L − b) ]   (2)\n\nResolvendo o sistema (1)-(2), com L ≠ 2d:\n- N_B = g cosθ · [ M/2 + ( m(a − d) + m_c(L − b − d) ) / (L − 2d) ]\n- N_A = g cosθ · [ M/2 + ( m(L − a − d) + m_c(b − d) ) / (L − 2d) ]\n\nEquivalentemente, N_A = g cosθ·[ M(L−2d)/2 + m(L−a−d) + m_c(b−d) ] / (L−2d).\n\nVerificações:\n- A soma N_A + N_B = (M + m + m_c) g cosθ satisfaz (1).\n- O momento em relação a B, N_A(L−2d) = g cosθ[ M(L/2 − d) + m(L − d − a) + m_c(b − d) ], confere com (2).\n- Com m = m_c = 0, N_A = N_B = Mg cosθ/2, como esperado para barra uniforme e simétrica.\n- Com a = d e m_c = 0, N_A = g cosθ (M/2 + m) e N_B = Mg cosθ/2: a massa m sobre A descarrega integralmente em A.\n- Com o caso numérico M = 12, m = 3, m_c = 2, L = 4, d = 0,5, a = 1, b = 0,8, θ = 30° e g = 10 (valores de teste), obtém-se N_A ≈ 75,34 N e N_B ≈ 71,88 N. A soma, 147,22 N, é igual a (M+m+m_c)g cosθ.\n\n**Item b) Forças de atrito.**\n\nEquilíbrio na direção paralela ao plano:\nf_A + f_B = (M + m + m_c) g sinθ   (3)\n\nOs momentos não trazem equação nova para o atrito. As forças paralelas atuam sobre a linha da barra e não produzem torque no plano. Temos 4 incógnitas (N_A, N_B, f_A, f_B) e apenas 3 equações independentes, (1), (2) e (3). A estática é indeterminada de grau 1 para a divisão do atrito entre os apoios.\n\nConclusões:\n- Determinado: a soma f_A + f_B = (M + m + m_c) g sinθ, no sentido de subida do plano.\n- Indeterminado individualmente: f_A = λ e f_B = (M+m+m_c) g sinθ − λ, com λ dependente das propriedades do contato, não da estática.\n\nFechamento usual (deslizamento iminente com o mesmo coeficiente μ_e nos dois apoios): f_i = μ_e N_i. Como f_A + f_B = μ_e(N_A + N_B) = (M+m+m_c) g sinθ, obtém-se μ_e = tanθ, que é a condição necessária para o equilíbrio nessa hipótese. Então:\n- f_A = tanθ·N_A = g sinθ · [ M/2 + ( m(L − a − d) + m_c(b − d) ) / (L − 2d) ]\n- f_B = tanθ·N_B = g sinθ · [ M/2 + ( m(a − d) + m_c(L − b − d) ) / (L − 2d) ]\n\nEssas duas expressões somam (M+m+m_c) g sinθ. No caso numérico acima, dão f_A ≈ 43,50 N e f_B ≈ 41,50 N, com soma 85,0 N.\n\nOutra escolha possível, sem ser única, é a divisão simétrica f_A = f_B = (M+m+m_c) g sinθ/2. Uma resolução que apresente um valor individual sem explicitar essa hipótese não é justificada pela estática.\n\n**Condições de validade.**\n- 0 < d < L/2, ou seja, os apoios estão sobre a barra e são distintos. Para L = 2d o denominador anula e o problema é degenerado.\n- Contato com os dois apoios exige N_A ≥ 0 e N_B ≥ 0. Isso significa M(L−2d)/2 + m(L−a−d) + m_c(b−d) ≥ 0 e M(L−2d)/2 + m(a−d) + m_c(L−b−d) ≥ 0. Se uma delas falhar, a barra se levanta de um apoio e gira em torno do outro, e o modelo deixa de valer.\n- Atrito estático: é necessário μ_e ≥ tanθ para que o equilíbrio exista, já que f_A + f_B = (M+m+m_c) g sinθ ≤ μ_A N_A + μ_B N_B. O coeficiente μ não é dado, então essa condição só pode ser verificada como restrição.",
+    "final_answer": "a) Forças normais, perpendiculares ao plano:\nN_A = g cosθ · [ M/2 + (m(L − a − d) + m_c(b − d)) / (L − 2d) ]\nN_B = g cosθ · [ M/2 + (m(a − d) + m_c(L − b − d)) / (L − 2d) ]\nVerificação: N_A + N_B = (M + m + m_c) g cosθ.\n\nb) Atrito, paralelo ao plano, no sentido de subida:\n- Soma determinada: f_A + f_B = (M + m + m_c) g sinθ.\n- Individualmente, a estática não determina a divisão. Com a hipótese de deslizamento iminente e mesmo coeficiente nos dois apoios (μ = tanθ), resulta f_A = tanθ·N_A = g sinθ · [ M/2 + (m(L − a − d) + m_c(b − d))/(L − 2d) ] e f_B = tanθ·N_B = g sinθ · [ M/2 + (m(a − d) + m_c(L − b − d))/(L − 2d) ].\n\nVálido para 0 < d < L/2, com N_A, N_B ≥ 0 e μ_e ≥ tanθ. Não há alternativa de múltipla escolha.",
+    "pitfalls": [
+      "Normal e peso: as normais dos apoios são perpendiculares ao plano, então entram com g cosθ (componente normal do peso), não com g. O atrito é paralelo ao plano e a soma dos atritos é (M+m+m_c) g sinθ. Trocar cos por sin ou usar o peso total é o erro mais comum.",
+      "Posições: a é medido a partir da extremidade INFERIOR e b a partir da SUPERIOR. Logo o contrapeso fica em s = L − b, e não em s = b. A é em s = d (perto da base) e B em s = L − d (perto do topo). Inverter esses pontos troca N_A e N_B.",
+      "Distâncias ao longo da barra (sobre o plano), não horizontais. d, a e b são medidos sobre a barra, então não cabe nenhum fator cos ou sin extra nos braços de alavanca.",
+      "Centro de massa da barra: a barra é homogênea, então o peso Mg atua em L/2, no meio, e não em A ou B.",
+      "Forças paralelas ao plano (atrito e componente do peso) não produzem momento em relação ao eixo da barra, porque atuam sobre a linha da barra. Incluí-las nos momentos com braço arbitrário é erro.",
+      "Hipótese do plano: o problema só fica determinado com os dados dados se a altura do centro de massa e dos contatos acima do plano for desprezível. Se a barra estiver elevada de h, há momento extra proporcional a h(M+m+m_c)g sinθ, que altera N_A e N_B. Uma boa resolução declara essa hipótese.",
+      "Indeterminação do atrito: há 4 incógnitas (N_A, N_B, f_A, f_B) e apenas 3 equações independentes. Só a soma dos atritos é determinada pela estática. Dar f_A e f_B individuais como se fossem únicos, sem hipótese explícita, é erro conceitual. Também não se deve assumir f_A = f_B = (M+m+m_c)g sinθ/2 como resultado, pois é apenas uma escolha.",
+      "Hipótese de fechamento: f_i = μ N_i com μ igual nos dois apoios exige μ = tanθ, e isso fornece valores individuais consistentes com a soma. Mas é hipótese, não consequência da estática. O coeficiente μ não é dado no enunciado.",
+      "Validade: N_A e N_B devem ser ≥ 0. Se m_c estiver além de B (b pequeno) ou m estiver perto de A (a pequeno), uma normal pode ficar negativa e a barra se levanta de um apoio. Também é necessário 0 < d < L/2; com L = 2d o denominador (L − 2d) anula e os apoios coincidem.",
+      "Sentido do atrito: o atrito aponta para cima do plano, opondo-se à tendência de descer. Trocar o sinal ou tratá-lo como força para baixo é erro.",
+      "Casos-limite de conferência: com m = m_c = 0 deve sair N_A = N_B = Mg cosθ/2. Com a = d e m_c = 0, toda a carga de m vai para A, e N_A = g cosθ(M/2 + m). A soma dos normais sempre deve ser (M+m+m_c) g cosθ. Os itens (1) e (2) devem ser conferidos ao final.",
+      "Resultados simbólicos: as respostas devem ser expressas em M, m, m_c, L, d, a, b, g e θ, conforme o enunciado, sem substituir valores numéricos. Expressões numéricas devem ser resolvidas integralmente (instrução 8 da prova)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 7.5,
+      "final_answer": "a) Com $d<L/2$ e $x$ medido a partir da extremidade inferior, as normais são $N_A=\\dfrac{g\\cos\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m(L-a-d)+m_c(b-d)\\right]$ e $N_B=\\dfrac{g\\cos\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m(a-d)+m_c(L-b-d)\\right]$, com $N_A+N_B=(M+m+m_c)g\\cos\\theta$.\n\nb) A estática fixa apenas a soma dos atritos: $f_A+f_B=(M+m+m_c)g\\sin\\theta$. A divisão entre os apoios é indeterminada para corpo rígido. Adotando $f_A/N_A=f_B/N_B$ (reações verticais em cada apoio), $f_A=N_A\\tan\\theta$ e $f_B=N_B\\tan\\theta$. Ambos apontam para cima do plano. O repouso exige $\\mu_s\\ge\\tan\\theta$. Exemplo ($M=10$ kg, $m=2$ kg, $m_c=1$ kg, $L=2$ m, $d=0{,}2$ m, $a=0{,}6$ m, $b=0{,}5$ m, $\\theta=30^\\circ$): $N_A\\approx 57{,}9$ N, $N_B\\approx 54{,}7$ N, $f_A\\approx 33{,}4$ N, $f_B\\approx 31{,}6$ N.",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Hipótese geométrica central mal formulada e não declarada como necessária. Os dados do enunciado não incluem altura h, então o problema só fecha se contatos e pesos estiverem no plano da linha da barra (as cunhas A e B da figura com altura desprezível). A hipótese (i) justifica a ausência de momento das forças paralelas à barra pelo 'eixo perpendicular ao plano', que não é o eixo usado na equação (2). O eixo da equação (2) é horizontal, no plano e perpendicular à barra. Deveria: declarar que a altura dos contatos acima do plano é desprezada e que isso é necessário para os dados bastarem; mostrar que forças ao longo da barra, atuando em z=0, têm braço nulo em relação ao eixo usado; e indicar que o efeito de uma altura h seria um momento extra que altera N_A e N_B."
+          },
+          {
+            "severity": "minor",
+            "description": "Fechamento do item b): a hipótese f_i/N_i = tanθ é chamada de 'hipótese usual', sem fundamento, e a justificativa aparece só como reformulação ('reação vertical'). Não se menciona que outras divisões são compatíveis com (3), como a simétrica f_A = f_B = (M+m+m_c)g sinθ/2, nem que o valor individual é condicional. Deveria: retirar 'usual'; explicar que é a distribuição por alavanca dos componentes tangenciais, equivalente a reação vertical em cada apoio; e registrar que a divisão é uma escolha."
+          },
+          {
+            "severity": "minor",
+            "description": "Erro dimensional na seção de unidades: 'os colchetes têm dimensão de massa' está errado. Os colchetes são massa×comprimento (kg·m) e só viram massa após dividir por (L−2d). A frase 'se cancela com o comprimento dos braços' é imprecisa, pois o fator (L−2d) está no denominador e não há braços a cancelar."
+          },
+          {
+            "severity": "minor",
+            "description": "Salto algébrico e verificação circular. A expressão de N_B é dada com 'que resulta em' sem mostrar a passagem, que é (M+m+m_c)(L−2d) − [M(L/2−d)+m(L−a−d)+m_c(b−d)], e a 'conferência' N_A+N_B=(M+m+m_c)g cosθ vale por construção. Deveria mostrar a passagem e verificar a equação de momentos (2) com os N_A e N_B finais, ou o momento em relação a B."
+          },
+          {
+            "severity": "minor",
+            "description": "Referencial da verificação não definido. Os vetores n̂=(−sinθ,cosθ) e t̂=(cosθ,sinθ) são usados sem dizer que as coordenadas são horizontal e vertical, e o referencial anterior era outro (x ao longo da barra, y normal ao plano). A conta está correta (a reação resultante em A é (0, N_A/cosθ)), mas o texto é confuso."
+          },
+          {
+            "severity": "minor",
+            "description": "Sentido das forças nos apoios não explicitado. O enunciado pergunta as forças 'exercidas sobre os apoios' e o atrito 'em cada apoio'. A resposta dá módulos e sentidos só como forças sobre a barra. Pela 3ª lei, sobre os apoios a normal aponta para dentro do plano e o atrito aponta para baixo do plano. Deveria explicitar os dois sentidos."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta final do item b) remete a 'expressões acima' em vez de escrever f_A e f_B em função dos parâmetros. O enunciado pede respostas em termos de M, m, m_c, L, d, a, b, g e θ, e o bloco final deveria ser autocontido."
+          },
+          {
+            "severity": "minor",
+            "description": "Condições de validade não explicitadas. Diz-se que N_A e N_B devem ser ≥ 0, mas as desigualdades em função dos parâmetros não aparecem. Deveria escrever M(L/2−d)+m(L−a−d)+m_c(b−d) ≥ 0 e M(L/2−d)+m(a−d)+m_c(L−b−d) ≥ 0, e discutir o que acontece quando uma se anula."
+          }
+        ],
+        "summary": "Parecer sobre a questão 2 (ITA 2026, Física, 2ª fase).\n\nComparação item por item:\n- Item a) N_A e N_B: a resolução do candidato coincide com a referência e com a solução direta do sistema (1)-(2). Conferi com python3 em 20 mil casos aleatórios; o erro relativo máximo foi 2e-12. A expressão é correta, com posições bem tratadas: A em s=d, B em s=L−d, m em a, m_c em L−b, CM em L/2.\n- Item b) soma dos atritos: f_A+f_B=(M+m+m_c)g sinθ, correta e igual nas duas resoluções. Atritos individuais: f_i = N_i tanθ, o mesmo resultado da referência. Os dois usam um fechamento que a estática não determina, mas são equivalentes: a referência usa mesmo μ com deslizamento iminente, o que força μ=tanθ, e o candidato usa a mesma razão atrito/normal, que equivale a reação vertical em cada apoio. A forma fechada coincide com a distribuição por alavanca dos componentes tangenciais.\n- Exemplo numérico do candidato (M=10, m=2, m_c=1, L=2, d=0,2, a=0,6, b=0,5, θ=30°): reproduzido exatamente (N_A≈57,9; N_B≈54,7; f_A≈33,4; f_B≈31,6; somas 112,6 N e 65,0 N). Os valores de teste da referência também batem (75,34; 71,88; 43,50; 41,50).\n- Casos-limite: m=m_c=0, a=L/2 com m_c=0, e θ=0 conferem.\n\nArmadilhas: foram tratadas as de normal vs cosθ, posições a/b medidas a partir de extremidades diferentes, distâncias ao longo da barra, CM em L/2, paralelas sem momento, indeterminação do atrito, sentido do atrito, N≥0 e L≠2d, μ≥tanθ e casos-limite. Falhou em declarar bem a hipótese de altura nula (o eixo citado está errado) e em dar as condições N≥0 explicitamente.\n\nObservação sobre a referência (não altera a nota): seu fechamento 'deslizamento iminente com mesmo μ nos dois apoios' implica μ=tanθ exato, o que conflita com a própria condição de validade μ≥tanθ. A formulação de razão igual usada pelo candidato é mais limpa.\n\nNota: 7,5. A resposta final está certa e a derivação de (a) é rigorosa. O item (b) é aceitável porque a hipótese é declarada e a soma é determinada. Faltam uma hipótese geométrica bem enunciada, a justificativa da escolha do fechamento, uma correção dimensional, a passagem algébrica de N_B e explicitação das condições de validade e dos sentidos das forças nos apoios. Para 9 ou mais, seriam necessárias essas correções.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 7.0,
+      "final_answer": "a) N_A = \\frac{g\\cos\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m(L-a-d)+m_c(b-d)\\right], N_B = \\frac{g\\cos\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m(a-d)+m_c(L-b-d)\\right] (forças do plano sobre os apoios, perpendiculares ao plano, para fora). b) f_A+f_B=(M+m+m_c)g\\sin\\theta; com o fechamento de reação vertical em cada apoio, f_A=N_A\\tan\\theta e f_B=N_B\\tan\\theta, ou seja, f_A=\\frac{g\\sin\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m(L-a-d)+m_c(b-d)\\right] e f_B=\\frac{g\\sin\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m(a-d)+m_c(L-b-d)\\right], para cima do plano. Exige \\mu_s\\ge\\tan\\theta e N_A, N_B\\ge 0.",
+      "review": {
+        "score": 7,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Justificativa fraca do fechamento do atrito no item b). O candidato adota f_A/N_A = f_B/N_B (razão atrito/normal igual nos dois apoios) e diz que é análogo a uma viga apoiada em suportes que transmitem cargas verticais e que 'estende a regra da alavanca à componente tangencial'. Essa analogia não sustenta a distribuição tangencial: a regra da alavanca com reações verticais não implica nada sobre o atrito. Deveria: declarar o fechamento como hipótese explícita e dar seu sentido físico, por exemplo que os dois contatos estão no limite de deslizamento com o mesmo coeficiente efetivo tanθ, ou que decorre de compatibilidade de deformação dos apoios. Deveria também dizer que a divisão real depende da rigidez dos contatos e não da estática. Vale notar que a referência enquadra o mesmo fechamento como μ_e N_i com μ_e = tanθ, o que só vale para esse valor de μ; a forma f_i = tanθ·N_i, usada pelo candidato, é a mais coerente com μ_s ≥ tanθ."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de altura nula (hipótese i: 'cunhas de altura desprezível') contraria a figura, em que as cunhas são visivelmente altas e a barra fica elevada. O candidato chama a hipótese de necessária, o que é correto para o enunciado, mas deveria dizer explicitamente que a figura mostra altura não nula, que o enunciado não a fornece e que por isso a idealização é obrigatória. Também só cita o efeito de h na equação (3). Com h ≠ 0, N_A e N_B mudam em sentidos opostos (ΔN_A = +hg sinθ(M+m+m_c)/(L−2d), ΔN_B = −hg sinθ(M+m+m_c)/(L−2d)). Verifiquei isso numericamente. O efeito de h na equação (4) deveria ser mencionado."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'conferência independente' da normal não é independente: ela soma as equações (3) e (4), que vêm das mesmas equações de momento, e apenas reproduz (1) multiplicada por (L−2d). É uma checagem de consistência algébrica, não uma verificação independente. Deveria ser chamada assim, ou substituída por uma conferência com o momento em torno de um terceiro ponto."
+          },
+          {
+            "severity": "minor",
+            "description": "A condição de atrito μ_s ≥ tanθ usa um único μ_s para os dois apoios sem declarar a hipótese. Com μ_A ≠ μ_B, a condição vira tanθ ≤ (μ_A N_A + μ_B N_B)/(N_A + N_B). Deveria declarar que o coeficiente é igual nos dois apoios ou escrever a condição geral."
+          },
+          {
+            "severity": "minor",
+            "description": "O caso degenerado L = 2d não é discutido explicitamente. Ele aparece só implicitamente na hipótese (ii), d < L/2. Deveria dizer que, com L = 2d, o denominador se anula, os apoios coincidem, o sistema é singular e as fórmulas não valem."
+          },
+          {
+            "severity": "minor",
+            "description": "A lista 'Forças:' não diz que são forças exercidas sobre a barra (N_A ê_n, N_B ê_n, f_A ê_s, f_B ê_s). Só os sentidos da 3ª lei são esclarecidos depois. Deveria explicitar o referencial de corpo livre desde o início."
+          }
+        ],
+        "summary": "As respostas finais são corretas e idênticas às da referência. Refiz o equilíbrio 2D de forma independente (resolvendo N_A, N_B com torque e equilíbrio de forças, e usando o fechamento f_i = tanθ·N_i): em 2000 configurações aleatórias, o erro máximo contra as fórmulas do candidato foi ~1e-11. O exemplo numérico também confere (N_A ≈ 57,9 N, N_B ≈ 54,7 N, f_A ≈ 33,4 N, f_B ≈ 31,6 N, somas 112,6 N e 65,0 N). As armadilhas foram tratadas: cos para a normal, a medido da base e b do topo, distâncias ao longo da barra, centro de massa em L/2, forças paralelas sem momento, sentido do atrito, N ≥ 0 e μ ≥ tanθ. O item a) é sólido. O item b) identifica corretamente que a estática fixa só f_A + f_B e que a divisão é indeterminada. O fechamento usado é válido e declarado, mas sua justificativa é fraca (analogia com viga de cargas verticais), e a hipótese de altura nula contraria a figura. Por isso a nota fica limitada a 7, já que a justificativa do item b) é fraca."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.0,
+      "final_answer": "a) $N_A=\\dfrac{g\\cos\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m\\,(L-a-d)+m_c\\,(b-d)\\right]$ e $N_B=\\dfrac{g\\cos\\theta}{L-2d}\\left[M\\left(\\frac{L}{2}-d\\right)+m\\,(a-d)+m_c\\,(L-b-d)\\right]$, com $N_A+N_B=(M+m+m_c)\\,g\\cos\\theta$.\nb) $f_A+f_B=(M+m+m_c)\\,g\\sin\\theta$ pela estática. A repartição individual exige a hipótese explícita de mobilização uniforme do atrito, $f_i=N_i\\tan\\theta$ (reação vertical em cada apoio): $f_A=N_A\\tan\\theta$ e $f_B=N_B\\tan\\theta$. Ela exige $\\mu_s\\ge\\tan\\theta$ e $L>2d$.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A Hipótese 1 afirma que a idealização de contatos no plano (δ = 0) é 'obrigatória' e que a altura δ alteraria N_A e N_B em ±δ g sinθ (M+m+m_c)/(L−2d). Isso só vale se o atrito atuar na superfície do plano (h = 0) enquanto os pesos estão a altura δ. Refiz a conta: se o atrito atuar na altura da barra (configuração da figura, em que a barra repousa sobre os suportes), o termo em δ se cancela exatamente, porque a soma dos momentos das forças tangenciais é δ·(Σ forças tangenciais) = 0, e as fórmulas de N_A e N_B continuam valendo para qualquer δ. A afirmação de necessidade está errada como enunciada. O correto seria dizer que o resultado assume contatos sobre o plano e que, nessa hipótese, δ precisaria ser conhecido. A quantificação de 0,4 N está correta apenas para esse modelo. A resposta final não muda, mas a justificativa da hipótese está mal formulada. Deveria ser corrigida para explicitar onde atuam as forças tangenciais."
+          },
+          {
+            "severity": "minor",
+            "description": "Em Item b, a frase 'Ambas as frações são positivas, pois o atrito atua para cima do plano' é um non sequitur. A positividade de f_i = N_i tanθ depende de N_i ≥ 0, que é uma condição de validade, e não do sentido do atrito, que é uma convenção de sinal. Deveria ser: 'f_i ≥ 0 porque N_i ≥ 0 (condição de validade)'."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa do momento nulo de F_s ê_s ('atua ao longo da própria linha da barra, que contém o eixo') é imprecisa. O eixo é perpendicular a Π, e a linha da barra está contida em Π, então ela não contém o eixo. O motivo correto é que a força é colinear com o braço (ambos ao longo de ê_s, com altura nula). Além disso, 'plano Π da barra' nunca é definido e pode ser lido como o plano inclinado. Deveria definir-se Π como o plano (ê_s, ê_n)."
+          },
+          {
+            "severity": "minor",
+            "description": "A componente lateral do atrito (fora do plano de ê_s e ê_n) é assumida nula sem justificativa. A hipótese 'todas as forças atuam nessa linha' também não é exata, pois as normais são perpendiculares à linha. A estática implica f_Ay = f_By = 0: f_Ay + f_By = 0 e d·f_Ay + (L−d)·f_By = 0, com determinante L−2d ≠ 0. Esse argumento deveria aparecer."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa para f_A = f_B ('contatos idênticos e elásticos com a barra transladando sem girar') é solta. Além disso, a repartição por mobilização uniforme (f_i/N_i constante) é uma escolha de modelo. O texto a declara, mas o parágrafo de validade poderia deixar mais claro que a única parte determinada pela estática é a soma."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução é longa e inclui itens não exigidos (exemplo numérico com valores arredondados sem contas intermediárias, parágrafo de unidades, várias conferências). Isso é um risco real de caber mal no espaço de resposta do caderno de soluções. Se o exemplo numérico for mantido, a instrução 8 pede que as expressões numéricas sejam resolvidas integralmente."
+          },
+          {
+            "severity": "minor",
+            "description": "A seção de validade não cobre todos os casos: não exige 0 ≤ a, b ≤ L nem d > 0, e não dá exemplos físicos de quando N_A ou N_B se tornam negativas (m perto de A, m_c além de B)."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à de referência. Conferi com python: N_A = g cosθ/(L−2d)·[M(L/2−d)+m(L−a−d)+m_c(b−d)] e N_B análogo satisfazem as três equações independentes (força normal, força paralela e momento) com resíduo ~1e−14. Os valores do exemplo (N_A≈57,9 N, N_B≈54,7 N, f_A≈33,4 N, f_B≈31,6 N, tan30°≈0,577) e a variação de 0,41 N para δ = 1 cm também conferem. Todos os itens de a) e b) estão respondidos. Em b), a estática fixa só f_A + f_B = (M+m+m_c) g sinθ. A repartição individual é declarada como hipótese de mobilização uniforme (f_i/N_i = tanθ), e isso fica explícito na resposta final. Armadilhas tratadas: cos vs sin, posições a/b/d, centro de massa em L/2, braços de momento, sentido do atrito, indeterminação, validade N ≥ 0, caso L = 2d e casos-limite. Faltou: a justificativa de que o atrito não gera momento está imprecisa; a afirmação de que a altura δ é 'obrigatória' é superestimada (a resposta é independente de δ se o atrito atuar na altura da barra); há um non sequitur na positividade das frações; e há omissões de rigor (componente lateral do atrito, bounds de a e b). Não há erro que mude a resposta. A nota fica abaixo de 9 por esses problemas de justificativa, não por erro de conta."
+      }
+    }
+  ]
+}

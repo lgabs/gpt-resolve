@@ -1,0 +1,80 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Montagem e hipóteses.} Tome $V_C=0$. Na figura ampliada, o traço longo do símbolo da bateria (polo positivo, convenção usual) está no lado superior, ligado ao fio que chega a $A$; logo $V_A=V_s$. Trocar a polaridade apenas troca o sinal de $V_o$, sem alterar o módulo pedido em (a). Com fonte e voltímetro ideais, não há corrente na diagonal $DB$, e a ponte se reduz a dois divisores independentes, $ADC$ (braços $R_1$ e $R_3$) e $ABC$ (braços $R_2$ e $R_4$):
+\[
+V_D=V_s\,\frac{R_3}{R_1+R_3},\qquad V_B=V_s\,\frac{R_4}{R_2+R_4}.
+\]
+Escreva $R_i=R_0(1+x_i)$, com $x_i=G\varepsilon_i+\alpha\Delta T$ se o braço $i$ é extensômetro ($\varepsilon_i$ é a deformação do ponto de fixação) e $x_i=0$ se é resistor $R_0$. Com todos os $x_i=0$, $V_o=0$, como esperado para a ponte equilibrada.
+
+\textbf{Linearização.} A expressão exata é
+\[
+V_o=V_s\left[\frac{1+x_3}{2+x_1+x_3}-\frac{1+x_4}{2+x_2+x_4}\right].
+\]
+Seja $y=(x_1+x_3)/2\ll 1$. Usando $(1+y)^{-1}\approx 1-y$ e descartando produtos de pequenas correções ($x_1x_3$, $x_3y$, etc.):
+\[
+\frac{1+x_3}{2(1+y)}\approx\frac{1+x_3}{2}\,(1-y)\approx\frac12+\frac{x_3-x_1}{4}.
+\]
+Analogamente, $\dfrac{1+x_4}{2+x_2+x_4}\approx\dfrac12+\dfrac{x_4-x_2}{4}$. Subtraindo,
+\[
+V_o\approx\frac{V_s}{4}\,(x_2+x_3-x_1-x_4)=\frac{V_s}{4}\sum_{i=1}^{4}\sigma_i\,x_i,
+\]
+com $\sigma_1=\sigma_4=-1$ e $\sigma_2=\sigma_3=+1$. As parcelas $V_s/2$ se cancelam, o que confirma a saída nula da ponte equilibrada. Braços opostos ($R_1$ com $R_4$, e $R_2$ com $R_3$) têm o mesmo sinal; braços adjacentes (que compartilham um vértice) têm sinais opostos.
+
+\textbf{Item a.} Com um único extensômetro, $x_k=x=G\varepsilon+\alpha\Delta T$ e os demais $x_i=0$. Então $V_o=\pm\frac{V_s}{4}\,x$, com sinal negativo para $k=1$ ou $k=4$ e positivo para $k=2$ ou $k=3$. Conferência exata com o extensômetro em $R_1$: $V_D=\dfrac{V_s}{2+x}$ e $V_B=\dfrac{V_s}{2}$, logo
+\[
+V_o=\frac{V_s}{2+x}-\frac{V_s}{2}=-\frac{V_s\,x}{4}\cdot\frac{1}{1+x/2}\approx-\frac{V_s\,x}{4}\left(1-\frac{x}{2}\right)\approx-\frac{V_s\,x}{4},
+\]
+usando $(1+x/2)^{-1}\approx 1-x/2$ e descartando o termo em $x^2$. Portanto
+\[
+|V_o|=\frac{V_s}{4}\,\bigl|G\varepsilon+\alpha\Delta T\bigr|.
+\]
+Como $\varepsilon$ e $\Delta T$ entram somados, um único extensômetro não separa deformação de temperatura. Numericamente, com $V_s=10\,\mathrm{V}$, $G=2$ e $\varepsilon=10^{-4}$, tem-se $\dfrac{V_s}{4}=2{,}5\,\mathrm{V}$ e $G\varepsilon=2\cdot 10^{-4}$, logo $|V_o|=0{,}5\,\mathrm{mV}$. Um erro térmico $\alpha\Delta T=10^{-4}$ já produz $0{,}25\,\mathrm{mV}$, metade desse sinal.
+
+\textbf{Item b.} Objetivos: (i) anular o termo térmico; (ii) maximizar $|V_o|$ por unidade de $|\varepsilon|$. Isso equivale a sensibilidade mecânica máxima com erro térmico nulo, que é o sentido de "máxima precisão" adotado aqui. Hipóteses: extensômetros idênticos ($G$, $\alpha$ e $R_0$ iguais); sistema isotérmico ($\Delta T$ igual em todos os braços); os pontos de fixação têm deformações de mesma intensidade $|\varepsilon|$, em tração ($+|\varepsilon|$) ou em compressão ($-|\varepsilon|$). Um resistor $R_0$ tem $x_i=0$ e não contribui nem para o sinal nem para o termo térmico.
+
+Seja $S$ o conjunto dos braços com extensômetro e $k=\#S$. Então
+\[
+V_o=\frac{V_s}{4}\sum_{i\in S}\sigma_i\left(G\varepsilon_i+\alpha\Delta T\right).
+\]
+O termo térmico $\dfrac{V_s}{4}\,\alpha\Delta T\sum_{i\in S}\sigma_i$ se anula, para qualquer $\Delta T$, se e somente se $\sum_{i\in S}\sigma_i=0$. Examinando os casos:
+
+\begin{itemize}
+\item $k=1$: $\sum\sigma_i=\pm1\neq0$. O erro térmico não é compensado (é o caso do item a).
+\item $k=2$ com braços opostos de mesmo $\sigma$ ($\{R_1,R_4\}$ ou $\{R_2,R_3\}$): $\sum\sigma_i=\pm2\neq0$. Por exemplo, com $R_2$ e $R_3$ em tração e $p=G\varepsilon+\alpha\Delta T$: $V_D=\dfrac{V_s(1+p)}{2+p}$ e $V_B=\dfrac{V_s}{2+p}$, logo $V_o=\dfrac{V_s\,p}{2+p}\approx\dfrac{V_s}{2}\,(G\varepsilon+\alpha\Delta T)$. O termo térmico entra com peso total, e a sensibilidade cai à metade.
+\item $k=2$ com braços adjacentes de sinais opostos ($\{R_1,R_2\}$, $\{R_1,R_3\}$, $\{R_2,R_4\}$, $\{R_3,R_4\}$): $\sum\sigma_i=0$, logo o termo térmico se cancela. Chamando de $b$ o braço com $\sigma_b=+1$ e de $a$ o braço com $\sigma_a=-1$, vale $V_o=\dfrac{V_sG}{4}(\varepsilon_b-\varepsilon_a)$. Com deformações de tipos opostos ($\varepsilon_a=-\varepsilon_b$), $|V_o|=\dfrac{V_sG|\varepsilon|}{2}$, metade do máximo. Se ambos forem do mesmo tipo, então $\varepsilon_a=\varepsilon_b$ (mesma intensidade) e $V_o=0$.
+\item $k=3$: $\sum\sigma_i=\pm1$, pois retirar um braço com $\sigma=+1$ deixa soma $-1$, e retirar um com $\sigma=-1$ deixa soma $+1$. O termo térmico $\pm\dfrac{V_s}{4}\alpha\Delta T$ permanece, mesmo com o sinal mecânico máximo $\dfrac{3V_sG|\varepsilon|}{4}$. Descartado.
+\item $k=4$: $\sum\sigma_i=-1+1+1-1=0$, logo o termo térmico se cancela e $V_o=\dfrac{V_sG}{4}(\varepsilon_2+\varepsilon_3-\varepsilon_1-\varepsilon_4)$. Como $|\varepsilon_i|=|\varepsilon|$, vale $|V_o|\le V_sG|\varepsilon|$, com igualdade se e somente se $\varepsilon_2=\varepsilon_3=-\varepsilon_1=-\varepsilon_4=\pm|\varepsilon|$. Ou seja, $R_2$ e $R_3$ em tração com $R_1$ e $R_4$ em compressão, ou o inverso.
+\end{itemize}
+
+\textbf{Conclusão de b.} A configuração ótima usa quatro extensômetros e nenhum resistor $R_0$:
+\begin{itemize}
+\item $R_1$ (braço $AD$): ponto de \textbf{compressão};
+\item $R_2$ (braço $AB$): ponto de \textbf{tração};
+\item $R_3$ (braço $DC$): ponto de \textbf{tração};
+\item $R_4$ (braço $CB$): ponto de \textbf{compressão}.
+\end{itemize}
+Trocar os tipos em bloco ($R_1$ e $R_4$ em tração) inverte apenas o sinal de $V_o$.
+
+\textbf{Verificação exata.} Com $\varepsilon>0$ em tração, $x_2=x_3=a=G\varepsilon+\alpha\Delta T$ e $x_1=x_4=b=-G\varepsilon+\alpha\Delta T$. Como $x_1+x_3=x_2+x_4=2\alpha\Delta T$,
+\[
+V_D=\frac{V_s(1+a)}{2(1+\alpha\Delta T)},\qquad V_B=\frac{V_s(1+b)}{2(1+\alpha\Delta T)},
+\]
+e, portanto,
+\[
+V_o=\frac{V_s(a-b)}{2(1+\alpha\Delta T)}=\frac{V_sG\varepsilon}{1+\alpha\Delta T}.
+\]
+Com $(1+\alpha\Delta T)^{-1}\approx 1-\alpha\Delta T$, obtém-se $V_o\approx V_sG\varepsilon-V_sG\varepsilon\,\alpha\Delta T\approx V_sG\varepsilon$, pois o resíduo $\varepsilon\,\alpha\Delta T$ é produto de pequenas quantidades e é descartado. Assim, no regime linear, $V_o$ não depende de $\Delta T$, e para $\varepsilon=0$ tem-se $V_o=0$ qualquer que seja $\Delta T$.
+
+\textbf{Comparação e ordem de grandeza.} Com $\Delta T=0$, o item a dá $\dfrac{V_sG|\varepsilon|}{4}$, e a configuração completa dá $V_sG|\varepsilon|$, quatro vezes maior. Com $V_s=10\,\mathrm{V}$, $G=2$ e $\varepsilon=10^{-4}$, obtém-se $V_o\approx 2\,\mathrm{mV}$. Unidades: $V_o$ e $V_s$ em volt; $G$, $\varepsilon$ e $\alpha\Delta T$ são adimensionais.
+
+\textbf{Quando a compensação falha.} Para que o cancelamento térmico valha, é preciso:
+\begin{itemize}
+\item \textbf{Temperatura uniforme}: com $\Delta T_i$ diferentes entre braços (gradiente térmico), o termo térmico vira $\dfrac{V_s}{4}\,\alpha\sum_i\sigma_i\Delta T_i\neq0$.
+\item \textbf{Extensômetros casados}: $\alpha$ ou $G$ diferentes (lotes distintos) impedem o cancelamento térmico e a igualdade das sensibilidades.
+\item \textbf{Nenhum resistor $R_0$}: um $R_0$ em qualquer braço ($k=3$) faz reaparecer o termo $\pm\dfrac{V_s}{4}\alpha\Delta T$ e reduz a sensibilidade a $\frac{3}{4}$ do máximo.
+\item \textbf{$R_0$ nominais iguais}: valores diferentes deslocam o zero, com $V_o(0,0)=V_s\left(\dfrac{R_{03}}{R_{01}+R_{03}}-\dfrac{R_{04}}{R_{02}+R_{04}}\right)\neq0$, o que se corrige por calibração.
+\end{itemize}
+
+ANSWER: (a) $|V_o|=\dfrac{V_s}{4}\left|G\varepsilon+\alpha\Delta T\right|$. (b) Quatro extensômetros e nenhum resistor $R_0$: $R_1$ e $R_4$ em pontos de compressão; $R_2$ e $R_3$ em pontos de tração (ou o inverso, com sinal oposto de $V_o$). Então $V_o=\dfrac{V_sG\varepsilon}{1+\alpha\Delta T}\approx V_sG\varepsilon$, sem dependência térmica no regime linear.

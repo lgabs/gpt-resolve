@@ -1,0 +1,57 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) v = 250 m/s; b) T = 4000 K; c) W = 864 kJ (trabalho realizado pelos gases na expansão isobárica).",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA: IME 2027, Física, Questão 1 (valor 1,0)\n\nReferencial: origem na plataforma de lançamento, x horizontal, y vertical para cima. Alvo em (2000 m, 1000 m). Dados: g = 10 m/s², v0 = 200 m/s, θ = 45°, T0 = 2560 K, m = 2,0 kg, c_p = 1,0 kJ/(kg·K), ΔU = 2016 kJ.\n\n0) Consistência da situação de projeto\n- Trajetória sem resistência do ar: y(x) = x·tanθ − g·x²/(2·v²·cos²θ).\n- Com θ = 45° (tanθ = 1, cos²θ = 1/2): y(x) = x − 10·x²/v².\n- Alcance até o apogeu: x_ap = v²·sen2θ/(2g) = v²/20. Para v0 = 200 m/s, x_ap = 2000 m.\n- Altura do apogeu: y_ap = v²·sen²θ/(2g) = v²/40. Para v0 = 200 m/s, y_ap = 1000 m.\n- Logo o apogeu cai exatamente no alvo, como afirma o enunciado. Os dados são coerentes.\n\na) Velocidade de lançamento na falha\n- Na vertical do alvo (x = 2000 m), o foguete está 360 m acima do alvo, ou seja, na altura y = 1000 + 360 = 1360 m em relação à plataforma.\n- Substituindo em y(x): 1360 = 2000 − 10·(2000)²/v², ou seja, 4·10⁷/v² = 640.\n- Então v² = 62 500 m²/s² e v = 250 m/s.\n- Verificação de movimento ascendente: v_y(x = 2000 m) = v·sen45° − g·x/(v·cos45°) = 176,8 − 113,1 ≈ 63,6 m/s > 0. O apogeu da nova trajetória está em x = 62 500/20 = 3125 m > 2000 m, então o foguete ainda sobe ao passar pela vertical do alvo. Equivalentemente, a condição de subida exige v > 200 m/s.\n- Resposta (a): v = 250 m/s (900 km/h).\n\nb) Temperatura na câmara\n- Por hipótese, T é proporcional a v²: T = k·v², com k = T0/v0² = 2560/200² = 0,064 K·s²/m².\n- T = 0,064 · 250² = 4000 K. Equivalentemente, T = T0·(v/v0)² = 2560·(1,25)² = 4000 K.\n- Resposta (b): T = 4000 K (3727 °C).\n\nc) Trabalho durante o aquecimento (isobárico)\n- Calor a pressão constante: Q = m·c_p·ΔT = 2,0 · 1,0 · (4000 − 2560) = 2880 kJ.\n- Primeira lei: Q = ΔU + W, logo W = Q − ΔU = 2880 − 2016 = 864 kJ.\n- Verificação independente: c_v = ΔU/(m·ΔT) = 2016/(2,0·1440) = 0,70 kJ/(kg·K). Então W = m·(c_p − c_v)·ΔT = 2,0 · 0,30 · 1440 = 864 kJ. Os dois caminhos coincidem.\n- Resposta (c): W = 864 kJ (8,64·10⁵ J), realizado pelos gases na expansão, ou seja, trabalho positivo do gás sobre o meio. Se a convenção for trabalho sobre os gases, o valor seria −864 kJ.\n\nResumo: (a) 250 m/s; (b) 4000 K; (c) 864 kJ.\n",
+    "final_answer": "a) v = 250 m/s (900 km/h), obtido com y = 1360 m em x = 2000 m e y(x) = x − 10x²/v² para θ = 45°. A subida é confirmada: v_y ≈ 63,6 m/s > 0 e apogeu em x = 3125 m.\n\nb) T = 4000 K, obtido de T = T0·(v/v0)² = 2560·(250/200)².\n\nc) W = 864 kJ realizado pelos gases (expansão isobárica), obtido de Q = m·c_p·ΔT = 2880 kJ e W = Q − ΔU = 2880 − 2016 = 864 kJ.\n\nResumo das respostas: (a) 250 m/s; (b) 4000 K; (c) 864 kJ (trabalho realizado pelos gases, positivo). A questão não é de múltipla escolha.",
+    "pitfalls": [
+      "Altura absoluta: o alvo está 1,0 km acima da plataforma, então 360 m acima do alvo equivale a y = 1360 m, não 360 m. Se o aluno usar y = 360 m, obtém v ≈ 156 m/s; nesse caso o apogeu cai em x ≈ 1220 m, antes do alvo, e o foguete já estaria descendo, o que contradiz o enunciado. A condição de subida serve como verificação para detectar esse erro.",
+      "Unidades: 2,0 km = 2000 m e 1,0 km = 1000 m. Energias em kJ (ΔU = 2016 kJ, c_p em kJ/(kg·K)). Resultados finais: v em m/s, T em K, W em kJ.",
+      "Equação da trajetória: com θ = 45° use tanθ = 1 e cos²θ = 1/2, de modo que y = x − 10x²/v². Não confunda com a fórmula de alcance em solo, que não se aplica à altura do alvo.",
+      "Condição 'ainda em movimento ascendente': a equação em 1/v² é linear e tem solução única, então esta condição não escolhe entre raízes. Ela é uma verificação, equivalente a v > 200 m/s (apogeu além de 2 km). Não invente uma segunda raiz.",
+      "Hipótese T ∝ v² (não T ∝ v): T = 2560·(250/200)² = 4000 K. A resposta linear T = 3200 K é o erro mais comum. A constante de proporcionalidade é k = T0/v0² = 0,064 K·s²/m², obtida da situação de projeto.",
+      "Calor a pressão constante: Q = m·c_p·ΔT, com c_p = 1,0 kJ/(kg·K), e não c_v (não fornecido). Q = 2880 kJ. Usar Q = ΔU = 2016 kJ é erro.",
+      "Primeira lei: ΔU = Q − W, logo W = Q − ΔU = 864 kJ. O valor 2016 kJ é a variação de energia interna, não o trabalho. Também não se deve tomar W = Q.",
+      "Sinal e convenção: a expansão isobárica realizada pelos gases dá W > 0 (+864 kJ). O sinal seria negativo apenas se o enunciado pedisse trabalho sobre os gases. Declare a convenção na resposta.",
+      "Não é preciso conhecer a massa molar nem a pressão ou o volume. W = nR·ΔT exige n = m/M, e M não é dado. Usar c_v = ΔU/(mΔT) = 0,70 kJ/(kg·K) e W = m(c_p − c_v)ΔT = 864 kJ é um caminho alternativo que confere a resposta.",
+      "A velocidade altera só a magnitude; o ângulo permanece 45°. Não assuma que o tempo de voo ou a altura máxima se mantêm: na falha, o apogeu migra para x = 3125 m e y = 1562,5 m.",
+      "Dados de consistência do projeto: com v0 = 200 m/s e θ = 45°, o apogeu está em (2000 m, 1000 m). Verifique isso antes de usar as fórmulas, para validar g = 10 m/s² e o referencial."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) v = 250 m/s; b) T = 4000 K; c) W = 864 kJ (trabalho realizado pelos gases na expansão isobárica).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Sinal de v_y não justificado no passo da verificação. Ao escrever v_y² = 4050 e depois v_y = √4050 ≈ 64 m/s > 0, o candidato escolhe a raiz positiva sem dizer por quê; v_y² não determina o sinal. A justificação correta (x = 2000 m < x_V = 3125 m, ou seja, o ápice ainda não foi atingido) aparece só depois, como 'coerentemente'. Deveria: explicitar que a raiz positiva decorre de o foguete ainda estar antes do ápice (x = 2000 < x_V = 3125), ou calcular diretamente v_y = v·sen45° − g·t com t = x/(v·cos45°) ≈ 11,3 s (v_y ≈ 63,6 m/s). Também convém dizer que a condição de subida equivale a v > 200 m/s, e não usar o símbolo Δy sem definição (é y − y₀ = 1360 m)."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses incompletas. O candidato diz que o foguete está 'sujeito apenas ao peso', mas não declara que, após deixar o lançador, a propulsão cessa e o foguete é tratado como partícula de massa constante (modelo de projétil). Deveria: acrescentar essa frase na seção de modelo."
+          },
+          {
+            "severity": "minor",
+            "description": "Relação de Mayer usada sem justificação explícita no item (c). A passagem W = pΔV = nRΔT = m(c_p − c_v)ΔT pressupõe R/M = c_p − c_v por unidade de massa, e que ΔU = m·c_v·ΔT para gás ideal (energia interna função só de T). Nenhum dos dois é enunciado, e o candidato não diz que M não é necessária. Deveria: escrever uma linha com essas duas relações e a observação de que M não é usada numericamente."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação γ = c_p/c_v ≈ 1,43 'compatível com gás ideal (1 < γ < 5/3)' é fraca: qualquer gás ideal clássico passa nesse intervalo, então não discrimina nada e não confirma a resposta. Deveria: remover, ou apresentá-la apenas como plausibilidade (valor próximo de 1,40 de um gás diatômico)."
+          }
+        ],
+        "summary": "Respostas finais: a) v = 250 m/s; b) T = 4000 K; c) W = 864 kJ (trabalho realizado pelos gases, positivo). Coincidem item por item com a referência. Reconferi no PDF original e com python3: altura do alvo em y = 1360 m, apogeu do projeto em (2000 m, 1000 m), apogeu da nova trajetória em x = 3125 m e H' = 1562,5 m, T = 2560·(1,25)² = 4000 K, Q = 2880 kJ, c_v = 0,70 kJ/(kg·K), W = 864 kJ, W/Q = 0,30. Nenhuma conta está errada e a dimensional confere.\n\nArmadilhas: tratadas. Altura absoluta (y = 1000 + 360 = 1360 m, não 360 m). Unidades (km→m, kJ). Equação com tan45° e cos²45°. Raiz única pela linearidade em 1/v², sem inventar segunda raiz. T ∝ v² usado em kelvin, com nota sobre Celsius. Q com c_p, não c_v. W = Q − ΔU. Convenção de sinal declarada. Mudança do apogeu. Consistência do projeto verificada (H = 1000 m, x_V = 2000 m).\n\nLacunas, todas menores: sinal de v_y escolhido sem justificação direta; hipóteses sem a menção ao fim da propulsão/modelo de partícula; Mayer usada sem enunciar a relação por unidade de massa; verificação de γ fraca. Nenhuma crítica nem grave.\n\nNota 9,0: resposta correta, justificada e com verificações reais, publicável como gabarito comentado após os ajustes acima. Não chega a 9,5 por causa do sinal de v_y e das hipóteses implícitas."
+      }
+    }
+  ]
+}

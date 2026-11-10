@@ -1,0 +1,49 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.1,
+  "final_answer": "a) u = c(√3 h − L)/(√3 L − h) (com t = (√3 L − h)/c e R = √3 h − L no impacto); b) é necessário que h < L < √3 h (ou seja, 1 < L/h < √3), que garante 0 < u < c.",
+  "judge_reference": {
+    "reference_solution": "**Montagem.** O fóton parte da origem na direção x = √3·y, isto é, a 30° do eixo x: d = (√3/2, 1/2). Posição: P(t) = (√3·ct/2, ct/2). A esfera tem centro C = (L, h) e raio R = ut. Como R(0) = 0 e a origem está fora da esfera, o fóton incide na face EXTERNA (refletora).\n\n**a) Velocidade u**\n\n1) Lei da reflexão (superfície tratada como estática, como o enunciado manda). Direção incidente d = (√3/2, 1/2); direção refletida r = (0, −1). Como r = d − 2(d·n)n, o vetor d − r = (√3/2, 3/2) ∥ (1, √3) é paralelo à normal. A normal é, portanto, ±(1/2, √3/2), ou seja, forma 60° com o eixo x.\n\n2) Escolha do sentido. O fóton vem de fora, então a normal externa n deve ter d·n < 0. Como d·(1/2, √3/2) = √3/2 > 0, tem-se n = −(1/2, √3/2). Verificação: d − 2(d·n)n = (√3/2, 1/2) − √3·(1/2, √3/2) = (0, −1) ✓. O ângulo de incidência é 30°, e o ponto de impacto fica na parte inferior esquerda da esfera (posição angular 240° em relação ao centro).\n\n3) Ponto de impacto: Q = C + R·n = (L − R/2, h − (√3/2)R).\n\n4) Q está na trajetória do fóton (x = √3·y):\nL − R/2 = √3·h − (3/2)R ⟹ R = √3·h − L.\n\n5) Instante do impacto. De y_Q = ct/2: ct = 2h − √3·R = 2h − 3h + √3·L, logo t = (√3·L − h)/c. Conferência por x: ct·√3/2 = L − R/2 ⟹ ct = (3L − √3h)/√3 = √3L − h ✓.\n\n6) Como R = ut:\n**u = R/t = c·(√3·h − L)/(√3·L − h).**\n\nVerificação independente: substituindo t e u na equação |P(t) − C|² = u²t², isto é, (c² − u²)t² − 2c(d·C)t + L² + h² = 0, com d·C = (√3L + h)/2, o resultado é identicamente nulo (usa a² − b² = 2L² − 2h², com a = √3L − h e b = √3h − L). Conferi também numericamente (por exemplo L = 1, h = 0,8 dá u ≈ 0,4138c, t ≈ 0,932/c e refletido = (0, −1)).\n\nEsse é o PRIMEIRO contato fóton–esfera. g(t) = |P − C|² − u²t² é uma parábola com concavidade para cima e g(0) > 0. Em t = (√3L − h)/c, g'(t) = −R(√3c + 2u) < 0. Logo é a menor raiz, e o fóton não poderia ter atingido a esfera antes. A velocidade de aproximação normal, c√3/2 + u, é positiva.\n\n**b) Condição sobre h e L**\n\nExigências físicas:\n- R > 0, ou seja, u > 0: √3·h − L > 0 ⟹ h > L/√3. (Se h = L/√3, o centro está sobre a trajetória do fóton e R = 0, sem esfera.)\n- t > 0: √3·L − h > 0 ⟹ h < √3·L. (O denominador positivo é necessário.)\n- u < c: (√3h − L) < (√3L − h), com denominador positivo ⟹ (√3 + 1)h < (√3 + 1)L ⟹ h < L. Essa condição implica h < √3·L, que então é redundante.\n\n**Resultado: L/√3 < h < L**, ou seja, L < √3·h e h < L. Geometricamente, o centro fica no 1º quadrante, acima da reta y = x/√3 (trajetória do fóton, como na figura) e abaixo da reta y = x. Nas extremidades: h → L/√3 dá u → 0; h → L dá u → c (excluído, pois u < c).",
+    "final_answer": "a) u = c·(√3·h − L)/(√3·L − h). O impacto ocorre em t = (√3·L − h)/c, com R = √3·h − L, no ponto (L − R/2, h − √3R/2).\n\nb) L/√3 < h < L, ou seja, √3·h > L (para que R > 0 e u > 0) e h < L (equivalente a u < c). Com isso t > 0 fica automaticamente satisfeito.",
+    "pitfalls": [
+      "Escolher o sentido errado da normal: n = +(1/2, √3/2) leva a um ponto de impacto na face superior direita (interna ao lado do fóton), que é incoerente. O fóton vem de fora, então d·n_ext < 0 e n_ext = −(1/2, √3/2). O ponto de impacto fica na parte inferior esquerda da esfera, a 240° em relação ao centro.",
+      "Obter a normal pela lei da reflexão (r = d − 2(d·n)n, com d − r ∥ n) e conferir que o ângulo de incidência é 30°. Não usar a velocidade da superfície na reflexão: o enunciado manda desprezar o movimento da esfera e os efeitos relativísticos.",
+      "Esquecer que a esfera cresce e tratar R como constante. O ponto de impacto depende de R = ut, e o sistema se fecha impondo que Q esteja sobre x = √3y e que o instante t seja o mesmo para o fóton e para a superfície (R = ut, com t = (√3L − h)/c).",
+      "Condição de validade: R = √3h − L > 0, t = (√3L − h)/c > 0 e 0 < u < c. A condição determinante é u < c ⟹ h < L, que torna h < √3L redundante. Muitos candidatos citam apenas √3h > L e esquecem o limite superior h < L, ou então apresentam h < √3L como cota superior, que é menos restritiva.",
+      "Casos-limite: h = L/√3 dá R = 0 (sem esfera, centro sobre a trajetória); h = L dá u = c (proibido por u < c). Por isso as desigualdades são estritas.",
+      "Primeiro contato: a equação |P(t) − C| = ut é quadrática e tem duas raízes positivas. O fóton reflete na menor, onde a distância cai de fora para dentro da esfera (g' < 0, o que vale sempre aqui). Vale mencionar, ainda que a solução saia sem essa verificação.",
+      "Erros algébricos comuns: usar o ponto Q = C + Rn com o sinal trocado, o que dá R = √3h + L ou R = L − √3h; confundir x = √3y com y = √3x (ângulo de 60° em vez de 30°); esquecer o fator 1/2 ou √3/2 nas componentes de n."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.1,
+      "final_answer": "a) u = c(√3 h − L)/(√3 L − h) (com t = (√3 L − h)/c e R = √3 h − L no impacto); b) é necessário que h < L < √3 h (ou seja, 1 < L/h < √3), que garante 0 < u < c.",
+      "review": {
+        "score": 9.1,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A escolha do sentido da normal (n = −(1/2, √3/2)) é justificada só por \"o fóton está fora da esfera até o primeiro contato, logo d·n < 0\". Com a superfície em expansão isso não é estritamente implicado. No primeiro contato só vale f' ≤ 0, isto é, c·d·n ≤ u, e isso admite d·n > 0 se a esfera alcançasse o fóton por trás. O ramo alternativo n = +(1/2, √3/2) não é descartado explicitamente. Ele daria R = L − √3h e u/c = (L − √3h)/(√3L − h) < 1/√3 < √3/2. Nesse ramo f'(t_Q) = 2R(√3c/2 − u) > 0, então seria a segunda raiz, com o fóton já refletido antes, e além disso exigiria centro abaixo da reta, contra a figura. Faltou uma linha para excluir essa alternativa; a checagem de f' < 0 só confirma a solução encontrada, não elimina o outro ramo."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (b), a exclusão do caso h < L/√3 (centro abaixo da reta do fóton) apoia-se no sinal de R = √3h − L e na figura (\"o centro fica acima da reta, como na figura\"). Não há um argumento físico dizendo por que a configuração simétrica (impacto na face superior direita) é impossível. É o mesmo ponto do primeiro problema: a pergunta \"por que não o outro sentido de n?\" fica sem resposta explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase sobre o caso-limite L → √3h (\"caso sem desvio de 120°\") é vaga. O mais claro seria dizer que a corda percorrida pelo fóton está a distância R/2 do centro, então com R → 0 o centro tende à trajetória e a esfera degenera num ponto, sem refletir o fóton em 120°. Trata-se de detalhe de redação, sem efeito no resultado."
+          }
+        ],
+        "summary": "As respostas finais do candidato coincidem com as da minha referência e estão corretas: (a) u = c(√3h − L)/(√3L − h); (b) h < L < √3h, equivalente a L/√3 < h < L. Refiz as contas e todas conferem: d' − d = (−√3/2, −3/2), n = −(1/2, √3/2), o sistema t(√3c+u) = 2L e t(c+√3u) = 2h, t = (√3L − h)/c, R = √3h − L. Conferi também numericamente, com o ponto de impacto, para vários pares (L, h); por exemplo h=1, L=1,5 dá u ≈ 0,1452c e P = (1,384; 0,799), como no texto do candidato. A conferência geométrica independente (distância do centro à reta igual a R·sen30°, projeção a (√3L+h)/2) está correta. No item (b), as três condições (R>0, t>0, u<c) são derivadas corretamente. O candidato nota que u<c dá h<L e torna t>0 redundante, trata os limites como excluídos e verifica que f(t) = |P−C|² − u²t² tem f' < 0 no impacto, o que confirma o primeiro contato (f' = −u²t − (√3/2)cut, expressão correta). A solução é clara, bem organizada e traz exemplo numérico. Evitou todas as armadilhas da referência (sentido da normal, R variável, o limite h<L, os sinais). A única fraqueza é de rigor: o sentido da normal é justificado por \\\"fora implica d·n<0\\\", e o ramo n = + não é descartado de forma explícita. Esse ramo é de fato inválido, e isso é verificável. Trata-se de um defeito pequeno; a resolução tem qualidade de gabarito comentado, ficando um pouco abaixo da excelência por esse ponto."
+      }
+    }
+  ]
+}

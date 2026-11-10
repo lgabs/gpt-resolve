@@ -1,0 +1,29 @@
+{
+  "question": 7,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-7-matematica-2-fase-dia-1-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Demonstração (traço de A·B divisível por 1013 para m = 2^10, n = 10^3)",
+      "solution_answer": "tr(A·B) = C(m+n+2, n+1), obtido somando a1j + a2j por Stifel e aplicando Vandermonde duas vezes. Com m = 1024 e n = 1000, tr = C(2026,1001). Como 1001!·C(2026,1001) = 1026·…·2026 tem o fator 2026 = 2·1013, 1013 é primo e não divide 1001!, segue que 1013 | C(2026,1001).",
+      "key_answer": "tr(AB) = C(m+n,n−1) + C(m+n,n) + C(m+n+1,n+1) = C(m+n+2,n+1) = C(2026,1001) = 2026!/(1025!·1001!), divisível por 1013.",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os dois chegam à mesma forma fechada, C(m+n+2,n+1) = C(2026,1001), e à mesma conclusão. Conferi tudo em Python: a identidade do traço vale para 1 ≤ m,n ≤ 24; as diagonais c11 = C(m+n,n−1), c22 = C(m+n,n) e c33 = C(m+n+1,n+1) do gabarito também estão certas; para m = 1024 e n = 1000 o traço calculado pela soma direta é igual a C(2026,1001), tem 609 algarismos, é ≡ 0 (mod 1013) e não é divisível por 1013². O exemplo de conferência da resolução (m=2, n=1, T=10=C(5,2)) também está certo. A diferença está na justificativa final. O gabarito diz que 'o primo 1013 não divide 1025!·1001!', o que é falso: 1013 ≤ 1025, então 1013 | 1025!. O argumento correto conta as potências de 1013: 2026! tem 1013² (dos fatores 1013 e 2026), 1025! tem 1013¹ e 1001! não tem, logo v_1013 = 2−1−0 = 1. A resolução evita esse erro ao cancelar 1025! antes, usando 1001!·C(2026,1001) = 1026·…·2026, que contém apenas o múltiplo 2026 de 1013. Ela ainda confirma o resultado pelo teorema de Lucas e observa, corretamente, que a divisibilidade é exata de ordem 1. A demonstração da resolução está completa e correta. A conclusão do gabarito está certa, mas sua justificativa tem um passo falso."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "high",
+      "description": "A justificativa final do gabarito Poliedro tem um passo falso: diz que 'o primo 1013 não divide 1025!·1001!', mas 1013 ≤ 1025, então 1013 divide 1025!. Na verdade 2026! tem 1013², 1025! tem 1013¹ e 1001! não tem fator 1013, de modo que v_1013(C(2026,1001)) = 1. A conclusão continua certa, mas uma prova escrita como no gabarito seria logicamente inválida nesse ponto. Vale avisar o professor para não usar esse argumento como padrão de correção."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A hipótese m > n do enunciado não é necessária para a identidade tr(A·B) = C(m+n+2,n+1), que vale para quaisquer inteiros positivos m e n, como a resolução observa. Não afeta a resposta."
+    }
+  ],
+  "summary": "A resolução está correta e completa. Pelos gabaritos dos dois lados, tr(A·B) = C(m+n+2,n+1) = C(2026,1001), resultado igual ao do gabarito Poliedro e conferido numericamente (o traço é ≡ 0 mod 1013, mas não mod 1013²). O argumento de divisibilidade da resolução está certo: cancela 1025! e usa o fator 2026 = 2·1013 em 1026·…·2026, junto com 1013 ∤ 1001!. O gabarito chega à mesma conclusão, mas sua justificativa final tem um passo falso: afirma que 1013 não divide 1025!·1001!, quando 1013 | 1025!."
+}

@@ -1,0 +1,65 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) R_A = 200 kN, vertical, para cima; R_B = 100 kN, vertical, para baixo (B precisa ser ancorado); reações horizontais nulas.\nb) N_CD = 75 kN (compressão); N_CF = 125 kN (tração); N_DF = 200 kN (compressão); N_AD = 200 kN (compressão); N_AE = 0; N_DE = 75 kN (compressão); N_BE = 100 kN (tração); N_EF = 125 kN (tração).\nc) AE é barra de contraventamento: sob P tem força nula, mas sem ela o quadrilátero ADEB é um paralelogramo articulado (mecanismo horizontal). Com ela a estrutura fica rígida e isostática, e AE trabalha com N = 5H/3 se houver força horizontal H.",
+  "judge_reference": {
+    "reference_solution": "**Geometria, hipóteses e verificação inicial**\n\nReferencial em A (origem), x para a direita e y para cima, em metros: A(0;0), B(3;0), D(0;4), E(3;4), C(−3;4), F(0;8). As cotas de 3 m são CA e AB, portanto AB = 3 m (não 6 m). Comprimentos: AD = BE = DF = 4 m; CD = DE = 3 m; CF = EF = AE = 5 m (ternos 3-4-5).\n\nApoios A e B são articulados (símbolo de pino na figura), cada um com 2 reações. Pesos das barras desprezados. Carga P = 100 kN vertical para baixo em C.\n\nContagem: 8 barras + 4 reações = 12 incógnitas = 2 × 6 nós. A estrutura é isostática e estável, então basta a estática (equilíbrio de nós e global).\n\n**a) Reações em A e B**\n\n- ΣFx = 0: Ax + Bx = 0.\n- ΣM_A = 0 (anti-horário positivo): P·3 + By·3 = 0 → By = −100 kN.\n- ΣFy = 0: Ay + By = 100 → Ay = 200 kN.\n- Componentes horizontais: o nó B recebe só a reação em B e a barra BE, que é vertical. Logo Bx = 0 e, pelo equilíbrio global, Ax = 0.\n\nResultado:\n- R_A = 200 kN, vertical, sentido para cima.\n- R_B = 100 kN, vertical, sentido para baixo (o apoio B precisa resistir ao tombamento e ser ancorado).\n\nVerificação de momentos em B: P·6 = 600 kN·m (anti-horário) e Ay·3 = 600 kN·m (horário). Soma nula.\n\n**b) Esforços normais** (convenção: tração positiva; método dos nós, começando por nós com no máximo 2 incógnitas)\n\n- Nó C (P, CF, CD). Vertical: N_CF·(4/5) = 100 → N_CF = 125 kN (tração). Horizontal: N_CD + N_CF·(3/5) = 0 → N_CD = −75 kN (compressão).\n- Nó B (By, BE). Vertical: By + N_BE = 0 → N_BE = 100 kN (tração).\n- Nó D (CD, DE, AD, DF). Horizontal: N_DE = N_CD = −75 kN (compressão). Vertical: N_DF = N_AD.\n- Nó E (DE, BE, AE, EF). Horizontal: −N_DE − (3/5)(N_AE + N_EF) = 0 → N_AE + N_EF = 125. Vertical: −N_BE − (4/5)N_AE + (4/5)N_EF = 0 → N_EF − N_AE = 125. Resolvendo: N_AE = 0 e N_EF = 125 kN (tração).\n- Nó A (Ay, AD, AE). Vertical: Ay + N_AD = 0 → N_AD = −200 kN (compressão). Horizontal: (3/5)N_AE = 0, consistente.\n- Nó F (CF, EF, DF). Vertical: −(4/5)·125 − (4/5)·125 − N_DF = 0 → N_DF = −200 kN (compressão), igual a N_AD como exigido pelo nó D. Horizontal: −75 + 75 = 0.\n\nTabela:\n\n| Barra | Esforço | Natureza |\n|---|---|---|\n| CD | 75 kN | compressão |\n| CF | 125 kN | tração |\n| DF | 200 kN | compressão |\n| AD | 200 kN | compressão |\n| AE | 0 (força nula) | — |\n| DE | 75 kN | compressão |\n| BE | 100 kN | tração |\n| EF | 125 kN | tração |\n\nVerificação: resíduo nulo em todos os nós, ΣM_B = 0, e sistema linear exato 12×12 de posto 12, com a mesma solução (conferido com aritmética exata em Python).\n\n**c) Função da barra AE**\n\nSob esta carga vertical, AE tem força nula. Ela não é necessária ao equilíbrio de forças verticais, mas tem função estrutural: estabilidade geométrica (indeformabilidade).\n\nSem AE, os nós A, D, E e B formam um quadrilátero articulado (retângulo 3 m × 4 m, com AB como \"chão\") que pode se deformar como paralelogramo. A estrutura vira mecanismo. A diagonal AE triangula o retângulo em dois triângulos rígidos (ADE e ABE).\n\nTeste de confirmação: sem AE e com uma carga horizontal de 10 kN em C, o sistema não tem solução (posto 11, inconsistente), ou seja, há mecanismo. Com AE, a mesma carga gera AE = 50/3 ≈ 16,7 kN (tração). Ou seja, AE trabalha como diagonal de contraventamento contra cargas laterais, como vento, balanço da carga ou componente horizontal do cabo.\n\nConclusão: AE é barra de força nula para a carga vertical dada, mas é indispensável à rigidez da estrutura para qualquer carregamento lateral.",
+    "final_answer": "a) Reações (pinos em A e B, pesos desprezados): R_A = 200 kN, vertical, para cima; R_B = 100 kN, vertical, para baixo. As componentes horizontais são nulas (A_x = B_x = 0).\n\nb) Esforços normais (tração positiva):\n- CD = 75 kN, compressão\n- CF = 125 kN, tração\n- DF = 200 kN, compressão\n- AD = 200 kN, compressão\n- AE = 0 (força nula)\n- DE = 75 kN, compressão\n- BE = 100 kN, tração\n- EF = 125 kN, tração\n\nc) A barra AE não carrega esforço sob a carga vertical P, mas é essencial para a estabilidade: triangula o quadrilátero ADEB, evitando que a estrutura se deforme como mecanismo (paralelogramo). Ela trabalha apenas quando há componente horizontal de carga, como vento ou balanço do guindaste.",
+    "pitfalls": [
+      "Leitura da geometria: as duas cotas de 3 m são CA e AB, então AB = 3 m (não 6 m). Com AB = 6 m, o momento em B muda, By sai −50 kN em vez de −100 kN, e AE, EF e CF ficam com valores irracionais (√13, √52), que são sinal de geometria errada.",
+      "Sentido da reação em B: é para baixo (100 kN), não para cima. Um aluno que assume que o apoio 'empurra' a estrutura para cima inverte o sinal e distribui mal os esforços. Verificação: P·6 = Ay·3 em torno de B.",
+      "A reação horizontal é nula: Bx = 0 porque o nó B tem só a reação e a barra BE, que é vertical; daí Ax = 0 pelo equilíbrio global. Não suponha componente horizontal por causa da diagonal AE.",
+      "Equilíbrio global dá só 3 equações para 4 reações: não é possível obter todas as reações apenas pela estática global. Use o nó B (ou uma seção) para fechar o sistema.",
+      "A barra AE tem força nula para esta carga. Não é erro: aluno que atribui a AE um valor não nulo ou diz que ela 'suporta a carga' errou. Sua função é de estabilidade (triangulação do quadrilátero ADEB). Sem ela a estrutura é mecanismo para cargas horizontais.",
+      "Convenção de tração e compressão: barra que puxa o nó é tração. CD e DE são compressão (CF puxa C para a direita, então CD empurra C para a esquerda). Trocar o sinal de CD ou DE é o erro mais comum.",
+      "Componente vertical de CF: o ângulo 3-4-5 dá N_CF·(4/5) = P, então N_CF = 125 kN, não 100 kN. O mesmo vale para EF (125 kN).",
+      "Isostaticidade: 8 barras + 4 reações = 12 = 2×6 nós. Com esse número de incógnitas a estática basta, sem análise de compatibilidade. Começar o método dos nós por um nó com 3 ou mais incógnitas invalida a sequência.",
+      "Se B fosse tratado como rolete (só reação vertical), o resultado não mudaria, porque Bx = 0 de qualquer modo. Mas a contagem de incógnitas e o argumento de estabilidade mudam, e a leitura do símbolo de apoio precisa ser justificada.",
+      "Convenção de sinais dos momentos: C está a 3 m de A na horizontal, e B está a 6 m de C. Forças verticais não produzem braço em torno de A, mas P tem braço de 3 m em A e de 6 m em B.",
+      "A barra DF e a barra AD (200 kN, compressão) são as mais solicitadas. Em projeto real, barras comprimidas precisam de verificação à flambagem, que o enunciado não pede."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) R_A = 200 kN, vertical, para cima; R_B = 100 kN, vertical, para baixo (B precisa ser ancorado); reações horizontais nulas.\nb) N_CD = 75 kN (compressão); N_CF = 125 kN (tração); N_DF = 200 kN (compressão); N_AD = 200 kN (compressão); N_AE = 0; N_DE = 75 kN (compressão); N_BE = 100 kN (tração); N_EF = 125 kN (tração).\nc) AE é barra de contraventamento: sob P tem força nula, mas sem ela o quadrilátero ADEB é um paralelogramo articulado (mecanismo horizontal). Com ela a estrutura fica rígida e isostática, e AE trabalha com N = 5H/3 se houver força horizontal H.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Nas equações de equilíbrio do nó E (ΣF_y e ΣF_x) o termo da barra AE, −(4/5)N_AE e −(3/5)N_AE, foi omitido sem aviso. O resultado é correto só porque N_AE = 0 já foi obtido antes. Deveria constar a substituição explícita (\"com N_AE = 0\") ou o termo deveria aparecer nas equações."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência diz \"Os seis nós estão em equilíbrio\", mas o nó B não aparece verificado. Só C, F, E, D e A foram checados. O nó B fecha por ΣF_y = −100 + 100 = 0 (reação e BE), o que deveria ser escrito. Ou então dizer que B segue do equilíbrio global."
+          },
+          {
+            "severity": "minor",
+            "description": "O tipo de apoio (articulado, com 2 reações) é afirmado sem ler o símbolo da figura (triângulo hachurado = pino). A justificativa é necessária porque a contagem 12 = 2j depende dela: com rolete em B, a contagem seria 11 incógnitas e o argumento de isostaticidade mudaria. O candidato não discute esse ponto."
+          },
+          {
+            "severity": "minor",
+            "description": "A ordem do método dos nós (C, depois F, E, D e A, sempre com no máximo 2 incógnitas) é válida, mas não é enunciada. Uma frase justificando a escolha deixaria o método mais rigoroso, como exige o gabarito comentado."
+          },
+          {
+            "severity": "minor",
+            "description": "Na análise de mecanismo do item c, o segmento AB aparece como barra do paralelogramo ADEB (\"DE e AB formam um paralelogramo\"), mas AB não é uma das 8 barras. É o trecho de solo entre dois apoios fixos. A contagem m + r = 7 + 4 = 11 usa esse solo implicitamente. Vale dizer isso explicitamente para não confundir o leitor."
+          },
+          {
+            "severity": "minor",
+            "description": "Não há comentário sobre flambagem das barras comprimidas (CD, DE, DF, AD), que são as de maior esforço em compressão. O enunciado não pede isso, então é só uma observação de completude opcional."
+          }
+        ],
+        "summary": "Verifiquei a figura e o enunciado: AB = 3 m (as duas cotas de 3 m são CA e AB), as barras são as 8 descritas, e P = 100 kN desce em C. Recalculei o sistema 12×12 de forma exata com um script em Python. O posto é 12 e a solução coincide com a do candidato em todos os itens: R_A = 200 kN para cima; R_B = 100 kN para baixo; sem componentes horizontais; CD = −75 kN (compressão); CF = 125 kN (tração); DF = −200 kN (compressão); AD = −200 kN (compressão); AE = 0; DE = −75 kN (compressão); BE = 100 kN (tração); EF = 125 kN (tração). Também confirmei ΣM_E = 0 e ΣM_A = 0. No item c, o candidato explica a função de AE corretamente: sem a barra a estrutura é mecanismo (posto 11, sistema inconsistente com carga horizontal), e com ela o esforço horizontal H gera N_AE = 5H/3 (exemplo: H = 10 kN dá 16,7 kN, tração), como também confere o script. A resolução cobre as armadilhas do gabarito: geometria (AB = 3 m), sentido da reação em B, Bx = 0, insuficiência da estática global para as 4 reações (resolvida com corte CDEF), força nula em AE, convenção de tração e compressão, CF e EF = 125 kN, contagem de isostaticidade, convenção de momentos, e as barras mais solicitadas. Não encontrei erro substantivo. Os problemas são de apresentação e rigor menores: termo de AE omitido nas equações do nó E, nó B não mostrado na conferência, símbolo de apoio não justificado, ordem do método dos nós não enunciada e AB tratado como barra no mecanismo. A nota fica em 9: é um gabarito que um professor publicaria com pequenos ajustes de texto.\""
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "x = y = z = 0, que é a única solução real do sistema. Motivo: f(t) = t + ln(t + √(t²+1)) é estritamente crescente (f'(t) = 1 + 1/√(t²+1) > 1), o que reduz o sistema a f(f(f(x))) = x; essa equação tem uma única raiz real, x = 0.",
+  "judge_reference": {
+    "reference_solution": "Questão 8 (IME 2025/2026, Matemática) — resolução de referência\n\nSistema:\n(1) x + log(x + √(x²+1)) = y\n(2) y + log(y + √(y²+1)) = z\n(3) z + log(z + √(z²+1)) = x\n\nItem 1 — Domínio. Para todo t real, √(t²+1) > |t|, logo t + √(t²+1) > 0. O logaritmo está definido em toda a reta; não há restrição de domínio a impor.\n\nItem 2 — Reescrita. Seja h(t) = log(t + √(t²+1)) e f(t) = t + h(t). O sistema é equivalente a y = f(x), z = f(y), x = f(z).\n(Vale para qualquer base b > 1; a resposta não depende da base escolhida.)\n\nItem 3 — f é estritamente crescente. Com a base natural, d/dt ln(t + √(t²+1)) = (1 + t/√(t²+1)) / (t + √(t²+1)) = 1/√(t²+1). Para base b, a derivada é 1/(ln b · √(t²+1)). Logo, para b > 1,\nf'(t) = 1 + 1/(ln b · √(t²+1)) > 0 para todo t real.\nPortanto f é estritamente crescente em ℝ.\n\nItem 4 — (0,0,0) é solução. h(0) = log(0 + 1) = 0, então as três equações viram 0 = 0.\n\nItem 5 — Unicidade (argumento cíclico). Seja (x, y, z) uma solução real.\n- Suponha x < y. Como f é crescente, f(x) < f(y), ou seja, y < z. De novo, f(y) < f(z), ou seja, z < x. Então x < y < z < x, contradição.\n- Suponha x > y. Analogamente, f(x) > f(y) dá y > z, e f(y) > f(z) dá z > x. Então x > y > z > x, contradição.\n- Logo x = y. Então z = f(y) = f(x) = y. Assim x = y = z = t.\n\nItem 6 — Determinação de t. Com x = y = z = t, a primeira equação dá t + log(t + √(t²+1)) = t, ou seja, log(t + √(t²+1)) = 0. Assim t + √(t²+1) = 1, isto é, √(t²+1) = 1 − t. Elevando ao quadrado: t² + 1 = 1 − 2t + t², logo t = 0. Verificação: √1 = 1 − 0 = 1, que é consistente.\n\nConclusão: o sistema admite uma única solução real, (x, y, z) = (0, 0, 0). Soluções complexas não são pedidas.\n\nVerificação numérica (script Python, pasta de trabalho): para bases e, 10, 2 e 1/e, f³(x) − x tem como única raiz x = 0 no intervalo [−50, 50], e f é crescente na malha. Os resíduos em (0,0,0) são nulos.",
+    "final_answer": "Única solução real do sistema: (x, y, z) = (0, 0, 0).\n\nProva: f(t) = t + log(t + √(t²+1)) é estritamente crescente em ℝ (para base > 1), e o sistema equivale a y = f(x), z = f(y), x = f(z). Um argumento cíclico mostra que x = y = z. Então log(t + √(t²+1)) = 0, o que dá t = 0. A base do logaritmo (decimal ou natural) não altera o resultado.",
+    "pitfalls": [
+      "Verificar que (0,0,0) satisfaz o sistema não prova unicidade. A questão pede a prova de que é a única solução real; é preciso um argumento de monotonicidade ou equivalente.",
+      "Argumento de domínio: t + √(t²+1) > 0 para todo real t, pois √(t²+1) > |t|. Não há restrição de domínio. Impor x ≥ 0 ou algo semelhante é erro.",
+      "Derivada do arco-seno hiperbólico: d/dt log(t + √(t²+1)) = 1/√(t²+1) (com base natural). Não confundir com 1/(t + √(t²+1)). Para base b a derivada tem o fator 1/ln b.",
+      "Monotonicidade de f depende da base: para b > 1 (ou b ≤ 1/e) f é estritamente crescente. Para b ∈ (1/e, 1), f'(t) = 1 + 1/(ln b·√(t²+1)) muda de sinal e o argumento padrão não se aplica. Numericamente, para b = 0.5 não encontrei outras raízes, mas a prova padrão não cobre esse caso. Use base 10 ou e como o contexto sugere.",
+      "Somar as três equações dá h(x)+h(y)+h(z) = 0, onde h(t) = log(t+√(t²+1)). Isso não basta para concluir x = y = z; é um erro comum tratar essa soma como suficiente.",
+      "Argumento cíclico incompleto: é preciso refutar tanto x < y quanto x > y. Usar apenas um dos casos não fecha a prova. Também não se deve supor uma ordenação prévia como x ≤ y ≤ z sem justificativa.",
+      "Após x = y = z = t, o erro típico é tratar a equação como identidade ou esquecer que ela reduz a log(t+√(t²+1)) = 0. Esse log é zero quando o argumento é 1, então t + √(t²+1) = 1.",
+      "Ao elevar √(t²+1) = 1 − t ao quadrado, é preciso checar 1 − t ≥ 0. Aqui t = 0 satisfaz, e a equação quadrática só dá t = 0.",
+      "A solução é a origem (0,0,0). Respostas como x = y = z = 1 ou soluções 'não triviais' indicam erro de cálculo ou de domínio.",
+      "Pergunta sobre soluções reais: a unicidade vale em ℝ. Soluções complexas do sistema não são pedidas e não devem ser discutidas como parte da resposta final."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "x = y = z = 0, que é a única solução real do sistema. Motivo: f(t) = t + ln(t + √(t²+1)) é estritamente crescente (f'(t) = 1 + 1/√(t²+1) > 1), o que reduz o sistema a f(f(f(x))) = x; essa equação tem uma única raiz real, x = 0.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Convenção de base: o enunciado usa \"log\" sem base. No contexto brasileiro isso costuma ser log decimal. A resolução adota o logaritmo natural como convenção principal e trata a base decimal apenas entre parênteses e em conferências. Deveria enunciar desde o início o resultado para qualquer base b>1, com f_b'(t)=1+1/(ln b·√(t²+1))>1, e só depois particularizar para e ou 10."
+          },
+          {
+            "severity": "minor",
+            "description": "O método cíclico (x<y ⇒ x<y<z<x; x>y ⇒ x>y>z>x; logo x=y=z), que é o argumento mais direto e o que a questão pede como monotonicidade, está escondido como bullet em \"Conferências adicionais\". Deveria ser apresentado como argumento principal ou como segunda prova claramente rotulada. A redução via F e o TVM (Passos 3–4) estão corretos, mas são mais pesados do que o necessário."
+          },
+          {
+            "severity": "minor",
+            "description": "Itens de enchimento: o bullet \"Unidades\" não verifica nada (apenas diz que não há unidades) e o bullet \"Sinais\" não é usado na prova. Deveriam ser removidos ou substituídos por conteúdo que suporte a argumentação."
+          },
+          {
+            "severity": "minor",
+            "description": "Afirmações numéricas (F(1)≈4,17 e F(−1)≈−4,17; \"com base decimal, a verificação numérica também dá F(0)=0 como única raiz\") são feitas sem indicar o método. Conferi: F(1)=4,1714 (ln); base 10 tem raiz única em [−50,50]. Estão corretas, mas deveriam declarar como foram obtidas ou ser omitidas."
+          },
+          {
+            "severity": "minor",
+            "description": "Escopo das bases não justificado: o texto assume b>1, mas não explica por que a monotonicidade falha em (1/e,1). Verifiquei que para b=0,5 o mínimo de f' é ≈−0,44, e que para b≤1/e f continua crescente. Não afeta a resposta para log decimal nem para ln, mas a restrição deveria ser explicitada."
+          }
+        ],
+        "summary": "Comparação item a item: a resposta final do candidato, (x,y,z)=(0,0,0) como única solução real, coincide com a referência. Refiz as contas e confirmo que essa resposta está correta. O sistema equivale a y=f(x), z=f(y), x=f(z), com f(t)=t+ln(t+√(t²+1)) estritamente crescente, pois f'=1+1/√(t²+1)>1. O caso cíclico com x≠y leva a contradição, logo x=y=z=t. Então ln(t+√(t²+1))=0 dá t=0. Não há divergência entre as duas resoluções.\n\nConferências numéricas (python3): F(1)=4,1714 e F(−1)=−4,1714 (ln natural), o que bate com o candidato. Em base 10, F(1)=1,4742, e a única raiz em [−50,50] é 0 para as bases e, 10 e 2. Para b>1, f_b'>1 (mínimo ≈1,0087 em base 10). As identidades de derivada conferem, e sign(ln u)=sign(t) vale. Todas as afirmações numéricas do candidato estão corretas.\n\nArmadilhas: (a) domínio tratado corretamente via √(t²+1)>|t|; (b) (0,0,0) não é usado como prova de unicidade, que vem da monotonicidade; (c) derivada do arco-seno hiperbólico correta (u'/u=1/√); (d) a soma das equações não é usada como argumento; (e) o caso cíclico cobre x<y e x>y, mas está no método alternativo; (f) t=0 sai sem elevar ao quadrado, pela identidade u·(√(t²+1)−t)=1; (g) não há soluções \\\"não triviais\\\" nem discussão de complexas. A dependência da base foi tratada só parcialmente, para b>1, sem justificar a exclusão de (1/e,1). Isso não é erro na resposta.\n\nAvaliação geral: prova correta, completa (existência, unicidade, cálculo e verificação) e com rigor adequado. Nota 9. Os descontos são de apresentação: convenção de base invertida em relação ao uso brasileiro, método mais limpo relegado a um bullet, conferências de enchimento e afirmações numéricas sem método. Nada disso invalida a prova."
+      }
+    }
+  ]
+}

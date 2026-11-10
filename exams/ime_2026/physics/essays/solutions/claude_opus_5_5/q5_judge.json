@@ -1,0 +1,51 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) R_C = 22/3 N ≈ 7,33 N; R_D = 200/3 N ≈ 66,7 N; R_E = 26 N; R_G = 26 N. b) m_max = 8,4 kg, limite em que R_C = 0 e a viga começa a girar em torno de D.",
+  "judge_reference": {
+    "reference_solution": "**Modelagem (viga Gerber)**\nEixo x horizontal com origem em C: C em x = 0, D em x = 6 m, G em x = 8 m (já que GE = 2 m), bloco em x = 9 m e E em x = 10 m.\nA viga é homogênea, com densidade linear λ = M/L = 0,6 kg/m, ou seja, 6 N/m.\n- O trecho CG mede 8 m. Tem massa 4,8 kg e peso P₁ = 48 N, aplicado em x = 4 m.\n- O trecho GE mede 2 m. Tem massa 1,2 kg e peso P₂ = 12 N, aplicado em x = 9 m.\n\nSem a articulação, uma viga rígida sobre três apoios é hiperestática: a estática só oferece 2 equações úteis para 3 incógnitas. A articulação (dente em G) não transmite momento, só força vertical. Ela divide a estrutura em duas vigas isostáticas:\n- GE é a viga \"apoiada\", com apoios no dente em G e em E.\n- CG é a viga \"portante\", sobre C e D, e tem um balanço DG de 2 m.\n\nPela 3ª lei de Newton, o dente empurra GE para cima com N_G e recebe de GE uma força N_G para baixo em x = 8 m.\n\n**a) m = 4 kg (peso do bloco 40 N)**\n\n*Trecho GE.* As cargas são 12 N + 40 N = 52 N, ambas em x = 9 m, que é o ponto médio de GE.\n- Momentos em relação a G: N_E·2 = 52·1, logo N_E = 26 N.\n- Soma das forças verticais: N_G = 52 − 26 = 26 N.\n\n*Trecho CG.* As cargas são 48 N em x = 4 m e 26 N para baixo em x = 8 m.\n- Momentos em relação a D: N_C·6 + 26·2 = 48·2, logo N_C = 44/6 = 22/3 N ≈ 7,33 N.\n- Soma das forças verticais: N_D = 48 + 26 − 22/3 = 200/3 N ≈ 66,7 N.\n\nConferência global: N_C + N_D + N_E = 22/3 + 200/3 + 26 = 100 N, que é igual a (6 + 4)·10. ✔\n\nReações (todas verticais e para cima):\n- C: 22/3 N ≈ 7,3 N\n- D: 200/3 N ≈ 66,7 N\n- E: 26 N\n- G: 26 N. Esta é a força do dente sobre o trecho GE. Sobre o trecho CG atua uma força igual, para baixo.\n\n**b) Maior m**\nPara m qualquer, o equilíbrio de GE dá N_G = N_E = (12 + 10m)/2 = 6 + 5m (em N).\n\nNo trecho CG, os momentos em relação a D dão 6·N_C = 48·2 − 2·N_G, ou seja, N_C = (96 − 2N_G)/6 = (42 − 5m)/3.\nTambém N_D = 48 + N_G − N_C, que é sempre positivo, e N_E e N_G também são sempre positivos.\n\nOs apoios são simples (unilaterais) e só podem empurrar a viga. Portanto é preciso N_C ≥ 0, o que equivale a N_G ≤ 48 N, ou seja, 6 + 5m ≤ 48, logo m ≤ 8,4 kg.\n\nCom m = 42/5 kg = 8,4 kg, temos N_C = 0. Nessa situação o trecho CG está na iminência de girar em torno de D: a ponta C se levanta, o balanço DG desce e GE perde a sustentação. Nesse limite, N_D = 96 N, N_G = N_E = 48 N, e o total é 144 N = (6 + 8,4)·10. ✔\n\n**m_máx = 8,4 kg** (o equilíbrio vale para m ≤ 8,4 kg; o valor 8,4 kg é a situação limite).",
+    "final_answer": "a) Com m = 4 kg as reações são verticais e para cima:\n- N_C = 22/3 N ≈ 7,3 N\n- N_D = 200/3 N ≈ 66,7 N\n- N_E = 26 N\n- N_G = 26 N. É a força do dente sobre o trecho GE; sobre o trecho CG atua uma força de 26 N para baixo.\n\nb) m_máx = 8,4 kg (42/5 kg). Nesse valor N_C = 0, e o trecho CG está na iminência de tombar em torno de D.",
+    "pitfalls": [
+      "Sem a articulação, a viga rígida sobre três apoios é hiperestática e não pode ser resolvida só com a estática. A articulação em G (momento fletor nulo, transmite só força vertical) torna o sistema isostático: GE é uma viga biapoiada (G, E) e CG é uma viga sobre C e D com balanço DG.",
+      "Distribuir corretamente o peso da viga entre os trechos: CG tem 8 m, 4,8 kg e 48 N com centro em x = 4 m; GE tem 2 m, 1,2 kg e 12 N com centro em x = 9 m. Erro comum: usar o peso total de 60 N em x = 5 m num dos trechos, ou dividir a viga em CD e DE.",
+      "Ação e reação em G: o dente empurra GE para cima com N_G, e por isso o trecho CG recebe N_G para baixo em x = 8 m, ou seja, 2 m além de D, no balanço. Esquecer essa carga, ou colocá-la para cima em CG, leva a N_C e N_D errados.",
+      "O bloco (x = 9 m) e o centro de massa de GE ficam ambos no ponto médio de GE, por isso N_G = N_E = metade da carga de GE. Errar a posição do bloco (por exemplo, a 1 m de G) muda os resultados.",
+      "Sinais nos momentos em relação a D: o peso de CG (2 m à esquerda de D) e a carga em G (2 m à direita de D) têm momentos opostos. Assim N_C = (96 − 2N_G)/6 = 22/3 N, e não (96 + 52)/6.",
+      "Conferir o equilíbrio global: N_C + N_D + N_E = (M + m)g. N_G é força interna da estrutura e não entra nessa soma.",
+      "Item b: os apoios simples são unilaterais (reação ≥ 0). O limite vem de N_C = 0, quando CG está na iminência de girar em torno de D (C se levanta). Isso dá N_G ≤ 48 N e m ≤ 8,4 kg. N_D, N_E e N_G nunca se anulam, então não geram limite.",
+      "Item b: não basta impor N_C > 0 sem justificar que essa é a única reação que pode se anular. Também não se deve confundir o limite com algum critério de resistência do dente, que o enunciado não fornece: a viga é indeformável.",
+      "Considerar a viga rígida contínua (ignorar a articulação) no item a, ou supor que o trecho GE sustenta CG (inverter o papel do dente), contradiz a observação do enunciado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) R_C = 22/3 N ≈ 7,33 N; R_D = 200/3 N ≈ 66,7 N; R_E = 26 N; R_G = 26 N. b) m_max = 8,4 kg, limite em que R_C = 0 e a viga começa a girar em torno de D.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No item b, a frase 'o que segura a viga é o peso do trecho CD, que atua como contrapeso' é imprecisa. O que equilibra a carga em G é o momento resultante, em relação a D, do peso de todo o trecho CG: o trecho CD dá +36·3 = 108 N·m e o próprio balanço DG dá −12·1 = −12 N·m, totalizando 96 N·m. A conta usa 48·2 = 96 corretamente, então só a redação está errada. Bastaria escrever 'o momento do peso do trecho CG em relação a D'."
+          },
+          {
+            "severity": "minor",
+            "description": "Na resposta final o candidato escreve apenas 'Todas são verticais', sem dizer que as reações de C, D e E e a força do dente sobre GE apontam para cima. O sentido aparece na modelagem ('R_G para cima', R ≥ 0), mas deveria constar também no quadro de respostas."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não relaciona a figura 'Articulação' (dente em Z) com o papel de cada trecho, isto é, que CG sustenta GE pelo dente. A observação do enunciado já fixa isso, então não há erro, mas uma frase ligando a figura à modelagem deixaria a resolução mais completa."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 5 do PDF, e ele bate com a transcrição. As respostas do candidato coincidem com a minha referência nos dois itens, e refiz as contas em python com frações exatas.\n\nItem a: R_C = 22/3 N, R_D = 200/3 N, R_E = 26 N e R_G = 26 N. A soma das reações dá 100 N = (M + m)g.\n\nItem b: R_C = (84 − 10m)/6 ≥ 0, logo m_máx = 8,4 kg. No caso limite, R_D = 96 N e R_G = R_E = 48 N, com soma 144 N.\n\nA modelagem é a correta de viga Gerber, e o candidato tratou todas as armadilhas que identifiquei:\n- justifica a hiperestaticidade sem a articulação e diz que o dente não transmite momento;\n- divide o peso da viga corretamente (48 N em x = 4 m e 12 N em x = 9 m), sem usar 60 N num trecho só;\n- aplica a 3ª lei em G, com a carga para baixo no balanço de CG;\n- usa os sinais certos nos momentos em relação a D e ainda confere tomando momentos em relação a C;\n- confere o equilíbrio global sem incluir R_G, que é força interna;\n- no item b, diz que os vínculos são unilaterais e mostra explicitamente por que R_D, R_E e R_G não geram limite (R_D = 40 + 20m/3 > 0);\n- descreve o mecanismo de falha: CG gira em torno de D, C se levanta e G desce.\n\nOs problemas que encontrei são só de redação: chamar de 'peso do trecho CD' o contrapeso, quando é o momento resultante do peso de CG em relação a D; não repetir na resposta final que as reações apontam para cima; e não ligar a figura do dente à modelagem. Nada disso afeta a física nem os resultados. A resolução tem nível de gabarito comentado."
+      }
+    }
+  ]
+}

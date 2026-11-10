@@ -1,0 +1,48 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "r = 1/16 (= 0,0625) e o polígono é um octógono regular cujos oito lados medem √(1 − √2/2) = √(4 − 2√2)/2 ≈ 0,541.",
+  "judge_reference": {
+    "reference_solution": "**Questão 3 (IME 2027, Matemática). Resolução de referência.**\n\n**1. Isolar z⁸.** De r + i·z⁸ = 0 vem i·z⁸ = −r. Como 1/i = −i, temos z⁸ = −r/i = −r·(−i) = r·i. Logo z⁸ = ri, com r > 0. Como o termo independente é não nulo, a equação tem exatamente 8 raízes distintas.\n\n**2. Raízes.** Tomando módulos: |z|⁸ = r, então |z| = R := r^(1/8). Tomando argumentos: 8·arg z ≡ π/2 (mod 2π), então arg z = π/16 + kπ/4, com k = 0, …, 7. Logo\n\nz_k = (√2/2)·e^{i(4k+1)π/16}, k = 0, …, 7\n\n(usando R = 2^(−1/2), que será confirmado no item 5).\n\nVerificação: |z_k|⁸ = R⁸ = r e arg(z_k⁸) = π/2 + 2kπ, logo z_k⁸ = ri.\n\n**3. Forma do polígono.** Os oito vértices estão sobre a circunferência de centro 0 e raio R, com argumentos igualmente espaçados de 2π/8 = π/4. Portanto são os vértices de um octógono regular convexo inscrito nessa circunferência. Todos os lados são iguais, e o polígono é determinado pelo módulo R (o argumento inicial só gira a figura).\n\n**4. Área em função de r.** O octógono se decompõe em 8 triângulos isósceles com ângulo central π/4:\n\nA = 8 · (1/2) · R² · sen(π/4) = 4R² · (√2/2) = 2√2 · R².\n\nComo R² = (r^(1/8))² = r^(1/4), obtemos A(r) = 2√2 · r^(1/4).\n\n**5. Valor de r.** A(r) = √2 ⇔ 2√2 · r^(1/4) = √2 ⇔ r^(1/4) = 1/2 ⇔ r = 1/16. A função A(r) é estritamente crescente para r > 0, então essa é a única solução. Consequentemente R = r^(1/8) = (2⁻⁴)^(1/8) = 2^(−1/2) = √2/2, o que confirma o item 2.\n\n**6. Comprimento do lado.** Cada lado é a corda que subtende o ângulo central π/4:\n\ns = 2R·sen(π/8) = √2 · sen(π/8).\n\nComo sen(π/8) = √(2 − √2)/2, temos\n\ns = √2·√(2 − √2)/2 = √(2 − √2)/√2 = √(1 − √2/2) = √(4 − 2√2)/2 ≈ 0,5412.\n\nConferência pela fórmula da área do octógono regular de lado s, que é 2(1 + √2)s²: com s² = 1 − √2/2, obtemos 2(1 + √2)(1 − √2/2) = 2·(√2/2) = √2. ✓\n\n**7. Checagem numérica (python3).** Resíduo máximo |r + i·z⁸| ≈ 9·10⁻¹⁷ para r = 1/16. A área pela fórmula de Gauss (shoelace) dá 1,4142135…, igual a √2. Os oito lados medem 0,5411961… cada. A relação A(r) = 2√2·r^(1/4) também confere para r = 0,5 e r = 2.\n\n**Conclusão.** O polígono é um octógono regular, todos os seus lados medem √(1 − √2/2) = √(4 − 2√2)/2 ≈ 0,541, e r = 1/16.",
+    "final_answer": "**Respostas finais (Questão 3):**\n\n- **Lados:** o polígono é um octógono regular, e todos os 8 lados medem s = √(1 − √2/2) = √(4 − 2√2)/2 = √2·sen(π/8) ≈ 0,5412 (formas equivalentes: √(2 − √2)/√2).\n- **r = 1/16.**\n\nJustificativa resumida: z⁸ = ri, então |z| = r^(1/8) = R, e as raízes estão sobre a circunferência de raio R com espaçamento angular π/4. A área é 2√2·R² = 2√2·r^(1/4) = √2, logo r^(1/4) = 1/2 e r = 1/16, o que dá R = √2/2 e s = 2R·sen(π/8).\n\nNão é múltipla escolha.",
+    "pitfalls": [
+      "Manipulação de i: de r + i·z⁸ = 0 segue z⁸ = −r/i = r·i (não −r·i nem r/i). O erro de sinal não altera módulo nem área, mas leva a raízes com argumento errado.",
+      "O argumento das raízes não afeta a área nem o lado: só o módulo importa, pois a configuração é um octógono regular girado. Não é preciso calcular as raízes para responder, mas é bom explicitá-las para conferir.",
+      "Módulo: |z| = r^(1/8), não r/8 nem r^8. O raio da circunferência circunscrita é R = r^(1/8), e R² = r^(1/4). Erro frequente é tomar R = r ou R² = r^(1/8).",
+      "Ao resolver para r, a equação é r^(1/4) = 1/2, o que dá r = 1/16. Não confundir com r^(1/8) = 1/2 (daria r = 1/256) nem com r = 1/4.",
+      "Área do octógono regular: A = (n/2)·R²·sen(2π/n) = 4R²·sen(π/4) = 2√2·R². Erros típicos: esquecer o fator 1/2 do triângulo (dobra a área) ou usar sen(π/8) na área.",
+      "Lado: a corda com ângulo central π/4 mede 2R·sen(π/8), não 2R·sen(π/4) = R√2 nem R. Fórmula correta: s = √2·sen(π/8) ≈ 0,5412 quando R = √2/2.",
+      "Hipótese de validade: os 8 vértices são distintos (r > 0 garante termo independente não nulo) e, ordenados pelo argumento, formam um octógono convexo e simples, então as fórmulas de polígono regular se aplicam. Todos os lados são iguais.",
+      "Unicidade de r: r > 0 é exigido pelo enunciado, e A(r) = 2√2·r^(1/4) é estritamente crescente, então há uma única solução r = 1/16.",
+      "Forma da resposta do lado: aceitar equivalentes, como √(4 − 2√2)/2, √(1 − √2/2) ou √(2 − √2)/√2. Conferir pela área: 2(1 + √2)·s² = √2 com s² = 1 − √2/2.",
+      "Não confundir o lado com o apótema, a diagonal menor ou a maior do octógono. O enunciado pede o comprimento dos lados (um único valor, pois todos são iguais) e o valor de r."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "r = 1/16 (= 0,0625) e o polígono é um octógono regular cujos oito lados medem √(1 − √2/2) = √(4 − 2√2)/2 ≈ 0,541.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A escolha do polígono não é justificada. O enunciado diz 'o polígono cujos vértices são as oito raízes', e o candidato assume, sem dizer por quê, que se trata do octógono convexo que liga raízes consecutivas em ordem de argumento. O Passo 3 não menciona convexidade; ela só aparece no Passo 4 ('Como o octógono regular é convexo'). Outras ligações possíveis (por exemplo, o octógono estrelado {8/3}) dariam outra área. Deveria ser dito explicitamente que o polígono é o de vértices consecutivos em ordem angular, e que a convexidade decorre de os vértices estarem sobre a circunferência com ângulos centrais iguais."
+          },
+          {
+            "severity": "minor",
+            "description": "A forma alternativa s = 2R·sen(π/8) = √2·sen(π/8) é apresentada como 'outra forma de escrever' sem derivação. Bastaria uma linha: no triângulo isósceles Oz_k z_{k+1}, a altura do vértice O divide o ângulo π/4 ao meio, o que dá s/2 = R·sen(π/8). Alternativamente, conferir com sen(π/8) = √(2−√2)/2, o que o candidato não faz."
+          }
+        ],
+        "summary": "Resposta final correta e igual à referência: r = 1/16 = 0,0625, e os oito lados (octógono regular, R = √2/2) medem √(1−√2/2) = √(4−2√2)/2 ≈ 0,5412. Confirmei o enunciado na página 4 do PDF e fiz a conferência em python: resíduo de r + i·z⁸ da ordem de 1e-16, área por shoelace = √2 e lado = 0,5411961. A cadeia do candidato está correta: z⁸ = ri com 1/i = −i (passo 1), |z| = r^(1/8) e argumentos π/16 + kπ/4 (passo 2), octógono regular (passo 3), A = 2√2·R² (passo 4, com o fator 1/2 do triângulo), R² = 1/2 e r = (R²)⁴ = 1/16 (passo 5), lado pela lei dos cossenos com 2R²=1 (passo 6), e substituição direta z₀⁸ = i/16 (passo 7, correta). As armadilhas da referência estão tratadas: manipulação de i, módulo r^(1/8) (sem confundir com r^(1/8)=1/2), fator 1/2 da área, lado 2R·sen(π/8) e não R√2, unicidade de r com r>0 usado, equivalentes da forma do lado com verificação pela área 2(1+√2)s² = √2. Não há erro de conta nem de lógica. As lacunas restantes são de justificação (escolha do polígono convexo e a forma alternativa do lado), e por isso a nota é 9,5 e não 10. Está no nível de gabarito comentado publicável."
+      }
+    }
+  ]
+}

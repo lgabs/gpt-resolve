@@ -1,0 +1,58 @@
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{Notação.} Seja $C=(L,h)$ o centro da esfera, $\hat d$ a direção do fóton incidente e $\hat d'$ a do refletido. A reta $x=\sqrt3\,y$ forma $30^\circ$ com o eixo $x$, logo
+\[
+\hat d=\left(\tfrac{\sqrt3}{2},\,\tfrac12\right),\qquad \hat d'=(0,-1),\qquad \vec r_f(t)=ct\,\hat d .
+\]
+
+\textbf{a) Velocidade $u$.}
+
+\emph{Passo 1: normal no ponto de impacto.} Como $u<c$ e a esfera nasce como um ponto distinto da origem ($R(0)=0$, $C\neq O$), o fóton está fora da esfera até o primeiro contato, portanto a atinge por fora. Seja $\hat n$ a normal unitária externa no ponto de impacto. Pela lei da reflexão (desprezando o movimento da superfície, como manda o enunciado),
+\[
+\hat d'=\hat d-2(\hat d\cdot\hat n)\,\hat n
+\;\Rightarrow\;
+\hat d'-\hat d=\left(-\tfrac{\sqrt3}{2},-\tfrac32\right)=-2(\hat d\cdot \hat n)\,\hat n .
+\]
+Como $\hat d\cdot\hat n<0$ (incidência por fora), o coeficiente é positivo e $\hat n$ tem o sentido de $\hat d'-\hat d$, cujo módulo é $\sqrt3$:
+\[
+\hat n=\left(-\tfrac12,\,-\tfrac{\sqrt3}{2}\right).
+\]
+Verificação: $\hat d\cdot\hat n=-\tfrac{\sqrt3}{2}$, ou seja, ângulo de incidência de $30^\circ$ e desvio total de $180^\circ-2\cdot30^\circ=120^\circ$, que é o ângulo entre $\hat d$ (a $30^\circ$) e $\hat d'$ (a $-90^\circ$). Está coerente.
+
+\emph{Passo 2: posição do impacto.} No instante $t$ do impacto, o ponto $P$ pertence à superfície, então $P=C+R\,\hat n$ com $R=ut$, e também $P=ct\,\hat d$:
+\begin{align*}
+\tfrac{\sqrt3}{2}\,ct&=L-\tfrac12\,ut \;\Rightarrow\; t\,(\sqrt3\,c+u)=2L,\\
+\tfrac12\,ct&=h-\tfrac{\sqrt3}{2}\,ut \;\Rightarrow\; t\,(c+\sqrt3\,u)=2h.
+\end{align*}
+
+\emph{Passo 3: eliminação de $t$.} Dividindo as equações, $\dfrac{L}{h}=\dfrac{\sqrt3\,c+u}{c+\sqrt3\,u}$, ou seja, $\sqrt3\,Lu+Lc=\sqrt3\,hc+hu$, e portanto
+\[
+\boxed{\,u=c\,\frac{\sqrt3\,h-L}{\sqrt3\,L-h}\,}
+\]
+
+\emph{Resultados auxiliares.} Substituindo $u$ em $t(\sqrt3c+u)=2L$, obtém-se $\sqrt3c+u=\dfrac{2cL}{\sqrt3L-h}$, então
+\[
+t=\frac{\sqrt3\,L-h}{c},\qquad R=ut=\sqrt3\,h-L .
+\]
+\emph{Conferência geométrica independente.} A distância de $C$ à reta do fóton é $\frac{|L-\sqrt3h|}{2}=R\sin30^\circ$, o que dá $R=\sqrt3h-L$ (o centro está acima da reta, como na figura). A projeção de $C$ sobre a reta fica a $s_C=\frac{\sqrt3L+h}{2}$ da origem e o impacto ocorre antes dela, a $R\cos30^\circ$. Logo $ct=\frac{\sqrt3L+h}{2}-\frac{\sqrt3}{2}(\sqrt3h-L)=\sqrt3L-h$, o mesmo resultado. 
+
+Exemplo numérico: $h=1$ e $L=1{,}5$ dão $u\approx0{,}145\,c$, $ct\approx1{,}598$ e $R\approx0{,}232$. O ponto $P=(1{,}384;\,0{,}799)$ dista $0{,}232$ de $C$, na direção $\hat n$, como esperado. Unidades: $u$ é $c$ vezes uma razão adimensional.
+
+\textbf{b) Condição sobre $h$ e $L$.} A situação é possível se a esfera realmente se expande ($u>0$, isto é, $R>0$), se o impacto ocorre em $t>0$ e se $u<c$. Com $u=R/t$:
+\begin{itemize}
+\item $R>0 \iff L<\sqrt3\,h$ (o centro fica acima da reta da trajetória do fóton, como na figura);
+\item $t>0 \iff \sqrt3\,L>h$;
+\item $u<c \iff R<ct \iff \sqrt3h-L<\sqrt3L-h \iff (\sqrt3+1)\,h<(\sqrt3+1)\,L \iff h<L$.
+\end{itemize}
+Se $h<L$, então $\sqrt3L>\sqrt3h>h$, de modo que a condição $t>0$ é automática. As condições se reduzem a
+\[
+\boxed{\,h<L<\sqrt3\,h\,}\qquad\left(1<\frac{L}{h}<\sqrt3\right).
+\]
+
+\emph{Casos-limite.} Para $L\to h$, $u\to c$ (a esfera cresce quase com a velocidade do fóton). Para $L\to\sqrt3h$, $u\to0$ e $R\to0$ (o centro tende à reta do fóton e a esfera degenera num ponto, caso sem desvio de $120^\circ$). Os dois extremos ficam excluídos.
+
+\emph{Validade.} A solução encontrada é o primeiro contato. Defina $f(t)=|ct\hat d-C|^2-u^2t^2$, parábola com $f(0)>0$. No impacto, $\tfrac12 f'(t)=-u^2t-\tfrac{\sqrt3}{2}\,cut<0$, isto é, $f$ está decrescendo e o fóton \emph{entra} na região da esfera, que é a menor raiz.
+
+ANSWER: a) $u=c\,\dfrac{\sqrt3\,h-L}{\sqrt3\,L-h}$; b) $h<L<\sqrt3\,h$.

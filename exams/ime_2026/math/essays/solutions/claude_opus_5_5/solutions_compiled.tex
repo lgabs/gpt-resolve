@@ -1,0 +1,730 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{IME 2026 - Matemática\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}opus{-}5{-}5 (solver) + claude{-}opus{-}5{-}5 (judge)}%
+\date{November 10, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{1. Separando parte real e parte imaginária.} Pelo binômio de Newton, com $i^2=-1$ e $i^3=-i$:
+\[
+z^3=(\alpha+\beta i)^3=\alpha^3+3\alpha^2\beta i-3\alpha\beta^2-\beta^3 i=(\alpha^3-3\alpha\beta^2)+(3\alpha^2\beta-\beta^3)\,i .
+\]
+Dois complexos são iguais se, e somente se, têm partes reais iguais e partes imaginárias iguais. Como $\alpha,\beta\in\mathbb{R}$, a igualdade $z^3=-9+46i$ equivale a
+\[
+\alpha(\alpha^2-3\beta^2)=-9 \qquad \text{(I)}, \qquad\qquad \beta(3\alpha^2-\beta^2)=46 \qquad \text{(II)}.
+\]
+
+\textbf{2. Usando o módulo.} Como $|z^3|=|z|^3$:
+\[
+|z|^3=\sqrt{(-9)^2+46^2}=\sqrt{81+2116}=\sqrt{2197}=\sqrt{13^3}
+\;\Longrightarrow\; |z|=\sqrt{13}
+\;\Longrightarrow\; \alpha^2+\beta^2=13 .
+\]
+
+\textbf{3. Soluções inteiras.} Como $\alpha$ e $\beta$ são inteiros não nulos, temos $\alpha^2,\beta^2\in\{1,4,9\}$, pois são quadrados perfeitos positivos menores que $13$. A única forma de escrever $13$ como soma de dois deles é $4+9$. Logo
+\[
+\{\alpha^2,\beta^2\}=\{4,9\}.
+\]
+
+\textbf{4. Seleção pelas equações (I) e (II).}
+\begin{itemize}
+\item Se $\alpha^2=4$ e $\beta^2=9$: em (I), $\alpha(4-27)=-23\alpha=-9$ daria $\alpha=\tfrac{9}{23}\notin\mathbb{Z}$. Impossível.
+\item Se $\alpha^2=9$ e $\beta^2=4$: em (I), $\alpha(9-12)=-3\alpha=-9$, logo $\alpha=3$. Em (II), $\beta(27-4)=23\beta=46$, logo $\beta=2$. Os valores são compatíveis com $\alpha^2=9$ e $\beta^2=4$.
+\end{itemize}
+Os sinais ficam determinados pelas próprias equações, que são lineares em $\alpha$ e em $\beta$ depois de fixados os quadrados. Portanto a solução é única.
+
+\textbf{5. Verificação.}
+\[
+(3+2i)^2=9+12i-4=5+12i,\qquad (5+12i)(3+2i)=15+10i+36i-24=-9+46i. \;\checkmark
+\]
+
+\textbf{Observação.} As outras duas raízes cúbicas de $-9+46i$ são $(3+2i)\,e^{\pm 2\pi i/3}$. Suas partes real e imaginária não são inteiras: por exemplo, $(3+2i)\left(-\tfrac12+\tfrac{\sqrt3}{2}i\right)=-\tfrac{3+2\sqrt3}{2}+\tfrac{3\sqrt3-2}{2}\,i$. Isso confirma que só $3+2i$ satisfaz a hipótese da questão.
+
+\[
+\boxed{\alpha=3,\quad \beta=2}\qquad (z=3+2i)
+\]
+
+ANSWER: $\alpha=3$ e $\beta=2$%
+\newpage%
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{1) Reconhecendo um binômio de Newton.} Passando tudo para o primeiro membro, a equação fica
+\[
+x^4+14x^3+\frac{147}{2}x^2+\frac{343}{2}x+\frac{2401}{16}+(2x+7)^3=0 .
+\]
+Pelo binômio de Newton, com $a=\frac{7}{2}$:
+\[
+\left(x+\tfrac{7}{2}\right)^4
+= x^4+4\cdot\tfrac{7}{2}x^3+6\cdot\tfrac{49}{4}x^2+4\cdot\tfrac{343}{8}x+\tfrac{2401}{16}
+= x^4+14x^3+\tfrac{147}{2}x^2+\tfrac{343}{2}x+\tfrac{2401}{16}.
+\]
+Esses são exatamente os termos que aparecem na equação, já que $\frac{7^3}{2}=\frac{343}{2}$ e $\frac{7^4}{16}=\frac{2401}{16}$. Logo a equação equivale a
+\[
+\left(x+\tfrac{7}{2}\right)^4+(2x+7)^3=0 .
+\]
+
+\textbf{2) Mudança de variável.} Seja $y=x+\frac{7}{2}$. Então $2x+7=2\left(x+\frac{7}{2}\right)=2y$, e a equação fica
+\[
+y^4+(2y)^3=0 \iff y^4+8y^3=0 \iff y^3\,(y+8)=0 .
+\]
+Um produto de números reais é nulo se, e somente se, algum dos fatores é nulo. Assim:
+\begin{itemize}
+\item $y^3=0 \Rightarrow y=0 \Rightarrow x=-\frac{7}{2}$ (raiz tripla do polinômio);
+\item $y+8=0 \Rightarrow y=-8 \Rightarrow x=-8-\frac{7}{2}=-\frac{23}{2}$.
+\end{itemize}
+O polinômio tem grau $4$, e as raízes encontradas somam $3+1=4$ contando multiplicidades. Portanto não há outras raízes, nem reais nem complexas.
+
+\textbf{3) Verificação na equação original.}
+\begin{itemize}
+\item Para $x=-\frac{7}{2}$: $\left(x+\frac{7}{2}\right)^4=0$ e $(2x+7)^3=0^3=0$. A soma é $0$. \checkmark
+\item Para $x=-\frac{23}{2}$: $\left(x+\frac{7}{2}\right)^4=(-8)^4=4096$ e $(2x+7)^3=(-16)^3=-4096$. A soma é $0$. \checkmark
+\end{itemize}
+
+\textbf{Conclusão.} As soluções reais da equação são
+\[
+x=-\frac{7}{2}\quad\text{(raiz tripla)}\qquad\text{e}\qquad x=-\frac{23}{2}.
+\]
+Como conjunto: $S=\left\{-\frac{23}{2},\,-\frac{7}{2}\right\}$.
+
+ANSWER: $S=\left\{-\dfrac{23}{2},\ -\dfrac{7}{2}\right\}$ (com $x=-\frac{7}{2}$ raiz tripla)%
+\newpage%
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{1) Forma fechada de $f$.} Para $x\in[0,1)$, seja $t=\sqrt{x}\in[0,1)$. Como $\sqrt{x^n}=(\sqrt{x})^n=t^n$, a série é geométrica com razão $t$, e $0\le t<1$, logo converge:
+\[
+f(x)=\sum_{n=1}^{\infty}t^n=\frac{t}{1-t}=\frac{\sqrt{x}}{1-\sqrt{x}} .
+\]
+
+\textbf{2) Coeficiente angular da secante.} Sejam $s=\sqrt{a}\in[0,1)$ e $t=\sqrt{x}\in[0,1)$. Como $x\neq a$, temos $t\neq s$. Então
+\[
+f(x)-f(a)=\frac{t}{1-t}-\frac{s}{1-s}=\frac{t(1-s)-s(1-t)}{(1-t)(1-s)}=\frac{t-s}{(1-t)(1-s)},
+\qquad x-a=t^2-s^2=(t-s)(t+s).
+\]
+Como $t\neq s$, podemos cancelar o fator $t-s$:
+\[
+m(t)=\frac{f(x)-f(a)}{x-a}=\frac{1}{(1-s)\,(1-t)(t+s)} .
+\]
+Note que $t+s>0$: se fosse $t+s=0$, teríamos $t=s=0$, o que contraria $t\neq s$. Assim $m(t)>0$.
+
+\textbf{3) Minimização.} Como $1-s>0$ é constante, minimizar $m$ equivale a maximizar
+\[
+g(t)=(1-t)(t+s)=-t^2+(1-s)t+s,\qquad t\in[0,1),\ t\neq s ,
+\]
+com $g(t)>0$ nesse intervalo. O gráfico de $g$ é uma parábola com concavidade para baixo. Seu vértice é
+\[
+t_0=\frac{1-s}{2}\in\left(0,\tfrac12\right]\subset[0,1),
+\qquad
+g(t_0)=\left(1-\frac{1-s}{2}\right)\left(\frac{1-s}{2}+s\right)=\left(\frac{1+s}{2}\right)^2 .
+\]
+Esse máximo só é atingido por uma reta secante se $t_0\neq s$. Temos $t_0=s\iff s=\tfrac13\iff a=\tfrac19$, que é exatamente o caso excluído pelo enunciado. Se fosse $a=\tfrac19$, o ``mínimo'' corresponderia à reta tangente e nenhuma secante o atingiria. Portanto, para $a\neq\tfrac19$, a secante de menor coeficiente angular existe, passa pelo ponto de abscissa $x_0=t_0^2=\left(\frac{1-\sqrt a}{2}\right)^2$, e tem
+\[
+m_{\min}=\frac{1}{(1-s)\left(\frac{1+s}{2}\right)^2}=\frac{4}{(1-s)(1+s)^2}=\frac{4}{(1-a)(1+\sqrt a)} .
+\]
+
+\textbf{4) Condição de paralelismo.} Como $m_{\min}$ é finito e positivo, a reta $ky-4x=2026$ não pode ser vertical, logo $k\neq0$. Ela se escreve $y=\frac{4}{k}x+\frac{2026}{k}$ e tem coeficiente angular $\frac4k$. Retas paralelas têm o mesmo coeficiente angular:
+\[
+\frac{4}{k}=\frac{4}{(1-a)(1+\sqrt a)}\ \Longrightarrow\ k=(1-a)(1+\sqrt a)=(1-\sqrt a)(1+\sqrt a)^2 .
+\]
+
+\textbf{Verificação.} Para $a=0$: $f(x)/x=\dfrac{1}{\sqrt x\,(1-\sqrt x)}$ é mínimo em $\sqrt x=\tfrac12$ e vale $4$. Daí $\frac4k=4$, ou seja, $k=1$, o que coincide com a fórmula $(1-0)(1+0)=1$. Além disso, $k>0$ para todo $a\in[0,1)$, o que é coerente com $m_{\min}>0$.
+
+\medskip
+ANSWER: $k=(1-a)(1+\sqrt{a})=(1-\sqrt a)(1+\sqrt a)^2$%
+\newpage%
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Condições de existência.} Os denominadores são $z-\overline{z}=2i\,\mathrm{Im}(z)$ e $z^2-\overline{z}^2=(z-\overline{z})(z+\overline{z})=4i\,\mathrm{Re}(z)\,\mathrm{Im}(z)$. Portanto, é preciso ter $\mathrm{Re}(z)\neq 0$ e $\mathrm{Im}(z)\neq 0$. Na forma polar,
+\[
+z=r(\cos\theta+i\sin\theta),\qquad r>0,\qquad \sin\theta\neq 0,\ \cos\theta\neq 0 .
+\]
+
+\textbf{Simplificação das frações.} Temos $z+\overline{z}=2r\cos\theta$ e $z-\overline{z}=2ir\sin\theta$. Pela fórmula de De Moivre, $z^2+\overline{z}^2=2r^2\cos 2\theta$ e $z^2-\overline{z}^2=2ir^2\sin 2\theta$. Logo, como $1/i=-i$,
+\[
+A=\frac{z+\overline{z}}{z-\overline{z}}=-i\cot\theta,\qquad
+B=\frac{z^2+\overline{z}^2}{z^2-\overline{z}^2}=-i\cot 2\theta .
+\]
+As duas frações dependem apenas de $\theta$. O módulo $r>0$ fica, portanto, livre.
+
+\textbf{Fatoração.} A equação é $i(A+B)-AB=1$, ou seja, $AB-iA-iB=-1$. Somando $i^2=-1$ aos dois lados:
+\[
+AB-iA-iB+i^2=-2\iff (A-i)(B-i)=-2 .
+\]
+Como $A-i=-i(\cot\theta+1)$ e $B-i=-i(\cot2\theta+1)$, o produto vale $(-i)^2(\cot\theta+1)(\cot2\theta+1)$. Assim,
+\[
+-(\cot\theta+1)(\cot 2\theta+1)=-2\iff(\cot\theta+1)(\cot 2\theta+1)=2 .
+\]
+
+\textbf{Equação trigonométrica.} Multiplicamos pelo fator $\sin\theta\,\sin2\theta$, que é não nulo pelas condições de existência. A equivalência se mantém:
+\[
+(\cos\theta+\sin\theta)(\cos2\theta+\sin2\theta)=2\sin\theta\sin2\theta .
+\]
+Expandindo e agrupando pelas fórmulas de adição:
+\[
+\underbrace{(\cos\theta\cos2\theta-\sin\theta\sin2\theta)}_{\cos3\theta}+\underbrace{(\sin\theta\cos2\theta+\cos\theta\sin2\theta)}_{\sin3\theta}=0
+\iff \cos3\theta+\sin3\theta=0 .
+\]
+Se $\cos3\theta=0$, a igualdade daria também $\sin3\theta=0$, o que é impossível. Logo $\cos 3\theta\neq 0$ e
+\[
+\tan3\theta=-1\iff 3\theta=\frac{3\pi}{4}+k\pi\iff \theta=\frac{\pi}{4}+\frac{k\pi}{3},\quad k\in\mathbb{Z}.
+\]
+
+\textbf{Verificação das restrições.} Em graus, os valores são $\theta\in\{45^\circ,105^\circ,165^\circ,225^\circ,285^\circ,345^\circ\}$ (mód. $360^\circ$). Nenhum deles é múltiplo de $90^\circ$. Além disso, $2\theta\in\{90^\circ,210^\circ,330^\circ\}$ (mód. $360^\circ$), de modo que $\sin2\theta\neq0$. Todas as condições valem e todos os passos foram equivalências. Os ângulos $\theta$ e $\theta+\pi$ diferem por $k\mapsto k+3$. Somar $\pi$ ao argumento equivale a trocar $z$ por $-z$. Por isso, as soluções são as três retas pela origem de inclinações $45^\circ$, $105^\circ$ e $165^\circ$, sem a origem.
+
+Os coeficientes angulares são:
+\[
+\tan45^\circ=1,\qquad \tan105^\circ=\frac{\sqrt3+1}{1-\sqrt3}=-(2+\sqrt3),\qquad \tan165^\circ=-\tan15^\circ=\sqrt3-2 .
+\]
+
+\textbf{Verificação.} Para $z=1+i$: $A=\frac{2}{2i}=-i$ e $z^2+\overline{z}^2=2i-2i=0$, logo $B=0$. Então $i(-i+0)-0=1$. \checkmark
+
+\textbf{Resposta.} Com $t\in\mathbb{R}$ e $t\neq 0$:
+\[
+z=t\,e^{i\pi/4},\qquad z=t\,e^{i7\pi/12},\qquad z=t\,e^{i11\pi/12}.
+\]
+De forma equivalente, $z=a+bi$ com $a\in\mathbb{R}^*$ e
+\[
+b=a\quad\text{ou}\quad b=-(2+\sqrt3)\,a\quad\text{ou}\quad b=(\sqrt3-2)\,a .
+\]
+
+ANSWER: $z=r(\cos\theta+i\sin\theta)$ com $r>0$ qualquer e $\theta=\frac{\pi}{4}+\frac{k\pi}{3}$, $k\in\mathbb{Z}$. Ou seja, $z=a+bi$, $a\neq0$, com $b=a$, $b=-(2+\sqrt3)a$ ou $b=(\sqrt3-2)a$.%
+\newpage%
+\section*{Questão 5}
+
+\section*{Solução}
+
+Conferi o enunciado na prova original: está igual à transcrição. As hipóteses são $a,b,c>0$, então todas as frações estão definidas.
+
+\paragraph{1) Expandindo o produto.} Pela propriedade distributiva,
+\[
+(a+b+c)\left(\frac1a+\frac1b+\frac1c\right)
+=\underbrace{\frac aa+\frac bb+\frac cc}_{=\,3}
++\frac ab+\frac ac+\frac ba+\frac bc+\frac ca+\frac cb .
+\]
+Agrupando os termos inversos dois a dois:
+\[
+(a+b+c)\left(\frac1a+\frac1b+\frac1c\right)
+=3+\left(\frac ab+\frac ba\right)+\left(\frac ac+\frac ca\right)+\left(\frac bc+\frac cb\right). \tag{1}
+\]
+
+\paragraph{2) Lema.} Se $x>0$ e $y>0$, então $\dfrac xy+\dfrac yx\ge 2$, com igualdade se e somente se $x=y$.
+
+\emph{Prova.} Basta reduzir ao mesmo denominador:
+\[
+\frac xy+\frac yx-2=\frac{x^2+y^2-2xy}{xy}=\frac{(x-y)^2}{xy}.
+\]
+O numerador satisfaz $(x-y)^2\ge 0$, porque é o quadrado de um número real. O denominador satisfaz $xy>0$, porque $x$ e $y$ são positivos. Logo a fração é $\ge 0$. Ela só vale zero quando $(x-y)^2=0$, isto é, quando $x=y$. $\blacksquare$
+
+\paragraph{3) Conclusão.} Aplicando o lema aos pares $(a,b)$, $(a,c)$ e $(b,c)$, todos de números positivos, e usando (1), obtemos a identidade
+\[
+(a+b+c)\left(\frac1a+\frac1b+\frac1c\right)-9
+=\frac{(a-b)^2}{ab}+\frac{(a-c)^2}{ac}+\frac{(b-c)^2}{bc}.
+\]
+Cada parcela da direita é $\ge 0$, então a soma também é $\ge 0$. Portanto
+\[
+\boxed{(a+b+c)\left(\frac1a+\frac1b+\frac1c\right)\ge 9}
+\]
+para quaisquer reais positivos $a,b,c$.
+
+\paragraph{4) Caso de igualdade.} Uma soma de parcelas não negativas só vale zero quando todas as parcelas são nulas. Isso exige $a=b$, $a=c$ e $b=c$, ou seja, $a=b=c$.
+
+\paragraph{Verificação.} Com $a=b=c=1$: $3\cdot 3=9$, que é a igualdade. Com $a=1$, $b=2$, $c=3$: $6\cdot\frac{11}{6}=11\ge 9$. Os dois valores são compatíveis com o resultado.
+
+\paragraph{Observação (outra prova).} Pela desigualdade das médias $\mathrm{MA}\ge\mathrm{MG}$, que vale para números positivos:
+\[
+a+b+c\ge 3\sqrt[3]{abc}
+\quad\text{e}\quad
+\frac1a+\frac1b+\frac1c\ge \frac{3}{\sqrt[3]{abc}}.
+\]
+Os dois lados dessas desigualdades são positivos, então podemos multiplicá-las membro a membro. O produto é $\ge 9$, com igualdade se e somente se $a=b=c$.
+
+ANSWER: Demonstrado: $(a+b+c)\left(\frac1a+\frac1b+\frac1c\right)-9=\frac{(a-b)^2}{ab}+\frac{(a-c)^2}{ac}+\frac{(b-c)^2}{bc}\ge 0$, logo o produto é $\ge 9$, com igualdade se e somente se $a=b=c$.%
+\newpage%
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{1) Redução do sistema.} As variáveis $x$ e $z$ aparecem somente na combinação $x+z$. Fazendo $s=x+z$, o sistema fica
+\[
+\begin{cases} s+2y=a_j\\ s+3y=a_{j+1}\\ s+4y=a_{j+2}\end{cases}
+\]
+nas incógnitas $(s,y)$. Subtraindo a 1ª equação da 2ª e a 2ª da 3ª:
+\[
+y=a_{j+1}-a_j \qquad\text{e}\qquad y=a_{j+2}-a_{j+1}.
+\]
+
+\textbf{2) Condição para o sistema ser possível.} O sistema é possível se, e somente se,
+\[
+a_{j+1}-a_j=a_{j+2}-a_{j+1}.
+\]
+De fato, essa condição é necessária pelas subtrações acima. Ela também é suficiente: com $y=a_{j+1}-a_j$ e $s=a_j-2y$, as três equações são satisfeitas, e então $(x,y,z)=(t,\,y,\,s-t)$ é solução para qualquer $t\in\mathbb{R}$.
+
+\textbf{3) A sequência é uma PA.} O sistema é possível para todo $j=1,\ldots,2025$. Logo $a_{j+1}-a_j=a_{j+2}-a_{j+1}$ para todos esses $j$, e as diferenças consecutivas são todas iguais de $a_1$ até $a_{2027}$. Assim, $(a_n)$ é uma progressão aritmética de razão $r$, com
+\[
+a_4=a_1+3r\ \Rightarrow\ 10=1+3r\ \Rightarrow\ r=3,\qquad a_n=1+3(n-1)=3n-2 .
+\]
+
+\textbf{4) Cálculo de $x_j+y_j+z_j$.} Para cada $j$ o sistema é possível e indeterminado, pois $x$ e $z$ não ficam determinados separadamente. Mesmo assim, a soma pedida é a mesma para qualquer solução escolhida:
+\[
+y_j=r=3,\qquad s_j=x_j+z_j=a_j-2y_j=a_j-6,
+\]
+\[
+x_j+y_j+z_j=s_j+y_j=a_j-3=(3j-2)-3=3j-5 .
+\]
+Conferência com $j=1$: $a_1,a_2,a_3=1,4,7$ e $y=3$, $x+z=1-6=-5$. Então $x+3y+z=-5+9=4=a_2$ e $x+4y+z=-5+12=7=a_3$. Portanto $x_1+y_1+z_1=-2=3\cdot1-5$.
+
+\textbf{5) Soma.} Somando para $j=1,\ldots,2025$:
+\[
+\sum_{j=1}^{2025}(x_j+y_j+z_j)=\sum_{j=1}^{2025}(3j-5)
+=3\cdot\frac{2025\cdot 2026}{2}-5\cdot 2025
+=2025\,(3\cdot 1013-5)=2025\cdot 3034 .
+\]
+Portanto
+\[
+\sum_{j=1}^{2025}(x_j+y_j+z_j)=6143850 .
+\]
+O resultado é coerente: o valor médio de $3j-5$ é $3\cdot 1013-5=3034$, e há $2025$ parcelas.
+
+ANSWER: $\displaystyle\sum_{j=1}^{2025}(x_j+y_j+z_j)=2025\cdot 3034=6143850$%
+\newpage%
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Eventos.} Para o computador examinado, sejam
+\begin{itemize}
+\item $I$: o computador está infectado; $\bar I$: não está infectado;
+\item $D$: o antivírus indica vírus; $\bar D$: o antivírus responde que não há vírus.
+\end{itemize}
+
+\textbf{Dados.} Pelo enunciado:
+\[
+P(I)=0{,}90,\qquad P(\bar I)=1-0{,}90=0{,}10,
+\]
+\[
+P(D\mid I)=0{,}95\ \Rightarrow\ P(\bar D\mid I)=1-0{,}95=0{,}05,
+\]
+\[
+P(D\mid \bar I)=0{,}01\ \Rightarrow\ P(\bar D\mid \bar I)=1-0{,}01=0{,}99 .
+\]
+Os complementos valem porque, dada a condição ($I$ ou $\bar I$), o programa dá exatamente uma das duas respostas, $D$ ou $\bar D$.
+
+\textbf{O que se pede.} O programa respondeu ``não infectado'', isto é, ocorreu $\bar D$. Pede-se então a probabilidade condicional $P(I\mid \bar D)$.
+
+\textbf{Probabilidade total.} Como $I$ e $\bar I$ particionam o espaço amostral,
+\[
+P(\bar D)=P(\bar D\mid I)\,P(I)+P(\bar D\mid \bar I)\,P(\bar I)
+=0{,}05\cdot 0{,}90+0{,}99\cdot 0{,}10
+=0{,}045+0{,}099=0{,}144 .
+\]
+
+\textbf{Teorema de Bayes.} Como $P(\bar D)=0{,}144>0$, a probabilidade condicional está bem definida e
+\[
+P(I\mid \bar D)=\frac{P(\bar D\mid I)\,P(I)}{P(\bar D)}
+=\frac{0{,}045}{0{,}144}
+=\frac{45}{144}
+=\frac{5}{16}
+=0{,}3125 .
+\]
+
+\textbf{Verificação.} O caso complementar dá
+\[
+P(\bar I\mid \bar D)=\frac{0{,}099}{0{,}144}=\frac{11}{16},
+\qquad \frac{5}{16}+\frac{11}{16}=1 .
+\]
+O valor também faz sentido. Antes do teste, a chance de infecção era de $90\%$. Depois de um resultado negativo ela cai para cerca de $31\%$. Mesmo assim, continua alta, porque quase todos os computadores estão infectados: nos falsos negativos ($0{,}045$) e nos verdadeiros negativos ($0{,}099$), as duas parcelas são da mesma ordem de grandeza.
+
+\textbf{Conclusão.} A probabilidade de o computador examinado estar infectado é
+\[
+P(I\mid \bar D)=\frac{5}{16}=31{,}25\%.
+\]
+
+ANSWER: $\dfrac{5}{16}=31{,}25\%$%
+\newpage%
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{1) Domínio e a função auxiliar.} Para todo $t\in\mathbb{R}$ vale $\sqrt{t^2+1}>\sqrt{t^2}=|t|\geq -t$, logo
+\[
+h(t)=t+\sqrt{t^2+1}>0 ,
+\]
+e o logaritmo está definido para todo real. Defina
+\[
+f(t)=t+\log\left(t+\sqrt{t^2+1}\right),\qquad t\in\mathbb{R}.
+\]
+O sistema fica
+\[
+y=f(x),\qquad z=f(y),\qquad x=f(z).
+\]
+(O raciocínio vale para qualquer base $b>1$, decimal ou natural.)
+
+\textbf{2) $f$ é estritamente crescente.} Temos
+\[
+h'(t)=1+\frac{t}{\sqrt{t^2+1}}=\frac{\sqrt{t^2+1}+t}{\sqrt{t^2+1}}>0,
+\]
+pois o numerador é $h(t)>0$. Logo $h$ é positiva e estritamente crescente. Como $\log$ (base $>1$) é estritamente crescente, $\log h(t)$ também é. Somando com a função estritamente crescente $t\mapsto t$, concluímos que $f$ é estritamente crescente, ou seja, $u<v \Rightarrow f(u)<f(v)$.
+
+\textbf{3) Toda solução tem $x=y=z$.} Seja $(x,y,z)$ uma solução real.
+\begin{itemize}
+\item Se $x<y$, aplicamos $f$: $f(x)<f(y)$, isto é, $y<z$. Aplicando $f$ de novo: $f(y)<f(z)$, isto é, $z<x$. Então $x<y<z<x$, absurdo.
+\item Se $x>y$, o mesmo argumento com as desigualdades invertidas dá $y>z$ e $z>x$. Então $x>y>z>x$, absurdo.
+\end{itemize}
+Portanto $x=y$. Daí $z=f(y)=f(x)=y$, e assim $x=y=z$.
+
+\textbf{4) Cálculo do valor comum.} Com $x=y=z$, a primeira equação fica $x+\log\left(x+\sqrt{x^2+1}\right)=x$, ou seja,
+\[
+\log\left(x+\sqrt{x^2+1}\right)=0 \iff x+\sqrt{x^2+1}=1 \iff \sqrt{x^2+1}=1-x .
+\]
+Isso exige $1-x\geq 0$. Elevando ao quadrado:
+\[
+x^2+1=1-2x+x^2 \iff x=0 ,
+\]
+e $x=0$ satisfaz $1-x\geq 0$. Esse é então o único valor possível.
+
+\textbf{5) Existência (verificação).} Para $x=y=z=0$, cada equação vira $0+\log\left(0+\sqrt{1}\right)=0+\log 1=0$, que é verdadeira. Então $(0,0,0)$ é solução.
+
+\textbf{Conclusão.} Pelos itens 3 e 4, toda solução real é igual a $(0,0,0)$. Pelo item 5, ela de fato é solução. Logo o sistema admite uma única solução real:
+\[
+(x,y,z)=(0,0,0).
+\]
+
+ANSWER: O sistema tem uma única solução real, $(x,y,z)=(0,0,0)$.%
+\newpage%
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{1) Simetria: $BM = DN$.} Os triângulos $ABM$ e $ADN$ são retângulos em $B$ e em $D$ (ângulos do quadrado). Têm os catetos $AB = AD = a$ e as hipotenusas $AM = AN$, pois $AMN$ é equilátero. Pelo caso cateto-hipotenusa, eles são congruentes, então
+\[
+BM = DN = x, \qquad 0 \le x \le a .
+\]
+Daí vem $CM = CN = a - x$, e o triângulo $CMN$ é retângulo isósceles em $C$.
+
+\textbf{2) Cálculo de $x$.} Aplicando Pitágoras nos triângulos $ABM$ e $CMN$:
+\[
+AM^2 = a^2 + x^2, \qquad MN^2 = 2(a-x)^2 .
+\]
+Como $AM = MN$ (o triângulo é equilátero),
+\[
+a^2 + x^2 = 2(a-x)^2 \;\Longrightarrow\; x^2 - 4ax + a^2 = 0 \;\Longrightarrow\; x = a\left(2 \pm \sqrt{3}\right).
+\]
+A raiz $a(2+\sqrt{3})$ é maior que $a$, então $M$ cairia fora do lado $BC$; ela é descartada. Fica
+\[
+x = a\left(2-\sqrt{3}\right) \approx 0{,}268\,a .
+\]
+Conferência: $\tan B\hat{A}M = x/a = 2-\sqrt{3} = \tan 15^\circ$. Então $B\hat{A}M = D\hat{A}N = 15^\circ$ e $M\hat{A}N = 90^\circ - 2\cdot 15^\circ = 60^\circ$, como deve ser.
+
+\textbf{3) Lados do triângulo $CMN$.}
+\[
+CM = CN = a - x = a\left(\sqrt{3}-1\right), \qquad MN = CM\sqrt{2} = a\left(\sqrt{6}-\sqrt{2}\right).
+\]
+
+\textbf{4) Raio inscrito.} Num triângulo retângulo de catetos $b, c$ e hipotenusa $h$, as tangentes traçadas a partir do vértice do ângulo reto medem $r$, porque esse vértice e os dois pontos de tangência formam um quadrado com o centro do círculo. Logo $b + c - h = 2r$, ou seja, $r = \dfrac{b+c-h}{2}$. Aqui:
+\[
+r = \frac{2a\left(\sqrt{3}-1\right) - a\left(\sqrt{3}-1\right)\sqrt{2}}{2}
+= \frac{a\left(\sqrt{3}-1\right)\left(2-\sqrt{2}\right)}{2}
+= \frac{a\left(2\sqrt{3}+\sqrt{2}-\sqrt{6}-2\right)}{2}.
+\]
+
+\textbf{5) Verificação por $r = \dfrac{S}{p}$.} A área é $S = \dfrac{a^2(\sqrt{3}-1)^2}{2}$ e o semiperímetro é $p = \dfrac{a(\sqrt{3}-1)(2+\sqrt{2})}{2}$. Então
+\[
+r = \frac{a(\sqrt{3}-1)}{2+\sqrt{2}} = \frac{a(\sqrt{3}-1)(2-\sqrt{2})}{2},
+\]
+o mesmo resultado.
+
+Numericamente, $r \approx 0{,}214\,a$. O valor tem dimensão de comprimento e é menor que a metade do cateto ($\approx 0{,}366\,a$), como tem de ser.
+
+ANSWER: $r = \dfrac{a\left(\sqrt{3}-1\right)\left(2-\sqrt{2}\right)}{2} = \dfrac{a\left(2\sqrt{3}+\sqrt{2}-\sqrt{6}-2\right)}{2} \approx 0{,}214\,a$%
+\newpage%
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{1) Altura e raio da esfera inscrita.} No tetraedro regular de aresta $a$, o pé da altura relativa a $A$ é o baricentro $G$ do triângulo equilátero $BCD$, e $GB=\frac{2}{3}\cdot\frac{a\sqrt3}{2}=\frac{a\sqrt3}{3}$. Por Pitágoras no triângulo $AGB$:
+\[
+H=\sqrt{a^2-\frac{a^2}{3}}=\frac{a\sqrt6}{3}.
+\]
+O incentro $I$ dista $r$ das quatro faces. Decompondo o tetraedro em quatro pirâmides de vértice $I$ e bases nas faces (todas de área $S$):
+\[
+4\cdot\frac{1}{3}Sr=\frac13 SH\;\Longrightarrow\; r=\frac{H}{4}=\frac{a\sqrt6}{12}.
+\]
+
+\textbf{2) O plano tangente e o novo tetraedro.} Há exatamente dois planos paralelos a $BCD$ tangentes à esfera, ambos a distância $r$ de $I$ e perpendiculares à altura por $A$ (que passa por $I$). Um deles é a própria face $BCD$; o outro, o plano pedido $\pi_A$, fica à distância $2r=\frac{H}{2}$ de $BCD$, ou seja, à distância $H-2r=\frac{H}{2}$ de $A$.
+
+A homotetia de centro $A$ e razão $\frac{H/2}{H}=\frac12$ leva $BCD$ na seção de $\pi_A$ com o tetraedro. Logo os novos vértices são os pontos médios de $AB$, $AC$ e $AD$, e o novo tetraedro é regular, de aresta $\frac a2$. O mesmo vale nos vértices $B$, $C$ e $D$. Como dois desses tetraedros de canto têm em comum no máximo um ponto médio de aresta, os quatro têm interiores disjuntos (o que sobra é o octaedro central).
+
+\textbf{3) As esferas não se sobrepõem.} A esfera inscrita em $ABCD$ fica do lado de $\pi_A$ que contém $I$, e o tetraedro do vértice $A$, com a esfera inscrita nele, fica do outro lado. As duas esferas apenas se tangenciam, no ponto de tangência de $\pi_A$, que está sobre a altura. O mesmo argumento vale em cada etapa: cada esfera fica separada dos tetraedros que nascem dentro do seu tetraedro, e tetraedros de mesmo nível têm interiores disjuntos. Portanto os volumes se somam sem descontos.
+
+\textbf{4) Contagem por nível.} Seja $V_0=\frac43\pi r^3$ o volume da esfera inscrita em $ABCD$. No nível $n$ ($n\ge 0$) há $4^n$ tetraedros regulares de aresta $\frac{a}{2^n}$. Cada um contém uma esfera de raio $\frac{r}{2^n}$, cujo volume é $\frac{V_0}{8^n}$. Assim o nível $n$ contribui com
+\[
+4^n\cdot\frac{V_0}{8^n}=\frac{V_0}{2^n}.
+\]
+Somando a série geométrica de razão $\frac12$ (convergente):
+\[
+V_{\text{total}}=\sum_{n=0}^{\infty}\frac{V_0}{2^n}=2V_0
+=2\cdot\frac43\pi\left(\frac{a\sqrt6}{12}\right)^3
+=\frac83\pi\cdot\frac{6\sqrt6\,a^3}{1728}
+=\frac{\pi\sqrt6}{108}\,a^3 .
+\]
+
+\textbf{5) Verificação.} O volume do tetraedro é $\frac{a^3\sqrt2}{12}\approx 0{,}1179\,a^3$, e $V_{\text{total}}\approx 0{,}0713\,a^3$, ou seja, cerca de $60\%$ do tetraedro. Isso é coerente: a esfera inscrita ocupa $\frac{\pi\sqrt3}{18}\approx 30\%$ do tetraedro, e em cada nível os cantos somam metade do volume do nível anterior ($4\cdot\frac18=\frac12$), o que dá o fator $1+\frac12+\frac14+\cdots=2$. A dimensão também está correta (volume $\propto a^3$). Se a esfera inscrita original não fosse contada, o resultado seria $V_0=\frac{\pi\sqrt6}{216}a^3$. Porém o enunciado pede \emph{todas} as esferas interiores a $ABCD$, e ela é uma delas.
+
+\medskip
+ANSWER: $V=\dfrac{\pi\sqrt6}{108}\,a^3$%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 1: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} $\alpha$ = 3 e $\beta$ = 2, ou seja, z = 3 + 2i. É a única solução com $\alpha$ e $\beta$ inteiros não nulos. As outras duas raízes cúbicas de -9 + 46i, z$\cdot$$\omega$ e z$\cdot$$\omega$$^2$, não têm coordenadas inteiras.\par %
+Enunciado conferido no PDF original (questão 1, página 1); bate com a transcrição. O candidato chega a $\alpha$ = 3 e $\beta$ = 2, a mesma resposta da referência, e ela está correta. Conferi com python3: (3+2i)$^3$ = -9+46i, e uma busca exaustiva com $\alpha$, $\beta$ inteiros não nulos entre -50 e 50 só encontra (3, 2).\newline%
+\newline%
+A resolução é completa e rigorosa:\newline%
+{-} Expande o cubo com os sinais corretos e iguala partes real e imaginária, obtendo (I) e (II).\newline%
+{-} Calcula o módulo corretamente: |z$^3$|$^2$ = 2197 = 13$^3$, logo $\alpha$$^2$ + $\beta$$^2$ = 13.\newline%
+{-} Esgota os quadrados possíveis: só 4 + 9 serve, então \{$\alpha$$^2$, $\beta$$^2$\} = \{4, 9\}.\newline%
+{-} Elimina os 8 candidatos de sinal e de troca $\alpha$?$\beta$ usando (I) e (II). No caso $\alpha$$^2$ = 4, (I) dá $\alpha$ = 9/23, que não é inteiro. No caso $\alpha$$^2$ = 9, (I) e (II) fixam $\alpha$ = 3 e $\beta$ = 2, inclusive os sinais, porque com os quadrados fixados as equações ficam lineares em $\alpha$ e em $\beta$.\newline%
+{-} Verifica explicitamente que (3+2i)$^3$ = -9+46i.\newline%
+{-} Trata bem a unicidade: diz que existem três raízes cúbicas e que só a hipótese de $\alpha$ e $\beta$ inteiros seleciona uma.\newline%
+\newline%
+Todas as armadilhas que listei foram evitadas: sinais da expansão, valor do módulo, eliminação dos sinais pelas equações, unicidade bem formulada e verificação final. A armadilha dos divisores negativos não se aplica, porque o candidato não usa divisibilidade.\newline%
+\newline%
+Só há dois detalhes menores de redação, nenhum de conteúdo. A resolução tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na Observação, o candidato afirma que as duas outras raízes cúbicas não têm partes inteiras, mas só calcula uma delas, (3+2i)$\cdot$e\^{}\{2$\pi$i/3\}. Conferi numericamente: a outra vale $\approx$ 0,232 - 3,598i e também não tem partes inteiras, então a afirmação está certa, mas ficou sem prova para essa raiz. Bastaria escrever também (3+2i)$\cdot$e\^{}\{-2$\pi$i/3\} = (-3+2$\surd$3)/2 - ((3$\surd$3+2)/2)i. Isso não compromete a resolução, porque a unicidade já foi provada nos passos 3--4 e a Observação é só um complemento.%
+\item%
+{[}minor{]} A passagem de |z|$^3$ = $\surd$(13$^3$) para |z| = $\surd$13 poderia ser escrita de forma explícita: |z|$^3$ = 13\^{}\{3/2\}, logo |z| = 13\^{}\{1/2\}. É um detalhe de redação, sem erro.%
+\end{itemize}%
+\subsection*{Questão 2: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Soluções reais: x = -7/2 e x = -23/2, ou seja, S = \{-7/2, -23/2\}. A raiz -7/2 é tripla. A equação equivale a (x+7/2)$^{4}$ + (2x+7)$^3$ = 0, isto é, (2x+7)$^3$(2x+23) = 0.\par %
+O enunciado foi conferido no PDF original (IME 2025/2026, 2ª questão) e a transcrição está correta. A resposta do candidato, S = \{-23/2, -7/2\} com -7/2 raiz tripla, é igual à da minha referência. Verifiquei com aritmética exata (Fraction) que f(-7/2) = f(-23/2) = 0 e que a equação, com tudo passado para o primeiro membro, é idêntica a (x+7/2)$^{4}$ + (2x+7)$^3$ (testei em 100 pontos racionais).\newline%
+\newline%
+A resolução faz o caminho ideal:\newline%
+? leva -7$^{4}$/16 para o primeiro membro com o sinal certo;\newline%
+? expande (x+7/2)$^{4}$ e mostra os coeficientes (14, 147/2, 343/2, 2401/16);\newline%
+? substitui y = x+7/2 e usa corretamente (2y)$^3$ = 8y$^3$, sem cair na armadilha do 2y$^3$;\newline%
+? fatora y$^3$(y+8) = 0 sem dividir por y$^3$, então não perde y = 0;\newline%
+? volta para x sem erro de sinal (x = -8-7/2 = -23/2).\newline%
+\newline%
+Todas as armadilhas da minha lista foram tratadas. A completude está justificada: grau 4 e multiplicidades 3+1 = 4, então não sobra nenhuma raiz. Há verificação explícita das duas raízes na equação original (4096 - 4096 = 0). A multiplicidade aparece como informação extra, e a resposta final é dada como conjunto, sem repetir a raiz -7/2. O texto é claro e enxuto, no nível de um gabarito comentado. O único detalhe é de redação: falta nomear o polinômio antes de contar as raízes.\newline%
+\newline%
+Observação: não consegui salvar uma nota de memória sobre o ambiente (o python3 daqui não tem sympy), porque um hook bloqueia o acesso à pasta de memória. A correção não foi afetada.%
+\begin{itemize}%
+\item%
+{[}minor{]} O texto chama de 'o polinômio' algo que nunca nomeou explicitamente (o lado esquerdo depois de passar tudo para o primeiro membro, ou y$^{4}$+8y$^3$). Dá para entender pelo contexto, mas o ideal seria escrever P(x) = (x+7/2)$^{4}$ + (2x+7)$^3$ ou a fatoração em x, (2x+7)$^3$(2x+23) = 0, antes de contar as raízes por multiplicidade.%
+\end{itemize}%
+\subsection*{Questão 3: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} k = (1-a)(1+$\surd$a) = (1-$\surd$a)(1+$\surd$a)$^2$ = 1 + $\surd$a - a - a$\surd$a, para a $\in$ {[}0,1), a $\neq$ 1/9. A menor inclinação de secante é 4/{[}(1-a)(1+$\surd$a){]}, atingida em x = ((1-$\surd$a)/2)$^2$.\par %
+Conferi o enunciado no PDF original e a transcrição está fiel. A resposta final do candidato, k = (1-a)(1+$\surd$a) = (1-$\surd$a)(1+$\surd$a)$^2$, coincide com a da minha referência. Também conferi por varredura numérica em x, para a = 0; 0,01; 0,05; 0,2; 0,5; 0,8; 0,95: o x ótimo bate com ((1-$\surd$a)/2)$^2$ e 4/m\_min bate com (1-a)(1+$\surd$a).\newline%
+\newline%
+Todas as armadilhas foram tratadas:\newline%
+{-} $\surd$(x?) = ($\surd$x)?, o que dá uma série geométrica de razão $\surd$x $\in$ {[}0,1), com a convergência justificada.\newline%
+{-} A série começa em n = 1, e a forma escrita é a correta, $\surd$x/(1-$\surd$x).\newline%
+{-} Com a substituição t = $\surd$x, s = $\surd$a, a fatoração x - a = (t-s)(t+s) dá m = 1/{[}(1-s)(1-t)(t+s){]}. O cancelamento de t - s é justificado por x $\neq$ a.\newline%
+{-} O caso s = 0 foi tratado (t + s > 0 porque t $\neq$ s).\newline%
+{-} O vértice t0 = (1-s)/2 fica em (0, 1/2{]} ? {[}0,1), e g(t0) = ((1+s)/2)$^2$.\newline%
+{-} A exclusão de a = 1/9 foi explicada: t0 = s nesse caso, o ótimo seria a reta tangente e nenhuma secante atingiria o mínimo.\newline%
+{-} O coeficiente angular 4/k está correto, e k $\neq$ 0 foi justificado.\newline%
+{-} A verificação em a = 0 dá k = 1.\newline%
+\newline%
+A resolução é limpa, completa e bem organizada, com qualidade de gabarito comentado. Só há ressalvas mínimas de redação: não diz explicitamente que o vértice é o máximo global de g e não cita os fatores 1 - t e 1 - s ao concluir que m > 0.%
+\begin{itemize}%
+\item%
+{[}minor{]} O candidato não diz explicitamente que o vértice é o máximo GLOBAL de g em {[}0,1). Isso fica implícito: a parábola tem concavidade para baixo e t0 está no intervalo. Uma frase como 'como t0 $\in$ {[}0,1) e a concavidade é para baixo, g(t) < g(t0) para todo t $\neq$ t0' deixaria claro que o mínimo da inclinação é atingido e único, e não apenas um ponto crítico.%
+\item%
+{[}minor{]} Para concluir m(t) > 0, o candidato justifica só t + s > 0. Os fatores 1 - t > 0 e 1 - s > 0 também são necessários; são óbvios, porque t, s < 1, mas valia citá{-}los junto. Também não comenta o caso x = 0 (f(0) = 0), que é trivialmente compatível com a fórmula t/(1-t) em t = 0. Nada disso compromete o rigor.%
+\end{itemize}%
+\subsection*{Questão 4: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} As soluções formam um conjunto infinito, sem nenhuma restrição ao módulo de z. São as três retas pela origem, sem a origem: z = x(1+i), z = x(1+($\surd$3-2)i) ou z = x(1-(2+$\surd$3)i), com x $\in$ $\mathbb{R}$ e x $\neq$ 0. Na forma polar: z = $\rho$$\cdot$cis($\pi$/4 + k$\pi$/3), com $\rho$ > 0 e k = 0, 1, 2, 3, 4, 5. Os argumentos são 45$^\circ$, 105$^\circ$, 165$^\circ$, 225$^\circ$, 285$^\circ$ e 345$^\circ$. De forma equivalente, z $\neq$ 0 e Re(z$^3$) + Im(z$^3$) = 0, ou seja, z$^3$ = $\lambda$(1-i) com $\lambda$ $\in$ $\mathbb{R}$*. Para a equação estar definida, Re z $\neq$ 0 e Im z $\neq$ 0, e nenhuma solução viola isso.\par %
+Conferi a transcrição com o PDF original, 4ª questão, e ela está correta.\newline%
+\newline%
+**Resposta final.** A resposta do candidato coincide com a da referência: z = r$\cdot$cis($\pi$/4 + k$\pi$/3), com r > 0 livre. Isso equivale às três retas pela origem, sem a origem, de inclinações 45$^\circ$, 105$^\circ$ e 165$^\circ$: b = a, b = -(2+$\surd$3)a e b = ($\surd$3-2)a, com a $\neq$ 0. Conferi numericamente as seis semirretas com vários módulos (erro $\leq$ 1e-14) e conferi tg105$^\circ$ = -(2+$\surd$3) e tg165$^\circ$ = $\surd$3-2.\newline%
+\newline%
+**Armadilhas.**\newline%
+1. **Domínio.** O candidato exige Re z $\neq$ 0 e Im z $\neq$ 0, escreve z$^2$ - z?$^2$ = 4i$\cdot$Re z$\cdot$Im z e verifica no fim que nenhum dos seis ângulos é múltiplo de 90$^\circ$. Também mostra que 2$\theta$ $\in$ \{90$^\circ$, 210$^\circ$, 330$^\circ$\}, logo sen2$\theta$ $\neq$ 0.\newline%
+2. **A e B imaginários puros.** Ele identifica A = -i$\cdot$cotg$\theta$ e B = -i$\cdot$cotg2$\theta$. Por isso a fatoração (A-i)(B-i) = -2 não fica incompleta: ela vira a equação real (cotg$\theta$ + 1)(cotg2$\theta$ + 1) = 2, que é a mesma (1+a)(1+b) = 2 da referência, com sinais corretos.\newline%
+3. **Multiplicação pelos denominadores.** Ao multiplicar por sen$\theta$$\cdot$sen2$\theta$, ele justifica que o fator é não nulo pelo domínio.\newline%
+4. **Divisão por cos3$\theta$.** Em vez de usar cotg($\theta$+2$\theta$), multiplica tudo e chega a cos3$\theta$ + sen3$\theta$ = 0. Antes de dividir por cos3$\theta$, descarta o caso cos3$\theta$ = 0 corretamente.\newline%
+5. **Periodicidade.** Usa k $\in$ $\mathbb{Z}$ e lista os seis argumentos.\newline%
+6. **Retas completas.** Explica que $\theta$ e $\theta$ + $\pi$ correspondem a z e -z, o que transforma as seis semirretas em três retas.\newline%
+7. **Módulo livre.** Afirma explicitamente que o módulo de z é livre, então o conjunto solução é infinito.\newline%
+\newline%
+**Avaliação geral.** A resolução é limpa, rigorosa e só usa equivalências justificadas. As únicas ressalvas são cosméticas: a expansão trigonométrica intermediária ficou implícita, e a verificação direta foi feita apenas em z = 1 + i. É uma resolução publicável como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} O passo 'Expandindo e agrupando pelas fórmulas de adição' omite a expansão intermediária: cos$\theta$cos2$\theta$ + cos$\theta$sen2$\theta$ + sen$\theta$cos2$\theta$ + sen$\theta$sen2$\theta$ = 2sen$\theta$sen2$\theta$. É imediato, mas num gabarito comentado convém escrever essa linha antes de agrupar em cos3$\theta$ + sen3$\theta$ = 0.%
+\item%
+{[}minor{]} A verificação final substitui só z = 1 + i. Como todos os passos foram equivalências justificadas, isso não compromete a prova. Mesmo assim, uma conferência rápida numa das retas não triviais (105$^\circ$ ou 165$^\circ$) deixaria a resolução mais convincente. Numericamente, todas as seis semirretas satisfazem a equação, com erro $\leq$ 1e-14.%
+\end{itemize}%
+\subsection*{Questão 5: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A desigualdade vale para todos a, b, c > 0. Pela expansão, (a+b+c)(1/a+1/b+1/c) = 3 + (a/b+b/a) + (b/c+c/b) + (c/a+a/c). Cada par é $\geq$ 2, porque x/y + y/x - 2 = (x-y)$^2$/(xy) $\geq$ 0 com xy > 0. Logo o produto é $\geq$ 9.\newline%
+\newline%
+De forma equivalente, (a+b+c)(1/a+1/b+1/c) - 9 = {[}c(a-b)$^2$ + a(b-c)$^2$ + b(c-a)$^2${]}/(abc) $\geq$ 0.\newline%
+\newline%
+A igualdade (= 9) vale se e somente se a = b = c. Também são aceitáveis provas por MA--MG (multiplicando duas desigualdades com lados positivos), por Cauchy--Schwarz ou por MA--MH.\newline%
+\newline%
+Não é questão de múltipla escolha; é uma demonstração.\par %
+Conferi o enunciado no PDF original (Questão 5, valor 1,0) e ele bate com a transcrição.\newline%
+\newline%
+**Resposta final.** O candidato chega a E - 9 = (a-b)$^2$/(ab) + (a-c)$^2$/(ac) + (b-c)$^2$/(bc) $\geq$ 0, com igualdade se e somente se a = b = c. Isso equivale à minha referência: multiplicando por abc, dá {[}c(a-b)$^2$ + b(a-c)$^2$ + a(b-c)$^2${]}/(abc). Conferi a identidade com aritmética racional exata em 20 mil triplas aleatórias, sem nenhuma discrepância. O exemplo numérico a=1, b=2, c=3 dá 11, também correto. As respostas coincidem.\newline%
+\newline%
+**Armadilhas.**\newline%
+{-} **Positividade:** está explícita no lema (xy > 0) e na aplicação a pares de números positivos.\newline%
+{-} **Expansão:** os 9 termos estão corretos, com 3 iguais a 1 e 3 pares recíprocos.\newline%
+{-} **Raciocínio de trás para frente:** não ocorre; a prova parte da expansão e chega à tese.\newline%
+{-} **Casos particulares:** aparecem só como verificação, não como argumento.\newline%
+{-} **Igualdade:** está tratada corretamente (a = b = c), sem afirmar desigualdade estrita.\newline%
+{-} **Rota MA--MG:** cita a hipótese de positividade e justifica a multiplicação membro a membro pela positividade dos lados.\newline%
+\newline%
+**Problemas encontrados.** São apenas de redação:\newline%
+{-} no passo 3, a frase 'aplicando o lema obtemos a identidade' confunde a desigualdade do lema com a identidade algébrica obtida na prova dele;\newline%
+{-} na prova alternativa por MA--MG, o 'somente se' da igualdade não é justificado;\newline%
+{-} há comentários de bastidor ('conferi o enunciado') e uma seção de verificação numérica dispensável.\newline%
+\newline%
+**Avaliação geral.** A prova está correta, completa e rigorosa, no nível de gabarito comentado. Nota 9,5.%
+\begin{itemize}%
+\item%
+{[}minor{]} No passo 3, o texto diz 'Aplicando o lema aos pares... obtemos a identidade'. O lema, porém, é uma desigualdade, e a identidade vem da conta feita dentro da prova dele: x/y + y/x - 2 = (x-y)$^2$/(xy). A lógica está certa, mas a redação mistura duas coisas. Deveria dizer 'usando a identidade obtida na prova do lema' ou então somar diretamente as três desigualdades do lema (3 + 2 + 2 + 2 = 9).%
+\item%
+{[}minor{]} Na observação por MA--MG, o 'somente se' da igualdade não é justificado. Faltou dizer que, como os dois lados de cada desigualdade são positivos, o produto só dá 9 se valer a igualdade nas duas, e isso exige a = b = c. Como é só uma prova alternativa e a prova principal trata a igualdade com rigor, o impacto é pequeno.%
+\item%
+{[}minor{]} Há texto de bastidor que não faz parte de uma prova: 'Conferi o enunciado na prova original'. A seção 'Verificação' com casos numéricos (as contas estão certas: 9 e 11) não acrescenta nada à demonstração. Não está errada, mas deveria ser removida ou dita explicitamente como checagem e não como argumento. O texto não a apresenta como prova, então não perde rigor.%
+\end{itemize}%
+\subsection*{Questão 6: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A sequência é a PA a\_n = 3n - 2 (razão 3). Para cada j, o sistema é possível e indeterminado, com y\_j = 3, x\_j + z\_j = a\_j - 6 e, portanto, x\_j + y\_j + z\_j = a\_j - 3 = 3j - 5. A soma pedida é $\Sigma$\_\{j=1\}\^{}\{2025\}(x\_j + y\_j + z\_j) = 2025$\cdot$3034 = 6 143 850.\par %
+Conferi o enunciado com o original (pág. 2, 6ª questão) e a transcrição está correta. A resposta final do candidato coincide com a minha referência: $\Sigma$ = 2025$\cdot$3034 = 6 143 850. Conferi em Python de três formas (soma direta de 3j-5, fórmula fechada e $\Sigma$(2a\_j - a\_\{j+1\})) e as três dão o mesmo valor.\newline%
+\newline%
+Situação de cada armadilha:\newline%
+{-} **Sistema singular:** tratado. O candidato reduz o sistema a (s, y) com s = x+z e diz que ele é possível e indeterminado, dando a família (t, y, s-t).\newline%
+{-} **Condição de compatibilidade:** ele a obtém e afirma que é necessária e suficiente. A necessidade vem das subtrações. Na suficiência, apenas declara que as equações são satisfeitas, sem escrever a verificação (falha menor).\newline%
+{-} **Extensão da PA:** justificada corretamente para todas as diferenças de a\_1 a a\_2027.\newline%
+{-} **Razão:** r = 3 obtido de a\_4 = a\_1 + 3r, sem erro na contagem dos passos.\newline%
+{-} **Invariância de x\_j+y\_j+z\_j:** dita explicitamente ("a soma pedida é a mesma para qualquer solução escolhida"), já que y\_j e s\_j são fixos. É isso que deixa a soma bem definida.\newline%
+{-} **Álgebra:** x+y+z = a\_j - 3 = 3j - 5 está correto. O candidato não confunde x+z com x+y+z e confere o caso j = 1 (termo -2).\newline%
+{-} **Índices:** soma de j = 1 a 2025, sem erro.\newline%
+{-} **Aritmética:** 2025$\cdot$3034 = 6 143 850, correto.\newline%
+\newline%
+A resolução é clara, bem organizada, rigorosa e completa. Os dois pontos que encontrei são menores: a verificação da suficiência ficou só afirmada e falta uma menção explícita a det = 0. Pode ser publicada como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na suficiência da condição (item 2), o candidato só afirma que 'as três equações são satisfeitas' com y = a\_\{j+1\} - a\_j e s = a\_j - 2y, sem fazer a conta. Falta a linha que mostra s+3y = a\_j + y = a\_\{j+1\} e s+4y = a\_j + 2y = a\_\{j+2\}. Essa última igualdade é justamente onde entra a condição a\_\{j+2\} - a\_\{j+1\} = a\_\{j+1\} - a\_j, e deixá{-}la explícita fecharia o argumento. A conta é imediata e a conferência numérica com j = 1 no item 4 compensa em parte a omissão.%
+\item%
+{[}minor{]} O candidato não diz explicitamente que a matriz dos coeficientes é singular (1ª e 3ª colunas iguais, det = 0, posto 2). Não é necessário, porque ele trabalha direto com s = x+z e conclui corretamente que o sistema é possível e indeterminado. Ainda assim, uma frase sobre isso deixaria claro ao leitor por que não se pode usar Cramer.%
+\end{itemize}%
+\subsection*{Questão 7: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} P(infectado | programa responde "não infectado") = 0,045/0,144 = 5/16 = 0,3125, ou seja, 31,25\%.\par %
+Conferi a transcrição com o PDF original (pág. 2, 7ª questão, valor 1,0) e ela está correta.\newline%
+\newline%
+**Resposta final:** o candidato chega a P(I|D?) = 0,045/0,144 = 5/16 = 31,25\%, o mesmo valor da minha referência. Refiz a conta em Python com frações exatas: 9/200 ÷ 18/125 = 5/16, e o complementar dá 11/16. A resposta está correta.\newline%
+\newline%
+**Armadilhas:** nenhuma ficou de fora.\newline%
+{-} Calcula a condicional certa, a da resposta negativa D?, e não P(I|D).\newline%
+{-} Usa os complementos certos, P(D?|I) = 0,05 e P(D?|?) = 0,99. Justifica isso dizendo explicitamente que o programa só dá duas respostas possíveis.\newline%
+{-} Monta a probabilidade total antes de aplicar Bayes, e a soma está certa: 0,045 + 0,099 = 0,144.\newline%
+{-} Não para na conjunta 0,045 nem em 5\%. Não trata 95\% e 1\% como complementares entre si.\newline%
+{-} Simplifica 45/144 corretamente para 5/16.\newline%
+{-} Confere que P(?|D?) = 11/16 e que 5/16 + 11/16 = 1.\newline%
+{-} Verifica que P(D?) > 0, o que deixa a condicional bem definida.\newline%
+{-} Comenta por que o resultado faz sentido: a probabilidade cai de 90\% para 31\%, mas continua alta por causa da taxa{-}base.\newline%
+\newline%
+**Defeitos:** só dois, ambos menores e de redação. No comentário final, as probabilidades conjuntas 0,045 e 0,099 são chamadas de 'falsos negativos' e 'verdadeiros negativos' sem dizer que são conjuntas. Também falta uma frase dizendo que as porcentagens do enunciado são lidas como probabilidades condicionais.\newline%
+\newline%
+A resolução está correta, completa, rigorosa e clara, e serve como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} No comentário final, 0,045 e 0,099 aparecem como 'falsos negativos' e 'verdadeiros negativos' sem dizer que são probabilidades conjuntas, P(I?D?) e P(??D?), e não taxas condicionais. A taxa de falso negativo é P(D?|I) = 0,05. Deveria vir rotulado assim: 'P(I?D?) = 0,045 e P(??D?) = 0,099'.%
+\item%
+{[}minor{]} Os dados são escritos direto como P(D|I) = 0,95 e P(D|?) = 0,01, sem uma frase dizendo que as porcentagens do enunciado são probabilidades condicionais e não P(I|D) etc. A notação deixa a leitura clara, mas uma linha de justificativa deixaria a resolução no nível de gabarito comentado.%
+\end{itemize}%
+\subsection*{Questão 8: nota 10,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} O sistema tem exatamente uma solução real: (x, y, z) = (0, 0, 0). A prova tem duas partes:\newline%
+{-} **Unicidade:** g(t) = log(t+$\surd$(t$^2$+1)) tem o mesmo sinal de t. Se x > 0, as equações dão y > x, z > y e x > z, o que é absurdo; o caso x < 0 é análogo. Logo x = 0 e daí y = z = 0.\newline%
+{-} **Existência:** (0, 0, 0) satisfaz as três equações, pois log 1 = 0.\par %
+Nota 10. Conferi a transcrição com o original (8ª questão, p. 2) e ela bate. As respostas finais coincidem: a solução real é única e vale (x, y, z) = (0, 0, 0). Essa resposta está correta.\newline%
+\newline%
+Passos da resolução, todos corretos:\newline%
+{-} **Domínio:** $\surd$(t$^2$+1) > |t| $\geq$ -t, logo o logaritmo está definido em todo $\mathbb{R}$.\newline%
+{-} **Reescrita:** o sistema vira y = f(x), z = f(y), x = f(z), com f(t) = t + log(t + $\surd$(t$^2$+1)).\newline%
+{-} **Monotonia de f:** o candidato não usa o argumento falso "soma de funções crescentes" para h(t) = t + $\surd$(t$^2$+1). Ele calcula h'(t) = ($\surd$(t$^2$+1) + t)/$\surd$(t$^2$+1) > 0, compõe com o log crescente (base b > 1) e soma com t. Esse é o argumento certo.\newline%
+{-} **x = y = z:** se x < y, aplicar f duas vezes dá y < z e z < x, absurdo. O caso x > y é simétrico. De x = y sai z = f(y) = f(x) = y. A igualdade das coordenadas é provada, não suposta por simetria.\newline%
+{-} **Valor comum:** log(x + $\surd$(x$^2$+1)) = 0 $\Leftrightarrow$ $\surd$(x$^2$+1) = 1 - x. O candidato impõe 1 - x $\geq$ 0 antes de elevar ao quadrado, obtém x = 0 e confere a condição.\newline%
+{-} **Existência:** verifica explicitamente que (0, 0, 0) satisfaz as três equações, porque log 1 = 0.\newline%
+{-} **Conclusão:** separa com clareza unicidade (itens 3 e 4) e existência (item 5).\newline%
+\newline%
+Todas as armadilhas da referência foram tratadas:\newline%
+{-} unicidade provada, além da existência;\newline%
+{-} nenhuma simetria suposta sem prova;\newline%
+{-} monotonia de h justificada pela derivada;\newline%
+{-} a soma das equações não foi usada;\newline%
+{-} monotonia crescente citada para fechar o ciclo;\newline%
+{-} domínio justificado;\newline%
+{-} condição 1 - x $\geq$ 0 imposta antes de elevar ao quadrado;\newline%
+{-} base genérica b > 1;\newline%
+{-} resposta dada como terna.\newline%
+\newline%
+A redação é clara, enxuta e no nível de um gabarito comentado. Não encontrei erro, lacuna ou salto lógico.%
+\subsection*{Questão 9: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} r = ($\surd$3 - 1)(2 - $\surd$2)$\cdot$a/2 = a(2$\surd$3 + $\surd$2 - $\surd$6 - 2)/2 = ($\surd$3 - 1)a/(2 + $\surd$2) $\approx$ 0,2144$\cdot$a.\newline%
+Valores intermediários: BM = DN = (2 - $\surd$3)a; CM = CN = ($\surd$3 - 1)a; MN = ($\surd$6 - $\surd$2)a. O triângulo CMN é retângulo isósceles em C.\par %
+A resposta coincide com a referência: r = a($\surd$3-1)(2-$\surd$2)/2 = a(2$\surd$3+$\surd$2-$\surd$6-2)/2 $\approx$ 0,2144a. A conferência numérica em python3 com a = 1 dá AM = AN = MN $\approx$ 1,035276 e S/p $\approx$ 0,214413. Todas as armadilhas foram tratadas: BM = DN por cateto{-}hipotenusa, descarte da raiz (2+$\surd$3)a > a, ângulo de 15$^\circ$ como conferência, CM = ($\surd$3-1)a sem troca com BM, fórmula do raio justificada geometricamente e verificada por S/p com o semiperímetro correto, e hipotenusa MN = ($\surd$6-$\surd$2)a. Há apenas duas pequenas omissões de rigor: a soma das tangentes de M e N igual à hipotenusa não é dita explicitamente, e a não degenerescência é comentada só depois de usada. A resolução é clara, completa e tem dupla verificação; tem qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na justificativa de r = (b+c-h)/2, a resolução diz que as tangentes a partir do vértice reto medem r, mas não diz explicitamente que as tangentes traçadas de M e de N somam a hipotenusa h (propriedade das tangentes iguais). O passo é padrão, mas deveria ser escrito em uma linha.%
+\item%
+{[}minor{]} CMN é declarado retângulo isósceles (não degenerado) antes de se mostrar que x < a. A conclusão está correta e o valor x $\approx$ 0,268a confirma logo depois; bastaria uma menção explícita de que 0 < x < a garante que a configuração existe, é única e não é degenerada.%
+\end{itemize}%
+\subsection*{Questão 10: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Volume total das esferas = 2 $\cdot$ V(esfera inscrita) = 2 $\cdot$ (4/3)$\pi$(a$\surd$6/12)$^3$ = **$\pi$$\surd$6 a$^3$/108** ($\approx$ 0,0713 a$^3$). Esse valor inclui a esfera inscrita original, de volume $\pi$$\surd$6 a$^3$/216. As esferas criadas depois dela somam exatamente o mesmo valor, $\pi$$\surd$6 a$^3$/216.\par %
+Conferi o enunciado com o PDF original (questão 10, página 2) e a transcrição está correta. A resposta final do candidato, V = $\pi$$\surd$6 a$^3$/108 $\approx$ 0,0713 a$^3$, coincide com a da minha referência.\newline%
+\newline%
+Refiz as contas em Python:\newline%
+{-} o inraio é r = a$\surd$6/12;\newline%
+{-} o plano de corte fica a 2r = H/2 da base BCD, o que dá razão de homotetia 1/2;\newline%
+{-} (8/3)$\pi$$\cdot$6$\surd$6/1728 = $\pi$$\surd$6/108;\newline%
+{-} a razão V/V\_tetra é $\pi$$\surd$3/9 $\approx$ 60,5\%.\newline%
+\newline%
+Também simulei a recursão até o nível 4 (341 esferas). A soma parcial é 0,06903 a$^3$, igual a V$_{0}$$\cdot$(1 + 1/2 + \ldots{} + 1/16), como esperado. A menor folga entre duas esferas é cerca de 0, ou seja, elas apenas se tangenciam e não se sobrepõem.\newline%
+\newline%
+Todas as armadilhas foram tratadas:\newline%
+{-} escolha do plano: o candidato exclui explicitamente a própria face e usa o plano a 2r da base;\newline%
+{-} inraio: deduzido pela decomposição do volume em quatro pirâmides;\newline%
+{-} homotetia de razão 1/2, com os novos vértices nos pontos médios, o que garante um tetraedro regular semelhante e permite repetir o processo;\newline%
+{-} contagem: 4? esferas no nível n, o que dá uma série de razão 1/2, cuja convergência é mencionada;\newline%
+{-} esfera original: incluída, com a ressalva de que o resultado seria V$_{0}$ se ela não fosse contada;\newline%
+{-} não sobreposição: tratada, com a tangência no ponto de contato de $\pi$\_A;\newline%
+{-} checagem de ordem de grandeza e de dimensão: feita.\newline%
+\newline%
+Os pontos fracos são de rigor menor. O argumento de não sobreposição é compacto: a generalização para níveis e ramos diferentes ficou implícita. Duas afirmações evidentes também não foram justificadas: que os tetraedros de canto se intersectam só nos pontos médios e que I está sobre a altura. Fora isso, a resolução está correta, completa, clara e bem organizada, com qualidade de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A frase 'dois desses tetraedros de canto têm em comum no máximo um ponto médio de aresta' é só afirmada. Basta uma linha para prová{-}la: em coordenadas baricêntricas, o tetraedro de canto em A é \{$\lambda$\_A $\geq$ 1/2\}. Como $\lambda$\_A + $\lambda$\_B $\leq$ 1, a interseção com \{$\lambda$\_B $\geq$ 1/2\} se reduz ao ponto médio de AB.%
+\item%
+{[}minor{]} O item 3 mostra a separação entre a esfera grande e o tetraedro de canto em A e depois generaliza com 'o mesmo argumento vale em cada etapa'. O caso de esferas em níveis diferentes e em ramos diferentes da árvore ficou implícito. Faltou concluir explicitamente: duas esferas quaisquer estão em tetraedros aninhados (e a esfera do maior fica fora dos filhos dele) ou em tetraedros disjuntos de um mesmo nível ancestral. Outra saída seria observar que cada esfera é a esfera inscrita do octaedro central do seu tetraedro e que esses octaedros têm interiores disjuntos.%
+\item%
+{[}minor{]} O texto diz que a altura por A passa pelo incentro I, mas não justifica. A justificativa é imediata (por simetria, o incentro coincide com o baricentro, que fica sobre as quatro alturas) e deveria constar em uma frase.%
+\end{itemize}%
+\end{document}

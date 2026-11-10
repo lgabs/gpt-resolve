@@ -1,0 +1,61 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{1. Forma de $p(x)$.} Pelo algoritmo da divisão de polinômios, existem quociente $q(x)$ e resto $r(x)=9x^2-4x+7$ com
+\[
+p(x)=(x^3-x+4)\,q(x)+9x^2-4x+7 .
+\]
+Como $\operatorname{gr} p=4$ e o divisor tem grau $3$, o quociente tem grau $1$: $q(x)=ax+b$, com $a,b\in\mathbb{R}$ e $a\neq 0$. Expandindo:
+\begin{align*}
+p(x)&=ax^4+bx^3-ax^2-bx+4ax+4b+9x^2-4x+7\\
+&=ax^4+bx^3+(9-a)x^2+(4a-b-4)x+(4b+7).
+\end{align*}
+
+\textbf{2. Relações de Girard.} Para $p(x)=a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$, a soma das raízes é $-\dfrac{a_3}{a_4}$ e, como o grau é par, o produto é $+\dfrac{a_0}{a_4}$. Logo:
+\[
+-\frac{b}{a}=\frac{3}{2}\;\Longrightarrow\; b=-\frac{3a}{2},
+\qquad
+\frac{4b+7}{a}=-\frac{5}{2}\;\Longrightarrow\; 4b+7=-\frac{5a}{2}.
+\]
+Substituindo $b$ na segunda equação: $-6a+7=-\dfrac{5a}{2}$, ou seja, $\dfrac{7a}{2}=7$, então $a=2$ e $b=-3$ ($a\neq 0$, como exigido). Portanto
+\[
+p(x)=2x^4-3x^3+7x^2+7x-5 .
+\]
+
+\textbf{3. Cálculo das raízes.} Pelo teorema das raízes racionais, as candidatas são $\pm 1,\ \pm 5,\ \pm\frac{1}{2},\ \pm\frac{5}{2}$. Testando $x=\frac{1}{2}$:
+\[
+p\!\left(\tfrac{1}{2}\right)=\frac{2}{16}-\frac{3}{8}+\frac{7}{4}+\frac{7}{2}-5=\frac{1-3+14+28-40}{8}=0 .
+\]
+Dividindo por $2x-1$ (Briot--Ruffini com $\tfrac12$: coeficientes $2,-2,6,10$, resto $0$):
+\[
+p(x)=(2x-1)(x^3-x^2+3x+5).
+\]
+No fator cúbico, $x=-1$ dá $-1-1-3+5=0$. Por Briot--Ruffini (coeficientes $1,-2,5$, resto $0$):
+\[
+x^3-x^2+3x+5=(x+1)(x^2-2x+5).
+\]
+Por fim, $x^2-2x+5=0$ tem $\Delta=4-20=-16$, então
+\[
+x=\frac{2\pm 4i}{2}=1\pm 2i .
+\]
+Assim, $p(x)=2\left(x-\tfrac12\right)(x+1)(x^2-2x+5)$.
+
+\textbf{4. Verificação.}
+\begin{itemize}
+\item Soma: $\tfrac12+(-1)+(1+2i)+(1-2i)=\tfrac32$. Confere.
+\item Produto: $\tfrac12\cdot(-1)\cdot(1+2i)(1-2i)=-\tfrac12\cdot 5=-\tfrac52$. Confere.
+\item As raízes complexas aparecem em par conjugado, o que é coerente com coeficientes reais.
+\item Resto: $(x^3-x+4)(2x-3)=2x^4-3x^3-2x^2+11x-12$, e
+\[
+p(x)-(2x^4-3x^3-2x^2+11x-12)=9x^2-4x+7 ,
+\]
+que tem grau menor que $3$, como deve ter um resto.
+\end{itemize}
+
+\textbf{Resposta.} As raízes de $p(x)$ em $\mathbb{C}$ são $\tfrac12$, $-1$, $1+2i$ e $1-2i$, com
+\[
+p(x)=2x^4-3x^3+7x^2+7x-5 .
+\]
+
+ANSWER: As raízes são $\frac{1}{2}$, $-1$, $1+2i$ e $1-2i$ (com $p(x)=2x^4-3x^3+7x^2+7x-5$).

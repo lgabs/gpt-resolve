@@ -1,0 +1,100 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "a) v = √(2qV/m). b) Movimento helicoidal uniforme: MRU ao longo de B com velocidade v cosθ, somado a MCU de raio mv sinθ/(qB) e período 2πm/(qB) no plano perpendicular a B. c) cosθ = (BL/(2πn))√(q/(2mV)), com n = 1, 2, 3, … e 0 < cosθ < 1, ou seja, n > (BL/(2π))√(q/(2mV)). A partícula toca a linha do ponto 1 apenas em t = nT, e z = np deve ser igual a L.",
+  "judge_reference": {
+    "reference_solution": "**Questão 8 — resolução de referência (resolvida às cegas, antes de ver qualquer resposta de candidato)**\n\n**Convenções.** Eixo $z$ no sentido de $\\vec B$ (para a direita na figura). O ângulo $\\theta$ é medido entre $\\vec v$ e $\\vec B$; na figura $\\vec v$ aponta para a direita, logo $\\cos\\theta>0$. Decompõe-se $\\vec v=\\vec v_\\parallel+\\vec v_\\perp$, com $v_\\parallel=v\\cos\\theta$ e $v_\\perp=v\\sen\\theta$.\n\n**a) Módulo da velocidade na entrada.** O campo elétrico que acelera a partícula do repouso realiza trabalho $qV$ sobre ela. Pelo teorema da energia cinética, $qV=\\tfrac12 mv^2$, logo\n\n$$v=\\sqrt{\\frac{2qV}{m}}.$$\n\nNa região de $\\vec B$ a força magnética não realiza trabalho, então o módulo da velocidade se mantém igual a esse valor. Não relativístico, como pede o enunciado.\n\n**b) Tipo de movimento dentro do campo.** A força é $\\vec F=q\\,\\vec v\\times\\vec B$.\n- Na direção de $\\vec B$: $\\vec F\\perp\\vec B$ sempre, logo $F_\\parallel=0$ e $v_\\parallel=v\\cos\\theta$ é constante. Há movimento retilíneo uniforme ao longo da linha de campo.\n- No plano perpendicular a $\\vec B$: $\\vec F_\\perp\\perp\\vec v_\\perp$, logo a componente transversal descreve um movimento circular uniforme, com raio $r=\\dfrac{mv\\sen\\theta}{qB}$, frequência angular $\\omega=\\dfrac{qB}{m}$ e período $T=\\dfrac{2\\pi m}{qB}$. O período não depende de $v$ nem de $\\theta$.\n- O módulo da velocidade é constante, pois a força é sempre perpendicular a $\\vec v$.\n\nConclusão: o movimento é **helicoidal uniforme**, ou seja, a composição de um MRU ao longo de $\\vec B$ com um MCU no plano perpendicular a $\\vec B$. A trajetória é uma hélice cilíndrica de raio $r=\\dfrac{mv\\sen\\theta}{qB}$ e passo $p=v_\\parallel T=\\dfrac{2\\pi m v\\cos\\theta}{qB}$.\n\nCasos degenerados: se $\\theta=0$, o movimento é retilíneo uniforme sobre a própria linha de campo ($r=0$). Se $\\theta=\\pi/2$, o passo é nulo e a partícula gira sem avançar.\n\n**c) Condição sobre $\\cos\\theta$ para passar pelo ponto 2.** Tomo a origem no ponto 1 e os eixos $x,y$ no plano perpendicular a $\\vec B$. Então\n\n$$x(t)=r\\sen(\\omega t),\\qquad y(t)=r\\,[\\cos(\\omega t)-1],\\qquad z(t)=v\\cos\\theta\\; t.$$\n\nA linha de campo que passa pelo ponto 1 é o conjunto $x=y=0$. A partícula está sobre ela quando $y=0$, ou seja, $\\cos(\\omega t)=1$, o que ocorre em $t_k=kT$ com $k=1,2,3,\\dots$. Nesses instantes $z_k=k\\,p$. Assim, a partícula toca a linha de campo do ponto 1 exatamente uma vez por período, e não a cada meia volta.\n\nO ponto 2 está nessa mesma linha, a uma distância $L$, então $L=k\\,p$:\n\n$$L=k\\,\\frac{2\\pi m v\\cos\\theta}{qB}\\;\\Longrightarrow\\;\\cos\\theta=\\frac{qBL}{2\\pi k\\,m v}.$$\n\nSubstituindo $mv=\\sqrt{2mqV}$:\n\n$$\\boxed{\\cos\\theta=\\frac{qBL}{2\\pi k\\sqrt{2mqV}}=\\frac{BL}{2\\pi k}\\sqrt{\\frac{q}{2mV}}},\\qquad k=1,2,3,\\dots$$\n\nRestrições:\n- $\\cos\\theta>0$. Como o ponto 2 está à frente, no sentido de $\\vec B$, a partícula deve avançar nesse sentido.\n- $\\cos\\theta\\le 1$, o que impõe $k\\ge \\dfrac{BL}{2\\pi}\\sqrt{\\dfrac{q}{2mV}}$. Ou seja, para um $L$ dado, só valem os retornos com $k$ suficientemente grande.\n\nVerificação dimensional: $[BL\\sqrt{q/(mV)}]=\\mathrm{T\\,m}\\sqrt{\\mathrm{C/(kg\\,V)}}=1$.\n\nVerificação numérica (feita com python, próton, $V=1\\,\\mathrm{kV}$, $B=0{,}1\\,\\mathrm{T}$): a hélice analítica volta à linha do ponto 1 exatamente em $z=k\\,p$, e para $L=k\\,p$ a expressão acima fornece o mesmo $\\cos\\theta$.\n\n**Resumo:** a) $v=\\sqrt{2qV/m}$; b) movimento helicoidal uniforme; c) $\\cos\\theta=\\dfrac{BL}{2\\pi k}\\sqrt{\\dfrac{q}{2mV}}$, com $k\\in\\mathbb{N}^*$ e $k\\ge\\dfrac{BL}{2\\pi}\\sqrt{\\dfrac{q}{2mV}}$.",
+    "final_answer": "a) Velocidade de entrada: $v=\\sqrt{\\dfrac{2qV}{m}}$ (conservação da energia: $qV=\\tfrac12 mv^2$; a força magnética não altera o módulo).\n\nb) Movimento helicoidal uniforme: MRU ao longo de $\\vec B$, com $v_\\parallel=v\\cos\\theta$ constante (porque $F_\\parallel=0$), composto com MCU no plano perpendicular a $\\vec B$, de raio $r=\\dfrac{mv\\sen\\theta}{qB}$ e período $T=\\dfrac{2\\pi m}{qB}$. A trajetória é uma hélice cilíndrica de passo $p=\\dfrac{2\\pi m v\\cos\\theta}{qB}$.\n\nc) Para passar pelo ponto 2, $L=k\\,p$ com $k\\in\\{1,2,3,\\dots\\}$, logo\n$$\\cos\\theta=\\frac{qBL}{2\\pi k\\,m v}=\\frac{BL}{2\\pi k}\\sqrt{\\frac{q}{2mV}},\\qquad k=1,2,3,\\dots$$\ncom $\\cos\\theta>0$ e $k\\ge\\dfrac{BL}{2\\pi}\\sqrt{\\dfrac{q}{2mV}}$ (para que $\\cos\\theta\\le1$).\n\nNão há alternativas de múltipla escolha nesta questão.",
+    "pitfalls": [
+      "Fator 2 na energia: $v=\\sqrt{2qV/m}$, não $\\sqrt{qV/m}$. A energia cinética adquirida é $qV$, pois V é a diferença de potencial de aceleração.",
+      "O movimento não é circular uniforme. A componente de $\\vec v$ paralela a $\\vec B$ é preservada, então a trajetória é uma hélice (movimento helicoidal uniforme). Justificar com $F_\\parallel=0$ e com $|\\vec v|$ constante.",
+      "Raio e passo usam componentes diferentes: $r=mv\\sen\\theta/(qB)$ (componente perpendicular) e $p=2\\pi mv\\cos\\theta/(qB)$ (componente paralela). Trocar seno por cosseno, ou usar $mv/(qB)$ como raio, é erro comum.",
+      "O período $T=2\\pi m/(qB)$ não depende de $v$ nem de $\\theta$. Não confundir o raio da hélice com o raio $mv/(qB)$ da órbita de uma partícula perpendicular ao campo.",
+      "A partícula volta à linha de campo do ponto 1 uma vez por período, em $t=kT$, e não a cada meia volta: o círculo projetado passa pela origem uma única vez por volta. Logo $L=k\\,p$ com $k$ inteiro positivo. Resolver com $L=p$ (k=1 fixo) é incompleto, pois o enunciado diz 'em um desses retornos'.",
+      "A linha de campo de referência é a reta paralela a $\\vec B$ que passa pelo ponto 1, não o eixo da hélice. O eixo da hélice está deslocado de $r$ dessa reta.",
+      "Restrição $\\cos\\theta\\le1$: impõe $k\\ge\\dfrac{BL}{2\\pi}\\sqrt{\\dfrac{q}{2mV}}$. Nem todo $k$ é fisicamente possível para qualquer $L$; é preciso indicar a desigualdade além da expressão.",
+      "Sinal de $\\cos\\theta$: como o ponto 2 está no sentido de $\\vec B$ (à direita na figura), exige-se $\\cos\\theta>0$. Com $\\cos\\theta<0$ a partícula avança contra $\\vec B$ e não alcança o ponto 2 com $L>0$ nesse sentido.",
+      "Casos degenerados: para $\\theta=0$ ($\\cos\\theta=1$) a partícula nunca sai da linha de campo e passa por 2 para qualquer L; a fórmula geral não se aplica. Para $\\theta=\\pi/2$ o passo é zero e só há retorno ao próprio ponto 1 ($L=0$), que não serve.",
+      "Não usar a nota da prova $\\sen\\theta\\approx\\theta$ para $\\theta\\ll1$: o ângulo é genérico e não há aproximação pedida. Aproximar $\\cos\\theta\\approx1-\\theta^2/2$ seria indevido.",
+      "Não usar relatividade. O enunciado a desconsidera, então $\\vec p=m\\vec v$ e $K=qV$ são válidos.",
+      "Checagem de unidades: $BL\\sqrt{q/(mV)}$ é adimensional (T·m·√(C/(kg·V)) = 1). Expressões com erro de potência de $q$, $m$ ou $V$ costumam falhar aqui.",
+      "Não confundir a componente da velocidade paralela a $\\vec B$ com a perpendicular ao medir o ângulo. $\\theta$ é medido em relação à direção de $\\vec B$ (linha horizontal da figura), e não em relação à vertical ou à perpendicular."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) $v=\\sqrt{\\dfrac{2qV}{m}}$ (a força magnética não realiza trabalho, então o módulo se mantém dentro do campo).\n\nb) Movimento helicoidal uniforme: MRU ao longo de $\\vec{B}$ com velocidade $v\\cos\\theta$, somado a MCU no plano perpendicular a $\\vec{B}$, de raio $r=\\dfrac{mv\\sin\\theta}{qB}$ e período $T=\\dfrac{2\\pi m}{qB}$.\n\nc) A partícula volta à linha de campo em $t=kT$, quando $z=k\\,v\\cos\\theta\\,T$. Impondo $z=L$:\n$\\cos\\theta=\\dfrac{BL}{2\\pi n}\\sqrt{\\dfrac{q}{2mV}}$, com $n=1,2,3,\\ldots$ e $\\cos\\theta\\leq 1$ (equivalentemente $\\cos\\theta=\\dfrac{qBL}{2\\pi n\\,mv}$).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Parte (c): a integração das equações do movimento não é mostrada. O candidato escreve as EDOs ẋ-ω·y etc., as condições iniciais e diz apenas \"a solução é\" para x(t), y(t), z(t). Deveria mostrar v_x = v⊥ cos ωt e v_y = −v⊥ sin ωt, verificar as condições iniciais e integrar. Esse é o passo central da prova de que a partícula toca a linha do ponto 1 só em t = kT. A expressão final está correta: a integração numérica que refiz dá erro máximo ~1e-13 m."
+          },
+          {
+            "severity": "minor",
+            "description": "Tratamento de θ = 0: o candidato diz que é um \"caso degenerado excluído pelo enunciado\". O enunciado não exclui isso explicitamente. A exclusão decorre apenas da leitura de \"volta a passar pela mesma linha\", que pressupõe que a partícula saiu da linha. Deveria declarar a hipótese (0 < θ < π/2, com justificativa textual e pela figura) e dizer o que acontece em θ = 0: a partícula nunca sai da linha, passa pelo ponto 2 para qualquer L, e a fórmula de (c) não se aplica."
+          },
+          {
+            "severity": "minor",
+            "description": "Caso θ = π/2 aparece só como limite em \"Casos limites\". Em (b) deveria ser citado como caso degenerado da hélice: passo nulo, movimento circular puro, retorno apenas ao ponto 1 com L = 0."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), a frase \"Isso vale para 0<θ<π/2, que é o caso da figura\" dá a entender que a classificação helicoidal depende de θ agudo. Ela vale para 0 < θ < π, com θ = 0 e θ = π/2 como degenerados. A restrição da figura deveria ser separada da validade do resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "O eixo da hélice não é explicitado como deslocado de r em relação à linha de campo do ponto 1. A solução usa y = r(cos ωt − 1), o que indica centro em y = −r, mas o texto não diz isso. A distinção entre a linha de referência e o eixo da hélice é uma armadilha do problema e deveria estar escrita."
+          },
+          {
+            "severity": "minor",
+            "description": "Sinal de cosθ: \"Como cosθ > 0, a partícula avança no sentido de B\" inverte a lógica. O correto é: L > 0 e z_k = k·p exigem cosθ > 0, pois com cosθ < 0 a partícula avança contra B e não alcança o ponto 2. Deveria ser apresentado como condição necessária e aparecer junto da resposta final, que hoje só a menciona no texto."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação \"a trajetória também foi conferida por integração numérica da equação de Lorentz\" não traz método, passo, parâmetros nem erro. O leitor não consegue verificá-la. Ou se apresenta a verificação (por exemplo z = kp em t = kT, com o erro de L), ou se retira a frase. Refiz essa checagem e a conclusão está correta, mas o texto não a sustenta."
+          }
+        ],
+        "summary": "Parecer sobre a resolução do candidato à Questão 8 (espectrômetro de massa, hélice em campo magnético).\n\nConfirmei o enunciado no PDF original (pág. 9): B aponta para a direita, v sai do ponto 1 para baixo e para a direita, θ é agudo (cosθ > 0) e o ponto 2 está na mesma linha de campo. A transcrição confere.\n\nComparação item por item com a referência (ambas concordam nas três partes):\n- a) v = √(2qV/m). Correta. A energia cinética é qV (fator 2 correto). Numericamente, para próton com V = 1 kV, v ≈ 4,38×10⁵ m/s e a energia residual é zero.\n- b) Movimento helicoidal uniforme: MRU de componente v cosθ ao longo de B (F∥ = 0) somado a MCU de raio r = mv sinθ/(qB) e período T = 2πm/(qB). Correto e bem justificado. Numericamente, a solução analítica coincide com a integração RK4 da equação de Lorentz (erro ≤ 1e-13 m em x, y, z).\n- c) cosθ = (BL/(2πk))√(q/(2mV)), k = 1, 2, 3, …, com cosθ ≤ 1. Correta. Usei n em vez de k, o que é só notação. Numericamente, a partícula toca a linha do ponto 1 apenas em t = kT (z/p = k), e não a cada meia volta. Com os cosθ dados por essa fórmula para k = 1, 2, 3, tem-se k·p − L ≈ 0 (erro ~1e-17 m). O exemplo de ordem de grandeza (cosθ ≈ 0,035; θ ≈ 88°) também confere.\n\nPonto a ponto contra as armadilhas: fator 2 na energia (ok); helicoidal e não circular (ok); r com sen e passo com cos (ok); período independente de v e θ (ok); k geral e não só k = 1 (ok); restrição cosθ ≤ 1 (ok); unidades (ok); sem sen θ ≈ θ e sem relatividade (ok). Pendências: θ = 0 e θ = π/2 (tratados de forma fraca), eixo deslocado de r não explicitado, sinal de cosθ com lógica invertida.\n\nA resposta final está certa e a justificativa é sólida. Não chega a 9 porque, para ser um gabarito comentado publicável, faltam a integração explícita em (c), o tratamento preciso dos casos degenerados e a restrição de θ escrita como hipótese e não como consequência da figura. Nenhum problema é crítico ou grave: todos são menores e de rigor/clareza."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "a) v = √(2qV/m). b) Movimento helicoidal uniforme: MRU ao longo de B com velocidade v cosθ, somado a MCU de raio mv sinθ/(qB) e período 2πm/(qB) no plano perpendicular a B. c) cosθ = (BL/(2πn))√(q/(2mV)), com n = 1, 2, 3, … e 0 < cosθ < 1, ou seja, n > (BL/(2π))√(q/(2mV)). A partícula toca a linha do ponto 1 apenas em t = nT, e z = np deve ser igual a L.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Caso degenerado θ=0 (cosθ=1): o candidato exclui por premissa (\"o enunciado pressupõe que a partícula deixa a linha... o que exige θ≠0\") e usa desigualdade estrita n > (BL/2π)√(q/2mV). A referência escreve ≤, porque, para θ=0, a partícula fica sobre a linha e passa pelo ponto 2 para qualquer L. A exclusão é defensável, mas em (c) deveria dizer explicitamente que θ=0 é trivial, que a fórmula não se aplica a ele e que a exclusão vem do enunciado (a partícula deve sair da linha e retornar), não de cálculo. A frase 'exige θ≠0' também está um pouco exagerada. Ação: acrescentar uma nota em (c) sobre θ=0 e sobre o caso n=0 (t=0, o próprio ponto 1, L=0), que fica fora por L>0."
+          },
+          {
+            "severity": "minor",
+            "description": "Erro aritmético na verificação de ordem de grandeza: com q/m = 9,6×10⁷ C/kg, T = 2π/(qB/m) = 2π/(9,6×10⁶) ≈ 6,5×10⁻⁷ s, não 6,6×10⁻⁷ s. (Com q/m = 9,58×10⁷ o valor seria 6,6×10⁻⁷ s, mas o candidato usou 9,6×10⁷.) Não afeta a conclusão cosθ ≈ 0,035, θ ≈ 88°, que confirmei numericamente. Ação: corrigir para 6,5×10⁻⁷ s ou explicitar q/m = 9,58×10⁷ C/kg."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (a): o trabalho qV é afirmado sem justificativa explícita. Deveria dizer que, pela definição de diferença de potencial, o trabalho do campo elétrico sobre a carga é qV, e então o teorema da energia cinética dá K = qV. A redação atual mistura TEC e conservação de energia de forma pouco clara, embora o resultado v = √(2qV/m) esteja certo."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação: o texto usa \\sin (renderiza 'sin'), enquanto o enunciado e a convenção em português usam 'sen' (a própria nota da prova diz 'sen θ ≈ θ'). É cosmético, mas um gabarito publicado deveria seguir a notação da prova."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 8.\n\nConferência do enunciado: no PDF original, as setas das linhas de campo apontam para a direita, o ponto 2 está à direita do ponto 1 na mesma linha, e o vetor v sai do ponto 1 para baixo e para a direita, com θ agudo. Portanto, a hipótese do candidato sobre o sentido de B e sobre θ agudo está correta.\n\nVerificação das contas (feita por mim, em Python puro, sem numpy):\n- a) v = √(2qV/m) está correto. O módulo da velocidade se mantém dentro do campo.\n- b) Integrei numericamente a equação de Lorentz com RK4. O desvio em relação à solução analítica do candidato foi da ordem de 1e-12, e |v| se conservou. Confirmei r = mv·senθ/(qB), T = 2πm/(qB) e p = 2πmv·cosθ/(qB). O movimento é helicoidal uniforme.\n- c) A partícula toca a linha do ponto 1 exatamente em t = nT, com z = np, uma vez por período (não a cada meia volta). Para L = k·p, a fórmula cosθ = (BL/2πk)√(q/2mV) reproduz p·k = L em numérico (k = 1, 2, 3 com L = 1 cm dão θ ≈ 88,0°, 89,0°, 89,3°). Para cosθ < 0, z < 0, e a partícula não alcança o ponto 2, como o candidato afirma.\n\nComparação com a referência, item por item: a), b) e c) coincidem. A única divergência formal está na fronteira: a referência escreve k ≥ … (cosθ ≤ 1), e o candidato escreve n > … (cosθ < 1, porque θ ≠ 0). Essa divergência cai só no caso degenerado θ = 0, em que a partícula fica sobre a linha de campo e passa por 2 para qualquer L. O candidato a exclui pela premissa do enunciado (a partícula deve sair da linha e retornar). A exclusão é defensável, mas precisa ser explicitada em (c). A resposta final do candidato está correta.\n\nChecklist das armadilhas: fator 2 na energia (ok); movimento helicoidal, não circular (ok, com justificativa por F∥ = 0 e |v| constante); r com seno e p com cosseno (ok); T independente de v e θ (ok); retorno uma vez por período, L = n·p (ok); eixo da hélice distinto da linha do ponto 1, a distância é r (ok); sinal de cosθ > 0 (ok); cosθ ≤ 1 expresso como desigualdade em n (ok, com a fronteira ressalvada); casos degenerados (θ = 0 tratado por premissa, θ = π/2 e θ = π descritos); sem uso de sen θ ≈ θ (ok); sem relatividade (ok); checagem dimensional de qBL/(mv) (ok).\n\nNota 9. A resolução é completa e rigorosa: resolve o sistema linear, verifica a solução, invoca unicidade, faz checagem dimensional e numérica, e trata as armadilhas principais. Os problemas que restam são menores: a fronteira θ = 0 não está explicitada em (c); há um erro de arredondamento no período numérico (6,6 em vez de 6,5 ×10⁻⁷ s com o q/m usado); a justificativa de qV em (a) é pouco clara; e \\sin aparece no lugar de 'sen'. Com essas correções, um professor publicaria como gabarito comentado."
+      }
+    }
+  ]
+}

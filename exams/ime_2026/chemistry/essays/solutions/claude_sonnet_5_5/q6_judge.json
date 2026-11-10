@@ -1,0 +1,58 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "Ácido etanoico (ácido acético), CH3–COOH (C2H4O2, M = 60 g/mol): monocarboxílico, com n(NaOH) = 3,0×10^-3 mol e M = 30×2 = 60 g/mol.",
+  "judge_reference": {
+    "reference_solution": "**Dados:** m(ácido) = 0,18 g; V(NaOH) = 30 mL = 0,030 L; [NaOH] = 0,1 mol/L; d(vapor do ácido) = 30 × d(H₂), nas mesmas condições de T e P.\n\n**1) Quantidade de NaOH gasta**\nn(NaOH) = 0,1 mol/L × 0,030 L = 3,0×10⁻³ mol.\n\n**2) Massa molar pela densidade relativa**\nPara gases (ou vapores) ideais nas mesmas T e P, d = PM/RT. Logo d(ácido)/d(H₂) = M(ácido)/M(H₂).\nM(ácido) = 30 × 2 g/mol = 60 g/mol. Com M(H₂) = 2,0158, resulta 60,5; a diferença é só de arredondamento.\n\n**3) Estequiometria da neutralização**\nn(ácido) = 0,18 g / 60 g/mol = 3,0×10⁻³ mol.\nn(ácido) : n(NaOH) = 1 : 1. Cada molécula libera 1 H⁺ ionizável, então o ácido é monocarboxílico (um único –COOH).\nComo a dissociação é considerada completa, todo H⁺ ácido é titulado e n(NaOH) = x·n(ácido), com x = número de H⁺ ionizáveis. Aqui x = 1.\n\n**4) Fórmula**\nÁcido monocarboxílico saturado: R–COOH.\nM(–COOH) = 12 + 2·16 + 1 = 45, então M(R) = 60 − 45 = 15 g/mol, o que corresponde a R = CH₃ (12 + 3 = 15).\nA fórmula molecular é C₂H₄O₂ (M = 2·12,011 + 4·1,0079 + 2·15,999 ≈ 60,05 g/mol), compatível com 60.\n\n**5) Estrutura e nome**\nCH₃–COOH, ou seja, H₃C–C(=O)–OH: carbono carbonílico com C=O e –OH, ligado a um grupo metila.\n- Nome IUPAC: **ácido etanoico**.\n- Nome usual: **ácido acético**.\n\n**6) Equações**\n- Dissociação: CH₃COOH → CH₃COO⁻ + H⁺\n- Neutralização: CH₃COOH + NaOH → CH₃COONa + H₂O (etanoato ou acetato de sódio)\n\n**7) Unicidade**\nEntre os isômeros de C₂H₄O₂ (ácido etanoico, metanoato de metila, hidroxietanal), apenas o ácido etanoico é ácido carboxílico. A resposta é única.\n\n**Verificação numérica (Python):** 0,18/60 = 0,003 mol = n(NaOH). Se o ácido fosse diprótico, a titulação daria M = 120 g/mol, o que contradiz os 60 g/mol da densidade. Se a densidade fosse relativa ao H atômico, M = 30 e a proporção ácido:NaOH seria 2:1, o que também é inconsistente.",
+    "final_answer": "Ácido etanoico (ácido acético), CH₃–COOH (C₂H₄O₂, M ≈ 60 g/mol): H₃C–C(=O)–OH. Ele é monocarboxílico, com n(ácido) = n(NaOH) = 3,0×10⁻³ mol e M = 0,18/0,003 = 60 g/mol, igual a 30 × 2 g/mol obtido pela densidade relativa ao H₂.",
+    "pitfalls": [
+      "Densidade do vapor relativa ao H₂ significa M(ácido)/M(H₂) = 30, logo M = 30 × 2 = 60 g/mol. Usar 30 × 1 (H atômico) dá M = 30, que não é de ácido carboxílico e contradiz a titulação (razão 2:1).",
+      "A razão 1:1 entre ácido e NaOH só vale para ácido monoprótico, e é isso que a hipótese de dissociação completa garante. A titulação sozinha daria M = 60·x (60, 120, 180...). A densidade fixa M = 60, o que força x = 1. É preciso mostrar essa consistência e não presumir o ácido monoprótico.",
+      "Descartar o ácido dicarboxílico: o menor deles, o oxálico (HOOC–COOH), tem M = 90 g/mol, maior que 60. Portanto não há alternativa diprótica compatível.",
+      "Converter 30 mL para 0,030 L ao calcular n(NaOH) = 0,1 × 0,030 = 3×10⁻³ mol. O erro comum é errar a potência de 10 e obter M = 6 ou 600 g/mol.",
+      "Obter a fórmula por subtração: R–COOH com M = 60 dá R = 15, que é CH₃. O ácido é saturado e acíclico, e o fórmico (M = 46) fica descartado.",
+      "Dar nome e estrutura, como pede o enunciado. Escrever CH₃–COOH ou o desenho de bastões e indicar o nome IUPAC (ácido etanoico) junto ao usual (acético). Não basta dar só a fórmula molecular C₂H₄O₂, pois o metanoato de metila (éster) e o hidroxietanal são isômeros; só o ácido satisfaz o enunciado.",
+      "As condições 'mesmas T e P' são necessárias para que a razão das densidades seja igual à razão das massas molares (d = PM/RT).",
+      "Ressalva química: na fase vapor o ácido acético real dimeriza por ligações de hidrogênio. O problema ignora isso e trata o vapor como ideal e monomérico, de modo que a massa molar de 60 g/mol é a do monômero. 'Dissociação completa' é idealização, pois o ácido acético é fraco; na titulação, porém, todo H⁺ acaba sendo neutralizado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "Ácido etanoico (ácido acético), CH3–COOH (C2H4O2, M = 60 g/mol): monocarboxílico, com n(NaOH) = 3,0×10^-3 mol e M = 30×2 = 60 g/mol.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não comenta que a 'dissociação completa' e o vapor ideal e monomérico são idealizações. O ácido acético é fraco, e em fase vapor real ele dimeriza por ligações de hidrogênio. Uma frase curta dizendo que M = 60 g/mol é a do monômero e que a titulação neutraliza todo o H⁺ de qualquer forma deixaria o gabarito mais completo."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 4, a afirmação 'o único radical monovalente de massa 15 u é o metil' é dada sem justificativa (por exemplo, nenhuma combinação de C, H, N ou O monovalente, além de CH₃, soma 15). A conferência pela série C_nH_{2n+1}COOH pressupõe ácido saturado e acíclico, o que não foi dito. O argumento de M_R = 15 já basta, mas a hipótese poderia ser explicitada."
+          },
+          {
+            "severity": "minor",
+            "description": "Não menciona que C₂H₄O₂ tem isômeros não ácidos (metanoato de metila, hidroxietanal). O enunciado já fixa que o composto é ácido carboxílico, então a resposta é única. Dizer isso em uma linha reforçaria por que nome e estrutura, e não só a fórmula molecular, são a resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "O passo 1 afirma que cada –COOH libera um H⁺ ao tratar a dissociação completa. A resolução depois mostra corretamente que x = 1 vem da combinação titulação × densidade, então não é circular. A redação do passo 1 poderia deixar explícito que x ainda é incógnita nesse ponto. Também não cita a armadilha de usar H atômico (30×1 = 30 g/mol), embora use corretamente M(H₂) = 2."
+          },
+          {
+            "severity": "minor",
+            "description": "A estrutura em LaTeX usa um array com O e || centralizados sobre o texto 'H₃C–C–OH', o que pode desalinhar o O em relação ao carbono carbonílico. Um desenho de bastões, ou um chemfig com a ligação dupla ligada ao C correto, seria mais claro. A fórmula condensada CH₃–COOH, também dada, é inequívoca."
+          }
+        ],
+        "summary": "Reli o enunciado original da 6ª questão e refiz as contas. n(NaOH) = 0,1 × 0,030 = 3,0×10⁻³ mol. A densidade relativa ao H₂ dá M = 30 × 2 = 60 g/mol. A massa 0,18 g corresponde a 3,0×10⁻³ mol, logo a razão é 1:1 e x = 1. Daí R = 60 − 45 = 15, que é CH₃, e o ácido é o etanoico (acético), CH₃COOH, C₂H₄O₂. A resposta do candidato coincide com a minha referência, e confirmei que está correta; não há divergência de resultado. A resolução é correta, bem estruturada e rigorosa: deduz x pela consistência entre titulação (M = 60x) e densidade (M = 60), em vez de presumir ácido monoprótico, e descarta x = 2 (M = 120). Verifica numericamente com as massas atômicas da tabela (60,05 g/mol; 29,8 ≈ 30) e escreve as equações de dissociação e neutralização. Dá nome IUPAC e usual, e a estrutura. Trata as principais armadilhas: conversão mL→L, M(H₂) = 2 e não 1, exclusão do fórmico (46) e do propanoico (74), e a razão estequiométrica. Faltam apenas detalhes de acabamento: a ressalva sobre idealização (dimerização do vapor, ácido fraco 'completamente dissociado'), a justificativa de que CH₃ é o único R de massa 15, a menção aos isômeros e o alinhamento do desenho da estrutura. Nenhum erro de conta, de química ou de unidade foi encontrado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+\usepackage{geometry}%
+\geometry{margin=2.2cm}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{booktabs}%
+\usepackage{longtable}%
+\usepackage{array}%
+\usepackage{hyperref}%
+\hypersetup{hidelinks}%
+\title{ITA 2026 {-} Matemática (claude\_opus\_5\_5) x Poliedro\\[4pt]\large Comparação com o gabarito Poliedro Resolve\thanks{Gerado com gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\date{10/11/2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Resumo}\textbf{Nota média: 9,3/10} (12 de 14 itens com a resolução correta; cada item vale o mesmo dentro da questão).\par\medskip%
+\begin{longtable}{@{}c c p{0.78\textwidth}@{}}\toprule Questão & Nota & Resumo \\ \midrule
+1 & 10,0 & A resolução está correta e coincide com o gabarito do Poliedro: 231 pontos de coordenadas inteiras. As duas descrevem o sólido como |x|+|y|+|z| $\leq$ 5 e contam os pontos cortando o octaedro por planos z = constante (2k$^2$+2k+1 pontos por corte). Uma contagem por força bruta confirmou o total de 231 e também a divisão da resolução: 102 pontos na superfície e 129 no interior. Não há divergência, só observações menores de redação. \\
+2 & 10,0 & A resolução e o gabarito concordam: n = 15. A entrada (1,3) de A\^{}n é n(n+3)/2, o que conferi multiplicando as matrizes para n de 1 a 16. Ela vale exatamente 119 em n = 14, que não é maior que 119, e 135 em n = 15. A resolução está completa e bem justificada, com a decomposição A = I + N, N nilpotente e binômio de Newton. A única coisa a notar é uma falta de parênteses na indução do gabarito, sem efeito na resposta. \\
+3 & 10,0 & A resolução está correta e bate com o gabarito do Poliedro: a área de ABCD é 30, com A=(-2,0), B=(0,4), C=(8,5), D=(6,1) e X=(3,5/2). Conferi as contas em Python: tangências, incentro e fórmula do cadarço. O caminho da resolução é o mesmo da 2ª solução do gabarito: tangentes por A e área de ABX vezes 4. A resolução ainda verifica que a circunferência é a inscrita, e não uma exinscrita, e confere a área de ABX por S = p$\cdot$$\rho$. Não há erros nem pontos a levar ao professor. \\
+4 & 10,0 & A resolução e o gabarito Poliedro dão a mesma resposta, $\pi$($\alpha$$^2$ + 32$\alpha$ + 528) unidades de área, e ela está correta. Refiz a soma das 16 coroas vermelhas mais o disco central e conferi em python: vermelho + branco dá a área do maior círculo. A resolução está certa e bem justificada. Não há divergência a resolver. \\
+5 & 10,0 & A resolução está correta e bate com o gabarito do Poliedro: a razão vale (2+$\surd$6)$^3$/32 = (22+9$\surd$6)/16 $\approx$ 2,75. Os dois métodos calculam o raio da esfera maior de forma diferente (Pitágoras na resolução, a divisão 3:1 da altura no gabarito) e chegam ao mesmo R = r(2+$\surd$6)/2. Conferi as contas numericamente, inclusive por coordenadas. Não há erro de matemática nem de conta, e a única irregularidade é tipográfica, na transcrição do gabarito. \\
+6 & 3,3 & Conferi o enunciado com o PDF original: a hipótese literal ('soma da coluna j de AB = n - j') é contraditória, porque as colunas n-1 e n de AB são sempre iguais. Resolução e gabarito Poliedro chegam a esse diagnóstico. O gabarito conclui que não existem tais matrizes e deixa os três itens sem resposta. A resolução troca a hipótese por 'colunas de A' e responde det = 0, tr = n(n-1)/2 e $\alpha$1 = 1, $\alpha$2 $\in$ \{1, -2\}, $\alpha$3 = 1, $\alpha$4 livre. As contas dentro dessa leitura estão corretas. No item a, os dois estão certos, porque det(AB) = 0 vale para quaisquer $\alpha$. Nos itens b e c, quem está certo é o gabarito: a resposta da resolução depende de um enunciado modificado, e não é verdade que essa seja 'a única leitura consistente' (há pelo menos outra). Fica a pergunta de como o ITA tratou a questão. \\
+7 & 10,0 & A resolução está correta e bate com o gabarito do Poliedro. Os dois chegam a p(x) = 2x\^{}4 - 3x\^{}3 + 7x\^{}2 + 7x - 5, com raízes 1/2, -1, 1+2i e 1-2i. O método é o mesmo: algoritmo da divisão com quociente de grau 1, relações de Girard e Briot--Ruffini. A diferença é só a ordem das raízes, porque a resolução encontra 1/2 primeiro e o gabarito encontra -1 primeiro. Refiz as contas de forma independente e todas conferem. A resolução ainda verifica soma, produto e resto, o que deixa o texto completo para a correção do ITA. Não achei nenhum ponto que precise ir a um professor. \\
+8 & 10,0 & A resolução e o gabarito do Poliedro dão a mesma resposta, 784, e ela está certa. Fiz a conta de novo e uma força bruta em Python confirmou. A resolução usa $\mathbb{N}$ = \{1, 2, 3, \ldots{}\}, como manda a prova, e ainda confere o resultado por contagem direta. Não há divergência. \\
+9 & 10,0 & A resolução está correta e bate com o gabarito do Poliedro nos dois itens. A hipérbole é x$^2$/4 - y$^2$/32 = 1, as tangentes por C são y = $\pm$2$\surd$6$\cdot$x - 8 e os pontos de tangência são ($\pm$$\surd$6, 4), com o sinal de x igual ao da inclinação. Conferi numericamente: $\Delta$ = 0 para m$^2$ = 24, os pontos estão em H e cada um está na reta indicada. A única divergência é da conclusão do gabarito no item b: ela escreve T$_{1}$ = (-$\surd$6, 4) e T$_{2}$ = ($\surd$6, 4), invertendo os índices em relação às retas t$_{1}$ e t$_{2}$, embora as contas do próprio gabarito associem os pontos corretamente. A resolução faz a associação certa e ainda descarta a reta vertical e as paralelas às assíntotas, casos que o gabarito não discute. \\
+10 & 10,0 & Resolução e gabarito Poliedro coincidem nos dois itens: a) raios 2$\surd$3 cm (centro C) e 6 cm (centro D); b) área comum (10$\pi$ - 12$\surd$3) cm$^2$ $\approx$ 10,63 cm$^2$. O enunciado transcrito confere com o PDF original. Conferi tudo numericamente: AP=PQ=6, BP=6$\surd$(2+$\surd$3), CP=CA, DP=DB e a área da lente. A resolução é até mais rigorosa que o gabarito, porque justifica a posição de M e dos centros. Não há erro em nenhum dos dois. \\
+\bottomrule\end{longtable}%
+\section*{Principais pontos de dúvida}%
+\begin{itemize}%
+\item%
+\textbf{Q6} \textit{(statement)} O enunciado oficial (p. 7, conferido) é inconsistente: as colunas n-1 e n de AB são sempre iguais, e a hipótese pede que valham 1 e 0. Não sabemos como o ITA corrigiu esta questão (anulou, aceitou reinterpretações, deu nota a quem só apontou a inconsistência). Isso decide a nota dos itens b e c.%
+\item%
+\textbf{Q6} \textit{(solution)} A resolução diz que 'soma da coluna j de A = n - j' é 'a única leitura consistente', e isso é falso. Um contraexemplo: se B fosse a transposta (b\_ij = 1 para j $\leq$ i), as somas das colunas de AB seriam c\_j + \ldots{} + c\_n = n - j. Daí sai c\_j = 1, que é consistente e dá $\alpha$1 = 0, $\alpha$2 $\in$ \{0, -1\}, $\alpha$3 = 0, $\alpha$4 livre e tr = 0 (verificado numericamente). Além disso, a leitura escolhida tira B da hipótese. A resolução apresenta como resposta principal o resultado de um enunciado alterado e deixa a conclusão literal ('sem solução') só para a Observação.%
+\item%
+\textbf{Q6} \textit{(key)} O gabarito deixa o item a sem resposta, mas det(AB) = det A $\cdot$ det B = 0 $\cdot$ 1 = 0 vale para quaisquer $\alpha$, mesmo sem usar a hipótese contraditória. Responder 0 pode ser aceitável, e isso pode mudar a nota do item a.%
+\item%
+\textbf{Q9} \textit{(key)} Na conclusão do item b, o gabarito do Poliedro escreve T$_{1}$ = (-$\surd$6, 4) e T$_{2}$ = ($\surd$6, 4). Nas próprias contas, porém, ele obtém ($\surd$6, 4) para t$_{1}$: y = 2$\surd$6x - 8 e (-$\surd$6, 4) para t$_{2}$: y = -2$\surd$6x - 8. A correspondência ponto--reta da frase final está trocada: (-$\surd$6, 4) não pertence a t$_{1}$, já que 2$\surd$6$\cdot$(-$\surd$6) - 8 = -20 $\neq$ 4. Se a banca exigir explicitamente essa associação ('para cada reta'), a conclusão do gabarito está incorreta. A resolução faz a associação certa.%
+\end{itemize}%
+\section*{Questão 1}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-1-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+Questão 1 --- número de pontos de coordenadas inteiras no octaedro (interior e superfície) & 231 (102 na superfície e 129 no interior) & 231 pontos & igual & ambos \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{Questão 1 --- número de pontos de coordenadas inteiras no octaedro (interior e superfície))} O enunciado confere com o original (pág. 2). Os três vértices dados estão a 5 da origem e a 5$\surd$2 uns dos outros. Num octaedro regular de circunraio 5, dois vértices estão a 5$\surd$2 (vizinhos) ou a 10 (opostos). Por isso os três vértices dados formam uma face, e a simetria central fixa os outros três como (-5,0,0), (0,-5,0) e (0,0,-5). O sólido é |x|+|y|+|z| $\leq$ 5. Cortando por planos z = constante, cada corte tem N(k) = 2k$^2$+2k+1 pontos, com k = 5-|z|. Total: 61 + 2(41+25+13+5+1) = 231. A resolução e o gabarito fazem exatamente esse corte e chegam à mesma conta. Uma contagem por força bruta em Python também deu 231 no total, 102 na superfície (|x|+|y|+|z| = 5) e 129 no interior (|x|+|y|+|z| $\leq$ 4). Isso confirma também a conferência extra que a resolução faz.%
+\end{itemize}%
+\paragraph{Pontos de dúvida}%
+\begin{itemize}%
+\item%
+\textit{(solution)} Para concluir que os outros vértices são os simétricos dos dados, a resolução usa a simetria central. Não diz explicitamente por que o octaedro é único. A justificativa completa é que, com circunraio 5, os três vértices dados (a 5$\surd$2 uns dos outros) são dois a dois vizinhos e formam uma face. O argumento usado basta, e a verificação de regularidade feita depois fecha a questão.%
+\item%
+\textit{(statement)} A expressão 'no interior e na superfície' deve ser lida como união (interior ? superfície = sólido fechado), e não como interseção, que seria vazia. Tanto a resolução quanto o gabarito leem assim, e é a única leitura que faz sentido.%
+\end{itemize}%
+\section*{Questão 2}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-2-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+Q2 (menor n com entrada (1,3) de A\^{}n > 119) & n = 15 (a entrada (1,3) é n(n+3)/2: vale 119 em n = 14 e 135 em n = 15) & n = 15 (a entrada (1,3) é (n$^2$ + 3n)/2, e (n$^2$ + 3n)/2 > 119 $\Rightarrow$ n > 14) & igual & ambos \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{Q2 (menor n com entrada (1,3) de A\^{}n > 119))} O enunciado transcrito confere com o original (pág. 3). Refiz a conta multiplicando as matrizes diretamente para n de 1 a 16, e em todos os casos a entrada (1,3) bate com n(n+3)/2: 2, 5, 9, 14, \ldots{}, 104, 119, 135, 152. Como n(n+3)/2 > 119 equivale a (n-14)(n+17) > 0, e n $\in$ $\mathbb{N}$, a condição é n > 14. Em n = 14 a entrada vale exatamente 119, que não é estritamente maior, então o menor n é 15. A resolução decompõe A = I + N com N nilpotente (N$^3$ = O) e usa o binômio de Newton, com N$^2$ e N$^3$ = O justificados corretamente. O gabarito chega ao mesmo resultado por indução. A resolução também comenta explicitamente o caso de fronteira n = 14.%
+\end{itemize}%
+\paragraph{Pontos de dúvida}%
+\begin{itemize}%
+\item%
+\textit{(key)} No passo de indução do gabarito, a entrada (1,3) de A\^{}\{k+1\} aparece como "(k + 1)\^{}2 + 3(k + 1)/2", sem parênteses no numerador. O certo é {[}(k+1)$^2$ + 3(k+1){]}/2, que sai de 2 + k + (k$^2$+3k)/2 = (k$^2$+5k+4)/2. É só erro de digitação e não muda o resultado.%
+\end{itemize}%
+\section*{Questão 3}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-3-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+Área de ABCD & 30 u.a. (X=(3,5/2), A=(-2,0), B=(0,4), C=(8,5), D=(6,1)) & 30 (X=(3,5/2), A=(-2,0), B=(0,4); ABX retângulo em B, {[}ABX{]}=15/2, {[}ABCD{]}=4$\cdot${[}ABX{]}=30) & igual & ambos \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{Área de ABCD)} O enunciado confere com o PDF original (p. 4). Refiz as contas: X=(3,5/2). C está em r e não está em s, então A=2X-C=(-2,0). As tangentes por A à circunferência de centro (1/2,5/2) e raio $\surd$5/2 têm inclinações 1/2 (a própria reta r) e 2, logo AB: y=2x+4 e B=AB?s=(0,4). As distâncias de I a r, a s e a AB valem todas $\surd$5/2. O incentro calculado pela média ponderada pelos lados sai exatamente (1/2,5/2), então a circunferência é mesmo a inscrita, e não uma exinscrita. AB tem inclinação 2 e s tem -1/2, então o ângulo em B é reto, como diz o gabarito. {[}ABX{]}=15/2, e a fórmula do cadarço com A, B, C=(8,5) e D=(6,1) dá 30. Os vértices intermediários da resolução também coincidem com os do gabarito (A e B; D=(6,1) decorre de X ser ponto médio de BD).%
+\end{itemize}%
+\section*{Questão 4}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-4-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+Questão 4 (área vermelha em função de $\alpha$) & A\_V = $\pi$($\alpha$$^2$ + 32$\alpha$ + 528) unidades de área & S = $\pi$($\alpha$$^2$ + 32$\alpha$ + 528) unidades de área & igual & ambos \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{Questão 4 (área vermelha em função de $\alpha$))} Conferi o enunciado na página 5 do PDF e a transcrição está fiel. Os 33 círculos têm raios $\alpha$, $\alpha$+1, \ldots{}, $\alpha$+32. O disco central é vermelho, e os anéis vermelhos são as coroas entre $\alpha$+2j-1 e $\alpha$+2j, para j = 1, \ldots{}, 16. Cada um tem área $\pi$(2$\alpha$+4j-1). A soma é $\pi$$\alpha$$^2$ + $\pi$(32$\alpha$ + 4$\cdot$136 - 16) = $\pi$($\alpha$$^2$ + 32$\alpha$ + 528). O gabarito soma a PA 2$\alpha$+3, 2$\alpha$+7, \ldots{}, 2$\alpha$+63 (16 termos, parte constante (3+63)$\cdot$16/2 = 528) e chega ao mesmo resultado. Conferi numericamente em python para $\alpha$ = 0, 1, 2,5 e 7. A área vermelha bate com a fórmula, a área branca dá $\pi$(32$\alpha$+496), vermelho + branco dá $\pi$($\alpha$+32$^2$) e vermelho - branco dá $\pi$($\alpha$$^2$+32). A resolução está completa e tem verificações coerentes.%
+\end{itemize}%
+\paragraph{Pontos de dúvida}%
+\begin{itemize}%
+\item%
+\textit{(statement)} A resolução e o gabarito leem '33 círculos' contando o círculo central, ou seja, raios de $\alpha$ a $\alpha$+32, com 32 anéis, e o anel mais externo vermelho. Essa é a leitura natural do enunciado, mas ela não está escrita de forma explícita. Se alguém contasse 33 círculos além do central, o resultado mudaria. A leitura adotada é a padrão e coincide com o gabarito.%
+\end{itemize}%
+\section*{Questão 5}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-5-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+Questão 5 --- razão V\_maior / (soma dos volumes das 4 esferas menores) & (2+$\surd$6)$^3$/32 = (22+9$\surd$6)/16 $\approx$ 2,75, com R = r(2+$\surd$6)/2 & (1/4)(1+$\surd$6/2)$^3$ = (22+9$\surd$6)/16, com R = r(1+$\surd$6/2) & igual & ambos \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{Questão 5 --- razão V\_maior / (soma dos volumes das 4 esferas menores))} O resultado final é o mesmo, (22+9$\surd$6)/16 $\approx$ 2,7528. Os dois chegam ao mesmo R = r(1+$\surd$6/2) = r(2+$\surd$6)/2, porque o circunraio do tetraedro de aresta 2r é 3h/4 = (3/4)(2r$\surd$6/3) = r$\surd$6/2. A resolução calcula esse valor por Pitágoras no triângulo OGB e o gabarito usa a propriedade de que o centro divide a altura na razão 3:1. Conferi numericamente em Python: (2+$\surd$6)$^3$ = 44+18$\surd$6 $\approx$ 88,09; (2+$\surd$6)$^3$/32 = (1/4)(1+$\surd$6/2)$^3$ = (22+9$\surd$6)/16 $\approx$ 2,75284. Também conferi com coordenadas: no tetraedro de aresta 2 com vértices $\pm$(1,1,1)/$\surd$2, a distância do centro a cada vértice é $\surd$6/2 $\approx$ 1,2247.%
+\end{itemize}%
+\paragraph{Pontos de dúvida}%
+\begin{itemize}%
+\item%
+\textit{(key)} Na transcrição do gabarito, a linha 'R = r + 3/42r(sqrt(6))/3' está mal tipografada. Deve ser lida como R = r + (3/4)$\cdot$(2r$\surd$6/3) = r(1+$\surd$6/2). Foi só uma falha de formatação do texto, sem efeito no resultado.%
+\item%
+\textit{(statement)} O enunciado diz 'inscritas em uma única esfera maior'. Ele não afirma explicitamente que cada esfera menor tangencia internamente a esfera maior, mas essa é a leitura usual, e tanto a resolução quanto o gabarito a usam. Se as esferas não fossem tangentes à maior, a razão não ficaria determinada.%
+\end{itemize}%
+\section*{Questão 6}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-6-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+a & det(AB) = 0 (vale para quaisquer $\alpha$, já que A é estritamente triangular inferior). A resolução também registra que, lida ao pé da letra, a hipótese é impossível. & Sem resposta: não existem matrizes com as propriedades descritas (S\_i = -1 para i > 1 contradiz S\_n = 0). & diferente & ambos \\
+b & tr(AB) = n(n-1)/2, obtido ao reinterpretar a hipótese como 'soma da coluna j de A = n - j'. & Sem resposta: o enunciado é inconsistente e não existem tais matrizes. & diferente & gabarito \\
+c & $\alpha$1 = 1, $\alpha$2 $\in$ \{1, -2\}, $\alpha$3 = 1, $\alpha$4 $\in$ $\mathbb{R}$ qualquer (com a convenção 0\^{}0 = 1), na leitura 'colunas de A'. Na Observação, a resolução admite que, ao pé da letra, não há solução. & Não há valores possíveis: o enunciado é inconsistente e não existem tais matrizes. & diferente & gabarito \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{a)} Conferi com o PDF: a transcrição está fiel. Como b\_kj = 1 $\Leftrightarrow$ k $\leq$ j, a coluna j de AB é a soma das colunas 1..j de A. A coluna n de A é nula, então as colunas n-1 e n de AB são sempre iguais (verifiquei numericamente para n = 2..7). A hipótese literal pediria 1 = 0, logo é contraditória, e o gabarito está certo nisso. Mas det A = 0 e det B = 1 para qualquer escolha dos $\alpha$, então det(AB) = 0 vale sem depender da hipótese. A resposta 0 é verdadeira de qualquer jeito, e a própria resolução aponta a inconsistência. Os dois estão corretos, só que adotam posições diferentes.%
+\item%
+\textbf{b)} (AB)\_ii = $\Sigma$\_\{k$\leq$i\} a\_ik é a soma da linha i de A, então tr(AB) é a soma de todos os elementos de A, que coincide com a soma da coluna n de AB e com a da coluna n-1. Na hipótese literal, esse número teria de valer 0 e 1 ao mesmo tempo, então o item não tem resposta, como diz o gabarito. O valor n(n-1)/2 está certo dentro da leitura que a resolução escolheu (com $\alpha$\_j = 1 e n = 5 dá tr = 10), mas essa leitura troca a matriz da hipótese (A no lugar de AB). Além disso, não é a 'única leitura consistente', como a resolução afirma.%
+\item%
+\textbf{c)} Na hipótese literal com n = 5, as somas das colunas 4 e 5 de AB são sempre iguais, mas teriam de valer 1 e 0. Nenhum ($\alpha$1, \ldots{}, $\alpha$4) serve, como diz o gabarito. As contas da resolução na leitura dela estão corretas: $\alpha$\^{}3 + $\alpha$\^{}2 + $\alpha$ - 3 = ($\alpha$ - 1)($\alpha$\^{}2 + 2$\alpha$ + 3), com $\Delta$ = -8; $\alpha$\^{}2 + $\alpha$ - 2 = ($\alpha$ - 1)($\alpha$ + 2); 1 + $\alpha$3 = 2. As somas das colunas de A dão {[}4, 3, 2, 1, 0{]} para (1, 1, 1, t) e para (1, -2, 1, t). Só que essa resposta vem de um enunciado modificado. A conclusão que a resolução põe só na Observação ('não teria solução') é a que bate com o gabarito.%
+\end{itemize}%
+\paragraph{Pontos de dúvida}%
+\begin{itemize}%
+\item%
+\textit{(statement)} O enunciado oficial (p. 7, conferido) é inconsistente: as colunas n-1 e n de AB são sempre iguais, e a hipótese pede que valham 1 e 0. Não sabemos como o ITA corrigiu esta questão (anulou, aceitou reinterpretações, deu nota a quem só apontou a inconsistência). Isso decide a nota dos itens b e c.%
+\item%
+\textit{(solution)} A resolução diz que 'soma da coluna j de A = n - j' é 'a única leitura consistente', e isso é falso. Um contraexemplo: se B fosse a transposta (b\_ij = 1 para j $\leq$ i), as somas das colunas de AB seriam c\_j + \ldots{} + c\_n = n - j. Daí sai c\_j = 1, que é consistente e dá $\alpha$1 = 0, $\alpha$2 $\in$ \{0, -1\}, $\alpha$3 = 0, $\alpha$4 livre e tr = 0 (verificado numericamente). Além disso, a leitura escolhida tira B da hipótese. A resolução apresenta como resposta principal o resultado de um enunciado alterado e deixa a conclusão literal ('sem solução') só para a Observação.%
+\item%
+\textit{(key)} O gabarito deixa o item a sem resposta, mas det(AB) = det A $\cdot$ det B = 0 $\cdot$ 1 = 0 vale para quaisquer $\alpha$, mesmo sem usar a hipótese contraditória. Responder 0 pode ser aceitável, e isso pode mudar a nota do item a.%
+\item%
+\textit{(key)} A redação do gabarito está truncada ('S\_n = 0 é formada apenas por zeros'; quis dizer que a coluna n de A é nula, então S\_n = 0). O raciocínio está certo: subtraindo as equações acumuladas sai S\_i = -1 para i $\geq$ 2, o que contradiz S\_n = 0 e também S\_\{n-1\} = 1.%
+\item%
+\textit{(solution)} No item c, a resolução usa a convenção 0\^{}0 = 1 para a\_54 = $\alpha$4\^{}0 quando $\alpha$4 = 0, e declara isso. A ressalva é razoável.%
+\end{itemize}%
+\section*{Questão 7}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-7-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+Q7 --- raízes de p(x) em $\mathbb{C}$ & p(x) = 2x\^{}4 - 3x\^{}3 + 7x\^{}2 + 7x - 5; raízes 1/2, -1, 1+2i, 1-2i & p(x) = 2x\^{}4 - 3x\^{}3 + 7x\^{}2 + 7x - 5; raízes -1, 1/2, 1+2i, 1-2i & igual & ambos \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{Q7 --- raízes de p(x) em $\mathbb{C}$)} O polinômio e o conjunto de raízes são os mesmos; só a ordem em que as raízes aparecem muda. Conferi o enunciado na página 8 do PDF e ele coincide com a transcrição. Contas refeitas: (x\^{}3-x+4)(2x-3) = 2x\^{}4-3x\^{}3-2x\^{}2+11x-12, e somando 9x\^{}2-4x+7 sai 2x\^{}4-3x\^{}3+7x\^{}2+7x-5. Pelas relações de Girard, -b/a = 3/2 e (4b+7)/a = -5/2, o que dá a = 2 e b = -3. Substituí 1/2, -1 e 1$\pm$2i em p(x) e todas zeram. O Briot--Ruffini da resolução também está certo: dividir por x-1/2 deixa 2, -2, 6, 10 com resto 0, ou seja, p = (2x-1)(x\^{}3-x\^{}2+3x+5); dividir esse cúbico por x+1 deixa 1, -2, 5, ou seja, x\^{}2-2x+5, com $\Delta$ = -16 e raízes 1$\pm$2i. O gabarito chega ao mesmo fim pela ordem inversa (primeiro -1, depois 1/2) e também está correto.%
+\end{itemize}%
+\section*{Questão 8}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-8-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+Questão 8 & 784 sequências & 784 sequências & igual & ambos \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{Questão 8)} O enunciado original (p. 9) bate com a transcrição, e a prova define $\mathbb{N}$ = \{1, 2, 3, \ldots{}\}. Refiz as contas: C(99,2) = 4851; os casos com dois termos iguais dão 3$\cdot$49 = 147; e (4851 - 147)/6 = 784. Uma força bruta em Python confirma 784 ternas com a<b<c, a$\geq$1 e a+b+c=100. A contagem direta da resolução também confere (408 + 376 = 784). O gabarito chega ao mesmo resultado com a troca x = a-1, que leva a x+y+z = 97 com x, y, z $\geq$ 0. Os dois estão corretos.%
+\end{itemize}%
+\paragraph{Pontos de dúvida}%
+\begin{itemize}%
+\item%
+\textit{(statement)} A resposta depende de 0 pertencer ou não a $\mathbb{N}$. Pela convenção da prova, $\mathbb{N}$ = \{1, 2, 3, \ldots{}\}, o que dá 784. Se o 0 fosse aceito, seriam 833 sequências (confirmei por força bruta). A resolução e o gabarito seguem a convenção da prova corretamente.%
+\item%
+\textit{(key)} No gabarito, a notação "x $\neq$ y $\neq$ z" é imprecisa: o certo seria dizer que x, y e z são distintos dois a dois. Isso não afeta a conta.%
+\end{itemize}%
+\section*{Questão 9}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-9-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+a & H: x$^2$/4 - y$^2$/32 = 1; tangentes por C: y = 2$\surd$6$\cdot$x - 8 e y = -2$\surd$6$\cdot$x - 8 & H: x$^2$/4 - y$^2$/32 = 1 (8x$^2$ - y$^2$ = 32); t$_{1}$: y = 2$\surd$6$\cdot$x - 8 e t$_{2}$: y = -2$\surd$6$\cdot$x - 8 & igual & ambos \\
+b & ($\surd$6, 4) em y = 2$\surd$6$\cdot$x - 8 e (-$\surd$6, 4) em y = -2$\surd$6$\cdot$x - 8 & Nas contas: ($\surd$6, 4) para t$_{1}$ (m = 2$\surd$6) e (-$\surd$6, 4) para t$_{2}$ (m = -2$\surd$6). Na conclusão final, porém, escreve T$_{1}$ = (-$\surd$6, 4) e T$_{2}$ = ($\surd$6, 4), com os rótulos trocados. & igual & resolução \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{a)} Com c = 6 e e = c/a = 3, temos a = 2 e b$^2$ = 32. Ao substituir y = mx - 8 em 8x$^2$ - y$^2$ = 32, chega{-}se a (8 - m$^2$)x$^2$ + 16mx - 96 = 0, e $\Delta$ = 3072 - 128m$^2$ = 0 dá m$^2$ = 24. Conferi numericamente. A resolução ainda descarta a reta x = 0, que não encontra H, e as retas de inclinação m$^2$ = 8, paralelas às assíntotas. Estas cortam H num único ponto, x = 3/$\surd$2 $\approx$ 2,12, sem ser tangentes. O gabarito não trata esses casos e só usa $\Delta$ = 0, mas o resultado é o mesmo.%
+\item%
+\textbf{b)} Os pontos coincidem, e a associação de cada ponto à sua reta na resolução está certa. Para m = 2$\surd$6, a raiz dupla é x$_{0}$ = -16m/(2(8 - m$^2$)) = m/2 = $\surd$6 e y$_{0}$ = 12 - 8 = 4. O ponto satisfaz 8$\cdot$6 - 16 = 32, e a reta y = 2$\surd$6x - 8 passa por ele, então pertence a t$_{1}$. Pela simetria, (-$\surd$6, 4) fica em t$_{2}$. As contas do gabarito chegam ao mesmo resultado (inclinação 8x/y). Só a frase final, 'T$_{1}$ = (-$\surd$6, 4) e T$_{2}$ = ($\surd$6, 4)', inverte os índices em relação a t$_{1}$ e t$_{2}$. Como o item pede o ponto de tangência 'para cada reta', a conclusão do gabarito, lida ao pé da letra, associa os pontos às retas erradas. É um erro de redação ou digitação: os pontos estão certos, mas a correspondência com as retas está trocada.%
+\end{itemize}%
+\paragraph{Pontos de dúvida}%
+\begin{itemize}%
+\item%
+\textit{(key)} Na conclusão do item b, o gabarito do Poliedro escreve T$_{1}$ = (-$\surd$6, 4) e T$_{2}$ = ($\surd$6, 4). Nas próprias contas, porém, ele obtém ($\surd$6, 4) para t$_{1}$: y = 2$\surd$6x - 8 e (-$\surd$6, 4) para t$_{2}$: y = -2$\surd$6x - 8. A correspondência ponto--reta da frase final está trocada: (-$\surd$6, 4) não pertence a t$_{1}$, já que 2$\surd$6$\cdot$(-$\surd$6) - 8 = -20 $\neq$ 4. Se a banca exigir explicitamente essa associação ('para cada reta'), a conclusão do gabarito está incorreta. A resolução faz a associação certa.%
+\item%
+\textit{(key)} O gabarito impõe $\Delta$ = 0 sem discutir a reta vertical x = 0 nem as retas paralelas às assíntotas (m$^2$ = 8). Nessas retas a equação deixa de ser do 2º grau, e elas cortam H num único ponto sem ser tangentes. A resolução trata esses dois casos, o que deixa a afirmação 'todas as retas' mais bem justificada. A resposta final não muda.%
+\item%
+\textit{(solution)} A resolução diz que as retas com m$^2$ = 8 são secantes por serem paralelas às assíntotas, sem mostrar a interseção. A conta confirma: para m = 2$\surd$2, x = 96/(32$\surd$2) = 3/$\surd$2 $\approx$ 2,12, um ponto de H no qual a reta não é tangente. A afirmação está correta, mas foi apenas enunciada.%
+\end{itemize}%
+\section*{Questão 10}%
+\href{https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-10-matematica-2-fase-dia-1-ita-2026}{Resolução do gabarito}\par\smallskip%
+\begin{longtable}{@{}p{0.06\textwidth} p{0.33\textwidth} p{0.33\textwidth} p{0.1\textwidth} p{0.08\textwidth}@{}}\toprule Item & Resolução & Gabarito & Veredito & Certo \\ \midrule
+a & r\_C = 2$\surd$3 cm (circunferência de centro C) e r\_D = 6 cm (circunferência de centro D) & CP = 2$\surd$3 cm (centro C) e DP = 6 cm (centro D) & igual & ambos \\
+b & (10$\pi$ - 12$\surd$3) cm$^2$ $\approx$ 10,63 cm$^2$ & S = 10$\pi$ - 12$\surd$3 cm$^2$ & igual & ambos \\
+\bottomrule\end{longtable}%
+\begin{itemize}%
+\item%
+\textbf{a)} Refiz a conta. Com A=(0,0) e AB no eixo x, tem{-}se h=3, M=(3$\surd$3,0) e P=(3$\surd$3,3). Daí AP=PQ=6 e BP=$\surd$(72+36$\surd$3)=6$\surd$(2+$\surd$3), como pede o enunciado. Com C=(2$\surd$3,0) vem CP=$\surd$(3+9)=2$\surd$3=CA. Com D=(6$\surd$3,0) vem DP=$\surd$(27+9)=6=DB. A resolução chega a isso por Pitágoras (AM=h$\surd$3, BM=h(2+$\surd$3), logo h=3). O gabarito chega pelos ângulos 30$^\circ$/15$^\circ$ e pelo parâmetro k=$\surd$3. Os dois valores coincidem.%
+\item%
+\textbf{b)} A área é a soma de dois segmentos circulares menores. O de raio 2$\surd$3 e ângulo central 120$^\circ$ dá 6(2$\pi$/3 - $\surd$3/2) = 4$\pi$ - 3$\surd$3. O de raio 6 e ângulo central 60$^\circ$ dá 18($\pi$/3 - $\surd$3/2) = 6$\pi$ - 9$\surd$3. Total: 10$\pi$ - 12$\surd$3 $\approx$ 10,6313 cm$^2$. Conferi numericamente com a fórmula geral da lente para d=CD=4$\surd$3: dá 10,6313, o mesmo valor.%
+\end{itemize}%
+\paragraph{Pontos de dúvida}%
+\begin{itemize}%
+\item%
+\textit{(key)} O gabarito tira a configuração da figura (C entre A e M, M entre C e D, segmentos menores dos dois lados) e não a justifica. A resolução justifica: mostra que M $\in$ AB e que C e D ficam em lados opostos de PQ. O resultado não muda, mas uma correção rigorosa poderia cobrar essa justificativa.%
+\item%
+\textit{(solution)} Na parte b a resolução afirma f(D) = CD$^2$ - r1$^2$ + r2$^2$ > 0 sem mostrar o valor. Ele vale 48 - 12 + 36 = 72 > 0, então a afirmação está certa. Falta só deixar a conta explícita.%
+\end{itemize}%
+\end{document}

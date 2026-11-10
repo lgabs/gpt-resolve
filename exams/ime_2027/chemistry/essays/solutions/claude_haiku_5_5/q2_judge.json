@@ -1,0 +1,92 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "Item a: o gráfico P×V tem as isotermas quase-estáticas 1→2 (T1) e 3→4 (T3) como curvas, com V3 < V2 < V1, V3 < V4 < V1, P1 mínima e P3 máxima. As etapas II e IV são trajetos irreversíveis com Q = 0, sem curva P×V definida, representados só por segmentos tracejados entre os extremos. Item b: W2 = −ΔU2 e W4 = −ΔU4 com ΔU2 + ΔU4 = 0 (U é função de estado e ΔU1 = ΔU3 = 0), logo W2 + W4 = 0. Portanto W_tot = W1 + W3 = P1V1 ln(V2/V1) + P4V4 ln(V4/V3), ou para n = 1 mol, RT3 ln(V4/V3) − RT1 ln(V1/V2).",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA - IME 2026/2027, Química, 2ª questão (valor 1,0)\n\nConvenções: n = 1 mol; W_i = trabalho realizado PELO gás na etapa i; Q_i = calor recebido; 1ª lei: ΔU = Q − W. Gás ideal: PV = RT e ΔU = Cv·ΔT (em geral ΔU = ∫Cv dT). Esta questão é simbólica: os dados da Folha de Dados não são necessários.\n\nITEM a) Gráfico P × V\n\nEstados:\n- Estado 1: (V1, P1, T1), com P1V1 = RT1.\n- Etapa I (isotérmica, lenta, T = T1): P2V2 = P1V1 = RT1, com V2 < V1 e P2 > P1. Curva sólida (ramo de hipérbole da isoterma T1), percorrida de 1 para 2 (compressão).\n- Etapa II (compressão muito rápida, Q2 = 0, irreversível): só os extremos 2 e 3 são estados de equilíbrio. Desenha-se um segmento tracejado de 2 até 3, e não uma adiabática contínua. Como o gás é comprimido, W2 < 0; então ΔU2 = −W2 > 0 e T3 > T1. Também V3 < V2 e P3 > P2.\n- Etapa III (expansão lenta, isotérmica a T3): P4V4 = P3V3 = RT3, com V4 > V3 e P4 < P3. Curva sólida: isoterma T3, acima da isoterma T1 (T3 > T1), percorrida de 3 para 4.\n- Etapa IV (expansão muito rápida, Q4 = 0, irreversível): tracejado de 4 para 1, com V1 > V4 e P1 < P4. A temperatura cai de T3 para T1 (W4 > 0, logo ΔU4 < 0).\n\nOrdenações que devem aparecer no gráfico: V3 < V2 < V1 e V3 < V4 < V1. P1 é a menor pressão do ciclo e P3 a maior. O enunciado não fixa a ordem entre V2 e V4.\n\nEsquema qualitativo (sentido horário, 1→2→3→4→1):\n\n P\n │   3 ●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━● 4        III: isoterma T3 (sólida)\n │      ╲                              ╲\n │       ╲    II (tracejada)            ╲   IV (tracejada)\n │        ╲                              ╲\n │         ●2━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━● 1  I: isoterma T1 (sólida)\n │\n └──────────────────────────────────────────────→ V\n\nLegenda: sólido = etapas lentas (isotermas, PV = RT); tracejado = etapas rápidas (irreversíveis, só os extremos são definidos). Se II e IV fossem reversíveis, seriam adiabáticas PV^γ = cte, mais inclinadas que as isotermas (inclinação γP/V contra P/V). O ciclo seria então um Carnot.\n\nITEM b) Mostrar que W_tot = W1 + W3\n\n1ª lei em cada etapa:\n- Etapa I: T1 → T1, ΔU1 = 0, logo Q1 = W1 = RT1 ln(V2/V1) = −RT1 ln(V1/V2) < 0.\n- Etapa II: Q2 = 0, logo W2 = −ΔU2 = −Cv(T3 − T1).\n- Etapa III: T3 → T3, ΔU3 = 0, logo Q3 = W3 = RT3 ln(V4/V3) > 0.\n- Etapa IV: Q4 = 0, logo W4 = −ΔU4 = −Cv(T1 − T3) = +Cv(T3 − T1).\n\nSomando:\nW_tot = W1 + W2 + W3 + W4 = W1 + W3 + [−Cv(T3 − T1) + Cv(T3 − T1)] = W1 + W3. ∎\n\nArgumento alternativo (ciclo): o estado final é o inicial e U é função de estado, então ΔU_ciclo = 0 e W_tot = Q_tot = Q1 + Q2 + Q3 + Q4 = Q1 + Q3 = W1 + W3, pois Q2 = Q4 = 0.\n\nObservações:\n- Nas etapas II e IV não se usa o caminho de pressão, pois são irreversíveis. Usa-se apenas ΔU (função de estado) e Q = 0.\n- Cv não precisa ser constante: ∫(T1→T3) Cv dT + ∫(T3→T1) Cv dT = 0.\n- Explicitamente: W_tot = RT3 ln(V4/V3) − RT1 ln(V1/V2).\n\nVerificação (caso reversível de II e IV): V3 = V2·(T1/T3)^{1/(γ−1)} e V4 = V1·(T1/T3)^{1/(γ−1)}, logo V4/V3 = V1/V2. Então W_tot = R(T3 − T1) ln(V1/V2) e η = W_tot/Q_quente = 1 − T1/T3 (Carnot).\nConferido numericamente (gás monoatômico, T1 = 300 K, T3 = 600 K, V1 = 20 L, V2 = 10 L): W1 = −1725,9 J; W2 = −3735 J; W3 = +3451,9 J; W4 = +3735 J; W_tot = 1725,9 J = W1 + W3; η = 0,50 = 1 − T1/T3. A integral numérica de P dV ao longo da adiabata reproduz W2.\nCaso irreversível (V3 = 5 L, V4 = 12 L, mesmas temperaturas): W2 + W4 = 0 continua valendo e W_tot = W1 + W3 = 2633,9 J, mas V4/V3 ≠ V1/V2. Por isso a demonstração pedida usa apenas a 1ª lei.\n\nSugestão de distribuição (estimativa minha, não oficial): a) 0,4 (quatro etapas identificadas, isotermas corretas em T1 e T3, etapas rápidas tracejadas, ordem de P e V); b) 0,6 (ΔU nas adiabáticas, Q = W nas isotermas, cancelamento W2 + W4 = 0 explicitado).",
+    "final_answer": "a) Gráfico P × V: ciclo fechado 1→2→3→4→1, percorrido no sentido horário no plano (V, P).\n- Etapa I: isoterma a T1, sólida, de 1 (V1, P1) para 2 (V2 < V1, P2 > P1). É compressão.\n- Etapa II: compressão rápida e irreversível, de 2 para 3, tracejada. V3 < V2, P3 > P2, T3 > T1.\n- Etapa III: isoterma a T3 > T1, sólida, de 3 para 4 (V4 > V3, P4 < P3). É expansão.\n- Etapa IV: expansão rápida e irreversível, de 4 para 1, tracejada. V1 > V4, P1 < P4, T cai de T3 para T1.\n- Ordens: V3 < V2 < V1 e V3 < V4 < V1; P1 é a menor pressão e P3 a maior. A ordem entre V2 e V4 não é fixada.\n\nb) Demonstração: ΔU1 = 0 e ΔU3 = 0 (isotermas), logo W1 = Q1 e W3 = Q3. Nas etapas II e IV, Q = 0, logo W2 = −Cv(T3 − T1) e W4 = +Cv(T3 − T1). Então W2 + W4 = 0 e W_tot = W1 + W3, qualquer que seja o caminho das etapas rápidas. Equivalentemente, ΔU_ciclo = 0 dá W_tot = Q1 + Q3 = W1 + W3.\nExpressão explícita: W1 = −RT1 ln(V1/V2) < 0 e W3 = RT3 ln(V4/V3) > 0, logo W_tot = RT3 ln(V4/V3) − RT1 ln(V1/V2).\nNo caso reversível de II e IV, V4/V3 = V1/V2 e W_tot = R(T3 − T1) ln(V1/V2) = 1 − T1/T3 de rendimento (Carnot).",
+    "pitfalls": [
+      "Etapa III é isoterma a T3, não a T1: ela começa no estado 3, que está em T3. Usar T1 aqui erra ΔU, Q e W da etapa.",
+      "Etapa I é isoterma a T1 (T2 = T1). A etapa IV termina em T1, então ΔU4 ≠ 0.",
+      "'Sem troca de calor' (Q = 0) não significa W = 0 nem ΔU = 0. Nas etapas II e IV, W = −ΔU = ∓Cv(T3 − T1) é diferente de zero.",
+      "O coração da demonstração é W2 + W4 = 0. 'Mostre' exige argumento explícito: 1ª lei nas adiabáticas, ΔU função apenas de T para gás ideal, e T3 e T1 nas duas etapas. Dizer só que 'as adiabáticas se cancelam' não basta.",
+      "Ciclo fechado não implica W_tot = 0. Como ΔU_ciclo = 0, o correto é W_tot = Q_tot, e não zero.",
+      "Etapas II e IV são irreversíveis ('muito rápidas'). Não se deve calcular W como ∫P dV ao longo de uma adiabática PV^γ = cte, nem usar TV^(γ−1) = cte para achar V3 e V4 em geral. A relação V4/V3 = V1/V2 vale só no caso reversível. Isso é a armadilha de quem tenta provar o resultado pela forma da curva.",
+      "Gráfico: as etapas rápidas devem ser tracejadas (ou apenas ligar os extremos), não desenhadas como curvas contínuas. Isotermas são hipérboles PV = RT, e adiabáticas reversíveis são mais inclinadas (γ vezes) que isotermas.",
+      "Posições relativas: 1 tem o maior V e a menor P; 3 tem o menor V e a maior P. T3 > T1 deve sair da 1ª lei (compressão adiabática aquece), o que coloca a isoterma III acima da I. Inverter isso inverte o ciclo.",
+      "Sentido do ciclo: 1→2→3→4→1 é horário no plano (V, P), logo W_tot > 0 (ciclo motor, Carnot no limite reversível). W1 é negativo e W3 é positivo; não confundir os sinais.",
+      "Convenção de sinal: W como trabalho do gás ou sobre o gás. A identidade W_tot = W1 + W3 vale nas duas, desde que a convenção seja a mesma em todas as etapas.",
+      "Nas isotermas, ΔU = 0 e portanto Q = W (não Q = 0 nem Q = ΔU).",
+      "A demonstração não depende de Cv constante, do valor de γ, nem de o gás ser específico: só de gás ideal (ΔU depende apenas de T) e de o ciclo retornar ao estado inicial. Não é preciso usar a Folha de Dados (R, ln).",
+      "Erro comum de contagem: somar W2 e W4 com o mesmo sinal, ou concluir W2 = W4 = 0. Ambos são não nulos e opostos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) Ciclo 1→2 (isoterma em T1, compressão lenta), 2→3 (adiabática irreversível, compressão rápida, T sobe até T3 > T1), 3→4 (isoterma em T3, expansão lenta), 4→1 (adiabática irreversível, expansão rápida, T desce a T1). No gráfico P×V, as etapas I e III são hipérboles PV = const. (azul) e as etapas II e IV são tracejadas (estados fora do equilíbrio). Ordem: V3 < V2 < V1 e V3 < V4 < V1; P1 é a menor pressão e P3 a maior.\n\nb) Em II e IV, Q = 0, logo W2 = -ΔU2 e W4 = -ΔU4. Como T2 = T1 e T4 = T3, W2 + W4 = -[U(T3)-U(T1)] - [U(T1)-U(T3)] = 0. Logo W_tot = W1 + W3 = P1V1 ln(V2/V1) + P4V4 ln(V4/V3). Resultado independe de C_V e da reversibilidade de II e IV.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item a, texto sobre a etapa II: a frase 'compressão muito rápida, com Q = 0 e sem estados de equilíbrio bem definidos' está imprecisa. Os estados 2 e 3 (e 4 e 1) são de equilíbrio e estão definidos pelo enunciado; o que não existe é uma sequência de estados de equilíbrio entre 2 e 3. Deveria dizer: 'os estados intermediários não são de equilíbrio, então o trajeto não tem curva P×V; só os extremos são definidos'."
+          },
+          {
+            "severity": "minor",
+            "description": "Item a, legenda da figura: as etapas II e IV aparecem como 'adiabáticas irreversíveis', mas o texto diz que não há curva P×V para esses trechos. O termo 'adiabática' pode ser lido como a curva PV^γ = cte, que é reversível. Deveria escrever 'trajetos irreversíveis com Q = 0, sem curva P×V definida, representados apenas por segmento tracejado ligando os extremos'."
+          },
+          {
+            "severity": "minor",
+            "description": "Item a, contraste ausente: a resolução não diz que uma adiabática reversível seria mais inclinada que as isotermas (inclinação γ·P/V contra P/V). Esse contraste é a justificativa padrão para desenhar um segmento tracejado e não a curva. Uma frase bastaria."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses e etapa II: 'como U cresce com T, T3 > T1' pressupõe Cv > 0 (U estritamente crescente em T), mas essa hipótese não está listada. Também 'V3 < V2' e 'V1 > V4' são afirmados sem dizer que decorrem de 'compressão' e 'expansão' no enunciado. Deveria listar Cv > 0 nas hipóteses e citar a origem das desigualdades de volume."
+          },
+          {
+            "severity": "minor",
+            "description": "Figura do item a: o ciclo desenhado é horário, mas, com os valores da própria figura (nRT1 = 60, nRT3 = 120), W1 + W3 ≈ −18 é negativo. Isso ocorre porque o trabalho de II e IV não é ∫P dV sobre o trajeto tracejado; a área no diagrama não dá o trabalho nessas etapas. O texto não faz essa ressalva, e um leitor pode concluir que horário = ciclo motor. Deveria acrescentar: 'o tracejado não representa trabalho; a orientação só fixa o sinal de W_tot no limite reversível, onde W_tot = R(T3 − T1) ln(V1/V2) > 0'."
+          }
+        ],
+        "summary": "A resposta final está correta e coincide com a referência nos dois itens. No item b, W_tot = W1 + W3 = P1V1 ln(V2/V1) + P4V4 ln(V4/V3), equivalente a RT3 ln(V4/V3) − RT1 ln(V1/V2). O argumento é explícito: 1ª lei com Q = 0 em II e IV, U = U(T), W2 = −[U(T3) − U(T1)], W4 = −[U(T1) − U(T3)], logo W2 + W4 = 0. A resolução também trata bem as armadilhas: usa T3 na etapa III, separa Q = 0 de W = 0, não usa ∫P dV nas etapas irreversíveis, não usa PV^γ e não conclui que o ciclo fechado dá W = 0 (usa ΔU_ciclo = 0 como verificação). Os sinais estão corretos. No item a, as etapas, as isotermas em T1 e T3, a ordem V3 < V2 < V1 e V3 < V4 < V1, a menor P em 1 e a maior em 3 estão certos, e a ordem entre V2 e V4 é corretamente deixada em aberto. A figura é consistente com as relações de estado (verificado: os segmentos tracejados não se cruzam e as isotermas estão nos valores certos). Os problemas são de precisão e redação, sem erro de conteúdo: uma frase imprecisa sobre estados de equilíbrio, uma legenda ambígua ('adiabáticas'), hipóteses não listadas (Cv > 0) e uma ressalva que falta sobre o sinal de W_tot na figura. Para ser publicado como gabarito comentado, esses pontos precisam de ajuste; por isso a nota é 8,5 e não 9.\"}"
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "Item a: o gráfico P×V tem as isotermas quase-estáticas 1→2 (T1) e 3→4 (T3) como curvas, com V3 < V2 < V1, V3 < V4 < V1, P1 mínima e P3 máxima. As etapas II e IV são trajetos irreversíveis com Q = 0, sem curva P×V definida, representados só por segmentos tracejados entre os extremos. Item b: W2 = −ΔU2 e W4 = −ΔU4 com ΔU2 + ΔU4 = 0 (U é função de estado e ΔU1 = ΔU3 = 0), logo W2 + W4 = 0. Portanto W_tot = W1 + W3 = P1V1 ln(V2/V1) + P4V4 ln(V4/V3), ou para n = 1 mol, RT3 ln(V4/V3) − RT1 ln(V1/V2).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Legenda do item a: a frase 'O percurso é horário, mas isso não indica motor ... porque V2V4 ≠ V1V3' tem explicação imprecisa. O sinal de W_tot não se lê da área do ciclo porque as etapas II e IV são irreversíveis, e o tracejado não representa trabalho. A condição V2V4 = V1V3 é o que força W_tot > 0 só no caso reversível. Além disso, os valores ilustrativos produzem uma figura horária com W_tot negativo, o que pode confundir um estudante. Deveria dizer explicitamente que a orientação horária só indica motor quando todas as etapas são reversíveis, ou escolher valores que não criem essa aparente contradição."
+          },
+          {
+            "severity": "minor",
+            "description": "Inconsistência conceitual na convenção: a Hipótese diz 'Em trechos irreversíveis, W = ∫P_ext dV', mas nas etapas II e IV afirma que '∫P dV não se aplica'. Deveria dizer que ∫P_ext dV vale em princípio, mas exige conhecer o histórico de P_ext, que o enunciado não fornece. Por isso o trabalho nessas etapas sai só da 1ª lei."
+          },
+          {
+            "severity": "minor",
+            "description": "A passagem 'muito rápida ⇒ irreversível' é aceita sem justificativa explícita. Bastava ligar a irreversibilidade à não-quase-estaticidade (gradientes de P e T no gás, estados intermediários sem definição de P)."
+          },
+          {
+            "severity": "minor",
+            "description": "No caso reversível (verificação de consistência), a obtenção de V2V4 = V1V3 diz 'somando' sem escrever a soma. O passo deveria aparecer: R ln(V3/V2) + R ln(V1/V4) = 0, logo V1V3 = V2V4. A conta está correta (confirmei numericamente: V2V4 = V1V3 = 70,71 no caso T1=300, T3=600, V1=20, V2=10), mas fica para o leitor reconstruir."
+          }
+        ],
+        "summary": "Resposta final: concordo com a referência, item a e item b. Não há divergência de conteúdo.\n\nItem a: a ordem V3 < V2 < V1 e V3 < V4 < V1 está correta. T3 > T1 vem da 1ª lei (W2 < 0, Q2 = 0, logo ΔU2 > 0 e, com Cv > 0, T3 > T1). P1 é a menor pressão e P3 a maior. P4/P1 = (T3/T1)(V1/V4) > 1, então P1 < P4. O candidato também não fixa V2 vs V4 nem P2 vs P4, o que é correto. A figura é coerente com PV = 60 (isoterma T1) e PV = 120 (isoterma T3). Os tracejados das etapas II e IV estão corretos. Recalculei a orientação pela fórmula do polígono (shoelace): dá −127, ou seja, horário, como o candidato afirma.\n\nItem b: W1 = P1V1 ln(V2/V1) < 0 e W3 = P4V4 ln(V4/V3) > 0 estão corretos. W2 = −ΔU2 = −[U(T3) − U(T1)] e W4 = −ΔU4 = −[U(T1) − U(T3)], logo W2 + W4 = 0. O argumento é explícito e usa só ΔU (função de estado) e Q = 0. Também usa a versão alternativa do ciclo (ΔU_ciclo = 0, W_tot = Q_tot). Não usa ∫P dV nem a relação adiabática na etapa irreversível.\n\nArmadilhas da referência: todas tratadas. Etapa III a T3 (T4 = T3). Etapa I a T1, com ΔU4 ≠ 0. Q = 0 não implica W = 0. W2 + W4 = 0 demonstrado, não apenas afirmado. Ciclo não implica W_tot = 0. Nenhum uso de ∫P dV ao longo de adiabática irreversível. Tracejados nas etapas rápidas. Posições relativas corretas. Sinais de W corretos. Não depende de Cv nem de γ. Não se cai em W2 = W4 = 0.\n\nDivergência só de redação: a referência diz 'horário ⇒ W_tot > 0'. Isso vale só no caso reversível, e o candidato é mais preciso ao tratar o caso irreversível (ver issue 1).\n\nNota 9: a resolução é correta e completa, com justificativa forte e verificações independentes. Os problemas são de clareza (legenda da figura, convenção ∫P_ext vs ∫P, passo omitido na verificação reversível). Nenhum é crítico ou maior."
+      }
+    }
+  ]
+}

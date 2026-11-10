@@ -1,0 +1,51 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Notação e interpretação.} Seja $\alpha>0$ o raio do disco central, em unidades de comprimento. Os 33 círculos (contando o central) são concêntricos, com raios $R_k=\alpha+k$, para $k=0,1,\ldots,32$. Seja $D_0$ o disco de raio $R_0=\alpha$ e, para $1\leq k\leq 32$, seja $A_k$ o anel compreendido entre os círculos de raios $R_{k-1}$ e $R_k$.
+
+\textbf{Cores.} O disco $D_0$ é vermelho e as cores alternam de anel em anel. Assim, $A_1$ é branco, $A_2$ é vermelho, $A_3$ é branco, e, em geral, $A_k$ é vermelho se, e somente se, $k$ é par. Os anéis vermelhos são $A_{2j}$ com $j=1,2,\ldots,16$ (o mais externo é $A_{32}$), e os brancos são $A_{2j-1}$ com $j=1,\ldots,16$.
+
+\textbf{Área de um anel.} Os círculos são concêntricos, logo $A_k$ é a diferença entre os discos de raios $R_k$ e $R_{k-1}$. Pela aditividade da área,
+\[
+[A_k]=\pi R_k^2-\pi R_{k-1}^2=\pi\big[(\alpha+k)^2-(\alpha+k-1)^2\big].
+\]
+Pela identidade $x^2-(x-1)^2=2x-1$, com $x=\alpha+k$, obtemos
+\[
+[A_k]=\pi\,(2\alpha+2k-1).
+\]
+Por exemplo, $[A_1]=\pi\big[(\alpha+1)^2-\alpha^2\big]=\pi(2\alpha+1)$.
+
+\textbf{Área vermelha.} A região vermelha é a reunião do disco $D_0$ com os anéis $A_{2j}$, $j=1,\ldots,16$. Como para $k=2j$ temos $2\alpha+2k-1=2\alpha+4j-1$,
+\[
+S_V=\pi\alpha^2+\sum_{j=1}^{16}\pi\,(2\alpha+4j-1).
+\]
+Na soma, o termo $2\alpha-1$ é somado 16 vezes e $\sum_{j=1}^{16} j=\dfrac{16\cdot 17}{2}=136$. Logo
+\[
+\sum_{j=1}^{16}(2\alpha+4j-1)=16\cdot 2\alpha+4\cdot 136-16=32\alpha+544-16=32\alpha+528.
+\]
+Portanto
+\[
+S_V=\pi\,(\alpha^2+32\alpha+528).
+\]
+
+\textbf{Verificação.} Os anéis brancos são $A_{2j-1}$, com $[A_{2j-1}]=\pi(2\alpha+4j-3)$. Assim
+\[
+S_B=\sum_{j=1}^{16}\pi(2\alpha+4j-3)=\pi(32\alpha+544-48)=\pi(32\alpha+496).
+\]
+A soma das áreas vermelha e branca deve ser a área do círculo externo, de raio $\alpha+32$:
+\[
+S_V+S_B=\pi(\alpha^2+64\alpha+1024)=\pi(\alpha+32)^2.
+\]
+Isso confirma o resultado.
+
+\textbf{Casos particulares e ordem de grandeza.}
+\begin{itemize}
+\item Para $\alpha=1$: $S_V=561\pi$, $S_B=528\pi$ e a área total é $1089\pi=33^2\pi$. Também $[A_2]=\pi(3^2-2^2)=5\pi=\pi(2\cdot 1+4-1)$, de acordo com a fórmula.
+\item A diferença $S_V-S_B=\pi(\alpha^2+32)$ é coerente: cada par $(A_{2j},A_{2j-1})$ difere em $2\pi$, e são 16 pares, o que dá $32\pi$. O disco central acrescenta $\pi\alpha^2$.
+\item Para $\alpha$ grande, $S_V\approx\pi\alpha^2$, pois o disco central domina. Além disso, $S_B\approx 32\pi\alpha$, já que cada anel de largura 1 tem área $\approx 2\pi\alpha$ e há 16 anéis brancos.
+\end{itemize}
+
+Como a questão pede uma expressão em função de $\alpha$, a resposta final é a área vermelha $S_V(\alpha)$ indicada abaixo, em unidades de área.
+
+ANSWER: $S_{\text{vermelho}}(\alpha)=\pi\,(\alpha^2+32\alpha+528)$ unidades de área

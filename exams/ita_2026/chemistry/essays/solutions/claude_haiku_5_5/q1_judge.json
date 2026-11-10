@@ -1,0 +1,53 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) Ácido na Solução 2: c2 = 0,40 mol/L. b) Ácido na Solução 1: c1 = 2,0 mol/L (diluição 4 mL para 20 mL, fator 5). c) Base na Solução 3: c3 = 2/95 ≈ 0,021 mol/L (2,1×10^-2 mol/L). Chave: no equivalente pH = 12 = pKA, logo [A-] = [HA] = [OH-] = 10^-2 mol/L e C = 2×10^-2 mol/L na mistura de 40 mL, o que dá c2 = 0,40 mol/L.",
+  "judge_reference": {
+    "reference_solution": "**Questão 1: resolução de referência (ITA 2026, 2ª fase, Química)**\n\n**Dados e convenções**\n- HA: ácido monoprótico fraco da Solução 1, Ka = 10^-12. C1 = concentração de HA na Solução 1.\n- Solução 2: C2 = concentração de HA. Foi obtida por diluição da Solução 1.\n- Solução 3: base forte monoprótica BOH, concentração Cb. O cátion é espectador.\n- Kw = 10^-14 a 25 °C.\n- A \"Solução I\" citada na descrição da Solução 2 deve ser lida como Solução 1 (erro de grafia do enunciado).\n- Titulação: HA + OH- -> A- + H2O, relação estequiométrica 1:1.\n\n**Passo 1: diluição (Solução 1 -> Solução 2)**\nC1 · 4 mL = C2 · 20 mL, logo C2 = C1/5.\n\n**Passo 2: ponto de equivalência**\nn(HA) = n(OH-), ou seja, C2 · 2 mL = Cb · 38 mL (em mmol).\n\n**Passo 3: composição da mistura final**\n- Volume total = 2 + 38 = 40 mL.\n- No equivalente não há excesso de ácido nem de base. A solução contém só o sal BA, cujo ânion é A-.\n- [A-]0 = (2 · C2)/40 = C2/20 mol/L.\n\n**Passo 4: pH da mistura final (hidrólise de A-)**\n- A- + H2O ⇌ HA + OH-\n- Kh = Kb = Kw/Ka = 10^-14 / 10^-12 = 10^-2.\n- pH = 12, então pOH = 2 e [OH-] = x = 10^-2 mol/L. Também [HA] = x.\n- Como x/C0 = 0,5, a aproximação C0 - x ≈ C0 NÃO é válida. Usa-se a expressão completa:\n  Kb = x²/(C0 - x) ⇒ 10^-2 = (10^-2)²/(C0 - 10^-2) ⇒ C0 - 10^-2 = 10^-2 ⇒ **C0 = 2 × 10^-2 mol/L**.\n- Verificação pela quadrática: x² + Kb·x - Kb·C0 = 0 ⇒ x² + 10^-2·x - 2×10^-4 = 0. Δ = 10^-4 + 8×10^-4 = 9×10^-4, √Δ = 3×10^-2, x = (-10^-2 + 3×10^-2)/2 = 10^-2. Confere.\n- A contribuição da água ([H+] = 10^-12) é desprezível.\n\n**Passo 5: respostas**\n\n**a) Concentração do ácido na Solução 2**\n[A-]0 = C2/20 = 2 × 10^-2, logo C2 = 20 · 2 × 10^-2 = **0,40 mol/L**.\n\n**b) Concentração do ácido na Solução 1**\nC1 = 5 · C2 = 5 · 0,40 = **2,0 mol/L**.\n\n**c) Concentração da base na Solução 3**\nn(HA) na alíquota = 0,40 mol/L · 2 mL = 0,80 mmol = n(OH-) = Cb · 38 mL.\nCb = 0,80/38 = 2/95 ≈ **2,1 × 10^-2 mol/L** (≈ 0,021 mol/L).\n\n**Conferência:** cálculos verificados em Python (fractions/math): C2 = 0,40; C1 = 2,0; Cb = 2/95; x exato = 1,0 × 10^-2, pH = 12,0. A aproximação simplificada daria pH ≈ 12,15, por isso não serve.",
+    "final_answer": "a) [HA] na Solução 2 = 0,40 mol/L\nb) [HA] na Solução 1 = 2,0 mol/L\nc) [base] na Solução 3 = 2/95 ≈ 2,1 × 10^-2 mol/L (≈ 0,021 mol/L)\n\nResumo do raciocínio: a diluição 4 mL → 20 mL é de fator 5 (C1 = 5·C2). No equivalente, n(HA) = n(OH-) = 0,80 mmol, em 40 mL de mistura, o que dá [A-] = 0,020 mol/L. Com Kb = Kw/Ka = 10^-2 e pH 12 ([OH-] = 10^-2), a hidrólise exige a equação completa (x/C0 = 0,5), que confirma C0 = 0,020 mol/L.",
+    "pitfalls": [
+      "Grafia: 'Solução I' no enunciado da Solução 2 é a Solução 1. Não há Solução I independente.",
+      "Diluição: 4 mL em 20 mL é fator 5, então C2 = C1/5 e C1 = 5·C2. Não confundir a ordem nem usar 4/20 como se fosse a concentração.",
+      "Volumes diferentes: a base consumida tem 38 mL, mas a mistura final tem 40 mL (2 + 38). Usar 40 mL no cálculo da base dá Cb = 0,020, que está errado. A resposta correta é 0,80/38 = 2/95 ≈ 0,021 mol/L.",
+      "Ponto de equivalência não é neutro: sal de ácido fraco com base forte tem pH básico por hidrólise do ânion A-. Assumir pH 7 invalida o problema.",
+      "Ka do ácido é 10^-12, mas o que entra na hidrólise é Kb do A- = Kw/Ka = 10^-2. Usar Ka direto ou esquecer Kw leva a resultado errado.",
+      "Conversão pH -> [OH-]: pH 12 dá pOH 2 e [OH-] = 10^-2, não 10^-12. Confundir os dois inverte a resposta.",
+      "Aproximação clássica inválida: x²/C0 = Kb só vale se x << C0. Aqui x/C0 = 0,5, e a aproximação dá pH ≈ 12,15 em vez de 12. A equação completa (quadrática) é obrigatória e dá x = 10^-2 exato, com discriminante 9×10^-4.",
+      "Estequiometria 1:1 (monoprótico com monoprótica): n(HA) = n(OH-). Não há fator 2 nem fator 1/2.",
+      "Base e ácido não têm a mesma concentração: a base é cerca de 19 vezes mais diluída que a Solução 2, porque o volume titulante é 38 mL e a alíquota é 2 mL.",
+      "Água: a contribuição de [H+] = 10^-12 e a autoionização da água são desprezíveis frente a [OH-] = 10^-2. Ka do ácido não é usado para achar a concentração do ácido, apenas para obter Kb do ânion.",
+      "Unidades: mL · mol/L = mmol, e as respostas devem sair em mol/L. Como o enunciado pede valor numérico, resolver as expressões integralmente (2/95 ou 0,80/38), e não arredondar cedo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) Ácido na Solução 2: c2 = 0,40 mol/L. b) Ácido na Solução 1: c1 = 2,0 mol/L (diluição 4 mL para 20 mL, fator 5). c) Base na Solução 3: c3 = 2/95 ≈ 0,021 mol/L (2,1×10^-2 mol/L). Chave: no equivalente pH = 12 = pKA, logo [A-] = [HA] = [OH-] = 10^-2 mol/L e C = 2×10^-2 mol/L na mistura de 40 mL, o que dá c2 = 0,40 mol/L.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não declara, antes das contas, que o pH do ponto de equivalência é básico porque o ânion A⁻ hidrolisa (sal de ácido fraco com base forte). Isso só aparece implicitamente na condição protônica do Passo 4 e na conferência. Um gabarito comentado deveria dizer no Passo 3 por que pH 12 é consistente, e não arbitrário. Correção: acrescentar uma frase sobre a hidrólise do A⁻ no Passo 3."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'ordem de grandeza' da Solução 2 usa [H⁺] ≈ (K_A·c₂)^½ e ignora a água. Verifiquei que o efeito é desprezível: Kw/[H⁺] ≈ 1,6×10⁻⁸ frente a [H⁺] ≈ 6,3×10⁻⁷ (cerca de 2,5%). Não é erro, mas a checagem poderia dizer explicitamente que é estimativa, ou usar [H⁺]² ≈ K_A·c₂ + K_w."
+          },
+          {
+            "severity": "minor",
+            "description": "A saída está em marcação LaTeX (\\section*, \\textbf, itemize) com linha 'ANSWER:'. Para um caderno de soluções manuscrito, uma versão em texto limpo seria mais fiel ao formato da prova. Isso não afeta o conteúdo nem a nota."
+          }
+        ],
+        "summary": "Respostas finais: a) 0,40 mol/L; b) 2,0 mol/L; c) 2/95 ≈ 2,1×10⁻² mol/L. Coincidem item por item com a referência, e confiro que estão corretas. Conferi no enunciado original (página 3) e com python3 (scripts na pasta de trabalho). O balanço completo de hidrólise dá x = [OH⁻] = 10⁻² com resíduo zero para C = 2×10⁻², c₂ = 0,40, c₁ = 2,0 e c₃ = 2/95. A condição protônica [OH⁻] = [HA] + [H⁺] com pH = pKa dá [HA] = [A⁻] = 10⁻² e C = 2×10⁻² (desvio 10⁻¹⁰), que é o mesmo resultado por outro caminho, sem aproximação. A aproximação clássica x = √(K_h·C) daria pH ≈ 12,15 com C = 10⁻², e a observação do candidato está correta. Traps: Solução I tratada como Solução 1; diluição de fator 5 correta; 38 mL na estequiometria e 40 mL na concentração do sal usados corretamente; K_h = K_w/K_A usado; pH → [OH⁻] correto; aproximação rejeitada com justificativa; estequiometria 1:1; unidades e volumes corretos. Nota 9: é um gabarito publicável. Os únicos pontos a melhorar são a falta de uma frase explícita sobre a não neutralidade do equivalente e o formato LaTeX.\""
+      }
+    }
+  ]
+}

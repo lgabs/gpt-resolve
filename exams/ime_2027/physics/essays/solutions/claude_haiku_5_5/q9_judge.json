@@ -1,0 +1,124 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "a) u = c(sqrt(3)h - L)/(sqrt(3)L - h). b) Para que o impacto ocorra com t1 > 0, raio positivo e u < c, deve valer L/sqrt(3) < h < L.",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA — IME 2027, Física, Questão 9 (resolvida antes de consultar qualquer candidato)\n\nNotação: O = origem; C = (L, h) centro da esfera; t₁ = instante do impacto; s = c·t₁ (distância percorrida pelo fóton); R₁ = R(t₁) = u·t₁; P = ponto de impacto.\n\n0) Direção do fóton\nA reta x = √3·y tem y = x/√3, ou seja, inclinação tg θ = 1/√3 → θ = 30° com o eixo x (no 1º quadrante). Versor d̂ = (√3/2, 1/2). Posição do fóton: r(t) = c·t·(√3/2, 1/2). Em t = 0, R = 0 e a origem está fora da esfera, logo o fóton chega à esfera pela face externa.\n\n1) Lei da reflexão no impacto\nDesprezando o movimento da superfície, a normal em P é radial: n̂ = (P − C)/R₁, apontando para fora. Como o fóton chega por fora, d̂·n̂ < 0.\nReflexão especular: d̂' = d̂ − 2(d̂·n̂)n̂, com d̂' = (0, −1). Então d̂ − d̂' = 2(d̂·n̂)n̂ ⇒ n̂ ∥ (√3/2, 3/2) ∝ (1, √3) ⇒ n̂ = ±(1/2, √3/2).\nO sinal correto é n̂ = (−1/2, −√3/2), pois d̂·n̂ = −√3/2 < 0.\nVerificação: d̂ + √3·n̂ = (√3/2 − √3/2, 1/2 − 3/2) = (0, −1). ✓\nGeometricamente, n̂ é a bissetriz entre −d̂ (210°) e d̂' (270°), isto é, 240°. O impacto ocorre na face da esfera voltada para a origem.\n\n2) Impacto, por duas vias\n(i) Sobre a trajetória do fóton: P = s·(√3/2, 1/2).\n(ii) Sobre a esfera, na direção radial: P = C + R₁·n̂ = (L − R₁/2, h − (√3/2)·R₁).\nIgualando as coordenadas:\n  (√3/2)·s + (1/2)·R₁ = L\n  (1/2)·s + (√3/2)·R₁ = h\nO determinante da matriz é 3/4 − 1/4 = 1/2, e a inversa é [[√3, −1], [−1, √3]]. Logo:\n  s = c·t₁ = √3·L − h\n  R₁ = √3·h − L\n\n3) Item a)\nt₁ = (√3·L − h)/c\nu = R₁/t₁ = c·(√3·h − L)/(√3·L − h)\nPonto de impacto: P = ((3L − √3·h)/2, (√3·L − h)/2).\n\nVerificações:\n- Primeira interseção: seja g(x) = |x·d̂ − C|² − (u/c)²·x², com x = ct. Tem-se g(0) = L² + h² > 0. Em x = s, g'(s) = 2[(1 − (u/c)²)·s − d̂·C]. Usando (u/c)²·s² = R₁² e d̂·C = (√3/2)L + h/2, a condição g'(s) < 0 equivale a 2(L² − h²) < (3L² − h²)/2, isto é, L < √3·h, que é justamente R₁ > 0. Portanto s é a entrada (primeira interseção), e não a saída.\n- Consistência geométrica: no triângulo OPC o ângulo em P vale 150°, então OC² = s² + R₁² + √3·s·R₁. Substituindo s e R₁, obtém-se L² + h². ✓\n- Numérica (script Python): para L = 1,2 m e h = 1,0 m, obtém-se t₁ = 1,078 m/c, R₁ = 0,532 m e u ≈ 0,493 c. Confirmou-se que P está sobre a esfera, que a reflexão produz (0, −1) e que é a primeira interseção.\n\n4) Item b): condições de validade\n(1) t₁ > 0 ⇒ √3·L > h.\n(2) R₁ > 0 (esfera com raio positivo no impacto e u > 0) ⇒ √3·h > L.\n(3) u < c (hipótese do enunciado): (√3h − L)/(√3L − h) < 1, com denominador positivo, ⇒ (√3 + 1)h < (√3 + 1)L ⇒ h < L.\nCombinando: L/√3 < h < L, equivalente a h < L < √3·h.\nSó (1) e (2) dariam L/√3 < h < √3·L; a observação u < c restringe o intervalo a h < L.\nOs extremos são excluídos: h = L dá u = c, e h = L/√3 dá R₁ = 0 (impacto na origem, sem expansão).\nExemplo de validade: L = 1,2 m e h = 1,0 m, que satisfazem L/√3 ≈ 0,69 < 1,0 < 1,2.",
+    "final_answer": "a) u = c·(√3·h − L)/(√3·L − h).\nObtida com t₁ = (√3·L − h)/c e R(t₁) = √3·h − L, ponto de impacto P = ((3L − √3·h)/2, (√3·L − h)/2) e normal radial n̂ = (−1/2, −√3/2).\n\nb) L/√3 < h < L, equivalente a h < L < √3·h. Esta condição combina t₁ > 0 (h < √3·L), R₁ > 0 (h > L/√3) e u < c (h < L). Os extremos são excluídos.\n\nNão se trata de múltipla escolha.",
+    "pitfalls": [
+      "Ângulo do fóton: x = √3·y significa y = x/√3, com inclinação 1/√3 e ângulo de 30° com o eixo x (não 60°). Versor d̂ = (√3/2, 1/2).",
+      "Normal da reflexão: é radial no ponto de impacto e obedece d̂ − d̂' ∥ n̂, com d̂' = (0, −1). O sinal correto é n̂ = (−1/2, −√3/2), pois o fóton chega de fora (d̂·n̂ < 0). A normal não é a direção do fóton nem d̂ + d̂'.",
+      "Sinal trocado: n̂ = (+1/2, +√3/2) gera formalmente u = c·(L − √3h)/(√3L − h), mas é espúrio. Ali d̂·n̂ > 0, ou seja, o fóton sairia da esfera, e a primeira interseção ocorre antes. Para L = 2 e h = 1, a primeira interseção está em ct ≈ 2,05 m, antes do impacto espúrio em 2,46 m. Verificar sempre a primeira interseção, não a saída.",
+      "Duas escalas de distância: o fóton percorre s = c·t₁ e a esfera tem raio R₁ = u·t₁, com o mesmo t₁. Não confundir s com R₁ nem tratar u como velocidade do fóton.",
+      "Troca de coordenadas: L é a abscissa e h a ordenada do centro. Invertê-las produz u = c(√3L − h)/(√3h − L), que está errado.",
+      "Sinais em R₁ = √3·h − L e t₁ = (√3·L − h)/c: sem verificar a positividade, a resposta pode ter u negativo ou tempo negativo.",
+      "Condição de validade incompleta: t₁ > 0 e R₁ > 0 dão apenas L/√3 < h < √3·L. Esquecer o dado u < c é o erro típico. Com L < h < √3·L, tem-se u > c, o que viola a observação. O resultado final é h < L.",
+      "Extremos: os intervalos são abertos. h = L dá u = c (proibido por u < c) e h = L/√3 dá u = 0 (esfera de raio nulo no impacto, caso degenerado).",
+      "Condição de primeira interseção: a solução algébrica precisa ser a entrada, isto é, a primeira raiz de |r(t) − C| = u·t. A condição equivalente é L < √3·h, a mesma que R₁ > 0.",
+      "Não modelar movimento da superfície: a instrução manda desprezar o movimento da superfície, então a normal é só radial. Também não se devem introduzir efeitos Doppler, relativísticos ou correções da velocidade da superfície. O módulo da velocidade do fóton continua c após a reflexão.",
+      "Geometria plana: o centro está no plano da trajetória do fóton, então a reflexão ocorre nesse plano e não há componente z.",
+      "Verificação dimensional e de consistência: u = c·(número adimensional), e o resultado não pode depender de t₁. Com o exemplo L = 1,2 m e h = 1,0 m, obtém-se u ≈ 0,493 c."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "(a) $u=c\\,\\dfrac{\\sqrt{3}\\,h-L}{\\sqrt{3}\\,L-h}$, com o instante de incidência $c\\,t_1=\\sqrt{3}\\,L-h$. (b) $\\dfrac{L}{\\sqrt{3}}<h<L$, que é equivalente a $\\sqrt{3}\\,h>L$ e $h<L$; a segunda desigualdade é exatamente $u<c$.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Argumento de primeira interseção: f'(t₁) = −2u·t₁(√3c/2 + u) < 0 só vale se u·t₁ = R₁ > 0. Esse sinal é usado sem ser declarado no ponto em que aparece; a condição R₁ > 0 só é listada depois, em (b). Para L=2, h=1 (R₁<0), o t₁ algébrico é a segunda raiz (saída), com as raízes em ct≈2,05 e ct≈2,46. Deveria dizer: 'supondo R₁>0 (condição (b)), f'(t₁)<0, logo t₁ é a entrada', e apontar que é R₁>0 que exclui a saída."
+          },
+          {
+            "severity": "minor",
+            "description": "Extremos pouco discutidos. O caso h = L/√3 (R₁ = 0, P = C, impacto no próprio centro, esfera degenerada) não é analisado. A frase 'esfera estática' não descreve isso. Deveria dizer explicitamente que h = L/√3 é excluído por R₁>0 e h = L por u<c, e que os intervalos são abertos."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação geométrica 'abaixo da reta y = x (limite u = c)' não tem justificativa. É só a equivalência algébrica h = L ⇔ u = c, que deveria ser mostrada ou removida."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'Conferência numérica' é afirmada ('uma verificação numérica confirmou...') sem mostrar o ponto P, o valor de |P−C| nem a direção refletida. O ponto de impacto P = ((3L−√3h)/2, (√3L−h)/2) aparece só implicitamente. Deveria apresentar P explicitamente e a checagem |P−C| = R."
+          },
+          {
+            "severity": "minor",
+            "description": "Observação não discutida (fora do escopo exigido): após a reflexão, a esfera em expansão alcança o fóton logo em seguida quando u > (√3/2)c, o que acontece para h próximo de L (ex.: L=1, h=0,99 → u≈0,963c). O enunciado manda desprezar o movimento da superfície para a direção refletida, então isso não é exigido e não altera a resposta. Uma linha de observação seria bem-vinda, mas não é penalização."
+          }
+        ],
+        "summary": "Parecer: a resposta final está correta e coincide com a referência. (a) u = c·(√3h − L)/(√3L − h); (b) L/√3 < h < L, com extremos excluídos. Conferi a álgebra: t₁ = (√3L − h)/c, R(t₁) = √3h − L, normal n̂ = (−1/2, −√3/2), reflexão levando a (0, −1), P = ((3L − √3h)/2, (√3L − h)/2). O exemplo L=3, h=2 dá ct₁ ≈ 3,196 m, R ≈ 0,464 m, u ≈ 0,145c, e confere com a checagem numérica (|P−C| = R; direção refletida (0,−1)). Também verifiquei que t₁ é a primeira interseção quando R₁>0, e que para R₁<0 ela vira a saída. A resolução trata bem as armadilhas principais: ângulo de 30°, sinal da normal pela incidência por fora (com verificação d̂'·n̂>0), troca de coordenadas, duas escalas (ct₁ e ut₁), u<c na condição de validade, e movimento da superfície desprezado na reflexão. Os problemas restantes são de rigor e acabamento, todos menores: (i) o argumento de primeira interseção depende de R₁>0 sem declarar isso onde é usado; (ii) os extremos são pouco discutidos; (iii) a leitura geométrica sobre y = x não é justificada; (iv) a verificação numérica é afirmada e não mostrada. Nota 8,5: é quase publicável como gabarito comentado, mas ainda não chega a 9 por causa desses pontos. Nota sobre a referência: ela diz que h = L/√3 dá 'impacto na origem'. Isso está errado, porque s = 2L/√3 ≠ 0 e P = C (esfera de raio zero no próprio centro). O erro não altera a resposta final.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.0,
+      "final_answer": "a) u = c(sqrt(3) h - L)/(sqrt(3) L - h); b) L/sqrt(3) < h < L, com os dois extremos excluídos (h = L/sqrt(3) daria raio nulo no impacto, h = L daria u = c).",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Seção 6, bullet 'Ponto de impacto': a expressão de |P−C|² está corrompida (sequência de '\\cdot\\dfrac{1}{1}' repetidos), termina em '(ver nota)' apontando para uma nota que não existe, e a verificação não é concluída. A conta correta é |P−C|² = (21−12√3)/4 + (63−36√3)/4 = 21−12√3 = R₁², o que confere (verificado numericamente). Deve ser reescrita limpa e concluída; um gabarito comentado não pode conter esse fragmento."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 2: o sinal de n̂ é escolhido pela premissa 'o fóton chega de fora', que só é estabelecida formalmente na seção 5. Deveria ser enunciada antes, como consequência de f(0)>0 (a primeira interseção é uma entrada, logo ê·n̂_out ≤ 0). A seção 2 também deveria mostrar explicitamente o que acontece com o sinal oposto: daria u = c(L−√3h)/(√3L−h), que corresponde à saída. Verificado: para L=2, h=1, o espúrio é a segunda raiz (ct ≈ 2,46 m), e a primeira (ct ≈ 2,05 m) é a entrada."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 1: a justificativa de 't₁=0 é impossível' é imprecisa. O correto é que em t=0 a esfera degenera no ponto C ≠ O, então a origem não está na superfície. A frase 'Como |OC|>0, ...' deveria dizer isso explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 5: a análise das raízes de f assume implicitamente que o discriminante é não negativo. Isso segue de t₁ ser uma raiz real (P pertence à superfície), mas não é dito. Vale uma frase para fechar o argumento."
+          },
+          {
+            "severity": "minor",
+            "description": "Seções 4 e 6: a afirmação 'para h>L teríamos u>c' (e a análise de sinais em geral) vale dentro do domínio t₁>0, isto é, h<√3L, mas essa restrição não é mencionada. Como o intervalo final já está contido nela, o impacto no resultado é nulo, só precisão de redação."
+          },
+          {
+            "severity": "minor",
+            "description": "O ponto de impacto P(L,h) em forma geral não aparece; só há o exemplo numérico (L=3, h=2). A questão não pede P, então é opcional, mas a referência o fornece em forma fechada e isso reforça a verificação geométrica."
+          }
+        ],
+        "summary": "Resposta final correta e igual à referência: a) u = c(√3h − L)/(√3L − h); b) L/√3 < h < L. Refiz as contas e confirmei com Python: para L=1,2 e h=1,0, u/c ≈ 0,4933; o fóton refletido sai em (0,−1); e t₁ é a menor raiz de f(t). Para L=3 e h=2, os valores declarados (ct₁ = 3√3−2, R₁ = 2√3−3, u = c(12−5√3)/23 ≈ 0,1452c, P = ((9−2√3)/2, (3√3−2)/2)) conferem. O sinal da normal (n̂_e = −(1/2, √3/2)) está correto, a condição u<c leva a h<L, e a prova de primeira interseção pela derivada f′(t₁) = −2ut₁(√3c/2 + u) < 0 é rigorosa, mais forte que a da referência. Pontos que pesam na nota: o fragmento corrompido da seção 6 (|P−C|² com LaTeX repetido e '(ver nota)' sem nota) e a justificativa do sinal da normal apresentada antes de ser provada. Observação sobre a referência: ela diz que h = L/√3 dá 'impacto na origem', mas nesse caso P = C (o centro fica sobre a trajetória); o candidato está certo ao dizer P = C. Nenhuma armadilha relevante ficou sem tratamento: direção de 30°, sinal da normal, duas escalas (a = ct₁, b = ut₁), troca de coordenadas, primeira interseção, condição u<c, extremos abertos, movimento da superfície desprezado e verificação dimensional. A geometria plana só está implícita, mas não causa erro. Nota 8: solução correta e bem argumentada, não publicável como está por causa do fragmento corrompido e de alguns pontos de redação."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "a) u = c(sqrt(3)h - L)/(sqrt(3)L - h). b) Para que o impacto ocorra com t1 > 0, raio positivo e u < c, deve valer L/sqrt(3) < h < L.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Observação final (\"além do pedido\"): afirma que, se o movimento da superfície afetasse a direção refletida, o fóton só se afastaria da esfera se u < √3c/2 (h < 5L/(3√3)). A conta algébrica está certa (verifiquei), mas a afirmação física não é derivada em lugar nenhum. Além disso, o enunciado manda desprezar exatamente esse efeito, e num tratamento padrão de espelho móvel (componente tangencial do vetor de onda conservada, deslocamento de frequência) o fóton refletido ainda se afasta para qualquer u < c. A afirmação é, no mínimo, não justificada. Deve ser removida ou derivada com o modelo explicitado."
+          },
+          {
+            "severity": "minor",
+            "description": "Item 5, ramo alternativo de sinal: o texto diz que esse ramo \"corresponderia ao ponto de saída t_+\", mas f'(t_s) = (L−√3h)(√3c−2u) só é positivo se L > √3h, isto é, fora do domínio pedido no item (b). Nesse domínio R_s = L−√3h < 0 e o ramo nem corresponde a uma esfera. A conclusão não muda, porque a entrada já é garantida por f'(t1) < 0, mas o argumento deveria dizer que vale só para L > √3h. Além disso, usa u para o u_s do ramo alternativo, o que colide com o u da quadrática principal f(t). Usar u_s explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Item 2 usa \"o fóton chega pela face externa\" para fixar o sinal de n̂, mas essa premissa só é confirmada no item 5. A justificação deveria ser direta e local: em t = 0 a origem está fora da esfera (|O−C| = √(L²+h²) > 0 = R(0)), e o primeiro contato é a entrada. Hoje a ordem do raciocínio fica circular na leitura. Também a justificativa de t1 > 0 (\"O não está sobre a esfera\") deveria citar explicitamente |O−C| > R(0)."
+          }
+        ],
+        "summary": "Verifiquei o enunciado no PDF original (9ª questão, itens a e b), e a transcrição confere. Refiz a resolução por conta própria e com python3 -I.\n\nResposta final: (a) u = c(√3h−L)/(√3L−h) e (b) L/√3 < h < L. Ambas coincidem com a referência e estão corretas. Confirmei: a direção 30° e ê = (√3/2, 1/2); a normal externa n̂ = −(1/2, √3/2), que faz a reflexão dar exatamente (0, −1); e o impacto em ct₁ = √3L−h, ut₁ = √3h−L. Para o exemplo L=3, h=2, o candidato dá u = c(12−5√3)/23 ≈ 0,1452c, que bate com a conta numérica, e P, |P−C| = R₁ e t₁ ≈ 1,07×10⁻⁸ s também batem. Na varredura de 4000 pontos, a condição (t₁>0, R₁>0, u<c) coincide com L/√3 < h < L, com zero divergências. Em 400 pontos aleatórios do domínio, t₁ é sempre a menor raiz de f(t), ou seja, a entrada.\n\nO argumento de entrada/saída do item 5 é rigoroso e mais forte que o da referência: f'(t₁) = −2ut₁(√3c/2 + u) < 0 com as duas raízes positivas. A resolução cobre as armadilhas listadas: ângulo de 30°, sinal da normal, duas escalas (ct₁ e ut₁), troca de coordenadas, positividade de t₁ e R₁, u<c levando a h<L, extremos abertos, primeira interseção, superfície estática e dimensões. O texto é organizado e publicável no essencial.\n\nDescontos, todos menores e sem afetar a resposta: a observação final sobre o movimento da superfície é uma afirmação física não derivada (deveria sair); o ramo alternativo de sinal é descrito sem a restrição L > √3h e usa u onde deveria usar u_s; e a premissa \\\"chega pela face externa\\\" aparece antes de ser justificada. A nota é 8,5 e não 9 por causa da observação não justificada, que um gabarito comentado não poderia publicar como está."
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Ideia.} O traço de $\mathbf{A}\mathbf{B}$ é a soma de três somas de produtos de binomiais. Cada uma delas é uma convolução de Vandermonde, e o resultado final é um único binomial, que se mostra divisível por $1013$.
+
+\textbf{Passo 1 --- Traço.} Como $\mathbf{A}$ é $3\times(n+2)$ e $\mathbf{B}$ é $(n+2)\times 3$, o produto $\mathbf{A}\mathbf{B}$ é $3\times3$ e
+\[
+(\mathbf{A}\mathbf{B})_{kk}=\sum_{j=1}^{n+2}a_{kj}\,b_{jk},\qquad \operatorname{tr}(\mathbf{A}\mathbf{B})=(\mathbf{A}\mathbf{B})_{11}+(\mathbf{A}\mathbf{B})_{22}+(\mathbf{A}\mathbf{B})_{33}.
+\]
+
+\textbf{Passo 2 --- Convolução de Vandermonde.} Para inteiros $a,b,r\ge 0$, com a convenção $\binom{x}{c}=0$ para $c<0$ ou $c>x$,
+\[
+\sum_{k\in\mathbb{Z}}\binom{a}{k}\binom{b}{r-k}=\binom{a+b}{r}.
+\]
+Ela vem de comparar o coeficiente de $x^r$ em $(1+x)^a(1+x)^b=(1+x)^{a+b}$. Na soma, só entram os $k$ com $0\le k\le a$ e $0\le r-k\le b$. Todos os outros termos são nulos pela convenção.
+
+\textbf{Passo 3 --- Os três elementos da diagonal.}
+
+\emph{(i)} Com $b_{j1}=\binom{n}{n+2-j}$ e $k=j-3$:
+\[
+(\mathbf{A}\mathbf{B})_{11}=\sum_{j=1}^{n+2}\binom{m}{j-3}\binom{n}{n+2-j}=\sum_{k=-2}^{n-1}\binom{m}{k}\binom{n}{n-1-k}=\binom{m+n}{n-1}.
+\]
+Os termos $k=-2,-1$ são nulos, e $k\ge n$ daria $\binom{n}{n-1-k}=0$. Logo a soma sobre $j$ é a soma completa de Vandermonde com $r=n-1$.
+
+\emph{(ii)} Com $b_{j2}=\binom{n}{n+2-j}$ e $k=j-2$:
+\[
+(\mathbf{A}\mathbf{B})_{22}=\sum_{j=1}^{n+2}\binom{m}{j-2}\binom{n}{n+2-j}=\sum_{k=-1}^{n}\binom{m}{k}\binom{n}{n-k}=\binom{m+n}{n}.
+\]
+O termo $k=-1$ é nulo, e os valores de $k$ de $0$ a $n$ cobrem todos os termos não nulos.
+
+\emph{(iii)} Com $b_{j3}=\binom{n+1}{n+2-j}$ e $k=j-1$:
+\[
+(\mathbf{A}\mathbf{B})_{33}=\sum_{j=1}^{n+2}\binom{m}{j-1}\binom{n+1}{n+2-j}=\sum_{k=0}^{n+1}\binom{m}{k}\binom{n+1}{n+1-k}=\binom{m+n+1}{n+1}.
+\]
+
+\textbf{Passo 4 --- Soma pela relação de Stifel.} Usando $\binom{N}{r}+\binom{N}{r+1}=\binom{N+1}{r+1}$ duas vezes:
+\[
+\operatorname{tr}(\mathbf{A}\mathbf{B})=\underbrace{\binom{m+n}{n-1}+\binom{m+n}{n}}_{=\binom{m+n+1}{n}}+\binom{m+n+1}{n+1}=\binom{m+n+2}{n+1}.
+\]
+
+\textbf{Passo 5 --- Caso $m=2^{10}=1024$ e $n=10^3=1000$.} Aqui $m>n$ e
+\[
+\operatorname{tr}(\mathbf{A}\mathbf{B})=\binom{2026}{1001},\qquad 2026=2\cdot 1013.
+\]
+
+\textbf{Passo 6 --- Divisibilidade por $1013$.}
+
+\emph{$1013$ é primo.} Como $32^2=1024>1013$, basta testar os primos até $31$. Os restos de $1013$ por $2,3,5,7,11,13,17,19,23,29,31$ são, nessa ordem, $1,2,3,5,1,12,10,6,1,27,21$, todos não nulos.
+
+\emph{Divisibilidade.} Pela identidade $k\binom{N}{k}=N\binom{N-1}{k-1}$, com $N=2026$ e $k=1001$:
+\[
+1001\cdot\binom{2026}{1001}=2026\cdot\binom{2025}{1000}=2\cdot 1013\cdot\binom{2025}{1000}.
+\]
+Logo $1013\mid 1001\cdot\binom{2026}{1001}$. Como $1013$ é primo e maior que $1001$, temos $\mathrm{mdc}(1013,1001)=1$. Pelo lema de Euclides, $1013\mid\binom{2026}{1001}$.
+
+\textbf{Conferência.} Verifiquei numericamente a fórmula $\operatorname{tr}(\mathbf{A}\mathbf{B})=\binom{m+n+2}{n+1}$ para vários pares $(m,n)$, entre eles $(5,3)$, $(7,4)$, $(10,2)$ e $(1024,1000)$. Verifiquei também que $\binom{2026}{1001}\equiv 0 \pmod{1013}$.
+
+\textbf{Conclusão.} $\operatorname{tr}(\mathbf{A}\mathbf{B})=\binom{m+n+2}{n+1}$. Para $m=2^{10}$ e $n=10^3$ isso vale $\binom{2026}{1001}$, que é divisível por $1013$. $\blacksquare$
+
+ANSWER: $\operatorname{tr}(\mathbf{A}\mathbf{B})=\binom{m+n+2}{n+1}=\binom{2026}{1001}$, que é divisível por $1013$ (primo), pois $1001\binom{2026}{1001}=2\cdot1013\cdot\binom{2025}{1000}$.

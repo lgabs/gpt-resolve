@@ -1,0 +1,56 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Dados (SI):} $m=100\ \text{g}$, $c=2{,}0\ \text{J/(g}\,^\circ\text{C)}$, $\Delta\theta=30\ ^\circ\text{C}$, $q=2\ \text{Ah}=7200\ \text{C}$, $\varepsilon=5{,}0\ \text{V}$, $T_{\text{total}}=20\ \text{min}=1200\ \text{s}$, $n=20\ \text{espiras/cm}=2000\ \text{m}^{-1}$, $r=5\times10^{-3}\ \text{m}$, $\ell=2\times10^{-2}\ \text{m}$ (logo $N=n\ell=40$ espiras), $\Delta I=14\ \text{A}$.
+
+\subsection*{a) Potência média mínima}
+
+Pela conservação da energia, a energia entregue pelo carregador deve, no mínimo, cobrir dois termos.
+
+\emph{Energia armazenada na bateria} (carga $q$ sob a tensão $\varepsilon$):
+\[
+E_{\text{bat}}=q\,\varepsilon=(2\ \text{A}\cdot 3600\ \text{s})(5{,}0\ \text{V})=36000\ \text{J}.
+\]
+
+\emph{Calor que aqueceu o aparelho:}
+\[
+Q=m\,c\,\Delta\theta=100\cdot 2{,}0\cdot(50-20)=6000\ \text{J}.
+\]
+
+Outras perdas (calor cedido ao ambiente, dissipação no próprio carregador etc.) só aumentariam a energia necessária. Por isso o valor mínimo corresponde a supor que essas são as únicas parcelas:
+\[
+P_{\min}=\frac{E_{\text{bat}}+Q}{T_{\text{total}}}=\frac{36000+6000}{1200}=35\ \text{W}.
+\]
+(Verificação: a corrente média de carga é $7200/1200=6\ \text{A}$, o que dá $30\ \text{W}$ para a bateria e $5\ \text{W}$ dissipados em calor.)
+
+\subsection*{b) Máximo $\Delta t$}
+
+\emph{Indutância.} No modelo de solenoide ideal, $B=\mu_0 n I$ no interior. O fluxo total no próprio solenoide é $N\,B\,\pi r^2$, o que dá
+\[
+L=\mu_0 n^2 \pi r^2 \ell=(4\pi\times10^{-7})(2000)^2\,\pi\,(5\times10^{-3})^2(2\times10^{-2})=8\pi^2\times10^{-7}\ \text{H}\approx 7{,}9\times10^{-6}\ \text{H}.
+\]
+Para duas bobinas, a indutância mútua satisfaz $M\le\sqrt{L_1L_2}=L$, com igualdade apenas no acoplamento perfeito (todo o fluxo de uma bobina atravessa a outra). O modelo ideal também superestima o campo de um solenoide real curto. Logo $M=L$ é o maior valor possível.
+
+\emph{Lei de Faraday--Neumann.} A corrente varia linearmente, então $di/dt=\Delta I/\Delta t$ é constante e a f.e.m. induzida na bobina do celular também é constante:
+\[
+|\varepsilon|=M\,\frac{\Delta I}{\Delta t}\quad\Longrightarrow\quad \Delta t=\frac{M\,\Delta I}{\varepsilon}\le\frac{L\,\Delta I}{\varepsilon}.
+\]
+Portanto
+\[
+\Delta t_{\max}=\frac{8\pi^2\times10^{-7}\cdot 14}{5{,}0}=2{,}24\,\pi^2\times10^{-6}\ \text{s}\approx 2{,}2\times10^{-5}\ \text{s}.
+\]
+
+\emph{Verificação energética.} No acoplamento perfeito de bobinas idênticas, a bobina do carregador também tem f.e.m. $\varepsilon$ durante a rampa. A potência que ela fornece é então $\varepsilon\,i(t)$, com $i$ variando linearmente de $0$ a $14\ \text{A}$. Sua média é
+\[
+\bar P=\varepsilon\,\frac{0+14}{2}=5{,}0\cdot 7=35\ \text{W},
+\]
+exatamente a potência mínima do item (a).
+
+De modo equivalente, cada ciclo transfere no máximo a energia magnética $\tfrac12 L I_{\max}^2=\tfrac12\,(8\pi^2\times10^{-7})(14)^2\approx 7{,}7\times10^{-4}\ \text{J}$. Com $P_{\min}=35\ \text{W}$, isso também limita
+\[
+\Delta t\le\frac{\tfrac12 L I_{\max}^2}{P_{\min}}\approx\frac{7{,}74\times10^{-4}}{35}\approx 2{,}2\times10^{-5}\ \text{s}.
+\]
+Os dois caminhos dão o mesmo resultado. A ordem de grandeza (dezenas de microssegundos, ou seja, frequência de dezenas de kHz) é típica de carregadores indutivos.
+
+ANSWER: a) $P_{\min}=35\ \text{W}$; \quad b) $\Delta t_{\max}=\dfrac{\mu_0 n^2\pi r^2\ell\,\Delta I}{\varepsilon}=2{,}24\,\pi^2\times10^{-6}\ \text{s}\approx 2{,}2\times10^{-5}\ \text{s}$

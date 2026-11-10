@@ -1,0 +1,56 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) d_min = 3ℓ/5; b) ρ = ℓ/14 (o fio afrouxa a 30° acima da horizontal que passa por B, com v² = 2gℓ/7; no ápice da parábola v_x = v/2, logo ρ = v_x²/g = ℓ/14).",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura e do modelo.** A esfera parte do repouso com o fio horizontal na altura de A. Ela desce um quarto de circunferência de raio ℓ em torno de A até o ponto mais baixo, que fica a ℓ abaixo de A. Como B está na vertical de A a uma distância d < ℓ, a esfera passa por baixo de B. Nesse instante o fio está vertical e encostado na barra AB, e o trecho AB gruda nela. A partir daí o centro do movimento passa a ser B, e o raio fica\n  r = ℓ − d.\nQuando o fio gruda, a esfera está no ponto mais baixo com velocidade horizontal, perpendicular ao fio. A tração muda de valor de forma brusca, mas não realiza trabalho. Por isso a velocidade é contínua, e a energia mecânica se conserva o tempo todo (a gravidade é a única força que realiza trabalho).\n\nVelocidade no ponto mais baixo (queda de altura ℓ): v₀² = 2gℓ.\n\nReferencial: origem em B, x para a direita (para o lado de onde a esfera veio), y para cima. No ponto mais baixo (0, −r), a esfera se move para a esquerda. Em seguida sobe pelo lado esquerdo de B, em sentido horário, como mostra a figura.\n\n**a) Valor mínimo de d**\nAcima de B, sobre a vertical, está a barra. O ponto mais alto do círculo de centro B fica a r acima de B, ou seja, a d − r abaixo de A, e portanto sobre a barra (na resposta, r = 2ℓ/5 < d = 3ℓ/5). Assim, a esfera não pode dar a volta completa. O máximo que ela pode descrever é a semicircunferência: ponto mais baixo → lado esquerdo → topo, onde encontra a barra. Para isso, o fio precisa continuar esticado até o topo, isto é, T ≥ 0 no ponto mais alto:\n  mg + T = m v_t²/r ⇒ v_t² ≥ g r.\nPor energia (o topo está 2r acima do ponto mais baixo):\n  v_t² = v₀² − 4g r = 2gℓ − 4g r.\nLogo 2gℓ − 4g r ≥ g r ⇒ r ≤ 2ℓ/5 ⇒ ℓ − d ≤ 2ℓ/5 ⇒ d ≥ 3ℓ/5.\nQuanto maior d, menor r, e mais fácil é chegar ao topo. Então:\n  **d_min = 3ℓ/5** (nesse caso T = 0 exatamente no topo, e v_t² = 2gℓ/5).\n\n**b) d = 3ℓ/7: raio de curvatura no ponto mais alto**\nAgora r = ℓ − 3ℓ/7 = 4ℓ/7. Como d = 3ℓ/7 < 3ℓ/5, a esfera não completa a semicircunferência: o fio afrouxa antes do topo, e daí em diante ela segue em lançamento oblíquo.\n\n*Ponto em que o fio afrouxa.* Seja φ o ângulo do fio acima da horizontal, do lado esquerdo de B. A posição é (−r cos φ, r sin φ). A componente radial do peso, dirigida para B, vale mg sin φ. Logo:\n  T + mg sin φ = m v²/r; com T = 0 ⇒ v² = g r sin φ.\nEnergia (altura r + r sin φ acima do ponto mais baixo):\n  v² = 2gℓ − 2g r(1 + sin φ).\nIgualando: 3 r sin φ = 2ℓ − 2r ⇒ sin φ = (2ℓ − 2r)/(3r) = (6ℓ/7)/(12ℓ/7) = 1/2 ⇒ φ = 30°.\nEntão v² = g·(4ℓ/7)·(1/2) = 2gℓ/7. O ponto fica a 2ℓ/7 acima de B, em x = −2√3ℓ/7.\n\n*Velocidade nesse ponto.* A velocidade é perpendicular ao fio, ou seja, faz 60° com a horizontal e aponta para cima e para a direita (em direção à barra):\n  vₓ = v sin φ = v/2,  v_y = v cos φ = (√3/2)v.\n\n*Lançamento oblíquo.* A partir daí só atua o peso. vₓ é constante, e o ponto mais alto da trajetória é o vértice da parábola. Nele a velocidade é horizontal (|v| = vₓ) e a aceleração g é perpendicular a ela, portanto é toda centrípeta:\n  g = vₓ²/R ⇒ R = vₓ²/g = (v²/4)/g = (2gℓ/7)/(4g) = **ℓ/14**.\n\n*Verificações de consistência:*\n- Altura do vértice acima de B: 2ℓ/7 + v_y²/(2g) = 2ℓ/7 + 3ℓ/28 = 11ℓ/28. Isso é menor que d = 12ℓ/28: o vértice fica ℓ/28 abaixo de A, como a esfera cinza da figura. É também mais alto que qualquer ponto do trecho circular (2ℓ/7), então é de fato o ponto mais alto do movimento.\n- Abscissa do vértice: −2√3ℓ/7 + v² sin φ cos φ/g = −2√3ℓ/7 + √3ℓ/14 = −3√3ℓ/14 ≈ −0,37ℓ. A esfera não toca a barra antes do vértice.\n- Distância do vértice a B: (√229/28)ℓ ≈ 0,540ℓ < r ≈ 0,571ℓ. A trajetória fica dentro do círculo, então o fio continua frouxo e o movimento é mesmo de projétil.\n- Conferência numérica em Python (integração RK4 + parábola):\n  - o fio afrouxa a 120° do ponto mais baixo (30° acima da horizontal), com v² = 2gℓ/7;\n  - o vértice fica em (−0,3712ℓ; 0,3929ℓ);\n  - R = 0,0714ℓ = ℓ/14.",
+    "final_answer": "a) d_min = 3ℓ/5. Com essa distância o raio em torno de B é r = 2ℓ/5, e a tração no topo da semicircunferência vale exatamente zero (v² = g r).\nb) R = ℓ/14. O fio afrouxa a 30° acima da horizontal (sin φ = 1/2), com v² = 2gℓ/7. No vértice da parábola a velocidade é vₓ² = gℓ/14 e R = vₓ²/g. O vértice fica a 11ℓ/28 acima de B, ou seja, ℓ/28 abaixo de A.",
+    "pitfalls": [
+      "Quando o fio gruda na barra, o novo centro passa a ser B e o raio vira r = ℓ − d. Usar ℓ, d ou outro raio no movimento depois de B é o erro mais grave.",
+      "Para usar conservação de energia ao passar por B é preciso justificar: a velocidade é perpendicular ao fio, então a mudança da tração não realiza trabalho e a velocidade não muda (v₀² = 2gℓ).",
+      "Item a: a condição correta é T ≥ 0 no topo (v_t² ≥ g r). Erros comuns: exigir v_t ≥ 0, como se fosse uma haste rígida, ou contar a altura do topo como 2ℓ em vez de 2r.",
+      "Item a: quanto maior d, menor o raio e mais fácil completar o arco. Portanto a desigualdade d ≥ 3ℓ/5 dá um valor MÍNIMO de d, e é preciso acertar o sentido dela.",
+      "Item a: a questão fala em semicircunferência, e não em volta completa, porque o topo do círculo de centro B fica sobre a barra (r = 2ℓ/5 < d). Uma boa resolução reconhece isso. Também vale a hipótese implícita d < ℓ, necessária para a esfera passar por baixo de B.",
+      "Item b: antes de tudo, verificar que d = 3ℓ/7 < 3ℓ/5. Assim a esfera NÃO chega ao topo do círculo, e o ponto mais alto é o vértice da parábola, depois que o fio afrouxa.",
+      "Item b: o fio afrouxa quando T = 0, ou seja, quando g sin φ = v²/r, com φ medido acima da horizontal. Esse ponto não é o topo do círculo e também não é o ponto em que v = 0.",
+      "Item b: no vértice, a velocidade é só a componente horizontal vₓ = v sin φ, constante durante o voo, e não a velocidade total no instante em que o fio afrouxa. É fácil trocar seno por cosseno: a velocidade faz 60° com a horizontal, então vₓ = v/2.",
+      "Item b: respostas erradas típicas: R = 4ℓ/7 (o raio do fio, que é o raio de curvatura apenas no instante em que o fio afrouxa), R = v²/g = 2ℓ/7 (usando a velocidade total) ou R = 3ℓ/14 (usando cos² em vez de sin²).",
+      "Item b: verificar que o vértice (x ≈ −0,37ℓ e altura 11ℓ/28 < d acima de B) não toca a barra e fica dentro do círculo de raio r (distância ≈ 0,54ℓ < 0,571ℓ). Assim o fio continua frouxo e o vértice é de fato o ponto mais alto. A figura é esquemática e não está em escala."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) d_min = 3ℓ/5; b) ρ = ℓ/14 (o fio afrouxa a 30° acima da horizontal que passa por B, com v² = 2gℓ/7; no ápice da parábola v_x = v/2, logo ρ = v_x²/g = ℓ/14).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item a: a resolução não diz por que a questão pede só uma semicircunferência. O topo do círculo de centro B, no ponto (0, r), fica sobre a barra, e a esfera a encontra ali. O candidato diz apenas que o topo fica abaixo de A e chama isso de 'geometricamente compatível'. Deveria dizer explicitamente que o topo está sobre a barra e que por isso a esfera não pode dar a volta completa."
+          },
+          {
+            "severity": "minor",
+            "description": "Item a: falta dizer que T(θ) = mg(2d/(ℓ−d) − 3 sin θ) decresce com θ. É isso que justifica impor T ≥ 0 só no topo (θ = 90°) para garantir o fio esticado em todo o arco. A fórmula deixa isso evidente, mas o argumento não aparece escrito."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não declara a hipótese d < ℓ, necessária para a esfera passar por baixo de B e para r = ℓ − d > 0. Também não comenta o instante em que o fio gruda (velocidade horizontal e fio vertical, portanto a velocidade é contínua). Esse ponto fica coberto só pela hipótese geral de que a tração é perpendicular à velocidade."
+          },
+          {
+            "severity": "minor",
+            "description": "Item b, verificação: a frase 'distância a B < r, logo [...] a esfera não toca a barra' mistura dois argumentos. Que a esfera não toca a barra decorre de x crescer de −2√3ℓ/7 até −3√3ℓ/14 < 0, não da distância a B. Também não se diz explicitamente que o ápice (11ℓ/28) fica acima de todo o trecho circular (no máximo 2ℓ/7) nem que depois do ápice a esfera só desce. São esses fatos que garantem que o ápice é o ponto mais alto de todo o movimento depois de B."
+          }
+        ],
+        "summary": "As respostas finais coincidem com as da minha referência, e conferi as duas: a) d_min = 3ℓ/5; b) ρ = ℓ/14. A transcrição confere com o enunciado original (página 3).\n\nO candidato usa o raio certo depois de B (r = ℓ − d) e conserva a energia com justificativa (a tração é perpendicular à velocidade). A expressão geral da tração, T = mg(2d/(ℓ−d) − 3 sin θ), está certa e organiza bem os dois itens.\n\nNo item a, a condição usada é a correta (T ≥ 0 no topo, ou seja, v² ≥ gr), o sentido da desigualdade está certo e o resultado é d ≥ 3ℓ/5. O candidato ainda confere que, nesse limite, v_topo² = gr.\n\nNo item b, ele verifica antes que d = 3ℓ/7 < 3ℓ/5, então o fio afrouxa antes do topo. Encontra sin θ = 1/2 e v² = 2gℓ/7, decompõe a velocidade corretamente (60° com a horizontal, v_x = v/2, sem trocar seno por cosseno) e calcula ρ = v_x²/g = ℓ/14 no vértice da parábola. Refiz as contas em Python: o ápice fica em (−3√3ℓ/14, 11ℓ/28), a ℓ/28 abaixo de A, e a distância a B vale √229ℓ/28 ≈ 0,540ℓ, menor que r ≈ 0,571ℓ. Tudo bate com a minha referência.\n\nTodas as armadilhas listadas foram evitadas. As falhas são apenas de rigor e de exposição:\n- não explica que o topo do círculo fica sobre a barra (e por isso a trajetória é só uma semicircunferência);\n- não diz que T decresce com θ;\n- não declara a hipótese d < ℓ;\n- usa um argumento pouco preciso para mostrar que a esfera não toca a barra;\n- não diz explicitamente que o ápice é o ponto mais alto de todo o movimento depois de B.\n\nÉ uma resolução no nível de gabarito comentado."
+      }
+    }
+  ]
+}

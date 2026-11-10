@@ -1,0 +1,50 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Convenção e notação.} Para $a_{j+1,j}=\alpha_j^{\,0}$ estar definido mesmo quando $\alpha_j=0$, usa-se $\alpha^0=1$ para todo $\alpha$ real. A coluna $j$ de $A$ ($1\le j\le n-1$) é nula até a linha $j$ e, da linha $j+1$ à $n$, vale $1,\alpha_j,\dots,\alpha_j^{\,n-j-1}$. A coluna $n$ e a linha $1$ de $A$ são nulas. Seja $s_j$ a soma da coluna $j$ de $A$:
+\[
+s_j=1+\alpha_j+\dots+\alpha_j^{\,n-j-1}\ (1\le j\le n-1),\qquad s_n=0 .
+\]
+Como $b_{lk}=1$ se $k\ge l$ e $0$ caso contrário, o produto é
+\[
+(AB)_{ik}=\sum_{l\le k}a_{il},
+\]
+isto é, a coluna $k$ de $AB$ é a soma das colunas $1,\dots,k$ de $A$.
+
+\textbf{Observação sobre o enunciado.} A coluna $n$ de $A$ é nula, logo $(AB)_{i,n}=(AB)_{i,n-1}$ para todo $i$: as duas últimas colunas de $AB$ são iguais e têm a mesma soma. A hipótese, lida literalmente sobre $AB$, exige somas $n-(n-1)=1$ e $n-n=0$, o que é impossível para todo $n\ge2$. (Por exemplo, para $n=3$: $AB=\begin{pmatrix}0&0&0\\1&1&1\\ \alpha_1&\alpha_1+1&\alpha_1+1\end{pmatrix}$.) Portanto, \emph{literalmente}, nenhuma escolha de $\alpha_j$ satisfaz a hipótese. A leitura que torna a questão consistente e coerente com o pedido ``em função de $n$'' é: \textbf{a soma dos elementos da coluna $j$ da matriz $A$ é $n-j$}, ou seja, $s_j=n-j$. Ela é consistente, pois $s_n=0$ e $s_{n-1}=a_{n,n-1}=1$ valem sempre, e $n-j$ é exatamente o número de parcelas de $s_j$. Os itens b) e c) são resolvidos nessa leitura. O item a) independe dela.
+
+\textbf{a)} A linha $1$ de $A$ é nula ($a_{1j}=0$, pois $j\ge1=i$). Logo a linha $1$ de $AB$ também é nula e
+\[
+\det(AB)=0 .
+\]
+Confirmação: $\det A=0$ e $\det B=1$ ($B$ é triangular com diagonal unitária). A igualdade das colunas $n-1$ e $n$ também dá $\det(AB)=0$. Vale para qualquer $n\ge2$ e qualquer escolha dos $\alpha_j$.
+
+\textbf{b)} Temos $\operatorname{tr}(AB)=\sum_{i,l}a_{il}\,b_{li}$. Como $a_{il}\ne0$ só se $l<i$, e nesse caso $b_{li}=1$ (pois $i\ge l$), vem
+\[
+\operatorname{tr}(AB)=\sum_{i,l}a_{il}=s_1+\dots+s_n \quad(\text{soma de todos os elementos de }A).
+\]
+Com $s_j=n-j$:
+\[
+\operatorname{tr}(AB)=\sum_{j=1}^{n}(n-j)=\frac{n(n-1)}{2}.
+\]
+Verificação: $n=5$ dá $4+3+2+1+0=10$.
+
+(Com a hipótese literal sobre $AB$, o traço $=c_{n-1}=c_n$ ficaria igual a $1$ e a $0$ ao mesmo tempo, o que confirma a inconsistência. Nenhum valor é determinado.)
+
+\textbf{c)} Para $n=5$, a condição $s_j=5-j$ dá:
+\begin{align*}
+j=1:&\ 1+\alpha_1+\alpha_1^2+\alpha_1^3=4\iff(\alpha_1-1)(\alpha_1^2+2\alpha_1+3)=0.\\
+&\ \text{O fator quadrático tem }\Delta=4-12=-8<0,\text{ então }\alpha_1=1.\\
+j=2:&\ 1+\alpha_2+\alpha_2^2=3\iff(\alpha_2-1)(\alpha_2+2)=0\Rightarrow\alpha_2\in\{1,-2\}.\\
+j=3:&\ 1+\alpha_3=2\Rightarrow\alpha_3=1.\\
+j=4:&\ s_4=a_{54}=\alpha_4^{\,0}=1\ \text{vale sempre: }\alpha_4\in\mathbb{R}\text{ é arbitrário.}\\
+j=5:&\ s_5=0\ \text{vale sempre.}
+\end{align*}
+Conferência com $(1,-2,1,3)$ e $(1,1,1,7)$: as somas das colunas de $A$ são $4,3,2,1,0$ e $\operatorname{tr}(AB)=10$.
+
+\textbf{Outra leitura (menos plausível).} Se $B$ fosse triangular inferior ($b_{ij}=1$ para $j\le i$), a hipótese sobre $AB$ seria consistente e equivaleria a $s_j=1$ para $j<n$. Para $n=5$ daria $\alpha_1=\alpha_3=0$, $\alpha_2\in\{0,-1\}$ e $\alpha_4$ livre, mas $AB$ seria estritamente triangular inferior e $\operatorname{tr}(AB)=0$, sem dependência de $n$. Isso destoa de ``em função de $n$''. A leitura sobre as colunas de $A$ é uma conjectura minha sobre a intenção do examinador. O gabarito oficial não foi consultado.
+
+\textbf{Resumo.} O enunciado literal (soma das colunas de $AB$ igual a $n-j$) é contraditório, e para ele o conjunto solução de c) é vazio. Na leitura pretendida (soma das colunas de $A$ igual a $n-j$): $\det(AB)=0$, $\operatorname{tr}(AB)=\dfrac{n(n-1)}{2}$ e, para $n=5$, $\alpha_1=1$, $\alpha_2\in\{1,-2\}$, $\alpha_3=1$, $\alpha_4\in\mathbb{R}$ qualquer.
+
+ANSWER: a) $\det(AB)=0$. b) $\operatorname{tr}(AB)=\dfrac{n(n-1)}{2}$. c) $\alpha_1=1$, $\alpha_2\in\{1,-2\}$, $\alpha_3=1$ e $\alpha_4\in\mathbb{R}$ qualquer. Isso vale na leitura em que a soma das colunas de $A$ é $n-j$. O enunciado literal, com a soma das colunas de $AB$, é contraditório e daria conjunto vazio.

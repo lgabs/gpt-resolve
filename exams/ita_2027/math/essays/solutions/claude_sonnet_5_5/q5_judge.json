@@ -1,0 +1,54 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "A abscissa de C é 5√3 − 9 (≈ −0,34).",
+  "judge_reference": {
+    "reference_solution": "**Enunciado conferido no PDF (p. 5, Questão 05):** triângulo ABC com vértices na elipse 2x² + y² = 6, A e B com abscissa 1, perímetro 10. Pede-se a abscissa de C. A transcrição confere com o original.\n\n**1. Posição de A e B.**\nCom x = 1, a equação dá 2 + y² = 6, logo y = ±2.\nA e B são distintos, então, a menos do nome dos vértices, A = (1, 2) e B = (1, −2). Assim AB = 4.\n\n**2. Condição sobre C.**\nO perímetro é 10, então AC + BC = 10 − 4 = 6.\nO lugar geométrico dos pontos P com PA + PB = 6 é uma elipse de focos A e B, pois 6 > AB = 4.\n- Semieixo maior: a' = 3.\n- Semidistância focal: c' = 2.\n- b'² = 9 − 4 = 5.\n- Centro: (1, 0). O eixo maior é vertical, porque os focos têm a mesma abscissa.\n- Equação: (x − 1)²/5 + y²/9 = 1.\n\n**3. Interseção com a elipse dada.**\nSeja C = (x, y) com y² = 6 − 2x². Substituindo na equação anterior e multiplicando por 45:\n\n9(x − 1)² + 5(6 − 2x²) = 45\n9x² − 18x + 9 + 30 − 10x² = 45\n−x² − 18x − 6 = 0\nx² + 18x + 6 = 0\n\nEntão x = −9 ± √75 = −9 ± 5√3.\n\n**4. Seleção da raiz.**\nOs pontos da elipse dada têm |x| ≤ √3 ≈ 1,73.\n- x = −9 − 5√3 ≈ −17,66 não serve.\n- x = 5√3 − 9 ≈ −0,340 serve.\n\nPara essa raiz, y² = 6 − 2x² = 180√3 − 306 ≈ 5,769 > 0, então y ≈ ±2,402. Há dois pontos C, simétricos em relação ao eixo x e com a mesma abscissa. Nenhum deles está sobre x = 1, então o triângulo é não degenerado.\n\n**5. Verificação sem usar a elipse auxiliar (álgebra direta).**\nCom y² = 6 − 2x², escreva S = −x² − 2x + 11. Então:\n- AC² = (x−1)² + (y−2)² = S − 4y\n- BC² = S + 4y\n\nLogo AC² − BC² = −8y. Com AC + BC = 6, segue AC − BC = −4y/3, portanto AC = 3 − 2y/3 e BC = 3 + 2y/3.\n\nImpondo AC² = S − 4y:\n9 − 4y + 4y²/9 = S − 4y, ou seja, S = 9 + 4(6 − 2x²)/9.\nIsso leva à mesma equação x² + 18x + 6 = 0.\n\nA passagem é reversível: |y| ≤ √6 < 9/2 garante AC = 3 − 2y/3 > 0 e BC = 3 + 2y/3 > 0.\n\n**6. Conferência numérica (Python).**\n- Com x = 5√3 − 9 e y = ±2,40190, obtém-se AC ≈ 1,39873 e BC ≈ 4,60127. Então AC + BC = 6 e o perímetro é 10,0000.\n- Uma varredura de 400 000 pontos sobre toda a elipse dada acha exatamente duas soluções, (−0,33975; ±2,40190).\n- O perímetro na elipse varia de 8 a ≈ 10,77, então o valor 10 é de fato atingido.\n\n**Resposta:** a abscissa de C é 5√3 − 9 (≈ −0,34), com C = (5√3 − 9, ±√(180√3 − 306)).",
+    "final_answer": "Abscissa de C = 5√3 − 9 ≈ −0,34. Há dois pontos C possíveis, simétricos em relação ao eixo x, com y = ±√(180√3 − 306) ≈ ±2,40, e ambos têm essa mesma abscissa. A e B são (1, 2) e (1, −2), com AB = 4 e AC + BC = 6.",
+    "pitfalls": [
+      "A e B com abscissa 1: de 2·1 + y² = 6 sai y = ±2, então A = (1,2), B = (1,−2) e AB = 4. Isso reduz o perímetro 10 a AC + BC = 6. Os rótulos A/B são intercambiáveis e não afetam a resposta.",
+      "Não confundir os focos da elipse dada com A e B. A elipse x²/3 + y²/6 = 1 tem eixo maior vertical e focos em (0, ±√3). A propriedade focal que resolve a questão é a da elipse auxiliar de focos A e B, não a da elipse original.",
+      "A elipse auxiliar é (x−1)²/5 + y²/9 = 1: centro em (1,0), a' = 3, c' = 2, b'² = 5, eixo maior vertical. Erros comuns são trocar 5 e 9, usar centro na origem ou esquecer que 2a' = 6 > AB = 4 (condição de existência).",
+      "A conta 9(x−1)² + 5(6−2x²) = 45 deve dar x² + 18x + 6 = 0. Erro de sinal ou de distribuição aqui leva a raízes erradas.",
+      "A segunda raiz, −9 − 5√3 ≈ −17,66, é espúria: precisa ser descartada por |x| ≤ √3 (e y² = 6 − 2x² > 0). Sem esse teste a resposta ficaria com duas abscissas.",
+      "Existem dois pontos C (y = ±√(180√3 − 306)), mas com a mesma abscissa, então a resposta é única. Convém mencionar que C não está sobre x = 1, ou seja, o triângulo é não degenerado.",
+      "Se a resolução eleva ao quadrado (método direto com AC e BC), deve justificar a reversibilidade: AC = 3 − 2y/3 > 0 e BC = 3 + 2y/3 > 0 pois |y| ≤ √6 < 9/2. Assim, as raízes encontradas realmente satisfazem AC + BC = 6.",
+      "Resposta final em forma exata (5√3 − 9), não só aproximada. Também vale conferir o sinal: o valor é negativo, ≈ −0,34, ou seja, C fica do lado oposto a A e B em relação ao eixo y."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "A abscissa de C é 5√3 − 9 (≈ −0,34).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A verificação do passo 6 é só numérica, com valores arredondados. Faltou uma checagem exata (por exemplo, y² = 180√3 − 306, ou AC = 3 − 2y/3 e BC = 3 + 2y/3). O argumento já está completo sem ela, porque o lugar geométrico PA+PB=6 é equivalência e não só implicação. Mas o candidato não diz isso, e o leitor pode se perguntar se elevar ao quadrado criou raízes espúrias."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não dá o valor exato de y (±√(180√3 − 306)), só y² ≈ 5,77. Também não verifica que C ≠ A e C ≠ B, embora isso decorra de x_C ≠ 1."
+          },
+          {
+            "severity": "minor",
+            "description": "O WLOG de A=(1,2) e B=(1,−2) é dito com 'podemos tomar' e sem justificativa explícita. Bastava uma frase: os rótulos são intercambiáveis, e a troca equivale à simetria em relação ao eixo x, que mantém a abscissa de C."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta não comenta que a abscissa é única apesar de haver dois pontos C (±y). O candidato diz que há dois pontos com essa abscissa, o que é suficiente. Também não nota que C fica do lado oposto a A e B em relação ao eixo y, observação opcional."
+          }
+        ],
+        "summary": "A resposta final 5√3 − 9 ≈ −0,34 está correta e coincide com a minha referência. Conferi numericamente: com x = 5√3 − 9 e y = ±2,40190, AC ≈ 1,39873, BC ≈ 4,60127 e o perímetro dá 10,0000. Uma varredura de 400 000 pontos sobre a elipse dada acha apenas os dois pontos (−0,3397; ±2,4019), e o perímetro varia de 8 a ≈ 10,77, então o valor 10 é de fato atingido. Reli o enunciado no PDF (Questão 05) e ele confere com a transcrição. A resolução é limpa e bem estruturada. Encontra A=(1,2) e B=(1,−2) e reduz o perímetro a AC+BC=6. Em seguida identifica a elipse auxiliar (x−1)²/5 + y²/9 = 1 (centro (1,0), a'=3, c'=2, b'²=5, eixo vertical) e a menciona com a condição de existência 6 > 4. A interseção dá x²+18x+6=0, com raízes −9 ± 5√3. A raiz −9−5√3 é descartada por |x| ≤ √3, e o candidato nota que y²>0 e que x≠1 (triângulo não degenerado). As contas conferem (x² = 156 − 90√3, 9(x−1)²+5(6−2x²)=45). Das armadilhas que listei, o candidato trata praticamente todas. A de reversibilidade não se aplica a este método, pois o lugar geométrico é uma equivalência. Os defeitos são só de acabamento: verificação exata ausente, y exato não dado e WLOG de A/B pouco justificado. Não há erro matemático. Está no nível de um gabarito comentado, com pequenas melhorias possíveis."
+      }
+    }
+  ]
+}

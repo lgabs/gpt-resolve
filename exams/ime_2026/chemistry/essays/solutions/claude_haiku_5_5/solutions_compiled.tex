@@ -1,0 +1,914 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{IME 2026 - Química\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}haiku{-}5{-}5 (solver) + claude{-}haiku{-}5{-}5 (judge)}%
+\date{November 10, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} (i) Eletrólise ígnea (sal fundido, sem água): os únicos íons presentes são $M^{2+}$ e $\text{C}\ell^-$; no cátodo reduz-se $M^{2+}$ e no ânodo oxida-se $\text{C}\ell^-$. (ii) Corrente constante e rendimento faradaico de $100\%$. (iii) Os $4{,}38$ g são do metal sólido, não do sal. (iv) Os dados são tomados como exatos, convenção deste enunciado (ver item 7).
+
+\textbf{1) Carga elétrica.} Com corrente constante, $Q = i\,t$, com $t$ em segundos:
+\begin{align*}
+t &= 6{,}7\ \text{h} \times 3600\ \text{s.h}^{-1} = 24120\ \text{s}\\
+Q &= 0{,}4\ \text{A} \times 24120\ \text{s} = 9648\ \text{C}
+\end{align*}
+
+\textbf{2) Quantidade de elétrons.} A carga de 1 mol de elétrons é a constante de Faraday, $F$; logo $Q = n_{e}\,F$ e
+\[
+n_{e} = \frac{Q}{F} = \frac{9648\ \text{C}}{96480\ \text{C.mol}^{-1}} = 0{,}100\ \text{mol de e}^-
+\]
+
+\textbf{3) Estequiometria dos eletrodos.} O sal é $M\text{C}\ell_2$ e a neutralidade do cloreto ($\text{C}\ell^-$) exige $M^{2+}$; logo $z = 2$ elétrons por átomo de metal. As semirreações são
+\begin{align*}
+\text{cátodo:}\quad & M^{2+} + 2\,e^- \longrightarrow M(s)\\
+\text{ânodo:}\quad & 2\,\text{C}\ell^- \longrightarrow \text{C}\ell_2(g) + 2\,e^-
+\end{align*}
+Assim, $n_M = n_e/z = 0{,}050$ mol de metal. O ânodo consome os mesmos $0{,}100$ mol de elétrons e libera $0{,}050$ mol de $\text{C}\ell_2$, o que confirma o balanço de cargas.
+
+\textbf{4) Massa molar.} Pelas leis de Faraday, a massa depositada é proporcional à carga (primeira lei) e, para uma mesma carga, proporcional a $M_m/z$ (segunda lei). Isso resulta em $m = Q\,M_m/(z\,F)$, equivalente a $m = n_M\,M_m$ com $n_M = Q/(z\,F)$. Aqui $M_m$ é a massa molar do metal. Logo
+\begin{align*}
+M_m &= \frac{m}{n_M} = \frac{4{,}38\ \text{g}}{0{,}050\ \text{mol}} = 87{,}6\ \text{g.mol}^{-1}
+\end{align*}
+
+\textbf{5) Identificação pela massa atômica.} Com $n_M = 0{,}0500$ mol, a resolução de $\pm 0{,}005$ g em $4{,}38$ g corresponde a $M_m \in [87{,}5;\ 87{,}7]\ \text{g.mol}^{-1}$. Na Tabela Periódica, só o estrôncio ($\text{Sr}$, $Z = 38$, $87{,}62$) está nessa faixa; o rubídio ($85{,}47$) e o ítrio ($88{,}91$) ficam fora.
+
+\textbf{6) Conferência química com a carga real.} A fórmula $M\text{C}\ell_2$ já fixa $z = 2$, mas os candidatos vizinhos na tabela (Rb, Y, Zr) e os alcalino-terrosos (Ca, Ba) devem ser testados com o cloreto que realmente formam. Para cada um, $m_{\text{calc}} = \dfrac{n_e}{z}\,M_m$, comparada com $4{,}38$ g:
+\begin{center}
+\begin{tabular}{llcrrr}
+\hline
+Metal & Cloreto usual & $z$ & $M_m$ (g.mol$^{-1}$) & $m_{\text{calc}}$ (g) & Desvio\\
+\hline
+Rb & RbC$\ell$ & 1 & 85,47 & 8,55 & $+95\%$\\
+Sr & SrC$\ell_2$ & 2 & 87,62 & 4,38 & $0{,}02\%$\\
+Y & YC$\ell_3$ & 3 & 88,91 & 2,96 & $-32\%$\\
+Zr & ZrC$\ell_4$ & 4 & 91,22 & 2,28 & $-48\%$\\
+Ca & CaC$\ell_2$ & 2 & 40,08 & 2,00 & $-54\%$\\
+Ba & BaC$\ell_2$ & 2 & 137,33 & 6,87 & $+57\%$\\
+\hline
+\end{tabular}
+\end{center}
+Só o Sr tem carga compatível com o sal e massa compatível com o dado. Rb ($+1$), Y ($+3$) e Zr ($+4$) são excluídos pela carga do cloreto real e também pela massa. O ítrio só chegaria perto de $4{,}38$ g se fosse forçado a $Y\text{C}\ell_2$ ($4{,}45$ g, desvio de $1{,}5\%$), mas o ítrio forma $\text{YC}\ell_3$ nos seus compostos usuais. Ca e Ba têm carga $+2$, porém suas massas dariam $2{,}00$ g e $6{,}87$ g.
+
+\textbf{7) Premissas, verificações e casos particulares.}
+\begin{itemize}
+\item \textit{Precisão dos dados.} Os valores são tratados como exatos ($Q = 0{,}1\,F$), convenção do enunciado. Na prática, $0{,}4$ A tem um algarismo significativo, e uma incerteza de $\pm 0{,}05$ A alargaria a faixa de $M_m$ para cerca de $\pm 12\%$; a identificação então dependeria também da química ($M\text{C}\ell_2$, carga $+2$).
+\item \textit{Retrossubstituição (conferência independente, com o valor tabelado):} $n_M\,M_m = 0{,}050\ \text{mol} \times 87{,}62\ \text{g.mol}^{-1} = 4{,}381\ \text{g} \approx 4{,}38\ \text{g}$.
+\item \textit{Carga:} $z\,n_M\,F = 2 \times 0{,}050 \times 96480\ \text{C} = 9648\ \text{C} = i\,t$, coerente com o item 1.
+\item \textit{Ordem de grandeza:} $Q = 2{,}68\ \text{A.h} \approx 0{,}1\,F$; $0{,}05$ mol de metal divalente com $M_m \approx 88\ \text{g.mol}^{-1}$ dá cerca de $4{,}4$ g, coerente com o dado.
+\item \textit{Rendimento:} com $\eta < 1$, a massa molar real seria $87{,}6/\eta$, maior que $87{,}6$; para $\eta = 0{,}90$, seria cerca de $97\ \text{g.mol}^{-1}$, sem metal da tabela com essa massa. A coincidência com o Sr ($87{,}62$) corrobora $\eta \approx 100\%$.
+\item \textit{Número de elétrons:} com $z = 1$ ou $z = 3$, a massa molar seria $43{,}8$ ou $131{,}4\ \text{g.mol}^{-1}$, sem metal da tabela nessa faixa (o mais próximo de $131{,}4$ é o Xe, $131{,}29$, que é gás nobre). Isso mostra que a fórmula $M\text{C}\ell_2$ é decisiva.
+\end{itemize}
+
+ANSWER: estrôncio (Sr, $Z = 38$), com $M_m = 87{,}6\ \text{g.mol}^{-1}$ (sal SrC$\ell_2$).%
+\newpage%
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{0) Grau de insaturação (GI) e hipóteses.} Para $\mathrm{C_cH_hX_x}$, vale $\mathrm{GI}=\frac{2c+2-h-x}{2}$, contando o halogênio como hidrogênio. Para $A=\mathrm{C_5H_{11}Cl}$: $\mathrm{GI}=\frac{2\cdot 5+2-11-1}{2}=0$. Logo $A$ é um haleto saturado e acíclico.
+
+\begin{itemize}
+\item[(H1)] Desidro-halogenação com base forte (KOH etanólico, $\Delta$) por E2, que é concertada: não há carbocátion, logo não há rearranjo. "Formando $B$" significa que $B$ é o produto principal (regra de Zaitsev quando há mais de um alceno).
+\item[(H2)] Hidratação = adição ácida de água ($\mathrm{H^+}$), Markovnikov, via carbocátion. Rearranjos 1,2 de H ou de alquila são possíveis e ocorrem quando levam a carbocátion mais estável. A hidroboração-oxidação (anti-Markovnikov) daria álcool primário, oxidável pelo $\mathrm{KMnO_4}$, e não é a hidratação pretendida.
+\item[(H3)] Ozonólise com work-up redutivo (Zn/$\mathrm{H_2O}$ ou sulfeto de dimetila), que preserva aldeídos. Com $\mathrm{H_2O_2}$ o formaldeído seria oxidado a $\mathrm{CO_2}$, contrariando o enunciado.
+\item[(H4)] $\mathrm{KMnO_4}$ em meio ácido, diluído e frio: oxida álcoois com H no carbono carbinólico (primários e secundários). Álcool terciário não é oxidado.
+\item[(H5)] "Produz o composto $C$" significa que a hidratação de $B$ gera um único composto, e o teste com $\mathrm{KMnO_4}$ é negativo. Logo nenhum álcool oxidável pode se formar em quantidade detectável.
+\end{itemize}
+
+\textbf{1) Natureza de $B$ e de $C$.}
+A desidro-halogenação é $\mathrm{C_5H_{11}Cl}\rightarrow \mathrm{C_5H_{10}}+\mathrm{HCl}$. Ela cria uma ligação $\pi$ sem alterar o esqueleto carbônico e sem fechar anel. Como $A$ é acíclico, $B$ é um alceno acíclico, com $\mathrm{GI}=\frac{12-10}{2}=1$. Na hidratação, $\mathrm{C_5H_{10}}+\mathrm{H_2O}\rightarrow \mathrm{C_5H_{12}O}$, com $\mathrm{GI}=0$. Um $\mathrm{C_5H_{12}O}$ saturado pode ser álcool ou éter. A adição de água à dupla coloca H em um carbono e OH no outro, logo $C$ é um álcool.
+
+\textbf{2) $B$ tem $\mathrm{CH_2=}$ terminal.}
+Na ozonólise, cada carbono da dupla vira um grupo C=O. Para formar $\mathrm{CH_2O}$, um dos carbonos da dupla deve ser $\mathrm{CH_2}$ terminal. Os alcenos acíclicos $\mathrm{C_5H_{10}}$ com esse grupo são 1-penteno, 3-metil-1-buteno e 2-metil-1-buteno.
+
+\textbf{3) Teste de $C$: álcool sem H carbinólico.}
+\begin{itemize}
+\item 1-penteno: o cátion inicial em C2 é secundário. Ele dá pentan-2-ol, e o deslocamento 1,2 de H leva a pentan-3-ol. Ambos são secundários e oxidáveis. \textbf{Excluído.}
+\item 3-metil-1-buteno: $\mathrm{H^+}$ se fixa em C1 e forma o cátion secundário $\mathrm{(CH_3)_2CH-CH^{+}-CH_3}$. Há dois caminhos. (i) A água captura esse cátion sem rearranjo e dá 3-metilbutan-2-ol, secundário e oxidável. (ii) O H de C3 (terciário) migra para C2, formando o cátion terciário e, então, 2-metilbutan-2-ol. O caminho (ii) é o favorecido, mas a água está em grande excesso e compete com o rearranjo. Qualquer fração de (i) seria detectada pelo $\mathrm{KMnO_4}$, o que contraria H5. \textbf{Excluído.}
+\item 2-metil-1-buteno: $\mathrm{H^+}$ se fixa em C1 (Markovnikov) e forma o cátion terciário $\mathrm{(CH_3)_2C^{+}-CH_2CH_3}$. Nenhum deslocamento leva a um cátion mais estável, e a água fornece um único produto, o 2-metilbutan-2-ol. \textbf{Adotado.}
+\end{itemize}
+
+Logo, $B=\mathrm{CH_2=C(CH_3)-CH_2-CH_3}$ (2-metilbut-1-eno) e $C=\mathrm{(CH_3)_2C(OH)-CH_2-CH_3}$ (2-metilbutan-2-ol), um álcool terciário.
+
+\textbf{4) Identificação de $A$.} $A$ deve dar $B$ como produto principal (H1). Os 8 isômeros constitucionais de $\mathrm{C_5H_{11}Cl}$ são:
+\begin{itemize}
+\item 1-cloropentano: só 1-penteno, que dá álcool secundário (passo 3). \textbf{Excluído.}
+\item 2-cloropentano: produto principal 2-penteno (Zaitsev), sem $\mathrm{CH_2=}$. \textbf{Excluído.}
+\item 3-cloropentano: só 2-penteno, sem $\mathrm{CH_2=}$. \textbf{Excluído.}
+\item \textbf{1-cloro-2-metilbutano}, $\mathrm{ClCH_2-CH(CH_3)-CH_2-CH_3}$: o único carbono $\beta$ com H é C2, que tem um H. A E2 dá um único produto, 2-metilbut-1-eno, sem rearranjo, pois o haleto é primário. \textbf{Adotado.}
+\item 2-cloro-2-metilbutano: Zaitsev dá 2-metilbut-2-eno como produto principal, sem $\mathrm{CH_2=}$. \textbf{Excluído.}
+\item 2-cloro-3-metilbutano: produto principal 2-metilbut-2-eno; 3-metilbut-1-eno é minoritário. \textbf{Excluído.}
+\item 1-cloro-3-metilbutano: só 3-metil-1-buteno, que passa no passo 2. Mas no passo 3 a hidratação dá mistura com álcool secundário, excluída por H5. \textbf{Excluído (ver observação).}
+\item 1-cloro-2,2-dimetilpropano: não tem H em carbono $\beta$, logo não sofre E2. \textbf{Excluído.}
+\end{itemize}
+
+\textbf{Observação.} Se o rearranjo 1,2-H fosse total, o 1-cloro-3-metilbutano também daria 2-metilbutan-2-ol, e o problema teria duas respostas. A unicidade de $A$ depende, portanto, da premissa H5, que é a leitura literal do enunciado (um único composto $C$ com teste negativo).
+
+\textbf{5) Equações.}
+\[
+\mathrm{ClCH_2-CH(CH_3)-CH_2-CH_3}+\mathrm{KOH}\xrightarrow[\Delta]{\mathrm{EtOH}}\mathrm{CH_2=C(CH_3)-CH_2-CH_3}+\mathrm{KCl}+\mathrm{H_2O}
+\]
+\[
+\mathrm{CH_2=C(CH_3)-CH_2-CH_3}\xrightarrow[\text{work-up redutivo}]{\text{1) }\mathrm{O_3}}\mathrm{CH_2O}+\mathrm{CH_3-CO-CH_2-CH_3}
+\]
+\[
+\mathrm{CH_2=C(CH_3)-CH_2-CH_3}+\mathrm{H_2O}\xrightarrow{\mathrm{H^+}}\mathrm{(CH_3)_2C(OH)-CH_2-CH_3}
+\]
+
+\textbf{6) Verificação.}
+\begin{itemize}
+\item Balanço da primeira equação: C $5=5$; H $11+1=10+2$; Cl, K e O conservados.
+\item Ozonólise: C $1+4=5$; H $2+8=10$.
+\item Hidratação: $\mathrm{C_5H_{10}}+\mathrm{H_2O}=\mathrm{C_5H_{12}O}$.
+\item Graus de insaturação: $0\rightarrow 1\rightarrow 0$, coerentes com haleto, alceno e álcool saturados.
+\item Teste: $C$ não tem C=C e não tem H no carbono carbinólico, logo não reage com $\mathrm{KMnO_4}$ em meio ácido.
+\end{itemize}
+
+\textbf{7) Estereoquímica.} $A$ tem o carbono C2 estereogênico (H, $\mathrm{CH_3}$, $\mathrm{CH_2Cl}$, $\mathrm{CH_2CH_3}$). O enunciado não define a configuração, então $A$ é descrito como $(\pm)$, racemato ou configuração não especificada. A fórmula plana não define estereoquímica. $B$ não tem estereocentro nem isomeria E/Z, pois C1 tem dois H. $C$ é aquiral, pois C2 tem dois grupos $\mathrm{CH_3}$ iguais.
+
+\textbf{Respostas.}
+\begin{itemize}
+\item[a)] $C$ é um \textbf{álcool terciário}: a hidroxila está ligada a C2, que não tem H e está ligado a três carbonos. Por isso não é oxidado pelo $\mathrm{KMnO_4}$ em meio ácido.
+\item[b)] $A=\mathrm{ClCH_2-CH(CH_3)-CH_2-CH_3}$ (1-cloro-2-metilbutano); $B=\mathrm{CH_2=C(CH_3)-CH_2-CH_3}$ (2-metilbut-1-eno); $C=\mathrm{(CH_3)_2C(OH)-CH_2-CH_3}$ (2-metilbutan-2-ol).
+\end{itemize}
+
+ANSWER: a) álcool terciário; b) A = 1-cloro-2-metilbutano, B = 2-metilbut-1-eno, C = 2-metilbutan-2-ol.%
+\newpage%
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{Passo 1: fórmula molecular.} A razão $6:10:1$ é a razão em número de átomos de C:H:O, logo a fórmula mínima é $\mathrm{C_6H_{10}O}$, com massa $6\cdot 12{,}011+10\cdot 1{,}0079+15{,}999=98{,}14\ \mathrm{g\,mol^{-1}}$. Essa fórmula tem 1 O, mas a hipótese (i) exige 2 O por molécula. A fórmula molecular é múltiplo inteiro da mínima, e o fator é 2:
+\[
+\mathrm{C_6H_{10}O}\ \xrightarrow{\ \times 2\ }\ \mathrm{C_{12}H_{20}O_2},\qquad M=12\cdot 12{,}011+20\cdot 1{,}0079+2\cdot 15{,}999=196{,}29\ \mathrm{g\,mol^{-1}}
+\]
+Conferência: o número de insaturações é $\mathrm{DBE}=C-\dfrac{H}{2}+1=12-10+1=3$. Os dois O formam o grupo acetato $\mathrm{-O{-}C(=O){-}CH_3}$ (OAc), que contém uma C=O. O dieno (iii) contém duas C=C. As três insaturações estão esgotadas, logo não há anel. Outra conferência: acetilar o linalol, $\mathrm{C_{10}H_{18}O}$ ($154{,}25\ \mathrm{g\,mol^{-1}}$), troca um H da hidroxila por $\mathrm{COCH_3}$, ou seja, soma $\mathrm{C_2H_2O}$, e $\mathrm{C_{10}H_{18}O+C_2H_2O=C_{12}H_{20}O_2}$.
+
+\textbf{Passo 2: esqueleto (itens ii, iii e iv).} Por (ii), a cadeia principal vai de C1 a C8. Por (iii), as duplas estão em C1 e C6: C1=C2 e C6=C7 (octa-1,6-dieno). Elas não são conjugadas: entre C2 e C6 há três carbonos sp$^3$ (C3, C4 e C5), e a conjugação exigiria $\mathrm{C{=}C{-}C{=}C}$, com uma única ligação simples entre as duplas.
+
+Por (iv), as duas metilas estão numa mesma extremidade. A extremidade C1--C2 não serve: uma metila em C1 alongaria a cadeia para 9 C, contrariando (ii), e C2 comporta no máximo uma metila, pois tem apenas um H disponível. Logo, a extremidade é C7--C8. C7 é sp$^2$ e liga C6 (pela dupla), C8 e mais um grupo, que só pode ser uma metila (7-metil). Assim, C7 carrega as duas metilas (C8 e 7-CH$_3$).
+
+Contagem: 8 da cadeia + 1 (7-CH$_3$) + 2 (acetato) = 11 C. O 12º carbono é uma metila que deve estar no mesmo carbono do acetato, por (v); sua posição é fixada no passo 3.
+
+\textbf{Passo 3: posição do acetato e da metila (item v).} O carbono procurado é sp$^3$, não terminal e ligado diretamente a carbono sp$^2$. Os candidatos são C3 (ligado a C2) e C5 (ligado a C6). C8 e a 7-metila são terminais; C4 não é alílico, pois liga dois carbonos sp$^3$.
+\begin{itemize}
+\item C5: C6 pertence a $\mathrm{C6{=}C7(CH_3)_2}$, e um dos metilos de C7 fica cis a C5. Um carbono quaternário em C5 (com CH$_3$ e OAc) sofre tensão alílica do tipo A$^{(1,3)}$ com esse metilo. Descartado.
+\item C3: o vizinho C2 é CH sem substituinte cis, pois a dupla C1=C2 é terminal. O impedimento é menor. Escolhido.
+\end{itemize}
+Logo, CH$_3$ e OAc estão em C3, e a fórmula estrutural plana é
+\[
+\mathrm{CH_2{=}CH{-}C(CH_3)(OAc){-}CH_2{-}CH_2{-}CH{=}C(CH_3)_2}
+\]
+Numeração: C1 (=CH$_2$), C2 (=CH--), C3 (quaternário, com CH$_3$ e OAc), C4 e C5 (CH$_2$), C6 (=CH--), C7 (=C, com dois CH$_3$) e C8 (CH$_3$).
+
+Conferência: C = 8 + 2 (metilas de C3 e C7) + 2 (acetato) = 12; H = 2 + 1 + 2 + 2 + 1 + 4$\times$3 = 20; O = 2. Confere com $\mathrm{C_{12}H_{20}O_2}$.
+
+Estereoquímica: C3 tem quatro grupos distintos (CH$_3$, OAc, vinila e CH$_2$CH$_2$), logo é estereogênico. A fórmula plana não define R ou S, e o enunciado não especifica a configuração. As duplas não têm isomeria E/Z: C1 tem dois H e C7 tem dois CH$_3$.
+
+\textbf{Passo 4: poliadição (item b).} A dupla mais substituída é C6=C7, trissubstituída (C7 com dois grupos e C6 com um). A dupla C1=C2 é monossubstituída. Como o enunciado manda considerar somente C6=C7, a vinila C1=C2 fica como grupo pendente.
+
+Regiosseletividade: na adição ao alceno, a nova ligação forma-se no carbono menos substituído (C6, que tem H), e o centro ativo (carbocátion ou radical) fica em C7, carbono terciário e mais estável. A propagação é cabeça-cauda: o centro ativo em C7 da cadeia forma ligação com C6 do monômero seguinte, repetindo a sequência $-\mathrm{C(CH_3)_2{-}CH(R)}-$.
+
+Unidade repetitiva:
+\[
+\left[\mathrm{C(CH_3)_2{-}CH\bigl(CH_2{-}CH_2{-}C(CH_3)(OAc){-}CH{=}CH_2\bigr)}\right]_n
+\]
+Nomenclatura: o polímero é poli[1,1-dimetil-2-(3-acetiloxi-3-metilpent-4-en-1-il)etileno]. Notação SMILES da unidade, com os pontos de ligação marcados: \texttt{[*]C(C)(C)C([*])CCC(C)(OC(C)=O)C=C}.
+
+A poliadição não perde átomos, então a unidade repetitiva tem a fórmula do monômero, $\mathrm{C_{12}H_{20}O_2}$ (contagem: C = 3 + 1 + 8 = 12; H = 6 + 1 + 13 = 20; O = 2), com massa de 196,29 g/mol. Logo $M=n\cdot 196{,}29\ \mathrm{g\,mol^{-1}}$, em que $n$ é o grau de polimerização, que o enunciado não fixa. Por exemplo, para $n=1000$, $M=1{,}96\times10^{5}\ \mathrm{g\,mol^{-1}}$.
+
+Estereoquímica do polímero: o C6 da cadeia principal é estereogênico, pois liga H, a cadeia lateral e dois ramos da cadeia principal que diferem pela direção cabeça-cauda (como no polipropileno). Sem informação de tacticidade, a configuração não é definida. Os C3 das cadeias laterais continuam estereogênicos, herdados do monômero.
+
+Sobre a formação: a polimerização catiônica é a via típica para esse padrão, pois C7 é 1,1-dialquilado, como no isobutileno, que polimeriza por ácidos de Lewis. A via radicalar é pouco eficiente para o isobutileno, por transferência de cadeia. Por isso o polímero é apenas "possivelmente" formado: a propagação de um alceno trissubstituído é mais impedida e depende das condições.
+
+ANSWER: a) $\mathrm{CH_2{=}CH{-}C(CH_3)(OAc){-}CH_2{-}CH_2{-}CH{=}C(CH_3)_2}$, acetato de 3,7-dimetilocta-1,6-dien-3-ila ($\mathrm{C_{12}H_{20}O_2}$, $196{,}29\ \mathrm{g\,mol^{-1}}$); b) $\left[\mathrm{C(CH_3)_2{-}CH\bigl(CH_2{-}CH_2{-}C(CH_3)(OAc){-}CH{=}CH_2\bigr)}\right]_n$, por poliadição na dupla C6=C7 (cabeça-cauda).%
+\newpage%
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses.}
+\begin{enumerate}
+\item Solução diluída e ideal: atividades iguais às concentrações. O contaminante está em traço, de modo que a força iônica é desprezível.
+\item Temperatura de $25\,^{\circ}\text{C}$. Essa é uma suposição adotada, pois o enunciado não a informa. Ela fixa $K_w = 10^{-14}$ e o valor de $K_a$.
+\item Volume da piscina constante: o ácido adicionado ocupa fração desprezível do volume (verificado ao final).
+\item Os íons do sal são espectadores, e suas concentrações não mudam. Supõe-se que o ânion $X^{m-}$ seja de ácido forte (p. ex. Cl$^-$ ou NO$_3^-$), que não consome H$^+$, e que o cátion metálico, em traço, não hidrolisa apreciavelmente nem se complexa com acetato. A prova não enuncia essa condição. Se $X^{m-}$ fosse de ácido fraco (CO$_3^{2-}$, S$^{2-}$, PO$_4^{3-}$), parte do ácido seria consumida e a massa aumentaria.
+\item Como se pede a massa mínima, o pH final é $4{,}00$, o limiar de precipitação. No limiar a precipitação é incipiente, e a remoção do metal é desprezível.
+\end{enumerate}
+
+\textbf{1. Concentração de H$^+$ exigida.} Por definição, $\text{pH} = -\log[\text{H}^+]$. Para $\text{pH} = 4$,
+\[
+[\text{H}^+] = 10^{-4}\ \text{mol/L}.
+\]
+Em água neutra a $25\,^{\circ}\text{C}$, $[\text{H}^+]_0 = [\text{OH}^-]_0 = 10^{-7}\ \text{mol/L}$.
+
+\textbf{2. Balanço de cargas.} Sejam $M^{n+}$ o cátion do contaminante e $X^{m-}$ o ânion do sal. Na solução final, a eletroneutralidade fornece
+\[
+[\text{H}^+] + n[M^{n+}] = [\text{OH}^-] + [\text{Ac}^-] + m[X^{m-}].
+\]
+Antes da adição do ácido, $10^{-7} + n[M^{n+}] = 10^{-7} + m[X^{m-}]$. Pela hipótese 4, os termos do sal são os mesmos nos dois estados. Subtraindo a condição inicial da final, esses termos e as parcelas de $10^{-7}$ se cancelam, e resta
+\[
+[\text{Ac}^-] = [\text{H}^+] - [\text{OH}^-].
+\]
+Com $K_w = [\text{H}^+][\text{OH}^-] = 10^{-14}$, tem-se $[\text{OH}^-] = 10^{-10}\ \text{mol/L}$. Logo
+\[
+[\text{Ac}^-] = 10^{-4} - 10^{-10} \approx 1{,}0\times10^{-4}\ \text{mol/L}.
+\]
+
+\textbf{3. Equilíbrio de dissociação.} Para $\text{HAc} \rightleftharpoons \text{H}^+ + \text{Ac}^-$, tem-se $K_a = \dfrac{[\text{H}^+][\text{Ac}^-]}{[\text{HAc}]}$. Então
+\[
+[\text{HAc}] = \frac{[\text{H}^+][\text{Ac}^-]}{K_a} = \frac{(10^{-4})(1{,}0\times10^{-4})}{2{,}0\times10^{-5}} = 5{,}0\times10^{-4}\ \text{mol/L}.
+\]
+
+\textbf{4. Balanço de massa do acetato.} Como o volume é constante, todo o ácido adicionado está como HAc ou Ac$^-$:
+\[
+C = [\text{HAc}] + [\text{Ac}^-] = 5{,}0\times10^{-4} + 1{,}0\times10^{-4} = 6{,}0\times10^{-4}\ \text{mol/L}.
+\]
+Não se usou $[\text{HAc}] \approx C$. Aqui a fração ionizada é $\alpha = [\text{Ac}^-]/C = 1/6 \approx 17\%$, bem acima do limite usual de $5\%$ para essa aproximação. Ela daria $C \approx [\text{H}^+]^2/K_a = 5{,}0\times10^{-4}$ mol/L, subestimando o ácido em cerca de $17\%$.
+
+\textbf{5. Justificativa do mínimo.} Substituindo $[\text{Ac}^-] = [\text{H}^+] - [\text{OH}^-]$ e $[\text{HAc}] = C - [\text{Ac}^-]$ na expressão de $K_a$, obtém-se, para um $h = [\text{H}^+]$ qualquer,
+\[
+C(h) = \left(h - \frac{K_w}{h}\right)\left(1 + \frac{h}{K_a}\right).
+\]
+Para $h > \sqrt{K_w} = 10^{-7}$, os dois fatores são positivos e crescentes em $h$. Logo $C(h)$ é estritamente crescente. A solução de concentração analítica $C$ tem $h$ dado por $C = C(h)$. Portanto $\text{pH} \le 4$ (ou seja, $h \ge 10^{-4}$) ocorre se, e só se, $C \ge C(10^{-4})$. Assim, qualquer pH menor exige mais ácido, e
+\[
+C_{\min} = \left(10^{-4} - 10^{-10}\right)\left(1 + \frac{10^{-4}}{2{,}0\times10^{-5}}\right) = 9{,}999\times10^{-5}\times 6 \approx 6{,}0\times10^{-4}\ \text{mol/L},
+\]
+o que confirma os passos 1 a 4.
+
+\textbf{6. Quantidade e massa por piscina.} Com $V = 2{,}0\times10^{5}$ L,
+\[
+n = C\,V = 6{,}0\times10^{-4}\ \text{mol/L} \times 2{,}0\times10^{5}\ \text{L} = 1{,}2\times10^{2}\ \text{mol} = 120\ \text{mol}.
+\]
+A massa molar do CH$_3$COOH (C$_2$H$_4$O$_2$), com a tabela periódica da prova, é
+\[
+M = 2(12{,}011) + 4(1{,}0079) + 2(15{,}999) = 60{,}05\ \text{g/mol}.
+\]
+Logo
+\[
+m = n\,M = 120\ \text{mol} \times 60{,}05\ \text{g/mol} \approx 7{,}2\times10^{3}\ \text{g} = 7{,}2\ \text{kg}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item \emph{Unidades:} $(\text{mol/L})\cdot\text{L} = \text{mol}$, $\text{mol}\cdot(\text{g/mol}) = \text{g}$ e $10^3\ \text{g} = 1\ \text{kg}$.
+\item \emph{Equilíbrio direto, partindo de $C$:} com $C = 6{,}0\times10^{-4}$ mol/L, a relação $h^2/(C-h) = K_a$ dá $h^2 + 2{,}0\times10^{-5}\,h - 1{,}2\times10^{-8} = 0$. A raiz positiva é
+\[
+h = \frac{-2{,}0\times10^{-5} + \sqrt{4{,}84\times10^{-8}}}{2} = \frac{-2{,}0\times10^{-5} + 2{,}2\times10^{-4}}{2} = 1{,}0\times10^{-4}\ \text{mol/L},
+\]
+e portanto $\text{pH} = 4{,}00$. A água foi desprezada nessa conta, pois sua contribuição ($10^{-7}$ mol/L) é $0{,}1\%$ de $10^{-4}$.
+\item \emph{Henderson--Hasselbalch:} $\text{p}K_a = 5 - \log 2 \approx 4{,}70$ e $\text{pH} = \text{p}K_a + \log\dfrac{[\text{Ac}^-]}{[\text{HAc}]} = 4{,}70 + \log\dfrac{1}{5} = 4{,}70 - (1 - 0{,}301) \approx 4{,}00$.
+\item \emph{Mínimo:} com $C = 4{,}0\times10^{-4}$ mol/L, a mesma equação dá $h = 8{,}0\times10^{-5}$ mol/L e $\text{pH} \approx 4{,}10$. Esse valor está acima de 4, portanto não há precipitação.
+\item \emph{Ordem de grandeza:} um ácido forte precisaria de apenas $10^{-4}\times2{,}0\times10^{5} = 20$ mol. O ácido fraco exige $1 + [\text{H}^+]/K_a = 6$ vezes mais, coerente com $\alpha = 1/6$.
+\item \emph{Volume:} $7{,}2$ kg de ácido puro ocupam cerca de $6{,}9$ L, usando densidade $\approx 1{,}05$ g/mL. Esse é um valor de referência externo à prova, não usado nos cálculos. A fração do volume da piscina é de $3\times10^{-5}$, o que valida a hipótese 3.
+\end{itemize}
+
+\textbf{Natureza do resultado.} Os $120$ mol são o limite teórico de equilíbrio, com mistura ideal e pH uniforme. Em uma planta real, a dosagem deve ter margem de segurança, pois a mistura não é instantânea e há zonas com pH acima do alvo. Além disso, qualquer alcalinidade da água (HCO$_3^-$, CO$_3^{2-}$) consumiria H$^+$ e exigiria ácido adicional.
+
+ANSWER: $m \approx 7{,}2\ \text{kg}$ de ácido acético por piscina (120 mol; pH final 4,00)%
+\newpage%
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Reação e hipóteses.} A combustão completa do metano, com água líquida como produto, é
+\[
+\mathrm{CH_4(g) + 2\,O_2(g) \longrightarrow CO_2(g) + 2\,H_2O(\ell)}
+\]
+(balanceamento: C, $1=1$; H, $4=4$; O, $4=2+2$). Hipóteses:
+\begin{enumerate}
+\item \textit{Mesma reação nas duas queimas.} O enunciado não nomeia o combustível da segunda queima nem seus produtos. Admite-se que ela é também a combustão completa do CH$_4$, com CO$_2$(g) e H$_2$O($\ell$). Sem essa hipótese, se a segunda queima formasse outros produtos (por exemplo, CO), a entalpia por mol de combustível mudaria e a razão não seria determinada pelos dados.
+\item \textit{Pressão constante e mesmas condições.} A $p$ constante, o calor trocado é $q_p=\Delta H$. Como as duas queimas ocorrem nas mesmas condições, a entalpia de combustão por mol de CH$_4$, $\Delta H_c<0$, é a mesma nas duas. Seu módulo $h=|\Delta H_c|$ é desconhecido e não precisa ser determinado. Se a energia fosse tomada como $\Delta U$, o argumento seria idêntico: $\Delta H$ e $\Delta U$ diferem por $\Delta n_{\text{gás}}\,RT$, com $\Delta n_{\text{gás}}=1-3=-2$, mas esse termo tem o mesmo valor por mol nas duas queimas.
+\item \textit{Extensividade.} A energia liberada é proporcional à quantidade de matéria de CH$_4$ queimada: $E=n_{\mathrm{CH_4}}\,h$.
+\item \textit{Estequiometria.} Pela equação, 1 mol de CH$_4$ consome 2 mol de O$_2$. Logo, $n_{\mathrm{O_2}}$ mol de O$_2$ correspondem a $n_{\mathrm{O_2}}/2$ mol de CH$_4$.
+\end{enumerate}
+
+\textbf{Passo 1: energias em função da quantidade de matéria de CH$_4$.} Na primeira queima, $n_1=m_1/M(\mathrm{CH_4})$ mol de CH$_4$, logo
+\[
+E_1=n_1\,h=324\ \text{kJ}
+\]
+Na segunda, são consumidos $n_{\mathrm{O_2}}=m_2/M(\mathrm{O_2})$ mol de O$_2$, correspondentes a $n_2=n_{\mathrm{O_2}}/2=m_2/[2\,M(\mathrm{O_2})]$ mol de CH$_4$, logo
+\[
+E_2=n_2\,h=81\ \text{kJ}
+\]
+
+\textbf{Passo 2: dividir as expressões.} Como $h$ é o mesmo nas duas queimas, ele se cancela. $E_1$ e $E_2$ são energias liberadas, positivas em módulo, e $h\neq 0$; a divisão é válida:
+\[
+\frac{E_1}{E_2}=\frac{n_1}{n_2}=\frac{m_1/M(\mathrm{CH_4})}{m_2/[2\,M(\mathrm{O_2})]}=\frac{2\,M(\mathrm{O_2})}{M(\mathrm{CH_4})}\cdot\frac{m_1}{m_2}
+\]
+Isolando a razão pedida:
+\[
+\frac{m_1}{m_2}=\frac{E_1}{E_2}\cdot\frac{M(\mathrm{CH_4})}{2\,M(\mathrm{O_2})}
+\]
+
+\textbf{Passo 3: substituição numérica.} $E_1/E_2=324/81=4$ (adimensional). Como $M(\mathrm{O_2})=2\,M(\mathrm{O})$, o denominador vale $2\,M(\mathrm{O_2})=4\,M(\mathrm{O})$, logo
+\[
+\frac{m_1}{m_2}=\frac{4\,M(\mathrm{CH_4})}{4\,M(\mathrm{O})}=\frac{M(\mathrm{CH_4})}{M(\mathrm{O})}
+\]
+Com a tabela periódica da prova, $M(\mathrm{CH_4})=12{,}011+4\times 1{,}0079=16{,}043\ \text{g.mol}^{-1}$ e $M(\mathrm{O})=15{,}999\ \text{g.mol}^{-1}$, de modo que
+\[
+\frac{m_1}{m_2}=\frac{16{,}043}{15{,}999}\approx 1{,}003
+\]
+Com massas molares inteiras (C = 12, H = 1, O = 16), $M(\mathrm{CH_4})=M(\mathrm{O})=16\ \text{g.mol}^{-1}$ e a razão é $1$. O desvio de 0,3\% vem apenas do arredondamento das massas atômicas e está muito abaixo da precisão dos dados (81 kJ tem dois algarismos significativos). Logo, $m_1/m_2=1$.
+
+\textbf{Passo 4: verificações.}
+\begin{itemize}
+\item \textit{Rota independente (massas explícitas).} De $E_1=n_1\,h$: $n_1=324/h$ mol e $m_1=16\cdot 324/h=5184/h$ g. De $E_2=n_2\,h$: $n_2=81/h$ mol, logo $n_{\mathrm{O_2}}=162/h$ mol e $m_2=32\cdot 162/h=5184/h$ g. Com $h$ em kJ.mol$^{-1}$, kJ/(kJ.mol$^{-1}$) = mol e mol $\times$ g.mol$^{-1}$ = g. Portanto $m_1=m_2$, o que confirma a razão 1 por outro caminho.
+\item \textit{Ordem de grandeza.} A folha de dados não traz $\Delta H^{\circ}_f(\mathrm{CH_4(g)})$, logo $h$ não é calculável com os dados da prova, e a resolução não precisa dele. Só para conferência, com o valor tabelado externo $\Delta H^{\circ}_f(\mathrm{CH_4(g)})=-74{,}8$ kJ.mol$^{-1}$ (não usado acima):
+\[
+\Delta H_c=-394{,}0+2\,(-285{,}8)-(-74{,}8)=-890{,}8\ \text{kJ.mol}^{-1}
+\]
+Então $h\approx 890{,}8$ kJ.mol$^{-1}$ e $m_1=m_2\approx 5184/890{,}8\approx 5{,}8$ g, com cerca de $0{,}36$ mol de CH$_4$ e $0{,}18$ mol de O$_2$, ordem de grandeza compatível com uma queima de laboratório.
+\item \textit{Unidades e sinais.} $m_1/m_2$ é adimensional (ambas em g). $E_1$ e $E_2$ são energias liberadas, tomadas em módulo, logo positivas; o sinal negativo de $\Delta H_c$ fica absorvido em $h$ e não afeta a razão.
+\item \textit{Casos particulares e dados não necessários.} A razão depende apenas da estequiometria 1:2 e das massas molares; não depende do valor de $h$, desde que a reação seja a mesma nas duas queimas. Por isso não são necessários $\Delta H^{\circ}_f$, $\Delta G^{\circ}_f$, a constante de Henry, a entropia de fusão do cobre, $R$, $F$ e os logaritmos. Se as duas queimas formassem H$_2$O(g), $h$ mudaria, mas ainda seria o mesmo nas duas, e a razão continuaria 1. Já se a segunda queima fosse de outro combustível, $h$ seria outro e a razão não seria determinada: a hipótese 1 é indispensável.
+\end{itemize}
+
+ANSWER: $\dfrac{m_1}{m_2}=1$, isto é, $m_1=m_2$ (em geral, $\dfrac{m_1}{m_2}=\dfrac{M(\mathrm{CH_4})}{M(\mathrm{O})}$, que com a tabela da prova dá $\approx 1{,}003$, dentro da precisão dos dados)%
+\newpage%
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Hipóteses.}
+\begin{itemize}
+\item Gases ideais; o vapor do ácido e o H$_2$ são comparados nas mesmas $p$ e $T$.
+\item Dissociação completa: cada molécula libera todos os seus hidrogênios ionizáveis, ou seja, $k$ íons H$^+$, com $k \geq 1$ inteiro. Essa hipótese serve apenas para contar H$^+$ na neutralização; não torna o ácido forte.
+\item O ácido contém apenas C, H e O.
+\end{itemize}
+
+\textbf{Passo 1: quantidade de matéria de NaOH.} Pela definição de concentração molar, $c = n/V$, com $V = 30\ \text{mL} = 0{,}030\ \text{L}$:
+\[
+n_{\text{NaOH}} = c\,V = 0{,}1\ \text{mol/L} \times 0{,}030\ \text{L} = 3{,}0 \times 10^{-3}\ \text{mol}.
+\]
+
+\textbf{Passo 2: massa molar pela titulação, com $k$ desconhecido.} Na equivalência, os $k$ H$^+$ de cada molécula são neutralizados por $k$ OH$^-$ (H$^+$ + OH$^-$ $\rightarrow$ H$_2$O). Como cada NaOH fornece um OH$^-$, vale $n_{\text{OH}^-} = n_{\text{NaOH}} = k\,n_{\text{ácido}}$. Logo
+\[
+n_{\text{ácido}} = \frac{3{,}0 \times 10^{-3}}{k}\ \text{mol}
+\qquad\Rightarrow\qquad
+M_{\text{real}} = \frac{0{,}18\ \text{g}}{n_{\text{ácido}}} = 60\,k\ \text{g/mol}.
+\]
+
+\textbf{Passo 3: massa molar aparente pela densidade do vapor.} Pela equação de Clapeyron, $pV = nRT$ com $n = m/M$, obtém-se $d = m/V = pM/(RT)$. Nas mesmas $p$ e $T$, a razão entre as densidades é a razão entre as massas molares (lei de Avogadro: volumes iguais contêm o mesmo número de mols). Logo
+\[
+M_{\text{ap}} = 30 \times M_{\text{H}_2} = 30 \times 2 \times 1{,}0079\ \text{g/mol} \approx 60{,}5\ \text{g/mol}.
+\]
+
+\textbf{Passo 4: confronto e teste de associação.} A massa molar obtida pela densidade é $M_{\text{ap}} = m/n_{\text{partículas}}$. Se o vapor tivesse dímeros, a mesma massa estaria distribuída em menos partículas, logo $M_{\text{ap}} \geq M_{\text{real}}$, com igualdade só na ausência de associação. Assim, $M_{\text{real}} \leq 60{,}5$ g/mol. Com o passo 2,
+\[
+60\,k \leq 60{,}5 \quad\Rightarrow\quad k \leq 1{,}008 \quad\Rightarrow\quad k = 1,
+\]
+pois $k$ é inteiro e $k \geq 1$. Consequências:
+\begin{itemize}
+\item $M_{\text{real}} = 60$ g/mol e $M_{\text{ap}} \approx M_{\text{real}}$ (diferença de 1\%, dentro do arredondamento do H): o vapor é praticamente monomérico.
+\item Há um único H ionizável. Como cada carboxila ($-\text{COOH}$) fornece um H ionizável e os H ligados a C não se ionizam em água, o ácido tem uma única carboxila, isto é, é monocarboxílico. Os casos $k = 2$ (120 g/mol) e $k = 3$ (180 g/mol) exigiriam $M_{\text{ap}} \geq 120$ g/mol, o que contradiz 60,5 g/mol.
+\end{itemize}
+
+\textbf{Passo 5: fórmula molecular.} Seja $\text{C}_x\text{H}_y\text{O}_z$. A carboxila exige $z \geq 2$ e $y \geq 1$, e
+\[
+12x + y + 16z = 60.
+\]
+\begin{itemize}
+\item $z = 2$: $12x + y = 28$. Como $12x \leq 28$, $x \leq 2$. Para $x = 1$, $y = 16$, impossível, pois um carbono forma no máximo 4 ligações com H. Logo $x = 2$ e $y = 4$.
+\item $z = 3$: $12x + y = 12$ dá $x = 1$ e $y = 0$, contrariando $y \geq 1$.
+\item $z \geq 4$: $12x + y = 60 - 16z < 0$, impossível.
+\end{itemize}
+Logo a fórmula é $\text{C}_2\text{H}_4\text{O}_2$, pois $2 \times 12 + 4 + 2 \times 16 = 60$. Ela coincide com $\text{C}_n\text{H}_{2n}\text{O}_2$ para $n = 2$ (monoácido saturado acíclico). Sua insaturação equivalente, $\text{DBE} = x - \dfrac{y}{2} + 1 = 1$, corresponde apenas à ligação $\text{C}=\text{O}$ da carboxila: não há anel nem outra dupla ligação.
+
+\textbf{Passo 6: estrutura e nome.} O grupo $-\text{COOH}$ tem massa $12 + 2 \times 16 + 1 = 45$ g/mol. Logo o grupo R ligado ao carbono da carboxila tem $M_R = 60 - 45 = 15$ g/mol. O único grupo formado só por C e H com massa 15 é $\text{CH}_3$, ou seja, R $=\text{CH}_3$. Os outros isômeros de C$_2$H$_4$O$_2$ não são ácidos carboxílicos: HCOOCH$_3$ (metanoato de metila, éster) e HOCH$_2$CHO (hidroxiacetaldeído) não têm grupo $-\text{COOH}$ e são excluídos pelo enunciado. A estrutura plana é
+\[
+\text{H}_3\text{C}-\text{C}(=\text{O})-\text{OH}.
+\]
+Pela IUPAC, o nome é ácido etanoico, conhecido como ácido acético.
+
+\textbf{Passo 7: dissociação.} Com $k = 1$, a dissociação completa é
+\[
+\text{CH}_3\text{COOH} \rightarrow \text{CH}_3\text{COO}^- + \text{H}^+,
+\]
+com apenas o H da carboxila ionizável.
+
+\textbf{Observação.} O ácido acético é fraco ($K_a$ da ordem de $10^{-5}$), de modo que sua dissociação real é parcial. Isso não altera a resposta: até o ponto de equivalência, o OH$^-$ consome H$^+$ e desloca o equilíbrio até que todo o ácido seja neutralizado. A razão 1:1 não depende, portanto, do grau de ionização.
+
+\textbf{Conferência.}
+\begin{itemize}
+\item $n_{\text{ácido}} = 0{,}18/60 = 3{,}0 \times 10^{-3}$ mol $= n_{\text{NaOH}}$, razão 1:1, confirmada.
+\item $M(\text{CH}_3\text{COOH}) = 2(12{,}011) + 4(1{,}0079) + 2(15{,}999) \approx 60{,}05$ g/mol, e $M/M_{\text{H}_2} \approx 60{,}05/2{,}016 \approx 30$, confirmada.
+\item Ordem de grandeza: $0{,}18$ g $\approx 3$ mmol, compatível com 30 mL de NaOH 0,1 M.
+\end{itemize}
+
+\textbf{Resposta:} ácido etanoico (ácido acético), $\text{CH}_3\text{COOH}$, com massa molar 60 g/mol.
+
+ANSWER: ácido etanoico (ácido acético), $\text{CH}_3\text{COOH}$, massa molar 60 g/mol, monoácido (um único H ionizável).%
+\newpage%
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Hipóteses e modelo.} (a) Processo a pressão constante de 1 atm (mesma condição de $\Delta S^o_{fus}$): o calor trocado com o meio é $q_p=\Delta H$. (b) $\Delta H_r(T)$ é a variação de entalpia da reação com reagentes e produtos à temperatura $T$ do reator. A energia consumida é a soma das entalpias das etapas do processo: as duas reações químicas e a fusão do cobre, como o enunciado as separa. (c) Há cobre líquido somente para $T\ge T_{fus}$; a menor temperatura de operação é $T_{fus}$. (d) A folha de dados não traz $C_p$ de malaquita, C, CO$_2$ e H$_2$O; por isso o aquecimento sensível desses compostos não é contabilizado, admitindo-se que a alimentação já está em $T$, como em (b). Como $C_p>0$, qualquer aquecimento adicional só aumentaria a energia (ver discussão final). (e) A viabilidade termodinâmica ($\Delta G_r\le 0$) não é verificável, pois faltam $S^o$ dos compostos; admite-se que a reação ocorra. (f) O enunciado indica $G$ em kJ/mol, mas o $\Delta S^o_{fus}=10{,}0$ J/(mol$\cdot$K) da folha só é compatível com $G$ em J/mol: em kJ/mol a inclinação de $G_L-G_S$ daria $10$ kJ/(mol$\cdot$K), o que é absurdo. Adota-se J/mol; $T_{fus}$ não depende dessa escolha.
+
+\textbf{1) Reação global.} O CuO formado na 1ª etapa é consumido na 2ª e se cancela:
+\begin{align*}
+\text{Cu}_2\text{CO}_3(\text{OH})_2(s)+\text{C}(\text{grafite})\longrightarrow 2\,\text{Cu}(s)+\text{H}_2\text{O}(g)+2\,\text{CO}_2(g)
+\end{align*}
+Balanço: Cu: $2=2$; C: $1+1=2$; O: $5=1+4$; H: $2=2$. A 3ª etapa, $\text{Cu}(s)\to\text{Cu}(l)$, é a fusão.
+
+\textbf{2) Entalpia da reação.} Pela Lei de Hess ($H$ é função de estado) e pela hipótese (iii), $\Delta H_r$ é o mesmo em qualquer $T$ da faixa; logo $\Delta H_r(T_{fus})=\Delta H_r(298)$. Cu e C, substâncias simples, têm $\Delta H^o_f=0$. A água entra como H$_2$O(g) porque, a $T_{fus}>373$ K, ela é vapor; com H$_2$O(l) a reação daria $-19{,}8$ kJ (exotérmica), contrariando o enunciado.
+\begin{align*}
+\Delta H_r&=\sum n\,\Delta H^o_f(\text{produtos})-\sum n\,\Delta H^o_f(\text{reagentes})\\
+&=\big[(-242{,}0)+2(-394{,}0)+2(0)\big]-\big[(-1054{,}0)+0\big]=+24{,}0\ \text{kJ por mol de malaquita}
+\end{align*}
+Como $\Delta H_r>0$, a reação é endotérmica, como afirma o enunciado. Por mol de Cu formado, $\Delta H_r/2=12{,}0$ kJ.
+
+\textbf{3) Temperatura de fusão ($G_S=G_L$).} Na diferença $G_L-G_S$, os termos $-24{,}1\,T\ln T$, $1{,}3\times10^{-7}T^3$, $52478{,}0/T$ e a constante $-2{,}7\times10^{2}$ são iguais nas duas fases e se cancelam:
+\begin{align*}
+G_L-G_S&=(5194{,}3+7770{,}5)+(120{,}0-130{,}0)\,T=12\,964{,}8-10{,}0\,T\ \text{(J/mol)}
+\end{align*}
+Em $T_{fus}$, $G_L=G_S$:
+\[
+T_{fus}=\frac{12\,964{,}8}{10{,}0}=1296{,}5\ \text{K}
+\]
+Este valor está na faixa de validade (298 a 1358 K). Não se deve usar 1358 K, que é apenas o limite superior da faixa e não o ponto de fusão dado pelas funções $G$.
+
+\textbf{4) Entalpia de fusão.} Como $\Delta G=\Delta H-T\Delta S$, a diferença $G_L-G_S$ equivale a $\Delta H_{fus}-T\,\Delta S_{fus}$: o intercepto ($12\,964{,}8$ J/mol) é $\Delta H_{fus}$ e a inclinação ($-10{,}0$) é $-\Delta S_{fus}$, ambos coerentes com a folha. Logo
+\[
+\Delta H_{fus}=T_{fus}\,\Delta S^o_{fus}=1296{,}5\times10{,}0\approx 12{,}96\ \text{kJ/mol}
+\]
+
+\textbf{5) Energia por mol de Cu.} Pela hipótese (b):
+\[
+Q_{Cu}=\frac{\Delta H_r}{2}+\Delta H_{fus}=12{,}0+12{,}96=24{,}96\ \text{kJ/mol de Cu}
+\]
+
+\textbf{6) Energia total.} Quantidade de cobre:
+\[
+n_{Cu}=\frac{213\,360\ \text{g}}{63{,}546\ \text{g/mol}}\approx 3357{,}6\ \text{mol}
+\]
+(equivalente a $3360$ mol, pois $213{,}36$ kg $=3360\times63{,}5$ g; malaquita: $1678{,}8$ mol).
+\[
+E=3357{,}6\times24{,}96\ \text{kJ}\approx 8{,}38\times10^{4}\ \text{kJ}=83{,}8\ \text{MJ},
+\]
+sendo $1678{,}8\times24{,}0\approx40{,}3$ MJ da reação e $3357{,}6\times12{,}96\approx43{,}5$ MJ da fusão.
+
+\textbf{7) Número de placas.} Cada placa fornece $2$ MJ em $1$ h, logo
+\[
+N\ge\frac{E}{2\ \text{MJ}}=\frac{83{,}8}{2}\approx 41{,}9\quad\Rightarrow\quad N_{min}=42
+\]
+Com 41 placas há 82 MJ, insuficientes ($<83{,}8$ MJ); com 42 há 84 MJ, suficientes.
+
+\textbf{Por que não somar o aquecimento do cobre.} A partir de $G_S$, $H_S(T)=G_S-T\,dG_S/dT$ fornece para o cobre, de 298 K a $T_{fus}$, cerca de $23{,}2$ kJ/mol. Somá-lo isoladamente levaria a 161,8 MJ e 81 placas, mas seria incoerente: o mesmo critério exigiria o calor sensível de C, malaquita, CO$_2$ e H$_2$O, cujos $C_p$ não são fornecidos e não são desprezíveis. A hipótese (iii) implica $\Delta C_{p,r}=0$, o que não anula o calor sensível: apenas o torna igual para reagentes e produtos. Como o enunciado decompõe o processo em duas reações e uma fusão, o modelo (b) é o consistente com os dados. Assim, 42 placas é o mínimo compatível com os dados fornecidos; uma instalação com balanço térmico completo exigiria mais placas.
+
+\textbf{Verificações.} Unidades: kJ/mol $\times$ mol = kJ; MJ/h $\times$ h = MJ; número de placas é adimensional. Sinais: $\Delta H_r>0$ e $\Delta H_{fus}>0$ (energia absorvida), coerente com a endotermia. Sensibilidade: com $T=1358$ K, $\Delta H_{fus}=13{,}58$ kJ/mol, $E\approx85{,}9$ MJ e o resultado seria 43 placas; por isso $T_{fus}$ deve vir das funções $G$. Com $M=63{,}5$ g/mol ($n=3360$ mol), $E\approx83{,}9$ MJ e o resultado continua 42. A margem é pequena ($84-83{,}8=0{,}2$ MJ). Ordem de grandeza: cerca de $0{,}19$ MJ/kg de Cu pela reação mais cerca de $0{,}20$ MJ/kg pela fusão, total cerca de $0{,}39$ MJ/kg.
+
+ANSWER: 42 placas solares fotovoltaicas (energia mínima de cerca de 83,8 MJ em 1 h)%
+\newpage%
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Hipóteses e definições.} Considera-se o ânion isolado, em fase gasosa, e a contagem usual de elétrons de valência: cada B (grupo 13) contribui com 3 elétrons, cada H com 1, e a carga $2-$ acrescenta 2 elétrons. Uma ligação covalente típica é de 2 centros e 2 elétrons (2c-2e). O valor esperado $N_{\text{esp}}$ é o número de elétrons que um modelo só com ligações 2c-2e exige: 2 elétrons para cada ligação B-B do poliedro (uma por aresta) e para cada ligação B-H terminal. O valor real $N_{\text{real}}$ é o número de elétrons de valência disponíveis. Como pede o enunciado, a deficiência é referida ao valor esperado:
+\[
+\delta = \frac{N_{\text{esp}}-N_{\text{real}}}{N_{\text{esp}}}\times 100
+\]
+
+\textbf{Passo 1: elétrons reais.} Somando as contribuições dos 12 B, dos 12 H e da carga:
+\[
+N_{\text{real}} = 12\cdot 3 + 12\cdot 1 + 2 = 36 + 12 + 2 = 50 \text{ elétrons}.
+\]
+Conferência da regra de contagem com o B$_2$H$_6$ do enunciado: $2\cdot 3 + 6\cdot 1 = 12$, valor informado.
+
+\textbf{Passo 2: geometria do esqueleto.} A figura mostra os 12 átomos de B nos vértices de um icosaedro regular, sólido platônico com faces triangulares equiláteras e cinco faces em torno de cada vértice (símbolo de Schläfli $\{3,5\}$). Com $V = 12$, as relações de incidência dão:
+\begin{itemize}
+\item cada vértice tem 5 arestas, pois cinco faces triangulares se encontram nele; pelo lema dos apertos de mão, $2A = 5V$, logo $A = \dfrac{5\cdot 12}{2} = 30$ arestas;
+\item cada face tem 3 arestas e cada aresta pertence a 2 faces (superfície fechada): $3F = 2A$, logo $F = \dfrac{2\cdot 30}{3} = 20$ faces;
+\item verificação pela relação de Euler para poliedros convexos: $V - A + F = 12 - 30 + 20 = 2$.
+\end{itemize}
+Cada B está ligado a 5 vizinhos B do poliedro e a 1 H terminal (a figura mostra um H por B e nenhum H em ponte), totalizando 6 ligações por B.
+
+\textbf{Passo 3: elétrons do modelo esperado.} Há 30 ligações B-B e 12 ligações B-H terminais, todas 2c-2e; logo
+\[
+N_{\text{esp}} = 2\cdot (30 + 12) = 84 \text{ elétrons}.
+\]
+As ligações B-H terminais devem ser contadas. Omiti-las daria 60 elétrons e uma deficiência falsa de 16,7\,\%. Ignorar a carga $2-$ daria $N_{\text{real}} = 48$ e uma deficiência falsa de 42,9\,\%. Essas são armadilhas, não respostas.
+
+\textbf{Passo 4: deficiência.} A diferença é
+\[
+\Delta N = N_{\text{esp}} - N_{\text{real}} = 84 - 50 = 34 \text{ elétrons}.
+\]
+Como $\Delta N > 0$, o ânion real tem menos elétrons do que o modelo exige. Referindo a diferença ao valor esperado:
+\[
+\delta = \frac{34}{84}\times 100 = \frac{850}{21} \approx 40{,}5\,\%.
+\]
+Não se usa $34/50$, que daria $68\,\%$, porque o enunciado refere a deficiência ao valor esperado. Como ordem de grandeza, $50/84 \approx 59{,}5\,\%$, e $100\,\% - 59{,}5\,\% = 40{,}5\,\%$.
+
+\textbf{Passo 5: verificação pela estrutura real (regra de Wade).} Cada ligação B-H terminal usa 1 elétron do B e 1 do H; as 12 ligações consomem $12\cdot 2 = 24$ elétrons. Restam $50 - 24 = 26$ elétrons para o esqueleto B$_{12}$. Para um cluster closo de $n$ vértices, a regra de Wade atribui $n+1$ pares, isto é, $2n+2$ elétrons de esqueleto; para $n = 12$, $2\cdot 12 + 2 = 26$. A contagem é consistente com a estrutura real.
+
+Esses 26 elétrons não bastam para ligações localizadas em todas as arestas (2c-2e exigiria $2\cdot 30 = 60$ elétrons) nem em todas as faces (3c-2e exigiria $2\cdot 20 = 40$ elétrons). Pela teoria de Wade, os elétrons de esqueleto ocupam orbitais moleculares multicêntricos deslocalizados sobre o poliedro; é essa a razão de o modelo só de 2c-2e superestimar a quantidade de elétrons necessária. No ânion não há H em ponte: cada B tem um único H terminal.
+
+\textbf{Conclusão.} O ânion $(\text{B}_{12}\text{H}_{12})^{2-}$ tem 50 elétrons de valência, contra 84 exigidos por um modelo só de ligações 2c-2e. A deficiência é de 34 elétrons, ou seja, aproximadamente 40,5\,\% do valor esperado.
+
+ANSWER: deficiência de aproximadamente 40,5\% (34 dos 84 elétrons esperados; 50 elétrons reais)%
+\newpage%
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Pressão total do ar igual a $1\,\text{atm}$ (ar seco, desprezando a pressão de vapor d'água); soluções diluídas e ideais (atividades iguais às concentrações molares; água pura com atividade unitária); $25\,^{\circ}\text{C}=298\,\text{K}$. O pH é governado pela primeira ionização do ácido carbônico, pois $K_{a2}$ (da ordem de $10^{-10}$, valor tabelado não fornecido) é muito menor que $K_{a1}$.
+
+\textbf{a)} Pela lei de Henry, a concentração de gás dissolvido é proporcional à sua pressão parcial:
+\[
+[\text{CO}_2(aq)]=k_H\,P_{\text{CO}_2},\qquad k_H=3{,}3\times10^{-2}\ \text{mol.(atm.L)}^{-1}.
+\]
+A fração molar é $\chi_{\text{CO}_2}=545\times10^{-6}$ (base molar), logo $P_{\text{CO}_2}=\chi_{\text{CO}_2}\cdot 1\,\text{atm}=5{,}45\times10^{-4}\,\text{atm}$. Então
+\[
+[\text{CO}_2(aq)]=3{,}3\times10^{-2}\times5{,}45\times10^{-4}\approx1{,}80\times10^{-5}\ \text{mol.L}^{-1}.
+\]
+Observação: $k_H$ foi dada a 300 K e usada a 298 K. A correção de van't Hoff, com $\Delta H^o_{sol}=\Delta H^o_f(\text{CO}_2(aq))-\Delta H^o_f(\text{CO}_2(g))=-413{,}8-(-394{,}0)=-19{,}8\ \text{kJ.mol}^{-1}$, dá $k_H(298\,\text{K})\approx3{,}5\times10^{-2}$ (cerca de 5\% maior), com efeito inferior a 0,02 no pH.
+
+\textbf{b)} Equilíbrio considerado:
+\[
+\text{CO}_2(aq)+\text{H}_2\text{O}(l)\rightleftharpoons\text{H}^+(aq)+\text{HCO}_3^-(aq),\qquad K_{a1}=\frac{[\text{H}^+][\text{HCO}_3^-]}{[\text{CO}_2(aq)]}.
+\]
+Trata-se de uma constante aparente, pois engloba a hidratação de $\text{CO}_2(aq)$ a $\text{H}_2\text{CO}_3$, que os dados termodinâmicos tratam como uma única espécie. Calcula-se $K_{a1}$ a partir da energia de Gibbs padrão da reação:
+\[
+\Delta G^o=\big[\Delta G^o_f(\text{H}^+)+\Delta G^o_f(\text{HCO}_3^-)\big]-\big[\Delta G^o_f(\text{CO}_2(aq))+\Delta G^o_f(\text{H}_2\text{O}(l))\big]
+\]
+\[
+=(0{,}00-586{,}8)-(-386{,}0-237{,}1)=+36{,}3\ \text{kJ.mol}^{-1}.
+\]
+Com $\Delta G^o=-RT\ln K_{a1}$:
+\[
+\ln K_{a1}=-\frac{36{,}3\times10^{3}}{8{,}3\times298}\approx-14{,}68\ \Rightarrow\ K_{a1}\approx4{,}2\times10^{-7}\quad(\text{p}K_{a1}\approx6{,}37),
+\]
+valor coerente com o tabelado para o H$_2$CO$_3$ ($\approx4\times10^{-7}$).
+
+Balanço de cargas: $[\text{H}^+]=[\text{HCO}_3^-]+[\text{OH}^-]$, com $[\text{OH}^-]=K_w/[\text{H}^+]\approx4\times10^{-9}\ \text{mol.L}^{-1}$ (usando $K_w=1{,}0\times10^{-14}$ a 25 °C), desprezível.
+
+Sejam $z=[\text{H}^+]=[\text{HCO}_3^-]$ e $C=1{,}80\times10^{-5}\ \text{mol.L}^{-1}$, de modo que $[\text{CO}_2(aq)]_{eq}=C-z$:
+\[
+K_{a1}=\frac{z^2}{C-z}\ \Rightarrow\ z^2+K_{a1}\,z-K_{a1}\,C=0\ \Rightarrow\ z=\frac{-K_{a1}+\sqrt{K_{a1}^2+4K_{a1}C}}{2}.
+\]
+A aproximação usual $z\ll C$ daria $z\approx\sqrt{K_{a1}C}\approx2{,}8\times10^{-6}\ \text{mol.L}^{-1}$, com $z/C\approx15\%$, acima do limite de 5\%; por isso a equação do segundo grau deve ser resolvida. Numericamente, $K_{a1}^2+4K_{a1}C\approx3{,}0\times10^{-11}$, logo
+\[
+z=\frac{-4{,}2\times10^{-7}+5{,}52\times10^{-6}}{2}\approx2{,}55\times10^{-6}\ \text{mol.L}^{-1},
+\]
+e
+\[
+\text{pH}=-\log z=6-\log2{,}55\approx6-0{,}407\approx5{,}6.
+\]
+Esse valor é o clássico da água de chuva em equilíbrio com o $\text{CO}_2$ atmosférico, o que confirma a ordem de grandeza.
+
+\textbf{c)} Com $[\text{CO}_2(aq)]$ mantido constante, $z=[\text{H}^+]$ depende apenas de $K_{a1}$: a solução da equação do segundo grau é função crescente de $K_{a1}$ (aproximadamente $z\approx\sqrt{K_{a1}C}$). Pela equação de van't Hoff, com $\Delta H^o$ aproximadamente constante na faixa de temperatura,
+\[
+\frac{d\ln K_{a1}}{dT}=\frac{\Delta H^o}{RT^2},\qquad \Delta H^o=\big[\Delta H^o_f(\text{H}^+)+\Delta H^o_f(\text{HCO}_3^-)\big]-\big[\Delta H^o_f(\text{CO}_2(aq))+\Delta H^o_f(\text{H}_2\text{O}(l))\big]
+\]
+\[
+=(0{,}00-692{,}0)-(-413{,}8-285{,}8)=+7{,}6\ \text{kJ.mol}^{-1}>0.
+\]
+A ionização é endotérmica, logo $K_{a1}$ aumenta com a temperatura. Como $[\text{CO}_2(aq)]$ é fixo, $[\text{H}^+]$ aumenta e o pH diminui. Ordem de grandeza:
+\[
+\frac{K_{a1}(308\,\text{K})}{K_{a1}(298\,\text{K})}=\exp\!\left[\frac{7{,}6\times10^{3}}{8{,}3}\left(\frac{1}{298}-\frac{1}{308}\right)\right]\approx1{,}10,
+\]
+ou seja, o pH cai cerca de 0,02 unidade a cada 10 K.
+
+Observação: a diminuição de $k_H$ com a temperatura tenderia a reduzir $[\text{CO}_2(aq)]$ e elevar o pH, mas esse efeito é excluído pela hipótese do enunciado. A autoionização da água, também endotérmica, age no mesmo sentido, porém é desprezível aqui.
+
+ANSWER: (a) $[\text{CO}_2(aq)]\approx1{,}8\times10^{-5}\ \text{mol.L}^{-1}$; (b) $\text{pH}\approx5{,}6$; (c) o pH diminui, pois $K_{a1}$ aumenta com a temperatura ($\Delta H^o=+7{,}6\ \text{kJ.mol}^{-1}$) e, com $[\text{CO}_2(aq)]$ constante, $[\text{H}^+]$ cresce.%
+\newpage%
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Notação e identificação.} Usa-se $Z$ para o número atômico e $\mathbf{Z}$ para o nuclídeo do enunciado. Pela tabela periódica, os números atômicos $89$, $90$, $88$, $86$ e $84$ correspondem a Ac, Th, Ra, Rn e Po. Logo
+\[
+X={}^{227}_{89}\mathrm{Ac},\quad J={}^{227}_{90}\mathrm{Th},\quad L={}^{223}_{88}\mathrm{Ra},\quad \mathbf{Z}={}^{219}_{86}\mathrm{Rn},\quad T={}^{215}_{84}\mathrm{Po}.
+\]
+Hipótese: em cada desintegração conservam-se o número de massa $A$ e a carga elétrica total, contando a carga da partícula emitida.
+
+\textbf{a)} Compara-se cada nuclídeo com o anterior.
+
+\begin{itemize}
+\item $X\to J$: $A$ permanece $227$ e $Z$ aumenta de $1$. Só a emissão $\beta^-$ faz isso, pois um nêutron se converte em próton. A emissão $\beta^+$ e a captura eletrônica diminuem $Z$, e a emissão $\alpha$ diminui $A$ em $4$; logo não se aplicam. O antineutrino é neutro, de massa praticamente nula, e completa a conservação de energia, momento e número leptônico.
+\item $J\to L\to\mathbf{Z}\to T$: $A$ diminui de $4$ e $Z$ diminui de $2$ em cada etapa. É emissão $\alpha$, ${}^{4}_{2}\alpha$ (núcleo de He, carga $+2e$).
+\end{itemize}
+
+Equação etapa por etapa:
+\begin{align*}
+{}^{227}_{89}\mathrm{Ac} &\longrightarrow {}^{227}_{90}\mathrm{Th} + {}^{0}_{-1}\beta^- + \bar{\nu}_e\\
+{}^{227}_{90}\mathrm{Th} &\longrightarrow {}^{223}_{88}\mathrm{Ra} + {}^{4}_{2}\alpha\\
+{}^{223}_{88}\mathrm{Ra} &\longrightarrow {}^{219}_{86}\mathrm{Rn} + {}^{4}_{2}\alpha\\
+{}^{219}_{86}\mathrm{Rn} &\longrightarrow {}^{215}_{84}\mathrm{Po} + {}^{4}_{2}\alpha
+\end{align*}
+
+Conferência por etapa. Cargas: $89=90+(-1)$, $90=88+2$, $88=86+2$, $86=84+2$. Massas: $227=227+0$, $227=223+4$, $223=219+4$, $219=215+4$.
+
+Somando as etapas (os intermediários se cancelam), a equação global do trecho apresentado é
+\[
+{}^{227}_{89}\mathrm{Ac}\longrightarrow {}^{215}_{84}\mathrm{Po}+3\,{}^{4}_{2}\alpha+{}^{0}_{-1}\beta^-+\bar{\nu}_e,
+\]
+com $215+3\cdot 4=227$ e $84+3\cdot 2+(-1)=89$. O $^{227}$Ac também decai por $\alpha$ em cerca de $1{,}4\%$ dos casos, para $^{223}$Fr. O trecho do enunciado segue o ramo $\beta^-$, que é o majoritário (cerca de $98{,}6\%$) e o da série.
+
+\textbf{b)} Escreve-se $A=4n+r$, com $r$ o resto da divisão de $A$ por $4$. Uma emissão $\alpha$ reduz $A$ de $4$ e mantém $r$. Uma emissão $\beta^-$ não altera $A$. Logo $r$ é invariante ao longo da série, e basta calculá-lo para o primeiro membro:
+\[
+227=4\cdot 56+3,\qquad 223=4\cdot 55+3,\qquad 219=4\cdot 54+3,\qquad 215=4\cdot 53+3.
+\]
+Todos os isótopos têm $r=3$, logo pertencem à família $4n+3$, a série do actínio (urânio-actínio). Conferência: essa série tem origem no ${}^{235}_{92}\mathrm{U}$, com $235=4\cdot 58+3$.
+
+Armadilha: os nomes Ra e Rn sugerem a família urânio-rádio ($4n+2$), mas nome químico e número atômico não determinam a família. Só o resto de $A$ por $4$ a determina. As demais famílias são: $4n$ (tório, natural, progenitor ${}^{232}$Th); $4n+2$ (urânio-rádio, natural, progenitor ${}^{238}$U); $4n+1$ (netúnio, progenitor ${}^{237}$Np). A família $4n+1$ está extinta na natureza, porque sua meia-vida, da ordem de $2{,}1\times 10^{6}$ anos, é muito menor que a idade da Terra, da ordem de $4{,}5\times 10^{9}$ anos. Hoje ela existe apenas em quantidades traço, de origem artificial.
+
+\textbf{c)} Para $\mathbf{Z}={}^{219}_{86}\mathrm{Rn}$, com $t_{1/2}\approx 4$ s.
+
+Hipótese: o decaimento nuclear é um processo de primeira ordem, com constante $\lambda$ independente de temperatura, pressão, atmosfera e estado químico. Assim, as condições CNTP, a atmosfera ambiente, a constante de Henry e os dados termodinâmicos são distratores e não alteram o resultado.
+
+Lei de decaimento: $-\dfrac{dN}{dt}=\lambda N$. Separando variáveis e integrando de $N_0$ em $t=0$ até $N$ em $t$:
+\[
+\ln\frac{N}{N_0}=-\lambda t\quad\Rightarrow\quad N(t)=N_0\,e^{-\lambda t}.
+\]
+
+Constante de decaimento: em $t=t_{1/2}$ tem-se $N=N_0/2$, logo $\lambda=\dfrac{\ln 2}{t_{1/2}}$. A folha de dados dá logaritmos decimais, com $\log x\simeq 0{,}434\,\ln x$. Então $\ln 2=\dfrac{\log 2}{0{,}434}\simeq\dfrac{0{,}301}{0{,}434}\simeq 0{,}694$ (valor exato $0{,}693$, sem efeito relevante). Portanto
+\[
+\lambda=\frac{0{,}694}{4\ \mathrm{s}}\simeq 0{,}17\ \mathrm{s}^{-1}.
+\]
+
+Vida média: é o tempo médio de vida dos núcleos. A fração de núcleos que decaem em $[t,t+dt]$ é $\lambda e^{-\lambda t}\,dt$. Essa densidade está normalizada, pois $\int_0^\infty \lambda e^{-\lambda t}\,dt=1$. Então
+\[
+\tau=\int_0^\infty t\,\lambda e^{-\lambda t}\,dt=\lambda\cdot\frac{1}{\lambda^2}=\frac{1}{\lambda}.
+\]
+A integral $\int_0^\infty t\,e^{-\lambda t}\,dt=\frac{1}{\lambda^2}$ sai por partes: $\left[-\frac{t\,e^{-\lambda t}}{\lambda}\right]_0^\infty+\frac{1}{\lambda}\int_0^\infty e^{-\lambda t}\,dt=\frac{1}{\lambda^2}$, com $\lambda>0$. Portanto
+\[
+\tau=\frac{t_{1/2}}{\ln 2}=\frac{4\ \mathrm{s}}{0{,}694}\simeq 5{,}8\ \mathrm{s}.
+\]
+
+Algarismos significativos: mantêm-se dois algarismos porque $t_{1/2}=4{,}0$ s foi tomado como dado de cálculo. Se o dado for lido com um único algarismo significativo, $\tau\approx 6$ s e $\lambda\approx 0{,}2\ \mathrm{s}^{-1}$, o que é coerente com o resultado acima.
+
+Verificações:
+\begin{itemize}
+\item Unidades: $\lambda t$ é adimensional. Logo $\lambda$ está em $\mathrm{s}^{-1}$ e $\tau$ em $\mathrm{s}$, ambos no SI.
+\item Relação: $\tau/t_{1/2}=1/\ln 2\simeq 1{,}44$, e $1{,}44\cdot 4\ \mathrm{s}\simeq 5{,}8\ \mathrm{s}$. Em $t=\tau$, $N/N_0=e^{-1}\simeq 0{,}37$.
+\item Ordem de grandeza: alguns segundos, compatível com o actinônio ${}^{219}_{86}\mathrm{Rn}$. Com o valor tabelado de cerca de $3{,}96$ s, obtém-se $\tau\approx 5{,}7$ s, em concordância.
+\end{itemize}
+
+ANSWER: (a) ${}^{227}_{89}\mathrm{Ac}\to{}^{215}_{84}\mathrm{Po}+3\,{}^{4}_{2}\alpha+{}^{0}_{-1}\beta^-+\bar{\nu}_e$, com $X\to J$ por emissão $\beta^-$ e $J\to L\to\mathbf{Z}\to T$ por três emissões $\alpha$; (b) $A=4n+3$, família do actínio (urânio-actínio); (c) para ${}^{219}_{86}\mathrm{Rn}$: $\tau\simeq 5{,}8\ \mathrm{s}$ e $\lambda\simeq 0{,}17\ \mathrm{s}^{-1}$.%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 1: nota 8,5 (não aprovada, rodada 2 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} M = estrôncio (Sr), número atômico 38, massa atômica 87,62. O sal fundido é SrCl2.\newline%
+\newline%
+Resumo das contas:\newline%
+{-} Q = 0,4 A $\times$ 6,7 h $\times$ 3600 s/h = 9648 C\newline%
+{-} n(e$^{-}$) = 9648 / 96480 = 0,100 mol\newline%
+{-} Sr$^2$? + 2 e$^{-}$ $\to$ Sr, logo n(Sr) = 0,050 mol\newline%
+{-} M = 4,38 g / 0,050 mol = 87,6 g/mol, compatível com Sr (87,62)\newline%
+\newline%
+Não há alternativas de múltipla escolha nesta questão.\par %
+Resposta final correta e igual à da referência: estrôncio (Sr, Z = 38), M = 87,6 g/mol, sal SrCl2. Comparei item a item: Q = 9648 C (ambos), n(e$^{-}$) = 0,100 mol (ambos), n(M) = 0,050 mol (ambos), M = 87,6 g/mol (ambos), e os descartes de Rb, Y, Zr, Ca e Ba com os mesmos desvios. Reli o enunciado no PDF (confere com a transcrição), reconferi todas as contas em python3 e batem. Conferi também a tabela periódica: Sr = 87,62, Rb = 85,47, Y = 88,91. Não há divergência de resultado.\newline%
+\newline%
+A resolução cobre as armadilhas principais: conversão de 6,7 h em 24 120 s; fator z = 2, com testes explícitos para z = 1 e z = 3; massa do metal e não do sal; eficiência, com premissa declarada; coerência de carga com MCl2; eletrodos corretos; resposta no formato pedido. Um mérito que a referência não viu: o candidato percebeu que 0,4 A tem 1 algarismo significativo, o que dá $\pm$12,5\% de incerteza. Porém não terminou essa análise, e há um raciocínio circular sobre $\eta$. Por isso a nota fica abaixo de 9: um professor pediria essas correções antes de publicar como gabarito comentado. Não há erro de conta nem erro crítico. Todos os problemas são de rigor e clareza."\}{]}%
+\begin{itemize}%
+\item%
+{[}minor{]} Raciocínio circular em 'Rendimento' (item 7): a frase 'a coincidência com o Sr corrobora $\eta$ $\approx$ 100\%' usa a identificação, que já pressupõe $\eta$ = 100\%, para validar essa mesma premissa. Deve ser reescrito: $\eta$ = 100\% é a premissa implícita do enunciado; a concordância de 0,02\% com o Sr é consistente com ela, mas não a demonstra, porque com $\eta$ livre qualquer massa cai perto de algum elemento.%
+\item%
+{[}minor{]} Hipótese (iv) e item 7 afirmam que tratar os dados como exatos é 'convenção deste enunciado'. O enunciado não estabelece convenção alguma. Deve ser apresentado como premissa de trabalho, justificada pela consistência numérica (Q\_teórica 9645,8 C contra 9648 C), e não como convenção.%
+\item%
+{[}minor{]} Análise de incerteza incompleta. O item 7 corretamente mostra que 0,4 A tem 1 algarismo significativo, o que dá $\pm$12,5\% em Q e em M (faixa de \textasciitilde{}76,6 a 98,5 g/mol). Mas: (a) o item 5 ainda afirma que só o Sr está na faixa de $\pm$0,005 g e o resultado é escrito com 3 algarismos (87,6); (b) dentro da faixa de $\pm$12,5\% está o Mo (95,95 g/mol; há cloreto de Mo(II)), que o candidato não discute; (c) Zr e Y são excluídos na tabela pelos cloretos usuais (ZrCl4, YCl3), e não pela fórmula MCl2 dada; ZrCl2 (+4,1\%) e YCl2 (+1,5\%) só ficam fora com dado exato. Deve{-}se declarar que a identificação depende do dado exato mais da fórmula MCl2, citar os dicloretos plausíveis na faixa e reportar M $\approx$ 88 $\pm$ 11 g/mol junto de 87,6.%
+\item%
+{[}minor{]} A tabela do item 6 mistura cenários. Para Rb, Y e Zr usa z = 1, 3 e 4 (cloretos usuais), mas o enunciado fixa MCl2 (z = 2) para o metal. Esses z correspondem a outras eletrólises que o problema não propõe. O teste químico correto é: z = 2 é dado, e a pergunta é se o elemento forma MCl2. A tabela deve ser reformulada ou o título 'Conferência química com a carga real' deve ser corrigido.%
+\item%
+{[}minor{]} O item 7 chama de 'conferência independente' a retrossubstituição 0,050 $\times$ 87,62 = 4,381 g. Ela não é independente, porque usa a massa atômica do elemento escolhido depois da identificação. É só conferência aritmética e deve ser renomeada.%
+\item%
+{[}minor{]} Notação e unidades: 'Q = 2,68 A$\cdot$h $\approx$ 0,1 F' mistura unidades. Deve ser Q = 2,68 A$\cdot$h = 9648 C = 0,100 mol de e$^{-}$ $\times$ F. Além disso, 'resolução de $\pm$0,005 g' usa uma palavra que em português também significa 'solução' e confunde num texto de solução (dizer 'incerteza de leitura'), e 'M\_m' para massa molar colide com o símbolo M do metal (usar MM ou M\_M).%
+\end{itemize}%
+\subsection*{Questão 2: nota 7,5 (não aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Composto C: álcool terciário (função álcool, com a hidroxila ligada a carbono terciário). Por isso não é oxidado por KMnO4 em meio ácido.\newline%
+\newline%
+b) Estruturas:\newline%
+{-} A = 1{-}cloro{-}2{-}metilbutano, CH2Cl--CH(CH3)--CH2--CH3 (C5H11Cl)\newline%
+{-} B = 2{-}metilbut{-}1{-}eno, CH2=C(CH3)--CH2--CH3 (C5H10), alceno terminal que dá HCHO + butan{-}2{-}ona na ozonólise\newline%
+{-} C = 2{-}metilbutan{-}2{-}ol, (CH3)2C(OH)--CH2--CH3 (C5H12O), produto da hidratação de Markovnikov de B\newline%
+\newline%
+Não há alternativas de múltipla escolha.\par %
+Respostas finais, item por item: (a) ambas dão álcool terciário, sem divergência. (b) A: 1{-}cloro{-}2{-}metilbutano em ambas; B: 2{-}metilbut{-}1{-}eno em ambas; C: 2{-}metilbutan{-}2{-}ol em ambas. Não há divergência, e a resposta está correta. Não tenho o gabarito oficial; esta avaliação vem da verificação independente. Verifiquei com python (enumeração de grafos): há exatamente 8 isômeros válidos de C5H11Cl, os mesmos listados pelo candidato. A E2 de cada um dá as olefinas indicadas. A hidratação de Markovnikov confirma 2{-}metil{-}1{-}buteno $\to$ 2{-}metilbutan{-}2{-}ol (terciário, não oxidável), e exclui 1{-}penteno e 3{-}metil{-}1{-}buteno sem rearranjo. Balanços, GI e estereoquímica estão corretos. Todas as armadilhas da referência foram tratadas. O candidato foi além da referência ao considerar o rearranjo do 3{-}metil{-}1{-}buteno, que a referência ignora. Esse mérito, porém, deixou a conclusão menos limpa: a unicidade de A depende de premissa que a resposta final não declara. Nota 7,5: resposta certa e raciocínio sólido na maior parte, mas com uma discriminação central sustentada por argumento contraditório. Um professor exigiria o ajuste da premissa antes de publicar como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}major{]} A unicidade de A (1{-}cloro{-}2{-}metilbutano) depende de uma premissa que a resposta final não declara e de um argumento internamente inconsistente. No passo 3, o candidato afirma que, na hidratação do 3{-}metil{-}1{-}buteno, o caminho com deslocamento 1,2{-}H até o cátion terciário é 'o favorecido'. A H2 diz que rearranjos ocorrem quando levam a carbocátion mais estável, que é exatamente o caso aqui. Pela própria química descrita, o 1{-}cloro{-}3{-}metilbutano também daria majoritariamente 2{-}metilbutan{-}2{-}ol. A exclusão desse isômero se apoia só em 'qualquer fração de (i) seria detectada pelo KMnO4' (H5). A observação admite que a unicidade depende de H5, mas as Respostas (b) não trazem essa ressalva. Correção: declarar já nas hipóteses que o enunciado pressupõe hidratação Markovnikov direta, sem deslocamento de H, por ser a única leitura que dá resposta única; remover 'o favorecido' ou reconciliá{-}lo com a H2; levar a ressalva para a resposta b. Verifiquei por enumeração que, sem rearranjo, o 1{-}cloro{-}3{-}metilbutano dá 3{-}metilbutan{-}2{-}ol (oxidável), o que sustenta a exclusão só sob essa premissa.%
+\item%
+{[}minor{]} Afirmações sem suporte no passo 3: 'qualquer fração de (i) seria detectada pelo KMnO4' (a sensibilidade do teste não é discutida) e 'a água está em grande excesso e compete com o rearranjo' (sem base quantitativa, e em tensão com 'o caminho (ii) é o favorecido'). Correção: não quantificar; dizer que o enunciado trata o produto como único e o teste como negativo.%
+\item%
+{[}minor{]} No 1{-}penteno, 'o deslocamento 1,2 de H leva a pentan{-}3{-}ol' é impreciso: o cátion secundário em C2 passa a secundário em C3, sem ganho de estabilidade, então o deslocamento não é favorecido. A exclusão não muda, mas a afirmação deveria ser removida ou qualificada.%
+\item%
+{[}minor{]} H3 diz que 'com H2O2 o formaldeído seria oxidado a CO2'. O produto direto é ácido fórmico (HCOOH), que pode depois ser oxidado a CO2 e H2O. Corrigir a formulação.%
+\item%
+{[}minor{]} H4 acrescenta 'diluído e frio' às condições do KMnO4, que o enunciado não especifica, para justificar a inércia do terciário. Está declarado como hipótese, o que é aceitável, mas deveria dizer que o enunciado fixa o comportamento do teste e que KMnO4 quente e concentrado poderia clivar terciários.%
+\item%
+{[}minor{]} Clareza: o texto é longo e repetitivo (a lista dos 8 isômeros e a estereoquímica são corretas, mas poderiam ser mais enxutas). A butan{-}2{-}ona, produto da ozonólise de B, aparece na equação sem nome IUPAC. Cosmético.%
+\end{itemize}%
+\subsection*{Questão 3: nota 9,0 (aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Fórmula estrutural plana do acetato de linalila (C12H20O2, M = 196,29 g/mol; acetato de 3,7{-}dimetilocta{-}1,6{-}dien{-}3{-}ila):\newline%
+\newline%
+H2C=CH--C(CH3)(OCOCH3)--CH2--CH2--CH=C(CH3)2\newline%
+\newline%
+SMILES: CC(=O)OC(C)(C=C)CCC=C(C)C\newline%
+\newline%
+O grupo metila e o acetato estão no C3 (alílico a C1=C2, vizinho do vinil, de menor impedimento). As duplas estão em C1=C2 e C6=C7, não conjugadas. As duas metilas estão no C7.\newline%
+\newline%
+b) Polímero por poliadição na dupla mais substituída (C6=C7, trissubstituída). A vinila C1=C2 permanece como grupo pendente.\newline%
+\newline%
+--{[} CH(CH2--CH2--C(CH3)(OCOCH3)--CH=CH2) -- C(CH3)2 {]}n--\newline%
+\newline%
+Unidade repetitiva: *C(CCC(C)(OC(C)=O)C=C)C(C)(C)*, com fórmula C12H20O2 (igual à do monômero).\par %
+Verifiquei o enunciado no PDF da prova (página 2) e as massas na tabela periódica da página 1 (C 12,011; H 1,0079; O 15,999). As duas respostas finais coincidem e estão corretas. (a) CH2=CH--C(CH3)(OAc)--CH2--CH2--CH=C(CH3)2 é o acetato de linalila (acetato de 3,7{-}dimetilocta{-}1,6{-}dien{-}3{-}ila), C12H20O2, 196,29 g/mol. Conferi com python: C6H10O = 98,14; C12H20O2 = 196,29; C10H18O = 154,25; DBE = 3. A SMILES tem 12 C, 20 H e 2 O (RDKit não está instalado, então a contagem foi manual). (b) A poliadição na dupla trissubstituída C6=C7 dá a unidade --{[}CH(R)--C(CH3)2{]}-- com R = CH2CH2C(CH3)(OAc)CH=CH2, cabeça{-}cauda, com a mesma fórmula do monômero. A vinila C1=C2 fica pendente, como manda o enunciado. Todas as armadilhas foram tratadas: razão atômica versus fórmula molecular (n = 2 pelo O); escolha de C3 em vez de C5 pelo item (v); C6=C7 como dupla mais substituída; metilas ambas em C7; duplas não conjugadas; sem perda de átomos; estereoquímica do C3 e do C6 do polímero; distinção entre linalol e acetato. Não há erro de conta nem de estrutura. Os problemas são de rigor e de clareza, todos menores: a justificativa de tensão em C3 está imprecisa, a exclusão da extremidade C1--C2 está comprimida, falta discutir o empate entre as duas cadeias de 8 C, a explicação do mecanismo radical está simplificada e o termo \textbackslash{}"poliadição\textbackslash{}" não é esclarecido. Nenhum problema crítico ou maior. Nota 9: é um gabarito que um professor publicaria com ajustes de redação."%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 3, justificativa do C3: a frase "o vizinho C2 é CH sem substituinte cis" mistura os casos de tensão alílica. O correto é dizer que C2 só tem H além de C3 e C1 (=CH2) só tem H, logo não há tensão A(1,2) nem A(1,3) em C3. Para C5 o argumento (A(1,3) com o metilo cis em C7) está certo e deveria ser comparado explicitamente com essa análise.%
+\item%
+{[}minor{]} Passo 2, exclusão da extremidade C1--C2: o argumento é válido (C2 aceita no máximo um metilo, logo o segundo teria de estar em C1, alongando a cadeia para 9 C), mas está comprimido. Deveria ser escrito como cadeia de raciocínio explícita.%
+\item%
+{[}minor{]} Passo 2 assume a cadeia C1--C8 sem discutir a alternativa de 8 C que começa no metilo de C7 (CH3--C7--C6--\ldots{}--C1), que empata em comprimento e também contém as duas duplas. O desempate é feito pelos localizadores das duplas (\{1,6\} contra \{2,7\}), e isso sustenta a numeração 3,7{-}dimetilocta{-}1,6{-}dien{-}3{-}il. A resolução deveria registrar esse critério.%
+\item%
+{[}minor{]} Seção "Sobre a formação": a afirmação "a propagação de um alceno trissubstituído é mais impedida" não é sustentada. O carbono atacado é C6 (CH); o impedimento relevante está no centro ativo C7. Também seria mais preciso falar em transferência degradativa para o monômero (H alílico) do que em "transferência de cadeia" genérica. Não afeta a resposta pedida, que é independente do mecanismo.%
+\item%
+{[}minor{]} Terminologia: a resolução usa "poliadição" sem nota. Em IUPAC o termo polyaddition designa polimerização em etapas; aqui é polimerização de adição em cadeia, termo que o enunciado usa. Uma nota curta evitaria ambiguidade num gabarito comentado.%
+\end{itemize}%
+\subsection*{Questão 4: nota 9,0 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Massa mínima de ácido acético por piscina: m $\approx$ 7,2 $\times$ 10$^3$ g $\approx$ 7,2 kg (120 mol de CH$_{3}$COOH em 2,0 $\times$ 10$^{5}$ L, com pH final = 4).\newline%
+\newline%
+Passos{-}chave: {[}H?{]} = 10$^{-}$$^{4}$ mol/L; {[}CH$_{3}$COO$^{-}${]} $\approx$ {[}H?{]}; {[}CH$_{3}$COOH{]} = {[}H?{]}$^2$/Ka = 5,0 $\times$ 10$^{-}$$^{4}$ mol/L; concentração total C = 6,0 $\times$ 10$^{-}$$^{4}$ mol/L.\newline%
+\newline%
+Hipóteses: contaminante em traço, sal metálico de ácido forte (ânion espectador), ácido acético puro e nenhuma outra reação. Resposta não válida se a aproximação ácido fraco simples (6,0 kg) for usada.\par %
+Resposta correta: 7,2 kg (120 mol de CH$_{3}$COOH) por piscina, confirmada por recálculo. Coincide com a referência. Recalculei C = (h - Kw/h)(1 + h/Ka) com h = 10$^{-}$$^{4}$, obtendo 6,0$\times$10$^{-}$$^{4}$ mol/L; n = 120 mol; M = 60,05 g/mol, conferido com a tabela da prova (C 12,011; H 1,0079; O 15,999); m $\approx$ 7,21 kg. A quadrática e o caso C = 4$\times$10$^{-}$$^{4}$ (pH 4,10) também conferem. A aproximação simples {[}H?{]}$^2$ /Ka dá 6,0 kg com erro de -17\%, e o candidato a rejeitou corretamente. A justificativa é rigorosa. A prova de monotonicidade do passo 5 é mais forte que a afirmação da referência, e as armadilhas foram tratadas: aproximação de ácido fraco ($\alpha$ $\approx$ 17\%), C = {[}HAc{]} + {[}Ac$^{-}${]}, pH $\leq$ 4 tratado como mínimo, água e OH$^{-}$, ânion espectador declarado, unidades e massa molar, além de Henderson--Hasselbalch e quadrática como verificações. Não tenho acesso ao gabarito oficial. Se ele trouxer 6 kg, esse valor vem da aproximação {[}HAc{]} $\approx$ C, que a resolução já explica como incorreta. Os problemas restantes são menores: hipóteses incompletas (ácido puro, perdas), duas afirmações sem justificativa (força iônica, remoção do metal), distratores não comentados e falta de linha de resposta final. Nenhum altera o resultado. Nota 9: publicável como gabarito comentado após os ajustes listados.%
+\begin{itemize}%
+\item%
+{[}minor{]} Hipóteses incompletas: a resolução não declara explicitamente que a massa pedida é de ácido acético puro (100\%), e não de ácido glacial comercial ou de solução. Isso aparece só de passagem na verificação de volume ("ácido puro"). Como a resposta é uma massa, essa hipótese deve constar na lista de hipóteses.%
+\item%
+{[}minor{]} A hipótese 1 afirma que a força iônica é desprezível sem estimativa. A justificativa existe e é simples: I $\approx$ 1$\times$10$^{-}$$^{4}$ mol/L (H? e CH$_{3}$COO$^{-}$), log $\gamma$ $\approx$ -0,51$\cdot$$\surd$I $\approx$ -0,005, $\gamma$ $\approx$ 0,99. Esse número deveria aparecer no texto.%
+\item%
+{[}minor{]} A hipótese 5 afirma que "a remoção do metal é desprezível" no limiar. Isso não é justificado, pois não há Kps nem concentração do contaminante, e soa contraditório com o enunciado, que diz que o contaminante precipita em pH $\leq$ 4. O correto seria dizer que a concentração do contaminante não entra no balanço (traço, não fornecida) e que a precipitação começa no limiar pH 4.%
+\item%
+{[}minor{]} Os distratores da folha de dados ($\Delta$H$^\circ$f, $\Delta$G$^\circ$f, Faraday, Henry, R, Kps) não são comentados explicitamente como desnecessários. Um gabarito comentado costuma apontar isso em uma frase. Não afeta o resultado.%
+\item%
+{[}minor{]} Perdas de ácido não estão listadas entre as hipóteses. Em uma piscina aberta de 2$\times$10$^{5}$ L, o ácido acético pode volatilizar e reagir com matéria orgânica do efluente. A hipótese 3 cobre só o volume. Deve{-}se declarar explicitamente que a massa calculada é a teórica, sem perdas.%
+\item%
+{[}minor{]} A verificação de volume usa densidade $\approx$ 1,05 g/mL, que não está na folha de dados. A resolução rotula o valor como externo e ele não entra no resultado, então é inócuo. Ainda assim, convém declarar que é dado de literatura ou usar apenas a ordem de grandeza.%
+\item%
+{[}minor{]} Falta uma linha de resposta final explícita (por exemplo, "Resposta: m $\approx$ 7,2 kg de CH$_{3}$COOH por piscina, 120 mol"). O resultado aparece só no passo 6, e a seção final sobre a natureza do resultado não o repete.%
+\end{itemize}%
+\subsection*{Questão 5: nota 8,5 (não aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} m1/m2 = 1 (não é múltipla escolha).\newline%
+\newline%
+Justificativa: a razão não depende de $\Delta$H\_c. Por estequiometria, 1 mol de CH4 libera x kJ e consome 2 mol de O2, então 324 kJ queimam 16 g de CH4 e 81 kJ consomem 32 g de O2 por (x/2)$\cdot$... Em termos de massas, m1 = 5184/x g e m2 = 5184/x g, com x = |$\Delta$H\_c|. Exemplo com $\Delta$H\_c = -890,8 kJ/mol: m1 = m2 $\approx$ 5,82 g.\newline%
+\newline%
+Com massas inteiras, m1/m2 = 1,00. Com as massas da tabela periódica da prova, m1/m2 = 1,003 (arredondamento).\par %
+A resposta final da resolução do candidato (m1/m2 = 1) está correta e coincide com a referência. Conferi com python3: 324/81 = 4; m1/m2 = 2$\cdot$M(CH4)/M(O2) = 1 com massas inteiras e 1,0027 com as massas da tabela da prova; $\Delta$Hc = -890,8 kJ/mol (só como referência), m1 = m2 $\approx$ 5,82 g, 0,364 mol de CH4 e 0,182 mol de O2. A resolução trata todas as armadilhas: estequiometria 2:1, base de comparação por mol de O2 (n\_CH4 = n\_O2/2), independência de h, distratores, $\Delta$Hf(CH4) ausente da folha, H2O(?), pressão constante com $\Delta$H versus $\Delta$U ($\Delta$n\_gás = -2), sinal das energias, hipótese explícita de que a segunda queima é a mesma reação completa, m2 como massa de O2 e arredondamento. Não há erros críticos nem graves. Os problemas são de precisão de linguagem (explicação do desvio de 0,27\%, a expressão 'em geral' e a ambiguidade de 0,36/0,18 mol), um dado externo dispensável na verificação e excesso de extensão. Por isso a nota fica em 8,5, abaixo de 9, que exigiria um gabarito sem essas imprecisões."%
+\begin{itemize}%
+\item%
+{[}minor{]} A explicação do desvio é imprecisa. A resolução diz que o desvio de 0,3\% 'vem apenas do arredondamento das massas atômicas' e que está 'muito abaixo da precisão dos dados'. Na verdade, 1,003 é o valor exato com as massas da tabela (16,043/15,999 = 1,0027). A resposta 1 vem de usar massas inteiras ou de arredondar a dois algarismos significativos, que é o limite imposto por 81 kJ. A incerteza desse dado é cerca de 0,6\%, e o desvio é 0,27\%, ou seja, da mesma ordem de grandeza e não 'muito abaixo'. Deveria dizer isso com os números.%
+\item%
+{[}minor{]} A linha ANSWER traz 'em geral, m1/m2 = M(CH4)/M(O)'. Essa expressão não é geral: vale apenas porque E1/E2 = 4 para estes dados. A forma geral é m1/m2 = (E1/E2)$\cdot$M(CH4)/(2$\cdot$M(O2)). Deveria dizer 'para estes dados' ou trazer a forma geral.%
+\item%
+{[}minor{]} No Passo 3 a resolução obtém 1,003 e escreve 'Logo, m1/m2 = 1'. Falta declarar explicitamente a decisão de arredondar para 1,0 (dois algarismos significativos), com a justificativa numérica. Como está, há um salto lógico no ponto mais sutil de precisão da questão.%
+\item%
+{[}minor{]} A verificação de ordem de grandeza usa $\Delta$Hf$^\circ$(CH4(g)) = -74,8 kJ/mol, que não consta na folha de dados. Mesmo rotulado como 'não usado' e 'tabelado externo', é um dado de fora da prova que não é necessário. Deveria ser omitido ou ficar explicitamente fora da resolução, em linha com a regra de não recorrer a valores que a prova não fornece.%
+\item%
+{[}minor{]} A frase 'com cerca de 0,36 mol de CH4 e 0,18 mol de O2' é ambígua. Os números estão corretos (0,364 mol de CH4 em m1 e 0,182 mol de O2 em m2), mas o texto não diz a qual queima cada quantidade corresponde. Deveria indicar 'em m1' e 'em m2'.%
+\item%
+{[}minor{]} A resolução é longa para uma questão de 1,0 ponto. A independência de h aparece em três lugares (hipótese 2, Passo 2 e verificações), e há duas rotas de verificação e uma seção de casos particulares. Um gabarito comentado ficaria mais enxuto sem perder conteúdo.%
+\end{itemize}%
+\subsection*{Questão 6: nota 9,0 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Ácido etanoico (ácido acético), CH3COOH (H3C--C(=O)--OH), fórmula molecular C2H4O2, massa molar 60 g/mol, monoácido.\newline%
+\newline%
+Raciocínio resumido: a densidade de vapor dá M = 30 $\times$ 2 = 60 g/mol. A neutralização dá n(NaOH) = 0,030 L $\times$ 0,1 mol/L = 3,0 $\times$ 10$^{-}$$^3$ mol; 0,18 g / 60 g/mol = 3,0 $\times$ 10$^{-}$$^3$ mol, então a razão é 1:1 e há um H? ionizável por molécula. A fórmula CnH2nO2 com 14n + 32 = 60 dá n = 2. Entre as isoméricas C2H4O2, a única que é ácido carboxílico é o ácido etanoico. Dissociação: CH3COOH $\to$ CH3COO$^{-}$ + H?.\newline%
+\newline%
+Não há alternativa de múltipla escolha nesta questão.\par %
+Resposta final correta e idêntica à de referência: ácido etanoico (ácido acético), CH3COOH, H3C--C(=O)--OH, C2H4O2, M = 60 g/mol, monoácido. Conferi as contas com python: n(NaOH) = 3,0$\times$10$^{-}$$^3$ mol; M\_ap = 30$\times$2$\times$1,0079 = 60,47 g/mol; M\_real = 60k; a enumeração CxHyOz com M = 60, z $\geq$ 2 e DBE inteiro não{-}negativo dá apenas C2H4O2 (com z = 3, y = 0 é excluído). O ponto forte da resolução é o Passo 4: como a associação em dímeros só aumenta a massa molar aparente (M\_ap $\geq$ M\_real), k $\leq$ 1,008 e a hipótese diácida fica eliminada de forma geral, sem depender de um diácido específico. Mantive a nota em 9,0 porque todos os problemas são menores: uma conclusão um pouco forte sobre monomeria, uma hipótese C/H/O não justificada, uma hipótese de gás ideal mal qualificada, a ausência de menção explícita a C3H8O, a resposta final sem a estrutura e uma frase imprecisa sobre equilíbrio. Nenhum deles altera a resposta. Com essas correções, a resolução poderia ser publicada como gabarito comentado."\}%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 4 conclui que "o vapor é praticamente monomérico" a partir de M\_ap $\approx$ M\_real (60,47 vs 60, diferença de 0,8\%). Essa diferença está abaixo da precisão dos dados (0,18 g; 0,1 mol/L com 1 algarismo significativo). O que os dados sustentam é que são compatíveis com vapor monomérico e que uma associação, se existir, não é detectável com essa precisão. Deveria ser reformulado nesses termos. O argumento de desigualdade M\_real $\leq$ M\_ap em si está correto e é o ponto forte da resolução.%
+\item%
+{[}minor{]} A hipótese "O ácido contém apenas C, H e O" não está no enunciado e não é justificada. Deve ser declarada como suposição de contexto ou removida. Na verdade ela não é necessária: no Passo 6, a única parte monovalente de massa 15 g/mol é CH3 (NH2 = 16, OH = 17, F = 19), então a conclusão R = CH3 vale sem essa hipótese. Vale dizer isso explicitamente.%
+\item%
+{[}minor{]} A hipótese inicial "Gases ideais" conflita com a discussão do Passo 4, que admite associação em dímeros (o vapor de ácido carboxílico não é ideal perto do ponto de ebulição). Deveria ser qualificada, por exemplo: "gases ideais, exceto possível associação, tratada no Passo 4".%
+\item%
+{[}minor{]} A armadilha dos isômeros C3H8O (álcool/éter, mesma massa nominal 60) não é citada. Ela é excluída implicitamente pela condição z $\geq$ 2 do Passo 5, mas deveria ser nomeada, como HCOOCH3 e HOCH2CHO já são. No Passo 5, o caso x = 0 (sem carbono) também não é excluído por escrito, embora seja trivial.%
+\item%
+{[}minor{]} A linha de resposta final (ANSWER) traz apenas CH3COOH, enquanto o enunciado pede a estrutura molecular. A estrutura H3C--C(=O)--OH aparece só no Passo 6. Deveria constar também na resposta final.%
+\item%
+{[}minor{]} A observação sobre Ka diz que "até o ponto de equivalência, o OH- consome H+ e desloca o equilíbrio até que todo o ácido seja neutralizado". A formulação é imprecisa. A razão 1:1 vem apenas da estequiometria da neutralização, independentemente de Ka e do grau de ionização. Basta afirmar isso.%
+\end{itemize}%
+\subsection*{Questão 7: nota 8,5 (não aprovada, rodada 2 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Resposta final: 42 placas solares fotovoltaicas (número mínimo, operando por 1 h). Não é questão de múltipla escolha.\newline%
+\newline%
+Resultados intermediários:\newline%
+{-} Reação global: Cu2CO3(OH)2(s) + C(grafite) $\to$ 2 Cu(l) + H2O(g) + 2 CO2(g)\newline%
+{-} n(Cu) = 3,36 $\times$ 10$^3$ mol; n(malaquita) = 1,68 $\times$ 10$^3$ mol\newline%
+{-} $\Delta$H da reação global = +24,0 kJ por mol de malaquita (endotérmica)\newline%
+{-} T\_fus obtida de G\_S = G\_L: 1296,5 K (não 1358 K)\newline%
+{-} $\Delta$H\_fus(Cu) = 12,96 kJ/mol\newline%
+{-} Energia total $\approx$ 83,9 MJ em 1 h; 83,9 / 2 = 41,9 $\to$ mínimo inteiro = 42 placas.\par %
+Resposta final 42 placas: correta. Confirmei a transcrição no PDF original e refiz as contas em Python. $\Delta$H\_r = +24,0 kJ por mol de malaquita (com H2O(g); com H2O(l) daria -19,8). T\_fus = 12964,8/10,0 = 1296,5 K, não 1358 K. $\Delta$H\_fus = 12,96 kJ/mol, e o intercepto de G\_L-G\_S é exatamente $\Delta$H\_fus, independente de T. Com M = 63,546 g/mol: E $\approx$ 83,8 MJ, N = 41,9 $\to$ 42 (com M = 63,5 g/mol, E $\approx$ 83,9 MJ, mesmo resultado). Com 1358 K o resultado seria 43 placas. O candidato tratou corretamente as armadilhas: T\_fus, fusão incluída, fator 2:1, H2O(g), unidade J/mol (com justificativa pela inclinação -$\Delta$S\_fus), arredondamento para cima, massa molar, cancelamento do CuO e comparação com o aquecimento sensível ($\approx$23,2 kJ/mol, levando a 81 placas). Esse modelo alternativo foi rejeitado com justificativa razoável. Os números intermediários conferem. As lacunas são de premissas e clareza (termo -2,7$\times$10$^2$ sem T, eficiência integral não declarada, modelo de alimentação a T\_fus, frase confusa sobre $\Delta$C\_p, massa molar usada de forma inconsistente), sem erro de resultado. Nota 8,5: gabarito quase publicável, mas com ajustes de premissas e redação."%
+\begin{itemize}%
+\item%
+{[}minor{]} O termo constante '-2,7$\times$10$^2$' da G do cobre aparece sem T no enunciado (na forma SGTE usual seria -2,65$\times$10$^{-}$$^3$$\cdot$T$^2$). O candidato não sinaliza isso. O termo não afeta T\_fus nem $\Delta$H\_fus, porque cancela em G\_L-G\_S, mas afeta o aquecimento sensível de Cu que ele calcula (cerca de 23,2 kJ/mol; cerca de 4,2 kJ/mol dependem dessa forma). Deveria haver uma nota sobre a possível inconsistência de digitação.%
+\item%
+{[}minor{]} A premissa de aproveitamento integral da placa (2 MJ/h é média, sem perdas, energia ideal) não aparece entre as hipóteses (a)--(f). Ela só aparece implicitamente na conta. Deveria ser declarada, porque o 'mínimo' depende dela.%
+\item%
+{[}minor{]} A hipótese (b)/(d) admite que malaquita, C, CO2 e H2O já entram a T\_fus ($\approx$1296 K), o que omite o calor sensível dos reagentes de 298 K a T\_fus. Esse termo pode superar os 24 kJ/mol da reação. O candidato reconhece a omissão e restringe o resultado a 'mínimo compatível com os dados', o que é aceitável. Mas o rótulo final 'energia mínima de cerca de 83,8 MJ' sugere mais do que o modelo entrega. Deveria dizer explicitamente que é um limite inferior de um modelo ideal.%
+\item%
+{[}minor{]} Inconsistência de massa molar: o candidato usa M = 63,546 g/mol (n(Cu) = 3357,6 mol; malaquita 1678,8 mol) e depois diz que isso é 'equivalente a 3360 mol'. Não é exatamente equivalente. Deveria escolher uma massa molar e manter a escolha em todo o texto. Ambas levam a 42 placas.%
+\item%
+{[}minor{]} A frase final sobre $\Delta$C\_p,r está confusa: 'A hipótese (iii) implica $\Delta$C\_p,r = 0, o que não anula o calor sensível: apenas o torna igual para reagentes e produtos'. $\Delta$C\_p,r = 0 significa que $\Delta$H\_r não varia com T. Não significa que o calor sensível seja igualado. Deveria ser reescrita com precisão.%
+\item%
+{[}minor{]} Faltam menções explícitas de que $\Delta$H\_f(CuO) não é dado e não é necessário (o cancelamento do CuO aparece, mas sem essa observação) e de que os dados de CO2(aq), HCO3$^{-}$, H2O(l) e a constante de Henry da folha são distratores pertencentes à questão 9. Isso é um detalhe de completude, não um erro.%
+\end{itemize}%
+\subsection*{Questão 8: nota 9,0 (aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Deficiência de elétrons de valência do {[}B12H12{]}2- em relação ao esperado no modelo 2c{-}2e: 34 e- em 84 e- esperados, ou seja, **$\approx$ 40,5 \%** (40,48 \%).\newline%
+\newline%
+Dados intermediários: elétrons reais = 50 e- (12 B $\times$ 3 + 12 H $\times$ 1 + 2 da carga); ligações 2c{-}2e necessárias = 12 (B--H) + 30 (B--B) = 42, logo 84 e-.\par %
+A resposta final do candidato ($\approx$ 40,5 \%, 34 de 84 elétrons esperados, 50 reais) está correta e coincide com a minha referência. Refiz as contas e confirmei a topologia do icosaedro com um script: 12 B com grau 5, 30 arestas, 20 faces, Euler 12 - 30 + 20 = 2, 12 ligações B--H terminais, 84 elétrons no modelo 2c{-}2e e 50 reais (36 + 12 + 2 da carga). A deficiência é 34/84 = 850/21 $\approx$ 40,48 \%. A conferência pela regra de Wade também fecha: 24 elétrons nas ligações B--H + 26 de esqueleto = 50, e 2n+2 = 26 para closo com n = 12. Revisei a figura ampliada: há um H terminal por B, nenhuma ponte e as 30 arestas estão desenhadas. Todas as armadilhas listadas foram tratadas com cálculo explícito: carga (42,9 \%), omissão das B--H (16,7 \%), base 34/50 (68 \%) e a aproximação 50/84 $\approx$ 59,5 \%. Não consegui confrontar com um gabarito oficial, pois não há acesso à internet e só usei o PDF da prova. A resolução é completa, clara e tem verificação independente, por isso fica em 9. Os pontos que faltam são de acabamento: falta interpretar o estilo das linhas da figura, a descrição de Wade é aproximada e há uma hipótese desnecessária."\}%
+\begin{itemize}%
+\item%
+{[}minor{]} A resolução não interpreta as linhas sólidas e tracejadas da figura. A ampliação mostra que as 30 arestas do icosaedro estão todas desenhadas, mas o candidato não diz que o estilo da linha não altera a contagem de 2c{-}2e, nem que o tracejado sugere as ligações de 3 centros nas faces. Uma frase resolveria isso.%
+\item%
+{[}minor{]} A justificativa de que os elétrons de esqueleto 'ocupam orbitais moleculares multicêntricos deslocalizados' é uma descrição aproximada da regra de Wade. Convém dizer que se trata de MOs de esqueleto deslocalizados sobre o poliedro, e não de uma propriedade provada aqui.%
+\item%
+{[}minor{]} O argumento 'nem em todas as faces (3c{-}2e exigiria 2$\cdot$20 = 40 elétrons)' é ilustrativo, porque cada aresta pertence a duas faces e a contagem por face superestima a necessidade. Ele serve para mostrar que 26 elétrons não bastam, mas deveria ser apresentado como cota e não como modelo.%
+\item%
+{[}minor{]} A hipótese 'ânion isolado, em fase gasosa' é desnecessária para a contagem e não é usada depois. Também há tom informal em 'Essas são armadilhas, não respostas'. Nenhum dos dois afeta a correção.%
+\end{itemize}%
+\subsection*{Questão 9: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) {[}CO2(aq){]} $\approx$ 1,8 $\times$ 10$^{-}$$^{5}$ mol/L, obtida com p(CO2) = 545 $\times$ 10$^{-}$$^{6}$ atm (fração molar a 1 atm total) e k\_H = 3,3 $\times$ 10$^{-}$$^2$ mol$\cdot$(L$\cdot$atm)$^{-}$$^{1}$. Se k\_H for corrigida para 298 K por van't Hoff ($\Delta$H\_dis = -19,8 kJ/mol), o valor fica em torno de 1,9 $\times$ 10$^{-}$$^{5}$ mol/L.\newline%
+\newline%
+b) pH $\approx$ 5,6. A constante aparente K\_a = {[}H?{]}{[}HCO3$^{-}${]}/{[}CO2(aq){]} vale $\approx$ 4,2 $\times$ 10$^{-}$$^{7}$, a partir de $\Delta$G$^\circ$ = +36,3 kJ/mol. Resolvendo a quadrática, {[}H?{]} $\approx$ 2,6 $\times$ 10$^{-}$$^{6}$ mol/L e pH $\approx$ 5,59. A aproximação simplificada dá 5,56.\newline%
+\newline%
+c) O pH diminui. A dissociação CO2(aq) + H2O ? H? + HCO3$^{-}$ é endotérmica ($\Delta$H$^\circ$ = +7,6 kJ/mol). Logo K\_a aumenta com a temperatura e, mantido {[}CO2(aq){]} constante, a concentração de H? aumenta.\par %
+Resposta final correta nos três itens e idêntica à referência: (a) {[}CO2(aq){]} $\approx$ 1,8$\times$10$^{-}$$^{5}$ mol/L; (b) pH $\approx$ 5,6 (5,59 pela quadrática, 5,56 pela aproximação); (c) o pH diminui, pois $\Delta$H$^\circ$ = +7,6 kJ/mol > 0 e K\_a1 cresce com T, mantendo{-}se {[}CO2(aq){]} fixo.\newline%
+\newline%
+Conferi as contas com python3. Confirmados: p(CO2) = 5,45$\times$10$^{-}$$^{4}$ atm; K\_a1 = exp(-36300/(8,3$\times$298)) = 4,2$\times$10$^{-}$$^{7}$ (pK 6,37); K$^2$+4KC $\approx$ 3,06$\times$10$^{-}$$^{1}$$^{1}$; z = 2,55$\times$10$^{-}$$^{6}$ mol/L; {[}OH$^{-}${]} $\approx$ 3,9$\times$10$^{-}$$^{9}$; z/C $\approx$ 14\% (acima de 5\%, portanto a quadrática é necessária); K(308)/K(298) = 1,105 e $\Delta$pH $\approx$ -0,02 por 10 K; correção de k\_H com $\Delta$H\_sol = -19,8 kJ/mol dá k\_H(298) $\approx$ 3,48$\times$10$^{-}$$^2$ e efeito no pH $\approx$ 0,01 (<0,02, como afirmado).\newline%
+\newline%
+Armadilhas tratadas: conversão de fração molar com P\_total = 1 atm (declarada); unidades de k\_H; correção de 300 K para 298 K; espécie CO2(aq) em vez de H2CO3 (com rotulagem imprecisa); sinal de $\Delta$G$^\circ$ e uso de R em J; K\_a2 e autoionização da água; aproximação x ? C testada e rejeitada; item (b) não assume pH 7; item (c) com van't Hoff correta e o argumento de solubilidade explicitamente descartado.\newline%
+\newline%
+As falhas são de acabamento: não usa os logaritmos da folha, não explicita o valor refinado de {[}CO2(aq){]}, usa K\_w de fora da folha sem sinalizar a origem, tem uma rotulagem imprecisa da constante aparente e uma confirmação por memória. Nenhuma afeta a resposta. Nota 9: resolução que um professor publicaria como gabarito comentado após pequenos ajustes.%
+\begin{itemize}%
+\item%
+{[}minor{]} K\_w = 1,0$\times$10$^{-}$$^{1}$$^{4}$ é usado sem constar da folha de dados. Para K\_a2 o candidato sinaliza que o valor é externo ('valor tabelado não fornecido'), mas para K\_w não faz a mesma sinalização. Deve dizer explicitamente que K\_w é valor padrão externo a 25 $^\circ$C, não fornecido na prova.%
+\item%
+{[}minor{]} Rotulagem da constante. O texto chama K\_a1 de 'constante aparente, que engloba a hidratação de CO2(aq) a H2CO3' e, logo depois, compara o valor com 'o tabelado para o H2CO3 ($\approx$4$\times$10$^{-}$$^{7}$)'. Essas duas afirmações se misturam. O correto é K\_a,app = K\_a1(H2CO3)$\cdot$K\_h, cujo valor $\approx$ 4,3$\times$10$^{-}$$^{7}$ (pK $\approx$ 6,35) corresponde ao sistema CO2 dissolvido/HCO3$^{-}$. Deve{-}se reescrever a frase com essa distinção.%
+\item%
+{[}minor{]} Os logaritmos fornecidos na folha (log x ? 0,434 ln x; log 2; log 3) não são usados. O valor log 2,55 $\approx$ 0,407 vem de calculadora e não é reproduzível com os dados da prova. A rota prevista é: log K\_a = 0,434$\times$(-14,68) = -6,37; log C = log 2 + 2 log 3 - 1 - 5 = -4,745; log{[}H?{]} = $\frac12$(log K\_a + log C) = -5,56, pH $\approx$ 5,56. Esse caminho deveria aparecer na resolução como verificação.%
+\item%
+{[}minor{]} No item (a), a correção de van't Hoff de k\_H (3,3$\times$10$^{-}$$^2$ a 300 K $\to$ $\approx$3,5$\times$10$^{-}$$^2$ a 298 K) é calculada, e o efeito no pH (<0,02) é afirmado. Mas o valor corrigido de {[}CO2(aq){]} ($\approx$1,9$\times$10$^{-}$$^{5}$ mol/L, diferença $\approx$5\%) não é explicitado. Deve ser informado como refinamento.%
+\item%
+{[}minor{]} Arredondamento intermediário inconsistente: escreve{-}se K$^2$+4KC $\approx$ 3,0$\times$10$^{-}$$^{1}$$^{1}$, mas a raiz usada (5,52$\times$10$^{-}$$^{6}$) corresponde a $\approx$3,05$\times$10$^{-}$$^{1}$$^{1}$ (o valor exato é $\approx$3,06$\times$10$^{-}$$^{1}$$^{1}$ $\to$ $\surd$ $\approx$ 5,53$\times$10$^{-}$$^{6}$). Não altera o pH (5,59), mas deve{-}se escrever o valor consistente com a raiz.%
+\item%
+{[}minor{]} A frase 'Esse valor é o clássico da água de chuva em equilíbrio com o CO2 atmosférico, o que confirma a ordem de grandeza' é apelo à memória e não verificação. O valor clássico 5,6 refere{-}se a outra pCO2 (abaixo de 545 ppm). Deve ser substituído pela checagem pela rota da folha (pH $\approx$ 5,56) ou removido.%
+\item%
+{[}minor{]} A negligência de K\_a2 é justificada só qualitativamente ('muito menor que K\_a1'). Quantificar: {[}CO3$^2$$^{-}${]} $\approx$ K\_a2$\cdot${[}HCO3$^{-}${]}/{[}H?{]} $\approx$ K\_a2 $\approx$ 10$^{-}$$^{1}$$^{0}$ mol/L, muito menor que z $\approx$ 2,6$\times$10$^{-}$$^{6}$ mol/L. Isso deixa o argumento fechado.%
+\end{itemize}%
+\subsection*{Questão 10: nota 8,5 (não aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Equação da série (com as partículas emitidas):\newline%
+{-} $^2$$^2$$^{7}$$_{8}$$_{9}$Ac $\to$ $^2$$^2$$^{7}$$_{9}$$_{0}$Th + $^{0}$?$_{1}$$\beta$$^{-}$ ($\beta$$^{-}$; A mantém{-}se e Z aumenta 1; antineutrino opcional)\newline%
+{-} $^2$$^2$$^{7}$$_{9}$$_{0}$Th $\to$ $^2$$^2$$^3$$_{8}$$_{8}$Ra + $^{4}$$_{2}$He ($\alpha$)\newline%
+{-} $^2$$^2$$^3$$_{8}$$_{8}$Ra $\to$ $^2$$^{1}$$^{9}$$_{8}$$_{6}$Rn + $^{4}$$_{2}$He ($\alpha$)\newline%
+{-} $^2$$^{1}$$^{9}$$_{8}$$_{6}$Rn $\to$ $^2$$^{1}$$^{5}$$_{8}$$_{4}$Po + $^{4}$$_{2}$He ($\alpha$)\newline%
+Global: $^2$$^2$$^{7}$$_{8}$$_{9}$Ac $\to$ $^2$$^{1}$$^{5}$$_{8}$$_{4}$Po + $^{0}$?$_{1}$$\beta$$^{-}$ + 3 $^{4}$$_{2}$He, balanceada em A e Z.\newline%
+\newline%
+b) Família radioativa 4n + 3 (227 = 4$\cdot$56 + 3; todos os membros têm A = 4n + 3). É a série do actínio (urânio--actínio), que começa no $^2$$^3$$^{5}$U e termina no $^2$$^{0}$$^{7}$Pb.\newline%
+\newline%
+c) Para o $^2$$^{1}$$^{9}$Rn (Z), com t$\frac12$ $\approx$ 4 s:\newline%
+{-} Constante de decaimento: k = ln2 / t$\frac12$ $\approx$ 0,173 s$^{-}$$^{1}$ ($\approx$ 0,17 s$^{-}$$^{1}$)\newline%
+{-} Vida média: $\tau$ = t$\frac12$ / ln2 $\approx$ 5,8 s (5,77 s)\newline%
+Unidades SI: k em s$^{-}$$^{1}$ e $\tau$ em s. CNTP e atmosfera não alteram k nem $\tau$.\par %
+Verifiquei o enunciado no PDF (página 5): a transcrição confere, incluindo o nuclídeo Z em negrito e os itens a, b e c.\newline%
+\newline%
+Comparação item por item com a referência: (a) equação idêntica, com $\beta$$^{-}$ no 227Ac$\to$227Th e três emissões $\alpha$, global 227Ac$\to$215Po + 3 $^{4}$$_{2}$He + $^{0}$?$_{1}$$\beta$$^{-}$ + $\nu$?; (b) família 4n+3 (série do actínio) pelo resto de A por 4; (c) $\tau$ $\approx$ 5,8 s e $\lambda$ $\approx$ 0,17 s$^{-}$$^{1}$. Não há divergência nas respostas finais. Conferi as contas com python3: ln 2 = 0,301/0,434 = 0,6935 (exato 0,6931); $\lambda$ = 0,1734 s$^{-}$$^{1}$; $\tau$ = 5,77 s; a integração numérica de $\int$t$\cdot$$\lambda$e\^{}(-$\lambda$t)dt reproduz 1/$\lambda$; todos os A dos membros dão resto 3 mod 4; o balanço de carga e massa da equação global fecha.\newline%
+\newline%
+Pontos fortes: a justificativa de $\beta$$^{-}$ por $\Delta$A = 0 e $\Delta$Z = +1 está correta; a resolução descarta $\beta$?, captura eletrônica e $\alpha$ para X$\to$J; escreve a partícula em cada etapa com carga e massa; separa Z (número atômico) de ? (rótulo do nuclídeo); trata CNTP, atmosfera, Henry e termodinâmica como distratores; usa ln 2 obtido da folha (não log 2); diferencia vida média de meia{-}vida e deriva $\tau$ = 1/$\lambda$ por integração; usa unidades SI; confere o resultado com $\tau$/t$\frac12$ = 1,44 e N/N$_{0}$ = e$^{-}$$^{1}$ em t = $\tau$.\newline%
+\newline%
+Para chegar a 9 faltam: remover a afirmação falsa sobre a origem do 237Np, corrigir a justificativa de algarismos significativos e sinalizar os dados externos. Um gabarito comentado não deve conter afirmações factualmente erradas, mesmo em observações laterais, por isso a nota fica em 8,5.%
+\begin{itemize}%
+\item%
+{[}minor{]} Parte (b), frase 'Hoje ela existe apenas em quantidades traço, de origem artificial' está imprecisa. Traços de 237Np ocorrem na natureza, formados em minérios de urânio por reações induzidas por nêutrons (p. ex. (n,2n) no 238U). O correto é dizer que a família 4n+1 está praticamente extinta como série primordial, com traços naturais além da produção artificial. Corrigir a frase.%
+\item%
+{[}minor{]} Parte (c), algarismos significativos: o enunciado dá 'aproximadamente 4 segundos' (1 algarismo significativo). A resolução reescreve o dado como 't$\frac12$ = 4,0 s' e justifica manter 2 algarismos com essa premissa, que acrescenta precisão inexistente. Justificar o número de algarismos a partir do dado real: por exemplo, dar $\tau$ $\approx$ 6 s (1 s.f.) e apresentar 5,8 s como valor intermediário de 1,44$\cdot$t$\frac12$, com a ressalva explícita.%
+\item%
+{[}minor{]} Valores externos à prova aparecem sem sinalização: ramos de 98,6\% ($\beta$$^{-}$) e 1,4\% ($\alpha$) do 227Ac, e meia{-}vida tabelada de 3,96 s do 219Rn usada como verificação. Os números conferem com o que conheço (3,96 s dá $\tau$ $\approx$ 5,7 s), mas a resolução deveria marcá{-}los como conhecimento externo, não como dados do problema.%
+\item%
+{[}minor{]} Parte (b) cita o início da série (235U), mas não o fim (207Pb, estável), que completaria a identificação da família actínio. Não é exigido pelo enunciado, mas a referência o inclui.%
+\end{itemize}%
+\end{document}

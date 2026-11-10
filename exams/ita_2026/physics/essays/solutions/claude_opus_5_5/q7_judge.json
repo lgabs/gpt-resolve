@@ -1,0 +1,51 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) A intensidade na saída é I = I0 · x^(N+1) · cos^(2N)(φ/N). O 1º polarizador só aplica a perda x, porque a luz já chega paralela ao eixo dele. Cada um dos N polarizadores seguintes aplica x·cos²β, com β = φ/N.\nb) Como P = I·πr², o raio é r = sqrt( P / (π · I0 · x^(N+1) · cos^(2N)(φ/N)) ). Isso vale se cos(φ/N) ≠ 0.",
+  "judge_reference": {
+    "reference_solution": "**Leitura do enunciado (página 8 da prova)**\n- Há N+1 polarizadores. Entre dois polarizadores vizinhos o ângulo é β, e entre o último e o primeiro é φ = Nβ, logo β = φ/N. São N pares de vizinhos, então são N ângulos β.\n- O laser já chega polarizado na direção do eixo do 1º polarizador. O feixe é cilíndrico e homogêneo: a intensidade é a mesma em toda a seção reta, que é um círculo de raio r. Nada no sistema muda esse raio.\n- Em cada polarizador o feixe sai com a fração x da intensidade que um polarizador ideal deixaria passar. Isso vale para todos os N+1 polarizadores, inclusive o primeiro.\n\n**a) Intensidade após o sistema**\n\nUm polarizador ideal segue a Lei de Malus, I_saída = I_entrada·cos²θ, onde θ é o ângulo entre a polarização que chega e o eixo do polarizador. Depois de passar, a luz fica polarizada na direção do eixo desse polarizador.\n\n- 1º polarizador: θ = 0, então o caso ideal dá I₀. O real dá I₁ = x·I₀.\n- 2º polarizador: a luz chega polarizada no eixo do 1º, e o ângulo é β. Então I₂ = x·I₁·cos²β = x²I₀cos²β.\n- k-ésimo polarizador, por indução: I_k = x·I_{k−1}·cos²β, o que dá I_k = x^k·I₀·cos^{2(k−1)}β.\n- Para k = N+1:\n\n  **I = I₀ · x^{N+1} · cos^{2N}(φ/N)**\n\nConferi com um cálculo numérico por vetores de Jones (I₀ = 3, x = 0,9, N = 5, φ = 60°). A projeção do campo, com fator √x em cada etapa, dá 1,27826, igual ao valor da fórmula.\n\n**b) Raio do feixe**\n\nComo o feixe é homogêneo e cilíndrico, a potência que o analisador (detector) registra é P = I·A = I·πr². O raio não muda ao atravessar o sistema. Então:\n\nπr² = P / [I₀ x^{N+1} cos^{2N}(φ/N)]\n\n**r = √( P / [π I₀ x^{N+1} cos^{2N}(φ/N)] )**\n\nIsso também pode ser escrito como r = (1/cos^N(φ/N))·√(P/(π I₀ x^{N+1})), desde que cos(φ/N) ≠ 0.\n\n**Condições de validade:** 0 < x ≤ 1, cos(φ/N) ≠ 0 (ou seja, β ≠ 90°) e P > 0. Se β = 90°, então I = 0 e P = 0, e o raio não pode ser determinado. Para x = 1 recupera-se o caso ideal I₀cos^{2N}(φ/N). Para N → ∞ com perdas, cos^{2N}(φ/N) → 1, mas x^{N+1} → 0: há uma competição entre os dois efeitos, embora isso não seja pedido.",
+    "final_answer": "a) I = I₀ · x^{N+1} · cos^{2N}(φ/N)\n\nb) r = √{ P / [π · I₀ · x^{N+1} · cos^{2N}(φ/N)] }, que vem de P = I·πr², com o raio constante ao longo do sistema.",
+    "pitfalls": [
+      "Contar o fator x também no 1º polarizador. O enunciado diz 'após a passagem por cada polarizador', então são N+1 fatores x, dando x^{N+1}. Escrever x^N é erro.",
+      "O expoente do cosseno é 2N, não 2(N+1). Com N+1 polarizadores há só N ângulos β entre vizinhos, e no 1º polarizador o ângulo é 0, porque o laser já é paralelo ao seu eixo.",
+      "Não usar o fator 1/2 de luz não polarizada no 1º polarizador. O laser já está polarizado paralelamente ao eixo, então o fator ideal ali é cos²0 = 1.",
+      "Escrever β em termos dos dados: β = φ/N. A resposta deve estar em função de I₀, φ, x, N (e P), sem β.",
+      "Em cada polarizador, o ângulo da Lei de Malus é medido em relação ao polarizador anterior (β), não ao primeiro. Usar cos²(kβ) acumulado, ou um único cos²φ, é erro conceitual.",
+      "Item b: usar P = I·A com A = πr². O feixe é homogêneo (intensidade uniforme) e cilíndrico (seção circular de raio constante, que não muda nos polarizadores). Não confundir intensidade com potência.",
+      "Interpretar o 'analisador' como detector de potência ao final do sistema, e não como mais um polarizador com ângulo desconhecido (que não aparece nos dados).",
+      "Condições de validade: cos(φ/N) ≠ 0, ou seja, β ≠ 90°. Nesse caso I = 0, P = 0 e o raio fica indeterminado. Além disso 0 < x ≤ 1, e x = 1 recupera o caso ideal.",
+      "Apresentar o raio com a raiz completa: r = √(P/(πI₀x^{N+1}cos^{2N}(φ/N))). Esquecer o π, ou dar r² em vez de r, é erro."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) A intensidade na saída é I = I0 · x^(N+1) · cos^(2N)(φ/N). O 1º polarizador só aplica a perda x, porque a luz já chega paralela ao eixo dele. Cada um dos N polarizadores seguintes aplica x·cos²β, com β = φ/N.\nb) Como P = I·πr², o raio é r = sqrt( P / (π · I0 · x^(N+1) · cos^(2N)(φ/N)) ). Isso vale se cos(φ/N) ≠ 0.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na verificação, a frase 'Como I ≤ I₀, a energia se conserva' está imprecisa. A energia do feixe não se conserva, porque parte é absorvida ou refletida. O que I ≤ I₀ mostra é que o sistema não amplifica o feixe, o que é compatível com a conservação de energia. O texto deveria dizer: 'I ≤ I₀, coerente com um sistema passivo, sem ganho'."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução trata o 'analisador' como um detector que capta toda a potência do feixe, mas não diz isso explicitamente. Faltou uma linha justificando por que ele não é mais um polarizador: nenhum ângulo dele aparece nos dados. A hipótese implícita está correta."
+          },
+          {
+            "severity": "minor",
+            "description": "O limite N→∞ é feito com '≈' seguido de '→1'. Ficaria mais rigoroso escrever explicitamente cos^{2N}(φ/N) ≈ exp(−φ²/N) → 1. Conferi numericamente: para φ = 1 rad e N = 10, 100, 1000, os dois valores coincidem. Isso não afeta a resposta, porque o limite não é pedido."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 8 do PDF original e ele confere com a transcrição. As respostas finais do candidato coincidem com a minha referência nos dois itens. a) I = I₀x^{N+1}cos^{2N}(φ/N). b) r = √(P/(πI₀x^{N+1}cos^{2N}(φ/N))). Conferi o item (a) com um cálculo por vetores de Jones, aplicando um fator √x ao campo em cada polarizador, para I₀ = 2,7, x = 0,85, N = 7 e φ = 110°. Os dois valores dão 0,431629, iguais até a 15ª casa decimal. O candidato evita todas as armadilhas que eu tinha listado. Aplica o fator x também no 1º polarizador, o que dá x^{N+1}. Usa cos²0 = 1 no 1º polarizador, sem o fator 1/2 de luz não polarizada. Chega ao expoente 2N contando os N ângulos β entre vizinhos. Mede cada ângulo em relação ao polarizador anterior, e não um cos²(kβ) acumulado. Elimina β com β = φ/N. Usa P = I·πr² e diz claramente que o raio não muda. Apresenta o raio com a raiz completa, incluindo o π. Também confere as unidades e aponta que a fórmula falha quando cos(φ/N) = 0, caso em que P = 0. Os casos-limite estão certos: N=1 com x=1 recupera Malus, e φ=0 deixa só as perdas. Sobram três problemas menores de redação e rigor: a frase 'a energia se conserva' está imprecisa, falta justificar explicitamente que o analisador funciona como detector, e o limite N→∞ ficou informal. A resolução é clara, completa e serve como gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Passo 1: condição de compatibilidade.} Sejam $E_1$, $E_2$, $E_3$ as três equações do sistema, com termos independentes $a_j$, $a_{j+1}$, $a_{j+2}$. Os coeficientes de $x,y,z$ nas linhas são $(1,2,1)$, $(1,3,1)$, $(1,4,1)$, e vale
+\[
+(1,2,1)-2\,(1,3,1)+(1,4,1)=(0,0,0).
+\]
+Assim, a combinação $E_1-2E_2+E_3$ elimina as incógnitas. Se o sistema tem solução, o lado direito dessa combinação também deve se anular:
+\begin{equation}\label{cond}
+a_j-2a_{j+1}+a_{j+2}=0, \qquad j=1,\ldots,2025.
+\end{equation}
+A recíproca será verificada no passo 3.
+
+\textbf{Passo 2: a sequência é uma progressão aritmética.} Seja $d_j=a_{j+1}-a_j$, para $j=1,\ldots,2026$. A condição \eqref{cond} equivale a $d_{j+1}=d_j$ para $j=1,\ldots,2025$. Logo $d_1=d_2=\cdots=d_{2026}=d$, e a sequência é uma progressão aritmética de razão $d$. Usando $a_1=1$ e $a_4=10$:
+\[
+a_4=a_1+3d \;\Rightarrow\; 10=1+3d \;\Rightarrow\; d=3,
+\qquad\text{logo}\qquad a_n=3n-2 \quad (1\le n\le 2027).
+\]
+
+\textbf{Passo 3: resolução do sistema.} Subtraindo $E_1$ de $E_2$ e $E_2$ de $E_3$:
+\[
+y=a_{j+1}-a_j=3, \qquad y=a_{j+2}-a_{j+1}=3.
+\]
+Substituindo $y=3$ em $E_1$ obtemos $x+z=a_j-6=3j-8$. Conferindo as outras duas equações:
+\[
+E_2:\; x+9+z=a_j+3=a_{j+1}, \qquad E_3:\; x+12+z=a_j+6=a_{j+2}.
+\]
+Ambas são satisfeitas, o que prova a recíproca: a condição \eqref{cond} é também suficiente, e o sistema é possível para cada $j$. As soluções são
+\[
+(x_j,\,y_j,\,z_j)=(t,\;3,\;3j-8-t), \qquad t\in\mathbb{R}.
+\]
+A matriz dos coeficientes tem posto $2$ (a coluna $1$ é igual à coluna $3$), então há uma família de soluções a um parâmetro.
+
+\textbf{Passo 4: a soma não depende da escolha de $t$.}
+\[
+x_j+y_j+z_j=t+3+(3j-8-t)=3j-5=a_j-3.
+\]
+Portanto a soma pedida está bem definida, qualquer que seja a solução escolhida.
+
+\textbf{Passo 5: cálculo da soma.}
+\begin{equation*}
+\sum_{j=1}^{2025}(x_j+y_j+z_j)=\sum_{j=1}^{2025}(3j-5)
+=3\cdot\frac{2025\cdot 2026}{2}-5\cdot 2025.
+\end{equation*}
+Como $2025\cdot 1013=2051325$, temos
+\[
+3\cdot 2025\cdot 1013-10125=6153975-10125=6143850.
+\]
+
+\textbf{Conferências.}
+\begin{itemize}
+\item Caso $j=1$: $a_1=1$, $a_2=4$, $a_3=7$. Com $t=-5$ (isto é, $x=-5$, $y=3$, $z=0$): $-5+6+0=1$, $-5+9+0=4$, $-5+12+0=7$. Todas as equações são satisfeitas, e $x_1+y_1+z_1=-2=3\cdot 1-5$.
+\item Soma parcial para $j=1,2$: $(-2)+1=-1$, e a fórmula $3\cdot 3-2\cdot 5=-1$ concorda.
+\item Ordem de grandeza: $\sum_{j=1}^{2025}3j\approx \dfrac{3\cdot 2025^2}{2}\approx 6{,}1\cdot 10^{6}$, compatível com o resultado $6\,143\,850$. O sinal é positivo, coerente com $a_j$ crescente a partir de $a_1=1$.
+\end{itemize}
+
+ANSWER: $\displaystyle\sum_{j=1}^{2025}(x_j+y_j+z_j)=6\,143\,850$

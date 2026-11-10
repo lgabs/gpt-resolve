@@ -1,0 +1,69 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "(a) $h_f = h_i\\left(\\frac{m+M}{m}\\right)^{3/5}$, obtido da expansão quase estática e adiabática reversível ($PV^{5/3}=\\text{cte}$) entre $P_i=(m+M)g/A$ e $P_f=mg/A$.\n\n(b) $m\\,(h_{\\max}-h_i)=\\frac{3}{2}(m+M)\\,h_i\\left[1-\\left(\\frac{h_i}{h_{\\max}}\\right)^{2/3}\\right]$, obtido de $W_{\\text{gás}}=mg(h_{\\max}-h_i)$, $Q=0$ e $\\Delta U=\\frac{3}{2}PV$ com $PV^{5/3}=\\text{cte}$. A raiz não trivial é única e satisfaz $h_{\\max}>h_f$.\n\nANSWER: (a) $h_f=h_i\\left(\\frac{m+M}{m}\\right)^{3/5}$; (b) $m\\,(h_{\\max}-h_i)=\\frac{3}{2}(m+M)\\,h_i\\left[1-\\left(\\frac{h_i}{h_{\\max}}\\right)^{2/3}\\right]$",
+  "judge_reference": {
+    "reference_solution": "**Questão 4: resolução de referência (resolvida antes de consultar qualquer resolução de candidato)**\n\n**Hipóteses e dados**\n- Paredes e pistão adiabáticos: Q = 0 para o gás em todo o processo.\n- Gás ideal monoatômico: C_V = (3/2)R, γ = 5/3.\n- Atrito nulo; vácuo acima do pistão (sem pressão externa); recipiente de areia de massa desprezível; a areia removida não transfere energia nem momento ao sistema gás + pistão.\n- Cilindro suficientemente alto para o pistão atingir h_max.\n\n**Estado inicial (equilíbrio mecânico)**\nP_i·A = (m+M)g, logo P_i = (m+M)g/A; V_i = A·h_i; nRT_i = P_iV_i = (m+M)·g·h_i.\n\n**Item a) Retirada lenta (quase estática) com paredes e pistão adiabáticos**\nO processo é adiabático e reversível, logo PV^γ = cte, com γ = 5/3.\nEstado final (sem areia): P_f·A = mg, logo P_f = mg/A; V_f = A·h_f.\n\nP_i(Ah_i)^{5/3} = P_f(Ah_f)^{5/3} ⇒ (h_f/h_i)^{5/3} = P_i/P_f = (m+M)/m\n\n**h_f = h_i·[(m+M)/m]^{3/5} = h_i·(1 + M/m)^{3/5}**\n\nChecagens:\n- T_f/T_i = (P_fV_f)/(P_iV_i) = (m/(m+M))^{2/5} < 1, coerente com o resfriamento na expansão adiabática.\n- O trabalho ∫P dV, calculado numericamente, coincide com (P_iV_i − P_fV_f)/(γ−1).\n- A resposta não depende de g, A, n nem R.\n\n**Item b) Remoção instantânea de toda a areia**\nLogo após a remoção, a resultante sobre o pistão é PA − mg, com PA = (m+M)g no instante anterior. O pistão parte do repouso em h_i, pois retirar peso não transfere impulso. Ele sobe, o gás expande adiabaticamente e o pistão para em h_max (primeiro ponto de retorno, v = 0).\n\nBalanço de energia (gás + pistão, sem dissipação, Q = 0). Como a energia cinética é nula em h_i e em h_max:\n\n(3/2)nR(T_max − T_i) = −mg(h_max − h_i)\n\nFechamento: a expansão entre i e o ponto de retorno é tratada como adiabática reversível (hipótese idealizadora usual para oscilação sem dissipação), logo TV^{2/3} = cte e T_max = T_i(h_i/h_max)^{2/3}. Substituindo nRT_i = (m+M)gh_i e dividindo por g:\n\n**3(m+M)·h_i·[1 − (h_i/h_max)^{2/3}] = 2m·(h_max − h_i)**\n\nForma polinomial: com t = (h_max/h_i)^{1/3}, obtém-se 2m·t⁵ − (5m+3M)·t² + 3(m+M) = 0. A raiz t = 1 é trivial (h_max = h_i, pistão em repouso no início). Fatorando:\n\n**2m·t²(t² + t + 1) = 3(m+M)(t + 1)**\n\nPara M > 0, a raiz física (t > 1) é única: g(t) = 2m(t⁴+t³+t²) − 3(m+M)(t+1) é convexa em t > 0, com g(1) = −6M < 0 e g → +∞. Não há forma fechada geral (equação de grau 4 em t), por isso a resposta pedida é a equação.\n\nChecagens:\n- M → 0: a equação só admite h_max = h_i (sem movimento), o que é correto.\n- m = M, h_i = 1: h_max ≈ 2,256·h_i. A integração numérica da dinâmica do pistão com a mesma lei adiabática reproduz esse valor.\n- Posição de repouso final pela energia (P = mg/A, U = (3/2)PV): (5/2)m·h_eq = [(5/2)m + (3/2)M]h_i, logo h_eq = h_i(1 + 3M/(5m)). Para m = M: h_eq = 1,6·h_i, h_f (item a) ≈ 1,516·h_i e 2h_eq − h_i = 2,2·h_i (que não é o valor correto). Em todos os casos testados, h_max > h_eq > h_f.\n\nObservação de modelo: a energia isolada não determina h_max, porque o estado do gás no ponto de retorno é desconhecido. A hipótese adiabática reversível fecha o problema. Irreversibilidades reais no gás (ondas de pressão) alterariam o valor exato. Um candidato que declare essa hipótese e chegue à equação acima deve receber a pontuação integral.",
+    "final_answer": "a) h_f = h_i·[(M+m)/m]^{3/5} = h_i·(1 + M/m)^{3/5}. Justificativa: retirada quase estática com paredes e pistão adiabáticos é processo adiabático reversível, com PV^{5/3} = cte, P_i = (M+m)g/A e P_f = mg/A.\n\nb) Equação que relaciona h_max com m, M e h_i:\n3(M+m)·h_i·[1 − (h_i/h_max)^{2/3}] = 2m·(h_max − h_i),\nequivalentemente, com t = (h_max/h_i)^{1/3}, 2m·t²(t²+t+1) = 3(M+m)(t+1), cuja raiz física tem h_max > h_i. Ela vem do balanço de energia ΔU_gás = −mg(h_max − h_i), fechado pela lei adiabática reversível TV^{2/3} = cte. A equação não depende de g, A, n nem R. Exemplo: para m = M, h_max ≈ 2,26·h_i.",
+    "pitfalls": [
+      "Gás monoatômico: γ = 5/3 (C_V = 3R/2). Usar 7/5 (diatômico) ou 4/3 está errado.",
+      "Item a) é adiabático (paredes e pistão isolantes), não isotérmico. Usar PV = cte dá h_f = h_i(M+m)/m, que está errado.",
+      "Pressão inicial: P_i = (m+M)g/A, incluindo o peso do próprio pistão m. Vácuo acima implica ausência de pressão atmosférica. Esquecer m é erro comum. Final: P_f = mg/A.",
+      "No item a), o peso sobre o gás muda durante a retirada da areia. Não usar trabalho com força constante (m+M)g. Usar a lei adiabática, ou integrar P dV.",
+      "As respostas não dependem de n, R, A nem g. Se elas aparecerem, há erro. A temperatura inicial não é necessária no item a).",
+      "No item b), a remoção é instantânea e não quase estática. Não usar h_max = h_f (resposta do item a) nem h_max = 2h_f − h_i (oscilação harmônica). O gás não é uma mola linear.",
+      "Energia sozinha não basta no item b): U + mgh se conserva, mas há duas incógnitas (h_max e P_max ou T_max). É preciso fechar com a lei adiabática reversível e declarar essa hipótese.",
+      "No ponto de retorno, v = 0 mas a força não é nula. Com PA = (M+m)g(h_i/h_max)^{5/3}, para m = M tem-se PA ≈ 0,52·mg < mg. Assumir P_max = mg/A, ou seja h_max = h_i(1 + 3M/5m), é o erro principal. Esse valor é a posição de repouso final pela energia, não o ponto de retorno.",
+      "Não confundir o ponto de retorno com a posição de equilíbrio final: h_max > h_eq > h_f.",
+      "A raiz trivial h_max = h_i da equação (t = 1) deve ser descartada. Para M > 0, a raiz física h_max > h_i é única.",
+      "Sinal do balanço de energia: ΔU_gás < 0 na expansão e mgΔh > 0. A forma correta é (3/2)(M+m)g·h_i[(h_i/h_max)^{2/3} − 1] = −mg(h_max − h_i). Erro de sinal gera equação sem raiz física.",
+      "A retirada instantânea da areia não transfere impulso ao pistão. Ele parte do repouso em h_i, sem velocidade inicial.",
+      "Não é necessário solução explícita no item b): a equação é de grau 4 em t. Resolver numericamente serve apenas como verificação.",
+      "O cilindro deve ser alto o bastante para o pistão atingir h_max. Esta é hipótese implícita do enunciado.",
+      "Ao corrigir, a resposta do item b) deve ser aceita se explicitar a hipótese adiabática reversível (ou equivalente) e chegar à equação ou à forma polinomial. A resposta h_max = h_i(1 + 3M/5m) como ponto de retorno deve receber penalização."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "(a) $h_f = h_i\\left(\\frac{m+M}{m}\\right)^{3/5}$, obtido da expansão quase estática e adiabática reversível ($PV^{5/3}=\\text{cte}$) entre $P_i=(m+M)g/A$ e $P_f=mg/A$.\n\n(b) $m\\,(h_{\\max}-h_i)=\\frac{3}{2}(m+M)\\,h_i\\left[1-\\left(\\frac{h_i}{h_{\\max}}\\right)^{2/3}\\right]$, obtido de $W_{\\text{gás}}=mg(h_{\\max}-h_i)$, $Q=0$ e $\\Delta U=\\frac{3}{2}PV$ com $PV^{5/3}=\\text{cte}$. A raiz não trivial é única e satisfaz $h_{\\max}>h_f$.\n\nANSWER: (a) $h_f=h_i\\left(\\frac{m+M}{m}\\right)^{3/5}$; (b) $m\\,(h_{\\max}-h_i)=\\frac{3}{2}(m+M)\\,h_i\\left[1-\\left(\\frac{h_i}{h_{\\max}}\\right)^{2/3}\\right]$",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item b): a hipótese de evolução adiabática reversível é justificada só qualitativamente. 'Velocidades da ordem de metros por segundo' e 'centenas de m/s' para o som não são calculadas. Verifiquei que no exemplo m=2 kg, M=3 kg, h_i=0,5 m a velocidade em h_f é ≈2,0 m/s, então a afirmação vale ali, mas o texto deveria mostrar a ordem de grandeza (v² ~ g·h, número de Mach ≪ 1) e dizer explicitamente que reversibilidade é uma idealização que despreza a produção de entropia por ondas de pressão."
+          },
+          {
+            "severity": "minor",
+            "description": "Não é declarada a hipótese implícita de que o cilindro é alto o bastante para o pistão atingir h_max. Também não se diz que a remoção instantânea da areia não transfere impulso ao pistão, que parte do repouso em h_i. Isso aparece apenas implicitamente em 'entre o repouso em h_i' (Passo 1). Deveria ser uma frase explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 1 usa 'W_gás' sem convenção de sinal explícita. Deveria dizer que é o trabalho realizado pelo gás sobre o pistão, para que o balanço ΔK = W_gás − mgΔh = 0 e ΔU = −W_gás fiquem auto-explicativos."
+          },
+          {
+            "severity": "minor",
+            "description": "Limite M ≪ m: 'linearizando em torno de h_i' não mostra o parâmetro pequeno nem a expansão. O resultado é correto. Com δ = h_max − h_i, a equação dá −(M/m)δ + (5/6)(1+M/m)δ² ≈ 0, logo δ ≈ 6M/[5(m+M)]·h_i. Verifiquei numericamente a razão (h_max−h_i)/previsão: 1,0107 para M/m = 0,01 e 1,0011 para M/m = 0,001, tendendo a 1. O texto deveria escrever essa dedução em vez de afirmar o resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "Unicidade da raiz: o argumento (F(1)=0, F' < 0 em (1, h_f/h_i), F' > 0 depois, F → +∞) está quase completo. Falta dizer explicitamente que F(h_f/h_i) < 0, o que segue de F decrescente a partir de F(1)=0, e concluir que a raiz está em (h_f/h_i, ∞), o que dá h_max > h_f."
+          },
+          {
+            "severity": "minor",
+            "description": "As armadilhas de item b) são evitadas pelo cálculo (usa P_max = P_i(h_i/h_max)^{5/3}, não mg/A), mas o texto não as aponta explicitamente. Uma resolução de gabarito comentado deveria dizer em uma frase que, no ponto de retorno, v = 0 mas a força não é nula, e que h_i(1+3M/5m) é a posição de equilíbrio final pela energia e não o ponto de retorno."
+          }
+        ],
+        "summary": "Comparação item a item: as duas respostas coincidem. (a) h_f = h_i·((m+M)/m)^{3/5}, correta: confirmei numericamente que ∫PA dh = (3/2)[(m+M)g h_i − m g h_f] para m=2, M=3, h_i=0,5. (b) m(h_max−h_i) = (3/2)(m+M)h_i[1−(h_i/h_max)^{2/3}], equivalente à forma 2m·t²(t²+t+1) = 3(m+M)(t+1) com t = (h_max/h_i)^{1/3}. É a mesma equação da referência (multiplicada por 1/2). Verifiquei-a por integração RK4 da dinâmica do pistão com PV^{5/3} = cte: h_max = 1,45518 para (m,M,h_i) = (2,3,0,5) e 2,25587 para (1,1,1), coincidindo com a raiz. A resposta de (b) está correta sob a hipótese adiabática reversível, que o candidato declara. A resolução trata as armadilhas principais: γ = 5/3; processo adiabático em (a); P_i inclui m e P_f = mg/A; sem trabalho com força constante; (b) não quase estático; h_max ≠ h_f e ≠ 2h_f−h_i; sinal correto do balanço de energia; raiz trivial h_i descartada; h_max > h_f. Não há erro de conta, de sinal nem de unidade. Os problemas são de rigor e clareza: justificativa qualitativa da hipótese de reversibilidade, hipóteses implícitas não listadas (altura do cilindro, impulso nulo), dedução do limite M≪m e um passo da unicidade. Nota 9: publicável como gabarito comentado, com polimentos.\"}]"
+      }
+    }
+  ]
+}

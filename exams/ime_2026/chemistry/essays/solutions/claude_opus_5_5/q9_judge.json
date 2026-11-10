@@ -1,0 +1,53 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) [CO2] ≈ 1,8×10⁻⁵ mol/L, de p = 5,45×10⁻⁴ atm a P = 1 atm. b) Ka ≈ 4,3×10⁻⁷ (ΔG° = +36,3 kJ/mol), o que dá pH ≈ 5,56. c) O pH diminui: a ionização do CO2 é endotérmica (ΔH° = +7,6 kJ/mol), então Ka e [H+] aumentam quando a temperatura sobe.",
+  "judge_reference": {
+    "reference_solution": "**Dados usados (folha de dados):** K_H(CO2, 300 K) = 3,3×10⁻² mol·atm⁻¹·L⁻¹; ΔHf° e ΔGf° a 25 °C de CO2(aq), H2O(l), HCO3⁻(aq) e H⁺(aq); R = 8,3 J·mol⁻¹·K⁻¹; log x ≈ 0,434 ln x; log 2 ≈ 0,301; log 3 ≈ 0,477. (Os dados de CO2(g), H2O(g) e Cu2CO3(OH)2 servem para a 7ª questão, a da malaquita.)\n\n---\n**a) Concentração de CO2 dissolvido**\n\n545 ppm em base molar significa fração molar y(CO2) = 545×10⁻⁶. Para gás ideal, a pressão parcial é p = y·P. Com P = 1 atm (pressão atmosférica ao nível do mar):\n\np(CO2) = 5,45×10⁻⁴ atm\n\nLei de Henry na forma dada pelas unidades (mol·atm⁻¹·L⁻¹), ou seja, C = K_H·p:\n\n[CO2(aq)] = 3,3×10⁻² × 5,45×10⁻⁴ = 1,7985×10⁻⁵ ≈ **1,8×10⁻⁵ mol·L⁻¹**\n\nSobre a temperatura: K_H é dado a 300 K e o enunciado pede 25 °C (298 K). A resolução esperada aproxima 298 K ≈ 300 K. Repare que 1,8×10⁻⁵ = 2·3²·10⁻⁶, número cujo log se calcula exatamente com os logs fornecidos. Uma correção opcional por van't Hoff usa ΔH_sol = ΔHf(CO2,aq) − ΔHf(CO2,g) = −413,8 − (−394,0) = −19,8 kJ/mol. Ela dá K_H(298) ≈ 3,48×10⁻², logo [CO2] ≈ 1,9×10⁻⁵ M. A diferença é de ~5 % e os dois valores são aceitáveis.\n\n---\n**b) pH da solução**\n\nEquilíbrio principal: CO2(aq) + H2O(l) ⇌ H⁺(aq) + HCO3⁻(aq), com constante K1.\n\nΔG°r = [−586,8 + 0] − [−386,0 + (−237,1)] = −586,8 + 623,1 = **+36,3 kJ·mol⁻¹**\n\nln K1 = −ΔG°/(RT) = −36300/(8,3 × 298) = −14,68\nlog K1 = 0,434 × (−14,68) = −6,37, logo **K1 ≈ 4,3×10⁻⁷** (pK1 ≈ 6,37)\n\nA solução está em equilíbrio com a atmosfera (sistema aberto), então [CO2(aq)] fica fixada pela lei de Henry: 1,8×10⁻⁵ M é a concentração de equilíbrio e não a inicial. Para a eletroneutralidade, [H⁺] = [HCO3⁻] + [OH⁻] + 2[CO3²⁻] ≈ [HCO3⁻]. Os termos [OH⁻] ~ 10⁻⁹ M e [CO3²⁻] ~ Ka2 ~ 10⁻¹¹ M são desprezíveis, como se verifica abaixo. Então:\n\n[H⁺]² = K1·[CO2(aq)] ⇒ pH = ½(pK1 − log[CO2])\n\nlog(1,8×10⁻⁵) = log 2 + 2 log 3 − 6 = 0,301 + 0,954 − 6 = −4,745\n\npH = ½(6,37 + 4,745) = **5,56**   ([H⁺] ≈ 2,8×10⁻⁶ mol/L)\n\nVerificação: [OH⁻] = 10⁻¹⁴/2,8×10⁻⁶ ≈ 3,6×10⁻⁹ ≪ [H⁺], então a autoionização da água pode ser desprezada. Incluir Kw muda o pH em menos de 0,001.\n\nVariantes numéricas aceitáveis:\n- tratar 1,8×10⁻⁵ como concentração inicial e resolver x²/(C − x) = K1 dá pH ≈ 5,59 (conceitualmente menos adequado para sistema aberto);\n- usar T = 300 K no cálculo de K1 dá pH ≈ 5,54;\n- usar K_H corrigido para 298 K dá pH ≈ 5,55.\n\nFaixa razoável: pH ≈ 5,5–5,6, ou seja, chuva/água naturalmente ácida.\n\n---\n**c) Efeito de aumentar T com [CO2(aq)] constante**\n\nΔH°r da ionização = [−692,0 + 0] − [−413,8 + (−285,8)] = −692,0 + 699,6 = **+7,6 kJ·mol⁻¹** (endotérmica).\n\nPela equação de van't Hoff, d(ln K1)/dT = ΔH°/(RT²) > 0. Portanto K1 aumenta com a temperatura (Le Chatelier: aquecer favorece o sentido endotérmico, o da ionização).\n\nComo [H⁺] = √(K1·[CO2(aq)]) e [CO2(aq)] está fixa, [H⁺] aumenta e **o pH diminui**.\n\nEstimativa: dpH/dT = −½·0,434·ΔH°/(RT²) ≈ −0,002 por K. Por exemplo, a 35 °C, K1 ≈ 4,7×10⁻⁷ e pH ≈ 5,54. O Kw também aumenta com T (autoionização endotérmica), o que reforça o mesmo sentido, embora com efeito desprezível aqui.\n\nObservação: ΔS° = (ΔH° − ΔG°)/T = (7600 − 36300)/298 ≈ −96 J·mol⁻¹·K⁻¹. Assim, ΔG° = ΔH° − TΔS° fica mais positivo com T, mas mesmo assim K1 aumenta, porque o que importa é ΔG°/T = ΔH°/T − ΔS°, que diminui com T.\n\nRessalva: se a concentração de CO2 não fosse mantida constante (sistema aberto com pCO2 fixa), a solubilidade cairia com T (dissolução exotérmica, −19,8 kJ/mol). O efeito líquido em [H⁺] ∝ √(K_H·K1) teria ΔH ≈ −12,2 kJ/mol, e o pH subiria. O enunciado elimina esse efeito ao fixar [CO2(aq)].",
+    "final_answer": "a) [CO2(aq)] = K_H·p(CO2) = 3,3×10⁻² × 5,45×10⁻⁴ ≈ 1,8×10⁻⁵ mol/L (com p = 545×10⁻⁶ × 1 atm; se K_H for corrigido para 298 K, dá ≈ 1,9×10⁻⁵ M, também aceitável).\nb) Para CO2(aq) + H2O ⇌ H⁺ + HCO3⁻: ΔG° = +36,3 kJ/mol ⇒ log K1 ≈ −6,37 (K1 ≈ 4,3×10⁻⁷); [H⁺] = √(K1·[CO2]) ≈ 2,8×10⁻⁶ M ⇒ pH ≈ 5,56 (faixa aceitável ≈ 5,5–5,6).\nc) O pH DIMINUI: a ionização é endotérmica (ΔH° = +7,6 kJ/mol), então K1 aumenta com T (van't Hoff); com [CO2(aq)] fixa, [H⁺] = √(K1[CO2]) aumenta.",
+    "pitfalls": [
+      "ppm em base molar é fração molar, portanto p(CO2) = y·P = 5,45×10⁻⁴ atm (com P = 1 atm). Ler 545 ppm como mg/L ou como fração mássica é erro.",
+      "As unidades de K_H (mol·atm⁻¹·L⁻¹) indicam C = K_H·p. Inverter a relação (p = K_H·C) ou usar K_H em base de fração molar dá um resultado absurdo.",
+      "K_H é dado a 300 K e a questão é a 25 °C. A resolução esperada aproxima 298 ≈ 300 K (1,8×10⁻⁵ se calcula com os logs de 2 e 3 fornecidos). Corrigir por van't Hoff com ΔH_sol = −19,8 kJ/mol (≈1,9×10⁻⁵ M) também é válido; nenhuma das duas escolhas deve ser penalizada.",
+      "K1 tem de vir dos ΔGf° fornecidos (ΔG° = +36,3 kJ/mol, pK1 ≈ 6,37), usando T = 298 K, já que os dados são a 25 °C. Usar 300 K desloca o pH para ≈5,54, um erro pequeno. Errar o sinal de ΔG° ou somar reagentes e produtos de forma trocada é erro grave.",
+      "Sistema aberto: [CO2(aq)] = 1,8×10⁻⁵ M é a concentração de equilíbrio, fixada por Henry, e não a inicial. O certo é [H⁺] = √(K1·[CO2]). Resolver x²/(C − x) = K1 dá pH ≈ 5,59, deslize conceitual menor, mas o valor ainda fica aceitável.",
+      "As aproximações têm de ser justificadas: [OH⁻] ≈ 3,6×10⁻⁹ ≪ [H⁺] e a segunda ionização (CO3²⁻) é desprezível; [H⁺] ≈ [HCO3⁻] vem da eletroneutralidade.",
+      "Escrever H2CO3 em vez de CO2(aq) só vale se for coerente com os dados, que são de CO2(aq) (convenção H2CO3*). Não se deve tratar o ácido como forte nem considerar a dissociação de 2 H⁺.",
+      "No item c, o sinal de ΔH° da ionização (+7,6 kJ/mol, endotérmica) tem de sair dos ΔHf° fornecidos. Afirmar o sinal sem calcular, ou com sinal errado, invalida a justificativa.",
+      "Armadilha central do item c: argumentar que, com T maior, a solubilidade do CO2 cai e por isso o pH sobe. O enunciado fixa [CO2(aq)], então só importa o efeito de T sobre K1.",
+      "Erro clássico: como ΔS° < 0, ΔG° = ΔH° − TΔS° fica mais positivo com T, e daí concluir que K1 diminui. Isso está errado: ln K = −ΔH°/RT + ΔS°/R, logo d ln K/dT = ΔH°/RT² > 0 e K1 aumenta.",
+      "A resposta do item c precisa ser explícita: o pH DIMINUI, com a cadeia completa ΔH° > 0 → K1 aumenta → [H⁺] aumenta (com [CO2] fixa) → pH diminui."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) [CO2] ≈ 1,8×10⁻⁵ mol/L, de p = 5,45×10⁻⁴ atm a P = 1 atm. b) Ka ≈ 4,3×10⁻⁷ (ΔG° = +36,3 kJ/mol), o que dá pH ≈ 5,56. c) O pH diminui: a ionização do CO2 é endotérmica (ΔH° = +7,6 kJ/mol), então Ka e [H+] aumentam quando a temperatura sobe.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A 2ª ionização (formação de CO3²⁻) é descartada só com o argumento qualitativo de que o meio é ácido. Como a folha de dados não dá Ka2, isso é aceitável, mas faltou dizer que [CO3²⁻] ≈ Ka2 ~ 10⁻¹¹ M (ordem de grandeza da literatura) é desprezível frente a [HCO3⁻] ~ 10⁻⁶ M. Também faltou citar a eletroneutralidade ([H⁺] = [HCO3⁻] + [OH⁻] + 2[CO3²⁻]) como origem de [H⁺] ≈ [HCO3⁻]."
+          },
+          {
+            "severity": "minor",
+            "description": "Na estimativa de ΔpH entre 298 K e 308 K (item c) e na correção de k_H entre 300 K e 298 K (item a), a van't Hoff integrada é usada sem declarar que ΔH° foi suposto constante na faixa. A hipótese é óbvia para ΔT de 2 a 10 K, mas um gabarito comentado a deixaria explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "K_a ≈ 4,3×10⁻⁷ é um arredondamento um pouco generoso: exp(−14,676) = 4,23×10⁻⁷ e 10^(−6,37) = 4,27×10⁻⁷. O pH final (5,56) não muda, porque o cálculo segue por pK_a = 6,37."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 4 do PDF, e a transcrição está fiel. As três respostas finais do candidato coincidem com a minha referência e estão corretas. a) [CO2] = 3,3×10⁻² × 5,45×10⁻⁴ = 1,7985×10⁻⁵ ≈ 1,8×10⁻⁵ mol/L. b) ΔG° = +36,3 kJ/mol, ln K = −14,68, log K = −6,37 e pH = ½(6,37 + 4,745) = 5,557 ≈ 5,56. c) ΔH° = +7,6 kJ/mol, logo o pH diminui. Refiz em python os valores secundários e todos batem: correção de k_H para 298 K = 3,48×10⁻², o que dá [CO2] ≈ 1,90×10⁻⁵ e ΔpH ≈ 0,012; sistema fechado dá pH = 5,591; [OH⁻] = 3,6×10⁻⁹; K_a·C = 7,7×10⁻¹² ≫ K_w; ΔpH de 298 para 308 K = −0,022; log 1,8 = 0,255.\n\nTodas as armadilhas foram tratadas:\n- ppm em base molar foi lido como fração molar, com P = 1 atm declarado.\n- A lei de Henry foi aplicada no sentido certo (C = k_H·p), coerente com as unidades.\n- A aproximação 300 K ≈ 298 K foi explicitada, com uma correção opcional por van't Hoff correta.\n- K_a saiu dos ΔGf° com T = 298 K e sinal correto.\n- O sistema aberto foi tratado corretamente: [CO2] é a concentração de equilíbrio e não se subtrai x. A variante de sistema fechado aparece como comparação.\n- O desprezo da autoionização foi justificado pelo critério certo (K_aC ≫ K_w) e conferido a posteriori.\n- No item c, o ΔH° foi calculado a partir dos ΔHf°, e a cadeia de raciocínio está completa: van't Hoff → K_a aumenta → [H⁺] = √(K_aC) aumenta → pH diminui. O candidato não caiu na armadilha da solubilidade nem na do ΔS° < 0.\n\nRestam só deslizes formais de rigor:\n- a 2ª ionização foi descartada de forma qualitativa e sem citar a eletroneutralidade;\n- não foi declarado que ΔH° é suposto constante na van't Hoff integrada;\n- o arredondamento de K_a ficou um pouco generoso.\n\nA resolução tem nível de gabarito comentado."
+      }
+    }
+  ]
+}

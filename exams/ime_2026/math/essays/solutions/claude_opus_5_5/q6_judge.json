@@ -1,0 +1,45 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A soma vale 6143850 (= 2025·3034). Como o sistema é possível para todo j, a sequência é uma PA com a_n = 3n − 2. Em cada sistema y = 3 e x + z = a_j − 6, então x_j + y_j + z_j = 3j − 5.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (pág. 2, 6ª questão): a sequência vai de a_1 a a_2027, com a_1 = 1 e a_4 = 10, e o sistema deve ser possível para j = 1, …, 2025. Pede-se Σ_{j=1}^{2025}(x_j+y_j+z_j).\n\n**1) Quando o sistema é possível.**\nEm todas as equações, x e z aparecem com coeficiente 1. Então, com s = x + z, o sistema fica:\n s + 2y = a_j\n s + 3y = a_{j+1}\n s + 4y = a_{j+2}\nA matriz dos coeficientes [[1,2,1],[1,3,1],[1,4,1]] tem a 1ª e a 3ª colunas iguais. Logo o determinante é 0 e o posto é 2. Não dá para usar Cramer e o sistema nunca tem solução única.\n- (2ª) − (1ª): y = a_{j+1} − a_j.\n- (3ª) − (2ª): y = a_{j+2} − a_{j+1}.\nLogo, é **necessário** que a_{j+1} − a_j = a_{j+2} − a_{j+1}, ou seja, a_j + a_{j+2} = 2a_{j+1}.\nEssa condição também é **suficiente**. Se ela vale, tome y = a_{j+1} − a_j e s = a_j − 2y. A 1ª equação vale por construção. A 2ª dá s + 3y = a_j + y = a_{j+1}. A 3ª dá s + 4y = a_j + 2y = a_{j+2}. O sistema é então possível e indeterminado: x é livre e z = s − x.\n\n**2) A sequência é uma PA.**\nA condição a_{j+2} − a_{j+1} = a_{j+1} − a_j vale para j = 1, …, 2025. Assim, as diferenças consecutivas d_k = a_{k+1} − a_k são todas iguais para k = 1, …, 2026, e a sequência inteira (a_1 até a_2027) é uma PA de razão r.\nBasta j = 1, 2 para ligar a_1 a a_4: a_4 = a_1 + 3r ⇒ 10 = 1 + 3r ⇒ r = 3.\nLogo a_n = 1 + 3(n − 1) = 3n − 2.\n\n**3) x_j + y_j + z_j é invariante.**\nPara cada j: y_j = r = 3 e x_j + z_j = s = a_j − 2r = a_j − 6. Portanto\n x_j + y_j + z_j = (a_j − 6) + 3 = a_j − 3 = 3j − 5.\nEsse valor é o mesmo para qualquer solução escolhida, embora x_j e z_j isolados não sejam únicos. Isso garante que a soma pedida está bem definida.\nForma equivalente: x_j + y_j + z_j = a_j − y_j = 2a_j − a_{j+1}.\nConferência: j = 1 dá 1 − 3 = −2 = 3·1 − 5 ✓.\n\n**4) A soma.**\nΣ_{j=1}^{2025}(3j − 5) = 3·(2025·2026/2) − 5·2025 = 2025·(3·1013 − 5) = 2025·3034 = **6 143 850**.\n(Conferido em Python: soma direta, fórmula fechada e a forma 2a_j − a_{j+1} dão todas 6 143 850. As soluções também foram verificadas com x arbitrário.)",
+    "final_answer": "A sequência é a PA a_n = 3n − 2 (razão 3). Para cada j, o sistema é possível e indeterminado, com y_j = 3, x_j + z_j = a_j − 6 e, portanto, x_j + y_j + z_j = a_j − 3 = 3j − 5. A soma pedida é Σ_{j=1}^{2025}(x_j + y_j + z_j) = 2025·3034 = 6 143 850.",
+    "pitfalls": [
+      "O sistema é sempre singular: x e z têm os mesmos coeficientes, então det = 0 e o posto é 2. Cramer ou inversão de matriz não funcionam. O sistema nunca é possível e determinado, só possível e indeterminado (ou impossível).",
+      "x_j e z_j não são únicos. A resolução precisa observar que x_j + y_j + z_j não depende da solução escolhida (só x+z e y são fixos). Sem isso, a soma pedida não estaria bem definida.",
+      "É preciso tirar do sistema a condição de compatibilidade a_j + a_{j+2} = 2a_{j+1} e mostrar que ela é necessária e suficiente. Supor que a sequência é uma PA sem justificar é uma lacuna.",
+      "A conclusão de que a sequência é uma PA vale porque a condição cobre j = 1, …, 2025 e, com isso, todas as diferenças até a_2027. Para achar r a partir de a_4 = a_1 + 3r, bastam j = 1 e j = 2.",
+      "Erro algébrico comum: escrever x+y+z = a_j − 2r (confundindo x+z com x+y+z) ou a_j + r. O correto é x+y+z = a_j − r = a_j − 3 = 3j − 5 (ou 2a_j − a_{j+1}).",
+      "Erros de índice: somar até 2027 ou 2026 em vez de 2025, somar os a_j no lugar de x_j+y_j+z_j, ou errar a razão (por exemplo, r = 10/4 ou r = 9/4 por contar mal os passos entre a_1 e a_4).",
+      "Erro aritmético no final: Σ(3j − 5) = 3·2025·2026/2 − 5·2025 = 2025·3034 = 6 143 850. Conferir que o termo de j = 1 é −2."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A soma vale 6143850 (= 2025·3034). Como o sistema é possível para todo j, a sequência é uma PA com a_n = 3n − 2. Em cada sistema y = 3 e x + z = a_j − 6, então x_j + y_j + z_j = 3j − 5.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na suficiência da condição (item 2), o candidato só afirma que 'as três equações são satisfeitas' com y = a_{j+1} − a_j e s = a_j − 2y, sem fazer a conta. Falta a linha que mostra s+3y = a_j + y = a_{j+1} e s+4y = a_j + 2y = a_{j+2}. Essa última igualdade é justamente onde entra a condição a_{j+2} − a_{j+1} = a_{j+1} − a_j, e deixá-la explícita fecharia o argumento. A conta é imediata e a conferência numérica com j = 1 no item 4 compensa em parte a omissão."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não diz explicitamente que a matriz dos coeficientes é singular (1ª e 3ª colunas iguais, det = 0, posto 2). Não é necessário, porque ele trabalha direto com s = x+z e conclui corretamente que o sistema é possível e indeterminado. Ainda assim, uma frase sobre isso deixaria claro ao leitor por que não se pode usar Cramer."
+          }
+        ],
+        "summary": "Conferi o enunciado com o original (pág. 2, 6ª questão) e a transcrição está correta. A resposta final do candidato coincide com a minha referência: Σ = 2025·3034 = 6 143 850. Conferi em Python de três formas (soma direta de 3j−5, fórmula fechada e Σ(2a_j − a_{j+1})) e as três dão o mesmo valor.\n\nSituação de cada armadilha:\n- **Sistema singular:** tratado. O candidato reduz o sistema a (s, y) com s = x+z e diz que ele é possível e indeterminado, dando a família (t, y, s−t).\n- **Condição de compatibilidade:** ele a obtém e afirma que é necessária e suficiente. A necessidade vem das subtrações. Na suficiência, apenas declara que as equações são satisfeitas, sem escrever a verificação (falha menor).\n- **Extensão da PA:** justificada corretamente para todas as diferenças de a_1 a a_2027.\n- **Razão:** r = 3 obtido de a_4 = a_1 + 3r, sem erro na contagem dos passos.\n- **Invariância de x_j+y_j+z_j:** dita explicitamente (\"a soma pedida é a mesma para qualquer solução escolhida\"), já que y_j e s_j são fixos. É isso que deixa a soma bem definida.\n- **Álgebra:** x+y+z = a_j − 3 = 3j − 5 está correto. O candidato não confunde x+z com x+y+z e confere o caso j = 1 (termo −2).\n- **Índices:** soma de j = 1 a 2025, sem erro.\n- **Aritmética:** 2025·3034 = 6 143 850, correto.\n\nA resolução é clara, bem organizada, rigorosa e completa. Os dois pontos que encontrei são menores: a verificação da suficiência ficou só afirmada e falta uma menção explícita a det = 0. Pode ser publicada como gabarito comentado."
+      }
+    }
+  ]
+}

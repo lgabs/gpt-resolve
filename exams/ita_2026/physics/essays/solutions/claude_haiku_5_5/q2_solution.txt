@@ -1,0 +1,68 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses.}
+\begin{enumerate}
+\item Equilíbrio estático do corpo rígido. A figura mostra a barra elevada sobre os suportes, mas o enunciado não fornece essa altura nem a geometria dos apoios. Por isso idealiza-se a linha de centro da barra e os contatos como situados sobre a superfície do plano, de modo que todas as forças atuam nessa linha. Essa idealização é obrigatória: se a linha das cargas estivesse a uma altura $\delta$ acima dos contatos, os momentos das componentes dos pesos paralelas ao plano alterariam $N_A$ e $N_B$ em sentidos opostos, de $\pm\,\delta\,g\sin\theta\,(M+m+m_c)/(L-2d)$. No exemplo numérico abaixo, $\delta=1$ cm já causaria uma variação de cerca de $0{,}4$ N, e $\delta$ não é dado.
+\item Contatos pontuais em $A$ e $B$, com $d<L/2$, logo $L-2d>0$.
+\item Pesos são forças concentradas: $Mg$ no centro da barra (homogênea), $mg$ em $s=a$ e $m_cg$ em $s=L-b$.
+\item Os apoios só empurram ($N_A\ge 0$, $N_B\ge 0$), e o atrito é estático.
+\end{enumerate}
+
+\textbf{Referencial e forças sobre a barra.} Seja $s$ a posição ao longo da barra, medida a partir da extremidade inferior. Use os versores $\hat e_s=(\cos\theta,\sin\theta)$, ao longo do plano para cima, e $\hat e_n=(-\sin\theta,\cos\theta)$, normal ao plano para fora, nas coordenadas (horizontal, vertical). Então $(0,1)=\sin\theta\,\hat e_s+\cos\theta\,\hat e_n$, e cada peso $-m_i g\,(0,1)$ tem componentes $-m_i g\sin\theta$ em $\hat e_s$ e $-m_i g\cos\theta$ em $\hat e_n$. As forças que os apoios exercem sobre a barra são $N_A\hat e_n+f_A\hat e_s$ em $s=d$ e $N_B\hat e_n+f_B\hat e_s$ em $s=L-d$. Pela 3ª lei, a barra comprime os apoios com forças de módulos $N_A$ e $N_B$, para dentro do plano, e os atritos sobre os apoios apontam no sentido descendente do plano.
+
+\textbf{Equações de equilíbrio.} Resultantes nas direções $\hat e_n$ e $\hat e_s$:
+\[
+N_A+N_B=(M+m+m_c)\,g\cos\theta \tag{1}
+\]
+\[
+f_A+f_B=(M+m+m_c)\,g\sin\theta \tag{2}
+\]
+Momentos em torno de um eixo perpendicular ao plano $\Pi$ da barra e passando por um ponto $s_0$: a força $F_n\hat e_n$ aplicada em $s$ tem momento $(s-s_0)F_n$, enquanto $F_s\hat e_s$ tem momento nulo, pois atua ao longo da própria linha da barra, que contém o eixo. Assim, os atritos e as componentes $-m_i g\sin\theta$ dos pesos não contribuem. Em torno de $A$ e de $B$:
+\[
+N_B\,(L-2d)=g\cos\theta\Big[M\big(\tfrac{L}{2}-d\big)+m\,(a-d)+m_c\,(L-b-d)\Big] \tag{3}
+\]
+\[
+N_A\,(L-2d)=g\cos\theta\Big[M\big(\tfrac{L}{2}-d\big)+m\,(L-a-d)+m_c\,(b-d)\Big] \tag{4}
+\]
+Há quatro incógnitas ($N_A$, $N_B$, $f_A$, $f_B$), mas só três equações independentes: (4) decorre de (1) e (3).
+
+\textbf{Item a).} Cada normal sai de uma única equação de momentos, o que é a regra da alavanca:
+\[
+N_A=\frac{g\cos\theta}{L-2d}\Big[M\big(\tfrac{L}{2}-d\big)+m\,(L-a-d)+m_c\,(b-d)\Big]
+\]
+\[
+N_B=\frac{g\cos\theta}{L-2d}\Big[M\big(\tfrac{L}{2}-d\big)+m\,(a-d)+m_c\,(L-b-d)\Big]
+\]
+Conferências algébricas (não são equações físicas novas). (i) Como $(L-a-d)+(a-d)=L-2d$ e $(b-d)+(L-b-d)=L-2d$, a soma das expressões reproduz (1). (ii) O momento em torno do centro da barra, ponto distinto de $A$ e $B$, deve satisfazer $(N_B-N_A)(L/2-d)=g\cos\theta\,[m(a-L/2)+m_c(L/2-b)]$; substituindo as expressões acima, a igualdade se verifica.
+
+\textbf{Item b).} Por (2), a estática fixa apenas a soma $f_A+f_B$. Como há uma incógnita a mais que as equações independentes, a repartição entre $A$ e $B$ depende da deformação dos contatos, que o enunciado não fornece. Adota-se, como hipótese explícita, a mobilização uniforme do atrito: a razão entre atrito e normal é a mesma nos dois apoios,
+\[
+\frac{f_A}{N_A}=\frac{f_B}{N_B}=\mu_m .
+\]
+Sentido físico: cada apoio mobiliza a mesma fração de atrito em relação à sua carga normal, análogo à hipótese de mobilização uniforme da resistência ao cisalhamento usada em análises de estabilidade de taludes. Equivalentemente, a reação de contato em cada apoio forma com a normal ao plano o ângulo $\arctan\mu_m$. Com (1) e (2), $\mu_m(N_A+N_B)=(M+m+m_c)\,g\sin\theta$ e $N_A+N_B=(M+m+m_c)\,g\cos\theta$, logo $\mu_m=\tan\theta$. Portanto
+\[
+f_A=N_A\tan\theta=\frac{g\sin\theta}{L-2d}\Big[M\big(\tfrac{L}{2}-d\big)+m\,(L-a-d)+m_c\,(b-d)\Big]
+\]
+\[
+f_B=N_B\tan\theta=\frac{g\sin\theta}{L-2d}\Big[M\big(\tfrac{L}{2}-d\big)+m\,(a-d)+m_c\,(L-b-d)\Big]
+\]
+Verificação: $N_A\hat e_n+f_A\hat e_s=\dfrac{N_A}{\cos\theta}(0,1)$, pois $\hat e_n+\tan\theta\,\hat e_s=(0,1/\cos\theta)$. Assim, a reação em cada apoio é vertical, com módulo $N_i/\cos\theta$. Ambas as frações são positivas, pois o atrito atua para cima do plano, opondo-se à tendência de descida.
+
+Esse fechamento não decorre da estática. Outras repartições também satisfazem (2); por exemplo, $f_A=f_B$ corresponderia a contatos idênticos e elásticos com a barra transladando sem girar no plano. O total $(M+m+m_c)\,g\sin\theta$ independe do modelo; apenas as parcelas individuais dependem dele.
+
+\textbf{Validade.}
+\begin{itemize}
+\item Atrito: com o fechamento, $|f_i|\le\mu_i N_i$ exige $\mu_i\ge\tan\theta$ em cada apoio. Para qualquer repartição, $f_A+f_B\le\mu_A N_A+\mu_B N_B$ exige $\tan\theta\le(\mu_A N_A+\mu_B N_B)/(N_A+N_B)$; com $\mu_A=\mu_B=\mu_s$, isso se reduz a $\mu_s\ge\tan\theta$.
+\item Contato: $N_A\ge 0$ e $N_B\ge 0$, ou seja, os colchetes de (a) são não negativos. Se um deles for negativo, o apoio correspondente deveria puxar a barra; a barra então se descola dele e o modelo deixa de valer.
+\item Caso degenerado $L=2d$: os apoios coincidem no centro, (3) e (4) reduzem-se a condições sobre as cargas ($0=g\cos\theta\,[\dots]$), e apenas $N_A+N_B$ fica determinado. Por isso as fórmulas exigem $L>2d$.
+\end{itemize}
+
+\textbf{Casos particulares.} Se $m=m_c=0$, então $N_A=N_B=\dfrac{Mg\cos\theta}{2}$ e $f_A=f_B=\dfrac{Mg\sin\theta}{2}$. Se $a=d$ e $m_c=0$, então $N_A=g\cos\theta\left(\dfrac{M}{2}+m\right)$ e $N_B=\dfrac{Mg\cos\theta}{2}$: toda a carga de $m$ vai para $A$. Se $a=L/2$ e $m_c=0$, então $N_A=N_B=\dfrac{(M+m)g\cos\theta}{2}$. Se $\theta=0$, os atritos se anulam e as normais somam o peso total.
+
+\textbf{Unidades.} $g$ em m/s$^2$ vezes massa em kg dá newtons. O quociente $(L-a-d)/(L-2d)$ é adimensional, de modo que cada termo entre colchetes tem unidade de massa, e $N_i$ e $f_i$ saem em newtons.
+
+\textbf{Exemplo numérico.} Com $M=10$ kg, $m=2$ kg, $m_c=1$ kg, $L=2$ m, $d=0{,}2$ m, $a=0{,}6$ m, $b=0{,}5$ m e $\theta=30^\circ$, obtém-se $N_A\approx 57{,}9$ N, $N_B\approx 54{,}7$ N, $f_A\approx 33{,}4$ N e $f_B\approx 31{,}6$ N. Conferências: $N_A+N_B\approx 112{,}6$ N $\approx 130\cos 30^\circ$ N; $f_A+f_B\approx 65{,}0$ N $=130\sin 30^\circ$ N, com $(M+m+m_c)g=130$ N; é preciso $\mu_s\ge\tan 30^\circ\approx 0{,}58$. Ordem de grandeza: peso total de 130 N, com cerca de 55 a 58 N em cada apoio.
+
+ANSWER: a) $N_A=\dfrac{g\cos\theta}{L-2d}\left[M\left(\frac{L}{2}-d\right)+m\,(L-a-d)+m_c\,(b-d)\right]$ e $N_B=\dfrac{g\cos\theta}{L-2d}\left[M\left(\frac{L}{2}-d\right)+m\,(a-d)+m_c\,(L-b-d)\right]$; b) $f_A=N_A\tan\theta=\dfrac{g\sin\theta}{L-2d}\left[M\left(\frac{L}{2}-d\right)+m\,(L-a-d)+m_c\,(b-d)\right]$ e $f_B=N_B\tan\theta=\dfrac{g\sin\theta}{L-2d}\left[M\left(\frac{L}{2}-d\right)+m\,(a-d)+m_c\,(L-b-d)\right]$, com $f_A+f_B=(M+m+m_c)\,g\sin\theta$, sob o fechamento de mobilização uniforme do atrito.

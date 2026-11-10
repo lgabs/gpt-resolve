@@ -1,0 +1,55 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "Razão r ímpar com 1 ≤ r ≤ 9 e a₁ = (87 − 9r)/2: (39,…,48), (30,…,57), (21,…,66), (12,…,75), (3,…,84) (razões 1, 3, 5, 7, 9). Mais as 5 invertidas (razões negativas). Ao todo, 5 PAs crescentes (10 contando as decrescentes).",
+  "judge_reference": {
+    "reference_solution": "**Enunciado (conferido no PDF):** descrever todas as PAs de 10 números naturais (ℕ = {1,2,3,…}, conforme a convenção da prova) cuja soma é 435.\n\n**1. Equação.** Seja a₁ = a o primeiro termo e r a razão. Então S₁₀ = (a₁ + a₁₀)·10/2 = 10a + 45r = 435. Dividindo por 5: **2a + 9r = 87**. (Equivalente: a₅ + a₆ = 87, pois S = 5(a₅+a₆).)\n\n**2. A razão é inteira.** Como a₁ e a₂ são naturais, r = a₂ − a₁ ∈ ℤ. Não se pode supor r ≥ 0 nem r natural: PAs decrescentes também valem.\n\n**3. Paridade.** 2a é par e 87 é ímpar, logo 9r é ímpar e **r é ímpar**. Em particular r ≠ 0 (a PA constante daria 10a = 435, a = 43,5 ∉ ℕ).\n\n**4. Condição de pertencer a ℕ.** Todos os termos devem ser ≥ 1. Com r ≠ 0, o menor termo é o primeiro (r > 0) ou o último (r < 0).\n- Se r > 0: a = (87 − 9r)/2 ≥ 1 ⇒ 9r ≤ 85 ⇒ r ≤ 9. Com r ímpar: r ∈ {1, 3, 5, 7, 9}. (r = 11 daria a = −6 < 0.)\n- Se r < 0: a₁₀ = a + 9r = (87 + 9r)/2 ≥ 1 ⇒ 9r ≥ −85 ⇒ r ≥ −9. Com r ímpar: r ∈ {−1, −3, −5, −7, −9}.\n\nEm ambos os casos a é inteiro, pois 87 − 9r é par quando r é ímpar. Basta, portanto, r ímpar com |r| ≤ 9.\n\n**5. Lista.** Valores de a = (87 − 9r)/2:\n\n| r | a₁ | a₁₀ | PA |\n|---|---|---|---|\n| 1 | 39 | 48 | 39, 40, 41, …, 48 |\n| 3 | 30 | 57 | 30, 33, 36, …, 57 |\n| 5 | 21 | 66 | 21, 26, 31, …, 66 |\n| 7 | 12 | 75 | 12, 19, 26, …, 75 |\n| 9 | 3 | 84 | 3, 12, 21, …, 84 |\n| −1 | 48 | 39 | 48, 47, …, 39 |\n| −3 | 57 | 30 | 57, 54, …, 30 |\n| −5 | 66 | 21 | 66, 61, …, 21 |\n| −7 | 75 | 12 | 75, 68, …, 12 |\n| −9 | 84 | 3 | 84, 75, …, 3 |\n\nConferência: em todas, a₁ + a₁₀ = 87, logo S = 5·87 = 435. ✓\n\n**6. Descrição final.** Os termos são aₖ = a + (k−1)r, com (a, r) = ((87 − 9r)/2, r) e r ∈ {±1, ±3, ±5, ±7, ±9}. Há **10 PAs** como sequências ordenadas (5 crescentes e suas 5 reversas decrescentes), ou **5 PAs** se uma PA e a sua reversa forem identificadas (mesmo conjunto de termos). Não há PA constante.\n\n**Verificação:** a busca por força bruta (a ∈ [−200, 400), r ∈ [−100, 100)) retornou exatamente esses 10 pares (a, r). O resultado é idêntico se 0 for considerado natural: com a ≥ 0 ainda se tem r ≤ 9 (9r ≤ 87 ⇒ r ≤ 9), e a = 0 exigiria 9r = 87, sem solução inteira.",
+    "final_answer": "Com 2a + 9r = 87, a razão r é ímpar e |r| ≤ 9. Há 10 PAs como sequências ordenadas, ou 5 se a PA e a sua reversa forem identificadas.\n\nCrescentes (r > 0):\n- r = 1, a₁ = 39: 39, 40, …, 48\n- r = 3, a₁ = 30: 30, 33, …, 57\n- r = 5, a₁ = 21: 21, 26, …, 66\n- r = 7, a₁ = 12: 12, 19, …, 75\n- r = 9, a₁ = 3: 3, 12, …, 84\n\nDecrescentes (r < 0): as reversas das anteriores.\n- r = −1, a₁ = 48\n- r = −3, a₁ = 57\n- r = −5, a₁ = 66\n- r = −7, a₁ = 75\n- r = −9, a₁ = 84\n\nNão há PA constante, pois a = 43,5 não é natural. O resultado é o mesmo se 0 for considerado natural.",
+    "pitfalls": [
+      "Não esquecer que a razão r pode ser negativa: as PAs decrescentes (reversas das crescentes) também são PAs de naturais. Quem só considera r ≥ 0 acha 5 em vez de 10 sequências, ou deve declarar que identifica uma PA com sua reversa.",
+      "r deve ser inteiro, pois é a diferença de dois naturais. Não é preciso supor r natural, e não se pode admitir r fracionário: com a₁ e a₂ naturais, r é inteiro.",
+      "A paridade de r é o passo-chave: 2a + 9r = 87 ⇒ 9r ímpar ⇒ r ímpar. Sem isso, a não seria inteiro, e testar r = 2, 4, … é erro.",
+      "Caso r = 0 (PA constante): 10a = 435 ⇒ a = 43,5 ∉ ℕ. Deve ser descartado explicitamente.",
+      "A condição de ser natural vale para todos os termos. Para r > 0 o menor termo é a₁ (a ≥ 1 ⇒ r ≤ 9). Para r < 0 o menor termo é a₁₀ = a + 9r ≥ 1 ⇒ r ≥ −9. Esquecer a₁₀ no caso decrescente deixa passar sequências com termos não positivos.",
+      "Cuidado com o limite r = 11: a = −6, inválido. O limite r = ±9 é válido (menor termo igual a 3).",
+      "A convenção da prova é ℕ = {1, 2, 3, …}. O resultado não depende de 0 ∈ ℕ ou não, pois a = 0 exigiria 9r = 87, sem solução inteira. Vale comentar isso.",
+      "Fórmula da soma: S₁₀ = 10a₁ + 45r (não 10a₁ + 55r nem 10a₁ + 90r). Erros de aritmética aqui mudam toda a lista. Conferir sempre a₁ + a₁₀ = 87.",
+      "A resposta pede 'descrever todas': uma resposta correta exibe a família (a, r) = ((87 − 9r)/2, r) com r ímpar e |r| ≤ 9, ou a lista completa, e não apenas um exemplo."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "Razão r ímpar com 1 ≤ r ≤ 9 e a₁ = (87 − 9r)/2: (39,…,48), (30,…,57), (21,…,66), (12,…,75), (3,…,84) (razões 1, 3, 5, 7, 9). Mais as 5 invertidas (razões negativas). Ao todo, 5 PAs crescentes (10 contando as decrescentes).",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A fórmula geral da resposta final (ANSWER) só cobre r ∈ {1,3,5,7,9}. As decrescentes aparecem só por 'leitura inversa', com razões e primeiros termos dados na Conclusão. Seria mais limpo escrever uma família única, a_n = (87−9r)/2 + (n−1)r com r ∈ {±1, ±3, ±5, ±7, ±9}. Seria bom também listar explicitamente as 5 decrescentes, por exemplo 48,47,…,39, no ANSWER."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta final admite as duas contagens ('5 crescentes, ou 10 contando as decrescentes') sem decidir qual é a leitura canônica. A referência faz o mesmo e a ambiguidade é do enunciado, mas um gabarito comentado poderia dizer que, como sequências ordenadas, são 10 PAs."
+          },
+          {
+            "severity": "minor",
+            "description": "O caso r<0 é tratado apenas pela simetria da inversão (Passo 3). O argumento é válido, porque a inversão é uma bijeção que preserva os termos, a soma e a pertinência a ℕ. Mas ele não mostra diretamente que o menor termo é a₁₀ = a₁+9r ≥ 1 ⇒ r ≥ −9. Uma frase justificando que a inversão é bijetiva e preserva ℕ tornaria o passo mais transparente."
+          },
+          {
+            "severity": "minor",
+            "description": "O comentário sobre 0 ∈ ℕ está correto, mas incompleto. Diz só que r=11 daria a₁<0. Falta observar que a₁=0 exigiria 9r=87, sem solução inteira, e que r=9 continua valendo (a₁=3). O resultado final não é afetado."
+          }
+        ],
+        "summary": "A resposta final do candidato coincide com a minha referência, e uma enumeração por força bruta confirmou: 2a₁+9r=87, r ímpar, |r|≤9, com os 10 pares (a₁,r) = (39,1), (30,3), (21,5), (12,7), (3,9) e as reversas (48,−1), (57,−3), (66,−5), (75,−7), (84,−9). O enunciado no PDF confere (ℕ={1,2,3,…}, 10 naturais, soma 435). A resolução é correta, bem organizada e rigorosa. Mostra r∈ℤ pela diferença de dois naturais, a paridade de r, o descarte da PA constante (a₁=43,5), o limite r≤9 (r=11 daria a₁<0), a verificação a₁+a₁₀=87 e a observação sobre 0∈ℕ. Trata as decrescentes por inversão da sequência e lista as razões −1,…,−9 e os primeiros termos 48,…,84. As falhas são apenas de apresentação: a família final só traz explicitamente r>0, a contagem 5-ou-10 fica sem uma leitura canônica, e o argumento de r<0 por simetria é correto, mas sucinto. Nenhuma armadilha foi deixada de lado. Seria publicável como gabarito comentado com pequenos ajustes."
+      }
+    }
+  ]
+}

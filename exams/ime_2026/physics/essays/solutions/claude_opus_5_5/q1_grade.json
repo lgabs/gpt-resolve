@@ -1,0 +1,55 @@
+{
+  "question": 1,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-2-24-10-2025-2-fase-dia-2/dissertativa-1-fisica-2-fase-dia-2-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "−2 m < x < 4 m (oscilação no poço em torno de x = 0 para 0 < E < 32/3 J; extremos excluídos)",
+      "key_answer": "−2 < x < 4 (m): poço em torno do equilíbrio estável x = 0; x = 4 é equilíbrio instável e x = −2 tem a mesma Ep (32/3 J)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi: F = −dEp/dx = −4x + x²; equilíbrios em x = 0 (Ep'' = 4 > 0, estável) e x = 4 (Ep'' = −4 < 0, instável); Ep(4) = 32 − 64/3 = 32/3 J; Ep(x) − 32/3 = −(x−4)²(x+2)/3, logo a outra borda do poço é x = −2 (Ep(−2) = 8 + 8/3 = 32/3). O intervalo aberto é o mesmo nos dois. A resolução ainda explica por que os extremos ficam de fora: com E = 32/3 J a partícula só se aproxima de x = 4 assintoticamente."
+    },
+    {
+      "item": "b",
+      "solution_answer": "E_sup = E_p(4) = 32/3 J ≈ 10,7 J",
+      "key_answer": "E_sup = 32/3 J (≈ 10,7 J) = Ep(4) = Ep(−2)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Mesmo valor e mesma unidade. Na linha de conta do gabarito há um erro de digitação (\"4(4)^3/3\" no lugar de \"(4)^3/3\"), mas o resultado 32/3 J está certo."
+    },
+    {
+      "item": "c",
+      "solution_answer": "v começa em −v0 = −√(2E/m) com tangente horizontal; sobe até 0 em t1 (retorno em x1 < −2, ponto de inflexão com inclinação máxima); chega a +v0 em t2 = 2t1 (volta a x = 0, máximo local); cai até v_min = √(2(E − 32/3)/m) > 0 em t3 (x = 4, mínimo local); depois cresce sem limite (diverge em tempo finito) e a partícula escapa",
+      "key_answer": "v começa em −V0; |v| diminui até 0 em T1 (retorno, x < 0); v cresce até +V0 em T2 = 2T1 (x = 0); cai até um mínimo positivo em T3 (x = 4, passa sem parar porque E > E_sup); depois cresce sem limite (F > 0 para x > 4) e a partícula escapa",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os dois esboços têm a mesma forma: −v0 → 0 (T1) → +v0 (T2 = 2T1) → mínimo positivo em x = 4 (T3) → crescimento sem limite. Simulei numericamente com m = 1 e v0 = 4,9 (E ≈ 12,0 J > 32/3): t1 ≈ 0,653, x1 ≈ −2,11 < −2, t2 ≈ 1,307 = 2t1, v(t2) = 4,9, t3 ≈ 2,612, v(t3) ≈ 1,636 = √(2(E − 32/3)). Esses valores batem com os pontos do gráfico TikZ da resolução, que acrescenta detalhes corretos que o gabarito não traz: tangente horizontal em t = 0, t2 e t3 (onde F = 0), inflexão em t1 e divergência em tempo finito (v ~ x^{3/2}, e ∫x^{−3/2}dx converge)."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Erro de digitação na resolução do gabarito, item b: está escrito \"E_sup = 2(4)^2 − (4(4)^3)/3\". O certo é 2(4)² − (4)³/3. O resultado 32/3 J está correto."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "Item a pede o \"intervalo de posições\", e há duas leituras possíveis: dar só o intervalo em x ou dar também a condição de energia (0 < E < 32/3 J). Também cabe discutir se os extremos entram (aberto ou fechado). Gabarito e resolução usam o intervalo aberto −2 < x < 4. Com E = 32/3 J exatos, a partícula tende assintoticamente a x = 4 e não oscila, o que justifica excluir os extremos."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "No item c, a resolução afirma que v → +∞ em tempo finito (assíntota vertical em t_∞). A matemática está certa (para x grande, v ≈ √(2/(3m))·x^{3/2}), mas o gabarito não pede isso: diz apenas que v cresce sem limite. Não contradiz o gabarito; é um detalhe a mais e precisa ser lido como propriedade do modelo, não como algo fisicamente realista."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A massa m não é dada, então o gráfico v×t só pode ser qualitativo. A escala numérica do esboço da resolução (m = 1, v0 = 4,9) é uma escolha arbitrária e está declarada como \"sem escala\"."
+    }
+  ],
+  "summary": "A resolução e o gabarito do Poliedro concordam nos três itens: a) −2 m < x < 4 m; b) E_sup = 32/3 J ≈ 10,7 J; c) v vai de −v0 a 0 (T1), sobe a +v0 (T2 = 2T1), cai a um mínimo positivo em x = 4 (T3) e depois cresce sem limite. Recalculei Ep(4) = Ep(−2) = 32/3 J e a fatoração (x−4)²(x+2), e simulei o movimento numericamente; tudo confirma as respostas e a forma do gráfico da resolução. O único problema no gabarito é um erro de digitação na conta do item b, que não altera o resultado. Nenhum dos itens tem divergência."
+}

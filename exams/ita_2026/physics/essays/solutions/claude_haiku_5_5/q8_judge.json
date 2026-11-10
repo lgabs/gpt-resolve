@@ -1,0 +1,133 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.0,
+  "final_answer": "a) P_min = 35 W (E_tot = 36 kJ da bateria + 6 kJ de aquecimento = 42 kJ, em T = 1200 s). b) Δt_max = 14L/V ≈ 2,2×10⁻⁵ s (≈ 22 µs), com L = μ0·n²·ℓ·A = 8π²×10⁻⁷ H. A cota energética Δt ≤ E_max/P_min (E_max = ½LI0² por ciclo, ciclos encadeados) coincide com o valor dado pela f.e.m. com acoplamento perfeito.",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 8 - resolução de referência (resolvida antes de ver qualquer resolução de candidato; contas conferidas em python3).\n\nDados: m = 100 g; c = 2,0 J/(g°C); ΔT = 50 - 20 = 30 °C; bateria 2 Ah a 5,0 V; carga completa em t = 20 min = 1200 s; solenoide com n = 20 espiras/cm = 2000 espiras/m, raio r = 0,5 cm, comprimento ℓ = 2 cm; ΔI = 14 A por ciclo; f.e.m. induzida no celular = 5,0 V (constante). μ0 = 4π×10⁻⁷ N/A².\n\nITEM a) Potência média mínima do carregador\n1. Energia armazenada na bateria: E_bat = Q·V = (2 Ah)(3600 s/h)(5,0 V) = 7200 C × 5,0 V = 36 000 J (= 10 Wh).\n2. Energia térmica absorvida pelo aparelho (o carregamento é responsável pelo aquecimento): Q = m·c·ΔT = 100 × 2,0 × 30 = 6 000 J.\n3. Balanço de energia: E_carregador = E_bat + Q + perdas. O mínimo ocorre sem perdas para o ambiente: E_min = 36 000 + 6 000 = 42 000 J.\n4. P_min = E_min / t = 42 000 / 1200 = 35 W.\n\nITEM b) Máximo valor possível de Δt\n1. Solenoide do carregador e do celular (idênticos): N = n·ℓ = 2000 × 0,02 = 40 espiras; A = π r² = π(5×10⁻³)² ≈ 7,85×10⁻⁵ m².\n2. Acoplamento perfeito (k = 1) entre solenoides idênticos: M = μ0·N²·A/ℓ = μ0·n²·ℓ·A = 4π×10⁻⁷ × 40² × 7,85×10⁻⁵ / 0,02 = 8π²×10⁻⁷ H ≈ 7,9 µH. Como são idênticos, M = L.\n3. Faraday: |ε| = M·ΔI/Δt. Com |ε| = 5,0 V e ΔI = 14 A: Δt = M·14/5 = 2,8·M = 22,4π²×10⁻⁷ s ≈ 2,2×10⁻⁵ s.\n4. Justificativa da cota de máximo (balanço energético, modelo ideal): a energia magnética de pico por ciclo é E_c = ½·L·I² = ½ × 7,9×10⁻⁶ × 14² ≈ 7,7×10⁻⁴ J. Para transferir pelo menos 42 000 J são necessários N ≥ E_min/E_c ≈ 5,4×10⁷ ciclos. Cada ciclo dura pelo menos Δt, logo N·Δt ≤ t, ou seja Δt ≤ t·E_c/E_min = E_c/P_min = 2,8·M ≈ 2,2×10⁻⁵ s.\n5. Resposta: Δt_max = 2,8·M = 22,4π²×10⁻⁷ s ≈ 2,2×10⁻⁵ s (cerca de 22 µs). A f.e.m. constante já fixa Δt = M·ΔI/ε nesse mesmo valor; a cota energética coincide com ele. Consequência: no limite ideal os ciclos são encadeados (período T = Δt, sem intervalo ocioso) e a potência média é exatamente 35 W.\n\nVerificação numérica: E_total = 42 kJ; P_min = 35 W; M = 7,8957×10⁻⁶ H; Δt (f.e.m.) = 2,2108×10⁻⁵ s; Δt pela cota de energia = 2,2108×10⁻⁵ s; se só a bateria fosse considerada (36 kJ) a cota daria 2,58×10⁻⁵ s (errado).",
+    "final_answer": "a) P_min = 35 W (energia mínima do carregador 42 kJ = 36 kJ da bateria + 6 kJ de aquecimento do aparelho, em 1200 s). Não há alternativas de múltipla escolha.\n\nb) Δt_max = 2,8·M = 22,4π²×10⁻⁷ s ≈ 2,2×10⁻⁵ s (cerca de 22 µs), com M = μ0·N²·A/ℓ = 8π²×10⁻⁷ H ≈ 7,9 µH e N = 40 espiras.",
+    "pitfalls": [
+      "Esquecer o calor absorvido pelo aparelho (6 kJ) e responder 30 W (só a bateria). O enunciado diz que o carregamento causou o aquecimento, então esse calor entra no balanço e o mínimo é 35 W.",
+      "Erro de conversão de bateria: 2 Ah = 7200 C e a energia é 2 × 3600 × 5 = 36 kJ, não 10 J nem 2×5. Tempo: 20 min = 1200 s, não 20 s.",
+      "Calor específico em J/(g°C) com massa em gramas: Q = 100 × 2,0 × 30 = 6000 J. Não se deve usar a massa em kg com c em J/(g°C).",
+      "Número de espiras: 20 espiras/cm dá n = 2000 espiras/m e N = 40 espiras em 2 cm. Usar N = 20 quebra a indutância por um fator 4.",
+      "Área: r = 0,5 cm = 5×10⁻³ m, A = π r² ≈ 7,85×10⁻⁵ m². Não misturar cm² com m².",
+      "Acoplamento perfeito (k = 1) entre solenoides idênticos: M = L = μ0 N² A/ℓ. Não usar M = L/2 nem outro fator.",
+      "A f.e.m. no celular é M·dI/dt (indutância mútua), não L·dI/dt da bobina do carregador, mesmo que os valores numéricos coincidam aqui.",
+      "Interpretação de 'máximo': com f.e.m. constante, Δt = M·ΔI/ε fica fixo. O máximo vem da cota Δt ≤ T ≤ E_c/P_min, que coincide com esse valor. A resposta é a mesma, mas a justificativa precisa aparecer.",
+      "Inversão de sinal na cota: o máximo de Δt usa a menor energia transferida (42 kJ). Usar 36 kJ dá 2,6×10⁻⁵ s, que está errado.",
+      "Confundir Δt (duração da rampa de corrente de 0 a 14 A, da ordem de 10⁻⁵ s) com o tempo total de carga (20 min).",
+      "Confundir potência média sobre os 20 min com a potência instantânea durante a rampa. A média pedida é E/t = 35 W.",
+      "Verificar as unidades: μ0 = 4π×10⁻⁷ N/A², M em henry, Δt em segundos (ordem de 10⁻⁵ s).",
+      "Hipóteses a declarar: sem perdas para o ambiente (o que define o mínimo), bateria com tensão constante de 5 V, resistência desprezível nas bobinas, energia magnética de pico por ciclo transferida ao celular e ciclos sem intervalo na cota de Δt."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 7.5,
+      "final_answer": "ANSWER: a) P_min = 35 W (energia mínima = 36 kJ da bateria + 6 kJ de aquecimento = 42 kJ, em 1200 s); b) Δt_max ≈ 2,2×10^-5 s (cerca de 22 microssegundos), obtido com M = L = μ0 n² ℓ A ≈ 7,9 μH e ε = L·ΔI/Δt = 5 V, no acoplamento perfeito (k = 1). A verificação pela energia por ciclo, ½LI² ≈ 7,7×10^-4 J, dá o mesmo limite.",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Afirmação factualmente errada na verificação pela energia: 'no início e no fim de cada ciclo a corrente é nula'. O enunciado diz que a corrente varia linearmente de 0 a 14 A dentro de Δt, então no fim da rampa I = 14 A (é nesse ponto que ½LI² é máximo). O ciclo deveria ser descrito corretamente: I = 0 no início da rampa, 14 A no fim, e um reset para 0 que precisa ser declarado como hipótese (transição sem duração e sem perdas). Corrigir a frase e declarar o reset."
+          },
+          {
+            "severity": "major",
+            "description": "A cota W_max = ½LI² por ciclo é afirmada, não derivada: 'a energia entregue ao celular em cada ciclo é ... no máximo ½LI²' sem justificar a transferência. Em um modelo de malha série simples, com ε = V (igual à tensão da bateria), a f.e.m. líquida da malha celular–bateria é zero durante a rampa, então a corrente de carga não cresce sozinha. O candidato não explica por qual mecanismo a energia chega à bateria (retificação, reset do primário etc.). Por isso a 'verificação' é condicional, não independente. Deveria ser apresentada como hipótese de modelo ideal, declarada na seção de hipóteses. Também deveria dizer que a coincidência dos dois limites decorre dos dados (E_tot = ½TVI = 42 kJ), não de uma relação geral."
+          },
+          {
+            "severity": "minor",
+            "description": "Conferência espúria em 'Corrente média no carregador I/2 = 7 A com V = 5 V dá 35 W': usa a tensão da bateria como se fosse a tensão do carregador, que o enunciado não dá. A conta é numericamente certa, mas não é verificação válida. Remover ou justificar."
+          },
+          {
+            "severity": "minor",
+            "description": "Afirmações sem suporte: 'repetição de cerca de 45 kHz sem pausas, plausível para carregadores indutivos' e 'ciclos contínuos, sem pausas'. A plausibilidade não é demonstrada, e a ausência de pausa exige um corte de 14 A em tempo nulo, o que não é discutido. Declarar como hipótese idealizada ou retirar a afirmação de plausibilidade."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação incompleta na indutância: N nunca aparece explicitamente como N = nℓ = 40 espiras, e L = NΦ/I é usada sem dizer Φ = BA. A passagem para μ0·n²·ℓ·A está correta, mas o gabarito deveria escrever N = 40, Φ = BA e A = 7,85×10⁻⁵ m²."
+          },
+          {
+            "severity": "minor",
+            "description": "Convenção de unidades não explicitada em (a): os dados dizem m = 100 g = 0,10 kg, mas o cálculo usa 100 × 2,0 × 30 com c em J/(g°C). Está correto, mas a convenção deve ser dita (ou converter c para 2000 J/(kg°C) e usar 0,10 kg), porque é justamente a armadilha do enunciado."
+          }
+        ],
+        "summary": "Ambas as respostas finais conferem com a referência e com minha verificação independente: a) P_min = 35 W; b) Δt_max = 8π²×10⁻⁷·14/5 ≈ 2,2×10⁻⁵ s (≈ 22 µs). Reli o enunciado na página 9 do PDF e a transcrição bate (20 min, 20 espiras/cm, r = 0,5 cm, ℓ = 2 cm, 14 A, 2,0 J/(g°C), 5,0 V, 2 Ah). Recalculei tudo em python3: E_bat = 36 kJ, Q = 6 kJ, E_tot = 42 kJ, P = 35 W, L = M = 7,8957 µH, Δt = 2,2108×10⁻⁵ s, N ≥ 5,43×10⁷ ciclos.\n\nPontos fortes: (a) está bem justificada, com hipóteses declaradas e a armadilha do calor de 6 kJ tratada. (b) tem o núcleo rigoroso: Δt = kLΔI/V com k ≤ 1, então o máximo é k = 1. Todas as armadilhas da lista (conversão de Ah, espiras, área, M vs L/2, inversão da cota com 42 kJ, Δt vs 20 min, unidades) foram evitadas.\n\nProblemas: a verificação energética da (b) tem uma afirmação falsa sobre a corrente no fim do ciclo e assume sem justificar que cada ciclo entrega ½LI² à bateria. Há também uma conferência espúria com 5 V e afirmações de plausibilidade sem suporte. Nada disso muda as respostas, mas um gabarito comentado (nota ≥ 9) não sairia com esses trechos. Nota 7,5.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 7.5,
+      "final_answer": "a) P_min = 35 W: balanço de energia com 36 kJ armazenados na bateria e 6 kJ de aquecimento do celular, em 1200 s. b) Δt_max = 14·L/V, com L = μ0·n²·ℓ·A = 8π²×10^-7 H e acoplamento perfeito (M = L, k = 1, que é o máximo permitido pois M ≤ L). Resultado: Δt_max ≈ 2,2×10^-5 s (cerca de 22 μs). A revisão corrigiu a afirmação errada sobre a corrente no fim da rampa (agora I = 14 A no fim), declarou como hipótese o modelo ideal da verificação energética, removeu a conferência com 5 V e as afirmações de plausibilidade sem suporte, e tornou explícitas as convenções de unidades e a indutância com N = 40, Φ = BA e A = 7,85×10^-5 m².",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Justificativa do 'máximo' de Δt (item b) não está bem fundamentada. O argumento principal trata k como livre em [0,1] (Δt = k·14L/V), mas o enunciado fixa acoplamento perfeito (k = 1), então a maximização sobre k não corresponde à restrição do problema. A cota que torna Δt 'máximo' no enunciado é energética: 42 kJ precisam ser transferidos em 1200 s, com cada ciclo transferindo no máximo ½LI₀², e ciclos encadeados, o que dá Δt ≤ T·E_c/E_tot = E_c/P_min. O candidato a apresenta só como 'verificação condicional (não derivada do enunciado)' e não a liga à potência mínima do item a. Deveria: (1) usar essa cota como argumento principal, declarando a hipótese por ciclo (energia ≤ ½LI₀², ciclos sem intervalo); (2) escrever Δt_max = E_c/P_min, ligando a) e b); (3) só depois observar que k = 1 e a f.e.m. dão o mesmo valor, explicando que a coincidência vem de E_tot = ½·T·I₀·V = 42 kJ exatamente."
+          },
+          {
+            "severity": "minor",
+            "description": "A cota 0 ≤ k ≤ 1 não está demonstrada. A energia W ≥ 0 com I₂ = −I₁ dá apenas M ≤ L. A cota inferior M ≥ −L vem do caso I₂ = I₁ (W = (L+M)I² ≥ 0), e não é mencionada. Como Δt depende de |M|, o correto seria escrever |k| ≤ 1 e justificar ambos os lados."
+          },
+          {
+            "severity": "minor",
+            "description": "A correção de bordas é subestimada ao dizer que ela 'reduziria um pouco L'. Com ℓ/r = 4, aproximações usuais (Wheeler: L ≈ r²N²/(9r+10ℓ) com unidades em polegadas, ou L ≈ μ0N²A/(ℓ+0,45d)) dão L ≈ 0,81 do valor ideal, ≈ 6,4 µH, o que levaria a Δt ≈ 1,8×10⁻⁵ s. A idealização de solenoide infinito é a esperada pela prova e pode ser usada, mas deve ser declarada com a ordem de grandeza (~20%) e não como 'um pouco'."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses incompletas. Não se declara resistência desprezível das bobinas nem que a f.e.m. igual à tensão da bateria é tratada como dado do modelo. Também não se declara, como hipótese da parte b, que os ciclos são encadeados (período = Δt). Isso só aparece de passagem na verificação (N·Δt ≤ T)."
+          }
+        ],
+        "summary": "As duas respostas finais conferem com a referência e com as minhas contas. a) P_min = 35 W, com E_tot = 36 kJ (2 Ah × 3600 × 5 V) + 6 kJ (100 g × 2,0 J/(g°C) × 30 °C) = 42 kJ em 1200 s. b) Δt_max = 14·L/V ≈ 2,21×10⁻⁵ s, com L = μ0·n²·ℓ·A = 8π²×10⁻⁷ H (N = 40, A = 25π×10⁻⁶ m²). Reli o enunciado no PDF (p. 9) e confirmei que a prova imprime μ0 em N.A⁻¹ (p. 2). O candidato corretamente lê como N/A² (H/m). Armadilhas tratadas: calor de 6 kJ incluído; cota usa 42 kJ, não 36 kJ; conversão Ah→C; c em J/(kg°C); N = 40; área em m²; M (não L) na f.e.m. de Faraday; Δt separado do tempo total de 20 min; potência média E/T. A observação de que ½·T·I₀·V = 42 kJ coincide exatamente com a cota energética está correta e bem colocada. A nota ficou abaixo de 9 porque a justificativa do 'máximo' usa um grau de liberdade (k) que o enunciado fixa em 1, e relega a cota energética, que é o argumento que realmente define o máximo, a uma verificação sem hipóteses explícitas. Há também uma cota inferior de k não demonstrada e a correção de bordas subestimada (~20%, não 'um pouco').\""
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.0,
+      "final_answer": "a) P_min = 35 W (E_tot = 36 kJ da bateria + 6 kJ de aquecimento = 42 kJ, em T = 1200 s). b) Δt_max = 14L/V ≈ 2,2×10⁻⁵ s (≈ 22 µs), com L = μ0·n²·ℓ·A = 8π²×10⁻⁷ H. A cota energética Δt ≤ E_max/P_min (E_max = ½LI0² por ciclo, ciclos encadeados) coincide com o valor dado pela f.e.m. com acoplamento perfeito.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "A justificativa do 'máximo' em (b) depende da hipótese H3 (energia transferida por ciclo ≤ ½LI₀²), declarada sem derivação. O argumento que realmente fixa o valor é a f.e.m. constante: |ε| = |M|·14 A/Δt = V, logo Δt = 14L/V é o único valor compatível com o enunciado. O candidato chega a essa equação só no Passo 4, como 'limite atingido', e não a apresenta como argumento principal. Deveria (i) enunciar a unicidade pela f.e.m. como razão principal, (ii) tratar a cota energética como verificação e (iii) justificar H3 por conservação de energia no sistema acoplado ou remover o argumento. A resposta numérica não muda."
+          },
+          {
+            "severity": "minor",
+            "description": "O modelo de ciclos com período T = Δt pressupõe que a queda de 14 A a 0 é instantânea. Isso induziria no celular uma f.e.m. de sinal oposto e módulo grande, em conflito com 'f.e.m. constante durante todo o processo'. A reinicialização não é declarada nem discutida. Deveria haver uma hipótese explícita, por exemplo: a reinicialização não transfere energia útil e fica fora do balanço."
+          },
+          {
+            "severity": "minor",
+            "description": "H3 diz 'ciclos encadeados, sem intervalos', mas a desigualdade Δt ≤ T/N_c usa apenas N_c·Δt ≤ T, que vale com intervalos. O encadeamento só é necessário para a igualdade. Deveria separar o que é cota (vale para qualquer ciclagem) do que é atingido (exige encadeamento)."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação com a fórmula de Wheeler (L ≈ 6,4 µH e Δt ≈ 1,8×10⁻⁵ s para 'solenoide real') introduz um segundo valor numa pergunta de resposta única e contraria a premissa idealizada do enunciado. A fórmula é empírica e sua faixa de validade não é declarada. Os números conferem (6,43 µH, 81% do ideal, 1,80×10⁻⁵ s), mas deveria ser removida ou reduzida a uma observação qualitativa."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que 1/Δt ≈ 45 kHz 'está na faixa de dezenas a centenas de kHz dos carregadores indutivos reais' é imprecisa. O padrão Qi opera tipicamente em ~100–205 kHz, e 45 kHz fica abaixo dessa faixa. Deveria ser corrigida ou removida."
+          },
+          {
+            "severity": "minor",
+            "description": "Excesso de conteúdo para uma prova discursiva: duas cotas paralelas, verificações extras e a correção de Wheeler diluem o caminho direto (Δt = M·ΔI/ε com M = L). A demonstração de |M| ≤ L está correta e é valiosa, pois justifica o 'máximo' sobre o acoplamento. Deveria ser mantida, mas o texto precisa ser enxugado para o argumento principal."
+          }
+        ],
+        "summary": "Resposta final correta nos dois itens e igual à referência. (a) P_min = 35 W: 36 kJ da bateria + 6 kJ de aquecimento = 42 kJ em 1200 s, com a energia de aquecimento incluída. (b) Δt_max = 14L/V = 2,24π²×10⁻⁶ s ≈ 2,2×10⁻⁵ s, com L = μ0·n²·ℓ·A = 8π²×10⁻⁷ H e M = L por acoplamento perfeito. Refiz todas as contas em python3 e elas conferem, inclusive a cota energética 42 kJ/(½LI²) e o número de ciclos ≈ 5,4×10⁷. Pontos fortes: o candidato detectou corretamente o erro de impressão em μ0 (a página 2 do PDF imprime N·A⁻¹; a unidade correta é N/A²) e usou o valor certo; declarou hipóteses; tratou todas as armadilhas listadas (calor, conversões de Ah, g e J/(g°C), N = 40 espiras, área em m², k = 1, M no lugar de L/2, sinal da cota com 42 kJ, Δt versus 20 min, potência média versus instantânea); provou |M| ≤ L. Fraquezas: a justificativa do máximo depende de uma hipótese energética não derivada, em vez de usar a unicidade imposta pela f.e.m. constante; a reinicialização da corrente não é tratada; há digressões (Wheeler, frequência) que introduzem números extras e uma afirmação imprecisa. Para publicar como gabarito comentado, faltam essas correções de rigor e enxugamento. Nota 8.\""
+      }
+    }
+  ]
+}

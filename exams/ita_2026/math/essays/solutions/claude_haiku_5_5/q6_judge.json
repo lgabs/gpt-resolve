@@ -1,0 +1,117 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.0,
+  "final_answer": "(a) det(AB) = 0 para todo n e todos os α_j (vale por Binet, pois a coluna n de A é nula; não depende da hipótese). (b) tr(AB) = σ_n = soma das entradas de A; a hipótese fixa σ_n = 0, logo tr(AB) = 0 para todo n. Para n ≥ 2 esse valor é formal, porque a hipótese é inconsistente. (c) Conjunto vazio: para n = 5, σ_5 − σ_4 = c_5 = 0, mas a hipótese exige −1; não existem α_1, α_2, α_3, α_4 ∈ ℝ que a satisfaçam. Na leitura alternativa b_ij = 1 para j ≤ i, a hipótese é consistente e (c) dá α_1 = α_3 = 0, α_2 ∈ {0, −1}, α_4 livre.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** li a página 7 do PDF da prova. A transcrição confere: a_ij = 0 se j ≥ i e a_ij = α_j^(i−j−1) se j < i; b_ij = 1 se j ≥ i e 0 se j < i; hipótese: soma da coluna j de AB igual a n − j.\n\n**Fatos preliminares (valem para quaisquer α_j):**\n1. A é estritamente triangular inferior. Como não existe i > n, a coluna n de A é nula. Seja c_j a soma da coluna j de A; então c_n = 0.\n2. Para j ≤ n−1, a_{j+1,j} = α_j^0 = 1 (convenção 0^0 = 1). Logo c_j = 1 + α_j + … + α_j^(n−j−1). Em particular c_{n−1} = 1 sempre.\n3. b_jk = 1 ⇔ j ≤ k. Logo (AB)_ik = Σ_{j≤k} a_ij, e a soma S_k da coluna k de AB é S_k = Σ_{j≤k} c_j.\n\n**(a)** det(AB) = det A · det B. A é triangular com diagonal nula, então det A = 0 e det(AB) = 0. Isso não depende de α_j nem da hipótese.\n\n**(b)** Para cada i, (AB)_ii = Σ_{j≤i} a_ij = Σ_j a_ij, pois a_ij = 0 para j ≥ i. Também (AB)_in = Σ_{j≤n} a_ij = Σ_j a_ij. Logo (AB)_ii = (AB)_in para todo i, e tr(AB) = Σ_i (AB)_in = S_n = Σ_j c_j, a soma de todas as entradas de A. Pela hipótese com j = n: S_n = n − n = 0. Portanto tr(AB) = 0, constante e não dependente de n.\nRessalva: a hipótese com j = n−1 daria S_{n−1} = 1, e isso contradiz S_{n−1} = S_n (ver (c)). O valor 0 vem apenas da coluna n.\n\n**(c) Enunciado como impresso.** Como c_n = 0, a coluna n−1 e a coluna n de AB são idênticas: (AB)_{i,n−1} = Σ_{j≤n−1} a_ij = Σ_j a_ij = (AB)_{in}. Logo S_{n−1} = S_n. A hipótese exige S_{n−1} = 1 e S_n = 0. Essa contradição vale para todo n ≥ 2 e quaisquer α reais ou complexos. Para n = 5, não existe (α_1, α_2, α_3, α_4) real que satisfaça a hipótese. O conjunto de valores possíveis é vazio.\nOutra forma de ver: S_k − S_{k−1} = c_k exigiria c_k = −1 para k = 2,…,n. Mas c_{n−1} = 1 e c_n = 0 são forçados. Mesmo ignorando a coluna n, as colunas n−2 e n−1 já se contradizem, pois c_{n−1} = 1 ≠ −1.\nVerificação: com aritmética exata (Fraction) para n = 2…7 em 200 sorteios de α, S_n = S_{n−1} sempre. Exemplo n = 3, α_1 = 2, α_2 = 5: AB = [[0,0,0],[1,1,1],[2,3,3]], com somas 3, 4, 4.\n\n**Versão corrigida (hipótese mais provável: troca de sinal em b_ij, isto é, b_ij = 1 se j ≤ i).** Agora (AB)_ik = Σ_{j≥k} a_ij e S_k = Σ_{j≥k} c_j. A hipótese equivale a c_k = 1 para k = 1,…,n−1, e S_n = c_n = 0 é automático. Para n = 5:\n- c_1 = 1 + α_1 + α_1² + α_1³ = 1 ⇔ α_1(1 + α_1 + α_1²) = 0. Como 1 + α + α² > 0 para todo real, α_1 = 0.\n- c_2 = 1 + α_2 + α_2² = 1 ⇔ α_2(1 + α_2) = 0, logo α_2 ∈ {0, −1}.\n- c_3 = 1 + α_3 = 1 ⇒ α_3 = 0.\n- c_4 = 1 sempre (só existe a_54 = 1). Logo α_4 ∈ ℝ é livre.\nNessa versão, det(AB) = 0 e tr(AB) = 0 também.\n\n**Resumo para correção:** (a) 0. (b) 0, constante. (c) Impresso: nenhum valor real (contradição). Corrigido: α_1 = 0, α_3 = 0, α_2 ∈ {0, −1}, α_4 ∈ ℝ arbitrário. Se o candidato detectar a contradição com a prova correta (colunas n−1 e n iguais), isso deve ser valorizado.",
+    "final_answer": "Resposta de referência (enunciado impresso, lido literalmente):\n\n(a) det(AB) = 0. Vale para quaisquer α_j, porque A é estritamente triangular inferior (det A = 0).\n\n(b) tr(AB) = 0, constante e não dependente de n. O traço de AB é a soma de todas as entradas de A, que é igual à soma da coluna n de AB; a hipótese com j = n dá 0.\n\n(c) Nenhum valor. Para n = 5 o conjunto de (α_1, α_2, α_3, α_4) reais admissíveis é vazio. A hipótese é contraditória: as colunas n−1 e n de AB são iguais (a coluna n de A é nula), mas a hipótese exige somas 1 e 0.\n\nRessalva: se a intenção for b_ij = 1 para j ≤ i (triangular inferior), a resposta fica: α_1 = 0, α_3 = 0, α_2 ∈ {0, −1}, α_4 ∈ ℝ arbitrário, com tr(AB) = 0 e det(AB) = 0. Recomenda-se confirmar a intenção com o gabarito oficial antes de penalizar (c).",
+    "pitfalls": [
+      "Coluna n de A é nula (não há i > n), logo c_n = 0. Quem impõe c_k = −1 para todo k ≥ 2 sem checar a coluna n chega a contradição ou a α's espúrios.",
+      "As colunas n−1 e n de AB são idênticas, pois a_in = 0. Logo S_{n−1} = S_n, mas a hipótese exige 1 e 0. O enunciado impresso é inconsistente e não existe α algum. Exemplo n = 3, α_1 = 2, α_2 = 5: AB = [[0,0,0],[1,1,1],[2,3,3]], somas 3,4,4. Candidato que apresenta α's sem verificar a coluna n−1 está errado.",
+      "Mesmo ignorando a coluna n, as colunas n−2 e n−1 se contradizem, porque c_{n−1} = a_{n,n−1} = α_{n−1}^0 = 1 é forçado. A hipótese exigiria c_{n−1} = −1.",
+      "Cada c_j contém sempre o termo 1 (de a_{j+1,j} = α_j^0). Logo c_{n−1} = 1 e não pode ser −1. Não tentar resolver c_j = −1 com raízes arbitrárias.",
+      "det(AB) = 0 é independente de α e da hipótese. Não é preciso calcular via α's. Não usar det B = 1 como argumento, pois det A = 0 domina.",
+      "Para o traço: tr(AB) = Σ_{i,j} a_ij, porque a_ij ≠ 0 só para i > j e b_ji = 1 ⇔ i ≥ j. Erros comuns: esquecer o indicador de b (obtendo somas de potências de α), usar só a coluna n−1 e obter tr = 1, ou obter n(n−1)/2 pela hipótese nas colunas de A (outra leitura do enunciado).",
+      "O traço é constante (0). A expressão 'em função de n' é um despiste, e forçar uma fórmula em n é erro.",
+      "Não confundir S_k (soma da coluna k de AB) com c_j (soma da coluna j de A). No enunciado impresso, S_k = Σ_{j≤k} c_j. Na versão com b_ij = 1 para j ≤ i, S_k = Σ_{j≥k} c_j. Inverter o intervalo muda todo o sistema.",
+      "Convenção 0^0 = 1: a_{j+1,j} = α_j^0 deve valer 1 mesmo quando α_j = 0. Na versão corrigida, α_1 = 0 e α_3 = 0 dependem disso. Tratar 0^0 como indeterminado invalida a matriz.",
+      "Reais: 1 + α + α² não tem raiz real (discriminante −3). Logo α_1(1 + α_1 + α_1²) = 0 tem só α_1 = 0 real. Quem trabalha em C acha raízes não reais proibidas pelo enunciado. Na versão corrigida, α_2(1 + α_2) = 0 dá α_2 ∈ {0, −1}.",
+      "α_4 é livre na versão corrigida, porque c_4 = 1 sempre (só existe a_54 = 1). Afirmar α_4 = 0 ou dar resposta finita é erro; a resposta é um conjunto infinito.",
+      "α_j só é definido para j = 1,…,n−1. A coluna n de A não usa α_n, e para n = 5 não existe α_5.",
+      "O gabarito oficial pode divergir do enunciado impresso. Se o candidato apontar a inconsistência com prova (colunas n−1 e n iguais), isso deve ser valorizado e não penalizado pela falta de α's."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "(a) det(AB) = 0, para todo n e quaisquer α_j (A é triangular inferior com diagonal nula; B tem diagonal de uns).\n(b) tr(AB) = soma de todos os elementos de A = σ_n = n − n = 0 para todo n, pela condição com j = n. Ressalva: a hipótese é inconsistente para n ≥ 2, pois as colunas n−1 e n de AB coincidem (a coluna n de A é nula), o que exigiria 1 = 0. Logo o valor 0 é formal.\n(c) Para n = 5 não há valores: o conjunto de (α_1, α_2, α_3, α_4) ∈ ℝ⁴ que satisfazem a hipótese é vazio. Recomenda-se conferir o enunciado/gabarito oficial.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Em (c) o candidato só diz que o conjunto é vazio e não analisa a leitura provavelmente pretendida (b_ij = 1 para j ≤ i). Nessa leitura, a hipótese equivale a c_k = 1 para k = 1,…,n−1, o que dá α_1 = 0, α_3 = 0, α_2 ∈ {0, −1} e α_4 ∈ ℝ livre (c_4 = 1 sempre). Verifiquei isso numericamente para n = 5. O candidato deveria ter apresentado essa análise como observação, com a derivação: em ℝ, 1+α+α² > 0 elimina as raízes não reais, e α_4 não aparece em A além de α_4^0 = 1. Sem isso, a resposta a (c) não dá nenhum valor útil para o aluno se o gabarito esperar a leitura corrigida. A pergunta pede 'todos os possíveis valores', e um gabarito comentado traria as duas leituras."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), a frase 'A própria condição com j=n−1 daria tr(AB)=σ_{n−1}=1' afirma tr = σ_{n−1} antes de provar σ_{n−1} = σ_n. A identidade demonstrada é tr = σ_n. A igualdade com σ_{n−1} só vale depois da prova de consistência. A frase deveria ser reescrita após essa prova, ou removida."
+          },
+          {
+            "severity": "minor",
+            "description": "No exemplo n = 2 aparece 'σ_2 = 1 ≠ 0 = n−2'. A hipótese para j = n é n−j, e n−2 coincide com 0 só porque n = 2. Deveria ser escrito n−j com j = 2."
+          },
+          {
+            "severity": "minor",
+            "description": "A convenção 0^0 = 1 só aparece na 'outra verificação', mas a afirmação a_{k+1,k} = 1 é usada desde o início, pois é ela que fixa c_k ≥ 1 e a parte do argumento que usa c_{n−1}. A convenção deveria ser declarada logo na estrutura das matrizes."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta de (b) tr(AB) = 0 vem apenas da equação com j = n, que pertence ao sistema inconsistente. O candidato diz 'formalmente' e adiciona a ressalva, o que está correto. Ainda assim, a justificativa deveria dizer explicitamente que, sem a hipótese, tr(AB) = soma de todas as entradas de A varia com os α_j, e que 'em função de n' é um despiste."
+          }
+        ],
+        "summary": "Verificação: li a página 7 do PDF e a transcrição confere. Conferi numericamente (frações exatas, n = 2…7, 200 sorteios de α por n) as identidades da leitura impressa: det(AB) = 0; tr(AB) = soma de todas as entradas de A = σ_n; σ_{n−1} = σ_n; c_{n−1} = 1; coluna n de A nula. A contradição é estrutural e vale para todo n ≥ 2 e todo α real.\n\nComparação de respostas: (a) 0, (b) 0, (c) conjunto vazio. As três coincidem com a referência e com a minha verificação para o enunciado impresso, então answer_correct = true. Ressalva: não consegui conferir o gabarito oficial, e só usei o arquivo da prova.\n\nPontos fortes: o argumento central é limpo e não depende dos α. A prova de que A·1 − A·e_n = A·1 (coluna n de A nula) é direta. A segunda verificação (c_{n−1} = 1 contra −1) é independente. O candidato também tratou as armadilhas de det (sem usar det B como argumento), do traço (constante, via indicador de b), da distinção σ × c e de α_4 (não aparece em A). A notação em LaTeX e a resposta final estão organizadas.\n\nPontos fracos: o principal é não ter analisado a leitura corrigida (b_ij = 1 para j ≤ i), que dá α_1 = α_3 = 0, α_2 ∈ {0, −1}, α_4 livre. Isso o impede de atingir gabarito comentado. Há ainda imprecisões menores (σ_{n−1} vs tr antes da prova, n−2 no exemplo n = 2, 0^0 declarado tarde).\n\nNota 8: resposta correta com prova rigorosa da inconsistência, mas incompleta na análise de (c) e com pequenas imprecisões."
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "Com o enunciado impresso (b_ij = 1 para j ≥ i): (a) $\\det(AB)=0$, para todo n e todos os α_j. (b) $\\operatorname{tr}(AB)=0$ para todo n; é o valor imposto pela hipótese, que é inconsistente para n ≥ 2 (σ_n − σ_{n−1} = c_n = 0, mas a hipótese exige −1). (c) Para n = 5 o conjunto de valores possíveis de (α_1, α_2, α_3, α_4) ∈ ℝ⁴ é vazio. Observação: na leitura b_ij = 1 para j ≤ i, a hipótese fica consistente e dá α_1 = α_3 = 0, α_2 ∈ {0, −1}, α_4 livre; det e traço continuam 0.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (b): o valor 0 vem da hipótese com j=n, que é inconsistente para n≥2. A resolução diz isso no texto e no parágrafo de Respostas, mas a formulação estrutural deveria ficar explícita: tr(AB)=Σ_{i,j} a_ij=σ_n vale para todo α, e a hipótese fixa σ_n=0 apenas de forma vacuamente verdadeira. Convém que o 0 seja apresentado já com essa ressalva, e não só como 'valor exigido'."
+          },
+          {
+            "severity": "minor",
+            "description": "Observação (leitura alternativa): a afirmação 'AB é estritamente triangular inferior' é feita sem justificativa. Falta uma linha: (AB)_ij = Σ_{k≥j} a_ik e a_ik≠0 só para k<i, logo j<i. Também falta justificar 'σ_n=0 é automático', que decorre de c_n=0 (coluna n de A nula)."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): a contradição é mostrada para todo n ≥ 2, mas não é especializada ao caso pedido. Faltou a linha direta para n=5: σ_4=1, σ_5=0, mas σ_5−σ_4=c_5=0. Como a resposta de (c) é o conjunto vazio, essa especialização deveria aparecer de forma explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "'Verificação independente' é, na prática, a mesma cadeia (H') com j=n−1, mais o exemplo n=2. Não há checagem concreta para n≥3 (ex.: n=3 com matriz explícita e somas de colunas). O rótulo 'independente' está exagerado. O exemplo n=2 está correto: A=[[0,0],[1,0]], B=[[1,1],[0,1]], AB=[[0,0],[1,1]], somas 1 e 1."
+          }
+        ],
+        "summary": "Confiro as respostas finais com a referência e com as contas. Verifiquei o enunciado no PDF (p. 7): a transcrição confere, com b_ij=1 se j≥i e hipótese \"soma da coluna j de AB = n−j\". Checagens em aritmética exata (Fraction): para n=2..7 e 200 sorteios de α cada, σ_n = σ_{n−1} sempre, o que contradiz σ_n=0 e σ_{n−1}=1. Em todos os casos det(AB)=0 e tr(AB) = soma das entradas de A. Na leitura alternativa (b_ij=1 se j≤i), para n=5, α=(0, 0 ou −1, 0, qualquer real) satisfaz a hipótese, como afirma o candidato.\n\nComparação item por item: (a) det(AB)=0 — iguais e corretos. (b) tr(AB)=0 para todo n — iguais e corretos, com a ressalva de vacuidade bem explicitada. (c) conjunto vazio no enunciado impresso — iguais e corretos. A resolução trata as armadilhas principais: coluna n de A nula (c_n=0), contradição σ_n−σ_{n−1}=0≠−1, convenção 0^0=1 usada na leitura alternativa, uso de reais (1+α+α²>0), α_4 livre na leitura alternativa, distinção entre σ_k e c_j e a não-dependência de n no traço.\n\nOs problemas que restam são de rigor e acabamento, não de conteúdo: a remark sobre a leitura alternativa tem duas afirmações sem justificativa, falta a especialização explícita a n=5 na parte (c), e a 'verificação independente' é fraca. Com as correções listadas, a resolução chegaria a 9 ou mais. Nota 8.5, porque a solução está correta e completa para o enunciado impresso, mas não está no ponto de ser publicada sem ajustes."
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.0,
+      "final_answer": "(a) det(AB) = 0 para todo n e todos os α_j (vale por Binet, pois a coluna n de A é nula; não depende da hipótese). (b) tr(AB) = σ_n = soma das entradas de A; a hipótese fixa σ_n = 0, logo tr(AB) = 0 para todo n. Para n ≥ 2 esse valor é formal, porque a hipótese é inconsistente. (c) Conjunto vazio: para n = 5, σ_5 − σ_4 = c_5 = 0, mas a hipótese exige −1; não existem α_1, α_2, α_3, α_4 ∈ ℝ que a satisfaçam. Na leitura alternativa b_ij = 1 para j ≤ i, a hipótese é consistente e (c) dá α_1 = α_3 = 0, α_2 ∈ {0, −1}, α_4 livre.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (b): o valor tr(AB)=0 sai de uma hipótese impossível para n≥2 (σ_n=0 e σ_{n-1}=1 não podem ocorrer juntos). A resolução diz isso na ressalva, mas a resposta final (ANSWER) apresenta 'tr(AB)=0 para todo n' sem vincular o valor à contradição. Deveria apresentar primeiro a identidade tr(AB)=Σ a_ij=σ_n, válida sem hipótese, e só depois concluir 0 sob (H), com a ressalva junto da resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "Armadilha não tratada: a contradição pode ser vista sem usar a coluna n. Como c_{n-1}=a_{n,n-1}=α_{n-1}^0=1 é forçado, a hipótese exigiria c_{n-1}=-1 (no n=5, c_4 = σ_4−σ_3 = −1, mas c_4 = a_54 = 1). A resolução usa apenas σ_n−σ_{n-1}=c_n=0, e isso depende de (H) valer também para j=n. Se (H) for lida só para j≤n−1, o argumento apresentado não se aplica diretamente. Deveria acrescentar esse segundo argumento, que cobre as duas leituras."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 3 mostra apenas igualdade das somas das colunas n−1 e n de AB. Vale mais dizer que essas colunas são idênticas, pois a_in=0 implica (AB)_{i,n-1}=(AB)_{i,n} para todo i. É uma formulação mais forte e mais clara do mesmo fato."
+          }
+        ],
+        "summary": "Respostas (enunciado impresso, conferido na página 7 do PDF): (a) det(AB)=0; (b) tr(AB)=0 (formal, pois a hipótese é impossível para n≥2); (c) conjunto vazio. Coincidem com a referência e com a conta exata que fiz (n=2..7, 200 sorteios de α): det=0 sempre, S_{n-1}=S_n sempre, e a hipótese exige 1 e 0. Na leitura alternativa (b_ij=1 para j≤i), a resolução também acerta: AB fica estritamente triangular inferior (det=tr=0), c_j=1 para j=1..n−1, e para n=5 o conjunto é {(0,0,0,t)} ∪ {(0,−1,0,t)}, t∈ℝ (conferido em grade racional). Armadilhas bem tratadas: coluna n de A nula; det(AB)=0 independente de α e de (H); convenção 0^0=1 explícita; reais (1+α+α²=(α+½)²+¾>0); α_4 livre; separação entre S_k e c_j; caso n=1; traço igual à soma das entradas de A (exemplo: 4, conferido). Não tratado: o argumento de c_{n-1}=1 (ver issue 2). Texto claro, em formato de gabarito. Nota 9: publicável como gabarito comentado, com pequenos ajustes em (b) e na robustez da contradição. Observação: não consegui gravar memória sobre esta questão, porque o hook bloqueou escrita fora da pasta de trabalho e da prova.\"}"
+      }
+    }
+  ]
+}

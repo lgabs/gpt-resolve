@@ -1,0 +1,42 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Raio de luz no plano da figura, espelhos ideais (lei da reflexão: ângulo de incidência igual ao de reflexão, medidos em relação à normal, que é radial). Seja $O$ o eixo comum; $\theta$ é o ângulo entre $AB$ e a normal $OB$ (prolongada para fora) no espelho interno. Seja $\alpha$ o ângulo entre $AB$ e a normal $OA$ no espelho externo.
+
+\textbf{1) Geometria de um segmento.} No triângulo $OAB$: $OA=R$, $OB=r$, o ângulo em $B$ vale $\pi-\theta$, o ângulo em $A$ vale $\alpha$ e o ângulo central é $\varphi=\widehat{AOB}$. A soma dos ângulos internos dá
+\[
+\varphi+\alpha+(\pi-\theta)=\pi \;\Rightarrow\; \varphi=\theta-\alpha .
+\]
+A lei dos senos fornece
+\[
+\frac{R}{\sin(\pi-\theta)}=\frac{r}{\sin\alpha}\;\Rightarrow\;\sin\alpha=\frac{r}{R}\,\sin\theta .
+\]
+
+\textbf{2) Periodicidade.} Em $B$ a normal é $OB$, e o raio refletido é a imagem especular de $BA$ em relação a $OB$. Logo o segmento seguinte $BC$ ($C$ no espelho externo) é congruente a $AB$: mesmo comprimento, ângulo $\alpha$ em $C$ e mesmo ângulo central $\varphi$. O mesmo vale em $C$ (normal $OC$) e em todas as reflexões seguintes. Assim, todos os segmentos são congruentes, o raio gira sempre no mesmo sentido, e cada segmento avança $\varphi$ em torno de $O$.
+
+Com $n$ reflexões em cada espelho, há $2n$ segmentos por volta. Como os raios se sobrepõem após uma volta,
+\[
+2n\,\varphi=2\pi\;\Rightarrow\;\varphi=\frac{\pi}{n}\;\Rightarrow\;\alpha=\theta-\frac{\pi}{n}.
+\]
+
+\textbf{a) Expressão de $\tan\theta$.} Substituindo em $\sin\alpha=\dfrac{r}{R}\sin\theta$:
+\[
+\sin\theta\cos\frac{\pi}{n}-\cos\theta\sin\frac{\pi}{n}=\frac{r}{R}\sin\theta .
+\]
+Dividindo por $\cos\theta$ (com $\theta\neq 90^\circ$): $\tan\theta\left(\cos\frac{\pi}{n}-\frac{r}{R}\right)=\sin\frac{\pi}{n}$. Com $r/R=\sqrt3/2$:
+\[
+\boxed{\tan\theta=\frac{\sin(\pi/n)}{\cos(\pi/n)-\dfrac{\sqrt3}{2}}=\frac{2\sin(\pi/n)}{2\cos(\pi/n)-\sqrt3}}
+\]
+
+\textbf{b) Valores possíveis de $n$.} Um raio que vem de fora e atinge o cilindro interno (convexo) incide com $0<\theta\le 90^\circ$, e $\theta=90^\circ$ é apenas tangência. Para haver reflexão efetiva em $B$ é preciso $0<\theta<90^\circ$, isto é, $\tan\theta$ finito e positivo. Como $\sin(\pi/n)>0$ para $n\ge 2$, precisamos do denominador positivo:
+\[
+\cos\frac{\pi}{n}>\frac{\sqrt3}{2}=\cos\frac{\pi}{6}\;\Rightarrow\;\frac{\pi}{n}<\frac{\pi}{6}\;\Rightarrow\; n>6 .
+\]
+Interpretação física: o ângulo central máximo de um segmento ocorre na tangência e vale $\arccos(r/R)=\pi/6$. Logo $\varphi=\pi/n\le\pi/6$. Para $n=6$ o raio apenas tangencia o espelho interno ($\theta=90^\circ$, $\tan\theta\to\infty$, trajetória em hexágono regular de vértices no espelho externo), sem reflexão efetiva. Para $n\le5$ o raio nem alcança o cilindro interno.
+
+Portanto $n\in\mathbb{N}$ com $n\ge 7$, ou seja, $n=7,8,9,\dots$ Não há limite superior.
+
+\textbf{Verificação.} Para $n=12$: $\tan\theta=\dfrac{0{,}2588}{0{,}9659-0{,}8660}\approx 2{,}59$, logo $\theta\approx 68{,}9^\circ$ e $\alpha=\theta-15^\circ\approx 53{,}9^\circ$. Confere: $\sin\alpha\approx0{,}808$ e $\dfrac{\sqrt3}{2}\sin\theta\approx0{,}866\cdot0{,}933\approx0{,}808$. Para $n=7$: $\theta\approx85{,}4^\circ$. Para $n\to\infty$: $\theta\to0$, com $\tan\theta\approx\dfrac{\pi}{n(1-\sqrt3/2)}\approx\dfrac{23{,}4}{n}$, ou seja, o raio tende a ser radial. Uma simulação numérica do traçado do raio para $n=7,8,12$ reproduz $n$ pontos de reflexão igualmente espaçados em cada espelho, com fechamento após uma volta.
+
+ANSWER: a) $\tan\theta=\dfrac{\sin(\pi/n)}{\cos(\pi/n)-\sqrt3/2}$; b) $n\in\mathbb{N}$ com $n\ge 7$ (isto é, $n>6$).

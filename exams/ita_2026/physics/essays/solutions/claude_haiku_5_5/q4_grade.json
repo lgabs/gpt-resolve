@@ -1,0 +1,47 @@
+{
+  "question": 4,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-3-30-10-2025-2-fase-dia-3/dissertativa-4-fisica-2-fase-dia-3-ita-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "y₂ = 2b ou y₂ = −4b. O CM, em (4a/5, (b+y₂)/5), é imposto sobre a elipse x²/a² + y²/b² = 1.",
+      "key_answer": "y₂ = 2b ou y₂ = −4b, com a mesma premissa de que o CM continua na elipse original. O Poliedro diz que essa premissa é falsa e sugere anular a questão.",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Refiz a conta. Com m₁ = 4m/5 e m₂ = m/5, o CM fica em (4a/5, (b+y₂)/5). Na elipse, 16/25 + (b+y₂)²/(25b²) = 1, o que dá (b+y₂)² = 9b² e, portanto, y₂ = 2b ou y₂ = −4b. As duas respostas são idênticas. Ambas avisam que a premissa só vale logo após a cisão: a resolução diz que o erro é de segunda ordem em δ/r e grande neste caso; o Poliedro sugere anular a questão."
+    },
+    {
+      "item": "b",
+      "solution_answer": "U_min = −(GMm/5)·[16/√(25a² − 15b² − 24ac) + 1/√(2a² + 3b² − 2ac)], com c = √(a²−b²), estrela no foco (c,0) e y₂ = 2b. O termo mútuo −16Gm²/(25√(a²+49b²)) aparece à parte, por ser da ordem de m/M.",
+      "key_answer": "E_pg,mín = −GMm₂·[4/√((3a/4 − √(a²−b²))² + (b/4)²) + 1/√((a − √(a²−b²))² + (2b)²)], com y₂ = 2b e a estrela em (c,0).",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "As duas expressões são a mesma escrita de outro jeito. Como m₂ = m/5, o fator −GMm₂ é igual a −GMm/5. Expandindo com c² = a² − b²: d₁² = (3a/4 − c)² + b²/16 = (25a² − 15b² − 24ac)/16, logo 4/d₁ = 16/√(25a² − 15b² − 24ac). Já d₂² = (a − c)² + 4b² = 2a² + 3b² − 2ac. Conferi numericamente com python3: para (a,b) = (1; 0,6), (2; 1,3) e (3; 0,4), as duas fórmulas dão −5,22404, −2,53260 e −1,34561 (em GM·m, unidades de a), iguais até 1e−14. A escolha do mínimo é a mesma nas duas: foco (c,0) e y₂ = 2b. Também conferi a tabela de força bruta da resolução: −5,224, −5,143, −0,606 e −0,580. Estão corretos o caso circular (≈ −1,10 GMm/a) e a razão |U_mut|/|U_*| ≈ 0,028·m/M. O gabarito não inclui o termo mútuo; a resolução o deixa fora da resposta principal. Por isso as respostas principais coincidem."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "high",
+      "description": "A questão depende de uma premissa que o enunciado não declara: depois da cisão, o CM de m₁ + m₂ continuaria na elipse original. Isso só vale logo após a separação. Com os dados, a distância P₁P₂ = √(a² + 49b²)/4 é comparável a a, e aí os fragmentos sentem campos bem diferentes. O Poliedro sugere anular a questão; a resolução também aponta a falha, mas segue o modelo. Convém confirmar se a banca anulou ou alterou a questão, porque isso muda a nota dos dois itens."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado não diz em qual foco está a estrela nem qual dos dois valores de y₂ vale. O item b resolve isso com o 'menor energia possível': escolhe o foco (c,0) e y₂ = 2b. A resolução e o gabarito justificam a escolha da mesma forma (as duas distâncias diminuem ao mesmo tempo). No item a, dar os dois valores parece ser o esperado."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O enunciado pede a energia potencial 'do sistema', e o gabarito usa só os termos estrela–fragmento, sem o termo mútuo −Gm₁m₂/d. Isso é razoável, porque M ≫ m e o termo mútuo é da ordem de m/M (≈ 2,8% de m/M no caso a=1, b=0,6). A resolução escreve esse termo à parte: −16Gm²/(25√(a²+49b²)). Na correção, isso não deveria ser penalizado, já que ela não o soma à resposta principal."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Na justificativa do gabarito, a frase 'y₂ = −4b deixaria m₂ mais afastada do eixo x' está certa, mas é informal. A justificativa rigorosa é que r₂² depende de y₂ apenas por y₂², e |2b| < |−4b|, como faz a resolução. Isso não muda o resultado."
+    }
+  ],
+  "summary": "A resolução e o gabarito do Poliedro concordam nos dois itens. No item a, os dois dão y₂ = 2b ou y₂ = −4b. No item b, a resposta da resolução, −(GMm/5)[16/√(25a² − 15b² − 24ac) + 1/√(2a² + 3b² − 2ac)], é a mesma expressão do gabarito, −GMm₂[4/d₁ + 1/d₂], só que expandida: m₂ = m/5 e c² = a² − b². Conferi isso algebricamente e numericamente; as duas escolhem a estrela no foco (c,0) e y₂ = 2b. A resolução está correta dentro do modelo pedido, e também estão certos a tabela de força bruta, o caso circular e as demais verificações. O ponto que pode mudar a nota é o próprio enunciado: a premissa de que o CM continua na órbita original é fisicamente falsa para uma separação da ordem de a. O Poliedro sugere anular a questão, e a resolução também aponta a falha."
+}

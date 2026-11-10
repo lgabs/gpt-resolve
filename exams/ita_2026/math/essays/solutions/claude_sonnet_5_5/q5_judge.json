@@ -1,0 +1,113 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.5,
+  "final_answer": "A razão entre o volume da esfera maior e a soma dos volumes das quatro esferas menores é (22+9√6)/16 ≈ 2,75. Com raio r das esferas menores, o circunraio do tetraedro de aresta 2r é r√6/2, logo R = r(2+√6)/2.",
+  "judge_reference": {
+    "reference_solution": "**Notação e hipótese de leitura.** Seja r o raio comum das quatro esferas menores e R o raio da esfera maior. \"Inscritas na esfera maior\" significa que cada esfera menor está contida na maior e é tangente a ela internamente. O enunciado não define \"inscrita\" para esferas dentro de esferas, então essa é a leitura natural e deve ser declarada.\n\n**1) O tetraedro dos centros.** Duas esferas tangentes externamente de raio r têm centros a distância r + r = 2r. Logo os centros A₁, A₂, A₃, A₄ formam um tetraedro regular de aresta a = 2r (o enunciado já diz que é regular).\n\n**2) Onde está o centro da esfera maior.** Seja O o centro da esfera maior. A tangência interna da esfera i com a maior dá O·Aᵢ = R − r, o mesmo valor para i = 1, 2, 3, 4. Então O é equidistante dos quatro vértices, ou seja, é o circuncentro do tetraedro. Ele existe e é único porque os quatro pontos não são coplanares. Num tetraedro regular o circuncentro coincide com o baricentro. Seja ρ o circunraio do tetraedro; então R − r = ρ.\n\n**3) Circunraio do tetraedro regular de aresta a.**\n- Altura relativa a uma face: o circuncentro de uma face (triângulo equilátero de lado a) está a a√3/3 de cada vértice da face, então h² = a² − a²/3 = 2a²/3 e h = a√6/3.\n- O circuncentro O está sobre a altura. Seja ρ a distância de O ao vértice, de modo que O está a h − ρ da face. Pitágoras no triângulo formado pelo vértice, o centro da face e O dá ρ² = (a√3/3)² + (h − ρ)², ou seja, 0 = a²/3 + h² − 2hρ.\n- Portanto ρ = (a²/3 + 2a²/3)/(2h) = a²/(2h) = 3a/(2√6) = a√6/4.\n- Conferência pelo cubo: o tetraedro regular de aresta a tem vértices alternados de um cubo de aresta c = a/√2, e ρ = c√3/2 = a√6/4. Confere.\n- Com a = 2r: ρ = 2r·√6/4 = r√6/2.\n\n**4) Raio da esfera maior.** R = r + ρ = r + r√6/2 = r(2 + √6)/2.\n\n**5) Razão de volumes.** V_maior = (4/3)πR³ e a soma dos menores é 4·(4/3)πr³. Os fatores (4/3)π se cancelam:\n\nRazão = R³/(4r³) = (1/4)·((2+√6)/2)³ = (2+√6)³/32.\n\nDesenvolvendo: (2+√6)³ = 8 + 3·4·√6 + 3·2·6 + 6√6 = 8 + 12√6 + 36 + 6√6 = 44 + 18√6.\n\nRazão = (44 + 18√6)/32 = **(22 + 9√6)/16** ≈ (22 + 22,045)/16 ≈ 2,753.\n\n**6) Conferência.** Verifiquei numericamente com um tetraedro de aresta 2 (r = 1): o circunraio é 1,2247 = √6/2 e R = 2,2247. A distância de O a cada centro mais r é igual a R nos quatro casos, e R³/4 = 2,752838, igual a (22+9√6)/16. O resultado é maior que 1, como deve ser, já que a esfera maior contém as quatro menores sem sobreposição. A ordem de grandeza também é plausível: a densidade de empacotamento é ≈ 1/2,75 ≈ 36%.",
+    "final_answer": "A razão entre o volume da esfera maior e a soma dos volumes das quatro esferas menores é (2+√6)³/32 = (22 + 9√6)/16 ≈ 2,753, independente do raio r (com R = r(2+√6)/2). A questão é dissertativa, então não há alternativa de múltipla escolha.",
+    "pitfalls": [
+      "Distância entre centros é 2r (esferas tangentes externamente), não r: a aresta do tetraedro vale 2r.",
+      "O raio da esfera maior NÃO é o circunraio do tetraedro: R = ρ + r. Esquecer o + r (usar R = r√6/2) dá razão ≈ 0,459, menor que 1, absurda porque a esfera maior contém as menores.",
+      "É preciso justificar que o centro da esfera maior é o circuncentro do tetraedro: a tangência interna dá O·Aᵢ = R − r igual para os quatro centros. Não basta dizer 'por simetria' sem comentar, embora a simetria também sirva.",
+      "Confundir os pontos notáveis do tetraedro regular: o circuncentro/baricentro fica a 3/4 da altura a partir do vértice (ρ = 3h/4 = a√6/4), e o inraio é h/4 = a√6/12. Usar 2/3 da altura (razão do triângulo equilátero) é erro frequente.",
+      "A altura do tetraedro é a√6/3, e não a√3/2 (altura da face).",
+      "Na razão de volumes, o denominador é a SOMA dos quatro volumes: 4·(4/3)πr³. Esquecer o fator 4 dá (22+9√6)/4 ≈ 11,0, e usar a razão de raios sem elevar ao cubo também erra.",
+      "Expansão do cubo: (2+√6)³ = 44 + 18√6 (erro típico: esquecer o termo 3·2·(√6)² = 36 ou o 6√6 de (√6)³). Simplificar por 2 dá (22 + 9√6)/16.",
+      "Deixar a resposta como expressão numérica não resolvida pode ser penalizado (instrução 8 da prova): entregar a forma fechada simplificada e, opcionalmente, o valor aproximado.",
+      "Hipótese de leitura de 'inscritas': cada esfera menor é tangente internamente à maior. Convém declará-la explicitamente na resolução."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 7.5,
+      "final_answer": "A razão é (22 + 9√6)/16 ≈ 2,75, com R = r(2+√6)/2.",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "A 'Conferência' (passo 5) termina com uma frase falsa e truncada: \"Também R>2r não ocorre, pois R≈1,22(2r)/... é compatível com a geometria\". Com o próprio resultado, R/r ≈ 2,2247 > 2, então R>2r de fato ocorre. A expressão \"1,22(2r)/...\" fica incompleta e sem sentido. Isso não muda a resposta, mas um gabarito comentado não pode trazer afirmação matematicamente errada nem rascunho solto. Apagar a frase, ou trocar por uma verificação válida: a distância de O a cada centro mais r dá R nos quatro casos, e a razão é maior que 1."
+          },
+          {
+            "severity": "minor",
+            "description": "O passo 3 afirma \"Pela simetria, o centro da esfera maior é o centro O do tetraedro\" sem justificar. O argumento rigoroso é curto: a tangência interna dá O'Oᵢ = R − r para i = 1..4, então O' é equidistante dos quatro vértices e, como eles não são coplanares, O' é o circuncentro, que é único. Num tetraedro regular o circuncentro coincide com o baricentro. Citar só 'simetria' é um salto lógico leve, mesmo o resultado estando certo."
+          },
+          {
+            "severity": "minor",
+            "description": "A leitura de 'inscritas' (cada esfera menor tangente internamente à maior) aparece como fato, não como hipótese de interpretação do enunciado. Convém declarar que essa é a interpretação adotada, já que o enunciado não define 'inscrita' para esferas dentro de esferas."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conferência numérica, \"R³/(4r³) ≈ 11,011/4\" mistura R³/r³ ≈ 11,011 com a divisão por 4 de um jeito pouco claro. Seria melhor escrever (R/r)³ ≈ 11,011 e depois 11,011/4 ≈ 2,753. O passo 2 também não diz que o centro do cubo é o centro O do tetraedro, nem que todo tetraedro regular de aresta a é congruente ao formado por vértices alternados de um cubo de aresta a/√2. É padrão, mas vale uma linha."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não comenta que a razão independe de r, e não discute as armadilhas clássicas (usar R = circunraio sem somar r, esquecer o fator 4, usar 2/3 da altura). A resolução evita todas elas, mas um gabarito comentado ganharia com uma observação curta, por exemplo que R = ρ + r e que a razão ≈ 2,75 > 1 confirma isso."
+          }
+        ],
+        "summary": "Resposta final correta e igual à da minha referência: (22+9√6)/16 ≈ 2,753, com R = r(2+√6)/2. Reli o enunciado no PDF (Questão 05, p. 6) e a transcrição confere. Conferi numericamente, com r = 1 e aresta 2: o circunraio é √6/2 ≈ 1,2247, R ≈ 2,2247, R³/4 ≈ 2,75284 e (2+√6)³ = 44+18√6, tudo batendo com a resolução. A derivação principal está correta e bem organizada: aresta 2r, circunraio pelo cubo, R = r + d, soma dos quatro volumes no denominador, expansão do cubo certa, forma fechada simplificada. Evita as armadilhas principais. Perde pontos por rigor e clareza: (i) o centro da esfera maior é justificado só 'por simetria', sem o argumento de equidistância dos quatro centros; (ii) a leitura de 'inscritas' não é declarada como hipótese; (iii) a conferência final contém uma frase falsa e truncada (\\\"R>2r não ocorre\\\" e \\\"1,22(2r)/...\\\"), quando R ≈ 2,22r > 2r. Nenhum desses defeitos afeta o resultado, mas deixam o texto abaixo do nível de um gabarito comentado publicável, daí a nota 7,5.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "A razão entre o volume da esfera maior e a soma dos volumes das quatro menores é (22+9√6)/16 ≈ 2,75. Isso vem de R = r(2+√6)/2, com o circunraio do tetraedro de aresta 2r igual a r√6/2 e R = r + circunraio.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A seção 5 (Conferência) traz um raciocínio solto, com autocorreção no meio do texto: \"o volume da maior é menor que o dobro... na verdade, a razão 2,75>1 indica...\". A frase \"menor que o dobro\" é falsa, pois 2,75 > 2, e foi deixada no texto. Um gabarito comentado não pode conter essa afirmação errada nem esse tom de rascunho. Deveria apagar a frase e dizer só que a razão é maior que 1 e que a densidade de empacotamento é de cerca de 36%, o que é plausível."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência numérica não é independente. Ela só reavalia a mesma fórmula com r=1 e compara (R/r)³/4 com (22+9√6)/16, então detecta apenas erro de expansão algébrica. Uma conferência melhor seria checar com coordenadas explícitas, por exemplo o cubo (±1,±1,±1), que a distância de O' a cada centro mais r é igual a R. A distância ρ=√3 com aresta 2√2 aparece de passagem no passo 2, mas não é usada para fechar o ciclo. Isso é um acabamento a mais, não um erro."
+          },
+          {
+            "severity": "minor",
+            "description": "O raciocínio de que cada esfera menor está dentro da maior e tangente a ela (O'Oᵢ = R − r) é declarado como interpretação de \"inscritas\", o que é bom. Falta uma frase dizendo que, com R = r + ρ, as quatro esferas ficam de fato contidas na maior e tangentes a ela, ou seja, que a configuração existe. É uma verificação de consistência curta que fecharia a lógica."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato mistura \"a/√2\", \"s\" e \"ρ\" sem avisar que a distância do centro do cubo ao vértice vale s√3/2 por ser metade da diagonal do cubo. Isso foi dito, mas a resolução poderia mostrar também uma segunda via, como Pitágoras com a altura a√6/3 e ρ = 3h/4. Não é obrigatório, mas ajudaria quem não conhece a inscrição do tetraedro no cubo."
+          }
+        ],
+        "summary": "A resposta final, (22+9√6)/16 ≈ 2,753, coincide com a da minha referência. Refiz as contas numericamente: R=r(2+√6)/2, (2+√6)³=44+18√6=88,09 e R³/4=2,7528, e todas conferem. O enunciado original (página 6 do PDF) foi checado e a leitura de \\\"inscritas\\\" como tangência interna é a natural.\\n\\nA resolução é correta e bem estruturada. Ela declara a interpretação de \\\"inscritas\\\", justifica a aresta 2r e obtém o circunraio pelo cubo (ρ=a√6/4), com exemplo de coordenadas e aresta 2√2. Justifica ainda que O' é o circuncentro, porque O'Oᵢ=R−r é igual para os quatro vértices e o ponto equidistante de quatro pontos não coplanares é único. Todas as armadilhas foram tratadas:\\n- R=ρ+r, com aviso explícito de que ρ não basta.\\n- A aresta do tetraedro é 2r.\\n- A soma dos volumes tem o fator 4.\\n- O cubo está desenvolvido corretamente.\\n- O resultado foi simplificado para forma fechada, mais o valor aproximado.\\n- O ρ do tetraedro está correto, pelo cubo, sem usar 2/3 da altura.\\n\\nA nota fica abaixo de 9 por causa da seção de conferência. Ela contém uma frase falsa com autocorreção no meio (\\\"menor que o dobro... na verdade\\\"), e a checagem numérica é circular, pois reusa a mesma fórmula. São defeitos de acabamento. Eles não afetam a correção da resposta, mas impedem que o texto seja publicado como gabarito comentado sem uma limpeza.\"}"
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.5,
+      "final_answer": "A razão entre o volume da esfera maior e a soma dos volumes das quatro esferas menores é (22+9√6)/16 ≈ 2,75. Com raio r das esferas menores, o circunraio do tetraedro de aresta 2r é r√6/2, logo R = r(2+√6)/2.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na via do cubo, a solução diz que os vértices alternados de um cubo formam um tetraedro regular e usa isso para o tetraedro dos centros. Ela não diz que todo tetraedro regular é semelhante a esse (o que justifica a escala por a = s√2). A conferência por Pitágoras cobre essa lacuna, então o impacto é desprezível."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa de que O' é o circuncentro é correta e suficiente: equidistância pela tangência interna, e unicidade porque os vértices não são coplanares. Poderia citar que o circuncentro coincide com o baricentro, mas isso é dispensável para o resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta final em caixa é dada na forma fechada simplificada (22+9√6)/16, com valor aproximado. Isso atende à instrução 8 da prova. A caixa usa a notação V_maior/(4V_menor), clara, mas o enunciado fala em 'soma dos volumes', e uma frase dizendo isso explicitamente deixaria a leitura mais direta."
+          }
+        ],
+        "summary": "A resposta (22+9√6)/16 ≈ 2,753 está correta e coincide com a minha referência. Refiz as contas: (2+√6)³ = 44+18√6; (√3+√2)³ = 9√3+11√2, o que dá 9√6/16 + 22/16 pela conferência com coordenadas. Os valores numéricos batem em 2,7528. O enunciado original (Questão 05, p. 6) confere com a transcrição. A hipótese de leitura de 'inscritas' (tangência interna) está declarada. A aresta 2r está justificada. O circunraio é obtido por dois caminhos independentes (cubo e Pitágoras com h = a√6/3 e ρ = 3h/4). O centro O' é identificado como circuncentro por argumento rigoroso: equidistância R−r e unicidade, pois os pontos não são coplanares. O texto avisa explicitamente que R = ρ + r, e não R = ρ. Inclui verificação de consistência (esferas menores contidas na maior, tangência no ponto da semirreta, sem sobreposição). O denominador usa a soma dos quatro volumes, o cubo é expandido corretamente e há conferência numérica por coordenadas e checagem de ordem de grandeza. Todas as armadilhas da referência foram tratadas. Restam apenas observações menores de rigor e apresentação. É praticamente um gabarito comentado publicável.\"}"
+      }
+    }
+  ]
+}

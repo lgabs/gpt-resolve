@@ -1,0 +1,56 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "tr(AB) = C(m+n+2, n+1) = C(2026, 1001), divisível pelo primo 1013, pois 1001·C(2026,1001) = 2·1013·C(2025,1000) e mdc(1013,1001) = 1.",
+  "judge_reference": {
+    "reference_solution": "**Resolução de referência – Questão 7 (IME 2027, Matemática discursiva)**\n\n**Ideia geral.** AB é 3×3. Seu traço é a soma dos três elementos da diagonal. Cada elemento é uma soma de produtos de binomiais, que a identidade de Vandermonde fecha. A regra de Pascal junta os três resultados em um único binomial, e então se analisa a divisibilidade por 1013.\n\n**Passo 1 – Os elementos da diagonal de AB.**\nO traço de AB é (AB)₁₁ + (AB)₂₂ + (AB)₃₃, com (AB)ₖₖ = Σ_{j=1}^{n+2} a_{kj}·b_{jk}. As colunas 1 e 2 de B coincidem (b_{j1} = b_{j2} = C(n, n+2−j)). A coluna 3 é b_{j3} = C(n+1, n+2−j).\n\nVale a convenção C(a,c) = 0 para c < 0 ou c > a. Por isso, em cada soma, os índices fora do intervalo \"natural\" contribuem com zero. Pode-se então estender cada soma a todos os inteiros k, sem alterar o valor.\n\nIdentidade de Vandermonde: Σ_k C(m,k)·C(n,r−k) = C(m+n, r), com a soma sobre todos os k inteiros.\n\n(a) (AB)₁₁ = Σ_j C(m, j−3)·C(n, n+2−j).\nCom k = j−3, tem-se n+2−j = n−1−k. Logo (AB)₁₁ = Σ_k C(m,k)·C(n, (n−1)−k) = C(m+n, n−1).\n- Os k que faltam à soma (k > n−1, ou k < −2) dão C(n, n−1−k) = 0 ou C(m,k) = 0.\n- Os valores k = −2 e k = −1 estão em j = 1 e j = 2, e dão C(m,k) = 0.\n\n(b) (AB)₂₂ = Σ_j C(m, j−2)·C(n, n+2−j).\nCom k = j−2, tem-se n+2−j = n−k. Logo (AB)₂₂ = Σ_k C(m,k)·C(n, n−k) = C(m+n, n).\n- Os k que faltam (k < −1 ou k > n) dão termos nulos.\n\n(c) (AB)₃₃ = Σ_j C(m, j−1)·C(n+1, n+2−j).\nCom k = j−1, tem-se n+2−j = (n+1)−k. Logo (AB)₃₃ = Σ_k C(m,k)·C(n+1, (n+1)−k) = C(m+n+1, n+1).\n- Os k de 0 a n+1 correspondem exatamente a j de 1 a n+2.\n\n**Passo 2 – O traço.**\ntr(AB) = C(m+n, n−1) + C(m+n, n) + C(m+n+1, n+1).\nPela relação de Stifel, C(N, r−1) + C(N, r) = C(N+1, r), duas vezes:\n- C(m+n, n−1) + C(m+n, n) = C(m+n+1, n);\n- C(m+n+1, n) + C(m+n+1, n+1) = C(m+n+2, n+1).\n\nPortanto **tr(AB) = C(m+n+2, n+1)**.\n\nA fórmula vale para quaisquer m, n ≥ 1. Conferi numericamente com construção explícita das matrizes para 1 ≤ n ≤ 14 e 1 ≤ m ≤ 24, inclusive com m ≤ n.\n\n**Passo 3 – Caso m = 2¹⁰ = 1024, n = 10³ = 1000.**\ntr(AB) = C(1024+1000+2, 1001) = C(2026, 1001).\n\nFato: 1013 é primo. Seu quadrado é 1026169 > 1013, e basta testar os primos até 31 (⌊√1013⌋ = 31). Nenhum divide 1013:\n- 2, 3 e 5 não dividem (1013 é ímpar, tem soma de algarismos 5 e termina em 3);\n- 1013 = 7·144 + 5 = 11·92 + 1 = 13·77 + 12 = 17·59 + 10 = 19·53 + 6 = 23·44 + 1 = 29·34 + 27 = 31·32 + 21.\n\nSeja p = 1013. Então 2026 = 2p, e C(2026, 1001) = (2p)! / (1001!·1025!), pois 2026 − 1001 = 1025.\n\nContagem do expoente de p (isto é, quantos fatores p cada fatorial contém):\n- (2p)! = 1·2·…·p·…·2p. Entre 1 e 2p, os múltiplos de p são exatamente p e 2p. Logo p² divide (2p)!, e o expoente de p em (2p)! é 2.\n- 1001! só tem fatores ≤ 1001 < 1013 e, como p é primo, p não o divide. Expoente 0.\n- 1025! tem fatores de 1 a 1025, e o único múltiplo de p é 1013 (o seguinte, 2026, excede 1025). Expoente 1.\n\nSeja T = C(2026, 1001). Então T·1001!·1025! = 2026!, e o expoente de p no lado direito é 2. No lado esquerdo, o expoente de p é v_p(T) + 0 + 1. Logo v_p(T) = 1 ≥ 1.\n\nPortanto 1013 divide tr(AB) (e o expoente de 1013 em tr(AB) é exatamente 1). ∎\n\n**Alternativa por Lucas.** Na base 1013, 2026 = (2,0) e 1001 = (0,1001). Então C(2026,1001) ≡ C(2,0)·C(0,1001) = 0 (mod 1013), porque 1001 > 0.\n\n**Verificação computacional.** Com Python, construí A e B com m = 1024, n = 1000 e calculei o traço com inteiros exatos:\n- O traço é igual a C(2026, 1001).\n- O traço mod 1013 é 0.\n- v₁₀₁₃(traço) = 1.\n- A fórmula de Legendre dá 2, 0 e 1 para (2026)!, 1001! e 1025!.",
+    "final_answer": "tr(A·B) = C(m+n, n−1) + C(m+n, n) + C(m+n+1, n+1) = C(m+n+2, n+1). Para m = 2¹⁰ e n = 10³, tr(A·B) = C(2026, 1001) = C(2·1013, 1001). Como 1013 é primo, 1013² divide 2026!, 1013 não divide 1001! e 1013 divide 1025! exatamente uma vez. Logo o expoente de 1013 em C(2026, 1001) é 2 − 0 − 1 = 1 ≥ 1, ou seja, 1013 divide o traço (exatamente uma vez). Conferido numericamente: o traço é ≡ 0 (mod 1013). Questão discursiva de demonstração, sem alternativa.",
+    "pitfalls": [
+      "O traço pedido é o de A·B (matriz 3×3), não o de B·A, que é (n+2)×(n+2). São só 3 somas na diagonal: (AB)₁₁, (AB)₂₂ e (AB)₃₃.",
+      "As colunas 1 e 2 de B são iguais (C(n, n+2−i)), mas as linhas 1 e 2 de A diferem. Por isso (AB)₁₁ e (AB)₂₂ resultam diferentes: C(m+n, n−1) e C(m+n, n). A coluna 3 usa C(n+1, ·), e daí sai C(m+n+1, n+1).",
+      "Erro de deslocamento de índice é o mais comum. Com k = j−3, j−2 ou j−1, o binomial de B vira C(n, n−1−k), C(n, n−k) ou C(n+1, n+1−k). O 'topo' de cada Vandermonde (n−1, n, n+1) tem de bater com essa mudança de variável.",
+      "Vandermonde exige somar sobre todos os k. É preciso justificar, pela convenção C(a,c) = 0 para c < 0 ou c > a, que os termos com j fora de 1..n+2, ou k fora do intervalo, são nulos. Assim a soma finita coincide com a soma completa. Por exemplo, b₁₁ = C(n, n+1) = 0, e a_{1j} = 0 para j = 1, 2.",
+      "A hipótese m > n não é necessária para a fórmula, pois a convenção dos binomiais nulos cobre todos os casos. Ela só garante m ≥ n+1, e a fórmula foi conferida também com m ≤ n. Não se deve inventar uma restrição para a identidade.",
+      "Aplicar Stifel duas vezes é obrigatório para fechar em C(m+n+2, n+1). Erro típico: parar em três binomiais sem juntá-los, ou usar Stifel com índices trocados.",
+      "Justificar que 1013 é primo (testar primos até 31). A divisibilidade se apoia em v_p, e isso exige p primo.",
+      "Não vale 'p divide C(2p, k) para todo 0 < k < 2p'. Isso é falso para k = p, onde C(2p, p) ≡ 2 (mod p). Aqui funciona porque k = 1001 ≠ 1013, ou seja, 1001 < p e 2026 − 1001 = 1025 > p. Para 2p − k > p, o denominador tem só um fator p, enquanto o numerador tem dois. Argumentos que usam apenas 'p | (2p)!' ignoram a contagem de p no denominador.",
+      "Contar corretamente os múltiplos de 1013: em 2026! são dois (1013 e 2026). Em 1001! são nenhum. Em 1025! é um só (1013). Um deslize aqui (por exemplo, tomar 2026 − 1001 = 1015 ou outro valor) altera o resultado.",
+      "Cálculo direto de C(2026, 1001) à mão é inviável. A demonstração deve ser por propriedades (Vandermonde, Stifel, valuação p-ádica ou Lucas), como o enunciado pede."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "tr(AB) = C(m+n+2, n+1) = C(2026, 1001), divisível pelo primo 1013, pois 1001·C(2026,1001) = 2·1013·C(2025,1000) e mdc(1013,1001) = 1.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A prova da convolução de Vandermonde é só esboçada em uma linha (coeficiente de x^r em (1+x)^a(1+x)^b). Isso é aceitável para 'usar propriedades de combinações', mas um gabarito comentado poderia escrever o produto de séries e o coeficiente de x^r em uma linha a mais."
+          },
+          {
+            "severity": "minor",
+            "description": "Na justificativa de que a soma finita em j coincide com a soma completa, o texto cita explicitamente os k fora do intervalo só do lado superior (k ≥ n) e os k = −2, −1. Os k < −2 (em (i)) e k < −1 (em (ii)) ficam cobertos apenas pela frase geral do Passo 2 ('só entram os k com 0≤k≤a'). Funciona, mas valia dizer 'C(m,k)=0 para k<0' de modo explícito em cada item."
+          },
+          {
+            "severity": "minor",
+            "description": "Não menciona que a hipótese m>n é desnecessária para a fórmula do traço (a convenção dos binomiais nulos cobre todos os casos). Só escreve 'Aqui m>n'. Isso não é erro, pois o candidato não inventou restrição, mas ficaria mais claro dizer que a hipótese não é usada."
+          },
+          {
+            "severity": "minor",
+            "description": "O parágrafo 'Conferência' afirma verificações numéricas (incluindo m=1024, n=1000) sem mostrar nada. Isso é inofensivo e não faz parte da prova, que é autossuficiente. Em uma resolução publicável, esse parágrafo seria cortado ou trocado por um teste pequeno feito à mão, como m=3, n=2 dando 35."
+          }
+        ],
+        "summary": "Reli o enunciado no PDF original e refiz tudo em Python, construindo A e B explicitamente. O traço de AB é C(m+n+2, n+1) para (5,3), (7,4), (10,2), (3,2) e (2,5), inclusive m ≤ n. Para (1024, 1000) ele é exatamente C(2026,1001), e C(2026,1001) mod 1013 = 0. Os restos de 1013 por 2, 3, 5, …, 31 ([1,2,3,5,1,12,10,6,1,27,21]) conferem com os do candidato. A identidade 1001·C(2026,1001) = 2·1013·C(2025,1000) também foi confirmada com inteiros exatos.\\n\\nA resolução bate com a de referência em tudo. Os três elementos da diagonal vêm de Vandermonde, com os deslocamentos k=j−3, j−2 e j−1 feitos corretamente. Isso dá C(m+n,n−1), C(m+n,n) e C(m+n+1,n+1). Duas aplicações corretas de Stifel fecham em C(m+n+2, n+1), e para m=1024, n=1000 isso é C(2026,1001) com 2026 = 2·1013.\\n\\nPara a divisibilidade, o candidato usa k·C(N,k) = N·C(N−1,k−1), a primalidade de 1013 (testada até 31, pois 32² = 1024 > 1013) e o lema de Euclides com mdc(1013,1001)=1. É um argumento correto, curto e mais limpo que a contagem de valuações da referência. Ele evita a armadilha de 'p | C(2p,k) para todo k', porque usa de fato que 1001 não é múltiplo de 1013. Também trata corretamente que o traço é o de AB (3×3), a convenção dos binomiais nulos para estender as somas de Vandermonde e o uso duplo de Stifel.\\n\\nNão encontrei erro de conta, de lógica nem de índice. Os defeitos são só de acabamento: Vandermonde esboçado em uma linha, alguns casos de k fora do intervalo cobertos só por frase geral, e um parágrafo de 'conferência' numérica sem evidência mostrada. Nota 9.5.\"}"
+      }
+    }
+  ]
+}

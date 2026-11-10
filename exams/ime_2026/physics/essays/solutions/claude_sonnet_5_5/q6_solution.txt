@@ -1,0 +1,63 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{1. Modelagem e hipóteses.}
+
+\emph{Fonte.} A reta da Figura 2 é $V_{AB}=10-2\,i$ (de $10$ V em $i=0$ a $0$ em $i=5$ A). É o modelo de Thévenin, com $\varepsilon=10$ V e resistência interna $r=10/5=2\ \Omega$. O terminal $A$ é o positivo e a corrente $i>0$ sai dele, como na Figura 1. A resistência da barra é $R=2\ \Omega$.
+
+\emph{Hipóteses.} Trilhos ideais e longos, $\vec B$ uniforme e vertical, autoindutância do circuito desprezível (a corrente se ajusta instantaneamente à velocidade) e velocidade $v(t)$ imposta pelo gráfico, o que é garantido por $F(t)$.
+
+\emph{Sentidos.} Adoto $\hat x$ para a direita (sentido de $F$ e de $v>0$), $\hat z$ para cima (sentido de $\vec B$) e $\hat y$ apontando para o trilho do fundo. O sistema $(\hat x,\hat y,\hat z)$ é dextrógiro. A corrente entra pelo trilho do fundo (ligado a $A$) e atravessa a barra no sentido $-\hat y$.
+\begin{itemize}
+\item Força magnética da corrente: $\vec F_m=i\,L\,(-\hat y)\times B\hat z=-\,iLB\,\hat x$, \emph{para a esquerda}, contra $F$.
+\item Fem de movimento: $q\,\vec v\times\vec B=qvB\,(\hat x\times\hat z)=-qvB\,\hat y$. Ela tem o sentido de $i$, logo \emph{soma-se} a $\varepsilon$ para $v>0$ e \emph{subtrai-se} para $v<0$. Isso concorda com Lenz: para $v>0$ a barra se move contra $\vec F_m$ e age como gerador, e para $v<0$ ela se move no sentido de $\vec F_m$ e age como motor, com contra-fem.
+\end{itemize}
+
+\emph{Lei das malhas:}
+\[
+\varepsilon+BLv-(r+R)\,i=0\;\Rightarrow\; i=\frac{10+2{,}5\,v}{4}=2{,}5+0{,}625\,v\quad(\text{A, com } v \text{ em m/s}).
+\]
+Para $-2\le v\le 2$ tem-se $1{,}25\le i\le 3{,}75$ A. A corrente nunca se anula (isso só ocorreria em $v=-4$ m/s) nem inverte de sentido, e fica dentro da faixa $0$ a $5$ A da característica da fonte, portanto o modelo linear vale em todo o intervalo.
+
+\textbf{2. Item a).} Como $i$ cresce com $v$, o mínimo ocorre no menor $v$ do gráfico, $v=-2$ m/s em $t=0$ (regime de motor, contra-fem de $5$ V):
+\[
+i_{\min}=2{,}5+0{,}625\,(-2)=1{,}25\ \text{A}.
+\]
+Para $t\ge1$ s, $v\ge0$ e $i\ge2{,}5$ A. Como $i>0$ sempre, o menor módulo é o menor valor.
+\[
+\boxed{i_{\min}=1{,}25\ \text{A}}
+\]
+\emph{Observação.} O sinal da fem motora é decisivo. Com o sinal oposto, o item (a) daria o mesmo $1{,}25$ A (em $v=+2$ m/s), mas (b) daria $6{,}25$ J e (c) mudaria. Por isso o sinal foi justificado pelo produto vetorial e por Lenz.
+
+\textbf{3. Item b).} Em $2\ \text{s}\le t\le 4$ s, $v=2$ m/s é constante, então
+\[
+i=2{,}5+0{,}625\cdot 2=3{,}75\ \text{A (constante)}.
+\]
+Só a resistência interna $r$ conta aqui. Sua potência é $P=r\,i^2=2\,(3{,}75)^2=28{,}125$ W. Em $\Delta t=2$ s:
+\[
+E=P\,\Delta t=28{,}125\cdot 2=56{,}25\ \text{J}.
+\]
+\emph{Conferência (balanço de potência).} A fonte fornece $\varepsilon i=37{,}5$ W e o agente externo fornece $F v=(BLi)\,v=9{,}375\cdot 2=18{,}75$ W (com $a=0$, $F=F_m$), num total de $56{,}25$ W. Isso é igual a $(r+R)\,i^2=4\,(3{,}75)^2=56{,}25$ W, e metade vai para $r$ ($28{,}125$ W), como esperado para $r=R$.
+\[
+\boxed{E=56{,}25\ \text{J}}
+\]
+
+\textbf{4. Item c).} Em $4\ \text{s}\le t\le 6$ s a reta vai de $2$ a $0$ m/s em $2$ s, logo $a=-1\ \text{m/s}^2$ (para a esquerda). Em $t=5$ s, $v=1$ m/s e
+\[
+i=2{,}5+0{,}625\cdot 1=3{,}125\ \text{A},\qquad F_m=BLi=2{,}5\cdot 1\cdot 3{,}125=7{,}8125\ \text{N (para a esquerda)}.
+\]
+Sem atrito, a 2ª lei de Newton na horizontal (positivo para a direita) dá
+\[
+F-F_m=m\,a\;\Rightarrow\;F=F_m+m\,a=7{,}8125+5\,(-1)=2{,}8125\ \text{N}.
+\]
+O resultado é positivo, logo $F$ aponta \emph{para a direita}, no sentido indicado na Figura 1. A força magnética (para a esquerda, $7{,}8125$ N) é maior que a força resultante necessária para frear a barra ($5$ N), e $F$ compensa a diferença.
+
+\emph{Conferência (potência em $t=5$ s).} Fontes: $Fv+\varepsilon i=2{,}8125+31{,}25=34{,}0625$ W. Consumo: $(r+R)i^2+m\,a\,v=39{,}0625-5=34{,}0625$ W. Os dois lados são iguais.
+\[
+\boxed{F(5\,\text{s})=2{,}8125\ \text{N}=\tfrac{45}{16}\ \text{N, para a direita}}
+\]
+
+\textbf{5. Unidades e casos particulares.} $BLv$ está em T$\cdot$m$\cdot$m/s $=$ V e $BLi$ em N. Em $t=0$, $F=ma+BLi=5\cdot 2+2{,}5\cdot 1{,}25=13{,}125$ N, positivo (direita), o que é coerente com a barra sendo acelerada para a direita. Em $2$ s a $4$ s, $F=BLi=9{,}375$ N, pois $a=0$.
+
+ANSWER: a) $i_{\min}=1{,}25$ A (em $t=0$); b) $E=56{,}25$ J; c) $F(5\,\text{s})=2{,}8125$ N ($=45/16$ N), para a direita.

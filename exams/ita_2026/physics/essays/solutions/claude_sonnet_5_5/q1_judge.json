@@ -1,0 +1,65 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) R_min = v²(1 − μ tanθ)/[g(μ + tanθ)] = v²/[g tan(θ + arctan μ)]; b) R_min = v²/(g tanθ); c) R_min = v²/(μ g).",
+  "judge_reference": {
+    "reference_solution": "**0. Leitura da figura e modelo**\n\n- A figura mostra um eixo horizontal com duas rodas em tronco de cone. O raio do cone é maior do lado de dentro, perto do eixo, e menor do lado de fora. O trilho é fino e toca a superfície cônica em um ponto da seção transversal. θ é o ângulo entre a geratriz do cone e a horizontal.\n- Portanto a normal ao cone no contato fica no plano da figura, inclinada θ em relação à VERTICAL. Ela aponta para cima e para o meio do eixo.\n- O trem descreve uma curva de raio R com velocidade v constante. A aceleração é horizontal, aponta para o centro C e vale a = v²/R.\n- Como R é muito maior que as dimensões do trem, o trem é tratado como um corpo de massa M com essa aceleração. As duas rodas têm o mesmo R. \"Eixo permanece horizontal\" significa que a estrutura do trem fornece qualquer torque necessário. Só a 2ª lei para a força resultante é usada, e não entram bitola, raio da roda nem altura do CM.\n- Atrito longitudinal nulo (v constante). O único atrito relevante é o transversal, ao longo da geratriz, com |f| ≤ μN.\n\nNotação: o eixo x horizontal aponta para C, e y aponta para cima. A roda E é a externa (mais longe de C) e a roda I é a interna.\n- Roda E: força do trilho N_E(sinθ, cosθ). O atrito f_E ao longo da geratriz vale f_E(cosθ, −sinθ).\n- Roda I: força do trilho N_I(−sinθ, cosθ). O atrito f_I vale f_I(cosθ, sinθ).\n- Convenção de sinal: f_E > 0 aponta para dentro e para baixo. f_I > 0 aponta para dentro e para cima.\n\nAssim, só a roda E empurra o trem para o centro com a componente N sinθ. A roda I empurra para fora.\n\nSegunda lei:\n- x: (N_E − N_I) sinθ + (f_E + f_I) cosθ = M v²/R\n- y: (N_E + N_I) cosθ − (f_E − f_I) sinθ = M g\n\n**b) Atrito desprezível (f = 0)**\n\nN_E − N_I = M v²/(R sinθ) e N_E + N_I = M g/cosθ. Logo\n\nN_I = (M/2)[ g/cosθ − v²/(R sinθ) ].\n\nA roda interna perde contato quando N_I < 0. Exigir N_I ≥ 0 dá v²/(R sinθ) ≤ g/cosθ, ou seja\n\n**R_min = v²/(g tanθ) = v² cotθ / g.**\n\nNo limite, N_I = 0 e N_E = Mg/cosθ, com N_E sinθ = M v²/R. A roda E nunca perde contato.\n\n**a) Atrito estático μ com rodas cônicas**\n\nO sistema é indeterminado: são 4 incógnitas (N_E, N_I, f_E, f_I) e 2 equações. É preciso um argumento de extremo.\n\n1. Cada roda contribui com um vetor (F_x, F_y). Com φ = arctan μ, a razão F_x/F_y fica no máximo em tan(θ+φ) para a roda E, quando f_E = μN_E dirigido para dentro e para baixo. Para a roda I, fica no máximo em tan(φ−θ), que é menor que tan(θ+φ).\n2. A razão global (v²/R)/g = ΣF_x/ΣF_y é uma média ponderada pelas cargas verticais. Ela é máxima quando toda a carga está na roda E, isto é, N_I = 0. Esse é exatamente o limite de perda de contato da roda interna.\n3. Nesse limite, com f_E = μN_E, as equações dão\n - N_E(sinθ + μ cosθ) = M v²/R\n - N_E(cosθ − μ sinθ) = M g\n\nDividindo uma pela outra, v²/(gR) = (tanθ + μ)/(1 − μ tanθ) = tan(θ+φ). Portanto\n\n**R_min = v²(1 − μ tanθ) / [ g(tanθ + μ) ] = v²(cosθ − μ sinθ) / [ g(sinθ + μ cosθ) ] = v² / [ g tan(θ + arctan μ) ].**\n\nPara todo R ≥ R_min existe solução com N_I ≥ 0, então esse é de fato o mínimo:\n- Com f = 0, cobre-se 0 ≤ a/g ≤ tanθ.\n- Com N_I = 0 e f_E crescendo de 0 a μN_E, cobre-se tanθ ≤ a/g ≤ tan(θ+φ).\n\nValidade: a fórmula vale se μ tanθ < 1. Se μ tanθ ≥ 1 (μ ≥ cotθ), o denominador cosθ − μ sinθ se anula ou fica negativo. A roda se \"crava\" no trilho e não há raio mínimo (R_min → 0).\n\nVerificações:\n- μ = 0 recupera o item (b).\n- θ = 0 dá v²/(μg), que é o item (c).\n- Para μ > 0, R_min é menor que em (b), então o atrito ajuda.\n\nConferi numericamente por varredura em Python (grade sobre a divisão de carga e sobre as razões f/N). O máximo de a/g coincide com tan(θ+φ) e ocorre com N_I = 0 e f_E = μN_E.\n\n**c) Rodas cilíndricas com atrito μ**\n\nA superfície de contato é horizontal, então a normal é vertical e N_E + N_I = Mg. A única força horizontal é o atrito: f_E + f_I = M v²/R ≤ μ(N_E + N_I) = μ M g. Logo\n\n**R_min = v²/(μ g).**\n\nSe R for menor, o atrito estático não segura a curva. O eixo desliza lateralmente para fora e as rodas saem dos trilhos finos. O resultado independe de como a carga se divide entre as rodas, e a massa M cancela. É o limite θ → 0 do item (a).\n\nExemplo numérico, só para conferir ordens de grandeza (v = 20 m/s, θ = 10°, μ = 0,3, g = 10 m/s²): (a) ≈ 79,5 m, (b) ≈ 227 m, (c) ≈ 133 m. A resposta pedida é simbólica, em v, g, θ e μ.",
+    "final_answer": "a) R_min = v²(1 − μ tanθ) / [ g(tanθ + μ) ] = v² / [ g tan(θ + arctan μ) ]. Vale se μ tanθ < 1; se μ tanθ ≥ 1 não há raio mínimo.\nb) R_min = v² / (g tanθ).\nc) R_min = v² / (μ g).\n\nEm todos os casos a massa M cancela. A perda de contato em (a) e (b) é a da roda interna (N_I = 0).",
+    "pitfalls": [
+      "Ler θ certo na figura: é o ângulo da geratriz com a horizontal. A normal ao cone fica inclinada θ da VERTICAL, então a componente horizontal é N sinθ e a vertical é N cosθ. Trocar por θ com a vertical inverte tan e cot.",
+      "Orientação do cone: o raio é maior do lado de dentro, então a normal aponta para o meio do eixo. Só a roda externa (mais longe do centro C) empurra o trem para o centro. A interna empurra para fora. Por isso a roda que perde contato é a INTERNA, e a condição é N_I = 0 (não N_E).",
+      "Identificar a condição de limite: a roda interna é a que descola. O raio mínimo corresponde a N_I = 0 mais atrito estático saturado na roda externa. A resolução deve justificar isso e não apenas impor f = μN nas duas rodas.",
+      "O sistema é estaticamente indeterminado (4 incógnitas, 2 equações). Um bom argumento mostra que a razão (v²/R)/g é uma média ponderada das razões de cada roda, maximizada com toda a carga na roda externa. Esquecer isso e escolher f arbitrário leva a fórmulas erradas.",
+      "Sentido do atrito no item (a): na iminência, a roda externa tenderia a subir a superfície cônica para fora, então o atrito aponta ao longo da geratriz para dentro e para BAIXO. Sua componente horizontal ajuda (cosθ) e a vertical aumenta a carga (−sinθ na equação de y). Com o sentido oposto sai (tanθ − μ)/(1 + μ tanθ), que é a velocidade mínima de uma curva inclinada e não resolve este problema.",
+      "Não usar N = Mg/cosθ no item (a). Com atrito, a equação vertical é N cosθ − f sinθ = Mg, ou seja, N(cosθ − μ sinθ) = Mg. Esquecer o termo de atrito na vertical dá a fórmula errada.",
+      "Condição de validade em (a): μ tanθ < 1. Caso contrário o denominador cosθ − μ sinθ é ≤ 0, a roda se crava e a fórmula não vale (daria R negativo ou infinito). Uma resolução completa menciona isso.",
+      "Verificar os limites: μ = 0 em (a) deve dar (b), e θ = 0 em (a) deve dar (c). Essa checagem pega erros de sinal.",
+      "Item (c): com rodas cilíndricas a normal é vertical e não há componente horizontal de N. Só o atrito segura a curva: v²/R ≤ μg. Não carregar θ nem usar o raio 'efetivo' do cone. O 'perder contato' aqui significa deslizar lateralmente para fora do trilho fino. Compare com (a): o cone é melhor, R_a < R_c.",
+      "As hipóteses do enunciado (R ≫ dimensões do trem, eixo horizontal) justificam tratar o trem como corpo de massa M com aceleração v²/R, sem torque, bitola ou altura do CM. Ignorar isso e tentar incluir tombamento e dimensões não dados leva a resultados que dependem de dados inexistentes.",
+      "A resposta deve ficar simbólica em v, g, θ e μ, e M cancela. Não substituir g = 10 nem inventar valores, e não deixar M na resposta. Também se ignoram atrito longitudinal e diferença de raio entre as rodas ('creep')."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) R_min = v²(1 − μ tanθ)/[g(μ + tanθ)] = v²/[g tan(θ + arctan μ)]; b) R_min = v²/(g tanθ); c) R_min = v²/(μ g).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (a): o sentido do atrito não é dito explicitamente. O texto diz só que f 'se opõe à tendência de a roda subir para fora do trilho'. Só as equações revelam que f aponta ao longo da geratriz, para dentro e para baixo (componentes f cosθ horizontal e −f sinθ vertical). O trecho deveria dizer isso, porque o sentido oposto daria (tanθ−μ)/(1+μ tanθ) e é a armadilha central do item. A conclusão sai correta, pois o argumento do setor fixa o extremo ψ=θ+φ."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta mostrar a suficiência. A resolução afirma 'para R ≥ R_min nenhuma roda perde o contato', mas só prova a necessidade (tanα ≤ tan(θ+φ)). Faltou dizer que todo tanα ∈ [0, tan(θ+φ)) é realizável com N_E, N_I > 0, por exemplo f=0 e N_I pequeno cobrem [0, tanθ), e N_I→0 com f_E crescendo cobre o resto. Faltou também dizer que, como altura do CM e bitola não são dados, R_min é o raio abaixo do qual nenhuma distribuição de cargas serve."
+          },
+          {
+            "severity": "minor",
+            "description": "A condição de validade μ tanθ < 1 aparece só em uma frase vaga ('a condição deixa de limitar R') e não consta na linha ANSWER. Deveria dizer que, para θ+φ ≥ 90°, não existe raio mínimo (a roda se crava, R_min→0) e a fórmula daria valor negativo ou infinito."
+          },
+          {
+            "severity": "minor",
+            "description": "A comparação entre os itens é restrita sem necessidade: 'para θ pequeno, R_a < R_b e R_a < R_c'. Como tan(θ+φ) > tanθ e > tanφ sempre que θ+φ < 90°, a desigualdade vale em geral. O exemplo numérico (226 m, 1029 m, 300 m com v=30 m/s, θ=5°, μ=0,3) está correto; conferi."
+          },
+          {
+            "severity": "minor",
+            "description": "Ambiguidade de terminologia: 'o raio da roda é maior do lado interno' (lado do eixo) convive com 'roda interna/externa à curva'. Isso confunde a leitura. Seria melhor dizer 'lado voltado para o eixo' e 'roda interna à curva'. A expressão 'não há rolamento do conjunto' também é pouco clara (quer dizer sem giro em torno do eixo longitudinal)."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): escreve 'N=Mg' sem explicar que é N_E+N_I=Mg e que o atrito total satisfaz f_E+f_I ≤ μ(N_E+N_I). Não diz que o resultado independe da divisão de carga entre as rodas. Já 'tratar o trem como partícula' e 'amostragem numérica aleatória confirmou' são afirmações soltas, sem detalhe. Não prejudicam a correção."
+          }
+        ],
+        "summary": "As respostas finais do candidato coincidem com as da minha referência nos três itens: (a) R_min = v²(1−μ tanθ)/[g(μ+tanθ)] = v²/[g tan(θ+arctan μ)]; (b) v²/(g tanθ); (c) v²/(μg). Refiz o problema e confirmei: pela figura (conferida no enunciado original), o raio é maior do lado do eixo, então a normal fica inclinada θ da vertical e aponta para dentro. Só a roda externa empurra o trem para o centro da curva. Uma varredura numérica aleatória sobre cargas e atritos deu máximo de a/g ≈ tan(θ+φ), nos dois casos testados, e os números do candidato (226 / 1029 / 300 m) conferem. A justificativa é boa e até mais limpa que a da referência. A direção da força de cada roda fica em um setor convexo |ψ| ≤ θ+φ, logo tanα ≤ tan(θ+φ). A igualdade exige N_I=0 e f_E=μN_E, que é a perda de contato da roda interna. O candidato trata as armadilhas: leitura de θ e da orientação do cone, roda interna como a que descola, indeterminação estática, atrito com termo vertical (não usa N=Mg/cosθ), verificações μ→0 e θ→0, e hipóteses sobre torques, altura do CM e bitola. Os defeitos são só de acabamento: sentido do atrito pouco explícito, suficiência não demonstrada, validade μ tanθ<1 dita de forma vaga e fora da resposta final, comparação restrita sem necessidade a θ pequeno, e terminologia 'lado interno' versus 'roda interna' ambígua. Nenhum falha de física ou de conta. Está perto de um gabarito comentado publicável, e dou nota 9 por esses detalhes de rigor.\""
+      }
+    }
+  ]
+}

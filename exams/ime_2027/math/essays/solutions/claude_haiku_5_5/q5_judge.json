@@ -1,0 +1,139 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "Pelo enunciado impresso (x_2+x_4+x_6+x_8 = 5540), a soma pedida é 5540p - 512p^2 + 512 ≈ 11196,5, com p ≈ 2,5116 a única raiz real de 128p^3 - 256p - 1385 = 0. Esse valor é irracional. Com x_2+x_4+x_6+x_8 = 5440, valor provavelmente pretendido (únicos x_k com d inteiro próximos de 5540), a soma é 10912, com x_k = 2^(k+4).",
+  "judge_reference": {
+    "reference_solution": "Notação: t_k = log₂ x_k = a + (k−1)r, k = 1,…,9, com r > 0 (razão positiva). Seja s = 2^r > 1. Como x_i > 0, todos os logaritmos estão definidos.\n\nITEM 1 — Usar o produto. Os índices ímpares 1,3,5,7,9 formam PA de 5 termos, logo t1+t3+t5+t7+t9 = 5·t5. Então log₂(x1x3x5x7x9) = 5·t5 = 45, donde t5 = 9 e x5 = 2⁹ = 512. (Equivalente: x5⁵ = 2⁴⁵.) Não é preciso determinar a e r separadamente.\n\nITEM 2 — Parametrizar pela razão. Como x_k = x5·s^(k−5) = 512·s^(k−5):\n- Ímpares: x1 = 512s⁻⁴, x3 = 512s⁻², x5 = 512, x7 = 512s², x9 = 512s⁴. Logo O = 512(s⁴ + s² + 1 + s⁻² + s⁻⁴).\n- Pares: x2 = 512s⁻³, x4 = 512s⁻¹, x6 = 512s, x8 = 512s³. Logo E = 512(s³ + s + s⁻¹ + s⁻³).\n\nITEM 3 — Simetrizar. Sejam v = s + s⁻¹ (com v ≥ 2) e w = s² + s⁻² = v² − 2.\n- s³ + s⁻³ + s + s⁻¹ = (s + s⁻¹)(s² + s⁻²) = v·w. Logo E = 512·v·(v² − 2).\n- s⁴ + s⁻⁴ + s² + s⁻² + 1 = (w² − 2) + w + 1 = w² + w − 1. Logo O = 512(w² + w − 1).\n\nITEM 4 — Caso 5440 (valor que torna o problema consistente). E = 5440 ⇔ v(v² − 2) = 5440/512 = 85/8 ⇔ 8v³ − 16v − 85 = 0 ⇔ (2v − 5)(4v² + 10v + 17) = 0. O fator quadrático tem discriminante 100 − 272 < 0, então v = 5/2 é a única raiz real.\n- s + 1/s = 5/2 ⇔ 2s² − 5s + 2 = 0 ⇔ s ∈ {2, 1/2}. Com r > 0 tomamos s = 2, isto é, r = 1. (Ver pitfalls: s = 1/2 dá o mesmo resultado.)\n- w = 4 + 1/4 = 17/4. Então O = 512·(w² + w − 1) = 512·(289/16 + 68/16 − 16/16) = 512·341/16 = 32·341 = 10912.\n- Verificação: t5 = 9 e r = 1 dão t = 5,6,…,13, ou seja x = 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192. Ímpares: 32 + 128 + 512 + 2048 + 8192 = 10912, e o produto é 2^(5+7+9+11+13) = 2⁴⁵ ✓. Pares: 64 + 256 + 1024 + 4096 = 5440 ✓.\n\nITEM 5 — Caso 5540 (enunciado literal). E = 5540 ⇔ v(v² − 2) = 1385/128, com v ≥ 2. A função f(v) = v³ − 2v tem f′ = 3v² − 2 > 0 para v ≥ 2, então há uma única solução admissível. Pelo teste das raízes racionais, 128v³ − 256v − 1385 = 0 não tem raiz racional (p | 1385, q | 128, nenhum serve). Assim v, s e r são irracionais: v ≈ 2,5116001, s ≈ 2,0154274, r ≈ 1,0110858. Em w, a equação é w³ + 2w² − (1385/128)² = 0, que tem uma única raiz real (positiva, w ≈ 4,30813). Então O = 512(w² + w − 1) ≈ 11196,50 (numericamente 11196,4994). Conferi que, com esses valores, E = 5540,0000 e O ≈ 11196,4994. Não há forma racional fechada: o valor é a raiz de uma cúbica. Isso indica erro de digitação no enunciado (5540 em vez de 5440).\n\nRESPOSTA: a referência é 10912, assumindo 5440. Pelo enunciado literal (5540) o resultado é irracional, ≈ 11196,50, raiz de uma cúbica.\n\nOBS. Não se usou nenhuma resolução de candidato. Só a prova original e contas próprias em Python (frações exatas e busca numérica), feitas na pasta de trabalho.",
+    "final_answer": "Resposta de referência: x1 + x3 + x5 + x7 + x9 = 10912, assumindo que a soma dos pares seja 5440 (e não 5540, como impresso).\n\nResumo:\n- Pelo produto: x5⁵ = 2⁴⁵, logo x5 = 512 (log₂ x5 = 9).\n- Com s = 2^r e s + 1/s = 5/2, obtém-se s = 2 (r = 1), e a sequência é x_k = 2^(k+4), k = 1..9.\n- Ímpares: 32 + 128 + 512 + 2048 + 8192 = 10912. Pares: 64 + 256 + 1024 + 4096 = 5440 (confere com o dado corrigido).\n\nPelo enunciado literal (soma dos pares = 5540): a equação em v = s + 1/s é 128v³ − 256v − 1385 = 0, sem raiz racional. O resultado é irracional, ≈ 11196,50 (raiz de w³ + 2w² − (1385/128)² = 0, com O = 512(w² + w − 1)). Isso sugere erro de digitação no enunciado.\n\nQuem chegar a 10912 deve justificar a leitura 5440. Quem chegar a ≈ 11196,50 pelo enunciado literal, com a análise da cúbica, responde corretamente ao enunciado como impresso e deve apontar a inconsistência.",
+    "pitfalls": [
+      "ERRO DE ENUNCIADO (principal armadilha): com x2+x4+x6+x8 = 5540 não há solução racional; com 5440 tudo fecha com inteiros (r = 1, x = 2⁵..2¹³) e a soma dos ímpares é 10912. A resolução deve detectar isso e assumir 5440 explicitamente, ou tratar o caso 5540 com o resultado irracional ≈ 11196,50. Responder 10912 sem comentar a discrepância não é uma justificativa rigorosa.",
+      "Produto: x1x3x5x7x9 = x5⁵ (média da PA dos ímpares = termo central), logo 5·log₂x5 = 45 e x5 = 2⁹ = 512. Erro comum: dividir 45 por outro número, ou tentar resolver um sistema em a e r sem necessidade.",
+      "Contagem de termos: os ímpares são 5 termos (expoentes a, a+2r, …, a+8r) e os pares são 4 (a+r, a+3r, a+5r, a+7r). Com a+4r = 9 os pares valem 2^(9−3r), 2^(9−r), 2^(9+r), 2^(9+3r). Erro comum: trocar a contagem ou o índice dos pares.",
+      "Hipótese de razão positiva: s = 2^r > 1. Em s² − vs + 1 = 0 há duas raízes recíprocas (s e 1/s). A troca s ↔ 1/s inverte a sequência (1↔9, 3↔7, 2↔8, 4↔6), e as somas dos índices de mesma paridade não mudam. Por isso a resposta é a mesma com s = 1/2, e a hipótese r > 0 só fixa a escolha de s, sem alterar o resultado.",
+      "Caso degenerado r = 0 (excluído pela hipótese): x_k = 512 para todo k, dando E = 2048 e O = 2560. Não é compatível com E = 5440 nem com 5540, então fica descartado. Vale mencionar a exclusão.",
+      "Identidade de simetria: s³ + s⁻³ + s + s⁻¹ = (s + s⁻¹)(s² + s⁻²) = v·w, com w = v² − 2. Erro comum: esquecer termos ou escrever (s + s⁻¹)(s² + 1 + s⁻²) em vez do produto correto.",
+      "Erro algébrico na soma dos ímpares: s⁴ + s⁻⁴ + s² + s⁻² + 1 = (w² − 2) + w + 1 = w² + w − 1. Erros frequentes: w² + w + 1, w² + w − 2 ou (w + 1)².",
+      "Unicidade: achar v = 5/2 não basta. Justifique que 8v³ − 16v − 85 = (2v − 5)(4v² + 10v + 17) e que o fator quadrático tem discriminante −172 < 0. Para o caso 5540, use a monotonicidade de f(v) = v³ − 2v em v ≥ 2 (v = s + 1/s ≥ 2 sempre) e que a cúbica em w tem uma única raiz real.",
+      "Cálculo de w com s = 2: w = s² + s⁻² = 4 + 1/4 = 17/4 (não 4 nem 1/4 isolados). Então O = 512·(289/16 + 68/16 − 16/16) = 512·341/16 = 10912.",
+      "Verificação obrigatória: confira o produto (2⁴⁵), a soma dos pares (5440 com o dado corrigido, ou 5540 com a aproximação numérica) e a soma dos ímpares. Uma resolução que não confere esses valores não se sustenta.",
+      "Positividade: os x_i são potências de 2, logo positivos. Não há solução com x_i ≤ 0 a considerar, pois log₂ x_i só existe para x_i > 0."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "x_1+x_3+x_5+x_7+x_9 = 10912, considerando x_2+x_4+x_6+x_8 = 5440. O enunciado impresso diz 5540, que parece erro de digitação: com 5540 literal, a equação recai em 128p^3 - 256p - 1385 = 0 (sem raiz racional), e o resultado seria ≈ 11196,5. Com 5440 temos d = 1 e x_k = 2^(k+4).",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "A linha ANSWER dá 10912, que é a resposta para E = x2+x4+x6+x8 = 5440, não para o enunciado impresso (5540, confirmado na página 2 do PDF). A resolução admite a troca no Passo 5, mas o valor literal é tratado só como aproximação ('≈ 11196,5', 'sem forma útil para uma prova'). Isso é menos do que a questão pede: a resposta ao enunciado como impresso tem forma exata. Com p = t + 1/t, a condição é 128p³ − 256p − 1385 = 0 com raiz única p > 2, O = 5540p − 512p² + 512. Equivalentemente, w = p² − 2 satisfaz w³ + 2w² = (1385/128)² e O = 512(w² + w − 1) ≈ 11196,4994 (verificado, resíduo ~3e−14). O correto seria apresentar as duas respostas com destaque, a literal em forma exata (raiz de cúbica) e a de 10912 como correção provável, deixando claro que a linha ANSWER depende dessa hipótese."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 5: o teste das raízes racionais é feito só para as candidatas em (2,3), mas não se justifica por que a raiz p > 2 está nesse intervalo. Falta o argumento: f(2) = 4 < 1385/128 ≈ 10,82 < f(3) = 21, com f crescente em (2,∞). Sem isso, a irracionalidade não está provada."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha E = 5440 é justificada só por coincidência numérica (2⁶+2⁸+2¹⁰+2¹² = 5440). Não se mostra que d = 1 é a escolha inteira natural (d = 0 dá E = 2048; d = 2 dá E = 34952), nem se declara explicitamente como hipótese antes do Passo 6. Deveria ser uma premissa declarada, não uma conclusão ('a leitura consistente é E = 5440')."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 4: a afirmação 'E cresce com t' é feita sem prova. Não é usada no argumento de unicidade (que é via p), mas é uma afirmação não justificada. Basta notar que d/dt (t³ + t + 1/t + 1/t³) = 3t² + 1 − 1/t² − 3/t⁴ > 0 para t > 1."
+          },
+          {
+            "severity": "minor",
+            "description": "O caso degenerado d = 0 não é tratado explicitamente. Só aparece o limite d → 0⁺ (E → 2048). Deveria constar que d = 0 dá x_k = 512 constantes, com E = 2048 e O = 2560, e que é excluído pela hipótese d > 0 e incompatível com E = 5440 e E = 5540."
+          }
+        ],
+        "summary": "Verifiquei o enunciado no PDF (5540 confirmado) e refiz as contas em Python com frações exatas. A álgebra central está correta: a = 9 e x5 = 512 pelo produto; x_k = 512·t^(k−5) com t = 2^d; as identidades E/512 = p³ − 2p e O = pE − 512(p² − 1) com p = t + 1/t; a unicidade por monotonicidade de f(p) = p³ − 2p para p > 2; t = 2, d = 1 e O = 10912 com E = 5440, conferindo produto, somas e progressão. A resposta 10912 coincide com a referência, que também assume 5440. Pelo enunciado literal (5540), o valor é ≈ 11196,4994 (irracional, raiz de uma cúbica), que o candidato identifica corretamente como irracional, mas não apresenta em forma exata nem usa como resposta principal. Por isso a nota é 8, não 9: a resolução é correta e bem verificada, mas a resposta final depende de alterar o dado sem apresentar com rigor a resposta literal, e há algumas lacunas pequenas de justificativa (localização de p em (2,3), 'E cresce com t' sem prova, caso d = 0 não explicitado)."
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.0,
+      "final_answer": "Pelo enunciado impresso (soma dos pares = 5540): x1+x3+x5+x7+x9 = 5540p - 512p^2 + 512 ≈ 11196,5, com p ≈ 2,5116 a única raiz real de 128p^3 - 256p - 1385 = 0 (valor irracional, não inteiro). Se o dado correto for 5440 (d = 1, x_k = 2^(k+4)), a soma é 10912.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resposta final não escolhe um valor como gabarito. O bloco ANSWER dá primeiro o valor literal (≈11196,5) e só depois 10912, condicionado a 5440. Os dois valores estão corretos, mas a apresentação deveria dizer com clareza que o enunciado impresso (5540, confirmado no PDF oficial) leva a um resultado irracional, que o valor pretendido é 10912 e por que. Sugestão: enunciar as duas respostas com o mesmo peso e uma frase conclusiva sobre qual é a intencional."
+          },
+          {
+            "severity": "minor",
+            "description": "A leitura 5440 é justificada só por heurística: 'o valor com d inteiro mais próximo de 5540 é 5440'. Isso é um indício, não prova de erro de digitação. Faltou dizer que, para d inteiro, E ∈ {2048, 5440, 34952, ...} e que nenhum d inteiro dá 5540. Também faltou notar que a discrepância está no próprio PDF oficial, e não só na transcrição."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação 'O valor é irracional' não tem argumento. Falta: se O = q ∈ Q, então p satisfaria 512p² − 5540p + (q − 512) = 0, uma quadrática sobre Q, o que contradiz a irredutibilidade da cúbica obtida no Passo 5."
+          },
+          {
+            "severity": "minor",
+            "description": "A forma fechada hiperbólica p = (2√6/3)·cosh((1/3)·arccosh(4155√6/1024)) está correta (verifiquei: resíduo ≈ 1,6e-12 na cúbica), mas a derivação está comprimida. Faltam: k² = 8/3 para cancelar o termo em cosh φ, e cosh 3φ = 4c/k³ com c = 1385/128. Sem isso o leitor precisa refazer a conta para confiar na fórmula."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação do caso literal é incompleta. O critério exige conferir os valores, e isso foi feito só para 5440 (produto 2^45, soma dos pares 5440, soma dos ímpares 10912). Para 5540 não há checagem de E a partir de t ≈ 2,015427 nem de O a partir dos x_k. Os valores conferem (x_k ≈ 31,03; 62,54; 126,05; 254,04; 512; 1031,90; 2079,72; 4191,52; 8447,70; E = 5540,000000; O = 11196,4994), mas o texto deveria mostrá-los."
+          },
+          {
+            "severity": "minor",
+            "description": "O papel da hipótese r > 0 não é discutido. O candidato escolhe t = 2 por t > 1, mas não observa que t = 1/2 daria a sequência invertida (1↔9, 3↔7, 2↔8, 4↔6) com a mesma soma O, pois a soma dos índices de mesma paridade não muda. Logo a hipótese só fixa a orientação e não altera o resultado. Vale uma frase explicando isso."
+          }
+        ],
+        "summary": "Resolução correta e bem estruturada, e os valores finais conferem com a referência. Verifiquei no PDF oficial que o enunciado imprime 5540. Conferi com Python: cúbica 128p³−256p−1385=0 com p ≈ 2,5116001 (bisseção e forma fechada coincidem); raízes racionais candidatas 5/2 (resíduo −25) e 277/128 (resíduo ≈ −641,8) falham; x_k com t = 2,015427 dão E = 5540,000000 e O = 11196,4994; no caso 5440 (t = 2), x_k = 2^5..2^13, produto 2^45, pares 5440 e ímpares 10912. As identidades E = 512(p³−2p), O = 512(p⁴−3p²+1) e O = pE − 512(p²−1) estão certas, assim como a cota p > 2, a unicidade por monotonicidade de g e f, e o caso degenerado d = 0 (E = 2048, O = 2560). Nota 8, não 9: a resposta final está dividida entre dois valores sem gabarito explícito, há afirmações sem prova (irracionalidade de O, derivação da forma fechada), a verificação do caso literal está incompleta e o papel de r > 0 não é discutido. Não aplica o limite de 7, porque a resposta é certa e a justificativa é forte."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "Pelo enunciado impresso (x_2+x_4+x_6+x_8 = 5540), a soma pedida é 5540p - 512p^2 + 512 ≈ 11196,5, com p ≈ 2,5116 a única raiz real de 128p^3 - 256p - 1385 = 0. Esse valor é irracional. Com x_2+x_4+x_6+x_8 = 5440, valor provavelmente pretendido (únicos x_k com d inteiro próximos de 5540), a soma é 10912, com x_k = 2^(k+4).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 10 diz que x9 domina a soma 'em ambos os casos (cerca de 8,4·10³)'. No caso E=5440 (d=1), x9 = 2^13 = 8192, não ≈8448. Os valores exatos devem ser dados separadamente para cada caso."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 10 afirma que 'a grandeza pedida é adimensional'. A observação não tem utilidade para a questão e deveria ser removida."
+          },
+          {
+            "severity": "minor",
+            "description": "O caso degenerado d=0 (razão nula) aparece só como limite d→0+ no Passo 10. Falta dizer explicitamente que d=0 é excluído pela hipótese de razão positiva e que daria E=2048 e O=2560, incompatíveis com 5540 e 5440 (f(2)≠0 no Passo 5 já implica isso, mas não é declarado)."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta final apresenta dois valores (≈11196,5 pelo enunciado literal e 10912 pelo caso provavelmente pretendido) sem um valor principal único. A inferência de que a banca pretendia 5440 baseia-se no fato de que 5440 é o valor inteiro-d mais próximo. Isso é heurística (o Passo 8 reconhece que 'não prova'), mas a conclusão 'intenção mais provável' deveria vir rotulada como hipótese."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 1: 'os desvios se cancelam' é afirmado sem escrever a soma (a5−4d)+(a5−2d)+a5+(a5+2d)+(a5+4d)=5a5. Essa soma explícita é o único passo do produto que o leitor precisa verificar."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 6: a irredutibilidade de f sobre Q é afirmada logo após a verificação de raízes racionais, sem citar o critério (cúbica sem raiz racional é irredutível). É correto, mas é uma frase a mais para fechar o argumento."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação: a letra k é usada como índice (x_k) e, no Passo 7, como constante k = 2√6/3. Renomear a constante (por exemplo, κ ou c) evitaria confusão."
+          }
+        ],
+        "summary": "Comparação item a item das respostas finais. (1) Enunciado literal (soma dos pares = 5540): a candidata dá O = 5540p − 512p² + 512 ≈ 11196,5, com p ≈ 2,5116 a única raiz real de 128p³ − 256p − 1385 = 0. A referência dá ≈ 11196,50. Recalculei com precisão de 50 casas: O = 11196,4994, p = 2,51160010, e O é irracional. Coincidem. (2) Caso pretendido (soma dos pares = 5440): ambas dão 10912. Coincidem. Logo, a resposta final está correta nos dois sentidos e agrees_with_reference = true.\n\nAvaliação: a resolução é correta e rigorosa. Verifiquei cada passo: a identidade O = pE − 512(p²−1), o cálculo de E/512 = p³ − 2p, a bijeção d ↔ p > 2 com a escolha t > 1, a fatoração 8p³ − 16p − 85 = (2p−5)(4p²+10p+17) com discriminante −172, a análise da monotonicidade de f com f(−√(2/3)) < 0, a exclusão das raízes racionais 5/2 e 277/128 (f(5/2) = −25, f(277/128) = −10514643/16384), a forma fechada com k² = 8/3 (testada numericamente, residual ~1e−12) e as somas numéricas. O argumento de irracionalidade via grau [Q(p):Q] = 3 está correto. Todas as armadilhas da referência estão tratadas: erro de digitação 5540/5440, x5 = 512 pelo produto, contagem de termos, razão positiva com reversão t↔1/t, identidade simétrica, unicidade das raízes e verificação direta do caso 5440. Os problemas são pequenos (x9 mal aproximado no caso 5440, exclusão de d=0 não declarada, uma frase irrelevante, notação k duplicada e a resposta dupla com a inferência 'intenção mais provável' rotulada como heurística). Nenhum afeta a correção. A nota 8,5 fica abaixo de 9 por esses detalhes de redação e rigor, que um gabarito publicado corrigiria."
+      }
+    }
+  ]
+}

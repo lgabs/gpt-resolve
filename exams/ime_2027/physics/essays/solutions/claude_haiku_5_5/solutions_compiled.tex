@@ -1,0 +1,986 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{IME 2027 - Física\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}haiku{-}5{-}5 (solver) + claude{-}haiku{-}5{-}5 (judge)}%
+\date{November 10, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Modelo e hipóteses.} Referencial no ponto de lançamento, com eixo $x$ horizontal (em direção ao alvo) e eixo $y$ vertical para cima. Sem resistência do ar, o foguete está sujeito apenas ao peso, com $\vec{g}$ constante: o movimento horizontal é uniforme e o vertical é uniformemente variado. Com $\theta = 45^\circ$ tem-se $\tan\theta = 1$ e $\cos^2\theta = \frac{1}{2}$. O alvo está em $x_A = 2000$ m e $y_A = 1000$ m.
+
+Das equações $x = v\cos\theta\,t$ e $y = v\sin\theta\,t - \frac{g\,t^2}{2}$, eliminando $t$, obtém-se a equação da trajetória:
+\[
+y = x\tan\theta - \frac{g\,x^2}{2\,v^2\cos^2\theta} \;\Rightarrow\; y = x - \frac{g\,x^2}{v^2}\qquad (\theta = 45^\circ).
+\]
+
+\textbf{Verificação do projeto.} Com $v_0 = 200$ m/s, o ápice tem altura $H = \dfrac{v_0^2\sin^2\theta}{2g} = \dfrac{200^2\cdot\frac{1}{2}}{20} = 1000$ m e abscissa $x_V = \dfrac{v_0^2\sin 2\theta}{2g} = 2000$ m. Isso coincide com o alvo, como afirma o enunciado, o que confirma o modelo.
+
+\textbf{a) Velocidade de lançamento.} Na falha, o ângulo continua $45^\circ$ e a velocidade passa a ser $v$. Na vertical do alvo ($x = 2000$ m), o foguete está a $y = 1000 + 360 = 1360$ m. Substituindo na equação da trajetória:
+\[
+1360 = 2000 - \frac{10\,(2000)^2}{v^2} \;\Rightarrow\; \frac{4\cdot 10^{7}}{v^2} = 640 \;\Rightarrow\; v^2 = 6{,}25\cdot 10^{4}\ \text{m}^2/\text{s}^2 \;\Rightarrow\; v = 250\ \text{m/s}.
+\]
+Conferência dimensional: $\dfrac{g\,x^2}{v^2}$ tem unidades $\dfrac{\text{m}}{\text{s}^2}\cdot\dfrac{\text{m}^2}{\text{m}^2/\text{s}^2} = \text{m}$.
+
+Como a equação é linear em $1/v^2$, a solução positiva é única. Para confirmar que o foguete ainda sobe, calcula-se a velocidade vertical na vertical do alvo, usando $v_y^2 = (v\sin\theta)^2 - 2g\,\Delta y$:
+\[
+v_y^2 = \frac{v^2}{2} - 2\cdot 10\cdot 1360 = 31250 - 27200 = 4050 \;\Rightarrow\; v_y = \sqrt{4050}\approx 64\ \text{m/s} > 0.
+\]
+Coerentemente, o ápice da nova trajetória está em $x_V = \dfrac{v^2}{2g} = 3125$ m (além do alvo) e em $H' = \dfrac{v^2}{4g} = 1562{,}5$ m (acima de 1360 m).
+
+\textbf{b) Temperatura na câmara.} A temperatura absoluta é proporcional a $v^2$, logo $\dfrac{T}{T_0} = \left(\dfrac{v}{v_0}\right)^2$. A proporcionalidade vale para a escala absoluta (kelvin), não para graus Celsius. Assim,
+\[
+T = 2560\cdot\left(\frac{250}{200}\right)^2 = 2560\cdot\frac{25}{16} = 4000\ \text{K}.
+\]
+
+\textbf{c) Trabalho no aquecimento.} O processo é isobárico com gás ideal. Pela primeira lei da termodinâmica, $Q = \Delta U + W$, em que $W$ é o trabalho realizado pelo gás. O calor recebido a pressão constante é
+\[
+Q = m\,c_p\,\Delta T = 2{,}0\cdot 1{,}0\cdot(4000 - 2560) = 2880\ \text{kJ}, \qquad \Delta T = 1440\ \text{K}.
+\]
+Portanto,
+\[
+W = Q - \Delta U = 2880 - 2016 = 864\ \text{kJ} = 8{,}64\cdot 10^{5}\ \text{J}.
+\]
+
+Verificação pela relação de Mayer: $c_v = \dfrac{\Delta U}{m\,\Delta T} = \dfrac{2016}{2{,}0\cdot 1440} = 0{,}70$ kJ/(kg$\cdot$K) e $c_p - c_v = 0{,}30$ kJ/(kg$\cdot$K). Então $W = p\,\Delta V = nR\,\Delta T = m(c_p - c_v)\Delta T = 2{,}0\cdot 0{,}30\cdot 1440 = 864$ kJ, o mesmo resultado. Além disso, $\gamma = c_p/c_v \approx 1{,}43$, valor compatível com gás ideal ($1 < \gamma < 5/3$). O sinal é positivo: pela lei de Gay-Lussac, $V \propto T$, o gás se expande e realiza trabalho sobre a vizinhança. Ordem de grandeza: $W \sim 10^6$ J, equivalente a $30\%$ do calor recebido.
+
+ANSWER: a) $v = 250$ m/s; b) $T = 4000$ K; c) $W = 864$ kJ (trabalho realizado pelos gases, positivo)%
+\newpage%
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses e referencial.} Barras retas, articuladas nas extremidades e de peso desprezado: cada barra transmite apenas esforço normal ao longo do seu eixo (treliça ideal). Carga $P$ aplicada somente no nó C. Apoios A e B articulados (duas reações incógnitas cada). Pequenas deformações, de modo que a geometria não se altera. Convenção: $N>0$ tração e $N<0$ compressão. Origem em A, eixo $x$ para a direita, eixo $y$ para cima; momentos positivos no sentido anti-horário.
+
+\textbf{Geometria.} Pelas cotas, $A$ e $B$ distam 3 m entre si, $C$ dista 3 m de $A$ (à esquerda), $D$ e $E$ estão 4 m acima de $A$ e $B$, e $F$ está 4 m acima de $CDE$:
+\[
+A(0,0),\quad B(3,0),\quad C(-3,4),\quad D(0,4),\quad E(3,4),\quad F(0,8)\qquad(\text{em m}).
+\]
+Comprimentos: $AD=BE=DF=4$ m, $CD=DE=AB=3$ m, $AE=CF=EF=5$ m (triângulos 3-4-5). Cossenos diretores usados: de $C$ para $F$, $\left(\tfrac35,\tfrac45\right)$; de $E$ para $F$, $\left(-\tfrac35,\tfrac45\right)$; de $E$ para $A$, $\left(-\tfrac35,-\tfrac45\right)$.
+
+Estaticidade: $j=6$ nós, $m=8$ barras e $r=4$ reações, logo $m+r=12=2j$: 12 equações e 12 incógnitas. O sistema é isostático desde que seja estável (ver item c).
+
+\textbf{a) Reações.} Como o guindaste está em repouso, valem $\sum F=0$ e $\sum M=0$ para o conjunto:
+\begin{align*}
+\sum F_x=0 &\;\Rightarrow\; R_{Ax}+R_{Bx}=0\\
+\sum M_A=0 &\;\Rightarrow\; (-3)(-P)+3R_{By}=0 \;\Rightarrow\; R_{By}=-P=-100\ \text{kN}\\
+\sum F_y=0 &\;\Rightarrow\; R_{Ay}+R_{By}-P=0 \;\Rightarrow\; R_{Ay}=2P=200\ \text{kN}
+\end{align*}
+Essas equações não dão $R_{Ax}$ isoladamente. Corte as barras AD, AE e BE e isole o conjunto CDEF (método das seções). Não há força horizontal externa e só a barra AE tem componente horizontal, logo $\sum F_x=0$ dá
+\[
+-\tfrac35N_{AE}=0\;\Rightarrow\;N_{AE}=0.
+\]
+No nó A, $\sum F_x=0$ dá $R_{Ax}+\tfrac35N_{AE}=0$, logo $R_{Ax}=0$ e, por $R_{Ax}+R_{Bx}=0$, $R_{Bx}=0$.
+
+Resultado: $R_A=200\ \text{kN}$, vertical, para cima; $R_B=100\ \text{kN}$, vertical, para baixo.
+
+Verificação: $\sum F_y=200-100-100=0$ e, com polo em E, $\sum M_E=(-6)(-100)+(-3)(200)+0=600-600=0$. Como $R_B$ aponta para baixo, o guindaste tenderia a tombar para a esquerda, girando em torno de A; por isso o apoio B deve ser ancorado, capaz de resistir a arrancamento. Conferência pela lei da alavanca em torno de A: $R_B=P\cdot\dfrac{3}{3}=P$.
+
+\textbf{b) Esforços normais.}
+
+\emph{Corte CDEF.} Momentos em E (AE e BE passam por E e não entram):
+\[
+\sum M_E=0\;\Rightarrow\;(-6)(-P)+(-3)(-N_{AD})=0\;\Rightarrow\;N_{AD}=-2P=-200\ \text{kN}\ (\text{compressão}).
+\]
+\[
+\sum F_y=0\;\Rightarrow\;-P-N_{AD}-N_{BE}=0\;\Rightarrow\;N_{BE}=100\ \text{kN}\ (\text{tração}).
+\]
+
+\emph{Método dos nós.} Em cada nó, barra tracionada puxa o nó no sentido da barra; barra comprimida empurra. Usa-se $\sum F_x=\sum F_y=0$.
+
+Nó C (carga $P$ para baixo):
+\[
+\sum F_y=0:\ \tfrac45N_{CF}-P=0\;\Rightarrow\;N_{CF}=\tfrac54P=125\ \text{kN}\ (\text{tração}).
+\]
+\[
+\sum F_x=0:\ \tfrac35N_{CF}+N_{CD}=0\;\Rightarrow\;N_{CD}=-\tfrac34P=-75\ \text{kN}\ (\text{compressão}).
+\]
+
+Nó F (sem carga externa):
+\[
+\sum F_x=0:\ -\tfrac35N_{CF}+\tfrac35N_{EF}=0\;\Rightarrow\;N_{EF}=125\ \text{kN}\ (\text{tração}).
+\]
+\[
+\sum F_y=0:\ -\tfrac45\left(N_{CF}+N_{EF}\right)-N_{DF}=0\;\Rightarrow\;N_{DF}=-200\ \text{kN}\ (\text{compressão}).
+\]
+
+Nó E (sem carga externa):
+\[
+\sum F_y=0:\ \tfrac45N_{EF}-N_{BE}=0\;\Rightarrow\;N_{BE}=100\ \text{kN}\ (\text{tração, confere com o corte}).
+\]
+\[
+\sum F_x=0:\ -\tfrac35N_{EF}-N_{DE}=0\;\Rightarrow\;N_{DE}=-75\ \text{kN}\ (\text{compressão}).
+\]
+
+Verificação nos nós D e A: $\sum F_y(D)=N_{DF}-N_{AD}=-200+200=0$; $\sum F_x(D)=-N_{CD}+N_{DE}=75-75=0$; $\sum F_y(A)=R_{Ay}+N_{AD}=200-200=0$. Os seis nós estão em equilíbrio.
+
+\begin{center}
+\begin{tabular}{lcc}
+Barra & Esforço $N$ (kN) & Natureza \\
+\hline
+CD & $-75$ & compressão \\
+CF & $125$ & tração \\
+DF & $-200$ & compressão \\
+AD & $-200$ & compressão \\
+AE & $0$ & nulo \\
+DE & $-75$ & compressão \\
+BE & $100$ & tração \\
+EF & $125$ & tração \\
+\end{tabular}
+\end{center}
+
+\textbf{c) Função da barra AE.} Sob o carregamento dado, $N_{AE}=0$, porque não há ação horizontal. A barra é, ainda assim, indispensável por razão cinemática:
+\begin{itemize}
+\item Sem AE, as barras AD e BE (verticais, 4 m) e DE e AB (horizontais, 3 m) formam um paralelogramo articulado ADEB. O conjunto CDEF poderia deslocar-se lateralmente, em primeira ordem, sem alongar nenhuma barra. A contagem fica $m+r=7+4=11<12$: a estrutura seria hipostática (mecanismo).
+\item Com AE, o quadrilátero fica dividido em dois triângulos rígidos, ADE (lados 4, 3 e 5, retângulo em D) e ABE (lados 3, 4 e 5, retângulo em B). A estrutura torna-se indeformável e isostática, com $m+r=12$.
+\item Função: barra de contraventamento (estabilização lateral). Ela não sustenta o peso $P$, mas trabalha quando surge uma força horizontal $H$ sobre o conjunto (vento, oscilação da carga etc.). O equilíbrio horizontal de CDEF dá $H-\tfrac35N_{AE}=0$, ou seja, $N_{AE}=\tfrac53H$: tração se $H$ apontar para a direita e compressão se apontar para a esquerda.
+\end{itemize}
+
+\textbf{Conferências.} Os maiores esforços são $2P=200$ kN (DF e AD), da mesma ordem de grandeza da carga. Os esforços são proporcionais a $P$ (sistema linear) e se anulam se $P=0$. A solução satisfaz o equilíbrio de todos os nós e o equilíbrio global de forças e de momentos.
+
+ANSWER: $R_A=200\,\text{kN}$ (vertical, para cima) e $R_B=100\,\text{kN}$ (vertical, para baixo), sem componentes horizontais; $N_{CD}=75\,\text{kN}$ (compressão), $N_{CF}=125\,\text{kN}$ (tração), $N_{DF}=200\,\text{kN}$ (compressão), $N_{AD}=200\,\text{kN}$ (compressão), $N_{AE}=0$, $N_{DE}=75\,\text{kN}$ (compressão), $N_{BE}=100\,\text{kN}$ (tração), $N_{EF}=125\,\text{kN}$ (tração); AE é barra de contraventamento: sem força sob $P$, mas indispensável para impedir o mecanismo horizontal.%
+\newpage%
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{Dados e hipóteses.}
+Volume $V = 2\cdot 0{,}25\cdot 0{,}05 = 0{,}025\ \mathrm{m}^3$; massa $m = \rho V = 2000\cdot 0{,}025 = 50\ \mathrm{kg}$, constante durante o processo. Gravidade do planeta $g_p = GM/R^2 = 12\ \mathrm{m/s}^2$; peso $W = m\,g_p = 600\ \mathrm{N}$. Calor específico $c = 1{,}0\ \mathrm{J/(g\cdot ^{\circ}C)} = 1000\ \mathrm{J/(kg\cdot ^{\circ}C)}$. Dilatação linear $L' = L(1+\alpha\,\Delta T)$, com $\alpha = 10^{-5}\ ^{\circ}\mathrm{C}^{-1}$. Área absorvedora (face superior): $A = 2\cdot 0{,}25 = 0{,}5\ \mathrm{m}^2$.
+
+Hipóteses:
+\begin{itemize}
+\item \textit{H1 (quase-estático):} o aquecimento é lento, de modo que o objeto está em equilíbrio em cada instante.
+\item \textit{H2 (temperatura uniforme e massa homogênea):} todo o objeto tem o mesmo $\Delta T$, o que justifica $Q = m c\,\Delta T$ e $L' = L(1+\alpha\,\Delta T)$. Com massa homogênea, o peso atua no centro de massa, a meio comprimento.
+\item \textit{H3 (pino):} a articulação à esquerda pode reagir em qualquer direção; como não há outra força horizontal sobre o objeto, sua componente horizontal é nula.
+\item \textit{H4 (argola e haste):} a haste é inextensível, vertical e presa ao teto; argola e haste têm massa desprezível e não dilatam. O contato argola-objeto é sem atrito e se faz por faces horizontais, logo a força da argola sobre o objeto é vertical. A argola, de massa nula, está em equilíbrio: a haste a puxa para cima com força $T$, e o objeto age sobre ela com força de mesmo módulo, para baixo. Pela 3ª lei, a argola puxa o objeto para cima com força de módulo $T$, igual à tração na haste.
+\item \textit{H5 (absorção):} a irradiância dada é a potência por área absorvida na face superior (incidência normal), sem perdas para o ambiente. A variação de área por dilatação é desprezível (ver conferência em c).
+\end{itemize}
+
+\textbf{a) Reação no apoio à esquerda ao amanhecer.}
+No amanhecer o comprimento é $L$. Forças verticais sobre o objeto: $N$ no pino (para cima, por H3), $T_0$ da argola em $x = L$ (para cima) e $W$ em $x = L/2$ (para baixo). Momentos em relação ao pino ($x = 0$), em que $N$ tem braço nulo:
+\[
+T_0\,L - W\,\frac{L}{2} = 0 \;\Rightarrow\; T_0 = \frac{W}{2} = 300\ \mathrm{N}.
+\]
+Equilíbrio vertical: $N + T_0 - W = 0 \;\Rightarrow\; N = W - T_0 = 300\ \mathrm{N}$.
+
+Resposta: $N = 3{,}0\cdot 10^{2}\ \mathrm{N}$, vertical, para cima, sem componente horizontal. A haste suporta $T_0 = 300\ \mathrm{N}$ e rompe para $T_{\max} = 1{,}001\,T_0 = 300{,}3\ \mathrm{N}$.
+
+\textbf{b) Variação de temperatura até o rompimento.}
+Durante o aquecimento, o pino não se move e o objeto desliza para a direita pela argola, com comprimento $L' = L(1+\alpha\,\Delta T)$ e centro de massa em $L'/2$ (H2). A haste é vertical, inextensível e presa ao teto, de modo que a argola permanece fixa no espaço em $x = L$; o objeto apenas desliza através dela. Por isso o braço da força $T$ em relação ao pino é $L$, a distância fixa do pino à argola, e não a distância a um ponto material do objeto, que muda com o deslizamento. Momentos em relação ao pino:
+\[
+T\,L = W\,\frac{L'}{2} \;\Rightarrow\; T = \frac{W}{2}\,(1+\alpha\,\Delta T) = T_0\,(1+\alpha\,\Delta T).
+\]
+A tração cresce linearmente com $\Delta T$, porque o braço do peso cresce. No rompimento, $T = 1{,}001\,T_0$:
+\[
+1+\alpha\,\Delta T = 1{,}001 \;\Rightarrow\; \Delta T = \frac{0{,}001}{10^{-5}} = 100\ ^{\circ}\mathrm{C}.
+\]
+Conferência: o deslizamento pela argola é $\alpha\,\Delta T\,L = 10^{-5}\cdot 100\cdot 2 = 2\cdot 10^{-3}\ \mathrm{m} = 2\ \mathrm{mm}$, pequeno frente a $L$. O resultado não depende de $m$, $W$ nem $L$.
+
+Resposta: $\Delta T = 100\ ^{\circ}\mathrm{C}$ (equivalente a 100 K).
+
+\textbf{c) Horário do rompimento.}
+Calor necessário para elevar a temperatura em 100 °C:
+\[
+Q = m\,c\,\Delta T = 50\cdot 1000\cdot 100 = 5\cdot 10^{6}\ \mathrm{J}.
+\]
+Amanhecer: $t_0 = 0{,}25\cdot 8\cdot 10^{4} = 2\cdot 10^{4}\ \mathrm{s}$. Pico (50 %): $t_p = 0{,}5\cdot 8\cdot 10^{4} = 4\cdot 10^{4}\ \mathrm{s}$. Pela H5, a energia absorvida desde o amanhecer é $Q(t) = A\displaystyle\int_{t_0}^{t} I(t')\,dt'$.
+
+Verificação do ramo: a energia absorvida até o pico é
+\[
+Q(t_p) = A\cdot\frac{1}{2}(t_p - t_0)\,I_{\max} = 0{,}5\cdot\frac{1}{2}\cdot 2\cdot 10^{4}\cdot 4000 = 2\cdot 10^{7}\ \mathrm{J} > 5\cdot 10^{6}\ \mathrm{J}.
+\]
+Logo o rompimento ocorre no ramo crescente, antes do pico.
+
+Para $t_0 \le t \le t_p$, a irradiância é $I(t) = I_{\max}\,\dfrac{t-t_0}{t_p-t_0} = 0{,}2\,(t-t_0)\ \mathrm{W/m^2}$, com $t$ em s (o coeficiente $0{,}2$ tem unidade $\mathrm{W/(m^2\cdot s)}$). Então
+\[
+Q(t) = 0{,}5\int_{t_0}^{t} 0{,}2\,(t'-t_0)\,dt' = 0{,}05\,(t-t_0)^2\ \mathrm{J}.
+\]
+Igualando a $5\cdot 10^{6}\ \mathrm{J}$: $(t-t_0)^2 = 10^{8}\ \mathrm{s}^2 \;\Rightarrow\; t - t_0 = 10^{4}\ \mathrm{s} \;\Rightarrow\; t = 3\cdot 10^{4}\ \mathrm{s}$.
+
+Em porcentagem do dia:
+\[
+\frac{t}{8\cdot 10^{4}} = \frac{3\cdot 10^{4}}{8\cdot 10^{4}} = 0{,}375 = 37{,}5\,\%.
+\]
+
+Conferências:
+\begin{itemize}
+\item 37,5 % está entre 25 % e 50 %, coerente com o ramo crescente.
+\item Nesse instante $I = 0{,}2\cdot 10^{4} = 2000\ \mathrm{W/m^2}$, metade do pico. A potência média absorvida no intervalo é $\bar P = \tfrac{1}{2}\,(2000\ \mathrm{W/m^2})\cdot(0{,}5\ \mathrm{m^2}) = 500\ \mathrm{W}$, e $\bar P\,(t-t_0) = 500\ \mathrm{W}\cdot 10^{4}\ \mathrm{s} = 5\cdot 10^{6}\ \mathrm{J}$, o que confirma $Q$.
+\item Unidades: $\mathrm{m^2}\cdot\mathrm{\frac{W}{m^2\,s}}\cdot\mathrm{s^2} = \mathrm{W\cdot s} = \mathrm{J}$.
+\item A dilatação altera a área do topo em cerca de $2\alpha\,\Delta T = 0{,}2\%$, efeito desprezível no balanço de energia.
+\end{itemize}
+
+Resposta: $t = 3\cdot 10^{4}\ \mathrm{s}$, ou seja, o rompimento ocorre em 37,5\,\% do dia, entre o amanhecer (25\,\%) e o pico (50\,\%).
+
+ANSWER: a) $N = 3{,}0\cdot 10^{2}\ \mathrm{N}$ (300 N), vertical, para cima, sem componente horizontal; b) $\Delta T = 100\ ^{\circ}\mathrm{C}$ (100 K); c) rompimento em 37,5\,\% do dia ($t = 3\cdot 10^{4}\ \mathrm{s}$).%
+\newpage%
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses e convenções.} Gerador e receptores são modelados como fontes ideais de força eletromotriz (fcem) em série com resistências internas constantes, conforme o enunciado. Chave S, fusível F e fios têm resistência desprezível. O circuito é puramente resistivo (sem indutores nem capacitores): as correntes atingem o regime em $t = 0^+$ e permanecem constantes, sem transitório. Logo, o tempo de rompimento lido na curva é o tempo de atuação com corrente constante.
+
+Polaridade (Figura 1): em cada fonte, a placa longa (polo positivo) está do lado superior, voltada para A. Verificação de consistência: o gerador empurra corrente para A; se os polos positivos de Rec$_1$ e Rec$_2$ também estão voltados para A, a corrente entra neles pelo polo positivo e eles absorvem energia, como o enunciado afirma ao chamá-los de receptores.
+
+Convenções: $U = V_A - V_B$; $I$ é a corrente que sai do polo positivo do gerador, passa pelo fusível e chega a A (é também a corrente do fusível); $I_1$ e $I_2$ são as correntes que entram em Rec$_1$ e Rec$_2$ pelo polo positivo. Corrente negativa num receptor significa que ele passa a fornecer energia.
+
+\textbf{Equações do circuito.}
+Ramo do gerador (sobe $E$, cai $rI$): $U = E - rI = 1000 - 2I$.
+Ramos dos receptores (cai $\varepsilon_j + r_j I_j$): $U = \varepsilon_j + r_j I_j$, logo $I_1 = U - 850$ e $I_2 = \dfrac{U - 900}{2}$.
+Nó A (1ª lei de Kirchhoff): $I = I_1 + I_2$. Com $I = \dfrac{1000 - U}{2}$:
+\begin{align*}
+\frac{1000 - U}{2} &= (U - 850) + \frac{U - 900}{2} \\
+1000 - U &= 2U - 1700 + U - 900 = 3U - 2600 \\
+4U &= 3600 \quad\Rightarrow\quad U = 900\ \text{V}
+\end{align*}
+
+\textbf{a) Correntes logo após o fechamento de S.} Com $U = 900$ V, em $t = 0^+$:
+\begin{align*}
+I &= \frac{1000 - 900}{2} = 50\ \text{A}, \\
+I_1 &= 900 - 850 = 50\ \text{A}, \qquad I_2 = \frac{900 - 900}{2} = 0.
+\end{align*}
+Rec$_1$ recebe $50$ A pelo polo positivo e consome energia. Rec$_2$ fica sem corrente, porque $U$ coincide com a sua fcem.
+
+Verificação (balanço de potências): o gerador produz $EI = 1000 \cdot 50 = 50$ kW, dissipa $rI^2 = 2 \cdot 50^2 = 5$ kW e entrega $UI = 45$ kW ao restante do circuito. Rec$_1$ absorve $\varepsilon_1 I_1 = 42{,}5$ kW e dissipa $r_1 I_1^2 = 2{,}5$ kW, totalizando $45$ kW. Confere: $50 = 5 + 42{,}5 + 2{,}5$ kW.
+
+\textbf{b) Rompimento do fusível.} A razão de corrente é
+\[ \frac{I}{I_{\text{FUSÍVEL}}} = \frac{50}{20} = 2{,}5. \]
+Pela definição de $I_{\text{FUSÍVEL}}$ como corrente máxima admitida, para $I \le I_{\text{FUSÍVEL}}$ o fusível não rompe. Para $I > I_{\text{FUSÍVEL}}$ ele rompe em tempo finito, dado pela curva da Figura 2. Como $I = 50$ A é constante após $t = 0^+$, o rompimento ocorre no instante dado pela curva em $x = 2{,}5$.
+
+Leitura da Figura 2. Eixos lineares. A grade tem passo de $0{,}5$ nos dois eixos. As marcas 1 a 5 do eixo horizontal são equidistantes, assim como as marcas 1, 2, 3 e 4 s do eixo vertical; a marca $10^{-1}$ coincide com o patamar, que vale $0{,}1$ s. Pontos lidos: início do trecho inclinado $P_1 = (1{,}1;\ 3{,}8\ \text{s})$, logo após o trecho quase vertical em $x \approx 1{,}1$, e joelho $P_2 = (3{,}34;\ 0{,}1\ \text{s})$, onde a curva fica horizontal. A leitura de $x$ tem incerteza de cerca de $\pm 0{,}05$.
+
+Interpolação linear entre $P_1$ e $P_2$ (a curva é reta nesse trecho):
+\begin{align*}
+a &= \frac{0{,}1 - 3{,}8}{3{,}34 - 1{,}1} \approx -1{,}65\ \text{s}, \\
+t_{\text{rup}} &= 3{,}8 + a\,(2{,}5 - 1{,}1) \approx 3{,}8 - 1{,}65 \cdot 1{,}4 \approx 1{,}5\ \text{s}.
+\end{align*}
+Conferência gráfica: a curva cruza a linha $x = 2{,}5$ um pouco acima da grade horizontal de $1{,}5$ s. Estimo a incerteza de leitura em $\pm 0{,}05$ s, ou seja, $1{,}45\ \text{s} \le t_{\text{rup}} \le 1{,}55\ \text{s}$.
+
+Resultado: sim, o fusível rompe, em $t \approx 1{,}5$ s após o fechamento de S. O limite de 50 ms não se aplica aqui, porque não há curto-circuito.
+
+\textbf{c) Curto-circuito entre A e B no fechamento de S.} O enunciado prevê reposição de fusível, então o fusível é novo (não rompido em (b)). Com A e B ligados por fio ideal, $U = V_A - V_B = 0$, qualquer que seja a fcem. Logo:
+\begin{align*}
+I &= \frac{E - 0}{r} = \frac{1000}{2} = 500\ \text{A}, \\
+I_1 &= \frac{0 - 850}{1} = -850\ \text{A}, \qquad I_2 = \frac{0 - 900}{2} = -450\ \text{A}.
+\end{align*}
+Os sinais negativos mostram que Rec$_1$ e Rec$_2$ invertem o sentido da corrente e passam a fornecer energia ao curto. Pela 1ª lei de Kirchhoff no nó A, o fio do curto é percorrido de A para B por $500 + 850 + 450 = 1800$ A. No nó B, esses $1800$ A se dividem em $500$ A (gerador), $850$ A (Rec$_1$) e $450$ A (Rec$_2$). O fusível está só no ramo do gerador, por onde passam apenas $I = 500$ A; os $1800$ A do fio não o atravessam.
+
+Balanço: o gerador fornece $EI = 500$ kW e dissipa $rI^2 = 2 \cdot 500^2 = 500$ kW; sua potência externa $UI$ é nula, pois $U = 0$.
+
+A razão é
+\[ \frac{I}{I_{\text{FUSÍVEL}}} = \frac{500}{20} = 25. \]
+A Figura 2 vai somente até $x \approx 5$, então $x = 25$ exige extrapolação.
+
+Hipótese H: para $x > 3{,}34$ a característica é horizontal em $0{,}1$ s, como desenhada na figura. Esse patamar é o único dado disponível para correntes acima de $3{,}3\, I_{\text{FUSÍVEL}}$, e a figura não mostra nenhuma queda abaixo dele. Adota-se, então, $t_{\text{rup}}(25) = 0{,}1$ s $= 100$ ms. Como a corrente é constante desde $t = 0^+$, esse é o tempo durante o qual o gerador operaria com $500$ A antes da abertura do fusível.
+
+Comparação: $100$ ms $> 50$ ms. O gerador ficaria em curto-circuito por o dobro do tempo admissível, antes de o fusível atuar. Logo, o fusível não protege a fonte de tensão.
+
+Ressalva sobre H: a conclusão depende dessa extrapolação. Para proteger a fonte, seria necessário $t_{\text{rup}}(25) \le 50$ ms, ou seja, uma curva abaixo de $0{,}05$ s em $x = 25$, o que a figura não mostra. Se a curva real continuasse caindo além de $x \approx 3{,}3$, por exemplo com $t \propto 1/x^2$ (I$^2$t aproximadamente constante), teríamos $t_{\text{rup}}(25) \approx 1{,}5/100 \approx 15$ ms e o fusível protegeria a fonte. Essa queda não aparece na figura. Por isso, a resposta "não" vale para a característica fornecida (com o patamar H). Uma conclusão definitiva exigiria a curva do fabricante para $x > 5$.
+
+\textbf{Conferência.} Unidades: $\text{V}/\Omega = \text{A}$; $1000\ \text{V}/2\ \Omega = 500\ \text{A}$; $0{,}1\ \text{s} = 100$ ms; potências em $\text{V}\cdot\text{A} = \text{W}$. Sinais: em (a), corrente positiva em Rec$_1$ (consumo); em (c), corrente negativa nos receptores (fornecem energia). Casos particulares: em (a), Rec$_2$ fica em vazio porque $U$ coincide com sua fcem; em (c), $U = 0$ recupera $I = E/r$. Ordem de grandeza: $500$ A é $25$ vezes a corrente de projeto do fusível, e o fio do curto leva $1800$ A.
+
+ANSWER: (a) $I_{\text{Rec}_1} = 50\ \text{A}$ (consumindo, entrando pelo polo positivo) e $I_{\text{Rec}_2} = 0$, com $I = 50\ \text{A}$; (b) sim, o fusível rompe em $t \approx 1{,}5\ \text{s}$ (razão $2{,}5$; leitura entre 1,45 s e 1,55 s); (c) não, o fusível não protege a fonte: $I = 500\ \text{A}$ (razão $25$), $t_{\text{rup}} = 0{,}1\ \text{s} = 100\ \text{ms} > 50\ \text{ms}$, sob a hipótese H de patamar.%
+\newpage%
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Hipóteses e leis.} Os ciclos operam em regime permanente, logo $\Delta U=0$ em cada ciclo e a 1ª lei fornece $\dot W=\sum_i\dot Q_i$, com $\dot Q_i$ algébricos (positivos se recebidos). A 2ª lei, com temperaturas absolutas, aparece na desigualdade de Clausius $\sum_i\dot Q_i/T_i\le 0$ (igualdade só no reversível), ou seja, com geração de entropia $\dot\sigma=-\sum_i\dot Q_i/T_i\ge 0$. Para uma máquina entre dois reservatórios, isso dá $\eta\le\eta_C=1-T_f/T_q$. A potência elétrica útil é tomada igual à potência mecânica, e o consumo residencial é tratado como potência média, $P=E/\Delta t$.
+
+Dados convertidos: $\dot W_A=80\cdot\frac34=60$ kW, $\dot Q_q=150$ kW e $T_q=900$ K.
+
+\textbf{a) Temperatura da fonte fria da empresa A}
+
+O rendimento real é $\eta_A=\dot W_A/\dot Q_q=60/150=0{,}40$. O enunciado fixa $\eta_A=0{,}80\,\eta_C$, com $\eta_C$ o rendimento de Carnot entre $900$ K e $T_{fA}$:
+\begin{align*}
+0{,}40&=0{,}80\left(1-\frac{T_{fA}}{900}\right)\\
+1-\frac{T_{fA}}{900}&=0{,}50\quad\Rightarrow\quad T_{fA}=450\ \text{K}
+\end{align*}
+Validade: $0<T_{fA}<T_q$ e $\eta_A=0{,}40<\eta_C=0{,}50$, como ocorre em um ciclo irreversível.
+
+\textbf{b) Taxa de calor rejeitada pela máquina A}
+
+Pela 1ª lei,
+\begin{align*}
+\dot Q_{fA}=\dot Q_q-\dot W_A=150-60=90\ \text{kW}
+\end{align*}
+Conferência: $\dot Q_q(1-\eta_A)=0{,}60\cdot150=90$ kW. Uma máquina reversível rejeitaria $\dot Q_q\,T_{fA}/T_q=75$ kW, valor menor, como deve ser. A geração de entropia é
+\begin{align*}
+\dot\sigma_A=\frac{\dot Q_{fA}}{T_{fA}}-\frac{\dot Q_q}{T_q}=\frac{90}{450}-\frac{150}{900}=\frac{1}{30}\ \text{kW/K}\approx 33{,}3\ \text{W/K}>0,
+\end{align*}
+coerente com a irreversibilidade indicada em a).
+
+\textbf{c) Realismo das afirmações da empresa B}
+
+Para B, $\dot Q_q=150$ kW, $\dot Q_{450}=90/2=45$ kW e $\dot Q_{300}\ge0$ é incógnita. Pela 1ª lei, $\dot W_B=105-\dot Q_{300}$ (kW).
+
+\textit{Passo 1: máximo com a repartição dada.} Clausius dá
+\begin{align*}
+\frac{150}{900}-\frac{45}{450}-\frac{\dot Q_{300}}{300}\le 0\quad\Rightarrow\quad \dot Q_{300}\ge 20\ \text{kW}\quad\Rightarrow\quad \dot W_B\le 85\ \text{kW}
+\end{align*}
+Caso particular: $\dot Q_{300}=0$ violaria Clausius, pois $\frac16-\frac1{10}>0$. O limite de 85 kW é atingido por máquinas reversíveis em paralelo: Carnot $900\to450$ K, com $90$ kW recebidos, faz $45$ kW e rejeita $45$ kW; Carnot $900\to300$ K, com $60$ kW recebidos, faz $40$ kW e rejeita $20$ kW.
+
+\textit{Passo 2: limite absoluto para qualquer repartição.} Todas as fontes frias estão em $T_i\ge300$ K e $\dot Q_i\ge0$, logo $\dot Q_i/T_i\le\dot Q_i/300$. Com Clausius, $\dot Q_q/T_q\le\sum_i\dot Q_i/T_i\le\sum_i\dot Q_i/300$, donde $\sum_i\dot Q_i\ge 50$ kW e
+\begin{align*}
+\dot W_B\le 100\ \text{kW},\qquad \eta_B\le 1-\frac{300}{900}=\frac23.
+\end{align*}
+
+\textit{Passo 3: demanda de 350 residências.} O consumo médio é $\frac{240\ \text{kW}\cdot\text{h}}{720\ \text{h}}=\frac13$ kW por residência, logo
+\begin{align*}
+P=350\cdot\frac13\approx 116{,}7\ \text{kW}
+\end{align*}
+A média é cota inferior da demanda real, porque o pico é maior e as perdas do gerador só aumentam o requisito. Como $116{,}7>100$, a exigência é inviável mesmo no limite absoluto. Ordem de grandeza: seria preciso $\eta\approx 116{,}7/150\approx 78\%$, acima do limite de $67\%$.
+
+\textit{Passo 4: aquecimento de água.} Vazão: $50$ L/min $=50$ kg/min $=\frac{50}{60}=\frac56$ kg/s, pois a massa específica é $1$ kg/L. Então
+\begin{align*}
+\dot Q_{\text{água}}=\dot m\,c\,\Delta T=\frac56\cdot4000\cdot10=\frac{100}{3}\approx 33{,}3\ \text{kW}
+\end{align*}
+Esse calor sai da fonte de 300 K, logo $\dot Q_{300}\ge\frac{100}{3}$ kW e
+\begin{align*}
+\dot W_B\le 105-\frac{100}{3}=\frac{215}{3}\approx 71{,}7\ \text{kW}\quad\Rightarrow\quad N\le\frac{215/3}{1/3}=215\ \text{residências}.
+\end{align*}
+Este é um limite superior, não um máximo reversível: Clausius dá $\frac16-\frac1{10}-\frac19=-\frac2{45}<0$, isto é, $\dot\sigma\approx 44$ W/K.
+
+\textit{Viabilidade térmica da água.} Sejam $T_e$ a temperatura de entrada e $T_s=T_e+10$ K a de saída. A água só recebe calor do reservatório de 300 K se for mais fria que ele. Com reservatório isotérmico, $U$ constante e área finita, $\theta=300-T$ decai como $\theta_s=\theta_e\,e^{-UA/\dot m c}$; logo $T_s$ só tende a 300 K quando $A\to\infty$. Definindo $\Delta T_p=300-T_s>0$,
+\begin{align*}
+T_e=290\ \text{K}-\Delta T_p<290\ \text{K}\qquad(\approx 17\,^\circ\text{C}).
+\end{align*}
+A 2ª lei não impõe restrição extra: para $T_e<T_s\le300$ K, usando $\ln x\ge1-\frac1x$,
+\begin{align*}
+\dot m c\ln\frac{T_s}{T_e}\ \ge\ \dot m c\,\frac{T_s-T_e}{T_s}\ \ge\ \dot m c\,\frac{T_s-T_e}{300}=\frac{\dot Q_{\text{água}}}{300},
+\end{align*}
+ou seja, a geração de entropia no aquecimento é não negativa. Numericamente, para $T_e=290$ K, $\dot m c\ln\frac{300}{290}\approx 113$ W/K $\ge \dot Q_{\text{água}}/300\approx 111$ W/K.
+
+\textbf{Conclusão do item c.}
+\begin{itemize}
+\item \textbf{350 residências simultâneas: não é realista.} São necessários $116{,}7$ kW, acima do limite absoluto de $100$ kW (no máximo $300$ residências) e do máximo reversível de $85$ kW ($255$ residências). A conclusão vale qualquer que seja a temperatura da água.
+\item \textbf{Aquecimento de 50 L/min com $+10$ K: não é garantido.} A 2ª lei não o proíbe, mas exige $T_e<290$ K menos o pinch $\Delta T_p>0$, e o enunciado não fornece $T_e$. Além disso, consome $33{,}3$ kW do calor rejeitado a 300 K.
+\item \textbf{Em conjunto: não é realista.} O aquecimento reduz o máximo a $71{,}7$ kW, ou no máximo $215$ residências, ainda abaixo de 350. A potência é a restrição decisiva e independe da hipótese sobre $T_e$.
+\end{itemize}
+
+ANSWER: a) $T_{fA}=450$ K; b) $\dot Q_{fA}=90$ kW; c) não realistas. Atender 350 residências exige $116{,}7$ kW, acima do limite absoluto de $100$ kW (no máximo 300 residências; no caso reversível, $85$ kW ou 255 residências). Com o aquecimento de água, no máximo 215 residências, e a água só é compatível se entrar abaixo de 290 K.%
+\newpage%
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Hipóteses e modelo.}
+\begin{itemize}
+\item A trajetória é circular e horizontal, no plano da superfície livre, o mesmo plano de O (observação do enunciado). Logo a altura do objeto é constante, $a_z=0$, e a reta fonte-O é horizontal.
+\item A fonte e O estão na superfície livre, e o som chega a O pelo ar, em repouso e sem vento: $c=v_{som}=340$ m/s. O enunciado dá só a velocidade no ar; a velocidade do som na água não é dada e não entra no cálculo.
+\item O objeto é tratado como ponto material; o fio é ideal e inextensível; a resistência da água é desprezada. Como o volume submerso é constante, o empuxo $E=\rho g V_{sub}$ é constante, vertical e para cima. O movimento é uniforme e não há arrasto, logo a força do motor não tem componente tangencial líquida e a única força horizontal é a tração.
+\item Velocidades não relativísticas: $v\ll c$ (verificado: $v=c/5$). Hipótese do modelo: $f_0\gg f_{rot}=v/(2\pi r)\approx 1{,}25$ Hz, valor obtido nos itens (a) e (b). O enunciado não dá $f_0$; supõe-se uma fonte sonora que emite muitos ciclos por volta, de modo que velocidade e direção mudam pouco durante um período de emissão.
+\end{itemize}
+
+\textbf{Efeito Doppler.} Seja $X(t)$ a posição da fonte, $\vec v_s$ sua velocidade e $\hat n$ o unitário horizontal de $X$ para O. Pulsos emitidos em $t_n$ e $t_n+T_0$, com $T_0=1/f_0$, chegam a O em $t_n+|O-X(t_n)|/c$ e $t_n+T_0+|O-X(t_n+T_0)|/c$. O intervalo recebido é
+\[
+\Delta t=T_0+\frac{|O-X(t_n+T_0)|-|O-X(t_n)|}{c}.
+\]
+Como $\dfrac{d}{dt}|O-X(t)|=-\hat n\cdot\vec v_s$, para $T_0$ pequeno vale $\Delta t\approx T_0\left(1-\dfrac{\hat n\cdot\vec v_s}{c}\right)$, logo
+\[
+f_{obs}=\frac{f_0}{1-\dfrac{\hat n\cdot\vec v_s}{c}}.
+\]
+O atraso de propagação $|O-X|/c$ depende da posição da fonte (10 m em A, 20 m em B), mas só a sua variação entre emissões consecutivas altera a frequência. Se a fonte se aproxima de O ($\hat n\cdot\vec v_s>0$), então $f_{obs}>f_0$.
+
+\textbf{Geometria e sentido.} Tomemos o centro $C$ como origem, o eixo $x$ de A para O e o eixo $y$ de C para B:
+\[
+A=(0,-r),\qquad B=(0,r),\qquad O=(d,-r).
+\]
+Como A é o ponto mais baixo, a horizontal por A é tangente à trajetória, e O está nela (figura). No sentido anti-horário, $\vec v_A=v\,\hat x$ (aponta para O) e $\vec v_B=-v\,\hat x$ (afasta-se de O). No sentido horário, $\vec v_A=-v\,\hat x$ daria $f_A=\dfrac{c}{c+v}f_0<f_0$, incompatível com $\tfrac54 f_0$. Logo o sentido anti-horário é o consistente.
+
+\textbf{a) Velocidade escalar.} Em A, $O-A=(d,0)$, então $\hat n=\hat x$ e $\hat n\cdot\vec v_A=v$:
+\[
+\frac54 f_0=\frac{f_0}{1-v/c}\ \Rightarrow\ 1-\frac vc=\frac45\ \Rightarrow\ v=\frac c5=\frac{340}{5}=68\ \text{m/s}.
+\]
+Como $v<c$, a fonte é subsônica e a fórmula é válida. Também $f_A>f_0$, como a aproximação exige.
+
+\textbf{b) Raio.} Em B, $O-B=(d,-2r)$. Seja $D=|BO|=\sqrt{d^2+4r^2}$. Então $\hat n\cdot\vec v_B=-vd/D$ (a fonte se afasta) e
+\[
+f_B=\frac{f_0}{1+\dfrac{vd}{cD}}.
+\]
+Igualando a $\tfrac{10}{11}f_0$: $1+\dfrac{vd}{cD}=\dfrac{11}{10}$, logo $D=\dfrac{10\,v\,d}{c}=\dfrac{10\cdot 68\cdot 10}{340}=20$ m. Como $D^2=d^2+4r^2$,
+\[
+r^2=\frac{D^2-d^2}{4}=\frac{400-100}{4}=75\ \text{m}^2\ \Rightarrow\ r=5\sqrt{3}\approx 8{,}66\ \text{m}.
+\]
+A solução é única, pois $f_B$ cresce com $D$, e $r<L=10$ m, o que mostra que a configuração é possível.
+
+\textbf{Posição do fixador.} A tração é a única força horizontal e deve apontar para $C$ em todas as posições, pois fornece a força centrípeta. Seja $P$ a projeção horizontal do ponto de fixação no fundo. A componente horizontal da tração aponta da projeção do objeto para $P$, logo $P$ deve estar sobre a reta que liga $C$ a cada ponto da trajetória. Duas dessas retas se cruzam apenas em $C$, portanto $P=C$: o fio é preso no fundo na vertical de $C$, como sugere o raio desenhado na vista superior. Com $\theta$ o ângulo do fio com a vertical e $H$ a profundidade do fundo,
+\[
+\sin\theta=\frac rL=\frac{\sqrt3}{2}\ \Rightarrow\ \theta=60^\circ,\qquad \cos\theta=\frac12,\qquad H=\sqrt{L^2-r^2}=5\ \text{m}=L\cos\theta.
+\]
+
+\textbf{c) Tração.} Sobre o objeto atuam $m\vec g$ (para baixo), $\vec E$ (para cima) e a tração ao longo do fio, com componentes $T\sin\theta$ (horizontal, para $C$) e $T\cos\theta$ (vertical, para baixo, pois o fio vai ao fundo). A aceleração é $v^2/r$ dirigida a $C$, e a vertical é nula. Pela 2ª lei de Newton:
+\begin{align*}
+\text{horizontal:}\quad & T\sin\theta=\frac{m\,v^2}{r},\\
+\text{vertical:}\quad & E=mg+T\cos\theta.
+\end{align*}
+Com $\dfrac{m v^2}{r}=\dfrac{\sqrt3\cdot 68^2}{5\sqrt3}=\dfrac{4624}{5}\ \text{N}\approx 924{,}8$ N,
+\[
+T=\frac{m v^2}{r\sin\theta}=\frac{4624/5}{\sqrt3/2}=\frac85\cdot\frac{34^2}{\sqrt3}=1{,}6\times 667{,}4\approx 1068\ \text{N}\approx 1{,}07\times 10^{3}\ \text{N}.
+\]
+
+\textbf{d) Volume submerso.} Na vertical, $T\cos\theta=\dfrac T2=\dfrac{4624}{5\sqrt3}=\dfrac{4624\sqrt3}{15}\ \text{N}\approx 533{,}9$ N e $mg=10\sqrt3=\dfrac{150\sqrt3}{15}\ \text{N}\approx 17{,}3$ N. Logo
+\[
+E=mg+T\cos\theta=\frac{4774\sqrt3}{15}\ \text{N}\approx 551\ \text{N}.
+\]
+Como $E>mg$, o empuxo supera o peso porque o fio puxa o objeto para baixo. Pelo princípio de Arquimedes, $E=\rho g V_{sub}$, portanto
+\[
+V_{sub}=\frac{E}{\rho g}=\frac{4774\sqrt3}{15\cdot 10^{4}}\ \text{m}^3\approx 5{,}5\times 10^{-2}\ \text{m}^3\approx 55\ \text{L}.
+\]
+
+\textbf{Conferências.}
+\begin{itemize}
+\item Doppler: $f_A/f_0=340/272=5/4$. Em B, $\hat n\cdot\vec v_B=-68\cdot 10/20=-34$ m/s e $f_B/f_0=340/374=10/11$.
+\item Geometria: $D^2=10^2+4\cdot 75=400$ m$^2$ e $H^2=L^2-r^2=25$ m$^2$.
+\item Dinâmica: $T\sin\theta\approx 1068\cdot 0{,}866\approx 925$ N $=mv^2/r$. Também $T=mv^2L/r^2$.
+\item Caso limite $v\to 0$: $f_A,f_B\to f_0$, $T\to 0$ e $E\to mg$, isto é, $V_{sub}\to m/\rho\approx 1{,}7\times 10^{-3}$ m$^3$.
+\item Decomposição: $V_{sub}=\dfrac{m}{\rho}+\dfrac{T\cos\theta}{\rho g}\approx 1{,}7\times 10^{-3}+53{,}4\times 10^{-3}\approx 55\times 10^{-3}$ m$^3$.
+\item Sinais: em A o objeto se aproxima de O ($f_A>f_0$) e em B se afasta ($f_B<f_0$). O sentido horário é incompatível.
+\item Unidades: $[T]=\text{kg}\cdot\text{m}\cdot\text{s}^{-2}=\text{N}$; $[V_{sub}]=\dfrac{\text{N}}{(\text{kg}\cdot\text{m}^{-3})(\text{m}\cdot\text{s}^{-2})}=\text{m}^3$.
+\item Ordem de grandeza: $v^2/r\approx 534$ m/s$^2\approx 53\,g$, por isso $T\sim 10^3$ N, muito maior que $mg\approx 17$ N. Isso decorre diretamente de $v=c/5$.
+\end{itemize}
+
+ANSWER: a) $v=68$ m/s; b) $r=5\sqrt{3}\approx 8{,}66$ m; c) $T\approx 1{,}07\times 10^{3}$ N; d) $V_{sub}\approx 5{,}5\times 10^{-2}$ m$^3$ (cerca de 55 L)%
+\newpage%
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Geometria, hipóteses e dados.} O dodecágono é regular, logo o ângulo externo vale $360^\circ/12 = 30^\circ$. Tomando o lado AB horizontal (topo nas Figuras 1 e 2), o lado BC desce de B para C formando $30^\circ$ com a horizontal. Com $P_1$ em B, $P_2$ a $d_0$ de $P_1$ e a mola relaxada ($P_2$ a $L_0$ de C), tem-se $\overline{BC} = d_0 + L_0 = 1{,}15\ \mathrm{m}$. Seja $x$ a posição de $P_1$ medida a partir de B, ao longo de BC. Constantes:
+\[
+K_e q_1 q_2 = 9\cdot 10^{9}\cdot 20\cdot 10^{-6}\cdot 5\cdot 10^{-6} = 0{,}9\ \mathrm{N\cdot m^2},
+\qquad
+mg\operatorname{sen}30^\circ = 0{,}4\cdot 10\cdot 0{,}5 = 2\ \mathrm{N}.
+\]
+Hipóteses: vácuo; partículas puntiformes; sem atrito, de modo que a normal é perpendicular a BC e não realiza trabalho; na análise de $P_1$, $P_2$ é tratada como fixa (enunciado).
+
+\textbf{a) Aproximação máxima.} Ao longo de BC atuam o peso (componente $2\ \mathrm{N}$, que puxa $P_1$ para C) e a repulsão de $P_2$ (que empurra $P_1$ para B). Ambas são conservativas, então a energia mecânica de $P_1$ se conserva. Com $r = d_0 - x$, a energia potencial é $U(x) = -2x + \dfrac{0{,}9}{1-x}$ (em J). Partindo do repouso em $x = 0$, a energia cinética é
+\[
+E_c(x) = U(0) - U(x) = 2x - 0{,}9\,\frac{x}{1-x} = \frac{x\,(1{,}1-2x)}{1-x}\ \mathrm{J}.
+\]
+Para $0<x<0{,}55\ \mathrm{m}$ tem-se $E_c>0$, e $P_1$ se move em direção a $P_2$. Em $x = 0{,}55\ \mathrm{m}$ tem-se $E_c = 0$, e para $x>0{,}55\ \mathrm{m}$ seria $E_c<0$, o que é impossível. Logo esse é o primeiro ponto de retorno, isto é, a aproximação máxima:
+\[
+r_{\min} = d_0 - 0{,}55 = 0{,}45\ \mathrm{m}.
+\]
+Verificação: a força líquida sobre $P_1$ (positiva para C) é $2 - 0{,}9/r^2$ (em N). Ela se anula em $r = \sqrt{0{,}45}\approx 0{,}67\ \mathrm{m}$, onde $P_1$ tem velocidade máxima. Esse não é o ponto de retorno, porque lá $P_1$ ainda se move. Em $r = 0{,}45\ \mathrm{m}$, a repulsão vale $0{,}9/0{,}45^2 = 40/9\approx 4{,}4\ \mathrm{N}$ e a força líquida é $\approx -2{,}4\ \mathrm{N}$ (para B), o que é coerente com a inversão do movimento.
+
+\textbf{Resposta (a):} $d_{\min} = 0{,}45\ \mathrm{m}$ (45 cm).
+
+\textbf{b) Razão entre energias.} Na aproximação máxima, $P_1$ está momentaneamente em repouso com $r = 0{,}45\ \mathrm{m}$. Como $k$ é muito alto, $P_2$ oscila em torno de sua posição de equilíbrio com frequência $\sqrt{k/m}$, muito maior que a taxa de variação de $r$, e com amplitude desprezível. Assim, $P_2$ acompanha adiabaticamente seu equilíbrio, com uma compressão pequena $x_s$. Esta é a aproximação pedida.
+
+Forças sobre $P_2$ ao longo de BC (positivo para C): peso $+2\ \mathrm{N}$; repulsão de $P_1$, que está do lado de B, $+40/9\ \mathrm{N}$; força elástica $-kx_s$, pois a mola comprimida empurra $P_2$ para B. Equilíbrio:
+\[
+kx_s = \frac{40}{9} + 2 = \frac{58}{9}\ \mathrm{N} \equiv F \approx 6{,}4\ \mathrm{N}.
+\]
+Como $P_2$ desce $x_s$ ao longo de BC, sua altura cai $x_s\operatorname{sen}30^\circ = x_s/2$. Portanto
+\[
+E_{el} = \frac{1}{2}kx_s^2 = \frac{F}{2}\,x_s,
+\qquad
+\Delta U_g(P_2) = -mg\,\frac{x_s}{2} = -2\,x_s\ \ (\text{J, com } x_s \text{ em m}).
+\]
+Logo
+\[
+\frac{E_{el}}{|\Delta U_g(P_2)|} = \frac{F\,x_s/2}{2\,x_s} = \frac{F}{4} = \frac{58}{36} = \frac{29}{18}\approx 1{,}6.
+\]
+Comentário: no modelo quase estático, $k$ e $x_s$ cancelam exatamente. A razão é apenas aproximada porque se despreza a oscilação de $P_2$ e a variação de $r$, que são de ordem $x_s\to 0$. Conferência: sem a repulsão, a razão seria $2/4 = 0{,}5$. A repulsão aumenta a força elástica necessária e, portanto, a energia elástica, o que é coerente com $1{,}6$. Ordem de grandeza: a mola armazena energia da mesma ordem da energia gravitacional que $P_2$ perde.
+
+\textbf{Resposta (b):} $E_{el}/|\Delta U_g(P_2)|\approx 1{,}6$ ($=29/18$).
+
+\textbf{c) Velocidade de $P_2$ ao atingir um vértice.} Interpretação: como o enunciado diz "após a condição da Figura 2", considera-se o processo a partir dessa situação: aproximação máxima, giro e retirada da mola, até a configuração da Figura 3. Com a mola presa, $P_2$ não chega a C, porque isso exigiria uma compressão de $L_0 = 0{,}15\ \mathrm{m}$, com força elástica $kL_0$, incompatível com $k$ muito alto. O deslocamento real é $\approx F/k \ll L_0$. Assim, o primeiro vértice é atingido na fase livre da Figura 3.
+
+O giro não altera as posições relativas nem adiciona energia cinética. A mola, comprimida apenas de $x_s$, armazena $F^2/(2k)\to 0$, de modo que sua retirada não transfere energia às partículas.
+
+Posições na Figura 3, com B à esquerda e C à direita, medidas a partir de B: $x_1 = 0{,}55\ \mathrm{m}$ e $x_2 = d_0 = 1{,}00\ \mathrm{m}$. Assim $P_2$ está a $0{,}15\ \mathrm{m}$ de C, e a separação é $r = 0{,}45\ \mathrm{m}$.
+
+Dinâmica: em BC horizontal, peso e normal são verticais e não realizam trabalho ao longo do segmento. A única força horizontal é a repulsão mútua, que é interna. Logo o momento linear horizontal se conserva. Como o sistema parte do repouso e $m_1 = m_2$, vale $mv_1 = mv_2$ em sentidos opostos em todo instante. Assim o centro de massa fica fixo em $x_{cm} = (0{,}55+1{,}00)/2 = 0{,}775\ \mathrm{m}$ e os deslocamentos são iguais e opostos.
+
+Primeiro vértice: $P_2$ percorre $0{,}15\ \mathrm{m}$ até C. Nesse intervalo $P_1$ percorre $0{,}15\ \mathrm{m}$ em direção a B e fica em $x_1 = 0{,}40\ \mathrm{m}$, ainda a $0{,}40\ \mathrm{m}$ de B. Logo C é o primeiro vértice atingido, com
+\[
+r' = 1{,}15 - 0{,}40 = 0{,}75\ \mathrm{m}.
+\]
+Conservação da energia (a gravidade não realiza trabalho; a energia eletrostática se converte em cinética):
+\begin{align*}
+\frac{K_e q_1 q_2}{0{,}45} &= \frac{K_e q_1 q_2}{0{,}75} + 2\cdot\frac{1}{2}\,m v^2 \\
+\frac{0{,}9}{0{,}45} &= \frac{0{,}9}{0{,}75} + 0{,}4\,v^2 \\
+2{,}0 &= 1{,}2 + 0{,}4\,v^2 \\
+v^2 &= 2\ \mathrm{m^2/s^2}
+\end{align*}
+Conferência: $\Delta E_c = 0{,}8\ \mathrm{J}$, ou seja, $0{,}4\ \mathrm{J}$ por partícula, com $\tfrac{1}{2}(0{,}4)(2) = 0{,}4\ \mathrm{J}$. As unidades batem ($\mathrm{N\cdot m^2}/\mathrm{m} = \mathrm{J}$). O centro de massa continua em $(0{,}40+1{,}15)/2 = 0{,}775\ \mathrm{m}$, como deve.
+
+\textbf{Resposta (c):} $v_2 = \sqrt{2}\ \mathrm{m/s}\approx 1{,}41\ \mathrm{m/s}$, horizontal, de B para C, no instante em que $P_2$ atinge C.
+
+ANSWER: (a) $d_{\min} = 0{,}45\ \mathrm{m}$; (b) $E_{el}/|\Delta U_g(P_2)|\approx 1{,}6$ ($=29/18$); (c) $v_2 = \sqrt{2}\ \mathrm{m/s}\approx 1{,}41\ \mathrm{m/s}$, horizontal, de B para C.%
+\newpage%
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Dados e modelo.} A rede tem $400$ linhas/mm, logo
+\[
+d=\frac{1\ \text{mm}}{400}=2{,}5\ \mu\text{m}=2500\ \text{nm}\qquad\Rightarrow\qquad \frac{d}{\lambda}=\frac{2500}{625}=4 .
+\]
+Hipóteses: incidência normal; rede ideal (máximos principais bem definidos); posições angulares dos máximos dadas pela equação da rede (regime de Fraunhofer); anteparo sempre paralelo à rede e perpendicular ao feixe, centrado no eixo do feixe. Se $D$ é a distância rede-anteparo, a franja de ordem $m$ aparece no anteparo à altura
+\[
+y_m=D\tan\theta_m .
+\]
+
+\textbf{Máximos possíveis.} Com incidência normal, a equação da rede é $d\sin\theta_m=m\lambda$, logo $\sin\theta_m=\dfrac{m}{4}$. Como $|\sin\theta_m|\le 1$, tem-se $|m|\le 4$. A ordem $|m|=4$ ocorre a $90^\circ$ (direção rasante) e nunca atinge um anteparo finito. As ordens visíveis são, portanto, $m=0,\pm1,\pm2,\pm3$, totalizando $1+2\cdot 3=7$ máximos, o que confere com a contagem inicial. Além disso,
+\[
+\tan\theta_m=\frac{\sin\theta_m}{\sqrt{1-\sin^2\theta_m}}=\frac{m}{\sqrt{16-m^2}} .
+\]
+
+\textbf{Condição de visibilidade.} A franja de ordem $m$ está no anteparo se $|y_m|\le L/2=0{,}6$ m, isto é, se $D\le D_m$, com
+\begin{align*}
+D_3&=\frac{0{,}6\sqrt{7}}{3}=0{,}2\sqrt{7}\approx 0{,}53\ \text{m},\\
+D_2&=0{,}6\cdot\frac{\sqrt{12}}{2}=0{,}6\sqrt{3}\approx 1{,}04\ \text{m},\\
+D_1&=0{,}6\sqrt{15}\approx 2{,}32\ \text{m}.
+\end{align*}
+Cada ordem $m\neq 0$ sai do anteparo aos pares ($\pm m$), e o máximo central ($m=0$) nunca sai. Logo, o número de máximos é
+\[
+N(D)=\begin{cases}7, & D<D_3,\\ 5, & D_3<D<D_2,\\ 3, & D_2<D<D_1,\\ 1, & D>D_1.\end{cases}
+\]
+
+\textbf{a) Sentido do movimento.} Como $y_m=D\tan\theta_m$ e $\theta_m$ é fixado pela rede, ao aumentar $D$ cada franja se afasta do centro e as de ordem mais alta saem pelas bordas. Se o anteparo se aproximasse da rede, as franjas entrariam pelas bordas e $N$ aumentaria. Como $N$ cai de $7$ para $5$ e depois para $3$, a distância $D$ está crescendo. O anteparo está \textbf{afastando-se} da rede, no sentido de propagação da luz.
+
+\textbf{b) Distância em $t_1$.} Em $t_1$ a contagem passa de 7 para 5, isto é, saem as ordens $\pm 3$. Nesse instante a franja de ordem 3 está na borda, com $y_3=L/2$. Logo
+\[
+D(t_1)=D_3=0{,}2\sqrt{7}\approx 0{,}53\ \text{m}.
+\]
+Verificação: $D_3\tan\theta_3=0{,}2\sqrt{7}\cdot\dfrac{3}{\sqrt{7}}=0{,}6$ m $=L/2$.
+
+\textbf{c) Módulo da velocidade.} Em $t_1+2$ s a contagem passa de 5 para 3, isto é, saem as ordens $\pm 2$. Logo $D(t_1+2\ \text{s})=D_2=0{,}6\sqrt{3}\approx 1{,}04$ m. O anteparo tem movimento retilíneo uniforme, portanto
+\[
+v=\frac{D_2-D_3}{2\ \text{s}}=\frac{0{,}6\sqrt{3}-0{,}2\sqrt{7}}{2}\ \text{m/s}=\left(0{,}3\sqrt{3}-0{,}1\sqrt{7}\right)\text{m/s}\approx 0{,}255\ \text{m/s}.
+\]
+Com a tabela ($\sqrt{3}\approx 1{,}73$ e $\sqrt{7}\approx 2{,}65$) obtém-se $0{,}254$ m/s, ou seja, $v\approx 0{,}25$ m/s.
+
+\textbf{d) Distância até restar só o máximo central.} Só o máximo central permanece quando $D>D_1$, isto é, quando também saem as ordens $\pm 1$. Partindo de $D(t_1)=D_3$,
+\[
+\Delta s=D_1-D_3=0{,}6\sqrt{15}-0{,}2\sqrt{7}\approx 2{,}32-0{,}53=1{,}79\ \text{m}.
+\]
+Como $v$ é constante, isso ocorre após $\Delta t=\Delta s/v\approx 1{,}79/0{,}255\approx 7\ \text{s}$.
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Ângulos: $\theta_3\approx 49^\circ$, $\theta_2=30^\circ$ e $\theta_1\approx 14{,}5^\circ$. As franjas de maior ângulo são as primeiras a sair, e $D_3<D_2<D_1$, como exige a sequência $7\to5\to3\to1$.
+\item A contagem inicial de 7 confirma $d/\lambda=4$ e a geometria adotada. O máximo central permanece sempre.
+\item Unidades: $D$ em m, $v$ em m/s, $\Delta s$ em m. Ordens de grandeza: distâncias da ordem de 1 m e velocidade de centésimos de m/s, coerentes com um anteparo de $1{,}2$ m.
+\end{itemize}
+
+ANSWER: a) afastando-se da rede (a contagem diminui quando D aumenta); b) $D(t_1)=0{,}2\sqrt{7}\approx 0{,}53$ m; c) $v=(0{,}3\sqrt{3}-0{,}1\sqrt{7})\approx 0{,}25$ m/s ($\approx 0{,}255$ m/s); d) $\Delta s=0{,}6\sqrt{15}-0{,}2\sqrt{7}\approx 1{,}79$ m%
+\newpage%
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{Hipóteses e notação.} O fóton se propaga em linha reta, no vácuo, com velocidade $c$ (sem efeitos relativísticos). A reta $x=\sqrt3\,y$ tem $\operatorname{tg}\theta=1/\sqrt3$, isto é, $\theta=30^\circ$, e o versor do fóton incidente é
+\[
+\hat e=\left(\frac{\sqrt3}{2},\ \frac12\right).
+\]
+O centro é $C=(L,h)$ e o raio é $R(t)=ut$, com $u>0$ (expansão) e $u<c$. Em $t=0$ a esfera se reduz ao ponto $C\neq O$, logo a origem está fora dela. Na reflexão, a superfície é tratada como estática, como pede o enunciado.
+
+\textbf{1. Impacto.} Antes da reflexão, $\vec r(t)=c\,t\,\hat e$. Seja $t_1$ o instante do primeiro contato e $P=c\,t_1\,\hat e$ o ponto atingido. Como $P$ pertence à superfície,
+\[
+|P-C|=R(t_1)=u\,t_1.
+\]
+Como $O$ não está sobre a esfera em $t=0$, tem-se $t_1>0$.
+
+\textbf{2. Lei da reflexão.} Para superfície lisa, a reflexão especular é $\hat e_r=\hat e-2(\hat e\cdot\hat n)\,\hat n$, com $\hat n$ unitário normal em $P$. Impondo $\hat e_r=(0,-1)$ (sentido negativo de $y$):
+\[
+\hat e-\hat e_r=2(\hat e\cdot\hat n)\,\hat n,\qquad \hat e-\hat e_r=\left(\frac{\sqrt3}{2},\ \frac32\right)=\sqrt3\left(\frac12,\ \frac{\sqrt3}{2}\right).
+\]
+Logo $\hat n=\pm\left(\tfrac12,\tfrac{\sqrt3}{2}\right)$. Para escolher o sinal, use a normal externa $\hat n_e=(P-C)/|P-C|$. Como o fóton chega pela face externa, ele se aproxima da superfície, ou seja, $\hat e\cdot\hat n_e<0$. Como $\hat e\cdot\left(\tfrac12,\tfrac{\sqrt3}{2}\right)=\tfrac{\sqrt3}{2}>0$,
+\[
+\hat n_e=-\left(\frac12,\ \frac{\sqrt3}{2}\right).
+\]
+Verificação: $\hat e_r\cdot\hat n_e=\tfrac{\sqrt3}{2}>0$, logo o fóton refletido se afasta da superfície. A escolha do sinal é confirmada no item 5. Como $P-C=u\,t_1\,\hat n_e$,
+\[
+C=P+u\,t_1\left(\frac12,\ \frac{\sqrt3}{2}\right).
+\]
+
+\textbf{3. Sistema linear e item (a).} Sejam $a=c\,t_1$ e $b=u\,t_1$ (comprimentos). Com $P=a\,\hat e$, as componentes de $C=(L,h)$ dão
+\[
+\sqrt3\,a+b=2L,\qquad a+\sqrt3\,b=2h.
+\]
+O determinante é $3-1=2\neq0$, logo a solução é única:
+\[
+c\,t_1=\sqrt3\,L-h,\qquad u\,t_1=\sqrt3\,h-L.
+\]
+Substituindo: $\sqrt3(\sqrt3L-h)+(\sqrt3h-L)=2L$ e $(\sqrt3L-h)+\sqrt3(\sqrt3h-L)=2h$. O ponto de impacto é
+\[
+P=\left(\frac{3L-\sqrt3\,h}{2},\ \frac{\sqrt3\,L-h}{2}\right).
+\]
+Dividindo $u\,t_1$ por $c\,t_1\neq0$:
+\[
+u=c\,\frac{\sqrt3\,h-L}{\sqrt3\,L-h}.
+\]
+
+\textbf{4. Condições de possibilidade (item b).}
+\begin{itemize}
+\item $t_1>0\Rightarrow \sqrt3\,L-h>0$.
+\item $R(t_1)=u\,t_1>0$ (pois $u>0$ e $t_1>0$) $\Rightarrow \sqrt3\,h-L>0$. Se fosse nulo, $P=C$ e a esfera seria degenerada no impacto.
+\item $u<c$, com denominador positivo: $\sqrt3\,h-L<\sqrt3\,L-h\Rightarrow(\sqrt3+1)\,h<(\sqrt3+1)\,L\Rightarrow h<L$.
+\end{itemize}
+Como $h<L<\sqrt3\,L$, a primeira condição decorre das outras. Portanto
+\[
+\frac{L}{\sqrt3}<h<L.
+\]
+Geometricamente, $h>L/\sqrt3$ significa que $C$ está acima da reta do fóton na vertical de $x=L$, e $h<L$ é exatamente $u<c$.
+
+\textbf{5. Primeiro contato (entrada).} Seja $f(t)=|c\,t\,\hat e-C|^2-u^2t^2$. Para $t>0$, $|c\,t\,\hat e-C|+ut>0$, logo o sinal de $f$ é o de $|\vec r-C|-R$: $f>0$ indica fóton fora e $f<0$ indica fóton dentro. Explicitamente,
+\[
+f(t)=(c^2-u^2)\,t^2-2c\,(\hat e\cdot C)\,t+(L^2+h^2),
+\]
+com $f(0)>0$ e concavidade para cima ($u<c$). Como $f(t_1)=0$, $t_1$ é raiz real. As raízes $t_-\leq t_+$ têm produto $(L^2+h^2)/(c^2-u^2)>0$ e soma $2c(\hat e\cdot C)/(c^2-u^2)>0$, pois $\hat e\cdot C=(\sqrt3L+h)/2>0$; logo são positivas. O fóton está fora em $[0,t_-)$ e dentro em $(t_-,t_+)$.
+
+Como $f'(t)=2c\,(c\,t\,\hat e-C)\cdot\hat e-2u^2t$ e $(P-C)\cdot\hat e=u\,t_1\,\hat n_e\cdot\hat e=-\tfrac{\sqrt3}{2}u\,t_1$,
+\[
+f'(t_1)=-2u\,t_1\left(\frac{\sqrt3}{2}\,c+u\right)<0,
+\]
+pois $u\,t_1>0$. Numa parábola com concavidade para cima, a raiz em que a derivada é negativa é a menor. Logo $t_1=t_-$ é a entrada, e a escolha de sinal do item 2 está confirmada.
+
+A outra escolha de sinal daria $c\,t_s=\sqrt3L-h$ e $u\,t_s=L-\sqrt3h$. Nesse ramo, $u<\sqrt3c/2$, pois $2(L-\sqrt3h)-\sqrt3(\sqrt3L-h)=-(L+\sqrt3h)<0$, e portanto $f'(t_s)=(L-\sqrt3h)(\sqrt3c-2u)>0$. Esse ramo corresponderia ao ponto de saída $t_+$, e não à entrada.
+
+\textbf{6. Conferência.}
+\begin{itemize}
+\item Unidades: $c\,t_1$ e $u\,t_1$ são comprimentos; $u/c$ é adimensional, logo $u$ é velocidade.
+\item Limites: $h\to(L/\sqrt3)^+\Rightarrow u\to0$ (com $P\to C$); $h\to L^-\Rightarrow u\to c$; $h>L\Rightarrow u>c$ (proibido); $h<L/\sqrt3\Rightarrow u<0$ (raio decrescente).
+\item Exemplo ($L=3\,\text{m}$, $h=2\,\text{m}$, dentro do intervalo): $c\,t_1=(3\sqrt3-2)\,\text{m}\approx3{,}20\,\text{m}$, $t_1\approx1{,}07\times10^{-8}\,\text{s}$, $R(t_1)=(2\sqrt3-3)\,\text{m}\approx0{,}464\,\text{m}$ e $u=c\,\dfrac{12-5\sqrt3}{23}\approx0{,}145\,c\approx4{,}36\times10^{7}\,\text{m/s}$. Com $P=\left(\frac{9-2\sqrt3}{2},\frac{3\sqrt3-2}{2}\right)\text{m}$, tem-se $P-C=\left(\frac{3-2\sqrt3}{2},\frac{3\sqrt3-6}{2}\right)\text{m}$ e $|P-C|^2=\frac{21-12\sqrt3}{4}+\frac{63-36\sqrt3}{4}=(21-12\sqrt3)\,\text{m}^2=R(t_1)^2$, como exige o item 1.
+\item Observação (além do pedido): se o movimento da superfície também afetasse a direção refletida, o fóton só se afastaria da esfera se $u<\frac{\sqrt3}{2}c$, isto é, $h<\frac{5L}{3\sqrt3}$. O enunciado manda desprezar esse efeito nesta etapa, por isso a resposta do item (b) permanece $\frac{L}{\sqrt3}<h<L$.
+\end{itemize}
+
+ANSWER: (a) $u=c\,\dfrac{\sqrt{3}\,h-L}{\sqrt{3}\,L-h}$; (b) $\dfrac{L}{\sqrt{3}}<h<L$%
+\newpage%
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Referencial e hipóteses.} Eixo $x$ horizontal, do fio esquerdo para o direito; eixo $y$ vertical para cima; $\hat z=\hat x\times\hat y$ (saindo do papel). Os fios estão em $x=\mp a$, com $a=d/2$, e o plano médio é $x=0$. Pela observação, o movimento permanece no plano $xy$. O enunciado não fornece $g$, e por isso o peso é desprezado (a validade dessa hipótese é verificada em (b)). Assim a única força é a magnética, que não realiza trabalho: $|\vec v|=v$, isto é, $\dot x^2+\dot y^2=v^2$.
+
+\textbf{1. Campo dos fios.} Pela lei de Ampère, um fio retilíneo infinito de corrente $I$ produz, à distância $r$, $B=\dfrac{\mu_0 I}{2\pi r}$, em linhas circulares em torno do fio. Para um fio em $x_k$, paralelo a $\hat y$, com corrente $I_k$, a regra da mão direita dá $\vec B_k=-\dfrac{\mu_0 I_k}{2\pi\,(x-x_k)}\,\hat z$ dos dois lados do fio (à direita, $x>x_k$, o campo aponta para $-\hat z$; à esquerda, para $+\hat z$). Pela superposição, $\vec B=B_z(x)\,\hat z$, com $B_z=\sum_k B_{z,k}$. Obtém-se:
+\begin{itemize}
+\item Situações 1 e 4 (correntes opostas, $I_E=i$, $I_D=-i$):
+\[
+B_z(x)=-\frac{\mu_0 i}{2\pi}\,\frac{d}{a^2-x^2},\qquad B_z(0)=-\frac{2\mu_0 i}{\pi d}\neq 0 .
+\]
+\item Situações 2 e 3 (correntes iguais, $I_E=I_D=i$):
+\[
+B_z(x)=\frac{\mu_0 i}{2\pi}\Big(\frac{1}{a-x}-\frac{1}{a+x}\Big)=\frac{\mu_0 i}{\pi}\,\frac{x}{a^2-x^2},\qquad B_z(0)=0 .
+\]
+\end{itemize}
+
+\textbf{2. Equações do movimento.} Com $\vec F=q\,\vec v\times\vec B$ e $\vec v\times\vec B=B_z\,(\dot y\,\hat x-\dot x\,\hat y)$, a 2ª lei de Newton dá
+\begin{align*}
+m\ddot x&=q\,\dot y\,B_z(x),\\
+m\ddot y&=-q\,\dot x\,B_z(x).
+\end{align*}
+A segunda equação equivale a $\dfrac{d}{dt}\big(m\dot y+qA(x)\big)=0$, com $A'(x)=B_z(x)$ (conservação do momento canônico $p_y$; integral primeira exata). No movimento quase vertical, $\dot y\simeq s\,v$, com $s=+1$ (sobe) ou $s=-1$ (desce), e então $m\ddot x\simeq q\,s\,v\,B_z(x)$.
+
+\textbf{3. Critério de restauração.} A força horizontal deve apontar para o plano médio quando a partícula se desloca, ou seja, $x=0$ deve ser equilíbrio estável. Isso exige (i) $B_z(0)=0$ e (ii) que, para $|x|\ll d$, com $B_z\simeq B_z'(0)\,x$,
+\[
+m\ddot x\simeq q\,s\,v\,B_z'(0)\,x
+\]
+tenha coeficiente negativo: $q\,s\,B_z'(0)<0$. Como $q>0$, a condição é $s\,B_z'(0)<0$.
+
+\textbf{4. Análise das quatro situações.}
+
+\emph{Situações 1 e 4 (excluídas).} Aqui $B_z(0)\neq 0$, logo (i) falha. Como $B_z<0$ em todo $|x|<a$, a força horizontal $F_x=q\,\dot y\,B_z$ tem sinal fixo:
+\begin{itemize}
+\item Situação 1 ($\dot y\simeq -v$): $F_x=-q\,v\,B_z>0$ em todo o intervalo. Para $x<0$ a força aproxima a partícula do plano; para $x>0$ a afasta. A força aponta sempre para a direita, em atração ao fio de corrente descendente (mesmo sentido da partícula).
+\item Situação 4 ($\dot y\simeq +v$): $F_x=q\,v\,B_z<0$ em todo o intervalo. Para $x>0$ aproxima, para $x<0$ afasta; a força aponta sempre para a esquerda, em atração ao fio de corrente ascendente.
+\end{itemize}
+Como $F_x(0)\neq 0$ e $F_x$ não muda de sinal, não há restauração. (Pela integral exata, a órbita da Situação 1 é um laço do lado direito, com $x_{\max}=a\tanh(4R/d)$, onde $R=\dfrac{mv}{q|B_z(0)|}=\dfrac{\pi d\,m\,v}{2\mu_0 i q}$; para $R\ll d$, $x_{\max}\simeq 2R$.)
+
+\emph{Situação 2 (escolhida).} Vale (i), pois $B_z(0)=0$. Para $|x|\ll a$, use $\dfrac{1}{1+w}\simeq 1-w$ com $w=\mp x/a$:
+\[
+\frac{1}{a\mp x}=\frac{1}{a}\cdot\frac{1}{1\mp x/a}\simeq\frac{1}{a}\Big(1\pm\frac{x}{a}\Big).
+\]
+Logo $B_z(x)\simeq\dfrac{\mu_0 i}{2\pi}\cdot\dfrac{2x}{a^2}=\dfrac{4\mu_0 i}{\pi d^2}\,x$, com $B_z'(0)=\dfrac{4\mu_0 i}{\pi d^2}>0$. Como a partícula desce ($s=-1$), $s\,B_z'(0)<0$: a condição (ii) é satisfeita.
+
+Exatamente, com $A(x)=-\dfrac{\mu_0 i}{2\pi}\ln(a^2-x^2)$ e a integral primeira, para uma partícula que parte de $x_0$ com $\dot x=0$ e $\dot y=-v$:
+\[
+\dot y(x)=-v+\frac{q\mu_0 i}{2\pi m}\ln\frac{a^2-x^2}{a^2-x_0^2}.
+\]
+Como $\dot x^2=v^2-\dot y^2\ge 0$ exige $\dot y\ge -v$, isto é $x^2\le x_0^2$, a partícula não se afasta do plano além de $|x_0|$: a amplitude é exatamente $|x_0|$, e a restauração não depende da linearização.
+
+\emph{Situação 3 (excluída).} Mesmas correntes, mas $s=+1$: $s\,B_z'(0)>0$, então $m\ddot x\simeq +q\,v\,B_z'(0)\,x$ diverge, e o plano médio é equilíbrio instável. A integral exata confirma: com $\dot y(x)=v+\dfrac{q\mu_0 i}{2\pi m}\ln\dfrac{a^2-x^2}{a^2-x_0^2}$, a partícula parte de $x_0$ (pequeno), afasta-se até $x_{\max}^2=a^2-(a^2-x_0^2)\,e^{-\kappa}$, onde $\dot y=-v$, e volta a $|x_0|$ sem cruzar o plano médio, com $\kappa=\dfrac{4\pi m v}{\mu_0 i q}$. Para $x_0\to 0$, $x_{\max}\simeq a\sqrt{1-e^{-\kappa}}$. No exemplo de (b), $\kappa=0{,}01$ e $x_{\max}\simeq 0{,}5$ mm, cerca de 50 vezes $x_0=10\,\mu$m.
+
+\emph{Interpretação.} Um portador positivo que desce equivale a uma corrente descendente. Correntes antiparalelas se repelem e paralelas se atraem: na Situação 2, a partícula descendo é repelida pelo fio mais próximo e volta ao plano; na Situação 3, subindo, é atraída pelo fio mais próximo e se afasta. Isso confirma as contas.
+
+\textbf{Conclusão do item (a):} somente a Situação 2 (correntes iguais e no mesmo sentido, partícula descendo).
+
+\textbf{b) Passo na Situação 2.} Para pequenas amplitudes ($|x|\ll a$ e $\omega|x|\ll v$), $\dot x^2\ll v^2$, logo $\dot y\simeq -v$ e $|\Delta y|=v\,\Delta t$. A equação de $x$ é $\ddot x\simeq -\omega^2 x$, com
+\[
+\omega^2=\frac{q v}{m}\,B_z'(0)=\frac{4\mu_0 i\,q\,v}{\pi m d^2},\qquad \omega=\frac{2}{d}\sqrt{\frac{\mu_0 i\,q\,v}{\pi m}},
+\]
+e $x(t)=A\cos(\omega t+\varphi)$. Os cruzamentos com $x=0$ estão separados por meio período, $\Delta t=\pi/\omega$. Logo
+\[
+p=\frac{\pi v}{\omega}=\frac{\pi d}{2}\sqrt{\frac{\pi m v}{\mu_0 i q}}.
+\]
+Aqui $p$ é a distância entre cruzamentos consecutivos (meio período), e não $2p$.
+
+\emph{Correção de segunda ordem} (da integral exata, com amplitude $A=|x_0|$):
+\[
+p\simeq\frac{\pi v}{\omega}\Big[1-\frac{3}{16}\Big(\frac{\omega A}{v}\Big)^2\Big].
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item \textbf{Unidades.} $\mu_0 i$ tem unidade $\mathrm{T\,m}$, com $\mathrm{T}=\mathrm{kg/(C\,s)}$. Então $\dfrac{\pi m v}{\mu_0 i q}$ tem unidade $\dfrac{\mathrm{kg\,m/s}}{\mathrm{T\,m\,C}}=1$, e $p$ é comprimento. Também $\dfrac{q v B_z'(0)}{m}$ tem unidade $\mathrm{s^{-2}}$, como deve ser $\omega^2$.
+\item \textbf{Casos limite e dependências.} Para $i\to 0$ ou $q\to 0$, $\omega\to 0$ e $p\to\infty$, pois não há restauração. Tem-se $p\propto d$, $p\propto\sqrt{v}$ e $p\propto\sqrt{m/(qi)}$. Em primeira ordem, $p$ não depende da amplitude (isocronismo).
+\item \textbf{Ordem de grandeza.} Tome $m/q=10^{-8}\ \mathrm{kg/C}$ (próximo da razão $m/q$ do próton), $i=10$ A, $d=1$ cm e $v=1$ m/s. Então $\mu_0 i/(\pi d)=4\cdot 10^{-4}$ T, $B_z'(0)=0{,}16$ T/m, $\omega=4000$ rad/s e $p=\pi/4000$ m $\approx 0{,}7854$ mm. Com $A=10\,\mu$m, $\omega A/v=0{,}04$, de modo que as hipóteses valem, e $\frac{3}{16}(0{,}04)^2=3{,}0\cdot 10^{-4}$.
+\item \textbf{Peso.} Com $g=9{,}8$ m/s$^2$, $g/(\omega v)\approx 2{,}5\cdot 10^{-3}$. O peso faz o passo crescer cerca de $\pi g/(2\omega v)\approx 0{,}4\,\%$ por meio período, efeito que se acumula porque a partícula acelera. Por isso ele é desprezível no valor aproximado de $p$, e a hipótese $|\vec v|\simeq v$ é consistente.
+\item \textbf{Integração numérica.} RK4 com o campo exato dos dois fios, sem peso, passo $2\cdot 10^{-8}$ s, $\dot y_0=-v$ e $x_0=10\,\mu$m: o espaçamento médio entre cruzamentos é $0{,}78516$ mm, com desvio relativo de $-3{,}0\cdot 10^{-4}$, igual à correção de segunda ordem acima. O máximo de $|x|$ é $x_0$, o que confirma a amplitude exata.
+\end{itemize}
+
+\textbf{Conclusão.} (a) Somente a Situação 2 (correntes iguais e no mesmo sentido, partícula descendo). (b) $p\approx\dfrac{\pi d}{2}\sqrt{\dfrac{\pi m v}{\mu_0 i q}}=\dfrac{\pi v}{\omega}$, com $\omega=\dfrac{2}{d}\sqrt{\dfrac{\mu_0 i q v}{\pi m}}$.
+
+ANSWER: (a) apenas a Situação 2 (correntes iguais e no mesmo sentido, partícula descendo); (b) $p\approx\dfrac{\pi d}{2}\sqrt{\dfrac{\pi m v}{\mu_0 i q}}$%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 1: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) v = 250 m/s (900 km/h), obtido com y = 1360 m em x = 2000 m e y(x) = x - 10x$^2$/v$^2$ para $\theta$ = 45$^\circ$. A subida é confirmada: v\_y $\approx$ 63,6 m/s > 0 e apogeu em x = 3125 m.\newline%
+\newline%
+b) T = 4000 K, obtido de T = T0$\cdot$(v/v0)$^2$ = 2560$\cdot$(250/200)$^2$.\newline%
+\newline%
+c) W = 864 kJ realizado pelos gases (expansão isobárica), obtido de Q = m$\cdot$c\_p$\cdot$$\Delta$T = 2880 kJ e W = Q - $\Delta$U = 2880 - 2016 = 864 kJ.\newline%
+\newline%
+Resumo das respostas: (a) 250 m/s; (b) 4000 K; (c) 864 kJ (trabalho realizado pelos gases, positivo). A questão não é de múltipla escolha.\par %
+Respostas finais: a) v = 250 m/s; b) T = 4000 K; c) W = 864 kJ (trabalho realizado pelos gases, positivo). Coincidem item por item com a referência. Reconferi no PDF original e com python3: altura do alvo em y = 1360 m, apogeu do projeto em (2000 m, 1000 m), apogeu da nova trajetória em x = 3125 m e H' = 1562,5 m, T = 2560$\cdot$(1,25)$^2$ = 4000 K, Q = 2880 kJ, c\_v = 0,70 kJ/(kg$\cdot$K), W = 864 kJ, W/Q = 0,30. Nenhuma conta está errada e a dimensional confere.\newline%
+\newline%
+Armadilhas: tratadas. Altura absoluta (y = 1000 + 360 = 1360 m, não 360 m). Unidades (km$\to$m, kJ). Equação com tan45$^\circ$ e cos$^2$45$^\circ$. Raiz única pela linearidade em 1/v$^2$, sem inventar segunda raiz. T $\propto$ v$^2$ usado em kelvin, com nota sobre Celsius. Q com c\_p, não c\_v. W = Q - $\Delta$U. Convenção de sinal declarada. Mudança do apogeu. Consistência do projeto verificada (H = 1000 m, x\_V = 2000 m).\newline%
+\newline%
+Lacunas, todas menores: sinal de v\_y escolhido sem justificação direta; hipóteses sem a menção ao fim da propulsão/modelo de partícula; Mayer usada sem enunciar a relação por unidade de massa; verificação de $\gamma$ fraca. Nenhuma crítica nem grave.\newline%
+\newline%
+Nota 9,0: resposta correta, justificada e com verificações reais, publicável como gabarito comentado após os ajustes acima. Não chega a 9,5 por causa do sinal de v\_y e das hipóteses implícitas.%
+\begin{itemize}%
+\item%
+{[}minor{]} Sinal de v\_y não justificado no passo da verificação. Ao escrever v\_y$^2$ = 4050 e depois v\_y = $\surd$4050 $\approx$ 64 m/s > 0, o candidato escolhe a raiz positiva sem dizer por quê; v\_y$^2$ não determina o sinal. A justificação correta (x = 2000 m < x\_V = 3125 m, ou seja, o ápice ainda não foi atingido) aparece só depois, como 'coerentemente'. Deveria: explicitar que a raiz positiva decorre de o foguete ainda estar antes do ápice (x = 2000 < x\_V = 3125), ou calcular diretamente v\_y = v$\cdot$sen45$^\circ$ - g$\cdot$t com t = x/(v$\cdot$cos45$^\circ$) $\approx$ 11,3 s (v\_y $\approx$ 63,6 m/s). Também convém dizer que a condição de subida equivale a v > 200 m/s, e não usar o símbolo $\Delta$y sem definição (é y - y$_{0}$ = 1360 m).%
+\item%
+{[}minor{]} Hipóteses incompletas. O candidato diz que o foguete está 'sujeito apenas ao peso', mas não declara que, após deixar o lançador, a propulsão cessa e o foguete é tratado como partícula de massa constante (modelo de projétil). Deveria: acrescentar essa frase na seção de modelo.%
+\item%
+{[}minor{]} Relação de Mayer usada sem justificação explícita no item (c). A passagem W = p$\Delta$V = nR$\Delta$T = m(c\_p - c\_v)$\Delta$T pressupõe R/M = c\_p - c\_v por unidade de massa, e que $\Delta$U = m$\cdot$c\_v$\cdot$$\Delta$T para gás ideal (energia interna função só de T). Nenhum dos dois é enunciado, e o candidato não diz que M não é necessária. Deveria: escrever uma linha com essas duas relações e a observação de que M não é usada numericamente.%
+\item%
+{[}minor{]} A verificação $\gamma$ = c\_p/c\_v $\approx$ 1,43 'compatível com gás ideal (1 < $\gamma$ < 5/3)' é fraca: qualquer gás ideal clássico passa nesse intervalo, então não discrimina nada e não confirma a resposta. Deveria: remover, ou apresentá{-}la apenas como plausibilidade (valor próximo de 1,40 de um gás diatômico).%
+\end{itemize}%
+\subsection*{Questão 2: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Reações (pinos em A e B, pesos desprezados): R\_A = 200 kN, vertical, para cima; R\_B = 100 kN, vertical, para baixo. As componentes horizontais são nulas (A\_x = B\_x = 0).\newline%
+\newline%
+b) Esforços normais (tração positiva):\newline%
+{-} CD = 75 kN, compressão\newline%
+{-} CF = 125 kN, tração\newline%
+{-} DF = 200 kN, compressão\newline%
+{-} AD = 200 kN, compressão\newline%
+{-} AE = 0 (força nula)\newline%
+{-} DE = 75 kN, compressão\newline%
+{-} BE = 100 kN, tração\newline%
+{-} EF = 125 kN, tração\newline%
+\newline%
+c) A barra AE não carrega esforço sob a carga vertical P, mas é essencial para a estabilidade: triangula o quadrilátero ADEB, evitando que a estrutura se deforme como mecanismo (paralelogramo). Ela trabalha apenas quando há componente horizontal de carga, como vento ou balanço do guindaste.\par %
+Verifiquei a figura e o enunciado: AB = 3 m (as duas cotas de 3 m são CA e AB), as barras são as 8 descritas, e P = 100 kN desce em C. Recalculei o sistema 12$\times$12 de forma exata com um script em Python. O posto é 12 e a solução coincide com a do candidato em todos os itens: R\_A = 200 kN para cima; R\_B = 100 kN para baixo; sem componentes horizontais; CD = -75 kN (compressão); CF = 125 kN (tração); DF = -200 kN (compressão); AD = -200 kN (compressão); AE = 0; DE = -75 kN (compressão); BE = 100 kN (tração); EF = 125 kN (tração). Também confirmei $\Sigma$M\_E = 0 e $\Sigma$M\_A = 0. No item c, o candidato explica a função de AE corretamente: sem a barra a estrutura é mecanismo (posto 11, sistema inconsistente com carga horizontal), e com ela o esforço horizontal H gera N\_AE = 5H/3 (exemplo: H = 10 kN dá 16,7 kN, tração), como também confere o script. A resolução cobre as armadilhas do gabarito: geometria (AB = 3 m), sentido da reação em B, Bx = 0, insuficiência da estática global para as 4 reações (resolvida com corte CDEF), força nula em AE, convenção de tração e compressão, CF e EF = 125 kN, contagem de isostaticidade, convenção de momentos, e as barras mais solicitadas. Não encontrei erro substantivo. Os problemas são de apresentação e rigor menores: termo de AE omitido nas equações do nó E, nó B não mostrado na conferência, símbolo de apoio não justificado, ordem do método dos nós não enunciada e AB tratado como barra no mecanismo. A nota fica em 9: é um gabarito que um professor publicaria com pequenos ajustes de texto."%
+\begin{itemize}%
+\item%
+{[}minor{]} Nas equações de equilíbrio do nó E ($\Sigma$F\_y e $\Sigma$F\_x) o termo da barra AE, -(4/5)N\_AE e -(3/5)N\_AE, foi omitido sem aviso. O resultado é correto só porque N\_AE = 0 já foi obtido antes. Deveria constar a substituição explícita ("com N\_AE = 0") ou o termo deveria aparecer nas equações.%
+\item%
+{[}minor{]} A conferência diz "Os seis nós estão em equilíbrio", mas o nó B não aparece verificado. Só C, F, E, D e A foram checados. O nó B fecha por $\Sigma$F\_y = -100 + 100 = 0 (reação e BE), o que deveria ser escrito. Ou então dizer que B segue do equilíbrio global.%
+\item%
+{[}minor{]} O tipo de apoio (articulado, com 2 reações) é afirmado sem ler o símbolo da figura (triângulo hachurado = pino). A justificativa é necessária porque a contagem 12 = 2j depende dela: com rolete em B, a contagem seria 11 incógnitas e o argumento de isostaticidade mudaria. O candidato não discute esse ponto.%
+\item%
+{[}minor{]} A ordem do método dos nós (C, depois F, E, D e A, sempre com no máximo 2 incógnitas) é válida, mas não é enunciada. Uma frase justificando a escolha deixaria o método mais rigoroso, como exige o gabarito comentado.%
+\item%
+{[}minor{]} Na análise de mecanismo do item c, o segmento AB aparece como barra do paralelogramo ADEB ("DE e AB formam um paralelogramo"), mas AB não é uma das 8 barras. É o trecho de solo entre dois apoios fixos. A contagem m + r = 7 + 4 = 11 usa esse solo implicitamente. Vale dizer isso explicitamente para não confundir o leitor.%
+\item%
+{[}minor{]} Não há comentário sobre flambagem das barras comprimidas (CD, DE, DF, AD), que são as de maior esforço em compressão. O enunciado não pede isso, então é só uma observação de completude opcional.%
+\end{itemize}%
+\subsection*{Questão 3: nota 9,0 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Reação no apoio da esquerda ao amanhecer: R = 300 N, vertical, para cima, sem componente horizontal. A haste tem tração inicial T$_{0}$ = 300 N.\newline%
+\newline%
+b) Variação de temperatura até o rompimento da haste: $\Delta$T = +100 $^\circ$C (equivale a +100 K). A condição é 1 + $\alpha$$\Delta$T = 1,001, com $\alpha$ = 10$^{-}$$^{5}$ $^\circ$C$^{-}$$^{1}$.\newline%
+\newline%
+c) Rompimento da haste em 37,5\% do dia, cerca de 1,0$\cdot$10$^{4}$ s (aproximadamente 2,8 h) após o amanhecer, no ramo crescente da irradiância.\par %
+Respostas finais: idênticas à referência e confirmadas por recálculo. (a) N = 300 N, vertical, para cima, sem componente horizontal (T$_{0}$ = 300 N). (b) $\Delta$T = +100 $^\circ$C, com 1 + $\alpha$$\Delta$T = 1,001. (c) Rompimento em 37,5\% do dia (t = 3$\cdot$10$^{4}$ s, após 10$^{4}$ s de aquecimento, no ramo crescente). Conferi no enunciado original as dimensões, a Figura 1 (pino à esquerda, haste vertical à direita) e a Figura 2 (pico de 4000 W/m$^2$ em 50\%). Recalculei: m = 50 kg, W = 600 N, A = 0,5 m$^2$, Q = 5$\cdot$10$^{6}$ J, (t - t$_{0}$)$^2$ = 10$^{8}$ s$^2$, energia até o pico = 2$\cdot$10$^{7}$ J > Q. Tudo confere.\newline%
+\newline%
+Pontos fortes: a tração variável T = T$_{0}$(1 + $\alpha$$\Delta$T) é derivada corretamente, com o braço do peso L'/2 e o braço da argola fixo em L. Os itens da lista de armadilhas foram tratados: área de 0,5 m$^2$ apenas na face superior, conversões de cm e de cal/g para J/kg (c = 1000 J/(kg$\cdot$$^\circ$C)), g = 12 m/s$^2$, massa constante, expansão linear e não volumétrica, fator 1,001, força da argola vertical, ramo crescente com checagem de energia, e distinção entre horário em \% e tempo decorrido. As hipóteses estão listadas, e as conferências (deslizamento de 2 mm, independência de m, W e L, 0,2\% na área, unidades) são corretas.\newline%
+\newline%
+Pela exigência de nota $\geq$ 9 para gabarito comentado, a resolução chega lá. Os problemas restantes são de justificativa e de acabamento, sem erro de conta nem de conceito. Nota 9,0."%
+\begin{itemize}%
+\item%
+{[}minor{]} Parte a): a redação "N no pino (para cima, por H3)" atribui o sentido vertical à H3, mas H3 diz que a articulação pode reagir em qualquer direção. O sentido deveria ser adotado como convenção e confirmado pelo sinal do resultado (N = W - T$_{0}$ = +300 N). O resultado está certo; só a justificativa está mal apoiada.%
+\item%
+{[}minor{]} H4: a afirmação de que o contato argola{-}objeto "se faz por faces horizontais" é uma leitura da figura que não é justificada no texto. Deveria ser declarada como idealização: argola retangular sem atrito, com reação normal às faces horizontais, portanto vertical. É isso que sustenta a componente horizontal nula no pino.%
+\item%
+{[}minor{]} H2 (temperatura uniforme) é declarada sem justificativa física. Uma frase bastaria, por exemplo: condução rápida no metal e absorção em face fina, de modo que o gradiente térmico é desprezível. Hipóteses não justificadas são exatamente o tipo de falha que se busca.%
+\item%
+{[}minor{]} Parte c), área: a variação de área (2$\alpha$$\Delta$T $\approx$ 0,2\%) é calculada, mas o efeito sobre o resultado é apenas afirmado como "desprezível". Faltaria propagar: Q varia 0,2\%, logo $\Delta$t varia $\approx$ 0,1\% de 10$^{4}$ s $\approx$ 10 s, ou seja $\approx$ 0,01 ponto percentual do dia. Uma linha fecharia o argumento.%
+\item%
+{[}minor{]} Parte c), conferência: a expressão "P? = $\frac12$ (2000 W/m$^2$)$\cdot$(0,5 m$^2$) = 500 W" traz um $\frac12$ sem explicação. Deveria dizer que é a média de uma rampa linear de 0 a 2000 W/m$^2$. O número está certo.%
+\item%
+{[}minor{]} A conversão 1\% do dia = 800 s nunca é explicitada. O candidato usa 8$\cdot$10$^{4}$ s e 0,25$\cdot$8$\cdot$10$^{4}$ = 2$\cdot$10$^{4}$ s diretamente, o que está correto. Um gabarito comentado deveria mostrar a escala de 800 s para o leitor conferir 37,5\% ? 3$\cdot$10$^{4}$ s.%
+\end{itemize}%
+\subsection*{Questão 4: nota 9,0 (aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Imediatamente após o fechamento de S: V\_AB = 900 V; corrente do gerador e do fusível I = 50 A; Rec1 recebe I$_{1}$ = 50 A (operando como receptor); Rec2 tem I$_{2}$ = 0 A.\newline%
+\newline%
+b) Sim, o fusível rompe. Com I/I\_FUSÍVEL = 50/20 = 2,5 (>1), a corrente é constante e a curva da Figura 2 dá t $\approx$ 1,5 s (faixa de leitura $\approx$ 1,4--1,6 s). Esse limite de 50 ms não se aplica, porque não há curto{-}circuito nesta condição.\newline%
+\newline%
+c) Não, o fusível não protege a fonte. Com o curto A--B, o fusível conduz I = 1000/2 = 500 A (razão 25; os receptores alimentam o curto com 1800 A no total, sem passar pelo fusível). O tempo de ruptura é o patamar de 0,1 s = 100 ms, que é maior que os 50 ms tolerados pelo gerador.\par %
+Respostas finais do candidato e da referência coincidem nos três itens, e confirmei cada um por conta própria. Verifiquei a polaridade na renderização ampliada da Figura 1: as três fontes têm a placa longa voltada para A. (a) V\_AB = 900 V, I = 50 A, I1 = 50 A (consome), I2 = 0; a conta com KCL e o balanço (45 kW) conferem. (b) Razão 2,5; a reta da Figura 2 cruza x = 2,5 em \textasciitilde{}1,49--1,54 s, logo acima da grade de 1,5 s, e rompe em $\approx$ 1,5 s; o limite de 50 ms não se aplica. (c) Com o curto A--B: V\_AB = 0, I\_fusível = 500 A (razão 25), I1 = -850 A, I2 = -450 A, corrente do curto 1800 A, que não passa pelo fusível. A extrapolação do patamar de 0,1 s (100 ms > 50 ms) leva a 'não protege'; a hipótese H está declarada. A resolução trata praticamente todas as armadilhas da referência: polaridade, sinal da equação dos receptores, Rec2 em vazio, fusível vendo só a corrente do gerador, corrente do curto fora do fusível, receptores fornecendo energia em (c), fcems mantidas em (c), comparação correta de (b) com 50 ms, escala linear, reposição do fusível, ausência de transitório e unidades. Os problemas restantes são de polimento: justificativa circular da polaridade, balanço incompleto em (c), leitura do patamar pelo rótulo, e uma ressalva de I$^2$t mais longa do que o necessário. Nenhum altera a resposta. A nota fica em 9: é um gabarito comentado publicável, com ajustes de texto."%
+\begin{itemize}%
+\item%
+{[}minor{]} A justificativa da polaridade é circular. O texto diz que Rec1 e Rec2 absorvem energia 'como o enunciado afirma ao chamá{-}los de receptores'. O nome não determina o sentido do fluxo de energia; isso sai da solução. O correto é afirmar que, com I1 = 50 A > 0 e I2 = 0 entrando pelo polo +, Rec1 consome energia, e que essa classificação se inverte em (c). Verifiquei na renderização ampliada que as três fontes têm a placa longa voltada para A, então a convenção está correta; só a frase de justificativa precisa ser reescrita.%
+\item%
+{[}minor{]} O balanço de potência de (c) cobre apenas o gerador (EI = 500 kW, rI$^2$ = 500 kW, UI = 0). Um balanço completo confirmaria a distribuição de 1800 A e seria mais convincente. As fcems de Rec1 e Rec2 fornecem 850$\cdot$850 = 722,5 kW e 900$\cdot$450 = 405 kW, todos dissipados nas resistências internas, e o total de 500 + 722,5 + 405 = 1627,5 kW fecha com a potência dissipada. Vale acrescentar.%
+\item%
+{[}minor{]} A leitura do patamar como 'exatamente 0,1 s' usa o rótulo 10\^{}{-}1. Na grade linear de 0,5 s, a horizontal do patamar fica um pouco abaixo de 0,1 s, mais perto de 0,13--0,14 s. Isso não muda a conclusão, porque nos dois casos 100 ms (ou \textasciitilde{}140 ms) > 50 ms. Mas a resolução deveria declarar que usa o rótulo e que a incerteza de leitura do patamar não altera a conclusão.%
+\item%
+{[}minor{]} A ressalva de (c) sobre I$^2$t constante (t $\approx$ 15 ms com t $\propto$ 1/x$^2$) é matematicamente correta (1,5/100 = 0,015 s), e a hipótese H está bem declarada. Mas a especulação enfraquece a resposta definitiva, que o enunciado pede a partir da característica fornecida. Ela deveria ficar mais curta: a conclusão 'não protege' vale para a curva dada, que termina em 5, e uma curva do fabricante para x > 5 é a única forma de resolver o caso real.%
+\item%
+{[}minor{]} Em (b), a afirmação 'para I $\leq$ I\_FUSÍVEL o fusível não rompe' vem da definição de corrente nominal e não da figura, que não traz pontos para x < 1. A inferência é razoável, mas deveria ser apresentada como tal. Também falta declarar que se assume o fusível frio em t = 0+, condição implícita na leitura da curva.%
+\end{itemize}%
+\subsection*{Questão 5: nota 9,0 (aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) T\_F = 450 K (177 $^\circ$C). Derivação: W = 80 HP x 0,75 = 60 kW; $\eta$\_real = 60/150 = 40\%; $\eta$\_real = 0,8$\cdot$$\eta$\_Carnot, logo $\eta$\_Carnot = 50\% = 1 {-} T\_F/900, donde T\_F = 450 K.\newline%
+\newline%
+b) Q\_F = 150 {-} 60 = 90 kW (taxa de calor rejeitada à fonte fria de 450 K). Consistente com a segunda lei: 90 kW $\geq$ 75 kW (mínimo reversível).\newline%
+\newline%
+c) Não realístico. Demanda de 350 residências = 84 000 kWh/mês ÷ 720 h $\approx$ 116,7 kW médios. Calor para a água: (50/60 kg/s)$\cdot$4000$\cdot$10 $\approx$ 33,3 kW, que precisa sair pela fonte de 300 K. Na máquina B, Q\_450 = 45 kW, então W = 150 {-} 45 {-} Q\_300. Limites: W $\leq$ 100 kW (Carnot 900 K / 300 K, limite absoluto), W $\leq$ 85 kW sem a água (Clausius), e W = 71,7 kW com a água, o que atende no máximo 215 residências. Logo a potência é insuficiente em qualquer cenário. Além disso, aquecer água em +10 K com uma fonte a 300 K exige água a $\leq$ 290 K e troca quase reversível. Não há alternativas de múltipla escolha; a resposta é discursiva.\par %
+Respostas finais: a) 450 K, b) 90 kW e c) não realistas. Coincidem item a item com a referência, e confirmei todas as contas em Python com frações exatas. Não há divergência de resposta.\newline%
+\newline%
+Conferências: $\eta$\_A = 60/150 = 0,40 e $\eta$\_C = 0,50, logo T\_F = 450 K. Q\_F = 90 kW, com mínimo reversível de 75 kW e $\sigma$ = 100/3 W/K. Em B: Q\_450 = 45 kW; Clausius dá Q\_300 $\geq$ 20 kW e W $\leq$ 85 kW; limite absoluto de 100 kW (300 residências). A demanda é 350/3 $\approx$ 116,7 kW, e $\eta$ necessária $\approx$ 77,8\% > 2/3. Água: 5/6 kg/s $\times$ 4000 $\times$ 10 = 100/3 kW; W = 215/3 kW, o que dá 215 residências; Clausius com água dá -2/45, ou seja $\sigma$ $\approx$ 44 W/K. A análise de trocador também confere: com NTU = 10, T\_e = 290,0 K.\newline%
+\newline%
+Ponto em que a resolução é mais precisa que a referência: a referência diz que a água exige troca "quase reversível". Com área finita, basta T\_e < 290 K - $\Delta$T\_p. Só a saída exatamente a 300 K exige área infinita. O candidato está certo.\newline%
+\newline%
+Cobertura de armadilhas: HP$\to$kW (3/4), 80\% sobre Carnot, Q\_F $\neq$ 75 kW, energia vs potência, conversão de vazão, água como parte de Q\_300, Clausius com temperaturas absolutas, Carnot 900/450 não usado isoladamente, 215 e não 216, média vs pico. Todas tratadas. Falta apenas a conferência de $\eta$\_B com água.\newline%
+\newline%
+Justificativa: a conclusão de c) é robusta, vinda da 1ª lei (balanço), da 2ª lei (Clausius e Carnot) e de um limite absoluto independente da repartição. Os problemas listados são de redação e de fechamento (tightness, nomenclatura, hedge sobre a água), não de conteúdo. Com esses ajustes, a resolução é publicável como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} No item c), o veredito sobre a água é hedged ("não é garantido"), enquanto o enunciado pede argumento conclusivo. A análise em si está certa: com área finita, T\_e = 300 - 10/(1 - e\^{}(-NTU)) < 290 K, e o enunciado não dá T\_e. O problema é só de formulação. Sugestão: dizer explicitamente "viável apenas se T\_e < 290 K - $\Delta$T\_p, dado ausente e irrelevante para o veredito, porque a potência já inviabiliza a proposta".%
+\item%
+{[}minor{]} O valor 71,7 kW é chamado de "limite superior, não um máximo reversível" sem mostrar que é atingível. Ele é atingível com ciclo irreversível: dissipar 13,3 kW de trabalho como atrito a 300 K leva Q\_300 a 33,3 kW e W a 71,7 kW. Uma frase bastaria para fechar a tightness do limite.%
+\item%
+{[}minor{]} O termo "pinch" é usado para $\Delta$T\_p = 300 - T\_s, que é a diferença terminal na saída da água. Em trocadores, "pinch" tem sentido próprio. Sugestão: chamar de "diferença terminal (approach)".%
+\item%
+{[}minor{]} A frase "a 2ª lei não impõe restrição extra" aparece logo antes da exigência T\_e < 290 K. Essa exigência vem da transferência de calor com área finita e reservatório isotérmico (lei de resfriamento), não da 2ª lei. A ressalva da 2ª lei ($\sigma$ $\geq$ 0 via ln x $\geq$ 1 - 1/x) está correta, mas a origem da restrição deveria estar nomeada com clareza.%
+\item%
+{[}minor{]} Não há verificação explícita de consistência para B com água: $\eta$\_B = 71,7/150 $\approx$ 47,8\% < 2/3. A referência faz essa conferência. Não é obrigatório, mas reforçaria o item c). A geração de entropia de B ($\approx$ 44 W/K) está calculada corretamente.%
+\end{itemize}%
+\subsection*{Questão 6: nota 8,5 (não aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) v = 68 m/s (v\_som/5).\newline%
+b) R = 5$\surd$3 m $\approx$ 8,66 m (sen $\theta$ = R/L = $\surd$3/2, $\theta$ = 60$^\circ$ com a vertical).\newline%
+c) T $\approx$ 1,07 $\times$ 10$^3$ N ($\approx$ 1068 N), de T sen $\theta$ = m v$^2$/R.\newline%
+d) V\_submerso $\approx$ 5,5 $\times$ 10$^{-}$$^2$ m$^3$ ($\approx$ 55 L), de E = mg + T cos $\theta$ = $\rho$ g V, com E $\approx$ 551 N.\newline%
+\newline%
+Não há alternativas de múltipla escolha.\par %
+Confiro as quatro respostas com contas independentes (script em python3 na pasta de trabalho). Todas batem com a referência: a) v = c/5 = 68 m/s; b) R = 5$\surd$3 $\approx$ 8,66 m (D = |BO| = 20 m, R$^2$ = 75); c) T = (8/5)$\cdot$34$^2$/$\surd$3 $\approx$ 1068 N; d) V\_sub = 4774$\surd$3/(1,5$\cdot$10$^{5}$) $\approx$ 0,0551 m$^3$ $\approx$ 55 L. O sentido anti{-}horário é confirmado (f\_A > f0 exige aproximação em A) e a vista original da prova também confirma a geometria (O à direita de A na horizontal, B no topo, fio ao fundo sob o centro). Não há erro de conta, de sinal ou de unidade. O Doppler de fonte móvel com observador parado está correto, e a derivação por intervalo entre emissões é rigorosa. Todas as armadilhas da lista de referência estão tratadas: sentido de rotação, fórmula correta, linha de visada inclinada em B, o papel de d (geometria, não tempo de propagação), ar em vez de água, R = L$\cdot$sen $\theta$, T sen $\theta$ = mv$^2$/R, E = mg + T cos $\theta$ e as premissas. A verificação do fixador em C (interseção de retas por C) é correta. Nenhum problema crítico ou grave. Os descontos são de clareza e rigor nas hipóteses: a afirmação falsa 'v?c (verificado)', referências adiantadas, a hipótese f0 ? f\_rot sem quantificação, a premissa do motor incompleta e a falta de ressalva sobre a figura fora de escala. Nota 8,5: é quase um gabarito publicável; corrigindo as hipóteses, passaria de 9. Observação sobre a referência: ela diz que a fórmula com velocidade instantânea é 'exata', o que é impreciso. O candidato foi mais correto ao tratá{-}la como aproximação válida para T0 pequeno."%
+\begin{itemize}%
+\item%
+{[}minor{]} Hipóteses: 'Velocidades não relativísticas: v?c (verificado: v=c/5)' é afirmação falsa e autocontraditória. 0,2c não é muito menor que c, e aqui c é a velocidade do som, não da luz, então o argumento relativístico não se aplica. O que vale é v < v\_som (fonte subsônica) com meio em repouso. Deveria ser corrigido para essa formulação; a resolução já verifica a subsonicidade depois, em (a).%
+\item%
+{[}minor{]} Referências adiantadas: a seção Doppler cita '10 m em A, 20 m em B' antes de (b) provar D = 20 m, e a hipótese 'f\_rot $\approx$ 1,25 Hz' cita valores que só aparecem depois em (a) e (b). Deveria indicar que o valor será obtido adiante, ou apresentar o critério sem números até a seção correspondente.%
+\item%
+{[}minor{]} Hipótese f0 ? f\_rot não quantificada. O que importa é T0 pequeno frente à escala de variação da geometria. Estimativa própria: a correção relativa de 1ª ordem em B é da ordem de 0,4/f0 (com g'' $\approx$ -289 m/s$^2$ e g'/c = 0,1). Logo basta f0 ? 1 Hz, o que é compatível com som audível. A resolução deveria afirmar esse critério com a estimativa, em vez de só 'f0 ? 1,25 Hz'.%
+\item%
+{[}minor{]} Hipótese sobre o motor incompleta. A resolução diz que a força do motor não tem componente tangencial líquida, mas a conclusão 'a única força horizontal é a tração' exige também que o empuxo do motor não tenha componente radial e que a água só exerça empuxo vertical e arrasto (desprezado). Deveria declarar essas premissas explicitamente.%
+\item%
+{[}minor{]} A figura não está em escala e a resolução não diz isso. Na vista superior, o raio aparente do círculo é cerca de 0,4$\cdot$d, enquanto os dados dão R $\approx$ 0,87$\cdot$d. Na vista lateral, o ângulo do fio parece \textasciitilde{}30$^\circ$ com a vertical, e os dados dão 60$^\circ$. A resolução cita o raio desenhado como sugestão ('como sugere o raio desenhado') sem ressalva. Deveria dizer que a figura é esquemática e que a geometria vem dos dados.%
+\end{itemize}%
+\subsection*{Questão 7: nota 8,5 (não aprovada, rodada 2 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Distância na aproximação máxima: 0,45 m (ponto de retorno de 0,90/r + 2,0$\cdot$r = 2,90 J, com r = 1,0 m descartado).\newline%
+b) Razão E\_el(mola) / variação da energia potencial gravitacional de P2 $\approx$ 1,6 ($\approx$ 1,61). A mola está comprimida e precisa equilibrar a repulsão de 4,44 N mais a componente do peso de P2 (2,0 N): k$\cdot$x = 6,44 N; a razão vale 6,44/4,0 e não depende de k.\newline%
+c) Após a retirada da mola (Figura 3), P2 atinge o vértice C com velocidade de módulo $\surd$2 m/s $\approx$ 1,4 m/s, horizontal, no sentido de C. P2 percorre 0,15 m; P1 percorre o mesmo módulo de deslocamento e não chega a B. Energia de Coulomb: 2,0 J $\to$ 1,2 J, com $\Delta$K = 0,80 J = 2$\cdot$($\frac12$$\cdot$0,4$\cdot$v$^2$).\par %
+Conferi o enunciado no PDF original (página 7). BC é o lado inclinado de 30$^\circ$ (ângulo externo 360$^\circ$/12), a mola liga P2 ao anteparo em C, e a Figura 3 mostra BC horizontal no topo, com B à esquerda e C à direita. Refiz as três respostas com Fraction exato:\newline%
+\newline%
+(a) d\_min = 0,45 m. Com U(x) = -2x + 0,9/(1-x), as raízes de U(x) = U(0) são x = 0 e x = 0,55 m, ou seja r = 0,45 m. A expressão E\_c = x(1,1-2x)/(1-x) está correta. O equilíbrio (r $\approx$ 0,67 m) não é a aproximação máxima, como o candidato afirma. Correto.\newline%
+\newline%
+(b) E\_el/|$\Delta$U\_g| = F/4 = (58/9)/4 = 29/18 $\approx$ 1,61. A razão não depende de k: testei k = 10$^3$, 10$^{6}$ e 10$^{9}$ e obtive o mesmo valor. A força elástica inclui a repulsão (40/9 N) e o peso componente (2 N), e a altura de P2 cai x\_s$\cdot$sen30$^\circ$. Correto.\newline%
+\newline%
+(c) v = $\surd$2 m/s $\approx$ 1,41 m/s. P2 precisa andar 0,15 m até C e P1 precisa andar 0,55 m até B, então C é atingido primeiro. Com CM fixo em 0,775 m, quando P2 chega a C a separação é 0,75 m. $\Delta$K = 0,9/0,45 - 0,9/0,75 = 0,8 J = 2$\cdot$$\frac12$$\cdot$m$\cdot$v$^2$, logo v$^2$ = 2. Correto.\newline%
+\newline%
+Armadilhas: o candidato trata a inclinação de 30$^\circ$, deduz BC = 1,15 m, distingue aproximação máxima de equilíbrio, usa 0,9 N$\cdot$m$^2$ e inclui o peso componente na força elástica de (b). Também justifica a interpretação de (c) (mola presa impede P2 de chegar a C; a análise ocorre na Figura 3), usa a energia cinética das duas partículas e checa o CM. As lacunas são de rigor expositivo, sem erro de resultado: a justificativa quase estática de (b) é frouxa e a altura de P1 não é derivada explicitamente. Nota 8,5: muito boa, mas abaixo de 9 por causa dessas lacunas de justificativa."%
+\begin{itemize}%
+\item%
+{[}minor{]} Item (b): a justificativa do regime quase estático é frouxa. A afirmação de que P2 tem 'amplitude desprezível' é feita sem estimativa; a amplitude forçada é da ordem de $\Delta$F/k vezes ($\omega$\_forçamento/$\omega$\_mola)$^2$, o que deveria ser mostrado. O comentário final diz que a oscilação de P2 e 'a variação de r' são 'de ordem x\_s$\to$0'. Isso está errado para r: a variação de r vem do movimento de P1, não de x\_s. O argumento correto é a separação de escalas de tempo ($\surd$(k/m) >> taxa de variação de r), que o texto cita, mas o comentário final o confunde. Deveria ser reescrito.%
+\item%
+{[}minor{]} Item (a): a variação da energia potencial gravitacional de P1 aparece já pronta como U(x) = -2x, sem derivação explícita. Falta escrever $\Delta$h = x$\cdot$sen30$^\circ$ = x/2 e mg$\cdot$sen30$^\circ$$\cdot$x = 2x. É o ponto que a referência destaca como armadilha. A conta está certa, mas a justificativa fica implícita.%
+\item%
+{[}minor{]} Item (c): não há menção a que, após C, a superfície cai (dodecágono convexo) e P2 pode deixar o contato como projétil. A pergunta pede só a velocidade ao atingir o vértice, então o resultado não é afetado, mas uma frase de contexto melhoraria a resposta.%
+\item%
+{[}minor{]} Pequenos ajustes de texto: 'ordem de grandeza: a mola armazena energia da mesma ordem da energia gravitacional' não acrescenta nada, pois a razão já foi calculada. A aproximação F $\approx$ 6,4 N é arredondada antes de usar 58/9 exato, o que não altera o resultado.%
+\end{itemize}%
+\subsection*{Questão 8: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Afastando{-}se da rede. A contagem de máximos cai de 7 para 5 e depois para 3. Isso só ocorre se o anteparo se afastar, porque as ordens saem pelas bordas quando y\_m = D$\cdot$tg $\theta$\_m cresce com D.\newline%
+\newline%
+b) D(t$_{1}$) = 0,2$\cdot$$\surd$7 $\approx$ 0,53 m (distância perpendicular rede--anteparo, saída das ordens $\pm$3).\newline%
+\newline%
+c) |v| = (0,6$\cdot$$\surd$3 - 0,2$\cdot$$\surd$7)/2 $\approx$ 0,25 m/s (valor exato 0,255 m/s; com a tabela, 0,254 m/s).\newline%
+\newline%
+d) $\Delta$x = 0,6$\cdot$$\surd$15 - 0,2$\cdot$$\surd$7 $\approx$ 1,79 m ($\approx$ 1,8 m), correspondente à saída das ordens $\pm$1. O tempo decorrido é de cerca de 7 s após t$_{1}$.\newline%
+\newline%
+Questão discursiva, sem alternativas.\par %
+Comparação item a item. (a) Ambas: afastando{-}se da rede. (b) Ambas: D(t$_{1}$) = 0,2$\surd$7 $\approx$ 0,53 m. (c) Ambas: v = (0,6$\surd$3 - 0,2$\surd$7)/2 $\approx$ 0,255 m/s (0,254 m/s com a tabela). (d) Ambas: $\Delta$s = 0,6$\surd$15 - 0,2$\surd$7 $\approx$ 1,79 m. Não há divergência de resposta. Refiz as contas em python3 e varri a contagem de máximos em função de D. Obtive d/$\lambda$ = 4, tg $\theta$$_{1}$ = 1/$\surd$15, tg $\theta$$_{2}$ = 1/$\surd$3, tg $\theta$$_{3}$ = 3/$\surd$7 e transições 7$\to$5 em D = 0,5292 m, 5$\to$3 em 1,0392 m e 3$\to$1 em 2,3238 m. A resolução do candidato confere com isso e com a referência. As armadilhas foram tratadas: unidade da rede (2500 nm, d/$\lambda$ = 4), ordem $\pm$4 rasante descartada (7 máximos), semialtura L/2 = 0,6 m, tangente exata (sem aproximação de ângulo pequeno), D como distância perpendicular (implícita, não declarada), sentido do movimento deduzido pela monotonia de N(D), ordens em pares $\pm$m, máximo central permanece, v = $\Delta$D/$\Delta$t e $\Delta$x em vez de D$_{3}$. Faltam apenas detalhes de redação: meio não declarado, D não definida explicitamente como perpendicular, overclaim sobre d/$\lambda$ = 4 nas verificações, arredondamento de v e vocabulário de 'visível'. Nenhum problema de conteúdo ou de cálculo. A resolução é correta, completa e bem justificada, e um professor a publicaria como gabarito comentado após ajustes pequenos de redação. Nota 9,0.%
+\begin{itemize}%
+\item%
+{[}minor{]} A hipótese sobre o meio não é declarada. A resolução usa $\lambda$ = 625 nm diretamente sem dizer que o meio é o ar (ou que $\lambda$ é o comprimento de onda no meio). A referência declara isso explicitamente. Deve{-}se acrescentar a hipótese 'meio = ar, $\lambda$ dado no meio'.%
+\item%
+{[}minor{]} D não é definida como distância perpendicular. A resolução escreve 'D é a distância rede--anteparo', mas y\_m = D$\cdot$tg$\theta$\_m só vale para D medido perpendicularmente ao plano da rede. Como o item (b) pede exatamente essa distância, deve{-}se escrever 'distância perpendicular entre o plano da rede e o anteparo'.%
+\item%
+{[}minor{]} Afirmação excessiva na seção de verificações: 'A contagem inicial de 7 confirma d/$\lambda$ = 4'. Sete máximos só implicam 3 $\leq$ d/$\lambda$ $\leq$ 4 (m = 3 visível e m = 4 não visível). O valor 4 vem dos dados (400 linhas/mm e 625 nm), não só da contagem. A frase deve ser reescrita.%
+\item%
+{[}minor{]} Arredondamento inconsistente no item (c). O valor exato 0,2550 m/s aparece como '$\approx$ 0,25 m/s', o que só é coerente com a aproximação pela tabela (0,254). Com duas casas decimais, 0,2550 arredondaria para 0,26. Deve{-}se dar 0,255 m/s e explicitar que 0,25 m/s vem da tabela.%
+\item%
+{[}minor{]} Vocabulário impreciso. 'Ordens visíveis' é usado antes de aplicar a condição do anteparo, quando na verdade são as ordens existentes (|sen $\theta$| $\leq$ 1). 'Visível' só cabe após |y| $\leq$ L/2. Além disso, 'velocidade de centésimos de m/s' é impreciso, pois 0,25 m/s é da ordem de décimos de m/s.%
+\end{itemize}%
+\subsection*{Questão 9: nota 8,5 (não aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) u = c$\cdot$($\surd$3$\cdot$h - L)/($\surd$3$\cdot$L - h).\newline%
+Obtida com t$_{1}$ = ($\surd$3$\cdot$L - h)/c e R(t$_{1}$) = $\surd$3$\cdot$h - L, ponto de impacto P = ((3L - $\surd$3$\cdot$h)/2, ($\surd$3$\cdot$L - h)/2) e normal radial n? = (-1/2, -$\surd$3/2).\newline%
+\newline%
+b) L/$\surd$3 < h < L, equivalente a h < L < $\surd$3$\cdot$h. Esta condição combina t$_{1}$ > 0 (h < $\surd$3$\cdot$L), R$_{1}$ > 0 (h > L/$\surd$3) e u < c (h < L). Os extremos são excluídos.\newline%
+\newline%
+Não se trata de múltipla escolha.\par %
+Verifiquei o enunciado no PDF original (9ª questão, itens a e b), e a transcrição confere. Refiz a resolução por conta própria e com python3 {-}I.\newline%
+\newline%
+Resposta final: (a) u = c($\surd$3h-L)/($\surd$3L-h) e (b) L/$\surd$3 < h < L. Ambas coincidem com a referência e estão corretas. Confirmei: a direção 30$^\circ$ e ê = ($\surd$3/2, 1/2); a normal externa n? = -(1/2, $\surd$3/2), que faz a reflexão dar exatamente (0, -1); e o impacto em ct$_{1}$ = $\surd$3L-h, ut$_{1}$ = $\surd$3h-L. Para o exemplo L=3, h=2, o candidato dá u = c(12-5$\surd$3)/23 $\approx$ 0,1452c, que bate com a conta numérica, e P, |P-C| = R$_{1}$ e t$_{1}$ $\approx$ 1,07$\times$10$^{-}$$^{8}$ s também batem. Na varredura de 4000 pontos, a condição (t$_{1}$>0, R$_{1}$>0, u<c) coincide com L/$\surd$3 < h < L, com zero divergências. Em 400 pontos aleatórios do domínio, t$_{1}$ é sempre a menor raiz de f(t), ou seja, a entrada.\newline%
+\newline%
+O argumento de entrada/saída do item 5 é rigoroso e mais forte que o da referência: f'(t$_{1}$) = -2ut$_{1}$($\surd$3c/2 + u) < 0 com as duas raízes positivas. A resolução cobre as armadilhas listadas: ângulo de 30$^\circ$, sinal da normal, duas escalas (ct$_{1}$ e ut$_{1}$), troca de coordenadas, positividade de t$_{1}$ e R$_{1}$, u<c levando a h<L, extremos abertos, primeira interseção, superfície estática e dimensões. O texto é organizado e publicável no essencial.\newline%
+\newline%
+Descontos, todos menores e sem afetar a resposta: a observação final sobre o movimento da superfície é uma afirmação física não derivada (deveria sair); o ramo alternativo de sinal é descrito sem a restrição L > $\surd$3h e usa u onde deveria usar u\_s; e a premissa \textbackslash{}"chega pela face externa\textbackslash{}" aparece antes de ser justificada. A nota é 8,5 e não 9 por causa da observação não justificada, que um gabarito comentado não poderia publicar como está.%
+\begin{itemize}%
+\item%
+{[}minor{]} Observação final ("além do pedido"): afirma que, se o movimento da superfície afetasse a direção refletida, o fóton só se afastaria da esfera se u < $\surd$3c/2 (h < 5L/(3$\surd$3)). A conta algébrica está certa (verifiquei), mas a afirmação física não é derivada em lugar nenhum. Além disso, o enunciado manda desprezar exatamente esse efeito, e num tratamento padrão de espelho móvel (componente tangencial do vetor de onda conservada, deslocamento de frequência) o fóton refletido ainda se afasta para qualquer u < c. A afirmação é, no mínimo, não justificada. Deve ser removida ou derivada com o modelo explicitado.%
+\item%
+{[}minor{]} Item 5, ramo alternativo de sinal: o texto diz que esse ramo "corresponderia ao ponto de saída t\_+", mas f'(t\_s) = (L-$\surd$3h)($\surd$3c-2u) só é positivo se L > $\surd$3h, isto é, fora do domínio pedido no item (b). Nesse domínio R\_s = L-$\surd$3h < 0 e o ramo nem corresponde a uma esfera. A conclusão não muda, porque a entrada já é garantida por f'(t1) < 0, mas o argumento deveria dizer que vale só para L > $\surd$3h. Além disso, usa u para o u\_s do ramo alternativo, o que colide com o u da quadrática principal f(t). Usar u\_s explicitamente.%
+\item%
+{[}minor{]} Item 2 usa "o fóton chega pela face externa" para fixar o sinal de n?, mas essa premissa só é confirmada no item 5. A justificação deveria ser direta e local: em t = 0 a origem está fora da esfera (|O-C| = $\surd$(L$^2$+h$^2$) > 0 = R(0)), e o primeiro contato é a entrada. Hoje a ordem do raciocínio fica circular na leitura. Também a justificativa de t1 > 0 ("O não está sobre a esfera") deveria citar explicitamente |O-C| > R(0).%
+\end{itemize}%
+\subsection*{Questão 10: nota 8,5 (não aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Somente a Situação 2 (correntes para cima nos dois fios, mesmo sentido; partícula positiva descendo, ou seja, em sentido contrário às correntes). Ela tem B = 0 no plano mediano e força F\_x = -(4$\mu$$_{0}$iqv/($\pi$d$^2$))$\cdot$x, que é restauradora. As Situações 1 e 4 (correntes opostas) têm B $\neq$ 0 no plano mediano, com força lateral não nula e sem restauração. A Situação 3 (mesmas correntes, mas v no sentido das correntes) tem força afastadora, portanto é instável.\newline%
+\newline%
+b) p $\approx$ ($\pi$d/2)$\cdot$$\surd$($\pi$mv/($\mu$$_{0}$iq)), equivalente a p = $\pi$v/$\omega$, com $\omega$ = (2/d)$\cdot$$\surd$($\mu$$_{0}$iqv/($\pi$m)). Esse é o passo entre dois cruzamentos consecutivos do eixo y. O período espacial completo é 2p.\par %
+Resposta final correta e igual à referência. (a) Somente a Situação 2 (correntes iguais para cima, partícula descendo). (b) p $\approx$ ($\pi$d/2)$\surd$($\pi$mv/($\mu$0 i q)) = $\pi$v/$\omega$, com $\omega$ = (2/d)$\surd$($\mu$0 i q v/($\pi$m)), sendo p a distância entre cruzamentos consecutivos do eixo (meio período), como a figura indica. Conferi o enunciado original e a figura ampliada (Sit. 1: opostas, v?; Sit. 2: ambas ?, v?; Sit. 3: ambas ?, v?; Sit. 4: opostas, v?). Verifiquei: o campo B\_z = $\mu$0 i x/($\pi$(a$^2$-x$^2$)) para correntes iguais e B\_z(0)$\neq$0 para correntes opostas; a integral primeira m ? + qA(x) = const; o critério q$\cdot$s$\cdot$B?(0)<0; a amplitude exata |x0| da Situação 2; a órbita em laço da Situação 1 com x\_max = a$\cdot$tanh(4R/d), confirmada numericamente; e a fórmula exata de x\_max da Situação 3, com concordância numérica de \textasciitilde{}10$^{-}$$^{1}$$^{1}$. O exemplo numérico da candidata (espaçamento 0,785161 mm, desvio -3,015$\times$10$^{-}$$^{4}$) reproduz. Nenhum problema critical ou major. As armadilhas da referência estão tratadas, exceto a discussão explícita do sinal de q. Os três problemas minor são de rigor: o 'sinal fixo' falso na exclusão das Situações 1 e 4, a correção de segunda ordem sem o termo (A/d)$^2$, e a justificativa fraca para desprezar o peso. Nota 8,5: publicável como gabarito após ajustar essas frases. Observação sobre a referência (que eu escrevi e que tem erros): o 'espaçamento previsto/numérico de 2483,65 m' está errado. Com os dados declarados (m = 1 µg) o valor é 78,54 m, que é também o valor fechado da própria referência; a fórmula final está certa. A frase 'nas Situações 1 e 4 a partícula vai para um fio' vale só para R ? d; para R ? d a órbita é um laço, como a candidata descreve.%
+\begin{itemize}%
+\item%
+{[}minor{]} Exclusão das Situações 1 e 4: a frase 'F\_x = q ? B\_z tem sinal fixo' em |x|<a é falsa em geral, porque ? inverte de sinal ao longo da órbita (na Situação 1 a órbita atinge ?=+v em x\_max; verifiquei numericamente que ? muda de sinal várias vezes). A conclusão se mantém, porque F\_x(0)$\neq$0 já impede equilíbrio no plano mediano. Deveria: restringir o 'sinal fixo' a ?$\approx$-v (deslocamentos pequenos) e apoiar a exclusão em F\_x(0)$\neq$0 e na órbita em laço.%
+\item%
+{[}minor{]} Correção de segunda ordem incompleta: p $\approx$ ($\pi$v/$\omega$){[}1-(3/16)($\omega$A/v)$^2${]} está certa para o acoplamento com ?, mas omite o termo de não linearidade do campo, -(3/8)(A/a)$^2$ = -(3/2)(A/d)$^2$. Verifiquei por integração com $\omega$a/v=1 e A/a=0,01: o desvio relativo numérico é -5,625$\times$10$^{-}$$^{5}$, igual à soma dos dois termos; o termo da candidata sozinho daria -1,875$\times$10$^{-}$$^{5}$. No exemplo da candidata o termo omitido vale só \textasciitilde{}0,5 \% da correção, por isso o acordo de 3 algarismos parece bom. Deveria: incluir -(3/2)(A/d)$^2$ ou rotular a fórmula como correção parcial.%
+\item%
+{[}minor{]} Peso: 'O enunciado não fornece g, e por isso o peso é desprezado' é um non sequitur. A justificativa correta é que o problema trata |v| como dado e que o peso altera ? em g$\cdot$t; a condição geral é g ? $\omega$v, e o efeito se acumula (verificado: +0,38 \% no 1º meio período e +1,5 \% após 4, em linha com $\pi$g/(2$\omega$v)). O texto diz 'se acumula' e depois 'desprezível' sem janela temporal. Deveria: declarar a hipótese, dar a condição geral e dizer até quantas oscilações o valor aproximado vale.%
+\item%
+{[}minor{]} Sinal de q: a candidata usa q>0 corretamente, mas não diz que, para q<0, a escolha passaria a ser a Situação 3 (armadilha que a referência destaca). Deveria: uma frase explicitando que a condição de restauração é q$\cdot$s$\cdot$B?(0)<0 e que a escolha depende do sinal de q.%
+\end{itemize}%
+\end{document}

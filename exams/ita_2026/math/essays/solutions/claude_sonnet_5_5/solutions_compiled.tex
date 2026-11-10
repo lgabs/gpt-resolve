@@ -1,0 +1,705 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{ITA 2026 - Matemática\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}sonnet{-}5{-}5 (solver) + claude{-}sonnet{-}5{-}5 (judge)}%
+\date{November 10, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{1. Identificação do sólido.} Num octaedro regular centrado na origem, os vértices formam pares antípodas $\pm\vec v$, com $|\vec v|=R$. Aqui $R=5$. Os três vértices dados distam entre si
+$$m=\sqrt{5^2+5^2}=5\sqrt2\neq 10=2R,$$
+logo nenhum par deles é antípoda. Os outros três vértices são, portanto, os simétricos $(-5,0,0)$, $(0,-5,0)$ e $(0,0,-5)$. O octaedro tem vértices $(\pm5,0,0)$, $(0,\pm5,0)$ e $(0,0,\pm5)$. A aresta mede $5\sqrt2=R\sqrt2$, como deve ser num octaedro regular de circunraio $R$.
+
+O sólido (interior mais superfície) é a envoltória convexa desses seis pontos. Cada uma das oito faces está num plano do tipo $\pm x\pm y\pm z=5$, por exemplo $x+y+z=5$ pelos pontos $(5,0,0)$, $(0,5,0)$, $(0,0,5)$. O sólido é a interseção dos oito semiespaços $\pm x\pm y\pm z\le 5$ que contêm a origem. Isso equivale a
+$$|x|+|y|+|z|\le 5 .$$
+
+\textbf{2. Contagem.} Procuramos os $(x,y,z)\in\mathbb Z^3$ com $|x|+|y|+|z|\le5$. Fixe $(x,y)$ e seja $s=|x|+|y|$, com $0\le s\le5$. Então $|z|\le 5-s$, o que dá $2(5-s)+1=11-2s$ valores inteiros de $z$.
+
+Número de pares inteiros $(x,y)$ com $|x|+|y|=s$:
+\begin{itemize}
+\item $s=0$: apenas $(0,0)$, ou seja, $1$ par;
+\item $s\ge1$: são os pontos inteiros do losango de lado $s$, que são $4s$ pares. De fato, $x=-s,\dots,s$ dá $2$ valores de $y$ para $|x|<s$ e $1$ para $|x|=s$, ou seja, $2(2s-1)+2=4s$.
+\end{itemize}
+
+Logo
+$$N=1\cdot 11+\sum_{s=1}^{5}4s\,(11-2s)=11+4\left(11\sum_{s=1}^{5}s-2\sum_{s=1}^{5}s^2\right).$$
+Com $\sum s=15$ e $\sum s^2=55$:
+$$N=11+4\,(165-110)=11+220=231 .$$
+
+\textbf{3. Verificação por camadas.} Os pontos com $|x|+|y|+|z|=k$ são $4k^2+2$ para $k\ge1$ (e $1$ para $k=0$). Para $k=1,\dots,5$ isso dá $6,\ 18,\ 38,\ 66,\ 102$. Então
+$$1+6+18+38+66+102=231 .$$
+O valor concorda com o anterior, e $102$ desses pontos estão na superfície ($k=5$). Para $n=1$ e $n=2$ a fórmula geral $\frac{(2n+1)(2n^2+2n+3)}{3}$ dá $7$ e $25$, valores que conferem com a contagem direta. Para $n=5$ ela dá $\frac{11\cdot 63}{3}=231$. Uma enumeração computacional também resultou em $231$.
+
+\textbf{Resposta:} o sólido contém $231$ pontos de coordenadas inteiras, sendo $129$ no interior e $102$ na superfície.
+
+ANSWER: 231%
+\newpage%
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Ideia.} Escrevemos $A=I+N$ com $N$ nilpotente. Como $I$ comuta com $N$, o binômio de Newton aplica-se a $(I+N)^n$ e a soma tem poucos termos.
+
+\textbf{1) Decomposição.}
+\[
+A=I+N,\qquad N=\begin{bmatrix}0&1&2\\0&0&1\\0&0&0\end{bmatrix}.
+\]
+
+\textbf{2) Potências de $N$.} Calculando,
+\[
+N^2=\begin{bmatrix}0&0&1\\0&0&0\\0&0&0\end{bmatrix},
+\]
+pois a única entrada não nula é a $(1,3)$, igual a $N_{12}N_{23}+N_{13}N_{33}=1\cdot 1+2\cdot 0=1$. Então $N^3=N\cdot N^2=0$ e $N^k=0$ para todo $k\ge 3$.
+
+\textbf{3) Binômio de Newton.} Como $IN=NI$, para todo $n\in\mathbb{N}$,
+\[
+A^n=(I+N)^n=\sum_{k=0}^{n}\binom{n}{k}N^k=I+nN+\binom{n}{2}N^2 ,
+\]
+em que só sobrevivem os termos com $k\le 2$ (com $\binom{n}{2}=0$ para $n=1$, o que está correto).
+
+\textbf{4) Entrada $(1,3)$.} As entradas $(1,3)$ de $I$, $N$ e $N^2$ valem $0$, $2$ e $1$. Logo
+\[
+(A^n)_{13}=2n+\binom{n}{2}=2n+\frac{n(n-1)}{2}=\frac{n(n+3)}{2}.
+\]
+Verificação: $n=1$ dá $2$, que é a entrada $a_{13}$ de $A$. $n=2$ dá $5$, e de fato $(A^2)_{13}=1\cdot 2+1\cdot 1+2\cdot 1=5$.
+
+\textbf{5) Condição pedida.} Queremos
+\[
+\frac{n(n+3)}{2}>119\iff n(n+3)>238 .
+\]
+A função $f(n)=n(n+3)$ é estritamente crescente para $n\in\mathbb{N}$, então basta achar o primeiro $n$ que satisfaz a desigualdade:
+\[
+f(13)=13\cdot 16=208<238,\qquad f(14)=14\cdot 17=238 \ \text{(igualdade, não é ``maior que'')},\qquad f(15)=15\cdot 18=270>238 .
+\]
+Para $n=14$ a entrada vale exatamente $119$, que não é maior que $119$. Para $n=15$ a entrada vale $\dfrac{270}{2}=135>119$. Pela monotonicidade, nenhum $n<15$ serve.
+
+\textbf{Conclusão.} O menor $n$ é $15$, e nesse caso a entrada $(1,3)$ de $A^{15}$ vale $135$.
+
+ANSWER: $n=15$%
+\newpage%
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{1) O ponto $X$ e o vértice $A$.} Resolvendo $2y-x=2$ e $x+2y=8$: somando, $4y=10$, logo $y=\tfrac52$ e $x=3$. Assim $X=\left(3,\tfrac52\right)$.
+
+Como $2\cdot 5-8=2$, o ponto $C=(8,5)$ pertence a $r$; logo $r$ contém a diagonal $\overline{AC}$ e $s$ contém a diagonal $\overline{BD}$. As diagonais de um paralelogramo se cortam no ponto médio, então $X$ é o ponto médio de $\overline{AC}$ e de $\overline{BD}$:
+\[
+A=2X-C=(6-8,\;5-5)=(-2,\,0).
+\]
+(Confere: $2\cdot 0-(-2)=2$, então $A\in r$.)
+
+\textbf{2) O vértice $B$.} Seja $\omega$ a circunferência dada, de centro $I=\left(\tfrac12,\tfrac52\right)$ e raio $\rho=\tfrac{\sqrt5}{2}$. Verificações:
+\[
+d(I,r)=\frac{\left|5-\tfrac12-2\right|}{\sqrt5}=\frac{\sqrt5}{2},\qquad
+d(I,s)=\frac{\left|\tfrac12+5-8\right|}{\sqrt5}=\frac{\sqrt5}{2},
+\]
+ou seja, $\omega$ é tangente a $r$ (lado $XA$) e a $s$ (lado $XB$), como deve ser.
+
+O lado $AB$ também é tangente a $\omega$ e passa por $A$. A reta vertical $x=-2$ está a distância $\tfrac52\neq\rho$ de $I$, então não serve. Para $y=m(x+2)$, a condição de tangência $d(I,AB)=\rho$ dá
+\[
+\frac{\left|\tfrac52 m-\tfrac52\right|}{\sqrt{1+m^2}}=\frac{\sqrt5}{2}
+\;\Longrightarrow\; 5(m-1)^2=1+m^2
+\;\Longrightarrow\; 2m^2-5m+2=0
+\;\Longrightarrow\; m=2\ \text{ ou }\ m=\tfrac12 .
+\]
+A raiz $m=\tfrac12$ é a própria reta $r$ (declive de $r$). Logo $AB:\ y=2x+4$.
+
+Intersectando com $s$: $x+2(2x+4)=8\Rightarrow x=0$, $y=4$. Portanto $B=(0,4)$ e $D=2X-B=(6,1)$.
+
+\textbf{3) Verificação de que $\omega$ é a circunferência \emph{inscrita}.} No triângulo $ABX$: $AB=2\sqrt5$, $BX=\tfrac{3\sqrt5}{2}$, $AX=\tfrac{5\sqrt5}{2}$. O incentro é a média dos vértices ponderada pelos lados opostos:
+\[
+I=\frac{BX\cdot A+AX\cdot B+AB\cdot X}{BX+AX+AB}
+=\frac{\tfrac{3\sqrt5}{2}(-2,0)+\tfrac{5\sqrt5}{2}(0,4)+2\sqrt5\left(3,\tfrac52\right)}{6\sqrt5}
+=\left(\tfrac12,\tfrac52\right),
+\]
+que coincide com o centro dado (e não com um exincentro). Além disso, a área de $ABX$ é
+\[
+[ABX]=\frac12\left|(-2)\left(4-\tfrac52\right)+0+3(0-4)\right|=\frac{15}{2},
+\]
+e o semiperímetro é $3\sqrt5$, de modo que $\rho=\dfrac{15/2}{3\sqrt5}=\dfrac{\sqrt5}{2}$, como no enunciado.
+
+\textbf{4) Área de $ABCD$.} As diagonais dividem o paralelogramo em quatro triângulos de mesma área (bases iguais, pois $X$ é ponto médio, e mesma altura). Assim
+\[
+[ABCD]=4\,[ABX]=4\cdot\frac{15}{2}=30 .
+\]
+
+\textbf{Conferência.} Com $A=(-2,0)$, $B=(0,4)$, $C=(8,5)$, $D=(6,1)$: $\overrightarrow{AB}=(2,4)=\overrightarrow{DC}$ (paralelogramo) e
+\[
+[ABCD]=\left|\overrightarrow{AB}\times\overrightarrow{AD}\right|=\left|2\cdot1-4\cdot8\right|=30 .
+\]
+
+ANSWER: $30$ (unidades de área)%
+\newpage%
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Modelagem.} Numere os círculos concêntricos por $k=0,1,\ldots,32$, sendo o de índice $k$ de raio $r_k=\alpha+k$ (são $33$ círculos, de raios $\alpha,\alpha+1,\ldots,\alpha+32$). O círculo central ($k=0$) é vermelho. O anel de índice $k\ge 1$ é a região entre os raios $r_{k-1}$ e $r_k$, e as cores alternam: o anel de índice $k$ é vermelho se $k$ é par e branco se $k$ é ímpar. O último anel ($k=32$) é, portanto, vermelho.
+
+\medskip
+\textbf{Área de cada parte vermelha.}
+\begin{itemize}
+\item Círculo central: $\pi\alpha^2$.
+\item Anel de índice $k$ (par):
+\[
+A_k=\pi\left[(\alpha+k)^2-(\alpha+k-1)^2\right]=\pi\,(2\alpha+2k-1).
+\]
+\end{itemize}
+
+Os anéis vermelhos têm $k=2j$, com $j=1,2,\ldots,16$. Logo $A_{2j}=\pi(2\alpha+4j-1)$.
+
+\medskip
+\textbf{Soma.}
+\[
+\sum_{j=1}^{16}(2\alpha+4j-1)=16(2\alpha-1)+4\cdot\frac{16\cdot 17}{2}=32\alpha-16+544=32\alpha+528 .
+\]
+
+Portanto, a área vermelha total é
+\[
+A_{\text{verm}}=\pi\alpha^2+\pi(32\alpha+528)=\pi\left(\alpha^2+32\alpha+528\right).
+\]
+
+\medskip
+\textbf{Verificação.}
+\begin{itemize}
+\item Anéis brancos: $k=2j-1$, $j=1,\ldots,16$, de modo que
+$\sum_{j=1}^{16}(2\alpha+4j-3)=32\alpha+544-48=32\alpha+496$, ou seja, $A_{\text{branca}}=\pi(32\alpha+496)$.
+\item A área total do alvo é $\pi(\alpha+32)^2=\pi(\alpha^2+64\alpha+1024)$. Somando as áreas:
+$\pi(\alpha^2+32\alpha+528)+\pi(32\alpha+496)=\pi(\alpha^2+64\alpha+1024)$, o que confere.
+\item Caso particular $\alpha=0$ (sem círculo central): a área vermelha é $\sum_{j=1}^{16}\pi(4j-1)=528\pi$, igual ao valor da fórmula.
+\end{itemize}
+
+As unidades são unidades de área (comprimento ao quadrado), compatíveis com $\pi\alpha^2$. O resultado vale para qualquer $\alpha>0$.
+
+\[
+\boxed{A_{\text{verm}}=\pi\left(\alpha^{2}+32\alpha+528\right)}
+\]
+
+ANSWER: $A_{\text{verm}}=\pi\left(\alpha^{2}+32\alpha+528\right)$ unidades de área%
+\newpage%
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Interpretação.} Sejam $r$ o raio de cada esfera menor e $R$ o raio da esfera maior. ``Inscritas'' significa que cada esfera menor está contida na maior e é tangente internamente a ela. Duas esferas menores tangentes (externamente) têm centros a distância $2r$.
+
+\textbf{1) Tetraedro dos centros.} Os centros $O_1,O_2,O_3,O_4$ formam um tetraedro regular de aresta $a=2r$.
+
+\textbf{2) Circunraio $\rho$ do tetraedro regular de aresta $a$.}
+\emph{Via cubo.} Os quatro vértices alternados de um cubo de aresta $s$ formam um tetraedro regular, pois cada aresta dele é diagonal de uma face do cubo: $a=s\sqrt2$. O centro do cubo é equidistante dos 4 vértices, logo é o circuncentro, e $\rho$ é metade da diagonal do cubo:
+\[
+\rho=\frac{s\sqrt3}{2}=\frac{a}{\sqrt2}\cdot\frac{\sqrt3}{2}=\frac{a\sqrt6}{4}.
+\]
+\emph{Via Pitágoras (conferência).} A altura do tetraedro é $h$, com $h^2=a^2-\left(\frac{a\sqrt3}{3}\right)^2=\frac{2a^2}{3}$, ou seja, $h=\frac{a\sqrt6}{3}$. O circuncentro está sobre a altura, a distância $\rho$ do vértice do topo e $h-\rho$ da base. Então $\rho^2=(h-\rho)^2+\frac{a^2}{3}$, o que dá $\rho=\frac{h^2+a^2/3}{2h}=\frac{a^2}{2h}=\frac{a\sqrt6}{4}$. Os dois caminhos concordam.
+
+Com $a=2r$:
+\[
+\rho=\frac{r\sqrt6}{2}.
+\]
+
+\textbf{3) Raio da esfera maior.} Seja $O'$ o centro da esfera maior. A tangência interna de cada esfera menor dá $O'O_i=R-r$ para $i=1,2,3,4$. Logo $O'$ é equidistante dos quatro vértices. Como os vértices de um tetraedro não são coplanares, só existe um ponto com essa propriedade, o circuncentro. Então $O'$ é o circuncentro e
+\[
+R-r=\rho=\frac{r\sqrt6}{2}\quad\Longrightarrow\quad R=r\,\frac{2+\sqrt6}{2}.
+\]
+Atenção: $R=\rho+r$, e não $R=\rho$, pois $\rho$ vai só até o \emph{centro} de cada esfera menor.
+
+\emph{Consistência.} Com esse $R$, a configuração existe. Cada ponto $P$ da esfera $i$ satisfaz $O'P\le O'O_i+O_iP\le\rho+r=R$, então a esfera menor está contida na maior. A igualdade ocorre só no ponto da semirreta $O'O_i$ a distância $R$ de $O'$, que é o ponto de tangência. As esferas menores não se sobrepõem, pois seus centros distam $2r$.
+
+\textbf{4) Razão dos volumes.} Com $V=\frac43\pi(\text{raio})^3$:
+\[
+\frac{V_{\text{maior}}}{4V_{\text{menor}}}=\frac{\frac43\pi R^3}{4\cdot\frac43\pi r^3}=\frac14\left(\frac{R}{r}\right)^3=\frac14\cdot\frac{(2+\sqrt6)^3}{8}=\frac{(2+\sqrt6)^3}{32}.
+\]
+Como $(2+\sqrt6)^3=8+3\cdot4\sqrt6+3\cdot2\cdot6+6\sqrt6=44+18\sqrt6$,
+\[
+\frac{V_{\text{maior}}}{4V_{\text{menor}}}=\frac{44+18\sqrt6}{32}=\frac{22+9\sqrt6}{16}.
+\]
+A razão não depende de $r$, como esperado: as duas figuras são semelhantes para qualquer $r$.
+
+\textbf{5) Conferência independente, com coordenadas.} Tome o cubo de vértices $(\pm1,\pm1,\pm1)$ e os centros $O_1=(1,1,1)$, $O_2=(1,-1,-1)$, $O_3=(-1,1,-1)$, $O_4=(-1,-1,1)$. Todas as arestas valem $2\sqrt2$, então $r=\sqrt2$. A origem dista $\sqrt3$ de cada $O_i$, então $R=\sqrt3+\sqrt2$. Neste caso,
+\[
+\frac{R^3}{4r^3}=\frac{(\sqrt3+\sqrt2)^3}{8\sqrt2}=\frac{9\sqrt3+11\sqrt2}{8\sqrt2}=\frac{9\sqrt6+22}{16},
+\]
+o mesmo resultado. Numericamente, $R/r\approx2{,}2247$, $(R/r)^3\approx11{,}011$ e a razão vale $\approx2{,}753$.
+
+Ordem de grandeza: a razão é maior que $1$, como deve ser, pois a esfera maior contém as quatro menores. Seu inverso, $\approx0{,}363$, mostra que as quatro esferas ocupam cerca de $36\%$ do volume da maior, valor plausível para quatro esferas tangentes dentro de uma esfera.
+
+\[
+\boxed{\dfrac{V_{\text{maior}}}{4\,V_{\text{menor}}}=\dfrac{22+9\sqrt6}{16}\approx 2{,}75}
+\]
+
+ANSWER: $\dfrac{22+9\sqrt{6}}{16}$%
+\newpage%
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Convenção e notação.} Para $a_{j+1,j}=\alpha_j^{\,0}$ estar definido mesmo quando $\alpha_j=0$, usa-se $\alpha^0=1$ para todo $\alpha$ real. A coluna $j$ de $A$ ($1\le j\le n-1$) é nula até a linha $j$ e, da linha $j+1$ à $n$, vale $1,\alpha_j,\dots,\alpha_j^{\,n-j-1}$. A coluna $n$ e a linha $1$ de $A$ são nulas. Seja $s_j$ a soma da coluna $j$ de $A$:
+\[
+s_j=1+\alpha_j+\dots+\alpha_j^{\,n-j-1}\ (1\le j\le n-1),\qquad s_n=0 .
+\]
+Como $b_{lk}=1$ se $k\ge l$ e $0$ caso contrário, o produto é
+\[
+(AB)_{ik}=\sum_{l\le k}a_{il},
+\]
+isto é, a coluna $k$ de $AB$ é a soma das colunas $1,\dots,k$ de $A$.
+
+\textbf{Observação sobre o enunciado.} A coluna $n$ de $A$ é nula, logo $(AB)_{i,n}=(AB)_{i,n-1}$ para todo $i$: as duas últimas colunas de $AB$ são iguais e têm a mesma soma. A hipótese, lida literalmente sobre $AB$, exige somas $n-(n-1)=1$ e $n-n=0$, o que é impossível para todo $n\ge2$. (Por exemplo, para $n=3$: $AB=\begin{pmatrix}0&0&0\\1&1&1\\ \alpha_1&\alpha_1+1&\alpha_1+1\end{pmatrix}$.) Portanto, \emph{literalmente}, nenhuma escolha de $\alpha_j$ satisfaz a hipótese. A leitura que torna a questão consistente e coerente com o pedido ``em função de $n$'' é: \textbf{a soma dos elementos da coluna $j$ da matriz $A$ é $n-j$}, ou seja, $s_j=n-j$. Ela é consistente, pois $s_n=0$ e $s_{n-1}=a_{n,n-1}=1$ valem sempre, e $n-j$ é exatamente o número de parcelas de $s_j$. Os itens b) e c) são resolvidos nessa leitura. O item a) independe dela.
+
+\textbf{a)} A linha $1$ de $A$ é nula ($a_{1j}=0$, pois $j\ge1=i$). Logo a linha $1$ de $AB$ também é nula e
+\[
+\det(AB)=0 .
+\]
+Confirmação: $\det A=0$ e $\det B=1$ ($B$ é triangular com diagonal unitária). A igualdade das colunas $n-1$ e $n$ também dá $\det(AB)=0$. Vale para qualquer $n\ge2$ e qualquer escolha dos $\alpha_j$.
+
+\textbf{b)} Temos $\operatorname{tr}(AB)=\sum_{i,l}a_{il}\,b_{li}$. Como $a_{il}\ne0$ só se $l<i$, e nesse caso $b_{li}=1$ (pois $i\ge l$), vem
+\[
+\operatorname{tr}(AB)=\sum_{i,l}a_{il}=s_1+\dots+s_n \quad(\text{soma de todos os elementos de }A).
+\]
+Com $s_j=n-j$:
+\[
+\operatorname{tr}(AB)=\sum_{j=1}^{n}(n-j)=\frac{n(n-1)}{2}.
+\]
+Verificação: $n=5$ dá $4+3+2+1+0=10$.
+
+(Com a hipótese literal sobre $AB$, o traço $=c_{n-1}=c_n$ ficaria igual a $1$ e a $0$ ao mesmo tempo, o que confirma a inconsistência. Nenhum valor é determinado.)
+
+\textbf{c)} Para $n=5$, a condição $s_j=5-j$ dá:
+\begin{align*}
+j=1:&\ 1+\alpha_1+\alpha_1^2+\alpha_1^3=4\iff(\alpha_1-1)(\alpha_1^2+2\alpha_1+3)=0.\\
+&\ \text{O fator quadrático tem }\Delta=4-12=-8<0,\text{ então }\alpha_1=1.\\
+j=2:&\ 1+\alpha_2+\alpha_2^2=3\iff(\alpha_2-1)(\alpha_2+2)=0\Rightarrow\alpha_2\in\{1,-2\}.\\
+j=3:&\ 1+\alpha_3=2\Rightarrow\alpha_3=1.\\
+j=4:&\ s_4=a_{54}=\alpha_4^{\,0}=1\ \text{vale sempre: }\alpha_4\in\mathbb{R}\text{ é arbitrário.}\\
+j=5:&\ s_5=0\ \text{vale sempre.}
+\end{align*}
+Conferência com $(1,-2,1,3)$ e $(1,1,1,7)$: as somas das colunas de $A$ são $4,3,2,1,0$ e $\operatorname{tr}(AB)=10$.
+
+\textbf{Outra leitura (menos plausível).} Se $B$ fosse triangular inferior ($b_{ij}=1$ para $j\le i$), a hipótese sobre $AB$ seria consistente e equivaleria a $s_j=1$ para $j<n$. Para $n=5$ daria $\alpha_1=\alpha_3=0$, $\alpha_2\in\{0,-1\}$ e $\alpha_4$ livre, mas $AB$ seria estritamente triangular inferior e $\operatorname{tr}(AB)=0$, sem dependência de $n$. Isso destoa de ``em função de $n$''. A leitura sobre as colunas de $A$ é uma conjectura minha sobre a intenção do examinador. O gabarito oficial não foi consultado.
+
+\textbf{Resumo.} O enunciado literal (soma das colunas de $AB$ igual a $n-j$) é contraditório, e para ele o conjunto solução de c) é vazio. Na leitura pretendida (soma das colunas de $A$ igual a $n-j$): $\det(AB)=0$, $\operatorname{tr}(AB)=\dfrac{n(n-1)}{2}$ e, para $n=5$, $\alpha_1=1$, $\alpha_2\in\{1,-2\}$, $\alpha_3=1$, $\alpha_4\in\mathbb{R}$ qualquer.
+
+ANSWER: a) $\det(AB)=0$. b) $\operatorname{tr}(AB)=\dfrac{n(n-1)}{2}$. c) $\alpha_1=1$, $\alpha_2\in\{1,-2\}$, $\alpha_3=1$ e $\alpha_4\in\mathbb{R}$ qualquer. Isso vale na leitura em que a soma das colunas de $A$ é $n-j$. O enunciado literal, com a soma das colunas de $AB$, é contraditório e daria conjunto vazio.%
+\newpage%
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{1. Forma geral de $p(x)$.} Como $p$ tem grau $4$ e o divisor $x^3-x+4$ tem grau $3$, o quociente da divisão tem grau $1$. Assim, existem $\alpha,\beta\in\mathbb{R}$ com $\alpha\neq 0$ tais que
+\[
+p(x)=(\alpha x+\beta)(x^3-x+4)+9x^2-4x+7 .
+\]
+Desenvolvendo,
+\[
+p(x)=\alpha x^4+\beta x^3+(9-\alpha)x^2+(4\alpha-\beta-4)x+(4\beta+7).
+\]
+
+\textbf{2. Relações de Girard.} Para $p(x)=a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$, a soma das raízes é $-a_3/a_4$ e o produto é $a_0/a_4$ (grau par). Logo:
+\[
+-\frac{\beta}{\alpha}=\frac32 \;\Rightarrow\; \beta=-\frac{3\alpha}{2},
+\qquad
+\frac{4\beta+7}{\alpha}=-\frac52 \;\Rightarrow\; 4\beta+7=-\frac{5\alpha}{2}.
+\]
+Substituindo $\beta$ na segunda equação: $-6\alpha+7=-\dfrac{5\alpha}{2}$, ou seja, $7=\dfrac{7\alpha}{2}$. Portanto
+\[
+\alpha=2,\qquad \beta=-3 .
+\]
+Então
+\[
+p(x)=2x^4-3x^3+7x^2+7x-5 .
+\]
+\textit{Verificação:} soma $=3/2$ e produto $=-5/2$, como pedido. Além disso, $(2x-3)(x^3-x+4)=2x^4-3x^3-2x^2+11x-12$, e somando $9x^2-4x+7$ obtém-se $p(x)$. O resto tem grau $2<3$, logo é o resto da divisão euclidiana (único).
+
+\textbf{3. Raízes.} Pelo teorema das raízes racionais, as candidatas são $\pm1,\pm5,\pm\frac12,\pm\frac52$.
+
+Temos $p(-1)=2+3+7-7-5=0$. Por Briot--Ruffini com a raiz $-1$ (coeficientes $2,-3,7,7,-5$):
+\[
+p(x)=(x+1)(2x^3-5x^2+12x-5).
+\]
+Para $q(x)=2x^3-5x^2+12x-5$: $q\!\left(\tfrac12\right)=\tfrac14-\tfrac54+6-5=0$. Dividindo por $x-\tfrac12$ (coeficientes $2,-5,12,-5$):
+\[
+q(x)=\left(x-\tfrac12\right)(2x^2-4x+10)=(2x-1)(x^2-2x+5).
+\]
+Logo
+\[
+p(x)=(x+1)(2x-1)(x^2-2x+5).
+\]
+Resolvendo $x^2-2x+5=0$: $\Delta=4-20=-16$, então $x=\dfrac{2\pm4i}{2}=1\pm2i$.
+
+\textbf{4. Conferência.} Soma: $-1+\tfrac12+(1+2i)+(1-2i)=\tfrac32$. Produto: $(-1)\cdot\tfrac12\cdot(1+2i)(1-2i)=-\tfrac12\cdot5=-\tfrac52$. Ambos coincidem com o enunciado. As raízes complexas aparecem em pares conjugados, como esperado para coeficientes reais.
+
+\textbf{Resposta:} as raízes de $p(x)$ em $\mathbb{C}$ são $-1,\ \dfrac12,\ 1+2i$ e $1-2i$, com $p(x)=2x^4-3x^3+7x^2+7x-5$.
+
+ANSWER: $\left\{-1,\ \dfrac12,\ 1+2i,\ 1-2i\right\}$%
+\newpage%
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Interpretação.} Como $\mathbb{N}=\{1,2,3,\ldots\}$, queremos contar as ternas $(a,b,c)$ de inteiros positivos com
+\[
+a<b<c \quad\text{e}\quad a+b+c=100 .
+\]
+Como a sequência é estritamente crescente, cada conjunto $\{a,b,c\}$ de três números distintos corresponde a exatamente uma sequência (a ordem é imposta), portanto não há contagem dupla.
+
+\textbf{Passo 1 — Reparametrização.} Sejam $d=b-a$ e $e=c-b$. A condição $a<b<c$ equivale a $d\ge 1$ e $e\ge 1$, com $a\ge 1$. A correspondência $(a,b,c)\leftrightarrow(a,d,e)$ é bijetora entre as ternas crescentes de inteiros positivos e as ternas $(a,d,e)$ de inteiros positivos. Temos $b=a+d$ e $c=a+d+e$, logo
+\[
+a+b+c = 3a+2d+e = 100 .
+\]
+
+\textbf{Passo 2 — Eliminar $e$.} Dados $a,d\ge 1$, o valor $e=100-3a-2d$ está determinado e deve ser $\ge 1$. Assim, basta contar os pares $(a,d)$ de inteiros positivos tais que
+\[
+3a+2d\le 99 .
+\]
+
+\textbf{Passo 3 — Contagem.} Fixado $a$, precisamos de $1\le d\le \left\lfloor \dfrac{99-3a}{2}\right\rfloor$. Isso exige $99-3a\ge 2$, ou seja, $a\le 32$. O número de valores de $d$ é $\left\lfloor \dfrac{99-3a}{2}\right\rfloor$.
+
+\begin{itemize}
+\item $a=2k-1$ ($k=1,\ldots,16$): $99-3a=102-6k$ é par, e há $51-3k$ valores de $d$. A soma é
+\[
+\sum_{k=1}^{16}(51-3k)=51\cdot 16-3\cdot\frac{16\cdot 17}{2}=816-408=408 .
+\]
+\item $a=2k$ ($k=1,\ldots,16$): $99-3a=99-6k$ é ímpar, e há $\dfrac{98-6k}{2}=49-3k$ valores de $d$. A soma é
+\[
+\sum_{k=1}^{16}(49-3k)=49\cdot 16-408=784-408=376 .
+\]
+\end{itemize}
+
+\textbf{Total:}
+\[
+408+376=784 .
+\]
+
+\textbf{Verificação.} O número de partições de $n$ em três parcelas distintas e positivas é o inteiro mais próximo de $\dfrac{(n-3)^2}{12}$. Para $n=100$ isso dá $\dfrac{97^2}{12}=\dfrac{9409}{12}\approx 784{,}08$, ou seja, $784$. Uma enumeração direta por computador de todas as ternas $a<b<c$ com soma $100$ também resulta em $784$. Em um caso pequeno, $n=6$, só há $(1,2,3)$, e a fórmula dá $\dfrac{9}{12}\approx 0{,}75\to 1$.
+
+\textbf{Resposta:} existem $784$ sequências.
+
+ANSWER: 784%
+\newpage%
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{Equação de $H$.} Os focos estão em $(\pm 6,0)$, logo o centro é a origem, o eixo focal é o eixo $x$ e $c=6$. Com $e=\dfrac{c}{a}=3$ obtemos $a=2$ e $b^2=c^2-a^2=36-4=32$. Assim
+\[
+H:\ \frac{x^2}{4}-\frac{y^2}{32}=1 \iff 8x^2-y^2=32 .
+\]
+
+\textbf{a) Retas tangentes por $C=(0,-8)$.}
+
+\emph{Reta vertical.} A reta $x=0$ passa por $C$, mas não encontra $H$, pois $\dfrac{x^2}{4}=1+\dfrac{y^2}{32}\ge 1$ exige $|x|\ge 2$. Portanto ela não é tangente, e as demais retas por $C$ têm a forma $y=mx-8$.
+
+\emph{Interseção com $H$.} Substituindo em $8x^2-y^2=32$:
+\[
+8x^2-(mx-8)^2=32 \iff (8-m^2)\,x^2+16m\,x-96=0 . \tag{1}
+\]
+
+\emph{Caso $m^2=8$.} A equação (1) fica $16mx=96$, com uma única solução. Essas retas são paralelas às assíntotas ($y=\pm 2\sqrt2\,x$) e cortam $H$ em um só ponto, mas não são tangentes. Esse caso é descartado.
+
+\emph{Caso $m^2\ne 8$.} A equação (1) é do 2.º grau. A reta é tangente a $H$ quando (1) tem raiz dupla, isto é, $\Delta=0$:
+\[
+\Delta=(16m)^2+4\cdot 96\,(8-m^2)=256m^2+3072-384m^2=3072-128m^2=0
+\ \Longrightarrow\ m^2=24,\quad m=\pm 2\sqrt6 ,
+\]
+valores que satisfazem $m^2\neq 8$.
+
+\emph{Conferência pela condição de tangência.} Para $y=mx+n$ tangente a $\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1$, vale $n^2=a^2m^2-b^2$. Aqui $64=4m^2-32$, ou seja, $m^2=24$, o que confirma o resultado.
+
+As retas tangentes são
+\[
+\boxed{y=2\sqrt6\,x-8\quad\text{e}\quad y=-2\sqrt6\,x-8 .}
+\]
+
+\textbf{b) Pontos de tangência.}
+
+Em (1) com $\Delta=0$, a raiz dupla é
+\[
+x_T=-\frac{16m}{2(8-m^2)}=-\frac{8m}{8-24}=\frac{m}{2}.
+\]
+
+\begin{itemize}
+\item Para $m=2\sqrt6$: $x_T=\sqrt6$ e $y_T=2\sqrt6\cdot\sqrt6-8=12-8=4$.
+\item Para $m=-2\sqrt6$: $x_T=-\sqrt6$ e $y_T=(-2\sqrt6)(-\sqrt6)-8=4$.
+\end{itemize}
+
+\emph{Verificação em $H$.} Para $(\pm\sqrt6,4)$: $8\cdot 6-16=32$, e os pontos pertencem a $H$.
+
+\emph{Verificação pela reta tangente em $(x_0,y_0)$.} Ela tem equação $8x_0x-y_0y=32$. Em $(\sqrt6,4)$ ela fica $8\sqrt6\,x-4y=32$, ou seja, $y=2\sqrt6\,x-8$, que passa por $C$. O caso $(-\sqrt6,4)$ é simétrico.
+
+Os pontos de tangência estão sobre a reta $y=4$, que é a polar de $C$ ($8\cdot 0\cdot x+8y=32$), como esperado.
+
+\textbf{Resultado:}
+\begin{itemize}
+\item $y=2\sqrt6\,x-8$, tangente em $(\sqrt6,\,4)$.
+\item $y=-2\sqrt6\,x-8$, tangente em $(-\sqrt6,\,4)$.
+\end{itemize}
+
+ANSWER: Retas $y=2\sqrt6\,x-8$ e $y=-2\sqrt6\,x-8$, com pontos de tangência $(\sqrt6,4)$ e $(-\sqrt6,4)$, respectivamente (hipérbole $\frac{x^2}{4}-\frac{y^2}{32}=1$).%
+\newpage%
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Notação e fatos geométricos.} Sejam $r_1=CA$ e $r_2=DB$ os raios, $x=m(\overline{AP})=m(\overline{PQ})$ e $M$ o ponto médio de $\overline{PQ}$. Como $P$ e $Q$ são simétricos em relação à reta dos centros $AB$, a corda comum $\overline{PQ}$ é perpendicular a $AB$, e $M\in AB$ é o pé da perpendicular por $P$. Logo $PM=\dfrac{x}{2}$.
+
+O ponto $M$ é interior a ambas as circunferências, pois é ponto médio de uma corda de cada uma. Portanto $M$ pertence ao diâmetro de centro $C$ que parte de $A$ em direção a $B$, e ao diâmetro de centro $D$ que parte de $B$ em direção a $A$. Assim $M$ está entre $A$ e $B$, e $AM+MB=AB$.
+
+\medskip
+\textbf{a) Raios.}
+
+\emph{Ângulo em $A$.} No triângulo $APM$, retângulo em $M$:
+\[
+\operatorname{sen}\widehat{PAM}=\frac{PM}{AP}=\frac{x/2}{x}=\frac12 .
+\]
+O ângulo $\widehat{PAM}=\widehat{PAB}$ é agudo, pois $M$ está sobre a semirreta $AB$. Logo $\widehat{PAB}=30^\circ$ e $AM=x\cos30^\circ=\dfrac{x\sqrt3}{2}$.
+
+\emph{Cálculo de $MB$.} No triângulo $BPM$, retângulo em $M$, com $BP^2=x^2(2+\sqrt3)$:
+\[
+MB^2=BP^2-PM^2=x^2\Bigl(2+\sqrt3-\tfrac14\Bigr)=x^2\Bigl(\tfrac74+\sqrt3\Bigr)=x^2\Bigl(1+\tfrac{\sqrt3}{2}\Bigr)^2 ,
+\]
+pois $\bigl(1+\tfrac{\sqrt3}{2}\bigr)^2=1+\tfrac34+\sqrt3$. Portanto $MB=\dfrac{x(2+\sqrt3)}{2}$.
+
+\emph{Cálculo de $x$.} Somando:
+\[
+AB=AM+MB=\frac{x\sqrt3}{2}+\frac{x(2+\sqrt3)}{2}=x(1+\sqrt3)=6(1+\sqrt3)\ \Rightarrow\ x=6\text{ cm}.
+\]
+Então $PM=3$, $AM=3\sqrt3$ e $MB=6+3\sqrt3$.
+
+\emph{Raio $r_1$.} O triângulo $CAP$ é isósceles ($CA=CP$) com $\widehat{CAP}=30^\circ$. Logo $\widehat{CPA}=30^\circ$ e $\widehat{ACP}=120^\circ$. Pela lei dos senos:
+\[
+\frac{AP}{\operatorname{sen}120^\circ}=\frac{CA}{\operatorname{sen}30^\circ}\ \Rightarrow\ r_1=\frac{6\cdot\frac12}{\frac{\sqrt3}{2}}=2\sqrt3\text{ cm}.
+\]
+
+\emph{Raio $r_2$.} Seja $t=DM$, com $D$ entre $M$ e $B$, de modo que $r_2=MB-t$. No triângulo $DMP$ vale $r_2^2=t^2+PM^2$. Então
+\[
+(MB-t)^2=t^2+9\ \Rightarrow\ t=\frac{MB^2-9}{2\,MB}.
+\]
+Como $MB^2+PM^2=BP^2$, temos $MB^2-9=BP^2-18$, mas é mais direto usar
+\[
+r_2=\frac{MB^2+9}{2\,MB}=\frac{BP^2}{2\,MB}=\frac{36(2+\sqrt3)}{12+6\sqrt3}=\frac{36(2+\sqrt3)}{6(2+\sqrt3)}=6\text{ cm}.
+\]
+Com isso, $t=MB-r_2=3\sqrt3$.
+
+\emph{Conferência.} Tomando $A$ como origem sobre $AB$: $C$ está em $2\sqrt3$, $M$ em $3\sqrt3$, $D$ em $6\sqrt3$ e $B$ em $6+6\sqrt3$. Portanto $A,C,M,D,B$ estão nessa ordem, e $C,D\in\overline{AB}$ como exigido. Além disso:
+\begin{itemize}
+\item $CP^2=CM^2+PM^2=3+9=12=r_1^2$ e $DP^2=27+9=36=r_2^2$;
+\item $CD=\sqrt3+3\sqrt3=4\sqrt3\approx6{,}9$, com $r_2-r_1<CD<r_1+r_2$, então as circunferências de fato se cortam.
+\end{itemize}
+
+\[
+\boxed{r_1=2\sqrt3\ \text{cm},\qquad r_2=6\ \text{cm}}
+\]
+
+\medskip
+\textbf{b) Área da região comum.}
+
+A região comum (lente) é limitada pela corda $\overline{PQ}$, que a divide em dois segmentos circulares. Um pertence ao disco de centro $C$ e fica do lado de $D$. O outro pertence ao disco de centro $D$ e fica do lado de $A$. Cada centro está do lado oposto da corda em relação ao seu segmento, então ambos são segmentos \emph{menores}.
+
+\emph{Disco de centro $C$.} Temos $\cos\widehat{PCM}=\dfrac{CM}{r_1}=\dfrac{\sqrt3}{2\sqrt3}=\dfrac12$, logo $\widehat{PCM}=60^\circ$ e o ângulo central é $\widehat{PCQ}=\dfrac{2\pi}{3}$. A área do segmento é
+\[
+S_1=\frac{r_1^2}{2}\bigl(\varphi_1-\operatorname{sen}\varphi_1\bigr)=\frac{12}{2}\Bigl(\frac{2\pi}{3}-\frac{\sqrt3}{2}\Bigr)=4\pi-3\sqrt3 .
+\]
+
+\emph{Disco de centro $D$.} Temos $\operatorname{sen}\widehat{PDM}=\dfrac{PM}{r_2}=\dfrac36=\dfrac12$, logo $\widehat{PDM}=30^\circ$ e $\widehat{PDQ}=\dfrac{\pi}{3}$. A área do segmento é
+\[
+S_2=\frac{r_2^2}{2}\bigl(\varphi_2-\operatorname{sen}\varphi_2\bigr)=\frac{36}{2}\Bigl(\frac{\pi}{3}-\frac{\sqrt3}{2}\Bigr)=6\pi-9\sqrt3 .
+\]
+
+\emph{Área total.}
+\[
+S=S_1+S_2=10\pi-12\sqrt3\ \text{cm}^2\approx 10{,}63\ \text{cm}^2 .
+\]
+
+\emph{Verificação.} A lente tem altura $PQ=6$ cm e largura $(C+r_1)-(D-r_2)=4\sqrt3-(3\sqrt3-6)\cdot0+\dots$ medida sobre $AB$, ou seja, de $6\sqrt3-6\approx4{,}39$ a $4\sqrt3\approx6{,}93$, o que dá cerca de $2{,}54$ cm. A estimativa $\tfrac23\cdot2{,}54\cdot6\approx10{,}2\ \text{cm}^2$ concorda com $10{,}63\ \text{cm}^2$. Uma integração numérica da área da interseção deu $10{,}6313\ \text{cm}^2$, igual a $10\pi-12\sqrt3$.
+
+\medskip
+ANSWER: a) $r_C=2\sqrt3$ cm e $r_D=6$ cm; b) $S=(10\pi-12\sqrt3)$ cm$^2\approx10{,}63$ cm$^2$.%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 1: nota 9,2 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} 231 pontos (129 no interior estrito + 102 na superfície). O octaedro é |x|+|y|+|z| $\leq$ 5, com vértices ($\pm$5,0,0), (0,$\pm$5,0), (0,0,$\pm$5).\par %
+Respondeu 231, que está correto, e concorda com minha referência: 231 no total, sendo 129 no interior e 102 na superfície. Conferi o enunciado no PDF (questão 01, octaedro regular com vértices (5,0,0), (0,5,0), (0,0,5), pedindo pontos no interior e na superfície). Também conferi a contagem por força bruta em Python, que deu 231, 102 na superfície e 129 no interior. As camadas 6, 18, 38, 66, 102 e a fórmula do octaedral central (7, 25, 231) também batem. A resolução trata bem as armadilhas da questão. Justifica que o octaedro é único, pois os três vértices dados distam 5$\surd$2 $\neq$ 10 e portanto não são antípodas, e então os outros três vértices são os simétricos. Escreve a região como |x|+|y|+|z|$\leq$5, com desigualdade não estrita, e inclui interior e superfície, separando 129 e 102. Conta a origem e os sinais negativos. A conta principal (fatiar por s=|x|+|y|, com 4s pares e 11-2s valores de z, dando 11+4(165-110)=231) está correta. A verificação por camadas é um segundo método, e a resolução é clara. Os defeitos são só de rigor e de redação: \textbackslash{}"losango de lado s\textbackslash{}" é impreciso, a fórmula 4k$^2$+2 não é deduzida e a equivalência com os oito semiespaços fica sem justificativa. A resolução ficaria pronta para gabarito comentado com pequenos ajustes."\}%
+\begin{itemize}%
+\item%
+{[}minor{]} O texto diz que os pares com |x|+|y|=s são "os pontos inteiros do losango de lado s". O quadrado de vértices ($\pm$s,0),(0,$\pm$s) tem lado s$\surd$2, não s. Além disso, só o contorno é contado, não o interior. A contagem 4s está certa, e a justificativa logo depois (2(2s-1)+2) também. O erro é só de redação. O correto seria "pontos inteiros do contorno do losango de semidiagonal s".%
+\item%
+{[}minor{]} A fórmula 4k$^2$+2 de pontos por camada, e portanto o número 102 na superfície, aparece sem dedução. O candidato só a confere por n=1 e n=2 e pelo total. A divisão em 129 interiores e 102 na superfície depende dela, e a resolução principal não a obtém diretamente. Bastava uma linha: para k$\geq$1, 6 vértices com uma coordenada não nula, 12k-12 pontos com duas, e 8$\cdot$C(k-1,2) com três, o que soma 4k$^2$+2. Outra opção era dizer que a superfície é a diferença entre o total para n=5 e o total para n=4.%
+\item%
+{[}minor{]} O candidato afirma que o sólido é a interseção dos oito semiespaços $\pm$x$\pm$y$\pm$z$\leq$5 e equivale a |x|+|y|+|z|$\leq$5, mas não justifica por que as oito faces são exatamente esses planos. Seria suficiente notar que cada face é um triângulo com um vértice em cada eixo semirreto, ou que |x|+|y|+|z|$\leq$5 é a envoltória convexa dos seis pontos. A afirmação está correta.%
+\item%
+{[}minor{]} A frase "uma enumeração computacional também resultou em 231" é citada sem código nem saída. Isso é inofensivo, porque a conferência por camadas já dá 231, mas não acrescenta evidência verificável.%
+\end{itemize}%
+\subsection*{Questão 2: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} n = 15. A entrada (1,3) de A? é n(n+3)/2. Para n = 14 ela vale exatamente 119 (não é maior que 119) e para n = 15 vale 135 > 119.\par %
+A resposta final n = 15 está correta e coincide com a referência. Conferi por multiplicação direta de matrizes em Python (puro, sem numpy) para n = 1\ldots{}17. As entradas (1,3) são 2, 5, 9, 14, 20, 27, 35, 44, 54, 65, 77, 90, 104, 119, 135, 152, 170, que batem com n(n+3)/2. Em n = 14 a entrada vale exatamente 119, e em n = 15 vale 135. Também confirmei o enunciado no PDF original (Questão 02, mesma matriz e mesmo limite 119). A resolução decompõe A = I + N e justifica a comutação de I com N. Mostra N$^2$ e N$^3$ = 0, e deriva (A?)$_{1}$$_{3}$ = 2n + C(n,2) = n(n+3)/2. Verifica a fórmula com n = 1 e n = 2 (inclusive o caso C(1,2) = 0). Trata explicitamente a armadilha da igualdade em n = 14, testando f(13) = 208, f(14) = 238 e f(15) = 270 contra 238. Conclui corretamente com 15. As armadilhas da referência estão cobertas: igualdade estrita, justificativa do binômio via nilpotência, (N$^2$)$_{1}$$_{3}$ = 1 e teste de casos pequenos. Os defeitos são só de explicitação: parte das entradas de N$^2$ e a conta de N$^3$ = 0 ficam sem mostrar, e a monotonicidade é apenas afirmada. Está próxima de um gabarito comentado, clara e bem organizada.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na etapa 2, o texto diz que a única entrada não nula de N$^2$ é a (1,3), mas só calcula essa entrada. As outras oito entradas de N$^2$ não são mostradas. Bastaria uma frase: a primeira coluna de N é nula e as linhas 2 e 3 de N, multiplicadas por N, dão zero. A conclusão está correta. A omissão é só de explicitação.%
+\item%
+{[}minor{]} N$^3$ = N$\cdot$N$^2$ = 0 é afirmado sem conta. Uma justificativa curta seria que (N$\cdot$N$^2$)\_\{i3\} = N\_\{i1\}$\cdot$1 = 0, porque a primeira coluna de N é nula. Alternativa: N é estritamente triangular superior 3$\times$3, logo N$^3$ = 0. Também falta mencionar que N$^2$ da expressão da entrada (1,3) tem o termo N$_{1}$$_{1}$N$_{1}$$_{3}$ = 0, que foi omitido na soma 1$\cdot$1 + 2$\cdot$0.%
+\item%
+{[}minor{]} A monotonicidade de f(n) = n(n+3) em $\mathbb{N}$ é só declarada. É trivial, pois f é produto de fatores positivos crescentes. Para ficar mais completo, poderia resolver n$^2$ + 3n - 238 > 0 pelas raízes 14 e -17 (discriminante 961 = 31$^2$). Isso confirmaria que 14 é raiz exata e que a desigualdade vale se e somente se n > 14. O teste de n = 13, 14 e 15 é suficiente e válido.%
+\end{itemize}%
+\subsection*{Questão 3: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Área de ABCD = 30 (unidades de área). Vértices: A(-2, 0), B(0, 4), C(8, 5), D(6, 1); centro X = (3, 5/2).\par %
+A resposta final é 30, igual à da referência, e confere com o meu recálculo: X=(3,5/2), A=(-2,0), B=(0,4), D=(6,1), AB$\times$AD=-30 em módulo e {[}ABX{]}=15/2. Conferi também as contas intermediárias. A equação de tangência 2m$^2$-5m+2=0 tem raízes 2 e 1/2, e m=1/2 é a própria reta r. Os lados são AB=2$\surd$5, BX=3$\surd$5/2 e AX=5$\surd$5/2, o incentro dá (1/2,5/2), o semiperímetro é 3$\surd$5 e o inraio é $\surd$5/2. O candidato usa um caminho mais enxuto que o da referência: a segunda tangente a $\omega$ por A dá AB, e a interseção com s dá B. Isso dispensa tratar k<0 e fixa B de forma única. Ele ainda verifica que $\omega$ é a inscrita (incentro e inraio coincidem, sem confusão com ex{-}incírculo) e confere a área por duas vias, incluindo o fator 4 e a checagem AB=DC. Todas as armadilhas da referência estão tratadas: diagonal que contém C, fator 4, circunferência inscrita e não ex{-}inscrita, e consistência do paralelogramo. Restam só detalhes de redação: C?s não declarado, justificativa telegráfica da igualdade das quatro áreas e ausência de comentário sobre o rótulo alternativo de B e D. Resolução correta, completa e clara, que um professor poderia publicar como gabarito comentado com pequenos ajustes.%
+\begin{itemize}%
+\item%
+{[}minor{]} Na seção 1 o candidato mostra que C $\in$ r (2$\cdot$5-8=2), mas não diz que C ? s (8+10=18$\neq$8). Isso é o que garante que AC ? r e BD ? s, e não o contrário. A conclusão está certa e o teste é trivial. Bastava uma frase.%
+\item%
+{[}minor{]} O candidato afirma que AB é a segunda tangente a $\omega$ traçada por A, sem explicar o porquê. A razão é que AB e AX são tangentes à inscrita partindo do mesmo vértice e são distintas. Essa dedução é válida, e é ela que torna B único e dispensa a análise k>0/k<0 da referência. O texto só poderia deixar essa lógica explícita: a dedução dá a condição necessária e a seção 3 dá a suficiência, ao confirmar o incentro e o inraio.%
+\item%
+{[}minor{]} A justificativa de que as quatro áreas são iguais ("bases iguais \ldots{} e mesma altura") é telegráfica. Faltou nomear os triângulos (ABX, BCX, CDX, DAX) e indicar quais pares compartilham altura. O resultado está correto e foi conferido por AB$\times$AD = 30.%
+\item%
+{[}minor{]} O candidato não comenta o rótulo alternativo (B=(6,1), D=(0,4)). Isso não é necessário, porque a tangente a partir de A já força B=(0,4), mas uma nota curta fecharia o assunto.%
+\end{itemize}%
+\subsection*{Questão 4: nota 9,2 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Área vermelha = $\pi$($\alpha$$^2$ + 32$\alpha$ + 528) (unidades de área). Detalhe: 17 regiões vermelhas (disco central + 16 anéis, incluindo o anel mais externo); a área branca é $\pi$(32$\alpha$ + 496) e a total é $\pi$($\alpha$+32)$^2$.\par %
+A resposta final do candidato, A\_verm = $\pi$($\alpha$$^2$+32$\alpha$+528), coincide com a da minha referência. Conferi numericamente com frações exatas ($\alpha$=0, 1/2, 1, 2, 5) e o valor bate em todos os casos. O vermelho e o branco somam sempre $\pi$($\alpha$+32)$^2$. Reli o enunciado no PDF (p. 5) e a leitura é a mesma: 33 círculos de raios $\alpha$,\ldots{},$\alpha$+32, com o central vermelho e as cores alternando. A modelagem está correta e todas as armadilhas foram tratadas. A contagem não tem erro de uma unidade (32 anéis, o externo vermelho). A área do anel é a diferença entre os círculos, $\pi$(2$\alpha$+2k-1). O disco central é somado à parte. $\Sigma$4j=544 e o termo constante 528 estão certos. $\alpha$ é tratado como real positivo e a resposta está em função de $\alpha$, com $\pi$ e unidades. A verificação por área branca ($\pi$(32$\alpha$+496)) e área total é correta e independente. As falhas são só menores: o teste com $\alpha$=0 é circular e contradiz $\alpha$>0, e falta justificar a leitura de que os 33 círculos incluem o central. Resolução clara, completa e quase no nível de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} A verificação com $\alpha$=0 é fraca e circular. Ela só reavalia a mesma soma com $\alpha$=0, o que não testa o modelo. Além disso, $\alpha$=0 contradiz o enunciado, que pede um círculo central de raio $\alpha$>0. Seria melhor um teste numérico concreto (por exemplo $\alpha$=1 dá 561$\pi$) ou só a checagem vermelho + branco = área total, que o candidato já fez e é a boa verificação.%
+\item%
+{[}minor{]} A interpretação de que os 33 círculos incluem o central (raios $\alpha$,\ldots{},$\alpha$+32, com 32 anéis e o anel externo vermelho) é afirmada, mas não discutida. O enunciado é um pouco ambíguo e uma frase justificando a escolha ou apontando a consequência (17 regiões vermelhas e 16 brancas) tornaria a resposta mais robusta contra o erro de uma unidade na contagem. A contagem em si está correta.%
+\item%
+{[}minor{]} Falta dizer explicitamente que há 17 regiões vermelhas (disco + 16 anéis) e 16 brancas. Isso está implícito nos índices k=2j com j=1..16, mas dizê{-}lo ajudaria o leitor. Também não se explica por que a fórmula do anel (2$\alpha$+2k-1) não vale para k=0; o disco central é tratado à parte, o que é correto.%
+\end{itemize}%
+\subsection*{Questão 5: nota 9,5 (aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A razão entre o volume da esfera maior e a soma dos volumes das quatro esferas menores é (2+$\surd$6)$^3$/32 = (22 + 9$\surd$6)/16 $\approx$ 2,753, independente do raio r (com R = r(2+$\surd$6)/2). A questão é dissertativa, então não há alternativa de múltipla escolha.\par %
+A resposta (22+9$\surd$6)/16 $\approx$ 2,753 está correta e coincide com a minha referência. Refiz as contas: (2+$\surd$6)$^3$ = 44+18$\surd$6; ($\surd$3+$\surd$2)$^3$ = 9$\surd$3+11$\surd$2, o que dá 9$\surd$6/16 + 22/16 pela conferência com coordenadas. Os valores numéricos batem em 2,7528. O enunciado original (Questão 05, p. 6) confere com a transcrição. A hipótese de leitura de 'inscritas' (tangência interna) está declarada. A aresta 2r está justificada. O circunraio é obtido por dois caminhos independentes (cubo e Pitágoras com h = a$\surd$6/3 e $\rho$ = 3h/4). O centro O' é identificado como circuncentro por argumento rigoroso: equidistância R-r e unicidade, pois os pontos não são coplanares. O texto avisa explicitamente que R = $\rho$ + r, e não R = $\rho$. Inclui verificação de consistência (esferas menores contidas na maior, tangência no ponto da semirreta, sem sobreposição). O denominador usa a soma dos quatro volumes, o cubo é expandido corretamente e há conferência numérica por coordenadas e checagem de ordem de grandeza. Todas as armadilhas da referência foram tratadas. Restam apenas observações menores de rigor e apresentação. É praticamente um gabarito comentado publicável."\}%
+\begin{itemize}%
+\item%
+{[}minor{]} Na via do cubo, a solução diz que os vértices alternados de um cubo formam um tetraedro regular e usa isso para o tetraedro dos centros. Ela não diz que todo tetraedro regular é semelhante a esse (o que justifica a escala por a = s$\surd$2). A conferência por Pitágoras cobre essa lacuna, então o impacto é desprezível.%
+\item%
+{[}minor{]} A justificativa de que O' é o circuncentro é correta e suficiente: equidistância pela tangência interna, e unicidade porque os vértices não são coplanares. Poderia citar que o circuncentro coincide com o baricentro, mas isso é dispensável para o resultado.%
+\item%
+{[}minor{]} A resposta final em caixa é dada na forma fechada simplificada (22+9$\surd$6)/16, com valor aproximado. Isso atende à instrução 8 da prova. A caixa usa a notação V\_maior/(4V\_menor), clara, mas o enunciado fala em 'soma dos volumes', e uma frase dizendo isso explicitamente deixaria a leitura mais direta.%
+\end{itemize}%
+\subsection*{Questão 6: nota 8,5 (não aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Enunciado literal (conferido com a página 7 da prova):\newline%
+a) det(AB) = 0, sempre.\newline%
+b) tr(AB) = 0. É a soma da última coluna, n-n = 0, e não depende de n.\newline%
+c) Para n=5 não existe nenhuma quadra ($\alpha$\_1,\ldots{},$\alpha$\_4) real que satisfaça a hipótese; o conjunto é vazio. A hipótese é autocontraditória: as colunas 4 e 5 de AB são idênticas, mas exigem somas 1 e 0.\newline%
+\newline%
+Leitura alternativa, conjectura minha sem gabarito oficial para confirmar: se a hipótese fosse sobre a soma das colunas de A, teríamos (a) 0, (b) n(n-1)/2 e, para n=5, $\alpha$\_1=1, $\alpha$\_2$\in$\{1,-2\}, $\alpha$\_3=1, $\alpha$\_4 qualquer real.\newline%
+\newline%
+O corretor deve conferir com o gabarito oficial ou errata qual leitura vale.\par %
+Li o enunciado na página 7 da prova e conferi as contas numericamente, com frações exatas para n=3..7. O enunciado impresso confere com a transcrição (B triangular superior de uns, hipótese sobre as colunas de AB).\newline%
+\newline%
+As identidades da candidata estão corretas:\newline%
+{-} (AB)\_\{ik\}=$\Sigma$\_\{l$\leq$k\} a\_il.\newline%
+{-} As colunas n-1 e n de AB são idênticas, e a diagonal de AB coincide com a última coluna.\newline%
+{-} Para n=3, AB={[}{[}0,0,0{]},{[}1,1,1{]},{[}$\alpha$1,$\alpha$1+1,$\alpha$1+1{]}{]}.\newline%
+{-} tr(AB)=soma de todos os elementos de A.\newline%
+{-} ($\alpha$-1)($\alpha$$^2$+2$\alpha$+3) e ($\alpha$-1)($\alpha$+2) estão fatorados corretamente.\newline%
+{-} Com (1,-2,1,3) e (1,1,1,7) as somas das colunas de A são 4,3,2,1,0 e o traço é 10.\newline%
+{-} Com B triangular inferior e $\alpha$=(0,-1,0,7), as somas das colunas de AB são 4,3,2,1,0 e o traço é 0.\newline%
+\newline%
+Comparação com a referência:\newline%
+{-} a) det(AB)=0, pelo mesmo argumento (primeira linha nula). Concordam.\newline%
+{-} b) A referência dá tr=0 no literal (vacuoso) e n(n-1)/2 na leitura sobre A. A candidata dá n(n-1)/2 na leitura sobre A e diz que no literal nenhum valor é determinado. Isso é consistente, porque o traço sairia 0 e 1 ao mesmo tempo, como a própria referência admite.\newline%
+{-} c) Literal: conjunto vazio, nos dois. Leitura sobre A: $\alpha$1=1, $\alpha$2$\in$\{1,-2\}, $\alpha$3=1, $\alpha$4$\in$$\mathbb{R}$, nos dois. Leitura B triangular inferior: $\alpha$=(0,\{0,-1\},0,livre) e tr=0, também nos dois.\newline%
+\newline%
+Armadilhas tratadas:\newline%
+{-} A contradição das colunas n-1 e n foi detectada e avisada de forma explícita, sem forçar valores.\newline%
+{-} det(AB) foi calculado sem a hipótese.\newline%
+{-} Não confundiu traço com soma de todos os elementos de AB.\newline%
+{-} Usou $\alpha$\^{}0=1 e deixou $\alpha$4 livre.\newline%
+{-} Não perdeu $\alpha$2=-2.\newline%
+{-} Admitiu que não consultou o gabarito oficial.\newline%
+\newline%
+Pontos fracos: o ANSWER final adota uma leitura reescrita e ranqueia as alternativas sem base. Há também notação não definida (c\_j) e uma afirmação não demonstrada (diagonal = última coluna). Faltam as obstruções extras no literal. É uma resolução honesta e rigorosa, mas ainda não no nível de gabarito publicável, por causa da escolha do headline.%
+\begin{itemize}%
+\item%
+{[}major{]} O ANSWER final dá b) e c) para uma leitura reescrita (soma das colunas de A), não para o enunciado impresso. A candidata avisa isso, mas depois chama a leitura B triangular inferior de "menos plausível" sem justificar. Essa leitura exige só inverter uma desigualdade na definição de B, o que é erro de digitação plausível, e deixa a hipótese sobre AB consistente. Conferi numericamente: com $\alpha$=(0,-1,0,7) as somas das colunas de AB são 4,3,2,1,0 e tr(AB)=0. A leitura sobre A exige trocar AB por A. Sem o gabarito oficial não há base para ordenar as duas, então o ideal era apresentá{-}las em pé de igualdade, ou deixar o literal (?) como resposta principal. Se o gabarito seguir a leitura B inferior ou a literal, o headline de b) e c) não bate.%
+\item%
+{[}minor{]} Na leitura literal, b) não recebe valor: "nenhum valor é determinado". A referência registra tr=0 (soma da última coluna, n-n), observando que também sai 1 pela coluna n-1. A posição da candidata é rigorosa, pois a hipótese é vacuosa. Faltou explicitar no ANSWER que, sob o enunciado literal, a hipótese é falsa e b) e c) são vacuosos.%
+\item%
+{[}minor{]} Na parte final de b) aparece "traço = c\_\{n{-}1\} = c\_n", mas a notação c\_j não foi definida (a solução usa s\_j para colunas de A). A igualdade diagonal de AB = última coluna de AB, que sustenta a frase, só é afirmada, não demonstrada. Bastava (AB)\_\{ik\}=$\Sigma$\_\{l$\leq$min(i-1,k)\} $\alpha$\_l\^{}\{i-l-1\}, que vale d\_i para k$\geq$i-1.%
+\item%
+{[}minor{]} A candidata mostra a contradição literal só pelas colunas n-1 e n, o que basta, mas não registra obstruções adicionais: c\_2=-1 não tem raiz real (1+x$^2$+x $\geq$ 3/4); c\_4=1$\neq$-1; e o sistema também não tem solução em $\mathbb{C}$. Isso deixaria o conjunto vazio em c) mais convincente.%
+\item%
+{[}minor{]} Diz que a leitura sobre A é "consistente" porque s\_n=0 e s\_\{n-1\}=1 valem sempre, mas não fecha o argumento: $\alpha$\_j=1 para todo j dá s\_j=n-j para qualquer n, logo o sistema é solúvel para n geral. Isso sustenta o n(n-1)/2 de b) fora do caso n=5.%
+\end{itemize}%
+\subsection*{Questão 7: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} p(x) = 2x$^{4}$ - 3x$^3$ + 7x$^2$ + 7x - 5 = (x+1)(2x-1)(x$^2$-2x+5). Raízes em $\mathbb{C}$: x = -1, x = 1/2, x = 1 + 2i e x = 1 - 2i (todas simples).\par %
+Resposta final correta e igual à da referência: raízes -1, 1/2, 1+2i e 1-2i, com p(x) = 2x$^{4}$ - 3x$^3$ + 7x$^2$ + 7x - 5 = (x+1)(2x-1)(x$^2$-2x+5). Conferi tudo numericamente: o desenvolvimento ($\alpha$x+$\beta$)(x$^3$-x+4)+r dá $\alpha$x$^{4}$+$\beta$x$^3$+(9-$\alpha$)x$^2$+(4$\alpha$-$\beta$-4)x+(4$\beta$+7). O sistema fornece $\alpha$=2 e $\beta$=-3. A divisão de p por x$^3$-x+4 dá quociente 2x-3 e resto 9x$^2$-4x+7. Soma 3/2 e produto -5/2 conferem, e |p(z)|=0 para as quatro raízes. O enunciado transcrito coincide com o da página 8 do PDF. A resolução trata as armadilhas principais: não supõe p mônico ($\alpha$ é incógnita), inclui o termo -$\alpha$x$^2$ e soma o resto corretamente, usa o sinal certo de Girard no grau 4 (produto = +a$_{0}$/a$_{4}$, citando \textbackslash{}"grau par\textbackslash{}") e observa que o resto tem grau 2 < 3. Fatora de fato por teste de raízes racionais, Briot--Ruffini e $\Delta$ = -16, listando as quatro raízes em $\mathbb{C}$. A estrutura é clara e lógica. Os defeitos são todos menores: não confere $\alpha$ $\neq$ 0 ao final, não comenta a unicidade (determinante 14 $\neq$ 0), omite a linha do quociente nos dispositivos de Briot--Ruffini e não explicita a conta da verificação de soma e produto. Está perto do nível de gabarito comentado, e esses pontos o separam de uma nota mais alta."%
+\begin{itemize}%
+\item%
+{[}minor{]} A resolução não diz explicitamente que $\alpha$ = 2 $\neq$ 0 é compatível com o grau 4. A hipótese $\alpha$ $\neq$ 0 é declarada no início, mas nunca é conferida no final. Bastaria uma frase.%
+\item%
+{[}minor{]} Não há comentário sobre a unicidade de p. A solução obtém $\alpha$ e $\beta$ por equações lineares (determinante 14 $\neq$ 0), de modo que p é único e a resposta é completa. Isso fica implícito, e só a unicidade do resto é citada. Um gabarito comentado diria que o sistema 3$\alpha$+2$\beta$=0, 5$\alpha$+8$\beta$=-14 tem solução única.%
+\item%
+{[}minor{]} As divisões de Briot--Ruffini aparecem só com o resultado, sem a linha de coeficientes do quociente (2, -5, 12, -5 e depois 2, -4, 10). Os valores estão corretos (conferidos), mas o dispositivo não é mostrado. A instrução 8 da prova pede expressões resolvidas integralmente.%
+\item%
+{[}minor{]} A "Verificação" de soma = 3/2 e produto = -5/2 logo após obter p é afirmada sem a conta (-(-3)/2 e -5/2). Também não se diz que a soma e o produto contam as raízes com multiplicidade, nem que as 4 raízes encontradas são simples e distintas. Isso não afeta o resultado, mas é uma lacuna de rigor.%
+\item%
+{[}minor{]} Não há uma conferência direta de que a fatoração (x+1)(2x-1)(x$^2$-2x+5) se expande em 2x$^{4}$-3x$^3$+7x$^2$+7x-5. A conferência feita (soma e produto das raízes) é necessária, mas não suficiente para validar a fatoração. Ela está correta, como confirmei por expansão.%
+\end{itemize}%
+\subsection*{Questão 8: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} 784 sequências (usando $\mathbb{N}$ = \{1, 2, 3, \ldots{}\}, convenção da prova).\par %
+A resposta 784 está correta e coincide com a referência. Conferi por enumeração em Python (784) e pelas somas parciais, 408 para a ímpar e 376 para a par. A transcrição do enunciado confere com a p. 9 da prova. A resolução é bem estruturada: usa $\mathbb{N}$ = \{1,2,\ldots{}\} da prova e justifica que sequência estritamente crescente equivale a conjunto, sem contagem dupla. A reparametrização d=b-a, e=c-b dá a bijeção com 3a+2d+e=100, e eliminar e leva a 3a+2d $\leq$ 99. O piso ?(99-3a)/2? está certo, o limite a $\leq$ 32 também (sem off{-}by{-}one), e as duas PAs por paridade de a estão corretas (16 termos cada). A contagem explícita já basta como prova, então as fraquezas ficam na parte de verificação: a fórmula round((n-3)$^2$/12) é citada sem justificar o deslocamento, e a 'enumeração por computador' não é argumento de prova escrita. Falta também uma checagem independente, como a complementar 4851 = 6$\cdot$784 + 3$\cdot$49. Nenhum erro de conta ou lógica. Nota 9, não 10, só pela verificação pouco rigorosa e por não explicitar a exclusão do 0 e dos casos repetidos (contraste com 833).%
+\begin{itemize}%
+\item%
+{[}minor{]} A verificação usa a fórmula round((n-3)$^2$/12) para partições em três parcelas distintas sem justificar. A justificativa seria subtrair (0,1,2) de (a,b,c), o que dá partições de n-3 em 3 partes positivas, contadas por round((n-3)$^2$/12). Como a contagem principal já é explícita, isso só enfraquece a parte de verificação, não a prova. A fórmula está correta e a conta 97$^2$/12 $\approx$ 784,08 também.%
+\item%
+{[}minor{]} Cita 'enumeração direta por computador' como verificação. Numa prova dissertativa sem computador isso não é argumento válido. Seria melhor trocar por uma checagem independente, como o método complementar 4851 - 3$\cdot$49 = 4704 = 6$\cdot$784, ou a checagem de 3a+2d $\leq$ 99 por outro caminho.%
+\item%
+{[}minor{]} Não comenta explicitamente por que o 0 fica excluído, além de citar $\mathbb{N}$ = \{1,2,3,\ldots{}\}. Também não diz que 100 não é múltiplo de 3, que garante que não há terna com três termos iguais. Nenhum dos dois é necessário para a prova, mas um gabarito comentado poderia mencionar o contraste com 833 (partições sem exigir parcelas distintas) para mostrar que o 0 e o 'estritamente' foram tratados.%
+\item%
+{[}minor{]} Em 'Passo 3', a passagem de 'd $\geq$ 1 e d $\leq$ ?(99-3a)/2?' para 'a $\leq$ 32' está correta (99-3a $\geq$ 2 $\Rightarrow$ a $\leq$ 32), mas o limite poderia vir acompanhado do caso a = 33 (99-99 = 0 valores) para fechar a checagem de off{-}by{-}one. É só uma questão de clareza.%
+\end{itemize}%
+\subsection*{Questão 9: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} H: x$^2$/4 - y$^2$/32 = 1 (a = 2, b$^2$ = 32).\newline%
+a) Existem exatamente duas tangentes por C: y = 2$\surd$6$\cdot$x - 8 e y = -2$\surd$6$\cdot$x - 8.\newline%
+b) A reta y = 2$\surd$6$\cdot$x - 8 toca H em ($\surd$6, 4), no ramo direito. A reta y = -2$\surd$6$\cdot$x - 8 toca H em (-$\surd$6, 4), no ramo esquerdo.\par %
+Conferi o enunciado original (Questão 09: focos ($\pm$6,0), e = 3, C = (0,-8)) e refiz as contas em Python. H: x$^2$/4 - y$^2$/32 = 1 (a = 2, b$^2$ = 32). Em (8-m$^2$)x$^2$ + 16mx - 96 = 0 o discriminante é 3072 - 128m$^2$, que se anula em m$^2$ = 24. As tangentes são y = $\pm$2$\surd$6$\cdot$x - 8, com raiz dupla x = m/2 e pontos de tangência ($\pm$$\surd$6, 4); ambos satisfazem 8x$^2$ - y$^2$ = 32. A resposta do candidato coincide integralmente com a minha referência, nos dois itens, e está correta. O candidato tratou as armadilhas principais. Escolheu o eixo focal horizontal e calculou a e b$^2$ corretamente (a = 2, b$^2$ = c$^2$ - a$^2$ = 32). Descartou a reta vertical x = 0, mostrando que |x| $\geq$ 2 em H. Separou o caso m$^2$ = 8 (paralelas às assíntotas, que não são tangentes). Usou a condição k$^2$ = a$^2$m$^2$ - b$^2$ (e não a da elipse). Obteve x\_T = m/2 com o sinal certo, associou cada ponto à reta correta e conferiu em H. Fez ainda uma verificação independente pela tangente em um ponto e pela polar y = 4. A resposta é completa: dá as equações das duas retas e o ponto de tangência de cada uma. As falhas são só de rigor e acabamento. A fórmula da tangente em um ponto e a da polar são usadas sem justificativa. O caso y$_{0}$ = 0 não é mencionado na verificação. Faltou comentar que os pontos estão em ramos diferentes. Nenhuma falha afeta a correção. É uma resolução próxima de um gabarito comentado publicável.%
+\begin{itemize}%
+\item%
+{[}minor{]} A fórmula da tangente em um ponto, 8x$_{0}$x - y$_{0}$y = 32, é usada na 'verificação' e para a polar sem justificativa (faltou derivação implícita ou ao menos a menção de que se trata do desdobramento da equação). Ela só serve de conferência, pois o resultado principal vem do discriminante, mas um gabarito comentado deveria justificá{-}la.%
+\item%
+{[}minor{]} Na verificação pela tangente no ponto, o caso y$_{0}$ = 0 (vértices, tangentes verticais x = $\pm$2, que não passam por C) não é mencionado. Ele não afeta o resultado, porque o método do discriminante já cobriu as verticais, mas a verificação fica incompleta como método independente.%
+\item%
+{[}minor{]} A condição n$^2$ = a$^2$m$^2$ - b$^2$ é citada como conhecida, sem demonstração. Serve apenas de conferência e coincide com o discriminante, então o impacto é pequeno.%
+\item%
+{[}minor{]} Não diz que as duas tangentes tocam ramos diferentes: ($\surd$6,4) está no ramo direito (x $\geq$ 2) e (-$\surd$6,4) no esquerdo. Também não nota que C está fora de H, na região entre os ramos, o que explicaria por que há exatamente duas tangentes. O enunciado não pede isso. Seriam observações úteis de interpretação geométrica.%
+\item%
+{[}minor{]} Para m$^2$ = 8 o texto diz 'uma única solução' mas não calcula o ponto (x = 6/m). O caso é descartado corretamente por ser paralelo às assíntotas, mas a justificativa de que a reta atravessa o ramo e não é tangente é só afirmada. 'O caso (-$\surd$6,4) é simétrico' também é afirmado sem mostrar a reta resultante.%
+\end{itemize}%
+\subsection*{Questão 10: nota 9,2 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) Raio da circunferência de centro C: 2$\surd$3 cm. Raio da circunferência de centro D: 6 cm. (AP = PQ = 6 cm.)\newline%
+b) Área comum: (10$\pi$ - 12$\surd$3) cm$^2$ $\approx$ 10,63 cm$^2$.\par %
+As respostas finais coincidem com a referência e estão corretas: a) r\_C=2$\surd$3 cm e r\_D=6 cm; b) S=(10$\pi$-12$\surd$3) cm$^2$$\approx$10,63 cm$^2$. Refiz as contas em Python: CP=2$\surd$3, DP=6, BP/6=$\surd$(2+$\surd$3), os centros ficam em 2$\surd$3 e 6$\surd$3 (dentro de AB, na ordem A,C,M,D,B), e a integração numérica da lente deu 10,631317, igual a 10$\pi$-12$\surd$3. Todas as etapas intermediárias estão certas. Isso inclui a redução 7/4+$\surd$3=(1+$\surd$3/2)$^2$, MB=x(2+$\surd$3)/2, x=6, os ângulos 30$^\circ$ em A, 120$^\circ$ em C e 60$^\circ$ em D, r\_2=BP$^2$/(2$\cdot$MB)=6 e a soma de dois segmentos menores. A resolução trata bem as armadilhas. O radical é simplificado corretamente. AB=AM+MB tem todos os termos. A distinção entre ângulo central e ângulo da base está certa. A fórmula (r$^2$/2)($\theta$-sen$\theta$) é aplicada com r\_1 e r\_2 nos lugares certos. Há conferência de C,D$\in$AB e da condição de secância. O ponto mais forte é o caso M entre A e B: o candidato mostra que M é interior a ambos os discos e está no diâmetro que sai de A (ou de B) em direção a AB. Logo M$\in${[}AB{]} e o caso x=6(1+$\surd$3) fica excluído, sem a conta de coordenadas que a referência usa. Esse argumento é rigoroso e usa a hipótese C,D$\in$AB no ponto certo. Os defeitos são só de acabamento: uma expressão truncada na verificação do item b), uma frase solta no cálculo de r\_2, o lado de D em relação a M assumido sem justificativa e pequenas lacunas de justificativa (C$\neq$D, lente como união de dois segmentos, ângulo agudo). Com a limpeza desses trechos, serviria de gabarito comentado."%
+\begin{itemize}%
+\item%
+{[}minor{]} A verificação do item b) traz uma expressão truncada e sem sentido: "largura (C+r\_1)-(D-r\_2)=4$\surd$3-(3$\surd$3-6)$\cdot$0+\ldots{}". É resto de rascunho no texto final. Os números que vêm depois estão certos (6$\surd$3-6$\approx$4,39 e 4$\surd$3$\approx$6,93, largura $\approx$2,54), mas a linha deve ser reescrita como (2$\surd$3+2$\surd$3)-(6$\surd$3-6)=6-2$\surd$3$\approx$2,54 ou ser removida.%
+\item%
+{[}minor{]} Em r\_2 sobra uma frase solta, "MB$^2$-9=BP$^2$-18, mas é mais direto usar\ldots{}", que não serve ao argumento. O texto fica com cara de rascunho e deveria ser cortado.%
+\item%
+{[}minor{]} O candidato escreve "D entre M e B, de modo que r\_2=MB-t" sem justificar. O resultado confirma a hipótese, porque t=(MB$^2$-9)/(2MB)>0, e a conferência final (ordem A,C,M,D,B) a valida. Mesmo assim, o certo era tomar t com sinal ou comentar que o outro lado de M leva a t<0.%
+\item%
+{[}minor{]} Não é dito por que a reta dos centros é AB. Isso exige C$\neq$D, já que circunferências concêntricas não se cortam em dois pontos, e raios positivos (C$\neq$A, D$\neq$B). Também não se justifica que a lente é a união dos dois segmentos circulares de cada lado da corda. Isso decorre do eixo radical, e a lente só tem essa forma porque os centros ficam em lados opostos de PQ. Ambos são fatos padrão, mas uma frase os fecharia.%
+\item%
+{[}minor{]} A estimativa (2/3)$\cdot$2,54$\cdot$6$\approx$10,2 é apresentada como "concorda" com 10,63, uma diferença de cerca de 4\%. É só uma ordem de grandeza (aproximação parabólica) e deveria ser dita como tal. A menção a "integração numérica" não mostra conta nenhuma. Refiz a integração e ela confirma 10,6313, mas num gabarito publicado isso seria só um comentário.%
+\item%
+{[}minor{]} Em sen$\angle$PDM=1/2 $\to$ 30$^\circ$ falta dizer que o ângulo é agudo, por estar no triângulo retângulo PMD com ângulo reto em M. Fica implícito.%
+\end{itemize}%
+\end{document}

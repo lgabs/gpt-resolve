@@ -1,0 +1,46 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{1) Redução do sistema.} As variáveis $x$ e $z$ aparecem somente na combinação $x+z$. Fazendo $s=x+z$, o sistema fica
+\[
+\begin{cases} s+2y=a_j\\ s+3y=a_{j+1}\\ s+4y=a_{j+2}\end{cases}
+\]
+nas incógnitas $(s,y)$. Subtraindo a 1ª equação da 2ª e a 2ª da 3ª:
+\[
+y=a_{j+1}-a_j \qquad\text{e}\qquad y=a_{j+2}-a_{j+1}.
+\]
+
+\textbf{2) Condição para o sistema ser possível.} O sistema é possível se, e somente se,
+\[
+a_{j+1}-a_j=a_{j+2}-a_{j+1}.
+\]
+De fato, essa condição é necessária pelas subtrações acima. Ela também é suficiente: com $y=a_{j+1}-a_j$ e $s=a_j-2y$, as três equações são satisfeitas, e então $(x,y,z)=(t,\,y,\,s-t)$ é solução para qualquer $t\in\mathbb{R}$.
+
+\textbf{3) A sequência é uma PA.} O sistema é possível para todo $j=1,\ldots,2025$. Logo $a_{j+1}-a_j=a_{j+2}-a_{j+1}$ para todos esses $j$, e as diferenças consecutivas são todas iguais de $a_1$ até $a_{2027}$. Assim, $(a_n)$ é uma progressão aritmética de razão $r$, com
+\[
+a_4=a_1+3r\ \Rightarrow\ 10=1+3r\ \Rightarrow\ r=3,\qquad a_n=1+3(n-1)=3n-2 .
+\]
+
+\textbf{4) Cálculo de $x_j+y_j+z_j$.} Para cada $j$ o sistema é possível e indeterminado, pois $x$ e $z$ não ficam determinados separadamente. Mesmo assim, a soma pedida é a mesma para qualquer solução escolhida:
+\[
+y_j=r=3,\qquad s_j=x_j+z_j=a_j-2y_j=a_j-6,
+\]
+\[
+x_j+y_j+z_j=s_j+y_j=a_j-3=(3j-2)-3=3j-5 .
+\]
+Conferência com $j=1$: $a_1,a_2,a_3=1,4,7$ e $y=3$, $x+z=1-6=-5$. Então $x+3y+z=-5+9=4=a_2$ e $x+4y+z=-5+12=7=a_3$. Portanto $x_1+y_1+z_1=-2=3\cdot1-5$.
+
+\textbf{5) Soma.} Somando para $j=1,\ldots,2025$:
+\[
+\sum_{j=1}^{2025}(x_j+y_j+z_j)=\sum_{j=1}^{2025}(3j-5)
+=3\cdot\frac{2025\cdot 2026}{2}-5\cdot 2025
+=2025\,(3\cdot 1013-5)=2025\cdot 3034 .
+\]
+Portanto
+\[
+\sum_{j=1}^{2025}(x_j+y_j+z_j)=6143850 .
+\]
+O resultado é coerente: o valor médio de $3j-5$ é $3\cdot 1013-5=3034$, e há $2025$ parcelas.
+
+ANSWER: $\displaystyle\sum_{j=1}^{2025}(x_j+y_j+z_j)=2025\cdot 3034=6143850$

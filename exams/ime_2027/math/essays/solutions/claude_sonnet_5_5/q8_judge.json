@@ -1,0 +1,50 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "Identidade demonstrada: cada termo vale $\\frac{\\operatorname{tg}((k+1)\\alpha)-\\operatorname{tg}(k\\alpha)}{2\\operatorname{sen}\\alpha}$; a soma telescopa e dá $S_n=\\frac{\\operatorname{sen}(n\\alpha)}{\\operatorname{sen}(2\\alpha)\\cos((n+1)\\alpha)}$.",
+  "judge_reference": {
+    "reference_solution": "**Resolução (Questão 8 – IME 2027, Matemática discursiva).** Conferi a identidade numericamente em python (2000 pares (n, α) aleatórios, erro relativo da ordem de 1e-11).\n\n**Ideia:** transformar cada termo em produto (prostaférese), reescrevê-lo como diferença de tangentes e telescopar a soma.\n\n**Passo 0 – Hipóteses e boa definição.**\n- Para k = 1,…,n, o termo k envolve cos(kα) e cos((k+1)α). Juntos, esses índices cobrem j = 1,…,n+1, que são exatamente os índices da hipótese cos(jα) ≠ 0. Logo, todas as tangentes que aparecerão estão definidas e todas as divisões abaixo são legítimas.\n- sen α ≠ 0 e cos α ≠ 0 (caso j = 1) dão sen 2α = 2 sen α cos α ≠ 0. Assim o lado direito está bem definido, e cos((n+1)α) ≠ 0 pela hipótese com j = n+1.\n\n**Passo 1 – Cada termo vira um produto.** Pela identidade cos A + cos B = 2 cos((A+B)/2) cos((A−B)/2), com A = (2k+1)α e B = α, temos (A+B)/2 = (k+1)α e (A−B)/2 = kα. Portanto\n\ncos α + cos((2k+1)α) = 2 cos(kα) cos((k+1)α).\n\nEsse produto é ≠ 0 pelo Passo 0, então\n\n1/(cos α + cos((2k+1)α)) = 1 / (2 cos(kα) cos((k+1)α)).\n\n**Passo 2 – Diferença de tangentes.** Para x, y com cos x ≠ 0 e cos y ≠ 0:\n\ntg y − tg x = (sen y cos x − cos y sen x)/(cos x cos y) = sen(y−x)/(cos x cos y).\n\nCom x = kα e y = (k+1)α, tem-se y − x = α, logo\n\n1/(cos(kα) cos((k+1)α)) = [tg((k+1)α) − tg(kα)] / sen α,\n\ne isso exige sen α ≠ 0. Então\n\n1/(cos α + cos((2k+1)α)) = [tg((k+1)α) − tg(kα)] / (2 sen α).\n\n**Passo 3 – Soma telescópica.**\n\nS_n = (1/(2 sen α)) · Σ_{k=1}^{n} [tg((k+1)α) − tg(kα)] = [tg((n+1)α) − tg α] / (2 sen α).\n\n**Passo 4 – Fechamento.** Aplicando de novo a identidade do Passo 2, com x = α e y = (n+1)α, temos y − x = nα. Assim\n\ntg((n+1)α) − tg α = sen(nα) / (cos α · cos((n+1)α)).\n\nLogo\n\nS_n = sen(nα) / (2 sen α cos α cos((n+1)α)) = sen(nα) / (sen(2α) cos((n+1)α)). ∎\n\n**Verificações de consistência.**\n- n = 1: o lado esquerdo é 1/(cos α + cos 3α) = 1/(2 cos α cos 2α). O lado direito é sen α/(sen 2α cos 2α) = sen α/(2 sen α cos α cos 2α) = 1/(2 cos α cos 2α). ✓\n- n = 0 (se ℕ contiver 0): a soma vazia vale 0 e o lado direito vale sen 0/(…) = 0. ✓ Basta cos α ≠ 0, que é a hipótese j = 1.\n\n**Demonstração alternativa (indução em n).**\n- Base (n = 1): feita acima.\n- Passo: suponha a fórmula para n e cos((n+2)α) ≠ 0, que é a hipótese para n+1. Então S_{n+1} − S_n = 1/(2 cos((n+1)α) cos((n+2)α)). Por outro lado, com o lado direito R_n = sen(nα)/(sen 2α cos((n+1)α)),\n\nR_{n+1} − R_n = [sen((n+1)α) cos((n+1)α) − sen(nα) cos((n+2)α)] / (sen 2α cos((n+1)α) cos((n+2)α)).\n\n- Numerador: sen((n+1)α)cos((n+1)α) = ½ sen((2n+2)α) e sen(nα)cos((n+2)α) = ½[sen((2n+2)α) − sen 2α]. A diferença é ½ sen 2α.\n- Logo R_{n+1} − R_n = 1/(2 cos((n+1)α) cos((n+2)α)) = S_{n+1} − S_n. ✓",
+    "final_answer": "Identidade demonstrada: cos α + cos((2k+1)α) = 2cos(kα)cos((k+1)α) e 1/(cos kα cos (k+1)α) = [tg((k+1)α) − tg(kα)]/sen α. Assim S_n = [tg((n+1)α) − tg α]/(2 sen α) = sen(nα)/(sen(2α) cos((n+1)α)). As hipóteses sen α ≠ 0 e cos(jα) ≠ 0 (j = 1,…,n+1) garantem que todas as divisões e tangentes estão definidas. Não há alternativa a indicar: a questão é discursiva.",
+    "pitfalls": [
+      "Prostaférese correta: cos α + cos((2k+1)α) = 2cos((k+1)α)cos(kα). Erros comuns: esquecer o fator 2, trocar por seno, ou usar (2k+1)α/2 em vez de (A±B)/2.",
+      "Não basta 'telescopar': é preciso escrever o termo como diferença, usando tg y − tg x = sen(y−x)/(cos x cos y), com y − x = α. Isso dá o fator 1/sen α, e é aí que se usa sen α ≠ 0.",
+      "Justificar as hipóteses: cos(kα) e cos((k+1)α) com k = 1,…,n cobrem exatamente j = 1,…,n+1. Isso garante denominadores ≠ 0 e tangentes definidas. Também sen 2α = 2 sen α cos α ≠ 0 (cos α ≠ 0 pela hipótese j = 1), e o lado direito só faz sentido por isso.",
+      "Soma telescópica com limites certos: Σ_{k=1}^{n}[tg((k+1)α) − tg(kα)] = tg((n+1)α) − tg α. Erros comuns: terminar em tg(nα) ou começar em tg 0.",
+      "No fechamento, tg((n+1)α) − tg α = sen(nα)/(cos α cos((n+1)α)) e o 2 sen α do denominador vira sen 2α. Esquecer o fator 2 leva a sen α no lugar de sen 2α na resposta.",
+      "A condição sen α ≠ 0 é necessária: para α = π, a soma vale −n/2 e o lado direito é 0/0. Por isso a hipótese não é decorativa.",
+      "Em n = 0 (se ℕ contiver 0) a soma é vazia e vale 0, coerente com a fórmula. A indução funciona como alternativa, mas é preciso lembrar que a hipótese cos((n+2)α) ≠ 0 vem da hipótese para n+1.",
+      "Não basta testar para n = 1, 2 ou conferir numericamente: a questão pede 'mostre', ou seja, uma demonstração geral, e a verificação numérica não a substitui."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "Identidade demonstrada: cada termo vale $\\frac{\\operatorname{tg}((k+1)\\alpha)-\\operatorname{tg}(k\\alpha)}{2\\operatorname{sen}\\alpha}$; a soma telescopa e dá $S_n=\\frac{\\operatorname{sen}(n\\alpha)}{\\operatorname{sen}(2\\alpha)\\cos((n+1)\\alpha)}$.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato diz que uma \"checagem numérica com valores aleatórios\" confirmou a igualdade, mas não mostra o resultado. Isso não prejudica a demonstração, que é analítica e completa. Para um gabarito, essa frase poderia ser omitida ou o resultado explicitado."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não comenta que a hipótese sen α ≠ 0 é realmente necessária. Por exemplo, para α = π a soma vale −n/2 e o lado direito vira 0/0. Ela apenas a usa corretamente no Passo 2 ao dividir por sen α. Uma observação curta tornaria o texto mais didático, mas não era exigida."
+          },
+          {
+            "severity": "minor",
+            "description": "No Passo 3, a soma telescópica é escrita sem explicitar o cancelamento, isto é, que os termos tg(2α), …, tg(nα) aparecem com sinais opostos. O resultado e os limites estão corretos e a omissão é aceitável. O caso n = 0 é tratado só como verificação lateral, e vale lembrar que ele depende de cos α ≠ 0, já justificado na seção de condições."
+          }
+        ],
+        "summary": "A resolução do candidato está correta e completa, e coincide passo a passo com a minha referência. Conferi numericamente a identidade com 2000 pares (n, α), com erro da ordem de 1e-11, e reli o enunciado no PDF: a transcrição é fiel. O candidato justifica que os índices de cos(kα) e cos((k+1)α), com k = 1..n, cobrem j = 1..n+1. Também mostra que sen 2α = 2 sen α cos α ≠ 0, de modo que todas as divisões são legítimas. Usa a prostaférese corretamente, com o fator 2. Obtém tg((k+1)α) − tg(kα) = sen α / (cos kα · cos (k+1)α) e divide por 2 sen α, usando sen α ≠ 0. Telescopa com limites corretos, de tg α a tg((n+1)α). No fechamento aplica a mesma identidade com A − B = nα e chega a sen(nα)/(sen 2α · cos((n+1)α)). Evita as armadilhas listadas: o fator 2, os limites da soma, o 2 sen α virando sen 2α e a demonstração geral em vez de só testar valores. As verificações com n = 1 e n = 0 são corretas. As falhas são só cosméticas: a menção a uma checagem numérica sem resultado, e a falta de comentar que sen α ≠ 0 é necessário. É uma solução que um professor poderia publicar como gabarito comentado.\"}"
+      }
+    }
+  ]
+}

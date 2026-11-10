@@ -1,0 +1,35 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{1) Altura e raio da esfera inscrita.} No tetraedro regular de aresta $a$, o pé da altura relativa a $A$ é o baricentro $G$ do triângulo equilátero $BCD$, e $GB=\frac{2}{3}\cdot\frac{a\sqrt3}{2}=\frac{a\sqrt3}{3}$. Por Pitágoras no triângulo $AGB$:
+\[
+H=\sqrt{a^2-\frac{a^2}{3}}=\frac{a\sqrt6}{3}.
+\]
+O incentro $I$ dista $r$ das quatro faces. Decompondo o tetraedro em quatro pirâmides de vértice $I$ e bases nas faces (todas de área $S$):
+\[
+4\cdot\frac{1}{3}Sr=\frac13 SH\;\Longrightarrow\; r=\frac{H}{4}=\frac{a\sqrt6}{12}.
+\]
+
+\textbf{2) O plano tangente e o novo tetraedro.} Há exatamente dois planos paralelos a $BCD$ tangentes à esfera, ambos a distância $r$ de $I$ e perpendiculares à altura por $A$ (que passa por $I$). Um deles é a própria face $BCD$; o outro, o plano pedido $\pi_A$, fica à distância $2r=\frac{H}{2}$ de $BCD$, ou seja, à distância $H-2r=\frac{H}{2}$ de $A$.
+
+A homotetia de centro $A$ e razão $\frac{H/2}{H}=\frac12$ leva $BCD$ na seção de $\pi_A$ com o tetraedro. Logo os novos vértices são os pontos médios de $AB$, $AC$ e $AD$, e o novo tetraedro é regular, de aresta $\frac a2$. O mesmo vale nos vértices $B$, $C$ e $D$. Como dois desses tetraedros de canto têm em comum no máximo um ponto médio de aresta, os quatro têm interiores disjuntos (o que sobra é o octaedro central).
+
+\textbf{3) As esferas não se sobrepõem.} A esfera inscrita em $ABCD$ fica do lado de $\pi_A$ que contém $I$, e o tetraedro do vértice $A$, com a esfera inscrita nele, fica do outro lado. As duas esferas apenas se tangenciam, no ponto de tangência de $\pi_A$, que está sobre a altura. O mesmo argumento vale em cada etapa: cada esfera fica separada dos tetraedros que nascem dentro do seu tetraedro, e tetraedros de mesmo nível têm interiores disjuntos. Portanto os volumes se somam sem descontos.
+
+\textbf{4) Contagem por nível.} Seja $V_0=\frac43\pi r^3$ o volume da esfera inscrita em $ABCD$. No nível $n$ ($n\ge 0$) há $4^n$ tetraedros regulares de aresta $\frac{a}{2^n}$. Cada um contém uma esfera de raio $\frac{r}{2^n}$, cujo volume é $\frac{V_0}{8^n}$. Assim o nível $n$ contribui com
+\[
+4^n\cdot\frac{V_0}{8^n}=\frac{V_0}{2^n}.
+\]
+Somando a série geométrica de razão $\frac12$ (convergente):
+\[
+V_{\text{total}}=\sum_{n=0}^{\infty}\frac{V_0}{2^n}=2V_0
+=2\cdot\frac43\pi\left(\frac{a\sqrt6}{12}\right)^3
+=\frac83\pi\cdot\frac{6\sqrt6\,a^3}{1728}
+=\frac{\pi\sqrt6}{108}\,a^3 .
+\]
+
+\textbf{5) Verificação.} O volume do tetraedro é $\frac{a^3\sqrt2}{12}\approx 0{,}1179\,a^3$, e $V_{\text{total}}\approx 0{,}0713\,a^3$, ou seja, cerca de $60\%$ do tetraedro. Isso é coerente: a esfera inscrita ocupa $\frac{\pi\sqrt3}{18}\approx 30\%$ do tetraedro, e em cada nível os cantos somam metade do volume do nível anterior ($4\cdot\frac18=\frac12$), o que dá o fator $1+\frac12+\frac14+\cdots=2$. A dimensão também está correta (volume $\propto a^3$). Se a esfera inscrita original não fosse contada, o resultado seria $V_0=\frac{\pi\sqrt6}{216}a^3$. Porém o enunciado pede \emph{todas} as esferas interiores a $ABCD$, e ela é uma delas.
+
+\medskip
+ANSWER: $V=\dfrac{\pi\sqrt6}{108}\,a^3$

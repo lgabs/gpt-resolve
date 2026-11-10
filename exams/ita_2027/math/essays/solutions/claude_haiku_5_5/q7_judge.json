@@ -1,0 +1,85 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "$n \\in \\{-6,\\,-4,\\,6,\\,8\\}$, com quocientes $-10$, $-30$, $-10$ e $18$, respectivamente. A divisão polinomial dá $N(n)=(2n-1)D(n)+63$, logo $Q(n)$ é inteiro se e somente se $D(n)=n^2-2n-27$ divide $63$. Entre os doze divisores de $63$, só $D(n)=-3$ e $D(n)=21$ produzem $n^2-2n-27$ com $n$ inteiro, o que dá os quatro valores.",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 07 (ITA 2027, Matemática). Enunciado conferido com a prova original (página 8): determinar todos os inteiros n tais que o quociente (2n³ − 5n² − 52n + 90)/(n² − 2n − 27) seja inteiro.\n\nNotação: N(n) = 2n³ − 5n² − 52n + 90 e D(n) = n² − 2n − 27. \"Quociente\" aqui é o valor da fração N(n)/D(n), e não o quociente polinomial.\n\n1) Divisão polinomial de N por D.\n- 2n³ ÷ n² = 2n. Subtraindo 2n·D(n) = 2n³ − 4n² − 54n, sobra −n² + 2n + 90.\n- −n² ÷ n² = −1. Subtraindo −1·D(n) = −n² + 2n + 27, sobra 63.\nLogo N(n) = (2n − 1)·D(n) + 63. Verificação: (2n − 1)(n² − 2n − 27) = 2n³ − 5n² − 52n + 27, e somando 63 obtém-se 90.\nPortanto, para D(n) ≠ 0, N(n)/D(n) = 2n − 1 + 63/(n² − 2n − 27).\n\n2) O denominador nunca se anula para inteiros.\nn² − 2n − 27 = 0 ⇔ n = 1 ± 2√7, que são irracionais (Δ = 4 + 108 = 112 = 16·7). Assim a expressão está sempre definida para n inteiro, e não há valor a excluir.\n\n3) Condição de inteireza.\nComo 2n − 1 é inteiro para todo n inteiro, a fração é inteira se, e somente se, 63/D(n) é inteiro, isto é, D(n) é divisor inteiro de 63 = 3²·7. Os divisores são ±1, ±3, ±7, ±9, ±21, ±63.\n\n4) Resolução de D(n) = d para cada divisor d.\nCompletando o quadrado: n² − 2n − 27 = (n − 1)² − 28. Seja m = n − 1 ∈ ℤ. Então m² = d + 28, que deve ser quadrado perfeito não negativo.\n- d = 1: m² = 29, não.\n- d = −1: m² = 27, não.\n- d = 3: m² = 31, não.\n- d = −3: m² = 25, sim. m = ±5, logo n = 6 ou n = −4.\n- d = 7: m² = 35, não.\n- d = −7: m² = 21, não.\n- d = 9: m² = 37, não.\n- d = −9: m² = 19, não.\n- d = 21: m² = 49, sim. m = ±7, logo n = 8 ou n = −6.\n- d = −21: m² = 7, não.\n- d = 63: m² = 91, não.\n- d = −63: m² = −35, impossível.\nLogo n ∈ {−6, −4, 6, 8}.\n\nCota de conferência: D(n) | 63 com D(n) ≠ 0 implica |D(n)| ≤ 63, logo (n − 1)² ≤ 91, ou seja −8 ≤ n ≤ 10. Todas as soluções estão nesse intervalo.\n\n5) Verificação direta (substituição).\n- n = 6: N = 432 − 180 − 312 + 90 = 30; D = 36 − 12 − 27 = −3; quociente = −10.\n- n = −4: N = −128 − 80 + 208 + 90 = 90; D = 16 + 8 − 27 = −3; quociente = −30.\n- n = 8: N = 1024 − 320 − 416 + 90 = 378; D = 64 − 16 − 27 = 21; quociente = 18.\n- n = −6: N = −432 − 180 + 312 + 90 = −210; D = 36 + 12 − 27 = 21; quociente = −10.\nConferido também pela forma 2n − 1 + 63/D: n = 6 dá 11 − 21 = −10; n = −4 dá −9 − 21 = −30; n = 8 dá 15 + 3 = 18; n = −6 dá −13 + 3 = −10.\nBusca bruta por Python (|n| ≤ 200000) retornou exatamente (−6, −10), (−4, −30), (6, −10), (8, 18).\n\nConclusão: os valores inteiros de n são n = −6, −4, 6 e 8. Os quocientes correspondentes são −10, −30, −10 e 18, respectivamente.",
+    "final_answer": "Resposta: n ∈ {−6, −4, 6, 8}.\n\nQuocientes correspondentes: n = −6 → −10; n = −4 → −30; n = 6 → −10; n = 8 → 18.\n\nBase: 2n³ − 5n² − 52n + 90 = (2n − 1)(n² − 2n − 27) + 63. Logo a fração é inteira se e somente se n² − 2n − 27 divide 63. Com m = n − 1, isso dá m² − 28 = d, com d | 63. As únicas soluções ocorrem em d = −3 (m = ±5) e d = 21 (m = ±7).",
+    "pitfalls": [
+      "Considerar só divisores positivos de 63: obtém apenas n = 8 e n = −6 (D = 21) e perde n = 6 e n = −4 (D = −3). O quociente nesses casos é negativo, e isso não invalida a solução.",
+      "Esquecer o ramo negativo de m = n − 1: m² = 25 e m² = 49 têm duas raízes cada. Tomar só m ≥ 0 perde n = −4 (m = −5) e n = −6 (m = −7).",
+      "Erro na divisão polinomial: o resto correto é 63. Com resto errado, por exemplo 27, a condição D | resto muda e o conjunto de soluções sai errado.",
+      "Confundir 'quociente' com quociente polinomial: o quociente polinomial é 2n − 1, que é sempre inteiro. A condição de integralidade vem toda do termo 63/(n² − 2n − 27).",
+      "Justificar 'D | N' sem usar a identidade N = (2n − 1)D + 63: a equivalência com 'D | 63' precisa ser demonstrada, não suposta.",
+      "Denominador nulo: n² − 2n − 27 = 0 tem raízes 1 ± 2√7, irracionais, então nenhum inteiro zera o denominador. A ausência de exclusão deve ser justificada, não apenas afirmada.",
+      "Resolver por tentativa sem cota: testar alguns valores não prova que não há outras soluções. A abordagem por divisores é a prova completa; a cota |D| ≤ 63 ⇒ −8 ≤ n ≤ 10 serve para conferir.",
+      "Erros de sinal ao substituir n negativo em n² − 2n − 27 (ex.: para n = −6, −2n = +12) e em 2n³ − 5n². Conferir com a forma 2n − 1 + 63/D evita esses erros.",
+      "Restringir indevidamente a n natural: o enunciado pede valores inteiros, então os negativos (−4 e −6) fazem parte da resposta.",
+      "Pedir d = −63 ou d = −1, −3, −7, −9 sem checar: m² = d + 28 deve ser não negativo e quadrado perfeito. Para d = −63, m² = −35 é impossível; os demais casos positivos também não dão quadrado perfeito, exceto d = 21 e d = −3."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "Os valores inteiros de n são n = -6, -4, 6 e 8. Pela divisão polinomial, N(n)/D(n) = (2n-1) + 63/(n^2-2n-27), logo o quociente é inteiro se e somente se n^2-2n-27 divide 63. Só os divisores -3 e 21 dão (n-1)^2 quadrado perfeito (d+28 = 25 e 49). Quocientes correspondentes: n = 6 e -4 dão -10 e -30; n = 8 e -6 dão 18 e -10.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Passo 7 afirma que \"os quocientes negativos ocorrem exatamente quando D(n)<0 (n=6 e n=-4)\". Isso é falso: para n=-6, D(-6)=21>0 e Q=-210/21=-10<0. O próprio passo 6 mostra esse caso. O sinal de Q é o sinal de N/D, e em n=-6 o que é negativo é N. Deve-se remover a frase ou corrigi-la (ex.: \"o sinal de Q é o de N/D; em n=-6, N<0 e D>0\")."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 3, a equivalência \"Q∈Z ⟺ D(n)|63\" depende de D(n)≠0 (para que 63/D(n) faça sentido), mas o passo não cita o passo 2. Deve-se referenciar explicitamente que D(n)≠0 para todo n inteiro."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 4, os divisores de 63 são listados sem justificativa. Para um gabarito comentado, convém justificar pelo teorema fundamental da aritmética (positivos 3^a·7^b, com a∈{0,1,2} e b∈{0,1}, isto é 1,3,9,7,21,63) e depois acrescentar os sinais."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 5, os valores 7, 19, 21, 27, 29, 31, 35, 37 e 91 são descartados como \"estão entre quadrados consecutivos\", sem dizer quais. Deve-se explicitar os intervalos, por exemplo 7∈(4,9), 19 e 21∈(16,25), 27, 29, 31 e 35∈(25,36), 37∈(36,49), 91∈(81,100)."
+          },
+          {
+            "severity": "minor",
+            "description": "O passo 1 usa \"quociente\" para o quociente polinomial (2n−1), enquanto Q(n) denota N/D. A ambiguidade do enunciado é a armadilha central da questão. Está resolvida pela definição de Q, mas a frase deveria dizer explicitamente \"quociente polinomial 2n−1\" para evitar confusão."
+          }
+        ],
+        "summary": "Resposta final correta e igual à referência: n ∈ {−6, −4, 6, 8}, com quocientes −10, −30, −10 e 18. Conferi no PDF (a Questão 07 está na página impressa 8, que é o arquivo página 7; o enunciado transcrito confere) e refiz as contas em Python. A identidade N=(2n−1)D+63 vale, a busca bruta em |n|≤100000 retorna exatamente as quatro soluções, a tabela dos 12 divisores está correta, e os quatro quocientes batem. A prova é completa: o passo 2 justifica D≠0 corretamente, a equivalência D|63 está demonstrada nos dois sentidos, os ramos negativos (±5, ±7) e os divisores negativos foram tratados, e não há restrição indevida a naturais. Todas as armadilhas da lista de referência estão cobertas. O defeito principal é a afirmação falsa do passo 7 sobre o sinal dos quocientes, que a própria verificação do passo 6 contradiz. Não afeta a resposta, mas impede que o texto seja publicado como gabarito sem correção. Por isso a nota fica em 8, e não em 9. Os demais pontos são lacunas de rigor e clareza, facilmente corrigíveis."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "$n \\in \\{-6,\\,-4,\\,6,\\,8\\}$, com quocientes $-10$, $-30$, $-10$ e $18$, respectivamente. A divisão polinomial dá $N(n)=(2n-1)D(n)+63$, logo $Q(n)$ é inteiro se e somente se $D(n)=n^2-2n-27$ divide $63$. Entre os doze divisores de $63$, só $D(n)=-3$ e $D(n)=21$ produzem $n^2-2n-27$ com $n$ inteiro, o que dá os quatro valores.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 3: a equivalência \"63/D(n) é inteiro ⇔ D(n) | 63\" é justificada apenas com \"pela definição de divisibilidade\", sem escrever as duas implicações. Deveria constar: se 63/D = k ∈ ℤ então 63 = D·k, e reciprocamente se 63 = D·k então 63/D = k. A ideia está certa, mas o passo fica implícito."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 5: a notação \"7 ∈ (2², 3²)\", \"19, 21 ∈ (4², 5²)\" etc. mistura pertinência com intervalos. Compreensível, mas \"4 < 7 < 9\", \"16 < 19, 21 < 25\" e assim por diante seria mais limpo e mais rigoroso."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 7: a conferência de sinais não é necessária para a resposta, e a frase \"o sinal de D sozinho não determina o sinal de Q\" é tangencial. Deveria ser removida ou reduzida a uma frase, para não diluir a argumentação central."
+          }
+        ],
+        "summary": "Parecer da questão 7 (ITA 2027, inteiros n com (2n³ − 5n² − 52n + 90)/(n² − 2n − 27) inteiro).\n\nConferência do enunciado: a Questão 07 está na página 7 do PDF (numeração impressa 8). O enunciado transcrito pelo candidato confere. Observação sobre a referência: ela cita \"página 8\" para a Questão 07, mas o PDF página 8 contém a Questão 08. Isso é erro de citação da referência e não afeta a avaliação.\n\nResposta: as duas resoluções concordam item por item. n ∈ {−6, −4, 6, 8}, com quocientes −10, −30, −10 e 18. Verifiquei por força bruta em Python (|n| ≤ 100000, sem denominador nulo), confirmei a identidade N = (2n−1)·D + 63 em [−1000, 1000], e recalculei a tabela de d + 28 para os 12 divisores de 63. A resposta está correta.\n\nConteúdo do candidato, conferido linha a linha: a divisão polinomial (resto parcial −n²+2n+90, resto 63) está correta; a verificação (2n−1)(n²−2n−27) + 63 = N também. O denominador não se anula em ℤ, e a justificativa via (n−1)² = 28 é rigorosa. A equivalência Q ∈ ℤ ⇔ D | 63 está correta. Os divisores ±1, ±3, ±7, ±9, ±21, ±63 estão completos. A tabela de d + 28 está correta, e a classificação dos não quadrados por quadrados consecutivos cobre os 10 casos. Os ramos n − 1 = ±5 e n − 1 = ±7 estão completos. As substituições em N e D (incluindo sinais de n negativo) e as conferências pela forma 2n − 1 + 63/D estão corretas.\n\nArmadilhas: divisores negativos tratados; ramo negativo de m tratado; resto 63 correto; \"quociente\" distinguido do quociente polinomial; D | N ⇔ D | 63 demonstrado pela identidade; denominador nulo justificado; a abordagem por divisores é exaustiva, sem depender de tentativa; naturais não restringidos; d = −63 descartado por m² = −35 < 0.\n\nNão há erros matemáticos nem lacunas lógicas. Os três problemas restantes são de forma (equivalência escrita de modo implícito, notação de intervalos e um parágrafo tangencial). Uma verificação opcional com a cota |D(n)| ≤ 63 ⇒ −8 ≤ n ≤ 10 daria um fechamento independente, mas não é exigida. Esta é uma resolução que um professor publicaria como gabarito comentado."
+      }
+    }
+  ]
+}

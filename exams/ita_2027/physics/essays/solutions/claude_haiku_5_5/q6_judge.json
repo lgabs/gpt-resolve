@@ -1,0 +1,128 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "a) $q=\\frac{3}{4}\\,C\\varepsilon$ (carga que sai da armadura superior de $C$ para as placas); b) $\\Delta=\\frac{2}{3}\\,d$, compressão da mola (placas a $d/3$); c) $k=\\frac{27\\,C\\varepsilon^2}{64\\,d^2}=\\frac{27\\,\\varepsilon_0 a^2\\,\\varepsilon^2}{64\\,d^3}$, que é o limiar de estabilidade do sistema.",
+  "judge_reference": {
+    "reference_solution": "## Questão 6 (ITA/IME 2027, física): resolução de referência\n\n**Hipóteses e modelo**\n1. Antes de t₁ as placas estão neutras e a mola está no comprimento natural. Logo, o comprimento natural corresponde à separação d entre as placas.\n2. Após t₂, com S₁ aberta, o ramo R–ε sai do circuito (sem corrente por R, sem τ = RC). O conjunto C ∥ voltímetro ∥ placas fica isolado, com carga total conservada. O voltímetro é ideal (não drena corrente). Os fios são condutores sem força mecânica relevante.\n3. O movimento das placas é na direção da mola (horizontal). O peso das placas e a tração dos fios não entram no balanço nessa direção. Placas paralelas e d ≪ a: vale o modelo ideal, sem efeito de borda.\n4. Por enunciado, a capacitância inicial das placas (separação d) é C, logo ε₀A = Cd.\n\nSeja x a separação entre as placas em t₃. Então C_p(x) = ε₀A/x = Cd/x.\n\n**Estado em t₂:** a tensão no capacitor é V₂ = ε e a carga é Q₀ = Cε.\n\n**Conservação de carga (S₂ fechada):** o nó conectado mantém a carga Cε. Com tensão comum V:\nCε = (C + C_p)·V ⇒ V(x) = εx/(x + d).\nChecagem: logo ao fechar S₂ (x = d), V = ε/2 (C ∥ C), antes de qualquer movimento.\n\n**Equilíbrio mecânico:** a atração entre placas tem módulo F = Q_p²/(2ε₀A) = ε₀AV²/(2x²). A mola (comprimento natural d) equilibra essa força em cada placa: k(d − x) = F.\n\n**Item a.** V₃ = V₂/4 = ε/4. Então\nεx/(x + d) = ε/4 ⇒ 4x = x + d ⇒ x = d/3.\nLogo C_p(t₃) = 3C e a capacitância total é 4C. A carga nas placas é Q_p = C_p·V₃ = 3Cε/4.\nConferência: a carga em C passou de Cε para Cε/4, ou seja, saiu 3Cε/4.\n**Resposta (a): Q_fluxo = 3Cε/4** (3/4 da carga inicial do capacitor).\n\n**Item b.** Com x = d/3, a mola (natural em d) está comprimida por\nΔ = d − d/3 = 2d/3.\n**Resposta (b): compressão de 2d/3** (as placas se aproximam por atração). O enunciado já implica isso: V₃ = ε/4 < ε/2 exige x < d.\n\n**Item c.** Módulo da força elétrica:\nF = Q_p²/(2ε₀A) = (3Cε/4)²/(2Cd) = 9Cε²/(32d).\nConferência: ε₀AV₃²/(2x²) = Cd(ε/4)²/(2d²/9) = 9Cε²/(32d). ✓\nEquilíbrio de uma placa: k·Δ = F ⇒ k·(2d/3) = 9Cε²/(32d).\n**Resposta (c):** k = (9Cε²/(32d))·(3/(2d)) = **27Cε²/(64d²) = 27ε₀A·ε²/(64d³)** (com A = a²).\nAnálise dimensional: Cε²/d² tem unidades de J/m² = N/m. ✓\n\n**Conferência por energia (com o potencial correto):** U(x) = (Cε)²/(2(C + Cd/x)) + k(d − x)²/2. Então dU/dx = 0 dá Cε²d/(2(x+d)²) = k(d − x), que em x = d/3 reproduz k = 27Cε²/(64d²).\n\n**Observação de estabilidade (não altera as respostas).** Para essa k, U''(d/3) = k − Cε²d/(x+d)³ |_{x=d/3} = k − 27Cε²/(64d²) = 0. O equilíbrio em t₃ é degenerado: é exatamente o limite de estabilidade (pull-in). O enunciado afirma que o sistema está em equilíbrio em t₃, então esse é o dado usado. Vale comentar o caráter marginal.\n\n**Resumo:** (a) Q = 3Cε/4; (b) Δ = 2d/3 (compressão, placas a d/3); (c) k = 27Cε²/(64d²).",
+    "final_answer": "a) Carga que flui do capacitor para as placas: Q = 3Cε/4 (3/4 da carga inicial de C; restam Cε/4 em C). Obtida de conservação de carga (Cε = (C + Cd/x)·V) com V₃ = ε/4, que dá x = d/3 e C_p = 3C.\n\nb) Deformação da mola: compressão de Δ = d − d/3 = 2d/3 (as placas se aproximam até d/3).\n\nc) Constante elástica: k = 27Cε²/(64d²) = 27ε₀A·ε²/(64d³), com ε₀A = Cd e A = a². Obtida do equilíbrio k·(2d/3) = F, com F = Q²/(2ε₀A) = 9Cε²/(32d).\n\nNão se trata de múltipla escolha. Nota: o equilíbrio em t₃ é marginal (U'' = 0, limite de pull-in), o que não muda os valores pedidos.",
+    "pitfalls": [
+      "Após t₂ com S₁ aberta, o ramo R–ε sai do circuito. Não se deve usar τ = RC nem a fonte: a carga total Cε se conserva e basta a conservação de carga mais o equilíbrio.",
+      "A capacitância das placas não é C em t₃: C_p = Cd/x e, para V₃ = ε/4, vale 3C (capacitância total 4C). Manter C_p = C leva a V = ε/2, o que contradiz o enunciado.",
+      "Item (a) pede a carga que saiu do capacitor: 3Cε/4. Não confundir com Cε (carga total), nem com Cε/4 (carga que restou em C).",
+      "Sanidade: ao fechar S₂ a tensão cai para ε/2 antes de qualquer movimento (C ∥ C). Com V(x) = εx/(x+d), V₃ = ε/4 < ε/2 força x < d, ou seja, atração e compressão. Uma resposta com extensão da mola está errada.",
+      "Força elétrica: use F = Q_p²/(2ε₀A) = ε₀AV²/(2x²), com fator 1/2 e com a separação de equilíbrio d/3, não d. Não use V = ε nem C_p inicial.",
+      "Balanço por placa: k·Δ = F (a mola empurra cada placa com kΔ e a força elétrica puxa cada placa com F). Escrever 2F = kΔ ou kΔ = 2F dobra o resultado.",
+      "Deformação: Δ = d − d/3 = 2d/3, medida a partir do comprimento natural d. Não confundir com d/3 (separação final). Ao dar o valor, indicar que é compressão.",
+      "Não aplicar conservação de energia entre t₂ e t₃. Ao conectar C carregado às placas neutras, a energia cai de Cε²/2 para Cε²/4 (metade se perde na redistribuição de carga, dissipada nos fios). Igualar energias daí dá k = 27Cε²/16d² (desde t₂) ou k = 9Cε²/(16d²) (logo após conectar), ambos errados. O equilíbrio é uma condição de força, dU/dx = 0.",
+      "Hipóteses a declarar: placas paralelas e d ≪ a (sem efeito de borda; d/3 também é ≪ a); voltímetro ideal; fios sem força mecânica; mola linear com comprimento natural d; peso das placas não entra no balanço horizontal; placas neutras antes de S₂ fechar.",
+      "Equivalência de expressões: ε₀A = Cd, portanto k = 27Cε²/(64d²) = 27ε₀Aε²/(64d³). Se a resposta vier em ε₀ e a², verifique que bate com a forma em C.",
+      "Estabilidade: com essa k, U''(d/3) = 0 (equilíbrio degenerado, limite de pull-in). Não é erro de cálculo: a questão afirma o equilíbrio em t₃. Um bom texto comenta isso, mas não deve reinterpretar a resposta por causa disso.",
+      "Verificação unitária: Cε²/d² tem unidades de N/m, e Cε²/(32d) tem unidades de N. Respostas com unidades erradas indicam erro de modelagem."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) A carga que sai do capacitor para as placas é q = 3Cε/4 (sobram Cε/4 em C, pois V(t3) = ε/4 e a carga total do nó é Cε).\nb) As placas se aproximam até x3 = d/3, portanto a mola fica comprimida de Δx = 2d/3.\nc) No equilíbrio, F = q²/(2ε0A) = 9Cε²/(32d) = kΔx, logo k = 27Cε²/(64d²) = 27ε0Aε²/(64d³).",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não comenta a estabilidade do equilíbrio em t3. Com U(x) = Cε²x/(2(x+d)) + k(d−x)²/2, tem-se U'' = k − Cε²d/(x+d)³, que em x = d/3 com k = 27Cε²/(64d²) vale zero. Em qualquer equilíbrio U'' ∝ (3x−d), e dU/dx tem raiz dupla em x = d/3 sem mudança de sinal em (0, d). A configuração de t3 é, portanto, o limite de pull-in. Deveria haver uma observação curta sobre isso. As respostas não mudam."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses sobre os fios ausentes. O enunciado diz que os fios estão suspensos numa placa fixa e podem transmitir força às placas. A resolução não declara que eles não contribuem com força na direção da mola, e a condição de equilíbrio por placa (a mola exerce kΔx em cada placa e a força elétrica é F em cada placa, pela 3ª lei) aparece só como 'kΔx = F', sem justificativa."
+          },
+          {
+            "severity": "minor",
+            "description": "Contradição interna. A hipótese declara 'fios sem resistência' e, na seção de energia, atribui a dissipação a 'efeito Joule nos fios'. No modelo ideal não há Joule nos fios. A dissipação real vem de resistências parasitas e faíscas, que estão fora do modelo e deveriam ser apresentadas assim."
+          },
+          {
+            "severity": "minor",
+            "description": "O sentido do deslocamento no item b é justificado de forma fraca: 'cargas opostas, logo se atraem e se aproximam (x3<d)'. A atração não determina o sentido do equilíbrio. O que decide é x3 = d/3 < d, ou seja, V(x) = εx/(x+d) com V3 < ε/2. A checagem de sanidade (ao fechar S2 a tensão cai para ε/2 antes de qualquer movimento, e V3 = ε/4 exige x < d) não aparece explicitamente. A função V(x) nunca é escrita."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação 'Casos particulares' não testa caso especial algum; é só uma constatação (x3 > 0). A frase 'a força a tensão constante V' sugere um processo a V constante, mas V varia com x. A expressão ε0AV²/(2x²) vale como identidade no instante, porque Q_p = ε0AV/x. Isso deveria ser dito explicitamente."
+          }
+        ],
+        "summary": "Resposta final correta, idêntica à referência nos três itens. Refiz as contas com frações exatas (C = ε = d = 1): V(d) = ε/2, V(d/3) = ε/4, C_p(d/3) = 3C, q = 3Cε/4, Δx = 2d/3, F = 9Cε²/(32d), k = 27Cε²/(64d²) = 27ε0Aε²/(64d³). O método é limpo: conservação de carga no item a, equilíbrio por placa no item c, sem uso de energia. Evita as principais armadilhas do enunciado: não usa τ = RC, trata C_p(t3) = 3C (não C), usa o fator 1/2 na força, escreve kΔx = F (não 2F), dá compressão e não extensão, e não iguala energias. Faltaram: o comentário de que o equilíbrio é degenerado (U'' = 0 em x = d/3, limite de pull-in); a declaração das hipóteses sobre os fios e a justificativa do balanço por placa; a contradição entre 'fios sem resistência' e 'Joule nos fios'; a justificativa fraca do sentido do deslocamento, sem a checagem explícita V(x) = εx/(x+d) e o salto para ε/2 ao fechar S2; e a verificação 'casos particulares', que não testa caso especial. Nenhum erro de conta, unidade ou sinal. Nota 8: boa resolução, mas não publicável como gabarito comentado sem os ajustes acima.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "a) $q=\\frac{3}{4}C\\varepsilon$ de carga fluiu do capacitor para as placas. Isso vem da conservação da carga do nó isolado e de $V_3=\\varepsilon/4$. b) Em $t_3$ as placas estão a $x_3=d/3$, logo a mola está comprimida de $\\Delta x=\\frac{2}{3}d$. c) $k=\\frac{27\\,C\\varepsilon^2}{64\\,d^2}=\\frac{27\\,\\varepsilon_0 a^2\\,\\varepsilon^2}{64\\,d^3}$. Na revisão, a estabilidade foi checada: o equilíbrio em $t_3$ é degenerado (limite de pull-in), e as respostas não mudam.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na análise de forças, o texto diz que a mola empurra cada placa com kΔx 'pela terceira lei'. Isso está mal atribuído: a força de uma mola ideal de massa desprezível sobre cada extremidade é kΔx, dirigida para fora, por construção da mola, e não por terceira lei. A 3ª lei só relaciona a força das placas sobre a mola com a da mola sobre as placas. Deveria ser: 'mola ideal de massa desprezível, comprimida, transmite kΔx a cada placa, para fora'."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação de estabilidade, afirma-se que dU_e/dx com U_e = (Cε)²/(2(C+C_p)) 'reproduz F em módulo', sem justificativa. A igualdade vale por um argumento de envelope: no equilíbrio elétrico V_C = V_placas, então ∂W/∂q = 0 e dU/dx = ∂W/∂x|_q = q²/(2ε0A). Isso também pressupõe que a redistribuição de carga é quase estática e sempre no mínimo elétrico. Deveria ser explicitado, porque a análise de U_eff depende disso."
+          },
+          {
+            "severity": "minor",
+            "description": "O domínio está errado. O texto usa −d < x < d, mas C_p = ε0A/x só existe para x > 0, e U_e também só é física para x > 0. O domínio correto é 0 < x ≤ d. A conclusão U' ≥ 0 com zero único em d/3 continua válida (verifiquei numericamente), mas o intervalo deve ser corrigido."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses mal declaradas. (i) 'Fios flexíveis, de massa desprezível, sem força normal' não está no enunciado, que só diz 'fios idênticos e condutores', e deveria ser apresentado como hipótese de modelagem, não como fato. (ii) A linearidade da mola (F = kΔx) é usada sem ser declarada. (iii) 'Fios ideais' é incompatível com citar 'resistências parasitas e faíscas' como causa da dissipação; ou se assume ideal (sem R, sem dissipação), ou se explicita a dissipação só no transitório."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação 'Ordens de grandeza' (fatores 3/4, 2/3, 27/64 são de ordem unitária) não checa nada e deveria ser removida. Uma verificação real seria, por exemplo, conferir numericamente U'(d/3) = U''(d/3) = 0 com k = 27Cε²/(64d²), ou o limite d → 0 em unidades."
+          },
+          {
+            "severity": "minor",
+            "description": "A discussão física do equilíbrio em t3 está incompleta. Como U'(x) ≥ 0 em todo o domínio físico, com U'(d/3) = 0 e U'' = 0, o equilíbrio é de inflexão e semiestável: a força só restaura por um lado (de cima) e, de baixo, empurra para o colapso. Na dinâmica conservativa, as placas atravessariam d/3 com velocidade não nula e colapsariam; alcançar o estado em repouso exige dissipação exatamente ajustada. O texto diz 'limite de instabilidade (colapso ou pull-in)' e que o enunciado 'coloca o sistema exatamente nesse limite', o que está certo, mas deveria explicar essa consequência física."
+          },
+          {
+            "severity": "minor",
+            "description": "Clareza e foco. A seção de estabilidade é longa e vai além do que a questão pede. A armadilha 'não usar τ = RC após t2' não é nomeada; a resolução só diz que o ramo da fonte fica isolado. Uma frase explícita bastaria. Também faltaria uma nota de que o balanço por placa é kΔx = F, e não 2F, o que está certo no texto mas poderia ser destacado."
+          }
+        ],
+        "summary": "Respostas finais corretas e idênticas às da referência, sem divergência item a item. Verifiquei com contas exatas: (a) q = 3Cε/4; (b) Δx = 2d/3 (compressão, placas a d/3); (c) k = 27Cε²/(64d²) = 27ε0·a²·ε²/(64d³). Confirmei que V(x) = εx/(x+d) e q(x) = Cεd/(x+d) decorrem da conservação de carga no nó isolado; que V = ε/4 dá x = d/3 e C_p = 3C; que F = q²/(2Cd) = 9Cε²/(32d); e que k·(2d/3) = F dá k = 27Cε²/(64d²). Na análise de estabilidade, U'' = k(3x−d)/(x+d) sobre a curva de equilíbrio, U' ≥ 0 em 0 < x < d com zero único em d/3 (máximo de (d−x)(x+d)² = 32d³/27 nesse ponto), logo o equilíbrio é de inflexão e degenerado, como a referência também notou. A resolução cobre quase todas as armadilhas: R–ε sai do circuito após t2; C_p = 3C e não C; a carga é 3Cε/4; V(t3) < ε/2 força compressão; F com fator 1/2 e separação d/3; balanço kΔ = F; Δ = 2d/3 e não d/3; sem conservação de energia entre t2 e t3; equivalência ε0A = Cd; unidades e estabilidade. Os pontos fracos são de rigor e clareza, não de resultado: justificativa do envelope na energia, domínio de x, hipóteses não declaradas, uma verificação vazia e uma atribuição incorreta à terceira lei. Nenhum problema crítico ou grave; nota abaixo de 9 por esses ajustes necessários para um gabarito comentado.\""
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "a) $q=\\frac{3}{4}\\,C\\varepsilon$ (carga que sai da armadura superior de $C$ para as placas); b) $\\Delta=\\frac{2}{3}\\,d$, compressão da mola (placas a $d/3$); c) $k=\\frac{27\\,C\\varepsilon^2}{64\\,d^2}=\\frac{27\\,\\varepsilon_0 a^2\\,\\varepsilon^2}{64\\,d^3}$, que é o limiar de estabilidade do sistema.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Afirmação falsa na seção de estabilidade: 'Para k>k_c há dois equilíbrios'. Há dois equilíbrios só para k_c<k<Cε²/(2d²), porque h(0)=d³ fixa o limite superior de k que ainda admite uma raiz em (0,d/3). Para k≥Cε²/(2d²) há um único equilíbrio, em x>d/3, estável. Verificado numericamente com C=ε=d=1: k=0,45 e 0,49 dão 2 raízes em (0,d); k=0,5 e 0,6 dão 1. Deve-se corrigir a frase informando a janela de k. Não afeta a, b e c."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipótese (iii) diz 'sem dissipação elétrica', o que conflita com a própria física da redistribuição. A energia cai de Cε²/2 (C isolado em t2) para Cε²/4 após a redistribuição em x=d, e essa diferença só pode ir para dissipação (fios, não modelados). O argumento de mínimo de W(q,x) em q descreve o estado final porque a redistribuição ocorre, e isso exige dissipação. Deve-se declarar: indutância desprezível, redistribuição rápida frente ao movimento mecânico, energia da transição dissipada nos fios sem efeito no equilíbrio final. Também 'logo após fechar S2' pressupõe redistribuição instantânea, que deveria ser explicitada."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses incompletas ou justificadas de forma desnecessária. (1) O dado do enunciado 'as placas condutoras permanecem paralelas em todas as situações' não aparece na lista de hipóteses, embora seja usado implicitamente no campo uniforme. (2) A condição d/3 ≪ a, que vale no estado final, não é verificada (decorre de d≪a, mas deveria ser dita). (3) 'O peso das placas é sustentado pelos fios' é suposição sem base no enunciado. Basta afirmar que o peso é ortogonal ao eixo da mola (a figura mostra separação horizontal d e placas verticais), logo não entra no balanço; 'fios sem força horizontal' deve ser declarado como modelagem adotada."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 6 (circuito capacitor/placas com mola). Confirmei o enunciado no PDF original (p. 7): placas verticais, separação horizontal d e mola horizontal entre elas, como a candidata assumiu.\n\nRespostas, item a item (candidata = referência, e ambas conferem com aritmética exata em C=ε=d=1):\n- a) q = 3Cε/4 (V(x)=εx/(x+d) com V=ε/4 dá x=d/3; C_p=3C; a carga que sai de C é C(ε−V)=3Cε/4). Correta.\n- b) Δ = 2d/3, compressão (placas a d/3). Correta.\n- c) k = F/Δ, com F=q²/(2ε0A)=9Cε²/(32d) e ε0A=Cd, dá k = 27Cε²/(64d²) = 27ε0a²ε²/(64d³). Correta. Unidades verificadas (J/m² = N/m).\n\nVerificação das armadilhas: (1) R–ε sai do circuito após S1 aberta, sem τ=RC: tratado. (2) C_p ≠ C em t3 (3C, capacitância total 4C): tratado. (3) Item a não confunde Cε, Cε/4 e 3Cε/4: tratado. (4) V(d)=ε/2 e x3<d, com compressão e não extensão: tratado. (5) F com fator 1/2, usando ε0A=Cd constante: tratado. (6) Balanço por placa kΔ=F, sem 2F: tratado. (7) Δ=2d/3 e não d/3: tratado. (8) Não se iguala energia entre t2 e t3; a energia só aparece como verificação de força via envelope, que está correta: tratado. (9) Equivalência ε0A=Cd: tratado. (10) Estabilidade: U'=U''=0 em d/3 (pull-in), comentado sem reinterpretar o enunciado: tratado, exceto pela frase falsa sobre dois equilíbrios (issue 1). (11) Unidades: tratado.\n\nPor que 8,5 e não 9: a solução está em nível de gabarito comentado, com cadeia lógica completa e checagens independentes (conservação de carga, força por energia com envelope, estabilidade, casos-limite). Impede o 9 uma afirmação matemática falsa na seção de estabilidade e uma hipótese (sem dissipação) que contradiz a física da redistribuição, além de hipóteses importantes não declaradas. Nenhum problema afeta as respostas finais, e todos são corrigíveis em uma ou duas frases."
+      }
+    }
+  ]
+}

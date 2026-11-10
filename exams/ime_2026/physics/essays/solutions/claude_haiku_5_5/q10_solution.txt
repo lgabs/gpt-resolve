@@ -1,0 +1,83 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Hipóteses e notação.} Óptica geométrica (feixe estreito), meio homogêneo, espelhos ideais com reflexão especular. O feixe está num plano perpendicular ao eixo, logo o problema é bidimensional: tomamos o centro $O$ sobre o eixo e coordenadas polares $(\rho,\varphi)$. Entre reflexões consecutivas o feixe é retilíneo e permanece em $r<\rho<R$. Seja $\alpha$ o ângulo de incidência em $A$ (espelho externo), medido em relação à normal $OA$, e $\theta$ o ângulo de incidência em $B$ (espelho interno), medido entre o feixe e o prolongamento radial de $OB$, como na figura. Pela lei da reflexão, a normal em cada ponto de reflexão é a radial e o raio refletido é simétrico do incidente em relação a ela.
+
+\textbf{Passo 1 -- Ângulo central.} No triângulo $OAB$ temos $\angle OAB=\alpha$ e $\angle OBA=\pi-\theta$ (suplementar de $\theta$). Sendo $\Delta\varphi=\angle AOB$, a soma dos ângulos internos dá
+\[
+\Delta\varphi=\pi-\alpha-(\pi-\theta)=\theta-\alpha .
+\]
+
+\textbf{Passo 2 -- Lei dos senos.} Em $OAB$: $\dfrac{OA}{\sin\angle OBA}=\dfrac{OB}{\sin\angle OAB}$, isto é, $\dfrac{R}{\sin\theta}=\dfrac{r}{\sin\alpha}$. Logo
+\[
+\sin\alpha=\frac{r}{R}\,\sin\theta=\frac{\sqrt{3}}{2}\,\sin\theta . \tag{1}
+\]
+
+\textbf{Passo 3 -- Intervalos dos ângulos.} Seja $X(t)=B+t\,\vec u$, com $\vec u=A-B$ e $0\le t\le 1$. Então
+\[
+|X|^2=r^2+2t\,\vec B\cdot\vec u+t^2|\vec u|^2 .
+\]
+Para que $X$ permaneça em $\rho\ge r$ logo após $B$, é preciso $\vec B\cdot\vec u\ge 0$, isto é, $\cos\theta\ge 0$, pois $\vec B\cdot\vec u=r\,|\vec u|\cos\theta$. Analogamente, junto a $A$ deve valer $\rho\le R$, o que exige $\cos\alpha\ge 0$. Se $\theta=0$, (1) dá $\alpha=0$ e $\Delta\varphi=0$: o feixe é radial, não há avanço angular, caso degenerado excluído. O caso $\theta=\pi/2$ (rasância) é tratado no item b. Assim
+\[
+0<\theta<\frac{\pi}{2},\qquad 0<\alpha<\frac{\pi}{2}.
+\]
+Como $\sin\alpha<\sin\theta$ e o seno é crescente em $(0,\pi/2)$, vale $\alpha<\theta$, o que confirma $\Delta\varphi>0$.
+
+\textbf{Passo 4 -- Reflexões sucessivas.} Sejam $P_0=A$, $P_1=B$, $P_2,P_3,\dots$ os pontos de reflexão seguintes e $S_k$ a reflexão do plano na reta $OP_k$. Pela lei da reflexão, a direção de saída em $P_k$ é a simétrica, em relação à normal $OP_k$, da direção $P_k\to P_{k-1}$. Como $S_k$ fixa $O$ e $P_k$, o ponto $S_k(P_{k-1})$ está sobre o raio de saída, e
+\[
+P_{k+1}=S_k(P_{k-1}).
+\]
+Sendo $S_k$ uma isometria que fixa $O$, o segmento $P_kP_{k+1}$ é imagem de $P_kP_{k-1}$: tem o mesmo comprimento, o mesmo $\Delta\varphi$ e interior em $r<\rho<R$. Em polares, $S_k$ leva $\varphi\mapsto 2\varphi_k-\varphi$ e preserva $\rho$, donde $\varphi_{k+1}-\varphi_k=\varphi_k-\varphi_{k-1}$ e $\rho_{k+1}=\rho_{k-1}$. Com $\varphi_0=0$ e $\varphi_1=\Delta\varphi>0$, por indução
+\[
+\varphi_k=k\,\Delta\varphi ,
+\]
+e os raios alternam $R,r,R,\dots$ (espelho externo para $k$ par, interno para $k$ ímpar). Como todos os avanços são iguais e positivos, o feixe gira sempre no mesmo sentido e os avanços não se cancelam.
+
+\textbf{Passo 5 -- Fechamento após uma volta.} O estado do feixe em $P_k$ é determinado pelo par $(P_{k-1},P_k)$. Dizer que os raios se sobrepõem após uma volta significa que, ao completar o avanço angular $2\pi$, o feixe volta a $A$ com a mesma direção, isto é, $P_N=A$ e $P_{N+1}=B$, sendo $N$ o número de reflexões nessa volta. Então:
+\begin{itemize}
+\item $N\,\Delta\varphi=2\pi$, pois o avanço angular numa volta é $2\pi$;
+\item $P_N=A$ está no espelho externo; como $\rho_k=R$ somente para $k$ par, $N$ é par;
+\item há $n$ pontos de reflexão em cada espelho por volta; os externos são $P_0,P_2,\dots,P_{2n-2}$ (ângulos $2j\pi/n$, distintos) e os internos são $P_1,P_3,\dots,P_{2n-1}$. Logo $N=2n$, e a sobreposição ocorre já nessa primeira volta.
+\end{itemize}
+Portanto $2n\,\Delta\varphi=2\pi$, isto é,
+\[
+\theta-\alpha=\Delta\varphi=\frac{\pi}{n}. \tag{2}
+\]
+
+\textbf{Passo 6 -- Equação para $\theta$.} Substituindo $\alpha=\theta-\pi/n$ em (1):
+\[
+\sin\Big(\theta-\frac{\pi}{n}\Big)=\frac{\sqrt3}{2}\sin\theta
+\;\Longrightarrow\;
+\sin\theta\Big(\cos\frac{\pi}{n}-\frac{\sqrt3}{2}\Big)=\cos\theta\,\sin\frac{\pi}{n}. \tag{3}
+\]
+Como $\cos\theta>0$ (Passo 3), dividimos por $\cos\theta$ e obtemos
+\[
+\tan\theta\Big(\cos\frac{\pi}{n}-\frac{\sqrt3}{2}\Big)=\sin\frac{\pi}{n}. \tag{4}
+\]
+(Se $\cos\theta=0$, (3) só vale com $n=6$, caso tratado no item b.)
+
+\textbf{a)} Como $\sqrt3/2=\cos(\pi/6)$, o denominador é $\cos(\pi/n)-\cos(\pi/6)$, que se anula apenas para $n=6$. Logo, para $n\neq 6$,
+\[
+\tan\theta=\frac{\sin(\pi/n)}{\cos(\pi/n)-\sqrt3/2}=\frac{2\sin(\pi/n)}{2\cos(\pi/n)-\sqrt3}.
+\]
+
+\textbf{b) Valores possíveis de $n$.}
+\begin{itemize}
+\item $n\le 2$: por (2) e $\alpha>0$, $\pi/n=\theta-\alpha<\theta<\pi/2$, logo $n\ge 3$. Isso exclui $n=1$ e $n=2$.
+\item $3\le n\le 5$: $\pi/n>\pi/6$, logo $\cos(\pi/n)<\sqrt3/2$. Com $\sin(\pi/n)>0$, o lado direito de (a) é negativo, mas $\tan\theta>0$ em $(0,\pi/2)$. Impossível.
+\item $n=6$: o denominador se anula e (3) dá $\tfrac12\cos\theta=0$, logo $\theta=\pi/2$. Geometria: $AB=\sqrt{R^2-r^2}=R/2$ e $\cos\angle AOB=r/R$, logo $\angle AOB=\pi/6$. O feixe apenas tangencia o cilindro interno em $B$ (rasância): a direção não muda e não há reflexão efetiva em $B$. A órbita degenera no hexágono regular inscrito no círculo de raio $R$ (cada corda $AA'=2AB=R$ subtende $60^\circ$ e seu ponto médio está à distância $R\cos 30^\circ=r$ de $O$), com reflexões só no espelho externo. Excluído.
+\item $n\ge 7$: $\cos(\pi/n)>\sqrt3/2$, o denominador é positivo e $\tan\theta=T_n>0$, logo $\theta=\arctan T_n\in(0,\pi/2)$. Como $0<\cos(\pi/n)-\sqrt3/2<\cos(\pi/n)$ e $\sin(\pi/n)>0$, tem-se $T_n>\tan(\pi/n)$, donde $\theta>\pi/n$ e $\alpha=\theta-\pi/n\in(0,\theta)$.
+
+\emph{Existência.} Tome um triângulo com $OA=R$, $OB=r$ e $\angle AOB=\pi/n$. Sejam $\alpha^*=\angle OAB$ e $\theta^*=\pi-\angle OBA\in(0,\pi)$. A soma dos ângulos dá $\alpha^*=\theta^*-\pi/n$, e a lei dos senos dá $\sin\alpha^*=\frac{\sqrt3}{2}\sin\theta^*$, que é (3). Se $\cos\theta^*=0$, (3) daria $\sin\theta^*\big(\cos\frac{\pi}{n}-\frac{\sqrt3}{2}\big)=0$, impossível para $n\ge 7$. Logo vale (4), com $\tan\theta^*=T_n>0$; como $\theta^*\in(0,\pi)$, resulta $\theta^*=\theta$. Assim $\cos\theta>0$, e ao longo de $AB$ tem-se $\frac{d}{dt}|X|^2=2r|\vec u|\cos\theta+2t|\vec u|^2>0$: $\rho$ cresce estritamente de $r$ em $B$ até $R$ em $A$, sem tocar os cilindros no interior do segmento. Portanto $B$ é o primeiro contato, e os Passos 4 e 5 garantem o fechamento após $2n$ reflexões.
+\end{itemize}
+Conclusão: $n\ge 7$, sem limite superior.
+
+\textbf{Conferências.} Ângulos, $r/R$ e $\tan\theta$ são adimensionais, e (4) é homogênea em ângulos. O sinal é coerente: $\tan\theta>0$ exige $\cos(\pi/n)>\sqrt3/2$, isto é, $n\ge 7$, como concluído em b.
+\begin{itemize}
+\item $n=7$: $\sin(\pi/7)\approx 0{,}4339$ e $\cos(\pi/7)-\sqrt3/2\approx 0{,}0349$, logo $\tan\theta\approx 12{,}42$, $\theta\approx 85{,}40^\circ$ e $\alpha=\theta-\pi/7\approx 59{,}68^\circ$. Teste em (1): $\sin\alpha\approx 0{,}8632$ e $\frac{\sqrt3}{2}\sin\theta\approx 0{,}8660\cdot 0{,}99677\approx 0{,}8632$, em concordância.
+\item $n=8$: $\tan\theta\approx 6{,}61$ e $\theta\approx 81{,}40^\circ$.
+\item Limite $n\to\infty$: $\tan\theta\approx\dfrac{\pi/n}{1-\sqrt3/2}=(4+2\sqrt3)\dfrac{\pi}{n}\to 0$. O feixe torna-se quase radial, com $\theta$, $\alpha$ e $\Delta\varphi$ tendendo a zero, coerente com o Passo 3.
+\end{itemize}
+
+ANSWER: a) $\tan\theta=\dfrac{\sin(\pi/n)}{\cos(\pi/n)-\sqrt{3}/2}=\dfrac{2\sin(\pi/n)}{2\cos(\pi/n)-\sqrt{3}}$ (para $n\neq 6$); b) $n\geq 7$, isto é, $n\in\{7,8,9,\dots\}$

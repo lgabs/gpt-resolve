@@ -1,0 +1,49 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{1) Domínio e a função auxiliar.} Para todo $t\in\mathbb{R}$ vale $\sqrt{t^2+1}>\sqrt{t^2}=|t|\geq -t$, logo
+\[
+h(t)=t+\sqrt{t^2+1}>0 ,
+\]
+e o logaritmo está definido para todo real. Defina
+\[
+f(t)=t+\log\left(t+\sqrt{t^2+1}\right),\qquad t\in\mathbb{R}.
+\]
+O sistema fica
+\[
+y=f(x),\qquad z=f(y),\qquad x=f(z).
+\]
+(O raciocínio vale para qualquer base $b>1$, decimal ou natural.)
+
+\textbf{2) $f$ é estritamente crescente.} Temos
+\[
+h'(t)=1+\frac{t}{\sqrt{t^2+1}}=\frac{\sqrt{t^2+1}+t}{\sqrt{t^2+1}}>0,
+\]
+pois o numerador é $h(t)>0$. Logo $h$ é positiva e estritamente crescente. Como $\log$ (base $>1$) é estritamente crescente, $\log h(t)$ também é. Somando com a função estritamente crescente $t\mapsto t$, concluímos que $f$ é estritamente crescente, ou seja, $u<v \Rightarrow f(u)<f(v)$.
+
+\textbf{3) Toda solução tem $x=y=z$.} Seja $(x,y,z)$ uma solução real.
+\begin{itemize}
+\item Se $x<y$, aplicamos $f$: $f(x)<f(y)$, isto é, $y<z$. Aplicando $f$ de novo: $f(y)<f(z)$, isto é, $z<x$. Então $x<y<z<x$, absurdo.
+\item Se $x>y$, o mesmo argumento com as desigualdades invertidas dá $y>z$ e $z>x$. Então $x>y>z>x$, absurdo.
+\end{itemize}
+Portanto $x=y$. Daí $z=f(y)=f(x)=y$, e assim $x=y=z$.
+
+\textbf{4) Cálculo do valor comum.} Com $x=y=z$, a primeira equação fica $x+\log\left(x+\sqrt{x^2+1}\right)=x$, ou seja,
+\[
+\log\left(x+\sqrt{x^2+1}\right)=0 \iff x+\sqrt{x^2+1}=1 \iff \sqrt{x^2+1}=1-x .
+\]
+Isso exige $1-x\geq 0$. Elevando ao quadrado:
+\[
+x^2+1=1-2x+x^2 \iff x=0 ,
+\]
+e $x=0$ satisfaz $1-x\geq 0$. Esse é então o único valor possível.
+
+\textbf{5) Existência (verificação).} Para $x=y=z=0$, cada equação vira $0+\log\left(0+\sqrt{1}\right)=0+\log 1=0$, que é verdadeira. Então $(0,0,0)$ é solução.
+
+\textbf{Conclusão.} Pelos itens 3 e 4, toda solução real é igual a $(0,0,0)$. Pelo item 5, ela de fato é solução. Logo o sistema admite uma única solução real:
+\[
+(x,y,z)=(0,0,0).
+\]
+
+ANSWER: O sistema tem uma única solução real, $(x,y,z)=(0,0,0)$.

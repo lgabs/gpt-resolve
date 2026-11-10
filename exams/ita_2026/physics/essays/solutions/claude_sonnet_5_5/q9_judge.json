@@ -1,0 +1,55 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "a) d = 600√2 nm ≈ 8,5·10^-7 m (θ_laranja = 45°); b) x_violeta = 20√14/7 cm ≈ 10,7 cm.",
+  "judge_reference": {
+    "reference_solution": "**Modelo físico.** A grade é horizontal e a luz solar incide perpendicularmente a ela, ou seja, na vertical. O solo é um anteparo paralelo à grade, a H = 20 cm abaixo dela. O ponto central é o pé da vertical que passa pelo máximo de ordem 0. O ângulo θ do feixe difratado é medido em relação à normal da grade (a vertical). A condição de máximo para incidência normal é d·senθ = mλ, com m = 1 para o primeiro máximo. A geometria é tgθ = x/H, onde x é a distância no solo até o ponto central. O meio é o ar (n ≈ 1).\n\n**a) Distância entre as ranhuras.**\nPara o laranja (λ = 600 nm), o primeiro máximo está a x = 20 cm e H = 20 cm. Logo tgθ_o = 20/20 = 1, o que dá θ_o = 45°.\nA hipotenusa do triângulo é √(20² + 20²) = 20√2 cm, portanto senθ_o = 20/(20√2) = √2/2.\nDa condição de máximo, d·senθ_o = 1·λ_o:\nd = λ_o/senθ_o = 600 nm / (√2/2) = 600√2 nm.\n**d = 600√2 nm ≈ 8,5·10⁻⁷ m ≈ 0,85 μm**, o que corresponde a cerca de 1,18·10³ ranhuras/mm.\n\n**b) Primeiro máximo do violeta (λ_v = 400 nm).**\nd·senθ_v = λ_v, então senθ_v = 400/(600√2) = 2/(3√2) = √2/3 ≈ 0,471. Isso dá θ_v ≈ 28,1°, menor que 45°, como esperado: λ menor leva a ângulo menor.\ncosθ_v = √(1 − 2/9) = √7/3.\ntgθ_v = (√2/3)/(√7/3) = √2/√7 = √(2/7) ≈ 0,5345.\nA distância ao ponto central é x_v = H·tgθ_v = 20·√(2/7) = (20√14)/7 cm.\n**x_v = 20√(2/7) cm = (20√14)/7 cm ≈ 10,7 cm**, menor que os 20 cm do laranja.\n\n**Verificações.**\n- Em x = 20√(2/7) cm, tgθ_v = √(2/7) e senθ_v = √2/3. Isso reproduz d·senθ_v = 600√2·(√2/3) = 400 nm, como deveria.\n- Como d ≈ 848 nm, o laranja só tem a ordem m = 1, pois m = 2 daria sen = 1,41 > 1. O violeta teria também m = 2 (sen ≈ 0,94), mas a questão pede apenas o primeiro máximo.\n- Cálculo numérico conferido em Python: d = 848,53 nm; θ_v = 28,13°; x_v = 10,690 cm.",
+    "final_answer": "a) d = 600√2 nm ≈ 8,5·10⁻⁷ m (≈ 0,85 μm; ≈ 1,18·10³ ranhuras/mm).\nb) x_v = 20√(2/7) cm = (20√14)/7 cm ≈ 10,7 cm do ponto central.",
+    "pitfalls": [
+      "Não usar a aproximação de pequenos ângulos (senθ ≈ tgθ). Aqui tgθ = 1, ou seja, θ = 45°, e a aproximação é inválida. Ela daria d = 600 nm no item (a) e x_v = 20·400/600 ≈ 13,3 cm no item (b), ambos errados.",
+      "Não igualar senθ = x/H = 1. Isso confunde seno com tangente, daria θ = 90° e d = λ, o que é absurdo. O seno usa a hipotenusa: senθ = x/√(x² + H²) = √2/2.",
+      "O ângulo é medido em relação à normal da grade, que é vertical, porque a luz incide perpendicularmente. O ponto central é o pé da vertical sob a grade, e H = 20 cm é o cateto adjacente.",
+      "A condição de máximo é d·senθ = mλ com m = 1 (primeiro máximo). Não se deve usar ordem 0 nem escrever d·tgθ = λ.",
+      "No item (b), o d do item (a) deve ser reutilizado. Não basta escalar as distâncias por λ_v/λ_o, pois isso só vale para ângulos pequenos. É preciso calcular senθ_v = √2/3, obter cosθ_v = √7/3, tgθ_v = √(2/7) e então x_v = H·tgθ_v.",
+      "A prova pede que as expressões numéricas sejam resolvidas integralmente. Deve-se deixar a forma exata (600√2 nm; 20√14/7 cm) e também o valor numérico (≈ 848 nm; ≈ 10,7 cm). Atenção às unidades: nm contra cm.",
+      "Teste de sanidade: o violeta (λ menor) difrata menos, então x_v < x_laranja (10,7 cm < 20 cm). Um resultado maior que 20 cm indica erro.",
+      "Verificar que as ordens existem (λ < d). Para o laranja, m = 2 não existe (sen = 1,41 > 1), logo m = 1 é a maior ordem possível. Isso é só consistência, não é pedido no enunciado.",
+      "A constante g e o valor de μ₀ fornecidos na prova não são usados nesta questão (a grafia 'N.A⁻¹' de μ₀ está impressa assim na prova)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "a) d = 600√2 nm ≈ 8,5·10^-7 m (θ_laranja = 45°); b) x_violeta = 20√14/7 cm ≈ 10,7 cm.",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A justificativa para descartar a aproximação de pequenos ângulos está mal formulada: 'H é de poucos centímetros e x é comparável a H'. O argumento correto é que tgθ_L = x/H = 1, isto é, θ_L = 45°. O 'poucos centímetros' não tem relação com o critério. O texto deveria dizer que o ângulo é grande porque x/H = 1."
+          },
+          {
+            "severity": "minor",
+            "description": "Nas verificações, o resultado de pequenos ângulos (13,3 cm) é chamado de 'impreciso'. Ele está errado em cerca de 25% (13,3 contra 10,7 cm), e a aproximação também daria d = 600 nm no item (a). Seria mais rigoroso dizer 'incorreto' e citar as duas consequências."
+          },
+          {
+            "severity": "minor",
+            "description": "Não declara explicitamente que θ é medido em relação à normal da grade (a vertical), que o meio é o ar (n ≈ 1) e que o ponto central é o pé da vertical. Isso está implícito na geometria e na frase 'ponto diretamente abaixo da grade', mas um gabarito comentado diria de forma explícita. Também não registra que sen θ ≠ x/H, isto é, que o seno usa a hipotenusa. O cálculo sen 45° = √2/2 está correto."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (a), a resposta numérica aparece apenas como ≈ 8,5·10⁻⁷ m. Falta a forma 0,85 μm ou o valor mais preciso (≈ 848,5 nm). Isso é cosmético, pois a forma exata 600√2 nm está presente, como a prova exige."
+          }
+        ],
+        "summary": "Reli o enunciado no PDF e ele confere com a transcrição. Refiz as contas em Python: d = 600√2 nm ≈ 848,5 nm; sen θ_V = √2/3, θ_V ≈ 28,13°; x_V = 20·√(2/7) = 20√14/7 cm ≈ 10,69 cm. A resolução do candidato coincide com a minha referência nos dois itens, tanto na forma exata quanto no valor numérico: a) d = 600√2 nm ≈ 8,5·10⁻⁷ m; b) x_V = 20√14/7 cm ≈ 10,7 cm. Todas as armadilhas foram tratadas: não usou a aproximação de pequenos ângulos (e calculou o valor errado de 13,3 cm só como contraexemplo), usou sen θ = √2/2 em vez de x/H = 1, reaproveitou o d do item (a), converteu sen em tg via cos θ = √7/3, deu a forma exata e a numérica, e checou x_V < x_L e a existência apenas da ordem m = 1 para o laranja. A estrutura é clara e os passos são completos e corretos. Os defeitos são só de redação: a justificativa de por que o ângulo não é pequeno, o adjetivo 'impreciso' e a falta de declarações explícitas sobre a normal e o meio. Nada compromete a correção, e a resolução é quase publicável como gabarito comentado."
+      }
+    }
+  ]
+}

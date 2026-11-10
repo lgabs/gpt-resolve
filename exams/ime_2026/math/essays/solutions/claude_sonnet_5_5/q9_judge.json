@@ -1,0 +1,53 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "r = a(√3 − 1)(2 − √2)/2 = a(2√3 − √6 + √2 − 2)/2 ≈ 0,214·a",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a transcrição confere com a prova (9ª questão, p. 2, valor 1,0). Não há figura. Os pontos são M ∈ lado BC e N ∈ lado CD, e o triângulo AMN é equilátero.\n\n**1. Coordenadas.** Tomo A=(0,0), B=(a,0), C=(a,a), D=(0,a). Então M=(a,m) com 0≤m≤a, e N=(n,a) com 0≤n≤a. Assim BM=m e DN=n.\n\n**2. Simetria (BM = DN), sem assumir.** AM = AN, pois o triângulo é equilátero. Os triângulos ABM e ADN são retângulos em B e D, com AB = AD = a e hipotenusas iguais. Pelo caso cateto–hipotenusa, são congruentes, logo BM = DN. Em coordenadas: a²+m² = n²+a² ⇒ m = n, pois ambos são ≥ 0. Chamo x = BM = DN.\n\nConsequência: CM = a − x = CN. O triângulo CMN é isósceles, com ângulo reto em C.\n\n**3. Condição de equilátero.** Temos AM² = a² + x² e MN² = CM² + CN² = 2(a−x)². Impondo AM = MN:\na² + x² = 2(a−x)² ⇒ a² + x² = 2a² − 4ax + 2x² ⇒ x² − 4ax + a² = 0.\nEntão x = a(2 ± √3).\nComo x ≤ a (M está no lado BC), descarta-se 2+√3 (≈3,73 > 1). Logo x = a(2−√3).\n\nVerificação alternativa: ∠MAN = 60° e ∠BAM = ∠DAN (congruência), logo cada um vale (90°−60°)/2 = 15°. Então BM = a·tg15° = a(2−√3). Confere.\n\n**4. Catetos de CMN.** ℓ = CM = CN = a − a(2−√3) = a(√3 − 1) ≈ 0,732a. A hipotenusa é MN = ℓ√2.\n\n**5. Raio do círculo inscrito.** Em triângulo retângulo de catetos b, c e hipotenusa h, r = (b + c − h)/2. Isso decorre de r = Área/semiperímetro, ou de que as tangentes a partir do vértice do ângulo reto medem r.\nr = (2ℓ − ℓ√2)/2 = ℓ(2−√2)/2 = a(√3−1)(2−√2)/2.\n\nExpandindo: r = a(2√3 − √6 − 2 + √2)/2 = a(√3 − 1 − (√6−√2)/2) ≈ 0,2144·a.\n\n**6. Verificação numérica (Python, a=1).** AM = AN = MN = 1,03528. CM = CN = 0,73205. Área/semiperímetro = 0,214413, igual à fórmula fechada (0,214413).\n\n**Resposta:** r = a(√3 − 1)(2 − √2)/2 = a(2√3 − √6 − 2 + √2)/2.",
+    "final_answer": "r = a(√3 − 1)(2 − √2)/2 = a(2√3 − √6 − 2 + √2)/2 ≈ 0,214·a. Isso vem de BM = DN = a(2−√3), de CM = CN = a(√3−1) e de MN = a(√3−1)√2, com ângulo reto em C.",
+    "pitfalls": [
+      "Provar a simetria BM = DN em vez de assumi-la. A congruência dos triângulos retângulos ABM e ADN (hipotenusa e cateto) dá BM = DN. Equivalente: AM = AN ⇒ m = n, usando m, n ≥ 0.",
+      "A equação a² + x² = 2(a−x)² dá x² − 4ax + a² = 0 e duas raízes, a(2±√3). É obrigatório descartar a(2+√3) > a, porque M tem de estar no lado BC e não no prolongamento. Quem não descarta, ou escolhe a raiz errada, obtém um CM negativo ou absurdo.",
+      "O triângulo CMN é retângulo isósceles, com ângulo reto em C (lados do quadrado) e CM = CN = a − x = a(√3−1). Erro comum: usar a − x com x = a(2+√3), ou confundir CM com BM.",
+      "Usar a hipotenusa MN = ℓ√2 e não a medida do lado do equilátero AMN em outra fórmula. MN² = CM² + CN², não MN = a.",
+      "Fórmula do inraio em triângulo retângulo: r = (b + c − h)/2 = ℓ(2−√2)/2. Não confundir com o circunraio h/2, nem com o raio inscrito do AMN ou do quadrado.",
+      "Formas equivalentes da resposta (a(√3−1)(1−√2/2), a(2√3−√6−2+√2)/2 etc.) devem ser aceitas. Conferir numericamente: ≈ 0,2144a.",
+      "Casos degenerados (M=B, N=D ou M=N=C) não satisfazem a condição de equilátero. M=B daria AM=a e MN=a√2, e M=N=C não forma triângulo. A equação do 2º grau já os exclui, e a solução é única."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "r = a(√3 − 1)(2 − √2)/2 = a(2√3 − √6 + √2 − 2)/2 ≈ 0,214·a",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A \"verificação\" do item 4 é em parte circular. Dizer que r coincide com área/p repete a dedução da fórmula, e r < c/2 é só uma checagem de ordem de grandeza. Faltou uma checagem independente, como ∠BAM = ∠DAN = 15° e x = a·tg15° = a(2−√3). Isso também daria uma justificativa geométrica curta e confirmaria a raiz escolhida."
+          },
+          {
+            "severity": "minor",
+            "description": "Não se comenta que a configuração existe e é única. O equilátero é verificado só numericamente (AM = AN = MN ≈ 1,0353), e os casos extremos (M = B, N = D ou M = N = C) não são excluídos de forma explícita. A equação x² − 4ax + a² = 0 e a restrição 0 ≤ x ≤ a já cobrem isso de modo implícito, então a lacuna é pequena."
+          },
+          {
+            "severity": "minor",
+            "description": "Na simetria, AM = AN é usado como dado e depois só AM = MN entra na equação. Seria mais limpo dizer que, como x = y, AN = AM = MN, então o equilátero fica garantido. Também não está dito que a raiz x = a(2−√3) < a dá CM > 0, isto é, o triângulo CMN é não degenerado. Isso aparece apenas implicitamente em c = a(√3−1) > 0."
+          },
+          {
+            "severity": "minor",
+            "description": "A dedução de r = (b₁ + b₂ − h)/2 é só indicada (\"vem de r = área/p … usando h² = b₁² + b₂²\"), sem a álgebra intermediária. Para um gabarito comentado, convinha mostrar o passo ou usar o argumento das tangentes a partir do vértice do ângulo reto."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (9ª questão, p. 2) e refiz as contas em Python. A resposta do candidato, r = a(√3−1)(2−√2)/2 = a(2√3−√6+√2−2)/2 ≈ 0,2144a, é idêntica à da minha referência e está correta. Numericamente, com a = 1, AM = AN = MN = 1,03528, CM = CN = 0,73205, e r = área/p = 0,214413 = fórmula fechada. O raciocínio é válido do começo ao fim. A simetria BM = DN é provada por congruência cateto–hipotenusa e não assumida. A equação a²+x² = 2(a−x)² leva a x = a(2±√3), e a raiz 2+√3 é descartada por x ≤ a. O triângulo CMN é reconhecido como retângulo isósceles com ângulo reto em C, e a hipotenusa MN = c√2 é usada corretamente. A fórmula do inraio é aplicada sem confundir com o circunraio nem com o raio do AMN. As armadilhas da referência foram quase todas tratadas: simetria, descarte da raiz, hipotenusa e fórmula do inraio. A única parcialmente tratada é a dos casos degenerados, que o candidato não discute explicitamente. A forma final aparece em duas versões equivalentes, e o texto é claro e bem organizado. Os pontos fracos são menores: verificação parcialmente circular, falta da checagem independente com tg 15° e falta de comentário explícito sobre existência, unicidade e casos degenerados. Nenhum deles compromete a correção."
+      }
+    }
+  ]
+}

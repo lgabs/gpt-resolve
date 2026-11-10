@@ -1,0 +1,61 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) v = sqrt(2qV/m). b) Movimento helicoidal uniforme: MRU ao longo de B (v cosθ) combinado com MCU no plano perpendicular (R = m v senθ/(qB), T = 2πm/(qB)), pois a força magnética não realiza trabalho e é perpendicular a v e a B. c) cosθ = (L B/(2π n)) · sqrt(q/(2 m V)), com n = 1, 2, 3, ... (e cosθ < 1).",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura.** B é uniforme e horizontal, para a direita (eixo x). A velocidade inicial v⃗ está no plano da figura e aponta para baixo e para a direita, com ângulo θ agudo em relação a B. Logo v∥ = v cosθ > 0 (sentido de B) e v⊥ = v senθ. O ponto 2 está à direita do ponto 1, sobre a mesma linha de campo, a uma distância L > 0.\n\n**a) Módulo da velocidade na entrada**\n\nA partícula parte do repouso e é acelerada, no vácuo, pela ddp V. Só a força elétrica realiza trabalho, e ele vale qV. Pelo teorema trabalho-energia cinética, sem efeitos relativísticos:\n\nqV = ½ m v²  ⟹  **v = √(2qV/m)**\n\n**b) Tipo de movimento: hélice cilíndrica percorrida com velocidade escalar constante (movimento helicoidal uniforme)**\n\nDentro da região só atua a força magnética F⃗ = q v⃗ × B⃗. Ela é sempre perpendicular a v⃗ e a B⃗. Decompõe-se v⃗ em v∥ = v cosθ (paralela a B) e v⊥ = v senθ (perpendicular a B).\n\n- A força é perpendicular a v⃗, então não realiza trabalho. Logo |v⃗| = v permanece constante e a energia cinética não muda.\n- Como F⃗ ⟂ B⃗, não há componente de força ao longo de B. Portanto v∥ = v cosθ é constante. Ao longo de B o movimento é retilíneo uniforme.\n- No plano perpendicular a B, a força tem módulo constante q v senθ B e é perpendicular a v⃗⊥. Ela é a resultante centrípeta, então o movimento projetado é circular uniforme:\n  - q v senθ B = m v²sen²θ / R, logo R = m v senθ/(qB) = (senθ/B)√(2mV/q).\n  - Período T = 2πR/(v senθ) = 2πm/(qB), independente de v e de θ.\n- A composição de um MRU ao longo de B com um MCU no plano perpendicular é uma hélice circular de raio R e passo constante p = v∥T = 2π m v cosθ/(qB) = (2π/B)√(2mV/q)·cosθ.\n\nEsse é o caso geral (0 < θ < 90°). Os casos particulares são:\n\n- θ = 0: a trajetória é uma reta ao longo de B, MRU, e a partícula nunca deixa a linha de campo.\n- θ = 90°: a trajetória é uma circunferência e não há avanço ao longo de B.\n\nO enunciado diz que a partícula volta à linha de campo inicial (exige senθ ≠ 0) e passa por 2, a uma distância L > 0 ao longo de B (exige cosθ ≠ 0). Portanto o movimento é realmente helicoidal.\n\nObservação: em t = 0, F⃗ ∝ v⃗ × B⃗ aponta para fora do plano da figura (para o observador). A hélice sai do plano do papel, e a \"volta\" à linha de campo ocorre em 3D.\n\n**c) Condição sobre cosθ**\n\nA linha de campo que passa por 1 não é o eixo da hélice. O eixo é paralelo a B e fica a uma distância R dessa linha. No plano perpendicular a B, a linha de campo de 1 é um ponto P. A projeção da trajetória é uma circunferência de raio R que passa por P no instante inicial.\n\nA partícula só volta a P depois de uma volta completa, em t = nT (n = 1, 2, 3, …). Em t = T/2, por exemplo, ela está a 2R da linha de campo (diâmetro oposto), e não sobre ela.\n\nNesses instantes a posição ao longo de B é x_n = v cosθ · nT = n p. Para passar por 2 é preciso x_n = L:\n\nL = n · 2π m v cosθ/(qB)  ⟹  cosθ = qBL/(2π n m v).\n\nSubstituindo v = √(2qV/m), vem q/(m v) = √(q/(2mV)). Então:\n\n**cosθ = (B L /(2π n)) · √(q/(2 m V)), com n = 1, 2, 3, …**\n\nEquivalentemente, L = n·p, isto é, L deve ser múltiplo inteiro do passo da hélice.\n\nRestrições de validade:\n- Como θ é agudo (figura) e θ ≠ 0 (a partícula precisa voltar à linha), tem-se 0 < cosθ < 1. Isso impõe n > (BL/2π)√(q/(2mV)). Só valem os inteiros n acima desse valor, que existem em quantidade infinita.\n- O conjunto de valores de cosθ é discreto (um por valor de n).\n- A condição não depende do sentido de rotação nem de senθ.\n\n**Conferência.** Verifiquei a análise dimensional: BL√(q/(mV)) é adimensional. Fiz também uma integração numérica RK4 da equação de movimento, com n = 3 e cosθ = 0,6:\n- |v⃗| conservado até a precisão da integração.\n- A distância à linha de campo vale 0 em t/T = 1, 2 e 3, e vale 2R em t/T = 0,5, 1,5 e 2,5.\n- x/L = 1/3, 2/3 e 1 em t/T = 1, 2 e 3, ou seja, passa por 2 em t = 3T.\n- A fórmula devolve cosθ = 0,6.",
+    "final_answer": "a) v = √(2qV/m).\n\nb) Movimento helicoidal uniforme (hélice circular de passo constante):\n- MRU com v∥ = v cosθ ao longo de B, mais MCU no plano perpendicular a B.\n- Raio R = m v senθ/(qB) e período T = 2πm/(qB).\n- Passo p = 2π m v cosθ/(qB).\n- Justificativa: a força magnética é perpendicular a v⃗ e a B⃗, logo não realiza trabalho (|v⃗| constante) e não age ao longo de B (v∥ constante).\n\nc) A partícula só volta à linha de campo de 1 em t = nT, e nesses instantes avança n·p ao longo de B. Passar por 2 exige L = n·2π m v cosθ/(qB), ou seja:\n\ncosθ = (B L/(2π n))·√(q/(2 m V)), com n = 1, 2, 3, …\n\nA condição exige 0 < cosθ < 1, o que limita n > (BL/2π)√(q/(2mV)).",
+    "pitfalls": [
+      "Item a): a aceleração por V ocorre ANTES da região de B, e o campo magnético não realiza trabalho. O correto é qV = ½mv², e não v = qV/m nem uma energia que inclua B.",
+      "Item b): não basta dizer 'hélice'. É preciso justificar. A força magnética é ⟂ v⃗ e ⟂ B⃗, então |v⃗| é constante (sem trabalho) e v∥ = v cosθ é constante (sem força ao longo de B). No plano ⟂ B há MCU, com força centrípeta qv senθ B. O movimento composto é uma hélice cilíndrica uniforme.",
+      "Item b): citar os casos limite (θ = 0 dá reta; θ = 90° dá circunferência) e explicar por que não valem aqui. A partícula volta à linha de campo, logo senθ ≠ 0. Ela atinge o ponto 2, a L > 0, logo cosθ ≠ 0. Dizer apenas 'movimento circular' ou 'MRU' é erro.",
+      "Item b): período T = 2πm/(qB) independe de v e de θ. R ∝ senθ e o passo ∝ cosθ. A aceleração tem módulo constante (centrípeta), então o movimento não é uniformemente acelerado.",
+      "Item c), erro mais comum: tratar a linha de campo de 1 como eixo da hélice e usar retornos a cada meia volta (T/2), o que dá fator 2 errado. A linha de 1 passa a uma distância R do eixo. Em T/2 a partícula está a 2R dessa linha. Os retornos ocorrem apenas em t = nT, com x = n·p.",
+      "Item c): a resposta é uma família discreta, n = 1, 2, 3, …, e não um único valor. O enunciado diz 'em um desses retornos'. Falta nota máxima a quem omite n ou o seu domínio.",
+      "Item c): exprimir em função dos dados (V, m, q, B, L), substituindo v do item a). Deixar só cosθ = qBL/(2πn m v) é incompleto. Vale a conferência dimensional: BL√(q/(mV)) é adimensional.",
+      "Item c): validade. É preciso que cosθ < 1 (θ = 0 nunca deixa a linha, então não há 'retorno'), o que dá n > (BL/2π)√(q/(2mV)). Pela figura θ é agudo, logo cosθ > 0. Se θ fosse obtuso a partícula derivaria para a esquerda e nunca passaria por 2.",
+      "A dica sen θ ≈ θ para θ ≪ 1 é instrução geral da prova e NÃO se aplica aqui. θ não é pequeno e a resposta usa cosθ e senθ exatos. Aproximar cosθ ≈ 1 ou senθ ≈ θ é erro.",
+      "A trajetória sai do plano da figura: em t = 0, v⃗ × B⃗ aponta para fora do papel. A volta à linha de campo é tridimensional, e desenhar a trajetória no plano do papel induz a erros.",
+      "Não há efeitos relativísticos (o enunciado manda desprezá-los), então vale a energia cinética clássica. O sinal de q > 0 só afeta o sentido de giro, não o passo nem a condição final."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) v = sqrt(2qV/m). b) Movimento helicoidal uniforme: MRU ao longo de B (v cosθ) combinado com MCU no plano perpendicular (R = m v senθ/(qB), T = 2πm/(qB)), pois a força magnética não realiza trabalho e é perpendicular a v e a B. c) cosθ = (L B/(2π n)) · sqrt(q/(2 m V)), com n = 1, 2, 3, ... (e cosθ < 1).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "As respostas finais do candidato coincidem com as da minha referência nos três itens. a) v = √(2qV/m). b) Movimento helicoidal uniforme, com MRU de velocidade v cosθ ao longo de B e MCU no plano perpendicular, com R = m v senθ/(qB) e T = 2πm/(qB). c) cosθ = (LB/(2πn))√(q/(2mV)), com n = 1, 2, 3, …, e cosθ < 1. Conferi o item c numericamente com uma integração RK4 própria, em Python puro: n = 3 e cosθ = 0,6 reproduzem a fórmula. A distância à linha de campo de 1 vale 0 em t/T = 1, 2 e 3 e vale 2R em t/T = 0,5, 1,5 e 2,5. A posição x/L vale 1/3, 2/3 e 1 nos retornos. Confirmei também que o enunciado e a figura batem com a transcrição (B para a direita, v para baixo e à direita, ponto 2 à direita de 1). O candidato evitou o erro mais comum, que seria usar retornos a cada T/2. Ele justifica que a projeção da linha de campo de 1 é um ponto sobre a circunferência e que a partícula só volta a ele a cada volta completa. Apresenta a família discreta de n com a restrição cosθ < 1 (n > (BL/2π)√(q/(2mV))), substitui v do item a e confere as dimensões, corretamente. A justificativa do item b é sólida: a força magnética é perpendicular a v e a B, logo não realiza trabalho e não age ao longo de B. Restam apenas pontos menores de completude e rigor: não mostra que o retorno em T/2 está excluído, não discute os casos limite θ = 0 e θ = 90° ligando-os às hipóteses do enunciado, não observa que a trajetória sai do plano da figura, e há um deslize de vocabulário (\"descendo reta pela linha de campo\"). Não há erro de conta nem de física. A resolução está próxima de um gabarito comentado publicável, mas ainda sem alguns comentários que o tornariam completo.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "No item c, a exclusão dos retornos em meia volta é só implícita. O candidato diz que a projeção da linha de campo é um ponto da circunferência e que a partícula só volta a ele a cada volta completa, mas não diz que o eixo da hélice está a uma distância R da linha de 1 nem que em t = T/2 a partícula está a 2R dela. Esse é o erro típico (usar T/2) e merecia uma frase explícita para blindar o argumento."
+          },
+          {
+            "severity": "minor",
+            "description": "No item b, os casos limite não são ligados às hipóteses do enunciado. O candidato só afirma v∥ ≠ 0 e v⊥ ≠ 0 'pois 0 < θ < 90° na figura'. Faltou dizer que θ = 0 daria uma reta (a partícula nunca deixaria a linha de campo) e θ = 90° daria uma circunferência (sem avanço ao longo de B). Faltou também notar que 'volta à linha' implica senθ ≠ 0 e 'passa por 2 a L > 0' implica cosθ ≠ 0."
+          },
+          {
+            "severity": "minor",
+            "description": "A observação 'o caso limite cosθ → 1 (θ → 0) é a partícula descendo reta pela linha de campo' tem vocabulário errado: a linha de campo é horizontal e a partícula seguiria para a direita, não 'descendo'. Também não explica diretamente que θ = 0 não tem 'retorno'; só dá a restrição cosθ < 1."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não observa que, em t = 0, v × B aponta para fora do plano do papel. A hélice sai do plano da figura e o retorno à linha de campo é tridimensional. Não é indispensável, mas ajuda a evitar leituras planares."
+          },
+          {
+            "severity": "minor",
+            "description": "O raio R = m v⊥/(qB) é escrito sem a equação intermediária q v⊥ B = m v⊥²/R. Também não se diz que a aceleração é constante em módulo e centrípeta, nem que q > 0 só define o sentido de giro. A condição cosθ > 0 (θ agudo, como na figura) não é explicitada com o argumento de que, para θ obtuso, a partícula derivaria para a esquerda e nunca passaria por 2."
+          }
+        ]
+      }
+    }
+  ]
+}

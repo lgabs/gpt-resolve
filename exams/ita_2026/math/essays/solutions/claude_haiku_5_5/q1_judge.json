@@ -1,0 +1,132 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "231 pontos: 129 no interior e 102 na superfície (total 231). O sólido é {|x|+|y|+|z| ≤ 5}, e a contagem foi feita por N_k = 4k²+2 para k ≥ 1 (N_0 = 1), conferida por contagem por tipos de coordenadas e por força bruta.",
+  "judge_reference": {
+    "final_answer": "Resposta: 231 pontos com coordenadas inteiras no sólido fechado (129 no interior + 102 na superfície). Não é múltipla escolha. O sólido é {(x,y,z) ∈ ℝ³ : |x|+|y|+|z| ≤ 5}, e a contagem é feita sobre ℤ³.",
+    "reference_solution": "**Resposta final: 231** (129 no interior + 102 na superfície).\n\n**1. Identificação do sólido.**\nUm octaedro regular centrado na origem tem vértices em pares antipodais ±v₁, ±v₂, ±v₃, com v₁, v₂, v₃ mutuamente ortogonais e de mesmo módulo. Os pontos (5,0,0), (0,5,0) e (0,0,5) são mutuamente ortogonais, têm módulo 5 e não são antipodais entre si; logo pertencem a três pares antipodais distintos. Assim, os seis vértices são (±5,0,0), (0,±5,0), (0,0,±5). Essa escolha é forçada, não há outro octaedro compatível. Conferência: a aresta vale 5√2, e o triângulo de vértices (5,0,0), (0,5,0), (0,0,5) é uma face contida no plano x+y+z=5.\n\nO sólido S é a envoltória convexa desses seis vértices. Afirmo que S = {(x,y,z) : |x|+|y|+|z| ≤ 5}.\n- (⊆) A função f(p) = |x|+|y|+|z| é convexa e vale 5 em todos os vértices; logo f ≤ 5 em S.\n- (⊇) Se s = |x|+|y|+|z| ≤ 5, escreva p = Σᵢ (|pᵢ|/5)·(sgn(pᵢ)·5eᵢ) + (1 − s/5)·O, onde O = (0,0,0) é média de (5,0,0) e (−5,0,0). Os coeficientes são não negativos e somam 1, logo p ∈ S.\nEquivalentemente, as 8 faces são ±x±y±z = 5, e max(±x±y±z) = |x|+|y|+|z|.\n\nOs pontos pedidos são (x,y,z) ∈ ℤ³ com |x|+|y|+|z| ≤ 5. Interior: |x|+|y|+|z| ≤ 4. Superfície: |x|+|y|+|z| = 5.\n\n**2. Contagem por níveis da norma ℓ₁.**\nSeja N(k) = #{(x,y,z) ∈ ℤ³ : |x|+|y|+|z| = k}, com k ≥ 1. Classifico pelo número de coordenadas não nulas:\n- Uma não nula: 3 posições × 2 sinais = 6 pontos (valor ±k), para todo k ≥ 1.\n- Duas não nulas: 3 pares de posições × pares (a,b) com a,b ≥ 1 e a+b = k (k−1 opções) × 4 sinais = 12(k−1).\n- Três não nulas: ternas ordenadas (a,b,c) com a,b,c ≥ 1 e a+b+c = k, em número de C(k−1,2), × 8 sinais = 4(k−1)(k−2).\n\nLogo N(k) = 6 + 12(k−1) + 4(k−1)(k−2) = 4k² + 2.\nChecagens: N(1) = 6 (os ±eᵢ). N(2) = 18 = 6 (±2eᵢ) + 12 (±1, ±1 nas duas posições).\n\n- Superfície: N(5) = 4·5² + 2 = 102.\n- Interior (inclui a origem, k = 0, com N(0) = 1): 1 + Σₖ₌₁⁴ (4k²+2) = 1 + 4·(1+4+9+16) + 2·4 = 1 + 120 + 8 = 129.\n- Total: 129 + 102 = 231. Equivalentemente, 1 + Σₖ₌₁⁵ (4k²+2) = 1 + 4·55 + 10 = 1 + 220 + 10 = 231.\n\n**3. Verificações independentes.**\n(a) Por fatias em z. Para |z| = t, a seção é {|x|+|y| ≤ m} com m = 5−t. O número de inteiros nesse losango é g(m) = 2m²+2m+1. Então g(5) = 61 (z = 0) e, para t = 1..5 (duas fatias cada), 2·[g(4)+g(3)+g(2)+g(1)+g(0)] = 2·(41+25+13+5+1) = 170. Total: 61 + 170 = 231.\n(b) Superfície por partes: 6 vértices + 12 arestas × 4 pontos internos + 8 faces × C(4,2) = 6 pontos internos = 6 + 48 + 48 = 102.\n(c) Fórmula fechada para o número de pontos de ℤ³ em |x|+|y|+|z| ≤ n: (2n+1)(2n²+2n+3)/3. Com n = 5: 11·63/3 = 231. Para n = 1 dá 7 (origem + 6), o que confere.\n(d) Força bruta sobre [−5,5]³ (1331 pontos): 231 pontos, dos quais 102 satisfazem igualdade. Conferido em Python.\n\n**Conclusão:** há 231 pontos com coordenadas inteiras no interior ou na superfície do octaedro.",
+    "pitfalls": [
+      "Identificação do sólido: os três vértices dados determinam o octaedro sem ambiguidade, pois não são antipodais entre si e são mutuamente ortogonais com módulo 5. Os vértices são ±5eᵢ e a aresta vale 5√2, não 5. Não tome a aresta como 5 nem suponha outra orientação.",
+      "Não confundir o octaedro com o cubo |x|,|y|,|z| ≤ 5 (que daria 11³ = 1331 pontos). A região correta é a bola da norma ℓ₁: |x|+|y|+|z| ≤ 5.",
+      "'No interior e na superfície' pede o sólido fechado, com desigualdade não estrita |x|+|y|+|z| ≤ 5. Contar só o interior dá 129, só a superfície dá 102, e a desigualdade estrita também dá 129. A resposta correta é 231.",
+      "A origem (k = 0) deve ser contada. Esquecê-la dá 230 (e interior 128).",
+      "Contagem de sinais e permutações: cada coordenada não nula dobra a contagem e coordenadas nulas não. Exemplos: (1,2,2) gera 3 arranjos × 8 sinais = 24 pontos; (a,b,0) com a ≠ b gera 6 posições ordenadas × 4 sinais = 24, não 8 nem 12.",
+      "Na superfície, arestas e vértices pertencem a mais de uma face. Somar 8 faces com todos os seus pontos conta errado. A decomposição correta é 6 vértices + 12 arestas × 4 + 8 faces × 6 = 102.",
+      "Verifique a fórmula de contagem em um caso pequeno (n = 1 dá 7; n = 2 dá 25). Confirme também N(k) = 4k² + 2 em k = 1 e k = 2 antes de somar.",
+      "Instrução 8 da prova: as expressões numéricas devem ser resolvidas integralmente. Deixar 1 + 4·55 + 10 sem chegar a 231 pode gerar desconto. A resposta final deve ser o número 231, escrito com clareza."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "231 pontos com coordenadas inteiras no interior ou na superfície do octaedro, isto é, pontos de Z³ com |x|+|y|+|z| ≤ 5 (102 na superfície e 129 no interior).",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Identificação do sólido: a frase 'O sólido é convexo e contém a origem, onde ε·(x,y,z)=0<5; logo ele é a interseção dos oito semiespaços' é um non sequitur. Estar a origem do lado correto de cada plano não implica que o octaedro seja igual à interseção dos semiespaços. Falta justificar (i) que os oito triângulos com um vértice em cada par ±5eᵢ são de fato as faces, e (ii) a inclusão {|x|+|y|+|z| ≤ 5} ⊆ S, que é a direção usada para incluir pontos inteiros no sólido. Deveria ser exibida a combinação convexa explícita dos vértices (como na referência), ou citado o teorema de que um poliedro convexo é a interseção dos semiespaços de suas faces, com verificação de que os seis vértices satisfazem as oito desigualdades."
+          },
+          {
+            "severity": "minor",
+            "description": "Interior e superfície são atribuídos a k≤4 e k=5 sem justificativa. Falta dizer que a fronteira de S é {|x|+|y|+|z|=5} e que o interior é o aberto {|x|+|y|+|z|<5}, o que torna a separação dos pontos inteiros imediata."
+          },
+          {
+            "severity": "minor",
+            "description": "Unicidade do octaedro não é argumentada explicitamente. 'Logo os seis vértices são...' é consequência da simetria central, mas o texto não diz que os três pontos dados determinam os três pares antípodas e que não há outra escolha. Basta uma frase."
+          },
+          {
+            "severity": "minor",
+            "description": "Na contagem por camadas, o passo '4k+2Σ_{j=1}^{k−1}4j+2 = 4k²+2' não mostra as parcelas (z=0 dá 4k; z=±t dá 2·4(k−t); z=±k dá 2) nem a soma Σ4j = 2k(k−1). A expressão não está resolvida integralmente, o que vai contra a instrução 8 da prova, e a checagem fica difícil de acompanhar."
+          },
+          {
+            "severity": "minor",
+            "description": "A seção 'Ordem de grandeza' é uma verificação vazia. A área 100√3 é calculada e não usada, e 'coerentes' não é um teste quantitativo. Deve ser removida ou transformada em estimativa numérica explicada."
+          }
+        ],
+        "summary": "A resposta 231 está correta. Confirmei por força bruta sobre [−5,5]³ (interior 129, superfície 102, total 231), pela fórmula fechada (2n+1)(2n²+2n+3)/3 com n=5, e pelo lema f(r)=2r²+2r+1 verificado para r=0..11. O candidato chega ao mesmo resultado que a referência, com a mesma divisão 129+102. A parte de contagem é forte: o lema tem prova correta, há duas verificações independentes (fatias em z e camadas pela norma ℓ₁), a origem e os vértices são contados, e o sólido fechado com desigualdade não estrita está explicitado. O ponto fraco é a identificação do sólido. A frase 'contém a origem … logo é a interseção dos semiespaços' não sustenta a igualdade S = {|x|+|y|+|z| ≤ 5}, e a direção que inclui pontos inteiros no sólido fica sem justificativa. Também faltam a justificativa de que interior e superfície correspondem a k<5 e k=5, um passo de álgebra não expandido na contagem por camadas e uma seção de 'ordem de grandeza' sem valor de verificação. Nenhum desses problemas altera o resultado. Pelo critério de gabarito comentado (nota ≥9), a resolução ainda precisa fechar o argumento geométrico central e acabamentos, por isso a nota é 8."
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "231 pontos com todas as coordenadas inteiras no interior ou na superfície do octaedro: 129 no interior (g ≤ 4) e 102 na superfície (g = 5), onde g(x,y,z) = |x|+|y|+|z|.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 1: a estrutura do octaedro regular (vértices em três pares antipodais, diagonais perpendiculares e de mesmo comprimento) é afirmada sem justificativa. É fato padrão e não afeta a validade, mas um gabarito comentado deveria dar uma linha de justificativa ou apontar a propriedade de simetria central. A perpendicularidade nem é usada na determinação do sólido."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 1: a conclusão 'cada um dos três pares contém exatamente um deles' depende de um argumento de casa dos pombos (três pontos, três pares, nenhum par com dois pontos dados, pois nenhum é antípoda de outro). O argumento está implícito; deveria estar explícito."
+          },
+          {
+            "severity": "minor",
+            "description": "Instrução 8 da prova (expressões numéricas resolvidas integralmente, sob pena de desconto). Vários passos pulam contas: '61+2(1+5+13+25+41)=231' omite f(5)=61, 2·85=170 e 61+170; '11·63/3=231' omite 693; 'Σ4k²' é substituído por n(n+1)(2n+1)/6 sem mostrar a fórmula; '2·25+40/3+1=193/3' sem a soma intermediária. Todas as contas estão corretas, mas deveriam aparecer por extenso, como exige a prova."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 7 ('Ordem de grandeza e unidades') não é verificação independente: reescreve o mesmo polinômio como volume + correção de fronteira. A afirmação de que a correção 'é da ordem de n²' é heurística e não justificada, e não há análise de unidades (o item é adimensional, mas a seção não diz muito além disso). Ou remover, ou justificar com teoria de Ehrhart."
+          },
+          {
+            "severity": "minor",
+            "description": "Armadilha de contagem por sinais e permutações não é tratada explicitamente. O método por M(m) cobre o caso implicitamente, mas a resolução não mostra uma checagem por tipos (por exemplo, (a,b,0) com a≠b dá 24 pontos; (1,2,2) dá 24). Também falta verificar N(2)=25 à mão, além de N(1)=7. Uma linha bastaria."
+          }
+        ],
+        "summary": "Resposta final 231 (129 no interior + 102 na superfície) está correta. Refiz a contagem por força bruta em Python sobre [-5,5]³: 231 pontos com |x|+|y|+|z| ≤ 5, 129 com desigualdade estrita e 102 com igualdade. Os valores N_k = 1, 6, 18, 38, 66, 102 e a fórmula N(n) = (2n+1)(2n²+2n+3)/3 também conferem. A referência concorda com a resposta e com os níveis 129/102.\n\nPontos fortes: (a) envoltória convexa provada nos dois sentidos, com desigualdade triangular e uma combinação convexa explícita; (b) interior e superfície separados corretamente via continuidade de g e perturbação εu (g(P+εu)=5+3ε); (c) M(m)=4m, N_k=4k²+2 e N_0=1 derivados com cuidado; (d) verificação independente por fatias, f(r)=2r²+2r+1, que dá 61+2·85=231; (e) armadilhas tratadas: ℓ₁ em vez do cubo, origem contada, desigualdade não estrita, sem dupla contagem de arestas e vértices, aresta 5√2 conferida.\n\nPor que não 9: a solução é matematicamente completa, mas tem lacunas de apresentação. Justifica pouco a estrutura do octaedro, não mostra as contas intermediárias exigidas pela instrução 8, tem uma seção final heurística que não verifica nada de independente, e não exibe a checagem por sinais e permutações. Nenhum desses problemas invalida o resultado; todos são corrigíveis em poucas linhas. Para ser publicada como gabarito comentado, precisaria desses ajustes."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "231 pontos: 129 no interior e 102 na superfície (total 231). O sólido é {|x|+|y|+|z| ≤ 5}, e a contagem foi feita por N_k = 4k²+2 para k ≥ 1 (N_0 = 1), conferida por contagem por tipos de coordenadas e por força bruta.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Seção 1: 'PM=QM' não basta para concluir que M é ponto médio de PQ. Falta mostrar que P, M e Q são colineares (os ápices estão sobre a reta perpendicular à base pelo centro). A antipodalidade dos vértices é afirmada, não demonstrada. Deveria haver uma frase sobre o eixo da pirâmide regular ou sobre a simetria do octaedro."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 2: 'O sólido é o fecho convexo K' é assumido sem justificativa. Falta dizer que um poliedro convexo é o fecho convexo de seus vértices (ou que é a união de duas pirâmides, cada uma fecho convexo de seus vértices)."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 3: a identificação 'superfície = {g=5}' usa implicitamente que S é fechado, de modo que ∂S = S \\ int S. Isso não é dito. Falta uma frase sobre o fechamento de S (imagem inversa de [0,5] por função contínua)."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 1: o argumento entre parênteses ('se algum par não contivesse nenhum... o que é impossível') é confuso. Bastava dizer que os três pontos estão em três pares distintos e que há exatamente três pares."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação sobrecarregada: P é ápice (seção 1) e ponto genérico (seções 2–3); M é centro do quadrado (seção 1) e função M(m) (seção 4); A é vértice dado A_1 e também vértice da base ABCD. Renomear para evitar confusão."
+          },
+          {
+            "severity": "minor",
+            "description": "Não há discussão explícita da não-sobreposição de faces, arestas e vértices na contagem da superfície. A decomposição por níveis N_k evita a dupla contagem, mas o texto não diz isso. Uma frase resolveria."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 7 é ruído: 'unidades' não se aplica a uma contagem, e a afirmação de que a diferença ≈ 64 é 'plausível como contribuição dos pontos de fronteira' não é quantificada. Há 102 pontos de fronteira, e a conexão correta é via Ehrhart: L(n) = 4n³/3 + 2n² + 8n/3 + 1, em que 2n² vem da fronteira. Ou remover a seção, ou substituí-la por essa identidade, que é verificável."
+          }
+        ],
+        "summary": "Resposta final 231 (129 no interior + 102 na superfície) está correta e coincide com a referência. Conferi por força bruta em Python sobre [-5,5]³: interior (g≤4) = 129, superfície (g=5) = 102, total 231. N_k = 4k²+2 para k≥1 e N_0 = 1 conferem para k=0..5. A fórmula fechada (2n+1)(2n²+2n+3)/3 confere com contagem direta para n=0..6, e a identidade do item 6 vale. O volume 500/3 também confere. Pontos fortes: identificação do octaedro pelo argumento de antípodas (com a aresta 5√2 verificada), prova de K = S nos dois sentidos com pesos explícitos e não negativos, separação interior/superfície por perturbação ε, contagem por níveis disjuntos, verificação independente por tipos de coordenadas com sinais 2^(não nulos) e fórmula fechada. Armadilhas tratadas: origem contada, sinais e permutações, aresta não tomada como 5, sólido fechado (interior + superfície), instrução 8 (expressões resolvidas até o número final). Não há erro matemático. A nota 8.5 (e não 9) decorre de lacunas de justificativa em fatos padrão (colinearidade dos ápices, fecho convexo, fechamento de S), notação sobrecarregada e uma seção 7 dispensável com heurística não quantificada. Todas as lacunas são menores e corrigíveis com poucas linhas.\""
+      }
+    }
+  ]
+}

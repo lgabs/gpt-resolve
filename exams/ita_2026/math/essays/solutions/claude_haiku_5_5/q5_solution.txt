@@ -1,0 +1,65 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Notação.} Sejam $r$ o raio das esferas menores, $R$ o raio da esfera maior, $O$ o centro da esfera maior, $C_1,C_2,C_3,C_4$ os centros das esferas menores e $a$ a aresta do tetraedro regular $C_1C_2C_3C_4$.
+
+\textbf{Passo 1 (aresta em função de $r$).} Sejam $i\neq j$. Se as esferas $i$ e $j$ fossem tangentes internamente, a distância entre seus centros seria $|r-r|=0$, isto é, as esferas coincidiriam, o que é absurdo, pois são quatro esferas distintas. Logo a tangência é exterior, e a distância entre os centros é a soma dos raios:
+\[
+a = m(\overline{C_iC_j}) = r + r = 2r.
+\]
+
+\textbf{Passo 2 ($O$ é o circuncentro do tetraedro).} Cada esfera menor está contida na esfera maior e é tangente a ela, logo a tangência é interna. Em duas esferas tangentes internamente, o ponto de tangência, $O$ e o centro da esfera menor estão alinhados, e a distância entre os centros é a diferença dos raios. Portanto
+\[
+m(\overline{OC_i}) = R - r \qquad (i=1,2,3,4).
+\]
+Assim, $O$ é equidistante dos quatro vértices do tetraedro. Esse ponto é único: se $P$ também é equidistante de $C_1,\dots,C_4$, expandindo $|P-C_1|^2=|P-C_k|^2$ obtém-se
+\[
+2\,P\cdot(C_k-C_1)=|C_k|^2-|C_1|^2 \qquad (k=2,3,4),
+\]
+um sistema linear cuja matriz tem linhas $C_k-C_1$ linearmente independentes, pois os vértices não são coplanares. Logo a solução é única, e $O$ é o circuncentro do tetraedro.
+
+\textbf{Passo 3 (circunraio do tetraedro regular).} Os vértices $V_1=(1,1,1)$, $V_2=(1,-1,-1)$, $V_3=(-1,1,-1)$ e $V_4=(-1,-1,1)$ formam um tetraedro regular: dois quaisquer deles diferem em duas coordenadas por $2$, logo a distância entre eles é $\sqrt{8}=2\sqrt{2}$. A média dos quatro vértices é $(0,0,0)$, e cada vértice está à distância $\sqrt{3}$ da origem. Pelo passo anterior (unicidade do equidistante), a origem é o circuncentro desse tetraedro, e como é também o baricentro, o circuncentro coincide com o baricentro. Multiplicando as coordenadas por $\lambda=\dfrac{a}{2\sqrt{2}}$, obtém-se um tetraedro regular de aresta $a$ com o mesmo centro e circunraio $\sqrt{3}\,\lambda$. Como dois tetraedros regulares de mesma aresta são congruentes, o centro $O$ é o baricentro do tetraedro $C_1C_2C_3C_4$, e
+\[
+d = m(\overline{OC_i}) = \sqrt{3}\cdot\frac{a}{2\sqrt{2}} = \frac{a\sqrt{6}}{4}.
+\]
+
+\textbf{Passo 4 (raios).} Com $a=2r$ do Passo 1,
+\[
+d = \frac{2r\sqrt{6}}{4} = \frac{r\sqrt{6}}{2}.
+\]
+Como $m(\overline{OC_i}) = d = R - r$, temos $R = d + r$, logo
+\[
+R = \frac{r\sqrt{6}}{2} + r = \frac{(2+\sqrt{6})\,r}{2}, \qquad \frac{R}{r}=\frac{2+\sqrt{6}}{2}\approx 2{,}22 > 1.
+\]
+
+\textbf{Passo 5 (razão pedida).} O volume de uma esfera de raio $t$ é $\frac{4}{3}\pi t^3$. Logo
+\[
+\frac{V_{\text{maior}}}{\sum V_{\text{menores}}}
+= \frac{\frac{4}{3}\pi R^3}{4\cdot\frac{4}{3}\pi r^3}
+= \frac{R^3}{4r^3}
+= \frac{1}{4}\left(\frac{2+\sqrt{6}}{2}\right)^3.
+\]
+Desenvolvendo as potências:
+\[
+(2+\sqrt{6})^2 = 4+4\sqrt{6}+6 = 10+4\sqrt{6},
+\]
+\[
+(2+\sqrt{6})^3 = (10+4\sqrt{6})(2+\sqrt{6}) = 20+10\sqrt{6}+8\sqrt{6}+24 = 44+18\sqrt{6}.
+\]
+Logo $\left(\dfrac{2+\sqrt{6}}{2}\right)^3=\dfrac{44+18\sqrt{6}}{8}=\dfrac{22+9\sqrt{6}}{4}$. Finalmente, dividindo por $4$:
+\[
+\frac{V_{\text{maior}}}{\sum V_{\text{menores}}}
+= \frac{1}{4}\cdot\frac{22+9\sqrt{6}}{4}
+= \frac{22+9\sqrt{6}}{16}\approx 2{,}75.
+\]
+
+\textbf{Verificação.}
+\begin{itemize}
+\item A razão é adimensional e não depende de $r$, como deve ocorrer num quociente de volumes semelhantes.
+\item Ordem de grandeza: as esferas menores têm interiores disjuntos e estão contidas na maior, logo a soma de seus volumes não excede $V_{\text{maior}}$ e a razão é $\geq 1$. Obteve-se $2{,}75$, e as menores ocupam $1/2{,}75\approx 36\%$ do volume da maior, valor que coincide com $4(r/R)^3\approx 0{,}363$.
+\item Conferência independente de $d$: a altura do tetraedro satisfaz $h^2 = a^2-\left(\frac{a\sqrt{3}}{3}\right)^2=\frac{2a^2}{3}$, logo $h=\frac{a\sqrt{6}}{3}$. O baricentro divide a altura na razão $3:1$ a partir do vértice, de modo que $d=\frac{3}{4}h=\frac{a\sqrt{6}}{4}$, o mesmo valor obtido.
+\item Numérica com $r=1$: $a=2$, $d=\frac{\sqrt{6}}{2}\approx 1{,}2247$, $R\approx 2{,}2247$, $R^3/4\approx 2{,}7528$, que coincide com $\frac{22+9\sqrt{6}}{16}$.
+\end{itemize}
+
+ANSWER: $\dfrac{22+9\sqrt{6}}{16}\approx 2{,}75$

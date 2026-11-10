@@ -1,0 +1,64 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Hipóteses.}
+\begin{enumerate}
+\item Em cada instante, viga e banho têm temperatura uniforme (equilíbrio térmico), e a carga está em equilíbrio mecânico: seu movimento é quase estático.
+\item A viga é incompressível, de modo que a única variação de comprimento é a térmica. Com $\alpha$ constante no intervalo, $\Delta L=\alpha L\,\Delta T$. O erro frente à lei exponencial é da ordem de $(\alpha\,\Delta T)^2/2\approx 10^{-6}$, pois $\alpha\approx 1{,}7\times 10^{-5}\ \text{K}^{-1}$ é valor típico externo (não dado) e $\alpha\,\Delta T\approx 1{,}2\times 10^{-3}$.
+\item Desprezam-se empuxo, pressão atmosférica e o trabalho de expansão contra o ar. O peso próprio da viga é avaliado ao final. O trabalho pedido é o realizado sobre as cargas.
+\item A água tem $\rho_{\text{H}_2\text{O}}$ e $c_{\text{H}_2\text{O}}$ constantes entre 20\,$^\circ$C e 90\,$^\circ$C. $V$ é o volume de água (o volume da viga é desprezado frente a $V$), e a água permanece líquida a 90\,$^\circ$C (1 atm).
+\item O recipiente não absorve calor (sua capacidade térmica não é dada). No resfriamento, o calor cedido vai a um reservatório ambiente a $T_0=293\ \text{K}$.
+\item A fonte é um reservatório a temperatura constante $T_F$ (não dada). A troca $M_1\to M_2$ é instantânea e sem deslocamento, e as cargas não trocam calor com o sistema.
+\item Dulong-Petit: com $n=m/M_{\text{Cu}}$ mols de cobre, a energia interna da viga depende apenas de $T$, com $\mathrm{d}U=n\,c_V\,\mathrm{d}T=3nR\,\mathrm{d}T$. Assim $\Delta U_{\text{viga}}=+\dfrac{3Rm}{M_{\text{Cu}}}\,\Delta T$ no aquecimento e $-\dfrac{3Rm}{M_{\text{Cu}}}\,\Delta T$ no resfriamento. Esta hipótese é a que torna o modelo inconsistente (ver observação final).
+\end{enumerate}
+
+Em cada etapa, a variação de temperatura tem módulo $\Delta T=90-20=70$ K.
+
+\textbf{Passo 1: trabalho em cada etapa.} Seja $N=Mg$ a força que a viga exerce sobre a carga $M$, vertical e para cima, e $W=\int N\,\mathrm{d}y$ o trabalho que a viga realiza sobre a carga, com $y$ a altura da carga.
+
+\begin{itemize}
+\item Aquecimento com $M_1$ (de 20\,$^\circ$C a 90\,$^\circ$C): a viga dilata $\Delta L=\alpha L\,\Delta T$ e eleva a carga do mesmo valor, com $N=M_1 g$ no sentido do deslocamento:
+\[ W_1=M_1\,g\,\alpha L\,\Delta T>0 \]
+\item Troca $M_1\to M_2$ a 90\,$^\circ$C: sem deslocamento da carga, $W=0$.
+\item Resfriamento com $M_2$ (de 90\,$^\circ$C a 20\,$^\circ$C): a viga contrai $\alpha L\,\Delta T$ e a carga desce o mesmo valor, enquanto a viga a empurra para cima com $N=M_2 g$, em sentido contrário ao deslocamento:
+\[ W_2=-M_2\,g\,\alpha L\,\Delta T<0 \]
+\item Recolocação de $M_1$ a 20\,$^\circ$C: a viga já tem comprimento $L$ e a carga é colocada sem deslocamento, $W=0$.
+\end{itemize}
+
+Como o estado final é igual ao inicial, o trabalho do ciclo é a soma algébrica:
+\[ W_{\text{ciclo}}=W_1+W_2=(M_1-M_2)\,g\,\alpha L\,\Delta T \]
+Conferência: no plano $(y,N)$, o ciclo é um retângulo de lados $\alpha L\,\Delta T$ e $(M_1-M_2)\,g$, percorrido no sentido horário (como num diagrama $PV$ de motor). Sua área é esse valor, e o trabalho é positivo.
+
+\textbf{a)} Com $\Delta T=70$ K e $g=10\ \text{m/s}^2$:
+\[ W_{\text{ciclo}}=70\,g\,\alpha L\,(M_1-M_2)=700\,\alpha L\,(M_1-M_2) \]
+Unidades: $(\text{m/s}^2)\,\text{K}^{-1}\,\text{m}\,\text{K}\,\text{kg}=\text{kg}\,\text{m}^2/\text{s}^2=\text{J}$. Sinal: $W_{\text{ciclo}}>0$ se $M_1>M_2$, caso em que há produção de trabalho. Se $M_2=M_1$, $W_{\text{ciclo}}=0$. Se $M_2>M_1$, o ciclo consome trabalho e não é motor.
+
+\textbf{Passo 2: calor absorvido, $Q_H$.} Há entrada de calor apenas no aquecimento. No resfriamento o sistema cede calor, e nas trocas de carga não há calor (hipótese 6).
+\begin{itemize}
+\item Água: $Q_{\text{água}}=\rho_{\text{H}_2\text{O}}\,V\,c_{\text{H}_2\text{O}}\,\Delta T$.
+\item Viga, pela primeira lei $Q=\Delta U+W$, com $W$ o trabalho realizado pela viga: $Q_{\text{viga}}=\Delta U_{\text{viga}}+W_1=\left(\dfrac{3Rm}{M_{\text{Cu}}}+M_1\,g\,\alpha L\right)\Delta T$.
+\end{itemize}
+\[ Q_H=\left(\rho_{\text{H}_2\text{O}}\,V\,c_{\text{H}_2\text{O}}+\frac{3Rm}{M_{\text{Cu}}}+M_1\,g\,\alpha L\right)\Delta T \]
+
+\textbf{Passo 3: calor cedido, $Q_F$.} No resfriamento, a água cede $\rho_{\text{H}_2\text{O}}\,V\,c_{\text{H}_2\text{O}}\,\Delta T$. Para a viga, $\Delta U_{\text{viga}}=-\dfrac{3Rm}{M_{\text{Cu}}}\,\Delta T$ e $W_2=-M_2\,g\,\alpha L\,\Delta T$, logo $Q_{\text{viga}}=\Delta U_{\text{viga}}+W_2=-\left(\dfrac{3Rm}{M_{\text{Cu}}}+M_2\,g\,\alpha L\right)\Delta T$. Portanto, o calor cedido é
+\[ Q_F=\left(\rho_{\text{H}_2\text{O}}\,V\,c_{\text{H}_2\text{O}}+\frac{3Rm}{M_{\text{Cu}}}+M_2\,g\,\alpha L\right)\Delta T \]
+Primeira lei no ciclo: $\Delta U_{\text{ciclo}}=0$, pois água e viga voltam ao mesmo estado e a energia interna da viga depende só de $T$. Logo $Q_H-Q_F=W_{\text{ciclo}}$. De fato, $Q_H-Q_F=(M_1-M_2)\,g\,\alpha L\,\Delta T$, igual ao passo 1.
+
+\textbf{b)} A eficiência é
+\[ \eta=\frac{W_{\text{ciclo}}}{Q_H}=\frac{(M_1-M_2)\,g\,\alpha L}{\rho_{\text{H}_2\text{O}}\,V\,c_{\text{H}_2\text{O}}+\dfrac{3Rm}{M_{\text{Cu}}}+M_1\,g\,\alpha L} \]
+O fator $\Delta T$ cancela. Equivalentemente, $\eta=1-Q_F/Q_H$. O numerador e cada parcela do denominador têm unidade J/K, logo $\eta$ é adimensional.
+
+\textbf{Observação sobre a segunda lei (não pedida).} O modelo não é termodinamicamente consistente. Para um corpo em equilíbrio interno, a relação de Gibbs dá $\mathrm{d}S=(\mathrm{d}U+f\,\mathrm{d}L)/T$, com $f$ a força que o corpo exerce. Na viga, $f=Mg$ com $M=M_1$ ou $M_2$, mas a viga está no mesmo estado (20\,$^\circ$C, comprimento $L$) nas duas situações. Com $\mathrm{d}U=3nR\,\mathrm{d}T$ e $f\,\mathrm{d}L=Mg\,\alpha L\,\mathrm{d}T$, a variação de entropia da viga ao longo do ciclo seria $(M_1-M_2)\,g\,\alpha L\,\ln(363/293)\neq 0$, embora a viga volte ao mesmo estado. Logo a força não é função de estado do corpo, e as cotas de segunda lei que supõem variação nula de entropia no ciclo não se aplicam sem ressalva a este modelo.
+
+Para um corpo consistente, com a fonte à temperatura do banho em cada instante (troca reversível), o calor absorvido ocorre a temperaturas $\le 363$ K e o cedido a temperaturas $\ge 293$ K. A lei de Clausius dá então $\eta\le 1-293/363\approx 0{,}19$. Com fonte a $T_F$, a variação de entropia do universo, $\Delta S_{\text{univ}}=Q_F/T_0-Q_H/T_F\ge 0$, dá $\eta\le 1-293/T_F$. Essa cota cresce com $T_F$ e, como $T_F>363$ K, é maior que $0{,}19$. O exemplo numérico, com $\eta\approx 2\times 10^{-8}$, é compatível com ambas. Com $M_1=10^{9}$ kg e $M_2=0$, a fórmula daria $\eta\approx 0{,}80$. Como o modelo é inconsistente, esse valor não deve ser interpretado como eficiência real.
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Casos limite: $M_2\to M_1$ dá $W\to 0$ e $\eta\to 0$. $\alpha\to 0$ dá $W\to 0$ e $\eta\to 0$. Se $M_2>M_1$, $W<0$.
+\item Peso próprio: a viga sobe, em média, $\Delta L/2$ no aquecimento e desce o mesmo valor no resfriamento. Isso soma $\tfrac{1}{2}\,m\,g\,\alpha L\,\Delta T$ a $Q_H$ e a $Q_F$, sem alterar $W$. A razão ao termo de Dulong-Petit é $\dfrac{g\,M_{\text{Cu}}\,\alpha L}{6R}\approx 2\times 10^{-7}\,L$ ($L$ em metros), desprezível.
+\item Termo $M_1 g\alpha L$: se fosse desprezado, $\eta\approx(M_1-M_2)\,g\,\alpha L/(\rho_{\text{H}_2\text{O}}\,V\,c_{\text{H}_2\text{O}}+3Rm/M_{\text{Cu}})$. No exemplo abaixo, a diferença relativa é $4\times 10^{-8}$.
+\item Ordem de grandeza (valores externos ilustrativos: $L=1$ m, $\alpha=1{,}7\times 10^{-5}\ \text{K}^{-1}$, $m=1$ kg, $M_{\text{Cu}}=63{,}5$ g/mol, $V=10$ L, $\rho_{\text{H}_2\text{O}}=1000\ \text{kg/m}^3$, $c_{\text{H}_2\text{O}}=4186\ \text{J/(kg K)}$, $M_1=10$ kg, $M_2=5$ kg): $W\approx 0{,}06$ J; $Q_H\approx 2{,}96\times 10^{6}$ J, sendo $2{,}93\times 10^{6}$ J da água, $2{,}7\times 10^{4}$ J do cobre e $0{,}12$ J do termo $M_1 g\,\alpha L\,\Delta T$; $\eta\approx 2\times 10^{-8}$. A água domina o calor absorvido, e a máquina, na prática, não é útil.
+\end{itemize}
+
+ANSWER: a) $W_{\text{ciclo}}=70\,g\,\alpha L\,(M_1-M_2)=700\,\alpha L\,(M_1-M_2)$ J, positivo se $M_1>M_2$; b) $\eta=\dfrac{(M_1-M_2)\,g\,\alpha L}{\rho_{\text{H}_2\text{O}}\,V\,c_{\text{H}_2\text{O}}+3Rm/M_{\text{Cu}}+M_1\,g\,\alpha L}$, com $\eta\approx 2\times 10^{-8}$ no exemplo ilustrativo.

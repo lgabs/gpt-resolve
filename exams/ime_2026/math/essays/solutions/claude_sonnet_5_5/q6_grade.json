@@ -1,0 +1,29 @@
+{
+  "question": 6,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-1-23-10-2025-2-fase-dia-1/dissertativa-6-matematica-2-fase-dia-1-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q6 — soma de (x_j+y_j+z_j) para j=1..2025",
+      "solution_answer": "6143850",
+      "key_answer": "6 143 850",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "O enunciado transcrito confere com a página 2 do PDF. O sistema só é possível quando y = a_{j+1} − a_j = a_{j+2} − a_{j+1}. Valendo isso para j=1..2025, todas as 2026 diferenças consecutivas são iguais, então a sequência é uma PA. Como 10 = 1 + 3r, temos r = 3 e a_j = 3j − 2. Pela 1ª equação, x+z = a_j − 6, logo x+y+z = a_j − 3 = 3j − 5. O gabarito escreve a_j − 3 e a resolução escreve a_{j+1} − 6, que é a mesma coisa porque a_{j+1} = a_j + 3. A soma de (3j−5) para j=1..2025 é 3·2025·1013 − 10125 = 6153975 − 10125 = 6143850. Pelo gabarito: (1+6073)·2025/2 − 6075 = 6149925 − 6075 = 6143850. Conferi as duas contas em Python."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito diz que \"uma solução possível\" é a sequência ser uma PA, como se fosse só um caso entre vários. Na verdade a PA é obrigatória: subtraindo as equações vem a_{j+1} − a_j = a_{j+2} − a_{j+1} para todo j. É só uma imprecisão de redação, sem efeito no resultado. A resolução conferida prova a equivalência corretamente, nos dois sentidos."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "Cada sistema tem infinitas soluções, porque só x+z fica determinado. Por isso o enunciado só faz sentido se x_j+y_j+z_j não depender da solução escolhida. De fato não depende, já que x+y+z = a_j − 3. A resolução justifica esse ponto explicitamente; o gabarito apenas o usa sem comentar."
+    }
+  ],
+  "summary": "A resolução e o gabarito do Poliedro dão o mesmo resultado, 6143850, e os dois estão certos. A sequência tem de ser uma PA de razão 3 (a_j = 3j − 2), y_j = 3 e x_j+y_j+z_j = a_j − 3 = 3j − 5, qualquer que seja a solução escolhida. Refiz a soma em Python e ela confere. A resolução é até mais rigorosa que o gabarito: prova que a PA é condição necessária e suficiente e mostra que a soma não depende da solução escolhida. O enunciado transcrito confere com o PDF original."
+}

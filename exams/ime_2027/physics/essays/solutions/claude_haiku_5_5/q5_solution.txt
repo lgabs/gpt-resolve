@@ -1,0 +1,78 @@
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Hipóteses e leis.} Os ciclos operam em regime permanente, logo $\Delta U=0$ em cada ciclo e a 1ª lei fornece $\dot W=\sum_i\dot Q_i$, com $\dot Q_i$ algébricos (positivos se recebidos). A 2ª lei, com temperaturas absolutas, aparece na desigualdade de Clausius $\sum_i\dot Q_i/T_i\le 0$ (igualdade só no reversível), ou seja, com geração de entropia $\dot\sigma=-\sum_i\dot Q_i/T_i\ge 0$. Para uma máquina entre dois reservatórios, isso dá $\eta\le\eta_C=1-T_f/T_q$. A potência elétrica útil é tomada igual à potência mecânica, e o consumo residencial é tratado como potência média, $P=E/\Delta t$.
+
+Dados convertidos: $\dot W_A=80\cdot\frac34=60$ kW, $\dot Q_q=150$ kW e $T_q=900$ K.
+
+\textbf{a) Temperatura da fonte fria da empresa A}
+
+O rendimento real é $\eta_A=\dot W_A/\dot Q_q=60/150=0{,}40$. O enunciado fixa $\eta_A=0{,}80\,\eta_C$, com $\eta_C$ o rendimento de Carnot entre $900$ K e $T_{fA}$:
+\begin{align*}
+0{,}40&=0{,}80\left(1-\frac{T_{fA}}{900}\right)\\
+1-\frac{T_{fA}}{900}&=0{,}50\quad\Rightarrow\quad T_{fA}=450\ \text{K}
+\end{align*}
+Validade: $0<T_{fA}<T_q$ e $\eta_A=0{,}40<\eta_C=0{,}50$, como ocorre em um ciclo irreversível.
+
+\textbf{b) Taxa de calor rejeitada pela máquina A}
+
+Pela 1ª lei,
+\begin{align*}
+\dot Q_{fA}=\dot Q_q-\dot W_A=150-60=90\ \text{kW}
+\end{align*}
+Conferência: $\dot Q_q(1-\eta_A)=0{,}60\cdot150=90$ kW. Uma máquina reversível rejeitaria $\dot Q_q\,T_{fA}/T_q=75$ kW, valor menor, como deve ser. A geração de entropia é
+\begin{align*}
+\dot\sigma_A=\frac{\dot Q_{fA}}{T_{fA}}-\frac{\dot Q_q}{T_q}=\frac{90}{450}-\frac{150}{900}=\frac{1}{30}\ \text{kW/K}\approx 33{,}3\ \text{W/K}>0,
+\end{align*}
+coerente com a irreversibilidade indicada em a).
+
+\textbf{c) Realismo das afirmações da empresa B}
+
+Para B, $\dot Q_q=150$ kW, $\dot Q_{450}=90/2=45$ kW e $\dot Q_{300}\ge0$ é incógnita. Pela 1ª lei, $\dot W_B=105-\dot Q_{300}$ (kW).
+
+\textit{Passo 1: máximo com a repartição dada.} Clausius dá
+\begin{align*}
+\frac{150}{900}-\frac{45}{450}-\frac{\dot Q_{300}}{300}\le 0\quad\Rightarrow\quad \dot Q_{300}\ge 20\ \text{kW}\quad\Rightarrow\quad \dot W_B\le 85\ \text{kW}
+\end{align*}
+Caso particular: $\dot Q_{300}=0$ violaria Clausius, pois $\frac16-\frac1{10}>0$. O limite de 85 kW é atingido por máquinas reversíveis em paralelo: Carnot $900\to450$ K, com $90$ kW recebidos, faz $45$ kW e rejeita $45$ kW; Carnot $900\to300$ K, com $60$ kW recebidos, faz $40$ kW e rejeita $20$ kW.
+
+\textit{Passo 2: limite absoluto para qualquer repartição.} Todas as fontes frias estão em $T_i\ge300$ K e $\dot Q_i\ge0$, logo $\dot Q_i/T_i\le\dot Q_i/300$. Com Clausius, $\dot Q_q/T_q\le\sum_i\dot Q_i/T_i\le\sum_i\dot Q_i/300$, donde $\sum_i\dot Q_i\ge 50$ kW e
+\begin{align*}
+\dot W_B\le 100\ \text{kW},\qquad \eta_B\le 1-\frac{300}{900}=\frac23.
+\end{align*}
+
+\textit{Passo 3: demanda de 350 residências.} O consumo médio é $\frac{240\ \text{kW}\cdot\text{h}}{720\ \text{h}}=\frac13$ kW por residência, logo
+\begin{align*}
+P=350\cdot\frac13\approx 116{,}7\ \text{kW}
+\end{align*}
+A média é cota inferior da demanda real, porque o pico é maior e as perdas do gerador só aumentam o requisito. Como $116{,}7>100$, a exigência é inviável mesmo no limite absoluto. Ordem de grandeza: seria preciso $\eta\approx 116{,}7/150\approx 78\%$, acima do limite de $67\%$.
+
+\textit{Passo 4: aquecimento de água.} Vazão: $50$ L/min $=50$ kg/min $=\frac{50}{60}=\frac56$ kg/s, pois a massa específica é $1$ kg/L. Então
+\begin{align*}
+\dot Q_{\text{água}}=\dot m\,c\,\Delta T=\frac56\cdot4000\cdot10=\frac{100}{3}\approx 33{,}3\ \text{kW}
+\end{align*}
+Esse calor sai da fonte de 300 K, logo $\dot Q_{300}\ge\frac{100}{3}$ kW e
+\begin{align*}
+\dot W_B\le 105-\frac{100}{3}=\frac{215}{3}\approx 71{,}7\ \text{kW}\quad\Rightarrow\quad N\le\frac{215/3}{1/3}=215\ \text{residências}.
+\end{align*}
+Este é um limite superior, não um máximo reversível: Clausius dá $\frac16-\frac1{10}-\frac19=-\frac2{45}<0$, isto é, $\dot\sigma\approx 44$ W/K.
+
+\textit{Viabilidade térmica da água.} Sejam $T_e$ a temperatura de entrada e $T_s=T_e+10$ K a de saída. A água só recebe calor do reservatório de 300 K se for mais fria que ele. Com reservatório isotérmico, $U$ constante e área finita, $\theta=300-T$ decai como $\theta_s=\theta_e\,e^{-UA/\dot m c}$; logo $T_s$ só tende a 300 K quando $A\to\infty$. Definindo $\Delta T_p=300-T_s>0$,
+\begin{align*}
+T_e=290\ \text{K}-\Delta T_p<290\ \text{K}\qquad(\approx 17\,^\circ\text{C}).
+\end{align*}
+A 2ª lei não impõe restrição extra: para $T_e<T_s\le300$ K, usando $\ln x\ge1-\frac1x$,
+\begin{align*}
+\dot m c\ln\frac{T_s}{T_e}\ \ge\ \dot m c\,\frac{T_s-T_e}{T_s}\ \ge\ \dot m c\,\frac{T_s-T_e}{300}=\frac{\dot Q_{\text{água}}}{300},
+\end{align*}
+ou seja, a geração de entropia no aquecimento é não negativa. Numericamente, para $T_e=290$ K, $\dot m c\ln\frac{300}{290}\approx 113$ W/K $\ge \dot Q_{\text{água}}/300\approx 111$ W/K.
+
+\textbf{Conclusão do item c.}
+\begin{itemize}
+\item \textbf{350 residências simultâneas: não é realista.} São necessários $116{,}7$ kW, acima do limite absoluto de $100$ kW (no máximo $300$ residências) e do máximo reversível de $85$ kW ($255$ residências). A conclusão vale qualquer que seja a temperatura da água.
+\item \textbf{Aquecimento de 50 L/min com $+10$ K: não é garantido.} A 2ª lei não o proíbe, mas exige $T_e<290$ K menos o pinch $\Delta T_p>0$, e o enunciado não fornece $T_e$. Além disso, consome $33{,}3$ kW do calor rejeitado a 300 K.
+\item \textbf{Em conjunto: não é realista.} O aquecimento reduz o máximo a $71{,}7$ kW, ou no máximo $215$ residências, ainda abaixo de 350. A potência é a restrição decisiva e independe da hipótese sobre $T_e$.
+\end{itemize}
+
+ANSWER: a) $T_{fA}=450$ K; b) $\dot Q_{fA}=90$ kW; c) não realistas. Atender 350 residências exige $116{,}7$ kW, acima do limite absoluto de $100$ kW (no máximo 300 residências; no caso reversível, $85$ kW ou 255 residências). Com o aquecimento de água, no máximo 215 residências, e a água só é compatível se entrar abaixo de 290 K.

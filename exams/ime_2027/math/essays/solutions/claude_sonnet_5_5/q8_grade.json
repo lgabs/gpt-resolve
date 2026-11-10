@@ -1,0 +1,24 @@
+{
+  "question": 8,
+  "key_source": "Poliedro",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-1-26-10-2026-2-fase-dia-1/dissertativa-8-matematica-2-fase-dia-1-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q8 (demonstração)",
+      "solution_answer": "Identidade demonstrada. Usa a prostaférese cos α + cos((2k+1)α) = 2cos(kα)cos((k+1)α) e escreve cada termo como [tg((k+1)α) − tg(kα)]/(2 sen α). A soma telescopa para [tg((n+1)α) − tg α]/(2 sen α) = sen(nα)/(sen 2α · cos((n+1)α)).",
+      "key_answer": "Demonstração: S_n = sen(nα)/(sen(2α)·cos((n+1)α)), pelo mesmo caminho (prostaférese, diferença de tangentes e soma telescópica).",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "A resolução segue o mesmo caminho do gabarito e chega à mesma conclusão. Conferi cada passo. (1) A fórmula de prostaférese com p=(2k+1)α e q=α dá (p+q)/2=(k+1)α e (p−q)/2=kα, então está correta. (2) tg A − tg B = sen(A−B)/(cos A cos B), com A−B=α no termo geral e A−B=nα no fechamento. (3) A soma telescopa corretamente. (4) 2 sen α cos α = sen 2α. A resolução também justifica bem que os denominadores não se anulam: cos(jα)≠0 para j=1..n+1 e sen 2α≠0 (porque sen α≠0 e cos α≠0, caso j=1). Nisso ela é até mais cuidadosa que o gabarito resumido. Uma checagem numérica em python, com α e n aleatórios, confirmou a identidade (erro relativo de 1e-13 a 1e-16). O enunciado transcrito confere com o PDF original: lá aparece cos(2k+1)α, sem parênteses externos, que significa o mesmo."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A verificação 'n=0 (soma vazia)' só vale se ℕ incluir o 0. Isso é inofensivo: o caso trivial dá 0 = 0 e não faz parte da prova principal. Já a frase 'uma checagem numérica com valores aleatórios confirmou a igualdade' não tem valor de demonstração numa prova discursiva. Também é inofensiva, porque a demonstração algébrica está completa."
+    }
+  ],
+  "summary": "A resolução está correta e completa, e bate com o gabarito Poliedro (mesmo método: prostaférese, diferença de tangentes e soma telescópica). Ela justifica explicitamente que os denominadores são não nulos a partir das hipóteses. A identidade também foi confirmada numericamente. Não há divergência: as duas estão certas."
+}

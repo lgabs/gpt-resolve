@@ -1,0 +1,52 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{1. Forma geral de $A^n$.} Afirmamos que, para todo $n\in\mathbb{N}$,
+\begin{equation*}
+A^n=\begin{bmatrix}1 & n & a_n\\ 0 & 1 & n\\ 0 & 0 & 1\end{bmatrix},\qquad a_n=\frac{n(n+3)}{2}.
+\end{equation*}
+
+Demonstração por indução em $n$.
+
+\emph{Base ($n=1$):} $a_1=\frac{1\cdot 4}{2}=2$, e a matriz acima é exatamente $A$.
+
+\emph{Passo indutivo:} supondo a afirmação válida para $n$, temos $A^{n+1}=A^n\cdot A$. A entrada $(i,j)$ de $A^{n+1}$ é o produto da linha $i$ de $A^n$ pela coluna $j$ de $A$. As colunas de $A$ são $(1,0,0)^T$, $(1,1,0)^T$ e $(2,1,1)^T$.
+
+\begin{itemize}
+\item Linha 1 de $A^n$: $(1,\ n,\ a_n)$. Com as colunas de $A$ obtemos $1$, $1+n$ e $2+n+a_n$.
+\item Linha 2 de $A^n$: $(0,\ 1,\ n)$. Obtemos $0$, $1$ e $1+n$.
+\item Linha 3 de $A^n$: $(0,\ 0,\ 1)$. Obtemos $0$, $0$ e $1$.
+\end{itemize}
+
+Portanto
+\begin{equation*}
+A^{n+1}=\begin{bmatrix}1 & n+1 & a_n+n+2\\ 0 & 1 & n+1\\ 0 & 0 & 1\end{bmatrix}.
+\end{equation*}
+Resta verificar que $a_n+n+2=a_{n+1}$:
+\begin{equation*}
+a_n+n+2=\frac{n^2+3n+2n+4}{2}=\frac{(n+1)(n+4)}{2}=\frac{(n+1)\big((n+1)+3\big)}{2}=a_{n+1}.
+\end{equation*}
+As entradas $(1,2)$ e $(2,3)$ de $A^{n+1}$ são $n+1$, logo a forma vale para $n+1$. Isso completa a indução.
+
+\textbf{2. Entrada pedida.} Pelo item 1, a entrada na primeira linha e terceira coluna de $A^n$ é
+\begin{equation*}
+a_n=\frac{n(n+3)}{2}, \qquad n\in\mathbb{N}.
+\end{equation*}
+
+\textbf{3. Resolução da desigualdade.} Queremos o menor $n\in\mathbb{N}$ com $a_n>119$. Multiplicando por $2>0$ e usando $(n-14)(n+17)=n^2+3n-238$:
+\begin{equation*}
+a_n>119 \iff n^2+3n-238>0 \iff (n-14)(n+17)>0.
+\end{equation*}
+Para $n\in\mathbb{N}$ temos $n+17>0$, logo a condição se reduz a $n-14>0$, isto é, $n>14$. O menor natural com essa propriedade é $n=15$.
+
+\textbf{Conferência.}
+\begin{itemize}
+\item Caso limite: $a_{14}=\frac{14\cdot 17}{2}=119$. Como a desigualdade é estrita, $n=14$ não serve.
+\item $a_{15}=\frac{15\cdot 18}{2}=135>119$.
+\item Pela recorrência $a_{n+1}-a_n=n+2$: $a_{13}=104$, $a_{14}=119$, $a_{15}=135$ (diferenças $15$ e $16$, como previsto).
+\item Cálculo direto: $(A^2)_{13}=1\cdot 2+1\cdot 1+2\cdot 1=5=a_2$.
+\item Ordem de grandeza: $a_n\approx n^2/2$, e $n^2\approx 238$ leva a $n\approx 15$, coerente com o resultado.
+\end{itemize}
+
+ANSWER: $n = 15$ (com $a_{15}=135$; para $n=14$ a entrada vale exatamente $119$, o que não satisfaz "maior que $119$")

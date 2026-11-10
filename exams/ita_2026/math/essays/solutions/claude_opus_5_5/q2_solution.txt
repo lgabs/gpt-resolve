@@ -1,0 +1,33 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{1. Decomposição de $A$.} Escrevemos $A = I + N$, com
+\[
+N=\begin{bmatrix} 0 & 1 & 2 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix},\qquad
+N^2=\begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix},\qquad
+N^3 = N^2\cdot N = O .
+\]
+De fato, a entrada $(1,3)$ de $N^2$ é $0\cdot 2 + 1\cdot 1 + 2\cdot 0 = 1$, e as demais são nulas. Como $N^2$ só tem a entrada $(1,3)$ e a terceira linha de $N$ é nula, vale $N^3=O$, ou seja, $N$ é nilpotente.
+
+\textbf{2. Potência pelo binômio de Newton.} Como $I$ comuta com $N$, o binômio de Newton vale para matrizes. Além disso, $N^k=O$ para $k\ge 3$. Logo, para todo $n\in\mathbb{N}$,
+\[
+A^n=(I+N)^n=\sum_{k=0}^{n}\binom{n}{k}N^k = I + nN + \binom{n}{2}N^2 .
+\]
+Para $n=1$ temos $\binom{1}{2}=0$, e a fórmula continua válida.
+
+\textbf{3. Entrada $(1,3)$.} A entrada $(1,3)$ vale $0$ em $I$, $2$ em $N$ e $1$ em $N^2$. Portanto
+\[
+a_{13}(n) = 2n + \frac{n(n-1)}{2} = \frac{n^2+3n}{2} = \frac{n(n+3)}{2}.
+\]
+Para conferir: $n=1$ dá $2$ (entrada de $A$). Para $n=2$, calculando $A^2$ diretamente, a entrada é $1\cdot 2+1\cdot 1+2\cdot 1=5$, e a fórmula também dá $\frac{2\cdot 5}{2}=5$.
+
+\textbf{4. Inequação.} Queremos
+\[
+\frac{n(n+3)}{2} > 119 \iff n^2+3n-238>0 \iff (n-14)(n+17)>0 .
+\]
+Como $n+17>0$ para $n\in\mathbb{N}$, a condição equivale a $n>14$. Outra forma de ver: a sequência $a_{13}(n)$ é estritamente crescente em $n$. Com $n=14$ temos $a_{13}(14)=\frac{14\cdot 17}{2}=119$, que \emph{não} é maior que $119$. Com $n=15$ temos $a_{13}(15)=\frac{15\cdot 18}{2}=135>119$.
+
+Logo, o menor $n\in\mathbb{N}$ procurado é $n=15$. Nesse caso, a entrada $(1,3)$ de $A^{15}$ é $135$.
+
+ANSWER: $n = 15$

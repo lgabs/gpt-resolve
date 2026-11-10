@@ -1,0 +1,90 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "a) $d = 6\\sqrt{2}\\times 10^{-7}\\ \\text{m} \\approx 8{,}5\\times 10^{-7}\\ \\text{m}$ (cerca de 848,5 nm), obtida de $d\\sin\\theta_1 = \\lambda_L$ com $\\theta_1 = 45^\\circ$; b) $x_V = \\dfrac{20\\sqrt{14}}{7}\\ \\text{cm} \\approx 10{,}7\\ \\text{cm}$, do mesmo lado do laranja e mais perto do ponto central.",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA — ITA 2026, 2ª fase, Física, Questão 9 (resolvida de forma independente, antes de ver qualquer resolução de candidato; contas conferidas em Python).\n\nDados: grade horizontal a h = 20 cm do solo; luz solar incide perpendicularmente à grade (incidência normal, logo sen θ_i = 0); λ_laranja = 600 nm; λ_violeta = 400 nm; afastamento no solo do 1º máximo do laranja: x = 20 cm, medido a partir do ponto central.\n\nGeometria do problema:\n- Como a incidência é normal, o máximo central (ordem 0) segue na vertical e atinge o solo no ponto central, logo abaixo da grade.\n- O máximo de ordem 1 forma um ângulo θ com a normal (a vertical). Pela figura de projeção no solo: x = h · tg θ.\n- Os máximos de ordem 1 ficam sobre um cone de meio-ângulo θ em torno da normal. Assim, no solo eles formam um círculo de raio x, e a distância ao ponto central não depende da orientação das ranhuras.\n\nItem a) — distância entre as ranhuras (constante da rede d)\n1) Para o laranja: tg θ = x/h = 20/20 = 1, logo θ = 45° e sen θ = √2/2 (não é ângulo pequeno, então não se usa a aproximação de pequenos ângulos).\n2) Equação da rede com incidência normal: d · sen θ = m · λ, com m = 1.\n3) d = λ / sen θ = 600 nm / (√2/2) = 600√2 nm ≈ 848,5 nm ≈ 8,5 × 10⁻⁷ m (≈ 0,85 µm).\n4) Equivalentemente, cerca de 1,2 × 10³ ranhuras por mm (1/d ≈ 1179 ranhuras/mm).\nVerificação: sen θ = x/√(x² + h²) = 20/(20√2) = √2/2 ✔.\n\nItem b) — distância ao ponto central do 1º máximo do violeta no solo\n1) Para o violeta com a mesma rede (m = 1): sen θ_v = λ_v / d = 400 / (600√2) = √2/3 ≈ 0,471 (< 1, existe o máximo).\n2) cos θ_v = √(1 − 2/9) = √7/3 ≈ 0,882.\n3) tg θ_v = sen θ_v / cos θ_v = √2/√7 = √14/7 ≈ 0,5345.\n4) Projeção no solo: x_v = h · tg θ_v = 20 · √14/7 cm ≈ 10,7 cm.\nVerificação: sen θ_v = x_v / √(x_v² + h²) = 10,69 / 22,68 ≈ 0,471 ✔. O violeta fica mais próximo do centro que o laranja (θ_v < θ_laranja), como esperado, já que o comprimento de onda é menor.\nSe o enunciado fosse interpretado como distância percorrida pelo raio (da grade ao solo), o valor seria h / cos θ_v = 60/√7 cm ≈ 22,7 cm. A resposta pedida, porém, é a projeção no solo, ou seja, 10,7 cm.\n\nResposta final:\na) d = 600√2 nm ≈ 8,5 × 10⁻⁷ m (≈ 0,85 µm).\nb) x_violeta = 20√14/7 cm ≈ 10,7 cm (a partir do ponto central, na projeção no solo).",
+    "final_answer": "a) Distância entre as ranhuras: d = λ/sen θ com tg θ = 20/20 = 1 (θ = 45°), logo d = 600√2 nm ≈ 8,5 × 10⁻⁷ m (≈ 0,85 µm; ≈ 1,2 × 10³ ranhuras/mm).\n\nb) Violeta (400 nm, 1ª ordem): sen θ_v = √2/3 ≈ 0,471; tg θ_v = √14/7 ≈ 0,5345; distância no solo x_v = 20·√14/7 cm ≈ 10,7 cm do ponto central. (Se fosse pedido o comprimento do raio até o solo: ≈ 22,7 cm; não é a resposta pedida.)",
+    "pitfalls": [
+      "Confundir a projeção no solo com o comprimento do raio: os 20 cm dados são o afastamento horizontal no solo, então tg θ = x/h. Usar sen θ = 20/20 sem a geometria correta, ou tratar 20 cm como distância ao longo do raio, leva a erro (o caso do laranja dá 45° de qualquer forma, por isso a armadilha passa despercebida).",
+      "Aproximação de pequenos ângulos (d = λ·h/x, que daria d = 600 nm) é inválida: θ = 45° não é pequeno. A rede exige sen θ exato, não tg θ nem a aproximação de Young.",
+      "Usar tg θ na equação da rede (d·tg θ = mλ) está errado; a equação correta é d·sen θ = mλ.",
+      "Para o violeta, calcular x_v como h·sen θ_v (20·0,471 ≈ 9,4 cm) está errado; a projeção no solo é h·tg θ_v, com tg θ_v = sen θ_v/cos θ_v.",
+      "Incidência perpendicular significa sen θ_i = 0 e máximo central na vertical, logo abaixo da grade. Não se deve introduzir termo de incidência oblíqua na equação da rede.",
+      "Erro de unidades: 600 nm = 6,0 × 10⁻⁷ m, e d ≈ 8,5 × 10⁻⁷ m (não 10⁻⁵ nem 10⁻⁴ m). Manter cm e m coerentes na projeção.",
+      "Pelo edital (instrução 8), as expressões numéricas devem ser resolvidas integralmente: não deixar λ/sen45° ou 20·√14/7 sem simplificar nem fornecer valor decimal.",
+      "A distância ao centro não depende da orientação das ranhuras: os máximos de 1ª ordem estão sobre um cone em torno da normal, e no solo formam um círculo de raio x. Não é preciso especificar a direção das ranhuras.",
+      "Verificar a existência dos máximos: para o violeta, sen θ_v = 0,471 < 1, então o 1º máximo existe. Para o laranja, a ordem 2 não existe (2λ/d = √2 > 1), o que confirma que o único máximo lateral possível é o de ordem 1 nesse lado.",
+      "Arredondamento: o resultado é 10,7 cm (não 11 cm nem 10 cm). Para a constante da rede, 8,5 × 10⁻⁷ m com 2 algarismos significativos, sem perder o valor exato 600√2 nm.",
+      "Idealização: a luz solar não é monocromática e o disco solar tem diâmetro angular de cerca de 0,5°, o que alarga levemente os máximos. O enunciado pede a resposta idealizada com comprimento de onda único, então esse efeito não deve ser aplicado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) d = 600√2 nm ≈ 8,5 × 10^-7 m (cerca de 849 nm, ou aprox. 1,2 × 10^3 ranhuras/mm), obtido de sen θ₁ = √2/2 (θ₁ = 45°) e d sen θ₁ = λ. b) x_V = H·tan θ_V com sen θ_V = √2/3, o que dá x_V = 20√14/7 cm ≈ 10,7 cm, do mesmo lado do laranja e mais perto do ponto central.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na seção 'Consistência' do item a), a resolução afirma 'd ≫ λ, condição para máximos bem separados', mas no mesmo parágrafo calcula d/λ_L = √2 ≈ 1,41. A afirmação é falsa e contradiz o próprio cálculo; um professor cortaria essa frase. O correto seria dizer que d/λ ≈ 1,4, o que limita a ordem máxima do laranja a |m| = 1 (isso já está dito na frase anterior)."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não trata a orientação das ranhuras, embora a questão não pergunte por ela. Para incidência normal numa rede unidimensional, as ordens ficam no plano perpendicular às ranhuras, então a distância ao ponto central não depende da orientação da grade. Uma frase bastaria. Observação sobre a referência: sua afirmação de que os máximos de ordem 1 formam um cone (ou um círculo no solo) está incorreta para rede unidimensional em incidência normal; não a copiar. A resposta final não é afetada."
+          },
+          {
+            "severity": "minor",
+            "description": "Na figura TikZ, o rótulo θ_1 está em (0,42; 1,25), abaixo do raio (que passa por (0,42; 1,58)), portanto fora da cunha angular que deveria indicar. Deslocar o rótulo para algo como (0,5; 1,8). O bloco é um fragmento sem preâmbulo (\\usepackage{tikz}), o que é aceitável, mas precisa ser indicado se for colado num caderno."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução é longa para um espaço de caderno de soluções: seção de hipóteses com cinco itens, figura, quatro verificações e um caso particular. O conteúdo é correto, mas um gabarito de prova deveria condensar cada item em poucas linhas, com o essencial (tan θ = x/H, d sen θ = mλ, valores exatos e decimais). Trechos sem função na resposta, como 'valor típico de grades comerciais', podem sair. O espaço real do caderno não foi verificado."
+          }
+        ],
+        "summary": "Recalculei todas as contas em Python e as duas respostas finais batem com a referência e com o enunciado original (página 10 do PDF): a) d = 600√2 nm ≈ 8,5×10⁻⁷ m; b) x_V = 20√14/7 cm ≈ 10,7 cm. A geometria está certa: tan θ = x/H com H = 20 cm, sen θ = √2/2 para o laranja, sen θ_V = √2/3, cos θ_V = √7/3, tan θ_V = √14/7. Sen θ é usado na equação da rede e tan θ na projeção no solo, como exige o problema. O candidato trata as armadilhas principais: distância no solo versus comprimento do raio, rejeição da aproximação de pequenos ângulos (com a justificativa correta, θ = 45°), uso de sen e não tan na rede, existência dos máximos (|m| ≤ 1 para o laranja e sen θ_V < 1 para o violeta), incidência normal, unidades e forma exata com valor decimal (instrução 8). Os problemas que sobram são de redação e apresentação, não de física ou de conta: uma frase falsa ('d ≫ λ' com d/λ ≈ 1,4), a falta de uma nota sobre a independência em relação à orientação das ranhuras, um rótulo mal posicionado na figura e excesso de extensão para um espaço de prova. Nenhum erro afeta o resultado. Nota 8,5: resposta e raciocínio corretos e bem verificados, com pequenos defeitos que um professor corrigiria antes de publicar como gabarito comentado.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "a) $d = 6\\sqrt{2}\\times 10^{-7}\\ \\text{m} \\approx 8{,}5\\times 10^{-7}\\ \\text{m}$ (cerca de 848,5 nm), obtida de $d\\sin\\theta_1 = \\lambda_L$ com $\\theta_1 = 45^\\circ$; b) $x_V = \\dfrac{20\\sqrt{14}}{7}\\ \\text{cm} \\approx 10{,}7\\ \\text{cm}$, do mesmo lado do laranja e mais perto do ponto central.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A equação da rede aparece só como d·sinθ_m = mλ. Com incidência normal, o correto é d(sinθ_m − sinθ_i) = mλ com θ_i = 0. A hipótese de incidência normal está declarada, mas o termo de incidência não é mostrado como zerado na equação."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'Como 0° < θ₁ < 90°, o ângulo é único' justifica mal a escolha do ramo. sinθ = √2/2 também admite 135°. O que descarta esse ramo é a física da transmissão: a ordem difratada segue para o semiespaço abaixo da grade, logo θ < 90°. Isso deveria ser dito explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de luz monocromática está declarada, mas não se diz que a luz solar é policromática nem que o alargamento dos máximos pelo disco solar (~0,5°) é desprezado. Esse é o sentido da idealização do enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha 'calcular x_V como h·sinθ_V (≈ 9,4 cm)' não é apontada. O candidato não cai nela, pois usa H·tanθ_V corretamente, mas um comentário explícito tornaria a verificação completa."
+          },
+          {
+            "severity": "minor",
+            "description": "Formato: a resolução é longa para o espaço de uma questão no caderno de soluções (figura TikZ, bloco de Verificações com itens redundantes, caso particular). Para manuscrito, o ideal é condensar em equação, geometria, duas contas e resposta final, sem perder as verificações essenciais."
+          }
+        ],
+        "summary": "Ambas as respostas finais estão corretas e coincidem com a referência: (a) d = 6√2×10⁻⁷ m ≈ 8,5×10⁻⁷ m (≈ 848,5 nm); (b) x_V = 20√14/7 cm ≈ 10,7 cm. Conferi no Python: θ₁ = 45°, sinθ₁ = √2/2, d·sinθ₁ = 600 nm; sinθ_V = √2/3, tanθ_V = √14/7, x_V = 10,690 cm. O enunciado original (pág. 10) bate com a transcrição. Os 20 cm são a projeção horizontal no solo, e o candidato usa corretamente tanθ = x/H.\n\nErro na referência, não no candidato: a referência diz que as ordens formam um cone em torno da normal e um círculo de raio x no solo. Isso está errado para uma rede linear em incidência normal. A componente de k paralela às ranhuras se conserva e é nula, então as difratadas ficam no plano que contém a normal e é perpendicular às ranhuras. Cada ordem m gera dois pontos, a ±x. O candidato descreve isso corretamente. O resultado numérico não muda.\n\nArmadilhas: quase todas tratadas explicitamente (projeção vs. raio, pequenos ângulos, tanθ na rede, unidades, expressões integrais, existência das ordens, orientação das ranhuras, arredondamento). Faltam apenas h·sinθ_V e a idealização solar, que não são citadas.\n\nNota 9,0: resolução de nível de gabarito comentado, com geometria explícita, verificação de existência, caso particular e expressões exatas. As pendências são de redação e não envolvem erro de conta ou de física. Para chegar a 10: escrever a equação geral com sinθ_i, justificar o ramo θ < 90° pela transmissão, declarar a idealização da luz solar, comentar a armadilha h·sinθ_V e condensar o texto para caber no espaço manuscrito."
+      }
+    }
+  ]
+}

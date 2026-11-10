@@ -1,0 +1,65 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+Sejam $f(y)=y^3-4y-2$ e $g(x)=x^2-7x-3$. O produto pedido tem $3\cdot 2=6$ fatores:
+\[
+P=\prod_{j=1}^{2}\prod_{i=1}^{3}\,(y_i+x_j).
+\]
+
+\textbf{1. Relações básicas e hipóteses.} Como $g$ é mônico de grau 2 com raízes $x_1,x_2$, as Relações de Girard dão
+\[
+x_1+x_2=7, \qquad x_1x_2=-3.
+\]
+Substituindo $x=x_j$ em $g(x)=0$, obtemos também $x_j^2=7x_j+3$ para $j=1,2$.
+
+Como $f$ é mônico de grau 3 com raízes $y_1,y_2,y_3$, vale a identidade de polinômios $f(y)=(y-y_1)(y-y_2)(y-y_3)$. Logo, para todo número $t$ (real ou complexo), usando $f(a)=\prod_i (a-y_i)$ com $a=-t$:
+\begin{equation}\label{eq:id}
+\prod_{i=1}^{3}(t+y_i)=(-1)^3\prod_{i=1}^{3}\big((-t)-y_i\big)=-f(-t)=t^3-4t+2.
+\end{equation}
+A última igualdade vem de $-f(-t)=-\big[(-t)^3-4(-t)-2\big]=-\big[-t^3+4t-2\big]=t^3-4t+2$.
+
+\textbf{2. Eliminação dos $y_i$.} Tomando $t=x_j$ em (\ref{eq:id}), para $j=1,2$:
+\[
+\prod_{i=1}^{3}(y_i+x_j)=x_j^3-4x_j+2.
+\]
+Portanto
+\[
+P=\left(x_1^3-4x_1+2\right)\left(x_2^3-4x_2+2\right).
+\]
+Não é preciso calcular as raízes $y_i$: pelo teste das raízes racionais, $f$ não tem raiz racional ($f(\pm1)\neq 0$ e $f(\pm2)\neq 0$), e suas raízes são irracionais, o que tornaria o cálculo direto desnecessariamente trabalhoso.
+
+\textbf{3. Redução módulo $x^2-7x-3$.} Multiplicando $x_j^2=7x_j+3$ por $x_j$:
+\[
+x_j^3=7x_j^2+3x_j=7(7x_j+3)+3x_j=52x_j+21,
+\]
+logo
+\[
+x_j^3-4x_j+2=52x_j+21-4x_j+2=48x_j+23 \qquad (j=1,2).
+\]
+
+\textbf{4. Cálculo final.} Expandindo o produto e usando $x_1+x_2=7$ e $x_1x_2=-3$:
+\begin{align*}
+P&=(48x_1+23)(48x_2+23)=48^2\,x_1x_2+48\cdot 23\,(x_1+x_2)+23^2\\
+&=2304\cdot(-3)+1104\cdot 7+529\\
+&=-6912+7728+529=1345.
+\end{align*}
+
+\textbf{5. Conferências.}
+\begin{itemize}
+\item \emph{Identidade (\ref{eq:id}) em casos particulares.} Com $t=0$: $y_1y_2y_3=2$, que coincide com a Girard para $y^3-4y-2$ (produto das raízes $=-q=2$). Com $t=-y_1$: o lado esquerdo tem o fator $y_1+(-y_1)=0$ e o lado direito vale $-f(y_1)=0$.
+\item \emph{Valores numéricos aproximados.} As raízes de $f$ são $y_i\approx 2{,}2143;\ -0{,}5392;\ -1{,}6751$ (o discriminante $\Delta=-4(-4)^3-27(-2)^2=148>0$ confirma três raízes reais distintas), e $x_1\approx 7{,}4051$, $x_2\approx -0{,}4051$. Então
+\[
+\prod_{i}(y_i+x_1)\approx 9{,}6194\cdot 6{,}8659\cdot 5{,}7300\approx 378{,}4 \approx x_1^3-4x_1+2,
+\]
+\[
+\prod_{i}(y_i+x_2)\approx 1{,}8092\cdot(-0{,}9443)\cdot(-2{,}0802)\approx 3{,}554 \approx x_2^3-4x_2+2,
+\]
+e $378{,}4\cdot 3{,}554\approx 1345{,}0$, em acordo com o resultado exato.
+\item \emph{Sinal.} Como $|y_i|<3$ (se $|y|\ge 3$ então $|y|^3\ge 9|y|>4|y|+2\ge|4y+2|$, o que contradiz $f(y)=0$), temos $y_i+x_1>7{,}4-3>0$ para todo $i$. Além disso, $y_i+x_2<0$ apenas para os dois valores $y_i<-x_2\approx 0{,}405$ ($y\approx -0{,}539$ e $y\approx -1{,}675$). Há, portanto, dois fatores negativos entre os três com $x_2$, e $P>0$, coerente com $1345$.
+\item \emph{Unidades e ordem de grandeza.} $P$ é um número puro, sem unidades. O produto numérico é da ordem de $10^3$, compatível com o resultado inteiro $1345$.
+\end{itemize}
+
+Conclusão: o valor do produto é $1345$.
+
+ANSWER: 1345

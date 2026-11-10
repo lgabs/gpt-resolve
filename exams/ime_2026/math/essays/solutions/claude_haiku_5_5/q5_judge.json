@@ -1,0 +1,54 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Para reais positivos a, b, c, vale (a+b+c)(1/a+1/b+1/c) ≥ 9, com igualdade se, e somente se, a = b = c. Prova: após distribuir, o produto é 3 + (a/b+b/a) + (a/c+c/a) + (b/c+c/b); cada par satisfaz x/y + y/x − 2 = (x−y)²/(xy) ≥ 0, logo o produto − 9 = (a−b)²/(ab) + (a−c)²/(ac) + (b−c)²/(bc) ≥ 0. Verificado numericamente (identidade e casos (1,2,3) → 11 e a = b = c = 1 → 9).",
+  "judge_reference": {
+    "reference_solution": "Hipótese: a, b, c são reais positivos (a, b, c > 0). Logo ab, bc, ca > 0 e 1/a, 1/b, 1/c estão definidos.\n\nPasso 1 (expansão). Distribuindo o produto, há 9 parcelas: as três diagonais dão a·(1/a) = b·(1/b) = c·(1/c) = 1, e as seis cruzadas são a/b, a/c, b/a, b/c, c/a, c/b. Portanto\n(a+b+c)(1/a+1/b+1/c) = 3 + (a/b + b/a) + (a/c + c/a) + (b/c + c/b).\n\nPasso 2 (identidade de soma de quadrados). Para x, y > 0 vale (x−y)²/(xy) = x/y + y/x − 2. Aplicando aos três pares e usando o passo 1:\n(a+b+c)(1/a+1/b+1/c) − 9 = (a/b + b/a − 2) + (a/c + c/a − 2) + (b/c + c/b − 2)\n = (a−b)²/(ab) + (a−c)²/(ac) + (b−c)²/(bc).\n(Conferência: 3 + S − 9 = S − 6, com S a soma das seis cruzadas, e S − 6 é exatamente a soma dos três termos (x/y + y/x − 2). Também conferi a identidade exatamente com racionais em 20000 casos.)\n\nPasso 3 (conclusão). Cada parcela é um quadrado dividido por um produto positivo, logo é ≥ 0. Assim (a+b+c)(1/a+1/b+1/c) − 9 ≥ 0, isto é, (a+b+c)(1/a+1/b+1/c) ≥ 9.\n\nPasso 4 (igualdade). A soma é zero se e só se as três parcelas são zero, ou seja, a = b = c. Reciprocamente, para a = b = c = t > 0, (3t)(3/t) = 9. Logo a igualdade ocorre exatamente quando a = b = c.\n\nProva alternativa (AM-GM): pela desigualdade entre médias aplicada a (a,b,c) e a (1/a,1/b,1/c), temos a+b+c ≥ 3∛(abc) e 1/a+1/b+1/c ≥ 3∛(1/(abc)). Ambos os lados são positivos, então podemos multiplicar: o produto é ≥ 9·∛(abc)·∛(1/(abc)) = 9. A igualdade exige igualdade nas duas AM-GM, isto é, a = b = c.\n\nProva alternativa (Cauchy-Schwarz): (Σ a)(Σ 1/a) ≥ (Σ √a·(1/√a))² = 3² = 9, com igualdade se e somente se √a/(1/√a) é constante, isto é, a = b = c.\n\nObservação numérica: uma busca com 200.000 ternos positivos aleatórios deu mínimo ≈ 9,000007, atingido perto de a ≈ b ≈ c.",
+    "final_answer": "A desigualdade é verdadeira para quaisquer reais positivos a, b, c:\n\n(a+b+c)(1/a + 1/b + 1/c) ≥ 9,\n\ncom igualdade se e somente se a = b = c.\n\nNão é questão de múltipla escolha. A resposta é uma demonstração, e a demonstração completa está em reference_solution. Ela se baseia na identidade (a+b+c)(1/a+1/b+1/c) − 9 = (a−b)²/(ab) + (b−c)²/(bc) + (c−a)²/(ca) ≥ 0.",
+    "pitfalls": [
+      "Positividade é hipótese essencial. Sem ela a desigualdade é falsa: com a = b = 1 e c = −1/2, o produto vale (3/2)·0 = 0 < 9. Com a = 1, b = 2, c = −3 também dá 0. Com algum termo nulo a expressão nem está definida. A resolução deve usar a > 0 explicitamente, por exemplo para afirmar que a/b + b/a ≥ 2 (com a/b = −1 e b/a = −1, a soma já dá −2).",
+      "Erro comum: afirmar que a + b + c ≥ 3 e 1/a + 1/b + 1/c ≥ 3 e multiplicar. Ambas são falsas em geral (com a = b = c = 1/2, a soma é 1,5). Qualquer normalização, como abc = 1 ou a+b+c = 3, precisa ser justificada pela homogeneidade de grau 0: trocar (a,b,c) por (ta,tb,tc) com t > 0 não altera o produto.",
+      "Erro de expansão: esquecer as três parcelas diagonais a·(1/a) = 1, obtendo S ≥ 6 e concluindo LHS ≥ 6 em vez de 9. Deve-se contar 3 + S, com S ≥ 6.",
+      "Justificar a/b + b/a ≥ 2 corretamente: vale porque x + 1/x ≥ 2 para x > 0 (AM-GM com produto 1), ou por (x−y)²/(xy) ≥ 0 com x, y > 0. A justificativa 'soma de dois números inversos é ≥ 2' sem sinal positivo está errada.",
+      "A igualdade não é apenas 'quando a = b = c' como exemplo. A resolução deve mostrar que a igualdade vale se e somente se a = b = c, verificando as duas direções. Na prova por AM-GM, é preciso garantir a igualdade nas duas AM-GM simultaneamente.",
+      "Ao multiplicar desigualdades, como em (a+b+c) ≥ 3∛(abc) e (1/a+1/b+1/c) ≥ 3/∛(abc), os dois lados devem ser não negativos para que o produto preserve o sentido. Aqui isso vale, mas a resolução deve dizer por quê.",
+      "Na aplicação de Cauchy-Schwarz, o par de vetores precisa ser (√a, √b, √c) e (1/√a, 1/√b, 1/√c). Emparelhar os termos de outro modo produz um resultado diferente ou errado.",
+      "A tarefa é uma demonstração. Verificar o caso a = b = c = 1 (ou qualquer exemplo numérico) não prova nada, e a conclusão precisa valer para todos os positivos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Para reais positivos a, b, c, vale (a+b+c)(1/a+1/b+1/c) ≥ 9, com igualdade se, e somente se, a = b = c. Prova: após distribuir, o produto é 3 + (a/b+b/a) + (a/c+c/a) + (b/c+c/b); cada par satisfaz x/y + y/x − 2 = (x−y)²/(xy) ≥ 0, logo o produto − 9 = (a−b)²/(ab) + (a−c)²/(ac) + (b−c)²/(bc) ≥ 0. Verificado numericamente (identidade e casos (1,2,3) → 11 e a = b = c = 1 → 9).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Seção 3: a verificação da identidade está compactada demais. A frase \"o lado direito é (...)+(...)+(...), e 3+6=9\" obriga o leitor a reconstruir a conta. Deveria mostrar a cadeia: LHS − 9 = [3 + Σ(pares)] − 9 = Σ(pares) − 6 = Σ(pares − 2) = (a−b)²/(ab) + (a−c)²/(ac) + (b−c)²/(bc)."
+          },
+          {
+            "severity": "minor",
+            "description": "Seção 4: a direção \"a = b = c ⇒ igualdade\" fica implícita. Ela sai da cadeia de equivalências (soma = 0 ⟺ cada parcela nula ⟺ a = b = c), que está correta, mas não é escrita. Deveria acrescentar uma linha: se a = b = c, as três parcelas são nulas, logo (a+b+c)(1/a+1/b+1/c) − 9 = 0. Também convém ligar explicitamente \"produto = 9\" a \"diferença = 0\". A observação com a = b = c = 1 é só um caso particular e não substitui isso."
+          },
+          {
+            "severity": "minor",
+            "description": "Observação da desigualdade das médias: a justificativa da multiplicação (\"entre termos positivos\") deveria dizer que ambos os lados são positivos, logo o produto preserva o sentido da desigualdade. Se a igualdade for mencionada nessa prova alternativa, deve-se dizer que as duas AM-GM precisam ser igualdades simultaneamente, o que exige a = b = c. Hoje a prova alternativa não trata da igualdade."
+          },
+          {
+            "severity": "minor",
+            "description": "Observação \"Papel da hipótese de positividade\": a frase \"permite multiplicar e dividir sem inverter desigualdades\" é imprecisa. O uso real é dividir por ab, ac, bc > 0 para concluir que cada parcela é não negativa. Trocar por algo como: a positividade garante ab, bc, ca > 0, e então cada (x−y)²/(xy) ≥ 0."
+          }
+        ],
+        "summary": "Resposta final correta e igual à da referência: (a+b+c)(1/a+1/b+1/c) ≥ 9 para reais positivos, com igualdade se e somente se a = b = c. Conferi a identidade com aritmética exata em 20.000 ternos racionais, sem divergências. Também conferi os exemplos do candidato: (1,2,3) dá 11 = 9 + 1/2 + 4/3 + 1/6; (−1,1,1) dá 1 < 9; a = b = 1 com c → 0⁺ tende a infinito. Todos conferem. A prova é completa e rigorosa: expansão com as três diagonais e as seis cruzadas, cota x/y + y/x ≥ 2 por (x−y)²/(xy) com positividade usada explicitamente, identidade, conclusão e caso de igualdade. As armadilhas relevantes foram tratadas: positividade (usada em toda a cadeia e ilustrada com contraexemplo), diagonais contadas, justificativa do par recíproco, sinal ao multiplicar na prova por AM-GM. Normalização e Cauchy-Schwarz não foram usadas, o que é aceitável. Os problemas restantes são de exposição (identidade e sentido ⇐ da igualdade escritos de forma compacta, e observações com justificativa curta). Nenhum altera a validade. Nota 9: publicável como gabarito comentado após pequenos ajustes de redação."
+      }
+    }
+  ]
+}

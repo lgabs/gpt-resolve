@@ -1,0 +1,42 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "S = {−23/2, −7/2}. A equação equivale a (x+7/2)^4 + (2x+7)^3 = 0. Com y = x + 7/2, fica y^3(y+8) = 0, então x = −7/2 (raiz tripla) ou x = −23/2.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** A transcrição bate com o original (IME 2025/2026, Matemática, 2ª questão):\nx⁴ + (2x+7)³ + 14x³ + (147/2)x² + (7³/2)x = −7⁴/16.\n\n**1) Passar tudo para o lado esquerdo e identificar uma potência quarta.**\nLevando o termo −7⁴/16 = −2401/16 para o lado esquerdo:\nx⁴ + 14x³ + (147/2)x² + (343/2)x + 2401/16 + (2x+7)³ = 0.\n\nPelo binômio de Newton, com a = 7/2:\n(x + 7/2)⁴ = x⁴ + 4·(7/2)x³ + 6·(7/2)²x² + 4·(7/2)³x + (7/2)⁴\n= x⁴ + 14x³ + 6·(49/4)x² + 4·(343/8)x + 2401/16\n= x⁴ + 14x³ + (147/2)x² + (343/2)x + 2401/16.\n\nEsses são exatamente os termos que aparecem na equação. Ela fica então:\n(x + 7/2)⁴ + (2x + 7)³ = 0.\n\n**2) Substituição.** Tome t = x + 7/2. Então 2x + 7 = 2t e (2x+7)³ = 8t³. A equação vira:\nt⁴ + 8t³ = 0 ⇔ t³(t + 8) = 0 ⇔ t = 0 (raiz tripla) ou t = −8.\n\n**3) Voltar para x.**\n• t = 0 ⇒ x = −7/2;\n• t = −8 ⇒ x = −8 − 7/2 = −23/2.\n\n**4) Verificação / forma fatorada.** Multiplicando por 16, a equação é equivalente a\n16x⁴ + 352x³ + 2520x² + 7448x + 7889 = 0, e\n16x⁴ + 352x³ + 2520x² + 7448x + 7889 = (2x+7)³(2x+23).\nExpandindo para conferir: (2x+7)³ = 8x³+84x²+294x+343. Multiplicando por (2x+23), obtêm-se os coeficientes 16; 184+168 = 352; 1932+588 = 2520; 6762+686 = 7448; 343·23 = 7889. ✓\nSubstituição direta: em x = −7/2 vale t = 0, então 0 + 0 = 0. Em x = −23/2 vale t = −8 e 2x+7 = −16, então 4096 + (−4096) = 0. ✓ (Conferido também em Python com aritmética exata.)\n\nO polinômio tem grau 4 e as suas 4 raízes (contando multiplicidade) são reais: −7/2 (tripla) e −23/2 (simples). Não sobra nenhuma raiz complexa não real.\n\n**Resposta:** S = {−7/2, −23/2}. A raiz −7/2 tem multiplicidade 3.",
+    "final_answer": "Soluções reais: x = −7/2 e x = −23/2, ou seja, S = {−7/2, −23/2}. A raiz −7/2 é tripla. A equação equivale a (x+7/2)⁴ + (2x+7)³ = 0, isto é, (2x+7)³(2x+23) = 0.",
+    "pitfalls": [
+      "Ideia central: perceber que x⁴ + 14x³ + (147/2)x² + (343/2)x + 2401/16 = (x + 7/2)⁴. Para isso é preciso levar o −7⁴/16 para o lado esquerdo com o sinal trocado (+2401/16). Um erro de sinal nesse passo destrói o quadrado perfeito do binômio.",
+      "Na substituição t = x + 7/2, temos (2x+7)³ = (2t)³ = 8t³, e não 2t³. Quem escreve t⁴ + 2t³ = 0 chega a t = −2 e à raiz falsa x = −11/2. Teste: em x = −11/2, 16 − 64 = −48 ≠ 0.",
+      "Não dividir por t³ (ou por (2x+7)³) sem tratar à parte o caso t = 0. Isso perde a raiz x = −7/2. O certo é fatorar: t³(t+8) = 0.",
+      "Na volta para x, t = −8 dá x = −8 − 7/2 = −23/2. Erros comuns: x = −9/2 (somar 7/2 em vez de subtrair) e x = 23/2 (sinal errado).",
+      "Multiplicidade: −7/2 é raiz tripla. Como o enunciado pede 'as soluções reais', a resposta é o conjunto {−7/2, −23/2}. Listar −7/2 três vezes como se fossem soluções distintas, ou dizer que há 4 soluções distintas, é impreciso. Mencionar a multiplicidade é um bônus, não uma exigência.",
+      "Completude: o polinômio é de grau 4 e as 4 raízes (com multiplicidade) já são reais. Não existem raízes complexas para descartar. Uma boa resolução fecha o argumento mostrando a fatoração completa (2x+7)³(2x+23) = 0 ou t³(t+8) = 0.",
+      "Expandir tudo e usar o teorema das raízes racionais em 16x⁴ + 352x³ + 2520x² + 7448x + 7889 = 0 também funciona, mas é trabalhoso e sujeito a erros de conta. Para aceitar esse caminho, os coeficientes têm que estar corretos (352, 2520, 7448, 7889) e a fatoração tem que ser concluída. Uma resposta só numérica, sem justificar que não há outras raízes, fica incompleta.",
+      "Verificação recomendada: em x = −23/2 temos (x+7/2)⁴ = (−8)⁴ = 4096 e (2x+7)³ = (−16)³ = −4096, cuja soma é 0."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "S = {−23/2, −7/2}. A equação equivale a (x+7/2)^4 + (2x+7)^3 = 0. Com y = x + 7/2, fica y^3(y+8) = 0, então x = −7/2 (raiz tripla) ou x = −23/2.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O texto chama de 'o polinômio' algo que nunca nomeou explicitamente (o lado esquerdo depois de passar tudo para o primeiro membro, ou y⁴+8y³). Dá para entender pelo contexto, mas o ideal seria escrever P(x) = (x+7/2)⁴ + (2x+7)³ ou a fatoração em x, (2x+7)³(2x+23) = 0, antes de contar as raízes por multiplicidade."
+          }
+        ],
+        "summary": "O enunciado foi conferido no PDF original (IME 2025/2026, 2ª questão) e a transcrição está correta. A resposta do candidato, S = {−23/2, −7/2} com −7/2 raiz tripla, é igual à da minha referência. Verifiquei com aritmética exata (Fraction) que f(−7/2) = f(−23/2) = 0 e que a equação, com tudo passado para o primeiro membro, é idêntica a (x+7/2)⁴ + (2x+7)³ (testei em 100 pontos racionais).\n\nA resolução faz o caminho ideal:\n• leva −7⁴/16 para o primeiro membro com o sinal certo;\n• expande (x+7/2)⁴ e mostra os coeficientes (14, 147/2, 343/2, 2401/16);\n• substitui y = x+7/2 e usa corretamente (2y)³ = 8y³, sem cair na armadilha do 2y³;\n• fatora y³(y+8) = 0 sem dividir por y³, então não perde y = 0;\n• volta para x sem erro de sinal (x = −8−7/2 = −23/2).\n\nTodas as armadilhas da minha lista foram tratadas. A completude está justificada: grau 4 e multiplicidades 3+1 = 4, então não sobra nenhuma raiz. Há verificação explícita das duas raízes na equação original (4096 − 4096 = 0). A multiplicidade aparece como informação extra, e a resposta final é dada como conjunto, sem repetir a raiz −7/2. O texto é claro e enxuto, no nível de um gabarito comentado. O único detalhe é de redação: falta nomear o polinômio antes de contar as raízes.\n\nObservação: não consegui salvar uma nota de memória sobre o ambiente (o python3 daqui não tem sympy), porque um hook bloqueia o acesso à pasta de memória. A correção não foi afetada."
+      }
+    }
+  ]
+}

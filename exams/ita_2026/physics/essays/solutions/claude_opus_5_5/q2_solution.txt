@@ -1,0 +1,52 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Hipóteses e referencial.} Usamos o eixo $x$ ao longo do plano, apontando para cima da rampa, com origem na extremidade inferior da barra, e o eixo $y$ perpendicular ao plano. Com isso, as posições ficam:
+\[
+x_A=d,\qquad x_B=L-d,\qquad x_M=\tfrac{L}{2}\ \text{(barra homogênea)},\qquad x_m=a,\qquad x_{C}=L-b .
+\]
+Cada peso $Pg$ se decompõe em $Pg\cos\theta$, perpendicular ao plano (no sentido do plano), e $Pg\sin\theta$, paralela ao plano (rampa abaixo). Em cada apoio atuam a normal $N_i$ (perpendicular ao plano) e o atrito estático $f_i$ (ao longo do plano). Supomos desprezíveis a espessura da barra e a altura dos apoios, já que o enunciado não fornece essas medidas. Assim, as componentes paralelas ao plano têm linha de ação sobre o eixo da barra e não geram torque em relação a A ou a B. Para a barra em repouso, valem $\sum\vec F=\vec 0$ e $\sum\tau=0$ em relação a qualquer ponto.
+
+\subsection*{a) Forças normais}
+
+Tomando torques em relação a $A$, a força $N_A$ e os dois atritos não contribuem. Sobra:
+\[
+N_B\,(L-2d)=g\cos\theta\left[M\left(\tfrac{L}{2}-d\right)+m\,(a-d)+m_C\,(L-b-d)\right].
+\]
+Tomando torques em relação a $B$:
+\[
+N_A\,(L-2d)=g\cos\theta\left[M\left(\tfrac{L}{2}-d\right)+m\,(L-a-d)+m_C\,(b-d)\right].
+\]
+Daí:
+\[
+\boxed{N_A=g\cos\theta\left[\frac{M}{2}+\frac{m\,(L-a-d)+m_C\,(b-d)}{L-2d}\right]},\qquad
+\boxed{N_B=g\cos\theta\left[\frac{M}{2}+\frac{m\,(a-d)+m_C\,(L-b-d)}{L-2d}\right]}.
+\]
+Pela 3ª lei de Newton, as forças trocadas entre apoio e plano têm esses módulos e são perpendiculares ao plano.
+
+\emph{Verificação.} Somando as duas expressões, $N_A+N_B=(M+m+m_C)\,g\cos\theta$, que é o equilíbrio na direção $y$. As unidades estão corretas: kg$\cdot$m/s$^2$ = N. Se $m=m_C=0$, obtemos $N_A=N_B=\tfrac{Mg\cos\theta}{2}$, como exige a simetria. Se $a=d$, o peso de $m$ vai inteiramente para $A$. Para que a barra não tombe, é preciso $N_A\ge 0$ e $N_B\ge 0$. Essa é a função do contrapeso quando $m$ fica fora do vão entre os apoios. Na configuração da figura ($d<a<L-d$, $d<b<L-d$), as duas normais são positivas.
+
+\subsection*{b) Forças de atrito}
+
+O equilíbrio na direção $x$ dá:
+\[
+f_A+f_B=(M+m+m_C)\,g\sin\theta ,
+\]
+com os dois atritos apontando rampa acima. Os torques não fornecem nova equação, pois os atritos e as componentes paralelas dos pesos têm a mesma linha de ação. Portanto, a estática da barra rígida determina apenas a soma dos atritos.
+
+Para obter cada atrito, supomos que os dois apoios são do mesmo material, com coeficiente $\mu$. Como a barra é rígida, ela só desliza se os dois apoios deslizarem juntos. O deslizamento é impedido se existirem $f_A\le\mu N_A$ e $f_B\le\mu N_B$ com a soma acima, ou seja, se
+\[
+(M+m+m_C)\,g\sin\theta\le\mu\,(N_A+N_B)=\mu\,(M+m+m_C)\,g\cos\theta\iff\mu\ge\tan\theta .
+\]
+O coeficiente mínimo que impede o deslizamento é então $\mu_{\min}=\tan\theta$. Nessa situação de deslizamento iminente, a soma $f_A+f_B$ é igual a $\mu(N_A+N_B)$, e cada parcela vale no máximo $\mu N_i$. Logo, cada parcela atinge o seu máximo: $f_A=N_A\tan\theta$ e $f_B=N_B\tan\theta$. Assim:
+\[
+\boxed{f_A=g\sin\theta\left[\frac{M}{2}+\frac{m\,(L-a-d)+m_C\,(b-d)}{L-2d}\right]},\qquad
+\boxed{f_B=g\sin\theta\left[\frac{M}{2}+\frac{m\,(a-d)+m_C\,(L-b-d)}{L-2d}\right]},
+\]
+ambos paralelos ao plano e apontando rampa acima.
+
+\emph{Verificação.} A soma dá $f_A+f_B=(M+m+m_C)\,g\sin\theta$. Para $\theta=0$, os atritos se anulam, como esperado num plano horizontal. Para $m=m_C=0$, cada apoio recebe $\tfrac{Mg\sin\theta}{2}$. Os atritos são proporcionais às normais, na razão $f_i/N_i=\tan\theta$.
+
+\medskip
+ANSWER: a) $N_A=g\cos\theta\left[\frac{M}{2}+\frac{m(L-a-d)+m_C(b-d)}{L-2d}\right]$ e $N_B=g\cos\theta\left[\frac{M}{2}+\frac{m(a-d)+m_C(L-b-d)}{L-2d}\right]$, com $N_A+N_B=(M+m+m_C)g\cos\theta$. b) $f_A=N_A\tan\theta=g\sin\theta\left[\frac{M}{2}+\frac{m(L-a-d)+m_C(b-d)}{L-2d}\right]$ e $f_B=N_B\tan\theta=g\sin\theta\left[\frac{M}{2}+\frac{m(a-d)+m_C(L-b-d)}{L-2d}\right]$, rampa acima. A soma $f_A+f_B=(M+m+m_C)g\sin\theta$ é sempre determinada; a divisão entre os apoios supõe o mesmo $\mu$ nos dois e $\mu_{\min}=\tan\theta$.

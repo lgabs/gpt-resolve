@@ -1,0 +1,53 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "6143850",
+  "judge_reference": {
+    "reference_solution": "**Resolução de referência – 6ª questão (IME 2026, Matemática discursiva)**\n\n**1. Estrutura do sistema.** As colunas de x e de z são idênticas (coeficientes 1, 1, 1). Logo a matriz dos coeficientes tem posto 2 (as colunas de y e de x+z são independentes) e o determinante é zero. O sistema, quando possível, é possível e indeterminado: x e z só aparecem pela soma s = x + z. As equações ficam\n- s + 2y = a_j\n- s + 3y = a_{j+1}\n- s + 4y = a_{j+2}\n\n**2. Condição de compatibilidade (necessária e suficiente).**\n- Necessária: (2) − (1) dá y = a_{j+1} − a_j. (3) − (2) dá y = a_{j+2} − a_{j+1}. Igualando, a_j − 2a_{j+1} + a_{j+2} = 0, isto é, a_j, a_{j+1}, a_{j+2} estão em PA.\n- Suficiente: se vale essa relação, tome y = a_{j+1} − a_j e s = a_j − 2y. Então (1) vale por construção, (2) vale porque s + 3y = a_j + y = a_{j+1}, e (3) vale porque s + 4y = a_j + 2y = a_{j+2}. Qualquer (x, z) com x + z = s serve, com z livre.\n- Conferência por Rouché–Capelli: o determinante da matriz ampliada (colunas y, x, termos independentes) é a_j − 2a_{j+1} + a_{j+2}. Ele precisa ser nulo para o posto da ampliada ser 2.\n\n**3. A sequência é uma PA.** A condição vale para j = 1, …, 2025. As triplas (a_j, a_{j+1}, a_{j+2}) cobrem a_1, …, a_{2027}, então a_{j+1} − a_j é constante = r em toda a sequência. Com a_1 = 1 e a_4 = a_1 + 3r = 10, temos r = 3, e portanto a_j = 1 + 3(j − 1) = 3j − 2.\n\n**4. A soma x + y + z não depende da solução escolhida.** Para cada j, y_j = a_{j+1} − a_j = r = 3 e x_j + z_j = a_j − 2y_j. Então\nx_j + y_j + z_j = (a_j − 2y_j) + y_j = a_j − y_j = (3j − 2) − 3 = 3j − 5.\nExemplo: j = 1 dá a_1 = 1 e x + z = 1 − 6 = −5, logo x + y + z = −2, que é 3·1 − 5. Os valores individuais de x_j e z_j não são determinados (z_j é livre). Por isso o enunciado diz \"uma solução\", e o resultado vale para qualquer escolha.\n\n**5. Soma.**\nΣ_{j=1}^{2025} (3j − 5) = 3 · (2025 · 2026 / 2) − 5 · 2025 = 3 · 2 051 325 − 10 125 = 6 153 975 − 10 125 = **6 143 850**.\n\nConferi em Python com `Fraction`: para cada j = 1..2025, as três equações são satisfeitas para vários valores de z livre, x + y + z = 3j − 5 em todos os casos, e a soma é 6 143 850.",
+    "final_answer": "Σ_{j=1}^{2025} (x_j + y_j + z_j) = 6 143 850. A sequência é a PA a_j = 3j − 2 (razão 3), e x_j + y_j + z_j = 3j − 5 para qualquer solução escolhida.",
+    "pitfalls": [
+      "O sistema é 3×3, mas tem posto 2: as colunas de x e z são iguais e o determinante é zero. Não dá para resolver por Cramer ou por matriz inversa. Ele é possível e indeterminado (z livre), então x_j e z_j não são únicos. Uma boa resolução explica por que x_j + y_j + z_j não depende da solução escolhida: só x + z aparece, e ela é fixada por a_j − 2y.",
+      "A compatibilidade é a condição central e deve ser provada nos dois sentidos. É necessária (subtrair as equações dá y = a_{j+1} − a_j = a_{j+2} − a_{j+1}) e suficiente (construir y, depois s = x + z, e verificar as três equações). Dizer só 'tem que ser PA' sem mostrar que basta para existir solução deixa a argumentação incompleta.",
+      "Passar de 'cada tripla consecutiva é PA, j = 1..2025' para 'toda a sequência a_1..a_2027 é PA' exige notar que as triplas se sobrepõem e cobrem todos os 2027 termos. Isso fixa uma razão r única.",
+      "Calcular a razão com a_4 = a_1 + 3r (três passos), o que dá r = 3. Erros comuns: usar a_4 = a_1 + 4r ou r = 9 (ignorar o fator 3).",
+      "O somatório vai de j = 1 a 2025 (2025 sistemas), não até 2027. Erros de contagem de termos, ou de índice em Σ(3j − 5), mudam o resultado.",
+      "Valor por termo: x_j + y_j + z_j = a_j − y_j = 3j − 5, e não a_j nem a_j − 2y. Primeiro termo: −2 (negativo, o que é normal). Aritmética final: 3·2025·2026/2 = 6 153 975, menos 5·2025 = 10 125, dá 6 143 850.",
+      "Não afirmar 'solução única'. Não fixar z = 0 (ou outro valor) sem justificar que a soma não depende dessa escolha."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "6143850",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A recíproca (suficiência) é só afirmada: \"as três equações são então compatíveis e têm solução\". Não se constrói y = a_{j+1} − a_j e s = a_j − 2y, nem se verifica que s+3y = a_{j+1} e s+4y = a_{j+2}. Assim, \"a hipótese equivale a essa condição\" fica sem demonstração. Para a resposta basta a necessidade, já que o enunciado garante que o sistema é possível, mas a equivalência foi declarada. O ideal seria fazer a construção em duas linhas ou omitir a alegação."
+          },
+          {
+            "severity": "minor",
+            "description": "Não é dito explicitamente por que o sistema é indeterminado: as colunas de x e de z são iguais, a matriz tem posto 2 e det = 0, de modo que Cramer e a matriz inversa não se aplicam. O texto só observa que \"só x+z fica determinado\", o que está correto, mas a justificativa estrutural não aparece. Também não aparece a conferência por Rouché–Capelli (det da ampliada = a_j − 2a_{j+1} + a_{j+2})."
+          },
+          {
+            "severity": "minor",
+            "description": "A passagem das triplas sobrepostas (j = 1..2025) para a PA completa é correta, mas apressada. A frase \"as diferenças a_{j+1} − a_j, j = 1..2026, são todas iguais\" poderia dizer que as 2025 igualdades d_j = d_{j+1} encadeiam d_1 = d_2 = … = d_2026, de modo que as triplas cobrem a_1..a_2027."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência para j = 1 usa x + z = a_1 − 2y, enquanto a dedução geral usa a_{j+1} − 3y. As duas expressões são equivalentes e dão −5, mas a notação é inconsistente, e uma frase ligando as duas ajudaria o leitor."
+          }
+        ],
+        "summary": "A resposta final, 6 143 850, está correta e coincide com a referência. Conferi em Python: para j = 1..2025 e vários valores de z livre, as três equações são satisfeitas e x_j + y_j + z_j = 3j − 5. A soma é 6 143 850.\n\nA resolução também está correta nos passos:\n- Subtrair as equações dá y = a_{j+1} − a_j = a_{j+2} − a_{j+1}, logo cada tripla está em PA.\n- As triplas sobrepostas dão uma PA única de a_1 a a_2027.\n- Com a_4 = a_1 + 3r, r = 3 e a_j = 3j − 2.\n- x + y + z = a_{j+1} − 2y = 3j − 5 para qualquer solução, sem fixar z.\n- Há conferência explícita para j = 1 (x + y + z = −2).\n- A soma é calculada para j = 1..2025, com 3·2025·1013 = 6 153 975 e menos 10 125.\n\nNão há erros de conta, de índice nem de limite do somatório. A resolução diz que a solução não é única e que a soma não depende da escolha, o que trata as principais armadilhas.\n\nAs fraquezas são pequenas. A suficiência da condição de PA é afirmada sem construir y e s e sem verificar as equações, embora para a resposta baste a necessidade. A estrutura de posto 2 (colunas de x e z iguais, det = 0) não é explicitada. O encadeamento das triplas poderia ser mais detalhado. É um bom gabarito comentado, próximo do nível publicável, e só ficaria completo com a prova da recíproca e a justificativa do posto.\""
+      }
+    }
+  ]
+}

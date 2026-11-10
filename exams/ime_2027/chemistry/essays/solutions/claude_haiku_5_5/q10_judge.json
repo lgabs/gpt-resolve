@@ -1,0 +1,146 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "Idade da amostra: t = (T½/ln 2)·ln(1 + R), com R = ²⁰⁸Pb/²³²Th = 0,024 e T½(²³²Th) = 1,41×10¹⁰ anos. O cálculo exato dá t ≈ 4,83×10⁸ anos. Com a linearização e os logaritmos da Folha de Dados, dá t ≈ 4,88×10⁸ anos. Resposta: t ≈ 4,8×10⁸ a 4,9×10⁸ anos, ou seja, cerca de 5×10⁸ anos, com incerteza de ±2% herdada da razão 0,024.",
+  "judge_reference": {
+    "reference_solution": "**Questão 10 (1,0 ponto) — resolução de referência**\n\n**Dados e hipóteses**\n- t½(²³²Th) = 1,41×10¹⁰ anos; t½(²³⁸U) = 4,47×10⁹ anos (só o do Th é necessário).\n- Razão atômica molar atual ²⁰⁸Pb/²³²Th = D/P = 0,024.\n- Todo o ²⁰⁸Pb é radiogênico, logo N₀(²⁰⁸Pb) = 0 (sem chumbo comum).\n- Nenhum isótopo pai, filho ou intermediário saiu do sistema; os intermediários da cadeia são desprezíveis em quantidade frente ao ²³²Th.\n\n**Passo 1 – Balanço da cadeia do tório.** ²³²Th → ²⁰⁸Pb: ΔA = 232 − 208 = 24 = 6·4, então 6 partículas α; a carga cai de 90 para 82 com 6 α (−12) e 4 β⁻ (+4), o que confere. Cada ²³²Th que decai acaba como um ²⁰⁸Pb.\n\n**Passo 2 – Equação de decaimento.** Com N₀ átomos de Th no início, hoje restam N(Th) = N₀·e^(−λt). O número de ²⁰⁸Pb formados é N(Pb) = N₀ − N(Th) = N(Th)·(e^(λt) − 1). Logo:\n\n²⁰⁸Pb/²³²Th = e^(λt) − 1 ⇒ t = (1/λ)·ln(1 + D/P)\n\n**Passo 3 – Constante de decaimento.** λ = ln2 / t½, portanto 1/λ = t½ / ln2. Então\n\nt = (t½ / ln2)·ln(1,024)\n\n**Passo 4 – Logaritmo.** 1,024 = 2¹⁰/10³ = 2⁷/5³, então ln(1,024) = 7 ln2 − 3 ln5 = 7(0,693) − 3(1,609) = 4,851 − 4,827 = 0,024. Os valores da folha de dados foram escolhidos para isso.\n\n**Passo 5 – Cálculo.** t = (1,41×10¹⁰ / 0,693)·0,024 ≈ 2,03×10¹⁰ × 0,024 ≈ 4,9×10⁸ anos.\n\n**Passo 6 – Conferência.** Com ln(1,024) = 0,02372 (valor exato), t ≈ 4,82×10⁸ anos. A aproximação linear (D/P ≈ λt) difere cerca de 1,2%, porque t/τ ≈ 0,024 é pequeno. Pelos dados da folha, a faixa aceitável é 4,8–4,9×10⁸ anos.\n\n**Papel dos demais dados.** As porcentagens (9% ThO₂ e 0,35% U₃O₈) e o t½ do ²³⁸U são distratores. A idade sai só da razão ²⁰⁸Pb/²³²Th. Usar a cadeia do urânio exigiria a razão ²⁰⁶Pb/²³⁸U, que não foi dada.\n\n**Resposta:** a amostra tem idade de aproximadamente 4,9×10⁸ anos (cerca de 490 milhões de anos; valor exato pela equação, 4,8×10⁸ anos).",
+    "final_answer": "Idade estimada da amostra: t ≈ 4,9×10⁸ anos (≈ 490 milhões de anos). Pela equação exata, t = (t½(²³²Th)/ln2)·ln(1 + 0,024) ≈ 4,8×10⁸ anos; a aproximação linear dá 4,88×10⁸ anos. A idade vem apenas da razão ²⁰⁸Pb/²³²Th. Os dados de U₃O₈ (0,35%), ThO₂ (9%) e o t½ do ²³⁸U não são usados. A questão não tem alternativas de múltipla escolha.",
+    "pitfalls": [
+      "Relação correta: ²⁰⁸Pb/²³²Th = e^(λt) − 1, não e^(λt) = D/P (daria t negativo) nem a razão invertida ²³²Th/²⁰⁸Pb (daria ~7,6×10¹⁰ anos).",
+      "Converter meia-vida em constante exige o ln2: λ = ln2/t½, ou seja, t = ln(1+D/P)·t½/ln2. Esquecer o ln2 (t = ln(1,024)·t½ ≈ 3,3×10⁸ anos) é erro de fator ln2.",
+      "Usar o t½ do ²³⁸U (4,47×10⁹ anos) no lugar do ²³²Th, que dá cerca de 1,5×10⁸ anos. A razão dada é ²⁰⁸Pb/²³²Th, então o pai é o ²³²Th.",
+      "Os dados de ThO₂ (9%) e U₃O₈ (0,35%) são distratores. Não se pode montar a idade pela cadeia do urânio sem a razão ²⁰⁶Pb/²³⁸U, e misturar as duas cadeias sem essa razão é erro.",
+      "A hipótese 'todo o chumbo é radiogênico' significa N₀(²⁰⁸Pb) = 0. Sem ela, seria preciso corrigir pelo chumbo comum inicial.",
+      "A hipótese de que nenhum isótopo saiu do sistema inclui os intermediários gasosos (²²⁰Rn, ²²²Rn). Se algum escapasse, a contagem de ²⁰⁸Pb ficaria inconsistente com a idade.",
+      "Não é preciso lidar com massas molares de ThO₂ ou U₃O₈, nem com conversões de massa para mol: a razão já é atômica molar.",
+      "Estimativa e aproximação: a forma linear t ≈ (D/P)·t½/ln2 dá 4,88×10⁸ anos e a exata dá 4,82×10⁸ anos. Diferença de ~1%, aceitável em 'estime'. Não penalizar arredondamentos.",
+      "Cuidado com cancelamento numérico ao usar ln(1,024) = 7ln2 − 3ln5 com 3 casas: 7·0,693 − 3·1,609 = 0,024 (exato), mas com ln2 = 0,6931 e ln5 = 1,6094 o resultado vira 0,0235. Usar ln(1,024) direto é mais preciso.",
+      "Unidades: t½ está em anos, então a idade sai em anos (4,9×10⁸ anos). Não há conversão para segundos."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "Idade ≈ 4,8 × 10^8 anos (≈ 480 milhões de anos), obtida de t = (T½/ln 2)·ln(1 + 0,024), usando apenas a razão ²⁰⁸Pb/²³²Th e a meia-vida do ²³²Th (os dados de U não são necessários). Com a constante arredondada 0,024 da Folha de Dados, o resultado é 4,9 × 10^8 anos.\nANSWER: t ≈ 4,8 × 10^8 anos",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": false,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Atribui à Folha de Dados um valor que ela não traz: o texto diz \"com o valor arredondado 0,024 da Folha de Dados\", mas a folha só dá ln 2 e ln 5. O 0,024 é derivado de 7·ln2 − 3·ln5. Deveria dizer que 0,024 é obtido a partir dos logaritmos da folha."
+          },
+          {
+            "severity": "minor",
+            "description": "Resposta final em dois valores sem regra clara. O cálculo usa ln(1,024) ≈ 0,0237 (valor exato, que não está na folha) e dá 4,8×10⁸. Os dados da folha, que foram escolhidos para dar ln(1,024) ≈ 0,024, levam a 4,88×10⁸ ≈ 4,9×10⁸, que é o valor da referência. O candidato chama a diferença de 'arredondamento' sem dizer qual valor adota nem por quê. Um gabarito comentado daria a faixa 4,8–4,9×10⁸ (exato 4,82; pela folha 4,88) e justificaria a escolha."
+          },
+          {
+            "severity": "minor",
+            "description": "Terminologia incorreta: 'equilíbrio transiente'. Com t½(²³²Th) ≈ 1,41×10¹⁰ anos e meias-vidas dos filhos de no máximo ~5,75 anos (²²⁸Ra), o regime é de equilíbrio secular. A conclusão de que os intermediários são desprezíveis está certa, mas o motivo não foi explicitado. Vale quantificar: N_i/N_Th ≈ T_i/T_Th ≈ 5,75/1,41×10¹⁰ ≈ 4×10⁻¹⁰ para o filho mais lento."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de sistema fechado trata só de Th e Pb. Não diz explicitamente que o ²²⁰Rn (gás nobre, t½ ≈ 55 s, o intermediário da série do Th mais sujeito a escape por emanação em grãos minerais) fica incluído na hipótese de 'permaneceram integralmente' do enunciado. Uma resolução completa deveria dizer isso, em uma frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação 'as meias-vidas dos intermediários variam de microssegundos a poucos anos' está correta (²¹²Po ≈ 0,3 µs; ²²⁸Ra ≈ 5,75 anos). Só falta usar esse dado para justificar a desprezibilidade dos intermediários, como indicado acima."
+          }
+        ],
+        "summary": "Verifiquei o enunciado na página 5 da prova: a transcrição confere (9% ThO₂, 0,35% U₃O₈, razão ²⁰⁸Pb/²³²Th = 0,024, t½ do Th = 1,41×10¹⁰ anos, t½ do U = 4,47×10⁹ anos). Conferi as contas com python: t exata = (t½/ln2)·ln(1,024) = 4,82×10⁸ anos; forma linear = 4,88×10⁸ anos; com ln(1,024) = 0,024 da folha = 4,88×10⁸ anos; sem o ln2 o resultado seria 3,3×10⁸, e com o t½ do U, 1,5×10⁸. A resolução do candidato está correta em todos os passos: relação e^(λt) − 1, uso de λ = ln2/t½, expansão 1,024 = 2⁷/5³, balanço da cadeia (6 α e 4 β⁻, ΔZ = −8), reconstituição da razão e cálculo de % de Th decaído (2,3%, confere). Todas as armadilhas principais foram tratadas: ln2, relação exponencial, distratores (% de óxidos e t½ do U), hipótese N₀(Pb) = 0, unidades, massas molares desnecessárias. A resposta final (4,8×10⁸ anos) é fisicamente correta, mas difere do valor de 4,9×10⁸ dos dados da folha. Os dois valores estão dentro da faixa de 'estime' que a própria referência declara aceitável (4,8–4,9×10⁸), por isso marco answer_correct como true e agrees_with_reference como false apenas pelo dígito da cabeça da resposta. Os problemas que restam são de precisão e acabamento: atribuição errada do 0,024 à folha, escolha da resposta final sem justificativa, 'equilíbrio transiente' em vez de secular, e falta de menção ao ²²⁰Rn. Nenhum problema grave. Nota 8: justificativa forte, mas não chega a 9 por esses detalhes.\"}"
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "Idade estimada t ≈ 4,9 × 10^8 anos (cerca de 490 milhões de anos). Relação usada: N_Pb/N_Th = e^(λt) − 1 = 0,024, com λ = ln 2 / T½(232Th), logo t = (T½/ln 2)·ln(1,024). Com ln(1,024) = 7 ln 2 − 3 ln 5 ≈ 0,024 (logaritmos da folha), t ≈ 4,88 × 10^8 anos; com o logaritmo exato, 4,82 × 10^8 anos, na mesma faixa de estimativa. Hipóteses: sistema fechado (incluindo o 220Rn), Pb inicial nulo, cadeia com 6 α e 4 β−, intermediários em equilíbrio secular e desprezíveis. Os percentuais de óxidos e a meia-vida do 238U não são necessários.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Escolha do valor final. A linha ANSWER traz só t ≈ 4,9×10⁸ anos, mas a própria fórmula exata, t = (T½/ln2)·ln(1+D/P), dá 4,82×10⁸ anos (4,8 com dois algarismos). O 4,9 vem da aproximação com ln(1,024) ≈ 0,024, que o candidato mesmo reconhece ter 1,2% de erro. A justificativa ('a rota que o enunciado prepara') é de intenção, não de precisão. Deveria apresentar 4,9 como resultado da aproximação (linear/folha) e 4,8 como o exato, e dar a resposta como faixa (4,8–4,9×10⁸ anos) também na linha ANSWER."
+          },
+          {
+            "severity": "minor",
+            "description": "Erro de arredondamento no Passo 5. (1,41×10¹⁰/0,693)·0,02372 = 4,826×10⁸, que arredonda para 4,83×10⁸, e não 4,82×10⁸ como escrito. Corrigir o valor impresso."
+          },
+          {
+            "severity": "minor",
+            "description": "Justificativa incompleta do equilíbrio secular. Só se cita T½(Th) ≫ T½(filhos). Falta a condição temporal: a idade (≈5×10⁸ anos) é muito maior que a maior meia-vida intermediária (5,75 anos, ²²⁸Ra), o que garante que a cadeia já atingiu o equilíbrio. Acrescentar essa frase."
+          },
+          {
+            "severity": "minor",
+            "description": "O bullet 'Caso limite' mistura duas coisas. A linearização e^{λt}−1 ≈ λt é que causa o erro de ~R/2 ≈ 1,2% na idade. A expansão ln(1+R) ≈ R − R²/2 serve para checar o valor de ln(1,024), não para ilustrar um caso limite. Deixar explícito qual aproximação gera qual erro."
+          },
+          {
+            "severity": "minor",
+            "description": "As armadilhas são tratadas só implicitamente. O texto diz que o t½ do ²³⁸U e os percentuais 'não entram', mas não mostra a consequência numérica do erro: t½(²³⁸U) daria ~1,5×10⁸ anos, esquecer ln2 daria ~3,3×10⁸ anos, e inverter a razão daria ~7,6×10¹⁰ anos. Para um gabarito comentado, citar esses resultados ajudaria o aluno a entender por que estão errados. Não afeta a resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "Excesso de extensão. A seção de hipóteses (cadeia α/β, equilíbrio secular dos intermediários, escape de radônio) ocupa boa parte do texto para um item de 1 ponto, e o encadeamento principal (e^{λt}−1 = D/P, λ = ln2/T½, t = (T½/ln2)·ln(1+D/P)) fica diluído. Sugestão: apresentar primeiro o essencial e deixar os detalhes de intermediários em nota."
+          }
+        ],
+        "summary": "Resposta final correta e igual à da referência: t ≈ 4,9×10⁸ anos. A fórmula exata, t = (T½/ln2)·ln(1+D/P), dá 4,82×10⁸ anos, e a linearizada dá 4,88×10⁸. Conferi o enunciado no PDF (confere com a transcrição) e refiz as contas em Python: ln(1,024) exato = 0,023717; 7·ln2 − 3·ln5 com os valores da folha = 0,024; erro relativo de 1,2%; relação e^{λt}−1 = ²⁰⁸Pb/²³²Th; balanço ΔA = 24 e ΔZ = −8 (6α e 4β⁻); meias-vidas dos intermediários entre 0,3 μs (²¹²Po) e 5,75 anos (²²⁸Ra); soma dos intermediários ≈ 5×10⁻¹⁰ de T (cerca de 7,6 ordens abaixo do Pb formado); fração de Th decaído ≈ 2,3%. Tudo correto. Armadilhas tratadas: ln2, a relação exponencial (não e^{λt} = D/P), distratores de Th/U e de t½ do U, N_Pb(0) = 0, escape de radônio (direção do viés correta), unidades e cancelamento no logaritmo. Pontos fracos, todos menores: escolha do 4,9 como valor único sem explicitar a faixa 4,8–4,9; arredondamento 4,82 que deveria ser 4,83 no passo 5; condição temporal do equilíbrio secular não explicitada; explicação das armadilhas sem as consequências numéricas; e texto longo, com as hipóteses dominando a resolução. Nenhum erro de física ou de conta que altere a resposta.\""
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "Idade da amostra: t = (T½/ln 2)·ln(1 + R), com R = ²⁰⁸Pb/²³²Th = 0,024 e T½(²³²Th) = 1,41×10¹⁰ anos. O cálculo exato dá t ≈ 4,83×10⁸ anos. Com a linearização e os logaritmos da Folha de Dados, dá t ≈ 4,88×10⁸ anos. Resposta: t ≈ 4,8×10⁸ a 4,9×10⁸ anos, ou seja, cerca de 5×10⁸ anos, com incerteza de ±2% herdada da razão 0,024.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resposta final é dada como faixa (4,8 a 4,9×10⁸ anos) e a linha ANSWER diz 'ordem de 5×10⁸'. Para 'estime' a faixa é aceitável, mas o gabarito deveria escolher um valor principal (por exemplo ≈4,9×10⁸ anos pela aproximação com a Folha de Dados, com 4,8×10⁸ como valor exato) e dizer qual é qual."
+          },
+          {
+            "severity": "minor",
+            "description": "O Passo 5 chama de 'Aproximação com a Folha de Dados' o cálculo t ≈ 2,035×10¹⁰ × 0,024, que na verdade é a linearização ln(1+R) ≈ R. A Folha de Dados dá ln(1,024) = 7ln2 − 3ln5 ≈ 0,024 por logaritmos. Os dois caminhos são numericamente iguais, mas são justificativas diferentes e deveriam ser separados. A Verificação (Passo 6) então atribui a diferença 4,88 vs 4,83 à linearização, o que é coerente só se o leitor já tiver feito essa distinção."
+          },
+          {
+            "severity": "minor",
+            "description": "Erro de arredondamento no Passo 2: ΣT_i/T_Th = 7,7/1,41×10¹⁰ = 5,5×10⁻¹⁰, não 5×10⁻¹⁰. Não afeta a conclusão (o erro relativo sobre o Pb continua ~10⁻⁸), mas o número escrito está errado em 9%."
+          },
+          {
+            "severity": "minor",
+            "description": "Circularidade leve no Passo 2: a validade de t ≫ T_i (equilíbrio secular dos intermediários) é justificada com 't ≈ 5×10⁸ anos', valor que só é calculado depois no Passo 5. Bastaria dizer que t ≈ (T/ln2)·R ≈ 5×10⁸ anos, obtido pela própria fórmula, ou que λt ≪ 1 pela razão R = 0,024 pequena."
+          },
+          {
+            "severity": "minor",
+            "description": "A faixa de precisão 'entre 4,7 e 4,9×10⁸ anos' foi calculada com a fórmula exata (R = 0,0235 dá 4,72; R = 0,0245 dá 4,92). Pela linearização, os extremos dariam ≈4,8 a 5,0. Logo, a frase 'Os dois cálculos caem nessa faixa' só vale para os valores centrais."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha da sensibilidade do arredondamento dos logaritmos não é quantificada. Com ln2 = 0,6931 e ln5 = 1,6094, 7ln2 − 3ln5 dá 0,0235, e não 0,024. O texto diz só que a coincidência vem 'do arredondamento', sem mostrar que o resultado muda no 3º algarismo."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha do chumbo comum não aparece na lista de armadilhas. A hipótese N_Pb(0)=0 está correta, mas não há nenhuma frase sobre o que aconteceria se houvesse chumbo inicial (seria preciso corrigir por ²⁰⁴Pb ou pela razão inicial), o que a referência inclui."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de sistema fechado foi estendida aos intermediários e ao ²²⁰Rn. O enunciado só fala em ²⁰⁸Pb, ²⁰⁶Pb, ²³²Th e ²³⁸U. A extensão é necessária e está declarada em 'Hipóteses', mas o texto deveria dizer que é uma hipótese complementar, não dada pelo enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "Excesso de extensão para uma questão de 1,0 ponto. A lista de armadilhas repete itens já tratados nos passos (ex.: esquecer o −1, esquecer o ln2), e a Verificação repete o cálculo do Passo 5. Sem perda de correção, mas um gabarito comentado poderia ser mais enxuto."
+          }
+        ],
+        "summary": "Resposta final correta e concordante com a referência: a idade é ≈4,8–4,9×10⁸ anos. Confirmei no PDF (p. 5, questão 10) o enunciado e a razão 0,024. Refiz a conta: t = (T½/ln2)·ln(1+0,024) = 2,034×10¹⁰ × 0,023717 = 4,82×10⁸ anos; linearizado, 4,88×10⁸ anos. Conferem: a estequiometria (x = 6 α, y = 4 β⁻), as meias-vidas dos intermediários (0,3 μs e 5,75 a), ΣT_i ≈ 7,7 a, a fração decaída R/(1+R) ≈ 2,3%, o erro da linearização (R/2 ≈ 1,2%), λ ≈ 4,9×10⁻¹¹ ano⁻¹ e todas as armadilhas numéricas (−7,6×10¹⁰; 7,6×10¹⁰; 1,5×10⁸; 3,3×10⁸; 42,7). Não há erro de conta nem de física. Os problemas são de redação e de rigor secundário: resposta dada como faixa sem valor principal; Passo 5 mistura a aproximação pela tabela de logaritmos com a linearização; ΣT_i/T arredondado para 5×10⁻¹⁰ (o correto é 5,5×10⁻¹⁰); justificativa de λt ≪ 1 usa a própria idade antes de calculá-la; faixa 4,7–4,9 vale só para a fórmula exata; sensibilidade do arredondamento de ln e armadilha do chumbo comum não tratadas. Nota 8,5: correta, bem justificada e com as armadilhas tratadas, mas ainda não um gabarito de 9 sem ajustes de consistência e redação."
+      }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Modelo e hipóteses.} A haste (massa $M$, comprimento $L$, homogênea) gira num plano vertical em torno do eixo fixo $O$, sua extremidade inferior, que coincide com o eixo do corpo de prova. Os únicos torques são o do peso e o elástico, $\tau_e=-k\theta$; o atrito nos mancais é desprezado. Hipóteses: movimento plano; centro de massa (CM) no ponto médio, a $L/2$ de $O$; $\theta$ medido a partir da vertical, positivo no sentido horário da figura; aquecimento lento, de modo que $k$ é constante em cada instante e o sistema segue os equilíbrios (quase estático). Como o corpo de prova está fixo nos mancais, a altura $h_O$ de $O$ acima do mancal é constante.
+
+\textbf{Equação do movimento.} Pelo teorema dos eixos paralelos, $I_O=\frac{ML^2}{12}+M\left(\frac{L}{2}\right)^2=\frac{ML^2}{3}$. O peso tem braço $\frac{L}{2}\operatorname{sen}\theta$ e, como o CM está acima de $O$ para $|\theta|<\pi/2$, seu torque tende a aumentar $|\theta|$ (pêndulo invertido). Pela segunda lei para rotação em torno de eixo fixo, $\sum\tau_O=I_O\,\ddot\theta$:
+\[
+\frac{ML^2}{3}\,\ddot{\theta}=\frac{MgL}{2}\operatorname{sen}\theta-k\theta. \tag{1}
+\]
+
+\textbf{Energia potencial.} Os torques conservativos são $-k\theta=-\frac{d}{d\theta}\left(\frac{1}{2}k\theta^2\right)$ e $\frac{MgL}{2}\operatorname{sen}\theta=-\frac{d}{d\theta}\left[\frac{MgL}{2}\cos\theta\right]$. Com a energia gravitacional $Mg\,y_{CM}$, sendo $y_{CM}=h_O+\frac{L}{2}\cos\theta$ a altura do CM medida a partir do mancal,
+\[
+U_{total}(\theta)=\frac{1}{2}k\theta^2+Mg\left(h_O+\frac{L}{2}\cos\theta\right)+C.
+\]
+A constante $C$ é arbitrária (escolha de referência) e não altera $dU_{total}/d\theta$ nem $d^2U_{total}/d\theta^2$; tomamos $C=0$. $U_{total}$ é apenas potencial: a energia cinética $\frac{ML^2}{6}\dot\theta^2$ não entra nela. Assim, (1) equivale a $\frac{ML^2}{3}\ddot\theta=-\frac{dU_{total}}{d\theta}$.
+
+\textbf{Equilíbrio e estabilidade.} Um equilíbrio $\theta^*$ é um estado de repouso ($\dot\theta=0$) com $\ddot\theta=0$, isto é, $\frac{dU_{total}}{d\theta}(\theta^*)=0$. Para um desvio pequeno $\delta=\theta-\theta^*$, $\frac{ML^2}{3}\ddot\delta=-U_{total}''(\theta^*)\,\delta$: se $U_{total}''(\theta^*)>0$ há oscilação e o equilíbrio é estável; se $U_{total}''(\theta^*)<0$, o desvio cresce e o equilíbrio é instável; se $U_{total}''(\theta^*)=0$, o teste linear é inconclusivo.
+
+\textbf{a)} Com $\operatorname{sen}\theta\approx\theta$ para $\theta\ll 1$, (1) fica
+\[
+\frac{ML^2}{3}\,\ddot{\theta}=-\left(k-\frac{MgL}{2}\right)\theta,
+\]
+ou seja, $U_{total}''(0)=k-\frac{MgL}{2}$. Se $k>\frac{MgL}{2}$, $\omega^2=\frac{3}{ML^2}\left(k-\frac{MgL}{2}\right)>0$ e há oscilação em torno de $\theta=0$ (estável). Se $k<\frac{MgL}{2}$, $\ddot\theta$ tem o mesmo sinal de $\theta$ e o desvio cresce exponencialmente (instável). Portanto
+\[
+k_C=\frac{MgL}{2}.
+\]
+Conferências: $[MgL]=\mathrm{N\,m}$ e $[k]=\mathrm{N\,m/rad}=\mathrm{N\,m}$, pois o radiano é adimensional. A inércia não aparece em $k_C$; ela entra só na frequência, $\omega^2=\frac{3g}{2L}\left(\frac{k}{k_C}-1\right)$. Para $k=0$ a taxa de crescimento é $\sqrt{3g/(2L)}$, o resultado conhecido de uma haste uniforme articulada na extremidade. Em $k=k_C$ o teste linear é inconclusivo; o item b mostra que a vertical ainda é estável nesse valor, por isso o enunciado fala em $k<k_C$.
+
+\textbf{b)} Seja $\lambda=k/k_C>0$, com $k=\lambda\frac{MgL}{2}$. Então
+\[
+\frac{dU_{total}}{d\theta}=k_C\left(\lambda\theta-\operatorname{sen}\theta\right),\qquad \frac{d^2U_{total}}{d\theta^2}=k_C\left(\lambda-\cos\theta\right).
+\]
+O ponto $\theta=0$ é sempre equilíbrio. Os demais satisfazem $f(\theta)=\lambda$, com $f(\theta)=\frac{\operatorname{sen}\theta}{\theta}$, função par com $f(0)=1$ por limite.
+
+Seja $g(\theta)=\theta\cos\theta-\operatorname{sen}\theta$. Como $g(0)=0$ e $g'(\theta)=-\theta\operatorname{sen}\theta<0$ para $0<\theta<\pi$, tem-se $g<0$ nesse intervalo e $f'(\theta)=\frac{g(\theta)}{\theta^2}<0$. Logo $f$ decresce estritamente de $1$ (com $\theta\to0^+$) até $0$ (em $\theta=\pi$), passando por $f(\pi/2)=\frac{2}{\pi}$. Pelo teorema do valor intermediário e pela monotonia estrita:
+\begin{itemize}
+\item se $0<\lambda<1$, há exatamente uma raiz $\theta^*\in(0,\pi)$; ela está em $(0,\pi/2)$ se $\lambda>\frac{2}{\pi}$, vale $\pi/2$ se $\lambda=\frac{2}{\pi}$ e está em $(\pi/2,\pi)$ se $\lambda<\frac{2}{\pi}$;
+\item se $\lambda\ge 1$, não há raiz em $(0,\pi)$, pois $\operatorname{sen}\theta<\theta$ para $\theta>0$.
+\end{itemize}
+Por paridade, $-\theta^*$ também é raiz. Assim, em $(-\pi/2,\pi/2)$ existem raízes não nulas se e somente se $\frac{2}{\pi}<\lambda<1$; são $\pm\theta_e$, com $0<\theta_e<\pi/2$, únicas pela monotonia.
+
+\textit{Natureza.} Em $\theta=0$, $U_{total}''(0)=k_C(\lambda-1)$. Em $\pm\theta_e$, usando $\lambda=\frac{\operatorname{sen}\theta_e}{\theta_e}$,
+\[
+U_{total}''(\pm\theta_e)=k_C\left(\frac{\operatorname{sen}\theta_e}{\theta_e}-\cos\theta_e\right)=-k_C\,\frac{g(\theta_e)}{\theta_e}>0,
+\]
+logo $\pm\theta_e$ são mínimos locais, estáveis. A raiz $\theta^*\in(\pi/2,\pi)$, quando existe, tem $\cos\theta^*<0<\lambda$, logo $U_{total}''>0$: também estável, mas fora do intervalo pedido. Os casos são:
+\begin{enumerate}
+\item $\frac{k}{k_C}>1$: não há raiz não nula. Único equilíbrio, $\theta=0$, \textbf{estável}, pois $U_{total}''(0)>0$.
+\item $\frac{k}{k_C}=1$: não há raiz não nula. O teste linear é inconclusivo, mas $\frac{dU_{total}}{d\theta}=k_C(\theta-\operatorname{sen}\theta)$ tem o sinal de $\theta$; logo $\theta=0$ é mínimo global estrito no intervalo: \textbf{estável} (degenerado), com $U_{total}-U_{total}(0)\approx\frac{MgL}{48}\theta^4$.
+\item $\frac{2}{\pi}<\frac{k}{k_C}<1$: $\theta=0$ é \textbf{instável} ($U_{total}''(0)<0$) e há três equilíbrios: $\theta=0$ instável e $\pm\theta_e$ \textbf{estáveis}, com $\frac{\operatorname{sen}\theta_e}{\theta_e}=\frac{k}{k_C}$.
+\item $0<\frac{k}{k_C}\le\frac{2}{\pi}$: no intervalo aberto resta só $\theta=0$, \textbf{instável}. Para $\frac{k}{k_C}<\frac{2}{\pi}$ existe um equilíbrio estável $\theta^*\in(\pi/2,\pi)$, fora do intervalo; para $\frac{k}{k_C}=\frac{2}{\pi}$ ele está exatamente na borda $\theta=\pi/2$, também excluída.
+\end{enumerate}
+
+\textit{Evolução física.} Ao aquecer, $k$ diminui. Para $k>k_C$ a vertical é o único equilíbrio e é estável. Em $k=k_C$ ocorre bifurcação em forquilha: a vertical perde estabilidade e os ramos $\pm\theta_e$ nascem continuamente dela (perto de $\lambda=1$, $f\approx 1-\frac{\theta^2}{6}$ dá $\theta_e\approx\sqrt{6(1-\lambda)}$). Como o aquecimento é lento, a haste acompanha o ramo estável, cujo ângulo cresce até $\pi/2$ em $k=\frac{2}{\pi}k_C$, quando fica horizontal. O modelo é simétrico por $\theta\mapsto-\theta$ e não escolhe o sinal: a haste vai para $+\theta_e$ ou $-\theta_e$ conforme imperfeições de montagem ou perturbações. Com simetria perfeita, $\theta=0$ continuaria equilíbrio, mas instável. Abaixo de $\frac{2}{\pi}k_C$ não há equilíbrio no intervalo, e a haste tende a passar da horizontal até $\theta^*$, continuação do mesmo ramo.
+
+\textbf{c)} Com $\lambda=k/k_C$, $\frac{1}{2}k\theta^2=\frac{MgL}{2}\cdot\frac{\lambda\theta^2}{2}$, logo
+\[
+U_{total}(\theta)=Mg\,h_O+\frac{MgL}{2}\left[\cos\theta+\frac{\lambda}{2}\,\theta^2\right].
+\]
+A constante $Mg\,h_O$ apenas desloca o gráfico. $U_{total}$ é par, então basta analisar $(0,\pi/2)$, usando o sinal de $\frac{dU_{total}}{d\theta}=k_C(\lambda\theta-\operatorname{sen}\theta)$ e de $U_{total}''$.
+\begin{itemize}
+\item (i) $\lambda>1$: para $\theta>0$, $\lambda\theta>\theta>\operatorname{sen}\theta$, logo $\frac{dU_{total}}{d\theta}>0$; e $U_{total}''=k_C(\lambda-\cos\theta)>0$ em todo o intervalo. Poço único, com mínimo em $\theta=0$.
+\item (ii) $\lambda=1$: $\frac{dU_{total}}{d\theta}$ tem o sinal de $\theta$ e $U_{total}-U_{total}(0)\approx\frac{MgL}{48}\theta^4$. Poço quártico, com mínimo estrito em $\theta=0$.
+\item (iii) $\frac{2}{\pi}<\lambda<1$: em $(0,\theta_e)$, $\operatorname{sen}\theta>\lambda\theta$, logo $\frac{dU_{total}}{d\theta}<0$; em $(\theta_e,\pi/2)$, $\frac{dU_{total}}{d\theta}>0$. Duplo poço: máximo local em $\theta=0$ e mínimos em $\pm\theta_e$; há pontos de inflexão em $\pm\arccos\lambda$, onde $U_{total}''=0$. A barreira é positiva:
+\[
+U_{total}(0)-U_{total}(\theta_e)=\frac{MgL}{2}\left[1-\cos\theta_e-\frac{\theta_e\operatorname{sen}\theta_e}{2}\right]
+\]
+\[
+=MgL\,\operatorname{sen}x\,(\operatorname{sen}x-x\cos x)>0,\qquad x=\frac{\theta_e}{2},
+\]
+com $\operatorname{sen}x-x\cos x=-g(x)>0$, pois $x\in(0,\pi/4)$. Para $\lambda=0{,}8$, $\theta_e\approx 1{,}131$ rad ($\approx 64{,}8^\circ$) e a barreira vale $\approx 0{,}031\,MgL$. Para $\lambda\to 1$, a barreira tende a $\approx\frac{3}{4}MgL(1-\lambda)^2$.
+
+\textit{Bordas.} $U_{total}(\pm\pi/2)-U_{total}(0)=\frac{MgL}{2}\left(\frac{\lambda\pi^2}{8}-1\right)$, positivo se e somente se $\lambda>\frac{8}{\pi^2}\approx 0{,}81$. Para $\frac{8}{\pi^2}<\lambda<1$ (por exemplo $\lambda=0{,}9$, com excesso $\approx 0{,}11\,\frac{MgL}{2}$), os valores de $U_{total}$ no intervalo aberto se aproximam, quando $\theta\to\pm\pi/2$, de um supremo não atingido que supera $U_{total}(0)$; então $\theta=0$ é apenas máximo local. Para $\lambda\le\frac{8}{\pi^2}$, $U_{total}(\theta)\le U_{total}(0)$ em todo o intervalo e $\theta=0$ é máximo global atingido. O esboço (iii) usa $\lambda=0{,}8<\frac{8}{\pi^2}$.
+\item (iv) $0<\lambda\le\frac{2}{\pi}$: em $(0,\pi/2)$, $f>\frac{2}{\pi}\ge\lambda$, logo $\operatorname{sen}\theta>\lambda\theta$ e $\frac{dU_{total}}{d\theta}<0$. $U_{total}$ decresce de $\theta=0$ até as bordas: máximo global atingido em $\theta=0$ e nenhum mínimo no intervalo (o ínfimo, nas bordas, não é atingido).
+\end{itemize}
+
+\pgfplotsset{compat=1.18}
+\begin{center}
+\begin{minipage}{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=5.8cm,height=2.9cm,axis lines=left,
+title={(i) $k/k_C=2$},title style={font=\small},
+xmin=-90,xmax=90,ymin=0.9,ymax=2.7,
+xtick={-90,0,90},xticklabels={$-\pi/2$,$0$,$\pi/2$},ytick=\empty,
+xlabel={$\theta$},ylabel={$U_{total}$},label style={font=\small},tick label style={font=\small}]
+\addplot[thick,domain=-90:90,samples=121]{cos(x)+1.0*(x*pi/180)^2};
+\addplot[only marks,mark=*]coordinates{(0,1)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=5.8cm,height=2.9cm,axis lines=left,
+title={(ii) $k/k_C=1$},title style={font=\small},
+xmin=-90,xmax=90,ymin=0.95,ymax=1.3,
+xtick={-90,0,90},xticklabels={$-\pi/2$,$0$,$\pi/2$},ytick=\empty,
+xlabel={$\theta$},ylabel={$U_{total}$},label style={font=\small},tick label style={font=\small}]
+\addplot[thick,domain=-90:90,samples=121]{cos(x)+0.5*(x*pi/180)^2};
+\addplot[only marks,mark=*]coordinates{(0,1)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\vspace{1mm}
+
+\begin{minipage}{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=5.8cm,height=2.9cm,axis lines=left,
+title={(iii) $k/k_C=0{,}8$},title style={font=\small},
+xmin=-90,xmax=90,ymin=0.9,ymax=1.06,
+xtick={-90,0,90},xticklabels={$-\pi/2$,$0$,$\pi/2$},ytick=\empty,
+xlabel={$\theta$},ylabel={$U_{total}$},label style={font=\small},tick label style={font=\small}]
+\addplot[thick,domain=-90:90,samples=121]{cos(x)+0.4*(x*pi/180)^2};
+\addplot[only marks,mark=o]coordinates{(0,1)};
+\addplot[only marks,mark=*]coordinates{(-64.8,0.9374) (64.8,0.9374)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=5.8cm,height=2.9cm,axis lines=left,
+title={(iv) $k/k_C=0{,}4$},title style={font=\small},
+xmin=-90,xmax=90,ymin=0.4,ymax=1.1,
+xtick={-90,0,90},xticklabels={$-\pi/2$,$0$,$\pi/2$},ytick=\empty,
+xlabel={$\theta$},ylabel={$U_{total}$},label style={font=\small},tick label style={font=\small}]
+\addplot[thick,domain=-90:90,samples=121]{cos(x)+0.2*(x*pi/180)^2};
+\addplot[only marks,mark=o]coordinates{(0,1)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+
+\noindent\emph{Esboços qualitativos (escala vertical independente em cada painel). Cheio: estável (mínimo); vazado: instável (máximo).}
+
+ANSWER: (a) $k_C=\dfrac{MgL}{2}$; (b) $k/k_C>1$ ou $k/k_C=1$: um equilíbrio, $\theta=0$, estável (no caso $k/k_C=1$, degenerado); $\frac{2}{\pi}<k/k_C<1$: três equilíbrios, com $\theta=0$ instável e $\pm\theta_e$ estáveis, onde $\frac{\operatorname{sen}\theta_e}{\theta_e}=\frac{k}{k_C}$; $0<k/k_C\le\frac{2}{\pi}$: somente $\theta=0$ no intervalo, instável; (c) poço único ($k/k_C>1$), poço quártico ($k/k_C=1$), duplo poço com máximo local em $\theta=0$ e mínimos em $\pm\theta_e$ ($\frac{2}{\pi}<k/k_C<1$; para $k/k_C>\frac{8}{\pi^2}$, $\theta=0$ é só máximo local), e máximo monotônico decrescente ($0<k/k_C\le\frac{2}{\pi}$).

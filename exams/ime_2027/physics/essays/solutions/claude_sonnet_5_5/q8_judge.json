@@ -1,0 +1,62 @@
+{
+  "question": 8,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) Afastando-se; b) D(t1) = 0,2·√7 ≈ 0,53 m; c) v ≈ 0,25 m/s; d) Δs ≈ 1,79 m (o anteparo chega a D = 0,6·√15 ≈ 2,32 m).",
+  "judge_reference": {
+    "reference_solution": "**Modelo físico.** Feixe incidindo normalmente na rede: os máximos obedecem a d·sen θ_m = m·λ, com m inteiro. Passo da rede: d = 1/400 mm = 2,5 µm = 2500 nm. Então d/λ = 2500/625 = 4, e sen θ_m = m/4.\n\n- Os máximos existentes são os de |m| < 4. Para m = ±4 teríamos sen θ = 1 (θ = 90°), ou seja, raio rasante à rede, que nunca atinge um anteparo paralelo. Logo, no máximo 2·3 + 1 = 7 franjas (m = 0, ±1, ±2, ±3). Isso concorda com o \"7\" do enunciado.\n- Ângulos: θ₁ = arcsen(1/4) ≈ 14,5°, θ₂ = 30°, θ₃ = arcsen(3/4) ≈ 48,6°.\n- Com o anteparo a uma distância D da rede, a franja m fica a uma altura y_m = D·tg θ_m do eixo. O anteparo é centrado no eixo e tem meio-comprimento L/2 = 0,6 m. A franja m é visível se y_m ≤ L/2, isto é, se D ≤ (L/2)/tg θ_m.\n- Como tg θ_m cresce com m, as ordens maiores saem primeiro. Por simetria, as ordens +m e −m saem ao mesmo tempo, e o número de franjas muda de 2 em 2 (7 → 5 → 3 → 1). A franja central (m = 0) está sempre no eixo e sempre é vista.\n- Distâncias críticas (com sen θ = m/4, tg θ = m/√(16−m²)):\n  - m = 3: tg θ₃ = 3/√7, então D₃ = 0,6·√7/3 = 0,2√7.\n  - m = 2: tg θ₂ = 1/√3, então D₂ = 0,6√3.\n  - m = 1: tg θ₁ = 1/√15, então D₁ = 0,6√15.\n\n**a)** Entre t₁ e t₁+2 s o número de franjas diminui (7 → 5 → 3). Pela condição D ≤ (L/2)/tg θ_m, o número de franjas visíveis é não crescente em D. Ele só pode diminuir se D aumentar. Se o anteparo se aproximasse, mais ordens caberiam nele, e o número aumentaria ou ficaria em 7 (máximo possível). Logo, **o anteparo está se afastando da rede**.\n\n**b)** Em t₁ a ordem m = ±3 acaba de sair do anteparo, ou seja, a franja m = 3 está na borda: D·tg θ₃ = L/2.\nD(t₁) = 0,6·√7/3 = 0,2·√7 = 0,2·2,65 ≈ **0,53 m** (exato: 0,529 m).\n\n**c)** Em t₁+2 s a ordem m = ±2 acaba de sair: D·tg θ₂ = L/2.\nD₂ = 0,6·√3 = 0,6·1,73 ≈ 1,04 m (exato: 1,039 m).\nO movimento é uniforme: v = ΔD/Δt = (1,038 − 0,53)/2 ≈ 0,254 m/s. Em valores exatos, v ≈ 0,255 m/s.\n**v ≈ 0,25 m/s.**\n\n**d)** Só resta o máximo central quando a ordem m = ±1 sai do anteparo: D·tg θ₁ = L/2, ou seja, D = 0,6·√15 = 0,6·3,87 ≈ 2,32 m (exato: 2,324 m). Para D acima desse valor só se vê 1 máximo.\nDistância percorrida desde t₁: Δ = D(1 máx) − D(t₁) = 2,322 − 0,53 ≈ **1,79 m** (exato: 1,795 m, ≈ 1,8 m).\nVerificação: isso corresponde a 1,79/0,254 ≈ 7,0 s após t₁, ou seja, cerca de 5 s depois do instante t₁+2 s. A distância percorrida a partir de t₁+2 s seria 1,28 m, que não é o que se pede.\n\n**Observação de consistência.** As raízes √2, √5, √6, √8, √13 e √14 da tabela não são usadas. São distratores, e a necessidade apenas de √3, √7 e √15 confirma o caminho com sen θ = m/4 e tg θ = sen/√(1−sen²).",
+    "final_answer": "a) Afastando-se (o número de franjas só diminui quando D aumenta).\nb) D(t₁) = 0,2√7 ≈ 0,53 m.\nc) v = (0,6√3 − 0,2√7)/2 ≈ 0,25 m/s (0,254 m/s com a tabela; 0,255 m/s exato).\nd) Δ = 0,6√15 − 0,2√7 ≈ 2,32 − 0,53 ≈ 1,79 m (≈ 1,8 m), contada a partir da posição em t₁. Isso corresponde a D = 2,32 m da rede.",
+    "pitfalls": [
+      "Passo da rede: d = 1/400 mm = 2,5 µm, logo d/λ = 4 exatamente. A ordem m = ±4 corresponde a θ = 90° e nunca atinge o anteparo, então o máximo é 7 franjas (e não 9). Esse fato explica o 7 do enunciado e deve ser justificado.",
+      "Não usar a aproximação de ângulo pequeno (tg θ ≈ sen θ). Os ângulos são grandes (14,5°, 30°, 48,6°). Com tg ≈ sen sairia D₁ = 0,8 m, D₂ = 1,2 m e D₃ = 2,4 m, todos errados. A tabela de raízes (√7, √3, √15) só faz sentido com tg θ = sen θ/√(1−sen²θ).",
+      "A franja m é vista se D·tg θ_m ≤ L/2, onde L/2 = 0,6 m é o meio-comprimento do anteparo (não L = 1,2 m). Usar L em vez de L/2 dobra todas as distâncias.",
+      "Condição de fronteira: no instante t₁ a ordem ±3 está exatamente na borda (D·tg θ₃ = L/2). A mudança 7 → 5 ocorre com a saída simultânea de +3 e −3 (simetria, anteparo centrado). Do mesmo modo, 5 → 3 é a saída de ±2, e 3 → 1 é a saída de ±1.",
+      "Item a): justificar que o número de franjas é não crescente em D. Afastar o anteparo faz as franjas se espalharem (y_m = D·tg θ_m cresce) e sair pelas bordas. Aproximar faria o número aumentar ou ficar em 7.",
+      "Item c): a velocidade vem da diferença das distâncias críticas D₂ − D₁ dividida por 2 s, e não de D₂ ou D₁ sozinhas. Valores: D₁ = 0,53 m, D₂ = 1,04 m, v ≈ 0,25 m/s.",
+      "Item d): pede-se a distância percorrida desde t₁, ou seja, D₃ − D₁ = 2,32 − 0,53 ≈ 1,79 m. Responder 2,32 m (distância à rede) ou 1,28 m (contada a partir de t₁+2 s) é erro de referencial. A condição é estrita (D > 0,6√15 m) e o máximo central sempre permanece visível.",
+      "Usar sempre as raízes da tabela com coerência (√7 = 2,65, √3 = 1,73, √15 = 3,87). Pequenas variações de arredondamento (0,25 vs 0,254 m/s; 1,79 vs 1,8 m) são aceitáveis. Raízes como √2, √5, √6, √8, √13 e √14 são distratores e não entram na solução."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) Afastando-se; b) D(t1) = 0,2·√7 ≈ 0,53 m; c) v ≈ 0,25 m/s; d) Δs ≈ 1,79 m (o anteparo chega a D = 0,6·√15 ≈ 2,32 m).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "summary": "As respostas do candidato batem com a minha referência nos quatro itens: (a) afastando-se; (b) D(t₁)=0,2√7≈0,53 m; (c) v≈0,25 m/s; (d) Δs=0,6√15−0,2√7≈1,79 m. Refiz as contas em Python e os valores exatos conferem: D₃=0,529 m, D₂=1,039 m, D₁=2,324 m, v=0,255 m/s e D₁−D₃=1,795 m. Conferi o enunciado no PDF: L=1,2 m com L/2 acima e L/2 abaixo do eixo, λ=625 nm, 400 linhas/mm e a tabela de raízes, tudo como transcrito. A resolução evita todas as armadilhas listadas. Calcula d/λ=4 e exclui m=±4 por ser rasante (θ=90°), o que explica o \"7\" do enunciado. Usa tg θ=m/√(16−m²) em vez de tg≈sen. Usa L/2=0,6 m. Identifica as fronteiras 7→5 (±3 na borda), 5→3 (±2) e 3→1 (±1). Responde o item (d) contando a distância desde t₁ (1,79 m) e anota D=2,32 m como posição absoluta. Faz uma checagem de consistência com os tempos (≈5 s depois de t₁+2 s). A justificativa é sólida e a apresentação é clara, com alguns detalhes menores de rigor e redação que impedem nota máxima.",
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (a): a justificativa 'se ele se aproximasse, o número de franjas aumentaria' é imprecisa. Ao se aproximar, o número aumentaria ou ficaria em 7, o máximo possível. O argumento correto é que N(D) é não crescente, então uma queda estrita só ocorre com D crescente. O candidato diz isso no início, mas fecha com a frase imprecisa."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c): a frase '(exatamente 0,254 m/s com os dados da tabela)' mistura 'exato' com valor arredondado. O valor exato é (0,6√3−0,2√7)/2≈0,255 m/s, e 0,254 vem do arredondamento das raízes da tabela. Não afeta o resultado, mas a redação deveria distinguir os dois valores."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação do item (d) dá '≈7,1 s', mas 1,79/0,254≈7,05 s, que arredonda para 7,0 ou 7,1 conforme o critério. É um deslize numérico trivial, sem efeito no resultado. A checagem em si é válida: 2 s + 5,1 s ≈ 7,1 s."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta explicitar que a simetria do anteparo centralizado faz +m e −m saírem simultaneamente, o que justifica o número de franjas variar de 2 em 2 (7→5→3→1) e m=0 estar sempre visível. O candidato usa isso implicitamente ('saem ±3') e comenta m=0 apenas no item (d)."
+          },
+          {
+            "severity": "minor",
+            "description": "A condição de fronteira não é discutida: em t₁ a franja ±3 está exatamente na borda (y=L/2). A escolha entre 'vista' (≤) ou 'não vista' (<) na borda é só convenção. Também não se diz que a distância pedida no item (d) é o ínfimo (D>D₁ estrito). A resolução escreve y≤L/2 e D>D₁, então é coerente, mas um gabarito comentado diria isso em uma linha."
+          },
+          {
+            "severity": "minor",
+            "description": "Redação pouco clara em 'Os valores crescem com a ordem decrescente: D₃<D₂<D₁'. O resultado está certo, mas faltou citar os ângulos (≈14,5°, 30°, 48,6°) ou dizer que tg θ_m cresce com m para justificar a ordem de saída. Também não menciona explicitamente que o ângulo pequeno (tg≈sen) seria inadequado, embora não o use."
+          }
+        ]
+      }
+    }
+  ]
+}

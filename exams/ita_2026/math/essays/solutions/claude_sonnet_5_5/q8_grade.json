@@ -1,0 +1,24 @@
+{
+  "question": 8,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-8-matematica-2-fase-dia-1-ita-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Questão 8 (número de sequências estritamente crescentes de três naturais com soma 100)",
+      "solution_answer": "784",
+      "key_answer": "784",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi o enunciado no PDF original (p. 9) e ele bate com a transcrição. A convenção da prova é ℕ = {1, 2, 3, …}, e tanto a resolução quanto o gabarito usam a, b, c ≥ 1.\n\nResolução: faz a = a, d = b − a ≥ 1, e = c − b ≥ 1 e chega a 3a + 2d + e = 100. Isso equivale a contar os pares (a, d) com 3a + 2d ≤ 99. Para a ímpar há Σ(51 − 3k) = 408 pares, e para a par há Σ(49 − 3k) = 376, com k = 1..16. Os limites estão certos: a vai até 32, e para k = 16 restam 3 e 1 valores de d. Total: 784.\n\nGabarito: faz a = x + 1, b = y + 1, c = z + 1. A equação x + y + z = 97 tem C(99,2) = 4851 soluções não negativas. Os três casos com duas coordenadas iguais têm 49 soluções cada (x = 0..48). Não existe x = y = z, porque 3 não divide 97. Dividindo por 6: (4851 − 147)/6 = 784.\n\nConferi por computador: a enumeração direta dá 784, e as duas fórmulas e as somas parciais 408/376 também. A verificação da resolução pelo inteiro mais próximo de (n − 3)²/12 também vale: 97²/12 ≈ 784,08."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A resposta depende de ℕ excluir o zero. Essa convenção está escrita explicitamente na prova (ℕ = {1, 2, 3, …}), então não há ambiguidade. Se o zero fosse permitido, entrariam também as 49 ternas (0, b, 100 − b) com 1 ≤ b ≤ 49, e o total seria 833. A resolução e o gabarito usam a convenção correta."
+    }
+  ],
+  "summary": "A resolução e o gabarito Poliedro dão a mesma resposta, 784, e os dois estão certos. A resolução troca a, b, c pelo primeiro termo e pelas diferenças (a, d, e) e soma separando a par e a ímpar (408 + 376). O Poliedro parte de C(99,2), tira as soluções com duas coordenadas iguais e divide por 3! = 6. Conferi por enumeração direta em Python, que também dá 784, e pela fórmula das partições em três partes distintas. Nenhum dos dois tem erro, e a solução está completa e bem justificada."
+}

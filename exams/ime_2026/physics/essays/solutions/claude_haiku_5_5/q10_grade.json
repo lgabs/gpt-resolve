@@ -1,0 +1,42 @@
+{
+  "question": 10,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-2-24-10-2025-2-fase-dia-2/dissertativa-10-fisica-2-fase-dia-2-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "tan θ = sen(π/n)/(cos(π/n) − √3/2) = 2·sen(π/n)/(2·cos(π/n) − √3), para n ≠ 6",
+      "key_answer": "tg θ = 2·sen(π/n)/(2·cos(π/n) − √3)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "A expressão é a mesma. As duas partem do triângulo O-A-B. O ângulo central entre reflexões consecutivas é φ = π/n, porque são 2n reflexões por volta. Pela lei dos senos, R/sen θ = r/sen α, com α = θ − φ. Isso dá sen(θ − π/n) = (√3/2)·sen θ e, daí, a fórmula. Conferi em Python que, com esse θ, a lei dos senos fica satisfeita até o erro de máquina (n = 7, 8, 10, 20). Também simulei o traçado do raio para n = 7 e n = 8: o feixe alterna entre os raios R e r, os pontos ficam igualmente espaçados de π/n e, após 2n reflexões, volta exatamente ao ponto A (n pontos em cada espelho). A ressalva n ≠ 6 da resolução é coerente, pois aí o denominador se anula."
+    },
+    {
+      "item": "b",
+      "solution_answer": "n ≥ 7, ou seja, n ∈ {7, 8, 9, …}. Para n ≤ 5, tan θ < 0 (e n ≤ 2 já fica fora porque π/n < θ < π/2). n = 6 é rasante (θ = 90°) e foi excluído.",
+      "key_answer": "n > 6 (n natural, ou seja, n ≥ 7), porque tg θ > 0 exige cos(π/n) > √3/2",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Mesma conclusão. Como 0 < θ < π/2 e sen(π/n) > 0, é preciso cos(π/n) > cos(π/6), o que dá n > 6. Conferi numericamente: n = 3, 4 e 5 dão tan θ negativo (−2,37; −4,45; −10,31). Para n = 7, tan θ ≈ 12,42 (θ ≈ 85,40°). Para n = 8, tan θ ≈ 6,61 (θ ≈ 81,40°). θ diminui à medida que n cresce. A resolução vai além do gabarito: justifica por que θ < π/2 (o feixe precisa se afastar do espelho interno), mostra que existe solução para todo n ≥ 7 e explica a exclusão de n = 6 (o feixe só tangencia o cilindro interno e a trajetória vira um hexágono inscrito). O gabarito exclui n = 6 apenas pela desigualdade estrita."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Em b, o gabarito usa 0 < θ < π/2 sem justificar e exclui n = 6 só pela desigualdade estrita. Em n = 6 o feixe tangencia o cilindro interno (θ = 90°), sem desvio. Um aluno poderia discutir se esse caso-limite conta como 'ponto de reflexão'. Tanto a resolução quanto o gabarito o excluem, o que é a leitura mais razoável."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A figura do enunciado é esquemática. Nela, r/R ≈ 0,57 e θ ≈ 45°, o que não combina com r/R = √3/2. Pela fórmula, θ ≈ 45° só ocorreria com n ≈ 25, e para n = 7 o ângulo seria θ ≈ 85°. Isso não afeta a resposta, mas pode confundir quem tente tirar valores do desenho."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A interpretação de 'os raios se sobrepõem após uma volta' como 2n·Δφ = 2π, com n reflexões em cada espelho e retorno ao ponto A na primeira volta, é uma hipótese comum à resolução e ao gabarito. Uma leitura com mais de uma volta mudaria a condição de fechamento, mas o enunciado fala em 'uma volta'."
+    }
+  ],
+  "summary": "A resolução e o gabarito Poliedro concordam nos dois itens. Em a), tan θ = 2·sen(π/n)/(2·cos(π/n) − √3). Em b), n ≥ 7 (n > 6). Refiz a conta: a lei dos senos no triângulo O-A-B com ângulo central π/n confirma a fórmula. A simulação do traçado do raio para n = 7 e n = 8 mostra o fechamento exato após 2n reflexões, com n em cada espelho. A resolução é mais completa que o gabarito: justifica que θ < π/2, mostra que existe solução para todo n ≥ 7 e explica por que n = 6 (feixe rasante) fica de fora. Não há erro em nenhum dos dois. Restam apenas pontos menores para levar ao professor: o caso-limite n = 6 e o fato de a figura ser esquemática."
+}

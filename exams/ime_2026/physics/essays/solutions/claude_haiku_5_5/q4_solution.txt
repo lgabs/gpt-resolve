@@ -1,0 +1,63 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses e topologia.} Fontes, chaves e fios são ideais. Todos os elementos são resistivos (não há capacitores nem indutores): não há transitório, cada fechamento altera as correntes instantaneamente e a potência é constante entre os instantes de chaveamento. Pela figura, as três baterias têm a mesma orientação (polo positivo, placa longa, voltado para o fio superior), logo cada ramo tem FEM $V$. Ramos em paralelo com a mesma FEM não somam tensão: a tensão em circuito aberto continua $V$, e o que se soma são as correntes. Como as FEMs são iguais, não circula corrente entre os ramos. Uma bateria invertida alteraria a FEM equivalente, o que não ocorre aqui.
+
+Na figura, as chaves estão no fio superior, entre ramos consecutivos (ramos 1, 2, 3 da esquerda para a direita): $S_2$ liga os ramos 1 e 2, $S_1$ liga os ramos 2 e 3, e $S_0$ liga o ramo 3 ao nó $N_0$. Ramos sem caminho por chaves fechadas até $N_0$ têm uma extremidade flutuante e não conduzem. Como nenhuma chave reabre, o número de ramos ativos é $k=1$ em $0\le t<20\,\text{s}$, $k=2$ em $20\,\text{s}\le t<40\,\text{s}$ e $k=3$ em $40\,\text{s}\le t\le 60\,\text{s}$.
+
+Logo após $S_0$, a figura mostra um $R_2$ em série e só depois a primeira derivação $R_2$. Portanto $N_0$ não tem derivação, e a malha é a sequência série, derivação, série, derivação, indefinidamente.
+
+\textbf{1) Resistência de entrada da malha.} Seja $X$ a resistência entre $N_0$ e o trilho inferior, vista para a direita. Trunque a malha em $n$ seções (cada uma: $R_2$ em série seguido de $R_2$ em derivação no nó seguinte), com extremidade final aberta, e seja $X_n$ a resistência de entrada. Então $X_1=2R_2$. Para $n\ge 2$, a derivação de $N_1$ fica em paralelo com o restante da malha a partir de $N_1$, que tem $n-1$ seções e resistência de entrada $X_{n-1}$:
+\[
+X_n = T(X_{n-1}), \qquad T(x)=R_2+\frac{R_2\,x}{R_2+x}.
+\]
+A resistência da malha infinita é $X=\lim_{n\to\infty}X_n$.
+
+\textit{Ponto fixo.} Se o limite existe, $X=T(X)$. Multiplicando por $R_2+X$ e simplificando:
+\[
+X^2-R_2X-R_2^2=0 \quad\Rightarrow\quad X=\frac{1\pm\sqrt{5}}{2}\,R_2 .
+\]
+A raiz negativa, $\frac{1-\sqrt{5}}{2}R_2=-(3-\sqrt{5})\approx -0{,}764\,\Omega$, é excluída: uma rede passiva absorve potência $I^2X\ge 0$ para toda corrente, logo $X\ge 0$. A raiz positiva é
+\[
+X=\frac{1+\sqrt{5}}{2}(\sqrt{5}-1)\,\Omega=\frac{5-1}{2}\,\Omega=2\,\Omega .
+\]
+
+\textit{Convergência.} $T$ é crescente para $x\ge 0$, pois $T'(x)=R_2^2/(R_2+x)^2>0$. Além disso, $X_2=\frac{5}{3}R_2\approx 2{,}06\,\Omega<X_1=2R_2\approx 2{,}47\,\Omega$; por indução, $X_{n+1}=T(X_n)<T(X_{n-1})=X_n$, logo a sequência é decrescente. Também $T(2)=2$ e $X_1>2$ (pois $2\sqrt{5}-2>2$); por indução, se $X_n>2$ então $X_{n+1}=T(X_n)>T(2)=2$, logo $X_n>2$ para todo $n$. A sequência decrescente e limitada inferiormente converge a um $L\ge 2$, e por continuidade $L=T(L)$. Pelo ponto fixo, $L=2\,\Omega$. Assim $X=2\,\Omega$, e a convergência é rápida: $X_5\approx 2{,}0002\,\Omega$.
+
+\textit{Nota.} Se houvesse derivação em $N_0$, a resistência seria $R_2\parallel 2\,\Omega=3-\sqrt{5}\approx 0{,}764\,\Omega$, com $E\approx 5460\,\text{J}$. A figura não tem essa derivação.
+
+\textbf{2) Equivalente de Thevenin das fontes.} Vistos de $N_0$, os $k$ ramos idênticos estão entre os mesmos nós. Em circuito aberto a tensão é $V$ (não há corrente nos ramos), e as $k$ resistências $R_1$ estão em paralelo. Logo $V_{th}=V$ e $R_{th}=R_1/k$. Como a malha é um bipolo linear, o teorema de Thevenin pode ser aplicado.
+
+\textbf{3) Corrente e potência.} Com a malha como carga de resistência $X$:
+\[
+I_k=\frac{V}{R_1/k+X}, \qquad U_k=I_kX, \qquad P_k=U_kI_k=I_k^{2}X .
+\]
+A malha não tem fontes internas e é puramente resistiva; logo toda a potência que entra por seus terminais é dissipada nela.
+
+\begin{center}
+\begin{tabular}{c c c c c c}
+Intervalo & $k$ & $R_{th}=R_1/k$ & $I_k$ & $P_k$ & $E_k=P_k\,\Delta t$ \\
+\hline
+$0\le t<20\,\text{s}$ & 1 & $6\,\Omega$ & $5\,\text{A}$ & $50\,\text{W}$ & $1000\,\text{J}$ \\
+$20\,\text{s}\le t<40\,\text{s}$ & 2 & $3\,\Omega$ & $8\,\text{A}$ & $128\,\text{W}$ & $2560\,\text{J}$ \\
+$40\,\text{s}\le t\le 60\,\text{s}$ & 3 & $2\,\Omega$ & $10\,\text{A}$ & $200\,\text{W}$ & $4000\,\text{J}$ \\
+\end{tabular}
+\end{center}
+
+Por exemplo, para $k=2$: $I_2=40/(3+2)=8\,\text{A}$ e $P_2=8^2\cdot 2=128\,\text{W}$.
+
+\textbf{4) Energia.} Como $P$ é constante em cada intervalo, $E=\sum_k P_k\,\Delta t_k$:
+\[
+E=20\,\text{s}\,(50+128+200)\,\text{W}=7560\,\text{J}\approx 7{,}56\,\text{kJ}.
+\]
+
+\textbf{5) Verificações.}
+\begin{itemize}
+\item Unidades: $\text{V}/\Omega=\text{A}$, $\text{A}^2\cdot\Omega=\text{W}$ e $\text{W}\cdot\text{s}=\text{J}$.
+\item Balanço de potência (fontes = $R_1$ + malha, em W): $k=1$: $40\cdot 5=200=5^2\cdot 6+50$; $k=2$: $40\cdot 8=320=2\cdot 4^2\cdot 6+128$; $k=3$: $40\cdot 10=400=3\cdot(10/3)^2\cdot 6+200$. Todos fecham.
+\item Caso particular: para $k=3$, $R_{th}=X=2\,\Omega$, logo a potência na malha é máxima (máxima transferência): $P_{\max}=V^2/(4X)=1600/8=200\,\text{W}$, o valor obtido.
+\item Conferência numérica independente: análise nodal de Kirchhoff de uma escada truncada com 400 seções e extremidade aberta (sistema tridiagonal), para $k=1,2,3$, reproduz $I=5, 8, 10\,\text{A}$, $P=50, 128, 200\,\text{W}$ e $E=7560\,\text{J}$.
+\end{itemize}
+
+ANSWER: 7560 J (7,56 kJ)

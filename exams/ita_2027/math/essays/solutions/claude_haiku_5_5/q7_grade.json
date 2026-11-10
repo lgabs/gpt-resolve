@@ -1,0 +1,29 @@
+{
+  "question": 7,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 1 - Matemática)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-1-20-10-2026-2-fase-dia-1/dissertativa-7-matematica-2-fase-dia-1-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Questão 7",
+      "solution_answer": "n ∈ {−6, −4, 6, 8} (quocientes −10, −30, −10 e 18)",
+      "key_answer": "n ∈ {−6, −4, 6, 8}",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi o enunciado no original (página impressa 8, que é a página 7 do PDF) e ele bate com a transcrição. Refiz as contas: 2n³−5n²−52n+90 = (2n−1)(n²−2n−27) + 63, então o quociente é inteiro se e somente se n²−2n−27 divide 63. Como n²−2n−27 = (n−1)² − 28, é preciso que d+28 seja quadrado perfeito, sendo d um divisor de 63. Isso só ocorre para d = −3 (25), que dá n = 6 ou n = −4, e para d = 21 (49), que dá n = 8 ou n = −6. Uma busca por força bruta em python, com n de −100000 a 100000, encontrou exatamente {−6, −4, 6, 8}, com quocientes −10, −30, −10 e 18. Esses valores coincidem com os da resolução. Os dois métodos são equivalentes: a resolução completa o quadrado e o gabarito usa o discriminante."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Na resolução do gabarito, como transcrita, o discriminante aparece como 'Δ = 4 + 4k + 27 = m², m² = 4k + 28'. O correto é Δ = 4 + 4(k+27) = 4(k+28). Parece perda de parênteses na transcrição. A conclusão de que k+28 precisa ser quadrado perfeito está certa e o resultado final não muda."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "No passo 5, a resolução diz que 'em cada caso o número está estritamente entre dois quadrados consecutivos', mas a lista inclui −35, que é negativo. Esse caso já tinha sido descartado à parte por ser negativo, então é só uma imprecisão de redação, sem efeito no resultado."
+    }
+  ],
+  "summary": "A resolução está correta e a resposta coincide com a do gabarito: n ∈ {−6, −4, 6, 8}. Uma busca por força bruta em python e a divisão polinomial refeita confirmam esse conjunto e os quocientes −10, −30, −10 e 18. As únicas observações são de redação: uma provável perda de parênteses no discriminante do gabarito e uma frase pouco precisa no passo 5 da resolução. Nenhuma delas afeta a nota."
+}

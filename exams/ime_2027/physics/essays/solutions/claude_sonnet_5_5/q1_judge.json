@@ -1,0 +1,51 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) v = 250 m/s; b) T = 4000 K; c) W = 864 kJ (trabalho realizado pelo gás; Q = 2880 kJ, ΔU = 2016 kJ)",
+  "judge_reference": {
+    "final_answer": "a) v = 250 m/s. b) T = 4000 K. c) W = 864 kJ, trabalho realizado pelo gás ao se expandir a pressão constante. Isso vem de Q = 2880 kJ e ΔU = 2016 kJ.",
+    "reference_solution": "**Convenções.** Eixo x horizontal, eixo y vertical para cima, origem na plataforma, g = 10 m/s², sem resistência do ar. O alvo está em (2000 m; 1000 m).\n\n**Checagem do projeto (v₀ = 200 m/s, 45°).**\n- v₀x = v₀y = 200/√2 = 100√2 m/s.\n- Altura máxima: H = v₀y²/(2g) = 20000/20 = 1000 m.\n- Alcance horizontal até o ápice: x = v₀x·(v₀y/g) = 20000/10 = 2000 m.\n- Isso coincide com o centro do alvo, então os dados são coerentes.\n\n**a) Velocidade de lançamento na falha**\n\nO ângulo continua 45°, então v_x = v_y = v/√2, com v desconhecido.\n\nO foguete passa pela vertical do alvo (x = 2000 m) a 360 m acima dele, isto é, a y = 1000 + 360 = 1360 m acima da plataforma.\n\nEquação da trajetória (parábola), com tg 45° = 1:\n\ny = x·tg θ − g x²/(2 v_x²), ou seja, y = x − g x²/(2 v_x²)\n\nSubstituindo: 1360 = 2000 − 10·(2000)²/(2 v_x²) = 2000 − 2·10⁷/v_x²\n\nEntão 2·10⁷/v_x² = 640, o que dá v_x² = 31250 m²/s², ou v_x ≈ 176,8 m/s.\n\nComo v² = v_x² + v_y² = 2 v_x²:\n\nv² = 62500, logo **v = 250 m/s**.\n\nVerificação do movimento ascendente:\n- t = 2000/v_x ≈ 11,31 s.\n- v_y(t) = v_x − g t ≈ 176,8 − 113,1 ≈ 63,6 m/s > 0, então o foguete ainda sobe.\n- O ápice ocorreria em t = v_y/g ≈ 17,7 s, com H_max = v_x²/(2g) = 1562,5 m.\n- A condição do enunciado é satisfeita.\n\nPara um v e um ângulo dados, a trajetória passa por x = 2000 m uma única vez. Portanto a informação \"ainda ascendente\" não escolhe uma raiz; ela só confirma a coerência.\n\n**b) Temperatura atingida**\n\nT ∝ v², logo T/T₀ = (v/v₀)² = (250/200)² = 1,5625.\n\nT = 2560 × 1,5625 = **4000 K**.\n\n**c) Trabalho realizado durante o aquecimento**\n\nO aquecimento é isobárico, de T₀ = 2560 K a T = 4000 K, com ΔT = 1440 K (o mesmo valor em °C).\n\nCalor trocado: Q = m·c_p·ΔT = 2,0 × 1,0 × 1440 = 2880 kJ.\n\nPrimeira lei da termodinâmica, Q = ΔU + W:\n\nW = Q − ΔU = 2880 − 2016 = **864 kJ**.\n\nO sinal é positivo: o gás se expande e realiza trabalho sobre o meio (W = pΔV > 0).\n\nVerificação por outro caminho:\n- ΔU = m·c_v·ΔT dá c_v = 2016/(2·1440) = 0,70 kJ/(kg·K).\n- Então c_p − c_v = 0,30 kJ/(kg·K), que é R/M para o gás.\n- W = pΔV = m(R/M)ΔT = 2 × 0,30 × 1440 = 864 kJ.\n- O resultado confere. O valor γ = c_p/c_v ≈ 1,43 é próximo ao de um gás diatômico (1,4), o que é plausível.",
+    "pitfalls": [
+      "Altura do alvo: o foguete está 360 m ACIMA DO ALVO, que já está a 1000 m da plataforma. Portanto y = 1360 m, não 360 m. Usar 360 m dá v errado.",
+      "Ao usar v_x = v_y = v/√2 na equação da parábola, lembrar de elevar ao quadrado: v² = 2 v_x². Erro comum: tomar v = v_x ou esquecer o fator √2. Com v_x² = 31250 obtém-se v² = 62500 e v = 250 m/s.",
+      "Não é preciso nem correto usar a condição do ápice (H = 1000 m, x = 2000 m) para a situação da falha. Ela vale só para o projeto. Na falha o ápice fica em 1562,5 m, acima do alvo.",
+      "A frase 'ainda em movimento ascendente' não seleciona uma solução, pois o v é único. Ela serve como verificação: v_y ≈ 63,6 m/s > 0 em x = 2000 m. Uma boa resolução faz essa conferência.",
+      "A temperatura é proporcional a v², não a v. Com proporcionalidade linear obter-se-ia 3200 K, valor errado. O correto é 2560 × (250/200)² = 4000 K.",
+      "No item c), Q = m c_p ΔT usa c_p, pois o processo é isobárico. Não se deve calcular ΔU com c_p nem confundir Q com ΔU. O dado ΔU = 2016 kJ serve justamente para obter W = Q − ΔU. ΔT em K é igual a ΔT em °C (1440).",
+      "Convenção de sinal da 1ª lei: com Q = ΔU + W, W é o trabalho realizado PELO gás (positivo na expansão), W = 864 kJ. Se o candidato usar a convenção ΔU = Q + W_sobre, deve indicar W_sobre = −864 kJ e explicar. Misturar as convenções produz 2880 + 2016 = 4896 kJ, que está errado.",
+      "Unidades: m = 2,0 kg, c_p = 1,0 kJ/(kg·K) e ΔT = 1440 K dão Q = 2880 kJ. Não misturar J com kJ.",
+      "Conferência de coerência (opcional, mas valorizada): c_v = 0,7 kJ/(kg·K), R/M = 0,3 kJ/(kg·K), W = pΔV = m(R/M)ΔT = 864 kJ, e γ ≈ 1,43 (compatível com gás diatômico)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) v = 250 m/s; b) T = 4000 K; c) W = 864 kJ (trabalho realizado pelo gás; Q = 2880 kJ, ΔU = 2016 kJ)",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A verificação de \"movimento ascendente\" está correta, mas não diz explicitamente que ela só confirma a coerência. Como x(t) é monotônico, a parábola passa por x = 2000 m uma única vez, e a condição não escolhe entre duas raízes. Uma frase a mais deixaria claro por que o v é único e que o enunciado não é ambíguo."
+          },
+          {
+            "severity": "minor",
+            "description": "Não registra explicitamente que a condição de ápice (H = 1000 m em x = 2000 m) vale apenas para o projeto. Na falha, o ápice fica em (3125 m; 1562,5 m). O candidato calcula esses valores corretamente na verificação, então a conclusão está certa e só falta a observação."
+          },
+          {
+            "severity": "minor",
+            "description": "No item c), o trabalho é definido como o realizado pelo gás (Q = ΔU + W), com sinal positivo na expansão. Está correto e foi justificado. Faltou apenas mencionar que, na convenção de trabalho sobre o gás, o valor seria −864 kJ. Isso ajudaria um leitor que usa outra convenção, mas não é erro."
+          }
+        ],
+        "summary": "Respostas finais idênticas às da referência: a) v = 250 m/s; b) T = 4000 K; c) W = 864 kJ, realizado pelo gás, com Q = 2880 kJ.\n\nConferi no Python e no enunciado original (página 1 do PDF):\n- Com y = x − g x²/v² (θ = 45°), x = 2000 m e y = 1360 m, resulta 4·10⁷/v² = 640, logo v² = 62500 e v = 250 m/s.\n- A verificação do ascendente está correta: v_y² = 31250 − 27200 = 4050, logo v_y ≈ +63,6 m/s. O ápice fica em x = 3125 m e H' = 1562,5 m.\n- T = 2560·(250/200)² = 4000 K.\n- Q = 2·1·1440 = 2880 kJ e W = 2880 − 2016 = 864 kJ.\n- A checagem independente confere: c_v = 0,70 kJ/(kg·K), R/M = 0,30 kJ/(kg·K), W = m(R/M)ΔT = 864 kJ e γ ≈ 1,43.\n\nTodas as armadilhas foram tratadas:\n- Altura do alvo: usou y = 1000 + 360 = 1360 m, não 360 m.\n- Fator √2: a equação em v já embute cos²45° = 1/2, sem confundir v com v_x.\n- T ∝ v², não linear em v.\n- Calor com c_p num processo isobárico, sem confundir Q com ΔU.\n- Convenção de sinal explicitada.\n- Unidades consistentes em kJ.\n\nA resolução é clara, completa e rigorosa, com hipóteses declaradas e duas verificações. Os únicos pontos são observações menores de explicitação, que não afetam a correção. Nota alta, próxima de um gabarito comentado publicável."
+      }
+    }
+  ]
+}

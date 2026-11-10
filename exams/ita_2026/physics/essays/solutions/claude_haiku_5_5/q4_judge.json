@@ -1,0 +1,145 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "a) y_2 = 2b ou y_2 = -4b (o centro de massa (4a/5, (b+y_2)/5) deve estar sobre a elipse).\n\nb) Com a estrela no foco (c, 0), c = sqrt(a^2 - b^2), e y_2 = 2b, a menor energia potencial estelar é U_min = -(GMm/5)[16/sqrt(25a^2 - 15b^2 - 24ac) + 1/sqrt(2a^2 + 3b^2 - 2ac)]. A correção mútua -16Gm^2/(25 sqrt(a^2 + 49b^2)) é da ordem de m/M e foi separada. Verificado por força bruta em seis pares (a,b).",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 4 (ITA 2026, 2ª fase, Física). Resolução de referência, feita antes de consultar qualquer candidato.\n\nNotação: c = sqrt(a² − b²) é a semidistância focal. Os focos são F± = (±c, 0). Pela 1ª lei de Kepler, a estrela (massa M) ocupa um dos focos, não o centro. Massas: m1 + m2 = m e m1 = 4 m2, logo m1 = 4m/5 e m2 = m/5.\n\n(a) y2\n\n1. Na separação interna a quantidade de movimento se conserva. O centro de massa (CM) dos dois fragmentos coincide com a posição de m naquele instante, que pertence à elipse. Logo R_cm está sobre a elipse.\n\n2. Com pesos 4/5 (m1) e 1/5 (m2):\n   R_cm = (4·P1 + P2)/5 = ((3a + a)/5, (b + y2)/5) = (4a/5, (b + y2)/5).\n\n3. Impondo x²/a² + y²/b² = 1:\n   16/25 + (b + y2)²/(25 b²) = 1  ⇒  (b + y2)² = 9b²  ⇒  y2 = 2b ou y2 = −4b.\n\n4. Verificação: para y2 = 2b, R_cm = (4a/5, 3b/5); para y2 = −4b, R_cm = (4a/5, −3b/5). Ambos estão na elipse.\n\n5. P2 não precisa estar sobre a elipse, porque é um fragmento que já saiu da órbita original. Impor x = a na elipse (y2 = 0) é erro.\n\nResposta (a): y2 = 2b ou y2 = −4b. Ambas são geometricamente válidas. O item (b) seleciona y2 = 2b.\n\n(b) Menor energia potencial gravitacional\n\n6. Adotamos U = 0 no infinito. Com a estrela em S = (s, 0):\n   U = −GM m1/r1 − GM m2/r2 − G m1 m2/|P1 − P2|,\n   com r1 = |P1 − S| e r2 = |P2 − S|.\n\n7. O último termo (mútuo entre fragmentos) é da ordem de m/M em relação aos termos estelares. Como M ≫ m, ele é desprezado no resultado principal e mantido como correção no fim.\n\n8. Distâncias ao foco:\n   r1² = (3a/4 − s)² + b²/16\n   r2² = (a − s)² + y2²\n\n9. Escolha do foco: para x > 0 e c > 0, |x − c| < |x + c|. Como 3a/4 > 0 e a > 0, o foco s = +c minimiza r1 e r2 ao mesmo tempo, para qualquer y2. Logo s = +c.\n\n10. Escolha de y2: com s = +c, r2² = (a − c)² + y2² é mínimo para |y2| mínimo, ou seja y2 = 2b (|2b| < |−4b|). Logo y2 = 2b. Como r1 não depende de y2, o mínimo global é em (s = +c, y2 = 2b).\n\n11. Distâncias com y2 = 2b e s = c:\n   r1² = (3a/4 − c)² + b²/16 = (25a² − 15b² − 24ac)/16 = (10a² − 24ac + 15c²)/16\n   r2² = (a − c)² + 4b² = 2a² + 3b² − 2ac = (a − c)(5a + 3c)\n\n12. Energia mínima (termo mútuo desprezado):\n   U_min = −(GMm/5) [4/r1 + 1/r2]\n         = −(GMm/5) [ 16/√(25a² − 15b² − 24ac) + 1/√(2a² + 3b² − 2ac) ],  com c = √(a² − b²).\n\n13. Termo mútuo, com y2 = 2b: |P1 − P2|² = (a² + 49b²)/16, logo −G m1 m2/|P1 − P2| = −16 G m²/(25 √(a² + 49b²)). Esta é a correção de ordem m/M que se soma ao resultado acima se a energia do sistema incluir a interação entre fragmentos.\n\n14. Checagem numérica (a = 5, b = 3, c = 4): r1 = √10/4 ≈ 0,791; r2 = √37 ≈ 6,083; U_min ≈ −1,045 GMm. Varredura das quatro combinações (foco ±c, y2 = 2b ou −4b) confirma o mínimo em (+c, 2b) para vários pares (a, b).\n\nResposta (b): U_min = −(GMm/5)[16/√(25a² − 15b² − 24a√(a² − b²)) + 1/√(2a² + 3b² − 2a√(a² − b²))] (com a estrela em (+c, 0)). Se for incluído o termo mútuo, soma-se −16Gm²/(25√(a² + 49b²)).",
+    "final_answer": "a) y2 = 2b ou y2 = −4b. Ambas são válidas, porque o centro de massa dos fragmentos, (4a/5, (b + y2)/5), cai na elipse nos dois casos.\n\nb) Menor energia potencial (U = 0 no infinito, estrela em um foco, termo mútuo desprezado por M ≫ m):\nU_min = −(GMm/5) [ 16/√(25a² − 15b² − 24a·c) + 1/√(2a² + 3b² − 2a·c) ], com c = √(a² − b²).\nObtida com a estrela no foco (+c, 0) e y2 = 2b. Para a = 5, b = 3 (c = 4), U_min ≈ −1,045 GMm.\nSe o termo mútuo entre fragmentos for incluído, soma-se −16Gm²/(25√(a² + 49b²)), uma correção de ordem m/M.",
+    "pitfalls": [
+      "Tomar P2 sobre a elipse (x = a ⇒ y2 = 0). Errado: só o centro de massa dos fragmentos precisa estar na elipse. P2 é um fragmento que já saiu da órbita.",
+      "Inverter os pesos do centro de massa, usando (P1 + 4P2)/5. Com m1 = 4m2, o peso é 4/5 em P1 e 1/5 em P2.",
+      "Usar m1 = 4m e m2 = m em vez de m1 = 4m/5 e m2 = m/5. A massa total dos fragmentos é m.",
+      "Esquecer a segunda raiz y2 = −4b. As duas são válidas. A letra (a) pede y2 e a letra (b) escolhe 2b, pelo critério de menor energia.",
+      "Supor que a estrela está na origem. Pela 1ª lei de Kepler ela está em um foco (±c, 0), não no centro da elipse.",
+      "Confundir c com a ou com b. Use c = √(a² − b²), a semidistância focal.",
+      "Não escolher o foco. Para x > 0, o foco +c fica mais perto de P1 e de P2 que −c, e minimiza U para qualquer y2. Escolher −c aumenta a energia potencial (menos negativa).",
+      "Escolher y2 pela distância errada. O mínimo de U usa |y2| = 2b < 4b, então y2 = 2b. Escolher −4b leva a uma energia maior.",
+      "Erro de sinal em 24ac. Verificar: r1² = (3a/4 − c)² + b²/16 = (25a² − 15b² − 24ac)/16.",
+      "Esquecer a referência de energia. Adotar U = 0 no infinito, com U = −GMm/r.",
+      "Tratar o termo mútuo entre fragmentos sem justificativa. Com M ≫ m, ele é da ordem de m/M em relação ao termo estelar. Desprezá-lo é aceitável, mas deve ser dito explicitamente.",
+      "Usar a distância ao centro da elipse em vez da distância à estrela. Em U, r1 e r2 são distâncias ao foco onde está a estrela.",
+      "Não verificar que o resultado satisfaz a elipse. Teste: y2 = 2b dá R_cm = (4a/5, 3b/5), e (16/25) + (9/25) = 1."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) y2 = 2b ou y2 = -4b. Justificativa: o centro de massa dos fragmentos (m1 = 4m/5, m2 = m/5) deve estar sobre a elipse, o que dá (b + y2)^2 = 9b^2.\n\nb) U_min = -(GMm/5) [ 16/sqrt(25a^2 - 15b^2 - 24ac) + 1/sqrt(2a^2 + 3b^2 - 2ac) ], com c = sqrt(a^2 - b^2). Esse mínimo corresponde à estrela no foco (c, 0) e a y2 = 2b. Para b = a, U_min = -1,10 GMm/a; para a = 1 e b = 0,6, U_min ≈ -5,22 GMm/a.\n\nANSWER: a) y2 = 2b ou y2 = -4b; b) U_min = -(GMm/5)[16/sqrt(25a^2 - 15b^2 - 24ac) + 1/sqrt(2a^2 + 3b^2 - 2ac)], com c = sqrt(a^2 - b^2).",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A afirmação de que os dois casos de y2 'são simétricos em relação ao eixo x' é falsa para as configurações completas. Só os centros de massa (4a/5, ±3b/5) são simétricos. P1 é fixo em (3a/4, b/4), então a reflexão de y2 = 2b não produz y2 = −4b. Deveria ser dito que apenas os CMs são simétricos e que o enunciado não fixa qual configuração ocorre."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese do CM sobre a elipse é descrita como 'usual' e 'exata no limite de separação pequena frente à distância à estrela'. O limite está correto, mas os próprios dados da questão violam esse limite: |P1−P2| é da ordem de a e r1 ≈ 0,16a no exemplo a=1, b=0,6 do candidato. A resolução deveria dizer que se trata de um modelo idealizado, usado porque o enunciado o pressupõe, e não tratar a hipótese como válida para estes dados."
+          },
+          {
+            "severity": "minor",
+            "description": "O termo mútuo −Gm1m2/|P1−P2| é descartado com a justificativa 'da ordem de m/M', sem mostrar a razão (m2·r1/(M·d)). A resposta final também não declara que vale a menos de O(m/M). A referência dá a correção explícita −16Gm²/(25√(a²+49b²)) para y2 = 2b, que verifiquei por força bruta (diferença de −0,1482 em a=1, b=0,6). Faltou também a observação de que essa correção não muda a configuração mínima. Verifiquei isso em seis pares (a,b): o mínimo continua em (+c, 2b) com e sem o termo mútuo."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha do foco +c é justificada apenas por 'pois ac>0'. Deveria mostrar as diferenças explicitamente: r1²(+1) − r1²(−1) = −3ac e r2²(+1) − r2²(−1) = −4ac, ambas negativas para a, c > 0."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que as combinações s = −1 ou y2 = −4b dão energias menos negativas é feita sem argumento explícito. Segue da monotonicidade de U nas distâncias, mas deveria ser dita (r1 e r2 maiores ⇒ U menos negativa)."
+          },
+          {
+            "severity": "minor",
+            "description": "A estrela estar em um foco é afirmada sem citar a 1ª lei de Kepler, que é a justificativa."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação numérica a=1, b=0,6 ('|U| cerca de 10 vezes GMm/(2a)... m1 muito perto da estrela') é qualitativa. O valor −5,22 GMm/a está correto (verifiquei: −5,2240), mas a justificativa não é uma checagem independente, e uma comparação com força bruta ou com a forma fechada teria sido mais convincente."
+          }
+        ],
+        "summary": "Verifiquei o enunciado no PDF (questão 4, página 5). A transcrição confere: P1 = (3a/4, b/4), P2 = (a, y2), m1 = 4m2, estrela em um foco. Comparei as respostas finais. Ambas dão (a) y2 = 2b ou y2 = −4b, e (b) a mesma forma fechada U_min = −(GMm/5)[16/√(25a²−15b²−24ac) + 1/√(2a²+3b²−2ac)], com c = √(a²−b²). Confirmei com python: (i) o CM (4a/5, (b+y2)/5) cai na elipse para as duas raízes; (ii) a forma fechada coincide com a força bruta sobre foco ±c e y2 ∈ {2b, −4b} para seis pares (a,b), incluindo (5,3), (1,0,6), (2,1), (1,0,1), (10,9,9); (iii) o mínimo global é em (+c, 2b), com e sem o termo mútuo; (iv) os valores numéricos do candidato (r1 ≈ 0,158, r2 ≈ 1,217, U ≈ −5,22 GMm/a; caso circular U ≈ −1,10 GMm/a) estão corretos. Nenhuma armadilha listada foi cometida: pesos 4/5 e 1/5 corretos, m1 = 4m/5, as duas raízes de y2 apresentadas, foco e referência de energia tratados, P1 e P2 não impostos na elipse, sinal de 24ac correto e verificação de (16+9)/25 = 1 feita. A resolução é quase publicável como gabarito. Os problemas são menores: uma afirmação de simetria incorreta, uma hipótese apresentada como mais forte do que os dados permitem, e a omissão explícita da correção do termo mútuo (que a referência dá). Nenhum problema altera a resposta. Nota 8.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 7.5,
+      "final_answer": "a) y2 = 2b ou y2 = -4b. Impondo que o centro de massa (4a/5, (b+y2)/5) esteja sobre a elipse, obtém-se (b+y2)² = 9b².\n\nb) U_min = -(GMm/5)[16/√(25a²−15b²−24ac) + 1/√(2a²+3b²−2ac)] − 16Gm²/(25√(a²+49b²)), com c = √(a²−b²). A configuração de menor energia tem a estrela no foco (c,0) e y2 = 2b. O termo mútuo (o segundo termo) é da ordem de m/M em relação ao primeiro e não altera a configuração mínima. Sem ele, U_min = -(GMm/5)[...], com o mesmo sinal e forma.\n\nANSWER: a) y2 = 2b ou y2 = -4b; b) U_min = -(GMm/5)[16/√(25a²−15b²−24ac) + 1/√(2a²+3b²−2ac)] − 16Gm²/(25√(a²+49b²)), com c = √(a²−b²).",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Justificativa falsa do passo central (r_CM sobre a elipse). A resolução diz: 'Se os fragmentos estivessem à mesma distância da estrela, a força sobre o sistema seria a que atuaria sobre a massa total m no CM, e o CM seguiria a elipse.' Isso é falso. Com distâncias iguais à estrela, a força sobre o par é Σ m_i r_i/|r_i|³, que não é m r_CM/|r_CM|³, porque |r_CM| < r. Contraexemplo numérico (fragmentos iguais, r=1, θ=60°, unidades GM·m): força sobre o par = −0,5 x̂; força kepleriana no CM = −4,0 x̂. O critério correto é a separação pequena, d ≪ r (expansão de maré), e a conservação do momento garante apenas que, no instante da cisão, r_CM coincide com a posição de m. Deveria ser: (i) fato exato na cisão; (ii) para o instante posterior dado, premissa do modelo (o CM segue a órbita original), aproximada para d ≪ r. Sem o argumento da distância igual."
+          },
+          {
+            "severity": "minor",
+            "description": "Conflação de instantes com non sequitur. 'No instante da separação, a posição e a velocidade do CM são as da órbita original... Assim, no instante considerado, r_CM pertence à elipse.' A conservação fixa a posição do CM apenas no instante da cisão, não no instante posterior em que P1 e P2 são dadas. O 'assim' não se segue; a hipótese deveria ser declarada como premissa."
+          },
+          {
+            "severity": "minor",
+            "description": "Caveat sem consequência clara: 'Os dados da questão não satisfazem essa condição, pois |P1−P2| é da ordem de a' seguido de 'O enunciado pressupõe o modelo'. A resolução sustenta a resposta numa premissa que afirma estar violada, sem estimar o erro nem explicar por que a resposta continua valendo. Deveria declarar a premissa como pressuposto do enunciado e indicar a ordem do erro, O((d/r)²), ou omitir o comentário."
+          },
+          {
+            "severity": "minor",
+            "description": "Ordem de aproximação inconsistente. O texto diz M≫m e que o termo mútuo é 'desprezível', mas a ANSWER final inclui o termo mútuo como parte do U_min. O erro do modelo do CM é O(1) neste problema (d~a, r~a), então manter um termo O(m/M) enquanto se ignora o erro dominante é arbitrário. O resultado principal deveria ser o termo estelar (o que M≫m pede), com a correção mútua separada e rotulada, como faz a referência."
+          },
+          {
+            "severity": "minor",
+            "description": "Argumento da escolha de (s, y2) compactado e pouco explícito. 'Como −2sac e y2² aparecem separadamente em r2², o par (+1,2b) minimiza r1 e r2 ao mesmo tempo' chega à conclusão certa, mas não explicita a lógica: r1 não depende de y2; r2² = f(s) + g(y2), com f mínimo em s=+1 e g mínimo em |y2| mínimo; o termo mútuo segue o mesmo ordenamento."
+          },
+          {
+            "severity": "minor",
+            "description": "Verificação alegada mas não demonstrada: 'Conferi por força bruta o valor de U nas quatro combinações... em seis pares (a,b)'. A resolução mostra apenas um caso numérico, então o leitor não consegue auditar a afirmação. Eu confirmei a conclusão (mínimo em (+c, 2b), com e sem mútuo, e fórmula fechada igual à força bruta com erro relativo ~1e-9) em oito pares. Deveria mostrar a tabela ou remover a frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha 'tomar P2 sobre a elipse' é evitada, mas não é explicitada. A resolução deveria dizer que apenas o CM precisa estar na elipse, porque P2 é um fragmento que já saiu da órbita."
+          }
+        ],
+        "summary": "Comparação item por item: (a) candidato e referência dão y2 = 2b ou y2 = −4b, com o CM (4a/5, (b+y2)/5) na elipse. Verifiquei: ambas as raízes satisfazem a elipse, e P1 não está na elipse (5/8). (b) Ambos escolhem o mínimo em (s=+1, y2=2b). A referência dá a forma estelar como resposta principal e menciona o termo mútuo como correção; o candidato dá a forma estelar mais o termo mútuo na ANSWER. A expressão estelar é a mesma nos dois. Verifiquei por força bruta em oito pares (a,b), incluindo a=5, b=3 (U*≈−1,045 GMm) e o caso circular: a fórmula fechada coincide com o mínimo numérico, e o foco +c minimiza U para qualquer y2. As identidades de r1², r2², d² e as diferenças −3ac e −4ac conferem. Todas as armadilhas da referência foram tratadas pelo candidato (pesos 4/5 e 1/5, m1 = 4m/5, segunda raiz −4b, escolha do foco, referência de energia, sinal de 24ac, verificação na elipse). A nota fica abaixo de 9 por causa da justificativa errada da premissa central (afirma que a igualdade r_CM ∈ elipse vale para distâncias iguais à estrela, o que é falso) e da inconsistência entre tratar M≫m e manter o termo mútuo na resposta final. Observação sobre a referência: ela afirma que o CM está na elipse 'pela conservação do momento' no instante dado. Isso é um exagero, porque a conservação só fixa o CM no instante da cisão. O caveat do candidato sobre o erro de aproximação é mais preciso nesse ponto, embora o argumento de distâncias iguais esteja errado."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "a) y_2 = 2b ou y_2 = -4b (o centro de massa (4a/5, (b+y_2)/5) deve estar sobre a elipse).\n\nb) Com a estrela no foco (c, 0), c = sqrt(a^2 - b^2), e y_2 = 2b, a menor energia potencial estelar é U_min = -(GMm/5)[16/sqrt(25a^2 - 15b^2 - 24ac) + 1/sqrt(2a^2 + 3b^2 - 2ac)]. A correção mútua -16Gm^2/(25 sqrt(a^2 + 49b^2)) é da ordem de m/M e foi separada. Verificado por força bruta em seis pares (a,b).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A premissa do centro de massa está mal delimitada. O texto diz que ela é 'adotada pelo enunciado', mas o enunciado não a afirma, e diz que é 'exata no instante da cisão'. O instante dado tem P1 ≠ P2, então não é o instante da cisão. A resposta de (a) depende dessa hipótese. O correto seria declará-la como hipótese explícita (o CM dos fragmentos permanece sobre a elipse no instante considerado) e mencionar a aproximação uma única vez. A formulação 'o erro real é grande' enfraquece a resposta sem necessidade."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (b), a linha de resposta traz só a energia estelar e a correção mútua aparece separada. O total U_min,total = U_* + U_mut nunca é escrito como uma expressão única. O correto seria escrever U_min,total = −(GMm/5)[…] − 16Gm²/(25√(a²+49b²)) e depois dizer que, com M ≫ m, o termo mútuo é desprezado na resposta principal."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'repeti a comparação por força bruta em seis pares (a,b)' não traz saída, tabela nem critério de amostragem, então não é auditável. Deveria mostrar o resultado ou ser removida. Refiz a verificação em sete pares (a,b) com brute force e a conclusão se mantém: mínimo em (+c, 2b), com e sem o termo mútuo, e a forma fechada bate com o brute force até 1e-6."
+          },
+          {
+            "severity": "minor",
+            "description": "O argumento de escolha do foco (Passo 3) usa desigualdades estritas, que exigem c > 0. No caso degenerado b = a (c = 0) os focos coincidem e a escolha é irrelevante. Isso deveria ser dito, porque o caso aparece depois nas verificações."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução tem material demais para o caderno de soluções, onde a prova só aceita respostas nos espaços delimitados. A tabela de quatro combinações, o sweep de pares, a discussão do limite b → 0 e a verificação de unidades não são exigidos. Uma versão publicável teria: hipótese do CM, pesos 4/5 e 1/5, equação em y2 com as duas raízes, comparação das distâncias para escolher foco e y2, U_min com a justificativa do termo mútuo. Esse conjunto cabe numa página."
+          }
+        ],
+        "summary": "Resposta final correta e igual à da referência. (a) y2 = 2b ou y2 = −4b, pois o CM (4a/5, (b+y2)/5) deve estar sobre a elipse, e as duas raízes são válidas. (b) U_min = −(GMm/5)[16/√(25a²−15b²−24ac) + 1/√(2a²+3b²−2ac)], com a estrela no foco (+c, 0) e y2 = 2b. A correção mútua é −16Gm²/(25√(a²+49b²)). Conferi o enunciado no PDF e as contas: as identidades algébricas, os valores da tabela (−5,224; −5,143; −0,606; −0,580), a razão 0,028 m/M e a escolha de foco e de y2 por brute force em sete pares (a,b). Todas as armadilhas da referência foram tratadas: P2 não precisa estar na elipse, pesos 4/5 e 1/5, a raiz −4b, a estrela em foco e não na origem, a escolha do foco e de y2 com justificativa, U = 0 no infinito, o termo mútuo justificado por ordem m/M, e a verificação na elipse. O problema é de forma, não de física: premissa do CM mal descrita, total do item (b) não escrito como uma expressão, afirmação não auditável e excesso de material para o caderno. A nota fica em 8,5, abaixo de 9, porque falta limpeza na apresentação para um gabarito comentado."
+      }
+    }
+  ]
+}

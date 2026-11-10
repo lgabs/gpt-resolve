@@ -1,0 +1,51 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) A distância entre as ranhuras é d = 600√2 nm ≈ 8,5×10⁻⁷ m (≈ 849 nm), porque o primeiro máximo do laranja sai a θ = 45°. b) O primeiro máximo do violeta fica a x = 20√(2/7) cm = 20√14/7 cm ≈ 10,7 cm do ponto central (sen θ = √2/3, θ ≈ 28°). A aproximação de ângulo pequeno não vale aqui e daria o valor errado de 13,3 cm.",
+  "judge_reference": {
+    "reference_solution": "**Modelo e hipóteses**\nA grade é horizontal e está a h = 20 cm do solo. A luz solar chega perpendicular à grade, ou seja, na vertical (Sol no zênite). Os raios do Sol são tratados como paralelos, a grade é uma rede de fendas paralelas com período d (a \"distância entre as ranhuras\") e as dimensões da grade são desprezadas diante de h. Com essas hipóteses vale a equação da rede para incidência normal:\n\n  d·sen θ = m·λ, com m = 0, ±1, ±2, …\n\nO ângulo θ é medido a partir da vertical, que é a normal à grade. O \"ponto central\" é o ponto do solo logo abaixo da grade, onde fica o máximo central (m = 0), branco. Um máximo de ordem m e ângulo θ cai no solo a uma distância x desse ponto, dada por:\n\n  tan θ = x/h  ⇒  x = h·tan θ.\n\nOs máximos aparecem aos pares, simétricos dos dois lados do ponto central. A distância pedida vale para cada um deles.\n\n---\n**a) Período da grade**\nPara o laranja em primeira ordem (m = 1, λ_L = 600 nm), temos x_L = 20 cm e h = 20 cm:\n\n  tan θ_L = 20/20 = 1  ⇒  θ_L = 45°  ⇒  sen θ_L = √2/2.\n\n  d = λ_L / sen θ_L = 600 nm / (√2/2) = 600√2 nm ≈ 8,49×10⁻⁷ m ≈ 0,85 μm.\n\nIsso corresponde a cerca de 1,18×10³ ranhuras por milímetro.\nO ângulo de 45° é grande, então não se pode usar a aproximação sen θ ≈ tan θ. Ela levaria a d = 600 nm, o que está errado.\n\n---\n**b) Primeira ordem do violeta (λ_V = 400 nm)**\n\n  sen θ_V = λ_V / d = 400/(600√2) = √2/3 ≈ 0,471  ⇒  θ_V ≈ 28,1°.\n\n  cos θ_V = √(1 − 2/9) = √7/3  ⇒  tan θ_V = (√2/3)/(√7/3) = √(2/7) ≈ 0,535.\n\n  x_V = h·tan θ_V = 20·√(2/7) cm = (20√14)/7 cm ≈ 10,7 cm (≈ 0,107 m).\n\nConferência: o violeta tem λ menor, então é desviado menos que o laranja e fica mais perto do centro (10,7 cm < 20 cm). Está coerente.\n\nA aproximação linear x ∝ λ daria 20·(400/600) ≈ 13,3 cm, o que está errado. Usar sen θ ≈ tan θ também nos dois itens daria 10 cm, também errado. A relação entre x e λ não é linear.\n\nObservação: a ordem máxima possível é d/λ. Ela vale ≈ 1,41 para o laranja e ≈ 2,12 para o violeta. Assim, o laranja só tem a 1ª ordem, e o violeta tem também uma 2ª ordem em θ ≈ 70,5° (x ≈ 56,6 cm). Isso não interfere no que foi pedido.",
+    "final_answer": "a) d = 600√2 nm ≈ 8,5×10⁻⁷ m (≈ 0,85 μm, cerca de 1180 ranhuras/mm). O primeiro máximo do laranja sai a θ = 45°, pois tan θ = 20/20.\nb) x_V = 20·√(2/7) cm = 20√14/7 cm ≈ 10,7 cm do ponto central, de cada lado. Nesse caso sen θ_V = √2/3 e θ_V ≈ 28,1°.",
+    "pitfalls": [
+      "Aproximação de pequenos ângulos indevida. Como tan θ = 1, temos θ = 45°. Usar sen θ ≈ tan θ = x/h dá d = 600 nm no item a, que está errado. O correto é d = 600√2 nm ≈ 849 nm.",
+      "Escalar x proporcionalmente a λ no item b, fazendo x_V = 20·(400/600) ≈ 13,3 cm, está errado: x = h·tan(arcsen(λ/d)) não é linear em λ. Usar a aproximação nos dois itens dá 10 cm, que também está errado. O correto é ≈ 10,7 cm.",
+      "Geometria: o ângulo de difração é medido a partir da normal à grade, que é a vertical, porque a incidência é normal. Os 20 cm do solo são a distância horizontal a partir do ponto logo abaixo da grade, então tan θ = x/h. Não confundir x com a hipotenusa (distância grade–ponto) nem usar sen θ = x/h.",
+      "Usar a equação da rede d·sen θ = mλ com m = 1, que vale para incidência normal. Aqui não há termo de incidência oblíqua porque a luz é perpendicular à grade.",
+      "Interpretar 'distância entre as ranhuras' como o período d da grade, e não como número de ranhuras por comprimento. Quem der N ≈ 1,18×10³ /mm precisa também deixar claro o valor de d.",
+      "Unidades e forma final: d = 600√2 nm ≈ 8,49×10⁻⁷ m. A expressão numérica precisa ser resolvida até o fim (instrução 8 da prova). Vale aceitar a forma exata 20√(2/7) cm = 20√14/7 cm junto com o valor ≈ 10,7 cm.",
+      "Coerência física: o violeta (λ menor) deve ficar mais perto do centro que o laranja (10,7 cm < 20 cm). Um resultado maior que 20 cm indica erro.",
+      "Hipóteses implícitas que uma boa resolução menciona: luz solar como feixe paralelo, máximo central branco no ponto logo abaixo da grade, grade pequena comparada a h e máximos simétricos dos dois lados (a distância pedida vale para cada um).",
+      "Verificar se a ordem existe: d/λ ≈ 1,41 para o laranja e ≈ 2,12 para o violeta, então a 1ª ordem existe para os dois. Não confundir com a 2ª ordem do violeta (θ ≈ 70,5°, x ≈ 56,6 cm)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) A distância entre as ranhuras é d = 600√2 nm ≈ 8,5×10⁻⁷ m (≈ 849 nm), porque o primeiro máximo do laranja sai a θ = 45°. b) O primeiro máximo do violeta fica a x = 20√(2/7) cm = 20√14/7 cm ≈ 10,7 cm do ponto central (sen θ = √2/3, θ ≈ 28°). A aproximação de ângulo pequeno não vale aqui e daria o valor errado de 13,3 cm.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O candidato não diz que os máximos de 1ª ordem aparecem aos pares, um de cada lado do ponto central. Também escreve m = 0, 1, 2, … sem os valores negativos. A distância pedida vale para cada lado. Bastava escrever m = 0, ±1, ±2, … e acrescentar 'de cada lado' na resposta."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa do regime de Fraunhofer cita só d ≪ H. A rigor, para que o máximo no solo seja um ponto bem definido, a largura iluminada da grade também precisa ser pequena diante de H, e esse é o pressuposto implícito do enunciado. A hipótese deveria ser 'dimensões da grade ≪ H'."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação da 2ª ordem do violeta, o candidato dá θ ≈ 70° (o valor exato é 70,5°) mas não calcula a posição no solo, x = 20·tan θ ≈ 56,6 cm, que reforçaria o 'cai longe'. É só uma checagem extra e não afeta a resposta."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 10 do PDF original e a transcrição está fiel. As respostas finais do candidato coincidem com as minhas. No item a, d = 600√2 nm ≈ 849 nm ≈ 8,5×10⁻⁷ m, o que dá cerca de 1,18×10³ ranhuras/mm. No item b, x_V = 20√(2/7) cm = 20√14/7 cm ≈ 10,7 cm. Refiz as contas em Python: sen θ_V = √2/3 ≈ 0,4714, θ_V ≈ 28,13°, x_V = 10,690 cm. A 2ª ordem do violeta fica em θ ≈ 70,5°, com x ≈ 56,6 cm. Tudo bate.\n\nA resolução trata as armadilhas principais:\n- Recusa explicitamente a aproximação de pequenos ângulos, porque θ = 45°.\n- Mede θ a partir da normal, que é a vertical.\n- Usa tan θ = x/H corretamente, sem confundir com sen θ.\n- Aplica a equação da rede para incidência normal com m = 1.\n- Interpreta 'distância entre as ranhuras' como o período d e também informa a densidade de ranhuras.\n- Resolve a expressão numérica até o fim e dá a forma exata junto com a decimal.\n- Confere a coerência física: o violeta fica mais perto do centro que o laranja.\n- Mostra que a escala linear (13,3 cm) estaria errada.\n- Verifica a 2ª ordem do violeta.\n\nTambém declara as hipóteses: ondas planas, ponto central no pé da perpendicular e máximo central branco.\n\nAs falhas são pequenas: não diz que os máximos aparecem dos dois lados, simétricos (e lista m só com valores não negativos), justifica Fraunhofer apenas com d ≪ H e não calcula x da 2ª ordem. A apresentação é clara e pode servir de gabarito comentado."
+      }
+    }
+  ]
+}

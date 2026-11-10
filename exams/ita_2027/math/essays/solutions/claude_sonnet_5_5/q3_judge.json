@@ -1,0 +1,53 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Lado do octógono: $\\ell=\\sqrt{(2-\\sqrt2)/2}=\\sqrt{4-2\\sqrt2}/2\\approx0{,}541$; $r=1/16$ (raio circunscrito $R=\\sqrt2/2$).",
+  "judge_reference": {
+    "reference_solution": "**1. Reescrever a equação.**\nr + i z⁸ = 0 ⇒ z⁸ = −r/i. Como 1/i = −i, temos −r/i = r·i. Logo z⁸ = r·i = r·e^{iπ/2}.\n\n**2. Raízes.**\nSeja R = |z|. Então R⁸ = r, ou seja R = r^{1/8} (único real positivo, pois r > 0).\nOs argumentos satisfazem 8θ = π/2 + 2kπ, logo θ_k = π/16 + kπ/4, k = 0,1,…,7.\nAs oito raízes z_k = R·e^{i(π/16 + kπ/4)} são distintas e estão todas na circunferência de centro 0 e raio R. Estão igualmente espaçadas, com passo angular π/4. Tomadas em ordem de argumento, formam um **octógono regular** inscrito nessa circunferência. O octógono é convexo e a rotação de π/16 não altera nem a área nem o lado.\n\n**3. Área em função de R.**\nO octógono se decompõe em 8 triângulos isósceles com vértice na origem, lados R, R e ângulo central π/4:\nA = 8·(1/2)·R²·sen(π/4) = 4R²·(√2/2) = 2√2·R².\nImpondo A = √2: 2√2·R² = √2 ⇒ R² = 1/2 ⇒ R = 1/√2 = √2/2.\n\n**4. Valor de r.**\nr = R⁸ = (R²)⁴ = (1/2)⁴ = **1/16**.\nConferência: r^{1/8} = 2^{−4/8} = 2^{−1/2} = 1/√2. ✓\n\n**5. Lado do octógono.**\nO lado é a corda de ângulo central π/4 numa circunferência de raio R:\nℓ = 2R·sen(π/8) = 2·(1/√2)·sen(π/8) = √2·sen(π/8).\nComo sen(π/8) = √(2−√2)/2 (de sen²(π/8) = (1−cos(π/4))/2 = (2−√2)/4):\nℓ = √2·√(2−√2)/2 = √(4−2√2)/2 = √((2−√2)/2) = √(1 − √2/2).\n\nPela lei dos cossenos: ℓ² = 2R²(1−cos(π/4)) = 1·(1−√2/2) = (2−√2)/2 ⇒ ℓ = √((2−√2)/2), mesmo resultado.\nValor numérico: ℓ ≈ 0,5412.\n\n**Verificação independente (python).**\nCom r = 1/16, as oito raízes satisfazem |r + i z⁸| ≈ 10⁻¹⁶. A fórmula do cadarço aplicada aos vértices ordenados por argumento dá área = 1,41421356… = √2. O lado medido é 0,5411961… = √(4−2√2)/2. O raio é 0,70710678….\n\n**Resposta:** ℓ = √(4−2√2)/2 = √((2−√2)/2) = √2·sen(π/8) ≈ 0,541 e r = 1/16.",
+    "final_answer": "Lado do octógono regular: ℓ = √(4 − 2√2)/2 = √((2 − √2)/2) = √2·sen(π/8) ≈ 0,541. Valor de r: r = 1/16. (Raio da circunferência circunscrita R = 1/√2; as raízes de z⁸ = r·i formam um octógono regular; área = 2√2·R² = √2.)",
+    "pitfalls": [
+      "Isolar corretamente z⁸: r + i z⁸ = 0 ⇒ z⁸ = −r/i = +r·i, porque 1/i = −i. Errar o sinal (z⁸ = −ri) ou escrever z⁸ = −r não muda o raio nem a área, mas rotaciona o polígono. A resolução deve ao menos justificar que isso é irrelevante para área e lado.",
+      "Justificar que as 8 raízes formam um octógono REGULAR: mesmo módulo R = r^{1/8}, argumentos π/16 + kπ/4 igualmente espaçados. Só então valem as fórmulas de área e de lado. Dizer apenas 'é um octógono regular' sem mostrar isso é um ponto fraco.",
+      "O polígono é o convexo, com vértices tomados em ordem de argumento. Ligar as raízes fora de ordem (polígono estrelado) mudaria a área; o enunciado se refere ao octógono convexo usual.",
+      "Fórmula da área: 8 triângulos com ângulo central 2π/8 = π/4, então A = 4R² sen(π/4) = 2√2 R². Erros comuns: usar sen(π/8), usar 2π/8 como se fosse 2π/16, esquecer o fator 1/2, ou usar a fórmula de área do octógono com o lado em vez do raio.",
+      "Passar de R para r: r = R⁸ (e não R^{1/8}). R² = 1/2 ⇒ R⁸ = (1/2)⁴ = 1/16. Como r > 0 e R > 0, a solução é única.",
+      "O lado vale ℓ = 2R sen(π/8) = √2·sen(π/8). A forma fechada exige sen(π/8) = √(2−√2)/2, via arco-metade. Erro comum: usar sen(π/4) ou a corda com ângulo errado (π/8 em vez de π/4 como ângulo central). As formas √(4−2√2)/2, √((2−√2)/2) e √(1−√2/2) são equivalentes.",
+      "A questão pede DOIS resultados (lado e r). A resposta final deve apresentar ambos, com a ordem lado → r."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Lado do octógono: $\\ell=\\sqrt{(2-\\sqrt2)/2}=\\sqrt{4-2\\sqrt2}/2\\approx0{,}541$; $r=1/16$ (raio circunscrito $R=\\sqrt2/2$).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não diz que o polígono é o octógono convexo, com os vértices ligados em ordem crescente de argumento. Chama-o de \"octógono regular inscrito\", o que implica isso, mas não explicita que ligar as raízes fora de ordem daria um polígono estrelado de outra área. Bastaria uma frase afirmando isso."
+          },
+          {
+            "severity": "minor",
+            "description": "Não menciona que as 8 raízes são distintas. Os argumentos π/16 + kπ/4, com k = 0,…,7, ficam em [π/16, 29π/16] e são todos diferentes módulo 2π. Sem isso não se garante que há 8 vértices distintos."
+          },
+          {
+            "severity": "minor",
+            "description": "Não comenta que a rotação de π/16 (ou um eventual erro de sinal em z⁸ = ±ri) não altera área nem lado. O sinal foi tratado corretamente (−1/i = i), então não há erro, apenas uma justificativa que faltou."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência de |z_k|⁸ = r é circular, porque apenas repete a definição de R. A conferência útil é a da área pela fórmula 2(1+√2)ℓ², que está correta e é independente. A expressão do lado como 2R·sen(π/8) = √2·sen(π/8) também seria um complemento natural, mas não é necessária."
+          }
+        ],
+        "summary": "A resolução do candidato está correta e coincide com a minha referência nos dois itens, na ordem pedida (lado → r). O lado vale ℓ = √((2−√2)/2) = √(4−2√2)/2 ≈ 0,541 e r = 1/16. Conferi numericamente: com r = 1/16, as oito raízes satisfazem |r + i z⁸| ≈ 10⁻¹⁷. A fórmula do cadarço dá área 1,41421356… = √2 e o lado medido é 0,5411961…, igual à forma fechada do candidato.\n\nO desenvolvimento é limpo:\n- O sinal foi tratado corretamente: −1/i = i, logo z⁸ = i·r.\n- De Moivre dá as raízes com módulo R = r^{1/8} e argumentos π/16 + kπ/4, igualmente espaçados, o que justifica o octógono regular. Esse era o ponto fraco apontado na referência, e o candidato o mostrou explicitamente.\n- A área foi calculada como 8 triângulos de ângulo central π/4: A = 2√2·R², logo R² = 1/2.\n- A passagem de R para r foi feita corretamente: r = R⁸ = (1/2)⁴ = 1/16.\n- O lado veio pela lei dos cossenos com ângulo central π/4, sem confundir com π/8.\n- A conferência independente pela fórmula 2(1+√2)ℓ² = √2 está correta.\n\nOs problemas restantes são só de rigor e polimento: não explicita o polígono convexo em ordem de argumento, não declara que as raízes são distintas e não diz que a rotação por π/16 é irrelevante para área e lado. Nenhum compromete a correção. É praticamente um gabarito comentado, com pequenas lacunas formais."
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "question": 7,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-1-23-10-2025-2-fase-dia-1/dissertativa-7-matematica-2-fase-dia-1-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q7 — P(infectado | antivírus respondeu 'não infectado')",
+      "solution_answer": "5/16 = 0,3125 = 31,25%",
+      "key_answer": "5/16",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Os dois aplicam Bayes com P(I)=0,9, P(N|I)=1−0,95=0,05 e P(N|Ī)=1−0,01=0,99. Assim, P(I|N) = 0,045/(0,045+0,099) = 0,045/0,144 = 5/16. Conferi a conta em python com frações exatas e deu 5/16. A transcrição bate com o enunciado original da página 2."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Na resolução do gabarito faltam as barras de complemento: aparece 'P(B/A) = 0,01' quando deveria ser P(B|Ā), e o denominador está escrito como 'P(A)P(B/A) + P(A)P(B/A)'. É só erro de digitação ou de extração, porque a conta numérica (0,9·0,05)/(0,9·0,05 + 0,01·0,99)… na verdade usa 0,1·0,99, e o resultado 5/16 está certo. Também está escrito '0,01 · 0,99' no lugar de '0,1 · 0,99', mas o valor final 5/16 só sai com 0,1·0,99 = 0,099. Logo, isso também é erro de digitação e não muda a resposta."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A frase 'indica a presença de vírus quando o computador não está infectado com probabilidade de 1%' foi lida como P(detecta | não infectado) = 0,01, que é a leitura padrão de taxa de falso positivo. A resolução e o gabarito adotam essa mesma leitura. Uma leitura alternativa, P(não infectado | detecta) = 0,01, seria pouco natural e mudaria o resultado."
+    }
+  ],
+  "summary": "A resolução está correta e bate com o gabarito do Poliedro: P(infectado | resposta negativa) = 0,045/0,144 = 5/16 = 31,25%. Conferi com frações exatas. A resolução define bem os eventos, justifica os complementares e confere o resultado de duas formas: pelo evento complementar (11/16) e por uma contagem em 1000 computadores. A resolução do gabarito tem erros de digitação na notação (faltam barras de complemento e aparece 0,01·0,99 onde deveria ser 0,1·0,99), mas a resposta final 5/16 está certa."
+}

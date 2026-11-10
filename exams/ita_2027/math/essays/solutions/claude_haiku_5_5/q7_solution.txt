@@ -1,0 +1,68 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+Sejam
+\[
+N(n)=2n^3-5n^2-52n+90, \qquad D(n)=n^2-2n-27 .
+\]
+Queremos os inteiros $n$ para os quais $Q(n)=\dfrac{N(n)}{D(n)}$ é inteiro. Aqui $Q(n)$ é o quociente da questão, e o quociente da divisão polinomial (que é $2n-1$) é tratado separadamente no passo 1.
+
+\textbf{1. Divisão polinomial.} Dividindo $N(n)$ por $D(n)$: o primeiro termo do quociente polinomial é $2n$, e o resto parcial é $-n^2+2n+90$; o segundo termo do quociente polinomial é $-1$, e o resto final é $63$. Logo o quociente polinomial é $2n-1$ e o resto é $63$:
+\[
+2n^3-5n^2-52n+90=(2n-1)(n^2-2n-27)+63 .
+\]
+Verificação: $(2n-1)(n^2-2n-27)=2n^3-4n^2-54n-n^2+2n+27=2n^3-5n^2-52n+27$, e somando $63$ obtém-se $N(n)$. Assim, para todo $n$ com $D(n)\neq 0$,
+\[
+Q(n)=(2n-1)+\frac{63}{D(n)} .
+\]
+
+\textbf{2. O denominador não se anula para $n$ inteiro.} Completando quadrados, $D(n)=(n-1)^2-28$. Se $n\in\mathbb{Z}$ e $D(n)=0$, então $(n-1)^2=28$, o que é impossível em $\mathbb{Z}$, pois $5^2=25<28<36=6^2$ e $28$ não é quadrado perfeito. Logo $D(n)\neq 0$ para todo $n$ inteiro, e $Q(n)$ está sempre definido.
+
+\textbf{3. Condição de integralidade.} Seja $n\in\mathbb{Z}$. Pelo passo 2, $D(n)$ é inteiro não nulo; além disso, $2n-1$ é inteiro. Como $Q(n)-(2n-1)=\dfrac{63}{D(n)}$, temos que $Q(n)$ é inteiro se e somente se $\dfrac{63}{D(n)}$ é inteiro (pois $2n-1$ é inteiro). Pela definição de divisibilidade, para $D(n)$ inteiro não nulo, $\dfrac{63}{D(n)}$ é inteiro se e somente se $D(n)\mid 63$. Portanto
+\[
+Q(n)\in\mathbb{Z}\iff D(n)\mid 63 .
+\]
+
+\textbf{4. Divisores de $63$.} Como $63=3^2\cdot 7$ (teorema fundamental da aritmética), os divisores positivos de $63$ são os números $3^a\cdot 7^b$ com $a\in\{0,1,2\}$ e $b\in\{0,1\}$, isto é, $1,3,9,7,21,63$. Os divisores inteiros são esses e seus opostos:
+\[
+d\in\{\pm 1,\ \pm 3,\ \pm 7,\ \pm 9,\ \pm 21,\ \pm 63\}.
+\]
+
+\textbf{5. Resolução de $D(n)=d$.} Para cada divisor $d$, a equação $n^2-2n-27=d$ equivale a $(n-1)^2=d+28$. Como $n-1\in\mathbb{Z}$, é necessário que $d+28$ seja quadrado perfeito não negativo. Verificando os doze divisores:
+
+{\small
+\begin{center}
+\begin{tabular}{c|cccccccccccc}
+$d$ & $-63$ & $-21$ & $-9$ & $-7$ & $-3$ & $-1$ & $1$ & $3$ & $7$ & $9$ & $21$ & $63$ \\ \hline
+$d+28$ & $-35$ & $7$ & $19$ & $21$ & $25$ & $27$ & $29$ & $31$ & $35$ & $37$ & $49$ & $91$ \\ \hline
+quadrado? & não & não & não & não & sim & não & não & não & não & não & sim & não
+\end{tabular}
+\end{center}
+}
+
+Os valores de $d+28$ que não são quadrados perfeitos são: $-35$ (negativo); $7\in(2^2,3^2)$; $19,21\in(4^2,5^2)$; $27,29,31,35\in(5^2,6^2)$; $37\in(6^2,7^2)$; e $91\in(9^2,10^2)$. Em cada caso o número está estritamente entre dois quadrados consecutivos, logo não é quadrado. Restam apenas:
+\begin{itemize}
+\item $d=-3$: $(n-1)^2=25$, logo $n-1=\pm 5$, isto é, $n=6$ ou $n=-4$;
+\item $d=21$: $(n-1)^2=49$, logo $n-1=\pm 7$, isto é, $n=8$ ou $n=-6$.
+\end{itemize}
+Como todo $n$ com $D(n)\mid 63$ tem $D(n)$ igual a um dos doze divisores, a lista é exaustiva.
+
+\textbf{6. Verificação direta.} Calculando $N(n)$ e $D(n)$ diretamente:
+\begin{align*}
+n=6:&\quad D=36-12-27=-3,\quad N=432-180-312+90=30,\quad Q=\frac{30}{-3}=-10;\\
+n=-4:&\quad D=16+8-27=-3,\quad N=-128-80+208+90=90,\quad Q=\frac{90}{-3}=-30;\\
+n=8:&\quad D=64-16-27=21,\quad N=1024-320-416+90=378,\quad Q=\frac{378}{21}=18;\\
+n=-6:&\quad D=36+12-27=21,\quad N=-432-180+312+90=-210,\quad Q=\frac{-210}{21}=-10.
+\end{align*}
+Conferência pela forma $Q(n)=(2n-1)+\dfrac{63}{D(n)}$: para $n=6$, $11-21=-10$; para $n=-4$, $-9-21=-30$; para $n=8$, $15+3=18$; para $n=-6$, $-13+3=-10$. Os valores coincidem.
+
+\textbf{7. Conferências finais.}
+\begin{itemize}
+\item Sinais: o sinal de $Q=\dfrac{N}{D}$ é o produto dos sinais de $N$ e $D$. Em $n=6$ e $n=-4$, $N>0$ e $D<0$, logo $Q<0$. Em $n=8$, $N>0$ e $D>0$, logo $Q>0$. Em $n=-6$, $N<0$ e $D>0$, logo $Q<0$. Por isso o sinal de $D$ sozinho não determina o sinal de $Q$.
+\item Cobertura: o passo 3 é uma equivalência, e o passo 5 examina todos os doze divisores de $63$. Logo nenhuma solução foi omitida nem acrescentada.
+\end{itemize}
+
+\textbf{Conclusão.} Os valores inteiros de $n$ para os quais o quociente é inteiro são $n=-6$, $n=-4$, $n=6$ e $n=8$, com quocientes $-10$, $-30$, $-10$ e $18$, respectivamente.
+
+ANSWER: $n \in \{-6,\,-4,\,6,\,8\}$

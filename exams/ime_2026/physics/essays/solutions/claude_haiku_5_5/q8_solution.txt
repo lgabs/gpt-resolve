@@ -1,0 +1,93 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Hipóteses e convenções.}
+\begin{itemize}
+\item (i) Sistema: a tonelada de suco, $m = 1000\ \text{kg}$, é um sistema fechado. Nas fases condensadas não há trabalho de eixo nem variação apreciável de volume, logo a energia trocada com o exterior é apenas calor. Convenção: $Q$ é o calor \emph{retirado} do suco, tomado como positivo.
+\item (ii) Reservatórios: a câmara é a fonte fria, a $T_F = 246\ \text{K}$ ($-27\,^\circ$C), e o ambiente é a fonte quente, a $T_Q = 307{,}5\ \text{K}$ ($34{,}5\,^\circ$C), ambos com temperatura constante. Logo o COP do equipamento é constante, mesmo com o suco variando de temperatura. A câmara recebe todo o calor retirado do suco e o transfere ao evaporador, sem ganhos externos (hipótese revista na parte b).
+\item (iii) Processo transitório: o suco esfria e muda de fase, mas o enunciado fornece apenas a duração total $\Delta t = 96\ \text{min} = 5760\ \text{s}$, sem perfil de carga. Com COP constante, o trabalho total é $W_{\text{total}} = Q/\text{COP}$, fixado pelos dados. A única potência constante que os dados determinam é a média $\overline{\dot W} = W_{\text{total}}/\Delta t$. Picos instantâneos podem ser maiores, mas não são calculáveis com os dados.
+\item (iv) Calores específicos constantes em cada fase; solidificação isotérmica a $-2\,^\circ$C.
+\item (v) Conversões: $1\ \text{kcal} = 1000\ \text{cal} = 4000\ \text{J}$; $1\ \text{HP} = 0{,}75\ \text{kW}$.
+\end{itemize}
+
+\textbf{a) Análise termodinâmica.}
+
+\textit{Passo 1 (calor a retirar).} Balanço de energia no suco, que não recebe nem realiza trabalho: $-Q = \Delta U$. As trocas são de calor sensível (líquido e sólido) e de calor latente (solidificação, isotérmica). O calor total é a soma das três etapas, todas retiradas do suco:
+\begin{align*}
+Q_1 &= m\,c_L\,\bigl(33-(-2)\bigr) = 1000\cdot 1{,}0\cdot 35 = 35\,000\ \text{kcal}\\
+Q_2 &= m\,L_f = 1000\cdot 72{,}5 = 72\,500\ \text{kcal}\\
+Q_3 &= m\,c_S\,\bigl(-2-(-27)\bigr) = 1000\cdot 0{,}5\cdot 25 = 12\,500\ \text{kcal}
+\end{align*}
+Logo $Q = 120\,000\ \text{kcal}$ (120 kcal/kg). Com $1\ \text{kcal} = 4000\ \text{J}$,
+\[
+Q = 1{,}2\times10^{5}\cdot 4000\ \text{J} = 4{,}8\times10^{8}\ \text{J}.
+\]
+
+\textit{Passo 2 (taxa média de extração).} Pela hipótese (iii), e usando que o calor retirado da câmara é $Q$ por (ii),
+\[
+\dot Q_F = \frac{Q}{\Delta t} = \frac{4{,}8\times10^{8}}{5760}\ \text{W} = \frac{250\,000}{3}\ \text{W} \approx 83{,}3\ \text{kW}.
+\]
+
+\textit{Passo 3 (limite de Carnot).} Para um refrigerador reversível entre $T_F$ e $T_Q$, o COP é $\text{COP}_C = \dfrac{T_F}{T_Q-T_F}$, definido como $\dot Q_F/\dot W$. A bomba de calor, com $T_Q/(T_Q-T_F)$, não se aplica, porque o interesse é o calor retirado da câmara:
+\[
+\text{COP}_C = \frac{246}{307{,}5-246} = \frac{246}{61{,}5} = 4.
+\]
+Pelo teorema de Carnot (consequência da 2ª lei), nenhum refrigerador opera com COP maior que $\text{COP}_C$ entre as mesmas duas fontes.
+
+\textit{Passo 4 (COP real).} Pelo enunciado,
+\[
+\text{COP} = \tfrac{3}{4}\,\text{COP}_C = \tfrac{3}{4}\cdot 4 = 3 < 4 = \text{COP}_C,
+\]
+o que é coerente com a 2ª lei. O fator $3/4$ já incorpora as irreversibilidades do ciclo.
+
+\textit{Passo 5 (potência do compressor).} Por definição, $\text{COP} = \dot Q_F/\dot W$, em que $\dot W$ é a potência de acionamento do compressor:
+\[
+\dot W = \frac{\dot Q_F}{\text{COP}} = \frac{250\,000/3}{3}\ \text{W} = \frac{250\,000}{9}\ \text{W} \approx 27{,}8\ \text{kW}.
+\]
+
+\textit{Passo 6 (conversão).} Com $1\ \text{HP} = 0{,}75\ \text{kW}$,
+\[
+\dot W = \frac{27{,}8}{0{,}75}\ \text{HP} = \frac{1000}{27}\ \text{HP} \approx 37{,}0\ \text{HP}.
+\]
+
+\textit{Conferências.}
+\begin{itemize}
+\item 1ª lei no ciclo: $\dot Q_Q = \dot Q_F + \dot W = 83{,}3 + 27{,}8 = 111{,}1$ kW rejeitados ao ambiente, com $\dot Q_Q/\dot Q_F = 4/3 = (\text{COP}+1)/\text{COP}$. Todas as grandezas são positivas.
+\item Energia por tonelada: $\dot W\,\Delta t = Q/\text{COP} = 1{,}6\times10^{8}$ J $\approx 44$ kWh.
+\item Caso ideal: $\dot W_{\min} = \dot Q_F/4 \approx 20{,}8$ kW $\approx 27{,}8$ HP. A máquina real exige o fator $4/3$ sobre esse valor.
+\item Sensibilidade: com $273{,}15$ K, $\text{COP}_C \approx 4{,}002$, variação de 0,06\%, desprezível.
+\item Ordem de grandeza: $10^{8}$ J por tonelada e dezenas de kW de potência frigorífica, coerente com uma câmara industrial.
+\end{itemize}
+
+\textbf{b) Comparação com o engenheiro.}
+
+Para 30 HP, $\dot W_{30} = 30\cdot 0{,}75 = 22{,}5$ kW. A capacidade de extração é
+\[
+\text{COP}\cdot\dot W_{30} = 3\cdot 22{,}5 = 67{,}5\ \text{kW} = 0{,}81\cdot 83{,}3\ \text{kW},
+\]
+ou seja, faltam cerca de 16 kW (19\%). O tempo de processo fica
+\[
+t = \frac{Q}{\text{COP}\cdot\dot W_{30}} = \frac{4{,}8\times10^{8}}{3\cdot 22\,500}\ \text{s} \approx 7{,}1\times10^{3}\ \text{s} \approx 118{,}5\ \text{min},
+\]
+cerca de 23\% acima dos 96 min previstos. Equivalentemente, cumprir 96 min com 30 HP exigiria COP $= Q/(\dot W_{30}\,\Delta t) \approx 3{,}70$, ou seja, 92,6\% do Carnot, contra os 75\% dados.
+
+\textit{Sobre a folga.} Nem a máquina ideal de Carnot, que precisa de 27,8 HP, deixaria mais de 8\% de folga em 30 HP. A afirmação de folga não se sustenta.
+
+\textit{Origem provável do 30 HP.} Os dados não confirmam nenhuma destas hipóteses, mas duas causas são plausíveis:
+\begin{itemize}
+\item Usar o COP de Carnot sem o fator $3/4$: $\dot W = 27{,}8$ HP, que arredondado daria 30 HP com folga de 8\%. Isso ignora um dado do enunciado.
+\item Trocar o COP de refrigerador pelo de bomba de calor e aplicar o fator $3/4$: $\text{COP}_{BC} = \tfrac{3}{4}\cdot\tfrac{T_Q}{T_Q-T_F} = \tfrac{3}{4}\cdot 5 = 3{,}75$, logo $\dot W = 83{,}3/3{,}75 = 22{,}2$ kW $\approx 29{,}6$ HP $\approx 30$ HP. Esta é a confusão que mais reproduz o número 30 HP, mas está errada: o equipamento extrai calor da câmara, então seu desempenho é $\dot Q_F/\dot W$. Mesmo que o cálculo estivesse certo, a folga seria de apenas 1\%.
+\end{itemize}
+
+\textit{Completude: perdas reais.} O modelo é ideal. Perdas não incluídas no COP de 3/4 aumentariam a potência:
+\begin{itemize}
+\item ganho de calor por paredes, portas e embalagens entre o ambiente e a câmara ($\Delta T = 61{,}5$ K), que soma a $\dot Q_F$ e eleva $\dot W$ na mesma proporção;
+\item partida (\emph{pull-down}) e degelo, que exigem potência acima da média;
+\item rendimento do motor elétrico: a potência que aparece na conta de energia é $\dot W/\eta_m$, maior que a potência de eixo.
+\end{itemize}
+Logo, 37 HP é um piso (limite inferior), e não um valor de projeto.
+
+\textbf{Conclusão.} A estimativa \textbf{não é procedente}. Os 30 HP extraem apenas cerca de 81\% da carga necessária, faltando cerca de 7 HP em relação a 37 HP, e o congelamento duraria cerca de 118,5 min, e não 96 min. Longe de haver folga, o compressor ficaria subdimensionado. Recomenda-se especificar no mínimo 37 HP de potência de eixo, com margem definida pelas perdas reais listadas acima.
+
+ANSWER: a) $\dot W \approx 27{,}8$ kW $\approx 37$ HP (exato $1000/27$ HP), com $Q = 4{,}8\times10^{8}$ J extraídos em 96 min e COP real $= 3$; b) a estimativa de 30 HP não é procedente, pois esse compressor fornece apenas cerca de 81\% da potência necessária e congelaria a tonelada em cerca de 118,5 min, e não em 96 min.

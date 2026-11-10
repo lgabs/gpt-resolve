@@ -1,0 +1,887 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{IME 2027 - Matemática\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}haiku{-}5{-}5 (solver) + claude{-}haiku{-}5{-}5 (judge)}%
+\date{November 09, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{1. Raízes e hexágonos.} As raízes de $z^{12}=1$ são $z_k=e^{2\pi i k/12}=e^{ik\pi/6}$, $k=0,1,\ldots,11$. Todas têm módulo $1$ e argumentos $30^\circ k$, igualmente espaçados sobre a circunferência unitária $C$.
+
+Para índice par, $z_{2j}=e^{ij\pi/3}$ cumpre $z^6=1$. Para índice ímpar, $z_{2j+1}=e^{i\pi/6}e^{ij\pi/3}$ cumpre $z^6=e^{i\pi}=-1$. Como $z^6=1$ e $z^6=-1$ têm, cada uma, exatamente $6$ raízes,
+\[
+\mathcal P=\{z\in\mathbb C:\ z^6=1\},\qquad \mathcal I=\{z\in\mathbb C:\ z^6=-1\}.
+\]
+Essa descrição não depende de começar os índices em $0$ ou em $1$: com índices de $1$ a $12$, $z_{12}=1$ tem índice par e o conjunto obtido é o mesmo.
+
+Ambos são hexágonos regulares inscritos em $C$, com raio $R=1$ e lado $\ell=R=1$. Decompostos a partir do centro, são formados por $6$ triângulos equiláteros de lado $1$, logo
+\[
+A(\mathcal P)=A(\mathcal I)=6\cdot\frac{\sqrt3}{4}=\frac{3\sqrt3}{2}.
+\]
+Além disso $\mathcal I=e^{i\pi/6}\mathcal P\neq\mathcal P$, pois os vértices de $\mathcal P$ têm argumento $\equiv 0^\circ \pmod{60^\circ}$ e os de $\mathcal I$ têm argumento $\equiv 30^\circ \pmod{60^\circ}$. Se fossem iguais, a união teria área $\frac{3\sqrt3}{2}$, o que não ocorre.
+
+\textbf{2. Hexágonos como interseções de semiplanos.} Seja $\hat u_\varphi=(\cos\varphi,\sin\varphi)$ e $a=\dfrac{\sqrt3}{2}$, o apótema de um hexágono de lado $1$ (altura do triângulo equilátero de lado $1$). O lado de $\mathcal P$ entre $z_0=1$ e $z_2=e^{i\pi/3}$ tem ponto médio $M=\left(\frac34,\frac{\sqrt3}{4}\right)=a\,\hat u_{30^\circ}$. Esse lado é perpendicular a $OM$, logo está na reta $x\cdot\hat u_{30^\circ}=a$. As rotações de $60^\circ j$ dão os outros lados de $\mathcal P$. Do mesmo modo, o lado de $\mathcal I$ entre $e^{-i\pi/6}$ e $e^{i\pi/6}$ está na reta $x=\frac{\sqrt3}{2}$, isto é, $x\cdot\hat u_0=a$.
+
+Um polígono convexo é a interseção dos semiplanos fechados determinados por seus lados e que contêm o polígono. Com $H_\varphi=\{x\in\mathbb R^2:\ x\cdot\hat u_\varphi\le a\}$, temos
+\[
+\mathcal P=\bigcap_{j=0}^{5}H_{30^\circ+60^\circ j},\qquad \mathcal I=\bigcap_{j=0}^{5}H_{60^\circ j}.
+\]
+Como $\{30^\circ+60^\circ j\}\cup\{60^\circ j\}=\{30^\circ m:\ m=0,\ldots,11\}$,
+\[
+\mathcal P\cap\mathcal I=\bigcap_{m=0}^{11}H_{30^\circ m}.
+\]
+
+\textbf{3. A interseção é um dodecágono regular.} Sejam $d=\dfrac{a}{\cos 15^\circ}$, $\theta_k=15^\circ+30^\circ k$ e $V_k=d\,\hat u_{\theta_k}$, com $k=0,\ldots,11$ e índices módulo $12$.
+
+\emph{(a) $V_k\in\mathcal P\cap\mathcal I$.} Para cada $m$, o ângulo $\theta_k-30^\circ m=15^\circ\,(2(k-m)+1)$ é múltiplo ímpar de $15^\circ$. Reduzido módulo $360^\circ$, seu valor absoluto fica em $[15^\circ,165^\circ]$. Como $\cos$ é decrescente em $[0^\circ,180^\circ]$, vale $\cos(\theta_k-30^\circ m)\le\cos 15^\circ$, logo
+\[
+V_k\cdot\hat u_{30^\circ m}=d\cos(\theta_k-30^\circ m)\le d\cos15^\circ=a.
+\]
+Assim $V_k\in H_{30^\circ m}$ para todo $m$.
+
+\emph{(b) Os lados de $D=V_0V_1\cdots V_{11}$.} Os $V_k$ estão igualmente espaçados de $30^\circ$ sobre a circunferência de raio $d$, portanto $D$ é um dodecágono regular de circunraio $d$. Os ângulos $\theta_{k-1}=30^\circ k-15^\circ$ e $\theta_k=30^\circ k+15^\circ$ são simétricos em relação a $30^\circ k$, logo
+\[
+V_{k-1}\cdot\hat u_{30^\circ k}=V_k\cdot\hat u_{30^\circ k}=d\cos15^\circ=a.
+\]
+Então o lado $V_{k-1}V_k$ está na reta $\partial H_{30^\circ k}$, e seu apótema é $d\cos15^\circ=a$.
+
+\emph{(c) $D=\mathcal P\cap\mathcal I$.} Por (a), os $V_k$ estão no conjunto convexo $\mathcal P\cap\mathcal I$, logo $D\subset\mathcal P\cap\mathcal I$. Reciprocamente, por (b) cada reta $\partial H_{30^\circ m}$ contém um lado de $D$, e por (a) $D\subset H_{30^\circ m}$. Portanto $H_{30^\circ m}$ é exatamente o semiplano fechado determinado por esse lado e que contém $D$. Como um polígono convexo é a interseção dos semiplanos de seus lados, $D=\bigcap_m H_{30^\circ m}=\mathcal P\cap\mathcal I$.
+
+\textbf{4. Área de $\mathcal P\cap\mathcal I$.} O dodecágono $D$ é a união de $12$ triângulos $OV_{k-1}V_k$, cada um com lados $d,d$ e ângulo central $30^\circ$. Logo
+\[
+A(\mathcal P\cap\mathcal I)=12\cdot\frac12 d^2\sin30^\circ=3d^2.
+\]
+Como $\cos^2 15^\circ=\dfrac{1+\cos30^\circ}{2}=\dfrac{2+\sqrt3}{4}$,
+\[
+d^2=\frac{a^2}{\cos^2 15^\circ}=\frac{3/4}{(2+\sqrt3)/4}=\frac{3}{2+\sqrt3}=\frac{3(2-\sqrt3)}{(2+\sqrt3)(2-\sqrt3)}=3(2-\sqrt3),
+\]
+pois $(2+\sqrt3)(2-\sqrt3)=4-3=1$. Portanto
+\[
+A(\mathcal P\cap\mathcal I)=3d^2=9(2-\sqrt3)=18-9\sqrt3.
+\]
+Conferência: um polígono regular de $n$ lados e apótema $a$ tem área $n\,a^2\tan\frac{\pi}{n}$. Aqui $12\cdot\frac34\tan15^\circ=9(2-\sqrt3)$, o mesmo valor.
+
+\textbf{5. Área da união.} Os conjuntos são convexos e mensuráveis. Pela inclusão-exclusão, a interseção é contada duas vezes em $A(\mathcal P)+A(\mathcal I)$:
+\[
+A(\mathcal P\cup\mathcal I)=A(\mathcal P)+A(\mathcal I)-A(\mathcal P\cap\mathcal I)=3\sqrt3-\left(18-9\sqrt3\right)=12\sqrt3-18.
+\]
+
+\textbf{6. Conferências.}
+\begin{itemize}
+\item \emph{Pelas pontas.} $\mathcal I\setminus\mathcal P$ são $6$ pontas, uma sobre cada lado de $\mathcal P$. A ponta sobre o lado na reta $x\cdot\hat u_{30^\circ}=a$ é o triângulo $TP_1P_2$, com vértice $T=\hat u_{30^\circ}=e^{i\pi/6}$ e base $P_1P_2$ sobre essa reta. Sua altura é $1-a=1-\frac{\sqrt3}{2}$.
+
+O ponto $P_1=\left(\frac{\sqrt3}{2},\sqrt3-\frac32\right)$ é a interseção da reta com o lado $x=\frac{\sqrt3}{2}$ de $\mathcal I$. Verifica-se $\frac34+\frac12\left(\sqrt3-\frac32\right)=\frac{\sqrt3}{2}$. Por simetria de $\mathcal I$ em torno da bissetriz $OT$, $P_2$ é o simétrico de $P_1$ nessa bissetriz, e o ponto médio de $P_1P_2$ é $M=a\,\hat u_{30^\circ}$. O argumento de $P_1$ é $15^\circ$, pois $\frac{y}{x}=\frac{\sqrt3-3/2}{\sqrt3/2}=2-\sqrt3=\tan15^\circ$. Logo $\angle MOP_1=30^\circ-15^\circ=15^\circ$. No triângulo retângulo $OMP_1$, reto em $M$,
+\[
+|MP_1|=|OM|\tan15^\circ=\frac{\sqrt3}{2}(2-\sqrt3)=\sqrt3-\frac32,\qquad |P_1P_2|=2\sqrt3-3.
+\]
+Assim $A(\text{ponta})=\frac12(2\sqrt3-3)\left(1-\frac{\sqrt3}{2}\right)=\frac{7\sqrt3-12}{4}$, e
+\[
+A(\mathcal P\cup\mathcal I)=\frac{3\sqrt3}{2}+6\cdot\frac{7\sqrt3-12}{4}=\frac{24\sqrt3-36}{2}=12\sqrt3-18.
+\]
+
+\item \emph{Numérica.} O recorte exato dos polígonos pelos $12$ semiplanos (algoritmo de Sutherland–Hodgman) dá $A(\mathcal P\cap\mathcal I)\approx 2{,}4115427$ e $A(\mathcal P\cup\mathcal I)\approx 2{,}7846097$. Esses valores coincidem com $9(2-\sqrt3)$ e $12\sqrt3-18$.
+
+\item \emph{Ordem de grandeza e cotas.} $A(\mathcal P)\approx 2{,}598<A(\mathcal P\cup\mathcal I)\approx 2{,}785<2A(\mathcal P)\approx 5{,}196$. Além disso, $\mathcal P\cap\mathcal I$ está inscrito no círculo de raio $d$, e $\pi d^2=3(2-\sqrt3)\pi\approx 2{,}525>2{,}412$. A união está no disco unitário, de área $\pi\approx 3{,}14>2{,}785$.
+\end{itemize}
+
+Logo a área pedida é $A(\mathcal P\cup\mathcal I)=12\sqrt3-18\approx 2{,}78$ unidades de área.
+
+ANSWER: $12\sqrt{3}-18 \approx 2{,}78$ unidades de área%
+\newpage%
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{1. Raízes da equação.} Seja $P(z)=1+z+z^2+z^3+z^4+z^5$. Multiplicando por $z-1$ (soma telescópica da progressão geométrica),
+\begin{align*}
+(z-1)\,P(z) = z^6-1 .
+\end{align*}
+Em $z=1$ temos $P(1)=6\neq 0$, logo $z=1$ não é raiz. Para $z\neq 1$, $P(z)=0 \iff z^6=1$. Portanto as raízes de $P$ são as raízes sextas da unidade diferentes de $1$:
+\begin{align*}
+z_k = e^{ik\pi/3}, \qquad k=1,2,3,4,5 .
+\end{align*}
+Explicitamente,
+\begin{align*}
+z_1 &= \frac12+\frac{\sqrt{3}}{2}i, & z_2 &= -\frac12+\frac{\sqrt{3}}{2}i, & z_3 &= -1, \\
+z_4 &= -\frac12-\frac{\sqrt{3}}{2}i, & z_5 &= \frac12-\frac{\sqrt{3}}{2}i .
+\end{align*}
+Como $P$ tem grau $5$ e estas cinco raízes são distintas, elas são todas as raízes de $P$, cada uma simples. Assim, o espaço amostral tem $5$ elementos, equiprováveis (escolha "ao acaso").
+
+\textbf{2. Conjunto solução da inequação.} A condição $\left|z-\frac32\right|\le\frac{\sqrt7}{2}$ define o disco fechado de centro $\frac32$ e raio $\frac{\sqrt7}{2}$, bordo incluído. Como ambos os lados são não negativos, ela equivale a
+\begin{align*}
+\left|z-\frac32\right|^2\le\frac74 .
+\end{align*}
+
+\textbf{3. Teste de cada raiz.} Para $z=a+bi$, $\left|z-\frac32\right|^2=\left(a-\frac32\right)^2+b^2$.
+\begin{itemize}
+\item $z_1$ e $z_5$ ($a=\frac12$, $b^2=\frac34$): $\left(\frac12-\frac32\right)^2+\frac34=1+\frac34=\frac74$. Vale a igualdade, logo a inequação é satisfeita, pois o bordo pertence ao disco.
+\item $z_2$ e $z_4$ ($a=-\frac12$, $b^2=\frac34$): $(-2)^2+\frac34=\frac{19}{4}>\frac74$. Não satisfazem.
+\item $z_3=-1$: $\left(-\frac52\right)^2=\frac{25}{4}>\frac74$. Não satisfaz.
+\end{itemize}
+
+\textbf{4. Verificação por identidade.} Para $|z|=1$ e $w=\frac32$ real, $|z-w|^2=|z|^2-2\,\mathrm{Re}(z\bar w)+|w|^2=1-3\,\mathrm{Re}(z)+\frac94=\frac{13}{4}-3\,\mathrm{Re}(z)$. A condição $\frac{13}{4}-3\,\mathrm{Re}(z)\le\frac74$ equivale a $\mathrm{Re}(z)\ge\frac12$. Como $\mathrm{Re}(z_k)=\cos\frac{k\pi}{3}$ vale, para $k=1,\dots,5$, respectivamente $\frac12,\,-\frac12,\,-1,\,-\frac12,\,\frac12$, apenas $z_1$ e $z_5$ satisfazem. O resultado confere com o item 3.
+
+\textbf{5. Probabilidade.} Casos favoráveis: $2$ ($z_1$ e $z_5$). Casos possíveis: $5$. Logo
+\begin{align*}
+P=\frac{2}{5}=0{,}4 .
+\end{align*}
+
+\textbf{Conferências.}
+\begin{itemize}
+\item $z=1$ não é raiz, então o total é $5$ e não $6$. Usar $6$ daria o erro $\frac{2}{6}=\frac13$.
+\item A resposta depende de as raízes $z_1$ e $z_5$ estarem exatamente sobre o bordo do disco. Com desigualdade estrita, a probabilidade seria $0$.
+\item $0\le P\le 1$. Numericamente, $|P(z_k)|\approx 10^{-15}$ para todo $k$, e as distâncias $|z_k-\frac32|$ conferem com a tabela acima.
+\end{itemize}
+
+ANSWER: $P=\dfrac{2}{5}=0{,}4$ (apenas $z_1$ e $z_5$ satisfazem a inequação)%
+\newpage%
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{1. Simplificação de $f$.} Para $n\ge 1$, $g_n(x)\in\{0,1\}$, logo $\left(\frac{g_n(x)}{3}\right)^n=\frac{g_n(x)}{3^n}$ (pois $0^n=0$ e $1^n=1$). A série converge absolutamente, por comparação com $\sum 3^{-n}$, e
+\[
+f(x)=\sum_{\substack{n\ge 1\\ x>-1/n}}\frac{1}{3^n}.
+\]
+
+\textbf{2. Valores de $f$.}
+\begin{itemize}
+\item Se $x\ge 0$, então $x\ge 0>-1/n$ para todo $n\ge 1$; logo todos os termos aparecem e
+\[
+f(x)=\sum_{n=1}^{\infty}\frac{1}{3^n}=\frac{1/3}{1-1/3}=\frac12 .
+\]
+\item Se $x<0$, então $-x>0$ e
+\[
+x>-\frac1n\iff -x<\frac1n\iff n<\frac{1}{|x|}.
+\]
+Logo $f(x)=\sum_{1\le n<1/|x|}3^{-n}$.
+\end{itemize}
+
+\textbf{3. Domínio.} A expressão $f(-1/x)$ exige $x\ne 0$. Logo $x=0$ não é admissível.
+
+\textbf{4. Expressão de $S(x)=f(x)+f(-1/x)$.}
+\begin{itemize}
+\item Se $x>0$, então $-1/x<0$ e $\left|-1/x\right|=1/x$. Pelo item 2, $f(-1/x)=\sum_{1\le n<x}3^{-n}$. Como $f(x)=\frac12$,
+\[
+S(x)=\frac12+\sum_{1\le n<x}\frac{1}{3^n}.
+\]
+\item Se $x<0$, então $-1/x>0$, logo $f(-1/x)=\frac12$ e $S(x)=\frac12+\sum_{1\le n<1/|x|}\frac{1}{3^n}$.
+\end{itemize}
+
+\textbf{5. Inteiros negativos.} Se $x\in\mathbb{Z}$ e $x\le -1$, então $1/|x|\le 1$, e não existe $n\ge 1$ com $n<1/|x|$. Assim $f(x)=0$ e $S(x)=\frac12<0{,}999$. Esses inteiros não servem. O caso $x=0$ já foi excluído no item 3.
+
+\textbf{6. Inteiros positivos.} Seja $k\ge 1$ inteiro. Os $n\ge 1$ com $n<k$ são $n=1,\dots,k-1$. Pela soma parcial da progressão geométrica de primeiro termo $\frac13$ e razão $\frac13$,
+\[
+\sum_{n=1}^{m}\frac{1}{3^n}=\frac{1}{2}\left(1-\frac{1}{3^{m}}\right).
+\]
+Com $m=k-1$,
+\[
+S(k)=\frac12+\frac12\left(1-\frac{1}{3^{k-1}}\right)=1-\frac{1}{2\cdot 3^{k-1}}.
+\]
+A condição $S(k)\ge 0{,}999$ equivale a $\frac{1}{2\cdot 3^{k-1}}\le\frac{1}{1000}$, isto é, $3^{k-1}\ge 500$. Como $3^5=243<500\le 729=3^6$ e $j\mapsto 3^j$ é crescente, a condição vale exatamente quando $k-1\ge 6$, ou seja, $k\ge 7$.
+
+Conferência direta nos casos de fronteira:
+\begin{itemize}
+\item $k=6$: $f(-1/6)=\sum_{n=1}^{5}3^{-n}=\frac{121}{243}$ e $S(6)=\frac12+\frac{121}{243}=\frac{485}{486}\approx 0{,}997942<0{,}999$. Não serve.
+\item $k=7$: $f(-1/7)=\sum_{n=1}^{6}3^{-n}=\frac{364}{729}$ e $S(7)=\frac12+\frac{364}{729}=\frac{1457}{1458}\approx 0{,}999314\ge 0{,}999$. Serve.
+\end{itemize}
+
+\textbf{7. Verificação com $x$ real.} Nos dois casos, $S=1-\frac{1}{2\cdot 3^{m}}$, em que $m$ é o número de inteiros $n\ge 1$ com $n<x$ (se $x>0$) ou com $n<1/|x|$ (se $x<0$). Então $S\ge 0{,}999$ equivale a $m\ge 6$.
+\begin{itemize}
+\item Para $x>0$: $m=\lceil x\rceil-1\ge 6$ equivale a $x>6$.
+\item Para $x<0$: $m\ge 6$ equivale a $1/|x|>6$, isto é, $-\frac16<x<0$.
+\end{itemize}
+O conjunto solução real é $\left(-\frac16,0\right)\cup(6,+\infty)$. O intervalo $\left(-\frac16,0\right)$ não contém inteiros, e o menor inteiro do conjunto é $7$.
+
+\textbf{8. Conferências finais.} Como $0\le f\le\frac12$, temos $0\le S\le 1$, e os valores obtidos respeitam isso. Para $k=1$, a soma é vazia e $S(1)=\frac12$, coerente com a fórmula $1-\frac{1}{2\cdot 3^0}$. Para $k=2$, $S(2)=\frac56$. A folga $1-S(k)=\frac{1}{2\cdot 3^{k-1}}$ cai por um fator $3$ a cada unidade de $k$, e a tolerância $10^{-3}$ só é atingida em $k=7$, pois $3^6=729$.
+
+\textbf{Resposta.} O menor inteiro é $x=7$, com $f(7)+f\left(-\frac17\right)=\frac12+\frac{364}{729}=\frac{1457}{1458}\approx 0{,}999314$.
+
+ANSWER: $x = 7$%
+\newpage%
+\section*{Questão 4}
+
+\section*{Solução}
+
+Sejam $f(y)=y^3-4y-2$ e $g(x)=x^2-7x-3$. O produto pedido tem $3\cdot 2=6$ fatores:
+\[
+P=\prod_{j=1}^{2}\prod_{i=1}^{3}\,(y_i+x_j).
+\]
+
+\textbf{1. Relações básicas e hipóteses.} Como $g$ é mônico de grau 2 com raízes $x_1,x_2$, as Relações de Girard dão
+\[
+x_1+x_2=7, \qquad x_1x_2=-3.
+\]
+Substituindo $x=x_j$ em $g(x)=0$, obtemos também $x_j^2=7x_j+3$ para $j=1,2$.
+
+Como $f$ é mônico de grau 3 com raízes $y_1,y_2,y_3$, vale a identidade de polinômios $f(y)=(y-y_1)(y-y_2)(y-y_3)$. Logo, para todo número $t$ (real ou complexo), usando $f(a)=\prod_i (a-y_i)$ com $a=-t$:
+\begin{equation}\label{eq:id}
+\prod_{i=1}^{3}(t+y_i)=(-1)^3\prod_{i=1}^{3}\big((-t)-y_i\big)=-f(-t)=t^3-4t+2.
+\end{equation}
+A última igualdade vem de $-f(-t)=-\big[(-t)^3-4(-t)-2\big]=-\big[-t^3+4t-2\big]=t^3-4t+2$.
+
+\textbf{2. Eliminação dos $y_i$.} Tomando $t=x_j$ em (\ref{eq:id}), para $j=1,2$:
+\[
+\prod_{i=1}^{3}(y_i+x_j)=x_j^3-4x_j+2.
+\]
+Portanto
+\[
+P=\left(x_1^3-4x_1+2\right)\left(x_2^3-4x_2+2\right).
+\]
+Não é preciso calcular as raízes $y_i$: pelo teste das raízes racionais, $f$ não tem raiz racional ($f(\pm1)\neq 0$ e $f(\pm2)\neq 0$), e suas raízes são irracionais, o que tornaria o cálculo direto desnecessariamente trabalhoso.
+
+\textbf{3. Redução módulo $x^2-7x-3$.} Multiplicando $x_j^2=7x_j+3$ por $x_j$:
+\[
+x_j^3=7x_j^2+3x_j=7(7x_j+3)+3x_j=52x_j+21,
+\]
+logo
+\[
+x_j^3-4x_j+2=52x_j+21-4x_j+2=48x_j+23 \qquad (j=1,2).
+\]
+
+\textbf{4. Cálculo final.} Expandindo o produto e usando $x_1+x_2=7$ e $x_1x_2=-3$:
+\begin{align*}
+P&=(48x_1+23)(48x_2+23)=48^2\,x_1x_2+48\cdot 23\,(x_1+x_2)+23^2\\
+&=2304\cdot(-3)+1104\cdot 7+529\\
+&=-6912+7728+529=1345.
+\end{align*}
+
+\textbf{5. Conferências.}
+\begin{itemize}
+\item \emph{Identidade (\ref{eq:id}) em casos particulares.} Com $t=0$: $y_1y_2y_3=2$, que coincide com a Girard para $y^3-4y-2$ (produto das raízes $=-q=2$). Com $t=-y_1$: o lado esquerdo tem o fator $y_1+(-y_1)=0$ e o lado direito vale $-f(y_1)=0$.
+\item \emph{Valores numéricos aproximados.} As raízes de $f$ são $y_i\approx 2{,}2143;\ -0{,}5392;\ -1{,}6751$ (o discriminante $\Delta=-4(-4)^3-27(-2)^2=148>0$ confirma três raízes reais distintas), e $x_1\approx 7{,}4051$, $x_2\approx -0{,}4051$. Então
+\[
+\prod_{i}(y_i+x_1)\approx 9{,}6194\cdot 6{,}8659\cdot 5{,}7300\approx 378{,}4 \approx x_1^3-4x_1+2,
+\]
+\[
+\prod_{i}(y_i+x_2)\approx 1{,}8092\cdot(-0{,}9443)\cdot(-2{,}0802)\approx 3{,}554 \approx x_2^3-4x_2+2,
+\]
+e $378{,}4\cdot 3{,}554\approx 1345{,}0$, em acordo com o resultado exato.
+\item \emph{Sinal.} Como $|y_i|<3$ (se $|y|\ge 3$ então $|y|^3\ge 9|y|>4|y|+2\ge|4y+2|$, o que contradiz $f(y)=0$), temos $y_i+x_1>7{,}4-3>0$ para todo $i$. Além disso, $y_i+x_2<0$ apenas para os dois valores $y_i<-x_2\approx 0{,}405$ ($y\approx -0{,}539$ e $y\approx -1{,}675$). Há, portanto, dois fatores negativos entre os três com $x_2$, e $P>0$, coerente com $1345$.
+\item \emph{Unidades e ordem de grandeza.} $P$ é um número puro, sem unidades. O produto numérico é da ordem de $10^3$, compatível com o resultado inteiro $1345$.
+\end{itemize}
+
+Conclusão: o valor do produto é $1345$.
+
+ANSWER: 1345%
+\newpage%
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Notação e hipóteses.} Seja $a_k=\log_2 x_k$. Como $x_k>0$, temos $x_k=2^{a_k}$, e $y\mapsto 2^y$ é injetiva: igualdades entre potências de $2$ equivalem a igualdades entre expoentes. Por hipótese, $(a_1,\dots,a_9)$ é progressão aritmética de razão $d>0$, isto é, $a_k=a_5+(k-5)d$.
+
+\textbf{Passo 1: o valor de $x_5$.} Pelo produto dado,
+\[
+2^{45}=x_1x_3x_5x_7x_9=2^{a_1+a_3+a_5+a_7+a_9}\quad\Rightarrow\quad a_1+a_3+a_5+a_7+a_9=45.
+\]
+Os índices ímpares correspondem a $a_5-4d,\ a_5-2d,\ a_5,\ a_5+2d,\ a_5+4d$. Os desvios se cancelam, logo $5a_5=45$, $a_5=9$ e $x_5=2^9=512$.
+
+\textbf{Passo 2: escrever tudo em $t=2^d$.} Como $x_k=2^{9+(k-5)d}=512\,t^{\,k-5}$, com $t>1$ pois $d>0$:
+\[
+E:=x_2+x_4+x_6+x_8=512\left(t^{3}+t+t^{-1}+t^{-3}\right),
+\]
+\[
+O:=x_1+x_3+x_5+x_7+x_9=512\left(t^{4}+t^{2}+1+t^{-2}+t^{-4}\right).
+\]
+
+\textbf{Passo 3: a variável $p=t+t^{-1}$.} Usando $t\cdot t^{-1}=1$ e $(u+v)^2=u^2+2uv+v^2$ com $uv=1$:
+\[
+t^2+t^{-2}=p^2-2,\qquad t^3+t^{-3}=p^3-3p,\qquad t^4+t^{-4}=(p^2-2)^2-2=p^4-4p^2+2.
+\]
+Logo $\dfrac{E}{512}=p^3-2p$ e $\dfrac{O}{512}=p^4-3p^2+1$. Como $p\cdot\dfrac{E}{512}=p^4-2p^2$, obtemos a identidade, válida para todo $t>0$:
+\[
+O=p\,E-512\,(p^2-1).
+\]
+
+\textbf{Passo 4: correspondência entre $d$ e $p$.} Para $t>0$, $p-2=\dfrac{(t-1)^2}{t}$, logo $p\ge 2$, com $p>2$ para $t\ne 1$. Reciprocamente, dado $p>2$, a equação $s^2-ps+1=0$ tem duas raízes reais positivas distintas, $t$ e $t^{-1}$ (relações de Girard: produto $1$, soma $p$, discriminante $p^2-4>0$), e exatamente uma delas é maior que $1$. Assim, $p>2$ determina $t>1$ e $d=\log_2 t$ de modo único. Além disso, $E$ e $O$ são invariantes por $t\mapsto t^{-1}$, que corresponde à reversão $k\leftrightarrow 10-k$ dos índices (esta preserva as somas dos índices ímpares e dos pares). Logo a hipótese $d>0$ apenas fixa a orientação da progressão e não altera $E$ nem $O$.
+
+\textbf{Passo 5: equação para $p$ com $E=5540$.} Como $\dfrac{5540}{512}=\dfrac{1385}{128}$, a condição $E=5540$ equivale a
+\[
+f(p):=128p^3-256p-1385=0.
+\]
+Temos $f(2)=-873<0<1303=f(3)$, logo há raiz em $(2,3)$. A derivada $f'(p)=384p^2-256$ se anula em $\pm\sqrt{2/3}$. Assim, $f$ é crescente em $(-\infty,-\sqrt{2/3}]$, decrescente em $[-\sqrt{2/3},\sqrt{2/3}]$ e crescente em $[\sqrt{2/3},\infty)$. Como $f(-\sqrt{2/3})=\dfrac{512}{3}\sqrt{\dfrac23}-1385<0$ (pois $\dfrac{512}{3}\sqrt{\dfrac23}<171$), $f$ só tem zero no último intervalo, e ele está em $(2,3)$. Portanto $p\approx 2{,}5116$ é a única raiz real, e pelo Passo 3,
+\[
+O=5540\,p-512\,p^2+512.
+\]
+
+\textbf{Passo 6: $O$ é irracional.} Pelo teorema das raízes racionais, uma raiz racional irredutível $a/b$ satisfaz $a\mid 1385=5\cdot 277$ (277 é primo) e $b\mid 128$. Dentro de $(2,3)$ restam $\dfrac52$ e $\dfrac{277}{128}$, e nenhuma é raiz:
+\[
+f\!\left(\tfrac52\right)=-25\neq 0,\qquad f\!\left(\tfrac{277}{128}\right)=\frac{277^3}{128^2}-554-1385=-\frac{10514643}{16384}\neq 0.
+\]
+Assim, a cúbica $f$ não tem raiz racional e é irredutível sobre $\mathbb{Q}$. Se fosse $O=q\in\mathbb{Q}$, então $p$ seria raiz de $512p^2-5540p+(q-512)=0$, equação quadrática com coeficientes racionais e coeficiente líder não nulo. Isso daria $[\mathbb{Q}(p):\mathbb{Q}]\le 2$, contradição. Logo $O$ é irracional e, em particular, não inteiro.
+
+\textbf{Passo 7: forma fechada e valores numéricos.} Escreva $p=k\cosh\varphi$ com $k=\dfrac{2\sqrt6}{3}$, de modo que $k^2=\dfrac83$. Pela identidade $\cosh^3\varphi=\dfrac{\cosh 3\varphi+3\cosh\varphi}{4}$,
+\[
+p^3-2p=\frac{k^3}{4}\cosh 3\varphi+k\left(\frac{3k^2}{4}-2\right)\cosh\varphi=\frac{k^3}{4}\cosh 3\varphi,
+\]
+pois $\dfrac{3k^2}{4}-2=0$. Com $k^3=\dfrac{16\sqrt6}{9}$, a equação $p^3-2p=\dfrac{1385}{128}$ vira
+\[
+\cosh 3\varphi=\frac{4\cdot 1385}{128\,k^3}=\frac{4155\sqrt6}{1024}\approx 9{,}9391.
+\]
+Como o argumento é $\ge 1$, $\varphi=\frac13\operatorname{arccosh}\dfrac{4155\sqrt6}{1024}$ é real e dá uma raiz real da cúbica. Pela unicidade do Passo 5,
+\[
+p=\frac{2\sqrt6}{3}\cosh\!\left(\frac13\operatorname{arccosh}\frac{4155\sqrt6}{1024}\right)\approx 2{,}51160.
+\]
+Daí $t=\dfrac{p+\sqrt{p^2-4}}{2}\approx 2{,}015427$ e $d=\log_2 t\approx 1{,}01109$, que não é inteiro. Os termos são
+\[
+x_1\approx 31{,}031,\quad x_2\approx 62{,}542,\quad x_3\approx 126{,}048,\quad x_4\approx 254{,}040,\quad x_5=512,
+\]
+\[
+x_6\approx 1031{,}899,\quad x_7\approx 2079{,}717,\quad x_8\approx 4191{,}519,\quad x_9\approx 8447{,}703.
+\]
+Conferência: $x_2+x_4+x_6+x_8\approx 5540$ e $O\approx 31{,}031+126{,}048+512+2079{,}717+8447{,}703\approx 11196{,}5$. Além disso, $x_1x_3x_5x_7x_9=512^5=2^{45}$ para qualquer $t$, pois os expoentes de $t$ ($-4,-2,0,2,4$) se cancelam.
+
+\textbf{Passo 8: o dado impresso e a leitura provável.} Para $d$ inteiro, $E=512\left(2^{3d}+2^{d}+2^{-d}+2^{-3d}\right)$ assume os valores $2048$ ($d=0$), $5440$ ($d=\pm1$), $34952$ ($d=\pm2$), $266305$ ($d=\pm3$), e assim por diante. Nenhum deles é $5540$. O mais próximo é $5440$, que difere só no algarismo das centenas. Isso é indício forte de erro de digitação, mas não prova, e o caderno oficial imprime 5540, de modo que a discrepância está no próprio documento. Com $E=5440$, temos $\dfrac{E}{512}=\dfrac{85}{8}$ e
+\[
+8p^3-16p-85=(2p-5)(4p^2+10p+17)=0.
+\]
+O fator quadrático tem discriminante $100-272<0$, logo $p=\dfrac52$ é a única raiz real (e $p>2$). Então $t+t^{-1}=\dfrac52$ dá $2t^2-5t+2=0$, isto é, $(2t-1)(t-2)=0$. Com $t>1$, temos $t=2$ e $d=1$. Pelo Passo 3,
+\[
+O=5440\cdot\frac52-512\cdot\frac{25}{4}+512=13600-3200+512=10912.
+\]
+
+\textbf{Passo 9: verificação direta do caso $E=5440$.} Com $t=2$, $x_k=2^{k+4}$, ou seja, $x_1,\dots,x_9=2^5,\dots,2^{13}$, e $\log_2 x_k=k+4$ é progressão aritmética de razão $1>0$. Produto dos ímpares: $2^{5+7+9+11+13}=2^{45}$. Soma dos pares: $64+256+1024+4096=5440$. Soma dos ímpares: $32+128+512+2048+8192=10912$.
+
+\textbf{Passo 10: casos-limite e ordens de grandeza.} Para $d\to0^+$, temos $p\to2$, $E\to2048$ e $O\to2560$, que são os valores do caso degenerado $d=0$. Isso é coerente com $E$ crescente em $d$, já que $5540>2048$. Em ambos os casos $x_9$ domina a soma (cerca de $8{,}4\cdot10^3$), e $O\approx 1{,}1\cdot10^4$. Todos os $x_k$ são positivos e a grandeza pedida é adimensional.
+
+\textbf{Conclusão.} A resposta rigorosa ao enunciado impresso ($E=5540$) é $O=5540p-512p^2+512\approx 11196{,}5$, com $p\approx 2{,}5116$ a única raiz real de $128p^3-256p-1385=0$. Esse valor é irracional. A intenção mais provável da banca é $E=5440$, o único valor próximo obtido com $d$ inteiro. Nesse caso, a resposta pretendida é $10912$.
+
+ANSWER: pelo enunciado impresso ($x_2+x_4+x_6+x_8=5540$), $x_1+x_3+x_5+x_7+x_9=5540p-512p^2+512\approx 11196{,}5$, com $p\approx 2{,}5116$ raiz real única de $128p^3-256p-1385=0$ (valor irracional); para o valor provavelmente pretendido, $x_2+x_4+x_6+x_8=5440$, a resposta é $10912$.%
+\newpage%
+\section*{Questão 6}
+
+\section*{Solução}
+
+Como $f$ é escolhida ao acaso, todas as $9!$ bijeções de $\mathcal{S}$ em $\mathcal{S}$ são equiprováveis. Logo
+\[
+P=\frac{N}{9!}, \qquad N=\#\{f \text{ bijetora} : f^{(9)}(1)=1\}.
+\]
+
+\textbf{Passo 1: comprimento do ciclo de $1$.} Considere os dez valores $f^{(0)}(1)=1,\ f^{(1)}(1),\ \dots,\ f^{(9)}(1)$, todos em $\mathcal{S}$, que tem 9 elementos. Pelo princípio da casa dos pombos, existem $0\le i<j\le 9$ com $f^{(i)}(1)=f^{(j)}(1)$. Como $f^{(i)}$ é injetiva e $f^{(j)}(1)=f^{(i)}\big(f^{(j-i)}(1)\big)$, obtemos $f^{(j-i)}(1)=1$. Portanto existe o menor inteiro $L\ge 1$ com $f^{(L)}(1)=1$, e $L\le 9$. Os valores $1,f(1),\dots,f^{(L-1)}(1)$ são distintos: se $f^{(a)}(1)=f^{(b)}(1)$ com $0\le a<b<L$, a mesma injetividade daria $f^{(b-a)}(1)=1$ com $0<b-a<L$, o que contradiz a minimalidade de $L$. Assim $L$ é o comprimento do ciclo de $f$ que contém $1$.
+
+\textbf{Passo 2: caracterização de $f^{(m)}(1)=1$.} Afirmo que $f^{(m)}(1)=1 \iff L\mid m$. Escreva $m=qL+r$ com $0\le r<L$. Como $f^{(L)}(1)=1$, vale $f^{(qL)}(1)=1$ (por indução em $q$), e $f^{(m)}=f^{(r)}\circ f^{(qL)}$. Logo
+\[
+f^{(m)}(1)=f^{(r)}\big(f^{(qL)}(1)\big)=f^{(r)}(1).
+\]
+Se $L\mid m$, então $r=0$ e $f^{(m)}(1)=1$. Reciprocamente, se $f^{(m)}(1)=1$, então $f^{(r)}(1)=1$ com $0\le r<L$; pela minimalidade de $L$, $r=0$, ou seja, $L\mid m$.
+
+Para $m=9$: $f^{(9)}(1)=1 \iff L\in\{1,3,9\}$, que são os divisores de $9$.
+
+\textbf{Passo 3: número de bijeções com ciclo de $1$ de comprimento $L$.} Fixe $L\in\{1,\dots,9\}$ e seja $N_L$ o número de bijeções cujo ciclo de $1$ tem comprimento $L$. Para cada uma delas, os elementos $a_1=1$ e $a_{k+1}=f(a_k)$ ($k=1,\dots,L-1$) são distintos, com $f(a_L)=1$. Assim, cada bijeção determina:
+\begin{itemize}
+\item[(i)] uma sequência ordenada $(a_2,\dots,a_L)$ de $L-1$ elementos distintos de $\{2,\dots,9\}$, em número de $8\cdot 7\cdots(9-L+1)=\dfrac{8!}{(9-L)!}$;
+\item[(ii)] a restrição de $f$ ao conjunto $R$ dos $9-L$ elementos restantes. Como $f$ leva $A=\{a_1,\dots,a_L\}$ em $A$ e é bijetiva, ela leva $R$ bijetivamente em $R$. Há $(9-L)!$ escolhas.
+\end{itemize}
+Reciprocamente, cada par (sequência, permutação de $R$) define uma única bijeção, com $f(a_k)=a_{k+1}$, $f(a_L)=1$ e $f|_R$ dada, cujo ciclo de $1$ tem comprimento $L$. Essa correspondência é bijetiva, logo
+\[
+N_L=\frac{8!}{(9-L)!}\cdot(9-L)!=8!
+\]
+para todo $L$. Como conferência, $\sum_{L=1}^{9}N_L=9\cdot 8!=9!$.
+
+\textbf{Passo 4: probabilidade.} Os casos favoráveis são $L=1,3,9$. Então
+\[
+N=N_1+N_3+N_9=3\cdot 8!,
+\qquad
+P=\frac{3\cdot 8!}{9!}=\frac{3}{9}=\frac{1}{3}.
+\]
+Equivalentemente, cada valor de $L$ tem probabilidade $1/9$, e três deles são favoráveis.
+
+\textbf{Conferência.}
+\begin{itemize}
+\item Caso $L=1$: $f(1)$ é uniforme em $\mathcal{S}$, logo $P(f(1)=1)=1/9$, o que coincide com $N_1/9!=8!/9!$.
+\item Caso análogo menor: $\mathcal{S}=\{1,2,3\}$ e $f^{(3)}(1)=1$. A fórmula dá $\#\{L\le 3 : L\mid 3\}/3=2/3$. Listando as 6 bijeções, são favoráveis a identidade, $(2\,3)$, $(1\,2\,3)$ e $(1\,3\,2)$, ou seja, 4 casos, e $4/6=2/3$. As transposições $(1\,2)$ e $(1\,3)$ dão $f^{(3)}(1)=2$ e $f^{(3)}(1)=3$, respectivamente, e não são favoráveis.
+\item Uma enumeração completa das $9!$ bijeções confirma $N=120960=3\cdot 8!$.
+\item Ordem de grandeza: $1/3\approx 0,33$, cerca de $33\%$. É razoável, pois há três valores possíveis de $L$ favoráveis, cada um com probabilidade $1/9$.
+\end{itemize}
+
+Resposta: a probabilidade é $\dfrac{1}{3}$.
+
+ANSWER: $\dfrac{1}{3}$%
+\newpage%
+\section*{Questão 7}
+
+\section*{Solução}
+
+Escrevo $C(a,b)=\binom{a}{b}$ e $T=\operatorname{tr}(\mathbf{A}\cdot\mathbf{B})$. Valem as convenções do enunciado para os coeficientes binomiais.
+
+\textbf{Passo 1 (traço como soma).} $\mathbf{A}\cdot\mathbf{B}$ é $3\times 3$ e $(\mathbf{A}\cdot\mathbf{B})_{kk}=\sum_{j=1}^{n+2}a_{kj}\,b_{jk}$ para $k=1,2,3$. Logo
+\[
+T=\sum_{j=1}^{n+2}\bigl(a_{1j}b_{j1}+a_{2j}b_{j2}+a_{3j}b_{j3}\bigr).
+\]
+Usando $b_{j1}=b_{j2}=\binom{n}{n+2-j}$ e $b_{j3}=\binom{n+1}{n+2-j}$:
+\[
+T=\sum_{j=1}^{n+2}\bigl(a_{1j}+a_{2j}\bigr)\binom{n}{n+2-j}+\sum_{j=1}^{n+2}a_{3j}\binom{n+1}{n+2-j}.
+\]
+
+\textbf{Passo 2 (relação de Stifel).} Para $m\ge 0$ e $k\in\mathbb{Z}$ vale $\binom{m}{k-1}+\binom{m}{k}=\binom{m+1}{k}$. Para $1\le k\le m$ é a relação usual; para $k<0$ ou $k>m+1$ os três termos são nulos; para $k=0$ e $k=m+1$ basta notar que $\binom{m}{-1}=\binom{m}{m+1}=0$. Com $k=j-2$:
+\[
+a_{1j}+a_{2j}=\binom{m}{j-3}+\binom{m}{j-2}=\binom{m+1}{j-2}.
+\]
+Assim $T=S_1+S_2$, em que
+\[
+S_1=\sum_{j=1}^{n+2}\binom{m+1}{j-2}\binom{n}{n+2-j},\qquad S_2=\sum_{j=1}^{n+2}\binom{m}{j-1}\binom{n+1}{n+2-j}.
+\]
+
+\textbf{Passo 3 (identidade de Vandermonde).} Para inteiros $a,b\ge 0$ e $s$ inteiro,
+\[
+\sum_{k\in\mathbb{Z}}\binom{a}{k}\binom{b}{s-k}=\binom{a+b}{s},
+\]
+pois ambos os lados são o coeficiente de $x^s$ em $(1+x)^a(1+x)^b=(1+x)^{a+b}$. A soma é finita, pois só há termos não nulos com $0\le k\le a$.
+
+\begin{itemize}
+\item Em $S_1$, faça $k=j-2$. Quando $j$ percorre $\{1,\ldots,n+2\}$, $k$ percorre $\{-1,\ldots,n\}$, e $n+2-j=n-k$. Os termos com $k\le -1$ são nulos por $\binom{m+1}{k}=0$ e os com $k\ge n+1$ são nulos por $\binom{n}{n-k}=0$. Logo $S_1=\sum_{k\in\mathbb{Z}}\binom{m+1}{k}\binom{n}{n-k}=\binom{m+n+1}{n}$, por Vandermonde com $a=m+1$, $b=n$, $s=n$.
+\item Em $S_2$, faça $k=j-1\in\{0,\ldots,n+1\}$, com $n+2-j=(n+1)-k$. Os termos com $k<0$ são nulos por $\binom{m}{k}=0$ e os com $k\ge n+2$ são nulos por $\binom{n+1}{n+1-k}=0$. Logo $S_2=\binom{m+n+1}{n+1}$, por Vandermonde com $a=m$, $b=n+1$, $s=n+1$.
+\end{itemize}
+
+\textbf{Passo 4 (forma fechada).} Pela relação de Stifel com $N=m+n+1$ e $k=n+1$:
+\[
+T=\binom{m+n+1}{n}+\binom{m+n+1}{n+1}=\binom{m+n+2}{n+1}.
+\]
+Esta identidade vale para quaisquer inteiros positivos $m$ e $n$; a hipótese $m>n$ não foi necessária.
+
+\textbf{Conferência.} Para $m=2$ e $n=1$:
+\[
+\mathbf{A}=\begin{pmatrix}0&0&1\\0&1&2\\1&2&1\end{pmatrix},\qquad \mathbf{B}=\begin{pmatrix}0&0&1\\1&1&2\\1&1&1\end{pmatrix}.
+\]
+As entradas diagonais de $\mathbf{A}\cdot\mathbf{B}$ são $1$, $3$ e $6$, logo $T=10=\binom{5}{2}$, como previsto.
+
+\textbf{Passo 5 (valores pedidos).} Para $m=2^{10}=1024$ e $n=10^3=1000$ temos $m+n+2=2026$ e $n+1=1001$. Portanto
+\[
+T=\binom{2026}{1001}.
+\]
+
+\textbf{Passo 6 (divisibilidade por 1013).}
+\begin{enumerate}
+\item $1013$ é primo: $\sqrt{1013}<32$, e $1013$ não é divisível por nenhum primo $p\le 31$ (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31).
+\item Como $2026-1001=1025$, temos $\dfrac{2026!}{1025!}=1026\cdot 1027\cdots 2026$, produto de $1001$ fatores. Logo
+\[
+1001!\cdot\binom{2026}{1001}=\frac{2026!}{1025!}=\prod_{k=1026}^{2026}k=:P.
+\]
+\item $2026=2\cdot 1013$ é um dos fatores de $P$, portanto $1013\mid P=1001!\cdot\binom{2026}{1001}$.
+\item Os fatores de $1001!$ são os inteiros de $1$ a $1001$, todos menores que o primo $1013$; logo $1013\nmid 1001!$. Como $1013$ é primo, o lema de Euclides dá $1013\mid\binom{2026}{1001}$.
+\end{enumerate}
+
+\textit{Verificação alternativa (Lucas).} Na base $1013$, $2026=(2,0)$ e $1001=(0,1001)$. Pelo teorema de Lucas, $\binom{2026}{1001}\equiv\binom{2}{0}\binom{0}{1001}=0 \pmod{1013}$.
+
+\textit{Observação.} O único múltiplo de $1013$ em $[1026,2026]$ é $2026$, que contribui com a potência $1013^1$. Como $1001!$ não tem fator $1013$, a divisibilidade é exata de ordem $1$: $1013$ divide $\binom{2026}{1001}$, mas $1013^2$ não divide. O número $\binom{2026}{1001}$ tem $609$ algarismos, por isso a divisibilidade é provada pelo argumento acima e não por cálculo direto do valor.
+
+ANSWER: $\operatorname{tr}(\mathbf{A}\cdot\mathbf{B})=\binom{m+n+2}{n+1}$; para $m=2^{10}$ e $n=10^3$ é $\binom{2026}{1001}$, que é divisível por $1013$.%
+\newpage%
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Hipóteses e ferramentas.} Supomos $\operatorname{sen}\alpha\neq 0$ e $\cos(j\alpha)\neq 0$ para $j=1,\dots,n+1$. Usaremos as fórmulas $\cos P+\cos Q=2\cos\frac{P+Q}{2}\cos\frac{P-Q}{2}$ e $\operatorname{sen}(A-B)=\operatorname{sen}A\cos B-\cos A\operatorname{sen}B$, válidas para quaisquer reais $P,Q,A,B$; também $\tan x=\frac{\operatorname{sen}x}{\cos x}$ quando $\cos x\neq 0$, e $\cos(-x)=\cos x$.
+
+\textbf{Passo 1 (fatoração do denominador).} Para $k\in\{1,\dots,n\}$, tomamos $P=\alpha$ e $Q=(2k+1)\alpha$. Então $\frac{P+Q}{2}=(k+1)\alpha$ e $\frac{P-Q}{2}=-k\alpha$. Como o cosseno é par,
+\[
+\cos\alpha+\cos(2k+1)\alpha=2\cos(k\alpha)\cos((k+1)\alpha)\qquad (1)
+\]
+Esta igualdade vale para todo $\alpha$, sem hipóteses.
+
+\textbf{Passo 2 (identidade telescópica).} Para $k\in\{1,\dots,n\}$, como $\alpha=(k+1)\alpha-k\alpha$,
+\[
+\operatorname{sen}\alpha=\operatorname{sen}((k+1)\alpha)\cos(k\alpha)-\cos((k+1)\alpha)\operatorname{sen}(k\alpha).
+\]
+Os índices $k$ e $k+1$ pertencem a $\{1,\dots,n+1\}$, logo $\cos(k\alpha)\neq 0$ e $\cos((k+1)\alpha)\neq 0$. Dividindo por $\cos(k\alpha)\cos((k+1)\alpha)$,
+\[
+\frac{\operatorname{sen}\alpha}{\cos(k\alpha)\cos((k+1)\alpha)}=\tan((k+1)\alpha)-\tan(k\alpha)\qquad (2)
+\]
+
+\textbf{Passo 3 (uso de $\operatorname{sen}\alpha\neq 0$).} Seja $c_k=\cos(k\alpha)\cos((k+1)\alpha)$, que é não nulo. Por (1), a parcela de $S_n$ é $\frac{1}{2c_k}$. Como $\operatorname{sen}\alpha\neq 0$, podemos escrever $\frac{1}{2c_k}=\frac{1}{2\operatorname{sen}\alpha}\cdot\frac{\operatorname{sen}\alpha}{c_k}$. Por (2),
+\[
+\frac{1}{\cos\alpha+\cos(2k+1)\alpha}=\frac{\tan((k+1)\alpha)-\tan(k\alpha)}{2\operatorname{sen}\alpha}\qquad (3)
+\]
+
+\textbf{Passo 4 (soma telescópica).} Seja $T_j=\tan(j\alpha)$, definida para $1\le j\le n+1$ porque $\cos(j\alpha)\neq 0$. Somando (3) para $k=1,\dots,n$, temos $\sum_{k=1}^{n}(T_{k+1}-T_k)=T_{n+1}-T_1$, pois os termos intermediários se cancelam. Logo
+\[
+S_n=\frac{T_{n+1}-T_1}{2\operatorname{sen}\alpha}=\frac{\tan((n+1)\alpha)-\tan\alpha}{2\operatorname{sen}\alpha}\qquad (4)
+\]
+
+\textbf{Passo 5 (diferença de tangentes).} Como $\cos\alpha\neq 0$ (hipótese com $j=1$) e $\cos((n+1)\alpha)\neq 0$ (hipótese com $j=n+1$), o denominador comum $\cos((n+1)\alpha)\cos\alpha$ é não nulo. Então
+\[
+\tan((n+1)\alpha)-\tan\alpha=\frac{\operatorname{sen}((n+1)\alpha)\cos\alpha-\cos((n+1)\alpha)\operatorname{sen}\alpha}{\cos((n+1)\alpha)\cos\alpha}=\frac{\operatorname{sen}(n\alpha)}{\cos((n+1)\alpha)\cos\alpha}\qquad (5)
+\]
+pois $(n+1)\alpha-\alpha=n\alpha$.
+
+\textbf{Passo 6 (conclusão).} Substituindo (5) em (4) e usando $2\operatorname{sen}\alpha\cos\alpha=\operatorname{sen}(2\alpha)$,
+\[
+S_n=\frac{\operatorname{sen}(n\alpha)}{2\operatorname{sen}\alpha\cos\alpha\cos((n+1)\alpha)}=\frac{\operatorname{sen}(n\alpha)}{\operatorname{sen}(2\alpha)\cos((n+1)\alpha)}.
+\]
+O denominador é não nulo: $\operatorname{sen}(2\alpha)=2\operatorname{sen}\alpha\cos\alpha\neq 0$ e $\cos((n+1)\alpha)\neq 0$. Fica demonstrada a identidade para $n\ge 1$.
+
+\textbf{Caso $n=0$ (se $0\in\mathbb{N}$).} A soma é vazia, logo $S_0=0$. As hipóteses se reduzem a $\operatorname{sen}\alpha\neq 0$ e $\cos\alpha\neq 0$, e o lado direito vale $\frac{\operatorname{sen}0}{\operatorname{sen}(2\alpha)\cos\alpha}=0$. A identidade vale também neste caso.
+
+\textbf{Por que as hipóteses são necessárias.}
+\begin{itemize}
+\item Por (1), $\cos\alpha+\cos(2k+1)\alpha=0$ se e somente se $\cos(k\alpha)\cos((k+1)\alpha)=0$. Como $\{k,k+1:1\le k\le n\}=\{1,\dots,n+1\}$ para $n\ge 1$, a soma $S_n$ está definida exatamente quando $\cos(j\alpha)\neq 0$ para $j=1,\dots,n+1$.
+\item O denominador do lado direito, $2\operatorname{sen}\alpha\cos\alpha\cos((n+1)\alpha)$, é não nulo exatamente quando $\operatorname{sen}\alpha\neq 0$, $\cos\alpha\neq 0$ e $\cos((n+1)\alpha)\neq 0$. Portanto as hipóteses são exatamente as condições para os dois lados estarem definidos.
+\item Se $\operatorname{sen}\alpha=0$, isto é $\alpha=m\pi$, então $\operatorname{sen}(n\alpha)=\operatorname{sen}(2\alpha)=0$ e o lado direito é $\frac{0}{0}$. Exemplo: $\alpha=\pi$, $n=1$. Aqui $\cos\pi=-1$ e $\cos2\pi=1$ são não nulos, e $S_1=\frac{1}{\cos\pi+\cos3\pi}=-\frac12$ está definido, mas o lado direito é $\frac{\operatorname{sen}\pi}{\operatorname{sen}2\pi\cos2\pi}=\frac{0}{0}$. Além disso, a divisão por $\operatorname{sen}\alpha$ em (3) e (4) não é permitida.
+\item Se $\cos((n+1)\alpha)=0$: exemplo $\alpha=\frac{\pi}{4}$, $n=1$. Então $\cos2\alpha=0$, e o termo $k=1$ tem denominador $\cos\frac{\pi}{4}+\cos\frac{3\pi}{4}=0$. Ambos os lados são indefinidos, logo a hipótese com $j=n+1$ não é supérflua. Analogamente, $\cos\alpha=0$ anula $\cos\alpha+\cos3\alpha=2\cos\alpha\cos2\alpha$ e torna indefinido o lado direito.
+\end{itemize}
+
+\textbf{Verificações numéricas e em casos particulares.}
+\begin{itemize}
+\item $n=1$, $\alpha=\frac{\pi}{6}$: $\operatorname{sen}\alpha=\frac12$, $\cos\alpha=\frac{\sqrt3}{2}$ e $\cos2\alpha=\frac12$ são não nulos ($j=1,2$). Esquerdo: $S_1=\frac{1}{\cos\frac{\pi}{6}+\cos\frac{\pi}{2}}=\frac{2}{\sqrt3}$. Direito: $\frac{\operatorname{sen}\frac{\pi}{6}}{\operatorname{sen}\frac{\pi}{3}\cos\frac{\pi}{3}}=\frac{1/2}{\frac{\sqrt3}{2}\cdot\frac12}=\frac{2}{\sqrt3}$. Coincidem. Aqui $\cos3\alpha=0$, mas $j=3>n+1$ não é hipótese, e o denominador $\frac{\sqrt3}{2}$ é não nulo.
+\item $n=2$, $\alpha=\frac{\pi}{8}$: $\cos\frac{\pi}{8}$, $\cos\frac{\pi}{4}$ e $\cos\frac{3\pi}{8}$ são não nulos. Esquerdo: $\frac{1}{\cos\frac{\pi}{8}+\cos\frac{3\pi}{8}}+\frac{1}{\cos\frac{\pi}{8}+\cos\frac{5\pi}{8}}\approx 0{,}76537+1{,}84776=2{,}61313$. Direito: $\frac{\operatorname{sen}\frac{\pi}{4}}{\operatorname{sen}\frac{\pi}{4}\cos\frac{3\pi}{8}}=\frac{1}{\cos\frac{3\pi}{8}}=\frac{2}{\sqrt{2-\sqrt2}}\approx 2{,}61313$.
+\item $n=3$, $\alpha=\frac{\pi}{3}$: $\cos\alpha=\frac12$, $\cos2\alpha=-\frac12$, $\cos3\alpha=-1$ e $\cos4\alpha=-\frac12$ são não nulos. Termos: $k=1$: $\frac{1}{\frac12-1}=-2$; $k=2$: $\frac{1}{\frac12+\frac12}=1$; $k=3$: $\frac{1}{\frac12+\frac12}=1$. Logo $S_3=0$. Direito: $\operatorname{sen}\pi=0$ e $\operatorname{sen}\frac{2\pi}{3}\cos\frac{4\pi}{3}=-\frac{\sqrt3}{4}\neq 0$, logo o lado direito vale $0$.
+\item $n=3$, $\alpha=0{,}71$ rad: $\cos(j\alpha)\approx 0{,}7584;\ 0{,}1502;\ -0{,}5305;\ -0{,}9549$ para $j=1,\dots,4$, todos não nulos. Os termos são $4{,}388842$, $-6{,}273816$ e $0{,}987037$, cuja soma é $-0{,}897937$. O lado direito também vale $\approx -0{,}897937$.
+\end{itemize}
+
+ANSWER: $S_n=\dfrac{\operatorname{sen}(n\alpha)}{\operatorname{sen}(2\alpha)\cos((n+1)\alpha)}$, identidade demonstrada.%
+\newpage%
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{Dados da elipse.} Dividindo a equação por 16, obtemos $\dfrac{x^2}{16}+\dfrac{y^2}{4}=1$, com $a=4$ e $b=2$. Logo
+$$c=\sqrt{a^2-b^2}=\sqrt{12}=2\sqrt{3},$$
+a distância focal é $2c=4\sqrt{3}$, e as retas pedidas são $x=\pm 2\sqrt{3}\approx \pm 3{,}46$.
+
+\textbf{1. Normal em $P$.} Seja $P=(x_0,y_0)$ com $x_0^2+4y_0^2=16$. Derivando implicitamente, $2x+8yy'=0$, logo um vetor tangente à elipse em $P$ é $(4y_0,-x_0)$. Como $(x_0,4y_0)\cdot(4y_0,-x_0)=4x_0y_0-4x_0y_0=0$, a normal em $P$ tem direção $(x_0,4y_0)$, que é não nulo pois $P\neq(0,0)$. A normal é a reta
+$$(x,y)=(x_0,y_0)+s\,(x_0,4y_0),\qquad s\in\mathbb{R}.$$
+
+\textbf{2. Ponto $Q$.} Se $y_0=0$, então $P=(\pm 4,0)$, a normal é o próprio eixo $x$ e $Q$ não é definido; esses dois casos são excluídos. Para $y_0\neq 0$, a normal corta o eixo $x$ quando $y_0+4y_0s=0$, isto é, $s=-\frac14$. Assim
+$$Q=\left(x_0-\frac{x_0}{4},\,0\right)=\left(\frac{3x_0}{4},\,0\right).$$
+(Esta é a forma geral $x_Q=\frac{a^2-b^2}{a^2}\,x_0$, com $\frac{12}{16}=\frac34$.)
+
+\textbf{3. Ponto médio $M=(X,Y)$ de $PQ$.}
+\begin{align*}
+X&=\frac{1}{2}\left(x_0+\frac{3x_0}{4}\right)=\frac{7x_0}{8},\\
+Y&=\frac{1}{2}\left(y_0+0\right)=\frac{y_0}{2}.
+\end{align*}
+
+\textbf{4. Lugar geométrico de $M$.} Temos $x_0=\frac{8X}{7}$ e $y_0=2Y$. Substituindo em $x_0^2+4y_0^2=16$:
+\begin{align*}
+\frac{64X^2}{49}+16Y^2&=16 \quad\Longleftrightarrow\quad \frac{4X^2}{49}+Y^2=1,
+\end{align*}
+ou seja, $\dfrac{X^2}{(7/2)^2}+Y^2=1$: elipse de semieixo $\frac72$ sobre o eixo $x$ e semieixo $1$ sobre o eixo $y$.
+
+A correspondência é biunívoca: a partir de $M=(X,Y)$ com $Y\neq 0$, recupera-se $P=\left(\frac{8X}{7},2Y\right)$, que está na elipse original pela equivalência acima. Os pontos com $Y=0$, ou seja $\left(\pm\frac72,0\right)$, vêm de $P=(\pm4,0)$ e são excluídos. Isso não altera as interseções pedidas.
+
+\textbf{5. Interseção com $x=\pm c$.} Como $c^2=12<\frac{49}{4}=12{,}25$, a reta $x=\pm c$ corta a elipse do lugar geométrico em dois pontos. Com $X^2=c^2=12$:
+\begin{align*}
+\frac{4\cdot 12}{49}+Y^2&=1,\\
+Y^2&=\frac{49-48}{49}=\frac{1}{49},\\
+Y&=\pm\frac{1}{7}.
+\end{align*}
+Como $Y\neq 0$, os quatro pontos pertencem ao lugar geométrico:
+$$\left(2\sqrt{3},\ \tfrac17\right),\quad \left(2\sqrt{3},\ -\tfrac17\right),\quad \left(-2\sqrt{3},\ \tfrac17\right),\quad \left(-2\sqrt{3},\ -\tfrac17\right),$$
+ou aproximadamente $(\pm 3{,}46;\ \pm 0{,}14)$.
+
+\textbf{6. Verificações.}
+\begin{itemize}
+\item \emph{Ponto concreto:} $M=\left(2\sqrt3,\frac17\right)$ vem de $P=\left(\frac{16\sqrt3}{7},\frac27\right)$, com $\frac{768}{49}+\frac{16}{49}=16$. Então $Q=\left(\frac{12\sqrt3}{7},0\right)$, o ponto médio de $PQ$ é $\left(2\sqrt3,\frac17\right)$, e $\overrightarrow{PQ}=-\frac{2}{7}(2\sqrt3,1)$ é paralelo a $(x_0,4y_0)=\frac{8}{7}(2\sqrt3,1)$. Logo $Q$ está na normal.
+\item \emph{Caso particular:} $P=(0,2)$ tem normal $x=0$, $Q=(0,0)$ e $M=(0,1)$, que satisfaz $\frac{4\cdot 0}{49}+1=1$.
+\item \emph{Ordem de grandeza e unidades:} $c\approx 3{,}46$ está logo abaixo do semieixo $3{,}5$, então as retas cortam a elipse perto dos vértices $(\pm 3{,}5;0)$, com $|Y|=\frac17\approx 0{,}14<1$. O enunciado não define unidades; as coordenadas são adimensionais.
+\item \emph{Simetria:} os quatro pontos são simétricos em relação aos dois eixos, como esperado.
+\end{itemize}
+
+ANSWER: $\left(\pm 2\sqrt{3},\ \pm\frac{1}{7}\right)$, isto é, $\left(2\sqrt{3},\frac{1}{7}\right)$, $\left(2\sqrt{3},-\frac{1}{7}\right)$, $\left(-2\sqrt{3},\frac{1}{7}\right)$ e $\left(-2\sqrt{3},-\frac{1}{7}\right)$.%
+\newpage%
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Notação e hipóteses.} Seja $O$ o centro de $\mathcal{S}$ e $R=6\,\text{cm}$. Distingo a superfície esférica $\mathcal{S}=\{X:\ |X|=R\}$ da bola fechada $\mathcal{K}=\{X:\ |X|\le R\}$. "Contido na esfera" significa que o sólido do prisma está em $\mathcal{K}$. Como o prisma é reto, tomo o eixo $z$ paralelo às arestas laterais, com origem em $O$. As bases estão nos planos $z=a$ e $z=a+h$, com $h>0$ a altura. Um vértice de uma base é $(p_i,a)$, e o vértice correspondente da outra base é $(p_i,a+h)$, com $p_i\in\mathbb{R}^2$ ($i=1,2,3,4$, em ordem ao longo do contorno da base). Não supomos a base convexa nem quadrada.
+
+Usarei apenas que os oito vértices estão em $\mathcal{K}$. Assim a cota obtida vale qualquer que seja a face com vértices sobre $\mathcal{S}$ (base ou lateral).
+
+\textbf{Passo 1 (a base cabe num disco).} Os vértices $(p_i,a)$ e $(p_i,a+h)$ pertencem a $\mathcal{K}$, logo
+\[
+|p_i|^2\le R^2-a^2,\qquad |p_i|^2\le R^2-(a+h)^2 .
+\]
+Portanto $|p_i|^2\le R^2-M$, com $M=\max\{a^2,(a+h)^2\}$. Os quatro vértices da base estão no disco de centro $0$ e raio $r=\sqrt{R^2-M}$.
+
+\textbf{Passo 2 (área da base).} Seja $u\times v=u_1v_2-u_2v_1$ em $\mathbb{R}^2$. Pela fórmula de Gauss (cadarço), a área de um polígono simples, convexo ou não, é
+\[
+S=\tfrac12\left|p_1\times p_2+p_2\times p_3+p_3\times p_4+p_4\times p_1\right| .
+\]
+Expandindo e usando $-p_3\times p_2=p_2\times p_3$ e $-p_1\times p_4=p_4\times p_1$, obtemos
+\[
+(p_3-p_1)\times(p_4-p_2)=p_1\times p_2+p_2\times p_3+p_3\times p_4+p_4\times p_1 .
+\]
+Logo, se $\theta$ é o ângulo entre as diagonais $p_1p_3$ e $p_2p_4$,
+\[
+S=\tfrac12\,|p_3-p_1|\,|p_4-p_2|\,\operatorname{sen}\theta\le \tfrac12\,|p_3-p_1|\,|p_4-p_2| .
+\]
+Como $|p_3-p_1|\le |p_3|+|p_1|\le 2r$, e o mesmo vale para $|p_4-p_2|$, segue
+\[
+S\le 2r^2 .
+\]
+Para a igualdade, é preciso $|p_3-p_1|=|p_4-p_2|=2r$ e $\theta=90^\circ$. Como $|p_1|,|p_3|\le r$ e $|p_1|+|p_3|\ge|p_3-p_1|=2r$, vale $|p_1|=|p_3|=r$. Além disso $|p_3-p_1|^2=2r^2-2\,p_1\cdot p_3=4r^2$ dá $p_1\cdot p_3=-|p_1||p_3|$, e a igualdade em Cauchy–Schwarz força $p_3=-p_1$. O mesmo vale para $p_2,p_4$. Logo a base é um quadrado inscrito no círculo de raio $r$, com diagonais diâmetros perpendiculares.
+
+\textbf{Passo 3 (a altura).} Afirmo que $M\ge h^2/4$, com igualdade se e somente se $a=-h/2$. Como $a^2-(a+h)^2=-h(2a+h)$:
+\begin{itemize}
+\item se $2a+h\ge 0$, então $M=(a+h)^2$ e $a+h=\tfrac h2+\tfrac{2a+h}{2}\ge \tfrac h2$;
+\item se $2a+h\le 0$, então $M=a^2$ e $-a=\tfrac h2-\tfrac{2a+h}{2}\ge \tfrac h2$.
+\end{itemize}
+Nos dois casos $M\ge h^2/4$, e a igualdade exige $2a+h=0$. Ou seja, as bases devem ser simétricas em relação a $O$, nos planos $z=\mp h/2$.
+
+\textbf{Passo 4 (cota para o volume).} Pelos passos 1 e 3, $r^2=R^2-M\le R^2-\tfrac{h^2}{4}$. Com $R=6$,
+\[
+S\le 2r^2\le 2R^2-\frac{h^2}{2}=72-\frac{h^2}{2}\qquad(\text{cm}^2).
+\]
+Como $h>0$ e $V=Sh$ para o prisma reto,
+\[
+V\le 72h-\frac{h^3}{2}.
+\]
+Expandindo, $(h-4\sqrt3)^2(h+8\sqrt3)=h^3-144h+384\sqrt3$. Logo vale a identidade
+\[
+192\sqrt3-\Big(72h-\frac{h^3}{2}\Big)=\frac12\big(h-4\sqrt3\big)^2\big(h+8\sqrt3\big)\ge 0 ,
+\]
+pois $h+8\sqrt3>0$. Assim $V\le 192\sqrt3\ \text{cm}^3$ para todo $h>0$, com igualdade somente se $h=4\sqrt3\ \text{cm}$.
+
+\textbf{Passo 5 (o máximo é atingido e é único).} A igualdade $V=192\sqrt3$ exige, ao mesmo tempo: (i) base quadrada inscrita no círculo de raio $r$ centrado em $0$ (passo 2); (ii) $a=-h/2$ (passo 3); (iii) $h=4\sqrt3\ \text{cm}$ (passo 4). Então
+\[
+r^2=R^2-\frac{h^2}{4}=36-12=24,\qquad r=2\sqrt6\ \text{cm}.
+\]
+A diagonal da base vale $2r=4\sqrt6\ \text{cm}$, e o lado vale $\ell=\dfrac{2r}{\sqrt2}=4\sqrt3\ \text{cm}$.
+
+Admissibilidade: com $a=-2\sqrt3$, as bases estão em $z=\mp 2\sqrt3$. Cada vértice satisfaz $|X|^2=r^2+(2\sqrt3)^2=24+12=36$, logo os oito vértices estão em $\mathcal{S}$, e em particular os quatro de cada base, como pede o enunciado. Como $\mathcal{K}$ é convexa e o prisma é o fecho convexo de seus vértices, o prisma está contido em $\mathcal{K}$. Portanto $192\sqrt3$ é atingido. O prisma ótimo é o cubo de aresta $4\sqrt3\ \text{cm}$ inscrito em $\mathcal{S}$, e todos os cubos inscritos são congruentes entre si.
+
+\textbf{Conferências.}
+\begin{itemize}
+\item \textit{Checagem para bases quadradas (outra desigualdade):} se a base é quadrada de lado $\ell$, a diagonal espacial $\sqrt{2\ell^2+h^2}$ liga dois vértices, logo $2\ell^2+h^2\le 144$. Pela desigualdade entre médias, $(\ell^4h^2)^{1/3}\le\frac{2\ell^2+h^2}{3}\le 48$, donde $\ell^2h\le 48^{3/2}=192\sqrt3$. O resultado coincide. No ótimo, $\ell\sqrt3=12=2R$.
+\item \textit{Casos limites:} $72h-\tfrac{h^3}{2}\to 0$ quando $h\to 0$ ou $h\to 12=2R$, que é a altura máxima possível pois $R^2\ge M\ge h^2/4$. Esses são prismas degenerados, coerentes com o máximo interior em $h=4\sqrt3$.
+\item \textit{Unidades e ordem de grandeza:} $V_{\mathcal{K}}=\tfrac43\pi\,6^3=288\pi\approx 904{,}78\ \text{cm}^3$. A razão $\dfrac{192\sqrt3}{288\pi}=\dfrac{2}{\sqrt3\,\pi}\approx 0{,}368$ é a razão cubo/esfera esperada para um cubo inscrito. Os resultados estão em $\text{cm}^3$ e $\text{cm}$.
+\end{itemize}
+
+\textbf{Resposta.} (a) $V_{\max}=192\sqrt3\ \text{cm}^3\approx 332{,}55\ \text{cm}^3$. (b) O prisma é um cubo: altura $h=4\sqrt3\ \text{cm}\approx 6{,}93\ \text{cm}$ e base quadrada de lado $4\sqrt3\ \text{cm}\approx 6{,}93\ \text{cm}$ (diagonal da base $4\sqrt6\ \text{cm}\approx 9{,}80\ \text{cm}$).
+
+ANSWER: (a) $V_{\max}=192\sqrt{3}\ \text{cm}^3\approx 332{,}55\ \text{cm}^3$; (b) altura $h=4\sqrt{3}\ \text{cm}\approx 6{,}93\ \text{cm}$ e base quadrada de lado $4\sqrt{3}\ \text{cm}\approx 6{,}93\ \text{cm}$ (o prisma é o cubo de aresta $4\sqrt{3}\ \text{cm}$)%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 1: nota 9,5 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Área de P ? I = 12$\surd$3 - 18 = 6(2$\surd$3 - 3) $\approx$ 2,78 (unidades de área no plano de Argand{-}Gauss). Não é de múltipla escolha.\newline%
+\newline%
+Passos principais:\newline%
+{-} Raízes z\_k = e\^{}\{i$\pi$k/6\}. P (índices pares) é hexágono regular com vértices em 0$^\circ$, 60$^\circ$, \ldots{}, de circunraio 1 e área 3$\surd$3/2. I (índices ímpares) é o mesmo hexágono girado de 30$^\circ$, com área 3$\surd$3/2. Os apótemas de ambos valem $\surd$3/2.\newline%
+{-} P ? I é um dodecágono regular de apótema $\surd$3/2 (12 semiplanos com normais a cada 30$^\circ$, todos à mesma distância). Sua área é 12$\cdot$(3/4)$\cdot$tan15$^\circ$ = 18 - 9$\surd$3.\newline%
+{-} A(P ? I) = 3$\surd$3 - (18 - 9$\surd$3) = 12$\surd$3 - 18.\newline%
+{-} Conferido pela decomposição em 12 triângulos de área (7$\surd$3 - 12)/4 e por malha numérica ($\approx$ 2,786).\par %
+Parecer: a resposta final está correta e coincide com a referência: A(P?I) = 12$\surd$3 - 18 = 6(2$\surd$3 - 3) $\approx$ 2,7846. Verifiquei o enunciado no PDF (confere com a transcrição). Conferi por cálculo independente: o recorte exato (Sutherland--Hodgman) dá A(P?I) = 2,41154273 = 9(2-$\surd$3) e A(P?I) = 2,78460969 = 12$\surd$3-18; uma malha 1200$\times$1200 com pertinência direta às raízes dá 2,7860 e 2,4127; a ponta I?P vale (7$\surd$3-12)/4 $\approx$ 0,0310889; P1 está na reta x$\cdot$û30 = a com argumento 15$^\circ$ e |P1P2| = 2$\surd$3-3; d$^2$ = 3(2-$\surd$3); cos$^2$15$^\circ$ = (2+$\surd$3)/4. Não encontrei nenhum erro de conta nem de hipótese. Todos os passos principais estão justificados: as raízes e os hexágonos (P $\neq$ I, ambos R = 1, área 3$\surd$3/2); a representação por 12 semiplanos com normais de 30$^\circ$ em 30$^\circ$, todos a distância $\surd$3/2; a prova em (a)--(c) de que a interseção é o dodecágono regular D com circunraio d; a área por 12 triângulos com ângulo central 30$^\circ$ e pela fórmula n$\cdot$a$^2$$\cdot$tan($\pi$/n); a inclusão{-}exclusão; e a decomposição independente pelas pontas. As armadilhas da lista foram tratadas: troca de P e I e de índice inicial, R versus apótema, interseção que não é hexágono, tan15$^\circ$ e não tan30$^\circ$, soma das áreas versus união, aritmética com radicais, cotas (2,598 < A < 5,196 e A < $\pi$). As lacunas são pequenas: a conferência pelas pontas não prova disjunção e exaustão (correta, mas afirmada), a justificativa da convexidade/mensurabilidade é redundante, e a checagem numérica não é reproduzível. Uma resolução com este nível de justificativa e checagens cruzadas poderia sair como gabarito comentado, por isso a nota é 9,5."%
+\begin{itemize}%
+\item%
+{[}minor{]} Na conferência 'pelas pontas' (item 6), afirma{-}se que I\textbackslash{}P são exatamente 6 pontas, uma sobre cada lado de P, sem justificar que não há sobreposição nem resto. Faltam dois fatos: (i) I?\{x$\cdot$û\_\{30$^\circ$+60$^\circ$j\}>a\} contém apenas um vértice de I, e (ii) dois cones consecutivos se intersectam só fora de I, porque x$\cdot$û\_60 $\geq$ 1 > a no cone. Também não se verifica explicitamente que P1 e P2 caem dentro do lado de P (está correto: o parâmetro é t$\approx$0,268). Isso é conferência, não prova principal, então é uma lacuna menor.%
+\item%
+{[}minor{]} Item 5 diz 'Os conjuntos são convexos e mensuráveis', mas a inclusão{-}exclusão só exige mensurabilidade, e a convexidade é irrelevante. Essa frase é redundante e não justifica a mensurabilidade (conjuntos compactos convexos, por exemplo).%
+\item%
+{[}minor{]} Item 3(a): a frase 'reduzido módulo 360$^\circ$, seu valor absoluto fica em {[}15$^\circ$,165$^\circ${]}' omite a convenção do representante em (-180$^\circ$,180$^\circ${]}. O argumento está correto, mas a passagem fica implícita.%
+\item%
+{[}minor{]} A verificação numérica ('Sutherland--Hodgman ... 2,4115427 e 2,7846097') é só descrita, sem método reproduzível nem código. Os valores estão corretos (conferi: 2,41154273 e 2,78460969), mas o leitor não tem como refazer a checagem.%
+\item%
+{[}minor{]} Armadilha 'hipótese que justifica o dodecágono regular': a resolução prova a regularidade via (b) (vértices V\_k equiespaçados em círculo de raio d), mas não diz explicitamente que a hipótese decisiva é o mesmo circunraio (R = 1 nos dois hexágonos) e que todas as 12 retas estão à mesma distância a. Também não comenta o que ocorreria com apótemas diferentes.%
+\item%
+{[}minor{]} A observação de independência da indexação (1..12 versus 0..11) é correta, mas redundante, pois o enunciado fixa z\_0..z\_11. Não é erro. Também não há menção explícita à distinção 'região coberta' versus 'contorno', embora a resposta trate corretamente a área da região.%
+\end{itemize}%
+\subsection*{Questão 2: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Resposta: P = 2/5 (= 0,4, ou 40\%).\newline%
+\newline%
+Resumo: (1) Multiplicando p(z) = 1+z+\ldots{}+z$^{5}$ por (z-1) obtém{-}se z$^{6}$ - 1; como p(1) = 6 $\neq$ 0, z = 1 não é raiz, e as raízes de p são as 5 raízes sextas da unidade diferentes de 1: -1, e\^{}\{$\pm$i$\pi$/3\}, e\^{}\{$\pm$2i$\pi$/3\}. (2) Para |z| = 1, |z - 3/2|$^2$ = 13/4 - 3x, então a condição |z - 3/2| $\leq$ $\surd$7/2 equivale a x $\geq$ 1/2. (3) Satisfazem a condição apenas e\^{}\{i$\pi$/3\} e e\^{}\{-i$\pi$/3\} (com |z - 3/2|$^2$ = 7/4, igualdade incluída). Logo P = 2/5.\par %
+Reli o enunciado na página 1 do PDF: a equação é 1 + z + \ldots{} + z$^{5}$ = 0 e a condição é |z - 3/2| $\leq$ $\surd$7/2. Recalculei tudo com python3 e com frações exatas. As raízes são e\^{}\{ik$\pi$/3\}, k = 1..5, todas simples. Para |z| = 1, |z - 3/2|$^2$ = 13/4 - 3$\cdot$Re(z), então a condição equivale a Re(z) $\geq$ 1/2. Só z$_{1}$ = e\^{}\{i$\pi$/3\} e z$_{5}$ = e\^{}\{-i$\pi$/3\} satisfazem, com igualdade no bordo, que é incluído. Logo P = 2/5 = 0,4. A resolução do candidato chega à mesma resposta, e a minha referência também. Não há divergência de resposta.\newline%
+\newline%
+Armadilhas: o candidato tratou todas. Excluiu z = 1 (P(1) = 6 $\neq$ 0) e usou total de 5 casos. Tratou o bordo como incluído ao usar $\leq$. Leu corretamente centro 3/2 e raio$^2$ = 7/4. Usou aritmética exata, sem decimais. Testou os sinais de Re(z) para z$_{2}$, z$_{4}$ (19/4) e z$_{3}$ (25/4). Obteve as raízes por fatoração z$^{6}$ - 1 = (z - 1)P(z), sem resolver a quíntica. Declarou a escolha uniforme sobre 5 raízes simples.\newline%
+\newline%
+Não há problemas críticos nem graves. Os pontos restantes são cosméticos ou de redação: a premissa |z| = 1 não justificada na verificação, uma afirmação numérica solta, uma referência a tabela inexistente e uma checagem vazia. Como resolução de gabarito, está publicável após esses ajustes de texto. Nota 9,5."%
+\begin{itemize}%
+\item%
+{[}minor{]} Na seção 4 (verificação por identidade) usa{-}se |z| = 1 sem justificar. Deveria dizer que |z\_k| = 1 segue de z\_k = e\^{}\{ik$\pi$/3\} (ou de |z|\^{}6 = 1 para z\^{}6 = 1). O teste direto da seção 3 não depende disso, mas a identidade fica sem a premissa explicitada.%
+\item%
+{[}minor{]} A seção 'Conferências' afirma uma verificação numérica (|P(z\_k)| $\approx$ 10\^{}{-}15) que não aparece na resolução. Essa afirmação não é verificável no texto e não contribui para a prova. Deve ser removida ou substituída por um argumento exato, que já existe: z\^{}6 = 1 com z $\neq$ 1.%
+\item%
+{[}minor{]} A frase 'conferem com a tabela acima' refere{-}se a uma tabela que não existe. Deveria apontar para o item 3 (lista de testes).%
+\item%
+{[}minor{]} A checagem '0 $\leq$ P $\leq$ 1' é vazia para este problema. Deve ser cortada ou trocada por uma checagem substantiva, como a de que o total de casos é 5 e não 6 (já coberto em outro ponto do texto).%
+\end{itemize}%
+\subsection*{Questão 3: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Resposta final: o menor inteiro é x = 7.\newline%
+\newline%
+Conjunto solução de f(x) + f({-}1/x) $\geq$ 0,999 (x $\neq$ 0):\newline%
+{-} f(x) = 1/2 para x $\geq$ 0 e f(x) = (1/2)(1 {-} 3\^{}({-}K)), com K = \#\{n $\geq$ 1 : n < {-}1/x\}, para x < 0.\newline%
+{-} S(x) = f(x) + f({-}1/x) é invariante por x ? {-}1/x e, para x > 0, S(x) = 1 {-} (1/2)$\cdot$3\^{}({-}(?x?{-}1)).\newline%
+{-} S(x) $\geq$ 0,999 ? 3\^{}K $\geq$ 500 ? K $\geq$ 6 ? x > 6 (para x > 0).\newline%
+{-} Solução completa: ({-}1/6, 0) ? (6, +$\infty$). Não há inteiros negativos no conjunto, e o menor inteiro positivo é 7.\newline%
+\newline%
+Checagens: S(7) = 1457/1458 $\approx$ 0,99931 $\geq$ 0,999; S(6) = 485/486 $\approx$ 0,99794 < 0,999.\par %
+A resposta final x = 7 está correta e coincide com a referência. Conferi o enunciado no PDF (confere com a transcrição) e refiz as contas: (g\_n/3)\^{}n = g\_n/3\^{}n para n $\geq$ 1; f = 1/2 para x $\geq$ 0; para x < 0, f(x) = $\Sigma$\_\{n<1/|x|\} 3\^{}(-n); S(k) = 1 - 1/(2$\cdot$3\^{}(k-1)) para k $\geq$ 1; S $\geq$ 0,999 ? 3\^{}(k-1) $\geq$ 500 ? k $\geq$ 7. Os valores S(6) = 485/486 $\approx$ 0,99794 e S(7) = 1457/1458 $\approx$ 0,99931 batem. Uma checagem em Python com frações exatas (soma truncada em 80 termos) mostrou que os inteiros em {[}-30, 30{]} que satisfazem a condição são exatamente 7, 8, \ldots{}, 30. Também mostrou S(-k) = 1/2 para inteiros negativos e a fronteira em -1/6 e 6 consistente com (-1/6, 0) ? (6, $\infty$). (O 'False' na igualdade exata de S(7) com 1457/1458 veio da truncagem da série, não de erro da resolução; os valores em ponto flutuante batem até 1e{-}15.)\textbackslash{}n\textbackslash{}nA resolução do candidato trata todas as armadilhas listadas: uso de 0\^{}n = 0 (item 1); exclusão de x = 0 por domínio (item 3); uso de f(-1/x) e não f(1/x) para x > 0, contando n < x (item 4); fator 1/2 da soma geométrica (item 6); limite estrito em n < k, com x = 6 recusado por conta direta (item 6); inteiros negativos tratados explicitamente com f = 0 e S = 1/2 (item 5); e distinção entre menor inteiro e menor inteiro positivo, com o intervalo (-1/6, 0) sem inteiros (item 7). Não há erro de conta, de domínio ou de lógica.\textbackslash{}n\textbackslash{}nAs falhas são de polimento: o item 7 e o item 8 afirmam algumas equivalências sem a justificativa completa, e o conjunto solução real é um extra não pedido. Nada disso muda a resposta. Como resolução que um professor publicaria como gabarito comentado, está no nível 9, com pequenos ajustes de redação."%
+\begin{itemize}%
+\item%
+{[}minor{]} Item 7 (intitulado 'Verificação com x real') afirma que S = 1 - 1/(2$\cdot$3\^{}m) nos dois casos sem escrever o passo da soma geométrica para x<0 (S = 1/2 + (1/2)(1 - 3\^{}(-m))). Também afirma 'm $\geq$ 6 ? 1/|x| > 6' e 'm = ?x?-1 $\geq$ 6 ? x > 6' sem justificar que \#\{n $\geq$ 1 : n < y\} $\geq$ 6 ? y > 6. Ação: escrever essas duas linhas de justificativa, ou renomear o item como derivação do conjunto solução.%
+\item%
+{[}minor{]} O conjunto solução real (-1/6, 0) ? (6, +$\infty$) não é pedido (a questão quer só o menor inteiro). Está correto, mas aparece com justificativa compacta. Ação: justificar por completo ou marcar explicitamente como observação adicional.%
+\item%
+{[}minor{]} O item 8 tem trechos de enchimento: a cota 0 $\leq$ S $\leq$ 1 vem de 0 $\leq$ f $\leq$ 1/2 e não verifica a resposta. O argumento de 'menor inteiro' ficaria mais limpo com uma lista explícita: 0 excluído; inteiros $\leq$ -1 têm S = 1/2; para k = 1..6, S(k) = 1 - 1/(2$\cdot$3\^{}(k-1)) $\leq$ 485/486 < 0,999; k = 7 é o primeiro que vale. Ação: trocar o item 8 por essa conclusão em lista.%
+\end{itemize}%
+\subsection*{Questão 4: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Valor pedido: 1345 (questão discursiva, sem múltipla escolha).\newline%
+\newline%
+Resumo das etapas:\newline%
+1. Vieta em x$^2$-7x-3: x\_1+x\_2 = 7, x\_1x\_2 = -3, logo ?\_j (y+x\_j) = y$^2$ + 7y - 3.\newline%
+2. O produto vira ?\_i (y\_i$^2$ + 7y\_i - 3) = Res(y$^3$-4y-2, y$^2$+7y-3).\newline%
+3. Com r\_j = -x\_j (raízes de t$^2$+7t-3), P = q(r\_1)q(r\_2), q(y)=y$^3$-4y-2.\newline%
+4. Expansão por funções simétricas (s=-7, p=-3): P = -27 + 660 + 812 - 48 - 56 + 4 = 1345.\newline%
+5. Conferência: determinante de Sylvester exato = 1345; cálculo numérico com as seis somas também dá 1345.\par %
+Resposta final correta: 1345, igual à referência. Conferi o enunciado no PDF original (y$^3$-4y-2=0, x$^2$-7x-3=0, produto dos seis fatores) e refiz as contas. A identidade ?(t+y\_i)=-f(-t)=t$^3$-4t+2 está correta, inclusive o sinal e o termo constante -2. A redução x$^3$=52x+21 e x$^3$-4x+2=48x+23 estão corretas. A expansão 2304$\cdot$(-3)+1104$\cdot$7+529=1345 confere. A resultante de Sylvester Res(y$^3$-4y-2, y$^2$+7y-3) também dá 1345, e o produto numérico dos seis fatores dá 1344,9999999999998. As armadilhas da referência (sinal de x, sinal do cúbico, termo constante, não usar raízes explícitas) foram tratadas corretamente, mesmo que algumas sem comentário explícito. O método por identidade polinomial é elegante e sem saltos de conta. As falhas são de redação e de verificação: justificativa mal formulada para dispensar as raízes, arredondamento que não fecha no texto, passo de contradição com uma igualdade omitida, notação '-q' ambígua e ausência de menção à realidade das raízes. Nenhuma afeta o resultado. Com pequenos ajustes, publicável como gabarito comentado."%
+\begin{itemize}%
+\item%
+{[}minor{]} Justificativa confusa para não calcular as raízes y\_i: o texto diz que, como f não tem raiz racional (raízes irracionais), o cálculo direto seria 'desnecessariamente trabalhoso'. Isso é um non sequitur. O motivo para dispensar as raízes é a identidade ?(t+y\_i)=t$^3$-4t+2, não a irracionalidade. Deveria ser: a identidade dispensa as raízes; a ausência de raiz racional apenas confirma que não há fatoração simples.%
+\item%
+{[}minor{]} Verificação numérica com arredondamento inconsistente: 378,4$\cdot$3,554 $\approx$ 1344,8, não 1345,0 como afirmado. Com mais casas (378,446$\cdot$3,554008 $\approx$ 1345,00) o resultado fecha, mas o texto como está não sustenta o '$\approx$1345,0' escrito. Deveria usar mais algarismos significativos ou declarar a tolerância do arredondamento.%
+\item%
+{[}minor{]} No argumento de sinal |y\_i|<3, o passo que gera a contradição omite a igualdade decisiva: de f(y)=0 segue |y|$^3$=|4y+2| $\leq$ 4|y|+2. O texto pula direto para 'o que contradiz f(y)=0'. Falta explicitar essa igualdade.%
+\item%
+{[}minor{]} Notação ambígua na conferência com t=0: 'produto das raízes = -q = 2' usa q sem defini{-}lo como termo constante. Deveria ser escrito como -(-2) = 2, que é a Girard correta (produto = -d para cúbico mônico).%
+\item%
+{[}minor{]} Os valores numéricos de x\_1 e x\_2 são usados como reais sem justificar. Deveria citar o discriminante 49+12=61>0 e observar que a identidade algébrica vale em C, sendo a conta real apenas conferência.%
+\end{itemize}%
+\subsection*{Questão 5: nota 8,5 (não aprovada, rodada 3 de 3)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Resposta de referência: x1 + x3 + x5 + x7 + x9 = 10912, assumindo que a soma dos pares seja 5440 (e não 5540, como impresso).\newline%
+\newline%
+Resumo:\newline%
+{-} Pelo produto: x5$^{5}$ = 2$^{4}$$^{5}$, logo x5 = 512 (log$_{2}$ x5 = 9).\newline%
+{-} Com s = 2\^{}r e s + 1/s = 5/2, obtém{-}se s = 2 (r = 1), e a sequência é x\_k = 2\^{}(k+4), k = 1..9.\newline%
+{-} Ímpares: 32 + 128 + 512 + 2048 + 8192 = 10912. Pares: 64 + 256 + 1024 + 4096 = 5440 (confere com o dado corrigido).\newline%
+\newline%
+Pelo enunciado literal (soma dos pares = 5540): a equação em v = s + 1/s é 128v$^3$ - 256v - 1385 = 0, sem raiz racional. O resultado é irracional, $\approx$ 11196,50 (raiz de w$^3$ + 2w$^2$ - (1385/128)$^2$ = 0, com O = 512(w$^2$ + w - 1)). Isso sugere erro de digitação no enunciado.\newline%
+\newline%
+Quem chegar a 10912 deve justificar a leitura 5440. Quem chegar a $\approx$ 11196,50 pelo enunciado literal, com a análise da cúbica, responde corretamente ao enunciado como impresso e deve apontar a inconsistência.\par %
+Comparação item a item das respostas finais. (1) Enunciado literal (soma dos pares = 5540): a candidata dá O = 5540p - 512p$^2$ + 512 $\approx$ 11196,5, com p $\approx$ 2,5116 a única raiz real de 128p$^3$ - 256p - 1385 = 0. A referência dá $\approx$ 11196,50. Recalculei com precisão de 50 casas: O = 11196,4994, p = 2,51160010, e O é irracional. Coincidem. (2) Caso pretendido (soma dos pares = 5440): ambas dão 10912. Coincidem. Logo, a resposta final está correta nos dois sentidos e agrees\_with\_reference = true.\newline%
+\newline%
+Avaliação: a resolução é correta e rigorosa. Verifiquei cada passo: a identidade O = pE - 512(p$^2$-1), o cálculo de E/512 = p$^3$ - 2p, a bijeção d ? p > 2 com a escolha t > 1, a fatoração 8p$^3$ - 16p - 85 = (2p-5)(4p$^2$+10p+17) com discriminante -172, a análise da monotonicidade de f com f(-$\surd$(2/3)) < 0, a exclusão das raízes racionais 5/2 e 277/128 (f(5/2) = -25, f(277/128) = -10514643/16384), a forma fechada com k$^2$ = 8/3 (testada numericamente, residual \textasciitilde{}1e-12) e as somas numéricas. O argumento de irracionalidade via grau {[}Q(p):Q{]} = 3 está correto. Todas as armadilhas da referência estão tratadas: erro de digitação 5540/5440, x5 = 512 pelo produto, contagem de termos, razão positiva com reversão t?1/t, identidade simétrica, unicidade das raízes e verificação direta do caso 5440. Os problemas são pequenos (x9 mal aproximado no caso 5440, exclusão de d=0 não declarada, uma frase irrelevante, notação k duplicada e a resposta dupla com a inferência 'intenção mais provável' rotulada como heurística). Nenhum afeta a correção. A nota 8,5 fica abaixo de 9 por esses detalhes de redação e rigor, que um gabarito publicado corrigiria.%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 10 diz que x9 domina a soma 'em ambos os casos (cerca de 8,4$\cdot$10$^3$)'. No caso E=5440 (d=1), x9 = 2\^{}13 = 8192, não $\approx$8448. Os valores exatos devem ser dados separadamente para cada caso.%
+\item%
+{[}minor{]} Passo 10 afirma que 'a grandeza pedida é adimensional'. A observação não tem utilidade para a questão e deveria ser removida.%
+\item%
+{[}minor{]} O caso degenerado d=0 (razão nula) aparece só como limite d$\to$0+ no Passo 10. Falta dizer explicitamente que d=0 é excluído pela hipótese de razão positiva e que daria E=2048 e O=2560, incompatíveis com 5540 e 5440 (f(2)$\neq$0 no Passo 5 já implica isso, mas não é declarado).%
+\item%
+{[}minor{]} A resposta final apresenta dois valores ($\approx$11196,5 pelo enunciado literal e 10912 pelo caso provavelmente pretendido) sem um valor principal único. A inferência de que a banca pretendia 5440 baseia{-}se no fato de que 5440 é o valor inteiro{-}d mais próximo. Isso é heurística (o Passo 8 reconhece que 'não prova'), mas a conclusão 'intenção mais provável' deveria vir rotulada como hipótese.%
+\item%
+{[}minor{]} Passo 1: 'os desvios se cancelam' é afirmado sem escrever a soma (a5-4d)+(a5-2d)+a5+(a5+2d)+(a5+4d)=5a5. Essa soma explícita é o único passo do produto que o leitor precisa verificar.%
+\item%
+{[}minor{]} Passo 6: a irredutibilidade de f sobre Q é afirmada logo após a verificação de raízes racionais, sem citar o critério (cúbica sem raiz racional é irredutível). É correto, mas é uma frase a mais para fechar o argumento.%
+\item%
+{[}minor{]} Notação: a letra k é usada como índice (x\_k) e, no Passo 7, como constante k = 2$\surd$6/3. Renomear a constante (por exemplo, $\kappa$ ou c) evitaria confusão.%
+\end{itemize}%
+\subsection*{Questão 6: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Probabilidade pedida: P{[}f\^{}(9)(1) = 1{]} = 1/3 ($\approx$ 0,333). A questão é discursiva (não há alternativas).\newline%
+\newline%
+Resumo do raciocínio: f\^{}(9)(1) = 1 $\Leftrightarrow$ o comprimento k do ciclo de f que contém 1 divide 9 $\Leftrightarrow$ k $\in$ \{1, 3, 9\}. Cada valor de k ocorre em exatamente 8! das 9! bijeções, portanto P = 3$\cdot$8!/9! = 1/3. Confirmado por força bruta sobre as 9! bijeções (120960 favoráveis de 362880).\par %
+Resposta final 1/3, igual à referência e correta: confirmei o enunciado no PDF (p. 2) e a força bruta sobre as 9! bijeções dá 120960 favoráveis, ou seja 1/3. A distribuição do comprimento do ciclo de 1 é uniforme (8! para cada L de 1 a 9), e os divisores de 9 são 1, 3 e 9. A argumentação é correta em todos os passos: casa dos pombos e injetividade para obter L$\leq$9 e a minimalidade, equivalência f\^{}\{(m)\}(1)=1 $\Leftrightarrow$ L|m via divisão euclidiana, contagem 8!/(9-L)!$\cdot$(9-L)!=8! com bijeção explícita, e 3$\cdot$8!/9!=1/3. Todas as armadilhas listadas foram tratadas (f\^{}\{(9)\} como iteração, L=1 e L=3 incluídos, equiprobabilidade sobre permutações, soma 9$\cdot$8!=9!, resposta em fração). Os problemas são só de rigor e notação: f\^{}\{(0)\} não definido, uma frase de 'enumeração completa' sem evidência, f(A)=A sem justificativa, indução terse, papel da bijetividade não comentado e identificação do ciclo não explicitada. Nenhum é crítico ou grave. Nota 9,0, acima do limiar de gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} f\^{}\{(0)\} = identidade é usado sem ser definido (Passo 1, f\^{}\{(0)\}(1)=1; Passo 2, caso r=0). Deveria haver a convenção explícita f\^{}\{(0)\} = id.%
+\item%
+{[}minor{]} A frase 'Uma enumeração completa das 9! bijeções confirma N=120960' não tem evidência no texto e não é viável à mão numa prova. Deve ser removida ou marcada como verificação computacional, sem peso na argumentação.%
+\item%
+{[}minor{]} Passo 3: a afirmação 'f leva A em A' não é justificada. Faltava: f(a\_k)=a\_\{k+1\} e f(a\_L)=1 dão f(A)?A; a injetividade com A finito dá f(A)=A; daí f(R)=S\textbackslash{}A=R.%
+\item%
+{[}minor{]} Passo 2: a indução 'por indução em q' para f\^{}\{(qL)\}(1)=1 não está desenvolvida. Bastaria f\^{}\{((q+1)L)\}(1)=f\^{}\{L\}(f\^{}\{(qL)\}(1))=f\^{}\{L\}(1)=1.%
+\item%
+{[}minor{]} O papel essencial da bijetividade não é comentado. A solução usa injetividade e sobrejetividade implícita sem observar que, para funções gerais, a órbita pode cair num ciclo sem passar por 1 e a equivalência L|m falha. Não é obrigatório, mas um gabarito comentado diria.%
+\item%
+{[}minor{]} 'L é o comprimento do ciclo de f que contém 1' é afirmado sem mostrar que o conjunto \{1, f(1), ..., f\^{}\{L{-}1\}(1)\} é fechado por f e portanto é o ciclo.%
+\end{itemize}%
+\subsection*{Questão 7: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} tr(A$\cdot$B) = C(m+n+2, n+1) = C(m+n+2, m+1), em geral (m, n inteiros positivos).\newline%
+\newline%
+Para m = 2\^{}10 e n = 10\^{}3: tr(A$\cdot$B) = C(2026, 1001) = C(2026, 1025), e 1013 divide esse número (com v\_1013 = 1). Logo a afirmação é verdadeira.\newline%
+\newline%
+Resumo dos passos: Pascal para C(m,j-3)+C(m,j-2) = C(m+1,j-2); duas aplicações de Vandermonde (T1+T2 = C(m+n+1,n) e T3 = C(m+n+1,n+1)); Pascal final; e, por Legendre (2026 = 2$\cdot$1013, 1001 < 1013 < 1025), v\_1013(C(2026,1001)) = 2 - 0 - 1 = 1.\newline%
+\newline%
+Verificado numericamente: identidade para 1 $\leq$ m, n < 40, tr(AB) = C(2026,1001) e tr(AB) mod 1013 = 0.\par %
+A resposta final da resolução do candidato está correta e coincide com a referência: tr(AB) = C(m+n+2, n+1), e para m = 2\^{}10 e n = 10\^{}3 o traço é C(2026, 1001), divisível por 1013 (com ordem exata 1). Conferi o enunciado no PDF original e a transcrição confere (a\_\{1j\}=C(m,j-3), a\_\{2j\}=C(m,j-2), a\_\{3j\}=C(m,j-1), b\_\{i1\}=b\_\{i2\}=C(n,n+2-i), b\_\{i3\}=C(n+1,n+2-i)). Verificações com python3 com matrizes completas: a identidade vale para todos os 1 $\leq$ m, n $\leq$ 40, inclusive m $\leq$ n, o que confirma que a hipótese m > n não é necessária, como afirma o candidato. Para m=2, n=1, as matrizes e as diagonais de AB (1, 3, 6) batem. Para m=1024, n=1000, o traço exato é igual a C(2026,1001) e é $\equiv$ 0 mod 1013. 1013 é primo, v\_1013(C(2026,1001)) = 1 e C(2026,1001) tem 609 algarismos, como afirmado. Também conferi C(2026,1013) $\equiv$ 2 mod 1013, e o candidato evitou corretamente essa armadilha. Quanto à conta, a sequência é correta: Stifel com a convenção (k<0, k>m+1 e bordas), Vandermonde em S\_1 (a=m+1, b=n, s=n) e S\_2 (a=m, b=n+1, s=n+1), Stifel final com N=m+n+1, e a divisibilidade pelo argumento de Euclides sobre 2026!/1025! = ?\_\{1026\}\^{}\{2026\} k, com 1001! sem fator 1013. Não há erro lógico nem de conta. Os problemas restantes são de rigor e clareza: bordas de Stifel pouco explícitas, primalidade sem checagem à vista, conferência numérica de um caso só e a armadilha de 1013 não discutida. Nota 9,5: esta é uma resolução que um professor publicaria como gabarito comentado, com pequenos ajustes."\}{]}%
+\begin{itemize}%
+\item%
+{[}minor{]} Nas bordas da relação de Stifel (Passo 2), k=0 e k=m+1, o texto diz apenas 'basta notar que C(m,{-}1)=C(m,m+1)=0'. Falta registrar explicitamente que C(m,0)=C(m+1,0)=1 e C(m,m)=C(m+1,m+1)=1, que são os valores que fecham a identidade nesses casos. Deveria ser: k=0 dá 0+1=1=C(m+1,0); k=m+1 dá 1+0=1=C(m+1,m+1).%
+\item%
+{[}minor{]} A primalidade de 1013 é afirmada pela lista de primos até 31, sem mostrar as divisões nem indicar que é checagem direta. É trivial, mas um gabarito comentado deveria mostrar pelo menos os restos ou dizer explicitamente que a checagem foi feita.%
+\item%
+{[}minor{]} A conferência numérica usa um único caso (m=2, n=1). Está correta (diagonal 1, 3, 6; traço 10 = C(5,2)), mas como ilustração é fraca. A prova é geral, então isso não é erro, só poderia ser apresentado como exemplo e não como evidência de confirmação.%
+\item%
+{[}minor{]} A armadilha principal do enunciado não é mencionada: C(2026,1013) não é divisível por 1013 (resto 2). A resolução evita essa armadilha corretamente ao usar o índice 1001, mas um gabarito comentado deveria explicar por que o argumento de Euclides depende de 1001 (ou 1025) e não de 1013.%
+\item%
+{[}minor{]} A 'Observação' sobre a ordem exata 1 está compactada. O argumento é correto (o único múltiplo de 1013 em {[}1026,2026{]} é 2026, com v\_1013 = 1, e v\_1013(1001!) = 0), mas deveria concluir explicitamente v\_1013(C) = v\_1013(P) - v\_1013(1001!) = 1 - 0 = 1.%
+\end{itemize}%
+\subsection*{Questão 8: nota 9,0 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} A identidade é verdadeira sob as hipóteses dadas:\newline%
+\newline%
+S\_n = $\Sigma$\_\{k=1\}\^{}\{n\} 1/(cos $\alpha$ + cos((2k+1)$\alpha$)) = sen(n$\alpha$) / (sen(2$\alpha$)$\cdot$cos((n+1)$\alpha$)).\newline%
+\newline%
+Passos{-}chave: cos $\alpha$ + cos((2k+1)$\alpha$) = 2 cos(k$\alpha$) cos((k+1)$\alpha$); então 1/(cos $\alpha$ + cos((2k+1)$\alpha$)) = {[}tan((k+1)$\alpha$) - tan(k$\alpha$){]}/(2 sen $\alpha$). Somando por telescopagem, S\_n = {[}tan((n+1)$\alpha$) - tan $\alpha${]}/(2 sen $\alpha$) = sen(n$\alpha$)/(2 sen $\alpha$ cos $\alpha$ cos((n+1)$\alpha$)) = sen(n$\alpha$)/(sen 2$\alpha$ $\cdot$ cos((n+1)$\alpha$)).\newline%
+\newline%
+Não é questão de múltipla escolha. Todas as condições são usadas: sen $\alpha$ $\neq$ 0 divide na telescopagem e garante sen 2$\alpha$ $\neq$ 0 junto com cos $\alpha$ $\neq$ 0; cos(j$\alpha$) $\neq$ 0 para j = 1..n+1 garante que os termos, as tangentes e o denominador da direita estejam definidos.\par %
+Resposta final idêntica à da referência: S\_n = sen(n$\alpha$)/(sen(2$\alpha$)$\cdot$cos((n+1)$\alpha$)) é verdadeira sob as hipóteses. Não há divergência entre as duas resoluções. Refiz as contas: a fatoração soma$\to$produto (erro \textasciitilde{}4e{-}14), o passo telescópico (3) (erro \textasciitilde{}4e{-}12) e a identidade geral (3000 combinações aleatórias, erro relativo máx. \textasciitilde{}5e{-}9) estão corretos. Conferi todos os casos particulares do candidato ($\alpha$=$\pi$/6, $\pi$/8, $\pi$/3, 0,71, $\pi$/4 e $\pi$ para n=1): os valores estão corretos, incluindo S\_3=0 em $\alpha$=$\pi$/3 e S\_1={-}1/2 em $\alpha$=$\pi$. A demonstração é completa e rigorosa: fatoração com cos par (sinal correto), telescopagem com extremos T\_\{n+1\} e T\_1, uso de sen $\alpha$$\neq$0 na divisão, diferença de tangentes com denominador não nulo, sen2$\alpha$=2 sen $\alpha$ cos $\alpha$ com fator 2 correto, validade do lado direito e caso n=0. Todas as armadilhas do gabarito estão tratadas, exceto a prova alternativa por indução, que é opcional. Os problemas restantes são de apresentação (caso n=0 com ressalva desnecessária, um caso incompleto sobre cos $\alpha$=0, uma verificação numérica não reproduzível e uma frase comprimida). Nenhum afeta a validade. Nota 9.0: publicável como gabarito comentado após pequenos ajustes."%
+\begin{itemize}%
+\item%
+{[}minor{]} O caso n=0 aparece como observação opcional, 'Caso n=0 (se 0$\in$$\mathbb{N}$)', enquanto a conclusão principal diz 'Fica demonstrada a identidade para n$\geq$1'. Na convenção brasileira usual $\mathbb{N}$ = \{0,1,2,...\}, então n=0 faz parte do enunciado. O caso está correto (soma vazia = 0 = sen(0)/(...)), mas deveria ser tratado como parte da demonstração, com o enunciado final cobrindo n $\in$ $\mathbb{N}$ inteiro. Correção: enunciar a conclusão para todo n $\in$ $\mathbb{N}$, incluindo n=0, e manter o caso como base.%
+\item%
+{[}minor{]} Na última bullet de 'Por que as hipóteses são necessárias', 'cos $\alpha$=0 anula cos $\alpha$+cos3$\alpha$=2cos $\alpha$ cos2$\alpha$ e torna indefinido o lado direito' omite que o lado esquerdo também fica indefinido, pois o denominador do termo k=1 se anula. Correção: dizer explicitamente que ambos os lados são indefinidos.%
+\item%
+{[}minor{]} A verificação numérica com n=3, $\alpha$=0,71 mostra cos(j$\alpha$) apenas para j=1..4, com 4 casas decimais, mas os termos k=2 e k=3 exigem cos5$\alpha$ $\approx$ {-}0,917755 e cos7$\alpha$ $\approx$ 0,254771, que não aparecem. Os termos com 6 casas (4,388842; {-}6,273816; 0,987037) não são reproduzíveis a partir dos dados mostrados. Conferi com python: os valores estão corretos, e a soma {-}0,897937 coincide com o lado direito. Correção: listar cos5$\alpha$ e cos7$\alpha$ e indicar a precisão usada.%
+\item%
+{[}minor{]} A frase 'as hipóteses são exatamente as condições para os dois lados estarem definidos' está correta, mas comprimida. Para ficar auto{-}suficiente, deveria dizer: o lado esquerdo está definido $\Leftrightarrow$ cos(j$\alpha$)$\neq$0 para j=1..n+1 (n$\geq$1); o lado direito está definido $\Leftrightarrow$ sen $\alpha$$\neq$0, cos $\alpha$$\neq$0 e cos((n+1)$\alpha$)$\neq$0; a conjunção das duas condições coincide com as hipóteses dadas.%
+\end{itemize}%
+\subsection*{Questão 9: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Quatro pontos, com as retas x = +c e x = {-}c, onde c = 2$\surd$3 (semidistância focal, pois 2c = 4$\surd$3 é a distância entre os focos):\newline%
+\newline%
+{-} Em x = +2$\surd$3: (2$\surd$3, 1/7) e (2$\surd$3, {-}1/7)\newline%
+{-} Em x = {-}2$\surd$3: ({-}2$\surd$3, 1/7) e ({-}2$\surd$3, {-}1/7)\newline%
+\newline%
+Base: o lugar geométrico de M é a elipse 4x$^2$/49 + y$^2$ = 1 (semieixos 7/2 e 1), excluídos os pontos ($\pm$7/2, 0), imagem de P = ($\pm$4, 0). Com Q = (3x0/4, 0) e M = (7x0/8, y0/2), substituindo x = $\pm$2$\surd$3 obtém{-}se Y$^2$ = 1/49.\par %
+Resposta final correta e idêntica à de referência: quatro pontos ($\pm$2$\surd$3, $\pm$1/7). Confirmei o enunciado no PDF original (p. 2, Questão 9); a transcrição confere. Refiz as contas: c=2$\surd$3 (2c=4$\surd$3 é a distância focal); normal com direção (x0,4y0); Q=(3x0/4,0); M=(7x0/8,y0/2); lugar geométrico 4X$^2$/49+Y$^2$=1, menos ($\pm$7/2,0); com X$^2$=12, Y$^2$=1/49. Verifiquei com 200 mil pontos da elipse (erro \textasciitilde{}1e{-}16 na equação do lugar, Q exato) e em aritmética exata com frações. Todas as armadilhas do gabarito estão tratadas: semidistância focal, normalização, direção da normal, Q pela sub{-}normal, exclusão de ($\pm$4,0) e ($\pm$7/2,0), caso x0=0 (na verificação), ponto médio, folga 12<49/4, os quatro pontos e verificação de volta. Não encontrei erro de conta nem salto lógico que mude o resultado. Os problemas são de rigor e clareza: derivação da tangente que divide por y, justificativa vaga de não nulidade, eixo maior não declarado, biunivocidade afirmada sem argumento e observação de adimensionalidade desnecessária. Nota 9: uma resolução que um professor publicaria como gabarito comentado, depois dos ajustes de rigor listados."%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 1: a tangente (4y0,-x0) é obtida de 2x+8yy'=0, que só determina a direção dividindo por y. A justificativa não cobre y0=0 (tangente vertical em ($\pm$4,0)). Deveria partir do gradiente (2x0,8y0): (4y0,-x0) é perpendicular a ele para todo P da elipse. A checagem de ortogonalidade está correta, só a derivação é fraca.%
+\item%
+{[}minor{]} Passo 1: 'a normal tem direção (x0,4y0), que é não nulo pois P$\neq$(0,0)' dá um motivo impreciso. O correto é que (x0,4y0)=(0,0) forçaria P=(0,0), que não pertence à elipse (0$\neq$16).%
+\item%
+{[}minor{]} A resolução não declara que o eixo maior é horizontal (a$^2$=16 associado a x), nem que os focos são ($\pm$2$\surd$3,0). O enunciado não exige isso, mas a conta c=$\surd$(a$^2$-b$^2$) e a interpretação do lugar dependem dessa orientação. O gabarito de referência trata isso explicitamente como armadilha de normalização.%
+\item%
+{[}minor{]} Convenção de c: a resolução escreve c=$\surd$(a$^2$-b$^2$)=2$\surd$3 (semidistância focal padrão) e só depois 2c=4$\surd$3. Está correto, mas deveria dizer uma vez que, pela definição do enunciado (2c = distância entre focos), c=2$\surd$3, não 4$\surd$3, para não haver ambiguidade.%
+\item%
+{[}minor{]} Passo 4: 'A correspondência é biunívoca' é afirmada sem argumento explícito. Bastava dizer que P?M é a aplicação afim invertível (x,y)?(7x/8, y/2), que leva a elipse menos ($\pm$4,0) sobre o lugar menos ($\pm$7/2,0).%
+\item%
+{[}minor{]} O caso x0=0 (normal vertical, Q=(0,0), M=(0,$\pm$1)) aparece só na verificação final. Deveria ser citado no passo 1 ou 2 como coberto pela forma paramétrica, que evita a inclinação indefinida.%
+\item%
+{[}minor{]} A fórmula x\_Q=(a$^2$-b$^2$)x0/a$^2$ é apresentada como 'forma geral' sem demonstração. Serve como conferência, então deveria ser rotulada como checagem (sub{-}normal), ou demonstrada.%
+\item%
+{[}minor{]} Em 'Ordem de grandeza e unidades': a frase 'as coordenadas são adimensionais' é uma afirmação não justificada e desnecessária, e 'perto dos vértices' é vago. Deveria ser removida ou justificada. Não afeta a correção.%
+\end{itemize}%
+\subsection*{Questão 10: nota 9,5 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} (a) V\_max = 192$\surd$3 cm$^3$ $\approx$ 332,55 cm$^3$.\newline%
+\newline%
+(b) Altura h = 4$\surd$3 cm $\approx$ 6,93 cm; base quadrada de lado 4$\surd$3 cm (dimensões a = b = 4$\surd$3 cm, diagonal da base 4$\surd$6 cm). O prisma ótimo é um cubo de aresta 4$\surd$3 cm, com os 8 vértices sobre a esfera (diagonal espacial 12 cm = 2R).\newline%
+\newline%
+Resultado robusto: vale tanto se a face com 4 vértices na esfera for base quanto lateral, e tanto se "contido" for interpretado como "todos os vértices na esfera" quanto como "vértices na bola".\par %
+Verifiquei o enunciado no PDF (página 3) e a transcrição confere. As duas respostas finais coincidem e estão corretas: (a) V\_max = 192$\surd$3 cm$^3$ $\approx$ 332,55 cm$^3$; (b) h = 4$\surd$3 cm e base quadrada de lado 4$\surd$3 cm, ou seja, o cubo de aresta 4$\surd$3 cm. A solução do candidato é uma prova completa e rigorosa. A cota S $\leq$ 2r$^2$ vale para qualquer quadrilátero simples com vértices num disco de raio r (Passo 2, com igualdade só para quadrado). A cota r$^2$ $\leq$ R$^2$ - h$^2$/4 vem de M $\geq$ h$^2$/4 (Passo 3). A identidade (h-4$\surd$3)$^2$(h+8$\surd$3) = 2{[}192$\surd$3 - (72h - h$^3$/2){]} está correta e fecha a otimização em h sem cálculo. A admissibilidade (8 vértices a distância 6 do centro e convexidade de K) fecha o caso de existência. Conferi numericamente: as identidades e a cota de área por amostragem; a subida de encosta sobre prismas com 8 vértices na bola chegou a 330,8, abaixo de 332,55, sem violar a cota; o cubo tem todos os vértices a 6 cm e V = 332,553755. Todas as armadilhas da lista foram tratadas: altura não livre, base não assumida quadrada, r$^2$ em vez de r, lado versus diagonal, fator 2 na altura, face lateral, 'contido' versus vértices, consistência do cubo e unidades. Os problemas restantes são de precisão de linguagem (unicidade a menos de rotação, hipótese de quadrilátero simples declarada implicitamente, uma frase de conferência sem justificativa). Nenhum afeta a correção, por isso a nota é 9,5: publicável como gabarito comentado após pequenos ajustes de redação."%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 5 afirma que o máximo 'é único' e que 'todos os cubos inscritos são congruentes'. A unicidade vale apenas a menos de rotação em torno do eixo z (a orientação do quadrado na base). O texto deveria dizer 'único a menos de rotação em torno do eixo z'.%
+\item%
+{[}minor{]} A fórmula do cadarço (Passo 2) só dá a área para polígono simples (não autointersectante). A resolução diz 'polígono simples, convexo ou não', mas não fixa na notação que 'quadrilátero da base' significa polígono simples de 4 lados. Essa hipótese deveria ser declarada explicitamente.%
+\item%
+{[}minor{]} Na seção 'Conferências', a frase 'a razão cubo/esfera esperada para um cubo inscrito' não é justificada e não acrescenta verificação. Deveria ser removida ou justificada. A checagem AM{-}GM vale só para base quadrada e não substitui o Passo 2; está corretamente rotulada como conferência.%
+\end{itemize}%
+\end{document}

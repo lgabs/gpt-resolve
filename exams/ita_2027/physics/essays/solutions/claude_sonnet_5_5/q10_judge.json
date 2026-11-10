@@ -1,0 +1,54 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "a) ν' = ν / [1 + (hν/(m_e c²))(1 − cos θ)] (efeito Compton). b) V = −c(ν² − ν'²)/(ν² + ν'²), isto é |V| = c·ε(2+ε)/(2+2ε+ε²) com ε = (hν/(m_e c²))(1 − cos θ); O se move sobre a reta do fóton espalhado, em sentido oposto ao dele (desvio para o azul). Para θ ≪ 1 e ε ≪ 1: |V| ≈ hνθ²/(2 m_e c).",
+  "judge_reference": {
+    "reference_solution": "**Notação.** Seja S o referencial do enunciado (elétron inicialmente em repouso), α ≡ hν/(m_e c²) e n̂ a direção do fóton espalhado, formando ângulo θ com a direção incidente x̂.\n\n## a) Frequência do fóton espalhado (efeito Compton)\n\nColisão elástica (o elétron não tem estrutura interna, então não há excitação) entre um fóton e um elétron livre inicialmente em repouso. Conservam-se a energia e o momento linear relativísticos totais.\n\n- Energia: hν + m_e c² = hν' + E_e, com E_e² = p_e²c² + m_e²c⁴.\n- Momento: p_e = (hν/c) x̂ − (hν'/c) n̂.\n\nElevando ao quadrado o momento do elétron:\np_e²c² = (hν)² + (hν')² − 2h²νν' cosθ.\n\nDa energia: E_e = m_e c² + h(ν − ν'), logo\nE_e² = m_e²c⁴ + 2m_e c² h(ν − ν') + (hν)² + (hν')² − 2h²νν'.\n\nIgualando E_e² = p_e²c² + m_e²c⁴, os termos (hν)², (hν')² e m_e²c⁴ se cancelam:\n\n2 m_e c² h (ν − ν') = 2h²νν'(1 − cosθ)\n⟹ (ν − ν')/(νν') = (h/(m_e c²))(1 − cosθ)\n⟹ **1/ν' − 1/ν = (h/(m_e c²))(1 − cosθ).**\n\nIsolando ν':\n\n**ν' = ν / [1 + (hν/(m_e c²))(1 − cosθ)] = ν / [1 + (2hν/(m_e c²)) sen²(θ/2)].**\n\nEquivalente em comprimento de onda: λ' − λ = (h/(m_e c))(1 − cosθ).\n\nVerificações:\n- θ = 0 dá ν' = ν.\n- θ = π dá o menor valor, ν' = ν/(1 + 2α).\n- ν' ≤ ν sempre.\n- Conferi numericamente que a expressão satisfaz a invariante E_e² − p_e²c² = m_e²c⁴.\n\n## b) Velocidade do observador O\n\n**Leitura do enunciado.** A frequência original ν é a do referencial S. O observador O se move sobre a reta do fóton espalhado, com velocidade V (positiva se no mesmo sentido do fóton). Queremos ν'_O = ν.\n\n**Efeito Doppler relativístico longitudinal.** O quadrivetor do fóton espalhado em S é (hν'/c)(1, n̂). Um boost com velocidade V ao longo de n̂ dá\nE_O = γ(E − V p) = γ hν'(1 − β), com β = V/c.\nPortanto\nν'_O = ν' γ(1 − β) = ν' √[(1 − β)/(1 + β)].\n\n**Condição ν'_O = ν.** Tomando k ≡ α(1 − cosθ), a parte (a) dá ν/ν' = 1 + k. Então\n\n√[(1 − β)/(1 + β)] = ν/ν' = 1 + k > 1 (se θ ≠ 0).\n\nIsso exige **β < 0**. O fóton espalhado já perdeu energia (ν' < ν). Para recuperar a frequência ν, o observador precisa ter blueshift, isto é, deve se mover **contra o sentido de propagação do fóton**, indo ao encontro dele. Se O se movesse no mesmo sentido do fóton, só haveria redshift adicional e seria impossível.\n\nResolvendo:\n(1 − β)/(1 + β) = (1 + k)²\n⟹ β = [1 − (1 + k)²]/[1 + (1 + k)²] = −k(k + 2)/(k² + 2k + 2).\n\nEm módulo (forma exata, válida para qualquer θ):\n\n**|V| = c · k(k + 2)/(k² + 2k + 2) = c (ν² − ν'²)/(ν² + ν'²),** com k = (hν/(m_e c²))(1 − cosθ).\n\nO sentido é oposto ao de propagação do fóton espalhado. Em termos de V com sinal (eixo no sentido do fóton), V = −|V|.\n\n**Uso da aproximação sen θ ≈ θ.** Para θ ≪ 1: 1 − cosθ = 2 sen²(θ/2) ≈ θ²/2, logo\nk ≈ hνθ²/(2 m_e c²).\n\nEntão\n|V| ≈ c · k(k + 2)/(k² + 2k + 2), com k = hνθ²/(2 m_e c²).\n\nSe além disso k ≪ 1 (isto é, αθ² ≪ 1), então β ≈ k − k²/2 ≈ k, e\n\n**|V| ≈ hνθ²/(2 m_e c).**\n\nVerificação numérica (unidades m = c = h = 1, ν = 0,7, θ = 1 rad):\n- O zero numérico da equação de Doppler dá β = −0,27197.\n- A fórmula dá |β| = 0,27197.\n- Para ν = 0,01 e θ = 0,1, β exato = 4,9957×10⁻⁵ e β com a aproximação de ângulo pequeno = 4,9999×10⁻⁵.\n\nCasos particulares:\n- θ = 0 dá V = 0.\n- |V| < c sempre, pois k > 0 finito.",
+    "final_answer": "a) ν' = ν / [1 + (hν/(m_e c²))(1 − cosθ)] = ν / [1 + (2hν/(m_e c²)) sen²(θ/2)], equivalente a 1/ν' − 1/ν = h(1 − cosθ)/(m_e c²).\n\nb) Com k = (hν/(m_e c²))(1 − cosθ) e ν/ν' = 1 + k, O deve ir ao encontro do fóton, em sentido oposto ao da propagação, com\n|V| = c·k(k + 2)/(k² + 2k + 2) = c(ν² − ν'²)/(ν² + ν'²).\n\nCom sen θ ≈ θ, k ≈ hνθ²/(2 m_e c²). Se também k ≪ 1, |V| ≈ hνθ²/(2 m_e c).\n\nCom sinal, no eixo orientado no sentido do fóton espalhado, V = −|V| < 0.",
+    "pitfalls": [
+      "Na parte (a) é preciso usar energia e momento relativísticos do elétron (E² = p²c² + m²c⁴). Usar energia cinética clássica p²/2m dá resultado errado, pois hν é comparável a m_e c². Também é erro esquecer o momento de recuo do elétron ou escrever a conservação de momento sem o ângulo θ.",
+      "Na parte (a) não se deve aproximar nada. A aproximação sen θ ≈ θ não é necessária e só pode ser usada se a resposta exata também for dada. O erro comum é aproximar já em (a), ou deixar a resposta em λ' − λ sem converter para ν'. A conversão correta é 1/ν' − 1/ν = h(1 − cosθ)/(m_e c²), não ν' − ν.",
+      "A fórmula de Compton só vale no referencial em que o elétron está inicialmente em repouso. Em O o elétron não está em repouso, então não se pode refazer Compton lá. Em (b) usa-se apenas a transformação (Doppler) da frequência do fóton já espalhado, ν'.",
+      "A condição de (b) é ν'_O = ν, a frequência original no referencial S, e não a frequência de ν' em O. É erro confundir os dois valores.",
+      "O sentido do movimento de O é a armadilha principal. Como ν' < ν, é preciso blueshift, então O se move contra o sentido do fóton espalhado, indo ao encontro dele. Com V no sentido do fóton, a solução é negativa. Supor O no mesmo sentido do fóton só gera redshift e não tem solução (exceto θ = 0, V = 0). Trocar o sinal em √[(1 − β)/(1 + β)] também inverte a conclusão.",
+      "Usar Doppler clássico (ν' = ν(1 ± V/c)) é inadequado. Como k não é desprezível a priori, deve-se usar o Doppler relativístico, ν'_O = ν'√[(1 − β)/(1 + β)]. A linearização |V| ≈ hνθ²/(2 m_e c) só vale se αθ² ≪ 1. O erro típico é aplicá-la sem dizer isso ou omitir a forma exata c(ν² − ν'²)/(ν² + ν'²).",
+      "Ao usar sen θ ≈ θ em b), é preciso passar por 1 − cosθ = 2 sen²(θ/2) ≈ θ²/2, com o argumento θ/2. Escrever 1 − cosθ ≈ θ (ordem errada) ou 1 − cosθ ≈ θ² (fator 2 perdido) é erro comum.",
+      "Verificar |V| < c, o caso θ = 0 (V = 0), a unidade de V e a coerência com ν' ≤ ν ajuda a evitar erros de álgebra. A resposta é expressa em ν, θ, h, m_e, c, sem ν'."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "a) ν' = ν / [1 + (hν/(m_e c²))(1 − cos θ)] (efeito Compton). b) V = −c(ν² − ν'²)/(ν² + ν'²), isto é |V| = c·ε(2+ε)/(2+2ε+ε²) com ε = (hν/(m_e c²))(1 − cos θ); O se move sobre a reta do fóton espalhado, em sentido oposto ao dele (desvio para o azul). Para θ ≪ 1 e ε ≪ 1: |V| ≈ hνθ²/(2 m_e c).",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A dica do enunciado (sen θ ≈ θ) só é usada no fim de (b), no \"caso de ângulo pequeno\". A resposta final destacada é a forma exata, em ε e ν'. A forma exata é correta e mais geral, mas quem espera a resposta aproximada em θ só a encontra no parêntese final. Seria melhor deixar a forma aproximada, com ε ≈ hνθ²/(2m_ec²), mais visível no ANSWER, junto com a condição de validade (ε ≪ 1)."
+          },
+          {
+            "severity": "minor",
+            "description": "O Doppler longitudinal é citado como \"transformação de Lorentz do quadrivetor do fóton\", sem mostrar o boost (E' = γ(E − Vp), com p = E/c). A fórmula está certa e o sinal de β está bem definido. Uma linha de dedução tornaria a solução autocontida, já que (b) é a parte \"nova\" da questão."
+          },
+          {
+            "severity": "minor",
+            "description": "A forma exata de (a) não é dada também como 2hν sen²(θ/2)/(m_ec²) no denominador. É equivalente e trivial de obter, mas ligaria diretamente (a) ao uso da aproximação sen θ ≈ θ em (b)."
+          },
+          {
+            "severity": "minor",
+            "description": "A interpretação de \"mesma direção\" como mesma reta, em sentido oposto, está bem justificada. O candidato observa que no mesmo sentido não há solução. Falta só dizer explicitamente que, nesse caso, a resposta é V = 0 apenas para θ = 0."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (Questão 10, páginas 10 e 11) e refiz as contas.\n\nItem (a): a resolução usa conservação de energia e de momento relativísticos, com E_e² = p_e²c² + m_e²c⁴, e cancela corretamente os termos quadráticos. Chega a 1/ν' − 1/ν = h(1 − cosθ)/(m_ec²), ou seja, ν' = ν/[1 + (hν/m_ec²)(1 − cosθ)]. É idêntico à minha referência. Não aproxima nada em (a) e traz verificações pertinentes (θ = 0, ν' < ν, limite m_e → ∞).\n\nItem (b): usa o Doppler relativístico longitudinal ν'' = ν'√[(1 − β)/(1 + β)] e impõe ν'' = ν. Obtém β = (ν'² − ν²)/(ν'² + ν²) < 0. Conclui com o sentido certo: O vai ao encontro do fóton, em sentido oposto ao dele, pois é preciso blueshift. A forma final, |V| = c ε(2 + ε)/(2 + 2ε + ε²) = c(ν² − ν'²)/(ν² + ν'²), com ε = (hν/m_ec²)(1 − cosθ), coincide com a minha referência.\n\nUsa corretamente 1 − cosθ = 2 sen²(θ/2) ≈ θ²/2, com o fator 2 e o argumento θ/2 certos. Dá a linearização |V| ≈ hνθ²/(2m_ec) e diz que ela exige ε ≪ 1.\n\nRefiz o teste numérico (hν = 100 keV, θ = 90°): ε = 0,1957, ν' = 0,836ν, |V| = 0,1768c. O boost com β = −0,1768 devolve exatamente ν. Isso confirma os valores do candidato.\n\nTodas as armadilhas da minha referência foram tratadas:\n- não usou Compton em O;\n- a condição é ν'' = ν (frequência original em S);\n- o sentido do movimento está correto;\n- usou Doppler relativístico;\n- a linearização vem com sua condição de validade;\n- verificou |V| < c e V = 0 para θ = 0.\n\nSó há pontos de acabamento: a dica sen θ ≈ θ aparece apenas no fim, e o boost de Lorentz não é mostrado em detalhe. Nada compromete a correção."
+      }
+    }
+  ]
+}

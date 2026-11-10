@@ -1,0 +1,51 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{1) Simplificação de $f$.} Como $g_n(x)\in\{0,1\}$ e $n\ge 1$, temos $\left(\dfrac{g_n(x)}{3}\right)^n=3^{-n}$ se $g_n(x)=1$ e $0^n=0$ se $g_n(x)=0$. Logo
+\[
+f(x)=\sum_{n:\,g_n(x)=1}3^{-n}.
+\]
+A série converge, pois seus termos são não negativos e limitados por $3^{-n}$, e $\sum_{n\ge1}3^{-n}=\tfrac12$. Pela definição, $g_n(x)=1\iff x>-\tfrac1n$.
+
+\begin{itemize}
+\item \textbf{$x\ge 0$:} vale $x>-\tfrac1n$ para todo $n$, então $f(x)=\sum_{n\ge1}3^{-n}=\tfrac12$.
+\item \textbf{$x<0$:} escrevendo $|x|=-x>0$, temos $x>-\tfrac1n\iff \tfrac1n>|x|\iff n<\tfrac1{|x|}$. Seja $N$ o número de inteiros positivos $n<\tfrac1{|x|}$, isto é, $n=1,\dots,N$. Então
+\[
+f(x)=\sum_{n=1}^{N}3^{-n}=\frac{1-3^{-N}}{2},
+\]
+e a fórmula vale também para $N=0$, que dá $f(x)=0$ (soma vazia).
+\end{itemize}
+
+\textbf{2) Domínio.} $f\!\left(-\tfrac1x\right)$ exige $x\neq0$. Analisamos os inteiros $x\le-1$ e $x\ge1$.
+
+\textbf{3) Inteiros $x\le -1$.} Aqui $|x|\ge1$, então $\tfrac1{|x|}\le1$ e nenhum inteiro $n\ge1$ satisfaz $n<\tfrac1{|x|}$. Logo $N=0$ e $f(x)=0$. Como $-\tfrac1x>0$, temos $f\!\left(-\tfrac1x\right)=\tfrac12$. Assim
+\[
+f(x)+f\!\left(-\tfrac1x\right)=\tfrac12<0{,}999 .
+\]
+Nenhum inteiro negativo serve.
+
+\textbf{4) Inteiros $x\ge 1$.} Aqui $f(x)=\tfrac12$. Além disso, $-\tfrac1x<0$ e $\left|-\tfrac1x\right|=\tfrac1x$, então a condição é $n<x$. O valor $n=x$ fica fora, porque $-\tfrac1x\le-\tfrac1x$ dá $g_x\!\left(-\tfrac1x\right)=0$. Portanto $N=x-1$ e $f\!\left(-\tfrac1x\right)=\dfrac{1-3^{-(x-1)}}{2}$. Somando,
+\[
+h(x):=f(x)+f\!\left(-\tfrac1x\right)=\frac12+\frac{1-3^{1-x}}{2}=1-\frac{3^{1-x}}{2}.
+\]
+Verificação em $x=1$: $h(1)=\tfrac12$, coerente com $f(1)=\tfrac12$ e $f(-1)=0$.
+
+\textbf{5) A desigualdade.} Para $x\ge1$,
+\[
+1-\frac{3^{1-x}}{2}\ge 0{,}999
+\iff \frac{1}{2\cdot3^{x-1}}\le 0{,}001
+\iff 3^{x-1}\ge \frac{1}{2\cdot 0{,}001}=500 .
+\]
+A função $x\mapsto3^{x-1}$ é estritamente crescente. Logo $h$ é crescente em $x\ge1$ e o conjunto dos $x$ que servem é uma semirreta. Como $3^5=243<500<729=3^6$, a condição equivale a $x-1\ge6$, ou seja, $x\ge7$.
+
+\textbf{6) Conferência.}
+\begin{itemize}
+\item $x=6$: $h(6)=1-\dfrac1{486}\approx0{,}99794<0{,}999$, não serve.
+\item $x=7$: $h(7)=1-\dfrac1{1458}\approx0{,}99931\ge0{,}999$, serve.
+\end{itemize}
+Também conferi $h(x)$ por soma exata em frações, a partir da definição de $g_n$. O resultado foi $0{,}5$ para $x=-3,-1,1$, $0{,}99794$ para $x=6$ e $0{,}99931$ para $x=7$.
+
+O conjunto solução entre os inteiros é $\{7,8,9,\dots\}$, e seu menor elemento é $7$.
+
+ANSWER: $x=7$

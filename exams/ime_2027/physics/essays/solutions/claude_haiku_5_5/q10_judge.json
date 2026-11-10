@@ -1,0 +1,130 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "(a) Somente a Situação 2 (correntes iguais e no mesmo sentido, partícula descendo). É a única com B_z(0)=0 e restauração: B_z'(0)=4μ0 i/(πd²)>0 e ẏ≈−v dão coeficiente negativo. As Situações 1 e 4 têm B_z(0)≠0 e força horizontal de sinal fixo; a Situação 3 é instável.\n(b) p ≈ (πd/2)·√(πmv/(μ0 i q)) = πv/ω, com ω = (2/d)·√(μ0 i q v/(πm)). Correção relativa de segunda ordem: −(3/16)(ωA/v)². A integração numérica das equações exatas confirma.",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA — Questão 10 (Física, IME 2026/2027, 1,0 ponto)\n\n1) Montagem e ferramentas\n- Fios verticais (paralelos ao eixo y) em x = −d/2 e x = +d/2. A partícula está no plano mediano (x = 0) e no plano dos fios (z = 0).\n- Sejam s₁, s₂ = ±1 os sentidos das correntes nos fios esquerdo e direito (+1 = para cima) e σ = ±1 o sentido de v (+1 = para cima).\n- Campo de fio infinito: B = μ₀I/(2πr), com direção dada por dl × r̂. No plano dos fios o campo é perpendicular ao plano, B = B_z ẑ.\n- Para um ponto entre os fios, com abscissa x (sem depender de y):\n  B_z(x) = (μ₀i/2π)·[ −s₁/(d/2 + x) + s₂/(d/2 − x) ].\n- Força de Lorentz: F = q v × B, com v = σv ŷ, logo F = qσv B_z(x) x̂. A força é horizontal, e |v| é constante (a força magnética não realiza trabalho).\n- Condição de restauração: F_x ≈ −k·x, com k > 0, em torno de x = 0.\n\n2) Item a) — análise das quatro situações\nSituação 1 (s₁ = +1, s₂ = −1; σ = −1, v para baixo):\n- B_z(0) = (μ₀i/2π)(−4/d) = −2μ₀i/(πd) ≠ 0.\n- F_x(0) = q(−v)B_z(0) = +2μ₀iqv/(πd) ≠ 0.\n- dB_z/dx = 0 em x = 0, então B_z(x) ≈ B_z(0) + O(x²): a força é quase constante e empurra a partícula para um dos fios. Não há restauração. DESCARTADA.\n\nSituação 4 (s₁ = +1, s₂ = −1; σ = +1, v para cima):\n- Mesma geometria de correntes, então B_z(0) ≠ 0 e F_x(0) = −2μ₀iqv/(πd) ≠ 0. Sem ponto de equilíbrio estável no plano mediano. DESCARTADA.\n\nSituação 2 (s₁ = s₂ = +1; σ = −1, v para baixo):\n- B_z(0) = 0, então o plano mediano é ponto de equilíbrio.\n- B_z(x) = (μ₀i/2π)[1/(d/2 − x) − 1/(d/2 + x)] = μ₀ix / [π(d²/4 − x²)].\n- Linearização com 1/(1 + u) ≈ 1 − u: 1/(d/2 ± x) = (2/d)/(1 ± 2x/d) ≈ (2/d)(1 ∓ 2x/d). Logo 1/(d/2 − x) − 1/(d/2 + x) ≈ (2/d)(4x/d) = 8x/d², e B_z ≈ 4μ₀ix/(πd²).\n- F_x = q(−v)·4μ₀ix/(πd²) = −(4μ₀iqv/(πd²))·x. Restauradora, com k = 4μ₀iqv/(πd²) > 0. ESCOLHIDA.\n\nSituação 3 (s₁ = s₂ = +1; σ = +1, v para cima):\n- Mesmo B_z(x), mas agora F_x = +k·x: afastadora. O desvio cresce exponencialmente e a partícula vai para um fio. DESCARTADA.\n\nInterpretação física: correntes paralelas se atraem. Uma carga positiva que se move no mesmo sentido das correntes age como corrente paralela ao fio mais próximo e é atraída (instável). Movendo-se em sentido contrário, é repelida pelo fio mais próximo (restauradora). O plano mediano é equilíbrio nas Situações 2 e 3 (B = 0), mas só é estável na 2.\n\nResposta a): somente a Situação 2.\n\n3) Item b) — passo p\n- Equação do movimento horizontal (pequenas amplitudes): m·ẍ = −k·x, com k = 4μ₀iqv/(πd²).\n- Frequência angular: ω = √(k/m) = (2/d)·√(μ₀iqv/(πm)).\n- Como |v| é constante e ẋ ≪ v, a velocidade vertical é v_y ≈ v em módulo. Assim, |y| ≈ v·t e x(y) = A·sen(ω|y|/v).\n- Os cruzamentos com o eixo y (x = 0) estão separados por Δ|y| = πv/ω. Esse é o passo p, pois a figura marca p entre dois cruzamentos consecutivos (as duas linhas tracejadas partem do eixo y). O período espacial completo é 2p.\n- p = πv/ω = (πvd/2)·√(πm/(μ₀iqv)) = (πd/2)·√(πmv/(μ₀iq)).\n\nVerificação numérica: integrei a equação exata com o campo completo dos dois fios (Biot-Savart) e a força de Lorentz, com d = 0,10 m, m = 1 µg, q = 1 µC, i = 1 A, v = 100 m/s e x₀ = 10⁻⁴ d. O espaçamento médio entre cruzamentos foi 2483,65 m, contra a previsão fechada de 2483,65 m (erro < 10⁻⁶). Nas Situações 1 e 4 a partícula vai para um fio; na 3 diverge. Os resultados confirmam a escolha.\n\nObservação: se q fosse negativo, a escolha seria a Situação 3, com o mesmo p. O enunciado diz q > 0, portanto a resposta é a Situação 2.",
+    "final_answer": "a) Somente a Situação 2 (correntes para cima nos dois fios, mesmo sentido; partícula positiva descendo, ou seja, em sentido contrário às correntes). Ela tem B = 0 no plano mediano e força F_x = −(4μ₀iqv/(πd²))·x, que é restauradora. As Situações 1 e 4 (correntes opostas) têm B ≠ 0 no plano mediano, com força lateral não nula e sem restauração. A Situação 3 (mesmas correntes, mas v no sentido das correntes) tem força afastadora, portanto é instável.\n\nb) p ≈ (πd/2)·√(πmv/(μ₀iq)), equivalente a p = πv/ω, com ω = (2/d)·√(μ₀iqv/(πm)). Esse é o passo entre dois cruzamentos consecutivos do eixo y. O período espacial completo é 2p.",
+    "pitfalls": [
+      "Situações 1 e 4 (correntes opostas) parecem simétricas e induzem a falsa ideia de restauração. Mas B no plano mediano não é nulo (B₀ = 2μ₀i/(πd)), a força lateral é não nula e quase constante, e a partícula é empurrada para um fio. Não basta haver um ponto de B = 0 para haver restauração.",
+      "Equilíbrio não é estabilidade: nas Situações 2 e 3 o plano mediano tem B = 0, mas só a 2 é estável. A estabilidade depende do sentido de v em relação às correntes (para q > 0, restauração exige v contrário às correntes de mesmo sentido). Escolher a Situação 3 por confundir esses sentidos é o erro típico.",
+      "Dependência do sinal de q: a resposta (Situação 2) vale para q > 0, como o enunciado dá. Para q < 0 a escolha seria a Situação 3. Não aplicar a regra de sentido sem checar o sinal da carga.",
+      "Distância ao fio: cada fio está a d/2 do plano mediano, não a d. Usar d no lugar de d/2 subestima k por fator 4 e superestima p por fator 2.",
+      "Linearização: as duas parcelas 1/(d/2 ± x) somam termos lineares de mesmo sinal (4x/d² cada), e as constantes (B(0) = 0) se cancelam. Um erro de sinal faz o termo linear cancelar e leva à conclusão falsa de que não há restauração. Usar 1/(1+x) ≈ 1 − x com u = 2x/d, não com x/d.",
+      "Passo p versus período espacial: a figura marca p entre dois cruzamentos consecutivos do eixo y (as duas linhas tracejadas partem do eixo y). Isso é meia onda, p = λ_y/2 = πv/ω. Dar 2p (período completo) responde a outra pergunta.",
+      "Constantes do campo: B = μ₀i/(2πr). Usar μ₀i/(4πr) ou μ₀i/(2r) altera k e p por fator √2 ou 2. Conferir também as unidades: μ₀iqv/(md²) tem unidade s⁻² e p tem unidade de metro.",
+      "Conversão tempo-distância: como o campo magnético não realiza trabalho, |v| é constante. O deslocamento vertical usa v_y ≈ v (correção O(ẋ²/v²)). Não usar ẋ nem a velocidade total de forma errada.",
+      "Pequenas amplitudes: a linearização vale para |x| ≪ d/2 (correções O(x²/d²)). Em primeira ordem, p não depende da amplitude, por isso o enunciado pede um valor aproximado.",
+      "Gravidade e hipóteses: o campo é perpendicular ao plano dos fios, logo a força restauradora é horizontal. O peso não entra na restauração horizontal. O enunciado não dá g e assume v constante, então o peso ao longo da trajetória deve ser declarado como desprezado ou irrelevante."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) Somente a Situação 2 (correntes iguais e no mesmo sentido, com a partícula descendo). Ela é a única que cumpre B(0)=0 e tem força restauradora, pois B_z'(0)=4μ0 i/(π d²)>0 e a partícula desce. Situações 1 e 4 têm B(0)=−2μ0 i/(π d)≠0, com força horizontal constante que desvia a partícula para um fio. A Situação 3 tem força repulsiva (equilíbrio instável).\nb) Com ω² = 4μ0 i q v/(π m d²), o passo entre cruzamentos sucessivos do eixo y (meio período) é p ≈ (π d/2)·sqrt(π m v/(μ0 q i)). Para i = 10 A, d = 1 cm, q/m = 1 C/kg e v = 1 m/s, p ≈ 7,85 m.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A frase \"uma integração numérica das equações exatas ... confirmou esse valor com diferença inferior a 0,02%\" não traz código, parâmetros de integração nem o valor obtido. A afirmação é verdadeira: integrei as equações exatas com o campo completo para d=1 cm, m/q=1, i=10 A, v=1 m/s e obtive espaçamento médio 7,85398 m (erro ~1e-6 %). Mas, no texto, é uma afirmação não verificável. Deveria apresentar os dados da integração ou retirar a frase."
+          },
+          {
+            "severity": "minor",
+            "description": "O sinal de q não aparece na análise de estabilidade. A condição (ii) é escrita como s·B'(0)<0, mas a forma completa é s·q·B'(0)<0. Ela só vale porque q>0, dado do enunciado, e o texto não diz isso. Se q<0, a escolha passaria para a Situação 3, que é justamente a armadilha da referência. Deveria escrever a condição com q e explicitar o uso de q>0."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de desprezar o peso está mal justificada. O texto diz que o peso 'não atua na direção x', o que não basta: o peso atua em y e altera |v|, e a afirmação anterior de que |v| é constante vale só sem peso. O correto é declarar a hipótese mg ≪ qvB (g não é dado no enunciado). O próprio exemplo numérico viola essa condição: com m=1 kg, mg≈9,8 N, enquanto qvB≈8·10⁻⁴ N. O exemplo confirma a álgebra, não a física da hipótese."
+          },
+          {
+            "severity": "minor",
+            "description": "A exclusão das Situações 1 e 4 é justificada só no plano médio (B_z(0)≠0). Um argumento completo mostraria que B_z = −(μ0 i/2π)·d/(d²/4−x²) não se anula em |x|<d/2, logo não existe ponto de equilíbrio entre os fios. Além disso, 'força constante' é aproximação (varia com O(x²/d²)), e o raio R=πdmv/(2μ0iq) vale apenas para campo aproximadamente uniforme. Deveria dizer 'aproximadamente'."
+          },
+          {
+            "severity": "minor",
+            "description": "Na linearização, o texto cita 1/(1+u)≈1−u com u=2|x|/d, mas as expansões usadas são 1/(d/2∓x)≈(2/d)(1±2x/d), que correspondem a 1/(1−u)≈1+u. A substituição de u (com o sinal certo) não está explícita, então a justificativa citada não sustenta diretamente o passo. O resultado B_z≈4μ0ix/(πd²) está correto. Deveria mostrar a substituição de u."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência de unidades cobre só p. Não verifica ω² = 4μ0iqv/(πmd²), que deveria ter unidade s⁻² e é a grandeza central do item b). Deveria incluir essa verificação."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta uma interpretação física curta, por exemplo: correntes paralelas de mesmo sentido se atraem, e a partícula que se move no sentido contrário às correntes é repelida pelo fio mais próximo, o que torna a escolha da Situação 2 intuitiva. Não é erro, mas um gabarito comentado deveria ter essa explicação."
+          },
+          {
+            "severity": "minor",
+            "description": "Erro de português: 'Ao primeiro ordem' deve ser 'Em primeira ordem'."
+          }
+        ],
+        "summary": "Resposta final correta e igual à da referência. (a) Somente a Situação 2 (correntes iguais no mesmo sentido, partícula descendo). (b) p = (πd/2)·√(πmv/(μ0·q·i)) = πv/ω, com ω = (2/d)·√(μ0·i·q·v/(πm)).\n\nConferi cada passo. A expressão de B_z(x) e as equações ẍ = q·ẏ·B_z/m e ÿ = −q·ẋ·B_z/m estão corretas. A linearização dá B_z ≈ 4μ0·i·x/(πd²), com sinal correto, e a Situação 2 é restauradora. Integrei numericamente as equações exatas com o campo completo: para os parâmetros do candidato o espaçamento médio é 7,85398 m, com erro ~1e-6 %, então a afirmação de \"<0,02 %\" é verdadeira, embora não esteja demonstrada no texto. Nas Situações 1, 3 e 4 a partícula atinge um fio (em 3,4 s, 22,6 s e 3,4 s), o que confirma as exclusões.\n\nSobre a referência: a fórmula fechada está correta, mas o valor numérico \"2483,65 m\" não corresponde aos parâmetros declarados (m = 1 µg). Esses parâmetros dão 78,54 m, também confirmado por integração exata. O valor 2483,65 m corresponde a m = 1 mg. A referência não deve ser usada como prova da verificação numérica.\n\nArmadilhas: falsa restauração nas Situações 1/4, equilíbrio versus estabilidade, d/2 versus d, passo versus 2p, constantes do campo, conversão tempo-distância e pequenas amplitudes foram tratadas. O sinal de q não foi tratado explicitamente. A justificativa para desprezar o peso está incompleta.\n\nNota 8: resolução correta e bem estruturada, mas com várias lacunas pequenas de justificativa e de explicitação, que a impedem de chegar a 9 como gabarito comentado."
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "(a) Somente a Situação 2 (correntes iguais no mesmo sentido, partícula descendo): B_z(0)=0 e B_z'(0)=4μ0·i/(πd²)>0, de modo que com ẏ≈−v a força horizontal é restauradora. Situações 1 e 4: B_z(0)≠0 e não há ponto de equilíbrio entre os fios, logo não há restauração. Situação 3: equilíbrio instável (s·B_z'(0)>0).\n\n(b) p ≈ (πd/2)·√(π·m·v/(μ0·q·i)) = πv/ω, com ω = (2/d)·√(μ0·i·q·v/(π·m)). Exemplo: m/q=10⁻⁸ kg/C, i=10 A, d=1 cm, v=1 m/s dá p≈0,785 mm.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Situação 4: a frase 'para x>0 a força afasta a partícula do plano médio; para x<0 ela a empurra em direção ao plano' está invertida para a Situação 4. Nela F_x = q·v·B_z < 0 em todo o intervalo: em x>0 a força empurra para o plano e em x<0 afasta. A frase vale só para a Situação 1. Corrigir separando os dois casos; para a Situação 4 basta dizer que B_z(0) ≠ 0 com sinal constante, logo não há ponto de equilíbrio."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipótese do peso: a resolução afirma |v| = v constante porque a força magnética não realiza trabalho, mas o peso realiza trabalho, então a hipótese é inconsistente. Além disso, 'g ≪ ωv, verificada no item (b)' é overclaim: g/(ωv) = 2,5·10⁻³ foi calculado só para um conjunto de parâmetros. O efeito de primeira ordem sobre o passo é πg/(2ωv) ≈ 0,4% por meio período e se acumula, porque a partícula acelera ao cair. Corrigir declarando g desprezado (o enunciado não o fornece) e enunciando a validade como g·Δy ≪ v², ou quantificando o termo."
+          },
+          {
+            "severity": "minor",
+            "description": "Verificação numérica: o valor 0,7852 mm reproduz-se sem o peso (obtive 7,8516·10⁻⁴ m, −0,030%). Com g = 9,8 m/s² incluído, o espaçamento médio sobe ~1,1% em 5 intervalos. A resolução não diz que o peso foi excluído da integração. A explicação do desvio pela correção (ωA/v)²/4 ≈ 4·10⁻⁴ é só de ordem de grandeza: o sinal confere, mas a magnitude observada é ~3·10⁻⁴. Corrigir declarando as hipóteses da integração."
+          },
+          {
+            "severity": "minor",
+            "description": "Situação 3: a instabilidade é mostrada só pela linearização x ∝ e^{±ωt}, válida enquanto |ẋ| ≪ v. A conclusão (não restauradora) está correta, mas o limite de validade deveria ser declarado. A conservação exata de p_y e |v| mostra que o desvio satura em amplitude ≈ √(x0² + 4mv/(q·B'(0))), cerca de 0,5 mm no exemplo, sem necessariamente chegar a um fio."
+          }
+        ],
+        "summary": "Respostas finais idênticas e corretas. (a) Somente a Situação 2. (b) p = (πd/2)·√(πmv/(μ0 i q)) = πv/ω, com ω = (2/d)·√(μ0 i q v/(π m)). Conferi independentemente: o campo B_z(x) de cada configuração (sinais pela regra da mão direita e por F = qv×B); B'(0) = 4μ0 i/(πd²), que dá 0,16 T/m no exemplo; B(0) = −2μ0 i/(πd) nas Situações 1 e 4. A integração RK4 com o campo exato dos dois fios dá espaçamento médio de 7,8516·10⁻⁴ m, igual ao 0,7852 mm reportado. A órbita da Situação 1 bate com x_max = (d/2)tanh(4R/d) (erro relativo ~5·10⁻⁹) e ẏ = +v em x_max. A Situação 3 não é restauradora.\n\nPontos fortes: as quatro situações estão analisadas. As armadilhas foram tratadas: B₀≠0 nas Situações 1 e 4, equilíbrio versus estabilidade em 2 e 3, dependência do sinal de q, d/2 e não d, linearização com u = 2x/d, p versus 2p, constantes do campo, unidades, conversão tempo-distância e amplitude. Os problemas encontrados são de rigor e redação; não há erro de conteúdo nem de resposta. Para ser gabarito publicável falta corrigir a frase da Situação 4 e fechar a justificativa do peso.\n\nSobre a referência (não altera a resposta final): (1) a verificação numérica que ela reporta (2483,65 m) não bate com os próprios dados. Com m = 1 µg, a forma fechada e a integração dão 78,54 m. O valor 2483,65 m corresponde a m = 10⁻⁶ kg. (2) Ela diz que nas Situações 1 e 3 a partícula 'vai para um fio', o que não vale em geral. Na 1, x_max < d/2 para R finito; na 3, o desvio satura em cerca de 0,5 mm no exemplo. Nesses dois pontos a resolução do candidato é mais correta que a referência.\n\nScripts de verificação: pasta de trabalho judge (check_q10.py, check_q10b.py)."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "(a) Somente a Situação 2 (correntes iguais e no mesmo sentido, partícula descendo). É a única com B_z(0)=0 e restauração: B_z'(0)=4μ0 i/(πd²)>0 e ẏ≈−v dão coeficiente negativo. As Situações 1 e 4 têm B_z(0)≠0 e força horizontal de sinal fixo; a Situação 3 é instável.\n(b) p ≈ (πd/2)·√(πmv/(μ0 i q)) = πv/ω, com ω = (2/d)·√(μ0 i q v/(πm)). Correção relativa de segunda ordem: −(3/16)(ωA/v)². A integração numérica das equações exatas confirma.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Exclusão das Situações 1 e 4: a frase 'F_x = q ẏ B_z tem sinal fixo' em |x|<a é falsa em geral, porque ẏ inverte de sinal ao longo da órbita (na Situação 1 a órbita atinge ẏ=+v em x_max; verifiquei numericamente que ẏ muda de sinal várias vezes). A conclusão se mantém, porque F_x(0)≠0 já impede equilíbrio no plano mediano. Deveria: restringir o 'sinal fixo' a ẏ≈−v (deslocamentos pequenos) e apoiar a exclusão em F_x(0)≠0 e na órbita em laço."
+          },
+          {
+            "severity": "minor",
+            "description": "Correção de segunda ordem incompleta: p ≈ (πv/ω)[1−(3/16)(ωA/v)²] está certa para o acoplamento com ẏ, mas omite o termo de não linearidade do campo, −(3/8)(A/a)² = −(3/2)(A/d)². Verifiquei por integração com ωa/v=1 e A/a=0,01: o desvio relativo numérico é −5,625×10⁻⁵, igual à soma dos dois termos; o termo da candidata sozinho daria −1,875×10⁻⁵. No exemplo da candidata o termo omitido vale só ~0,5 % da correção, por isso o acordo de 3 algarismos parece bom. Deveria: incluir −(3/2)(A/d)² ou rotular a fórmula como correção parcial."
+          },
+          {
+            "severity": "minor",
+            "description": "Peso: 'O enunciado não fornece g, e por isso o peso é desprezado' é um non sequitur. A justificativa correta é que o problema trata |v| como dado e que o peso altera ẏ em g·t; a condição geral é g ≪ ωv, e o efeito se acumula (verificado: +0,38 % no 1º meio período e +1,5 % após 4, em linha com πg/(2ωv)). O texto diz 'se acumula' e depois 'desprezível' sem janela temporal. Deveria: declarar a hipótese, dar a condição geral e dizer até quantas oscilações o valor aproximado vale."
+          },
+          {
+            "severity": "minor",
+            "description": "Sinal de q: a candidata usa q>0 corretamente, mas não diz que, para q<0, a escolha passaria a ser a Situação 3 (armadilha que a referência destaca). Deveria: uma frase explicitando que a condição de restauração é q·s·B′(0)<0 e que a escolha depende do sinal de q."
+          }
+        ],
+        "summary": "Resposta final correta e igual à referência. (a) Somente a Situação 2 (correntes iguais para cima, partícula descendo). (b) p ≈ (πd/2)√(πmv/(μ0 i q)) = πv/ω, com ω = (2/d)√(μ0 i q v/(πm)), sendo p a distância entre cruzamentos consecutivos do eixo (meio período), como a figura indica. Conferi o enunciado original e a figura ampliada (Sit. 1: opostas, v↓; Sit. 2: ambas ↑, v↓; Sit. 3: ambas ↑, v↑; Sit. 4: opostas, v↑). Verifiquei: o campo B_z = μ0 i x/(π(a²−x²)) para correntes iguais e B_z(0)≠0 para correntes opostas; a integral primeira m ẏ + qA(x) = const; o critério q·s·B′(0)<0; a amplitude exata |x0| da Situação 2; a órbita em laço da Situação 1 com x_max = a·tanh(4R/d), confirmada numericamente; e a fórmula exata de x_max da Situação 3, com concordância numérica de ~10⁻¹¹. O exemplo numérico da candidata (espaçamento 0,785161 mm, desvio −3,015×10⁻⁴) reproduz. Nenhum problema critical ou major. As armadilhas da referência estão tratadas, exceto a discussão explícita do sinal de q. Os três problemas minor são de rigor: o 'sinal fixo' falso na exclusão das Situações 1 e 4, a correção de segunda ordem sem o termo (A/d)², e a justificativa fraca para desprezar o peso. Nota 8,5: publicável como gabarito após ajustar essas frases. Observação sobre a referência (que eu escrevi e que tem erros): o 'espaçamento previsto/numérico de 2483,65 m' está errado. Com os dados declarados (m = 1 µg) o valor é 78,54 m, que é também o valor fechado da própria referência; a fórmula final está certa. A frase 'nas Situações 1 e 4 a partícula vai para um fio' vale só para R ≳ d; para R ≪ d a órbita é um laço, como a candidata descreve."
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) tan θ = sen(π/n) / (cos(π/n) − √3/2) = 2 sen(π/n) / (2 cos(π/n) − √3); b) n inteiro com n ≥ 7 (n > 6; n = 6 é só tangência, θ = 90°).",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado:** a figura do PDF confere com a transcrição. O ponto A está no espelho externo (raio R) e B no espelho interno (raio r). A normal em B é a reta radial OB, e θ é o ângulo entre BA e a normal que aponta para fora (no prolongamento de OB além de B).\n\n**1) Geometria de um trecho.** Seja O o eixo comum e φ = ∠AOB o ângulo central subtendido pelo trecho AB.\n- Pela lei da reflexão, o raio BC refletido em B é o simétrico de BA em relação à normal OB. Logo, o triângulo OBC é congruente ao OBA, com OC = OA = R e ∠BOC = φ.\n- Em C (espelho externo) acontece o mesmo: o trecho CD é o simétrico de CB em relação a OC. Então ∠COD = φ e OD = r.\n- Por indução, todos os trechos subtendem o mesmo ângulo central φ. Os pontos de reflexão se alternam entre espelho externo e interno e avançam sempre no mesmo sentido, pois os ângulos de A, B, C... são +φ, 0, −φ, ...\n\n**2) Condição de fechamento.** Há n pontos em cada espelho, ou seja, 2n pontos no total. Uma volta completa contém 2n trechos, e os raios se sobrepõem após uma volta:\n2n·φ = 2π, logo **φ = π/n**.\nConferência: os pontos externos ficam em 2πj/n (n pontos) e os internos em (2j+1)π/n (n pontos).\n\n**3) Item (a): tan θ.** Tome B = (r, 0), com a normal externa ao longo de +x, e A = (R cos φ, R sen φ).\nO vetor BA = (R cos φ − r, R sen φ) faz com a normal (eixo x) o ângulo θ. Portanto\ntan θ = R sen φ / (R cos φ − r) = sen φ / (cos φ − r/R).\n\nVerificação pela lei dos senos no triângulo OAB: ∠OBA = π − θ e sen(∠OAB) = (r/R) sen θ. Como φ = θ − ∠OAB, vale sen(θ − φ) = (r/R) sen θ, o que dá a mesma expressão.\n\nCom φ = π/n e r/R = √3/2:\n\n**tan θ = sen(π/n) / [cos(π/n) − √3/2] = 2 sen(π/n) / [2 cos(π/n) − √3]**\n\n**4) Item (b): valores possíveis de n.** O raio precisa realmente atingir o espelho interno pelo lado de fora e ser refletido. Isso exige 0 < θ < 90°, isto é, componente normal positiva em B:\nR cos φ − r > 0, ou seja, cos(π/n) > √3/2 = cos(π/6).\nComo π/n está em (0, π/2], isso dá π/n < π/6, logo **n > 6**.\n\nArgumento equivalente: φ(θ) = θ − arcsen((√3/2) sen θ) é crescente em [0, 90°), pois φ' = 1 − k cos θ / √(1 − k² sen² θ) > 0 com k < 1. Seu valor máximo, em θ → 90°, é arccos(√3/2) = π/6. Assim φ só pode estar em (0, π/6).\n\nCasos de borda:\n- **n = 6:** o denominador se anula, θ = 90° e tan θ não existe. O raio é tangente ao cilindro interno, apenas o roça e não é refletido. Não há 6 reflexões no espelho interno.\n- **n = 2, …, 5:** tan θ < 0 (θ obtuso). O trecho que sai do espelho externo não alcança o cilindro interno pelo lado externo, e a configuração é impossível.\n- **n = 1:** a fórmula dá tan θ = 0, mas isso é artefato. φ = π e θ = π (não 0): o raio iria pela diâmetro e atingiria o espelho interno no lado oposto antes de B. Também é inválido.\n\nNão há limite superior: quando n → ∞, tan θ → 0 (incidência quase radial). Portanto **n ∈ ℕ com n ≥ 7** (n = 7, 8, 9, …).\n\n**5) Conferência numérica.** Fiz um traçado de raios em Python, com R = 1, r = √3/2 e a lei da reflexão aplicada a cada choque, para n = 1…15.\n- Para n = 7…15, o primeiro choque ocorre no espelho interno e o ângulo de A é π/n.\n- Em 2n choques há exatamente n reflexões em cada espelho, e o choque de número 2n + 1 volta a B após 360°.\n- Para n ≤ 6, não existe θ em [0, 90°) válido.\n\nValores: n = 7 → tan θ ≈ 12,42 (θ ≈ 85,4°); n = 8 → 6,61 (81,4°); n = 12 → 2,59 (68,9°).",
+    "final_answer": "a) tan θ = sen(π/n) / [cos(π/n) − √3/2] = 2 sen(π/n) / [2 cos(π/n) − √3]. O ângulo central por trecho é φ = π/n.\n\nb) n inteiro com n ≥ 7 (n = 7, 8, 9, …). Isso vem de cos(π/n) > √3/2, ou seja, θ < 90°. Para n = 6 o raio é tangente ao cilindro interno e tan θ é infinita. Para n ≤ 5 não há solução geométrica.",
+    "pitfalls": [
+      "Contagem de reflexões: 'n pontos em cada espelho' significa 2n pontos e 2n trechos por volta, então 2nφ = 2π e φ = π/n. Usar n pontos no total (φ = 2π/n) é erro comum e leva a n > 12 e a uma tan θ errada.",
+      "É preciso justificar que todos os trechos subtendem o mesmo ângulo central φ, por congruência dos triângulos OAB, OBC, OCD… (reflexão em relação à normal radial, que preserva as distâncias a O). Sem isso, a condição de fechamento 2nφ = 2π não está fundamentada.",
+      "'Sobrepõem-se após uma volta' fixa uma única volta (m = 1). Para m voltas seria φ = mπ/n, o que mudaria a resposta. Aqui não é o caso.",
+      "Definição de θ: é o ângulo com a normal (radial) em B, e não com a tangente. Confundir os dois troca tan θ por cot θ. A relação é tan θ = R sen φ / (R cos φ − r), com φ = ∠AOB.",
+      "Condição de validade de (b): é preciso exigir θ < 90°, isto é, R cos φ > r, e não apenas que a fórmula faça sentido. n = 6 dá θ = 90° (raio tangente, sem reflexão real, tan θ infinita) e deve ser excluído, assim como n ≤ 5, em que tan θ < 0 (θ obtuso).",
+      "n = 1 dá tan θ = 0 pela fórmula, mas é falso: θ seria π (raio pelo diâmetro), e o raio atingiria o espelho interno do outro lado antes de B. Usar só tan θ > 0 ou 'fórmula definida' deixa esse caso passar. Também não vale n = 0.",
+      "Não existe limite superior para n: tan θ → 0 quando n → ∞. A resposta correta é n ≥ 7, e não um conjunto finito. A razão √3/2 = cos 30° é o que define o corte em n > 6.",
+      "Armadilha de identificação da figura: o raio horizontal A→B é o raio incidente em B. A normal tracejada é radial e aponta para fora, e a reflexão em B leva o raio ao ponto C do espelho externo, simétrico de A em relação a OB, seguindo no mesmo sentido de rotação."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) tan θ = sen(π/n) / (cos(π/n) − √3/2) = 2 sen(π/n) / (2 cos(π/n) − √3); b) n inteiro com n ≥ 7 (n > 6; n = 6 é só tangência, θ = 90°).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O caso n = 1 não é tratado de forma explícita. O texto diz que sen(π/n) > 0 para n ≥ 2 e segue, mas a fórmula dá tan θ = 0 para n = 1, e esse caso é um artefato (φ = π, θ = π, não 0). Ele só fica excluído porque 'tan θ finito e positivo' é exigido, e isso não é dito. Deveria haver uma linha dizendo que n = 1 (e n = 0) cai fora: φ = π leva o raio pelo diâmetro, que atinge o espelho interno do lado oposto antes de B."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'Para n ≤ 5 o raio nem alcança o cilindro interno' é imprecisa. Para φ > π/6 o segmento AB atravessa o disco interno, com θ obtuso e tan θ < 0, e o raio bate no cilindro interno antes de B. A configuração é impossível, mas o motivo é esse, não 'não alcançar'. O ideal seria ligar o argumento ao sinal do denominador, R cos φ − r < 0."
+          },
+          {
+            "severity": "minor",
+            "description": "O ângulo central máximo π/6 'na tangência' aparece como interpretação física, sem prova de monotonicidade de φ(θ). A conclusão é correta e já decorre algebricamente de tan θ > 0 ⇔ cos φ > r/R, e a resolução dá os dois argumentos. A justificativa geométrica poderia ser mais curta e mais precisa: com o raio tangente, o triângulo OAB é retângulo em B e cos φ = r/R."
+          },
+          {
+            "severity": "minor",
+            "description": "A convenção 'uma volta = 2n segmentos' (φ = π/n, m = 1) é usada corretamente, mas não se discute explicitamente que m voltas daria φ = mπ/n. O enunciado fixa uma volta, então não afeta o resultado. Também falta dizer que o fechamento só ocorre após uma volta completa, e não antes. A verificação numérica por simulação é só citada, sem mostrar o código."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a referência nos dois itens. (a) tan θ = sen(π/n)/(cos(π/n) − √3/2) = 2 sen(π/n)/(2cos(π/n) − √3). (b) n ≥ 7, sem limite superior. Refiz a conta por traçado de raios em Python, com R = 1, r = √3/2 e a lei da reflexão a cada choque. Para n = 7, 8 e 12, o ponto A fica em π/n e θ = 85,4°, 81,4° e 68,9°, com tan θ = 12,42, 6,62 e 2,59. Há exatamente n pontos em cada espelho em 2n choques, e o raio volta a B após 360°. Para n = 12, sen α = 0,808 = (√3/2) sen θ. O sinal de cos(π/n) − √3/2 é positivo só para n ≥ 7, é ≈ 0 em n = 6 (tangência, θ = 90°) e negativo para n ≤ 5. A resolução está bem montada. Ela define θ corretamente em relação à normal radial e usa a lei dos senos no triângulo OAB. Justifica por congruência (reflexão em relação à normal radial) que todos os trechos subtendem o mesmo ângulo central e que o sentido de giro se mantém. Conta corretamente 2n segmentos por volta, o que dá φ = π/n. Exige 0 < θ < 90° e exclui n = 6 (tangência) e n ≤ 5. Afirma que não há limite superior e dá uma verificação numérica coerente (n = 12, n = 7 e n → ∞). Quase todas as armadilhas listadas foram evitadas: contagem de reflexões, θ medido na normal, θ < 90° e não só fórmula definida, ausência de limite superior e interpretação da figura. Restam falhas apenas de acabamento: n = 1 não é tratado de forma explícita, 'nem alcança o cilindro interno' é uma frase imprecisa, e a monotonicidade do ângulo máximo é só enunciada. Seria aceitável como gabarito comentado, com pequenos ajustes."
+      }
+    }
+  ]
+}

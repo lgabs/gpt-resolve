@@ -1,0 +1,52 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) A componente radial da reação do pivô fica ao longo da haste e aponta para o pivô. Seu valor é F_r = M[ω²(L−2a)/2 + g cos θ]. Ela não depende da aceleração angular. Em vetor, com o versor r̂ = (sen θ, −cos θ) indo do pivô para o centro de massa: R_r = −M[ω²(L/2−a) + g cos θ] r̂.\nb) Fazendo F_r = 0: cos θ = ω²(2a−L)/(2g), ou seja, θ = arccos[ω²(2a−L)/(2g)]. Para a < L/2, esse ângulo fica acima de 90° (trecho longo acima da horizontal). Só existe solução se ω²(L−2a) ≤ 2g.",
+  "judge_reference": {
+    "final_answer": "a) A componente radial da reação do pivô fica ao longo da haste. Tomando como positivo o sentido do centro de massa para o pivô:\nR = M[g cosθ + ω²(L/2 − a)] = M[g cosθ + ω²(L − 2a)/2].\nSe R < 0, o pivô empurra a haste para fora. Vetorialmente, com r̂ = (sinθ, −cosθ) unitário do pivô para a ponta longa: N_r = −M[g cosθ + ω²(L/2 − a)] r̂.\n\nb) R = 0 ⇔ cosθ = −ω²(L − 2a)/(2g), ou seja, θ = arccos[−ω²(L − 2a)/(2g)] = π − arccos[ω²(L − 2a)/(2g)].\n- Para a < L/2, isso dá 90° < θ ≤ 180°: o centro de massa fica acima do pivô.\n- Por simetria, −θ também serve.\n- A massa M não aparece no resultado.\n- Só existe solução se ω²(L − 2a) ≤ 2g.\n- Para a = L/2, o resultado é θ = 90°, qualquer que seja ω.",
+    "reference_solution": "**Montagem do problema**\n\nA origem fica no pivô O, com x para a direita e y para cima (como na figura).\n- O trecho curto (comprimento a) fica acima e à esquerda do pivô.\n- O trecho longo (comprimento L − a) desce para a direita, fazendo ângulo θ com a vertical para baixo.\n\nVersores:\n- Radial, do pivô para a ponta longa: r̂ = (sinθ, −cosθ).\n- Tangencial, no sentido de θ crescente: θ̂ = (cosθ, sinθ).\n\nCentro de massa. A haste é homogênea, então o CM está no ponto médio, a L/2 de cada ponta. A distância do CM ao pivô é d = L/2 − a, medida ao longo de r̂. Para a < L/2, como na figura, o CM está no trecho longo. Logo r_CM = d r̂.\n\nForças externas sobre a haste:\n- o peso M g = (0, −Mg), aplicado no CM;\n- a reação do pivô N = N_r r̂ + N_t θ̂.\n\n**a) Componente radial da reação**\n\nO pivô está fixo e a haste é rígida. Então o CM descreve uma circunferência de raio d em torno do pivô, e sua aceleração é:\na_CM = α d θ̂ − ω² d r̂.\n\nO termo −ω² d r̂ é a aceleração centrípeta, apontando para o pivô.\n\nPelo teorema do movimento do centro de massa, Σ F_ext = M a_CM. Projetando em r̂:\n- componente radial do peso: (0, −Mg)·(sinθ, −cosθ) = +Mg cosθ;\n- equação: N_r + Mg cosθ = −M ω² d;\n- portanto N_r = −M[g cosθ + ω²(L/2 − a)].\n\nResposta (a): a componente radial da reação vale R = M[g cosθ + ω²(L/2 − a)] = M[g cosθ + ω²(L − 2a)/2].\n- Ela atua ao longo da haste.\n- O sentido positivo é do CM para o pivô.\n- Se R < 0, o pivô empurra a haste para fora.\n\nEssa projeção não envolve α. Por isso não é preciso conhecer o momento de inércia nem usar conservação de energia.\n\nPara referência (não pedido): a componente tangencial vale\nN_t = Mg sinθ · I_CM/I_O = Mg sinθ · (L²/12)/(L²/12 + d²),\ncom I_O = ML²/12 + M d² e α = −M g d sinθ / I_O.\n\nVerificação: uma simulação numérica independente (RK4 para a rotação, a_CM por diferenças finitas, N = M a_CM − M g) reproduz a fórmula em θ variando de 0° a 360°, com 6 algarismos significativos.\n\n**b) Ângulo em que a componente radial se anula**\n\nR = 0 ⇔ g cosθ + ω²(L/2 − a) = 0 ⇔ cosθ = −ω²(L − 2a)/(2g).\n\nLogo θ = arccos[−ω²(L − 2a)/(2g)] = π − arccos[ω²(L − 2a)/(2g)].\n\nDiscussão:\n1. Para a < L/2 (caso da figura), temos cosθ < 0, então 90° < θ ≤ 180°. O trecho longo, onde está o CM, fica acima da horizontal do pivô. Interpretação: a componente do peso ao longo da haste, Mg|cosθ|, aponta para o pivô e sozinha fornece a força centrípeta Mω²d.\n2. Existência: é preciso ω²(L − 2a)/(2g) ≤ 1, isto é, ω ≤ √[2g/(L − 2a)]. Se ω for maior, a componente radial nunca se anula.\n3. Simetria: como cos(−θ) = cosθ, o ângulo −θ (haste do outro lado da vertical) também é solução.\n4. A massa M se cancela. Embora o enunciado peça a resposta \"em função de M, L, a, ω e g\", ela não depende de M.\n5. Caso particular a = L/2: o CM coincide com o pivô, R = Mg cosθ e o ângulo é θ = 90° para qualquer ω.\n6. Na rotação livre, ω em cada θ é fixado pela energia, mas o enunciado trata ω como dado do instante. A simulação confirma que R muda de sinal durante o movimento, numa posição com θ > 90°.\n\nExemplo numérico de checagem: L = 1,5; a = 0,3; ω = 2; g = 10. Então cosθ = −0,18 e θ ≈ 100,37°. Nesse ângulo, a fórmula de R dá ≈ 0.",
+    "pitfalls": [
+      "Distância do CM ao pivô: é d = L/2 − a, não L/2, L − a nem (L − a)/2. Usar outra distância muda a parcela centrípeta.",
+      "Sinal da componente do peso: projetado na direção da haste, o peso dá Mg cosθ. Para θ > 90° essa componente aponta para o pivô. Errar o sinal leva a θ = arccos(+ω²(L−2a)/(2g)), com o CM abaixo do pivô, o que está fisicamente errado.",
+      "A resposta tem de definir o sentido da componente radial (para o pivô ou para fora). Uma expressão sem referencial claro é ambígua: ±M[g cosθ + ω²(L/2−a)] depende da convenção.",
+      "Força centrífuga: num referencial inercial ela não existe. Somá-la como força real, junto com a equação de movimento, conta o efeito duas vezes ou troca o sinal.",
+      "Momento de inércia e energia são desnecessários no item a: a projeção radial de F = M a_CM não envolve α. Usar a energia para eliminar ω está errado, porque ω é dado do problema. Confundir com a componente tangencial (que depende de I) também é erro.",
+      "Confundir componente radial com componente vertical ou horizontal (eixos x, y) da reação. Radial é ao longo da haste.",
+      "Confundir a força do pivô sobre a haste com a força da haste sobre o pivô (3ª lei de Newton), o que inverte o sinal.",
+      "Item b: deve aparecer o cosseno negativo, com θ > 90° para a < L/2, e a condição de existência ω²(L − 2a) ≤ 2g. A ausência de M deve ser notada, apesar de o enunciado listá-la.",
+      "Casos particulares: com a = L/2, o CM fica no pivô e θ = 90° para qualquer ω. Por simetria, −θ também é solução.",
+      "Tratar a haste como massa pontual na extremidade ou no ponto médio da parte longa, em vez de usar o CM da haste inteira."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) A componente radial da reação do pivô fica ao longo da haste e aponta para o pivô. Seu valor é F_r = M[ω²(L−2a)/2 + g cos θ]. Ela não depende da aceleração angular. Em vetor, com o versor r̂ = (sen θ, −cos θ) indo do pivô para o centro de massa: R_r = −M[ω²(L/2−a) + g cos θ] r̂.\nb) Fazendo F_r = 0: cos θ = ω²(2a−L)/(2g), ou seja, θ = arccos[ω²(2a−L)/(2g)]. Para a < L/2, esse ângulo fica acima de 90° (trecho longo acima da horizontal). Só existe solução se ω²(L−2a) ≤ 2g.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item a: a fórmula F_r = M[ω²(L−2a)/2 + g cosθ] aparece descrita como valor 'em módulo e orientada para o pivô'. Isso falha quando o colchete é negativo, o que ocorre para θ > 90° com |g cosθ| > ω²d. Exemplo: θ = 2,0 rad, ω = 2,5 rad/s, L = 1,5, a = 0,3 dá F_r ≈ −2,70 N. Nesse caso o pivô empurra a haste para fora, e F_r não é um módulo. A forma vetorial F_r(−sinθ, cosθ) está correta para qualquer θ. O texto deveria chamar F_r de componente algébrica, positiva quando aponta para o pivô e negativa quando aponta para fora. A resposta final ('dirigida para o pivô') também deveria trazer essa ressalva."
+          },
+          {
+            "severity": "minor",
+            "description": "Item b: falta dizer que −θ também é solução, com a haste do outro lado da vertical, porque cos(−θ) = cosθ. O arccos só devolve o ângulo em [0, π]. Uma frase sobre a simetria resolveria."
+          },
+          {
+            "severity": "minor",
+            "description": "Item b: o caso a = L/2 (θ = 90° para qualquer ω) não é discutido explicitamente. Ele aparece de forma implícita na verificação do item a e na fórmula. Também não se comenta que o enunciado pede a resposta 'em função de M', embora o resultado não dependa de M. O candidato diz que o resultado independe de M, mas não aponta o conflito com o enunciado. É detalhe de completude."
+          }
+        ],
+        "summary": "Conferi o enunciado original (p. 4), que confere com a transcrição. As respostas finais do candidato coincidem com as da referência nos dois itens. Também conferi numericamente: montei a dinâmica completa com α = −Mgd·sinθ/I_O, calculei N = M·a_CM − M·g e projetei em r̂, para vários (θ, ω). O resultado bate com −F_r até a precisão de máquina. Para L = 1,5, a = 0,3 e ω = 2, a fórmula do item b dá θ ≈ 100,37°, com F_r = 0.\n\n**Item a.** A resolução está correta e bem justificada:\n- d = L/2 − a está certo;\n- o versor r̂ = (sinθ, −cosθ) está definido explicitamente;\n- usa o teorema do CM num referencial inercial, sem força centrífuga;\n- projeta o peso com o sinal correto (+Mg·cosθ);\n- observa que α não entra na direção radial, então não usa momento de inércia nem energia;\n- define que o sentido positivo é para o pivô;\n- dá a forma vetorial correta;\n- faz verificações de unidade e dos casos θ = 0, ω = 0 e a = L/2.\n\n**Item b.** θ = arccos[ω²(2a − L)/(2g)] está certo. A discussão também é boa:\n- diz que cosθ < 0, logo 90° < θ ≤ 180°, e interpreta fisicamente;\n- dá a condição de existência ω ≤ √(2g/(L − 2a));\n- mostra o limite ω → 0;\n- nota que o resultado independe de M;\n- justifica por que qualquer par (θ, ω) é possível, escolhendo a energia.\n\n**Falhas.** São poucas e menores:\n- F_r é chamado de 'módulo' e dito 'orientado para o pivô' sem a ressalva de que pode ser negativo para θ > 90°. A forma vetorial, porém, está certa.\n- Falta citar a solução simétrica −θ.\n- O caso a = L/2 não é comentado no item b.\n\nTodas as armadilhas principais foram evitadas: distância do CM, sinal do peso, referencial inercial, não usar I nem energia no item a, componente ao longo da haste e não nos eixos, cosseno negativo e condição de existência no item b. Com um pequeno ajuste de redação, a resolução serviria de gabarito comentado."
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) O raio da circunferência de centro C é 2√3 cm, e o da de centro D é 6 cm. b) A área da região comum é (10π − 12√3) cm², aproximadamente 10,63 cm².",
+  "judge_reference": {
+    "reference_solution": "**Configuração.** Os centros C e D estão sobre a reta AB, então AB é a linha dos centros das duas circunferências. A corda comum PQ é perpendicular a AB e AB passa pelo seu ponto médio M. Logo a reta AB é a mediatriz de PQ.\n\nChame s = m(AP) = m(PQ). Então PM = MQ = s/2.\n\n**Triângulos APQ e BPQ.**\n- A está sobre a mediatriz de PQ, então AQ = AP = s. Como PQ = s, o triângulo APQ é equilátero. Assim ∠PAQ = 60°, ∠PAM = 30° e AM = s√3/2.\n- B também está sobre a mediatriz, então BQ = BP = s√(2+√3). No triângulo retângulo BMP:\n  BM² = BP² − PM² = s²(2+√3−1/4) = s²(7+4√3)/4.\n  Como 7+4√3 = (2+√3)², temos BM = s(2+√3)/2.\n  Também tg∠PBM = (s/2)/BM = 1/(2+√3) = 2−√3, então ∠PBM = 15° e ∠PBQ = 30°.\n\n**Posição de M.**\n- **Caso 1: M entre A e B.** AB = AM + BM = s√3/2 + s(2+√3)/2 = s(1+√3). Com AB = 6(1+√3), sai s = 6.\n- **Caso 2: M fora do segmento AB.** Como BM > AM, A ficaria entre M e B, e AB = BM − AM = s. O centro C fica na reta AB, do lado de A em que está a projeção M de P (ver o cálculo abaixo: AC = AP/(2cos∠PAM)). Então C ficaria no prolongamento de AB além de A, fora do segmento. Isso contraria o enunciado, e o caso é descartado.\n\nPortanto s = 6 cm, AM = 3√3, BM = 3(2+√3) = 6+3√3, PM = 3.\n\n**a) Raios.**\n- **Circunferência de centro C (por A e P).** C está na reta AB e CA = CP. O ponto A' diametralmente oposto a A está na reta AB, e o triângulo APA' tem ângulo reto em P. Então AP = 2r₁·cos30°, ou seja, 6 = r₁√3, e **r₁ = 2√3 cm**.\n  Verificação: AC = 2√3, CM = 3√3 − 2√3 = √3 e CP² = 3 + 9 = 12. ✓\n- **Circunferência de centro D (por B e P).** Do mesmo modo, BP = 2r₂·cos15°.\n  BP = 6√(2+√3) = 6·(√6+√2)/2 = 3(√6+√2) e cos15° = (√6+√2)/4.\n  Então 3(√6+√2) = r₂(√6+√2)/2, e **r₂ = 6 cm**.\n  Verificação: BD = 6, DM = BM − 6 = 3√3 e DP² = 27 + 9 = 36. ✓\n- **As circunferências se cortam de fato.** AC = 2√3 e AD = 6(1+√3) − 6 = 6√3, então C e D estão no segmento AB e CD = 4√3 ≈ 6,93. Como |r₂ − r₁| = 6 − 2√3 ≈ 2,54 < CD < r₁ + r₂ ≈ 9,46, há dois pontos de interseção. ✓\n\n**b) Área da região comum (lente).**\nC está do lado de A da reta PQ (CM = √3) e D está do lado de B (DM = 3√3). Como os centros ficam em lados opostos da corda comum, a lente é a soma de dois segmentos circulares menores apoiados em PQ.\n\n- **Na circunferência de centro C:** pelo ângulo inscrito, ∠PCQ = 2·∠PAQ = 120°. (Confere: sen(∠PCM) = 3/(2√3) = √3/2.)\n  S₁ = ½·r₁²·(2π/3 − sen120°) = ½·12·(2π/3 − √3/2) = 4π − 3√3.\n- **Na circunferência de centro D:** ∠PDQ = 2·∠PBQ = 60°, então o triângulo PDQ é equilátero de lado 6.\n  S₂ = ½·36·(π/3 − √3/2) = 6π − 9√3.\n\nÁrea comum = S₁ + S₂ = **(10π − 12√3) cm² ≈ 10,63 cm²**.\n\n(Conferido numericamente pela fórmula geral da lente e por Monte Carlo: ≈ 10,631.)",
+    "final_answer": "a) A circunferência de centro C (que passa por A) tem raio 2√3 cm. A de centro D (que passa por B) tem raio 6 cm. Além disso, AP = PQ = 6 cm.\n\nb) A área da região comum é (10π − 12√3) cm² ≈ 10,63 cm². Ela é a soma de dois segmentos circulares: o de ângulo central 120° no círculo de raio 2√3, com área 4π − 3√3, e o de ângulo central 60° no círculo de raio 6, com área 6π − 9√3.",
+    "pitfalls": [
+      "Notar que a reta AB (linha dos centros) é a mediatriz da corda comum PQ. É daí que vêm AP = AQ, e portanto o triângulo APQ equilátero, e também BP = BQ. Sem isso, a condição AP = PQ não é bem aproveitada.",
+      "Discutir a posição do pé M da perpendicular. Se M ficar fora de AB, sai AB = BM − AM = s, ou seja, s = 6(1+√3). Esse caso tem de ser descartado porque C cairia no prolongamento de AB além de A, contra a hipótese 'C e D estão no segmento AB'. (Curiosamente, nesse caso D coincidiria com A.) Uma boa resolução justifica que M está entre A e B, ou descarta o outro caso.",
+      "Simplificar os radicais duplos: √(7+4√3) = 2+√3 e √(2+√3) = (√6+√2)/2. Também reconhecer que tg∠PBM = 2−√3, isto é, ∠PBM = 15°.",
+      "Não confundir corda com raio: AP = 6 não é raio. O correto é r₁ = AP/(2cos30°) = 2√3. Da mesma forma, BP = 3(√6+√2) não é raio; o correto é r₂ = BP/(2cos15°) = 6.",
+      "Associar cada raio à circunferência certa: 2√3 é o raio da circunferência de centro C (por A) e 6 é o da de centro D (por B). Trocar os dois é erro.",
+      "Ângulos centrais pelo teorema do ângulo inscrito: ∠PCQ = 2·60° = 120° e ∠PDQ = 2·30° = 60°. Um erro comum é usar o ângulo inscrito no lugar do central.",
+      "Na área da lente, verificar que C e D estão em lados opostos da corda PQ (CM = √3 do lado de A, DM = 3√3 do lado de B). Por isso a lente é a soma de dois segmentos MENORES. Usar o segmento maior do círculo pequeno, ou somar setores sem subtrair os triângulos, dá resultado errado.",
+      "Área do segmento circular: ½r²(θ − sen θ), com θ em radianos. Erros típicos são esquecer o fator ½ ou misturar graus com radianos.",
+      "Conferir que as circunferências realmente se intersectam (|r₂ − r₁| < CD = 4√3 < r₁ + r₂) e que C e D ficam dentro do segmento: AC = 2√3 e AD = 6√3 < AB.",
+      "Resolver as expressões até o fim e dar as unidades: os raios em cm e a área em cm², na forma 10π − 12√3 (instrução 8 da prova)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) O raio da circunferência de centro C é 2√3 cm, e o da de centro D é 6 cm. b) A área da região comum é (10π − 12√3) cm², aproximadamente 10,63 cm².",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Ao localizar M, a frase 'o diâmetro tem o sentido de A para B, pois C ∈ AB' só vale se C ≠ A, ou seja, se r₁ > 0. Isso fica implícito. Bastaria uma observação: se C = A, a circunferência degeneraria em um ponto."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação f(D) = CD² − r₁² + r₂² > 0 aparece sem conta. A conclusão é verdadeira (CD² = 48, então f(D) = 48 − 12 + 36 = 72) e decorre de r₂ > r₁, já obtido no item a, mas convinha escrever isso."
+          },
+          {
+            "severity": "minor",
+            "description": "Na 'Conferência' final, os ângulos inscritos ∠PAQ = 60° e ∠PBQ = 30° são afirmados sem dedução. Eles saem de tg∠PAM = 1/√3 e tg∠PBM = 1/(2+√3) = 2−√3. Como é só uma checagem, isso não afeta a solução."
+          },
+          {
+            "severity": "minor",
+            "description": "Para descartar C = D, o candidato diz que circunferências concêntricas distintas não se intersectam. Ele não justifica que as duas são distintas. A justificativa seria que, se coincidissem, a interseção não se reduziria aos dois pontos P e Q. É detalhe de redação."
+          }
+        ],
+        "summary": "Conferi o enunciado na página 11 do PDF, e ele bate com a transcrição. As respostas finais do candidato coincidem com a minha referência: a) r_C = 2√3 cm e r_D = 6 cm; b) área = (10π − 12√3) cm² ≈ 10,63 cm². Reconferi tudo numericamente: AP = PQ = 6, BP = 6√(2+√3) ≈ 11,591, CP = 2√3, DP = 6. A fórmula geral da lente dá 10,6313, com ângulos centrais de 120° e 60°.\n\nA resolução está correta, completa e, em dois pontos, é mais rigorosa que a minha referência:\n1. **Posição de M.** No lugar da análise de casos, o candidato usa um argumento elegante. M é interior aos dois discos, e cada disco corta a reta AB no diâmetro que parte de A (ou de B) e aponta para dentro do segmento. Portanto M ∈ semirreta AB ∩ semirreta BA = segmento AB. Isso trata corretamente a armadilha do caso 'M fora de AB'.\n2. **Forma da região comum.** Ele prova, com o eixo radical e a função afim f(X), que a região comum é a união dos dois segmentos circulares menores. Eu tinha apenas observado que os centros ficam em lados opostos da corda.\n\nAs contas estão todas certas:\n- h = 3, a partir de 2h(1+√3) = 6(1+√3).\n- √(7+4√3) = 2+√3.\n- r₁ = 2√3 sai de (3√3−x)² + 9 = x².\n- r₂ = 6 sai de 36(2+√3)/(6(2+√3)).\n- Os ângulos centrais 120° e 60° são obtidos pelos senos.\n- S₁ = 4π − 3√3 e S₂ = 6π − 9√3, com setor menos triângulo e θ em radianos.\n\nTambém estão cobertos:\n- a verificação de que C e D estão em AB;\n- a conferência BP = 2r₂cos15°;\n- a associação correta de cada raio à sua circunferência;\n- as unidades e a forma final 10π − 12√3.\n\nA interseção efetiva das duas circunferências não é testada pela desigualdade |r₂ − r₁| < CD < r₁ + r₂. Mas ela fica garantida por construção, porque P satisfaz CP = r₁ e DP = r₂ e não está sobre a reta AB.\n\nRestam só detalhes de redação menores: C ≠ A implícito, f(D) > 0 sem conta, ângulos inscritos da conferência sem dedução e a distinção entre as circunferências não justificada. Esta resolução poderia ser publicada como gabarito comentado."
+      }
+    }
+  ]
+}

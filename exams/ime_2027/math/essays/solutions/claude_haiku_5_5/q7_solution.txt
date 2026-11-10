@@ -1,0 +1,68 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+Escrevo $C(a,b)=\binom{a}{b}$ e $T=\operatorname{tr}(\mathbf{A}\cdot\mathbf{B})$. Valem as convenções do enunciado para os coeficientes binomiais.
+
+\textbf{Passo 1 (traço como soma).} $\mathbf{A}\cdot\mathbf{B}$ é $3\times 3$ e $(\mathbf{A}\cdot\mathbf{B})_{kk}=\sum_{j=1}^{n+2}a_{kj}\,b_{jk}$ para $k=1,2,3$. Logo
+\[
+T=\sum_{j=1}^{n+2}\bigl(a_{1j}b_{j1}+a_{2j}b_{j2}+a_{3j}b_{j3}\bigr).
+\]
+Usando $b_{j1}=b_{j2}=\binom{n}{n+2-j}$ e $b_{j3}=\binom{n+1}{n+2-j}$:
+\[
+T=\sum_{j=1}^{n+2}\bigl(a_{1j}+a_{2j}\bigr)\binom{n}{n+2-j}+\sum_{j=1}^{n+2}a_{3j}\binom{n+1}{n+2-j}.
+\]
+
+\textbf{Passo 2 (relação de Stifel).} Para $m\ge 0$ e $k\in\mathbb{Z}$ vale $\binom{m}{k-1}+\binom{m}{k}=\binom{m+1}{k}$. Para $1\le k\le m$ é a relação usual; para $k<0$ ou $k>m+1$ os três termos são nulos; para $k=0$ e $k=m+1$ basta notar que $\binom{m}{-1}=\binom{m}{m+1}=0$. Com $k=j-2$:
+\[
+a_{1j}+a_{2j}=\binom{m}{j-3}+\binom{m}{j-2}=\binom{m+1}{j-2}.
+\]
+Assim $T=S_1+S_2$, em que
+\[
+S_1=\sum_{j=1}^{n+2}\binom{m+1}{j-2}\binom{n}{n+2-j},\qquad S_2=\sum_{j=1}^{n+2}\binom{m}{j-1}\binom{n+1}{n+2-j}.
+\]
+
+\textbf{Passo 3 (identidade de Vandermonde).} Para inteiros $a,b\ge 0$ e $s$ inteiro,
+\[
+\sum_{k\in\mathbb{Z}}\binom{a}{k}\binom{b}{s-k}=\binom{a+b}{s},
+\]
+pois ambos os lados são o coeficiente de $x^s$ em $(1+x)^a(1+x)^b=(1+x)^{a+b}$. A soma é finita, pois só há termos não nulos com $0\le k\le a$.
+
+\begin{itemize}
+\item Em $S_1$, faça $k=j-2$. Quando $j$ percorre $\{1,\ldots,n+2\}$, $k$ percorre $\{-1,\ldots,n\}$, e $n+2-j=n-k$. Os termos com $k\le -1$ são nulos por $\binom{m+1}{k}=0$ e os com $k\ge n+1$ são nulos por $\binom{n}{n-k}=0$. Logo $S_1=\sum_{k\in\mathbb{Z}}\binom{m+1}{k}\binom{n}{n-k}=\binom{m+n+1}{n}$, por Vandermonde com $a=m+1$, $b=n$, $s=n$.
+\item Em $S_2$, faça $k=j-1\in\{0,\ldots,n+1\}$, com $n+2-j=(n+1)-k$. Os termos com $k<0$ são nulos por $\binom{m}{k}=0$ e os com $k\ge n+2$ são nulos por $\binom{n+1}{n+1-k}=0$. Logo $S_2=\binom{m+n+1}{n+1}$, por Vandermonde com $a=m$, $b=n+1$, $s=n+1$.
+\end{itemize}
+
+\textbf{Passo 4 (forma fechada).} Pela relação de Stifel com $N=m+n+1$ e $k=n+1$:
+\[
+T=\binom{m+n+1}{n}+\binom{m+n+1}{n+1}=\binom{m+n+2}{n+1}.
+\]
+Esta identidade vale para quaisquer inteiros positivos $m$ e $n$; a hipótese $m>n$ não foi necessária.
+
+\textbf{Conferência.} Para $m=2$ e $n=1$:
+\[
+\mathbf{A}=\begin{pmatrix}0&0&1\\0&1&2\\1&2&1\end{pmatrix},\qquad \mathbf{B}=\begin{pmatrix}0&0&1\\1&1&2\\1&1&1\end{pmatrix}.
+\]
+As entradas diagonais de $\mathbf{A}\cdot\mathbf{B}$ são $1$, $3$ e $6$, logo $T=10=\binom{5}{2}$, como previsto.
+
+\textbf{Passo 5 (valores pedidos).} Para $m=2^{10}=1024$ e $n=10^3=1000$ temos $m+n+2=2026$ e $n+1=1001$. Portanto
+\[
+T=\binom{2026}{1001}.
+\]
+
+\textbf{Passo 6 (divisibilidade por 1013).}
+\begin{enumerate}
+\item $1013$ é primo: $\sqrt{1013}<32$, e $1013$ não é divisível por nenhum primo $p\le 31$ (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31).
+\item Como $2026-1001=1025$, temos $\dfrac{2026!}{1025!}=1026\cdot 1027\cdots 2026$, produto de $1001$ fatores. Logo
+\[
+1001!\cdot\binom{2026}{1001}=\frac{2026!}{1025!}=\prod_{k=1026}^{2026}k=:P.
+\]
+\item $2026=2\cdot 1013$ é um dos fatores de $P$, portanto $1013\mid P=1001!\cdot\binom{2026}{1001}$.
+\item Os fatores de $1001!$ são os inteiros de $1$ a $1001$, todos menores que o primo $1013$; logo $1013\nmid 1001!$. Como $1013$ é primo, o lema de Euclides dá $1013\mid\binom{2026}{1001}$.
+\end{enumerate}
+
+\textit{Verificação alternativa (Lucas).} Na base $1013$, $2026=(2,0)$ e $1001=(0,1001)$. Pelo teorema de Lucas, $\binom{2026}{1001}\equiv\binom{2}{0}\binom{0}{1001}=0 \pmod{1013}$.
+
+\textit{Observação.} O único múltiplo de $1013$ em $[1026,2026]$ é $2026$, que contribui com a potência $1013^1$. Como $1001!$ não tem fator $1013$, a divisibilidade é exata de ordem $1$: $1013$ divide $\binom{2026}{1001}$, mas $1013^2$ não divide. O número $\binom{2026}{1001}$ tem $609$ algarismos, por isso a divisibilidade é provada pelo argumento acima e não por cálculo direto do valor.
+
+ANSWER: $\operatorname{tr}(\mathbf{A}\cdot\mathbf{B})=\binom{m+n+2}{n+1}$; para $m=2^{10}$ e $n=10^3$ é $\binom{2026}{1001}$, que é divisível por $1013$.

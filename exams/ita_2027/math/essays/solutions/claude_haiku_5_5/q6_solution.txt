@@ -1,0 +1,72 @@
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Pela convenção da prova, $\mathbb{N}=\{1,2,3,\ldots\}$. Logo, procuramos sêxtuplas de inteiros com $x_k\geq 1$ para $k=1,\ldots,6$. Denotemos por $(E_1)$, $(E_2)$ e $(E_3)$ as equações do sistema, nessa ordem.
+
+\textbf{Passo 1: eliminação linear.} Substituir $(E_2)$ por $(E_2)-(E_1)$ e $(E_3)$ por $(E_3)-2(E_1)$ não altera o conjunto de soluções, pois as operações são invertíveis: $(E_2)=\big[(E_2)-(E_1)\big]+(E_1)$ e $(E_3)=\big[(E_3)-2(E_1)\big]+2(E_1)$. Os novos coeficientes são:
+\begin{itemize}
+\item em $(E_2)-(E_1)$: $x_1$ tem coeficiente $1-1=0$; $x_2,\ldots,x_5$ têm $2-1=1$; $x_6$ tem $4-3=1$; termo independente $52-30=22$;
+\item em $(E_3)-2(E_1)$: $x_1$ e $x_2$ têm coeficiente $2-2=0$; $x_3,x_4,x_5$ têm $3-2=1$; $x_6$ tem $7-6=1$; termo independente $76-60=16$.
+\end{itemize}
+Obtemos
+\begin{align*}
+(A):&\quad x_2+x_3+x_4+x_5+x_6=22,\\
+(B):&\quad x_3+x_4+x_5+x_6=16.
+\end{align*}
+
+\textbf{Passo 2: isolamento das variáveis.} O sistema original é equivalente a $\{(E_1),(A),(B)\}$. Então:
+\begin{itemize}
+\item $(A)-(B)$ dá $x_2=22-16=6$;
+\item $(E_1)-(A)$ dá $x_1+2x_6=30-22=8$;
+\item $(B)$ dá $x_3+x_4+x_5=16-x_6$.
+\end{itemize}
+Assim, o sistema original é equivalente a
+\begin{equation*}
+\begin{cases}
+x_2=6,\\
+x_1=8-2x_6,\\
+x_3+x_4+x_5=16-x_6.
+\end{cases}
+\end{equation*}
+Para a recíproca, suponha válidas essas três igualdades. Então valem $(E_1)$, $(A)$ e $(B)$:
+\begin{align*}
+(E_1):&\quad (8-2x_6)+6+(16-x_6)+3x_6=30,\\
+(A):&\quad 6+(16-x_6)+x_6=22,\\
+(B):&\quad (16-x_6)+x_6=16.
+\end{align*}
+Como $(E_2)=(A)+(E_1)$ e $(E_3)=(B)+2(E_1)$ (somando membro a membro, os lados esquerdos e os termos independentes), $(E_2)$ e $(E_3)$ também valem.
+
+\textbf{Passo 3: condições de positividade e finitude.}
+\begin{itemize}
+\item $x_2=6\geq 1$: satisfeita.
+\item $x_1=8-2x_6\geq 1$ equivale a $x_6\leq \frac{7}{2}$. Como $x_6$ é inteiro, $x_6\leq 3$. Com $x_6\geq 1$, obtemos $x_6\in\{1,2,3\}$. Os valores $x_6=0$ (não natural) e $x_6=4$ (daria $x_1=0$) são excluídos.
+\item Para cada $x_6$ admissível, seja $m=16-x_6\in\{15,14,13\}$. Procuramos $(x_3,x_4,x_5)\in\mathbb{N}^3$ com $x_3+x_4+x_5=m$.
+\end{itemize}
+Como $x_2$ é fixo, $x_6$ assume apenas três valores, $x_1$ é determinado por $x_6$ e cada $x_j$ ($j=3,4,5$) é limitado por $m$. Portanto o conjunto de soluções é finito e a quantidade pedida é um número inteiro bem definido.
+
+\textbf{Passo 4: contagem de ternas por estrelas e barras.} Afirmação: para $m\geq 3$, o número de $(x_3,x_4,x_5)\in\mathbb{N}^3$ com $x_3+x_4+x_5=m$ é $\binom{m-1}{2}$. De fato, $y_j=x_j-1\geq 0$ ($j=3,4,5$) transforma a equação em $y_3+y_4+y_5=m-3$. Pelo teorema das estrelas e barras, a equação $y_1+\cdots+y_r=n$ tem $\binom{n+r-1}{r-1}$ soluções em inteiros não negativos. Com $r=3$ e $n=m-3$, obtemos $\binom{m-1}{2}$.
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$x_6$ & $x_1=8-2x_6$ & $m=16-x_6$ & $\binom{m-1}{2}$ & número de soluções em $(x_3,x_4,x_5)$ \\ \hline
+1 & 6 & 15 & $\binom{14}{2}$ & 91 \\
+2 & 4 & 14 & $\binom{13}{2}$ & 78 \\
+3 & 2 & 13 & $\binom{12}{2}$ & 66 \\
+\end{tabular}
+\end{center}
+
+\textbf{Passo 5: total.} A sêxtupla é determinada por $(x_6,x_3,x_4,x_5)$, pois $x_2=6$ e $x_1=8-2x_6$ são forçados. Reciprocamente, cada escolha de $x_6\in\{1,2,3\}$ com $(x_3,x_4,x_5)$ admissível produz uma sêxtupla de naturais que satisfaz o sistema (Passo 2). Há, portanto, correspondência biunívoca entre as soluções e essas escolhas. Os casos são disjuntos, pois têm valores distintos de $x_6$. Pelo princípio aditivo:
+\begin{equation*}
+N=\binom{14}{2}+\binom{13}{2}+\binom{12}{2}=91+78+66=235.
+\end{equation*}
+
+\textbf{Verificação.}
+\begin{itemize}
+\item \emph{Caso concreto.} Com $x_6=3$ e $(x_3,x_4,x_5)=(1,1,11)$ obtemos $(x_1,\ldots,x_6)=(2,6,1,1,11,3)$. Em $(E_1)$: $2+6+1+1+11+9=30$. Em $(E_2)$: $2+12+2+2+22+12=52$. Em $(E_3)$: $4+12+3+3+33+21=76$. Todas conferem.
+\item \emph{Caso de borda.} $x_6=3$ fornece $x_1=2$, o menor valor permitido, e $x_6=4$ fornece $x_1=0$, excluído. Logo o corte $x_6\leq 3$ é exato.
+\item \emph{Contagem complementar.} Pelo mesmo raciocínio, as quádruplas $(x_3,x_4,x_5,x_6)\in\mathbb{N}^4$ com soma $16$ são as soluções de $(B)$ com $x_6\geq 1$. Por estrelas e barras (subtraindo $1$ de cada parcela, soma $12$, $r=4$), há $\binom{15}{3}=455$ delas. Entre elas, as com $x_6\geq 4$ correspondem, pela troca $x_6=t+3$ com $t\geq 1$, às quádruplas de $\mathbb{N}^4$ de soma $13$, cuja quantidade é $\binom{12}{3}=220$. Logo, as que têm $x_6\in\{1,2,3\}$ somam $455-220=235$, o mesmo valor.
+\item \emph{Observação sobre o zero.} Se $0$ fosse natural, teríamos $x_6\in\{0,1,2,3,4\}$ e a contagem seria $\binom{18}{2}+\binom{17}{2}+\binom{16}{2}+\binom{15}{2}+\binom{14}{2}=153+136+120+105+91=605$. Como a prova fixa $\mathbb{N}=\{1,2,3,\ldots\}$, a resposta é $235$.
+\end{itemize}
+
+ANSWER: 235 sêxtuplas

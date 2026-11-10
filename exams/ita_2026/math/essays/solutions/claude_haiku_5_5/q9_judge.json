@@ -1,0 +1,65 @@
+{
+  "question": 9,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "Hipérbole H: x²/4 − y²/32 = 1 (a = 2, c = 6, b² = 32). Excluindo a vertical x = 0 (não é tangente) e as retas de inclinação ±2√2 (paralelas às assíntotas, cortam H em um só ponto mas não são tangentes), as tangentes por C = (0, −8) são:\na) y = 2√6·x − 8 e y = −2√6·x − 8 (ou seja, 2√6·x − y − 8 = 0 e 2√6·x + y + 8 = 0).\nb) Pontos de tangência: (√6, 4) para y = 2√6·x − 8 e (−√6, 4) para y = −2√6·x − 8. Ambos estão na polar de C, y = 4.",
+  "judge_reference": {
+    "reference_solution": "Questão 09 (ITA 2026, 2ª fase): referência de correção, resolvida antes de consultar qualquer resolução de candidato.\n\nDados da hipérbole\n- Focos A = (−6, 0) e B = (6, 0): o eixo transverso está sobre o eixo x e o centro é a origem. Logo c = 6.\n- e = c/a = 3 ⇒ a = 2.\n- b² = c² − a² = 36 − 4 = 32.\n- H: x²/4 − y²/32 = 1, equivalente a 8x² − y² = 32.\n- Asíntotas: y = ±(b/a)x = ±2√2·x.\n\nItem a) Retas tangentes a H passando por C = (0, −8)\n\n1) Reta vertical por C: é x = 0. Substituindo em H: −y²/32 = 1, sem solução real. Logo x = 0 não é tangente.\n\n2) Retas não verticais: y = mx − 8. Substituindo em 8x² − y² = 32:\n8x² − (m²x² − 16mx + 64) = 32 ⇒ (8 − m²)x² + 16m·x − 96 = 0.   (∗)\n\n3) Caso m² = 8 (retas paralelas às assíntotas y = ±2√2·x): o coeficiente de x² se anula e (∗) vira 16m·x − 96 = 0, com solução única x = 6/m. A reta corta H em um só ponto, mas não é tangente. Logo m = ±2√2 é descartado.\n\n4) Caso m² ≠ 8: (∗) é do 2º grau, e a tangência exige Δ = 0.\nΔ = (16m)² − 4(8 − m²)(−96) = 256m² + 384(8 − m²) = 3072 − 128m² = 128(24 − m²).\nΔ = 0 ⇔ m² = 24 ⇔ m = ±2√6. Nesses valores, 8 − m² = −16 ≠ 0, o que confirma que estamos no caso 4.\n\nConferência pela condição de tangência para y = mx + k: k² = a²m² − b². Com k = −8, a² = 4 e b² = 32: 64 = 4m² − 32, logo m² = 24.\n\nRetas tangentes:\n- r₁: y = 2√6·x − 8, ou seja, 2√6·x − y − 8 = 0\n- r₂: y = −2√6·x − 8, ou seja, 2√6·x + y + 8 = 0\n\nItem b) Pontos de tangência\n\nCom Δ = 0, a raiz dupla é x₀ = −16m / (2(8 − m²)) = −16m / (2·(−16)) = m/2.\n- Para m = 2√6: x₀ = √6 e y₀ = 2√6·√6 − 8 = 4. Ponto T₁ = (√6, 4).\n- Para m = −2√6: x₀ = −√6 e y₀ = −2√6·(−√6) − 8 = 4. Ponto T₂ = (−√6, 4).\n\nVerificação em H: (√6)²/4 − 4²/32 = 3/2 − 1/2 = 1, para T₁ e T₂.\n\nConferência geométrica:\n- A polar de C = (0, −8) em relação a H é x·0/4 − y·(−8)/32 = 1, ou seja, y = 4.\n- Intersectando y = 4 com H: 8x² − 16 = 32 ⇒ x² = 6 ⇒ x = ±√6. Esses são exatamente T₁ e T₂.\n- Coeficiente angular de CT₁: (4 − (−8))/(√6 − 0) = 12/√6 = 2√6, de acordo com r₁.\n\nResposta final\na) Duas retas: y = 2√6·x − 8 e y = −2√6·x − 8.\nb) Para y = 2√6·x − 8, o ponto de tangência é (√6, 4). Para y = −2√6·x − 8, o ponto de tangência é (−√6, 4).",
+    "final_answer": "a) Há exatamente duas retas tangentes a H que passam por C = (0, −8): y = 2√6·x − 8 (ou 2√6·x − y − 8 = 0) e y = −2√6·x − 8 (ou 2√6·x + y + 8 = 0).\n\nb) Pontos de tangência: (√6, 4) para a reta y = 2√6·x − 8, e (−√6, 4) para a reta y = −2√6·x − 8.\n\nBase dos cálculos: c = 6, e = 3 ⇒ a = 2, b² = 32, H: x²/4 − y²/32 = 1.",
+    "pitfalls": [
+      "Eccentricity and parameters: e = c/a for hyperbolas, so e = 3 with c = 6 gives a = 2, not a = 6 or 18. Then b² = c² − a² = 32 (not a² − c²). Using e = a/c is invalid here, since that would give e < 1, which is an ellipse.",
+      "Orientation of the hyperbola: the foci lie on the x-axis, so H is x²/4 − y²/32 = 1 (x² positive). Writing y²/4 − x²/32 = 1 is a common error that changes every subsequent step.",
+      "Vertical line x = 0: it passes through C but does not meet H (−y²/32 = 1 has no real solution). The slope form y = mx − 8 does not cover it, so it must be checked separately and rejected.",
+      "Lines parallel to the asymptotes (m = ±2√2) pass through C and meet H at exactly one point, x = ±3√2/2 and y = −2, but they are NOT tangent. The belief that 'one common point implies tangency' is false for hyperbolas. In this case the x² coefficient vanishes, so the equation is linear and Δ = 0 does not apply. These lines must be excluded explicitly.",
+      "Discriminant check: when applying Δ = 0 with (8 − m²)x² + 16m·x − 96 = 0, confirm that the leading coefficient is nonzero. For m² = 24 it equals −16. Δ = 128(24 − m²) = 0 gives m² = 24.",
+      "Correct number of answers: there are exactly two tangents. Answers with four lines (including the asymptote-parallel ones), with the vertical line, or with a single line are wrong. Sanity check: C = (0, −8) satisfies 8x² − y² − 32 < 0, so it lies in the region between the branches. There are then two tangents, one touching each branch: T₁ on the right branch (x > 0) and T₂ on the left branch (x < 0).",
+      "Pairing of tangency points: the tangent with slope +2√6 touches at (√6, 4), and the one with slope −2√6 touches at (−√6, 4). Common errors are (√6, −4), which lies on H but not on the line y = 2√6·x − 8 (since 2√6·√6 − 8 = 4), and mismatching the x-sign with the slope sign.",
+      "Sign error in the polar: the polar of (x₀, y₀) is x·x₀/a² − y·y₀/b² = 1. With y₀ = −8 this gives y/4 = 1, so y = 4 (not −4). Using the wrong sign yields the wrong tangency points.",
+      "Tangency point formula: for y = mx + k, the tangency point is (−a²m/k, −b²/k). With k = −8 this gives (m/2, 4). Using the wrong sign in the formula for y₀ yields y₀ = −4.",
+      "Final form: write the lines with the radical simplified, 2√6 (not √24 or 4√6 by mistake). The instructions require numerical expressions to be fully simplified. Present the final equations in a clear form, either y = ±2√6·x − 8 or 2√6·x ∓ y − 8 = 0.",
+      "Justification: the solution must show the exclusion of x = 0 and of m = ±2√2 explicitly, and it must check that (√6, 4) lies on H. Answers that only list lines without this reasoning lose points even when the result is correct."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "Hipérbole H: x²/4 − y²/32 = 1 (a = 2, c = 6, b² = 32). Excluindo a vertical x = 0 (não é tangente) e as retas de inclinação ±2√2 (paralelas às assíntotas, cortam H em um só ponto mas não são tangentes), as tangentes por C = (0, −8) são:\na) y = 2√6·x − 8 e y = −2√6·x − 8 (ou seja, 2√6·x − y − 8 = 0 e 2√6·x + y + 8 = 0).\nb) Pontos de tangência: (√6, 4) para y = 2√6·x − 8 e (−√6, 4) para y = −2√6·x − 8. Ambos estão na polar de C, y = 4.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na 'Simetria' do Passo 5 está escrito que 'H e C são simétricos em relação ao eixo y'. Isso está errado: H é simétrica em relação ao eixo y, e C = (0,-8) pertence a esse eixo, ou seja, é fixo pela reflexão. O argumento correto é que x ↦ -x leva o conjunto de tangentes por C em si mesmo, trocando m por -m e (√6,4) por (-√6,4). Corrigir a frase."
+          },
+          {
+            "severity": "minor",
+            "description": "No Passo 3, a definição de tangência é circular ('tem um único ponto comum com H e esse contato é de tangência'). Deveria definir tangência pela direção da reta igual à do gradiente no ponto de contato, ou pelo critério de um único ponto comum com reta não paralela a assíntota, enunciado de forma explícita."
+          },
+          {
+            "severity": "minor",
+            "description": "Para m² ≠ 8, a equivalência 'tangente ⇔ Δ=0' é afirmada sem justificativa. A direção 'Δ=0 ⇒ tangente' fica implicitamente verificada pela derivada no Passo 5, mas a direção 'tangente ⇒ Δ=0' depende do fato de que uma tangente não paralela a assíntota tem um único ponto comum com H. Esse fato deveria ser citado ou provado em uma linha."
+          },
+          {
+            "severity": "minor",
+            "description": "A conta 'x = −16m/(2(8−m²)) = m/2' pula a substituição de m² = 24, que dá 8−m² = −16 e −16m/(−32) = m/2. A instrução 8 da prova exige expressões numéricas resolvidas integralmente, então esse passo deveria aparecer explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação '|m| > b/a, como deve ser para tangentes que partem de C' é uma propriedade geral das tangentes não verticais de H (decorre de k² = a²m² − b² ≥ 0). Está apresentada como conferência sem demonstração e sem ser ligada ao caso. Ou se demonstra em uma linha (com k = −8 dá m² = 24 > 8), ou se remove."
+          },
+          {
+            "severity": "minor",
+            "description": "A solução lista as duas retas, mas não conclui explicitamente 'há exatamente duas tangentes'. Essa conclusão de exaustividade decorre da análise (vertical excluída, m² = 8 excluída, Δ=0 dá exatamente dois valores), e a polar y=4 cortando H em dois pontos a confirma. Vale escrever a frase final com esse argumento."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 09 (ITA 2026, 2ª fase).\n\nConferência com o PDF original (página 10): o enunciado da transcrição confere (focos (±6,0), e = 3, C = (0,−8)).\n\nResposta: correta e idêntica à referência nos dois itens.\na) y = 2√6·x − 8 e y = −2√6·x − 8 (equivalentes a 2√6·x − y − 8 = 0 e 2√6·x + y + 8 = 0).\nb) (√6, 4) para a primeira reta e (−√6, 4) para a segunda.\n\nVerificação própria (python3): H: 8x² − y² = 32, com a = 2 e b² = 32. Δ(m) = 128(24 − m²), raiz dupla x = m/2, y = 4. Os pontos estão em H (1,000000000000). A inclinação da tangente em (√6,4) é 8x/y = 2√6 = m. Para m² = 8, a inclinação da tangente em (6/m, −2) é −3m ≠ m, então essas retas não são tangentes. A reta x = 0 não tem interseção real com H. A polar de C é y = 4 e corta H em x² = 6. A fórmula k² = a²m² − b² com k = −8 dá m² = 24.\n\nArmadilhas: todas tratadas. e = c/a e a = 2; orientação x²/4 − y²/32 = 1; x = 0 excluída com justificativa; retas paralelas às assíntotas excluídas por um argumento de derivada, mais forte que a referência, que só observa 'um ponto comum não basta'; Δ com coeficiente líder não nulo (m² ≠ 8 tratado em caso separado); pareamento correto de sinais entre inclinação e ponto; polar com o sinal certo; 2√6 simplificado; pontos verificados em H.\n\nNão há divergência com a referência. A resolução é um gabarito sólido. Os problemas listados são menores: uma frase de simetria factualmente incorreta (C está sobre o eixo y, e não é 'simétrico' a H), uma definição de tangência circular, duas afirmações sem justificativa (a equivalência Δ=0 ⇔ tangente e a desigualdade |m| > b/a), um passo algébrico omitido e a falta da conclusão explícita de que há exatamente duas tangentes. Nenhum afeta a correção. Por isso a nota é 9: no limiar de gabarito publicável, subiria com as correções listadas."
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "A soma vale 6143850. Compatibilidade exige a_j - 2a_{j+1} + a_{j+2} = 0, logo a sequência é a PA a_n = 3n - 2 (razão 3). Então y_j = 3 e x_j + z_j = 3j - 8, de modo que x_j + y_j + z_j = 3j - 5 = a_j - 3 para qualquer solução. Somando de j = 1 a 2025: 3·2025·1013 - 10125 = 6143850.",
+  "judge_reference": {
+    "reference_solution": "Referência própria para a 6ª questão (IME 2026, Matemática, discursiva). A álgebra foi conferida com Python (determinante, compatibilidade para cada j, soma com parâmetro livre em vários valores).\n\n1) Matriz dos coeficientes. A = [[1,2,1],[1,3,1],[1,4,1]]. det A = 1·(3−4) − 2·(1−1) + 1·(4−3) = −1 + 0 + 1 = 0. O sistema é singular. As linhas 1 e 2 não são proporcionais, logo posto(A) = 2. Além disso, a linha 3 = 2·(linha 2) − (linha 1): (1,4,1) = 2(1,3,1) − (1,2,1).\n\n2) Condição de compatibilidade. Como posto(A) = 2, o sistema é possível se, e somente se, a ampliada também tiver posto 2. Isso ocorre exatamente quando o termo independente da 3ª equação satisfaz b3 = 2·b2 − b1, ou seja, a_{j+2} − 2a_{j+1} + a_j = 0. Essa condição vale para j = 1, …, 2025, o que cobre os índices de 1 a 2027. Logo (a_1, …, a_2027) é uma progressão aritmética.\n\n3) Determinação da PA. Seja r a razão. Então a_4 = a_1 + 3r, e 10 = 1 + 3r, donde r = 3. Assim a_j = 3j − 2 (por exemplo, a_2027 = 6079).\n\n4) Solução do sistema para cada j. Subtraindo a 1ª equação da 2ª: y = a_{j+1} − a_j = 3. Da 1ª equação: x + z = a_j − 2y = a_j − 6. Portanto x + y + z = a_j − y = a_j − 3 = 3j − 5. O sistema é possível e indeterminado, com uma variável livre. Tomando z = t, temos x = a_j − 6 − t e y = 3. Verificação: x+2y+z = a_j; x+3y+z = a_j + 3 = a_{j+1}; x+4y+z = a_j + 6 = a_{j+2}. A soma x+y+z não depende de t, então a quantidade pedida está bem definida para qualquer solução escolhida.\n\n5) Somatório. Σ_{j=1}^{2025} (x_j + y_j + z_j) = Σ_{j=1}^{2025} (3j − 5) = 3·2025·2026/2 − 5·2025 = 6 153 975 − 10 125 = 6 143 850. Forma alternativa com n = 2025: n(3n − 7)/2 = 2025·6068/2 = 2025·3034 = 6 143 850. Pela PA: 2025·(a_1 + a_2025)/2 − 3·2025 = 2025·6074/2 − 6075 = 6 149 925 − 6 075 = 6 143 850.\n\nResposta final: 6 143 850.",
+    "final_answer": "Resposta final: Σ_{j=1}^{2025} (x_j + y_j + z_j) = 6 143 850. A questão é discursiva, sem alternativas.\n\nEtapas-chave:\n- A matriz dos coeficientes é singular (det = 0) e tem posto 2, pois a 3ª linha é 2·(2ª) − (1ª).\n- Compatibilidade para cada j ⇔ a_{j+2} − 2a_{j+1} + a_j = 0. Com j = 1..2025, a sequência a_1..a_2027 é uma PA.\n- a_4 = a_1 + 3r ⇒ r = 3, logo a_j = 3j − 2.\n- Para cada solução: y = 3 e x + z = a_j − 6, logo x_j + y_j + z_j = a_j − 3 = 3j − 5, independente da variável livre.\n- Soma: Σ_{j=1}^{2025} (3j − 5) = 6 143 850.",
+    "pitfalls": [
+      "Determinante zero não significa sistema impossível. O sistema é singular, mas possível para os dados da questão. É preciso testar a compatibilidade pelo posto da ampliada, e a condição correta é b3 = 2·b2 − b1 (relação entre os termos independentes), não det ≠ 0.",
+      "A condição de compatibilidade vale para j = 1..2025 e encadeia toda a sequência até a_2027. Conclui-se que a é PA em 1..2027, e não apenas em 1..2026. Um erro de índice terminal muda a leitura da hipótese.",
+      "Erro de índice em a_4: a_4 = a_1 + 3r, não a_1 + 4r. O uso de 4r leva a r = 9/4 e a resposta errada. O valor correto é r = 3, com a_j = 3j − 2.",
+      "O sistema é possível e indeterminado (uma variável livre), então não há solução única. A armadilha é achar que a questão está mal posta. A saída é mostrar que y é fixo (y = a_{j+1} − a_j = 3) e que x+y+z = a_j − y não depende da variável livre, de modo que a soma pedida está bem definida.",
+      "Não se deve tentar determinar x_j e z_j separadamente. Só x+z = a_j − 6 é determinado, e a soma x+y+z pedida depende apenas dele combinado com y.",
+      "Erros comuns na soma x+y+z: escrever a_j (esquecendo y), a_j − 6 (confundindo com x+z) ou a_j − 2 (erro de sinal ou de coeficiente). O valor correto é a_j − 3.",
+      "Número de termos e intervalo do somatório: são 2025 termos (j = 1..2025), e não 2026 ou 2027. Confundir o intervalo de a_j com o de compatibilidade também altera o resultado.",
+      "Conta do somatório: 3·2025·2026/2 = 6 153 975 e 5·2025 = 10 125, resultando em 6 143 850. Verificações cruzadas: n(3n−7)/2 com n = 2025 e a soma da PA 2025·6074/2 − 6075, ambas dando 6 143 850.",
+      "Verificação da solução: substituir x = a_j − 6 − t, y = 3 e z = t nas três equações confirma que os lados valem a_j, a_{j+1} e a_{j+2}. Uma resolução completa deve mostrar essa checagem ou justificar a equivalência com o posto."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "A soma vale 6143850. Compatibilidade exige a_j - 2a_{j+1} + a_{j+2} = 0, logo a sequência é a PA a_n = 3n - 2 (razão 3). Então y_j = 3 e x_j + z_j = 3j - 8, de modo que x_j + y_j + z_j = 3j - 5 = a_j - 3 para qualquer solução. Somando de j = 1 a 2025: 3·2025·1013 - 10125 = 6143850.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Overclaim de rigor no Passo 1/Passo 3: a resolução diz que a recíproca 'será verificada no passo 3' e conclui que 'a condição é também suficiente'. Mas a verificação do Passo 3 usa valores específicos (y=3, a_{j+1}=a_j+3, a_{j+2}=a_j+6), o que prova apenas a existência para esta sequência, não a equivalência geral. Para a resposta isso basta, porque a sequência já está determinada no Passo 2. O que deveria ser feito: trocar a frase por 'para esta sequência, o sistema é possível para cada j', ou provar a equivalência geral (com y=d_j e x+z=a_j−2d_j, E2 vale sempre e E3 vale se e só se d_{j+1}=d_j)."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha 'det A = 0 não significa sistema impossível' é tratada só implicitamente. O determinante não aparece no texto. O que deveria ser feito: acrescentar uma linha dizendo que det A = 0, que a singularidade não decide a compatibilidade e que a compatibilidade vem da relação entre os termos independentes (E1−2E2+E3)."
+          },
+          {
+            "severity": "minor",
+            "description": "O posto 2 é justificado só por 'a coluna 1 é igual à coluna 3', o que dá posto ≤ 2. Falta mostrar que o posto é exatamente 2, ou seja, que as colunas 1 e 2 são independentes ((1,1,1) e (2,3,4) não são proporcionais). O que deveria ser feito: incluir essa frase."
+          },
+          {
+            "severity": "minor",
+            "description": "Na conferência de somas parciais, '3·3−2·5=−1' está cifrado. O correto é 3·(2·3/2) − 5·2 = 9 − 10 = −1. O que deveria ser feito: escrever a expressão explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "A checagem de 'ordem de grandeza ≈ 6,1·10^6' é imprecisa (3·2025²/2 ≈ 6,15·10^6) e não verifica o resultado exato. O que deveria ser feito: substituir por uma segunda conta exata, por exemplo n(3n−7)/2 com n=2025 = 6 143 850, ou a soma pela fórmula da PA."
+          }
+        ],
+        "summary": "Resposta final correta: 6 143 850, igual à referência. Confirmei o enunciado no PDF original (confere com a transcrição) e refiz as contas em Python. Comparação item a item: det A = 0 e linha3 = 2·linha2 − linha1; a condição a_{j+2} − 2a_{j+1} + a_j = 0 para j = 1..2025 dá PA em a_1..a_2027; r = 3 e a_j = 3j−2; y = 3; x+y+z = a_j − 3 = 3j−5, independente da variável livre; soma = 6 143 850, também confirmada pela fórmula n(3n−7)/2. Todos os itens coincidem com a referência e não há divergência de conteúdo. A resolução é correta e completa. Usa a combinação E1−2E2+E3 para a compatibilidade, trata o índice terminal 2027, verifica as três equações e não tenta determinar x e z separadamente. Armadilhas tratadas: índice de a_4, número de termos (2025), variável livre, soma independente de t, e conta do somatório. Os problemas que restam são de rigor e clareza, não de conteúdo. Com os ajustes listados (principalmente o overclaim da recíproca e a menção explícita ao determinante e ao posto), a resolução é publicável como gabarito comentado. Nota 9.",
+        "score_note": "Nota 9."
+      }
+    }
+  ]
+}

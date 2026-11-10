@@ -1,0 +1,69 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} As fontes e as chaves são ideais, e o fechamento é instantâneo. Nenhuma chave reabre. Como só há fontes contínuas e resistores, o circuito é puramente resistivo. Não há transitório, e em cada intervalo vale o regime permanente.
+
+\textbf{1) Topologia das chaves (leitura da figura).} O fio inferior é comum a todo o circuito. No fio superior, os nós de topo dos ramos $(V,R_1)$ são $A_1$ (esquerda), $A_2$ e $A_3$ (o mais próximo da escada). As chaves ficam entre esses nós:
+\begin{itemize}
+\item $S_0$ liga $A_3$ à malha infinita, $S_1$ liga $A_2$ a $A_3$ e $S_2$ liga $A_1$ a $A_2$.
+\item Um ramo só participa do circuito se houver caminho fechado até a malha. Isso depende da ordem de fechamento $S_0\to S_1\to S_2$.
+\end{itemize}
+Os três intervalos ficam assim:
+\begin{itemize}
+\item $0<t<20$ s: só $S_0$ está fechada. Apenas o ramo 3 alimenta a malha. Os ramos 1 e 2 ficam isolados por $S_1$ aberta e não têm corrente.
+\item $20<t<40$ s: $S_0$ e $S_1$ estão fechadas. Os ramos 3 e 2 ficam em paralelo. O ramo 1 está isolado por $S_2$ aberta.
+\item $40<t<60$ s: as três chaves estão fechadas. Os três ramos estão em paralelo.
+\end{itemize}
+Portanto, em cada intervalo há $n=1,2,3$ ramos idênticos em paralelo.
+
+\textbf{2) Resistência equivalente da malha infinita.} Retirando a primeira célula (um $R_2$ em série e um $R_2$ em paralelo), o que resta é idêntico à malha original, pois ela é infinita:
+\[
+R_{eq}=R_2+\frac{R_2R_{eq}}{R_2+R_{eq}}
+\;\Longrightarrow\; R_{eq}^2-R_2R_{eq}-R_2^2=0
+\;\Longrightarrow\; R_{eq}=\frac{1+\sqrt5}{2}R_2 ,
+\]
+pois a raiz negativa é descartada. Com $R_2=(\sqrt5-1)\ \Omega$:
+\[
+R_{eq}=\frac{(\sqrt5+1)(\sqrt5-1)}{2}\ \Omega=2\ \Omega .
+\]
+Esse $R_{eq}$ inclui todos os $R_2$, a começar pelo primeiro, em série com $S_0$.
+
+\textbf{3) Equivalente de Thévenin das fontes.} Os $n$ ramos idênticos ($V$ em série com $R_1$) em paralelo equivalem a $V_{th}=V$ em série com $R_{th}=R_1/n$. Isso vale porque as fontes são iguais. Com fontes diferentes, $V_{th}$ mudaria. A corrente total que entra na malha, a tensão em seus terminais e a potência nela dissipada são
+\[
+I_n=\frac{V}{R_1/n+R_{eq}},\qquad U_n=R_{eq}I_n,\qquad P_n=R_{eq}I_n^{2}=\frac{U_n^2}{R_{eq}} .
+\]
+A potência $P_n$ é a dissipada em toda a malha, inclusive no primeiro $R_2$. Em regime permanente, toda a potência que entra pelos terminais é dissipada nos infinitos resistores. A série de dissipações converge, como mostra a verificação adiante. A dissipação em $R_1/n$ fica fora da malha e não entra na conta.
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+intervalo & $n$ & $I_n$ (A) & $U_n$ (V) & $P_n$ (W)\\\hline
+$0$ a $20$ s & 1 & $\dfrac{40}{6+2}=5$ & 10 & 50\\
+$20$ a $40$ s & 2 & $\dfrac{40}{3+2}=8$ & 16 & 128\\
+$40$ a $60$ s & 3 & $\dfrac{40}{2+2}=10$ & 20 & 200
+\end{tabular}
+\end{center}
+
+\textbf{4) Energia dissipada na malha.} A potência é constante em cada intervalo de $20$ s:
+\[
+E=\sum_n P_n\,\Delta t=20\,(50+128+200)\ \mathrm{J}=20\cdot 378\ \mathrm{J}=7560\ \mathrm{J}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item \emph{Millman (nós), para $n=1,2,3$.} A tensão na entrada da malha é $U_n=\dfrac{nV/R_1}{n/R_1+1/R_{eq}}$. Isso dá $\dfrac{40/6}{1/6+1/2}=10$ V, $\dfrac{80/6}{1/3+1/2}=16$ V e $\dfrac{20}{1/2+1/2}=20$ V. São os mesmos $U_n$ da tabela.
+\item \emph{Balanço de potência.} Em cada caso, a potência da fonte é $nV\cdot I_n/n=VI_n$. Ela é igual à soma da dissipação em $R_1/n$ com a da malha:
+ \begin{itemize}
+ \item $n=1$: $200=150+50$ W.
+ \item $n=2$: $320=192+128$ W.
+ \item $n=3$: $400=200+200$ W.
+ \end{itemize}
+\item \emph{Convergência da série na malha.} A tensão em cada nó da escada é multiplicada por $q=\dfrac{R_2R_{eq}/(R_2+R_{eq})}{R_{eq}}=\dfrac{3-\sqrt5}{2}$ em relação ao nó anterior. Por unidade de $U^2$, a primeira célula dissipa $\tfrac14R_2+q^2/R_2\approx0{,}427$ S. As seguintes diminuem por $q^2\approx0{,}146$. A soma é $0{,}427/(1-q^2)=0{,}5\ \mathrm{S}=1/R_{eq}$, o que confirma $P=U^2/R_{eq}$.
+\item \emph{Ordem de grandeza.} A potência cresce com $n$, pois $R_1/n$ diminui. Ela fica abaixo do teto $V^2/R_{eq}=800$ W, que corresponde a $R_1/n\to0$.
+\end{itemize}
+
+\[
+E = 7560\ \mathrm{J}\approx 7{,}56\ \mathrm{kJ}
+\]
+
+ANSWER: $E = 7560\ \mathrm{J}$ (isto é, $7{,}56\ \mathrm{kJ}$)

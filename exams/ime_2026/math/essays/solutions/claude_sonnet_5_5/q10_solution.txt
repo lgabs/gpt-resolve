@@ -1,0 +1,44 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{1. Esfera inscrita em $ABCD$.}
+A altura do tetraedro regular de aresta $a$ é $h=\sqrt{a^{2}-\left(\tfrac{a}{\sqrt3}\right)^{2}}=\dfrac{a\sqrt6}{3}$, pois o pé da altura é o centro da base, que dista $a/\sqrt3$ de cada vértice da base.
+
+Seja $S$ a área de uma face. Dividindo o tetraedro em quatro tetraedros de vértice no centro $O$ da esfera inscrita e bases nas faces, obtemos
+\[
+\tfrac13 S h=4\cdot\tfrac13 S r \;\Longrightarrow\; r=\frac h4=\frac{a\sqrt6}{12}.
+\]
+O volume da esfera inscrita é
+\[
+V_0=\frac43\pi r^{3}=\frac43\pi\,\frac{6\sqrt6\,a^{3}}{1728}=\frac{\pi\sqrt6}{216}\,a^{3}.
+\]
+
+\textbf{2. O plano tangente e o novo tetraedro.}
+Por simetria, $O$ está na altura de $A$, a distância $r$ da base $BCD$. Os planos paralelos a $BCD$ e tangentes à esfera estão a distância $r$ de $O$, ou seja, a alturas $0$ (a própria base) e $2r=\dfrac h2$ acima de $BCD$. O plano pedido (distinto da base) é o de altura $h/2$.
+
+Pelo teorema de Tales, ele corta $AB$, $AC$ e $AD$ nos pontos médios. O novo tetraedro de vértice $A$ é, portanto, homotético a $ABCD$ com centro $A$ e razão $\tfrac12$. O mesmo vale para $B$, $C$ e $D$.
+
+\textbf{3. Os tetraedros e as esferas não se sobrepõem.}
+Em coordenadas baricêntricas, o tetraedro do vértice $A$ é o conjunto $\lambda_A\ge \tfrac12$. Dois tetraedros de vértices distintos só se encontram em pontos com $\lambda_A=\lambda_B=\tfrac12$ (pontos médios das arestas). Logo, os quatro têm interiores disjuntos.
+
+A esfera inscrita em $ABCD$ está na região $\lambda_i\le\tfrac12$ (entre os planos tangentes), então não invade nenhum deles.
+
+Cada novo tetraedro é regular, de aresta $a/2$, e o processo se repete dentro dele de forma idêntica, com a mesma razão $\tfrac12$. Assim, todas as esferas têm interiores disjuntos e seus volumes se somam.
+
+\textbf{4. Contagem por geração.}
+Na geração $n$ ($n=0,1,2,\dots$; $n=0$ é o próprio $ABCD$) há $4^{n}$ tetraedros de aresta $a/2^{n}$. Cada um tem esfera inscrita de raio $r/2^{n}$ e volume $V_0/8^{n}$. O volume total da geração $n$ é
+\[
+4^{n}\cdot\frac{V_0}{8^{n}}=V_0\left(\frac12\right)^{n}.
+\]
+
+\textbf{5. Soma.}
+Todas as esferas estão no interior de $ABCD$, incluindo a inscrita em $ABCD$ (geração $0$). A série geométrica de razão $\tfrac12$ converge:
+\[
+V=V_0\sum_{n=0}^{\infty}\left(\frac12\right)^{n}=2V_0=\frac{\pi\sqrt6}{108}\,a^{3}.
+\]
+
+\textbf{Conferência.}
+A unidade é a de volume ($a^{3}$). Numericamente, $V\approx 0{,}0713\,a^{3}$. Isso é menor que o volume do tetraedro, $\dfrac{a^{3}\sqrt2}{12}\approx0{,}1179\,a^{3}$, como deve ser. A fração ocupada é cerca de $60\%$, plausível para esferas empacotadas dentro do tetraedro. Sem contar a esfera inscrita em $ABCD$, o volume seria $V_0=\dfrac{\pi\sqrt6}{216}a^{3}$, mas o enunciado pede \emph{todas} as esferas interiores a $ABCD$, o que inclui a primeira.
+
+ANSWER: $V=\dfrac{\pi\sqrt{6}}{108}\,a^{3}$

@@ -1,0 +1,82 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "$a=-2$ (único valor real possível). Para esse valor, $p(x)=(x+1)^2(x-2)(x^2+1)(x^2-6x+1)$, e as raízes de $p$ são $-1$ (dupla), $2$, $i$, $-i$, $3+2\\sqrt{2}$ e $3-2\\sqrt{2}$: seis raízes distintas, ou sete contando multiplicidade.",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DA QUESTÃO 4 (resolvida do zero, sem consultar nenhuma resolução de candidato)\n\n0) Fatoração de q(x). q(x) = x³ − 3x − 2 = (x + 1)²(x − 2), pois (x + 1)²(x − 2) = (x² + 2x + 1)(x − 2) = x³ − 3x − 2. As raízes de q são −1 (dupla) e 2. Note que 1 NÃO é raiz de q, pois q(1) = −4.\nLogo, q | p ⇔ (x + 1)² | p e (x − 2) | p ⇔ p(−1) = 0, p'(−1) = 0 e p(2) = 0.\n\n1) Determinação de a. Escreva p(x) = A(x) + a·B(x), com\nA(x) = x⁷ − x⁵ + 7x³ + 9x  e  B(x) = 3x⁶ − 5x⁴ − 7x² + 1.\n(a) Método do resto. Reduza módulo q usando x³ ≡ 3x + 2:\n  x⁴ ≡ 3x² + 2x;  x⁵ ≡ 2x² + 9x + 6;  x⁶ ≡ 9x² + 12x + 4;  x⁷ ≡ 12x² + 31x + 18.\n  Então A ≡ 10x² + 52x + 26 e B ≡ 5x² + 26x + 13.\n  Resto de p: r(x) = (a + 2)(5x² + 26x + 13). Como 5x² + 26x + 13 não é o polinômio nulo, q | p ⇔ a = −2.\n(b) Conferência pelas três condições:\n  A(−1) = −16, B(−1) = −8 ⇒ p(−1) = −16 − 8a = 0 ⇒ a = −2.\n  A(2) = 170, B(2) = 85 ⇒ p(2) = 170 + 85a = 0 ⇒ a = −2.\n  A'(x) = 7x⁶ − 5x⁴ + 21x² + 9 ⇒ A'(−1) = 32; B'(x) = 18x⁵ − 20x³ − 14x ⇒ B'(−1) = 16; p'(−1) = 32 + 16a = 0 ⇒ a = −2.\n  As três condições dão o mesmo valor, o que é consistente.\nConclusão: a = −2, e é o único valor possível.\n\n2) Com a = −2: p(x) = x⁷ − 6x⁶ − x⁵ + 10x⁴ + 7x³ + 14x² + 9x − 2.\n\n3) Divisão por q(x): o quociente é x⁴ − 6x³ + 2x² − 6x + 1, com resto zero. Logo\n  p(x) = (x³ − 3x − 2)(x⁴ − 6x³ + 2x² − 6x + 1) = (x + 1)²(x − 2)·r(x), com r(x) = x⁴ − 6x³ + 2x² − 6x + 1.\n(Conferência: expandindo o produto obtém-se de volta p(x).)\n\n4) Fatoração de r(x). r é palindrômico e r(0) = 1 ≠ 0. Divida por x²:\n  (x² + 1/x²) − 6(x + 1/x) + 2 = 0.\nCom t = x + 1/x, vale x² + 1/x² = t² − 2. Então t² − 2 − 6t + 2 = 0, ou seja, t(t − 6) = 0.\n  • t = 0 ⇒ x² + 1 = 0 ⇒ x = ±i.\n  • t = 6 ⇒ x² − 6x + 1 = 0 ⇒ x = 3 ± 2√2.\nLogo r(x) = (x² + 1)(x² − 6x + 1). (Conferência: (x² + 1)(x² − 6x + 1) = x⁴ − 6x³ + 2x² − 6x + 1.)\n\n5) Resultado. p(x) = (x + 1)²(x − 2)(x² + 1)(x² − 6x + 1), de grau 2 + 1 + 2 + 2 = 7.\nRaízes com multiplicidade: −1 (multiplicidade 2), 2, 3 + 2√2, 3 − 2√2, i, −i (total 7).\nMultiplicidades exatas: r(−1) = 16 ≠ 0 e r(2) = −35 ≠ 0. Logo −1 tem multiplicidade exatamente 2, e 2 é raiz simples.\nRaízes reais: −1, 2, 3 ± 2√2 (≈ 5,828 e ≈ 0,172). Raízes não reais: ±i.\nVerificação numérica: p(−1) = p'(−1) = p(2) = 0 e p se anula em ±i, 3 ± 2√2 (checado em Python com aritmética exata e complexa).",
+    "final_answer": "a = −2 (único valor possível: q(x) divide p(x) ⇔ a = −2).\n\nCom a = −2, p(x) = (x + 1)²(x − 2)(x² + 1)(x² − 6x + 1), e as raízes de p(x) são:\n- x = −1 (raiz dupla);\n- x = 2;\n- x = 3 + 2√2 e x = 3 − 2√2;\n- x = i e x = −i.\n\nRaízes reais: −1, 2, 3 ± 2√2. Raízes complexas não reais: ±i. Contadas com multiplicidade, são 7 raízes (6 distintas).",
+    "pitfalls": [
+      "Fatoração de q: q(x) = x³ − 3x − 2 = (x+1)²(x−2), e não (x+1)(x−1)(x−2). Quem erra o sinal ou a raiz 1 não percebe que −1 é raiz dupla. Note que q(1) = −4 ≠ 0.",
+      "Multiplicidade: divisibilidade por q exige p(−1) = 0 e p'(−1) = 0 (além de p(2) = 0). Mesmo que p(−1) = 0 e p(2) = 0 bastem para achar a = −2 nesse caso, a condição p'(−1) = 0 é a que justifica a raiz dupla −1 na resposta final.",
+      "Consistência: as três condições dão o mesmo a = −2. A forma mais limpa é o resto: r(x) = (a + 2)(5x² + 26x + 13), que se anula identicamente só para a = −2. Não concluir que o sistema é incompatível, nem que há uma família de valores de a.",
+      "Sinais em potências ímpares negativas: (−1)⁷ = (−1)⁵ = (−1)³ = −1. Com A(−1) = −16 e B(−1) = −8, um sinal trocado dá a = +2 em vez de −2.",
+      "Substituição de a = −2 em todos os termos: 3a x⁶ = −6x⁶, −5a x⁴ = +10x⁴, −7a x² = +14x², e o termo constante a = −2. Errar um deles quebra a divisão exata por q.",
+      "Use o resto zero da divisão por q como checagem. O quociente correto é x⁴ − 6x³ + 2x² − 6x + 1, e (x³ − 3x − 2)(quociente) deve reproduzir p(x).",
+      "Raízes complexas: a prova define a unidade imaginária i, e 'todas as raízes' de um polinômio real inclui ±i. Listar só −1, 2 e 3 ± 2√2 é resposta incompleta.",
+      "Palíndromo: na substituição t = x + 1/x é preciso x ≠ 0 (aqui r(0) = 1). Use corretamente x² + 1/x² = t² − 2 (não t² + 2). Erro comum: obter t² − 6t + 4 = 0 ou outra equação errada. Resultado correto: t(t − 6) = 0.",
+      "O caso t = 0 dá x² = −1, ou seja x = ±i, e não x = 0. Já t = 6 dá x² − 6x + 1 = 0, com raízes 3 ± 2√2 (também escritas como (√2 ± 1)²).",
+      "Ambiguidade 'todas as raízes': distinguir raízes distintas (6) de raízes com multiplicidade (7). Declare que −1 é raiz dupla. Confira também que −1 e 2 não são raízes do quártico, pois r(−1) = 16 e r(2) = −35, para garantir as multiplicidades exatas.",
+      "Confira a contagem: grau 7 implica exatamente 7 raízes complexas com multiplicidade, então a lista final deve ter 7 elementos contados com multiplicidade."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "$a=-2$, e $p(x)=(x+1)^2(x-2)(x^2+1)(x^2-6x+1)$. As raízes de $p$ são $-1$ (raiz dupla), $2$, $i$, $-i$, $3+2\\sqrt{2}$ e $3-2\\sqrt{2}$.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 6: a frase 'A raiz dupla −1 é exatamente o que a condição p'(−1)=0 exige' é imprecisa. p'(−1)=0 só garante multiplicidade ≥ 2. A multiplicidade exata 2 vem da fatoração, mas a resolução não verifica explicitamente que −1 e 2 não são raízes do quártico (r(−1)=16 ≠ 0 e r(2)=−35 ≠ 0). Deveria dizer isso, ou usar r(−1)≠0 e r(2)≠0 para fixar as multiplicidades exatas."
+          },
+          {
+            "severity": "minor",
+            "description": "A contagem de raízes não é fechada: a lista traz '−1 (dupla)' mas não diz que são 6 raízes distintas e 7 contadas com multiplicidade. Como 'todas as raízes' admite essa ambiguidade, a resposta final deveria explicitar as duas contagens."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 4: a frase 'Pela divisão de p por q (resto nulo), ou conferindo por expansão' sugere uma divisão que não foi feita. O quociente x⁴−6x³+2x²−6x+1 aparece sem derivação. A conferência por expansão está correta e sustenta a identidade (verifiquei: q·quociente = p com a=−2), então não há erro matemático. Mas a frase deveria mostrar a divisão ou ser removida."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência 'Caso particular e ordem de grandeza' (3±2√2 inversos entre si, ±i conjugados) não verifica o fatorado de p, apenas observa propriedades. As conferências úteis são as de Vieta (soma 6 e produto 2), que estão corretas. O item poderia ser removido ou reescrito como verificação."
+          }
+        ],
+        "summary": "A resposta final do candidato está correta e coincide com a referência: a = −2 (único valor), p(x) = (x+1)²(x−2)(x²+1)(x²−6x+1), raízes −1 (dupla), 2, ±i e 3±2√2. Recalculei com Python. p(−1) = −16−8a, p(2) = 170+85a e p'(−1) = 32+16a dão todas a = −2. q(x) = (x+1)²(x−2). O quociente de p por q é x⁴−6x³+2x²−6x+1 e o resto é zero. r(x) = (x²+1)(x²−6x+1). A soma das raízes é 6 e o produto é 2, como exige Vieta. Não encontrei erro de conta nem de hipótese. Armadilhas tratadas: fatoração de q, p'(−1), consistência das três condições, sinais de potências ímpares, substituição de a em todos os termos, r(0)≠0 antes de dividir por x², x²+1/x² = t²−2, t=0 dando ±i, e raízes complexas incluídas. Falta rigor em três pontos: a multiplicidade exata não é justificada explicitamente (p'(−1)=0 só dá multiplicidade ≥ 2), a contagem 6 distintas / 7 com multiplicidade não é feita, e há uma 'divisão' citada sem ser mostrada. Por isso a nota é 8,5. Está próxima de um gabarito comentado, mas precisa dos ajustes listados antes de ser publicada como está.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "$a=-2$ (único valor real possível). Para esse valor, $p(x)=(x+1)^2(x-2)(x^2+1)(x^2-6x+1)$, e as raízes de $p$ são $-1$ (dupla), $2$, $i$, $-i$, $3+2\\sqrt{2}$ e $3-2\\sqrt{2}$: seis raízes distintas, ou sete contando multiplicidade.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 5: a fatoração s(x)=(x²+1)(x²−6x+1) é concluída a partir de 'quatro raízes distintas e s mônico de grau 4' sem citar o teorema do fator (s = ∏(x−r_k)) nem justificar explicitamente a distinção das quatro raízes (±i não reais, 3±2√2 reais e distintos). Deveria ser: 'pelo teorema do fator, como s é mônico de grau 4 e tem as quatro raízes distintas ±i, 3±2√2, s = ∏(x−r_k)'."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 6: a multiplicidade exata de 2 ('tem multiplicidade exatamente 1') é afirmada sem ligá-la explicitamente a s(2) = −35 ≠ 0, embora o cálculo esteja no mesmo parágrafo. Deveria dizer: 'como s(2) ≠ 0, 2 é raiz simples de p'."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 6: a afirmação de que as raízes de s são diferentes de −1 e de 2 é apoiada em aproximações decimais (≈0,172 e ≈5,828), o que não é argumento exato. O argumento rigoroso já está disponível: s(−1) = 16 ≠ 0 e s(2) = −35 ≠ 0; alternativamente, 3±2√2 são irracionais e ±i não são reais. A justificativa decimal deveria ser removida ou tratada como comentário."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à referência item por item: a = −2 (único valor); p(x) = (x+1)²(x−2)(x²+1)(x²−6x+1); raízes −1 (dupla), 2, i, −i, 3±2√2; seis distintas e sete contando multiplicidade. Verifiquei no enunciado original (página 5) que a transcrição de p(x) e q(x) está correta e refiz as contas em aritmética exata: p(−1)=p'(−1)=p(2)=0 para a=−2, resto nulo na divisão por q com quociente x⁴−6x³+2x²−6x+1, s(−1)=16, s(2)=−35, s(0)=1, p(0)=−2, p(1)=32, e as relações de Vieta (soma 6, produto 2, soma dos quadrados 38, e₂=−1). Todas conferem. Todas as armadilhas listadas na referência foram tratadas: fatoração de q como (x+1)²(x−2) com derivada q'(−1)=0 justificando a multiplicidade; consistência das três condições (todas reduzem a a+2=0, sem família de soluções); sinais em potências ímpares; substituição de a=−2 em todos os termos; divisão explícita como checagem; ±i incluídos; palíndromo com s(0)≠0, identidade x²+1/x²=t²−2 e t(t−6)=0; e contagem com e sem multiplicidade. A resolução é rigorosa e completa, com verificações independentes (Vieta e valores numéricos). Os problemas que restam são de acabamento: conclusões implícitas (fator teorema, multiplicidade de 2) e uma justificativa de distinção por decimais. Nenhum afeta o conteúdo. Com ajustes mínimos de uma frase cada, a resolução poderia ser publicada como gabarito comentado; por isso nota 9,0.\""
+      }
+    }
+  ]
+}

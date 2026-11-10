@@ -1,0 +1,29 @@
+{
+  "question": 1,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-1-matematica-2-fase-dia-1-ita-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Questão 1 — número de pontos de coordenadas inteiras no octaedro (interior e superfície)",
+      "solution_answer": "231 (102 na superfície e 129 no interior)",
+      "key_answer": "231 pontos",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "O enunciado confere com o original (pág. 2). Os três vértices dados estão a 5 da origem e a 5√2 uns dos outros. Num octaedro regular de circunraio 5, dois vértices estão a 5√2 (vizinhos) ou a 10 (opostos). Por isso os três vértices dados formam uma face, e a simetria central fixa os outros três como (−5,0,0), (0,−5,0) e (0,0,−5). O sólido é |x|+|y|+|z| ≤ 5. Cortando por planos z = constante, cada corte tem N(k) = 2k²+2k+1 pontos, com k = 5−|z|. Total: 61 + 2(41+25+13+5+1) = 231. A resolução e o gabarito fazem exatamente esse corte e chegam à mesma conta. Uma contagem por força bruta em Python também deu 231 no total, 102 na superfície (|x|+|y|+|z| = 5) e 129 no interior (|x|+|y|+|z| ≤ 4). Isso confirma também a conferência extra que a resolução faz."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Para concluir que os outros vértices são os simétricos dos dados, a resolução usa a simetria central. Não diz explicitamente por que o octaedro é único. A justificativa completa é que, com circunraio 5, os três vértices dados (a 5√2 uns dos outros) são dois a dois vizinhos e formam uma face. O argumento usado basta, e a verificação de regularidade feita depois fecha a questão."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A expressão 'no interior e na superfície' deve ser lida como união (interior ∪ superfície = sólido fechado), e não como interseção, que seria vazia. Tanto a resolução quanto o gabarito leem assim, e é a única leitura que faz sentido."
+    }
+  ],
+  "summary": "A resolução está correta e coincide com o gabarito do Poliedro: 231 pontos de coordenadas inteiras. As duas descrevem o sólido como |x|+|y|+|z| ≤ 5 e contam os pontos cortando o octaedro por planos z = constante (2k²+2k+1 pontos por corte). Uma contagem por força bruta confirmou o total de 231 e também a divisão da resolução: 102 pontos na superfície e 129 no interior. Não há divergência, só observações menores de redação."
+}

@@ -1,0 +1,54 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "(a) V_max = 192√3 cm³ ≈ 332,6 cm³; (b) altura = 4√3 cm e base quadrada de lado 4√3 cm (o prisma é um cubo de aresta 4√3 cm).",
+  "judge_reference": {
+    "reference_solution": "**Convenções.** Esfera S de raio R = 6 e centro O (origem). \"Contido na esfera\" = contido na bola (pontos da superfície valem). Prisma reto: arestas laterais perpendiculares à base. Como \"prisma quadrangular\" tem como base um quadrilátero qualquer (não necessariamente quadrado), trato o caso geral. Eixo z perpendicular à base; a base Q fica no plano z = z₀ e a outra base em z = z₀ + h. Todo ponto do prisma é (p, z), com p ∈ Q e z entre z₀ e z₀ + h. Estar na bola equivale a |p|² + z² ≤ 36 para todos esses pontos (basta checar os vértices, pois a bola é convexa).\n\n**1) Face-base com os 4 vértices na esfera (o caso natural).**\n- Os 4 vértices da base estão numa circunferência de raio r, seção da esfera pelo plano z = z₀. Logo r² + z₀² = 36 e o plano dista d = √(36 − r²) de O.\n- O prisma tem de ficar na bola. Os vértices da outra base estão a distância² = r² + (z₀ + h)² de O, e isso deve ser ≤ 36. Isso dá |z₀ + h| ≤ |z₀| = d. O prisma deve se estender do lado do centro: z₀ = −d e h ≤ 2d. Se ele fosse para fora, sairia da bola.\n- Área da base: um quadrilátero cíclico de diagonais d₁, d₂ e ângulo θ entre elas tem A = ½·d₁·d₂·sen θ ≤ ½·(2r)(2r) = 2r². A igualdade ocorre quando as diagonais são diâmetros perpendiculares, isto é, no quadrado inscrito. Para um retângulo a×b, vale ab ≤ (a²+b²)/2 = 2r².\n- Para r fixo, V = A·h ≤ 2r²·2d = 4r²√(36 − r²). O volume cresce com h, então o máximo exige h = 2d. Nesse caso os vértices da outra base também ficam sobre a esfera.\n- Seja u = r². Maximiza-se φ(u) = u²(36 − u) para 0 < u < 36. Então φ′(u) = 72u − 3u² = 3u(24 − u). φ′ > 0 para u < 24 e φ′ < 0 para u > 24, logo o máximo é em u = 24, isto é, r² = 24.\n- Então d = √12 = 2√3, h = 2d = 4√3 e a base é um quadrado inscrito numa circunferência de raio r = 2√6. Sua diagonal é 4√6 e seu lado é 4√6/√2 = 4√3. A área da base é 48.\n- V = 48·4√3 = **192√3 cm³ ≈ 332,55 cm³**.\n\n**2) Verificação independente e caso da face lateral (a \"uma das faces\" pode ser lateral).**\nMostro que nenhum prisma reto de base quadrilátera contido na bola, tenha ou não a propriedade dos 4 vértices, supera 192√3.\n- Seja m = max(|z₀|, |z₀ + h|) ≥ h/2. Todo p ∈ Q satisfaz |p|² ≤ 36 − m² ≤ 36 − h²/4. Logo Q está num disco de raio ρ com ρ² ≤ 36 − h²/4.\n- Qualquer quadrilátero simples (convexo ou não) tem área ½|AC × BD| ≤ ½·(2ρ)(2ρ) = 2ρ². Portanto V ≤ 2h(36 − h²/4) = 72h − h³/2.\n- Identidade: 72h − h³/2 = 192√3 − ½(h − 4√3)²(h + 8√3) ≤ 192√3 para h ≥ 0. Verifica-se expandindo: (h − 4√3)²(h + 8√3) = h³ − 144h + 384√3.\n- Igualdade: h = 4√3; z₀ = −h/2 (prisma centrado em O); ρ² = 24; Q é um quadrado inscrito no disco. O único prisma que atinge o máximo é, a menos de rotação, um **cubo de aresta 4√3**. Sua diagonal é 4√3·√3 = 12 = 2R, e os 8 vértices estão na esfera.\n- Esse cubo satisfaz a hipótese do enunciado (toda face, base ou lateral, tem os 4 vértices na esfera). Logo o máximo global é atingido dentro da família admissível, e o resultado vale qualquer que seja a face considerada.\n- Conferência para uma caixa a×b×h: os dois extremos de uma diagonal espacial estão na bola, então a² + b² + h² ≤ 144. Por MA–MG, V² = a²b²h² ≤ (144/3)³ = 48³, logo V ≤ 48√48 = 192√3, com igualdade em a = b = h = 4√3.\n- Conferência numérica em Python: o máximo de 4r²√(36−r²) deu 332,5537 em r² = 23,99994 e coincide com 192√3 = 332,5538. A busca aleatória por quadriláteros ficou abaixo (324,2). A família \"face lateral na esfera, base retangular\" também dá no máximo 332,553.\n\n**Respostas.**\n(a) V_máx = 192√3 cm³ ≈ 332,55 cm³.\n(b) Altura h = 4√3 cm e base quadrada de lado 4√3 cm (4√3 × 4√3 cm). O prisma é um cubo de aresta 4√3 cm, inscrito na esfera.",
+    "final_answer": "(a) V_máx = 192√3 cm³ ≈ 332,55 cm³.\n(b) Altura h = 4√3 cm; base quadrada de lado 4√3 cm (4√3 × 4√3). O prisma ótimo é um cubo de aresta 4√3 cm inscrito na esfera, com diagonal 12 cm = diâmetro.",
+    "pitfalls": [
+      "O enunciado diz \"prisma quadrangular\", não \"regular\". A base é um quadrilátero qualquer. Não vale assumir quadrado ou retângulo sem justificar. É preciso provar que um quadrilátero inscrito num círculo de raio r tem área ≤ 2r², por exemplo com A = ½·d₁·d₂·sen θ ≤ ½·(2r)(2r), com igualdade só no quadrado.",
+      "\"Uma das faces\" pode ser a base ou uma face lateral. Uma boa resolução trata os dois casos, ou usa uma cota global. Mostra-se V ≤ 72h − h³/2 ≤ 192√3 para qualquer prisma reto de base quadrilátera dentro da bola. O cubo ótimo satisfaz a hipótese em todas as suas faces, então a resposta não depende de qual face é a dos 4 vértices.",
+      "O prisma está contido na bola, não necessariamente inscrito. Com a base na esfera, a altura só precisa satisfazer h ≤ 2d, com d = √(36 − r²). É preciso argumentar que V cresce com h, então o ótimo tem h = 2d e a outra base também toca a esfera. Se alguém exigisse os outros 4 vértices estritamente no interior, não haveria máximo, só supremo. \"Contido\" admite a fronteira.",
+      "Posição do prisma: ele deve se estender da base em direção ao centro e passar dele (z₀ = −d, topo em +d). Erros comuns são usar h ≤ d, ou deixar o prisma sair da bola do outro lado do plano da base.",
+      "Maximizar φ(u) = u²(36 − u) com u = r², e não em r direto. Resultado: r² = 24, d² = 12, h = 4√3. Não confundir o raio circunscrito r = 2√6 com o lado da base. A diagonal da base é 4√6 e o lado é 4√3.",
+      "Usar a² + b² + h² = 144 só vale se todos os 8 vértices estiverem na esfera, o que decorre de h = 2d. Em geral só se tem a² + b² + h² ≤ 144, o que basta para o MA–MG. Aplicar a igualdade logo no início, sem justificar, é um salto lógico.",
+      "Pode-se pensar que o ótimo é um paralelepípedo \"alto\" ou \"achatado\". O resultado correto é o cubo, de aresta 4√3 (≈ 6,93 cm), com diagonal igual ao diâmetro 12. Conferência: 192√3 ≈ 332,55 cm³. Unidade: cm³.",
+      "Para o item (b), dar as três dimensões (altura e os dois lados da base) e afirmar que o prisma é um cubo. Dizer só \"h = 4√3\" deixa o item incompleto."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "(a) V_max = 192√3 cm³ ≈ 332,6 cm³; (b) altura = 4√3 cm e base quadrada de lado 4√3 cm (o prisma é um cubo de aresta 4√3 cm).",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na 'Conferência' há uma expressão LaTeX quebrada/incompleta: \"\\frac{192\\sqrt3}{288\\pi}=\\frac{2\\sqrt3}{3\\pi}\\cdot\\!\\ldots\\approx 37\\%\". O valor correto é 2√3/(3π) ≈ 0,3676 (≈ 37%), sem nenhum fator adicional. O '·…' é lixo tipográfico que, num gabarito publicado, teria de ser removido. Não afeta o resultado."
+          },
+          {
+            "severity": "minor",
+            "description": "A observação da face lateral é correta, mas telegráfica. O 'mesmo argumento das diagonais' é aplicado a um quadrilátero cujos vértices só estão dentro do disco, não sobre a circunferência. O texto deveria dizer que as diagonais são cordas do disco (≤ 2ρ) e que a área vale ½|AC×BD| para qualquer quadrilátero simples, convexo ou não. Reutiliza também a letra r, com r² = 36 − h²/4, para um raio que é só cota superior. Não afirma que 72h − h³/2 é côncava para h > 0 (máximo global) e não prova explicitamente que o cubo é o único maximizador, o que daria o item (b) no caso lateral."
+          },
+          {
+            "severity": "minor",
+            "description": "Na fórmula S = ½·AC·BD·sen θ para o quadrilátero inscrito, falta uma frase dizendo que um quadrilátero simples inscrito numa circunferência é convexo, e que a fórmula vale para qualquer quadrilátero simples. Falta também dizer, de forma explícita, que 'contido na esfera' é lido como contido na bola, com pontos da fronteira permitidos. Isso é o que torna o máximo atingido, com h = 2d, e é usado implicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (b), o texto não diz explicitamente que o prisma ótimo vai de z = −d a z = +d, isto é, atravessa o centro O. Isso decorre de h = 2d e de z = d − h, e a posição é correta, mas valeria uma frase de fechamento."
+          }
+        ],
+        "summary": "Resposta final correta e igual à da referência: (a) V_máx = 192√3 cm³ ≈ 332,6 cm³; (b) h = 4√3 cm e base quadrada de lado 4√3 cm, ou seja, um cubo de aresta 4√3 inscrito na esfera. Conferi as contas com Python: f(d) = 4(36d − d³) tem máximo em d = 2√3 com valor 192√3; 72h − h³/2 = 192√3 − ½(h − 4√3)²(h + 8√3); uma busca aleatória em quadriláteros ficou abaixo do máximo. A estrutura é rigorosa e cobre as armadilhas principais. (1) Não assume base quadrada: prova S ≤ 2r² pelas diagonais, com igualdade só no quadrado. (2) Posiciona o prisma do lado do centro, descarta z = d + h com argumento explícito e obtém 0 ≤ h ≤ 2d. (3) Justifica por convexidade da bola que basta checar os vértices. (4) Majora V ≤ f(d) e mostra que as igualdades são simultaneamente atingíveis, o que dispensa o argumento de monotonia em h. (5) Dá as três dimensões e identifica o cubo. (6) Trata a face lateral com a cota global V ≤ 72h − h³/2, cujo máximo é atingido pelo cubo, que satisfaz a hipótese em qualquer face. Os defeitos são só de acabamento: uma expressão LaTeX quebrada na conferência do volume, justificativa telegráfica no caso lateral, e algumas frases implícitas, como o tratamento de 'contido' como bola e a posição do prisma atravessando O. Nada compromete a correção."
+      }
+    }
+  ]
+}

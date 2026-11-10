@@ -1,0 +1,67 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Notação.} Para um tetraedro regular $T$ de aresta $e$, sejam $H_T$ a altura, $G$ o centro (baricentro, incentro e circuncentro coincidem) e $\rho_T$ o inraio. Usamos coordenadas baricêntricas $\lambda_X\ge 0$ relativas aos vértices $X$ de $T$, com $\sum\lambda_X=1$: $\lambda_X=0$ é a face oposta a $X$, $\lambda_X=1$ em $X$ e $\lambda_X(G)=\frac14$.
+
+\textbf{Passo 1 (altura e inraio).} Pelo Teorema de Pitágoras, com circunraio $\frac{a\sqrt3}{3}$ da face $BCD$:
+\[
+H^2=a^2-\Big(\frac{a\sqrt3}{3}\Big)^2=\frac{2a^2}{3}\quad\Rightarrow\quad H=\frac{a\sqrt6}{3}.
+\]
+Decompondo $ABCD$ em quatro pirâmides de vértice $G$ e bases nas faces (interiores disjuntos, união igual a $ABCD$), de alturas $\rho$ e área de face $S$, vem $\frac13SH=4\cdot\frac13S\rho$. Logo
+\[
+H=4\rho,\qquad r:=\rho_{ABCD}=\frac{a\sqrt6}{12}.
+\]
+A relação $H_T=4\rho_T$ vale para todo tetraedro regular.
+
+\textbf{Passo 2 (o novo plano).} Seja $\Sigma$ a esfera inscrita, de centro $G$ e raio $r$. Seja $h$ a distância ao plano $BCD$, com $h=0$ em $BCD$ e $h=H$ em $A$. Um plano paralelo a $BCD$ à altura $h$ é tangente a $\Sigma$ se e só se $|h-r|=r$, isto é, $h=0$ (o próprio plano da base, excluído pelo enunciado) ou $h=2r$. Como $0<2r<H=4r$, o plano corta $AB$, $AC$, $AD$ à altura $2r=\frac H2$. A altura varia linearmente ao longo de cada aresta, logo esses pontos são os pontos médios $M_{AB}$, $M_{AC}$, $M_{AD}$.
+
+\textbf{Passo 3 (novo tetraedro e invariância).} O novo tetraedro é $T_A=A\,M_{AB}M_{AC}M_{AD}$, imagem de $ABCD$ pela homotetia de centro $A$ e razão $\frac12$. Em coordenadas de $ABCD$,
+\[
+T_A=\{x\in ABCD:\ \lambda_A(x)\ge\tfrac12\}.
+\]
+De fato, se $x=\frac{p+A}{2}$ com $p\in ABCD$, então $\lambda_A(x)=\frac{1+\lambda_A(p)}{2}\ge\frac12$. Reciprocamente, se $x\in ABCD$ e $\lambda_A(x)\ge\frac12$, então $p=2x-A$ tem coordenadas $2\lambda_A(x)-1\ge0$ e $2\lambda_Y(x)\ge0$ ($Y\ne A$), com soma $1$; logo $p\in ABCD$.
+
+O Passo 2 usa apenas $H_T=4\rho_T$, válido para qualquer tetraedro regular, e a construção é definida por vértices, paralelismo e tangência, propriedades preservadas por semelhanças. Logo, a mesma construção aplicada a um tetraedro regular $T$ de aresta $e$ produz os quatro filhos
+\[
+T_X=T\cap\{\lambda_X\ge\tfrac12\}\qquad (X\text{ vértice de }T),
+\]
+regulares, de aresta $\frac e2$ e inraio $\frac{\rho_T}{2}$, pois a homotetia leva a esfera inscrita de $T$ na de $T_X$.
+
+\textbf{Passo 4 (tangências).} A homotetia de centro $A$ e razão $\frac12$ leva $\Sigma$ na esfera inscrita de $T_A$, de raio $\frac r2$ e centro $M$, ponto médio de $AG$. Como $|AG|=H-r=3r$, temos $|GM|=\frac{3r}{2}=r+\frac r2$. Logo $\Sigma$ e a esfera de $T_A$ são tangentes exteriormente. O mesmo vale para $T_B$, $T_C$, $T_D$.
+
+\textbf{Passo 5 (lema de não sobreposição).} Seja $B_T$ a bola inscrita em $T$, de centro $G_T$ e raio $\rho_T$.
+
+(a) \emph{Em $B_T$ vale $0\le\lambda_X\le\frac12$, e no interior de $B_T$ vale $0<\lambda_X<\frac12$.} De fato, $\lambda_X$ é afim, vale $\frac14$ em $G$ e se anula na face oposta a $X$, que dista $\rho_T$ de $G$. Assim $|\nabla\lambda_X|=\frac{1}{4\rho_T}$. Para $|x-G|\le\rho_T$, pela desigualdade de Cauchy–Schwarz, $\big|\lambda_X(x)-\frac14\big|=\big|\nabla\lambda_X\cdot(x-G)\big|\le\frac{1}{4\rho_T}\rho_T=\frac14$. Geometricamente, $B_T$ está no octaedro regular $O_T=T\cap\{\lambda_X\le\frac12\ \forall X\}$ dos pontos médios de $T$, cujo inraio é $\frac{e/2}{\sqrt6}=\frac{e\sqrt6}{12}=\rho_T$.
+
+(b) \emph{Os filhos têm interseção de volume nulo.} Se $x\in T_X\cap T_Y$ ($X\ne Y$), então $\lambda_X,\lambda_Y\ge\frac12$ e $\lambda_X+\lambda_Y\le1$. Logo $\lambda_X=\lambda_Y=\frac12$ e as outras coordenadas são nulas: $x$ é o ponto médio de $XY$. Além disso, $\operatorname{int}(B_T)\cap T_X=\emptyset$, pois $T_X\subset\{\lambda_X\ge\frac12\}$ e por (a).
+
+(c) \emph{Árvore.} Cada tetraedro do nível $n+1$ é filho de exatamente um do nível $n$, e todo filho está contido no pai. Logo $B_T\subset T\subset ABCD$ para todo $T$. Sejam $P\ne Q$ dois tetraedros do processo.
+\begin{itemize}
+\item Se um é ancestral do outro, digamos $P$ ancestral de $Q$, então $Q$ está num filho $T_X$ de $P$. Assim $B_Q\subset\{\lambda^P_X\ge\frac12\}$, que não intersecta $\operatorname{int}(B_P)$ por (a). Logo $B_P\cap B_Q\subset\partial B_P$, de volume nulo.
+\item Caso contrário, seja $R$ o ancestral comum mais próximo. Então $P\subset T_X$ e $Q\subset T_Y$ para filhos distintos $T_X,T_Y$ de $R$, e $B_P\cap B_Q\subset T_X\cap T_Y$, que é um único ponto por (b).
+\end{itemize}
+Portanto quaisquer duas bolas se intersectam em conjunto de volume nulo. Desdobrando $B_k'=B_k\setminus\bigcup_{j<k}B_j$ (disjuntos, com $B_k\setminus B_k'$ de volume nulo), o volume da união é a soma dos volumes.
+
+\textbf{Passo 6 (contagem por níveis).} Afirmação: o nível $n$ tem $4^n$ tetraedros regulares de aresta $\frac{a}{2^n}$ e inraio $\frac{r}{2^n}$. Base $n=0$: apenas $ABCD$. Passo $n\to n+1$: cada tetraedro do nível $n$ gera quatro filhos regulares de aresta e inraio iguais à metade (Passo 3). Há $4\cdot4^n=4^{n+1}$ tetraedros, com aresta $\frac{a}{2^{n+1}}$ e inraio $\frac{r}{2^{n+1}}$. Assim, cada esfera do nível $n$ tem volume $\frac43\pi\frac{r^3}{8^n}$.
+
+\textbf{Passo 7 (soma).} O enunciado pede as esferas interiores a $ABCD$. A esfera inscrita em $ABCD$ ($n=0$) é uma delas e entra na soma, pois é interior a $ABCD$ e pertence ao processo. Pelo Passo 5, os volumes se somam:
+\[
+V=\sum_{n=0}^{\infty}4^{n}\cdot\frac43\pi\frac{r^{3}}{8^{n}}=\frac43\pi r^3\sum_{n=0}^{\infty}\frac{1}{2^{n}}=\frac43\pi r^3\cdot 2=\frac83\pi r^3,
+\]
+série geométrica de razão $\frac12<1$, convergente. (Se só as esferas dos novos tetraedros, $n\ge1$, fossem contadas, o resultado seria a metade, $\frac{\pi\sqrt6}{216}a^3$. A leitura adotada segue o enunciado, que pede todas as esferas interiores a $ABCD$.)
+
+\textbf{Passo 8 (substituição).} Como $r^3=\frac{6\sqrt6\,a^3}{1728}=\frac{\sqrt6\,a^3}{288}$,
+\[
+V=\frac83\pi\cdot\frac{\sqrt6\,a^3}{288}=\frac{\pi\sqrt6}{108}\,a^3\approx 0{,}0713\,a^3.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Unidades: $V$ e $a^3$ são volumes.
+\item A esfera de $ABCD$ sozinha tem volume $\frac43\pi r^3=\frac{\pi\sqrt6}{216}a^3$. O nível $n$ contribui com $2^{-n}$ desse valor (4 esferas de volume $\frac18$ cada, por nível), e a soma é o dobro do termo inicial, $\frac{\pi\sqrt6}{108}a^3$.
+\item Com $V_{ABCD}=\frac13\cdot\frac{\sqrt3}{4}a^2\cdot\frac{a\sqrt6}{3}=\frac{\sqrt2}{12}a^3$, temos $\frac{V}{V_{ABCD}}=\frac{\pi\sqrt3}{9}\approx0{,}605<1$, coerente com as esferas estarem dentro de $ABCD$. A esfera inscrita sozinha ocupa $\frac{\pi\sqrt3}{18}\approx0{,}302$ do tetraedro.
+\item Tangências do Passo 4: $\Sigma$ toca as esferas de $T_A,\dots,T_D$ sem penetrá-las, em acordo com o Passo 5.
+\end{itemize}
+
+ANSWER: $V=\dfrac{\pi\sqrt{6}}{108}\,a^{3}\approx 0{,}0713\,a^{3}$

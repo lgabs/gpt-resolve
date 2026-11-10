@@ -1,0 +1,69 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Modelo e hipóteses.} Treliça plana ideal: barras biarticuladas, de peso desprezível, carregadas só nos nós; logo cada barra transmite apenas força axial. Adoto $A=(0;0)$, $B=(3;0)$, $C=(-3;4)$, $D=(0;4)$, $E=(3;4)$, $F=(0;8)$ (em m). As barras inclinadas $CF$, $EF$ e $AE$ têm comprimento $5$ m (triângulo $3$--$4$--$5$), com $\operatorname{sen}\theta=\tfrac45$ e $\cos\theta=\tfrac35$.
+
+Convenção: $N>0$ é tração (a barra puxa o nó) e $N<0$ é compressão. Conferência de determinação: $b+r=8+4=12=2n$ (com $n=6$ nós), então a treliça é isostática e o método dos nós resolve tudo.
+
+\textbf{Passo 1 --- nó $C$} (carga $P$ para baixo; barras $CD$ e $CF$).
+\[
+\sum F_y=0:\ N_{CF}\cdot\tfrac45-P=0\Rightarrow N_{CF}=\tfrac54P=125\ \text{kN (tração)};
+\]
+\[
+\sum F_x=0:\ N_{CF}\cdot\tfrac35+N_{CD}=0\Rightarrow N_{CD}=-75\ \text{kN (compressão)}.
+\]
+
+\textbf{Passo 2 --- nó $F$} (barras $FC$, $FD$, $FE$; sem carga externa).
+\[
+\sum F_x=0:\ -\tfrac35N_{CF}+\tfrac35N_{EF}=0\Rightarrow N_{EF}=125\ \text{kN (tração)};
+\]
+\[
+\sum F_y=0:\ -\tfrac45N_{CF}-\tfrac45N_{EF}-N_{DF}=0\Rightarrow N_{DF}=-200\ \text{kN (compressão)}.
+\]
+
+\textbf{Passo 3 --- nó $D$} (barras $DC$, $DE$, $DF$, $DA$).
+\[
+\sum F_x=0:\ -N_{CD}+N_{DE}=0\Rightarrow N_{DE}=-75\ \text{kN (compressão)};
+\]
+\[
+\sum F_y=0:\ N_{DF}-N_{AD}=0\Rightarrow N_{AD}=-200\ \text{kN (compressão)}.
+\]
+
+\textbf{Passo 4 --- nó $E$} (barras $ED$, $EF$, $EA$, $EB$).
+\[
+\sum F_x=0:\ -N_{DE}-\tfrac35N_{EF}-\tfrac35N_{AE}=0\Rightarrow 75-75-\tfrac35N_{AE}=0\Rightarrow N_{AE}=0;
+\]
+\[
+\sum F_y=0:\ \tfrac45N_{EF}-\tfrac45N_{AE}-N_{BE}=0\Rightarrow N_{BE}=100\ \text{kN (tração)}.
+\]
+
+\textbf{a) Reações.} 
+Nó $A$: a barra $AD$, comprimida com $200$ kN, empurra o apoio para baixo e $AE$ não tem esforço. Para equilibrar o nó, a reação é vertical, para cima: $R_A=200$ kN, com $A_x=0$.
+Nó $B$: a barra $BE$, tracionada com $100$ kN, puxa o apoio para cima. A reação é vertical, para baixo: $R_B=100$ kN, com $B_x=0$.
+
+\textit{Conferência global:} $\sum F_y=200-100-100=0$; $\sum F_x=0$; momentos em relação a $A$: $P\cdot3-R_B\cdot3=300-300=0$. \checkmark\ (O apoio $B$ precisa \emph{puxar} a estrutura para baixo, pois $P$ está fora da base e tende a tombá-la.)
+
+\textbf{b) Esforços normais.}
+
+\begin{center}
+\begin{tabular}{c|c|c}
+Barra & $|N|$ (kN) & Natureza \\ \hline
+$CD$ & $75$ & compressão \\
+$CF$ & $125$ & tração \\
+$DF$ & $200$ & compressão \\
+$AD$ & $200$ & compressão \\
+$AE$ & $0$ & nula \\
+$DE$ & $75$ & compressão \\
+$BE$ & $100$ & tração \\
+$EF$ & $125$ & tração
+\end{tabular}
+\end{center}
+
+Conferência dos nós: em $F$, $-75-75+\ldots$ fecha com $+200$ vertical de $DF$ ($-100-100+200=0$) e horizontais $-75+75=0$; os nós $A$, $B$ e todos os demais fecham com as reações acima.
+
+\textbf{c) Função da barra $AE$.} Para a carga vertical $P$ dada, $AE$ é uma barra de esforço nulo (o nó $E$ não tem componente horizontal a equilibrar). Mesmo assim ela é essencial para a \emph{estabilidade}. Sem $AE$, o quadrilátero articulado $A$--$D$--$E$--$B$ (com $AD\parallel BE$ e $DE=AB$) é um paralelogramo deformável. Seria uma estrutura hipostática ($7+4=11<12$), isto é, um mecanismo: o conjunto superior (rígido, pois é triangulado) poderia deslizar lateralmente, girando as barras $AD$ e $BE$ em torno de $A$ e $B$. Esse equilíbrio seria instável, como o de um pêndulo invertido, pois $AD$ está comprimida. A barra $AE$ forma o triângulo rígido $ADE$ (contraventamento): impede essa oscilação lateral, torna a treliça isostática e rígida e absorve forças horizontais (vento, frenagem, balanço da carga, ação dinâmica), transmitindo-as ao apoio $A$. Aqui, como a carga é só vertical, ela não trabalha, mas passaria a ser solicitada com qualquer componente horizontal.
+
+\textbf{Resultado.} $A$: $200$ kN, vertical, para cima; $B$: $100$ kN, vertical, para baixo. Barras: $CD=75$ (C), $CF=125$ (T), $DF=200$ (C), $AD=200$ (C), $AE=0$, $DE=75$ (C), $BE=100$ (T), $EF=125$ (T), em kN.
+
+ANSWER: $R_A=200$ kN (vertical, para cima); $R_B=100$ kN (vertical, para baixo); $N_{CD}=75$ kN (compressão); $N_{CF}=125$ kN (tração); $N_{DF}=200$ kN (compressão); $N_{AD}=200$ kN (compressão); $N_{AE}=0$; $N_{DE}=75$ kN (compressão); $N_{BE}=100$ kN (tração); $N_{EF}=125$ kN (tração); $AE$ é barra de contraventamento: impede o mecanismo (paralelogramo $ADEB$) e dá estabilidade lateral.

@@ -1,0 +1,43 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Interpretação.} Como $\mathbb{N}=\{1,2,3,\ldots\}$, queremos contar as ternas $(a,b,c)$ de inteiros positivos com
+\[
+a<b<c \quad\text{e}\quad a+b+c=100 .
+\]
+Como a sequência é estritamente crescente, cada conjunto $\{a,b,c\}$ de três números distintos corresponde a exatamente uma sequência (a ordem é imposta), portanto não há contagem dupla.
+
+\textbf{Passo 1 — Reparametrização.} Sejam $d=b-a$ e $e=c-b$. A condição $a<b<c$ equivale a $d\ge 1$ e $e\ge 1$, com $a\ge 1$. A correspondência $(a,b,c)\leftrightarrow(a,d,e)$ é bijetora entre as ternas crescentes de inteiros positivos e as ternas $(a,d,e)$ de inteiros positivos. Temos $b=a+d$ e $c=a+d+e$, logo
+\[
+a+b+c = 3a+2d+e = 100 .
+\]
+
+\textbf{Passo 2 — Eliminar $e$.} Dados $a,d\ge 1$, o valor $e=100-3a-2d$ está determinado e deve ser $\ge 1$. Assim, basta contar os pares $(a,d)$ de inteiros positivos tais que
+\[
+3a+2d\le 99 .
+\]
+
+\textbf{Passo 3 — Contagem.} Fixado $a$, precisamos de $1\le d\le \left\lfloor \dfrac{99-3a}{2}\right\rfloor$. Isso exige $99-3a\ge 2$, ou seja, $a\le 32$. O número de valores de $d$ é $\left\lfloor \dfrac{99-3a}{2}\right\rfloor$.
+
+\begin{itemize}
+\item $a=2k-1$ ($k=1,\ldots,16$): $99-3a=102-6k$ é par, e há $51-3k$ valores de $d$. A soma é
+\[
+\sum_{k=1}^{16}(51-3k)=51\cdot 16-3\cdot\frac{16\cdot 17}{2}=816-408=408 .
+\]
+\item $a=2k$ ($k=1,\ldots,16$): $99-3a=99-6k$ é ímpar, e há $\dfrac{98-6k}{2}=49-3k$ valores de $d$. A soma é
+\[
+\sum_{k=1}^{16}(49-3k)=49\cdot 16-408=784-408=376 .
+\]
+\end{itemize}
+
+\textbf{Total:}
+\[
+408+376=784 .
+\]
+
+\textbf{Verificação.} O número de partições de $n$ em três parcelas distintas e positivas é o inteiro mais próximo de $\dfrac{(n-3)^2}{12}$. Para $n=100$ isso dá $\dfrac{97^2}{12}=\dfrac{9409}{12}\approx 784{,}08$, ou seja, $784$. Uma enumeração direta por computador de todas as ternas $a<b<c$ com soma $100$ também resulta em $784$. Em um caso pequeno, $n=6$, só há $(1,2,3)$, e a fórmula dá $\dfrac{9}{12}\approx 0{,}75\to 1$.
+
+\textbf{Resposta:} existem $784$ sequências.
+
+ANSWER: 784

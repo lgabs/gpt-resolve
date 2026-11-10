@@ -1,0 +1,142 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.0,
+  "final_answer": "a) t ≈ 5,5×10² s (552,8 s; 552 s com √5 = 2,24), tempo para o início da precipitação, com V_p ≈ 0,4472 L e 552,8 mL de água evaporada. b) Com V_f = V_p/2 ≈ 0,2236 L, [A⁺] ≈ 6,1×10⁻³ mol·L⁻¹ e [B⁻] ≈ 1,6×10⁻³ mol·L⁻¹, após a formação de ≈ 0,634×10⁻³ mol de AB(s).",
+  "judge_reference": {
+    "reference_solution": "**Questão 3: resolução de referência (feita antes de ver qualquer candidato; contas conferidas em python3)**\n\n**Situação inicial.** V₀ = 1 L, então [A⁺]₀ = 2×10⁻³ mol·L⁻¹ e [B⁻]₀ = 1×10⁻³ mol·L⁻¹. O produto iônico inicial é Q₀ = 2×10⁻⁶ < K_PS = 1×10⁻⁵, portanto não há sólido no início. A solução já está a 100 °C, então não há aquecimento da solução: toda a energia da fonte vai para vaporizar água (consideração iv), com q = m·ΔH_vap e t = q/P. A expressão do K_PS é K_PS = [A⁺][B⁻] = 1×10⁻⁵, pois o sólido AB tem atividade unitária.\n\n**Item a) Tempo até o início da precipitação.**\nA e B têm volume desprezível, então o número de mols não muda com a evaporação; só o volume V diminui:\n[A⁺] = 2×10⁻³/V e [B⁻] = 1×10⁻³/V.\nA precipitação começa quando Q = K_PS:\n(2×10⁻³/V)(1×10⁻³/V) = 1×10⁻⁵ → V² = 0,2 → V₁ = √0,2 = √5/5 ≈ 0,448 L.\nÁgua evaporada: 1,000 − 0,448 = 0,552 L = 552 mL. Com ρ = 1 g·mL⁻¹, m = 552 g.\nCalor: q = 552 g × 540 cal·g⁻¹ = 2,98×10⁵ cal (298 080 cal).\nTempo: t = q/P = 298 080 cal ÷ 540 cal·s⁻¹ = 552 s.\n(Sem arredondar √5: V₁ = 0,4472 L, m = 552,8 g, t ≈ 553 s. A diferença é só de arredondamento.)\n\n**Item b) Concentrações com o volume reduzido à metade do volume de início da precipitação.**\nV₂ = V₁/2 = 0,224 L (exato: 1/(2√5) ≈ 0,2236 L).\nAgora há sólido AB em equilíbrio, então a solução está saturada: [A⁺][B⁻] = K_PS = 1×10⁻⁵.\nBalanço de massa: sejam x mol de AB precipitados (razão 1:1). Restam n(A⁺) = 2×10⁻³ − x e n(B⁻) = 1×10⁻³ − x dissolvidos. A diferença entre as concentrações é constante:\nΔ = [A⁺] − [B⁻] = (2×10⁻³ − 1×10⁻³)/V₂ = 1×10⁻³/V₂ = 2√5×10⁻³ ≈ 4,47×10⁻³ mol·L⁻¹.\nCom y = [B⁻]: y(y + Δ) = 1×10⁻⁵ → y² + 2√5×10⁻³·y − 10⁻⁵ = 0.\nDiscriminante: (2√5×10⁻³)² + 4×10⁻⁵ = 6×10⁻⁵ = (2√15×10⁻³)².\ny = (−2√5 + 2√15)×10⁻³ / 2 = (√15 − √5)×10⁻³ ≈ 1,64×10⁻³ mol·L⁻¹ (raiz negativa descartada).\n[A⁺] = y + Δ = (√15 + √5)×10⁻³ ≈ 6,11×10⁻³ mol·L⁻¹.\nVerificação: [A⁺][B⁻] = (15 − 5)×10⁻⁶ = 1×10⁻⁵ ✓.\nCom os valores fornecidos (√3 = 1,73; √5 = 2,24; √15 = √3·√5 ≈ 3,875): [B⁻] ≈ 1,6×10⁻³ e [A⁺] ≈ 6,1×10⁻³ mol·L⁻¹.\nConferência pelo x: n(B⁻) dissolvido = 10⁻³(√3 − 1)/2 ≈ 3,66×10⁻⁴ mol; n(A⁺) dissolvido ≈ 1,37×10⁻³ mol; dividindo por 0,224 L obtêm-se os mesmos valores. Sólido formado ≈ 6,3×10⁻⁴ mol de AB.\n\n**Respostas:** a) ≈ 552 s (≈ 5,5×10² s); b) [A⁺] ≈ 6,1×10⁻³ mol·L⁻¹ e [B⁻] ≈ 1,6×10⁻³ mol·L⁻¹.\nNão há alternativas de múltipla escolha.",
+    "final_answer": "a) Tempo para o início da precipitação: t ≈ 552 s (≈ 5,5×10² s). Início em V₁ = √0,2 ≈ 0,448 L, com 552 g de água evaporados; 552 g × 540 cal/g ÷ 540 cal/s = 552 s. Sem arredondar √5, t ≈ 553 s.\n\nb) Com V₂ = 0,224 L e solução saturada ([A⁺][B⁻] = 1×10⁻⁵): [A⁺] = (√15 + √5)×10⁻³ ≈ 6,1×10⁻³ mol·L⁻¹ e [B⁻] = (√15 − √5)×10⁻³ ≈ 1,6×10⁻³ mol·L⁻¹.\n\nNão é questão de múltipla escolha.",
+    "pitfalls": [
+      "Precipitação começa quando Q = K_PS, não quando as quantidades estão em proporção estequiométrica. Use concentrações (mol/L), não mols: [A⁺]₀ = 2×10⁻³ M e [B⁻]₀ = 1×10⁻³ M, não 2 M e 1 M. Q₀ = 2×10⁻⁶ < 1×10⁻⁵, então não há sólido no início.",
+      "Item (a): a evaporação reduz o volume, mas não o número de mols de A⁺ e B⁻ (volume desprezível). Modele [X] = n/V com V variável e resolva V² = n(A)·n(B)/K_PS = 0,2 L².",
+      "Item (a): a água evaporada é 1 L − V₁ ≈ 0,552 L, não V₁. Com ρ = 1 g/mL, 552 mL = 552 g. Não confundir volume total com volume evaporado.",
+      "Item (a): a solução já está a 100 °C; não some aquecimento da solução. A energia vai toda para vaporização (consideração iv), com q = m·ΔH_vap.",
+      "Item (a): as unidades se cancelam como t(s) = m(g)·540 cal/g ÷ 540 cal/s. Não divida por 1000 nem use 4,18 J/cal. Resposta em segundos: 552 s, não minutos (≈ 9,2 min).",
+      "Item (b): 'metade do valor correspondente ao do início da precipitação' significa V₂ = V₁/2 = 0,224 L, não metade do 1 L inicial (0,5 L).",
+      "Item (b): após o início da precipitação, não use [A⁺] = 2×10⁻³/V₂ e [B⁻] = 1×10⁻³/V₂ (dá Q ≈ 4×10⁻⁵ > K_PS, o que é incoerente). O sólido AB consome A⁺ e B⁻ na razão 1:1, então é preciso combinar o balanço de massa com K_PS.",
+      "Item (b): a diferença [A⁺] − [B⁻] = (n(A)−n(B))/V é constante durante a precipitação. Com isso a equação vira y² + Δ·y − K_PS = 0. Descarte a raiz negativa.",
+      "Item (b): a expressão do K_PS é [A⁺][B⁻] = 1×10⁻⁵ (sólido AB tem atividade unitária e não entra). O par de concentrações tem que satisfazer exatamente K_PS; confira o produto no final.",
+      "Item (b): A⁺ está em excesso (2:1). B⁻ é o reagente limitante. Não suponha que A⁺ é consumido por completo. A⁺ permanece em ~6,1×10⁻³ M.",
+      "Valores aproximados: o enunciado fornece √3 = 1,73 e √5 = 2,24. Sem arredondamento, t ≈ 553 s e [B⁻] ≈ 1,637×10⁻³ M; com os dados do enunciado, t = 552 s e [B⁻] ≈ 1,635×10⁻³ M. Aceite as duas formas, mas o mesmo arredondamento deve valer para as duas letras.",
+      "Atividades são tomadas como concentrações (solução ideal, efeitos coligativos desprezíveis). O ponto de ebulição continua 100 °C. Não aplique correção de ebulioscopia.",
+      "ΔH_vap = 540 cal/g é o valor dado. Ebulição 'nas condições padrão' (1 bar) em vez de 1 atm muda o ΔH de forma desprezível: use o valor fornecido e não tente corrigir por Clapeyron.",
+      "Instrução 8 da prova: expressões numéricas devem ser resolvidas integralmente, senão há desconto. Registre os passos (V = √0,2, m = 552 g, q = 298 080 cal, t = 552 s, e a quadrática em (b)), não apenas o resultado final."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) t ≈ 5,5×10² s (552 s com √5 = 2,24; 553 s com o valor exato). Início da precipitação com V = √0,2 L ≈ 0,448 L, após evaporar 552 mL a 1 mL/s.\nb) Com V = √0,05 L ≈ 0,224 L (metade do volume de início): [A+] = √5(1+√3)×10^-3 ≈ 6,1×10^-3 mol/L e [B-] = √5(√3−1)×10^-3 ≈ 1,6×10^-3 mol/L. Verificado: [A+][B-] = K_PS = 1×10^-5.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A consideração ii (ebulição nas condições padrão, 1 bar) não é mencionada em lugar nenhum. O candidato usa ΔH_vap = 540 cal/g sem dizer por que isso vale nessas condições. Deveria dizer em uma linha que o ΔH dado é usado sem correção, por ser a condição padrão do enunciado."
+          },
+          {
+            "severity": "minor",
+            "description": "No item a, a expressão aparece como 't = 0,552 L / 1×10⁻³ L·s⁻¹ ≈ 5,5×10² s', com arredondamento dentro da própria expressão. O valor 552 s só aparece na frase seguinte. A instrução 8 exige expressões resolvidas integralmente. Deveria escrever 't = 552 mL / (1 mL·s⁻¹) = 552 s'."
+          },
+          {
+            "severity": "minor",
+            "description": "Passos da quadrática omitidos: a passagem de (2−y)(1−y)=0,5 para y²−3y+1,5=0 não é mostrada, nem o discriminante Δ = 9−6 = 3. A instrução 8 pede a resolução integral, então esses passos deveriam aparecer."
+          },
+          {
+            "severity": "minor",
+            "description": "Tratamento de precisão inconsistente. No item a o candidato dá 552 s e 553 s, descrevendo 553 como 'valor exato de √5' (na verdade é √0,2 sem a aproximação √5 = 2,24) e como 'mesma ordem de grandeza' (são iguais com 3 algarismos significativos). No item b não dá a versão exata (6,11×10⁻³ e 1,637×10⁻³ mol·L⁻¹). Deveria fixar uma convenção, a dos dados √3 = 1,73 e √5 = 2,24, e aplicá-la às duas letras, mencionando o exato em parênteses com a justificativa correta."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação (iii) não verifica nada. '10⁻³ mol/L coerente com 10⁻³ mol em cerca de 0,2 L' é vago, e 10⁻³ mol em 0,2 L dá 5×10⁻³ mol/L, não 10⁻³. Deveria ser removida ou trocada por uma checagem real, como o balanço de massa de A⁺ e B⁻ (já feito parcialmente em iv)."
+          },
+          {
+            "severity": "minor",
+            "description": "Suposições implícitas não enunciadas: (1) a precipitação é instantânea, e a solução está em equilíbrio com AB(s) em V_f; (2) o volume do sólido formado é desprezível e não entra no volume da solução. A primeira aparece como 'a solução permanece saturada', mas a segunda não é discutida. Deveriam estar na lista de hipóteses."
+          }
+        ],
+        "summary": "Resposta correta e idêntica à referência. a) t ≈ 552 s (553 s com √0,2 exato). b) [A⁺] ≈ 6,1×10⁻³ mol·L⁻¹ e [B⁻] ≈ 1,6×10⁻³ mol·L⁻¹. Refiz as contas em python3: V_p = √0,2 L, V_f = √0,05 L, e o balanço de massa 1:1 com saturação dá x = (3−√3)/2×10⁻³ mol. A outra raiz, (3+√3)/2, dá n_B⁻ < 0 e é descartada corretamente. O produto [A⁺][B⁻] = 1×10⁻⁵ exatamente. A modelagem está certa: volume variável só pela água evaporada, Q = K_PS para o início, e depois o consumo 1:1 com saturação. As armadilhas foram tratadas: água evaporada = 1 − V_p (não V_p), sem aquecimento da solução, V_f = V_p/2 (não 0,5 L), A⁺ em excesso, raiz negativa descartada, e nada de usar concentrações sem consumo após o início. As lacunas são pequenas: consideração ii não mencionada, expansão e discriminante omitidos, um '≈' dentro da expressão de t (instrução 8), verificação (iii) vazia, precisão não uniforme entre a) e b), e duas suposições implícitas. Nenhuma altera o resultado. A resolução está perto do nível de gabarito comentado, mas não chega a 9 por causa dos passos compactados e da precisão inconsistente.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "a) $t \\approx 5{,}5\\times10^{2}\\ \\text{s}$ (552 s; 553 s com $\\sqrt{5}$ exato); b) $[\\text{A}^+] \\approx 6{,}1\\times10^{-3}\\ \\text{mol}\\cdot\\text{L}^{-1}$ e $[\\text{B}^-] \\approx 1{,}6\\times10^{-3}\\ \\text{mol}\\cdot\\text{L}^{-1}$ (volume final $V_f = 0{,}224$ L)",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Hipótese (i) reinterpreta a consideração i. O enunciado diz apenas que A e B têm volume desprezível na solução. A afirmação de que AB(s) 'não ocupa volume na solução e não altera o volume do líquido' é uma hipótese extra, apresentada como se fosse dada. Deveria ser declarada como hipótese adicional, justificando que AB(s) é fase sólida separada e fora do volume do líquido."
+          },
+          {
+            "severity": "minor",
+            "description": "Em 'Consideração ii', a conclusão 'logo ... ΔH_vap = 540 cal·g⁻¹ é usado sem correção' é um non sequitur. Ebulição a 1 bar, por si só, não justifica a ausência de correção. O texto deveria dizer que o enunciado fornece o ΔH para a ebulição e que a diferença entre 1 bar e 1 atm (1,01325 bar) é desprezível frente à precisão dos dados. A referência faz essa ressalva e o candidato não."
+          },
+          {
+            "severity": "minor",
+            "description": "Instrução 8 e rastro numérico do item a. A energia é tratada só pela vazão (ṁ = P/ΔH = 1 g·s⁻¹). Não aparecem m = 552 g, q = 552 g × 540 cal·g⁻¹ = 298 080 cal nem t = q/P = 552 s. O resultado está correto, mas o encadeamento numérico fica incompleto para o padrão de gabarito pedido pela prova."
+          },
+          {
+            "severity": "minor",
+            "description": "'Solução diluída ... coeficientes de atividade iguais a 1' é apresentado como fato físico. Na verdade é a convenção do próprio enunciado (atividade unitária, efeitos coligativos desprezíveis). Com força iônica da ordem de 5×10⁻³ mol·L⁻¹, γ não é exatamente 1. A hipótese deveria ser declarada como convenção do enunciado, não como propriedade da solução."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à referência: a) t ≈ 552 s (553 s com √5 exato); b) [A⁺] ≈ 6,1×10⁻³ e [B⁻] ≈ 1,6×10⁻³ mol·L⁻¹. Confirmei o enunciado no PDF original e refiz as contas em python3. No item a, V_p = √0,2 = 1/√5 L, água evaporada = 0,5528 L, t = 552,8 s. No item b, V_f = V_p/2 = 0,2236 L, (2−y)(1−y) = 0,5 com y = (3−√3)/2 (raiz y₂ descartada por n(B⁻) < 0), [A⁺] = √5(1+√3)×10⁻³ = 6,109×10⁻³, [B⁻] = √5(√3−1)×10⁻³ = 1,637×10⁻³, produto exatamente 1×10⁻⁵. Armadilhas tratadas: Q com concentrações e Q₀ < K_PS; moles constantes na evaporação; água evaporada = 1 − V_p; V_f = V_p/2 (não 0,5 L); balanço de massa em vez de 2×10⁻³/V; B⁻ limitante; K_PS sem o sólido; unidades em segundos; convenção de arredondamento declarada e consistente. Não há erro de conta nem caso esquecido. As lacunas são de justificativa de hipóteses e de rastro numérico (m e q não explicitados), o que impede nota de gabarito pleno."
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.0,
+      "final_answer": "a) t ≈ 5,5×10² s (552,8 s; 552 s com √5 = 2,24), tempo para o início da precipitação, com V_p ≈ 0,4472 L e 552,8 mL de água evaporada. b) Com V_f = V_p/2 ≈ 0,2236 L, [A⁺] ≈ 6,1×10⁻³ mol·L⁻¹ e [B⁻] ≈ 1,6×10⁻³ mol·L⁻¹, após a formação de ≈ 0,634×10⁻³ mol de AB(s).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Ebulição a 1 bar vs. 100 °C: a resolução admite que a ebulição a 1 bar ocorre a uma temperatura cerca de 0,4 °C abaixo de 100 °C e, em seguida, fixa T = 100 °C 'por desprezo'. A estimativa está correta (Clausius-Clapeyron com ΔH = 540 cal/g dá ≈ 99,6 °C), mas é afirmada, não calculada. Deveria justificar o 100 °C pelo próprio enunciado (solução fixada a 100 °C, ΔH fornecido, consideração iii) e mostrar que a diferença não afeta o balanço energético, porque não há aquecimento sensível."
+          },
+          {
+            "severity": "minor",
+            "description": "Atribuição indevida ao enunciado: o texto diz que 'o enunciado manda desprezar' o efeito dos coeficientes de atividade. O enunciado não trata disso; a equivalência atividade = concentração é uma convenção adotada (a definição de condições padrão fala em atividade unitária). Deveria apresentá-la como hipótese própria e, se possível, comentar que γ < 1 com força iônica da ordem de 10⁻³ alteraria os valores em poucos por cento."
+          },
+          {
+            "severity": "minor",
+            "description": "Volume do sólido AB: a justificativa 'a quantidade de sólido é da ordem de 10⁻³ mol' não basta, porque a massa molar de AB não é fornecida. O argumento correto é comparar com o volume da solução (~0,22 L): qualquer massa plausível de AB ocupa uma fração desprezível desse volume. Deveria ser reformulado nesses termos."
+          },
+          {
+            "severity": "minor",
+            "description": "Consideração iii não quantificada: a resolução declara a elevação ebulioscópica desprezível, mas não verifica. Com íons da ordem de 10⁻³ mol·L⁻¹, ΔT_eb ≈ 10⁻² °C, o que confirmaria a hipótese. Uma linha de cálculo fortaleceria o rigor."
+          },
+          {
+            "severity": "minor",
+            "description": "Resposta final com dois valores e convenções misturadas: em (a) aparecem '552,8 s' e '552 s com √5 = 2,24'; a convenção numérica usa √5 ≈ 2,236, enquanto os itens usam 2,24 (e 1,73 para √3). Os resultados são consistentes (verifiquei: 552,8 s; 6,109×10⁻³ e 1,637×10⁻³ mol·L⁻¹; com 1,73 e 2,24 dá 552 s, 6,115×10⁻³ e 1,635×10⁻³), mas o gabarito deveria apresentar um valor principal (ex.: 552 s com os dados do enunciado) e citar o outro só como observação."
+          },
+          {
+            "severity": "minor",
+            "description": "Instrução 8 (expressões integrais): o produto escrito como '≈ 2,985×10⁵ cal' é arredondamento de 552,8 × 540 = 298 512 cal, e o passo √0,2 aparece como '2,236/5'. Deveria escrever os produtos e quocientes por extenso (298 512 cal; 0,4472 L), como pede a instrução 8."
+          },
+          {
+            "severity": "minor",
+            "description": "Bloco 'Sentido físico' confuso: compara [A⁺] e [B⁻] com valores hipotéticos 'sem precipitação' em V_f (8,9×10⁻³ e 4,5×10⁻³ mol·L⁻¹), que não ocorrem fisicamente, pois Q seria 4×10⁻⁵ > K_PS. Deveria ser reescrito como comparação explícita ('se não houvesse precipitação') ou removido. O rótulo 'Rastro energético' também é pouco claro."
+          },
+          {
+            "severity": "minor",
+            "description": "Trap da concentração n/V após o início da precipitação não é explicitada: a resolução passa direto ao balanço de massa 1:1. Uma frase explicando por que [A⁺] = 2×10⁻³/V e [B⁻] = 1×10⁻³/V deixam de valer após V_p (o sólido consome A⁺ e B⁻ na razão 1:1) tornaria o raciocínio do item (b) mais didático."
+          }
+        ],
+        "summary": "Comparação item a item. (a) Candidato: t ≈ 5,5×10² s (552,8 s; 552 s com √5 = 2,24). Referência: 552 s (553 s sem arredondar). Mesma resposta. (b) Candidato: [A⁺] = √5(1+√3)×10⁻³ ≈ 6,11×10⁻³ e [B⁻] = √5(√3−1)×10⁻³ ≈ 1,64×10⁻³ mol·L⁻¹. Referência: (√15+√5)×10⁻³ e (√15−√5)×10⁻³. As expressões são algebricamente idênticas (√5·√3 = √15). Não há divergência nas respostas finais.\n\nVerificação independente (python3 -I, enunciado relido no PDF da prova): V_p = √0,2 = 0,44721 L; ΔV = 0,55279 L; m = 552,8 g; q = 298 512 cal; t = 552,8 s. Com V_f = V_p/2 = 0,22361 L, a equação (2×10⁻³−x)(1×10⁻³−x) = K_PS·V_f² dá x = 0,634×10⁻³ mol (a outra raiz, 2,366×10⁻³, torna n(B⁻) negativo e é descartada). Resultado: [A⁺] = 6,1091×10⁻³ e [B⁻] = 1,6369×10⁻³ mol·L⁻¹, com produto 1,0000×10⁻⁵. A rota da referência (y² + Δ·y − K_PS = 0) dá os mesmos valores. Q₀ = 2×10⁻⁶ < K_PS confirma que não há sólido inicialmente.\n\nArmadilhas: todas as 15 da lista de referência foram tratadas corretamente: Q = K_PS com concentrações; Q₀ < K_PS; evaporação reduz V, não n; água evaporada = 1 − V_p; sem aquecimento sensível; unidades em segundos; V_f = V_p/2 = 0,224 L; balanço de massa após precipitação; K_PS com sólido em atividade unitária; B⁻ limitante e A⁺ em excesso; arredondamentos; sem correção ebulioscópica; ΔH a 1 bar (a diferença de 1 bar para 1 atm é de ~0,37 °C, o candidato estimou 0,4 °C, correto); instrução 8, com passos mostrados.\n\nNota 9: resolução de nível de gabarito comentado. Os problemas são de atribuição, precisão de redação e de apresentação, sem erro de conteúdo. Nenhum problema é major ou critical."
+      }
+    }
+  ]
+}

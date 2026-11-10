@@ -1,0 +1,24 @@
+{
+  "question": 2,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-1-28-10-2025-2-fase-dia-1/dissertativa-2-matematica-2-fase-dia-1-ita-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q2 – menor n ∈ ℕ com (A^n)_{13} > 119",
+      "solution_answer": "n = 15 ((A^n)_{13} = n(n+3)/2, que vale 119 em n=14 e 135 em n=15)",
+      "key_answer": "n = 15 ((A^n)_{13} = (n²+3n)/2 > 119 ⇒ n > 14)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "O enunciado do PDF (p. 3) confere com a transcrição. Fórmula conferida em Python, multiplicando a matriz diretamente para n = 1..16: (A^n)_{13} = n(n+3)/2 em todos os casos, com 104 (n=13), 119 (n=14) e 135 (n=15). Como a desigualdade é estrita, n=14 dá exatamente 119 e não serve, então n=15. A resolução usa A = I + N com N nilpotente (N³ = 0) e o binômio de Newton; o gabarito chega à mesma fórmula por indução. Os dois métodos são válidos. A inequação (n−14)(n+17) > 0 dá n > 14 ou n < −17, como diz o gabarito."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Erro de digitação no passo de indução do gabarito: a entrada (1,3) de A^{k+1} aparece como '(k + 1)^2 + 3(k + 1)/2', sem os parênteses. O correto é [(k+1)² + 3(k+1)]/2. Também não aparece a conta intermediária (k²+3k)/2 + 2k + 2 = [(k+1)² + 3(k+1)]/2. Isso não muda a resposta."
+    }
+  ],
+  "summary": "A resolução e o gabarito Poliedro dão a mesma resposta, n = 15, e os dois estão certos. A entrada (1,3) de A^n é n(n+3)/2, conferida em Python multiplicando a matriz para n = 1..16. Ela vale exatamente 119 em n = 14, que não serve porque o enunciado pede maior que 119, e 135 em n = 15. A resolução está completa e rigorosa: usa a decomposição I + N com N nilpotente e trata corretamente a igualdade em n = 14. O gabarito tem só um erro de digitação sem importância: faltam parênteses no passo de indução."
+}

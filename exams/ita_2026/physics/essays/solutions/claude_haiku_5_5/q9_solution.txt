@@ -1,0 +1,81 @@
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{Hipóteses e modelo.}
+\begin{itemize}
+  \item Luz monocromática em cada item: laranja, $\lambda_L = 600\ \text{nm}$, no item a); violeta, $\lambda_V = 400\ \text{nm}$, no item b). Incidência normal, logo o ângulo de incidência é nulo.
+  \item Grade de transmissão (a luz a atravessa para chegar ao solo), no ar ($n \approx 1$), com ranhuras equidistantes de espaçamento $d$.
+  \item Solo horizontal a $H = 20\ \text{cm}$ abaixo da grade. O ponto central é a ordem $m = 0$, o raio não desviado que cai na vertical da grade. As distâncias são medidas sobre o solo, como no enunciado.
+\end{itemize}
+
+\textbf{Equação da grade.} Raios difratados por ranhuras vizinhas, sob o ângulo $\theta$ com a normal, têm diferença de caminho $d\sin\theta$. Há máximo (interferência construtiva) quando essa diferença é múltipla inteira de $\lambda$:
+\[
+d\sin\theta_m = m\lambda, \qquad m = 0,\ \pm 1,\ \pm 2,\ \dots
+\]
+Como a incidência é normal, o vetor de onda incidente não tem componente paralela à grade. Por isso os máximos ficam no plano perpendicular às ranhuras, e a distância ao ponto central não depende da orientação da grade.
+
+\textbf{Geometria no solo.} O raio de ordem $m$ atinge o solo a uma distância horizontal $x_m$ do ponto central. O triângulo retângulo de catetos $H$ (vertical) e $x_m$ (horizontal) fornece
+\[
+\tan\theta_m = \frac{x_m}{H}.
+\]
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  \draw[thick] (-1.2,0) -- (2.9,0);
+  \node[right] at (2.9,0) {solo};
+  \draw[very thick] (-0.9,2) -- (0.9,2);
+  \node[left] at (-0.9,2) {grade};
+  \draw[->] (0,3) -- (0,2.12);
+  \node[above] at (0,3) {luz solar};
+  \draw[dashed] (0,2) -- (0,0);
+  \draw[->, thick] (0,2) -- (2,0);
+  \draw (0,1.4) arc (-90:-45:0.6);
+  \node at (0.45,1.3) {$\theta_1$};
+  \fill (0,0) circle (1.5pt);
+  \fill (2,0) circle (1.5pt);
+  \node[below] at (0,0) {centro};
+  \node[above right] at (2,0) {$m=1$};
+  \draw[<->] (-0.3,0) -- (-0.3,2);
+  \node[left] at (-0.3,1) {$20\ \text{cm}$};
+  \draw[<->] (0,-0.6) -- (2,-0.6);
+  \node[below] at (1,-0.6) {$20\ \text{cm}$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{a) Distância entre as ranhuras.}
+O máximo de primeira ordem do laranja ($m = 1$) está em $x_1 = 20\ \text{cm} = H$. Logo
+\[
+\tan\theta_1 = \frac{20}{20} = 1 \quad\Rightarrow\quad \theta_1 = 45^\circ, \qquad \sin\theta_1 = \frac{\sqrt{2}}{2}.
+\]
+Como $0^\circ < \theta_1 < 90^\circ$, o ângulo é único. A equação da grade usa $\sin\theta$, e não $\tan\theta$. Com $m = 1$:
+\begin{align*}
+d &= \frac{\lambda_L}{\sin\theta_1} = \frac{600\ \text{nm}}{\sqrt{2}/2} = 600\sqrt{2}\ \text{nm} \\
+  &= 6\sqrt{2}\times 10^{-7}\ \text{m} \approx 8{,}5\times 10^{-7}\ \text{m} \quad (\approx 848{,}5\ \text{nm}).
+\end{align*}
+\textit{Consistência:} $d\sin\theta_1 = 600\sqrt{2}\cdot\frac{\sqrt{2}}{2}\ \text{nm} = \lambda_L$. Além disso, $|m| \le d/\lambda_L = \sqrt{2} \approx 1{,}41$, então o laranja só tem as ordens $m = 0, \pm 1$. Assim, $m = 1$ é a ordem mais alta, e $m = -1$ cai do lado oposto, à mesma distância. Ordem de grandeza: $1/d \approx 1{,}2\times 10^{3}$ ranhuras por milímetro, compatível com grades comerciais.
+
+\textbf{b) Distância do violeta.}
+A grade é a mesma, logo $d$ não muda. Para $m = 1$ e $\lambda_V = 400\ \text{nm}$:
+\[
+\sin\theta_V = \frac{\lambda_V}{d} = \frac{400}{600\sqrt{2}} = \frac{2}{3\sqrt{2}} = \frac{\sqrt{2}}{3} \approx 0{,}471.
+\]
+Como $\sin\theta_V < 1$ (equivalentemente, $d/\lambda_V = 3\sqrt{2}/2 \approx 2{,}12 > 1$), o máximo de primeira ordem existe. O ângulo é agudo, logo $\cos\theta_V > 0$:
+\begin{align*}
+\cos\theta_V &= \sqrt{1-\sin^2\theta_V} = \sqrt{1-\frac{2}{9}} = \frac{\sqrt{7}}{3}, \\
+\tan\theta_V &= \frac{\sin\theta_V}{\cos\theta_V} = \frac{\sqrt{2}/3}{\sqrt{7}/3} = \frac{\sqrt{2}}{\sqrt{7}} = \frac{\sqrt{14}}{7}.
+\end{align*}
+Distância no solo:
+\[
+x_V = H\tan\theta_V = 20\ \text{cm}\cdot\frac{\sqrt{14}}{7} = \frac{20\sqrt{14}}{7}\ \text{cm} \approx 10{,}7\ \text{cm}.
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+  \item Unidades: $\lambda/d$ é adimensional, pois ambos estão em nm. A grandeza $x = H\tan\theta$ sai em cm, como pedido.
+  \item Sentido: o violeta, de menor $\lambda$, tem menor $\sin\theta$ e cai mais perto do centro: $10{,}7\ \text{cm} < 20\ \text{cm}$.
+  \item Caso particular: com ângulos pequenos, $x \propto \lambda$ daria $20\cdot 400/600 \approx 13{,}3$ cm. Esse atalho não vale, pois $\theta_1 = 45^\circ$ não é pequeno. O cálculo exato dá $10{,}7$ cm.
+  \item Não confundir com o raio: seu comprimento até o solo é $H/\cos\theta_V \approx 22{,}7\ \text{cm}$, mas o pedido é a distância no solo.
+\end{itemize}
+
+ANSWER: a) $d = 6\sqrt{2}\times 10^{-7}\ \text{m} \approx 8{,}5\times 10^{-7}\ \text{m}$ (cerca de 848,5 nm); b) $x_V = \dfrac{20\sqrt{14}}{7}\ \text{cm} \approx 10{,}7\ \text{cm}$

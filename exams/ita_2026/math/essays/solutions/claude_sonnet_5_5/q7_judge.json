@@ -1,0 +1,57 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "p(x) = 2x^4 - 3x^3 + 7x^2 + 7x - 5 = (x+1)(2x-1)(x^2-2x+5); raízes: -1, 1/2, 1+2i e 1-2i.",
+  "judge_reference": {
+    "reference_solution": "**Notação.** Seja d(x) = x³ − x + 4 e r(x) = 9x² − 4x + 7. Como p tem grau 4 e d tem grau 3, o quociente da divisão é de grau 1: p(x) = (αx + β)·d(x) + r(x), com α, β reais e α ≠ 0. O resto r tem grau 2 < 3, então é um resto válido.\n\n**1) Expandir p em função de α e β.**\n(αx + β)(x³ − x + 4) = αx⁴ + βx³ − αx² + (4α − β)x + 4β.\nSomando r(x):\np(x) = αx⁴ + βx³ + (9 − α)x² + (4α − β − 4)x + (4β + 7).\n\n**2) Relações de Girard (grau 4, coeficiente líder α).**\n- Soma das raízes = −(coef. de x³)/(coef. de x⁴) = −β/α = 3/2, logo β = −3α/2.\n- Produto das raízes = +(termo independente)/(coef. líder), pois (−1)⁴ = +1. Logo (4β + 7)/α = −5/2, isto é, 4β + 7 = −5α/2.\n\nSubstituindo β: −6α + 7 = −5α/2, ou seja 7 = 7α/2, então **α = 2** e **β = −3**.\n\nO sistema é linear (3α + 2β = 0 e 5α + 8β = −14, determinante 14 ≠ 0), então a solução é única e α = 2 ≠ 0 é compatível com grau 4.\n\n**3) O polinômio.**\np(x) = (2x − 3)(x³ − x + 4) + 9x² − 4x + 7 = 2x⁴ − 3x³ + 7x² + 7x − 5.\nConferência: soma = 3/2 ✓, produto = −5/2 ✓, e (2x−3)(x³−x+4) = 2x⁴ − 3x³ − 2x² + 11x − 12, que somado a r dá p ✓.\n\n**4) Raízes.**\nPelo teste das raízes racionais (candidatos ±1, ±5, ±1/2, ±5/2): p(−1) = 2 + 3 + 7 − 7 − 5 = 0, então x = −1 é raiz.\nBriot–Ruffini com −1 sobre (2, −3, 7, 7, −5): coeficientes 2, −5, 12, −5, resto 0. Logo p(x) = (x + 1)(2x³ − 5x² + 12x − 5).\nPara o cúbico: x = 1/2 dá 1/4 − 5/4 + 6 − 5 = 0, então 2x³ − 5x² + 12x − 5 = (2x − 1)(x² − 2x + 5). Conferência: (2x−1)(x²−2x+5) = 2x³ − 5x² + 12x − 5 ✓.\nPara x² − 2x + 5 = 0: Δ = 4 − 20 = −16, então x = (2 ± 4i)/2 = 1 ± 2i.\n\nFatoração: p(x) = 2(x + 1)(x − 1/2)(x² − 2x + 5) = (x + 1)(2x − 1)(x − 1 − 2i)(x − 1 + 2i).\n\n**5) Verificação final.**\nSoma: −1 + 1/2 + (1+2i) + (1−2i) = 3/2 ✓. Produto: (−1)(1/2)(1+2i)(1−2i) = (−1/2)(5) = −5/2 ✓. As quatro raízes foram também verificadas numericamente (|p(z)| = 0) e a divisão de p por d dá quociente 2x − 3 e resto 9x² − 4x + 7 ✓.\n\n**Conclusão:** as raízes de p em ℂ são −1, 1/2, 1 + 2i e 1 − 2i, todas simples. As duas raízes complexas formam um par conjugado, como esperado para coeficientes reais.",
+    "final_answer": "p(x) = 2x⁴ − 3x³ + 7x² + 7x − 5 = (x+1)(2x−1)(x²−2x+5). Raízes em ℂ: x = −1, x = 1/2, x = 1 + 2i e x = 1 − 2i (todas simples).",
+    "pitfalls": [
+      "Não supor p mônico: o coeficiente líder α é incógnita. Com α = 1 o produto das raízes sairia 1, não −5/2, então a hipótese seria inconsistente. O quociente da divisão por x³−x+4 tem a forma αx+β, e é preciso determinar os dois parâmetros.",
+      "Escrever corretamente p = (αx+β)(x³−x+4) + (9x²−4x+7). Erros comuns são esquecer o termo −αx² ao expandir (o que muda o coeficiente de x² para 9−α) e esquecer de somar o resto aos coeficientes de x², x e do termo independente.",
+      "Sinal de Girard no grau 4: o produto das raízes é +e/a, não −e/a. Usar −e/a daria α = 14/17 e valores absurdos, sem raízes racionais. A soma é −b/a. Aqui o coeficiente de x³ é β (não 4β) e o termo independente é 4β+7 (não β+7).",
+      "A soma e o produto só determinam α e β porque se obtém um sistema linear com determinante 14 ≠ 0. Vale mencionar a unicidade de p e que α = 2 ≠ 0 mantém o grau 4. Também vale notar que o resto de grau 2 < 3 é admissível.",
+      "Depois de achar p, é preciso fatorar de fato: testar candidatos racionais (−1 e 1/2), reduzir o grau com Briot–Ruffini e resolver x²−2x+5 = 0 em ℂ, com Δ = −16 e raízes 1 ± 2i. Parar em p(x) sem dar as raízes não responde ao pedido.",
+      "Resposta completa deve listar as 4 raízes em ℂ, incluindo o par conjugado complexo (coeficientes reais garantem o par conjugado). Conferir soma 3/2 e produto −5/2 com as raízes encontradas e que o resto da divisão é mesmo 9x²−4x+7.",
+      "Não há casos degenerados (raízes múltiplas) neste problema: as quatro raízes são distintas, então soma e produto contam cada raiz uma vez."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "p(x) = 2x^4 - 3x^3 + 7x^2 + 7x - 5 = (x+1)(2x-1)(x^2-2x+5); raízes: -1, 1/2, 1+2i e 1-2i.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não diz explicitamente que α = 2 ≠ 0 é compatível com o grau 4. A hipótese α ≠ 0 é declarada no início, mas nunca é conferida no final. Bastaria uma frase."
+          },
+          {
+            "severity": "minor",
+            "description": "Não há comentário sobre a unicidade de p. A solução obtém α e β por equações lineares (determinante 14 ≠ 0), de modo que p é único e a resposta é completa. Isso fica implícito, e só a unicidade do resto é citada. Um gabarito comentado diria que o sistema 3α+2β=0, 5α+8β=−14 tem solução única."
+          },
+          {
+            "severity": "minor",
+            "description": "As divisões de Briot–Ruffini aparecem só com o resultado, sem a linha de coeficientes do quociente (2, −5, 12, −5 e depois 2, −4, 10). Os valores estão corretos (conferidos), mas o dispositivo não é mostrado. A instrução 8 da prova pede expressões resolvidas integralmente."
+          },
+          {
+            "severity": "minor",
+            "description": "A \"Verificação\" de soma = 3/2 e produto = −5/2 logo após obter p é afirmada sem a conta (−(−3)/2 e −5/2). Também não se diz que a soma e o produto contam as raízes com multiplicidade, nem que as 4 raízes encontradas são simples e distintas. Isso não afeta o resultado, mas é uma lacuna de rigor."
+          },
+          {
+            "severity": "minor",
+            "description": "Não há uma conferência direta de que a fatoração (x+1)(2x−1)(x²−2x+5) se expande em 2x⁴−3x³+7x²+7x−5. A conferência feita (soma e produto das raízes) é necessária, mas não suficiente para validar a fatoração. Ela está correta, como confirmei por expansão."
+          }
+        ],
+        "summary": "Resposta final correta e igual à da referência: raízes −1, 1/2, 1+2i e 1−2i, com p(x) = 2x⁴ − 3x³ + 7x² + 7x − 5 = (x+1)(2x−1)(x²−2x+5). Conferi tudo numericamente: o desenvolvimento (αx+β)(x³−x+4)+r dá αx⁴+βx³+(9−α)x²+(4α−β−4)x+(4β+7). O sistema fornece α=2 e β=−3. A divisão de p por x³−x+4 dá quociente 2x−3 e resto 9x²−4x+7. Soma 3/2 e produto −5/2 conferem, e |p(z)|=0 para as quatro raízes. O enunciado transcrito coincide com o da página 8 do PDF. A resolução trata as armadilhas principais: não supõe p mônico (α é incógnita), inclui o termo −αx² e soma o resto corretamente, usa o sinal certo de Girard no grau 4 (produto = +a₀/a₄, citando \\\"grau par\\\") e observa que o resto tem grau 2 < 3. Fatora de fato por teste de raízes racionais, Briot–Ruffini e Δ = −16, listando as quatro raízes em ℂ. A estrutura é clara e lógica. Os defeitos são todos menores: não confere α ≠ 0 ao final, não comenta a unicidade (determinante 14 ≠ 0), omite a linha do quociente nos dispositivos de Briot–Ruffini e não explicita a conta da verificação de soma e produto. Está perto do nível de gabarito comentado, e esses pontos o separam de uma nota mais alta.\""
+      }
+    }
+  ]
+}

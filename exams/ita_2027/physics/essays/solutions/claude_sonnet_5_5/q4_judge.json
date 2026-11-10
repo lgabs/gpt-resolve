@@ -1,0 +1,59 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "a) h_f = h_i (1 + M/m)^{3/5} (adiabática reversível, PV^{5/3} = cte, P_i = (m+M)g/A, P_f = mg/A). b) Pela conservação de energia (ΔU + mgΔh = 0 com v = 0) e PV^{5/3} = cte: 3(m+M) h_i [1 − (h_i/h_max)^{2/3}] = 2m (h_max − h_i), tomando a raiz h_max > h_i. Equivalentemente, com y = (h_max/h_i)^{1/3}: 2m y^4 + 2m y^3 + 2m y^2 − 3(m+M)(y+1) = 0.",
+  "judge_reference": {
+    "reference_solution": "**Convenções e hipóteses.** Gás ideal monoatômico: Cv = 3R/2, γ = Cp/Cv = 5/3. Paredes e pistão adiabáticos (Q = 0). Vácuo acima do pistão, então não há pressão atmosférica. O recipiente da areia tem massa desprezível. Pressão do gás P, volume V = A·h, e PV = nRT.\n\n**Estado inicial.** O pistão e a areia estão em repouso, então P_i·A = (m+M)g. Logo P_i = (m+M)g/A, e nRT_i = P_iV_i = (m+M)g·h_i.\n\n---\n\n**a) Retirada lenta (quase estática)**\n\nO processo é quase estático e adiabático, portanto reversível, e vale a adiabática do gás ideal:\n\nP·V^γ = cte, que é o mesmo que T·V^(γ−1) = T·V^(2/3) = cte.\n\n(Dedução: dU = −P dV dá (3/2)nR dT = −(nRT/V) dV, logo dT/T = −(2/3) dV/V.)\n\nNo estado final não há mais areia. O equilíbrio do pistão dá P_f·A = mg, ou seja, P_f = mg/A. Como A é o mesmo, V_i/V_f = h_i/h_f, e a adiabática fica:\n\nP_f/P_i = (h_i/h_f)^(5/3)\n\nm/(m+M) = (h_i/h_f)^(5/3)\n\n**h_f = h_i·[(m+M)/m]^(3/5) = h_i·(1 + M/m)^(3/5)**\n\nO resultado não depende de n, R, A nem g. A temperatura final é T_f = T_i·[m/(m+M)]^(2/5), menor que T_i, pois o gás se expandiu realizando trabalho.\n\n---\n\n**b) Retirada instantânea**\n\n*Situação física.* No instante t = 0 a força para cima, P_i·A = (m+M)g, supera o peso mg. O pistão parte do repouso em h_i e sobe. Como não há atrito, nem dissipação, nem atmosfera, ele oscila entre h_i (ponto de retorno inferior) e h_max (ponto de retorno superior). A posição h_f do item (a) é a de equilíbrio, e não o ponto de retorno máximo.\n\n*Hipótese central.* O pistão se move devagar comparado à velocidade do som no gás. O gás fica então em equilíbrio interno (P e T uniformes) a cada instante e sofre uma adiabática reversível. A energia mecânica do pistão varia (energia cinética e potencial), e é por isso que a retirada instantânea não é uma adiabática \"de equilíbrio\" entre estados finais.\n\n*Equação do movimento (energia).* Para o pistão, d(½mv²) = (PA − mg)dh. Em h_max, v = 0, então ∫(PA − mg)dh = 0 entre h_i e h_max:\n\nW_gás = ∫P dV = mg·(h_max − h_i)\n\n*Trabalho do gás.* Para o gás, Q = 0 dá W_gás = −ΔU = (3/2)nR(T_i − T_max). Com T·V^(2/3) = cte:\n\nT_max = T_i·(h_i/h_max)^(2/3)\n\nUsando nRT_i = (m+M)g·h_i:\n\nW_gás = (3/2)(m+M)g·h_i·[1 − (h_i/h_max)^(2/3)]\n\n(Equivalente: W = (P_iV_i − P_maxV_max)/(γ−1) com P_max = P_i(h_i/h_max)^(5/3).)\n\n*Equação pedida.* Igualando os dois trabalhos, A, n, R e g se cancelam:\n\n**(3/2)(m+M)·h_i·[1 − (h_i/h_max)^(2/3)] = m·(h_max − h_i)**\n\nou, com x = h_max/h_i > 1:\n\n**3(m+M)(1 − x^(−2/3)) = 2m(x − 1)**\n\n*Observações sobre a equação.*\n- x = 1 é raiz trivial (o instante inicial). A raiz de interesse é x > 1.\n- Com u = x^(1/3) e dividindo por (u−1), a raiz não trivial satisfaz o quártico 2m·u⁴ + 2m·u³ + 2m·u² − 3(m+M)·u − 3(m+M) = 0. Ele não tem solução fechada simples, por isso o enunciado pede \"a equação\".\n- Existe uma raiz x > 1 para todo M > 0. A função g(x) = 3(m+M)(1−x^(−2/3)) − 2m(x−1) tem g(1) = 0, g'(1) = 2M > 0 e é côncava, então cruza o zero uma vez para x > 1.\n- Para M → 0, g'(1) → 0 e a raiz não trivial colapsa em x = 1, como deveria (sem areia, o pistão já está em equilíbrio).\n\n*Verificações.*\n- Para M ≪ m: h_max − h_i ≈ (6/5)(M/m)·h_i = 2(h_f − h_i). Isso é um oscilador quase harmônico em torno de h_f, com amplitude igual ao deslocamento inicial.\n- Integração numérica de m·ḧ = P_i(h_i/h)^(5/3)·A − mg (RK4) reproduz exatamente as raízes da equação e confirma que o mínimo da oscilação é h_i. Valores de h_max/h_i para M/m = 0,1; 0,5; 1; 2; 5: 1,1208; 1,6164; 2,2559; 3,5755; 7,6899.\n- Exemplo: para M = m, h_max ≈ 2,256·h_i, enquanto h_f = 2^(3/5)·h_i ≈ 1,516·h_i. Vale h_max > h_f > h_i.",
+    "final_answer": "a) h_f = h_i·[(m+M)/m]^(3/5).\n\nb) (3/2)(m+M)·h_i·[1 − (h_i/h_max)^(2/3)] = m·(h_max − h_i). Equivalente: 3(m+M)(1 − x^(−2/3)) = 2m(x − 1), com x = h_max/h_i > 1 (a raiz x = 1 é trivial). Isso equivale ao quártico em u = x^(1/3): 2m·u⁴ + 2m·u³ + 2m·u² − 3(m+M)(u+1) = 0. Para M = m, h_max ≈ 2,256·h_i.",
+    "pitfalls": [
+      "Item a): o processo quase estático e adiabático é uma adiabática reversível, P·V^γ = cte com γ = 5/3 (monoatômico). Não vale isotérmica nem energia contra pressão constante. O expoente final é 3/5 = 1/γ, e a razão de pressões é m/(m+M), não M/m.",
+      "Item a): A pressão final é P_f = mg/A. Não há pressão atmosférica (vácuo), e o recipiente de areia tem massa desprezível. Incluir P_atm ou a massa do recipiente é erro.",
+      "Item b): A retirada instantânea NÃO é uma adiabática entre os estados de equilíbrio inicial e final. O pistão adquire energia cinética e oscila. Usar h_f do item (a) ou P_max = mg/A em h_max está errado.",
+      "Item b): No ponto mais alto o pistão está instantaneamente parado, mas está sendo desacelerado, então P_gás·A < mg. A pressão em h_max não vale mg/A e deve vir da adiabática, P_max = P_i(h_i/h_max)^(5/3).",
+      "Item b): Hipótese essencial: gás em equilíbrio interno (pistão lento frente ao som) e sem dissipação (atrito, viscosidade). Só assim vale T·V^(2/3) = cte durante a oscilação e h_max é ponto de retorno. Deve ser declarada.",
+      "Item b): A resposta é uma equação transcendente/algébrica sem forma fechada simples, e é isso que o enunciado pede. h = h_i é raiz trivial (ponto de partida) e deve ser descartada. A solução relevante tem x = h_max/h_i > 1.",
+      "Item b): Erro comum: aplicar ΔU = −mg·Δh com T_final obtido de P_f = mg/A. Isso dá h = h_i(1 + 3M/(5m)), que é a altura de repouso final se houvesse amortecimento, não o máximo. Na ausência de dissipação, h_max > h_f. Para M ≪ m, h_max − h_i ≈ 2(h_f − h_i).",
+      "Item b): O trabalho do gás vale (P_iV_i − P_maxV_max)/(γ−1), mas o fator (3/2) vem de Cv = 3R/2. Confundir com o fator de Cp ou usar γ = 7/5 (diatômico) altera a equação.",
+      "Conferir que A, n, R e g se cancelam em ambos os itens. O resultado depende só de m, M e h_i, como pede o enunciado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "a) h_f = h_i (1 + M/m)^{3/5} (adiabática reversível, PV^{5/3} = cte, P_i = (m+M)g/A, P_f = mg/A). b) Pela conservação de energia (ΔU + mgΔh = 0 com v = 0) e PV^{5/3} = cte: 3(m+M) h_i [1 − (h_i/h_max)^{2/3}] = 2m (h_max − h_i), tomando a raiz h_max > h_i. Equivalentemente, com y = (h_max/h_i)^{1/3}: 2m y^4 + 2m y^3 + 2m y^2 − 3(m+M)(y+1) = 0.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Frase imprecisa nas hipóteses do item b): \"Não há atrito nem vácuo a dissipar energia\". Deveria dizer que não há atrito nem atmosfera/ar (o vácuo acima do pistão é o motivo de não haver P_atm). Além disso, \"a evolução após o desequilíbrio inicial é adiabática reversível\" é ambíguo. O gás nunca sofre um passo irreversível: em t=0⁺ ele ainda está em equilíbrio a P_i, e o desequilíbrio é só mecânico (do pistão). Seria mais claro dizer que o gás percorre uma adiabática quase estática porque o pistão é lento frente ao som."
+          },
+          {
+            "severity": "minor",
+            "description": "Não escreve a equação de movimento do pistão (m·ḧ = P·A − mg) nem o teorema trabalho–energia para o pistão. O balanço de energia ΔU + mg(h_max − h_i) = 0 é correto, mas poderia ser justificado em duas linhas. A \"conferência numérica por integração\" é citada sem mostrar a equação integrada. Conferi: RK4 de ḧ = (m+M)h^(−5/3) − m dá h_max/h_i = 1,1208; 1,6164; 2,2559; 3,5755; 7,6899 para M/m = 0,1; 0,5; 1; 2; 5, com mínimo em h_i. Isso confirma a equação, mas o texto do candidato só traz o valor para M = m."
+          },
+          {
+            "severity": "minor",
+            "description": "Não demonstra que existe e é única a raiz h_max > h_i. A equação g(x) = 3(m+M)(1 − x^(−2/3)) − 2m(x − 1) tem g(1) = 0, g'(1) = 2M > 0 e é côncava. Diz só \"a solução procurada é a raiz h_max > h_i\". Não é exigido pelo enunciado, mas um gabarito comentado traria isso."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação M ≫ m (h_max ≈ 3(m+M)h_i/(2m)) é só assintótica, com correção relativa de ordem (M/m)^(−2/3), que converge devagar. Para M/m = 5 dá 9,0 contra o valor exato 7,69. Convém indicar que é limite assintótico."
+          },
+          {
+            "severity": "minor",
+            "description": "Não confronta explicitamente o erro comum de usar P_f = mg/A com ΔU = −mgΔh, que dá h = h_i(1 + 3M/(5m)), a altura de repouso com amortecimento e não o máximo. Afirma apenas que P_max ≠ mg/A e que h_max > h_f. Isso cobre o essencial, mas faltou citar essa leitura alternativa do enunciado e dizer por que se descarta."
+          }
+        ],
+        "summary": "Respostas finais corretas e equivalentes às da referência.\n\na) h_f = h_i[(m+M)/m]^(3/5) vem da adiabática reversível com γ = 5/3 e P_f = mg/A. Os pontos de atenção foram tratados: sem P_atm, recipiente sem massa, A, n, R e g cancelados.\n\nb) A equação 3(m+M)h_i[1 − (h_i/h_max)^(2/3)] = 2m(h_max − h_i) é a mesma da referência. Conferi independentemente:\n- a equação reproduz o RK4 do movimento do pistão (h_max/h_i = 1,1208; 1,6164; 2,2559; 3,5755; 7,6899 para M/m = 0,1; 0,5; 1; 2; 5);\n- o mínimo da oscilação é h_i;\n- o quártico 2m·y⁴ + 2m·y³ + 2m·y² − 3(m+M)(y+1) = 0 sai corretamente da equação, após dividir por (y−1);\n- a expansão ε ≈ 6M/(5m) para M ≪ m está certa.\n\nO candidato identificou corretamente que h_max ≠ h_f, que P_max não é mg/A, que o pistão oscila entre h_i e h_max e que a raiz trivial deve ser descartada. Declarou as hipóteses essenciais: pistão lento frente ao som e ausência de dissipação. As verificações são variadas (M → 0, M ≪ m, M ≫ m, M = m, unidades).\n\nOs defeitos são só de acabamento: uma frase mal redigida (\\\"vácuo a dissipar\\\"), ausência da equação de movimento e da prova de existência da raiz, e o limite M ≫ m apresentado sem dizer que é assintótico. Resolução limpa, rigorosa e quase de gabarito comentado.\""
+      }
+    }
+  ]
+}

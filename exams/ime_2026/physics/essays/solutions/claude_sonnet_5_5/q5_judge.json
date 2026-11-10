@@ -1,0 +1,54 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "a) C = 22/3 ≈ 7,3 N; D = 200/3 ≈ 66,7 N; E = 26 N; G = 26 N. b) m máximo = 8,4 kg (limite em que a reação em C se anula).",
+  "judge_reference": {
+    "reference_solution": "**Modelo e hipóteses**\n\nEixo x horizontal a partir de C: C em x=0, D em x=6 m, G em x=8 m (GE=2 m), E em x=10 m, bloco em x=9 m (1 m de E). O bloco está sobre o trecho GE, exatamente no ponto médio desse trecho.\n\nDensidade linear da viga: 6 kg/10 m = 0,6 kg/m, ou seja, 6 N/m com g=10 m/s². A viga é separada em duas peças rígidas pela articulação:\n- Peça CG: 8 m, 4,8 kg, peso 48 N aplicado em x=4 m.\n- Peça GE: 2 m, 1,2 kg, peso 12 N aplicado em x=9 m.\n- Bloco: peso 10m N (40 N para m=4 kg), aplicado em x=9 m, sobre a peça GE.\n\nPelo detalhe da figura, a peça da esquerda (CG) tem um dente em L sobre o qual a peça da direita (GE) se apoia. Portanto o dente só empurra GE para cima, com força N_G. Pela terceira lei, GE empurra CG para baixo com o mesmo N_G. A articulação transmite força vertical, mas não momento, então o momento fletor em G é nulo e vale ΣM=0 separadamente em cada peça. Não há cargas horizontais.\n\nSem a articulação, a viga rígida sobre 3 apoios seria hiperestática (3 incógnitas, 2 equações). A articulação adiciona a equação M_G=0 e o problema fica isostático.\n\n**a) m = 4 kg**\n\nPeça GE (apoios G e E). Forças: N_G e R_E para cima, 12 N + 40 N = 52 N para baixo, todos em x=9, que é o ponto médio de GE. Momentos em E: N_G·2 = 52·1, logo N_G = 26 N. Então R_E = 52 − 26 = 26 N. Isso era esperado, pois a carga está no meio do vão GE e G e E dividem a carga igualmente.\n\nPeça CG (apoios C e D, com balanço de 2 m além de D). Forças: R_C em x=0 e R_D em x=6 (para cima); 48 N em x=4 e N_G = 26 N em x=8 (para baixo). Momentos em D, com os dois lados do apoio:\n- R_C·6 + 26·2 = 48·2, ou seja, 6R_C = 96 − 52 = 44, logo R_C = 22/3 ≈ 7,33 N.\n- Equilíbrio vertical: R_D = 48 + 26 − 22/3 = 200/3 ≈ 66,7 N.\n\nVerificação global:\n- Forças: 22/3 + 200/3 + 26 = 100 N = 60 N (viga) + 40 N (bloco). ✓\n- Momentos em C: 6·(200/3) + 10·26 = 400 + 260 = 660 N·m, e 60·5 + 40·9 = 300 + 360 = 660 N·m. ✓\n\nResultado: R_C = 22/3 N ≈ 7,3 N; R_D = 200/3 N ≈ 66,7 N; R_E = 26 N (todas para cima); R_G = 26 N (o dente empurra GE para cima, e GE empurra CG para baixo com 26 N).\n\n**b) Maior m**\n\nPara m genérico (kg), com g=10:\n- N_G = R_E = (12 + 10m)/2 = 6 + 5m.\n- R_C = [96 − 2(6+5m)]/6 = (42 − 5m)/3.\n- R_D = 48 + (6+5m) − R_C = (120 + 20m)/3.\n\nOs apoios só empurram (a viga está apoiada sobre eles) e o dente também só empurra. N_G, R_E e R_D crescem com m, então nunca se anulam. Só R_C diminui com m. Quando m cresce, a carga N_G em G, a 2 m de D, tende a girar a peça CG em torno de D e a levantar o apoio C. A condição de equilíbrio é R_C ≥ 0:\n\n42 − 5m ≥ 0, logo m ≤ 42/5 = 8,4 kg.\n\nInterpretação física: o momento de N_G em torno de D (2(6+5m)) não pode exceder o momento do peso de CG em torno de D (48·2 = 96 N·m).\n\nNo limite m = 8,4 kg: R_C = 0, R_D = 96 N, R_E = N_G = 48 N, e a soma é 144 N = 60 N + 84 N. ✓ Acima desse valor, C perde contato e a peça CG gira em torno de D.",
+    "final_answer": "a) Para m = 4 kg: R_C = 22/3 N ≈ 7,3 N; R_D = 200/3 N ≈ 66,7 N; R_E = 26 N (todas para cima); R_G = 26 N (dente empurra GE para cima; GE empurra CG para baixo com 26 N).\nb) m_máx = 42/5 = 8,4 kg. Nesse valor R_C = 0, R_D = 96 N e R_E = R_G = 48 N. Acima disso o apoio C perde contato.",
+    "pitfalls": [
+      "Sem a articulação a viga rígida com 3 apoios é hiperestática. A chave é usar M_G = 0 (articulação não transmite momento) e separar a viga em CG e GE. Resolver só com o corpo inteiro (2 equações para 3 incógnitas) trava a resolução.",
+      "Dividir corretamente o peso da viga em partes proporcionais ao comprimento: CG com 8 m (4,8 kg, 48 N, em x=4 m de C) e GE com 2 m (1,2 kg, 12 N, no meio de GE). Usar 60 N no centro da viga (x=5 m), ou 6 kg em CG, é erro comum.",
+      "O bloco está a 1 m de E, que é o ponto médio de GE, e o peso de GE também atua aí. Por isso R_G = R_E = (12+10m)/2. Aqui o bloco pesa só sobre a peça GE e entra em CG apenas através de N_G. Se ele estivesse entre D e G, a conta seria outra.",
+      "Sentido das forças em G: o dente empurra GE para cima e, por ação e reação, GE empurra CG para baixo com o mesmo módulo. Na peça CG a carga em G é para baixo e a 2 m de D, no lado oposto de C. Errar esse sentido muda o sinal de R_C. R_G é força interna: não entra na soma das reações externas (R_C + R_D + R_E = 100 N).",
+      "Tomar momentos em D para a peça CG (elimina R_D). Os braços são: C a 6 m, peso de CG a 2 m (do lado de C) e N_G a 2 m (do lado oposto).",
+      "Item (b): o limite vem da perda de contato em C (R_C = 0), não em D, E nem no dente G. N_G, R_E e R_D crescem com m, e só R_C = (42−5m)/3 decresce. Isso supõe apoios unilaterais (viga apoiada, só empurram). Com apoios que também puxam, não haveria m máximo. A frase 'articulação mantém o equilíbrio' é só o enunciado do problema: o dente nunca perde contato aqui.",
+      "O valor limite é m = 8,4 kg exato (R_C = 0 é equilíbrio na iminência de rotação). Não é 8 nem 8,5. Convém registrar também R_D = 96 N e R_E = R_G = 48 N como verificação.",
+      "Conferir as contas por soma de forças (100 N) e momentos globais em C (660 N·m). Usar m em kg e g = 10 m/s² e dar as reações em newtons (fração 22/3 e 200/3, não arredondar cedo)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "a) C = 22/3 ≈ 7,3 N; D = 200/3 ≈ 66,7 N; E = 26 N; G = 26 N. b) m máximo = 8,4 kg (limite em que a reação em C se anula).",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A orientação do dente em G (o dente do trecho CG sustenta o trecho GE por baixo) é adotada como hipótese ('o dente apenas apoia o trecho GE'). A resolução a justifica só por um argumento de consistência de equilíbrio, sem citar o detalhe da figura. No PDF, o bloco escuro (esquerdo, CG) tem o dente inferior e o claro (direito, GE) se apoia nele por cima, então a hipótese está certa. Faltou citar a figura como fonte do sentido de G."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não diz explicitamente que a viga com 3 apoios seria hiperestática sem a articulação, nem que a condição M_G = 0 fornece a equação que a torna isostática. A estratégia está correta e implícita ('G não transmite momento, separamos em dois corpos'), mas faltou essa explicação do porquê."
+          },
+          {
+            "severity": "minor",
+            "description": "O resultado final dá G = 26 N sem repetir os sentidos: C, D, E para cima; G para cima sobre GE e para baixo sobre CG. Também não diz que G é força interna e não entra na soma das reações externas, embora a conferência C+D+E = 100 N seja feita corretamente sem G."
+          },
+          {
+            "severity": "minor",
+            "description": "No item (b), a justificativa de que G, E e D nunca se anulam é só uma frase ('crescem ou permanecem positivas'). Ficaria mais rigoroso escrever G = E = 6+5m > 0 e D = (120+20m)/3 > 0 para todo m ≥ 0. A conclusão de que o único limite é C ≥ 0, com o pressuposto de apoios unilaterais, está correta e explícita nas hipóteses. A resolução trata corretamente C = 0 como situação-limite, com valores de verificação (D = 96 N, E = G = 48 N)."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a referência nos dois itens: (a) C = 22/3 ≈ 7,3 N, D = 200/3 ≈ 66,7 N, E = 26 N, G = 26 N; (b) m_máx = 8,4 kg. Conferi as contas com frações exatas em Python: para m = 4 kg, ΣF = 100 N e momentos em C = 660 N·m; no limite m = 8,4 kg, C = 0, D = 96 N, E = G = 48 N e ΣF = 144 N. Também conferi a figura no PDF original: o dente do bloco esquerdo (CG) sustenta o bloco direito (GE) por baixo, o que confirma o sentido de G adotado. A modelagem está correta: separação em CG (8 m, 48 N em x=4) e GE (2 m, 12 N em x=9), M_G = 0, bloco sobre GE a 1 m de E (ponto médio, G = E), momentos em D para CG com braços 6, 2 e 2 m, e condição C ≥ 0 com apoios unilaterais. Verifiquei cada armadilha da referência e todas foram tratadas: peso dividido proporcionalmente, sentido de G, limite vindo de C e valor exato 8,4. Há dupla conferência (forças e momentos) e fórmulas gerais em m. As falhas são só de acabamento: a figura não é citada para justificar o dente, a hiperestaticidade sem a articulação não é mencionada, o resultado final omite os sentidos das reações e G como força interna, e a justificativa de que G, E e D nunca se anulam é sucinta. Estaria perto de um gabarito comentado, com pequenos ajustes de rigor e explicação."
+      }
+    }
+  ]
+}

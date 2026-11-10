@@ -1,0 +1,37 @@
+{
+  "question": 2,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2027/ime-2-fase-dia-3-28-10-2026-2-fase-dia-3/dissertativa-2-quimica-2-fase-dia-3-ime-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "Diagrama P×V do ciclo 1→2→3→4→1: etapa I na isoterma T1 (compressão de V1 a V2), etapa II rápida e adiabática de 2 a 3, com T3 > T1, etapa III na isoterma T3 (expansão de V3 a V4) e etapa IV rápida e adiabática de 4 a 1. As etapas II e IV aparecem tracejadas porque são irreversíveis, mas foram desenhadas mais inclinadas que as isotermas. O gráfico tem setas de sentido e rótulos de estados e etapas.",
+      "key_answer": "Gráfico P×V do ciclo 1→2 (I, isoterma T1), 2→3 (II, adiabática), 3→4 (III, isoterma T3), 4→1 (IV, adiabática).",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "O ciclo é o mesmo: duas isotermas (T1 abaixo, T3 acima) ligadas por dois trechos adiabáticos, na mesma ordem e no mesmo sentido. Conferi as coordenadas do TikZ: o estado 3 (0,26; 5,77) e o estado 4 (0,48; 3,125) estão na isoterma 1,5/V. As curvas tracejadas ligam de fato 2→3 e 4→1 (deram 5,766 e 1,000). As setas seguem o sentido certo (I e II para a esquerda, III e IV para a direita). Também estão corretas as relações P2 > P1, P3 > P2, P4 < P3 e P4 > P1, esta última porque P4V4 = RT3 > RT1 = P1V1 e V4 < V1. A única diferença é que a resolução traça II e IV tracejadas, sem usar PV^γ, por serem rápidas e irreversíveis. Isso é um refinamento e não contradiz o gabarito."
+    },
+    {
+      "item": "b",
+      "solution_answer": "Em II e IV, Q = 0, então W2 = ΔU2 = U(T3) − U(T1) e W4 = ΔU4 = U(T1) − U(T3). Com Cv constante, W2 = Cv(T3 − T1) = −W4. Logo W2 + W4 = 0 e W_tot = W1 + W3, com W1 = RT1 ln(V1/V2) > 0 e W3 = −RT3 ln(V4/V3) < 0 (trabalho realizado sobre o gás).",
+      "key_answer": "W2 = n·Cv·(T3−T1) e W4 = n·Cv·(T1−T3) = −W2 ⇒ Wtot = W1 + W3, com W1 = −nRT1·ln(V2/V1) e W3 = −nRT3·ln(V4/V3).",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "A demonstração é a mesma: a primeira lei com Q = 0 dá W = ΔU, e U só depende de T. Como T2 = T1 e T4 = T3, W2 e W4 se anulam. A convenção de sinal também é a mesma nos dois (W é o trabalho sobre o gás, ΔU = Q + W): o gabarito escreve W2 = nCv(T3 − T1) > 0 na compressão. Com n = 1, RT1 ln(V1/V2) = −RT1 ln(V2/V1), então o W1 coincide, e o W3 é idêntico. A resolução é um pouco mais geral porque usa U(T) sem precisar de Cv constante. Refiz a verificação numérica (gás monoatômico, V2 = V1/3, P_ext = 5P1 em II e P1 em IV) com frações exatas: T3 = 19T1/15, V3 = 19V1/75, V4 = 0,6V1, W2 = +0,40RT1 e W4 = −0,40RT1. Tudo confere."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "Dá para ler \"muito rápida\" como irreversível. Nesse caso a curva P(V) de II e IV não é bem definida e não vale PV^γ = cte; é o que a resolução faz, com trechos tracejados. Também dá para ler como adiabática reversível, com curvas PV^γ, que é o que o gabarito sugere com \"adiabática\". A conclusão de b não muda, porque ΔU depende só de T. A resolução desenha os trechos II e IV mais inclinados que as isotermas, o que atende às duas leituras. Um corretor que espere adiabáticas desenhadas em linha cheia dificilmente descontaria."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "Os dois usam W como trabalho sobre o gás (ΔU = Q + W). Se o corretor usar trabalho realizado pelo gás (ΔU = Q − W), os sinais de W1 a W4 se invertem, mas W2 + W4 = 0 e W_tot = W1 + W3 continuam valendo. A resolução declara a convenção explicitamente."
+    }
+  ],
+  "summary": "A resolução da questão 2 está correta e confere com o gabarito Poliedro nos dois itens. Item a: é o mesmo ciclo, isoterma T1, adiabática, isoterma T3 > T1, adiabática, na ordem 1→2→3→4→1; II e IV estão tracejadas por serem irreversíveis, o que é um refinamento. Item b: a demonstração é a mesma, W2 = ΔU2 = −W4 porque U só depende de T, T2 = T1 e T4 = T3. A convenção de sinal (trabalho sobre o gás) é a mesma do gabarito, e as expressões de W1 e W3 são equivalentes. Conferi em Python as coordenadas do esboço e a verificação numérica (W2 = +0,40RT1, W4 = −0,40RT1). Não achei erro."
+}

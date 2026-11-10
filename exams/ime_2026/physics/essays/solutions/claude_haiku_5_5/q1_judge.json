@@ -1,0 +1,134 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "(a) $-2\\,\\mathrm{m}<x<4\\,\\mathrm{m}$: a partícula oscila (em torno de posições dentro desse intervalo) para $0<E<\\tfrac{32}{3}\\,\\mathrm{J}$. (b) $E_{\\text{sup}}=E_p(4)=\\dfrac{32}{3}\\,\\mathrm{J}\\approx 10{,}7\\,\\mathrm{J}$; é supremo não atingido, e o período diverge logaritmicamente quando $E\\to E_{\\text{sup}}^{-}$. (c) $v(0)=-\\sqrt{2E/m}$; a velocidade se anula em $x_t<-2$, volta a $+\\sqrt{2E/m}$ em $x=0$, decresce até $v_4>0$ em $x=4$ e cresce sem limite até $+\\infty$ em tempo finito (assíntota vertical). O gráfico $v\\times t$ não é periódico: não há oscilação.",
+  "judge_reference": {
+    "reference_solution": "**Questão 1: resolução de referência (Física, IME 2025/2026, 2ª fase)**\n\n**0. Verificações preliminares**\n- Coerência força/energia: F = −dE_p/dx = −(4x − x²) = x² − 4x, igual ao enunciado.\n- Pontos críticos: dE_p/dx = x(4 − x) = 0 ⇒ x = 0 e x = 4.\n- d²E_p/dx² = 4 − 2x. Em x = 0: 4 > 0, mínimo, com E_p(0) = 0. Em x = 4: −4 < 0, máximo, com E_p(4) = 32 − 64/3 = 32/3.\n- Zeros: E_p = x²(2 − x/3) = 0 ⇒ x = 0 (duplo) e x = 6. Confere com a figura, que cruza o eixo em x = 6.\n- Fatoração-chave: E_p(x) − 32/3 = −(1/3)(x − 4)²(x + 2). Expandindo, (x − 4)²(x + 2) = x³ − 6x² + 32.\n- Consequência: E_p(−2) = 32/3 = E_p(4). Mas x = −2 NÃO é ponto crítico (E_p'(−2) = −12 ≠ 0). É só o ponto em que a curva, à esquerda, atinge a altura 32/3.\n- Limites: E_p → +∞ quando x → −∞ (parede à esquerda); E_p → −∞ quando x → +∞.\n\n**a) Intervalo de posições para movimento oscilatório**\nMovimento oscilatório é o movimento confinado num poço de potencial, entre dois pontos de retorno (E = E_p). A região permitida é {x : E_p(x) ≤ E}.\n- Para E < 32/3, a barreira em x = 4 é intransponível.\n- A componente conexa de {E_p < 32/3} que contém o mínimo x = 0 é dada por (x − 4)²(x + 2) > 0, isto é, x > −2 com x ≠ 4. Logo é o intervalo (−2, 4).\n- Energia: a oscilação em torno de x = 0 exige 0 < E < 32/3. Com E = 0 a partícula fica em repouso no fundo. Com E < 0 ela só existe em x ≥ 6 e escapa para +∞.\n- Para cada E ∈ (0, 32/3), os pontos de retorno são as raízes de (x − 4)²(x + 2) = 32 − 3E: x₁ ∈ (−2, 0) e x₂ ∈ (0, 4). O movimento ocorre em x₁ ≤ x ≤ x₂.\n- Toda posição de oscilação satisfaz −2 < x < 4. Reciprocamente, cada x desse intervalo é alcançável, pois E_p(x) < 32/3 nele, bastando escolher E ∈ (E_p(x), 32/3).\n\n**Resposta a): −2 m < x < 4 m.** A amplitude depende de E e é o intervalo [x₁(E), x₂(E)].\n\n**b) Supremo da energia E_sup**\n- A partícula fica presa se E < E_p(4) = 32/3. A parede à esquerda, em x = −2, também tem altura 32/3.\n- Se E > 32/3, não existe ponto de retorno à direita: a partícula atravessa x = 4 e escapa para +∞.\n- Se E = 32/3, a partícula que parte de x = −2 em repouso tende a x = 4 apenas assintoticamente, pois o topo é um equilíbrio instável. Em x = 4, ẋ² ∝ (x − 4)² leva a tempo infinito. Não há oscilação.\n\n**Resposta b): E_sup = 32/3 J ≈ 10,67 J.** É um supremo não atingido: E deve ser estritamente menor.\n\n**c) Gráfico de v(t) para E > E_sup, com v(0) < 0 em x = 0**\nVelocidades-chave, com m a massa (não dada) e v = ±√(2(E − E_p)/m):\n- v₀ = √(2E/m) é o módulo da velocidade em x = 0.\n- v₄ = √(2(E − 32/3)/m) é a velocidade em x = 4. Vale v₄ > 0 porque E > 32/3, e v₄ < v₀ porque E_p(4) > 0.\n\nTrajetória qualitativa:\n1. Para x < 0, F = x(x − 4) > 0, ou seja, a força aponta para a direita e freia a partícula. Ela retorna em x_L < −2, a única raiz real de (x − 4)²(x + 2) = 32 − 3E com x < −2.\n2. Volta a x = 0 com velocidade +v₀, por conservação de energia.\n3. Para 0 < x < 4, F < 0 e a partícula freia até x = 4 com v₄ > 0, atravessando a barreira.\n4. Para x > 4, F > 0 e a partícula acelera. Como E_p → −∞, v ≈ √(2x³/(3m)), logo dx/dt ∝ x^{3/2}. Essa integral converge no infinito, então x → ∞ em tempo finito t*.\n\nPontos-chave do gráfico v(t):\n\n| instante | posição | velocidade | dv/dt |\n|---|---|---|---|\n| t = 0 | x = 0 | −v₀ | 0, pois F(0) = 0 |\n| t₁ | x = x_L < −2 | 0 | > 0 |\n| t₂ | x = 0 (voltando) | +v₀ | 0 |\n| t₃ | x = 4 | v₄ > 0, mínimo local | 0, pois F(4) = 0 |\n| t → t* | x → +∞ | v → +∞ | > 0 |\n\nForma: v cresce monotonicamente de −v₀ a +v₀ no trecho [0, t₂], com tangente horizontal nas extremidades. Esse trecho é antissimétrico em relação a (t₁, 0), por simetria temporal do movimento entre x_L e 0: v(t₁ + s) = −v(t₁ − s). Depois, v decresce até o mínimo v₄ > 0 em t₃. Em seguida, cresce e diverge com assíntota vertical em t*. O gráfico não é periódico.\n\nVerificação numérica (m = 1 kg, E = 12 J, integração RK4): v₀ ≈ 4,90 m/s, v₄ ≈ 1,63 m/s, x_L ≈ −2,11 m. O movimento diverge para x → ∞ em t ≈ 4,7 s, e a forma qualitativa confirma o esboço acima.",
+    "final_answer": "a) Movimento oscilatório com posições possíveis −2 < x < 4 (em metros). Para uma energia E ∈ (0, 32/3), o movimento vai de x₁ ∈ (−2, 0) até x₂ ∈ (0, 4), raízes de (x − 4)²(x + 2) = 32 − 3E. A condição vem de E_p(x) − 32/3 = −(1/3)(x − 4)²(x + 2), e E_p(−2) = E_p(4) = 32/3.\n\nb) E_sup = 32/3 J ≈ 10,67 J (supremo não atingido; a altura da barreira em x = 4 é E_p(4) = 32/3).\n\nc) Gráfico v(t) não periódico. Começa em −v₀ com tangente horizontal em t = 0. Sobe até 0 no retorno em x_L < −2. Chega a +v₀ em x = 0 com tangente horizontal. Decresce até o mínimo v₄ = √(2(E − 32/3)/m) > 0 em x = 4, com tangente horizontal. Depois cresce sem limite, com v → +∞ em tempo finito t*.",
+    "pitfalls": [
+      "Item (a), intervalo de posições: não confundir com um único par de pontos de retorno. O enunciado pede o conjunto de posições possíveis, −2 < x < 4, que é a união das oscilações para todas as energias 0 < E < 32/3. Os pontos x₁(E) e x₂(E) dependem de E.",
+      "Item (a), armadilha da componente conexa: E_p(x) < 32/3 também vale para x > 4, mas essa região está separada do poço pela barreira em x = 4. Não se deve concluir que x > 4 é permitido só porque E_p < E_sup. Deve-se tomar a componente que contém x = 0.",
+      "x = −2 não é máximo local: E_p'(−2) = −12 ≠ 0. A parede da esquerda é só o nível E_p = 32/3 atingido em x = −2. Procurar um máximo à esquerda, ou tomar o intervalo como (−∞, 4), (0, 4) ou (−2, 0), são erros comuns.",
+      "Condição de energia: a oscilação em torno de x = 0 exige E > 0 (E = 0 é repouso no fundo, E < 0 escapa para x > 6) e E < 32/3. Não basta E < 32/3.",
+      "x > 6 não é poço: aí E_p < 0 e E_p → −∞, de modo que a partícula escapa para +∞. O zero de E_p em x = 6 não cria região oscilatória.",
+      "Item (b): a resposta é supremo, não máximo. Em E = 32/3 o movimento não é oscilatório, pois a partícula tende ao topo em x = 4 assintoticamente, em tempo infinito. Erros comuns são escrever 'máximo', ou tomar E_sup = E_p(0) = 0, E_p(6) = 0 ou outro valor.",
+      "Item (b): E_sup = E_p(4) = 32 − 64/3 = 32/3 J (≈ 10,67 J). Não confundir com a altura de outro ponto. Lembrar que E_p(−2) = 32/3 coincide com E_p(4), o que é uma escolha deliberada da questão.",
+      "Item (c), sentido inicial: como v(0) < 0 (sentido da direita para a esquerda), o gráfico começa em −v₀ < 0. Desenhar v(0) > 0, ou v(0) = 0, é erro.",
+      "Item (c), sentido do movimento: com E > 32/3 a partícula não reverte em x = 4. Ela retorna apenas no lado esquerdo, em x_L < −2, e depois atravessa a barreira para +∞. Desenhar uma senoide ou um movimento periódico é erro.",
+      "Item (c), pontos especiais: F(0) = 0 e F(4) = 0 implicam dv/dt = 0 nesses instantes, então v(t) tem tangente horizontal em x = 0 e x = 4. Em x = 4 a velocidade é v₄ > 0 e não zero. Desenhar v = 0 ali é erro.",
+      "Item (c), divergência: para x grande, F ≈ x² e E_p ≈ −x³/3, então v ∝ x^{3/2} e x → ∞ em tempo finito t*. O gráfico termina com assíntota vertical em t*. Não tende a uma constante.",
+      "Item (c), dados faltantes: a massa m não é dada, então v₀ = √(2E/m) e v₄ = √(2(E − 32/3)/m) só podem aparecer simbolicamente. O esboço é qualitativo: escalas de v e t dependem de m (v ∝ 1/√m, t ∝ √m). Não se devem inventar valores numéricos.",
+      "Sinal da força: F = −dE_p/dx aponta para o mínimo de E_p. Usar F = +dE_p/dx inverte o sentido das acelerações e o esboço fica errado. A coerência com F = −4x + x² do enunciado confirma o sinal.",
+      "Unidades: todos os valores estão em SI, então E_sup = 32/3 J e as posições estão em metros. Não se deve atribuir unidades inconsistentes aos coeficientes."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "a) Oscilação somente para 0 < E < 32/3 J, com a partícula confinada entre dois pontos de retorno; as posições possíveis são −2 m < x < 4 m (as paredes do poço, x = −2 m à esquerda e o topo x = 4 m, têm a mesma altura E_p = 32/3 J).\nb) E_sup = E_p(4) = 32/3 J ≈ 10,7 J (supremo, não atingido: para E ≥ 32/3 J não há retorno à direita).\nc) Com E > 32/3 J e v(0) = −√(2E/m): a partícula reflete em x_t < −2 e volta a x = 0 com +√(2E/m); depois sua velocidade diminui até v₄ = √(2(E − 32/3)/m) > 0 em x = 4 e então cresce sem limite, atingindo v → +∞ em tempo finito. O gráfico v×t não é periódico; é antissimétrico em torno de (t₁, 0), com t₂ = 2t₁, e tem assíntota vertical em t*.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Em (c), a resolução afirma que v(0) = −v₀ é 'o módulo máximo de v, pois x=0 é o mínimo de E_p'. Isso é falso globalmente: x=0 é só mínimo local, e E_p → −∞ quando x → +∞ (o próprio item (a)(iv) diz isso). Para x > 6, |v| > v₀ e cresce sem limite. Numericamente, com E = 16 J e m = 1 kg, |v(3,0 s)| ≈ 12,6 m/s > v₀ ≈ 5,66 m/s, e o próprio esboço mostra v subindo acima de +v₀. Correção: 'em [x_t, 4], |v| é máximo em x = 0, pois E_p é mínimo local ali; após x = 6, |v| ultrapassa v₀ sem limite'."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (a), para E ≤ 0 a resolução diz que E_p(x) ≤ E só ocorre para x ≥ 6. Para E < 0 temos E_p(6) = 0 > E, então o conjunto permitido é [x_E, ∞) com x_E > 6 (e {0} ∪ [6, ∞) para E = 0). Corrigir a descrição."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (a), a união dos intervalos [x₁(E), x₂(E)] é afirmada sem mostrar que ela cobre todo (−2, 4). Faltaria o argumento: para cada x ∈ (−2, 4), existe E ∈ (max(0, E_p(x)), 32/3) não vazio cujos pontos de retorno incluem x; e x = −2 e x = 4 nunca são alcançados porque E_p = 32/3 não é < E."
+          },
+          {
+            "severity": "minor",
+            "description": "A resolução não verifica que x = −2 não é ponto crítico (E_p'(−2) = −12 ≠ 0). A armadilha só é evitada porque o texto não chama −2 de extremo. Deveria ser dito explicitamente que −2 é nível de retorno (E_p = 32/3), não máximo."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (b), a afirmação de que para E = E_sup a partícula chega a x = 4 só assintoticamente (tempo infinito) e que o período diverge quando E → E_sup⁻ é feita sem prova. Faltaria: perto de x = 4, ẋ² = (2/m)(x−4)²(x+2)/3, logo ẋ ∝ |x−4| e ∫dx/(x−4) diverge (logaritmicamente)."
+          },
+          {
+            "severity": "minor",
+            "description": "No esboço de (c), o ramo final vai de (2,8; 7,21) até (3,0; 9,4), mas com E = 16 J e m = 1 kg a curva numérica vale ≈ 12,6 em t = 3,0 s. Os demais pontos conferem (t₁ = 0,64 s, t₂ = 1,28 s, t₃ = 2,19 s, v₄ = 3,27 m/s, t* ≈ 3,98 s, x_t ≈ −2,39 m). A truncagem deve ser ajustada ou rotulada como esquemática."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a referência e com a minha verificação independente: (a) −2 m < x < 4 m; (b) E_sup = 32/3 J ≈ 10,7 J, como supremo não atingido; (c) v(t) não periódica, começando em −v₀, com retorno em x_t < −2, volta a +v₀ em x = 0, mínimo local v₄ > 0 em x = 4 e divergência para +∞ em tempo finito. Conferi com exatidão: F = −dE_p/dx, pontos críticos 0 e 4, E_p(−2) = E_p(4) = 32/3, E_p'' em 0 e 4, a fatoração E_p − 32/3 = −(1/3)(x−4)²(x+2), os zeros 0 e 6, e numericamente os instantes e velocidades do exemplo (E = 16 J; também E = 12 J da referência). Todas as armadilhas da lista de referência foram tratadas, exceto a verificação explícita de que −2 não é extremo. O principal defeito é a afirmação falsa de que |v| é máximo em x = 0 globalmente, que contradiz o próprio esboço e o item (a)(iv). Há também lacunas de rigor: a união dos intervalos não é justificada, a divergência em E_sup não é demonstrada e a descrição de E ≤ 0 é imprecisa. Nota 8: resolução forte e correta, que precisa corrigir a frase falsa e fechar as justificativas para chegar a 9.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "(a) Oscilação somente para 0 < E < 32/3 J, com posições −2 m < x < 4 m (os extremos não são atingidos). (b) E_sup = E_p(4) = 32/3 J ≈ 10,7 J; é supremo não atingido, e o período diverge logaritmicamente quando E → E_sup⁻. (c) Com v(0) = −√(2E/m): a partícula é refletida em x_t < −2 e volta a x = 0 com +√(2E/m); depois a velocidade decresce até v₄ = √(2(E − 32/3)/m) > 0 em x = 4 e cresce sem limite até +∞ em tempo finito. Não há oscilação. O gráfico v×t é não periódico, com mínimo global em t = 0, máximo local em t₂ = 2t₁, mínimo local em t₃ e assíntota vertical em t*.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (b), não periodicidade em E = 32/3: a frase 'toda trajetória não estacionária tende assintoticamente a x=4 sem retornar' é falsa como enunciada. Com x > 4 e v > 0, a partícula escapa para +∞ (F > 0 e E_p decrescente). Trajetórias que começam em (−2,4) indo para a esquerda refletem em x = −2 antes de se aproximar de 4. A conclusão (não há movimento periódico) continua correta, mas o argumento deveria separar os casos: aproximação assintótica de 4 (tempo infinito, pela divergência logarítmica de ∫dx/|v|) ou fuga para +∞. Não há retorno finito a um ponto de retorno."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (c), sobre a forma do gráfico: a afirmação 'a forma vale para qualquer E > 32/3, mudando apenas escalas e instantes' é exagerada. A razão v₄/v₀ = √(1 − 32/(3E)) depende de E e tende a 0 quando E → E_sup⁺. Perto do limiar, o tempo de passagem por x = 4 cresce como (√m/2)·ln(1/(E − E_sup)), então o vale em torno de t₃ vira um patamar longo próximo de v = 0. Deveria dizer que as características qualitativas valem para todo E > 32/3, mas que as proporções dependem de E, com o caso limite E → E_sup⁺ descrito. A figura numérica (m = 1 kg, E = 16 J, arbitrários) já está rotulada como exemplo, o que é aceitável."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (b), período perto de E_sup: o coeficiente (√m/2)·ln(1/δ) está correto. Verifiquei numericamente que T(E) − (√m/2)ln(1/δ) converge para uma constante (≈ 4,2178 para m = 1). Mas o texto é ambíguo: 'cada período contém duas dessas passagens (ida e volta)' não deixa claro que há uma única reversão perto de x₂ por período, e que a parte perto de x₁ ≈ −2 tem tempo finito. Também pula o passo arccosh(z) ≈ ln(2z) sem explicitar. Deveria indicar: T = 2·(tempo de x₁ a x₂), cada semiperíodo contém um ramo de arccosh, e o fator 2 vem daí."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (a), justificação de que x ∈ (−2,4) pertence à componente que contém 0: o argumento 'E_p é monótona de cada lado de 0, logo E_p ≤ E_p(x) < E nesse segmento' é terso. Deveria dizer explicitamente que, para x ∈ (0,4), E_p é crescente em [0,x], e para x ∈ (−2,0), é decrescente em [x,0], de modo que sup do segmento é E_p(x) < E. Isso fecha o argumento de conexão sem depender de leitura implícita."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 1 (Física, IME 2025/2026, 2ª fase). Nota 8,5.\n\nRespostas finais: a candidata e a referência concordam nos três itens e as duas estão corretas.\n(a) −2 m < x < 4 m, para 0 < E < 32/3 J. A união das oscilações cobre exatamente (−2, 4).\n(b) E_sup = 32/3 J ≈ 10,7 J, supremo não atingido.\n(c) v(0) = −√(2E/m). A velocidade se anula em x_t < −2, volta a +√(2E/m) em x = 0, decresce até v₄ > 0 em x = 4 e depois diverge para +∞ em tempo finito t*, com assíntota vertical. O gráfico não é periódico.\n\nVerificações independentes (exato com frações e RK4 em Python):\n- F = −dE_p/dx confere. Pontos críticos x = 0 e x = 4. E_p(4) = E_p(−2) = 32/3, com E_p′(−2) = −12 ≠ 0.\n- A fatoração E_p = 32/3 − (x−4)²(x+2)/3 é exata.\n- Para E = 16 J, m = 1: v₀ = 5,657; x_t = −2,392; t₁ = 0,640; t₂ = 1,280; t₃ = 2,192; v₄ = 3,266; v(3 s) = 12,60; t* ≈ 3,975. Todos batem com o candidato.\n- Período perto de E_sup: T(E) − (√m/2)·ln(1/δ) converge para uma constante, então o coeficiente do candidato está certo. Em E → 0, T → π√m, também confere.\n- Para E = 12 J, a referência tem x_L = −2,107, v₀ = 4,899, v₄ = 1,633 e t* ≈ 4,7 s. Confere.\n\nArmadilhas: todas tratadas. Destaques: união sobre E; componente conexa (x ∈ (4, x₃) proibido, ramo ilimitado não oscila); x = −2 não é extremo; faixa 0 < E < 32/3; supremo e não máximo; sinal de v(0); tangências em 0 e 4 com v₄ > 0; divergência com v ∝ (t* − t)⁻³; massa simbólica; unidades SI.\n\nOs problemas listados são de rigor e clareza, nenhum afeta a resposta. Não reduzem a nota abaixo de 8 porque a justificativa é sólida. Não chega a 9 porque há uma afirmação universal falsa no item (b) e uma generalização exagerada sobre o gráfico no item (c)."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "(a) $-2\\,\\mathrm{m}<x<4\\,\\mathrm{m}$: a partícula oscila (em torno de posições dentro desse intervalo) para $0<E<\\tfrac{32}{3}\\,\\mathrm{J}$. (b) $E_{\\text{sup}}=E_p(4)=\\dfrac{32}{3}\\,\\mathrm{J}\\approx 10{,}7\\,\\mathrm{J}$; é supremo não atingido, e o período diverge logaritmicamente quando $E\\to E_{\\text{sup}}^{-}$. (c) $v(0)=-\\sqrt{2E/m}$; a velocidade se anula em $x_t<-2$, volta a $+\\sqrt{2E/m}$ em $x=0$, decresce até $v_4>0$ em $x=4$ e cresce sem limite até $+\\infty$ em tempo finito (assíntota vertical). O gráfico $v\\times t$ não é periódico: não há oscilação.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Item (b), E > 32/3: a não-periodicidade é justificada só para trajetórias que chegam a x ≥ 0 com v > 0 (\"uma vez em x≥0 com v>0, não pode voltar\"). O argumento completo é que {E_p ≤ E} = [x_t, ∞), com um único ponto de retorno, logo não há região limitada e não há movimento periódico, qualquer que seja a condição inicial. Deve ser escrito explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (b), E = 32/3: a frase \"Em nenhum caso há retorno a um ponto de retorno após excursão finita\" contradiz o caso (i), em que a partícula reflete em x = −2 após excursão finita. Deve ser trocada por algo como \"não há segundo retorno / a trajetória não é periódica\"."
+          },
+          {
+            "severity": "minor",
+            "description": "Trecho extra \"Período perto de E_sup\", não pedido. O resultado está correto: verifiquei que t_{L→2} − ¼ ln(1/δ) → 2,1089 para δ = 10⁻², 10⁻³, 10⁻⁴, e o valor 2,109 do texto confere. Porém o termo O(1) é justificado só com \"fator 1+O(u)\" e \"quantidade limitada\". Faltam a mudança de variável w = u√(1−u/6), ou um limite para a integral da diferença. A citação da \"simetria temporal do item (c)\" também sugere que o argumento é específico de E > 32/3, quando vale para qualquer ponto de retorno simples."
+          },
+          {
+            "severity": "minor",
+            "description": "Item (a), caso x₀ > 4: tratado em uma única frase (\"proibida ou pertence a componente ilimitada\"). Deveria afirmar que, para 0 < E < 32/3, a região de x > 4 é [x₃(E), ∞), ilimitada e separada do poço pela barreira, e que para E ≤ 0 ou E ≥ 32/3 não há poço nessa região."
+          },
+          {
+            "severity": "minor",
+            "description": "Notação: x_L (no item a) e x_t (nos itens b e c) designam o mesmo ponto de retorno esquerdo, em faixas de energia diferentes. Isso pode confundir o leitor. Convém unificar a notação ou avisar explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "Exemplo numérico do item (c) com m = 1 kg e E = 16 J, que não está no enunciado. Está rotulado como exemplo e os valores conferem (t₁ ≈ 0,640; t₂ ≈ 1,280; t₃ ≈ 2,192; v₄ ≈ 3,266; v(3 s) ≈ 12,60; x_t ≈ −2,392; t* ≈ 3,975). Mas o texto não descreve o método numérico e não diz que os tempos escalam com √m e as velocidades com 1/√m."
+          }
+        ],
+        "summary": "Resposta final correta e igual à referência nos três itens. (a) −2 m < x < 4 m, com 0 < E < 32/3 J. (b) E_sup = 32/3 J ≈ 10,67 J, supremo não atingido. (c) v(0) = −√(2E/m); a velocidade se anula em x_t < −2, volta a +v₀ em x = 0, tem mínimo local v₄ > 0 em x = 4 e diverge para +∞ em tempo finito, sem oscilação.\n\nVerificações feitas em Python puro (numpy não está disponível): a identidade E_p = 32/3 − (x−4)²(x+2)/3 = x²(6−x)/3 e F = −dE_p/dx conferem; E_p(−2) = E_p(4) = 32/3 e E_p'(−2) = −12; a fatoração E − E_p = (x−x_L)(x₂−x)(x₃−x)/3 é exata; o semiperíodo perto de E_sup dá t_{L→2} − ¼ ln(1/δ) → 2,1089, o que confirma o 2,109 citado; no exemplo E = 16 J, m = 1, a integração RK4 e a quadratura dão t₁ = 0,640, t₂ = 1,280 (= 2t₁), t₃ = 2,192, v₄ = 3,266, v(3 s) = 12,60, v(3,25 s) = 31,08 e t* ≈ 3,975, todos batendo com o texto.\n\nTodas as armadilhas listadas foram tratadas: união das oscilações em (a), componente conexa e ilimitada, x = −2 não é extremo, condição E > 0, x > 6 não é poço, supremo e não máximo em (b), v(0) < 0, não periodicidade, tangente horizontal em t = 0, t₃ e t₂, divergência em tempo finito, massa simbólica, sinal de F e unidades. Não há erro de conteúdo nem critical ou major. A nota fica em 8,5 pelas lacunas de rigor: a não-periodicidade de (b) para E > 32/3 é argumentada só para um caso, o termo O(1) do período extra é hand-waved, e a frase sobre retornos em (b) para E = 32/3 é contraditória."
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "question": 1,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 1 - Matemática)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-1-20-10-2026-2-fase-dia-1/dissertativa-1-matematica-2-fase-dia-1-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q1",
+      "solution_answer": "10 PAs ordenadas, a_k = (87 + (2k−11)r)/2, k = 1..10, com r ∈ {±1, ±3, ±5, ±7, ±9} e a_1 = (87 − 9r)/2. Tabela explícita: r=9: 3..84; r=7: 12..75; r=5: 21..66; r=3: 30..57; r=1: 39..48; e as 5 decrescentes correspondentes. Como conjuntos de números, são 5.",
+      "key_answer": "10 PAs: crescentes (39,...,48) r=1; (30,...,57) r=3; (21,...,66) r=5; (12,...,75) r=7; (3,...,84) r=9; e as 5 decrescentes correspondentes (r = −1, −3, −5, −7, −9).",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi com o enunciado original (pág. 2 da prova, onde N = {1,2,3,...}). Da soma vem 2a_1 + 9r = 87, então r é ímpar. Para todos os termos serem ≥ 1 é preciso 1 ≤ a_1 ≤ 86, o que dá −9 ≤ r ≤ 9. Testei por força bruta em python (r de −20 a 20, a_1 de 0 a 199, exigindo todos os termos ≥ 1): saem exatamente os 10 pares (r, a_1) = (±1; 39/48), (±3; 30/57), (±5; 21/66), (±7; 12/75), (±9; 3/84). Os termos da tabela da resolução batem com os do gabarito, e a fórmula fechada a_k = (87+(2k−11)r)/2 vale em k=1 e em k=10. Os dois chegam às mesmas 10 PAs: 5 crescentes e as 5 decrescentes correspondentes. A observação extra da resolução (são 5 conjuntos) não contradiz o gabarito."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "A resolução do gabarito diz só que 'a razão deve ser ímpar' e lista r = 1, 3, 5, 7, 9. Não justifica por que para em r = 9 (r = 11 daria a_1 = −6) nem trata as razões negativas pela inequação. A resolução avaliada faz isso direito (−9 ≤ r ≤ 9 a partir de 1 ≤ a_1 ≤ 86)."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Erros de digitação na transcrição do gabarito: faltam parênteses em 'S_10 = (a_1 + a_10 · 10)/2' e '(2a_1 + 9r · 10)/2' (deveria ser (a_1 + a_10)·10/2). As 5 PAs decrescentes aparecem grudadas numa sequência só ('...40,3957,54,...'). Nenhum dos dois muda a resposta."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "'Descreva todas as PAs' pode ser lido como contar sequências ordenadas (10) ou conjuntos de números (5). O gabarito conta 10, com as decrescentes. A resolução dá 10 como resposta principal e menciona os 5 conjuntos só como observação, então fica coberta nas duas leituras. Ela também verifica que contar o 0 como natural não muda o resultado."
+    }
+  ],
+  "summary": "A resolução da Q1 está correta e coincide com o gabarito do Poliedro: são 10 PAs, com r ∈ {±1, ±3, ±5, ±7, ±9} e a_1 = (87−9r)/2, cujos termos vão de 3 a 84. Confirmei o resultado com o enunciado original e por força bruta. A resolução é até mais completa que o gabarito, porque justifica o limite |r| ≤ 9 e verifica os casos de fronteira. Não há divergência de mérito; no gabarito só aparecem pequenas falhas de digitação."
+}

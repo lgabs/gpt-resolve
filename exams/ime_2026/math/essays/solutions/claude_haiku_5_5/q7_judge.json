@@ -1,0 +1,92 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.3,
+  "final_answer": "P(I|N) = 5/16 = 0,3125 = 31,25%. Solução por Bayes: P(N) = 0,9·0,05 + 0,1·0,99 = 0,144 e P(I|N) = 0,045/0,144 = 5/16. Hipóteses declaradas: computador sorteado da população (a priori 0,9), um único teste, taxas fixas e resposta binária. Com outra informação prévia, a resposta muda (p=0,5 daria cerca de 4,8%).",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 7 (IME 2026, Matemática, discursiva). Resolução de referência, feita antes de consultar qualquer candidato.\n\nEventos:\n- I: o computador está infectado.\n- V+: o antivírus indica vírus (resultado positivo).\n- V-: o antivírus indica ausência de vírus (resultado negativo). É o resultado observado.\n\nDados, em probabilidades condicionais:\n1. P(I) = 0,9, logo P(não I) = 0,1.\n2. Detecta vírus em computador infectado com probabilidade 95%: P(V+ | I) = 0,95, logo P(V- | I) = 0,05.\n3. Indica vírus quando o computador não está infectado com probabilidade 1%: P(V+ | não I) = 0,01, logo P(V- | não I) = 0,99.\n\nPergunta: P(I | V-).\n\nPasso 1 (probabilidade total do resultado negativo):\nP(V-) = P(V- | I)·P(I) + P(V- | não I)·P(não I) = 0,05·0,9 + 0,99·0,1 = 0,045 + 0,099 = 0,144.\n\nPasso 2 (Bayes):\nP(I | V-) = P(V- | I)·P(I) / P(V-) = 0,045 / 0,144 = 45/144 = 5/16 = 0,3125.\n\nResposta: 5/16, ou 31,25%.\n\nConferências:\n- Complementares: P(V+) = 0,95·0,9 + 0,01·0,1 = 0,856, e P(V+) + P(V-) = 1. Confere.\n- Contagem com 1000 computadores: 900 infectados e 100 não infectados. Entre os infectados, 5% dão negativo, ou seja, 45. Entre os não infectados, 99% dão negativo, ou seja, 99. Total de negativos: 144. Infectados entre os negativos: 45/144 = 5/16. Confere.\n- Cálculo exato com frações em Python (fractions.Fraction): P(I | V-) = 5/16.\n\nHipóteses usadas:\n- O computador examinado é tratado como sorteado da população com taxa de infecção de 90%, sem outra informação sobre ele (por exemplo, sintomas).\n- As taxas do antivírus valem para qualquer computador e dependem apenas do estado real de infecção. Um único teste é aplicado.\n\nInterpretação: o resultado negativo reduz a probabilidade de infecção de 90% para 31,25%. A queda é grande, mas a probabilidade não é desprezível, por causa dos falsos negativos.",
+    "final_answer": "Questão 7 (resposta aberta, não é múltipla escolha): a probabilidade de o computador examinado estar infectado, sabendo que o antivírus respondeu \"não infectado\", é P(I | V-) = 5/16 = 0,3125 = 31,25%.\n\nCálculo resumido: P(V-) = 0,05·0,9 + 0,99·0,1 = 0,144 e P(I | V-) = 0,045/0,144 = 5/16.",
+    "pitfalls": [
+      "Inverter a condicional: 5% é P(V- | I), a probabilidade de o antivírus errar dado que está infectado. A pergunta pede P(I | V-), que é 5/16 ≈ 31,25%.",
+      "Não normalizar: 0,9·0,05 = 4,5% é só a parcela de 'infectado e deu negativo'. É preciso dividir por P(V-) = 0,144 (a soma das duas parcelas de resultado negativo).",
+      "Ignorar a probabilidade a priori de 90%: usar P(I) = 0,5 ou desconsiderá-la leva a 0,05/(0,05+0,99) ≈ 4,8%, que está errado. A base alta de infecção é o ponto central do exercício.",
+      "Trocar os complementares: P(V+ | não I) = 0,01 é a taxa de falso positivo. Não é P(V- | não I) = 0,01 (que vale 0,99), nem P(não I | V+). A frase 'não está infectado com probabilidade de 1%' está condicionada a não infectado.",
+      "Confundir a sensibilidade de 95% com P(I | V-). Sensibilidade é P(V+ | I), e o resultado negativo usa o complementar 5%.",
+      "Ler o evento observado errado: a condição é o resultado do programa (V-, 'respondeu que não está infectado'), não o fato de o computador estar sadio. A condição é sobre o teste, não sobre o estado real.",
+      "Esquecer as hipóteses implícitas: o computador examinado é tratado como sorteado da população com infecção de 90%, sem outra informação. Um único teste é aplicado e as taxas valem para qualquer máquina.",
+      "Erros de arredondamento e apresentação: a resposta exata é 5/16. Escrever 31% ou 0,31 é aproximação, e não se deve confundir com 1/3 ou 0,5.",
+      "Interpretação: o negativo reduz a probabilidade de 90% para 31,25%, mas não a zera. Um bom texto de resposta precisa dizer isso, porque o falso negativo continua possível."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.0,
+      "final_answer": "P(infectado | antivírus negativo) = 5/16 = 0,3125 = 31,25%. Por Bayes com P(I)=0,9, P(N|I)=0,05 e P(N|não I)=0,99: P(N)=0,144 e P(I|N)=0,045/0,144.",
+      "review": {
+        "score": 8,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Hipóteses de modelagem não declaradas. A resolução usa P(I)=0,9 como probabilidade a priori do computador examinado, mas não diz que ele é tratado como sorteado da população sem outra informação (sintomas, histórico etc.). Também não declara que se aplica um único teste, que as taxas valem para qualquer máquina e que o programa responde apenas 'sim' ou 'não' (a complementaridade 0,95/0,05 e 0,01/0,99 é apresentada como fato, sem a hipótese de que não há resposta inconclusiva). A referência trata isso como armadilha e o valor 5/16 depende dessas premissas. Deveria haver uma seção 'Hipóteses' explícita, com uma frase dizendo como a resposta mudaria se houvesse outra informação sobre o computador."
+          },
+          {
+            "severity": "minor",
+            "description": "Na interpretação final, 'cerca de um terço' é aproximação imprecisa. 5/16 = 0,3125 e 1/3 ≈ 0,333, diferença de quase 2 pontos percentuais, justamente a confusão que a referência aponta. A resolução já tem a resposta exata; deveria dizer '5/16, ou seja, 31,25%' nessa frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A explicação de por que a probabilidade continua considerável ('5% dos infectados recebem resposta negativa e os infectados são a maioria a priori') é qualitativa e não explica o número. O mecanismo exato é: a razão de verossimilhança 0,05/0,99 ≈ 1/20 atua sobre a chance a priori 9:1, dando chance a posteriori 5:11. Deveria citar essa conta ou a contagem de 45 infectados entre 144 negativos, para ligar a interpretação ao cálculo."
+          },
+          {
+            "severity": "minor",
+            "description": "As armadilhas de inversão da condicional (5% é P(N|I), não P(I|N)) e de normalização são tratadas corretamente, mas só implicitamente. Um gabarito comentado deveria apontar em uma frase que o 5% dado não é a resposta e que P(I|N) exige dividir por P(N). Trata-se de melhoria didática, não de erro."
+          }
+        ],
+        "summary": "Resposta final correta e igual à referência: P(I|N) = 5/16 = 31,25%. Confirmei no PDF original (página 2, 7ª questão) que o enunciado coincide com a transcrição. Refiz as contas com Fraction: P(N)=18/125=0,144; P(I|N)=5/16; P(Ī|N)=11/16, com soma 1; razão de chances 9·(0,05/0,99)=5/11, que dá 5/16; contagem 45/144. Tudo bate, e não encontrei erro de conta, de notação ou de lógica. A resolução também confere os casos-limite (antivírus perfeito dá 0; antivírus que não discrimina dá 0,9). As armadilhas de inversão da condicional, normalização, probabilidade a priori, complementares, evento observado e arredondamento foram tratadas corretamente. O que impede nota 9 é a falta de declaração explícita das hipóteses de modelagem (armadilha da referência não tratada) e uma interpretação final com aproximação imprecisa ('cerca de um terço') e explicação quantitativa fraca. Nota 8.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.3,
+      "final_answer": "P(I|N) = 5/16 = 0,3125 = 31,25%. Solução por Bayes: P(N) = 0,9·0,05 + 0,1·0,99 = 0,144 e P(I|N) = 0,045/0,144 = 5/16. Hipóteses declaradas: computador sorteado da população (a priori 0,9), um único teste, taxas fixas e resposta binária. Com outra informação prévia, a resposta muda (p=0,5 daria cerca de 4,8%).",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Notação: a letra p aparece com dois sentidos. Em 'Casos particulares' é P(N|I)=P(N|Ī)=p, e em 'Sensibilidade à hipótese 2' é a probabilidade a priori geral. Deveria usar outra letra (por exemplo q ou π) em um dos dois casos."
+          },
+          {
+            "severity": "minor",
+            "description": "A explicação de por que a probabilidade não zera ('porque os infectados são 9 vezes mais numerosos... e a razão de verossimilhança... não é nula') é confusa. A razão 9 explica o valor alto, não a positividade. A causa real é P(N|I)=0,05>0, ou seja, o falso negativo de 5%. Deveria dizer isso explicitamente e concluir que um resultado negativo não permite descartar a infecção."
+          },
+          {
+            "severity": "minor",
+            "description": "Falso positivo (1%) e falso negativo (5%) não são nomeados, embora a armadilha de trocar complementares dependa disso. Nomear as taxas na seção de dados tornaria a interpretação mais clara."
+          },
+          {
+            "severity": "minor",
+            "description": "A linha final 'ANSWER:' está em inglês e contém só a fórmula. Falta uma frase de conclusão em português, como 'A probabilidade de o computador estar infectado, dado que o programa respondeu não infectado, é 5/16 ≈ 31,25%'. Para um gabarito comentado em português, isso faz falta."
+          },
+          {
+            "severity": "minor",
+            "description": "No Passo 2, a validade de P(I|N)=P(I∩N)/P(N) depende de P(N)>0, mas isso só é verificado no Passo 3 (referência adiantada). Bastaria observar já no Passo 1 que P(N) ≥ P(N|Ī)·P(Ī) = 0,099 > 0."
+          },
+          {
+            "severity": "minor",
+            "description": "O item 'Unidades e ordem de grandeza' tem conteúdo de enchimento (P é adimensional e está em [0,1]). Poderia ser enxugado ou substituído pela interpretação do resultado em termos do problema."
+          }
+        ],
+        "summary": "Parecer sobre a questão 7 (probabilidade de infecção dado resultado negativo do antivírus).\n\nResposta: a resolução do candidato dá 5/16 = 0,3125 = 31,25%, igual à referência. Conferi as contas com frações exatas: P(N)=18/125=0,144; P(I|N)=0,045/0,144=5/16; P(Ī|N)=11/16; razão de chances 9:1 → 5:11; razão de verossimilhança 5/99; contagem de 1000 máquinas (45 de 144 negativos são infectados). A sensibilidade à priori também confere: p=0,9 dá 5/16 e p=0,5 dá 5/104≈4,8%. O enunciado do PDF (questão 7, página 2) coincide com a transcrição.\n\nPontos fortes: as hipóteses de modelagem estão explícitas (um único teste, priori de 90%, taxas fixas, resposta binária). A condicional invertida é tratada, assim como a normalização e o uso de P(I) como priori. Há conferências independentes (contagem, razão de chances, casos limite e sensibilidade). O resultado exato é 5/16, e não 1/3.\n\nArmadilhas: todas as dez da referência estão tratadas. A única tratada só parcialmente é a interpretação do resultado, cuja explicação do valor não nulo está mal formulada.\n\nProblemas encontrados: nenhum crítico ou grave. Há seis problemas menores: colisão da letra p, explicação confusa do valor não nulo, falso positivo e falso negativo não nomeados, conclusão final em inglês e só com fórmula, referência adiantada para P(N)>0 e um item de unidades que é enchimento.\n\nNota: 9,3. É um gabarito que um professor publicaria após ajustes de redação e notação. A matemática está correta e completa.\""
+      }
+    }
+  ]
+}

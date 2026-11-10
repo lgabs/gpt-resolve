@@ -1,0 +1,51 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "A área total em vermelho é π(α² + 32α + 528) unidades de área. Ela é a soma do círculo central (πα²) com 16 anéis vermelhos. O anel vermelho de índice 2j tem área π(2α + 4j − 1), para j = 1, …, 16.",
+  "judge_reference": {
+    "reference_solution": "**Modelagem.** O alvo tem 33 circunferências concêntricas. Os raios são, em ordem, r_k = α + k, com k = 0, 1, …, 32. A maior tem raio α + 32, e não α + 33. As 33 circunferências dividem o alvo em 33 regiões:\n- R_0: o disco central, de raio α, que é vermelho;\n- R_k, para k = 1, …, 32: a coroa entre os raios α + k − 1 e α + k.\n\nAs cores se alternam a partir do centro. Então R_k é vermelha quando k é par e branca quando k é ímpar. Como 32 é par, a coroa mais externa R_32 também é vermelha. As regiões vermelhas são R_0, R_2, R_4, …, R_32: o disco central mais 16 coroas, ou seja, 17 regiões. As brancas são R_1, R_3, …, R_31, que somam 16 coroas.\n\n**Área de uma coroa vermelha.** Para j = 1, …, 16, a coroa R_{2j} vai do raio α + 2j − 1 ao raio α + 2j. Sua área é:\nA_j = π[(α + 2j)² − (α + 2j − 1)²] = π[(2α + 4j − 1)·1] = π(2α + 4j − 1).\nIsso usa a diferença de quadrados com diferença entre os raios igual a 1. Logo as áreas A_j formam uma PA de razão 4π.\n\n**Soma.**\nΣ_{j=1}^{16} (2α + 4j − 1) = 16·2α + 4·(16·17/2) − 16 = 32α + 544 − 16 = 32α + 528.\n\nSomando a área do disco central:\nA_vermelha = π[α² + 32α + 528] = π(α² + 32α + 528) unidades de área.\n\nO mesmo valor sai da soma alternada π[(α+32)² − (α+31)² + (α+30)² − … − (α+1)² + α²], que tem 33 termos e o sinal \"+\" nos raios α + par.\n\n**Verificações.**\n- Área branca: Σ_{j=1}^{16} π[(α + 2j − 1)² − (α + 2j − 2)²] = π Σ (2α + 4j − 3) = π(32α + 544 − 48) = π(32α + 496).\n- Vermelha + branca = π(α² + 64α + 1024) = π(α + 32)². Isso bate com a área total do alvo.\n- Exemplo com α = 1: a soma direta dá 561π, e 1 + 32 + 528 = 561. Também conferi numericamente em Python para α = 0; 2; 3,5; 10.\n\n**Resposta:** A_vermelha = π(α² + 32α + 528) unidades de área, com α > 0. Formas equivalentes: π[(α + 16)² + 272] e π(α + 12)(α + 20) + 288π.",
+    "final_answer": "Área vermelha = π(α² + 32α + 528) unidades de área. A área vermelha é formada pelo disco central de raio α mais 16 coroas, cada uma de largura 1. Os raios vão de α a α + 32, e a coroa mais externa é vermelha. A área branca correspondente é π(32α + 496), e a soma das duas dá π(α + 32)².",
+    "pitfalls": [
+      "Erro de uma unidade nos raios: com 33 círculos o maior raio é α + 32, não α + 33. Se o candidato usar raios até α + 33, encontra π(α² + 34α + 595) ou um valor com paridade trocada, o que está errado.",
+      "Contagem das regiões: 33 círculos (incluindo o central) formam 33 regiões, o disco mais 32 coroas. Contar as regiões ou contar as circunferências dá o mesmo resultado, então as duas leituras do enunciado são equivalentes.",
+      "Paridade e cor da última coroa: o número de regiões é ímpar, então a coroa mais externa (entre α + 31 e α + 32) é vermelha. As regiões vermelhas são 17, o disco mais 16 coroas, e as brancas são 16. Quem trocar as cores ou achar que a coroa externa é branca erra a resposta.",
+      "Não esquecer o disco central πα² na soma. Sem ele o resultado seria π(32α + 528), que está errado.",
+      "Soma da PA: Σ_{j=1}^{16}(2α + 4j − 1) = 32α + 4·136 − 16 = 32α + 528. São comuns erros como 4·136 = 544 sem subtrair o 16, o que daria 560, ou somar 17 termos em vez de 16.",
+      "Cada coroa tem área π(R² − r²) = π(R − r)(R + r) = π(R + r), porque R − r = 1. Não se pode tomar a área de uma coroa como π(R − r)² ou como 2πr·1 aproximadamente; 2π·(raio médio) até dá certo, mas precisa ser justificado.",
+      "Fazer a verificação: vermelha + branca = π(α + 32)², com branca = π(32α + 496). Uma boa resolução mostra essa conferência ou chega à resposta por um caminho claro, como a soma alternada de quadrados ou a PA.",
+      "A resposta deve ser dada em função de α, com o fator π e totalmente simplificada (instrução 8 da prova: as expressões numéricas devem ser resolvidas integralmente). Deixar a soma Σ indicada ou 4·(16·17/2) sem calcular é penalizável.",
+      "Hipótese implícita: α > 0, já que α é o raio do disco central. Não há outras restrições."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "A área total em vermelho é π(α² + 32α + 528) unidades de área. Ela é a soma do círculo central (πα²) com 16 anéis vermelhos. O anel vermelho de índice 2j tem área π(2α + 4j − 1), para j = 1, …, 16.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A conferência com α = 1 não é independente. A 'soma direta' π[1 + Σ(4j+1)] é a própria fórmula da PA com α = 1 substituído, e não uma soma feita por outro caminho. Para valer como verificação, a soma deveria ser refeita de forma independente, por exemplo pela soma alternada π[(α+32)² − (α+31)² + … + α²] ou pela soma explícita dos termos 5, 9, …, 65."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação, a área branca aparece como Σ(2α+4j−3) = 32α+496 sem a conta intermediária (32α + 4·136 − 48 = 32α + 544 − 48). Isso não afeta a resposta, mas a instrução 8 pede que as expressões numéricas sejam resolvidas integralmente. O ideal é mostrar o passo, como foi feito para a área vermelha."
+          },
+          {
+            "severity": "minor",
+            "description": "O texto não diz explicitamente que α > 0, nem observa que contar as 33 circunferências ou as 33 regiões dá o mesmo resultado. É um detalhe de rigor e de clareza, não um erro."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (página 5) e a transcrição está fiel. O candidato chega a π(α² + 32α + 528), a mesma resposta da minha referência. Conferi numericamente para α = 0, 1, 2, 3,5 e 10 e também a área branca π(32α + 496). A diferença entre vermelho e branco é π(α² + 32), e a soma das duas dá π(α+32)². Tudo está certo.\n\nAs armadilhas foram tratadas:\n- os raios vão de α a α+32, e não até α+33;\n- são 32 coroas, com as de índice par vermelhas, o que dá 16 coroas vermelhas e mostra que a coroa externa é vermelha;\n- o disco central πα² foi incluído;\n- a área de cada coroa foi obtida pela diferença de quadrados com R − r = 1;\n- a PA foi somada corretamente: 32α + 544 − 16 = 32α + 528;\n- a resposta foi simplificada e traz π e unidades.\n\nA verificação vermelha + branca = π(α+32)² e a interpretação de A_V − A_B dão confiança ao resultado. Os problemas são pequenos e de acabamento: a checagem com α = 1 repete a própria fórmula da PA em vez de ser independente, a conta da área branca não mostra o passo intermediário, e o texto não declara explicitamente α > 0 nem que as duas formas de contar dão o mesmo resultado. A resolução está em nível de gabarito comentado."
+      }
+    }
+  ]
+}

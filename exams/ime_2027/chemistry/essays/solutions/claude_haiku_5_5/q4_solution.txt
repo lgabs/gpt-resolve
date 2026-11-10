@@ -1,0 +1,130 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Hipóteses e convenções.} Sejam $\mathrm{M}$ o monômero, $\mathrm{CH_3COOH}$, e $\mathrm{D}$ o dímero cíclico, $(\mathrm{CH_3COOH})_2$. O equilíbrio de associação é
+\[
+2\,\mathrm{M} \rightleftharpoons \mathrm{D}.
+\]
+Interpreta-se ``cada mol de monômero gera 0,42 mol de dímero'' como: a partir de 1 mol de monômero inicial, formam-se 0,42 mol de dímero no equilíbrio, o que consome $2\times0{,}42=0{,}84$ mol de monômero e deixa $0{,}16$ mol. Como o enunciado não informa o volume, a constante do item (c) é calculada na base de 1 mol de monômero inicial em 1 L ($c_0=1{,}00\ \mathrm{mol\,L^{-1}}$). Na crioscopia do item (d), a constante usada é a do benzeno (solvente); a constante e o ponto de fusão do ácido acético são distratores, e as densidades servem para converter volume em massa.
+
+\textbf{a)} O dímero é mantido por \textbf{ligações de hidrogênio} (pontes de hidrogênio). O hidrogênio da hidroxila, ligado a um oxigênio muito eletronegativo, fica com carga parcial positiva elevada ($\delta^+$) e interage com um par de elétrons não ligantes do oxigênio da carbonila da outra molécula. Há, assim, duas pontes $\mathrm{O{-}H\cdots O{=}C}$ por dímero, que fecham um anel de 8 membros. Forças dipolo-dipolo e de dispersão também existem, mas são secundárias; a interação ``forte'' citada no enunciado é a ponte de hidrogênio.
+
+\textbf{b)} Fórmula do dímero: $\mathrm{C_4H_8O_4}$. Elétrons de valência: $4\cdot4+8\cdot1+4\cdot6=48$. Em cada monômero, o C tem 4 ligações (ao $\mathrm{CH_3}$, à carbonila e à hidroxila); o O da carbonila tem 1 dupla ligação e 2 pares não ligantes; o O da hidroxila tem 2 ligações e 2 pares não ligantes; o H tem 1 ligação (dupleto). Conferência:
+\[
+2\times\left(8\ \text{ligações}\times2+4\ \text{pares não ligantes}\times2\right)=2\times24=48\ \text{elétrons}.
+\]
+As pontes de hidrogênio não são ligações covalentes e não compartilham elétrons, por isso são desenhadas como linhas tracejadas. Todos os C e O ficam com octeto e o H com dupleto.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8, every node/.style={font=\small}]
+  \coordinate (Oa) at (-1.1, 1.1);
+  \coordinate (C1) at (-1.6, 0);
+  \coordinate (Ob) at (-1.1, -1.1);
+  \coordinate (Hb) at (0, -1.6);
+  \coordinate (Oc) at (1.1, -1.1);
+  \coordinate (C2) at (1.6, 0);
+  \coordinate (Od) at (1.1, 1.1);
+  \coordinate (Hd) at (0, 1.6);
+  \coordinate (Me1) at (-3.2, 0);
+  \coordinate (Me2) at (3.2, 0);
+
+  % ligações covalentes
+  \draw[double, double distance=2pt] (C1) -- (Oa);
+  \draw (C1) -- (Ob);
+  \draw (Ob) -- (Hb);
+  \draw (C1) -- (Me1);
+  \draw[double, double distance=2pt] (C2) -- (Oc);
+  \draw (C2) -- (Od);
+  \draw (Od) -- (Hd);
+  \draw (C2) -- (Me2);
+
+  % pontes de hidrogênio (tracejadas)
+  \draw[dashed] (Hb) -- (Oc);
+  \draw[dashed] (Hd) -- (Oa);
+
+  % pares de elétrons não ligantes (pontos), em coordenadas relativas ao O
+  \begin{scope}[shift={(Oa)}]
+    \foreach \a in {100,170} {
+      \fill (\a:0.42) ++(\a+90:0.09) circle (1.1pt);
+      \fill (\a:0.42) ++(\a-90:0.09) circle (1.1pt);
+    }
+  \end{scope}
+  \begin{scope}[shift={(Ob)}]
+    \foreach \a in {200,250} {
+      \fill (\a:0.42) ++(\a+90:0.09) circle (1.1pt);
+      \fill (\a:0.42) ++(\a-90:0.09) circle (1.1pt);
+    }
+  \end{scope}
+  \begin{scope}[shift={(Oc)}]
+    \foreach \a in {290,340} {
+      \fill (\a:0.42) ++(\a+90:0.09) circle (1.1pt);
+      \fill (\a:0.42) ++(\a-90:0.09) circle (1.1pt);
+    }
+  \end{scope}
+  \begin{scope}[shift={(Od)}]
+    \foreach \a in {15,85} {
+      \fill (\a:0.42) ++(\a+90:0.09) circle (1.1pt);
+      \fill (\a:0.42) ++(\a-90:0.09) circle (1.1pt);
+    }
+  \end{scope}
+
+  % rótulos dos átomos
+  \node[fill=white, inner sep=1pt] at (Oa) {$\mathrm{O}$};
+  \node[fill=white, inner sep=1pt] at (Ob) {$\mathrm{O}$};
+  \node[fill=white, inner sep=1pt] at (Oc) {$\mathrm{O}$};
+  \node[fill=white, inner sep=1pt] at (Od) {$\mathrm{O}$};
+  \node[fill=white, inner sep=1pt] at (C1) {$\mathrm{C}$};
+  \node[fill=white, inner sep=1pt] at (C2) {$\mathrm{C}$};
+  \node[fill=white, inner sep=1pt] at (Hb) {$\mathrm{H}$};
+  \node[fill=white, inner sep=1pt] at (Hd) {$\mathrm{H}$};
+  \node[fill=white, inner sep=1pt] at (Me1) {$\mathrm{CH_3}$};
+  \node[fill=white, inner sep=1pt] at (Me2) {$\mathrm{CH_3}$};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\small Linhas contínuas: ligações covalentes; linhas tracejadas: pontes de hidrogênio; pontos: pares não ligantes.
+\end{center}
+
+\textbf{c)} Para $2\,\mathrm{M}\rightleftharpoons\mathrm{D}$:
+\[
+K_c=\frac{[\mathrm{D}]}{[\mathrm{M}]^2}.
+\]
+No equilíbrio, na base de 1 L: $[\mathrm{D}]=0{,}42\ \mathrm{mol\,L^{-1}}$ e $[\mathrm{M}]=1{,}00-2\times0{,}42=0{,}16\ \mathrm{mol\,L^{-1}}$. Conferência do balanço de massa: $[\mathrm{M}]+2[\mathrm{D}]=0{,}16+0{,}84=1{,}00\ \mathrm{mol\,L^{-1}}$. Logo
+\[
+K_c=\frac{0{,}42}{(0{,}16)^2}=\frac{0{,}42}{0{,}0256}\approx 16{,}4\ \mathrm{L\,mol^{-1}}.
+\]
+A unidade é $\mathrm{L\,mol^{-1}}$, pois $\Delta n=1-2=-1$. Como $K_c>1$ nessa base, o dímero é a espécie favorecida.
+
+\textbf{d)} Dados: $c_0=0{,}10\ \mathrm{mol\,L^{-1}}$ de ácido acético (total analítico), com a mesma relação dímero/monômero do equilíbrio: $[\mathrm{D}]/[\mathrm{M}]=0{,}42/0{,}16=2{,}625$.
+
+\begin{enumerate}
+\item \textit{Concentrações.} Com $[\mathrm{M}]+2[\mathrm{D}]=c_0$ e $[\mathrm{D}]=2{,}625\,[\mathrm{M}]$, vem $[\mathrm{M}](1+5{,}25)=0{,}10$, logo $[\mathrm{M}]=0{,}016\ \mathrm{mol\,L^{-1}}$ e $[\mathrm{D}]=0{,}042\ \mathrm{mol\,L^{-1}}$. Equivalentemente, a fração de monômero associada é a mesma: 0,42 mol de dímero por mol inicial.
+
+\item \textit{Fator de van't Hoff.} O abaixamento crioscópico depende do número de partículas dissolvidas. Por mol de ácido acético analítico:
+\[
+i=\frac{n_{\mathrm{M}}+n_{\mathrm{D}}}{n_0}=\frac{0{,}016+0{,}042}{0{,}10}=0{,}58.
+\]
+Confere com $i=1-0{,}42=0{,}58$: cada dímero consome 2 partículas e forma 1, ou seja, reduz o número de partículas em 1 por mol de dímero.
+
+\item \textit{Molalidade.} Em 1 L de solução há $0{,}10$ mol de ácido acético, com massa $0{,}10\times60{,}05=6{,}005$ g, que ocupam $6{,}005/1{,}05=5{,}72$ mL (densidade $1{,}05\ \mathrm{kg\,L^{-1}}$). Admitindo volumes aditivos, o benzeno ocupa $1{,}000-0{,}006=0{,}994$ L, com massa $0{,}994\times0{,}87=0{,}865$ kg. Então
+\[
+W=\frac{0{,}10\ \mathrm{mol}}{0{,}865\ \mathrm{kg}}\approx 0{,}1156\ \mathrm{mol\,kg^{-1}}.
+\]
+
+\item \textit{Abaixamento crioscópico.} Com $K_f=5{,}12\ \mathrm{K\,kg\,mol^{-1}}$ (benzeno):
+\[
+\Delta T_f=i\,K_f\,W=0{,}58\times5{,}12\times0{,}1156\approx 0{,}343\ \mathrm{K}.
+\]
+
+\item \textit{Temperatura de fusão.}
+\[
+T_f=5{,}45-0{,}343\approx 5{,}11\ ^\circ\mathrm{C}.
+\]
+\end{enumerate}
+
+\textit{Verificação.} Sem associação ($i=1$), seriam $\Delta T_f\approx0{,}59$ K e $T_f\approx4{,}86\ ^\circ\mathrm{C}$. A associação reduz o número de partículas e, portanto, o abaixamento, de modo que a solução congela cerca de 0,25 K mais perto do benzeno puro. A ordem de grandeza está coerente: $0{,}1\ \mathrm{mol\,kg^{-1}}\times5\ \mathrm{K\,kg\,mol^{-1}}\approx0{,}5$ K no caso ideal. Se o volume do soluto for desprezado ($W=0{,}10/0{,}87=0{,}115$ mol/kg), o resultado final continua $5{,}11\ ^\circ\mathrm{C}$.
+
+\textit{Observação.} Não se reaproveita $K_c$ do item (c) neste caso: com $K_c$ fixo, a razão dímero/monômero mudaria com a diluição (em 0,10 mol/L daria $[\mathrm{D}]/[\mathrm{M}]\approx0{,}69$, e não $2{,}625$). O enunciado impõe a mesma relação, portanto a mesma fração associada.
+
+ANSWER: a) ligações de hidrogênio (pontes $\mathrm{O{-}H\cdots O{=}C}$); b) dímero cíclico com duas pontes de hidrogênio, anel de 8 membros, $\mathrm{C_4H_8O_4}$ (ver figura); c) $K_c\approx16{,}4\ \mathrm{L\,mol^{-1}}$ (base de 1 mol/L); d) $T_f\approx5{,}11\ ^\circ\mathrm{C}$ ($\Delta T_f\approx0{,}34$ K, com $i=0{,}58$)

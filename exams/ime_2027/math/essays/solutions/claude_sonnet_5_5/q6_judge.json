@@ -1,0 +1,54 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "1/3",
+  "judge_reference": {
+    "reference_solution": "**Enunciado conferido com o PDF (p. 2, 6ª questão):** f: S→S bijetora escolhida ao acaso, |S| = 9, f^(9) = f∘f∘…∘f (9 vezes). Pede-se P(f^(9)(1) = 1). Todas as 9! = 362 880 permutações são equiprováveis.\n\n**1) Condição equivalente (estrutura de ciclos).**\nToda bijeção de um conjunto finito se decompõe em ciclos disjuntos. Seja k o comprimento do ciclo que contém o elemento 1, isto é, k é o menor inteiro positivo com f^(k)(1) = 1. Os elementos 1, f(1), …, f^(k−1)(1) são distintos e f^(m)(1) = 1 ⇔ k | m. Logo\nf^(9)(1) = 1 ⇔ k | 9 ⇔ k ∈ {1, 3, 9}.\n(1 só retorna a si mesmo em múltiplos de k. Se k não divide 9, f^(9)(1) ≠ 1.)\n\n**2) Quantas permutações têm o ciclo de 1 com comprimento k, para k = 1,…,9.**\nPara formar o ciclo (1 a₂ … a_k): escolher, em ordem, os k−1 outros elementos entre os 8 restantes, o que dá 8!/(9−k)! maneiras. Os 9−k elementos restantes formam uma permutação arbitrária: (9−k)! maneiras. Total:\nN_k = [8!/(9−k)!] · (9−k)! = 8!, independente de k.\nConferência: Σ_{k=1}^{9} N_k = 9·8! = 9!. ✔\nOu seja, o comprimento do ciclo de 1 é uniforme em {1,…,9}: P(k) = 1/9.\n\n**3) Probabilidade.**\nCasos favoráveis: k = 1, 3, 9, ou seja 3·8! = 120 960 permutações.\nP = 3·8!/9! = 3/9 = **1/3**.\n\nDetalhamento por k:\n- k = 1: f(1) = 1, as outras 8 posições livres: 8! = 40 320.\n- k = 3: 8·7 escolhas ordenadas para o ciclo (1 a b), vezes 6! = 56·720 = 40 320.\n- k = 9: ciclo de 9 elementos: 8! = 40 320.\n\n**4) Verificação computacional.** Enumerando as 9! permutações e calculando diretamente f^(9)(1), obtêm-se 120 960 casos com f^(9)(1) = 1, logo 120 960/362 880 = 1/3. A contagem por comprimento do ciclo de 1 deu exatamente 40 320 = 8! para cada k = 1,…,9, o que confirma o item 2.\n\n**Resposta: P = 1/3.**",
+    "final_answer": "P(f^(9)(1) = 1) = 1/3. Equivale ao ciclo de 1 ter comprimento k ∈ {1, 3, 9}, os divisores de 9. Cada comprimento k = 1,…,9 ocorre em 8! permutações, então a probabilidade é 3·8!/9! = 1/3. Conferido por enumeração das 9! permutações: 120 960 favoráveis de 362 880.",
+    "pitfalls": [
+      "Ler f^(9) como composição de f consigo mesma 9 vezes, não como potência (f(x))^9 nem derivada.",
+      "Só importa o ciclo que contém o elemento 1: f^(9)(1)=1 ⇔ comprimento k desse ciclo divide 9 (k ∈ {1,3,9}). Exigir que todos os ciclos tenham comprimento dividindo 9 (f^(9)=id) está errado e daria outra probabilidade, bem menor.",
+      "Justificar o 'k | 9' com cuidado: f^(m)(1)=1 ⇔ k | m, usando que k é o menor retorno a 1 e que os elementos do ciclo são distintos. Basta que k | 9, sem exigir k = 9 ou k primo.",
+      "Não esquecer k = 1 (ponto fixo, f(1)=1) e k = 9 (ciclo completo). Contar só k = 3 dá 1/9.",
+      "A contagem N_k = 8!/(9−k)! · (9−k)! = 8! para todo k vale porque o ciclo de 1 é escolhido em ordem e o resto é permutação livre. Erros comuns: usar C(8,k−1) sem a ordenação dos elementos ou esquecer o fator (9−k)! dos demais.",
+      "Atalho elegante: o comprimento do ciclo de 1 é uniforme em {1,…,9}, então P = (nº de divisores de 9)/9 = 3/9. Quem usa o atalho deve prová-lo (contagem de 8! por k), não apenas afirmá-lo.",
+      "O espaço amostral é o das 9! bijeções equiprováveis, e não o das 9^9 funções quaisquer.",
+      "Resposta final deve vir simplificada: 1/3, ou 120 960/362 880 = 1/3."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "1/3",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A equivalência f^(m)(1)=1 ⇔ k | m está só afirmada, em uma frase entre parênteses que é quase circular (\"exige que m seja múltiplo do período de 1, que é k\"). Falta a justificativa curta: se m = qk + r com 0 ≤ r < k, então f^(r)(1) = 1, e a minimalidade de k força r = 0. Também falta dizer que os elementos 1, f(1), …, f^(k−1)(1) são distintos. É o passo central do problema e merecia duas linhas de prova."
+          },
+          {
+            "severity": "minor",
+            "description": "O espaço amostral (as 9! bijeções equiprováveis) não é declarado no começo. Só aparece de forma implícita em \"total de bijeções\" e em P = 3·8!/9!. Convém dizer isso e que f(1)=1 etc. são eventos dentro desse espaço, e não dentro das 9^9 funções."
+          },
+          {
+            "severity": "minor",
+            "description": "A contagem N_k usa C(8,k−1)·(k−1)!·(9−k)! sem justificar que cada bijeção corresponde a exatamente uma escolha (conjunto do ciclo, ordem cíclica, permutação do resto). A contagem está correta. Faltou um comentário sobre essa correspondência biunívoca e um exemplo numérico, como k=3: 8·7·6! = 40 320."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência por computador é só citada, sem código nem detalhe. Refiz a enumeração e obtive 120 960 casos favoráveis e 40 320 permutações para cada k = 1,…,9, o que confirma o resultado. Para um gabarito, a verificação deveria ser mais concreta, por exemplo mencionando a distribuição uniforme do comprimento do ciclo de 1."
+          }
+        ],
+        "summary": "Enunciado conferido no PDF (p. 2, 6ª questão). A resposta do candidato, 1/3, coincide com a da minha referência e está correta. Confirmei por enumeração das 9! permutações: 120 960 casos favoráveis, razão 1/3. O comprimento k do ciclo de 1 tem N_k = 8! para cada k = 1,…,9, como o candidato afirma. A estrutura é a esperada. Reduz a k | 9, ou seja k ∈ {1,3,9}. A contagem N_k = C(8,k−1)(k−1)!(9−k)! = 8! tem verificação de soma 9·8! = 9!. A conclusão é P = 3·8!/9! = 1/3. As armadilhas foram evitadas: só o ciclo de 1 importa (não f^(9)=id), k=1 e k=9 foram incluídos, a ordenação do ciclo está presente, o fator (9−k)! também, e a resposta está simplificada. Os pontos fracos são de rigor e não de correção: o lema f^(m)(1)=1 ⇔ k | m é só afirmado, sem a divisão euclidiana e a minimalidade de k. O espaço amostral equiprovável não é declarado, e a correspondência biunívoca da contagem não é explicada. Nenhum erro de conta ou de lógica. Resolução limpa e completa, quase de gabarito comentado, descontando a pequena lacuna de justificativa do passo central."
+      }
+    }
+  ]
+}

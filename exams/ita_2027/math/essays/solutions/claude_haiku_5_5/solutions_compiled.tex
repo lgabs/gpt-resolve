@@ -1,0 +1,866 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsfonts}%
+\usepackage{graphicx}%
+\usepackage{hyperref}%
+\usepackage{tikz}%
+\usepackage{pgfplots}%
+\usetikzlibrary{math}%
+\title{ITA 2027 - Matemática\thanks{This exam was solved and automatically generated with gpt-resolve: \url{https://github.com/lgabs/gpt-resolve}}}%
+\author{claude{-}haiku{-}5{-}5 (solver) + claude{-}haiku{-}5{-}5 (judge)}%
+\date{November 09, 2026}%
+%
+\begin{document}%
+\normalsize%
+\maketitle%
+\section*{Questão 1}
+
+\section*{Solução}
+
+Sejam $a_1, a_2, \ldots, a_{10}$ os termos da progressão aritmética (PA), todos em $\mathbb{N}$, e seja $r$ a razão. Como $a_1$ e $a_2$ são naturais, $r = a_2 - a_1 \in \mathbb{Z}$, e o termo geral é
+\[
+a_k = a_1 + (k-1)\,r, \qquad k = 1, \ldots, 10.
+\]
+
+\textbf{Passo 1 (equação da soma).} Em uma PA finita, a soma é a média dos extremos vezes o número de termos:
+\[
+S = \frac{(a_1 + a_{10})\cdot 10}{2} = 5\,(a_1 + a_{10}).
+\]
+Como $S = 435$, segue $a_1 + a_{10} = 87$. Como $a_{10} = a_1 + 9r$, isso equivale a
+\[
+2a_1 + 9r = 87. \tag{1}
+\]
+(Conferência: $S = 10a_1 + 45r = 435$ é a mesma equação multiplicada por $5$.)
+
+\textbf{Passo 2 (paridade de $r$).} Em (1), $2a_1$ é par e $87$ é ímpar, logo $9r$ é ímpar. Como $9$ é ímpar, $r$ é ímpar. Reciprocamente, se $r$ é ímpar, então $87 - 9r$ é par e
+\[
+a_1 = \frac{87 - 9r}{2}
+\]
+é inteiro. Logo, a PA é determinada pela razão $r$, que deve ser ímpar.
+
+\textbf{Passo 3 (condição de naturalidade).} A função $k \mapsto a_k$ é afim, portanto monótona, e todos os termos estão entre $a_1$ e $a_{10}$. Como $a_1$ e $r$ são inteiros, todos os termos são inteiros. Assim, todos são naturais (inteiros $\geq 1$) se e somente se $a_1 \geq 1$ e $a_{10} \geq 1$. Por (1), $a_{10} = 87 - a_1$, e a condição fica $1 \leq a_1 \leq 86$. Em termos de $r$, com $r$ inteiro:
+\begin{itemize}
+\item $a_1 \geq 1 \iff 87 - 9r \geq 2 \iff 9r \leq 85$. Como $85 < 90 = 9\cdot 10$, isso equivale a $r \leq 9$.
+\item $a_{10} \geq 1 \iff a_1 \leq 86 \iff 87 - 9r \leq 172 \iff 9r \geq -85$. Como $-85 > -90 = 9\cdot(-10)$, isso equivale a $r \geq -9$.
+\end{itemize}
+Portanto $-9 \leq r \leq 9$.
+
+\textbf{Passo 4 (conjunto de razões).} Combinando a paridade com $-9 \leq r \leq 9$, obtemos
+\[
+r \in \{-9, -7, -5, -3, -1, 1, 3, 5, 7, 9\},
+\]
+dez valores, e cada um define exatamente uma PA, com primeiro termo $a_1 = \frac{87-9r}{2}$ e termo geral
+\[
+a_k = \frac{87 - 9r}{2} + (k-1)\,r = \frac{87 + (2k-11)\,r}{2}, \qquad k = 1, \ldots, 10.
+\]
+
+Explicitamente, para cada razão (os termos seguem $a_k = a_1 + (k-1)r$):
+
+\begin{center}
+\begin{tabular}{c|c|l}
+$r$ & $a_1$ & termos \\ \hline
+$9$ & $3$ & $3, 12, 21, 30, 39, 48, 57, 66, 75, 84$ \\
+$7$ & $12$ & $12, 19, 26, 33, 40, 47, 54, 61, 68, 75$ \\
+$5$ & $21$ & $21, 26, 31, 36, 41, 46, 51, 56, 61, 66$ \\
+$3$ & $30$ & $30, 33, 36, 39, 42, 45, 48, 51, 54, 57$ \\
+$1$ & $39$ & $39, 40, 41, 42, 43, 44, 45, 46, 47, 48$ \\
+$-1$ & $48$ & $48, 47, 46, 45, 44, 43, 42, 41, 40, 39$ \\
+$-3$ & $57$ & $57, 54, 51, 48, 45, 42, 39, 36, 33, 30$ \\
+$-5$ & $66$ & $66, 61, 56, 51, 46, 41, 36, 31, 26, 21$ \\
+$-7$ & $75$ & $75, 68, 61, 54, 47, 40, 33, 26, 19, 12$ \\
+$-9$ & $84$ & $84, 75, 66, 57, 48, 39, 30, 21, 12, 3$
+\end{tabular}
+\end{center}
+
+\textbf{Passo 5 (verificação).} Para todo $r$, $S = 10a_1 + 45r = 5(87 - 9r) + 45r = 435$. Exemplos: para $r = 9$, $(3 + 84)\cdot 5 = 435$; para $r = -1$, $(48 + 39)\cdot 5 = 435$. Além disso, $a_k + a_{11-k} = 87$ para todo $k$, em particular $a_5 + a_6 = 87$, de modo que a média dos termos é $\frac{a_5 + a_6}{2} = 43{,}5 = \frac{435}{10}$.
+
+\textbf{Casos de fronteira e exclusões.}
+\begin{itemize}
+\item $r = 11$ daria $a_1 = -6$, e $r = -11$ daria $a_1 = 93$ e $a_{10} = 93 - 99 = -6$. Ambos têm termos não naturais, o que confirma que $-9 \leq r \leq 9$ é exatamente o intervalo válido.
+\item $r = 0$ é impossível: é par, e daria $10a_1 = 435$, com $a_1 = 43{,}5$ não inteiro. Razões pares são excluídas em geral pelo Passo 2; por exemplo, $r = 10$ daria $a_1 = -\frac{3}{2}$.
+\item Se $0$ fosse considerado natural, a condição do Passo 3 seria $0 \leq a_1 \leq 87$, isto é, $9r \leq 87$ e $9r \geq -87$. Como $87 < 90$ e $-87 > -90$, para $r$ inteiro isso ainda dá $-9 \leq r \leq 9$. O conjunto de razões, e portanto de PAs, não muda.
+\end{itemize}
+
+\textbf{Progressões como conjuntos.} Se $r$ é válida, a PA de razão $-r$ e primeiro termo $\frac{87 + 9r}{2}$ é a mesma PA lida em ordem inversa, pois seu primeiro termo é $a_{10}$. Assim, cada par $\{r, -r\}$ fornece o mesmo conjunto de números. Um conjunto de números distintos tem uma única ordenação crescente, cuja diferença comum é $|r|$; logo conjuntos com $|r|$ diferentes são distintos. Como $r \neq 0$, há $5$ valores possíveis de $|r|$, e portanto $5$ conjuntos. Em ordem crescente, para as razões $1, 3, 5, 7, 9$:
+\[
+\{39, 40, \ldots, 48\}, \quad \{30, 33, \ldots, 57\}, \quad \{21, 26, \ldots, 66\}, \quad \{12, 19, \ldots, 75\}, \quad \{3, 12, \ldots, 84\}.
+\]
+
+\textbf{Conclusão.} Há exatamente $10$ progressões aritméticas ordenadas de $10$ naturais com soma $435$, uma para cada $r \in \{\pm 1, \pm 3, \pm 5, \pm 7, \pm 9\}$, dadas por $a_k = \frac{87 + (2k-11)\,r}{2}$. Como conjuntos de números, são $5$.
+
+ANSWER: Há 10 progressões aritméticas ordenadas, $a_k = \frac{87 + (2k-11)\,r}{2}$ para $k = 1, \ldots, 10$, com $r \in \{\pm 1, \pm 3, \pm 5, \pm 7, \pm 9\}$ e primeiro termo $a_1 = \frac{87 - 9r}{2}$. Como conjuntos de números, são 5, uma para cada $|r| \in \{1, 3, 5, 7, 9\}$.%
+\newpage%
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{1. Domínio e sinal.} Para todo $x\in\mathbb{R}$ tem-se $2^x>0$, logo $2^x+2>2$. Como $\log_2$ é estritamente crescente e $\log_2 2=1$, segue $\log_2(2^x+2)>1>0$. Portanto o logaritmo está definido em todo $\mathbb{R}$ e $\left|\log_2(2^x+2)\right|=\log_2(2^x+2)$. A inequação equivale a
+\[
+\log_2(2^x+2)>|2x|.
+\]
+
+\textbf{2. Separação do módulo.} Para reais $a$ e $L$, vale $|a|<L \iff -L<a<L$. Com $L=\log_2(2^x+2)$, a inequação é equivalente ao sistema
+\[
+\begin{cases}
+\log_2(2^x+2)>2x & \text{(I)}\\
+\log_2(2^x+2)>-2x & \text{(II)}
+\end{cases}
+\]
+
+\textbf{3. Substituição.} Seja $t=2^x$. A função $x\mapsto t$ é uma bijeção de $\mathbb{R}$ em $(0,+\infty)$ e $2^{kx}=t^k$ para todo $k$ real inteiro. Como $\log_2$ é estritamente crescente em $(0,+\infty)$, para $y>0$ e $a\in\mathbb{R}$ vale $\log_2 y>a\iff y>2^a$.
+
+\textbf{4. Condição (I).} Temos
+\[
+\log_2(t+2)>2x \iff t+2>2^{2x}=t^2 \iff t^2-t-2<0 \iff (t-2)(t+1)<0 \iff -1<t<2.
+\]
+Como $t>0$, resulta $0<t<2$, ou seja, $2^x<2$, isto é, $x<1$.
+
+\textbf{5. Condição (II).} Temos
+\[
+\log_2(t+2)>-2x \iff t+2>2^{-2x}=\frac{1}{t^2}.
+\]
+Multiplicando por $t^2>0$, que não altera o sentido da desigualdade, obtém-se $t^3+2t^2-1>0$. Como $t=-1$ anula o polinômio, vale a fatoração $t^3+2t^2-1=(t+1)(t^2+t-1)$, verificável por expansão. Para $t>0$ tem-se $t+1>0$, logo a condição é $t^2+t-1>0$. As raízes de $t^2+t-1$ são $\frac{-1\pm\sqrt{5}}{2}$; a raiz negativa é menor que qualquer $t>0$, e como o trinômio tem concavidade para cima, para $t>0$ ele é positivo se, e somente se, $t>\frac{\sqrt{5}-1}{2}$.
+
+Seja $\varphi=\frac{1+\sqrt{5}}{2}$. Como $\varphi\cdot\frac{\sqrt{5}-1}{2}=\frac{5-1}{4}=1$, vale $\frac{\sqrt{5}-1}{2}=\frac{1}{\varphi}$. Assim
+\[
+2^x>\frac{1}{\varphi}\iff x>\log_2\frac{1}{\varphi}=-\log_2\varphi=:x_0.
+\]
+Numericamente, $\varphi\approx 1{,}618$ e $x_0\approx -0{,}694$.
+
+\textbf{6. Interseção.} A condição (I) equivale a $x<1$ e a condição (II) equivale a $x>x_0$. Como $x_0<0<1$, o conjunto solução é
+\[
+x_0<x<1 \quad\Longleftrightarrow\quad -\log_2\frac{1+\sqrt{5}}{2}<x<1.
+\]
+
+\textbf{7. Verificações.}
+\begin{itemize}
+\item \textit{Extremo superior.} Em $x=1$: $\log_2 4=2=|2\cdot 1|$, há igualdade, logo $x=1$ fica excluído (desigualdade estrita). Para $x=0{,}99$: $\log_2(2^{0,99}+2)\approx 1{,}995>1{,}98=|2x|$; para $x=1{,}01$: $\log_2(2^{1,01}+2)\approx 2{,}005<2{,}02=|2x|$. Consistente.
+\item \textit{Extremo inferior.} Em $x=x_0$: $2^{x_0}=\frac{1}{\varphi}=\varphi-1$, logo $2^{x_0}+2=\varphi+1=\varphi^2$ e $\log_2\varphi^2=2\log_2\varphi=-2x_0=|2x_0|$. Há igualdade, logo $x_0$ fica excluído.
+\item \textit{Pontos internos e externos.} Em $x=0$: $\log_2 3\approx 1{,}585>0$ (satisfaz). Em $x=-1$: $\log_2 2{,}5\approx 1{,}322<2$ (não satisfaz). Em $x=2$: $\log_2 6\approx 2{,}585<4$ (não satisfaz).
+\item \textit{Conferência numérica adicional.} Testes em 200 000 valores de $x\in[-6,6]$ coincidiram com o intervalo obtido, exceto em vizinhanças das fronteiras.
+\end{itemize}
+
+\textbf{Conclusão.} O conjunto solução é
+\[
+S=\left(\log_2\frac{\sqrt{5}-1}{2},\ 1\right)=\left(-\log_2\frac{1+\sqrt{5}}{2},\ 1\right)\approx(-0{,}694;\ 1).
+\]
+
+ANSWER: $-\log_2\frac{1+\sqrt{5}}{2}<x<1$, isto é, $x\in\left(-\log_2\frac{1+\sqrt{5}}{2},\ 1\right)$%
+\newpage%
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{Passo 1 (isolar $z^8$).} A equação é $r+iz^8=0$. Como $\frac{1}{i}=-i$ (pois $i\cdot(-i)=-i^2=1$), temos
+\[
+iz^8=-r \quad\Rightarrow\quad z^8=\frac{-r}{i}=-r\cdot(-i)=ri .
+\]
+
+\textbf{Passo 2 (raízes).} Escrevemos $z=\rho\,e^{i\theta}$, com $\rho>0$, e $ri=r\,e^{i\pi/2}$, pois $r>0$. Igualando módulos e argumentos (módulos iguais e argumentos congruentes módulo $2\pi$):
+\[
+\rho^8=r\ \Rightarrow\ \rho=r^{1/8}, \qquad 8\theta=\frac{\pi}{2}+2k\pi\ \Rightarrow\ \theta_k=\frac{\pi}{16}+\frac{k\pi}{4}.
+\]
+Os valores $k=0,1,\dots,7$ dão 8 ângulos distintos módulo $2\pi$, e $k=8$ repete $k=0$. Como a equação $z^8=ri$ tem grau 8, há no máximo 8 raízes; portanto estas são todas:
+\[
+z_k=r^{1/8}\,e^{i\left(\frac{\pi}{16}+\frac{k\pi}{4}\right)}, \qquad k=0,1,\dots,7.
+\]
+
+\textbf{Passo 3 (forma do polígono).} Todos os $z_k$ estão na circunferência de centro $O$ (origem) e raio $R=r^{1/8}$, e vértices consecutivos formam ângulo central $\frac{\pi}{4}=\frac{2\pi}{8}$. Logo os vértices são os de um octógono regular inscrito nessa circunferência.
+
+\textbf{Passo 4 (área).} Como o octógono regular é convexo e $O$ é seu centro, ele é a união, sem sobreposição, de 8 triângulos $Oz_kz_{k+1}$ (índices módulo 8). Cada um é isósceles, com lados $R$ e $R$ formando ângulo $\frac{\pi}{4}$, logo tem área
+\[
+\frac{1}{2}R^2\sin\frac{\pi}{4}=\frac{\sqrt{2}}{4}R^2 .
+\]
+Portanto
+\[
+A=8\cdot\frac{\sqrt{2}}{4}R^2=2\sqrt{2}\,R^2 .
+\]
+Impondo $A=\sqrt{2}$, obtemos $R^2=\frac{1}{2}$ e, como $R>0$,
+\[
+R=\frac{\sqrt{2}}{2}.
+\]
+
+\textbf{Passo 5 (valor de $r$).} Como $r=R^8=\left(R^2\right)^4$,
+\[
+r=\left(\frac{1}{2}\right)^4=\frac{1}{16}=0{,}0625 .
+\]
+
+\textbf{Passo 6 (comprimento dos lados).} Cada lado $\overline{z_kz_{k+1}}$ é a base de um triângulo $Oz_kz_{k+1}$ com lados $R$, $R$ e ângulo $\frac{\pi}{4}$ em $O$. Pela lei dos cossenos, com $s=m(\overline{z_kz_{k+1}})$:
+\[
+s^2=R^2+R^2-2R^2\cos\frac{\pi}{4}=2R^2\left(1-\frac{\sqrt{2}}{2}\right)=1-\frac{\sqrt{2}}{2},
+\]
+usando $2R^2=1$. Logo
+\[
+s=\sqrt{1-\frac{\sqrt{2}}{2}}=\frac{\sqrt{4-2\sqrt{2}}}{2}\approx 0{,}541 .
+\]
+Como o octógono é regular, os oito lados têm esse mesmo comprimento. Outra forma de escrever: $s=2R\sin\frac{\pi}{8}=\sqrt{2}\,\sin\frac{\pi}{8}$, que dá o mesmo valor.
+
+\textbf{Passo 7 (conferências).}
+\begin{itemize}
+\item Substituição direta: para $r=\frac{1}{16}$ e $z_0=\frac{\sqrt{2}}{2}e^{i\pi/16}$, temos $z_0^8=\frac{1}{16}e^{i\pi/2}=\frac{i}{16}$ e $r+iz_0^8=\frac{1}{16}+i\cdot\frac{i}{16}=\frac{1}{16}-\frac{1}{16}=0$. Confere.
+\item Área por outra fórmula: a área de um octógono regular de lado $s$ é $2(1+\sqrt{2})\,s^2$. Com $s^2=1-\frac{\sqrt{2}}{2}$, obtemos $2(1+\sqrt{2})\left(1-\frac{\sqrt{2}}{2}\right)=2\cdot\frac{\sqrt{2}}{2}=\sqrt{2}$. Confere.
+\item Ordem de grandeza: o octógono está contido no círculo de raio $\frac{\sqrt{2}}{2}$, cuja área é $\pi\cdot\frac{1}{2}\approx 1{,}571$. A área $\sqrt{2}\approx 1{,}414$ é menor, como deve ser.
+\item Unicidade: $r>0$ garante que $r^{1/8}$ é real e positivo, e $R>0$ fixa $R=\frac{\sqrt{2}}{2}$, logo a solução é única.
+\end{itemize}
+
+\textbf{Resposta.} O polígono é um octógono regular. Todos os seus lados medem $\sqrt{1-\frac{\sqrt{2}}{2}}=\frac{\sqrt{4-2\sqrt{2}}}{2}\approx 0{,}541$, e $r=\frac{1}{16}=0{,}0625$.
+
+ANSWER: $r=\frac{1}{16}=0{,}0625$; lados de comprimento $\sqrt{1-\frac{\sqrt{2}}{2}}=\frac{\sqrt{4-2\sqrt{2}}}{2}\approx 0{,}541$%
+\newpage%
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{1. Fatoração de $q$.} Desenvolvendo,
+\[
+(x+1)^2(x-2)=(x^2+2x+1)(x-2)=x^3-2x^2+2x^2-4x+x-2=x^3-3x-2=q(x).
+\]
+Logo $q(x)=(x+1)^2(x-2)$, com raízes $-1$ (dupla) e $2$. Além disso, $q'(x)=3x^2-3$ e $q'(-1)=0$.
+
+\textbf{2. Condições necessárias.} Suponha $p(x)=q(x)\,s(x)$, com $s$ polinomial. Então:
+\begin{itemize}
+\item $p(2)=q(2)\,s(2)=0$, pois $q(2)=0$;
+\item $p(-1)=q(-1)\,s(-1)=0$, pois $q(-1)=0$;
+\item $p'(x)=q'(x)\,s(x)+q(x)\,s'(x)$; em $x=-1$ as duas parcelas se anulam, pois $q'(-1)=0$ e $q(-1)=0$. Logo $p'(-1)=0$.
+\end{itemize}
+Portanto $p(2)=p(-1)=p'(-1)=0$ é condição necessária para $q\mid p$. A suficiência, para o valor de $a$ obtido, será confirmada no passo 4 por divisão explícita.
+
+\textbf{3. Cálculo de $a$.} Temos $p'(x)=7x^6+18ax^5-5x^4-20ax^3+21x^2-14ax+9$. Separando as parcelas sem $a$ e as parcelas com $a$:
+\begin{align*}
+p(2)&=(128-32+56+18)+a\,(192-80-28+1)=170+85a=85(a+2),\\
+p(-1)&=(-1+1-7-9)+a\,(3-5-7+1)=-16-8a=-8(a+2),\\
+p'(-1)&=(7-5+21+9)+a\,(-18+20+14)=32+16a=16(a+2).
+\end{align*}
+As três condições se reduzem a $a+2=0$. Logo $a=-2$ é o único valor possível, e é real.
+
+\textbf{4. Divisão de $p$ por $q$ para $a=-2$.} Com $a=-2$,
+\[
+p(x)=x^7-6x^6-x^5+10x^4+7x^3+14x^2+9x-2.
+\]
+Aplicamos o algoritmo da divisão, eliminando em cada passo o termo de maior grau do resto:
+\begin{itemize}
+\item $x^4\,q(x)=x^7-3x^5-2x^4$; resto: $-6x^6+2x^5+12x^4+7x^3+14x^2+9x-2$;
+\item $-6x^3\,q(x)=-6x^6+18x^4+12x^3$; resto: $2x^5-6x^4-5x^3+14x^2+9x-2$;
+\item $2x^2\,q(x)=2x^5-6x^3-4x^2$; resto: $-6x^4+x^3+18x^2+9x-2$;
+\item $-6x\,q(x)=-6x^4+18x^2+12x$; resto: $x^3-3x-2$;
+\item $1\cdot q(x)=x^3-3x-2$; resto: $0$.
+\end{itemize}
+O quociente é $s(x)=x^4-6x^3+2x^2-6x+1$ e o resto é nulo. Portanto
+\[
+p(x)=(x^3-3x-2)\,(x^4-6x^3+2x^2-6x+1),
+\]
+ou seja, $p$ é divisível por $q$ para $a=-2$. Isso confirma a suficiência.
+
+\textbf{5. Raízes de $s$.} Como $s(0)=1\neq0$, nenhuma raiz de $s$ é nula, e podemos dividir por $x^2$ sem perder raízes. Com $t=x+\dfrac{1}{x}$ e a identidade $x^2+\dfrac{1}{x^2}=t^2-2$,
+\[
+\frac{s(x)}{x^2}=\left(x^2+\frac{1}{x^2}\right)-6\left(x+\frac{1}{x}\right)+2=(t^2-2)-6t+2=t^2-6t=t\,(t-6).
+\]
+Logo $s(x)=0$ se, e somente se, $t=0$ ou $t=6$:
+\begin{itemize}
+\item $t=0$: $x^2+1=0$, donde $x=\pm i$;
+\item $t=6$: $x^2-6x+1=0$, com $\Delta=36-4=32$, donde $x=\dfrac{6\pm4\sqrt{2}}{2}=3\pm2\sqrt{2}$.
+\end{itemize}
+Estas quatro raízes são distintas e $s$ é mônico de grau $4$. Assim $s(x)=(x^2+1)(x^2-6x+1)$.
+
+\textbf{6. Fatoração completa e multiplicidades.} Para $a=-2$,
+\[
+p(x)=(x+1)^2\,(x-2)\,(x^2+1)\,(x^2-6x+1),
+\]
+de grau $2+1+2+2=7$. Para fixar as multiplicidades exatas, note que
+\[
+s(-1)=1+6+2+6+1=16\neq0,\qquad s(2)=16-48+8-12+1=-35\neq0.
+\]
+Logo $-1$ não é raiz de $s$ e tem multiplicidade exatamente $2$. (A condição $p'(-1)=0$ do passo 2 garantia apenas multiplicidade $\geq 2$.) O número $2$ tem multiplicidade exatamente $1$. As raízes de $s$ são simples e diferentes de $-1$ e de $2$ (note $3-2\sqrt{2}\approx0{,}172$ e $3+2\sqrt{2}\approx5{,}828$).
+
+Portanto, para $a=-2$, as raízes de $p$ são:
+\begin{itemize}
+\item reais: $-1$ (multiplicidade $2$), $2$, $3+2\sqrt{2}$ e $3-2\sqrt{2}$;
+\item não reais: $i$ e $-i$.
+\end{itemize}
+São seis raízes distintas, ou sete contando multiplicidades.
+
+\textbf{7. Conferências.}
+\begin{itemize}
+\item \emph{Relações de Vieta.} Para $p$ mônico de grau $7$, o coeficiente de $x^6$ é $-e_1$ e o termo constante é $-e_7$, onde $e_1$ é a soma e $e_7$ o produto das raízes com multiplicidade. Como o coeficiente de $x^6$ é $-6$ e o termo constante é $-2$, devemos ter $e_1=6$ e $e_7=2$. Direto: $-1-1+2+i-i+(3+2\sqrt{2})+(3-2\sqrt{2})=6$, e $(-1)(-1)(2)\cdot[i(-i)]\cdot[(3+2\sqrt{2})(3-2\sqrt{2})]=2\cdot1\cdot1=2$. Confere.
+\item \emph{Coeficiente de $x^5$.} Deve ser $e_2=-1$, pois o coeficiente de $x^5$ em $p$ é $-1$. A soma dos quadrados das raízes é $1+1+4+(-1)+(-1)+\big[(3+2\sqrt{2})^2+(3-2\sqrt{2})^2\big]=6-2+34=38$. Então $e_2=\dfrac{e_1^2-\sum r_k^2}{2}=\dfrac{36-38}{2}=-1$. Confere.
+\item \emph{Valores numéricos.} Em $x=0$: $p(0)=-2$, e a forma fatorada dá $1\cdot(-2)\cdot1\cdot1=-2$. Em $x=1$: $p(1)=1-6-1+10+7+14+9-2=32$, e a forma fatorada dá $2^2\cdot(-1)\cdot2\cdot(-4)=32$. Confere.
+\item \emph{Ordem de grandeza e simetria.} $3+2\sqrt{2}\approx5{,}828$ e $3-2\sqrt{2}\approx0{,}172$ são inversos entre si (produto $1$), como exige a simetria palindrômica de $s$. As raízes $\pm i$ formam um par conjugado, como ocorre com coeficientes reais.
+\end{itemize}
+
+ANSWER: $a=-2$; as raízes de $p$ são $-1$ (dupla), $2$, $i$, $-i$, $3+2\sqrt{2}$ e $3-2\sqrt{2}$ (seis distintas; sete contando multiplicidade).%
+\newpage%
+\section*{Questão 5}
+
+\section*{Solução}
+
+\textbf{Passo 1 (vértices $A$ e $B$).} $A$ e $B$ pertencem à elipse $2x^2+y^2=6$ e têm abscissa $1$. Substituindo $x=1$: $2+y^2=6$, logo $y^2=4$ e $y=\pm 2$. Como $A\neq B$, $\{A,B\}=\{(1,2),(1,-2)\}$. Portanto $m(\overline{AB})=4$ e a reta $AB$ é a reta vertical $x=1$.
+
+\textbf{Passo 2 (condição do perímetro).} Como $m(\overline{AB})+m(\overline{BC})+m(\overline{CA})=10$ e $m(\overline{AB})=4$,
+\[ m(\overline{AC})+m(\overline{BC})=6. \]
+Esta condição é necessária. Como $6>4=m(\overline{AB})$, ela descreve uma elipse não degenerada, como mostra o passo 3.
+
+\textbf{Passo 3 (lugar geométrico de $C$).} Pelo passo 2, $C$ satisfaz $PA+PB=6$. Pela definição de elipse, o conjunto dos pontos $P$ com $PA+PB=2a$ é a elipse de focos $A$ e $B$ quando $2a>2c=m(\overline{AB})$. Aqui $2a=6>4=2c$, logo:
+\begin{itemize}
+\item $a=3$ e $c=2$;
+\item o centro é o ponto médio de $\overline{AB}$, isto é, $(1,0)$;
+\item os focos estão sobre a reta $x=1$, logo o eixo maior é paralelo ao eixo $y$;
+\item $b^2=a^2-c^2=9-4=5$.
+\end{itemize}
+Para uma elipse de centro $(h,k)$, eixo maior vertical de semieixo $a$ e semieixo menor $b$, a equação é $\frac{(x-h)^2}{b^2}+\frac{(y-k)^2}{a^2}=1$. Com $(h,k)=(1,0)$, $b^2=5$ e $a^2=9$:
+\[ \frac{(x-1)^2}{5}+\frac{y^2}{9}=1. \]
+Esta é a elipse completa, isto é, todo ponto dela satisfaz $PA+PB=6$ e reciprocamente. Ela cruza a reta $AB$ em $(1,\pm 3)$, que são pontos degenerados; eles não pertencem à elipse dada, pois $2\cdot 1^2+3^2=11\neq 6$.
+
+\textbf{Passo 4 (interseção das duas curvas).} $C$ satisfaz simultaneamente
+\[ 2x^2+y^2=6 \qquad (I) \qquad\text{e}\qquad \frac{(x-1)^2}{5}+\frac{y^2}{9}=1 \qquad (II). \]
+Multiplicando (II) por $45$: $9(x-1)^2+5y^2=45$. Por (I), $y^2=6-2x^2$. Substituindo:
+\[ 9(x^2-2x+1)+5(6-2x^2)=45, \]
+\[ 9x^2-18x+9+30-10x^2=45, \]
+\[ -x^2-18x+39=45, \]
+\[ -x^2-18x-6=0 \quad\Longleftrightarrow\quad x^2+18x+6=0 \qquad (\text{multiplicando por } -1). \]
+Assim, as soluções de (I) e (II) são os pontos com $x$ raiz desta quadrática e $y^2=6-2x^2$. Como $\Delta=18^2-4\cdot 6=324-24=300=10^2\cdot 3$, temos $\sqrt{\Delta}=10\sqrt{3}$ e
+\[ x=\frac{-18\pm 10\sqrt{3}}{2}=-9\pm 5\sqrt{3}. \]
+
+\textbf{Passo 5 (seleção das raízes).} Para que um ponto satisfaça (I), é necessário $y^2=6-2x^2\geq 0$.
+\begin{itemize}
+\item $x_2=-9-5\sqrt{3}\approx -17{,}66$. Como $x_2^2=81+90\sqrt{3}+75=156+90\sqrt{3}$, temos $y^2=6-2x_2^2=-306-180\sqrt{3}<0$. Não há ponto real com esta abscissa: $x_2$ é rejeitada.
+\item $x_1=-9+5\sqrt{3}\approx -0{,}340$. Como $x_1^2=81-90\sqrt{3}+75=156-90\sqrt{3}$, temos
+\[ y^2=6-2\left(156-90\sqrt{3}\right)=180\sqrt{3}-306=9\left(20\sqrt{3}-34\right). \]
+Esta quantidade é positiva, pois $20\sqrt{3}>34 \iff 10\sqrt{3}>17 \iff 300>289$. Logo $y=\pm 3\sqrt{20\sqrt{3}-34}\approx \pm 2{,}402$. Obtêm-se dois pontos, $C_{+}$ e $C_{-}$, simétricos em relação ao eixo $x$, ambos com abscissa $-9+5\sqrt{3}$. Ambos satisfazem (I) e (II), logo ambos são válidos.
+\end{itemize}
+
+\textbf{Passo 6 (verificação).}
+\begin{itemize}
+\item Não degenerescência: $x_C\neq 1$, logo $C$ não está sobre a reta $AB$ e o triângulo é não degenerado. Além disso $C\neq A,B$.
+\item Numericamente, para $C\approx(-0{,}3397;\,2{,}4019)$: $m(\overline{AC})\approx 1{,}3987$ e $m(\overline{BC})\approx 4{,}6013$, com soma $\approx 6{,}0000$. O perímetro é $4+6=10$. As desigualdades triangulares valem: $4<1{,}3987+4{,}6013$, $4{,}6013<4+1{,}3987$ e $1{,}3987<4+4{,}6013$.
+\item Ordem de grandeza: $|x_C|\approx 0{,}34<\sqrt{3}\approx 1{,}73$, que é o semieixo horizontal da elipse dada. Isso é coerente com $C$ estar nela.
+\end{itemize}
+
+\textbf{Conclusão.} Os dois vértices possíveis são $C_{\pm}=\left(-9+5\sqrt{3},\ \pm 3\sqrt{20\sqrt{3}-34}\right)$. Em ambos a abscissa é a mesma, de modo que a abscissa de $C$ é única:
+\[ x_C=-9+5\sqrt{3}\approx -0{,}340. \]
+
+ANSWER: $x_C=-9+5\sqrt{3}\approx -0{,}340$%
+\newpage%
+\section*{Questão 6}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} Pela convenção da prova, $\mathbb{N}=\{1,2,3,\ldots\}$. Logo, procuramos sêxtuplas de inteiros com $x_k\geq 1$ para $k=1,\ldots,6$. Denotemos por $(E_1)$, $(E_2)$ e $(E_3)$ as equações do sistema, nessa ordem.
+
+\textbf{Passo 1: eliminação linear.} Substituir $(E_2)$ por $(E_2)-(E_1)$ e $(E_3)$ por $(E_3)-2(E_1)$ não altera o conjunto de soluções, pois as operações são invertíveis: $(E_2)=\big[(E_2)-(E_1)\big]+(E_1)$ e $(E_3)=\big[(E_3)-2(E_1)\big]+2(E_1)$. Os novos coeficientes são:
+\begin{itemize}
+\item em $(E_2)-(E_1)$: $x_1$ tem coeficiente $1-1=0$; $x_2,\ldots,x_5$ têm $2-1=1$; $x_6$ tem $4-3=1$; termo independente $52-30=22$;
+\item em $(E_3)-2(E_1)$: $x_1$ e $x_2$ têm coeficiente $2-2=0$; $x_3,x_4,x_5$ têm $3-2=1$; $x_6$ tem $7-6=1$; termo independente $76-60=16$.
+\end{itemize}
+Obtemos
+\begin{align*}
+(A):&\quad x_2+x_3+x_4+x_5+x_6=22,\\
+(B):&\quad x_3+x_4+x_5+x_6=16.
+\end{align*}
+
+\textbf{Passo 2: isolamento das variáveis.} O sistema original é equivalente a $\{(E_1),(A),(B)\}$. Então:
+\begin{itemize}
+\item $(A)-(B)$ dá $x_2=22-16=6$;
+\item $(E_1)-(A)$ dá $x_1+2x_6=30-22=8$;
+\item $(B)$ dá $x_3+x_4+x_5=16-x_6$.
+\end{itemize}
+Assim, o sistema original é equivalente a
+\begin{equation*}
+\begin{cases}
+x_2=6,\\
+x_1=8-2x_6,\\
+x_3+x_4+x_5=16-x_6.
+\end{cases}
+\end{equation*}
+Para a recíproca, suponha válidas essas três igualdades. Então valem $(E_1)$, $(A)$ e $(B)$:
+\begin{align*}
+(E_1):&\quad (8-2x_6)+6+(16-x_6)+3x_6=30,\\
+(A):&\quad 6+(16-x_6)+x_6=22,\\
+(B):&\quad (16-x_6)+x_6=16.
+\end{align*}
+Como $(E_2)=(A)+(E_1)$ e $(E_3)=(B)+2(E_1)$ (somando membro a membro, os lados esquerdos e os termos independentes), $(E_2)$ e $(E_3)$ também valem.
+
+\textbf{Passo 3: condições de positividade e finitude.}
+\begin{itemize}
+\item $x_2=6\geq 1$: satisfeita.
+\item $x_1=8-2x_6\geq 1$ equivale a $x_6\leq \frac{7}{2}$. Como $x_6$ é inteiro, $x_6\leq 3$. Com $x_6\geq 1$, obtemos $x_6\in\{1,2,3\}$. Os valores $x_6=0$ (não natural) e $x_6=4$ (daria $x_1=0$) são excluídos.
+\item Para cada $x_6$ admissível, seja $m=16-x_6\in\{15,14,13\}$. Procuramos $(x_3,x_4,x_5)\in\mathbb{N}^3$ com $x_3+x_4+x_5=m$.
+\end{itemize}
+Como $x_2$ é fixo, $x_6$ assume apenas três valores, $x_1$ é determinado por $x_6$ e cada $x_j$ ($j=3,4,5$) é limitado por $m$. Portanto o conjunto de soluções é finito e a quantidade pedida é um número inteiro bem definido.
+
+\textbf{Passo 4: contagem de ternas por estrelas e barras.} Afirmação: para $m\geq 3$, o número de $(x_3,x_4,x_5)\in\mathbb{N}^3$ com $x_3+x_4+x_5=m$ é $\binom{m-1}{2}$. De fato, $y_j=x_j-1\geq 0$ ($j=3,4,5$) transforma a equação em $y_3+y_4+y_5=m-3$. Pelo teorema das estrelas e barras, a equação $y_1+\cdots+y_r=n$ tem $\binom{n+r-1}{r-1}$ soluções em inteiros não negativos. Com $r=3$ e $n=m-3$, obtemos $\binom{m-1}{2}$.
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$x_6$ & $x_1=8-2x_6$ & $m=16-x_6$ & $\binom{m-1}{2}$ & número de soluções em $(x_3,x_4,x_5)$ \\ \hline
+1 & 6 & 15 & $\binom{14}{2}$ & 91 \\
+2 & 4 & 14 & $\binom{13}{2}$ & 78 \\
+3 & 2 & 13 & $\binom{12}{2}$ & 66 \\
+\end{tabular}
+\end{center}
+
+\textbf{Passo 5: total.} A sêxtupla é determinada por $(x_6,x_3,x_4,x_5)$, pois $x_2=6$ e $x_1=8-2x_6$ são forçados. Reciprocamente, cada escolha de $x_6\in\{1,2,3\}$ com $(x_3,x_4,x_5)$ admissível produz uma sêxtupla de naturais que satisfaz o sistema (Passo 2). Há, portanto, correspondência biunívoca entre as soluções e essas escolhas. Os casos são disjuntos, pois têm valores distintos de $x_6$. Pelo princípio aditivo:
+\begin{equation*}
+N=\binom{14}{2}+\binom{13}{2}+\binom{12}{2}=91+78+66=235.
+\end{equation*}
+
+\textbf{Verificação.}
+\begin{itemize}
+\item \emph{Caso concreto.} Com $x_6=3$ e $(x_3,x_4,x_5)=(1,1,11)$ obtemos $(x_1,\ldots,x_6)=(2,6,1,1,11,3)$. Em $(E_1)$: $2+6+1+1+11+9=30$. Em $(E_2)$: $2+12+2+2+22+12=52$. Em $(E_3)$: $4+12+3+3+33+21=76$. Todas conferem.
+\item \emph{Caso de borda.} $x_6=3$ fornece $x_1=2$, o menor valor permitido, e $x_6=4$ fornece $x_1=0$, excluído. Logo o corte $x_6\leq 3$ é exato.
+\item \emph{Contagem complementar.} Pelo mesmo raciocínio, as quádruplas $(x_3,x_4,x_5,x_6)\in\mathbb{N}^4$ com soma $16$ são as soluções de $(B)$ com $x_6\geq 1$. Por estrelas e barras (subtraindo $1$ de cada parcela, soma $12$, $r=4$), há $\binom{15}{3}=455$ delas. Entre elas, as com $x_6\geq 4$ correspondem, pela troca $x_6=t+3$ com $t\geq 1$, às quádruplas de $\mathbb{N}^4$ de soma $13$, cuja quantidade é $\binom{12}{3}=220$. Logo, as que têm $x_6\in\{1,2,3\}$ somam $455-220=235$, o mesmo valor.
+\item \emph{Observação sobre o zero.} Se $0$ fosse natural, teríamos $x_6\in\{0,1,2,3,4\}$ e a contagem seria $\binom{18}{2}+\binom{17}{2}+\binom{16}{2}+\binom{15}{2}+\binom{14}{2}=153+136+120+105+91=605$. Como a prova fixa $\mathbb{N}=\{1,2,3,\ldots\}$, a resposta é $235$.
+\end{itemize}
+
+ANSWER: 235 sêxtuplas%
+\newpage%
+\section*{Questão 7}
+
+\section*{Solução}
+
+Sejam
+\[
+N(n)=2n^3-5n^2-52n+90, \qquad D(n)=n^2-2n-27 .
+\]
+Queremos os inteiros $n$ para os quais $Q(n)=\dfrac{N(n)}{D(n)}$ é inteiro. Aqui $Q(n)$ é o quociente da questão, e o quociente da divisão polinomial (que é $2n-1$) é tratado separadamente no passo 1.
+
+\textbf{1. Divisão polinomial.} Dividindo $N(n)$ por $D(n)$: o primeiro termo do quociente polinomial é $2n$, e o resto parcial é $-n^2+2n+90$; o segundo termo do quociente polinomial é $-1$, e o resto final é $63$. Logo o quociente polinomial é $2n-1$ e o resto é $63$:
+\[
+2n^3-5n^2-52n+90=(2n-1)(n^2-2n-27)+63 .
+\]
+Verificação: $(2n-1)(n^2-2n-27)=2n^3-4n^2-54n-n^2+2n+27=2n^3-5n^2-52n+27$, e somando $63$ obtém-se $N(n)$. Assim, para todo $n$ com $D(n)\neq 0$,
+\[
+Q(n)=(2n-1)+\frac{63}{D(n)} .
+\]
+
+\textbf{2. O denominador não se anula para $n$ inteiro.} Completando quadrados, $D(n)=(n-1)^2-28$. Se $n\in\mathbb{Z}$ e $D(n)=0$, então $(n-1)^2=28$, o que é impossível em $\mathbb{Z}$, pois $5^2=25<28<36=6^2$ e $28$ não é quadrado perfeito. Logo $D(n)\neq 0$ para todo $n$ inteiro, e $Q(n)$ está sempre definido.
+
+\textbf{3. Condição de integralidade.} Seja $n\in\mathbb{Z}$. Pelo passo 2, $D(n)$ é inteiro não nulo; além disso, $2n-1$ é inteiro. Como $Q(n)-(2n-1)=\dfrac{63}{D(n)}$, temos que $Q(n)$ é inteiro se e somente se $\dfrac{63}{D(n)}$ é inteiro (pois $2n-1$ é inteiro). Pela definição de divisibilidade, para $D(n)$ inteiro não nulo, $\dfrac{63}{D(n)}$ é inteiro se e somente se $D(n)\mid 63$. Portanto
+\[
+Q(n)\in\mathbb{Z}\iff D(n)\mid 63 .
+\]
+
+\textbf{4. Divisores de $63$.} Como $63=3^2\cdot 7$ (teorema fundamental da aritmética), os divisores positivos de $63$ são os números $3^a\cdot 7^b$ com $a\in\{0,1,2\}$ e $b\in\{0,1\}$, isto é, $1,3,9,7,21,63$. Os divisores inteiros são esses e seus opostos:
+\[
+d\in\{\pm 1,\ \pm 3,\ \pm 7,\ \pm 9,\ \pm 21,\ \pm 63\}.
+\]
+
+\textbf{5. Resolução de $D(n)=d$.} Para cada divisor $d$, a equação $n^2-2n-27=d$ equivale a $(n-1)^2=d+28$. Como $n-1\in\mathbb{Z}$, é necessário que $d+28$ seja quadrado perfeito não negativo. Verificando os doze divisores:
+
+{\small
+\begin{center}
+\begin{tabular}{c|cccccccccccc}
+$d$ & $-63$ & $-21$ & $-9$ & $-7$ & $-3$ & $-1$ & $1$ & $3$ & $7$ & $9$ & $21$ & $63$ \\ \hline
+$d+28$ & $-35$ & $7$ & $19$ & $21$ & $25$ & $27$ & $29$ & $31$ & $35$ & $37$ & $49$ & $91$ \\ \hline
+quadrado? & não & não & não & não & sim & não & não & não & não & não & sim & não
+\end{tabular}
+\end{center}
+}
+
+Os valores de $d+28$ que não são quadrados perfeitos são: $-35$ (negativo); $7\in(2^2,3^2)$; $19,21\in(4^2,5^2)$; $27,29,31,35\in(5^2,6^2)$; $37\in(6^2,7^2)$; e $91\in(9^2,10^2)$. Em cada caso o número está estritamente entre dois quadrados consecutivos, logo não é quadrado. Restam apenas:
+\begin{itemize}
+\item $d=-3$: $(n-1)^2=25$, logo $n-1=\pm 5$, isto é, $n=6$ ou $n=-4$;
+\item $d=21$: $(n-1)^2=49$, logo $n-1=\pm 7$, isto é, $n=8$ ou $n=-6$.
+\end{itemize}
+Como todo $n$ com $D(n)\mid 63$ tem $D(n)$ igual a um dos doze divisores, a lista é exaustiva.
+
+\textbf{6. Verificação direta.} Calculando $N(n)$ e $D(n)$ diretamente:
+\begin{align*}
+n=6:&\quad D=36-12-27=-3,\quad N=432-180-312+90=30,\quad Q=\frac{30}{-3}=-10;\\
+n=-4:&\quad D=16+8-27=-3,\quad N=-128-80+208+90=90,\quad Q=\frac{90}{-3}=-30;\\
+n=8:&\quad D=64-16-27=21,\quad N=1024-320-416+90=378,\quad Q=\frac{378}{21}=18;\\
+n=-6:&\quad D=36+12-27=21,\quad N=-432-180+312+90=-210,\quad Q=\frac{-210}{21}=-10.
+\end{align*}
+Conferência pela forma $Q(n)=(2n-1)+\dfrac{63}{D(n)}$: para $n=6$, $11-21=-10$; para $n=-4$, $-9-21=-30$; para $n=8$, $15+3=18$; para $n=-6$, $-13+3=-10$. Os valores coincidem.
+
+\textbf{7. Conferências finais.}
+\begin{itemize}
+\item Sinais: o sinal de $Q=\dfrac{N}{D}$ é o produto dos sinais de $N$ e $D$. Em $n=6$ e $n=-4$, $N>0$ e $D<0$, logo $Q<0$. Em $n=8$, $N>0$ e $D>0$, logo $Q>0$. Em $n=-6$, $N<0$ e $D>0$, logo $Q<0$. Por isso o sinal de $D$ sozinho não determina o sinal de $Q$.
+\item Cobertura: o passo 3 é uma equivalência, e o passo 5 examina todos os doze divisores de $63$. Logo nenhuma solução foi omitida nem acrescentada.
+\end{itemize}
+
+\textbf{Conclusão.} Os valores inteiros de $n$ para os quais o quociente é inteiro são $n=-6$, $n=-4$, $n=6$ e $n=8$, com quocientes $-10$, $-30$, $-10$ e $18$, respectivamente.
+
+ANSWER: $n \in \{-6,\,-4,\,6,\,8\}$%
+\newpage%
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Modelagem.} Tomemos o sistema cartesiano com $A=(0,0)$, $B=(10,0)$, $C=(10,6)$ e $D=(0,6)$. "Inscrito" significa que cada vértice de $EFGH$ (em ordem cíclica) está em um lado distinto de $ABCD$: $E\in\overline{AB}$, $F\in\overline{BC}$, $G\in\overline{CD}$, $H\in\overline{DA}$. Escrevemos
+\[
+E=(x,0),\qquad F=(10,y),\qquad G=(g,6),\qquad H=(0,h),
+\]
+com $0<x<10$ e $0<y<6$, pois $E\neq A,B$ e $F\neq B,C$. Assim $x=m(\overline{AE})$ e $y=m(\overline{BF})$.
+
+\textbf{Passo 1 (diagonais).} As diagonais $\overline{EG}$ e $\overline{FH}$ do retângulo se cortam ao meio, logo $E+G=F+H$, ou seja, $G=F+H-E=(10-x,\;y+h)$. Como $G\in\overline{CD}$, sua ordenada é $6$:
+\[
+y+h=6 .
+\]
+
+\textbf{Passo 2 (ângulo reto em $E$).} Temos $\vec{EF}=(10-x,\;y)$ e $\vec{EH}=(-x,\;h)$. Como $\angle FEH=90^\circ$, $\vec{EF}\cdot\vec{EH}=0$:
+\[
+-x(10-x)+yh=0 \quad\Longrightarrow\quad yh=x(10-x).
+\]
+Com $y+h=6$, os números $y$ e $h$ são as raízes de
+\[
+t^2-6t+x(10-x)=0 \qquad (*)
+\]
+Reciprocamente, se $y$ e $h=6-y$ são raízes de $(*)$, então $G-F=H-E=(-x,\,h)$; logo $EFGH$ é paralelogramo com ângulo reto em $E$, isto é, um retângulo inscrito. Além disso, toda raiz real $t$ de $(*)$ cumpre $t(6-t)=x(10-x)>0$, donde $0<t<6$. Portanto, $x$ admite retângulo inscrito se, e somente se, $(*)$ tem raízes reais.
+
+\textbf{Item (a).} O discriminante reduzido de $(*)$ é
+\[
+\frac{\Delta}{4}=9-x(10-x)=x^2-10x+9=(x-1)(x-9).
+\]
+Há raízes reais se, e somente se, $(x-1)(x-9)\ge 0$, isto é, $x\le 1$ ou $x\ge 9$. Com $0<x<10$, obtemos
+\[
+0<x\le 1 \qquad\text{ou}\qquad 9\le x<10 .
+\]
+Conferência: pela desigualdade entre as médias aritmética e geométrica, $x(10-x)=yh\le\left(\frac{y+h}{2}\right)^2=9$, que é exatamente $(x-1)(x-9)\ge 0$. Para $x\in(0,1)\cup(9,10)$ há duas raízes distintas, logo dois retângulos (trocando o papel de $y$ e $h$); para $x=1$ ou $x=9$ há um só, com $y=h=3$.
+
+\textbf{Item (b).} Os lados $\overline{EF}$ e $\overline{EH}$ são perpendiculares, logo a área é $|\vec{EF}|\,|\vec{EH}|$. Pela identidade de Lagrange, $|u|^2|v|^2=(u\cdot v)^2+\det(u,v)^2$; com $u\cdot v=0$ resulta área $=|\det(\vec{EF},\vec{EH})|$. Como $\det(\vec{EF},\vec{EH})=(10-x)h-y(-x)=(10-x)h+xy>0$,
+\[
+S=(10-x)h+xy .
+\]
+Impondo $S=30$ e usando $h=6-y$:
+\[
+(10-x)(6-y)+xy=30 \iff 2xy-6x-10y+30=0 \iff 2(x-5)(y-3)=0 .
+\]
+\begin{itemize}
+\item Se $x=5$, então $(*)$ vira $t^2-6t+25=0$, com $\Delta/4=-16<0$: não há solução real. Caso impossível.
+\item Se $y=3$, então $h=3$ e $yh=9=x(10-x)$, ou seja, $x^2-10x+9=0$, donde $x=1$ ou $x=9$. Ambos satisfazem (a).
+\end{itemize}
+Os dois casos dão retângulos congruentes, reflexos um do outro na mediatriz $x=5$ de $\overline{AB}$:
+\begin{itemize}
+\item $x=1$: $E=(1,0)$, $F=(10,3)$, $G=(9,6)$, $H=(0,3)$. Então $\vec{EF}=(9,3)$, $\vec{EH}=(-1,3)$, $m(\overline{EF})=\sqrt{90}=3\sqrt{10}$ e $m(\overline{FG})=m(\overline{EH})=\sqrt{10}$.
+\item $x=9$: $E=(9,0)$, $F=(10,3)$, $G=(1,6)$, $H=(0,3)$. Então $m(\overline{EF})=\sqrt{10}$ e $m(\overline{FG})=3\sqrt{10}$.
+\end{itemize}
+Logo os lados medem $\sqrt{10}\approx 3{,}16$ e $3\sqrt{10}\approx 9{,}49$.
+
+\textbf{Conferências.}
+\begin{itemize}
+\item $3\sqrt{10}\cdot\sqrt{10}=30$, e $\vec{EF}\cdot\vec{EH}=9\cdot(-1)+3\cdot 3=0$ (ângulo reto).
+\item As diagonais de um retângulo são iguais: $m(\overline{EG})=\sqrt{8^2+6^2}=10=m(\overline{FH})$ (caso $x=1$).
+\item Caso $x=1$: $AE=1$, $EB=9$, $BF=3$, $FC=3$, $CG=1$, $GD=9$, $DH=3$, $HA=3$. Todos são positivos, e $AE+EB=10$, $BF+FC=6$.
+\item Ordem de grandeza: $9{,}49<10$ e $3{,}16<6$, compatível com um retângulo contido em $ABCD$. A área $30$ é metade da área $60$ de $ABCD$, o que também é plausível.
+\end{itemize}
+
+ANSWER: (a) $0<x\le 1$ ou $9\le x<10$, isto é, $x\in(0,1]\cup[9,10)$; (b) os lados medem $\sqrt{10}$ e $3\sqrt{10}$ (aproximadamente $3{,}16$ e $9{,}49$). Com $x=1$ tem-se $m(\overline{EF})=3\sqrt{10}$ e $m(\overline{FG})=\sqrt{10}$; com $x=9$, $m(\overline{EF})=\sqrt{10}$ e $m(\overline{FG})=3\sqrt{10}$.%
+\newpage%
+\section*{Questão 9}
+
+\section*{Solução}
+
+\textbf{1. Medidas da pirâmide.} A base é um hexágono regular de lado $4$: o raio circunscrito é $R=4$, o apótema é $2\sqrt{3}$ e a diagonal maior mede $8$. Seja $S$ o vértice e $O$ o centro da base. Como a pirâmide é reta, a altura $H=SO$ é perpendicular à base, e $OA=R=4$ para todo vértice $A$ da base.
+
+Cada face lateral, por exemplo $SAB$, tem $SA=SB=L$ (arestas laterais), $AB=4$ e $\widehat{ASB}=\pi/6$. Pela lei dos cossenos:
+\[
+4^2=2L^2-2L^2\cos\frac{\pi}{6}\quad\Longrightarrow\quad L^2=\frac{16}{2-\sqrt{3}}=16\,(2+\sqrt{3}).
+\]
+No triângulo retângulo $SOA$, $H^2=L^2-R^2$. Logo
+\[
+H^2=16(2+\sqrt{3})-16=16\,(1+\sqrt{3}),\qquad H=4\sqrt{1+\sqrt{3}}\approx 6{,}61 .
+\]
+
+\textbf{2. Coordenadas.} Tomo $O$ como origem, a base no plano $z=0$ e a diagonal maior $AD$ sobre o eixo $x$:
+\[
+A(4,0,0),\quad B(2,2\sqrt{3},0),\quad C(-2,2\sqrt{3},0),\quad D(-4,0,0),\quad E(-2,-2\sqrt{3},0),\quad F(2,-2\sqrt{3},0),\quad S(0,0,H).
+\]
+Os seis vértices da base estão a distância $4$ de $O$, e $|AB|=\sqrt{2^2+(2\sqrt{3})^2}=4$, como deve ser.
+
+\textbf{3. Escolha da face paralela.} Em um hexágono regular, $BC\parallel EF\parallel AD$. Se a face lateral $\sigma$ contém $A$ mas não $D$ (ou o contrário), o único plano paralelo a $\sigma$ que passa pelo vértice comum é a própria $\sigma$, que não contém o outro vértice da diagonal; logo tal face não serve. Sobram as faces que não contêm $A$ nem $D$: $SBC$ e $SEF$. A reflexão em relação ao plano $SAD$ (plano de simetria da pirâmide, que troca $B\leftrightarrow F$ e $C\leftrightarrow E$) leva uma na outra. Portanto as duas seções têm a mesma área, e tomo a face $SBC$.
+
+\textbf{4. Plano da seção.} Seja $M=(0,2\sqrt{3},0)$ o ponto médio de $BC$. O plano $SBC$ contém $\overrightarrow{BC}=(-4,0,0)$ e $\overrightarrow{MS}=(0,-2\sqrt{3},H)$, e sua equação é
+\[
+Hy+2\sqrt{3}\,z=2\sqrt{3}\,H,
+\]
+que se verifica em $B$, $C$ e $S$. O plano $\alpha$ que contém $AD$ e é paralelo a $SBC$ tem a mesma normal $(0,H,2\sqrt{3})$ e passa pela origem, pois $O\in AD$:
+\[
+\alpha:\quad Hy+2\sqrt{3}\,z=0 .
+\]
+Seja $f(P)=Hy+2\sqrt{3}\,z$, de modo que $\alpha=\{f=0\}$. Então
+\[
+f(A)=f(D)=0,\qquad f(B)=f(C)=f(S)=2\sqrt{3}\,H>0,\qquad f(E)=f(F)=-2\sqrt{3}\,H<0 .
+\]
+
+\textbf{5. Vértices da seção.} A pirâmide é um sólido convexo, logo a seção é um polígono convexo cujos vértices são os vértices da pirâmide contidos em $\alpha$ e os pontos em que $\alpha$ corta as arestas. Como $f$ é afim, uma aresta é cortada em ponto interior somente se seus extremos têm sinais estritamente opostos.
+\begin{itemize}
+\item Arestas da base: $AB$, $FA$, $CD$, $DE$ têm um extremo em $\alpha$; $BC$ tem os dois extremos com $f>0$; $EF$ tem os dois com $f<0$. Nenhuma é cortada em ponto interior.
+\item Arestas laterais: $SA$ e $SD$ têm um extremo em $\alpha$; $SB$ e $SC$ têm os dois extremos com $f>0$. Só $SE$ e $SF$ ligam $S$ ($f>0$) a um vértice com $f<0$.
+\end{itemize}
+Sobre $SE$, tomo $P(t)=S+t(E-S)=\left(-2t,\,-2\sqrt{3}\,t,\,H(1-t)\right)$. Então $f(P(t))=2\sqrt{3}\,H(1-2t)$, que se anula em $t=\tfrac12$. Analogamente para $SF$. Obtemos
+\[
+X=\left(-1,\,-\sqrt{3},\,\tfrac{H}{2}\right)\ \text{(ponto médio de }SE\text{)},\qquad Y=\left(1,\,-\sqrt{3},\,\tfrac{H}{2}\right)\ \text{(ponto médio de }SF\text{)}.
+\]
+Logo a seção é o quadrilátero $ADXY$.
+
+\textbf{6. Forma e altura.} Os vetores $\overrightarrow{AD}=(-8,0,0)$ e $\overrightarrow{XY}=(2,0,0)$ são paralelos, com $m(AD)=8$ e $m(XY)=2$. Assim $ADXY$ é um trapézio de bases $8$ e $2$. (Conferência: $XY$ é base média do triângulo $SEF$, logo $XY=EF/2=2$.)
+
+As retas $AD$ (eixo $x$) e $XY$ ($y=-\sqrt{3}$, $z=H/2$) são paralelas ao eixo $x$, então a distância entre elas é a distância do ponto $\left(0,-\sqrt{3},\tfrac{H}{2}\right)$ ao eixo $x$:
+\[
+h=\sqrt{(\sqrt{3})^2+\left(\frac{H}{2}\right)^2}=\sqrt{3+4(1+\sqrt{3})}=\sqrt{7+4\sqrt{3}}=2+\sqrt{3},
+\]
+pois $(2+\sqrt{3})^2=4+4\sqrt{3}+3=7+4\sqrt{3}$.
+
+\textbf{7. Área.}
+\[
+\mathcal{A}=\frac{8+2}{2}\cdot(2+\sqrt{3})=5\,(2+\sqrt{3})=10+5\sqrt{3}\approx 18{,}66\ \text{u.a.}
+\]
+
+\textbf{8. Conferências.}
+\begin{itemize}
+\item \textit{Projeção sobre a base.} A projeção de $ADXY$ é um trapézio de bases $8$ e $2$ e altura $\sqrt{3}$, de área $5\sqrt{3}$. A área projetada é a área real vezes $\cos\theta$, em que $\theta$ é o ângulo entre $\alpha$ e a base. Com a normal $(0,H,2\sqrt{3})$ e $\sqrt{H^2+12}=\sqrt{28+16\sqrt{3}}=2(2+\sqrt{3})$, obtemos $\cos\theta=\dfrac{2\sqrt{3}}{2(2+\sqrt{3})}=2\sqrt{3}-3$. Então $\dfrac{5\sqrt{3}}{2\sqrt{3}-3}=5(2+\sqrt{3})$, o mesmo valor.
+\item \textit{Ordem de grandeza.} A base tem área $\frac{3\sqrt{3}}{2}\cdot 4^2=24\sqrt{3}\approx 41{,}57$. A seção ($\approx 18{,}66$) é menor que a base, como deve ser, e a altura $2+\sqrt{3}\approx 3{,}73$ é coerente com o trapézio.
+\end{itemize}
+
+\textbf{Resposta.} A seção é o trapézio $ADXY$, de bases $8$ e $2$ e altura $2+\sqrt{3}$, e sua área é $10+5\sqrt{3}$.
+
+ANSWER: $10+5\sqrt{3}=5(2+\sqrt{3})\approx 18{,}66$ unidades de área%
+\newpage%
+\section*{q10_solution}%
+Solution has invalid LaTeX, see q10\_solution.txt.%
+\newpage%
+\section*{Apêndice: parecer do avaliador}%
+\subsection*{Questão 1: nota 9,0 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Há exatamente 10 progressões aritméticas ordenadas de 10 termos naturais com soma 435: uma para cada razão r $\in$ \{$\pm$1, $\pm$3, $\pm$5, $\pm$7, $\pm$9\}, com primeiro termo a$_{1}$ = (87 - 9r)/2 e termos a? = a$_{1}$ + (k-1)r.\newline%
+\newline%
+{-} Crescentes (r > 0): (39,\ldots{},48); (30,33,\ldots{},57); (21,26,\ldots{},66); (12,19,\ldots{},75); (3,12,\ldots{},84).\newline%
+{-} Decrescentes (r < 0): as mesmas cinco, lidas ao contrário (ex.: 84,75,\ldots{},3 para r = -9).\newline%
+{-} Se a ordem não importar, são 5 conjuntos de termos.\newline%
+{-} Não existe PA constante (r = 0 daria a$_{1}$ = 43,5).\newline%
+\newline%
+Condição{-}chave: a$_{1}$ + a$_{1}$$_{0}$ = 87 com a$_{1}$, a$_{1}$$_{0}$ $\geq$ 1 e r = (a$_{1}$$_{0}$ - a$_{1}$)/9 ímpar, |r| $\leq$ 9.\par %
+Resposta final correta e idêntica à referência: 10 PAs ordenadas, uma para cada r $\in$ \{$\pm$1, $\pm$3, $\pm$5, $\pm$7, $\pm$9\}, com a$_{1}$ = (87 - 9r)/2; como conjuntos, são 5. Conferi o enunciado na p. 2 ($\mathbb{N}$ = \{1, 2, 3, \ldots{}\}). A força bruta (a$_{1}$ $\in$ {[}1, 499{]}, r $\in$ {[}-200, 200{]}) retorna exatamente essas 10 sequências e 5 conjuntos distintos. Refiz a tabela termo a termo (todas corretas), as identidades S = 435 e a\_k + a\_\{11-k\} = 87 (válidas para todo r), os valores de a$_{1}$ para r = 0, $\pm$10, $\pm$11 e a variante com zero permitido (mesmo conjunto de razões). Todas as armadilhas da lista foram tratadas: PAs decrescentes incluídas, os dois extremos verificados, paridade (r ímpar), caso r = 0, fator da soma, r inteiro, convenção de $\mathbb{N}$ com discussão do caso com zero, descrição completa com a$_{1}$ e condições, contagem ambígua (10 ordenadas vs 5 conjuntos) e verificação por soma. Não há erro de conta, de lógica ou de hipótese. Os problemas são de rigor de redação (equivalências com inteiros não detalhadas, uma frase de fronteira que superestima o que os exemplos provam, e argumento terso sobre a contagem como conjuntos), que não afetam o conteúdo. Por isso a nota é 9: a solução é publicável como gabarito comentado após pequenos ajustes de redação."%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 3: as equivalências 'a1 $\geq$ 1 $\Leftrightarrow$ 9r $\leq$ 85 $\Leftrightarrow$ r $\leq$ 9' e '9r $\geq$ -85 $\Leftrightarrow$ r $\geq$ -9' são justificadas só com '85 < 90' e '-85 > -90', sem explicitar o sentido recíproco nem que o arredondamento usa r inteiro. Deveria escrever: 9r $\leq$ 85 < 90 $\Rightarrow$ r < 10 $\Rightarrow$ r $\leq$ 9, e reciprocamente r $\leq$ 9 $\Rightarrow$ 9r $\leq$ 81 $\leq$ 85; análogo para o lado inferior.%
+\item%
+{[}minor{]} Seção de fronteira: 'r = $\pm$11 ... o que confirma que -9 $\leq$ r $\leq$ 9 é exatamente o intervalo válido'. Os exemplos fora do intervalo não provam que o intervalo é exato; quem garante isso é o 'se e somente se' do Passo 3. Reformular a frase para apontar o Passo 3 como a justificativa.%
+\item%
+{[}minor{]} O caso r = 0 só aparece na seção de fronteira. No Passo 2, após concluir que r é ímpar, convém dizer em uma frase que r = 0 fica excluído (é par e daria a1 = 43,5), para o leitor não precisar procurar o argumento.%
+\item%
+{[}minor{]} A afirmação 'conjuntos com |r| diferentes são distintos' é justificada de forma terse ('única ordenação crescente, cuja diferença comum é |r|'). Ficaria mais rigorosa dizendo que o conjunto determina o mínimo m e o máximo M, com M - m = 9|r|, logo |r| é um invariante do conjunto.%
+\item%
+{[}minor{]} A convenção $\mathbb{N}$ = \{1, 2, 3, \ldots{}\} da p. 2 não é citada. A resolução usa 'naturais (inteiros $\geq$ 1)', que está correto, mas citar a convenção explicitamente deixaria claro que a exclusão do zero é um dado do enunciado e não uma escolha do candidato. A discussão do caso com zero já está correta.%
+\end{itemize}%
+\subsection*{Questão 2: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Conjunto solução: S = (log$_{2}$(($\surd$5 - 1)/2), 1) = (-log$_{2}$((1 + $\surd$5)/2), 1), ou seja, aproximadamente -0,6942 < x < 1. Os extremos são excluídos, pois ambos dão igualdade. A questão é discursiva, sem alternativas.\par %
+Resposta final correta e idêntica à da referência: S = (-log$_{2}$((1+$\surd$5)/2), 1), com os extremos excluídos. Enunciado confirmado na página 3 da prova: |log$_{2}$(2\^{}x+2)| > |2x|.\newline%
+\newline%
+Conferência independente:\newline%
+{-} Passo 1 (log > 1 sempre, módulo redundante) está correto e justificado.\newline%
+{-} A decomposição |2x| < L ? (I) L > 2x e (II) L > -2x vale para todo x e dispensa separação de casos. A interseção final é feita de forma explícita, então as armadilhas de domínio por casos ficam resolvidas pelo método.\newline%
+{-} (I): t$^2$ - t - 2 < 0 com t = 2\^{}x > 0 ? 0 < t < 2 ? x < 1. Correto.\newline%
+{-} (II): t + 2 > 1/t$^2$ ? t$^3$ + 2t$^2$ - 1 > 0; a fatoração (t+1)(t$^2$+t-1) está correta (conferida numericamente); para t > 0 ? t > ($\surd$5-1)/2 = 1/$\varphi$ ? x > -log$_{2}$$\varphi$. Correto. Usa 2\^{}\{-2x\} = 1/t$^2$, que é a armadilha do sinal, tratada corretamente.\newline%
+{-} Extremos: f(1) = log$_{2}$4 - 2 = 0 exato; em x$_{0}$ = -log$_{2}$$\varphi$, L = 2log$_{2}$$\varphi$ = -2x$_{0}$ = 1,388483\ldots{} (igualdade confirmada numericamente, erro \textasciitilde{}2e{-}16).\newline%
+{-} Valores citados (log$_{2}$3 $\approx$ 1,585; log$_{2}$2,5 $\approx$ 1,322; log$_{2}$6 $\approx$ 2,585; x = 0,99 $\to$ 1,995 vs 1,98; x = 1,01 $\to$ 2,005 vs 2,02) conferem.\newline%
+{-} Armadilhas: enunciado (2\^{}x) ?; módulo redundante ?; sinal do limite inferior ?; desigualdade estrita com ambos os extremos excluídos e justificados ?; resposta em intervalo único com x = -1 testado ?; conversão log $\to$ exponencial com sinal arbitrário de B ?.\newline%
+\newline%
+Pontos fortes: passos numerados e encadeados, justificativa de cada equivalência, uso da bijeção t = 2\^{}x, verificações nos extremos e em pontos internos e externos. Os defeitos restantes são de redação e comprovação, não de conteúdo matemático. Nota 9: resolução publicável como gabarito comentado, após as três correções menores acima.%
+\begin{itemize}%
+\item%
+{[}minor{]} No passo 3, a frase "2\^{}\{kx\} = t\^{}k para todo k real inteiro" é contraditória ("real inteiro"). O correto é "para todo k real" (vale para qualquer real k, pois 2\^{}\{kx\} = (2\^{}x)\^{}k com 2\^{}x > 0), ou, se a intenção era restringir, "para k inteiro". Corrigir a redação.%
+\item%
+{[}minor{]} No passo 7, a "Conferência numérica adicional" afirma que 200 000 valores em {[}{-}6,6{]} coincidiram com o intervalo "exceto em vizinhanças das fronteiras", sem descrever malha, critério de pertinência ou número de discrepâncias, e a exceção é vaga. Em um gabarito isso não agrega comprovação. Ou se descreve o procedimento e a contagem, ou se remove a frase. Verifiquei a afirmação por conta própria (malha de 400 001 pontos em {[}{-}6,6{]}, 0 discrepâncias em relação a (log$_{2}$(($\surd$5{-}1)/2), 1)), então o problema é de comprovação, não de conteúdo.%
+\item%
+{[}minor{]} No passo 5, a fatoração t$^3$+2t$^2${-}1 = (t+1)(t$^2$+t{-}1) é dita "verificável por expansão" sem mostrar a expansão. Um gabarito comentado deveria exibir: (t+1)(t$^2$+t{-}1) = t$^3$+t$^2${-}t+t$^2$+t{-}1 = t$^3$+2t$^2${-}1. Custo de correção mínimo.%
+\end{itemize}%
+\subsection*{Questão 3: nota 9,5 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} **Respostas finais (Questão 3):**\newline%
+\newline%
+{-} **Lados:** o polígono é um octógono regular, e todos os 8 lados medem s = $\surd$(1 - $\surd$2/2) = $\surd$(4 - 2$\surd$2)/2 = $\surd$2$\cdot$sen($\pi$/8) $\approx$ 0,5412 (formas equivalentes: $\surd$(2 - $\surd$2)/$\surd$2).\newline%
+{-} **r = 1/16.**\newline%
+\newline%
+Justificativa resumida: z$^{8}$ = ri, então |z| = r\^{}(1/8) = R, e as raízes estão sobre a circunferência de raio R com espaçamento angular $\pi$/4. A área é 2$\surd$2$\cdot$R$^2$ = 2$\surd$2$\cdot$r\^{}(1/4) = $\surd$2, logo r\^{}(1/4) = 1/2 e r = 1/16, o que dá R = $\surd$2/2 e s = 2R$\cdot$sen($\pi$/8).\newline%
+\newline%
+Não é múltipla escolha.\par %
+Resposta final correta e igual à referência: r = 1/16 = 0,0625, e os oito lados (octógono regular, R = $\surd$2/2) medem $\surd$(1-$\surd$2/2) = $\surd$(4-2$\surd$2)/2 $\approx$ 0,5412. Confirmei o enunciado na página 4 do PDF e fiz a conferência em python: resíduo de r + i$\cdot$z$^{8}$ da ordem de 1e{-}16, área por shoelace = $\surd$2 e lado = 0,5411961. A cadeia do candidato está correta: z$^{8}$ = ri com 1/i = -i (passo 1), |z| = r\^{}(1/8) e argumentos $\pi$/16 + k$\pi$/4 (passo 2), octógono regular (passo 3), A = 2$\surd$2$\cdot$R$^2$ (passo 4, com o fator 1/2 do triângulo), R$^2$ = 1/2 e r = (R$^2$)$^{4}$ = 1/16 (passo 5), lado pela lei dos cossenos com 2R$^2$=1 (passo 6), e substituição direta z$_{0}$$^{8}$ = i/16 (passo 7, correta). As armadilhas da referência estão tratadas: manipulação de i, módulo r\^{}(1/8) (sem confundir com r\^{}(1/8)=1/2), fator 1/2 da área, lado 2R$\cdot$sen($\pi$/8) e não R$\surd$2, unicidade de r com r>0 usado, equivalentes da forma do lado com verificação pela área 2(1+$\surd$2)s$^2$ = $\surd$2. Não há erro de conta nem de lógica. As lacunas restantes são de justificação (escolha do polígono convexo e a forma alternativa do lado), e por isso a nota é 9,5 e não 10. Está no nível de gabarito comentado publicável.%
+\begin{itemize}%
+\item%
+{[}minor{]} A escolha do polígono não é justificada. O enunciado diz 'o polígono cujos vértices são as oito raízes', e o candidato assume, sem dizer por quê, que se trata do octógono convexo que liga raízes consecutivas em ordem de argumento. O Passo 3 não menciona convexidade; ela só aparece no Passo 4 ('Como o octógono regular é convexo'). Outras ligações possíveis (por exemplo, o octógono estrelado \{8/3\}) dariam outra área. Deveria ser dito explicitamente que o polígono é o de vértices consecutivos em ordem angular, e que a convexidade decorre de os vértices estarem sobre a circunferência com ângulos centrais iguais.%
+\item%
+{[}minor{]} A forma alternativa s = 2R$\cdot$sen($\pi$/8) = $\surd$2$\cdot$sen($\pi$/8) é apresentada como 'outra forma de escrever' sem derivação. Bastaria uma linha: no triângulo isósceles Oz\_k z\_\{k+1\}, a altura do vértice O divide o ângulo $\pi$/4 ao meio, o que dá s/2 = R$\cdot$sen($\pi$/8). Alternativamente, conferir com sen($\pi$/8) = $\surd$(2-$\surd$2)/2, o que o candidato não faz.%
+\end{itemize}%
+\subsection*{Questão 4: nota 9,0 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a = -2 (único valor possível: q(x) divide p(x) $\Leftrightarrow$ a = -2).\newline%
+\newline%
+Com a = -2, p(x) = (x + 1)$^2$(x - 2)(x$^2$ + 1)(x$^2$ - 6x + 1), e as raízes de p(x) são:\newline%
+{-} x = -1 (raiz dupla);\newline%
+{-} x = 2;\newline%
+{-} x = 3 + 2$\surd$2 e x = 3 - 2$\surd$2;\newline%
+{-} x = i e x = -i.\newline%
+\newline%
+Raízes reais: -1, 2, 3 $\pm$ 2$\surd$2. Raízes complexas não reais: $\pm$i. Contadas com multiplicidade, são 7 raízes (6 distintas).\par %
+Resposta final correta e idêntica à referência item por item: a = -2 (único valor); p(x) = (x+1)$^2$(x-2)(x$^2$+1)(x$^2$-6x+1); raízes -1 (dupla), 2, i, -i, 3$\pm$2$\surd$2; seis distintas e sete contando multiplicidade. Verifiquei no enunciado original (página 5) que a transcrição de p(x) e q(x) está correta e refiz as contas em aritmética exata: p(-1)=p'(-1)=p(2)=0 para a=-2, resto nulo na divisão por q com quociente x$^{4}$-6x$^3$+2x$^2$-6x+1, s(-1)=16, s(2)=-35, s(0)=1, p(0)=-2, p(1)=32, e as relações de Vieta (soma 6, produto 2, soma dos quadrados 38, e$_{2}$=-1). Todas conferem. Todas as armadilhas listadas na referência foram tratadas: fatoração de q como (x+1)$^2$(x-2) com derivada q'(-1)=0 justificando a multiplicidade; consistência das três condições (todas reduzem a a+2=0, sem família de soluções); sinais em potências ímpares; substituição de a=-2 em todos os termos; divisão explícita como checagem; $\pm$i incluídos; palíndromo com s(0)$\neq$0, identidade x$^2$+1/x$^2$=t$^2$-2 e t(t-6)=0; e contagem com e sem multiplicidade. A resolução é rigorosa e completa, com verificações independentes (Vieta e valores numéricos). Os problemas que restam são de acabamento: conclusões implícitas (fator teorema, multiplicidade de 2) e uma justificativa de distinção por decimais. Nenhum afeta o conteúdo. Com ajustes mínimos de uma frase cada, a resolução poderia ser publicada como gabarito comentado; por isso nota 9,0."%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 5: a fatoração s(x)=(x$^2$+1)(x$^2$-6x+1) é concluída a partir de 'quatro raízes distintas e s mônico de grau 4' sem citar o teorema do fator (s = ?(x-r\_k)) nem justificar explicitamente a distinção das quatro raízes ($\pm$i não reais, 3$\pm$2$\surd$2 reais e distintos). Deveria ser: 'pelo teorema do fator, como s é mônico de grau 4 e tem as quatro raízes distintas $\pm$i, 3$\pm$2$\surd$2, s = ?(x-r\_k)'.%
+\item%
+{[}minor{]} Passo 6: a multiplicidade exata de 2 ('tem multiplicidade exatamente 1') é afirmada sem ligá{-}la explicitamente a s(2) = -35 $\neq$ 0, embora o cálculo esteja no mesmo parágrafo. Deveria dizer: 'como s(2) $\neq$ 0, 2 é raiz simples de p'.%
+\item%
+{[}minor{]} Passo 6: a afirmação de que as raízes de s são diferentes de -1 e de 2 é apoiada em aproximações decimais ($\approx$0,172 e $\approx$5,828), o que não é argumento exato. O argumento rigoroso já está disponível: s(-1) = 16 $\neq$ 0 e s(2) = -35 $\neq$ 0; alternativamente, 3$\pm$2$\surd$2 são irracionais e $\pm$i não são reais. A justificativa decimal deveria ser removida ou tratada como comentário.%
+\end{itemize}%
+\subsection*{Questão 5: nota 9,0 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Abscissa de C: x = -9 + 5$\surd$3 ($\approx$ -0,3397). Única: a outra raiz de x$^2$ + 18x + 6 = 0, x = -9 - 5$\surd$3, é rejeitada por estar fora da elipse (|x| $\leq$ $\surd$3). Os dois vértices C possíveis são (-9 + 5$\surd$3, $\pm$3$\surd$(20$\surd$3 - 34)) $\approx$ (-0,3397; $\pm$2,4019). Dados intermediários: A, B = (1, $\pm$2), m(AB) = 4, m(AC) + m(BC) = 6, lugar de C: 9x$^2$ - 18x + 5y$^2$ - 36 = 0.\par %
+Parecer sobre a Questão 5 (ITA 2027, Matemática): a resolução está correta e a resposta confere com a referência. Refiz as contas em python (na pasta de trabalho do juiz). Confirmei: enunciado na p. 5 do PDF (Questão 05, impresso p. 6); A,B=(1,$\pm$2) e m(AB)=4; AC+BC=6; lugar geométrico (x-1)$^2$/5+y$^2$/9=1 (a=3, c=2, b$^2$=5, centro (1,0), eixo maior vertical), com 6>4 garantindo elipse não degenerada; substituição resulta em x$^2$+18x+6=0; x=-9$\pm$5$\surd$3; x$_{2}$=-9-5$\surd$3 é rejeitada porque y$^2$=-306-180$\surd$3<0; x$_{1}$=-9+5$\surd$3 dá y$^2$=180$\surd$3-306=9(20$\surd$3-34)$\approx$5,769 e dois pontos simétricos em Ox com a mesma abscissa; resíduos das duas curvas $\approx$ 0 e perímetro = 10,000000. Divergência com a referência: nenhuma. Todas as armadilhas relevantes para este caminho foram tratadas: soma inclui m(AB)=4; descarte de x$_{2}$ por validade; dois sinais de y com abscissa única; validade do lugar geométrico (6>4); não degenerescência (x\_C$\neq$1); conferência numérica; expansão algébrica correta. Armadilhas sobre os focos da elipse dada e sua orientação não se aplicam, porque a resolução não usa essas grandezas. Não há erros críticos nem graves. Os pontos a melhorar são de notação, de explicitar a suficiência e a simetria, e de clareza. Nota 9: publicável como gabarito comentado com pequenos ajustes."%
+\begin{itemize}%
+\item%
+{[}minor{]} Notação inconsistente com a convenção da prova, que define m(AB) como comprimento. Os passos 2 e 3 escrevem 'PA+PB=6' e 'PA+PB=2a', enquanto o resto usa m(AC), m(BC). Deveria ser m(PA)+m(PB)=6 (com as barras de segmento).%
+\item%
+{[}minor{]} O passo 2 chama a condição do perímetro de 'necessária' e não afirma a suficiência. A equivalência 'C serve $\Leftrightarrow$ C $\in$ (I) ? (II) e x\_C $\neq$ 1' fica só implícita, via o 'reciprocamente' do passo 3 e a checagem do passo 6. Deveria ser dita explicitamente na conclusão.%
+\item%
+{[}minor{]} O passo 3 usa a equação padrão da elipse e a equivalência com PA+PB=6 sem derivação. Em nível IME isso é aceitável, mas um gabarito comentado poderia incluir a dedução (elevar ao quadrado duas vezes a partir de $\surd$((x-1)$^2$+(y-2)$^2$)+$\surd$((x-1)$^2$+(y+2)$^2$)=6) ou a verificação alternativa do reference.%
+\item%
+{[}minor{]} Os pontos (1, $\pm$3) são descritos como 'pontos degenerados'. A razão para descartá{-}los como vértices é que C sobre a reta AB torna o triângulo degenerado. Eles também não estão na elipse dada (2+9=11$\neq$6), mas isso é um argumento separado. A redação mistura os dois.%
+\item%
+{[}minor{]} O passo 6 verifica numericamente só C? = (-0,3397; 2,4019). A validade de C? segue do passo 5 ('ambos satisfazem (I) e (II)'), e a simetria em Ox, que troca A e B e preserva o perímetro, poderia ser explicitada em uma frase.%
+\item%
+{[}minor{]} A 'ordem de grandeza' |x\_C| < $\surd$3 do passo 6 é checagem de coerência, não verificação. Deveria ser apresentada como tal ou removida, pois não acrescenta rigor.%
+\end{itemize}%
+\subsection*{Questão 6: nota 9,5 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Resposta: 235 sêxtuplas ordenadas de naturais ($\mathbb{N}$ = \{1,2,3,...\}, conforme a convenção da prova).\newline%
+\newline%
+Resumo: o sistema equivale a x$_{2}$ = 6, x$_{1}$ = 8 - 2x$_{6}$ e x$_{3}$ + x$_{4}$ + x$_{5}$ = 16 - x$_{6}$. A condição x$_{1}$ $\geq$ 1 restringe x$_{6}$ $\in$ \{1, 2, 3\}. Para cada valor, a contagem de ternas positivas é C(14,2) = 91 (x$_{6}$ = 1), C(13,2) = 78 (x$_{6}$ = 2) e C(12,2) = 66 (x$_{6}$ = 3). Total: 235, confirmado por força bruta. Se $\mathbb{N}$ incluísse o zero, a resposta seria 605, que não é a resposta desta prova.\par %
+Parecer: a resolução do candidato está correta, completa e rigorosa. Nota 9,5. Pode ser publicada como gabarito comentado, com ressalvas de redação.\newline%
+\newline%
+Conferência do enunciado: o PDF (página 7) confirma o sistema, com 3x6, 4x6 e 7x6, e a convenção $\mathbb{N}$ = \{1, 2, 3, ...\} (página 2). A transcrição de referência está correta.\newline%
+\newline%
+Comparação item a item com a referência (sem divergências de conteúdo):\newline%
+{-} Convenção $\mathbb{N}$ = \{1,2,...\}: ambas corretas.\newline%
+{-} x2 = 6: ambas corretas.\newline%
+{-} x1 = 8 - 2x6: ambas corretas. Verifiquei (E1)-(A): x1 + 2x6 = 8.\newline%
+{-} x3 + x4 + x5 = 16 - x6: ambas corretas.\newline%
+{-} x6 $\in$ \{1,2,3\}: ambas corretas. x6 = 4 dá x1 = 0.\newline%
+{-} Contagem por caso C(m-1,2) = 91, 78, 66: ambas corretas.\newline%
+{-} Total 235: ambas corretas. Força bruta em Python (xi $\in$ \{1..30\}) dá 235, com distribuição 91/78/66 por x6. Com zero, dá 605, como nas duas resoluções.\newline%
+{-} Eliminação: os coeficientes de (E2)-(E1) e (E3)-2(E1) estão corretos. Os termos independentes são 22 e 16.\newline%
+\newline%
+Armadilhas:\newline%
+{-} Convenção: citada na hipótese e na observação sobre o zero (605). Tratada.\newline%
+{-} Sistema subdeterminado: a finitude é justificada no Passo 3 pela positividade. Tratada.\newline%
+{-} Eliminação: correta. Tratada.\newline%
+{-} x2 = 6 fixo: tratado.\newline%
+{-} Limite de x6 vindo de x1 $\geq$ 1: x6 $\leq$ 3, com x6 = 4 excluído explicitamente. Tratado.\newline%
+{-} Estrelas e barras com parcelas positivas, C(m-1,2): derivado com y = x - 1. Tratado.\newline%
+{-} Ordenação: tratada implicitamente pela bijeção, mas sem frase explícita. Ver issue menor.\newline%
+{-} Verificação: exemplo (2,6,1,1,11,3) conferido nas três equações. Contagem complementar 455 - 220 = 235 conferida. Tratada.\newline%
+\newline%
+Os problemas listados são apenas de redação e precisão. Não há erro de conta, lacuna de caso ou salto lógico. A recíproca do Passo 2 está bem feita.Avaliação concluída. A resolução do candidato chega à resposta correta, 235, e a justifica com rigor. Dei nota 9,5. Os problemas restantes são apenas de redação e precisão.\newline%
+\newline%
+{-} **Enunciado:** conferi no PDF (página 7). O sistema e a convenção $\mathbb{N}$ = \{1, 2, 3, \ldots{}\} batem com a transcrição.\newline%
+{-} **Resposta:** a força bruta confirma 235, com distribuição 91/78/66 por x$_{6}$. Com zero incluído, dá 605, como nas duas resoluções.\newline%
+{-} **Comparação com a referência:** não há divergência de conteúdo em nenhum item (x$_{2}$ = 6, x$_{1}$ = 8 - 2x$_{6}$, x$_{3}$ + x$_{4}$ + x$_{5}$ = 16 - x$_{6}$, x$_{6}$ $\in$ \{1, 2, 3\}, contagens por caso e total).\newline%
+{-} **Armadilhas:** todas foram tratadas. Ficou só a unicidade (ordenação), que está implícita na bijeção, sem frase explícita.\newline%
+\newline%
+Os três problemas listados são menores: a frase "menor valor permitido" para x$_{1}$ = 2 (o correto é "menor valor atingível", pela paridade), a falta de uma frase explícita sobre ordenação, e a justificativa vaga da contagem complementar. Não há problemas graves.\newline%
+\newline%
+<br>\newline%
+\newline%
+\newline%
+<invoke name="Bash">\newline%
+<parameter name="command">echo "Questão 6 avaliada: nota 9.5, resposta 235 correta, concorda com a referência." %
+\begin{itemize}%
+\item%
+{[}minor{]} No 'Caso de borda' (Verificação), a frase 'x6=3 fornece x1=2, o menor valor permitido' é imprecisa. Pela positividade, o menor valor permitido para x1 é 1, mas x1 = 8 - 2x6 é sempre par, então x1 = 1 nunca é atingido. Deveria dizer 'menor valor atingível' e justificar pela paridade. Isso deixa mais limpo por que o corte x6 $\leq$ 3 é exato.%
+\item%
+{[}minor{]} A unicidade está implícita na bijeção do Passo 5, mas a resolução não diz explicitamente que as sêxtuplas são ordenadas e que, por isso, não há divisão por permutações nem simetrias a explorar entre x1, x2 e x3..x5. Uma frase explícita fecharia a armadilha 'ordenação'.%
+\item%
+{[}minor{]} Na 'Contagem complementar', a expressão 'Pelo mesmo raciocínio' é vaga. O passo de identificar as quádruplas de N\^{}4 com soma 16 às soluções de (B) com x6 $\geq$ 1, e a troca x6 = t + 3 (t $\geq$ 1) que leva a soma 13, deveriam ser escritos com uma linha de justificativa. A conta está correta: C(15,3) = 455, C(12,3) = 220, 455 - 220 = 235.%
+\end{itemize}%
+\subsection*{Questão 7: nota 9,5 (aprovada, rodada 2 de 2)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Resposta: n $\in$ \{-6, -4, 6, 8\}.\newline%
+\newline%
+Quocientes correspondentes: n = -6 $\to$ -10; n = -4 $\to$ -30; n = 6 $\to$ -10; n = 8 $\to$ 18.\newline%
+\newline%
+Base: 2n$^3$ - 5n$^2$ - 52n + 90 = (2n - 1)(n$^2$ - 2n - 27) + 63. Logo a fração é inteira se e somente se n$^2$ - 2n - 27 divide 63. Com m = n - 1, isso dá m$^2$ - 28 = d, com d | 63. As únicas soluções ocorrem em d = -3 (m = $\pm$5) e d = 21 (m = $\pm$7).\par %
+Parecer da questão 7 (ITA 2027, inteiros n com (2n$^3$ - 5n$^2$ - 52n + 90)/(n$^2$ - 2n - 27) inteiro).\newline%
+\newline%
+Conferência do enunciado: a Questão 07 está na página 7 do PDF (numeração impressa 8). O enunciado transcrito pelo candidato confere. Observação sobre a referência: ela cita "página 8" para a Questão 07, mas o PDF página 8 contém a Questão 08. Isso é erro de citação da referência e não afeta a avaliação.\newline%
+\newline%
+Resposta: as duas resoluções concordam item por item. n $\in$ \{-6, -4, 6, 8\}, com quocientes -10, -30, -10 e 18. Verifiquei por força bruta em Python (|n| $\leq$ 100000, sem denominador nulo), confirmei a identidade N = (2n-1)$\cdot$D + 63 em {[}-1000, 1000{]}, e recalculei a tabela de d + 28 para os 12 divisores de 63. A resposta está correta.\newline%
+\newline%
+Conteúdo do candidato, conferido linha a linha: a divisão polinomial (resto parcial -n$^2$+2n+90, resto 63) está correta; a verificação (2n-1)(n$^2$-2n-27) + 63 = N também. O denominador não se anula em $\mathbb{Z}$, e a justificativa via (n-1)$^2$ = 28 é rigorosa. A equivalência Q $\in$ $\mathbb{Z}$ $\Leftrightarrow$ D | 63 está correta. Os divisores $\pm$1, $\pm$3, $\pm$7, $\pm$9, $\pm$21, $\pm$63 estão completos. A tabela de d + 28 está correta, e a classificação dos não quadrados por quadrados consecutivos cobre os 10 casos. Os ramos n - 1 = $\pm$5 e n - 1 = $\pm$7 estão completos. As substituições em N e D (incluindo sinais de n negativo) e as conferências pela forma 2n - 1 + 63/D estão corretas.\newline%
+\newline%
+Armadilhas: divisores negativos tratados; ramo negativo de m tratado; resto 63 correto; "quociente" distinguido do quociente polinomial; D | N $\Leftrightarrow$ D | 63 demonstrado pela identidade; denominador nulo justificado; a abordagem por divisores é exaustiva, sem depender de tentativa; naturais não restringidos; d = -63 descartado por m$^2$ = -35 < 0.\newline%
+\newline%
+Não há erros matemáticos nem lacunas lógicas. Os três problemas restantes são de forma (equivalência escrita de modo implícito, notação de intervalos e um parágrafo tangencial). Uma verificação opcional com a cota |D(n)| $\leq$ 63 $\Rightarrow$ -8 $\leq$ n $\leq$ 10 daria um fechamento independente, mas não é exigida. Esta é uma resolução que um professor publicaria como gabarito comentado.%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 3: a equivalência "63/D(n) é inteiro $\Leftrightarrow$ D(n) | 63" é justificada apenas com "pela definição de divisibilidade", sem escrever as duas implicações. Deveria constar: se 63/D = k $\in$ $\mathbb{Z}$ então 63 = D$\cdot$k, e reciprocamente se 63 = D$\cdot$k então 63/D = k. A ideia está certa, mas o passo fica implícito.%
+\item%
+{[}minor{]} Passo 5: a notação "7 $\in$ (2$^2$, 3$^2$)", "19, 21 $\in$ (4$^2$, 5$^2$)" etc. mistura pertinência com intervalos. Compreensível, mas "4 < 7 < 9", "16 < 19, 21 < 25" e assim por diante seria mais limpo e mais rigoroso.%
+\item%
+{[}minor{]} Passo 7: a conferência de sinais não é necessária para a resposta, e a frase "o sinal de D sozinho não determina o sinal de Q" é tangencial. Deveria ser removida ou reduzida a uma frase, para não diluir a argumentação central.%
+\end{itemize}%
+\subsection*{Questão 8: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} a) x $\in$ (0, 1{]} ? {[}9, 10), isto é, 0 < x $\leq$ 1 ou 9 $\leq$ x < 10. (Condição: discriminante de (y$^2$ - 6y + x(10-x) = 0) não negativo $\Leftrightarrow$ (x-1)(x-9) $\geq$ 0; x = 0 e x = 10 excluídos porque E $\neq$ A, B.)\newline%
+\newline%
+b) Os lados de EFGH medem $\surd$10 e 3$\surd$10 (área 3$\surd$10$\cdot$$\surd$10 = 30). Há duas configurações: x = 1 (m(EF) = 3$\surd$10, m(FG) = $\surd$10) e x = 9 (m(EF) = $\surd$10, m(FG) = 3$\surd$10). Em ambas, F é o ponto médio de BC.\par %
+Respostas finais idênticas às do gabarito. (a) x $\in$ (0,1{]} ? {[}9,10). (b) Lados $\surd$10 e 3$\surd$10, em duas configurações (x=1: m(EF)=3$\surd$10, m(FG)=$\surd$10; x=9: o inverso). Conferi o enunciado no PDF: confere com a transcrição. Verificações independentes: (i) a identidade S = (10-x)h + xy vale com erro \textasciitilde{}1e{-}14 sobre os retângulos admissíveis, e 2(x-5)(y-3) = (10-x)(6-y)+xy-30 vale exatamente, o que fecha (b) sem lacunas; (ii) pela parametrização por ângulo, o conjunto de x com retângulo inscrito é (0,1{]}?{[}9,10), com lacuna (1,9); (iii) x=1 e x=9 dão área 30, e nenhum outro x dá, já que x=5 não admite raiz real. Todas as armadilhas listadas no gabarito foram tratadas: sinal do discriminante (com a conferência por MA{-}MG, que é válida sem sinal), extremos excluídos corretamente, x=m(AE) distinguido de 10-x, tratamento separado do caso x=5, as duas configurações com a reflexão na mediatriz de AB, e nenhuma suposição de lados paralelos. Os problemas são de justificativa e acabamento, não de conteúdo. O mais relevante é a atribuição dos vértices aos lados, que deveria ter uma linha de justificativa. Com os ajustes listados, a resolução é publicável como gabarito comentado, mas no limite da nota 9.%
+\begin{itemize}%
+\item%
+{[}minor{]} Hipótese não justificada: a resolução define 'inscrito' como E$\in$AB, F$\in$BC, G$\in$CD, H$\in$DA sem argumento. A atribuição é a correta e a resposta não muda, mas o texto deveria provar que as outras são impossíveis. Basta usar a identidade das diagonais que o próprio candidato usa (E+G=F+H): se G$\in$DA=(0,g) e H$\in$CD=(h,6), então h=x-10<0, fora de CD. Também não ficou explícito que E e F em posição interior excluem atribuições em que dois vértices caem no mesmo lado.%
+\item%
+{[}minor{]} Reciprocidade incompleta em (a): verifica{-}se a ordenada de G (=6) e que 0<t<6 para as raízes, mas não se diz que G=(10-x,6) está no interior de CD porque 0<10-x<10, nem que H=(0,h) está no interior de DA. Faltam uma frase e uma conta de duas linhas.%
+\item%
+{[}minor{]} A seção 'Conferências' tem um item vazio: 'Ordem de grandeza: 9,49<10 e 3,16<6, compatível com um retângulo contido em ABCD' não prova contenção (comprimentos não garantem encaixe), e 'a área 30 é metade de 60, o que é plausível' não é verificação. Deveria ser removido ou trocado pela checagem explícita de que todos os vértices têm 0$\leq$x$\leq$10 e 0$\leq$y$\leq$6, que o caso x=1 já fornece.%
+\item%
+{[}minor{]} Em (b), a passagem 'área = |det(EF,EH)|' via identidade de Lagrange é correta, mas indireta. A positividade de det=(10-x)h+xy depende de h>0 e y>0, que foram estabelecidos antes, mas não são repetidos ali. Uma frase bastaria: para lados perpendiculares, |det| = |EF|$\cdot$|EH|, e os termos são positivos.%
+\item%
+{[}minor{]} Redação ambígua em (a): 'dois retângulos (trocando o papel de y e h)'. O correto é: as duas raízes t$_{1}$,t$_{2}$ com t$_{1}$+t$_{2}$=6 dão dois retângulos distintos, com F=(10,t$_{1}$) e F=(10,t$_{2}$). Vale explicitar.%
+\end{itemize}%
+\subsection*{Questão 9: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Área da seção = 10 + 5$\surd$3 $\approx$ 18,66 unidades de área.\newline%
+\newline%
+A seção é o trapézio ADPQ, com bases AD = 8 (diagonal maior da base) e PQ = 2 (base média de VEF, com P e Q pontos médios de VE e VF), e altura 2 + $\surd$3. Há dois planos possíveis, um paralelo à face VBC e outro paralelo à face VEF. Eles são simétricos e dão a mesma área, então a resposta é única.\newline%
+\newline%
+Dados intermediários: aresta lateral L = 2($\surd$6 + $\surd$2) = $\surd$(32 + 16$\surd$3); altura da pirâmide h = 4$\surd$(1 + $\surd$3).\newline%
+\newline%
+Não é questão de múltipla escolha.\par %
+Parecer sobre a Questão 9. A resposta final do candidato, 10+5$\surd$3 = 5(2+$\surd$3) $\approx$ 18,66 u.a., está correta e coincide com a referência item a item (plano Hy+2$\surd$3z=0 paralelo a SBC ou SEF, seção trapezoidal com bases AD = 8 e XY = 2, altura 2+$\surd$3).\newline%
+\newline%
+Verificação feita: (i) reli o enunciado no PDF da prova (página 10), que confere com a transcrição; (ii) rodei script numérico independente no diretório de trabalho: L$^2$ = 16(2+$\surd$3), H$^2$ = 16(1+$\surd$3), ângulo ASB = 30,000$^\circ$, interseção do plano com as 12 arestas e área do polígono = 18,660254 para as faces SBC e SEF (as outras faces não admitem plano pela diagonal AD); 10+5$\surd$3 = 18,660254; distância entre as retas AD e XY = 2+$\surd$3; cos $\theta$ = 2$\surd$3-3, e 5$\surd$3/(2$\surd$3-3) = 10+5$\surd$3. Todas as contas do candidato conferem, inclusive as simplificações $\surd$(7+4$\surd$3) = 2+$\surd$3 e $\surd$(28+16$\surd$3) = 2(2+$\surd$3). Também conferi a simetria: a reflexão em y = 0 troca B?F e C?E, então SBC e SEF dão a mesma área.\newline%
+\newline%
+Armadilhas da referência: 13 de 14 foram tratadas corretamente (ângulo no vértice S, circunraio 4 e não apótema, diagonal maior 8, pirâmide reta, plano paralelo à face e não à aresta, seção que não passa por S, PQ/XY = 2, distância 3D entre as retas, simplificação do radical, conferência por projeção, dois planos simétricos). A única não discutida é a checagem de degenerescência do caso de 60$^\circ$.\newline%
+\newline%
+Pontos que impedem nota mais alta são apenas de exposição e rigor secundário, sem erro matemático: a escolha da face é compacta, a ordem dos vértices não é justificada, cos $\theta$ não tem a fórmula escrita e a 'ordem de grandeza' não verifica nada. Nota 9: a resolução é clara, completa e publicável como gabarito comentado após pequenos ajustes."%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 3 (escolha da face): a conclusão de que SBC e SEF servem é implícita. Falta escrever explicitamente que BC ? SBC e BC ? AD, logo AD ? SBC (e o análogo com EF em SEF). A frase "o único plano paralelo a $\sigma$ que passa pelo vértice comum" é ambígua, pois o vértice comum é A. O que deveria ser feito: enunciar a condição necessária (AD paralela ao plano da face) e a verificação para SBC e SEF.%
+\item%
+{[}minor{]} Não há checagem de consistência do ângulo de 30$^\circ$. A resolução não observa que a aresta lateral L precisa ser maior que o circunraio R = 4, ou seja, H$^2$ > 0. Com 60$^\circ$ teríamos L = 4 e H = 0, pirâmide degenerada, que é uma das armadilhas do enunciado. Está implícito em H$^2$ = 16(1+$\surd$3) > 0, mas não é discutido. O que deveria ser feito: acrescentar uma linha de consistência no passo 1.%
+\item%
+{[}minor{]} Identificação do polígono ADXY sem justificativa completa. Afirma{-}se 'o quadrilátero ADXY' sem dizer que a ordem dos vértices vem das faces cortadas (base, SDE, SEF, SFA) e sem justificar a convexidade (interseção de sólido convexo com plano). Além disso, 'ADXY é um trapézio' só segue se AD e XY forem lados opostos, o que a ordem dos vértices deveria explicitar. O que deveria ser feito: uma frase com a sequência de faces cortadas.%
+\item%
+{[}minor{]} Conferência (a): cos $\theta$ é usado sem explicitar a fórmula cos $\theta$ = |n\_z|/|n| com n = (0, H, 2$\surd$3), que é o ângulo entre as normais. O que deveria ser feito: escrever a fórmula antes de substituir os valores.%
+\item%
+{[}minor{]} A 'ordem de grandeza' (comparar 18,66 com a área da base 41,57 e dizer que a altura 3,73 é 'coerente') não é verificação independente, pois não testa nada. O que deveria ser feito: removê{-}la ou substituí{-}la por uma checagem real, como a área projetada 5$\surd$3 ser menor que a área real e a razão cos $\theta$.%
+\end{itemize}%
+\subsection*{Questão 10: nota 9,0 (aprovada, rodada 1 de 1)}%
+\textbf{Resposta da resolução às cegas do avaliador:} Resposta: k = 3 (conjunto unitário \{3\}).\newline%
+\newline%
+{-} 1º quadrante: f(x) = (2 - $\surd$2)$\cdot$sen(x + $\pi$/4) assume valores em ($\surd$2 - 1, 2 - $\surd$2{]} $\approx$ (0,414; 0,586{]}. Nenhum inteiro.\newline%
+{-} 3º quadrante: f(x) = -(2 + $\surd$2)$\cdot$sen(x + $\pi$/4) assume valores em ($\surd$2 + 1, 2 + $\surd$2{]} $\approx$ (2,414; 3,414{]}. Único inteiro: 3.\newline%
+{-} Solução explícita para f(x) = 3 no 3º quadrante: x = 3$\pi$/4 + arcsin((6 - 3$\surd$2)/2) ($\approx$ 3,4293 rad) e x = 7$\pi$/4 - arcsin((6 - 3$\surd$2)/2) ($\approx$ 4,4247 rad), mais os translados por 2$\pi$n.\par %
+Resposta final correta e igual à referência: k = 3 (conjunto \{3\}). Conferi o enunciado no PDF original (p. 11), que confere com a transcrição. Refiz as contas: a identidade f = $\surd$2(|sen x|+|cos x|) - sen x - cos x vale com erro $\approx$ 5$\cdot$10$^{-}$$^{1}$$^{1}$ em 200 000 pontos; no 1º quadrante a imagem é $\approx$ {[}0,41421; 0,58579{]}; no 3º, $\approx$ {[}2,41422; 3,41421{]}; $\gamma$ $\approx$ 1,07309 dá x$_{1}$ $\approx$ 3,42928 e x$_{2}$ $\approx$ 4,42470, ambos no 3º quadrante com f = 3 (erro \textasciitilde{}10$^{-}$$^{1}$$^{5}$); f(0)=f($\pi$/2)=$\surd$2-1, f($\pi$)=f(3$\pi$/2)=$\surd$2+1, f(5$\pi$/4)=2+$\surd$2. Todas as armadilhas da lista de referência foram tratadas: módulo só nos radicais, fórmulas separadas por quadrante, bordas dos eixos, domínio, periodicidade, existência por TVI e por solução explícita, e exclusão de k = 1, 2 pela restrição de quadrantes. Não há erro de conta, de hipótese ou de caso. Os pontos a melhorar são de exposição: o passo de sinal na solução explícita ($\gamma$ > 0 com sen(x+$\pi$/4) < 0), algumas justificativas comprimidas (f(5$\pi$/4), $\surd$(2cos$^2$x), t = 3-3$\surd$2) e o argumento de completude na conferência dos eixos. Nenhum é major. Resolução publicável como gabarito comentado com pequenos ajustes, por isso nota 9.%
+\begin{itemize}%
+\item%
+{[}minor{]} Passo 5 (solução explícita): $\gamma$ = arcsen(3 - 3$\surd$2/2) é positivo, mas a equação exige sen(x+$\pi$/4) = 3$\surd$2/2 - 3 < 0. As soluções x = 3$\pi$/4+$\gamma$ e x = 7$\pi$/4-$\gamma$ estão corretas (sen($\pi$+$\gamma$) = -sen $\gamma$), mas o passo que conecta uma coisa à outra não aparece. Deveria constar: sen(x+$\pi$/4) = -sen $\gamma$, logo x+$\pi$/4 $\in$ \{$\pi$+$\gamma$, 2$\pi$-$\gamma$\} dentro de (5$\pi$/4, 7$\pi$/4).%
+\item%
+{[}minor{]} Passo 5, bullet de f(5$\pi$/4): a justificativa 'pois cos 5$\pi$/2 = 0' não explica que 2x = 2$\cdot$(5$\pi$/4) = 5$\pi$/2 é o argumento de cos(2x), e a desigualdade 2+$\surd$2 > 3 usa $\surd$2 > 1 sem dizê{-}lo. Ambas as conclusões são verdadeiras, mas o texto é cifrado para quem lê.%
+\item%
+{[}minor{]} Passo 5: 't = 3-3$\surd$2' vem de -($\surd$2+1)t = 3 com t = -3/($\surd$2+1) = -3($\surd$2-1). A conta do denominador deveria aparecer, porque é o único passo algébrico não mostrado da parte explícita.%
+\item%
+{[}minor{]} Passo 1: a passagem $\surd$(2cos$^2$x) = $\surd$2$\cdot$|cos x| está comprimida a partir de '$\surd$(a$^2$) = |a|', que não se aplica diretamente ao radicando 2cos$^2$x. Deveria escrever $\surd$2$\cdot$$\surd$(cos$^2$x) = $\surd$2$\cdot$|cos x| (e o análogo para sen x).%
+\item%
+{[}minor{]} Passo 6: a conferência dos eixos verifica f(0), f($\pi$/2), f($\pi$), f(3$\pi$/2), que são de fato os únicos pontos novos gerados pela inclusão dos eixos (por periodicidade). O texto não afirma nem justifica essa completude, então 'a convenção sobre os eixos não altera a resposta' fica sem o argumento de cobertura.%
+\item%
+{[}minor{]} Forma da resposta: o enunciado pede 'todos os inteiros k', e a resolução conclui 'o único inteiro procurado é k=3' / 'ANSWER: k=3'. É equivalente e aceitável, mas apresentar como conjunto \{3\} seria mais fiel ao pedido.%
+\end{itemize}%
+\end{document}

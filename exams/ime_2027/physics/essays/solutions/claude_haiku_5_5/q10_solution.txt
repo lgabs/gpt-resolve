@@ -1,0 +1,85 @@
+\section*{Questão 10}
+
+\section*{Solução}
+
+\textbf{Referencial e hipóteses.} Eixo $x$ horizontal, do fio esquerdo para o direito; eixo $y$ vertical para cima; $\hat z=\hat x\times\hat y$ (saindo do papel). Os fios estão em $x=\mp a$, com $a=d/2$, e o plano médio é $x=0$. Pela observação, o movimento permanece no plano $xy$. O enunciado não fornece $g$, e por isso o peso é desprezado (a validade dessa hipótese é verificada em (b)). Assim a única força é a magnética, que não realiza trabalho: $|\vec v|=v$, isto é, $\dot x^2+\dot y^2=v^2$.
+
+\textbf{1. Campo dos fios.} Pela lei de Ampère, um fio retilíneo infinito de corrente $I$ produz, à distância $r$, $B=\dfrac{\mu_0 I}{2\pi r}$, em linhas circulares em torno do fio. Para um fio em $x_k$, paralelo a $\hat y$, com corrente $I_k$, a regra da mão direita dá $\vec B_k=-\dfrac{\mu_0 I_k}{2\pi\,(x-x_k)}\,\hat z$ dos dois lados do fio (à direita, $x>x_k$, o campo aponta para $-\hat z$; à esquerda, para $+\hat z$). Pela superposição, $\vec B=B_z(x)\,\hat z$, com $B_z=\sum_k B_{z,k}$. Obtém-se:
+\begin{itemize}
+\item Situações 1 e 4 (correntes opostas, $I_E=i$, $I_D=-i$):
+\[
+B_z(x)=-\frac{\mu_0 i}{2\pi}\,\frac{d}{a^2-x^2},\qquad B_z(0)=-\frac{2\mu_0 i}{\pi d}\neq 0 .
+\]
+\item Situações 2 e 3 (correntes iguais, $I_E=I_D=i$):
+\[
+B_z(x)=\frac{\mu_0 i}{2\pi}\Big(\frac{1}{a-x}-\frac{1}{a+x}\Big)=\frac{\mu_0 i}{\pi}\,\frac{x}{a^2-x^2},\qquad B_z(0)=0 .
+\]
+\end{itemize}
+
+\textbf{2. Equações do movimento.} Com $\vec F=q\,\vec v\times\vec B$ e $\vec v\times\vec B=B_z\,(\dot y\,\hat x-\dot x\,\hat y)$, a 2ª lei de Newton dá
+\begin{align*}
+m\ddot x&=q\,\dot y\,B_z(x),\\
+m\ddot y&=-q\,\dot x\,B_z(x).
+\end{align*}
+A segunda equação equivale a $\dfrac{d}{dt}\big(m\dot y+qA(x)\big)=0$, com $A'(x)=B_z(x)$ (conservação do momento canônico $p_y$; integral primeira exata). No movimento quase vertical, $\dot y\simeq s\,v$, com $s=+1$ (sobe) ou $s=-1$ (desce), e então $m\ddot x\simeq q\,s\,v\,B_z(x)$.
+
+\textbf{3. Critério de restauração.} A força horizontal deve apontar para o plano médio quando a partícula se desloca, ou seja, $x=0$ deve ser equilíbrio estável. Isso exige (i) $B_z(0)=0$ e (ii) que, para $|x|\ll d$, com $B_z\simeq B_z'(0)\,x$,
+\[
+m\ddot x\simeq q\,s\,v\,B_z'(0)\,x
+\]
+tenha coeficiente negativo: $q\,s\,B_z'(0)<0$. Como $q>0$, a condição é $s\,B_z'(0)<0$.
+
+\textbf{4. Análise das quatro situações.}
+
+\emph{Situações 1 e 4 (excluídas).} Aqui $B_z(0)\neq 0$, logo (i) falha. Como $B_z<0$ em todo $|x|<a$, a força horizontal $F_x=q\,\dot y\,B_z$ tem sinal fixo:
+\begin{itemize}
+\item Situação 1 ($\dot y\simeq -v$): $F_x=-q\,v\,B_z>0$ em todo o intervalo. Para $x<0$ a força aproxima a partícula do plano; para $x>0$ a afasta. A força aponta sempre para a direita, em atração ao fio de corrente descendente (mesmo sentido da partícula).
+\item Situação 4 ($\dot y\simeq +v$): $F_x=q\,v\,B_z<0$ em todo o intervalo. Para $x>0$ aproxima, para $x<0$ afasta; a força aponta sempre para a esquerda, em atração ao fio de corrente ascendente.
+\end{itemize}
+Como $F_x(0)\neq 0$ e $F_x$ não muda de sinal, não há restauração. (Pela integral exata, a órbita da Situação 1 é um laço do lado direito, com $x_{\max}=a\tanh(4R/d)$, onde $R=\dfrac{mv}{q|B_z(0)|}=\dfrac{\pi d\,m\,v}{2\mu_0 i q}$; para $R\ll d$, $x_{\max}\simeq 2R$.)
+
+\emph{Situação 2 (escolhida).} Vale (i), pois $B_z(0)=0$. Para $|x|\ll a$, use $\dfrac{1}{1+w}\simeq 1-w$ com $w=\mp x/a$:
+\[
+\frac{1}{a\mp x}=\frac{1}{a}\cdot\frac{1}{1\mp x/a}\simeq\frac{1}{a}\Big(1\pm\frac{x}{a}\Big).
+\]
+Logo $B_z(x)\simeq\dfrac{\mu_0 i}{2\pi}\cdot\dfrac{2x}{a^2}=\dfrac{4\mu_0 i}{\pi d^2}\,x$, com $B_z'(0)=\dfrac{4\mu_0 i}{\pi d^2}>0$. Como a partícula desce ($s=-1$), $s\,B_z'(0)<0$: a condição (ii) é satisfeita.
+
+Exatamente, com $A(x)=-\dfrac{\mu_0 i}{2\pi}\ln(a^2-x^2)$ e a integral primeira, para uma partícula que parte de $x_0$ com $\dot x=0$ e $\dot y=-v$:
+\[
+\dot y(x)=-v+\frac{q\mu_0 i}{2\pi m}\ln\frac{a^2-x^2}{a^2-x_0^2}.
+\]
+Como $\dot x^2=v^2-\dot y^2\ge 0$ exige $\dot y\ge -v$, isto é $x^2\le x_0^2$, a partícula não se afasta do plano além de $|x_0|$: a amplitude é exatamente $|x_0|$, e a restauração não depende da linearização.
+
+\emph{Situação 3 (excluída).} Mesmas correntes, mas $s=+1$: $s\,B_z'(0)>0$, então $m\ddot x\simeq +q\,v\,B_z'(0)\,x$ diverge, e o plano médio é equilíbrio instável. A integral exata confirma: com $\dot y(x)=v+\dfrac{q\mu_0 i}{2\pi m}\ln\dfrac{a^2-x^2}{a^2-x_0^2}$, a partícula parte de $x_0$ (pequeno), afasta-se até $x_{\max}^2=a^2-(a^2-x_0^2)\,e^{-\kappa}$, onde $\dot y=-v$, e volta a $|x_0|$ sem cruzar o plano médio, com $\kappa=\dfrac{4\pi m v}{\mu_0 i q}$. Para $x_0\to 0$, $x_{\max}\simeq a\sqrt{1-e^{-\kappa}}$. No exemplo de (b), $\kappa=0{,}01$ e $x_{\max}\simeq 0{,}5$ mm, cerca de 50 vezes $x_0=10\,\mu$m.
+
+\emph{Interpretação.} Um portador positivo que desce equivale a uma corrente descendente. Correntes antiparalelas se repelem e paralelas se atraem: na Situação 2, a partícula descendo é repelida pelo fio mais próximo e volta ao plano; na Situação 3, subindo, é atraída pelo fio mais próximo e se afasta. Isso confirma as contas.
+
+\textbf{Conclusão do item (a):} somente a Situação 2 (correntes iguais e no mesmo sentido, partícula descendo).
+
+\textbf{b) Passo na Situação 2.} Para pequenas amplitudes ($|x|\ll a$ e $\omega|x|\ll v$), $\dot x^2\ll v^2$, logo $\dot y\simeq -v$ e $|\Delta y|=v\,\Delta t$. A equação de $x$ é $\ddot x\simeq -\omega^2 x$, com
+\[
+\omega^2=\frac{q v}{m}\,B_z'(0)=\frac{4\mu_0 i\,q\,v}{\pi m d^2},\qquad \omega=\frac{2}{d}\sqrt{\frac{\mu_0 i\,q\,v}{\pi m}},
+\]
+e $x(t)=A\cos(\omega t+\varphi)$. Os cruzamentos com $x=0$ estão separados por meio período, $\Delta t=\pi/\omega$. Logo
+\[
+p=\frac{\pi v}{\omega}=\frac{\pi d}{2}\sqrt{\frac{\pi m v}{\mu_0 i q}}.
+\]
+Aqui $p$ é a distância entre cruzamentos consecutivos (meio período), e não $2p$.
+
+\emph{Correção de segunda ordem} (da integral exata, com amplitude $A=|x_0|$):
+\[
+p\simeq\frac{\pi v}{\omega}\Big[1-\frac{3}{16}\Big(\frac{\omega A}{v}\Big)^2\Big].
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item \textbf{Unidades.} $\mu_0 i$ tem unidade $\mathrm{T\,m}$, com $\mathrm{T}=\mathrm{kg/(C\,s)}$. Então $\dfrac{\pi m v}{\mu_0 i q}$ tem unidade $\dfrac{\mathrm{kg\,m/s}}{\mathrm{T\,m\,C}}=1$, e $p$ é comprimento. Também $\dfrac{q v B_z'(0)}{m}$ tem unidade $\mathrm{s^{-2}}$, como deve ser $\omega^2$.
+\item \textbf{Casos limite e dependências.} Para $i\to 0$ ou $q\to 0$, $\omega\to 0$ e $p\to\infty$, pois não há restauração. Tem-se $p\propto d$, $p\propto\sqrt{v}$ e $p\propto\sqrt{m/(qi)}$. Em primeira ordem, $p$ não depende da amplitude (isocronismo).
+\item \textbf{Ordem de grandeza.} Tome $m/q=10^{-8}\ \mathrm{kg/C}$ (próximo da razão $m/q$ do próton), $i=10$ A, $d=1$ cm e $v=1$ m/s. Então $\mu_0 i/(\pi d)=4\cdot 10^{-4}$ T, $B_z'(0)=0{,}16$ T/m, $\omega=4000$ rad/s e $p=\pi/4000$ m $\approx 0{,}7854$ mm. Com $A=10\,\mu$m, $\omega A/v=0{,}04$, de modo que as hipóteses valem, e $\frac{3}{16}(0{,}04)^2=3{,}0\cdot 10^{-4}$.
+\item \textbf{Peso.} Com $g=9{,}8$ m/s$^2$, $g/(\omega v)\approx 2{,}5\cdot 10^{-3}$. O peso faz o passo crescer cerca de $\pi g/(2\omega v)\approx 0{,}4\,\%$ por meio período, efeito que se acumula porque a partícula acelera. Por isso ele é desprezível no valor aproximado de $p$, e a hipótese $|\vec v|\simeq v$ é consistente.
+\item \textbf{Integração numérica.} RK4 com o campo exato dos dois fios, sem peso, passo $2\cdot 10^{-8}$ s, $\dot y_0=-v$ e $x_0=10\,\mu$m: o espaçamento médio entre cruzamentos é $0{,}78516$ mm, com desvio relativo de $-3{,}0\cdot 10^{-4}$, igual à correção de segunda ordem acima. O máximo de $|x|$ é $x_0$, o que confirma a amplitude exata.
+\end{itemize}
+
+\textbf{Conclusão.} (a) Somente a Situação 2 (correntes iguais e no mesmo sentido, partícula descendo). (b) $p\approx\dfrac{\pi d}{2}\sqrt{\dfrac{\pi m v}{\mu_0 i q}}=\dfrac{\pi v}{\omega}$, com $\omega=\dfrac{2}{d}\sqrt{\dfrac{\mu_0 i q v}{\pi m}}$.
+
+ANSWER: (a) apenas a Situação 2 (correntes iguais e no mesmo sentido, partícula descendo); (b) $p\approx\dfrac{\pi d}{2}\sqrt{\dfrac{\pi m v}{\mu_0 i q}}$

@@ -1,0 +1,50 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.3,
+  "final_answer": "n ∈ {−6, −4, 6, 8} (quocientes −10, −30, −10 e 18, respectivamente).",
+  "judge_reference": {
+    "reference_solution": "**Enunciado (conferido no PDF, p. 7 do arquivo):** determinar todos os inteiros n tais que Q(n) = (2n³ − 5n² − 52n + 90)/(n² − 2n − 27) seja inteiro.\n\n**Passo 0 – O denominador nunca se anula para n inteiro.**\nD(n) = n² − 2n − 27 = (n − 1)² − 28. As raízes são 1 ± 2√7, irracionais (discriminante 112 não é quadrado perfeito). Logo D(n) ≠ 0 para todo n ∈ ℤ e o quociente está definido para todo inteiro.\n\n**Passo 1 – Divisão polinomial.**\n(2n − 1)(n² − 2n − 27) = 2n³ − 4n² − 54n − n² + 2n + 27 = 2n³ − 5n² − 52n + 27.\nSubtraindo do numerador: 2n³ − 5n² − 52n + 90 − (2n³ − 5n² − 52n + 27) = 63. Portanto\n N(n) = (2n − 1)·D(n) + 63, ou seja Q(n) = 2n − 1 + 63/D(n).\n\n**Passo 2 – Reduzir à divisibilidade.**\nComo 2n − 1 é inteiro, Q(n) é inteiro ⇔ 63/D(n) é inteiro ⇔ D(n) divide 63 (equivalentemente, D(n) | N(n) ⇔ D(n) | 63, porque N ≡ 63 mod D).\nEntão D(n) ∈ {±1, ±3, ±7, ±9, ±21, ±63}.\n\n**Passo 3 – Resolver (n − 1)² = 28 + D.**\nComo D = (n−1)² − 28, é preciso que 28 + d seja quadrado perfeito, para cada divisor d de 63:\n- d = 1 → 29 (não); d = −1 → 27 (não);\n- d = 3 → 31 (não); d = −3 → 25 = 5² (SIM);\n- d = 7 → 35 (não); d = −7 → 21 (não);\n- d = 9 → 37 (não); d = −9 → 19 (não);\n- d = 21 → 49 = 7² (SIM); d = −21 → 7 (não);\n- d = 63 → 91 (não); d = −63 → −35 (< 0, impossível).\n\nCasos que servem:\n- d = −3: (n−1)² = 25 ⇒ n − 1 = ±5 ⇒ n = 6 ou n = −4.\n- d = 21: (n−1)² = 49 ⇒ n − 1 = ±7 ⇒ n = 8 ou n = −6.\n\n**Passo 4 – Verificação direta (Q = 2n − 1 + 63/D):**\n- n = −6: D = 21, Q = −13 + 3 = −10.\n- n = −4: D = −3, Q = −9 − 21 = −30.\n- n = 6: D = −3, Q = 11 − 21 = −10.\n- n = 8: D = 21, Q = 15 + 3 = 18.\nConferência numérica com Python (força bruta para |n| ≤ 5000, divisão exata do numerador pelo denominador) retorna exatamente {−6, −4, 6, 8}, com quocientes −10, −30, −10, 18. Para |n| grande, |D(n)| > 63, logo 0 < |63/D| < 1 e Q não é inteiro, o que confirma que não há outras soluções.\n\n**Conclusão:** n ∈ {−6, −4, 6, 8}.",
+    "final_answer": "n ∈ {−6, −4, 6, 8}. Os quocientes valem, respectivamente, −10, −30, −10 e 18. A chave é Q(n) = 2n − 1 + 63/(n² − 2n − 27), então é preciso que n² − 2n − 27 divida 63.",
+    "pitfalls": [
+      "Não esquecer de mostrar que o denominador n² − 2n − 27 nunca se anula para n inteiro (raízes 1 ± 2√7 são irracionais). Sem isso, o quociente poderia estar indefinido para algum candidato.",
+      "A divisão polinomial deve ser feita sem erro: o resto é 63 (quociente 2n − 1). Um erro comum é obter outro resto, por exemplo 90 − 27 mal calculado, o que muda o conjunto de divisores.",
+      "Passar de 'D | N' para 'D | 63' exige justificar que D | (2n−1)·D, então D | N ⇔ D | 63. Basta que D divida 63 em ℤ (divisores positivos E negativos), pois D(n) pode ser negativo (ex.: D = −3 para n = 6 e n = −4).",
+      "Esquecer os divisores negativos de 63 (−1, −3, −7, −9, −21, −63) faz perder as soluções n = 6 e n = −4, que correspondem a D = −3. É o erro mais provável: ficar só com n = −6 e 8.",
+      "Ao usar (n−1)² = 28 + d, é preciso testar os 12 divisores e lembrar que cada raiz quadrada dá dois valores de n (n − 1 = ±5 e ±7). Perder o sinal negativo perde metade das soluções.",
+      "Não confundir o quociente inteiro Q(n) com o quociente da divisão polinomial 2n − 1: Q(n) é inteiro apenas quando 63/D(n) também for inteiro.",
+      "Evitar argumentos de 'testar alguns valores': é necessário um argumento de finitude (D | 63 limita |D| ≤ 63, logo (n−1)² ≤ 91), e fechar com a verificação dos quatro valores encontrados.",
+      "Cuidado com resolução que use uma 'prova' do tipo gcd ou Euclides com passos falsos (por exemplo, supor D | 2n − 1 sem justificativa); a redução correta é só através de N = (2n−1)D + 63."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.3,
+      "final_answer": "n ∈ {−6, −4, 6, 8} (quocientes −10, −30, −10 e 18, respectivamente).",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O fechamento cita uma busca computacional em -2000 ≤ n ≤ 2000 como confirmação de que não há outras soluções. Isso não pertence a uma resolução discursiva e não prova nada. A unicidade já decorre, de forma rigorosa, de D(n) dividir 63 (12 valores possíveis) e de o teste de quadrado perfeito ter sido feito para todos os 12. Recomendo remover a frase ou trocá-la por uma frase explícita de finitude, por exemplo: 'como |D| ≤ 63, vem (n−1)² ≤ 91, e os casos foram esgotados'."
+          },
+          {
+            "severity": "minor",
+            "description": "A equivalência 'Q inteiro ⇔ D | 63' é enunciada de forma muito curta. Faltou dizer que 63/D = Q − (2n−1) é diferença de inteiros no sentido →, e que no sentido ← 63/D inteiro implica Q inteiro. Faltou também explicitar que 'divide' vale em ℤ, com divisores negativos. A lista ±1,…,±63 mostra que o candidato sabe disso, então o prejuízo é só de clareza."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato diz que (n−1)² = 28 + d deve ser 'quadrado perfeito (e não negativo)', mas não diz explicitamente que d = −63 dá −35 < 0 e por isso é descartado. A tabela mostra −35 com 'não', então a conclusão está correta, mas a justificativa fica implícita. Também não comenta que 28 + d é um quadrado perfeito ⇒ n inteiro, ou seja, que as raízes n = 1 ± k são inteiras. É trivial, mas é o passo que fecha a equivalência."
+          }
+        ],
+        "summary": "Resposta final n ∈ {−6, −4, 6, 8}, igual à da minha referência. Conferi por força bruta em |n| ≤ 5000: o conjunto é exatamente {−6, −4, 6, 8}, com quocientes −10, −30, −10 e 18, os mesmos valores que o candidato obtém. O enunciado transcrito confere com o PDF (Questão 07, p. 8 do arquivo).\n\nA resolução está correta e quase de nível de gabarito comentado:\n- Mostra que D(n) = (n−1)² − 28 nunca se anula para n inteiro, pois 28 não é quadrado perfeito.\n- Faz a divisão polinomial sem erro: N = (2n−1)D + 63. Eu refiz a conta e o resto é 63.\n- Reduz a D | 63 apenas pela identidade N = (2n−1)D + 63, sem usar Euclides com passos falsos.\n- Testa os 12 divisores, positivos e negativos, via (n−1)² = 28 + d. Acha d = −3 (n = 6 ou −4) e d = 21 (n = 8 ou −6), com os dois sinais de n−1.\n- Verifica os quatro valores diretamente.\n\nTodas as armadilhas listadas foram tratadas: denominador não nulo, resto 63, divisores negativos, dois sinais de cada raiz, argumento de finitude via divisores de 63 e verificação final. Os problemas restantes são só de apresentação: a citação da busca computacional como 'confirmação', e a justificativa um pouco enxuta da equivalência Q inteiro ⇔ D | 63 e do descarte de d = −63. Nenhum afeta a correção. Nota 9.3."
+      }
+    }
+  ]
+}

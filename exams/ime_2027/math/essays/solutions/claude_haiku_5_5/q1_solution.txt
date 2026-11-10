@@ -1,0 +1,85 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{1. Raízes e hexágonos.} As raízes de $z^{12}=1$ são $z_k=e^{2\pi i k/12}=e^{ik\pi/6}$, $k=0,1,\ldots,11$. Todas têm módulo $1$ e argumentos $30^\circ k$, igualmente espaçados sobre a circunferência unitária $C$.
+
+Para índice par, $z_{2j}=e^{ij\pi/3}$ cumpre $z^6=1$. Para índice ímpar, $z_{2j+1}=e^{i\pi/6}e^{ij\pi/3}$ cumpre $z^6=e^{i\pi}=-1$. Como $z^6=1$ e $z^6=-1$ têm, cada uma, exatamente $6$ raízes,
+\[
+\mathcal P=\{z\in\mathbb C:\ z^6=1\},\qquad \mathcal I=\{z\in\mathbb C:\ z^6=-1\}.
+\]
+Essa descrição não depende de começar os índices em $0$ ou em $1$: com índices de $1$ a $12$, $z_{12}=1$ tem índice par e o conjunto obtido é o mesmo.
+
+Ambos são hexágonos regulares inscritos em $C$, com raio $R=1$ e lado $\ell=R=1$. Decompostos a partir do centro, são formados por $6$ triângulos equiláteros de lado $1$, logo
+\[
+A(\mathcal P)=A(\mathcal I)=6\cdot\frac{\sqrt3}{4}=\frac{3\sqrt3}{2}.
+\]
+Além disso $\mathcal I=e^{i\pi/6}\mathcal P\neq\mathcal P$, pois os vértices de $\mathcal P$ têm argumento $\equiv 0^\circ \pmod{60^\circ}$ e os de $\mathcal I$ têm argumento $\equiv 30^\circ \pmod{60^\circ}$. Se fossem iguais, a união teria área $\frac{3\sqrt3}{2}$, o que não ocorre.
+
+\textbf{2. Hexágonos como interseções de semiplanos.} Seja $\hat u_\varphi=(\cos\varphi,\sin\varphi)$ e $a=\dfrac{\sqrt3}{2}$, o apótema de um hexágono de lado $1$ (altura do triângulo equilátero de lado $1$). O lado de $\mathcal P$ entre $z_0=1$ e $z_2=e^{i\pi/3}$ tem ponto médio $M=\left(\frac34,\frac{\sqrt3}{4}\right)=a\,\hat u_{30^\circ}$. Esse lado é perpendicular a $OM$, logo está na reta $x\cdot\hat u_{30^\circ}=a$. As rotações de $60^\circ j$ dão os outros lados de $\mathcal P$. Do mesmo modo, o lado de $\mathcal I$ entre $e^{-i\pi/6}$ e $e^{i\pi/6}$ está na reta $x=\frac{\sqrt3}{2}$, isto é, $x\cdot\hat u_0=a$.
+
+Um polígono convexo é a interseção dos semiplanos fechados determinados por seus lados e que contêm o polígono. Com $H_\varphi=\{x\in\mathbb R^2:\ x\cdot\hat u_\varphi\le a\}$, temos
+\[
+\mathcal P=\bigcap_{j=0}^{5}H_{30^\circ+60^\circ j},\qquad \mathcal I=\bigcap_{j=0}^{5}H_{60^\circ j}.
+\]
+Como $\{30^\circ+60^\circ j\}\cup\{60^\circ j\}=\{30^\circ m:\ m=0,\ldots,11\}$,
+\[
+\mathcal P\cap\mathcal I=\bigcap_{m=0}^{11}H_{30^\circ m}.
+\]
+
+\textbf{3. A interseção é um dodecágono regular.} Sejam $d=\dfrac{a}{\cos 15^\circ}$, $\theta_k=15^\circ+30^\circ k$ e $V_k=d\,\hat u_{\theta_k}$, com $k=0,\ldots,11$ e índices módulo $12$.
+
+\emph{(a) $V_k\in\mathcal P\cap\mathcal I$.} Para cada $m$, o ângulo $\theta_k-30^\circ m=15^\circ\,(2(k-m)+1)$ é múltiplo ímpar de $15^\circ$. Reduzido módulo $360^\circ$, seu valor absoluto fica em $[15^\circ,165^\circ]$. Como $\cos$ é decrescente em $[0^\circ,180^\circ]$, vale $\cos(\theta_k-30^\circ m)\le\cos 15^\circ$, logo
+\[
+V_k\cdot\hat u_{30^\circ m}=d\cos(\theta_k-30^\circ m)\le d\cos15^\circ=a.
+\]
+Assim $V_k\in H_{30^\circ m}$ para todo $m$.
+
+\emph{(b) Os lados de $D=V_0V_1\cdots V_{11}$.} Os $V_k$ estão igualmente espaçados de $30^\circ$ sobre a circunferência de raio $d$, portanto $D$ é um dodecágono regular de circunraio $d$. Os ângulos $\theta_{k-1}=30^\circ k-15^\circ$ e $\theta_k=30^\circ k+15^\circ$ são simétricos em relação a $30^\circ k$, logo
+\[
+V_{k-1}\cdot\hat u_{30^\circ k}=V_k\cdot\hat u_{30^\circ k}=d\cos15^\circ=a.
+\]
+Então o lado $V_{k-1}V_k$ está na reta $\partial H_{30^\circ k}$, e seu apótema é $d\cos15^\circ=a$.
+
+\emph{(c) $D=\mathcal P\cap\mathcal I$.} Por (a), os $V_k$ estão no conjunto convexo $\mathcal P\cap\mathcal I$, logo $D\subset\mathcal P\cap\mathcal I$. Reciprocamente, por (b) cada reta $\partial H_{30^\circ m}$ contém um lado de $D$, e por (a) $D\subset H_{30^\circ m}$. Portanto $H_{30^\circ m}$ é exatamente o semiplano fechado determinado por esse lado e que contém $D$. Como um polígono convexo é a interseção dos semiplanos de seus lados, $D=\bigcap_m H_{30^\circ m}=\mathcal P\cap\mathcal I$.
+
+\textbf{4. Área de $\mathcal P\cap\mathcal I$.} O dodecágono $D$ é a união de $12$ triângulos $OV_{k-1}V_k$, cada um com lados $d,d$ e ângulo central $30^\circ$. Logo
+\[
+A(\mathcal P\cap\mathcal I)=12\cdot\frac12 d^2\sin30^\circ=3d^2.
+\]
+Como $\cos^2 15^\circ=\dfrac{1+\cos30^\circ}{2}=\dfrac{2+\sqrt3}{4}$,
+\[
+d^2=\frac{a^2}{\cos^2 15^\circ}=\frac{3/4}{(2+\sqrt3)/4}=\frac{3}{2+\sqrt3}=\frac{3(2-\sqrt3)}{(2+\sqrt3)(2-\sqrt3)}=3(2-\sqrt3),
+\]
+pois $(2+\sqrt3)(2-\sqrt3)=4-3=1$. Portanto
+\[
+A(\mathcal P\cap\mathcal I)=3d^2=9(2-\sqrt3)=18-9\sqrt3.
+\]
+Conferência: um polígono regular de $n$ lados e apótema $a$ tem área $n\,a^2\tan\frac{\pi}{n}$. Aqui $12\cdot\frac34\tan15^\circ=9(2-\sqrt3)$, o mesmo valor.
+
+\textbf{5. Área da união.} Os conjuntos são convexos e mensuráveis. Pela inclusão-exclusão, a interseção é contada duas vezes em $A(\mathcal P)+A(\mathcal I)$:
+\[
+A(\mathcal P\cup\mathcal I)=A(\mathcal P)+A(\mathcal I)-A(\mathcal P\cap\mathcal I)=3\sqrt3-\left(18-9\sqrt3\right)=12\sqrt3-18.
+\]
+
+\textbf{6. Conferências.}
+\begin{itemize}
+\item \emph{Pelas pontas.} $\mathcal I\setminus\mathcal P$ são $6$ pontas, uma sobre cada lado de $\mathcal P$. A ponta sobre o lado na reta $x\cdot\hat u_{30^\circ}=a$ é o triângulo $TP_1P_2$, com vértice $T=\hat u_{30^\circ}=e^{i\pi/6}$ e base $P_1P_2$ sobre essa reta. Sua altura é $1-a=1-\frac{\sqrt3}{2}$.
+
+O ponto $P_1=\left(\frac{\sqrt3}{2},\sqrt3-\frac32\right)$ é a interseção da reta com o lado $x=\frac{\sqrt3}{2}$ de $\mathcal I$. Verifica-se $\frac34+\frac12\left(\sqrt3-\frac32\right)=\frac{\sqrt3}{2}$. Por simetria de $\mathcal I$ em torno da bissetriz $OT$, $P_2$ é o simétrico de $P_1$ nessa bissetriz, e o ponto médio de $P_1P_2$ é $M=a\,\hat u_{30^\circ}$. O argumento de $P_1$ é $15^\circ$, pois $\frac{y}{x}=\frac{\sqrt3-3/2}{\sqrt3/2}=2-\sqrt3=\tan15^\circ$. Logo $\angle MOP_1=30^\circ-15^\circ=15^\circ$. No triângulo retângulo $OMP_1$, reto em $M$,
+\[
+|MP_1|=|OM|\tan15^\circ=\frac{\sqrt3}{2}(2-\sqrt3)=\sqrt3-\frac32,\qquad |P_1P_2|=2\sqrt3-3.
+\]
+Assim $A(\text{ponta})=\frac12(2\sqrt3-3)\left(1-\frac{\sqrt3}{2}\right)=\frac{7\sqrt3-12}{4}$, e
+\[
+A(\mathcal P\cup\mathcal I)=\frac{3\sqrt3}{2}+6\cdot\frac{7\sqrt3-12}{4}=\frac{24\sqrt3-36}{2}=12\sqrt3-18.
+\]
+
+\item \emph{Numérica.} O recorte exato dos polígonos pelos $12$ semiplanos (algoritmo de Sutherland–Hodgman) dá $A(\mathcal P\cap\mathcal I)\approx 2{,}4115427$ e $A(\mathcal P\cup\mathcal I)\approx 2{,}7846097$. Esses valores coincidem com $9(2-\sqrt3)$ e $12\sqrt3-18$.
+
+\item \emph{Ordem de grandeza e cotas.} $A(\mathcal P)\approx 2{,}598<A(\mathcal P\cup\mathcal I)\approx 2{,}785<2A(\mathcal P)\approx 5{,}196$. Além disso, $\mathcal P\cap\mathcal I$ está inscrito no círculo de raio $d$, e $\pi d^2=3(2-\sqrt3)\pi\approx 2{,}525>2{,}412$. A união está no disco unitário, de área $\pi\approx 3{,}14>2{,}785$.
+\end{itemize}
+
+Logo a área pedida é $A(\mathcal P\cup\mathcal I)=12\sqrt3-18\approx 2{,}78$ unidades de área.
+
+ANSWER: $12\sqrt{3}-18 \approx 2{,}78$ unidades de área

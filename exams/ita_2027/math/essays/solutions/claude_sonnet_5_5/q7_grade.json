@@ -1,0 +1,29 @@
+{
+  "question": 7,
+  "key_source": "Poliedro Resolve (ITA 2027, 2ª fase, dia 1 - Matemática)",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2027/ita-2-fase-dia-1-20-10-2026-2-fase-dia-1/dissertativa-7-matematica-2-fase-dia-1-ita-2027",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Questão 7 (valores inteiros de n)",
+      "solution_answer": "n ∈ {−6, −4, 6, 8} (quocientes −10, −30, −10 e 18)",
+      "key_answer": "n ∈ {−6, −4, 6, 8}",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "A transcrição confere com o enunciado original (p. 8 do PDF). A divisão está certa: (2n−1)(n²−2n−27) = 2n³−5n²−52n+27, então o resto é 90−27 = 63 e o quociente é E = 2n−1 + 63/(n²−2n−27). O denominador nunca se anula para n inteiro, porque (n−1)² = 28 não tem solução inteira. Como 28+d precisa ser quadrado perfeito, só sobram d = −3, que dá (n−1)² = 25 e n ∈ {−4, 6}, e d = 21, que dá (n−1)² = 49 e n ∈ {−6, 8}. Confirmei por força bruta em python, para |n| ≤ 100000, que estes são os únicos valores. Os quocientes saem −10, −30, −10 e 18, iguais aos da resolução."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "Há erro de digitação no discriminante do gabarito. Para n² − 2n − (k+27) = 0, o certo é Δ = 4 + 4(k+27) = 4(k+28), mas o gabarito escreve 'Δ = 4 + 4k + 27' e 'm² = 4k + 28'. A conclusão (k+28 tem de ser quadrado perfeito) e a resposta final não mudam."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução cita 'uma busca computacional em −2000 ≤ n ≤ 2000', o que não vale como argumento numa prova escrita. A demonstração algébrica já está completa sem isso: D(n) divide 63 e 28+D(n) tem de ser quadrado perfeito. Na versão entregue, convém tirar essa frase ou deixar claro que é só uma conferência."
+    }
+  ],
+  "summary": "A resolução e o gabarito estão certos e chegam à mesma resposta, n ∈ {−6, −4, 6, 8}. O método é o mesmo nos dois: dividir os polinômios (resto 63), exigir que n²−2n−27 divida 63 e testar quais divisores tornam 28+d um quadrado perfeito (d = −3 e d = 21). A resolução está correta e completa e ainda confere os quocientes. O gabarito tem um erro de digitação sem importância na expressão do discriminante."
+}

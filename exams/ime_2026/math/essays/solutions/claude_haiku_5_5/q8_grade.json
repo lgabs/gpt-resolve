@@ -1,0 +1,29 @@
+{
+  "question": 8,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-1-23-10-2025-2-fase-dia-1/dissertativa-8-matematica-2-fase-dia-1-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Q8 (provar que a solução é única e calculá-la)",
+      "solution_answer": "Solução única (x, y, z) = (0, 0, 0). A resolução mostra que f(t) = t + ln(t + √(t²+1)) tem f'(t) = 1 + 1/√(t²+1) > 1. Daí F(t) = f(f(f(t))) − t tem F' > 0, logo no máximo uma raiz, e F(0) = 0. Também apresenta um método alternativo, sem derivadas, que conclui x = y = z = 0.",
+      "key_answer": "Solução única (x, y, z) = (0, 0, 0). O gabarito usa que f é estritamente crescente: de x = f(f(f(x))) segue f(x) = x, logo x = y = z. Então log(x + √(x²+1)) = 0, que dá √(x²+1) = 1 − x, e daí x = 0.",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "A conclusão é a mesma nas duas: a solução (0,0,0) é única. Conferi as contas. A derivada de ln(t + √(t²+1)) é 1/√(t²+1), então f' = 1 + 1/√(t²+1) > 1 está certo. Numericamente F(1) ≈ 4,1714 e F(−1) ≈ −4,1714, como a resolução declara. Com log decimal, F(±1) ≈ ±1,474 e F(0) = 0. O argumento do gabarito vale, embora resumido: se f(x) > x, então f(f(x)) > f(x) > x e f(f(f(x))) > f(f(x)) > x, um absurdo; o caso f(x) < x é análogo. Ao elevar ao quadrado √(x²+1) = 1 − x sai x = 0, que satisfaz 1 − x ≥ 0. A resolução é mais completa: prova que f é crescente, a equivalência do sistema com F(x) = 0, a unicidade pelo Teorema do Valor Médio e a independência da base do logaritmo."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado escreve 'log' sem dizer a base. A resolução usa ln e mostra que o resultado vale para qualquer base b > 1, porque f_b(0) = 0 e f_b' > 1. O gabarito não trata disso. Isso não muda a resposta (0,0,0)."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito diz que f é estritamente crescente sem justificar. A justificativa é simples: t e ln(t + √(t²+1)) = arcsenh(t) são crescentes. O gabarito também omite os passos intermediários de 'f(x) > x ⇒ f(f(f(x))) > x', que exigem aplicar a monotonicidade duas vezes. Em uma prova de 'Prove que', a banca pode cobrar essas justificativas, mas a conclusão do gabarito está correta."
+    }
+  ],
+  "summary": "A resolução está correta e bate com o gabarito: a única solução real é (x, y, z) = (0, 0, 0). As contas que conferi estão certas: a derivada f' = 1 + 1/√(t²+1) e os valores F(±1) ≈ ±4,17. O argumento do gabarito também vale, só está resumido e não prova que f é crescente. A resolução é mais rigorosa e completa: monotonicidade, equivalência com F(x) = 0, unicidade pelo Teorema do Valor Médio e um método alternativo igual ao do gabarito. O único ponto a levar a um professor é a base do 'log', que não está especificada, mas não muda a resposta."
+}

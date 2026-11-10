@@ -1,0 +1,76 @@
+\section*{Questão 3}
+
+\section*{Solução}
+
+\textbf{1. Forma fechada de $f$.} Para $x\in[0,1)$ seja $t=\sqrt{x}\in[0,1)$. Como $x\ge 0$, vale $\sqrt{x^n}=(\sqrt{x})^n=t^n$. A série $\sum_{n\ge 1}t^n$ é geométrica de razão $t$ com $|t|<1$, logo converge e
+\[
+f(x)=\frac{t}{1-t}=\frac{1}{1-t}-1,\qquad t=\sqrt{x}.
+\]
+Em particular $f(0)=0$.
+
+\textbf{2. Mudança de variável.} Sejam $s=\sqrt{a}$ e $t=\sqrt{x}$, ambos em $[0,1)$. A aplicação $x\mapsto\sqrt{x}$ é bijeção de $[0,1)$ sobre $[0,1)$, com inversa $t\mapsto t^2$. Para $t,s\ge 0$ vale $t^2=s^2\Leftrightarrow t=s$. Logo $x\neq a\Leftrightarrow t\neq s$, e o problema é equivalente a minimizar sobre $t\in[0,1)\setminus\{s\}$.
+
+\textbf{3. Coeficiente angular da secante.} Para $x\neq a$, seja $m=\dfrac{f(x)-f(a)}{x-a}$. Então
+\begin{align*}
+f(x)-f(a)&=\frac{t}{1-t}-\frac{s}{1-s}=\frac{t(1-s)-s(1-t)}{(1-t)(1-s)}=\frac{t-s}{(1-t)(1-s)},\\
+x-a&=t^2-s^2=(t-s)(t+s).
+\end{align*}
+Como $t\neq s$, podemos cancelar $t-s$:
+\[
+m=\frac{1}{(1-s)(1-t)(t+s)}.
+\]
+Os fatores são positivos: $1-s>0$ e $1-t>0$ pois $s,t\in[0,1)$. Também $t+s>0$: se $a>0$, então $s>0$ e $t\ge 0$; se $a=0$, então $s=0$ e $t\neq 0$, logo $t>0$. Assim $m>0$ em todo o domínio.
+
+\textbf{4. Minimização.} Sejam
+\[
+c=\frac{1+s}{2},\qquad t^*=\frac{1-s}{2}.
+\]
+Então $c+t^*=1$ e $c-t^*=s$. Logo $1-t=c-(t-t^*)$ e $t+s=c+(t-t^*)$, e portanto
+\[
+(1-t)(t+s)=c^2-(t-t^*)^2,\qquad m=\frac{1}{(1-s)\bigl[c^2-(t-t^*)^2\bigr]}.
+\]
+O denominador é positivo no domínio (é igual a $(1-s)(1-t)(t+s)$). Como $v\mapsto \frac{1}{(1-s)(c^2-v)}$ é crescente em $v=(t-t^*)^2$, o valor de $m$ é mínimo exatamente quando $(t-t^*)^2$ é mínimo, isto é, quando $t$ está o mais perto possível de $t^*$.
+
+Além disso, $t^*=s\Leftrightarrow\frac{1-s}{2}=s\Leftrightarrow s=\frac13\Leftrightarrow a=\frac19$.
+
+\begin{itemize}
+\item \textbf{Caso $a\neq\frac19$.} Temos $t^*\in(0,\frac12]\subset[0,1)$ e $t^*\neq s$, logo $t^*$ pertence ao domínio. Como $(t-t^*)^2=0$ só para $t=t^*$, o mínimo existe, é único e ocorre em
+\[
+x^*=(t^*)^2=\frac{(1-\sqrt{a})^2}{4}.
+\]
+Além disso $x^*\neq a$, pois $t^*\neq s$ e $t\mapsto t^2$ é injetora em $[0,1)$. Há portanto exatamente uma secante de menor coeficiente angular, com
+\[
+m_{\min}=\frac{1}{(1-s)\,c^2}=\frac{4}{(1-s)(1+s)^2}.
+\]
+\item \textbf{Caso $a=\frac19$} ($s=\frac13=t^*$). Para $t\neq s$ tem-se $(t-t^*)^2>0$, logo $m>\frac{4}{(1-s)(1+s)^2}=\frac{27}{8}$. Porém $m\to\frac{27}{8}$ quando $t\to s$. O ínfimo não é atingido. O valor limite é a inclinação da tangente em $x=a$, pois $f'(x)=\dfrac{1}{2\sqrt{x}\,(1-\sqrt{x})^2}$ e $f'\left(\frac{1}{9}\right)=\frac{27}{8}$. Essa tangente não é secante com $x\neq a$, e por isso a hipótese $a\neq\frac19$ é necessária.
+\end{itemize}
+
+\textbf{5. Condição de paralelismo.} A reta $ky-4x=2026$ tem coeficiente angular definido somente se $k\neq 0$. Para $k=0$ ela seria $x=-\frac{1013}{2}$, vertical, e a secante não é vertical, pois $x\neq a$. Logo $k\neq 0$ e
+\[
+y=\frac{4}{k}\,x+\frac{2026}{k},
+\]
+com coeficiente angular $\frac{4}{k}$. O termo $\frac{2026}{k}$ é apenas o intercepto e não influi no paralelismo. Duas retas não verticais são paralelas se e somente se têm o mesmo coeficiente angular. Como a secante ótima é única, devemos ter
+\[
+\frac{4}{k}=\frac{4}{(1-s)(1+s)^2}.
+\]
+Como $k\mapsto\frac4k$ é injetora em $k\neq0$, o valor de $k$ é único:
+\[
+k=(1-s)(1+s)^2=(1-s)(1+s)\cdot(1+s)=(1-a)(1+\sqrt{a}).
+\]
+
+\textbf{Verificações.}
+\begin{itemize}
+\item Adimensionalidade: $a$, $x$, $f$, $m$ e $k$ são números puros, sem unidades a conferir.
+\item Sinal: $k=(1-a)(1+\sqrt{a})>0$ para $a\in[0,1)$, coerente com $m_{\min}>0$ (a reta dada tem inclinação $\frac{4}{k}>0$).
+\item $a=0$: $k=1$, $t^*=\frac12$, $x^*=\frac14$. Direto: $f(0)=0$, $f\left(\frac14\right)=\frac{1/2}{1/2}=1$, declividade $\frac{1-0}{\frac14-0}=4=\frac{4}{k}$.
+\item $a=\frac14$ ($s=\frac12$): $k=\frac34\cdot\frac32=\frac98$ e $\frac4k=\frac{32}{9}$. Com $x^*=\frac{1}{16}$: $f\left(\frac{1}{16}\right)=\frac{1/4}{3/4}=\frac13$ e $f\left(\frac14\right)=1$, declividade $\dfrac{\frac13-1}{\frac{1}{16}-\frac14}=\dfrac{-\frac23}{-\frac{3}{16}}=\frac{32}{9}$. Os outros parceiros dão valores maiores: $x=0$ dá $4$, e $x=\frac19$ dá $\dfrac{\frac12-1}{\frac19-\frac14}=\frac{18}{5}$, com $\frac{18}{5}>\frac{32}{9}$ pois $18\cdot 9=162>160=32\cdot 5$.
+\item $a=\frac{9}{25}$ ($s=\frac35$): $k=\frac{16}{25}\cdot\frac{8}{5}=\frac{128}{125}$ e $\frac4k=\frac{125}{32}$. Com $x^*=\frac{1}{25}$: $f\left(\frac{1}{25}\right)=\frac{1/5}{4/5}=\frac14$ e $f\left(\frac{9}{25}\right)=\frac{3/5}{2/5}=\frac32$, declividade $\dfrac{\frac14-\frac32}{\frac{1}{25}-\frac{9}{25}}=\dfrac{-\frac54}{-\frac{8}{25}}=\frac{125}{32}$. Confere.
+\item Comportamento em $a\to1^-$: $\frac4k=\dfrac{4}{(1-a)(1+\sqrt a)}\sim\dfrac{2}{1-a}\to+\infty$. Também $f(a)=\dfrac{\sqrt a}{1-\sqrt a}=\dfrac{\sqrt a(1+\sqrt a)}{1-a}\sim\dfrac{2}{1-a}\to+\infty$. O parceiro ótimo $x^*=\frac{(1-\sqrt a)^2}{4}$ tende a $0$ (não a $1$), e $f(x^*)\to0$. Como $m_{\min}=\dfrac{f(a)-f(x^*)}{a-x^*}$, obtemos $\dfrac{m_{\min}}{f(a)}=\dfrac{4}{\sqrt a(1+\sqrt a)^2}\to1$. O resultado é consistente.
+\end{itemize}
+
+Assim, para $a\in[0,1)$ com $a\neq\frac19$, a secante de menor coeficiente angular liga $(a,f(a))$ ao ponto $x^*=\frac{(1-\sqrt a)^2}{4}$ e tem inclinação $\dfrac{4}{(1-\sqrt a)(1+\sqrt a)^2}$. A reta paralela dada corresponde a
+\[
+k=(1-a)(1+\sqrt{a})=(1-\sqrt{a})(1+\sqrt{a})^2.
+\]
+
+ANSWER: $k=(1-a)(1+\sqrt{a})$, equivalentemente $k=(1-\sqrt{a})(1+\sqrt{a})^2$

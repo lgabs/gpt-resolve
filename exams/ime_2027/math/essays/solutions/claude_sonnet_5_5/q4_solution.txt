@@ -1,0 +1,49 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Ideia.} Fixado $x$, o produto $\prod_{i=1}^{3}(y_i+x)$ é um polinômio em $x$ que se obtém diretamente da equação cúbica. Depois, basta aplicar esse polinômio às raízes $x_1,x_2$ e usar as relações de Girard da equação quadrática.
+
+\medskip
+\textbf{1) Produto em $y$ para $x$ fixo.} Seja $p(y)=y^3-4y-2$. Como $y_1,y_2,y_3$ são as raízes de $p$ (mônico, grau 3),
+\[
+p(y)=(y-y_1)(y-y_2)(y-y_3).
+\]
+Fazendo $y=-x$:
+\[
+p(-x)=(-x-y_1)(-x-y_2)(-x-y_3)=-(x+y_1)(x+y_2)(x+y_3).
+\]
+Logo
+\[
+\prod_{i=1}^{3}(y_i+x)=-p(-x)=-\bigl(-x^3+4x-2\bigr)=x^3-4x+2=:q(x).
+\]
+
+\textbf{2) Produto pedido.} Agrupando os seis fatores por $x_j$,
+\[
+P=\prod_{j=1}^{2}\prod_{i=1}^{3}(y_i+x_j)=q(x_1)\,q(x_2).
+\]
+
+\textbf{3) Redução de $q$ módulo a equação de $x$.} Cada $x_j$ satisfaz $x_j^2=7x_j+3$. Então
+\[
+x_j^3=7x_j^2+3x_j=7(7x_j+3)+3x_j=52x_j+21,
+\]
+e portanto
+\[
+q(x_j)=52x_j+21-4x_j+2=48x_j+23 .
+\]
+
+\textbf{4) Relações de Girard.} Para $x^2-7x-3=0$: $x_1+x_2=7$ e $x_1x_2=-3$. Assim
+\begin{align*}
+P&=(48x_1+23)(48x_2+23)\\
+&=2304\,x_1x_2+48\cdot 23\,(x_1+x_2)+529\\
+&=2304\cdot(-3)+1104\cdot 7+529\\
+&=-6912+7728+529=1345 .
+\end{align*}
+
+\textbf{Verificação.} Os discriminantes são $\Delta_x=49+12=61>0$ (duas raízes reais) e, para a cúbica, $-4(-4)^3-27(-2)^2=256-108=148>0$ (três raízes reais), de modo que não há ambiguidade de raízes. O cálculo numérico direto dos seis fatores com as raízes aproximadas dá $1345{,}000$, o que confirma o resultado. Como checagem de sinal, $q(x)=\prod(x+y_i)$ tem termo independente $y_1y_2y_3=2$ (Girard: $y_1y_2y_3=-(-2)=2$), e de fato $q(0)=2$.
+
+\[
+\boxed{(y_1+x_1)(y_1+x_2)(y_2+x_1)(y_2+x_2)(y_3+x_1)(y_3+x_2)=1345}
+\]
+
+ANSWER: $1345$

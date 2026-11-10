@@ -1,0 +1,62 @@
+{
+  "question": 10,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "a) Raio da circunferência de centro C: 2√3 cm; raio da circunferência de centro D: 6 cm (com AP = PQ = 6 cm). b) Área da região comum: (10π − 12√3) cm² ≈ 10,63 cm².",
+  "judge_reference": {
+    "reference_solution": "**Notação.** Seja x = m(AP). Pelos dados, PQ = x e BP = x√(2+√3). Como C ≠ D (circunferências concêntricas não se cortam em dois pontos) e C, D ∈ AB, a reta dos centros é a reta AB. A corda comum PQ é perpendicular à reta dos centros, e seu ponto médio M está sobre AB. Logo PM = x/2 e PM ⊥ AB.\n\n**1) Posições de A e B em relação a M.**\n- Triângulo APM, retângulo em M: AP = x e PM = x/2, então sen(∠PAM) = 1/2. Assim ∠PAM = 30° e AM = x√3/2.\n- Triângulo BPM, retângulo em M: BM² = BP² − PM² = x²(2+√3 − 1/4) = x²(7+4√3)/4. Como (2+√3)² = 7+4√3, BM = x(2+√3)/2 = x + x√3/2. Também tg(∠PBM) = (x/2)/BM = 1/(2+√3) = 2−√3 = tg 15°, logo ∠PBM = 15°.\n\nHá dois casos: M entre A e B, ou A e B do mesmo lado de M.\n\n*Caso (i): M entre A e B.* AB = AM + MB = x√3/2 + x + x√3/2 = x(1+√3) = 6(1+√3), donde **x = 6**.\n\n*Caso (ii): A e B do mesmo lado de M.* Como BM > AM, AB = BM − AM = x, logo x = 6(1+√3). Tomando M como origem, P = (0, x/2), A = (√3x/2, 0) e B = (x(1+√3/2), 0). O centro C = (c, 0) satisfaz CA = CP, ou seja (c − √3x/2)² = c² + x²/4. Daí c = x√3/6 ≈ 0,29x, que é menor que a abscissa de A (≈ 0,87x). Então C está fora do segmento AB, contra o enunciado (o centro D coincidiria com A, mas C não está em AB). O caso (ii) é descartado, e vale o caso (i) com x = 6.\n\n**2) Item a) — raios.** Com x = 6: PM = 3, AM = 3√3, BM = 6+3√3 e ∠PAM = 30°.\n\n*Circunferência de centro C (por A).* O triângulo ACP é isósceles (CA = CP) com ∠A = 30°. Logo ∠CPA = 30° e o ângulo externo ∠PCM = 60°. Então r₁ = CP = PM/sen 60° = 3/(√3/2) = **2√3 cm**. Também ∠PCQ = 120°.\n\n*Circunferência de centro D (por B).* O triângulo DBP é isósceles (DB = DP) com ∠B = 15°. Logo ∠DPB = 15° e o ângulo externo ∠PDM = 30°. Então r₂ = DP = PM/sen 30° = 3/(1/2) = **6 cm**. Também ∠PDQ = 60°, e o triângulo DPQ é equilátero de lado 6.\n\n*Conferência analítica.* Com A = (0,0), M = (3√3, 0), P = (3√3, 3) e B = (6+6√3, 0):\n- C = (c, 0) com c² = (3√3 − c)² + 9 dá c = 2√3, então r₁ = 2√3.\n- D = (d, 0) com (d − 3√3)² + 9 = (6+6√3 − d)² dá d = 6√3, então r₂ = 6+6√3 − 6√3 = 6.\n- Em ordem, 0 < 2√3 (C) < 3√3 (M) < 6√3 (D) < 6+6√3 (B). Logo C e D estão no segmento AB.\n- BP² = (6+3√3)² + 9 = 72+36√3 = 36(2+√3), o que confirma BP = 6√(2+√3).\n\n**3) Item b) — área da interseção (lente).** C está à esquerda de PQ e D à direita (centros em lados opostos da corda). A lente é a união de dois segmentos circulares, ambos **menores**:\n- o segmento da circunferência de C à direita de PQ, com ângulo central 120°;\n- o segmento da circunferência de D à esquerda de PQ, com ângulo central 60°.\n\nÁrea do segmento de ângulo θ e raio r: (r²/2)(θ − sen θ).\n- Em C: (12/2)(2π/3 − √3/2) = 4π − 3√3.\n- Em D: (36/2)(π/3 − √3/2) = 6π − 9√3.\n\n**Área = (4π − 3√3) + (6π − 9√3) = 10π − 12√3 cm² ≈ 10,63 cm².**\n\n(Conferido por integração numérica em Python: 10,6313, igual ao valor exato.)",
+    "final_answer": "a) Raio da circunferência de centro C: 2√3 cm. Raio da circunferência de centro D: 6 cm. (AP = PQ = 6 cm.)\nb) Área comum: (10π − 12√3) cm² ≈ 10,63 cm².",
+    "pitfalls": [
+      "Justificar que a reta CD é a reta AB e que PQ ⊥ AB com ponto médio M sobre AB. Daí PM = x/2 e os triângulos APM e BPM são retângulos. Sem isso a trigonometria não se sustenta.",
+      "Simplificar o radical corretamente: 2+√3 − 1/4 = (7+4√3)/4 = ((2+√3)/2)², donde BM = x(2+√3)/2. Errar aqui trava o item a). A relação tg 15° = 2−√3 = 1/(2+√3) dá a rota geométrica (∠B = 15°).",
+      "Tratar os dois casos de posição: M entre A e B (AB = AM + MB, x = 6) e A, B do mesmo lado de M (AB = BM − AM = x). O segundo só é descartado pela hipótese de que C e D estão em AB: ele daria c ≈ 0,29x, fora do segmento. Assumir AB = AM + MB sem discutir, ou aceitar x = 6(1+√3), é falha de rigor.",
+      "Escrever AB = x(1+√3) corretamente: AM + MB = x√3/2 + x + x√3/2. Esquecer o termo x deixa a soma incompleta.",
+      "Nos triângulos isósceles ACP e BDP, usar o ângulo externo (∠PCM = 60°, ∠PDM = 30°) para obter os ângulos centrais 120° e 60°. Confundir o ângulo central com o ângulo da base é um erro comum.",
+      "Verificar que C e D realmente pertencem ao segmento AB: 0 < 2√3 < 3√3 < 6√3 < 6+6√3.",
+      "Na área, os centros ficam em lados opostos da corda PQ. Os dois segmentos são menores (120° em C, 60° em D) e a lente é a SOMA deles. Usar o segmento maior, ou subtrair em vez de somar, daria resultado errado. Em C o ângulo é 120° e o seno vale √3/2; em D o ângulo é 60° e o seno vale √3/2. Não confundir.",
+      "Usar a fórmula (r²/2)(θ − sen θ) com θ em radianos. Esquecer o fator r²/2, ou misturar r₁ e r₂, é erro frequente. Dar o resultado final com unidade (cm²) e, de preferência, o valor aproximado (≈ 10,63)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "a) Raio da circunferência de centro C: 2√3 cm; raio da circunferência de centro D: 6 cm (com AP = PQ = 6 cm). b) Área da região comum: (10π − 12√3) cm² ≈ 10,63 cm².",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A verificação do item b) traz uma expressão truncada e sem sentido: \"largura (C+r_1)−(D−r_2)=4√3−(3√3−6)·0+…\". É resto de rascunho no texto final. Os números que vêm depois estão certos (6√3−6≈4,39 e 4√3≈6,93, largura ≈2,54), mas a linha deve ser reescrita como (2√3+2√3)−(6√3−6)=6−2√3≈2,54 ou ser removida."
+          },
+          {
+            "severity": "minor",
+            "description": "Em r_2 sobra uma frase solta, \"MB²−9=BP²−18, mas é mais direto usar…\", que não serve ao argumento. O texto fica com cara de rascunho e deveria ser cortado."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato escreve \"D entre M e B, de modo que r_2=MB−t\" sem justificar. O resultado confirma a hipótese, porque t=(MB²−9)/(2MB)>0, e a conferência final (ordem A,C,M,D,B) a valida. Mesmo assim, o certo era tomar t com sinal ou comentar que o outro lado de M leva a t<0."
+          },
+          {
+            "severity": "minor",
+            "description": "Não é dito por que a reta dos centros é AB. Isso exige C≠D, já que circunferências concêntricas não se cortam em dois pontos, e raios positivos (C≠A, D≠B). Também não se justifica que a lente é a união dos dois segmentos circulares de cada lado da corda. Isso decorre do eixo radical, e a lente só tem essa forma porque os centros ficam em lados opostos de PQ. Ambos são fatos padrão, mas uma frase os fecharia."
+          },
+          {
+            "severity": "minor",
+            "description": "A estimativa (2/3)·2,54·6≈10,2 é apresentada como \"concorda\" com 10,63, uma diferença de cerca de 4%. É só uma ordem de grandeza (aproximação parabólica) e deveria ser dita como tal. A menção a \"integração numérica\" não mostra conta nenhuma. Refiz a integração e ela confirma 10,6313, mas num gabarito publicado isso seria só um comentário."
+          },
+          {
+            "severity": "minor",
+            "description": "Em sen∠PDM=1/2 → 30° falta dizer que o ângulo é agudo, por estar no triângulo retângulo PMD com ângulo reto em M. Fica implícito."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a referência e estão corretas: a) r_C=2√3 cm e r_D=6 cm; b) S=(10π−12√3) cm²≈10,63 cm². Refiz as contas em Python: CP=2√3, DP=6, BP/6=√(2+√3), os centros ficam em 2√3 e 6√3 (dentro de AB, na ordem A,C,M,D,B), e a integração numérica da lente deu 10,631317, igual a 10π−12√3. Todas as etapas intermediárias estão certas. Isso inclui a redução 7/4+√3=(1+√3/2)², MB=x(2+√3)/2, x=6, os ângulos 30° em A, 120° em C e 60° em D, r_2=BP²/(2·MB)=6 e a soma de dois segmentos menores. A resolução trata bem as armadilhas. O radical é simplificado corretamente. AB=AM+MB tem todos os termos. A distinção entre ângulo central e ângulo da base está certa. A fórmula (r²/2)(θ−senθ) é aplicada com r_1 e r_2 nos lugares certos. Há conferência de C,D∈AB e da condição de secância. O ponto mais forte é o caso M entre A e B: o candidato mostra que M é interior a ambos os discos e está no diâmetro que sai de A (ou de B) em direção a AB. Logo M∈[AB] e o caso x=6(1+√3) fica excluído, sem a conta de coordenadas que a referência usa. Esse argumento é rigoroso e usa a hipótese C,D∈AB no ponto certo. Os defeitos são só de acabamento: uma expressão truncada na verificação do item b), uma frase solta no cálculo de r_2, o lado de D em relação a M assumido sem justificativa e pequenas lacunas de justificativa (C≠D, lente como união de dois segmentos, ângulo agudo). Com a limpeza desses trechos, serviria de gabarito comentado.\""
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.0,
+  "final_answer": "$x_C = -9+5\\sqrt{3} \\approx -0{,}340$. A abscissa é única: os dois vértices possíveis são $\\left(-9+5\\sqrt{3},\\ \\pm 3\\sqrt{20\\sqrt{3}-34}\\right)$, com $y\\approx \\pm 2{,}402$. A outra raiz, $-9-5\\sqrt{3}$, é rejeitada porque $y^2<0$.",
+  "judge_reference": {
+    "reference_solution": "Questão 5 (ITA 2027, Matemática) — resolução de referência\n\nEnunciado conferido com a prova (p. 6): triângulo ABC com vértices na elipse 2x² + y² = 6; A e B têm abscissa 1; perímetro de ABC igual a 10. Determinar a abscissa de C.\n\nItem 1 — Caracterizar a elipse dada.\n2x² + y² = 6 ⇔ x²/3 + y²/6 = 1. Logo a² = 6 (eixo maior vertical, sobre Oy), b² = 3, c² = a² − b² = 3, focos (0, ±√3).\nAtenção: os focos desta elipse NÃO são A e B. A e B são outros pontos da elipse.\n\nItem 2 — Determinar A e B.\nCom x = 1: 2·1² + y² = 6 ⇒ y² = 4 ⇒ y = ±2. Como A ≠ B, {A, B} = {(1, 2), (1, −2)}. A ordem não importa, pois o problema é simétrico em A e B.\nLogo m(AB) = 4.\n\nItem 3 — Usar o perímetro.\nPerímetro = m(AB) + m(AC) + m(BC) = 10 ⇒ m(AC) + m(BC) = 6.\nComo 6 > 4 = m(AB), o lugar dos pontos P com m(PA) + m(PB) = 6 é uma elipse não degenerada, com focos A e B, 2a' = 6, c' = 2, b'² = 9 − 4 = 5, centro (1, 0) e eixo maior vertical. Sua equação é\n(x − 1)²/5 + y²/9 = 1 ⇔ 9(x − 1)² + 5y² = 45 ⇔ 9x² − 18x + 5y² − 36 = 0.\n\nVerificação alternativa (sem citar a elipse): sejam d1 = m(AC) e d2 = m(BC). Então d1² − d2² = [(x−1)² + (y−2)²] − [(x−1)² + (y+2)²] = −8y. Com d1 + d2 = 6, segue d1 − d2 = −4y/3, logo d1 = 3 − 2y/3 e d2 = 3 + 2y/3. Substituindo em d1² = (x−1)² + (y−2)² chega-se à mesma equação 9x² − 18x + 5y² − 36 = 0. Para pontos da elipse dada, |y| ≤ √6 < 4,5, então d1 > 0 e não surge raiz estranha.\n\nItem 4 — Interseção com a elipse dada.\nC satisfaz 2x² + y² = 6 e 9x² − 18x + 5y² − 36 = 0.\nDa primeira, y² = 6 − 2x². Substituindo na segunda:\n9x² − 18x + 5(6 − 2x²) − 36 = 0 ⇒ 9x² − 18x + 30 − 10x² − 36 = 0 ⇒ −x² − 18x − 6 = 0 ⇒ x² + 18x + 6 = 0.\nRaízes: x = −9 ± √(81 − 6) = −9 ± √75 = −9 ± 5√3.\n\nItem 5 — Validade (condição essencial).\nUm ponto da elipse exige y² = 6 − 2x² ≥ 0, ou seja, x² ≤ 3, |x| ≤ √3 ≈ 1,732.\n- x₂ = −9 − 5√3 ≈ −17,66: |x₂| > √3, logo y² < 0. Rejeitada, pois não é ponto real da elipse.\n- x₁ = −9 + 5√3 ≈ −0,3397: x₁² = 81 − 90√3 + 75 = 156 − 90√3 ≈ 0,1154, e y² = 6 − 2x₁² = 180√3 − 306 ≈ 5,769. Logo y = ±3√(20√3 − 34) ≈ ±2,4019.\nObtêm-se dois pontos C₁ = (x₁, 2,4019) e C₂ = (x₁, −2,4019), simétricos em relação a Ox. Ambos têm a mesma abscissa.\n\nItem 6 — Verificação.\nPara C = (−0,3397; 2,4019): m(AC) ≈ 1,3987 e m(BC) ≈ 4,6013, com soma 6,0000. Perímetro = 4 + 6 = 10. C ≠ A, B, e C não está na reta x = 1, então o triângulo é não degenerado. Confirmado com python (perímetro = 10,000000000; 2x² + y² − 6 ≈ 0 em ambos os C).\n\nResposta: a abscissa de C é x = −9 + 5√3 (≈ −0,3397). Há dois vértices C possíveis, simétricos em Ox, mas a abscissa é única.",
+    "final_answer": "Abscissa de C: x = −9 + 5√3 (≈ −0,3397). Única: a outra raiz de x² + 18x + 6 = 0, x = −9 − 5√3, é rejeitada por estar fora da elipse (|x| ≤ √3). Os dois vértices C possíveis são (−9 + 5√3, ±3√(20√3 − 34)) ≈ (−0,3397; ±2,4019). Dados intermediários: A, B = (1, ±2), m(AB) = 4, m(AC) + m(BC) = 6, lugar de C: 9x² − 18x + 5y² − 36 = 0.",
+    "pitfalls": [
+      "Confundir os focos da elipse dada, (0, ±√3), com A e B. A e B são (1, ±2), que não são focos dela.",
+      "Esquecer que o perímetro inclui m(AB) = 4: a condição é m(AC) + m(BC) = 6, não 10.",
+      "Aceitar as duas raízes de x² + 18x + 6 = 0 sem testar a validade. x = −9 − 5√3 ≈ −17,66 não está na elipse, pois exige |x| ≤ √3.",
+      "Dar duas respostas por causa do sinal de y. C₁ e C₂ são simétricos em Ox e têm a mesma abscissa, então a resposta é única.",
+      "Errar a orientação da elipse. 2x² + y² = 6 tem a² = 6 sobre o eixo y e b² = 3 sobre o eixo x. Usar x²/6 + y²/3 = 1 leva a focos errados.",
+      "Errar a elipse de focos A e B. Com 2a' = 6 e 2c' = m(AB) = 4, temos b'² = 9 − 4 = 5, e a equação é (x−1)²/5 + y²/9 = 1. Trocar 5 por 9 ou o centro por (0, 0) invalida o cálculo.",
+      "Errar a expansão na substituição de y² = 6 − 2x² na equação 9x² − 18x + 5y² − 36 = 0. Um erro de sinal leva a x² − 18x + ... e a raízes erradas.",
+      "Verificar a validade do lugar geométrico. A condição é válida porque 6 > m(AB) = 4, então a soma das distâncias define uma elipse não degenerada. Se a soma fosse igual a 4, o lugar seria um segmento.",
+      "Verificar a não degenerescência do triângulo. C tem abscissa ≈ −0,34, diferente de 1, então não é colinear com A e B, e C ≠ A, B.",
+      "Concluir a resposta sem verificar. Conferir numericamente que m(AC) + m(BC) = 6 e que 2x² + y² = 6 para o C encontrado evita erro de álgebra."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "A abscissa de C é x_C = 5√3 − 9 ≈ −0,340. A e B são (1, 2) e (1, −2), com m(AB) = 4. Então AC + BC = 6, e C está na elipse (x−1)²/5 + y²/9 = 1. Intersectando com 2x² + y² = 6 obtém-se x² + 18x + 6 = 0, cuja raiz válida é x = −9 + 5√3 (a outra, ≈ −17,66, está fora da elipse dada). Há dois pontos C simétricos, ambos com essa abscissa.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 2: a frase \"Esta soma é maior que m(AB)=4, o que é compatível com a desigualdade triangular\" é correta, mas fraca. O que importa aqui é 6 > 4 = 2c, que garante que o lugar PA+PB=6 é uma elipse não degenerada. Deve-se dizer isso neste passo, e não só no passo 3."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 3: a equação (x−1)²/5 + y²/9 = 1 é apresentada pronta. Deve-se mostrar a forma geral (x−h)²/b² + (y−k)²/a² = 1 para eixo maior vertical, com centro (1,0), a=3, c=2, b²=a²−c²=5, e afirmar que o lugar é exatamente essa elipse completa."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 4: há saltos algébricos. \"9x²−18x+9+30−10x²−45=0\" passa direto a \"x²+18x+6=0\", sem mostrar a multiplicação por −1. A fórmula de Bhaskara também pula √300 = 10√3. Não há erro, mas um gabarito comentado explicitaria esses passos."
+          },
+          {
+            "severity": "minor",
+            "description": "Passo 5: a rejeição de x₂ = −9−5√3 cita só |x| ≤ √3. Deve-se mostrar y² = 6 − 2x₂² ≈ −617,8 < 0. A forma exata y = ±3√(20√3−34) também seria mais limpa que só o decimal ±2,402."
+          },
+          {
+            "severity": "minor",
+            "description": "Resposta final: não se afirma que a abscissa é única apesar dos dois vértices C = (x, ±y). Essa unicidade aparece apenas no passo 5 (\"mesma abscissa\"). A conclusão deveria dizê-lo explicitamente."
+          }
+        ],
+        "summary": "Nota 8,5. A resposta final do candidato, x_C = −9+5√3 ≈ −0,340, coincide com a referência e está correta. Conferi o enunciado na prova (Questão 05, impressa na página 6, PDF página 5): é idêntico à transcrição. Refiz as contas em python: A, B = (1, ±2) e m(AB) = 4; m(AC)+m(BC) = 6; a quadrática x²+18x+6 = 0 tem Δ = 300 e raízes −9±5√3 (resíduo ~1e-14); x₂ ≈ −17,66 dá y² ≈ −617,8 < 0 e é rejeitada; x₁ dá y² = 180√3−306 ≈ 5,769, com y = ±2,4019; para C = (−0,339746; ±2,401905), m(AC) = 1,398730, m(BC) = 4,601270, soma 6,000000000 e perímetro 10,000000000. Todos os números do candidato batem. Armadilhas: (1) focos da elipse dada confundidos com A, B: não se aplica, o candidato não usa esses focos; (2) perímetro incluindo m(AB): tratado no passo 2; (3) aceitar as duas raízes sem teste: tratado no passo 5, com justificativa correta; (4) dupla resposta pelo sinal de y: tratado (mesma abscissa), embora sem reafirmar unicidade na resposta final; (5) orientação da elipse dada: não usada, sem erro; (6) b² = 5 da auxiliar: correto; (7) erro de expansão: não há; (8) validade do lugar (2a > 2c): tratada no passo 3; (9) não degenerescência: tratada no passo 6 (x_C ≠ 1, reta AB é x = 1); (10) verificação numérica: feita no passo 6. Não há erro de conta, lógica ou hipótese não justificada. Por que não 9: a solução é correta e bem verificada, mas em alguns pontos é mais seca do que um gabarito comentado precisaria ser (justificativa de 2a > 2c, forma geral da elipse auxiliar, saltos algébricos, unicidade final). Esses pontos são polimento, não falhas de mérito."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.0,
+      "final_answer": "$x_C = -9+5\\sqrt{3} \\approx -0{,}340$. A abscissa é única: os dois vértices possíveis são $\\left(-9+5\\sqrt{3},\\ \\pm 3\\sqrt{20\\sqrt{3}-34}\\right)$, com $y\\approx \\pm 2{,}402$. A outra raiz, $-9-5\\sqrt{3}$, é rejeitada porque $y^2<0$.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Notação inconsistente com a convenção da prova, que define m(AB) como comprimento. Os passos 2 e 3 escrevem 'PA+PB=6' e 'PA+PB=2a', enquanto o resto usa m(AC), m(BC). Deveria ser m(PA)+m(PB)=6 (com as barras de segmento)."
+          },
+          {
+            "severity": "minor",
+            "description": "O passo 2 chama a condição do perímetro de 'necessária' e não afirma a suficiência. A equivalência 'C serve ⇔ C ∈ (I) ∩ (II) e x_C ≠ 1' fica só implícita, via o 'reciprocamente' do passo 3 e a checagem do passo 6. Deveria ser dita explicitamente na conclusão."
+          },
+          {
+            "severity": "minor",
+            "description": "O passo 3 usa a equação padrão da elipse e a equivalência com PA+PB=6 sem derivação. Em nível IME isso é aceitável, mas um gabarito comentado poderia incluir a dedução (elevar ao quadrado duas vezes a partir de √((x−1)²+(y−2)²)+√((x−1)²+(y+2)²)=6) ou a verificação alternativa do reference."
+          },
+          {
+            "severity": "minor",
+            "description": "Os pontos (1, ±3) são descritos como 'pontos degenerados'. A razão para descartá-los como vértices é que C sobre a reta AB torna o triângulo degenerado. Eles também não estão na elipse dada (2+9=11≠6), mas isso é um argumento separado. A redação mistura os dois."
+          },
+          {
+            "severity": "minor",
+            "description": "O passo 6 verifica numericamente só C₊ = (−0,3397; 2,4019). A validade de C₋ segue do passo 5 ('ambos satisfazem (I) e (II)'), e a simetria em Ox, que troca A e B e preserva o perímetro, poderia ser explicitada em uma frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'ordem de grandeza' |x_C| < √3 do passo 6 é checagem de coerência, não verificação. Deveria ser apresentada como tal ou removida, pois não acrescenta rigor."
+          }
+        ],
+        "summary": "Parecer sobre a Questão 5 (ITA 2027, Matemática): a resolução está correta e a resposta confere com a referência. Refiz as contas em python (na pasta de trabalho do juiz). Confirmei: enunciado na p. 5 do PDF (Questão 05, impresso p. 6); A,B=(1,±2) e m(AB)=4; AC+BC=6; lugar geométrico (x−1)²/5+y²/9=1 (a=3, c=2, b²=5, centro (1,0), eixo maior vertical), com 6>4 garantindo elipse não degenerada; substituição resulta em x²+18x+6=0; x=−9±5√3; x₂=−9−5√3 é rejeitada porque y²=−306−180√3<0; x₁=−9+5√3 dá y²=180√3−306=9(20√3−34)≈5,769 e dois pontos simétricos em Ox com a mesma abscissa; resíduos das duas curvas ≈ 0 e perímetro = 10,000000. Divergência com a referência: nenhuma. Todas as armadilhas relevantes para este caminho foram tratadas: soma inclui m(AB)=4; descarte de x₂ por validade; dois sinais de y com abscissa única; validade do lugar geométrico (6>4); não degenerescência (x_C≠1); conferência numérica; expansão algébrica correta. Armadilhas sobre os focos da elipse dada e sua orientação não se aplicam, porque a resolução não usa essas grandezas. Não há erros críticos nem graves. Os pontos a melhorar são de notação, de explicitar a suficiência e a simetria, e de clareza. Nota 9: publicável como gabarito comentado com pequenos ajustes.\""
+      }
+    }
+  ]
+}

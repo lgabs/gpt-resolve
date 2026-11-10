@@ -1,0 +1,127 @@
+{
+  "question": 7,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "a) $I = x^{N+1}\\, I_0\\, \\cos^{2N}(\\phi/N)$, independente de $P$. Cada polarizador (inclusive o primeiro) aplica o fator $x$, e cada transição aplica $\\cos^2\\beta$ com $\\beta=\\phi/N$.\n\nb) $r = \\sqrt{\\dfrac{P}{\\pi I}} = \\sqrt{\\dfrac{P}{\\pi\\, x^{N+1} I_0 \\cos^{2N}(\\phi/N)}} = \\dfrac{1}{|\\cos(\\phi/N)|^{N}}\\sqrt{\\dfrac{P}{\\pi\\, x^{N+1} I_0}}$, para $\\cos(\\phi/N)\\neq 0$. Se $\\cos(\\phi/N)=0$, o modelo prevê $P=0$ e $P$ não determina $r$.\n\nLeitura de $x$: adotou-se a perda composta por polarizador. Se $x$ valesse uma única vez, a intensidade seria $x\\,I_0\\cos^{2N}(\\phi/N)$, mas essa leitura contradiz um feixe que atravessa elementos em sequência.",
+  "judge_reference": {
+    "reference_solution": "QUESTÃO 7 (ITA 2026, 2ª fase, Física) - resolução de referência\n\nNotação: I_k = intensidade logo após o k-ésimo polarizador (k = 1, ..., N+1); β = φ/N (ver enunciado: φ = Nβ).\n\nModelagem da cadeia\n1) Primeiro polarizador: o laser é polarizado paralelamente ao seu eixo, então no caso ideal ele transmite toda a intensidade I0 (não há cos²). Com a fração x: I_1 = x·I0.\n2) Polarizadores k = 2, ..., N+1: cada eixo gira β em relação ao anterior. No caso ideal, a lei de Malus dá fator cos²β. Com a perda: I_k = x·cos²β·I_{k-1}.\n3) Aplicando a recorrência: I_{N+1} = x^{N+1} · cos^{2N}β · I0. São N+1 fatores de x (um por polarizador) e N fatores de cos²β (N transições entre N+1 polarizadores). Como β = φ/N, obtém-se cos^{2N}(φ/N).\n\na) Intensidade após o sistema:\n   I_f = x^{N+1} · I0 · cos^{2N}(φ/N)\n   (não depende de P; P só entra no item b).\n\nb) Raio do feixe: o analisador registra a potência total P que atravessa a seção do feixe. Como o feixe é cilíndrico e homogêneo, a intensidade é uniforme na seção de área A = π r², logo P = I_f · π r². Portanto:\n   r = sqrt( P / (π I_f) ) = sqrt( P / (π x^{N+1} I0 cos^{2N}(φ/N)) ) = (1/cos^N(φ/N)) · sqrt( P / (π x^{N+1} I0) ).\n\nVerificações feitas\n- N = 1: resultado vira I = x² I0 cos²φ, que é o caso de dois polarizadores (Malus com uma perda x em cada). Confere.\n- Caso ideal (x = 1) com N → ∞: cos^{2N}(φ/N) → 1, logo I → I0 (girar gradualmente transmite tudo). Confere.\n- Conferência numérica (python3): a cadeia I_k = x·cos²β·I_{k-1} coincide com a fórmula fechada em todos os casos testados (diferenças da ordem de 1e-14). Exemplo: I0 = 1000 W/m², N = 2, φ = π/2, x = 0,9 → I_f = 0,729 · 1000 · (1/4) = 182,25 W/m²; com P = 1 W, r ≈ 0,0418 m, e I_f·π·r² = 1 W.\n- Constantes g e μ0 não são usadas nesta questão.\n\nObservação de interpretação: o \"analisador\" foi tratado como medidor de potência posicionado após o sistema, sem ângulo de polarização dado e sem perda adicional. Se fosse um polarizador extra, o enunciado precisaria fornecer seu ângulo, o que não ocorre.",
+    "final_answer": "a) I_f = x^(N+1) · I0 · cos^(2N)(φ/N)\n\nb) r = sqrt( P / (π · x^(N+1) · I0 · cos^(2N)(φ/N)) ) = (1/cos^N(φ/N)) · sqrt( P / (π · x^(N+1) · I0) )\n\nNão há alternativas de múltipla escolha nesta questão.",
+    "pitfalls": [
+      "φ = Nβ: são N passos de β entre N+1 polarizadores. Erro típico: usar β = φ/(N+1) ou expoente 2(N+1), ou tratar φ como (N+1)β.",
+      "Não usar a lei de Malus global cos²φ. A cadeia dá cos^(2N)(φ/N), que é bem maior que cos²φ. Exemplo: N = 3, φ = π/2 dá 27/64 ≈ 0,42 pela cadeia, contra 0 pelo erro cos²φ.",
+      "O primeiro polarizador não aplica cos² (o laser já está alinhado com ele), mas aplica a fração x. Os fatores de x somam N+1, não N.",
+      "Ao expressar a resposta em termos de φ e N, β deve ser substituído por φ/N. Deixar β na resposta não atende ao enunciado.",
+      "Intensidade (W/m²) não é potência (W). A relação correta é P = I·π r², logo r = sqrt(P/(π I)). Erros comuns: esquecer o π, usar o diâmetro, ou escrever P/(πI) sem raiz.",
+      "P não entra no item a, pois a intensidade não depende da potência medida. Não se deve obter I via P/(πr²) sem conhecer r.",
+      "O analisador deve ser tomado como medidor de potência após o sistema, sem ângulo de polarização dado e sem perda extra. Se fosse tratado como polarizador adicional, faltaria o ângulo, e o enunciado não o fornece.",
+      "A igualdade P = I·πr² vale porque o feixe é cilíndrico e homogêneo, com intensidade uniforme na seção transversal. Um perfil não uniforme, como o gaussiano, invalidaria a relação.",
+      "Checagem de limite: com x < 1 fixo e N → ∞, o fator cos^(2N)(φ/N) tende a 1, mas x^(N+1) tende a 0, logo I_f → 0. Afirmar que I → I0 no limite de muitos polarizadores ignora as perdas e está errado.",
+      "Checagem para N = 1: deve resultar I = x²·I0·cos²φ. Uma resposta que não reproduz esse caso provavelmente errou o expoente ou o número de fatores de x.",
+      "Uma resposta sem a recorrência I_k = x·cos²β·I_{k-1} (ou equivalente) e sem justificar os expoentes não comprova o resultado, mesmo que a fórmula final esteja certa."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) $I = x^{N+1}\\, I_0 \\cos^{2N}(\\phi/N)$, independente de $P$. b) $r = \\sqrt{\\dfrac{P}{\\pi\\, x^{N+1} I_0 \\cos^{2N}(\\phi/N)}}$, obtido de $P = I\\pi r^2$ com $0 \\le \\phi/N < \\pi/2$.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Restrição 0 ≤ φ/N < π/2 é introduzida no meio do Passo b para simplificar sqrt(cos^{2N}) = cos^N, mas não é hipótese do enunciado e não aparece na linha ANSWER. Para N ímpar e cos(φ/N) < 0, a fórmula 1/cos^N(φ/N) fornece r negativo. O correto seria escrever |cos(φ/N)|^N ou declarar β ∈ [0, π/2] como convenção do ângulo entre eixos de polarização, e repetir essa condição na resposta final."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese 3 (perda por elemento, com fatores multiplicativos) é a leitura correta, pois 'reflexões e absorções' ocorrem a cada polarizador. Mas a frase 'fração x daquela que seria obtida em um caso ideal' admite uma leitura não cumulativa, na qual x aparece uma só vez (I = x I0 cos^{2N}(φ/N)). O candidato assume a leitura cumulativa sem argumentar por que ela é a pretendida nem mencionar a alternativa."
+          },
+          {
+            "severity": "minor",
+            "description": "O analisador é tratado como medidor de potência sem justificativa explícita. A justificativa seria que o enunciado não dá ângulo de polarização para ele; se fosse um polarizador extra, faltaria esse dado. A hipótese 4 afirma a leitura, mas não a fundamenta."
+          },
+          {
+            "severity": "minor",
+            "description": "A checagem de N = 1 com φ = π/2 resulta em zero para qualquer expoente de x, logo não verifica o expoente x² (o cálculo é pouco discriminante). Um teste com x ≠ 1 e ângulo genérico seria mais útil, por exemplo x = 0,8 e φ = 0,6 rad: I = 0,64 cos²(0,6) I0 ≈ 0,436 I0, que confere com a fórmula, conforme verifiquei."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'São N passos, de k=1 até k=N+1' confunde índices com passos. O correto seria: a partir de I_1, aplicam-se N vezes a razão q = x cos²β, de k=1 a k=N+1. A expressão final está correta, mas a justificativa do expoente de x (N+1) e do de cos (2N) ficou telegráfica."
+          }
+        ],
+        "summary": "Comparação item a item: (a) candidato e referência dão I = x^{N+1} I0 cos^{2N}(φ/N); (b) ambos dão r = sqrt(P/(π I)) = cos^{-N}(φ/N)·sqrt(P/(π x^{N+1} I0)). As respostas são idênticas e, pelo que verifiquei, corretas. Conferi no PDF (pág. 8) o enunciado: φ = Nβ, P é registrada por um analisador após o sistema, o feixe é cilíndrico e homogêneo. Em python, a recorrência I_k = x cos²β I_{k-1} coincide com a forma fechada para N = 1, 2, 3, 5. Os exemplos numéricos do candidato conferem: I ≈ 45,17 W/m² e r ≈ 4,20 mm, e 0,9^11 ≈ 0,31. O caso N = 1 reproduz x² I0 cos²φ, e o limite sem perdas, x = 1 com N → ∞, tende a I0. Armadilhas: o candidato tratou todas. Usou N passos de β (φ = Nβ), não usou cos²φ global, deu ao primeiro polarizador fator x sem cos², fez o expoente de x valer N+1, substituiu β por φ/N, distinguiu intensidade de potência com π e raiz, não usou P no item a, tratou o analisador como detector e o feixe como homogêneo, e escreveu a recorrência explicitamente. Os pontos fracos são todos menores e de justificativa: o domínio de cos(φ/N) não é declarado como convenção nem repetido na resposta final; a leitura cumulativa da perda não é argumentada frente à alternativa; o analisador não é justificado pela ausência de ângulo; a checagem de N = 1 com φ = π/2 não discrimina o expoente de x; e a redação do Passo 3 é imprecisa. Não há erro de conta nem de resposta. Como resolução, está próxima de um gabarito comentado, faltando apenas o fechamento desses pontos.\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "a) $I = x^{N+1}\\, I_0\\, \\cos^{2N}(\\phi/N)$, independente de $P$ (cada polarizador aplica o fator $x$, e cada uma das $N$ transições aplica $\\cos^2\\beta$, com $\\beta=\\phi/N$). b) $r = \\sqrt{\\dfrac{P}{\\pi\\, x^{N+1} I_0 \\cos^{2N}(\\phi/N)}}$, obtido de $P = I\\pi r^2$. Equivalentemente, $r=\\dfrac{1}{|\\cos(\\phi/N)|^{N}}\\sqrt{\\dfrac{P}{\\pi\\, x^{N+1} I_0}}$ para $\\cos(\\phi/N)\\neq 0$. Exemplo: $I_0=100\\ \\mathrm{W/m^2}$, $x=0{,}9$, $N=3$, $\\phi=\\pi/3$, $P=2{,}5\\ \\mathrm{mW}$ dão $I\\approx 45{,}2\\ \\mathrm{W/m^2}$ e $r\\approx 4{,}2\\ \\mathrm{mm}$.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Hipótese 3 fixa a leitura composta da perda (x^{N+1}) e descarta a leitura não composta (x aparece uma única vez, I_k = x·I_k,ideal, o que daria I = x·I0·cos^{2N}(φ/N)) em uma única frase, sem apresentar o resultado alternativo. Para N=2, φ=π/2, x=0,9, I0=1000 W/m², a leitura alternativa dá 225 W/m² e a composta dá 182,25 W/m². O texto afirma que a composta é 'a leitura pretendida' sem justificar a intenção do examinador além da frase 'após a passagem por cada polarizador'. Como a alínea (a) depende inteiramente dessa escolha, deveria: (i) enunciar os dois resultados; (ii) justificar a composição pelo enunciado e pelo fato físico de que as absorções se acumulam ao longo do feixe; (iii) não afirmar intenção sem evidência."
+          },
+          {
+            "severity": "minor",
+            "description": "Na verificação de sinais, o radicando é descrito como 'positivo, pois P≥0'. Com P=0 o radicando é nulo, então a afirmação está imprecisa. Deveria dizer P>0 ou tratar P=0 explicitamente."
+          },
+          {
+            "severity": "minor",
+            "description": "No caso cos(φ/N)=0 a resolução diz que 'P não determina r'. Mas no modelo I=0 implica P=0. Se o enunciado fornecesse P>0 com cos(φ/N)=0, os dados seriam incompatíveis com o modelo, e isso deveria ser dito, não tratado como indeterminação de r."
+          },
+          {
+            "severity": "minor",
+            "description": "O limite N→∞ é verificado apenas com x=1 (cos^{2N}→1, I→I0). O caso x<1 fixo, em que I→0 apesar de cos^{2N}→1, aparece só como exemplo numérico (0,9^{11} para N=10). A conclusão deveria ser enunciada como limite explícito, pois é justamente a armadilha de ignorar as perdas."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase final da verificação numérica ('ordem de grandeza compatível com um feixe colimado de laser') é vaga e não é sustentada por nenhum dado. Deveria ser justificada ou removida. As contas numéricas (45,2 W/m²; r ≈ 4,2 mm) conferem."
+          }
+        ],
+        "summary": "A resposta final do candidato coincide com a referência e, na minha conferência, está correta na leitura composta da perda. a) I = x^{N+1}·I0·cos^{2N}(φ/N), independente de P. b) r = √(P/(π·I)) = |cos(φ/N)|^{-N}·√(P/(π·x^{N+1}·I0)), para cos(φ/N)≠0. Reli o enunciado na prova (p. 8) e a transcrição confere. Conferi em Python: a recorrência I_k = x·cos²β·I_{k-1} coincide com a fórmula fechada (erro relativo ~2e-15 em 2000 casos aleatórios); os valores das verificações do candidato batem (0,436; 0,128; 0,31; 0,990; 45,17 W/m²; r ≈ 4,197 mm). As armadilhas da referência estão tratadas: φ=Nβ com N passos e N+1 polarizadores, primeiro polarizador com x mas sem cos², expoente x^{N+1}, β substituído por φ/N, intensidade versus potência com πr², P não entra em (a), analisador tratado como medidor de potência com justificativa, feixe homogêneo para P=I·πr², e a comparação explícita com I0·cos²φ. O ponto mais fraco é a interpretação de x: a leitura alternativa (x uma vez só) é descartada em uma frase e sem o resultado. A nota fica em 8,5 e não em 9 por esse tratamento superficial, somado a imprecisões menores nos casos-limite (radicando com P=0, cos=0 com P>0, limite N→∞ só com x=1)."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "a) $I = x^{N+1}\\, I_0\\, \\cos^{2N}(\\phi/N)$, independente de $P$. Cada polarizador (inclusive o primeiro) aplica o fator $x$, e cada transição aplica $\\cos^2\\beta$ com $\\beta=\\phi/N$.\n\nb) $r = \\sqrt{\\dfrac{P}{\\pi I}} = \\sqrt{\\dfrac{P}{\\pi\\, x^{N+1} I_0 \\cos^{2N}(\\phi/N)}} = \\dfrac{1}{|\\cos(\\phi/N)|^{N}}\\sqrt{\\dfrac{P}{\\pi\\, x^{N+1} I_0}}$, para $\\cos(\\phi/N)\\neq 0$. Se $\\cos(\\phi/N)=0$, o modelo prevê $P=0$ e $P$ não determina $r$.\n\nLeitura de $x$: adotou-se a perda composta por polarizador. Se $x$ valesse uma única vez, a intensidade seria $x\\,I_0\\cos^{2N}(\\phi/N)$, mas essa leitura contradiz um feixe que atravessa elementos em sequência.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na checagem 'Usar φ no lugar de β daria I0 cos²(π/2)=0', o expoente está errado: para N=2 a fórmula com φ no lugar de β seria cos^{2N}(φ) = cos⁴(π/2). O valor resultante (zero) não muda, mas a expressão escrita não corresponde à fórmula do próprio texto. Deveria ser corrigida para cos⁴(π/2)."
+          },
+          {
+            "severity": "minor",
+            "description": "A checagem de N=1 exigida pela referência (I = x²·I0·cos²φ) não aparece explicitamente. Só se verificou N=1 com x=1 (Malus clássica). A fórmula geral reduz a esse caso, mas a verificação com a perda x, que testaria o expoente de x, deveria ser mostrada."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha da leitura composta de x (um fator de x por polarizador, multiplicativo) está bem argumentada e a leitura alternativa é identificada e quantificada (225 vs 182,25 W/m² no exemplo). Porém a justificação textual é curta: 'caso ideal' é ambíguo, e o texto só diz que x se aplica 'após a passagem por cada polarizador'. A resolução deveria explicitar que o 'caso ideal' do polarizador k é a ação ideal sobre a luz que ele realmente recebe, em vez de apoiar-se sobretudo em argumento físico. Não é erro, mas é o ponto de maior risco de interpretação da questão."
+          },
+          {
+            "severity": "minor",
+            "description": "No exemplo numérico (0,9⁴·cos⁶(20°)·100 ≈ 45,17), o valor de cos(20°) não é apresentado, e as expressões são arredondadas. As Instruções Gerais (item 8) exigem resolver as expressões numéricas integralmente. A checagem não altera a resposta simbólica, mas a expressão deveria ser completada ou apresentada como verificação aproximada."
+          },
+          {
+            "severity": "minor",
+            "description": "Extensão e formato: a resolução é longa (seção de leitura alternativa, sete verificações, caso cos=0 detalhado). As instruções exigem que a resolução caiba nos espaços delimitados do caderno de soluções (item 7). Um gabarito comentado deveria ser condensado, mantendo a recorrência, a solução da recorrência, a verificação dos expoentes e as checagens essenciais (N=1 com x, limite com x<1)."
+          }
+        ],
+        "summary": "Nota 8,5/10. A resposta final do candidato coincide com a referência nos dois itens: a) I = x^{N+1}·I0·cos^{2N}(φ/N), independente de P; b) r = √(P/(π·x^{N+1}·I0·cos^{2N}(φ/N))) = |cos(φ/N)|^{-N}·√(P/(π·x^{N+1}·I0)). Confirmei no PDF (p. 8) que o enunciado é o da transcrição, incluindo \"após a passagem por cada polarizador\" e \"fração x daquela que seria obtida em um caso ideal\". Com python confirmei que a recorrência I_k = x·cos²β·I_{k-1} coincide com a forma fechada (diferença ≤ 1,5·10⁻¹²), que o exemplo N=2 dá 182,25 (composta) e 225 (alternativa), que I·πr² = 1 W para P = 1 W, que N=10 dá 283,9 e N=100 dá 0,0237 W/m², e que o exemplo N=3 dá 45,17 W/m² e r ≈ 4,2 mm. Todos os números do candidato conferem. Quanto às armadilhas: φ = Nβ com N passos, expoentes 2N e x^{N+1}, substituição β → φ/N, distinção entre intensidade e potência (P = I·πr²), P fora do item a, analisador tratado como medidor sem perda, uniformidade do perfil, limite N→∞ com x<1 (I→0) e o caso cos(φ/N)=0 foram tratados. Lacunas: um erro de expoente numa checagem (cos² em vez de cos⁴), a checagem de N=1 sem x, justificativa textual curta da leitura composta e excesso de extensão para o espaço da prova.\""
+      }
+    }
+  ]
+}

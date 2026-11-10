@@ -1,0 +1,130 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 9.0,
+  "final_answer": "(a) Para m = 4 kg: R_C = 22/3 N ≈ 7,3 N; R_D = 200/3 N ≈ 66,7 N; R_E = 26 N; R_G = 26 N (o dente empurra GE para cima), com componente horizontal H_G = 0. (b) Para m genérico: R_C = 14 − 5m/3, R_D = 40 + 20m/3, R_E = R_G = 6 + 5m (todos em N, m em kg). O equilíbrio exige R_C ≥ 0 e, se C perde contato, ΣM_D(CG) = 0, que só se cumpre para m = 8,4 kg. Logo m_máx = 8,4 kg, limitado pelo apoio C (a articulação não é o fator limitante).",
+  "judge_reference": {
+    "reference_solution": "RESOLUÇÃO DE REFERÊNCIA – IME 2026 (2ª fase, Física), Questão 5\n\nGeometria (origem em C, eixo x para a direita):\n- C: x = 0; D: x = 6 m (CD = 6 m); G: x = 8 m (GE = 2 m, logo DG = 2 m); E: x = 10 m.\n- Bloco de massa m: x = 9 m (1 m de E, entre G e E).\n\nPesos (g = 10 m/s²; a viga tem densidade linear 6/10 = 0,6 kg/m):\n- Trecho CG (0 a 8 m): 4,8 kg → 48 N, aplicado em x = 4 m.\n- Trecho GE (8 a 10 m): 1,2 kg → 12 N, aplicado em x = 9 m.\n- Bloco: P = 10m N, aplicado em x = 9 m.\n\nAnálise estrutural: com a articulação em G, a viga vira dois corpos rígidos.\n- Corpo 1 (CG): apoiado em C e D, recebe no ponto G a força do dente da articulação.\n- Corpo 2 (GE): apoiado em G (dente) e em E, carregado pelo bloco e pelo próprio peso.\n- Incógnitas (verticais): R_C, R_D, R_E e F (força do dente sobre GE, positiva para cima). São 4 incógnitas e há 4 equações (2 por corpo). Não há forças horizontais, e a articulação não transmite momento. O sistema é isostático. (Sem a articulação, os três apoios C, D, E tornariam a viga hiperestática de grau 1.)\n\nITEM a) m = 4 kg (P = 40 N)\n\nCorpo 2 (GE), carga total 40 + 12 = 52 N em x = 9 m:\n- ΣM_G = 0: R_E·2 = 52·1 → R_E = 26 N.\n- ΣF = 0: F + R_E = 52 → F = 26 N (o dente empurra GE para cima).\n\nCorpo 1 (CG): pela 3ª lei de Newton, a articulação aplica 26 N para baixo em G.\n- ΣM_C = 0: R_D·6 − 48·4 − 26·8 = 0 → R_D = 400/6 = 200/3 N ≈ 66,7 N.\n- ΣF = 0: R_C + R_D = 48 + 26 = 74 → R_C = 74 − 200/3 = 22/3 N ≈ 7,3 N.\n\nVerificações:\n- Soma vertical das reações: 22/3 + 200/3 + 26 = 100 N = peso da viga (60 N) + peso do bloco (40 N). ✓\n- Momento global em torno de E: (0−10)(22/3) + (6−10)(200/3) + (5−10)(−60) + (9−10)(−40) = −220/3 − 800/3 + 300 + 40 = 0. ✓\n\nResultado do item a): R_C = 22/3 N ≈ 7,3 N; R_D = 200/3 N ≈ 66,7 N; R_E = 26 N; R_G = 26 N (força do dente sobre GE, para cima; sobre CG é 26 N para baixo).\n\nITEM b) Maior m para que o sistema (com a articulação) permaneça em equilíbrio\n\nResolvendo para m genérico (P = 10m):\n- GE: ΣM_G = 0 → R_E = (10m + 12)/2 = 5m + 6. Então F = (10m + 12) − R_E = 5m + 6.\n- CG: ΣM_C = 0 → R_D·6 = 48·4 + F·8 = 192 + 8(5m + 6) = 240 + 40m → R_D = 40 + 20m/3.\n- ΣF = 0 em CG → R_C = 48 + F − R_D = 48 + 5m + 6 − 40 − 20m/3 = 14 − 5m/3.\n\nChecagem: para m = 4, R_C = 14 − 20/3 = 22/3. ✓\n\nCondições de admissibilidade:\n- Apoios simples só podem empurrar (reação ≥ 0).\n- R_C ≥ 0 → 14 − 5m/3 ≥ 0 → m ≤ 42/5 = 8,4 kg.\n- R_D = 40 + 20m/3 > 0, R_E = 5m + 6 > 0 e F = 5m + 6 > 0 para qualquer m > 0. Logo o dente da articulação está sempre comprimido (empurrando GE para cima) e nunca precisa tracionar. A articulação não é o fator limitante.\n\nPara m = 8,4 kg, a reação em C se anula (R_C = 0), com R_D = 96 N, R_E = 48 N e F = 48 N. Para m > 8,4 kg, C teria de puxar a viga para baixo, o que um apoio simples não faz. O trecho CG giraria em torno de D e a viga perderia o equilíbrio.\n\nResultado do item b): m_máx = 8,4 kg (= 42/5 kg). O limite vem da reação em C, não da articulação.\n\nObservação de interpretação: o enunciado não fornece capacidade máxima do dente. Se houvesse um limite F_máx para a articulação, a condição seria 5m + 6 ≤ F_máx, ou seja, m ≤ (F_máx − 6)/5. Sem esse dado, a resposta correta é 8,4 kg.",
+    "final_answer": "a) Para m = 4 kg (peso do bloco = 40 N):\n- R_C = 22/3 N ≈ 7,3 N\n- R_D = 200/3 N ≈ 66,7 N\n- R_E = 26 N\n- R_G = 26 N (força do dente sobre o trecho GE, para cima; sobre o trecho CG, a articulação aplica 26 N para baixo)\n\nb) m_máx = 8,4 kg (42/5 kg). Em geral, R_C = 14 − 5m/3 (N, com m em kg). O limite é R_C = 0, pois apoio simples não pode puxar. A reação do dente (5m + 6 N, sempre de compressão) nunca limita o sistema.\n\nNão é questão de múltipla escolha.",
+    "pitfalls": [
+      "Posições: G fica a 2 m de E (x = 8 m), não a 2 m de D. O bloco fica a 1 m de E (x = 9 m), não no meio de DE. Trocar essas posições muda todos os momentos.",
+      "Com a articulação, o sistema não pode ser resolvido como viga contínua com três apoios: isso dá indeterminação (hiperestaticidade de grau 1). É preciso separar em dois corpos (CG e GE) e usar o equilíbrio de cada um, com as 4 incógnitas verticais (R_C, R_D, R_E, F).",
+      "Seccionamento do peso da viga: o trecho CG (4,8 kg = 48 N) atua em x = 4 m e o trecho GE (1,2 kg = 12 N) atua em x = 9 m. Usar o peso total de 60 N no centro da viga (x = 5 m) está errado após a seccionamento.",
+      "Massa versus peso: o bloco pesa m·g = 40 N para m = 4 kg, não 4 N. Reações em newtons e m em kg.",
+      "Par ação-reação na articulação: sobre GE a força do dente é para cima (F = 26 N) e sobre CG é para baixo (26 N). Inverter esse sinal dá R_D negativo ou valores absurdos, e a verificação de momentos falha.",
+      "Apoio simples só empurra: se alguma reação der negativa, a hipótese de contato está errada. Em (b), o limite é R_C ≥ 0.",
+      "Erro comum em (b): procurar o limite na articulação. A força do dente cresce com m (F = 5m + 6), mas é sempre compressiva (positiva) para m > 0, então nunca 'falha' por tração. Quem conclui que não há limite, ou que o limite vem de R_D ou R_E, erra. O limite correto é R_C = 0, que dá m = 42/5 = 8,4 kg.",
+      "Ambiguidade do enunciado: 'a articulação consiga manter a viga em equilíbrio' não fornece uma capacidade máxima do dente. Se o aluno assumir um F_máx, a resposta muda para m = (F_máx − 6)/5, mas esse dado não existe no enunciado. A resposta de referência é 8,4 kg, com justificativa explícita.",
+      "Verificações obrigatórias: soma das reações = 60 N + 10m N (para m = 4, 100 N); momento global nulo em torno de qualquer ponto (por exemplo E); e R_C(m) decrescente com m, para confirmar o sentido do limite.",
+      "Hipóteses a declarar: viga indeformável, articulação ideal (transmite apenas força, sem momento e sem componente horizontal, pois não há cargas horizontais), apoios verticais simples e bloco tratado como carga pontual em x = 9 m (ou como carga concentrada sobre a viga)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "(a) Para m = 4 kg: R_C = 22/3 N ≈ 7,3 N, R_D = 200/3 N ≈ 66,7 N, R_E = 26 N e R_G = 26 N (o dente da articulação empurra o trecho GE para cima, com 26 N). (b) Em geral, R_C = 14 - 5m/3 (N), e R_C ≥ 0 limita m a no máximo 8,4 kg. Acima disso, C teria de puxar a viga e ela tomba em torno de D. A articulação nunca falha nessa configuração, pois o dente só empurra e sempre recebe reação positiva.\n\nANSWER: (a) R_C = 22/3 N ≈ 7,3 N, R_D = 200/3 N ≈ 66,7 N, R_E = 26 N, R_G = 26 N; (b) m_max = 8,4 kg",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Não justifica por que o problema é determinado após a articulação. Falta a contagem de incógnitas (R_C, R_D, R_E e a força do dente F, com 4 equações: 2 por trecho) e a observação de que, sem a articulação, a viga contínua com três apoios seria hiperestática de grau 1. É isso que torna necessário o corte em G. Deveria ser acrescentado um parágrafo curto sobre isso."
+          },
+          {
+            "severity": "minor",
+            "description": "A ambiguidade de (b) não é tratada explicitamente. O enunciado não dá capacidade máxima do dente. A resolução afirma que 'a articulação não é o fator limitante', mas não diz que essa conclusão depende da ausência de F_máx. Se houvesse um limite F_máx, a condição seria m ≤ (F_máx − 6)/5. Uma frase sobre isso tornaria a resposta de 8,4 kg mais defensável."
+          },
+          {
+            "severity": "minor",
+            "description": "Hipóteses não declaradas: (i) a componente horizontal da força no dente é nula, o que decorre de ΣF_x = 0 no trecho GE, mas o texto só a menciona de forma geral; (ii) o bloco é tratado como carga pontual em x = 9 m, o que aparece apenas implicitamente. Ambas deveriam ser listadas entre as hipóteses."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação '6R_D + 10R_E = 660 = 60·5 + 40·9, que é o equilíbrio de momentos da viga inteira' não indica o ponto de referência, que é C. Também é uma combinação linear das equações já usadas, então funciona como conferência aritmética e não como verificação independente. Convém escrever 'momento em relação a C' e reconhecer essa natureza."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase 'O valor m_máx = 8,4 kg é cerca de 1,4 vez a massa da viga, o que é plausível' é uma afirmação vazia, sem critério físico. Deveria ser removida ou substituída por uma justificativa real."
+          },
+          {
+            "severity": "minor",
+            "description": "'A viga então tomba em torno de D' é impreciso. O que ocorre é que o trecho CG gira em torno de D e C se levanta, formando um mecanismo. A viga inteira não tomba. A redação deveria descrever esse movimento com precisão."
+          }
+        ],
+        "summary": "Resposta final correta nos dois itens e igual à referência. (a) R_C = 22/3 N ≈ 7,3 N, R_D = 200/3 N ≈ 66,7 N, R_E = 26 N e R_G = 26 N (dente empurra GE para cima). (b) m_máx = 8,4 kg, limitado por R_C = 0. Refiz o sistema 4×4 com frações exatas e ele confere para m = 0, 4, 8,4 e 10. As fórmulas R_C = 14 − 5m/3, R_D = 40 + 20m/3 e R_E = F = 6 + 5m estão corretas. A geometria (G em x = 8 m, bloco em x = 9 m) confere com a figura da prova. Pontos fortes: separação correta do peso em 48 N (CG, x = 4 m) e 12 N (GE, x = 9 m); convenção de sinal consistente para o par ação-reação no dente; uso explícito de 'apoio só empulha' como condição de validade; a igualdade R_E = R_G é justificada pela carga centrada em 9 m; checagem física no limite pelo momento de CG em torno de D (48·2 = 2·R_G); e casos de teste m = 0 e m = 4. As lacunas são de rigor e de exposição, não de conteúdo: falta a justificativa de determinação do sistema, a nota sobre a capacidade não dada do dente, algumas hipóteses implícitas e algumas frases vagas. Não atinge 9 porque um gabarito comentado precisaria explicar por que o corte em G torna o problema solúvel e tratar a ambiguidade de (b).\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 8.5,
+      "final_answer": "(a) Para m = 4 kg: R_C = 22/3 N ≈ 7,3 N, R_D = 200/3 N ≈ 66,7 N, R_E = 26 N e R_G = 26 N (o dente empurra GE para cima). (b) m_máx = 8,4 kg. O limite vem do apoio C, que exige R_C = 14 − 5m/3 ≥ 0. A articulação não limita, pois a força no dente é 6 + 5m > 0 e o enunciado não dá sua capacidade máxima.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Item b: o argumento de que 8,4 kg é o máximo é incompleto. A resolução mostra que R_C < 0 é inadmissível para m > 8,4 kg, e então afirma que 'CG gira em torno de D' e que 'não existe equilíbrio com C apoiado'. Não exclui equilíbrio com C levantado. Nessa configuração, CG tem apoio só em D e no dente: ΣM_D(CG)=0 exige F = 48 N, enquanto ΣM_E(GE)=0 exige F = 6+5m. Só m = 8,4 kg satisfaz as duas. Deveria fechar essa dedução. A conferência ΣM_D = 48·2 − 2R_G = 0 já está no texto, mas só é usada no limite e não para excluir m > 8,4 kg."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de tratar o bloco como carga pontual em x = 9 m é justificada por 'é pequeno frente a GE'. As dimensões do bloco não são dadas no enunciado. A hipótese correta é que a posição do bloco (1 m de E) refere-se ao seu centro de massa/ponto de aplicação. Deve ser declarada assim, sem justificativa geométrica não fornecida."
+          },
+          {
+            "severity": "minor",
+            "description": "Terminologia: 'densidade linear 6 N/m' está errada. 6 N/m é peso linear (equivalentemente, massa linear de 0,6 kg/m). Deve-se escrever 'peso linear 6 N/m' ou 'massa linear 0,6 kg/m'."
+          },
+          {
+            "severity": "minor",
+            "description": "As verificações obrigatórias de item b estão incompletas. Só há checagem numérica da soma para m = 0 e m = 4. Não há verificação simbólica da soma (−5/3 + 20/3 + 5 = 10, logo 60 + 10m) nem do momento global para m genérico. Ambas são curtas e fortalecem a generalização."
+          },
+          {
+            "severity": "minor",
+            "description": "Na seção 'Por que o problema fica determinado', a contagem 4 incógnitas × 4 equações ignora a componente horizontal do dente. Ela só é eliminada depois, em 'Hipóteses'. Convém unificar a contagem: 5 incógnitas (incluindo H_G) e 6 equações (incluindo ΣF_x de cada trecho), com H_G = 0 deduzido diretamente."
+          },
+          {
+            "severity": "minor",
+            "description": "A 'Tendência física' de item b é apenas qualitativa e cita 'o momento que tende a abaixar o lado direito' sem indicar o ponto de momentos. A variação dR_C/dm = −5/3 N/kg já decorre da expressão e poderia ser apresentada como consequência algébrica."
+          }
+        ],
+        "summary": "Ambas as respostas finais coincidem com a referência e estão corretas. Refiz as contas com frações exatas: (a) R_C = 22/3 N, R_D = 200/3 N, R_E = 26 N, R_G = 26 N (soma 100 N, momento global nulo); (b) R_C = 14 − 5m/3, logo m_máx = 8,4 kg. A geometria (C=0, D=6, G=8, E=10, bloco em 9) confere com a figura da prova. A resolução é clara e bem organizada. Declara as hipóteses (indeformabilidade, apoios que só empurram, articulação sem momento e sem força horizontal). Separa a viga em CG e GE, com pesos seccionados em 48 N (x=4) e 12 N (x=9). Trata corretamente o sentido da força do dente (+26 N em GE, −26 N em CG) e a massa versus o peso. Conclui que a articulação nunca limita o sistema, pois F = 5m+6 é sempre compressiva. Assinala a ambiguidade de F_máx. Usa uma checagem independente de momento em torno de D no limite (48·2 = 2R_G). Pontos fracos: o argumento de máximo em (b) não exclui equilíbrio com C levantado, que é o passo lógico que fecha 'maior m'. Também há justificativas e terminologia menores (hipótese do bloco, 'densidade linear') e verificações gerais de (b) não apresentadas. Nenhum erro de conta ou de física. Nota 8,5: publicável como gabarito após fechar a dedução de (b) e corrigir os detalhes.\""
+      }
+    },
+    {
+      "round": 3,
+      "score": 9.0,
+      "final_answer": "(a) Para m = 4 kg: R_C = 22/3 N ≈ 7,3 N; R_D = 200/3 N ≈ 66,7 N; R_E = 26 N; R_G = 26 N (o dente empurra GE para cima), com componente horizontal H_G = 0. (b) Para m genérico: R_C = 14 − 5m/3, R_D = 40 + 20m/3, R_E = R_G = 6 + 5m (todos em N, m em kg). O equilíbrio exige R_C ≥ 0 e, se C perde contato, ΣM_D(CG) = 0, que só se cumpre para m = 8,4 kg. Logo m_máx = 8,4 kg, limitado pelo apoio C (a articulação não é o fator limitante).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na verificação de ordem de grandeza, o candidato afirma que 'as reações são de dezenas de newtons'. Isso está errado: R_C = 22/3 N ≈ 7,3 N, e para m = 0 R_E = R_G = 6 N. Corrigir para algo como 'entre ~6 N e ~100 N' ou remover a frase."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese de que a distância de 1 m refere-se ao centro do bloco está declarada, mas não se diz que o bloco deve ficar inteiramente dentro de GE (8 ≤ x ≤ 10) para o modelo valer, nem que outra referência para o 1 m mudaria os momentos. Uma frase sobre essa sensibilidade fortaleceria a hipótese."
+          },
+          {
+            "severity": "minor",
+            "description": "Em (a) e (b), as equações de momento aparecem sem braços e sinais explícitos (ex.: '6R_D = 48·4+26·8'), apesar da convenção anti-horária declarada. Escrever, por exemplo, ΣM_C = 6R_D − 48·4 − 26·8 = 0 facilitaria a auditoria. Também vale dizer que 'as duas equações ΣF_x coincidem' significa a mesma condição H_G = 0 com sinais opostos."
+          },
+          {
+            "severity": "minor",
+            "description": "As conferências de (a) (soma vertical e momento global em C) são combinações lineares das equações já usadas. O candidato reconhece isso, mas poderia incluir a checagem por outra rota, ΣM_D(CG) = 0 com m = 4 (6R_C = 96 − 2·26 = 44, logo R_C = 22/3). Essa rota só aparece em (b)."
+          }
+        ],
+        "summary": "Parecer – Questão 5 (Física, IME 2026, 2ª fase). Conferi o enunciado no PDF (p. 5): D ≈ 6 m, G ≈ 8 m, bloco ≈ 9 m e E ≈ 10 m, consistente com a transcrição. Refiz o problema com Fraction (eliminação gaussiana exata) e reproduzi o gabarito de referência.\n\nRespostas, item por item (candidato = referência = verificação exata):\n- a) m = 4 kg: R_C = 22/3 N ≈ 7,3 N; R_D = 200/3 N ≈ 66,7 N; R_E = 26 N; R_G = 26 N (dente empurra GE para cima; CG recebe 26 N para baixo); H_G = 0. Confere.\n- b) R_C = 14 − 5m/3; R_D = 40 + 20m/3; R_E = R_G = 6 + 5m. O limite vem de R_C = 0, logo m_max = 42/5 = 8,4 kg. Confere.\n\nNão há divergência entre candidato e referência, e a resposta correta é a mesma nos dois.\n\nJustificativa: boa. O candidato separa o sistema em CG e GE e usa hipóteses explícitas (indeformável, articulação sem momento, H_G derivado como nulo, apoios só empurram, bloco como carga pontual em x = 9 m). Mostra que a viga é hiperestática de grau 1 sem a articulação. Prova que o dente nunca limita (R_G = 6 + 5m > 0) e trata a ambiguidade do F_máx. Para m > 8,4 kg, argumenta com ΣM_D(CG) = 96 − 2R_G = 84 − 10m < 0 tanto com C apoiado (R_C < 0, impossível) quanto com C solto. A tendência dR_C/dm = −5/3 N/kg está correta. Cobre todas as armadilhas da lista de referência, incluindo o erro comum de procurar o limite na articulação.\n\nOs problemas que restam são menores: uma frase falsa sobre ordem de grandeza, a hipótese do bloco sem discussão de sensibilidade, equações de momento sem sinais explícitos e conferências que são apenas recombinações algébricas. Nenhum afeta o resultado. Para gabarito comentado, basta corrigir esses pontos.\n\nNota 9: resolução correta, completa e rigorosa, publicável como gabarito comentado após pequenos ajustes de redação."
+      }
+    }
+  ]
+}

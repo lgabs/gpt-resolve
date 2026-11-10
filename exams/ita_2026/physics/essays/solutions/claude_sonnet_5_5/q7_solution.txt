@@ -1,0 +1,52 @@
+\section*{Questão 7}
+
+\section*{Solução}
+
+\textbf{Hipóteses.} O feixe é homogêneo (intensidade uniforme na seção reta), todo o feixe atinge o analisador e vale a lei de Malus para a luz já polarizada que incide em cada polarizador. Supomos também $\cos\beta>0$, isto é, $\beta=\phi/N<90^\circ$.
+
+\medskip
+\textbf{a) Intensidade após o sistema.}
+
+\emph{1º polarizador.} A luz incide com polarização paralela ao eixo. No caso ideal, nada seria perdido e a intensidade seria $I_0$. Com perdas por reflexão e absorção, a intensidade que sai é
+\[
+I_1 = x\,I_0 .
+\]
+
+\emph{Polarizadores seguintes ($k=2,\dots,N+1$).} A luz que chega ao polarizador $k$ está polarizada segundo o eixo do polarizador $k-1$, que forma o ângulo $\beta$ com o eixo do polarizador $k$. Pela lei de Malus, no caso ideal a intensidade seria $I_{k-1}\cos^2\beta$. Com as perdas, ela é
+\[
+I_k = x\,I_{k-1}\cos^2\beta .
+\]
+
+\emph{Recorrência.} Há $N$ polarizadores além do primeiro, então
+\[
+I = I_{N+1}= x\,I_0\,\bigl(x\cos^2\beta\bigr)^{N}= I_0\,x^{N+1}\cos^{2N}\beta .
+\]
+Como $\beta=\phi/N$,
+\[
+\boxed{I = I_0\,x^{\,N+1}\,\cos^{2N}\!\left(\frac{\phi}{N}\right)}
+\]
+
+\medskip
+\textbf{b) Raio do feixe.}
+
+A intensidade é uniforme, então a potência que atravessa a seção reta, de área $A=\pi R^2$, é $P = I\,A = I\,\pi R^2$. Logo
+\[
+R=\sqrt{\frac{P}{\pi I}}
+\]
+e, substituindo $I$ do item (a),
+\[
+\boxed{R=\sqrt{\frac{P}{\pi\, I_0\, x^{\,N+1}\cos^{2N}(\phi/N)}}
+=\frac{1}{x^{(N+1)/2}\cos^{N}(\phi/N)}\sqrt{\frac{P}{\pi I_0}}}
+\]
+
+\medskip
+\textbf{Verificações.}
+\begin{itemize}
+\item Unidades: $P/(\pi I)$ tem unidade $\mathrm{W}/(\mathrm{W/m^2})=\mathrm{m^2}$, então $R$ está em metros.
+\item Caso ideal ($x=1$) com $N=1$ (dois polarizadores): $I=I_0\cos^2\phi$, que é a lei de Malus.
+\item $\phi=0$ (eixos paralelos): $I=I_0x^{N+1}$, apenas as perdas dos $N+1$ polarizadores.
+\item $N\to\infty$ com $\phi$ fixo: $\cos^{2N}(\phi/N)\approx 1-\phi^2/N\to 1$, então $I\to I_0 x^{N+1}$. A rotação gradual não causa perda por Malus, só as perdas por reflexão e absorção, que crescem com o número de polarizadores.
+\item Como $x<1$ e $\cos\beta<1$, vale $I<I_0$ e portanto $R>\sqrt{P/(\pi I_0)}$, coerente com o feixe ter perdido intensidade para a mesma potência medida.
+\end{itemize}
+
+ANSWER: a) $I=I_0\,x^{N+1}\cos^{2N}(\phi/N)$; b) $R=\sqrt{\dfrac{P}{\pi I_0\,x^{N+1}\cos^{2N}(\phi/N)}}$

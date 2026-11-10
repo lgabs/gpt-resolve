@@ -1,0 +1,59 @@
+{
+  "question": 4,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a = -2; raízes de p: -1 (dupla), 2, i, -i, 3+2√2 e 3-2√2.",
+  "judge_reference": {
+    "reference_solution": "**Conferência do enunciado.** O PDF (p. 4) confirma: p(x) = x⁷ + 3a x⁶ − x⁵ − 5a x⁴ + 7x³ − 7a x² + 9x + a, com a real, q(x) = x³ − 3x − 2, p divisível por q. Pede-se todas as raízes de p. Como a convenção da prova define i, as raízes são procuradas em ℂ.\n\n**1) Fatorar q.** q(x) = x³ − 3x − 2 = (x − 2)(x + 1)². Verificação: (x² + 2x + 1)(x − 2) = x³ − 2x² + 2x² − 4x + x − 2 = x³ − 3x − 2. Logo q tem a raiz simples 2 e a raiz dupla −1.\n\n**2) Determinar a.** Dizer que q | p equivale a dizer que 2 é raiz de p e −1 é raiz de p com multiplicidade ≥ 2. Ou seja, p(2) = 0, p(−1) = 0 e p'(−1) = 0.\n\n- p(−1) = −1 + 3a + 1 − 5a − 7 − 7a − 9 + a = −8a − 16. Então p(−1) = 0 dá a = −2.\n- p(2) = 128 + 192a − 32 − 80a + 56 − 28a + 18 + a = 170 + 85a. Então p(2) = 0 dá a = −2.\n- p'(x) = 7x⁶ + 18a x⁵ − 5x⁴ − 20a x³ + 21x² − 14a x + 9. Logo p'(−1) = 7 − 18a − 5 + 20a + 21 + 14a + 9 = 32 + 16a. Então p'(−1) = 0 dá a = −2.\n\nAs três condições dão o mesmo valor, a = −2, e o valor é único.\n\n*Verificação alternativa (divisão euclidiana com a genérico).* O resto de p por q é R(x) = (a + 2)(5x² + 26x + 13). Esse resto é nulo se e somente se a = −2, pois 5x² + 26x + 13 não é o polinômio nulo. A divisão foi conferida em Python para a = 0, 1, 2. Como p é linear em a, o resultado vale para todo a.\n\n**3) Dividir p por q com a = −2.** Com a = −2:\np(x) = x⁷ − 6x⁶ − x⁵ + 10x⁴ + 7x³ + 14x² + 9x − 2.\n\nDivisão passo a passo:\n- x⁴·q = x⁷ − 3x⁵ − 2x⁴. Sobra −6x⁶ + 2x⁵ + 12x⁴ + 7x³ + …\n- −6x³·q = −6x⁶ + 18x⁴ + 12x³. Sobra 2x⁵ − 6x⁴ − 5x³ + 14x² + …\n- 2x²·q = 2x⁵ − 6x³ − 4x². Sobra −6x⁴ + x³ + 18x² + 9x − 2.\n- −6x·q = −6x⁴ + 18x² + 12x. Sobra x³ − 3x − 2.\n- 1·q. O resto é 0.\n\nLogo p(x) = (x − 2)(x + 1)² · s(x), com s(x) = x⁴ − 6x³ + 2x² − 6x + 1.\n\n**4) Raízes de s (polinômio recíproco).** O termo independente é 1, então 0 não é raiz e podemos dividir por x². Obtemos x² + 1/x² − 6(x + 1/x) + 2 = 0. Seja t = x + 1/x. Então x² + 1/x² = t² − 2, e a equação fica t² − 2 − 6t + 2 = t² − 6t = 0. Assim t = 0 ou t = 6.\n\n- t = 0: x² + 1 = 0, logo x = ±i.\n- t = 6: x² − 6x + 1 = 0, com Δ = 32. Logo x = (6 ± 4√2)/2 = 3 ± 2√2.\n\nEntão s(x) = (x² + 1)(x² − 6x + 1). Conferindo: x⁴ − 6x³ + x² + x² − 6x + 1 = x⁴ − 6x³ + 2x² − 6x + 1. ✓\n\n**5) Multiplicidades.** s(2) = 16 − 48 + 8 − 12 + 1 = −35 ≠ 0. s(−1) = 1 + 6 + 2 + 6 + 1 = 16 ≠ 0. Portanto 2 é raiz simples e −1 é raiz exatamente dupla de p. As raízes ±i e 3 ± 2√2 são todas simples e distintas entre si e de −1 e 2.\n\n**6) Conclusão e conferência.** a = −2 e p(x) = (x − 2)(x + 1)²(x² + 1)(x² − 6x + 1).\n\nRaízes de p: −1 (multiplicidade 2), 2, i, −i, 3 + 2√2 e 3 − 2√2.\n\nSão 2 + 1 + 1 + 1 + 1 + 1 = 7 raízes contadas com multiplicidade, o que bate com o grau 7. Pelas relações de Girard:\n- Soma das raízes = −1 − 1 + 2 + 0 + 6 = 6, igual a −(−6). ✓\n- Produto das raízes = (−1)(−1)(2)(i·(−i))(1) = 2, igual a −(−2). ✓\n\nConferência numérica em Python: p se anula em todas elas (erro < 1e‑11). O produto dos fatores reproduz exatamente os coeficientes de p.\n\nDas raízes de p, quatro são reais (−1, 2, 3 ± 2√2) e duas são complexas não reais (±i).",
+    "final_answer": "a = −2. p(x) = (x − 2)(x + 1)²(x² + 1)(x² − 6x + 1). Raízes de p: x = −1 (dupla), x = 2, x = i, x = −i, x = 3 + 2√2 e x = 3 − 2√2. Conjunto-solução: {−1, 2, i, −i, 3 + 2√2, 3 − 2√2}.",
+    "pitfalls": [
+      "q(x) = (x − 2)(x + 1)² tem raiz DUPLA em −1. A divisibilidade exige p(2) = 0, p(−1) = 0 e p'(−1) = 0. Só testar p(2) e p(−1) é incompleto. Aqui as três condições coincidem em a = −2, mas isso deve ser verificado (ou confirmado pela divisão exata com resto zero), e não apenas suposto.",
+      "Erros de sinal ao calcular p(−1) = −8a − 16, p(2) = 170 + 85a e p'(−1) = 32 + 16a. Cada uma deve dar a = −2. Se dessem valores diferentes, o enunciado seria inconsistente. Uma boa resolução mostra essa coerência ou o resto (a + 2)(5x² + 26x + 13).",
+      "A divisão p ÷ q com a = −2 deve ter resto 0 e quociente x⁴ − 6x³ + 2x² − 6x + 1. Erros de coeficiente na divisão longa (sobretudo −6x³ e +2x²) levam a um quociente errado e a raízes erradas.",
+      "O quociente é recíproco (palindrômico). A substituição t = x + 1/x exige x ≠ 0, o que vale porque o termo independente é 1. O erro típico é esquecer o −2 em x² + 1/x² = t² − 2. O correto é t² − 2 − 6t + 2 = t² − 6t = 0, com t = 0 ou t = 6. Cada valor de t gera DUAS raízes: x² − t·x + 1 = 0.",
+      "t = 0 leva a x² = −1, isto é, x = ±i, raízes complexas não reais. Pede-se 'todas as raízes', e a convenção da prova define i. Responder só com raízes reais está incompleto.",
+      "t = 6 leva a x² − 6x + 1 = 0, com Δ = 32 e √32 = 4√2. Raízes 3 ± 2√2 (e não 3 ± √2 nem 3 ± 4√2). São inversas uma da outra (produto 1).",
+      "Multiplicidade: −1 é raiz dupla de p (não tripla, pois s(−1) = 16 ≠ 0), e 2 é simples (s(2) = −35 ≠ 0). Uma resposta deve indicar que −1 aparece com multiplicidade 2 e que o total é 7 raízes contando multiplicidade, igual ao grau.",
+      "Checagens úteis: Girard (soma = 6, produto = 2) e substituição numérica. Verifica-se que a é real e único, e que nenhuma raiz de s coincide com −1 ou 2.",
+      "Dizer apenas 'p é divisível por q, logo as raízes de q são raízes de p' sem determinar a e sem achar as outras quatro raízes não resolve a questão. A questão pede TODAS as raízes de p, o que exige primeiro achar a."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a = -2; raízes de p: -1 (dupla), 2, i, -i, 3+2√2 e 3-2√2.",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução não justifica explicitamente a suficiência e a unicidade de a. p(2)=0, p(-1)=0 e p'(-1)=0 são condições necessárias. A suficiência só aparece implicitamente, na divisão exata com resto nulo do passo 3. Faltou uma frase dizendo que cada condição, sendo linear em a, força a=-2 e que a divisão exata confirma a recíproca. O resto genérico (a+2)(5x²+26x+13) não foi mostrado."
+          },
+          {
+            "severity": "minor",
+            "description": "Vários cálculos aparecem só com o resultado final. É o caso de p'(-1)=32+16a, sem as parcelas, de s(-1)=16 e s(2)=-35, sem as contas, e do discriminante Δ=32 com √32=4√2 em x²-6x+1=0. As contas estão corretas, mas um gabarito comentado deveria mostrá-las."
+          },
+          {
+            "severity": "minor",
+            "description": "A fatoração s(x)=(x²+1)(x²-6x+1) e o produto final dos cinco fatores são apenas afirmados ('Multiplicando os fatores, obtém-se…'). Faltou um passo de conferência, como a expansão (x²+1)(x²-6x+1)=x⁴-6x³+2x²-6x+1. Também não há checagem por Girard (soma 6, produto 2). A verificação numérica citada só cobre 3±2√2."
+          },
+          {
+            "severity": "minor",
+            "description": "No passo 3 o quociente é anunciado antes de ser derivado. A 'conferência' lista os produtos parciais (x⁴q, -6x³q, 2x²q, -6xq, 1q), mas não mostra a soma coeficiente a coeficiente. A divisão está correta, mas a apresentação é de verificação e não de dedução."
+          },
+          {
+            "severity": "minor",
+            "description": "A multiplicidade 1 de ±i e de 3±2√2 não é dita explicitamente. Segue de serem quatro raízes distintas de s, e distintas de -1 e 2. Também não há menção a que são 7 raízes contadas com multiplicidade, igual ao grau, como conferência. A lista de sete raízes está lá, mas a observação do grau é implícita."
+          }
+        ],
+        "summary": "Resposta final correta e idêntica à minha referência. Conferi em Python puro, sem sympy: a=-2 (p(2)=170+85a, p(-1)=-16-8a, p'(-1)=32+16a, os três nulos só em a=-2). O produto (x+1)²(x-2)(x²+1)(x²-6x+1) reproduz exatamente os coeficientes de p com a=-2. s(-1)=16 e s(2)=-35. Os erros numéricos em ±i e 3±2√2 são desprezíveis. As raízes são -1 (dupla), 2, ±i e 3±2√2. O candidato fatorou q com a raiz dupla -1 e exigiu p'(-1)=0 além de p(2) e p(-1), tratando a principal armadilha. Fez a divisão p÷q com quociente e resto corretos e a substituição t=x+1/x com o -2 em x²+1/x²=t²-2, resolvendo t=0 e t=6 e incluindo as raízes complexas ±i. Verificou as multiplicidades por s(-1)≠0 e s(2)≠0 e deu a conclusão com a fatoração completa. Todas as armadilhas da referência foram evitadas. As fraquezas são de rigor e apresentação: não argumenta explicitamente a suficiência e a unicidade de a, omite várias contas intermediárias (p'(-1), Δ, s(-1), s(2)), não faz a conferência de Girard e não expande a fatoração de s. Nenhuma afeta a correção. Nota 9, no limite do que se publicaria como gabarito comentado, com um pouco mais de detalhe nesses passos."
+      }
+    }
+  ]
+}

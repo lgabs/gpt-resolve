@@ -1,0 +1,56 @@
+{
+  "question": 5,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "a) T = 450 K; b) Q = 90 kW; c) Não são realistas: 350 residências exigem 116,7 kW e a água 33,3 kW, que somados aos 45 kW rejeitados a 450 K dão 195 kW > 150 kW (viola a 1ª lei); além disso a 2ª lei limita a potência de B a 85 kW < 116,7 kW (no máximo cerca de 215 residências com a água aquecida).",
+  "judge_reference": {
+    "reference_solution": "**Convenção.** Todas as grandezas são taxas (potências): Q̇_h = 150 kW a T_h = 900 K. Para a empresa A, W_A = 80 HP = 80·(3/4) = 60 kW.\n\n**a) Temperatura da fonte fria de A**\n\n1. Rendimento real: η_A = W_A/Q_h = 60/150 = 0,40.\n2. O enunciado diz que η_A é 80 % do máximo admissível, isto é, do rendimento de Carnot entre 900 K e T: η_A = 0,8·η_Carnot. Logo η_Carnot = 0,40/0,80 = 0,50.\n3. η_Carnot = 1 − T/900 = 0,50, portanto **T = 450 K**.\n\n**b) Calor rejeitado por A**\n\nPela 1ª lei em regime cíclico: Q = Q_h − W_A = 150 − 60 = **90 kW**, rejeitados à fonte de 450 K.\n\nVerificação pela 2ª lei: ΔṠ_univ = 90/450 − 150/900 = 0,200 − 0,1667 = +0,0333 kW/K > 0. O ciclo é irreversível, o que é coerente com ter só 80 % do rendimento de Carnot.\n\n**c) Análise da proposta de B**\n\nDados de B: Q̇_h = 150 kW a 900 K. Rejeita Q/2 = 45 kW à fonte de T = 450 K. Rejeita Q₃ à fonte de 300 K. Produz W_B.\n\n*Demanda elétrica.* Cada residência consome 240 kWh/720 h = 1/3 kW em média. Para 350 residências: W_req = 350/3 ≈ 116,7 kW.\n\n*Demanda térmica.* 50 L/min = 50 kg/min = 5/6 kg/s. Q̇_água = ṁ·c·ΔT = (5/6)(4000)(10) = 33 333 W ≈ 33,3 kW. Esse calor vem da rejeição à fonte de 300 K, então Q₃ ≥ 33,3 kW.\n\n*1ª lei para B:* W_B = 150 − 45 − Q₃ = 105 − Q₃.\n\n- Para W_B = 116,7 kW seria preciso Q₃ = −11,7 kW < 0. Isso é impossível, pois a fonte de 300 K teria de fornecer calor. Equivalentemente, se W = 116,7 kW, o calor total rejeitado seria só 33,3 kW, menor que os 45 kW enviados à fonte de 450 K.\n- Mesmo com Q₃ = 0, W_B = 105 kW < 116,7 kW.\n- Com o aquecimento de água prometido (Q₃ ≥ 33,3 kW): W_B ≤ 105 − 33,3 = 71,7 kW = 215/3 kW. Isso atende no máximo 3·71,7 = **215 residências**, e não 350.\n\n*Verificação pela 2ª lei (independente).*\n\n- Rendimento exigido: η_B = 116,7/150 = 0,778. O máximo de qualquer máquina entre 900 K e a fonte mais fria disponível (300 K) é 1 − 300/900 = 0,667. Portanto 0,778 > 0,667 viola Carnot.\n- Balanço de entropia: Q₃/300 + 45/450 − 150/900 ≥ 0 dá Q₃ ≥ 20 kW. Então W_B ≤ 105 − 20 = 85 kW, o que atenderia no máximo 255 residências (limite reversível). Ainda é menor que 350.\n- A parte da água é viável: com Q₃ = 33,3 kW, ΔṠ = 0,1 + 0,111 − 0,1667 = +0,044 kW/K > 0. O mínimo de 20 kW corresponderia a 30 L/min.\n\n*Comparação com A:* A fornece 60 kW (180 residências). B, com água quente, fornece no máximo 71,7 kW (215 residências).\n\n**Conclusão.** Os dois aspectos não podem ser verdadeiros ao mesmo tempo. O aquecimento de 50 L/min, isoladamente, é compatível com as duas leis. O suprimento de 350 residências (116,7 kW) é irrealizável: viola a 1ª lei, pois exigiria Q₃ < 0, e viola a 2ª lei, pois exigiria η = 77,8 % > 66,7 %. Com os dados de B, o máximo realista é 71,7 kW, ou seja, 215 residências junto com a água quente. Mesmo desprezando a água, o teto termodinâmico é 255 residências. A proposta de B **não é realista**.",
+    "final_answer": "a) T_fria(A) = 450 K (η_A = 60/150 = 0,40 = 0,8·η_Carnot, logo η_Carnot = 0,5 e T = 900·0,5).\nb) Q̇_rejeitado(A) = 150 − 60 = 90 kW, com ΔṠ_univ = +0,033 kW/K > 0.\nc) Não são realistas. Para 350 residências, W = 350·(240/720) = 116,7 kW. A água exige Q₃ ≈ 33,3 kW. Já Q/2 = 45 kW. A 1ª lei dá W_B = 105 − Q₃ ≤ 71,7 kW (215 residências). Para W = 116,7 kW seria preciso Q₃ = −11,7 kW < 0, e η = 77,8 % > Carnot(900 K, 300 K) = 66,7 %. Mesmo sem a água, o limite pela 2ª lei é W ≤ 85 kW (255 residências). Só o aquecimento de água, isoladamente, é viável.",
+    "pitfalls": [
+      "Item a: \"80% do máximo admissível\" significa η_real = 0,8·η_Carnot, então η_Carnot = 0,40/0,80 = 0,50. Erro comum: multiplicar 0,4·0,8 = 0,32, ou aplicar o 80% à temperatura.",
+      "Converter 80 HP com o dado do enunciado (1 HP = 3/4 kW), que dá 60 kW. Não usar 80 kW nem 0,746 kW/HP.",
+      "Todas as grandezas são taxas (kW). Em (b) a resposta é uma potência térmica, Q̇ = 90 kW, obtida pela 1ª lei; não é um calor em joules.",
+      "Em B, Q/2 é metade do Q de A (45 kW), não metade do calor de B. A fonte \"T\" de B é a mesma de A (450 K).",
+      "Demanda elétrica: 240 kWh/mês ÷ 720 h = 1/3 kW por residência, em potência média. 350 residências dão 116,7 kW. Não confundir energia mensal com potência. A demanda de pico seria ainda maior, o que reforça a conclusão.",
+      "Água: 50 L/min = 5/6 kg/s e Q̇ = ṁ c ΔT = 33,3 kW. Atenção às unidades (J/s = W; dividir por 1000 para kW; L→kg com ρ = 1 kg/L; minuto→segundo).",
+      "O argumento central de (c) é o balanço de energia (1ª lei): W + 45 + Q₃ = 150. Com W = 116,7 kW, Q₃ < 0, o que é absurdo. Um bom argumento mostra isso e não só afirma \"viola Carnot\". Deve-se tratar a ambiguidade (Q₃ = 33,3 kW exatos ou Q₃ ≥ 33,3 kW): em ambos os casos W ≤ 71,7 kW.",
+      "Usar também a 2ª lei, com duas verificações: o rendimento exigido (77,8 %) excede o de Carnot entre 900 K e 300 K (66,7 %), e o balanço de entropia dá Q₃ ≥ 20 kW, logo W_max = 85 kW. É preciso distinguir o limite reversível (255 residências) do limite com a água quente (215 residências).",
+      "Conclusão condicional: o aquecimento de água, sozinho, é compatível com as duas leis (ΔṠ = +0,044 kW/K). A inviabilidade vem da combinação com os 350 residências. Dizer só \"B é irreal\" sem separar as duas afirmações é incompleto.",
+      "Verificar também a consistência de A com a 2ª lei (ΔṠ_univ = +0,033 kW/K > 0). Uma nota opcional: a água é aquecida por uma fonte a 300 K, então só pode chegar a no máximo 300 K (partindo de ≤ 290 K)."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "a) T = 450 K; b) Q = 90 kW; c) Não são realistas: 350 residências exigem 116,7 kW e a água 33,3 kW, que somados aos 45 kW rejeitados a 450 K dão 195 kW > 150 kW (viola a 1ª lei); além disso a 2ª lei limita a potência de B a 85 kW < 116,7 kW (no máximo cerca de 215 residências com a água aquecida).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A redação do argumento da 1ª lei na conclusão e na linha ANSWER é imprecisa. Diz \"150 kW fora das fontes frias além dos 45 kW já rejeitados, isto é, 195 kW\". Os 150 kW são W + Q_água (116,7 + 33,3), e os 195 kW misturam trabalho com calor. No corpo da solução, a forma 'W_B + Q₂ ≥ 150 > 105 kW' está correta e clara. Em um gabarito comentado seria melhor escrever: saída total = W + 45 + Q₂ ≥ 116,7 + 45 + 33,3 = 195 kW > 150 kW de entrada."
+          },
+          {
+            "severity": "minor",
+            "description": "Falta a verificação explícita pelo rendimento de Carnot: η exigido = 116,7/150 = 77,8 % > 1 − 300/900 = 66,7 %. É o argumento mais direto para a 2ª lei. O balanço de entropia usado (W ≤ 85 kW) é equivalente e até mais forte, então não há erro, mas o argumento mais intuitivo ficou de fora."
+          },
+          {
+            "severity": "minor",
+            "description": "A conclusão não separa de forma explícita os dois aspectos de B. O corpo do texto mostra que o aquecimento de 50 L/min é compatível com a 2ª lei (Q₂ ≥ 33,3 > 20 kW) e que a promessa de 350 residências falha mesmo sem a água, mas o texto final não diz 'a água isoladamente é viável; o inviável é a geração para 350 residências'. Também não calcula o ΔṠ = +0,044 kW/K para Q₂ = 33,3 kW. Cobre-se a ambiguidade Q₂ = 33,3 versus Q₂ ≥ 33,3 ao usar '≥'."
+          },
+          {
+            "severity": "minor",
+            "description": "Faltam duas observações opcionais. A primeira é dizer que 240 kWh/720 h é a demanda média, e que o pico só reforçaria a conclusão. A segunda é notar que a água aquecida por uma fonte a 300 K só chega a no máximo 300 K, o que exige água de entrada a no máximo 290 K. A hipótese de potência média está implícita no cálculo, mas não é declarada."
+          }
+        ],
+        "summary": "As respostas finais coincidem com a referência nos três itens, e refiz as contas conferindo-as. (a) 80 HP = 60 kW, η = 0,40, η_Carnot = 0,40/0,80 = 0,50, logo T = 450 K. (b) Q̇ = 150 − 60 = 90 kW, com Ṡ_ger = +0,033 kW/K > 0, coerente com o ciclo irreversível. (c) Demanda elétrica de 350/3 ≈ 116,7 kW e calor da água de 33,3 kW. Balanço de B: W + Q₂ = 105 kW. Sem a água, Q₂ = −11,7 kW (impossível, com Ṡ_ger ≈ −0,106 kW/K). A 2ª lei dá Q₂ ≥ 20 kW, logo W ≤ 85 kW (255 residências). Com a água, W ≤ 71,7 kW (cerca de 215 residências). Conclusão: a proposta de B não é realista. O candidato tratou as armadilhas principais: conversão de HP, 80 % aplicado ao rendimento e não à temperatura, Q/2 = 45 kW, energia mensal convertida em potência média, unidades da água, 1ª lei como argumento central e distinção entre limite reversível (255) e limite com água (215). A solução é correta, organizada e rigorosa. Os pontos fracos são só de acabamento: redação imprecisa da soma 195 kW, ausência da checagem por Carnot (77,8 % > 66,7 %), conclusão que não isola explicitamente a viabilidade do aquecimento da água e omissão das observações opcionais sobre demanda média e temperatura da água. Nota 9: atinge o patamar de aprovação, mas ainda não chega a gabarito comentado completo."
+      }
+    }
+  ]
+}

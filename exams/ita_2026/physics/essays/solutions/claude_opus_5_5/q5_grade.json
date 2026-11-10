@@ -1,0 +1,47 @@
+{
+  "question": 5,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ita/2026/ita-2-fase-dia-3-30-10-2025-2-fase-dia-3/dissertativa-5-fisica-2-fase-dia-3-ita-2026",
+  "score": 5.0,
+  "items": [
+    {
+      "item": "a",
+      "solution_answer": "W = (M1 − M2)·g·α·L·ΔT = 700·α·L·(M1 − M2) J (SI), com ΔT = 70 K e g = 10 m/s²",
+      "key_answer": "W = (M1 − M2)·g·α·L·(90 − 20) = 70·(M1 − M2)·g·α·L",
+      "verdict": "equivalent",
+      "correct": "both",
+      "comment": "Mesmo raciocínio: M1 sobe ΔL = αLΔT no aquecimento e M2 desce ΔL no resfriamento, então o trabalho líquido é (M1 − M2)gΔL. A resolução só substituiu g = 10 m/s² (70·10 = 700), o que é legítimo porque g foi dado na prova. As duas formas são equivalentes."
+    },
+    {
+      "item": "b",
+      "solution_answer": "η = (M1 − M2)gαL / (ρVc + 3Rm/M_Cu + M1gαL) ≈ 10αL(M1 − M2)/(ρVc + 3Rm/M_Cu)",
+      "key_answer": "η = (M1 − M2)gαL / (ρVc + 3Rm/M_Cu + M1gαL + mgαL/2)",
+      "verdict": "differs",
+      "correct": "key",
+      "comment": "A diferença está só no denominador. No aquecimento, a própria viga se dilata e seu centro de massa sobe ΔL/2. Essa energia potencial, mgΔL/2 = mgαLΔT/2, também sai do calor fornecido pela fonte. A resolução contou apenas a elevação de M1 e deixou de fora esse termo. Pela 1ª lei, o gabarito está mais completo: Q_q = ΔT(ρVc + 3Rm/M_Cu + M1gαL + mgαL/2). No ciclo, esse termo se anula, pois o centro de massa da viga desce ΔL/2 no resfriamento. Por isso o trabalho líquido do item a não muda, e a verificação Q_abs − Q_ced = W da resolução continua valendo. Na prática, a diferença é desprezível. No exemplo da própria resolução (viga de 1 kg, L = 1 m, α = 1,7×10⁻⁵ K⁻¹), o termo omitido vale cerca de 8,5×10⁻⁵ J/K, contra cerca de 4,6×10³ J/K de capacidade térmica, e as duas eficiências diferem relativamente em cerca de 2×10⁻⁸ (conferido em python). Se todos os termos mecânicos forem desprezados, a forma aproximada da resolução coincide com o limite do gabarito. Ainda assim, a expressão 'exata' da resolução é incompleta e incoerente: ela mantém M1gαL, que tem a mesma ordem de grandeza desprezível, mas omite mgαL/2."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "solution",
+      "importance": "high",
+      "description": "No item b, a resolução não inclui no calor absorvido a energia para erguer o centro de massa da própria viga, mgΔL/2. O gabarito Poliedro inclui. A omissão é fisicamente incorreta, embora seja numericamente desprezível (variação relativa de cerca de 10⁻⁸ em η). Se a banca exigir a expressão completa, isso pode custar parte da nota do item b. A resolução também é incoerente ao manter o termo M1gαL, que tem a mesma ordem de grandeza desprezível."
+    },
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito, assim como a resolução, despreza a dilatação da água: o trabalho contra a atmosfera e a elevação do centro de massa da água. Também despreza a capacidade térmica do recipiente. São hipóteses razoáveis que não foram declaradas. Dentro da mesma lógica que inclui mgΔL/2, a variação de energia potencial da água poderia ser tão relevante quanto esse termo."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "O enunciado não diz se a eficiência deve considerar a forma exata ou se os termos mecânicos podem ser desprezados diante das capacidades térmicas. A forma aproximada da resolução, η ≈ gαL(M1 − M2)/(ρVc + 3Rm/M_Cu), provavelmente seria aceita, mas isso depende do critério da banca."
+    },
+    {
+      "about": "solution",
+      "importance": "low",
+      "description": "A resolução usa c_P ≈ c_V para o sólido e trata os processos como quase estáticos, com a viga sempre em equilíbrio térmico com o banho. O gabarito adota as mesmas hipóteses, sem declará-las."
+    }
+  ],
+  "summary": "Conferi o enunciado no PDF original (p. 6). No item a, resolução e gabarito são equivalentes: W = (M1 − M2)gαLΔT = 70(M1 − M2)gαL; a resolução apenas substituiu g = 10 (700αL(M1 − M2)). No item b, o gabarito está mais correto. Ele inclui no calor absorvido o termo mgαL/2, que corresponde à subida do centro de massa da própria viga, e a resolução omite esse termo. A diferença numérica é desprezível (cerca de 10⁻⁸ relativo) e a forma aproximada da resolução coincide com o limite do gabarito. Mesmo assim, a expressão completa da resolução é incompleta, o que pode custar uma pequena parte da nota do item b."
+}

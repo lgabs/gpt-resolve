@@ -1,0 +1,29 @@
+{
+  "question": 6,
+  "key_source": "Poliedro Resolve",
+  "key_url": "https://poliedroresolve.sistemapoliedro.com.br/vestibulares/ime/2026/ime-2-fase-dia-1-23-10-2025-2-fase-dia-1/dissertativa-6-matematica-2-fase-dia-1-ime-2026",
+  "score": 10.0,
+  "items": [
+    {
+      "item": "Questão 6 (soma de x_j + y_j + z_j)",
+      "solution_answer": "6 143 850 (PA a_n = 3n − 2; y_j = 3; x_j + y_j + z_j = 3j − 5 = a_j − 3)",
+      "key_answer": "6 143 850 (PA de razão 3; y_j = 3; x_j + y_j + z_j = a_j − 3; soma = (1 + 6073)·2025/2 − 6075)",
+      "verdict": "match",
+      "correct": "both",
+      "comment": "Conferi o enunciado com o PDF original (p. 2) e a transcrição está fiel. Refiz as contas em python3: Σ(3j − 5) para j = 1..2025 dá 6 143 850. Pelo caminho do gabarito, Σa_j − 3·2025 = 6 149 925 − 6 075 = 6 143 850, o mesmo valor. A resolução prova que a condição de compatibilidade a_j − 2a_{j+1} + a_{j+2} = 0 é necessária e também suficiente. Disso sai a PA de razão 3, com y_j = 3 único e x_j + z_j = a_j − 6, de modo que a soma não depende do parâmetro livre. As contas intermediárias também batem: 2025·1013 = 2 051 325, vezes 3 dá 6 153 975, e 6 153 975 − 10 125 = 6 143 850. A conferência com j = 1 (x = −5, y = 3, z = 0) satisfaz as três equações."
+    }
+  ],
+  "doubts": [
+    {
+      "about": "key",
+      "importance": "low",
+      "description": "O gabarito diz que 'uma solução possível' é a sequência ser PA. Essa redação sugere que a PA seria só uma das possibilidades. Na verdade, ela é obrigatória: subtraindo as equações, y = a_{j+1} − a_j = a_{j+2} − a_{j+1} para todo j, e isso força razão constante. A redação não muda o resultado, mas é imprecisa. A resolução conferida trata isso corretamente, mostrando que a condição é necessária e suficiente."
+    },
+    {
+      "about": "statement",
+      "importance": "low",
+      "description": "A matriz dos coeficientes tem posto 2, então o sistema tem infinitas soluções e (x_j, y_j, z_j) não é única. A resposta só fica bem definida porque y_j = 3 e x_j + z_j = a_j − 6 são fixos. A resolução justifica isso explicitamente no Passo 4. O gabarito só faz isso de forma implícita."
+    }
+  ],
+  "summary": "A resolução e o gabarito Poliedro chegam ao mesmo valor, 6 143 850, e ambos estão corretos. A resolução é até mais rigorosa que o gabarito: prova que a sequência tem de ser uma PA (a_n = 3n − 2) e que a soma x_j + y_j + z_j = a_j − 3 vale para qualquer solução do sistema. Conferi as contas numericamente e não há divergência."
+}

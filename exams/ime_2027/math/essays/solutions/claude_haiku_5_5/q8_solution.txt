@@ -1,0 +1,62 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Hipóteses e ferramentas.} Supomos $\operatorname{sen}\alpha\neq 0$ e $\cos(j\alpha)\neq 0$ para $j=1,\dots,n+1$. Usaremos as fórmulas $\cos P+\cos Q=2\cos\frac{P+Q}{2}\cos\frac{P-Q}{2}$ e $\operatorname{sen}(A-B)=\operatorname{sen}A\cos B-\cos A\operatorname{sen}B$, válidas para quaisquer reais $P,Q,A,B$; também $\tan x=\frac{\operatorname{sen}x}{\cos x}$ quando $\cos x\neq 0$, e $\cos(-x)=\cos x$.
+
+\textbf{Passo 1 (fatoração do denominador).} Para $k\in\{1,\dots,n\}$, tomamos $P=\alpha$ e $Q=(2k+1)\alpha$. Então $\frac{P+Q}{2}=(k+1)\alpha$ e $\frac{P-Q}{2}=-k\alpha$. Como o cosseno é par,
+\[
+\cos\alpha+\cos(2k+1)\alpha=2\cos(k\alpha)\cos((k+1)\alpha)\qquad (1)
+\]
+Esta igualdade vale para todo $\alpha$, sem hipóteses.
+
+\textbf{Passo 2 (identidade telescópica).} Para $k\in\{1,\dots,n\}$, como $\alpha=(k+1)\alpha-k\alpha$,
+\[
+\operatorname{sen}\alpha=\operatorname{sen}((k+1)\alpha)\cos(k\alpha)-\cos((k+1)\alpha)\operatorname{sen}(k\alpha).
+\]
+Os índices $k$ e $k+1$ pertencem a $\{1,\dots,n+1\}$, logo $\cos(k\alpha)\neq 0$ e $\cos((k+1)\alpha)\neq 0$. Dividindo por $\cos(k\alpha)\cos((k+1)\alpha)$,
+\[
+\frac{\operatorname{sen}\alpha}{\cos(k\alpha)\cos((k+1)\alpha)}=\tan((k+1)\alpha)-\tan(k\alpha)\qquad (2)
+\]
+
+\textbf{Passo 3 (uso de $\operatorname{sen}\alpha\neq 0$).} Seja $c_k=\cos(k\alpha)\cos((k+1)\alpha)$, que é não nulo. Por (1), a parcela de $S_n$ é $\frac{1}{2c_k}$. Como $\operatorname{sen}\alpha\neq 0$, podemos escrever $\frac{1}{2c_k}=\frac{1}{2\operatorname{sen}\alpha}\cdot\frac{\operatorname{sen}\alpha}{c_k}$. Por (2),
+\[
+\frac{1}{\cos\alpha+\cos(2k+1)\alpha}=\frac{\tan((k+1)\alpha)-\tan(k\alpha)}{2\operatorname{sen}\alpha}\qquad (3)
+\]
+
+\textbf{Passo 4 (soma telescópica).} Seja $T_j=\tan(j\alpha)$, definida para $1\le j\le n+1$ porque $\cos(j\alpha)\neq 0$. Somando (3) para $k=1,\dots,n$, temos $\sum_{k=1}^{n}(T_{k+1}-T_k)=T_{n+1}-T_1$, pois os termos intermediários se cancelam. Logo
+\[
+S_n=\frac{T_{n+1}-T_1}{2\operatorname{sen}\alpha}=\frac{\tan((n+1)\alpha)-\tan\alpha}{2\operatorname{sen}\alpha}\qquad (4)
+\]
+
+\textbf{Passo 5 (diferença de tangentes).} Como $\cos\alpha\neq 0$ (hipótese com $j=1$) e $\cos((n+1)\alpha)\neq 0$ (hipótese com $j=n+1$), o denominador comum $\cos((n+1)\alpha)\cos\alpha$ é não nulo. Então
+\[
+\tan((n+1)\alpha)-\tan\alpha=\frac{\operatorname{sen}((n+1)\alpha)\cos\alpha-\cos((n+1)\alpha)\operatorname{sen}\alpha}{\cos((n+1)\alpha)\cos\alpha}=\frac{\operatorname{sen}(n\alpha)}{\cos((n+1)\alpha)\cos\alpha}\qquad (5)
+\]
+pois $(n+1)\alpha-\alpha=n\alpha$.
+
+\textbf{Passo 6 (conclusão).} Substituindo (5) em (4) e usando $2\operatorname{sen}\alpha\cos\alpha=\operatorname{sen}(2\alpha)$,
+\[
+S_n=\frac{\operatorname{sen}(n\alpha)}{2\operatorname{sen}\alpha\cos\alpha\cos((n+1)\alpha)}=\frac{\operatorname{sen}(n\alpha)}{\operatorname{sen}(2\alpha)\cos((n+1)\alpha)}.
+\]
+O denominador é não nulo: $\operatorname{sen}(2\alpha)=2\operatorname{sen}\alpha\cos\alpha\neq 0$ e $\cos((n+1)\alpha)\neq 0$. Fica demonstrada a identidade para $n\ge 1$.
+
+\textbf{Caso $n=0$ (se $0\in\mathbb{N}$).} A soma é vazia, logo $S_0=0$. As hipóteses se reduzem a $\operatorname{sen}\alpha\neq 0$ e $\cos\alpha\neq 0$, e o lado direito vale $\frac{\operatorname{sen}0}{\operatorname{sen}(2\alpha)\cos\alpha}=0$. A identidade vale também neste caso.
+
+\textbf{Por que as hipóteses são necessárias.}
+\begin{itemize}
+\item Por (1), $\cos\alpha+\cos(2k+1)\alpha=0$ se e somente se $\cos(k\alpha)\cos((k+1)\alpha)=0$. Como $\{k,k+1:1\le k\le n\}=\{1,\dots,n+1\}$ para $n\ge 1$, a soma $S_n$ está definida exatamente quando $\cos(j\alpha)\neq 0$ para $j=1,\dots,n+1$.
+\item O denominador do lado direito, $2\operatorname{sen}\alpha\cos\alpha\cos((n+1)\alpha)$, é não nulo exatamente quando $\operatorname{sen}\alpha\neq 0$, $\cos\alpha\neq 0$ e $\cos((n+1)\alpha)\neq 0$. Portanto as hipóteses são exatamente as condições para os dois lados estarem definidos.
+\item Se $\operatorname{sen}\alpha=0$, isto é $\alpha=m\pi$, então $\operatorname{sen}(n\alpha)=\operatorname{sen}(2\alpha)=0$ e o lado direito é $\frac{0}{0}$. Exemplo: $\alpha=\pi$, $n=1$. Aqui $\cos\pi=-1$ e $\cos2\pi=1$ são não nulos, e $S_1=\frac{1}{\cos\pi+\cos3\pi}=-\frac12$ está definido, mas o lado direito é $\frac{\operatorname{sen}\pi}{\operatorname{sen}2\pi\cos2\pi}=\frac{0}{0}$. Além disso, a divisão por $\operatorname{sen}\alpha$ em (3) e (4) não é permitida.
+\item Se $\cos((n+1)\alpha)=0$: exemplo $\alpha=\frac{\pi}{4}$, $n=1$. Então $\cos2\alpha=0$, e o termo $k=1$ tem denominador $\cos\frac{\pi}{4}+\cos\frac{3\pi}{4}=0$. Ambos os lados são indefinidos, logo a hipótese com $j=n+1$ não é supérflua. Analogamente, $\cos\alpha=0$ anula $\cos\alpha+\cos3\alpha=2\cos\alpha\cos2\alpha$ e torna indefinido o lado direito.
+\end{itemize}
+
+\textbf{Verificações numéricas e em casos particulares.}
+\begin{itemize}
+\item $n=1$, $\alpha=\frac{\pi}{6}$: $\operatorname{sen}\alpha=\frac12$, $\cos\alpha=\frac{\sqrt3}{2}$ e $\cos2\alpha=\frac12$ são não nulos ($j=1,2$). Esquerdo: $S_1=\frac{1}{\cos\frac{\pi}{6}+\cos\frac{\pi}{2}}=\frac{2}{\sqrt3}$. Direito: $\frac{\operatorname{sen}\frac{\pi}{6}}{\operatorname{sen}\frac{\pi}{3}\cos\frac{\pi}{3}}=\frac{1/2}{\frac{\sqrt3}{2}\cdot\frac12}=\frac{2}{\sqrt3}$. Coincidem. Aqui $\cos3\alpha=0$, mas $j=3>n+1$ não é hipótese, e o denominador $\frac{\sqrt3}{2}$ é não nulo.
+\item $n=2$, $\alpha=\frac{\pi}{8}$: $\cos\frac{\pi}{8}$, $\cos\frac{\pi}{4}$ e $\cos\frac{3\pi}{8}$ são não nulos. Esquerdo: $\frac{1}{\cos\frac{\pi}{8}+\cos\frac{3\pi}{8}}+\frac{1}{\cos\frac{\pi}{8}+\cos\frac{5\pi}{8}}\approx 0{,}76537+1{,}84776=2{,}61313$. Direito: $\frac{\operatorname{sen}\frac{\pi}{4}}{\operatorname{sen}\frac{\pi}{4}\cos\frac{3\pi}{8}}=\frac{1}{\cos\frac{3\pi}{8}}=\frac{2}{\sqrt{2-\sqrt2}}\approx 2{,}61313$.
+\item $n=3$, $\alpha=\frac{\pi}{3}$: $\cos\alpha=\frac12$, $\cos2\alpha=-\frac12$, $\cos3\alpha=-1$ e $\cos4\alpha=-\frac12$ são não nulos. Termos: $k=1$: $\frac{1}{\frac12-1}=-2$; $k=2$: $\frac{1}{\frac12+\frac12}=1$; $k=3$: $\frac{1}{\frac12+\frac12}=1$. Logo $S_3=0$. Direito: $\operatorname{sen}\pi=0$ e $\operatorname{sen}\frac{2\pi}{3}\cos\frac{4\pi}{3}=-\frac{\sqrt3}{4}\neq 0$, logo o lado direito vale $0$.
+\item $n=3$, $\alpha=0{,}71$ rad: $\cos(j\alpha)\approx 0{,}7584;\ 0{,}1502;\ -0{,}5305;\ -0{,}9549$ para $j=1,\dots,4$, todos não nulos. Os termos são $4{,}388842$, $-6{,}273816$ e $0{,}987037$, cuja soma é $-0{,}897937$. O lado direito também vale $\approx -0{,}897937$.
+\end{itemize}
+
+ANSWER: $S_n=\dfrac{\operatorname{sen}(n\alpha)}{\operatorname{sen}(2\alpha)\cos((n+1)\alpha)}$, identidade demonstrada.

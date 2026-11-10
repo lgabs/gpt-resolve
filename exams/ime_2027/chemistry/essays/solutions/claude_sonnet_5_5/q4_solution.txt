@@ -1,0 +1,70 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Modelo e leitura do dado.} A auto-associação é $2\,\mathrm{CH_3COOH}\rightleftharpoons(\mathrm{CH_3COOH})_2$ (monômero $M$, dímero $D$), com $K_c=\dfrac{[D]}{[M]^2}$. Leio ``cada mol de monômero (dissolvido) gera $0{,}42$ mol de dímero'' de forma literal: $n_D=0{,}42\,n_0$, sendo $n_0$ o ácido total dissolvido (o máximo possível seria $0{,}5\,n_0$). Cada dímero consome 2 monômeros, logo, para $1{,}00$ mol de ácido dissolvido,
+\[
+n_D=0{,}42\ \text{mol},\qquad n_M=1-2(0{,}42)=0{,}16\ \text{mol},\qquad \alpha=0{,}84 .
+\]
+A relação dímero/monômero do equilíbrio é, portanto, $n_D/n_M=0{,}42/0{,}16=2{,}625$.
+
+\textbf{a)} A interação é a \emph{ligação (ponte) de hidrogênio}: o H da hidroxila (H ligado a O, muito eletronegativo) de uma molécula atrai um par isolado do O carbonílico ($\mathrm{C{=}O}$) da outra, formando $\mathrm{O{-}H\cdots O{=}C}$. São duas pontes por dímero, que fecham um anel de 8 átomos (por isso ``cíclico''). O dímero é praticamente apolar (os dipolos das duas metades se cancelam), o que explica a boa solubilidade em benzeno, solvente apolar que não compete pelas pontes e favorece a dimerização.
+
+\textbf{b)} Cada monômero $\mathrm{C_2H_4O_2}$ tem $2(4)+4(1)+2(6)=24$ elétrons de valência; o dímero tem $48$. Em cada monômero há $8$ pares ligantes ($3$ C--H, C--C, C=O (2), C--O, O--H) e $4$ pares isolados (2 em cada O). As pontes de hidrogênio \emph{não} são ligações covalentes (não há par compartilhado entre os monômeros): são interações eletrostáticas, desenhadas em pontilhado. Desenho esquemático (a geometria real do anel não é retangular):
+\begin{center}
+\begin{tikzpicture}[scale=1.35, every node/.style={font=\small}]
+  \node (CL) at (0,0) {C};
+  \node (CR) at (4.4,0) {C};
+  \node (MeL) at (-1.5,0) {H$_3$C};
+  \node (MeR) at (5.9,0) {CH$_3$};
+  \node (OLt) at (0.9,1.3) {O};
+  \node (OLb) at (0.9,-1.3) {O};
+  \node (ORt) at (3.5,1.3) {O};
+  \node (ORb) at (3.5,-1.3) {O};
+  \node (Ht) at (2.55,1.3) {H};
+  \node (Hb) at (1.85,-1.3) {H};
+  \draw (MeL) -- (CL);
+  \draw (CR) -- (MeR);
+  \draw[double, double distance=1.4pt] (CL) -- (OLt);
+  \draw (CL) -- (OLb);
+  \draw (CR) -- (ORt);
+  \draw[double, double distance=1.4pt] (CR) -- (ORb);
+  \draw (Ht) -- (ORt);
+  \draw (OLb) -- (Hb);
+  \draw[dotted, thick] (OLt) -- (Ht);
+  \draw[dotted, thick] (Hb) -- (ORb);
+  \foreach \n/\a in {OLt/70, OLt/140, OLb/200, OLb/280, ORt/10, ORt/100, ORb/340, ORb/260}{
+    \fill ([shift={(\a+11:0.27)}]\n.center) circle (0.03);
+    \fill ([shift={(\a-11:0.27)}]\n.center) circle (0.03);
+  }
+  \node[font=\footnotesize] at (2.2,2.0) {ligações de hidrogênio (pontilhado)};
+\end{tikzpicture}
+\end{center}
+
+\textbf{c)} $K_c$ exige concentrações, e a única concentração fornecida é $0{,}10\ \text{mol}\cdot\text{L}^{-1}$, no item (d). O enunciado diz que essa solução \emph{preserva a relação dímero/monômero} do equilíbrio. Como $K_c$ é constante (mesma $T$), $R=[D]/[M]=K_c\,[M]$; manter $R$ equivale a manter $[M]$ e, pela estequiometria, também $[D]$ e a concentração total. Logo a solução de (d) \emph{é} o próprio estado de equilíbrio, e $c_0=0{,}10$ mol$\cdot$L$^{-1}$. (Em geral, $K_c=\dfrac{0{,}42}{0{,}16^{2}\,c_0}=\dfrac{16{,}4}{c_0}$: um $c_0$ diferente daria outro $K_c$, mas contrariaria a hipótese de (d).) Então
+\[
+[M]=0{,}16\,c_0=0{,}016\ \text{mol/L},\qquad [D]=0{,}42\,c_0=0{,}042\ \text{mol/L},
+\]
+\[
+K_c=\frac{[D]}{[M]^2}=\frac{0{,}042}{(0{,}016)^2}=\frac{0{,}042}{2{,}56\times10^{-4}}\approx 1{,}6\times 10^{2}\ \text{L}\cdot\text{mol}^{-1}\quad(\approx 164).
+\]
+Verificação: $[M]+2[D]=0{,}016+0{,}084=0{,}100$ mol/L, conservando o ácido. A ordem de grandeza ($10^2$ L/mol) é a esperada para a dimerização forte do ácido acético em solvente apolar.
+
+\textbf{d)} Solvente benzeno: $T_f^{\,0}=5{,}45\ ^\circ\mathrm{C}$, $K_f=5{,}12\ \mathrm{K\cdot kg\cdot mol^{-1}}$. Hipóteses: solução diluída e ideal, soluto não volátil e que não cristaliza com o solvente, volumes aditivos. Então $\Delta T=K_f\,W$, com $W$ a molalidade \emph{de partículas} (monômeros livres mais dímeros; cada dímero conta como uma partícula):
+\[
+[M]+[D]=0{,}016+0{,}042=0{,}058\ \text{mol/L}\qquad(i=1-\alpha/2=0{,}58).
+\]
+Massa de solvente em 1 L de solução: o ácido ($M_r=60{,}05$) ocupa $\dfrac{0{,}10\cdot 60{,}05}{1{,}05\cdot 10^{3}}\approx 5{,}7\times10^{-3}$ L, restando $0{,}994$ L de benzeno, isto é, $m=0{,}87\cdot0{,}994\approx0{,}865$ kg. Assim
+\[
+W=\frac{0{,}058}{0{,}865}\approx 0{,}0671\ \text{mol/kg},\qquad
+\Delta T=5{,}12\cdot 0{,}0671\approx 0{,}34\ \text{K},
+\]
+\[
+T_f=5{,}45-0{,}34\approx 5{,}11\ ^\circ\mathrm{C}.
+\]
+(Aproximando $1$ L de solução $\approx 0{,}87$ kg de benzeno obtém-se $W=0{,}0667$ e $T_f=5{,}109\ ^\circ$C, o mesmo valor com 3 algarismos.) Conferência: sem associação ($i=1$) seria $\Delta T\approx0{,}59$ K; a dimerização reduz o número de partículas e, por isso, o abaixamento ($0{,}34<0{,}59$ K), e $\Delta T\ll T_f^{\,0}$ confirma a validade da lei.
+
+\textbf{Observação (leitura alternativa).} Se ``$0{,}42$'' fosse lido como a razão $[D]/[M]=0{,}42$ no equilíbrio, com $[M]+2[D]=0{,}10$ mol/L se obteria $[M]\approx0{,}054$, $[D]\approx0{,}023$ mol/L, $K_c\approx7{,}7$ L/mol e $T_f\approx5{,}00\ ^\circ$C. Descarto essa leitura porque o enunciado fala em ``\emph{cada mol} de monômero \emph{gera} $0{,}42$ mol de dímero'' (produto por mol de ácido dissolvido, como adotado) e porque $K_c\approx 8$ L/mol subestimaria a associação do ácido acético em benzeno, que é fortíssima ($\sim10^2$ L/mol).
+
+\medskip
+\noindent ANSWER: a) ligações (pontes) de hidrogênio $\mathrm{O{-}H\cdots O{=}C}$; b) dímero cíclico de 8 átomos com duas pontes de hidrogênio (figura); c) $K_c\approx 1{,}6\times10^{2}\ \text{L/mol}$ (164 L/mol, para $c_0=0{,}10$ mol/L); d) $T_f\approx 5{,}11\ ^\circ\mathrm{C}$.

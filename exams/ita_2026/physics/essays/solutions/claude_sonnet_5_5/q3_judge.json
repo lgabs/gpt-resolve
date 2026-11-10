@@ -1,0 +1,59 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.2,
+  "final_answer": "a) R_r = -M[ω²(L-2a)/2 + g cosθ], com o eixo radial do pivô para o CM. O módulo é M[ω²(L-2a)/2 + g cosθ], dirigido ao longo da haste, do CM para o pivô. b) cosθ = -ω²(L-2a)/(2g), ou seja, θ = arccos[-ω²(L-2a)/(2g)] (>90°), que existe se ω²(L-2a) ≤ 2g.",
+  "judge_reference": {
+    "reference_solution": "**Leitura da figura e convenções.** O pivô fica a uma distância a da extremidade curta (trecho curto acima/esquerda do pivô). A parte longa (L − a) desce para a direita e faz ângulo θ com a vertical para baixo. Pela figura a < L/2, então o centro de massa (CM) fica no ponto médio da haste, a d = L/2 − a = (L − 2a)/2 do pivô, do lado da parte longa. Tomo a origem no pivô, x para a direita e y para cima.\n- r̂ = (sen θ, −cos θ): unitário ao longo da haste, do pivô para o CM (direção radial).\n- θ̂ = (cos θ, sen θ): unitário tangencial, no sentido de θ crescente.\n- Posição do CM: r_CM = d·r̂.\n- Forças sobre a haste: peso −Mg ŷ no CM e reação N⃗ do pivô.\n\n**a) Componente radial da reação.**\n1. A haste é rígida e gira em torno do pivô fixo, então o CM descreve uma circunferência de raio d com velocidade angular ω e aceleração angular α. Logo a_CM = −ω² d r̂ + α d θ̂. A parte radial é a centrípeta, −ω² d, apontando para o pivô. A parte tangencial α d não tem componente radial.\n2. Segunda lei de Newton para o CM, N⃗ + M g⃗ = M a⃗_CM, projetada em r̂:\n   N_r + (−Mg ŷ)·r̂ = −M ω² d.\n   Como (−ŷ)·r̂ = cos θ, o peso projetado é +Mg cos θ. Então\n   N_r = −M[ω² d + g cos θ].\n3. O sinal negativo indica que a componente radial da reação aponta de volta para o pivô, ao longo da haste, no sentido centrípeto (oposto a r̂). Em módulo, com esse sentido:\n\n   **R_r = M [ g cos θ + ω² (L/2 − a) ] = M [ g cos θ + ω²(L − 2a)/2 ]**\n\n   Esse valor é positivo quando o pivô \"puxa\" a haste para si (tração). Se for negativo, o pivô \"empurra\" a haste ao longo dela.\n4. Observações:\n   - Não é preciso calcular o momento de inércia nem α para este item. O momento de inércia só entra na componente tangencial: I = ML²/12 + M d², α = −Mg d sen θ / I e N_t = Mg sen θ · (L²/12)/(L²/12 + d²). Essa componente não foi pedida.\n   - Testes de sanidade:\n     - θ = 0 (haste pendurada): R_r = M(g + ω² d), isto é, peso mais centrípeta. ✓\n     - θ = π (CM no topo): R_r = M(ω² d − g). O peso já fornece parte da centrípeta. ✓\n     - ω = 0, θ = π/2: R_r = 0. Com a haste horizontal, o peso é perpendicular a ela. ✓\n\n**b) Ângulo para o qual a componente radial se anula.**\n1. Impor R_r = 0: g cos θ + ω²(L/2 − a) = 0, logo\n\n   **cos θ = − ω² (L − 2a) / (2g)**, ou seja, **θ = arccos[ −ω²(L − 2a)/(2g) ] = π − arccos[ ω²(L − 2a)/(2g) ]**.\n\n2. Interpretação e condições:\n   - Como cos θ < 0 para ω ≠ 0, temos θ > 90°. O CM está acima da horizontal do pivô, onde a componente do peso ao longo da haste (para fora do pivô, em sentido oposto ao CM) cancela exatamente a força centrípeta necessária.\n   - A solução só existe se |cos θ| ≤ 1, isto é, ω² (L − 2a) ≤ 2g, ou ω ≤ √(2g/(L − 2a)). Em ω = ω_máx, θ = 180° (haste na vertical, CM no topo). Para ω maior, R_r > 0 para todo θ: a reação radial nunca se anula e o pivô sempre traciona a haste.\n   - O resultado não depende de M, como a lista de variáveis do enunciado sugere (M simplifica).\n   - ω e θ são dados independentes do instante considerado. Não se deve usar conservação de energia para ligá-los, pois a condição inicial não foi fornecida.\n   - A figura pode ser espelhada (haste para a esquerda). Como cos é par, o resultado depende só do ângulo com a vertical.\n\n**Verificação numérica (Python puro, sem sympy/numpy, que não estavam instalados).** Integrei a equação do torque por RK4 e obtive a_CM por diferenças finitas na trajetória. Calculei N⃗ = M a⃗_CM − M g⃗ e projetei ao longo da haste. Com M = 2 kg, L = 1 m, a = 0,1 m e g = 10 m/s², comparei com a fórmula para θ ∈ {0; 0,7; 1,5; 2,4; π} e ω ∈ {0, 2, 4}. A concordância foi total, com erro < 1e-3. Para ω = 3 rad/s o item (b) dá cos θ* = −0,36, θ* ≈ 111,1°, e a simulação dá N_r ≈ 0 (≈ 5e-7 N). O valor limite é ω_máx = 5 rad/s.",
+    "final_answer": "a) R_r = M[ g cos θ + ω²(L/2 − a) ] = M[ g cos θ + ω²(L − 2a)/2 ], dirigida ao longo da haste, do CM para o pivô (sentido centrípeto, tração). Com r̂ apontando do pivô para o CM, N_r = −M[ g cos θ + ω²(L/2 − a) ].\n\nb) cos θ = −ω²(L − 2a)/(2g), ou seja, θ = arccos[ −ω²(L − 2a)/(2g) ] (com 90° < θ ≤ 180°). Independe de M. Só existe solução se ω²(L − 2a) ≤ 2g. Para ω maior, a componente radial nunca se anula.",
+    "pitfalls": [
+      "Distância pivô–CM: é d = L/2 − a, e não a nem L/2. A hipótese a < L/2 vem da figura (a é o trecho curto). Se a = L/2, d = 0, a fórmula continua válida e dá θ = 90°.",
+      "Erro clássico: dar só a centrípeta Mω²d e esquecer a componente radial do peso Mg cos θ. A reação radial tem as duas contribuições.",
+      "Sinal de g cos θ: θ é medido a partir da vertical PARA BAIXO. Em θ = 0 a haste pende e as parcelas se somam (M(g + ω²d)). Em θ = π subtraem (M(ω²d − g)). Quem mede θ a partir da vertical para cima inverte o sinal de cos θ e erra o item (b).",
+      "Deixar explícita a convenção de sinal da 'componente radial'. Aqui a reação aponta para o pivô (centrípeta), com módulo M[g cos θ + ω²d]. Se o candidato tomar r̂ saindo do pivô, o resultado vem com sinal negativo, o que é equivalente desde que a convenção seja dita.",
+      "Não é necessário calcular I, α nem usar conservação de energia no item (a). A aceleração angular só gera aceleração tangencial. Calcular I = ML²/12 + Md² é inofensivo, mas misturar α na equação radial é erro. Usar energia para ligar ω a θ também é inadequado, porque ω e θ são dados independentes e a condição inicial não foi dada.",
+      "Item (b): a condição de existência |cos θ| ≤ 1, isto é, ω²(L − 2a) ≤ 2g, é parte essencial da resposta. Sem ela, o arccos pode ser mal definido. Para ω = 0 dá θ = 90°. No limite ω = √(2g/(L − 2a)) dá θ = 180°. Acima disso a reação radial nunca se anula.",
+      "A solução tem cos θ < 0, logo θ > 90° (CM acima da horizontal do pivô). Dar θ < 90° (arccos de valor positivo) é erro de sinal. Escrever a resposta como arccos[ω²(L − 2a)/(2g)] sem o sinal negativo, ou sem o π −, está errado.",
+      "M não aparece na resposta de (b), pois simplifica. O enunciado lista M entre as variáveis só por generalidade; não vale 'forçar' M no resultado.",
+      "Tratar a haste como partícula no CM e usar o momento de inércia errado, por exemplo I = ML²/3, que vale só se o pivô estiver na extremidade. Aqui, para obter o torque/α, o correto seria o teorema dos eixos paralelos com d = L/2 − a, mas isso não é necessário para a componente radial."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.2,
+      "final_answer": "a) R_r = -M[ω²(L-2a)/2 + g cosθ], com o eixo radial do pivô para o CM. O módulo é M[ω²(L-2a)/2 + g cosθ], dirigido ao longo da haste, do CM para o pivô. b) cosθ = -ω²(L-2a)/(2g), ou seja, θ = arccos[-ω²(L-2a)/(2g)] (>90°), que existe se ω²(L-2a) ≤ 2g.",
+      "review": {
+        "score": 9.2,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "O item (b) não fecha todos os casos limite. Faltam ω = 0, que dá θ = 90°, e a faixa completa 90° < θ ≤ 180°. Também não dá a forma explícita ω ≤ √(2g/(L−2a)), nem diz que no limite a haste fica na vertical com o CM no topo. Há só uma menção parcial no teste θ = 180°. O resultado vale, mas faltou explicitar que o arccos, com argumento em [−1, 0], dá uma solução única em [90°, 180°]."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese a < L/2 é lida da figura, o que é correto. Falta observar que a fórmula com d = (L−2a)/2 vale também com sinal (d < 0 se a > L/2, ou d = 0 se a = L/2). O candidato só testa a = L/2 como caso particular. Isso mostraria que o resultado não depende de a ser o trecho curto."
+          },
+          {
+            "severity": "minor",
+            "description": "As conferências são um pouco soltas. 'Resultado conhecido' para a = 0 não é justificado. O teste a = L/2 diz 'projeção da reação Mg ŷ em r̂' sem explicar que, com d = 0, a reação equilibra o peso. Os testes θ = π (R = M(ω²d − g)) e ω = 0, θ = π/2 (R_r = 0) seriam mais informativos."
+          },
+          {
+            "severity": "minor",
+            "description": "O candidato não diz explicitamente por que ω e θ são independentes, isto é, por que não se usa energia nem a equação de torque. Diz só que α não entra na componente radial. A condição inicial não foi dada, então a conservação de energia não seria cabível. Uma frase sobre isso fecharia a única armadilha conceitual restante. O versor t̂ também é citado sem fixar o sentido, o que é inofensivo porque só a projeção radial importa."
+          },
+          {
+            "severity": "minor",
+            "description": "A resposta final do item (a) é dada em duas formas, com sinal (r̂ do pivô para o CM) e em módulo. A convenção está explícita, mas a linha ANSWER poderia destacar uma forma só. O módulo M[ω²(L−2a)/2 + g cosθ] vale 'quando o colchete é positivo'. Faltou dizer que, se for negativo, o pivô empurra a haste ao longo dela (compressão), o que é o caso 90° < θ < θ* do item (b)."
+          }
+        ],
+        "summary": "Conferi o enunciado e a figura no PDF original. O pivô fica a a da extremidade curta, que sobe para a esquerda. A parte longa desce para a direita, e θ é medido a partir da vertical para baixo. Portanto a < L/2 e d = L/2 − a, como o candidato e a referência assumem.\n\nRefiz o cálculo por conta própria, com Newton para o CM e a equação de torque com I = ML²/12 + Md². Comparei para vários θ e ω com M = 2, L = 1, a = 0,1 e g = 10, e a fórmula N_r = −M[ω²(L−2a)/2 + g cosθ] bateu com erro numérico ≈ 1e-15. Para ω = 3 rad/s, o ângulo cosθ = −0,36 (θ ≈ 111,1°) anula a componente radial. As duas resoluções coincidem nos itens (a) e (b).\n\n(a) R_r = −M[ω²(L−2a)/2 + g cosθ], com r̂ do pivô para o CM. O módulo M[g cosθ + ω²(L−2a)/2] aponta do CM para o pivô, igual à referência. O candidato evita todas as armadilhas:\n- usa d = L/2 − a;\n- inclui o peso projetado Mg cosθ com o sinal certo;\n- diz a convenção de sinal;\n- não usa I, α nem energia.\n\n(b) cosθ = −ω²(L−2a)/(2g), com θ > 90° e a condição de existência ω²(L−2a) ≤ 2g. O sinal negativo está certo, a independência de M é notada, e o teste θ = 180° (ω²d = g) é coerente.\n\nOs defeitos são só de acabamento:\n- casos limite de (b) pouco explicitados (ω = 0, ω_máx, faixa de θ);\n- conferências parcialmente soltas;\n- falta dizer que o módulo vira compressão para 90° < θ < θ*;\n- faltou uma frase sobre a independência entre ω e θ.\n\nA resolução está correta, completa e bem apresentada, próxima de um gabarito comentado."
+      }
+    }
+  ]
+}

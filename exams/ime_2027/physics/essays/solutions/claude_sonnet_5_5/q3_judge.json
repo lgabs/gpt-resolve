@@ -1,0 +1,56 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.5,
+  "final_answer": "a) R = 300 N (vertical, para cima); b) ΔT = 100 °C; c) a haste rompe em 37,5% do dia (12,5% do dia após o nascer do Sol, ou seja, 10^4 s depois).",
+  "judge_reference": {
+    "reference_solution": "**Dados e grandezas básicas**\n\n- Volume: V = 2 × 0,25 × 0,05 = 0,025 m³. Massa: m = ρV = 2000 × 0,025 = 50 kg (50 000 g). A massa se conserva no aquecimento; só a densidade muda.\n- Gravidade na superfície do planeta: g = GM/R² = 12 m/s² (o esquema está montado na superfície). Peso: P = mg = 50 × 12 = 600 N. Os valores de G, M e R separados não são necessários.\n\n**a) Reação no apoio esquerdo ao amanhecer**\n\nA haste é vertical e a argola não tem atrito, então a força da argola sobre a barra é vertical. A barra é homogênea, de modo que o peso atua no centro, a L/2 do apoio articulado. Não há força horizontal, e a reação do apoio também é vertical.\n\nTorque em relação ao apoio esquerdo: T·L = P·L/2, logo T₀ = P/2 = 300 N.\n\nEquilíbrio vertical: N₀ + T₀ = P, logo N₀ = P − T₀ = 300 N, vertical e para cima.\n\nA tração inicial na haste, 300 N, é o valor \"quase de ruptura\". A haste suporta no máximo 1,001 × 300 = 300,3 N.\n\n**b) Variação de temperatura até o rompimento**\n\nCom o aquecimento, a barra dilata: L' = L(1 + αΔθ). A extremidade esquerda fica presa ao apoio. A argola fica fixa a uma distância L do apoio, e a barra desliza por ela. O centro de massa passa a ficar a L'/2 do apoio.\n\nTorque em relação ao apoio: T·L = P·L'/2, logo T = (P/2)(1 + αΔθ) = T₀(1 + αΔθ).\n\nA tração cresce proporcionalmente à dilatação linear. O rompimento ocorre quando T = 1,001·T₀, ou seja, αΔθ = 1,0×10⁻³:\n\nΔθ = 10⁻³ / 10⁻⁵ = **100 °C**.\n\nVerificação: ΔL = 2 × 10⁻⁵ × 100 × 2 = 2 mm de balanço além da argola, e T = 300,3 N.\n\n**c) Instante do rompimento**\n\nEnergia absorvida necessária, com c = 1,0 J/(g·°C) e m = 50 000 g, sem perdas:\n\nQ = m c Δθ = 50 000 × 1,0 × 100 = 5,0×10⁶ J.\n\nPotência absorvida: só a face superior absorve, com A = 2 × 0,25 = 0,5 m². Então P(t) = A·I(t), com máximo de 0,5 × 4000 = 2000 W.\n\nEm 25% do dia, t₀ = 0,25 × 8×10⁴ = 2×10⁴ s, e a irradiância é nula. De 25% a 50% do dia (2×10⁴ s), a irradiância cresce linearmente de 0 a 4000 W/m². Nessa fase:\n\nP(s) = 2000·s/(2×10⁴) = 0,1·s (W), com s = t − t₀.\n\nEnergia acumulada: Q(s) = ∫₀ˢ 0,1 s' ds' = 0,05 s² (J).\n\nEnergia da subida inteira: 0,05 × (2×10⁴)² = 2×10⁷ J. Isso é muito maior que 5×10⁶ J, portanto o rompimento ocorre ainda na subida, antes do pico. Está confirmado que a fase da subida é a correta.\n\n0,05 s² = 5×10⁶ → s² = 10⁸ → s = 10⁴ s.\n\nIsso corresponde a 10⁴ / (8×10⁴) = 12,5% do dia após o nascer do Sol. Como o nascer é em 25%:\n\nt = 25% + 12,5% = **37,5% do dia** (t = 3×10⁴ s). Nesse instante a potência é de 1000 W, e ½ · 1000 · 10⁴ = 5×10⁶ J, o que confere.\n\nConferência numérica por integração passo a passo: 37,50%. Considerando também o aumento da área da face superior com a temperatura, o resultado seria 37,49%, ou seja, o efeito é desprezível.",
+    "final_answer": "a) N₀ = 300 N, vertical e para cima. A tração inicial na haste também é 300 N (g = 12 m/s², m = 50 kg, P = 600 N).\nb) Δθ = 100 °C (T = T₀(1 + αΔθ) e αΔθ = 0,1%).\nc) O rompimento ocorre em 37,5% do dia (t = 3×10⁴ s). Isso corresponde a 12,5% do dia após o nascer do Sol, na fase de subida da irradiância, com Q = 5×10⁶ J e Q(s) = 0,05 s².",
+    "pitfalls": [
+      "Usar g = 10 m/s² em vez de g = GM/R² = 12 m/s² dá 250 N em vez de 300 N. O enunciado dá g indiretamente e diz que o esquema está na superfície do planeta; G, M e R separados são irrelevantes.",
+      "Na parte (a), a reação do apoio é só vertical. A argola é lisa e a haste é vertical, então não há componente horizontal. A reação vale mg/2 = 300 N (e não mg), obtida pelo equilíbrio de torques em torno do apoio ou por N + T = mg com T = mg/2.",
+      "A hipótese-chave de (b) é que o ponto de sustentação da haste é fixo a uma distância L do apoio, enquanto o centro de massa passa a L'/2 = L(1+αΔθ)/2. Por isso T = (mg/2)(1+αΔθ), e a razão entre as trações é a razão entre os comprimentos. O aumento de 0,1% na tração equivale a αΔθ = 0,001, o que dá 100 °C. Erros comuns: tratar a haste como se ela se movesse junto com a ponta da barra, ou esquecer que a barra desliza pela argola e passa a ter um balanço.",
+      "A condição de ruptura é um aumento de 0,1% sobre a tração inicial de 300 N (300,3 N), e não 0,1% de dilatação no sentido de 0,1% de temperatura. A tração é linear em L', logo o resultado de primeira ordem coincide com o exato.",
+      "Conversão de unidades: c = 1,0 J/(g·°C) = 1000 J/(kg·°C). Com a massa em kg, Q = 50 × 1000 × 100 = 5×10⁶ J. Misturar kg com J/(g·°C) gera erro de fator 1000.",
+      "A área absorvedora é só a face superior, 2 m × 0,25 m = 0,5 m² (e não 2 × 0,05 nem a área total). A potência máxima é 0,5 × 4000 = 2000 W.",
+      "A potência não é constante: é preciso integrar a rampa triangular. Usar a potência máxima constante dá Δt = 2500 s (3,1% do dia), o que está errado. Usar a potência média também seria incorreto sem a verificação de qual fase da curva se aplica.",
+      "É necessário verificar em que trecho do gráfico ocorre o rompimento. A energia da subida inteira (2×10⁷ J) é maior que 5×10⁶ J, então o rompimento é antes do pico, e a fórmula quadrática Q = 0,05 s² vale. Se a energia necessária fosse maior que 2×10⁷ J, seria preciso incluir o trecho de descida.",
+      "O instante pedido é medido no dia, em % do dia: 25% (nascer) + 12,5% = 37,5%. Responder 12,5% (esquecer de somar os 25%) é um erro frequente. A duração do dia é 8×10⁴ s, e o tempo de aquecimento é 10⁴ s.",
+      "Hipóteses implícitas que um bom candidato deve declarar: toda a energia absorvida vira calor no objeto, sem perdas por radiação ou convecção; a temperatura é uniforme; a massa é constante; o aumento da área da face superior por dilatação (2αΔθ = 0,2%) é desprezado e muda o resultado em menos de 0,02% do dia."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.5,
+      "final_answer": "a) R = 300 N (vertical, para cima); b) ΔT = 100 °C; c) a haste rompe em 37,5% do dia (12,5% do dia após o nascer do Sol, ou seja, 10^4 s depois).",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A correção da área absorvedora com a dilatação (2αΔT ≈ 0,2%) é desprezada com o argumento genérico de que as correções são de ordem 10⁻³. Falta mostrar que isso muda o instante de rompimento em menos de 0,02% do dia, o que daria 37,49% contra 37,5%. A hipótese é declarada e correta, mas a estimativa é só qualitativa."
+          },
+          {
+            "severity": "minor",
+            "description": "Não é dito que G, M e R separados são irrelevantes, só que g = GM/R² = 12 m/s². Também não é comentado que usar g = 10 m/s² daria 250 N em vez de 300 N. É um detalhe de didática para um gabarito comentado, não afeta a correção."
+          },
+          {
+            "severity": "minor",
+            "description": "A justificativa de que a reação do apoio é vertical vem apenas na lista de hipóteses (argola sem atrito, haste vertical, demais forças verticais). Seria mais claro repetir isso no item (a). Em (b) a reação à esquerda cai a 299,7 N, e isso aparece só como conferência."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha do trecho do gráfico (subida) é bem verificada: 4·10⁷ J/m² na subida inteira contra 10⁷ J/m² necessários. Falta a frase de que, se a energia necessária fosse maior, seria preciso incluir o trecho de descida. É um acabamento opcional."
+          }
+        ],
+        "summary": "As respostas finais coincidem com as da minha referência, e refiz as contas: a) 300 N vertical para cima; b) Δθ = 100 °C; c) 37,5% do dia. Conferi o enunciado no PDF: figura e gráfico estão como transcritos, com ponto de sustentação fixo a distância L do apoio e irradiância triangular de 0 a 4000 W/m² entre 25% e 75%. As contas da resolução estão corretas: m = 50 kg, P = 600 N com g = 12 m/s², T₀ = 300 N e T = T₀(1+αΔT), que rompe em αΔT = 10⁻³. Também estão certos Q = 5·10⁶ J, A = 0,5 m², Q/A = 10⁷ J/m², I = 0,2τ, 0,1τ² = 10⁷, τ = 10⁴ s = 12,5% do dia, e 25% + 12,5% = 37,5%. A resolução trata as armadilhas principais: usa g = GM/R², reação só vertical, braço da tração fixo em L enquanto o centro de massa vai a L'/2, conversão J/(g·°C) para J/(kg·°C), só a face superior absorve, integração da rampa em vez de potência constante, verificação da fase da curva e soma dos 25% do nascer do Sol. As hipóteses (sem perdas, temperatura uniforme, área e altura constantes) estão declaradas e as conferências por substituição são corretas. Só há ressalvas menores de acabamento, como não quantificar o efeito da dilatação da área. É uma resolução que um professor poderia publicar como gabarito comentado."
+      }
+    }
+  ]
+}

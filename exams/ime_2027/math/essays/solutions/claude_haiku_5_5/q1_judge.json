@@ -1,0 +1,107 @@
+{
+  "question": 1,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.5,
+  "final_answer": "$A(\\mathcal P\\cup\\mathcal I)=12\\sqrt{3}-18\\approx 2{,}78$ unidades de área. Cada hexágono tem área $\\frac{3\\sqrt3}{2}$, e a interseção é um dodecágono regular de área $9(2-\\sqrt3)$. Pela inclusão-exclusão, a união vale $3\\sqrt3-9(2-\\sqrt3)=12\\sqrt3-18$.",
+  "judge_reference": {
+    "reference_solution": "**Questão 1: resolução de referência**\n\n**Item 1. Raízes.** z¹² = 1 tem raízes z_k = e^{2πik/12} = e^{iπk/6}, k = 0, 1, …, 11. Todas têm |z_k| = 1 e argumento 30k°.\n\n**Item 2. Hexágono P (índices pares).** Para k = 0, 2, 4, 6, 8, 10 os argumentos são 0°, 60°, 120°, 180°, 240°, 300°. São as seis raízes sextas da unidade, então P é hexágono regular inscrito no círculo unitário: circunraio R = 1, lado 1, com vértice em z_0 = 1.\n- Área: A_P = (3√3/2)·R² = 3√3/2.\n- Apótema: a_P = R·cos30° = √3/2. As normais às arestas de P têm direções 30° + 60°j.\n\n**Item 3. Hexágono I (índices ímpares).** Para k = 1, 3, …, 11 os argumentos são 30°, 90°, …, 330°. I também é hexágono regular de R = 1, mas girado de 30° em relação a P. Não coincide com P.\n- Área: A_I = 3√3/2.\n- Apótema: a_I = √3/2. As normais às arestas de I têm direções 60°j.\n\n**Item 4. Interseção P ∩ I.** Os dois hexágonos são convexos, então cada um é a interseção de 6 semiplanos do tipo {x : x·u ≤ √3/2}. Para P, as normais u estão em 30° + 60°j; para I, estão em 60°j. Todas as distâncias são iguais a √3/2. Logo P ∩ I é a interseção de 12 semiplanos com normais equiespaçadas de 30° e todos à mesma distância √3/2 da origem. As 12 retas são tangentes ao círculo de raio √3/2 em pontos equiespaçados, então P ∩ I é um dodecágono regular de apótema a = √3/2.\n\nÁrea de um dodecágono regular de apótema a: são 12 triângulos com vértice no centro, altura a e semiângulo central 15°. Cada triângulo tem área a²·tan15°. Assim\nA_∩ = 12·a²·tan15° = 12·(3/4)·(2 − √3) = 9(2 − √3) = 18 − 9√3 ≈ 2,4115.\nConferência: o circunraio do dodecágono é R₁₂ = a/cos15°, e 3R₁₂² = 9/(2 + √3) = 9(2 − √3), igual ao resultado acima.\n\n**Item 5. Área da união.** Pelo princípio da inclusão-exclusão,\nA(P ∪ I) = A_P + A_I − A_∩ = 3√3/2 + 3√3/2 − (18 − 9√3) = 12√3 − 18 ≈ 2,7846.\n\n**Item 6. Verificações.**\n(a) Decomposição independente. P \\ I é a união de 6 triângulos congruentes, um por vértice de P. Tomando o vértice (1, 0) e a reta x = √3/2 (aresta de I), os pontos de corte são (√3/2, ±(2 − √3)·√3/2). A base vale 2√3 − 3 e a altura vale 1 − √3/2, logo a área de cada triângulo é T = (7√3 − 12)/4. Então A_P − A_∩ = 6T = 21√3/2 − 18, que coincide com 3√3/2 + 9√3 − 18. Por simetria, I \\ P também tem área 6T. Logo A(P ∪ I) = A_∩ + 12T = 18 − 9√3 + 3(7√3 − 12) = 12√3 − 18.\n(b) Numérica. Uma malha 1200×1200 sobre [−1, 1]², com teste de pertinência aos semiplanos, deu A_∪ ≈ 2,7860 e A_∩ ≈ 2,4127, em acordo com os valores exatos (diferença de ordem 10⁻³, compatível com o erro da malha).\n(c) Cotas. A_P = 2,598 < A_∪ = 2,785 < A_P + A_I = 5,196. Além disso, a união está contida no disco unitário, cuja área é π ≈ 3,14.\n\n**Resposta final.** A área da região coberta por P ∪ I é\n**A = 12√3 − 18 = 6(2√3 − 3) ≈ 2,78 unidades de área.**\nA questão não é de múltipla escolha.",
+    "final_answer": "Área de P ∪ I = 12√3 − 18 = 6(2√3 − 3) ≈ 2,78 (unidades de área no plano de Argand-Gauss). Não é de múltipla escolha.\n\nPassos principais:\n- Raízes z_k = e^{iπk/6}. P (índices pares) é hexágono regular com vértices em 0°, 60°, …, de circunraio 1 e área 3√3/2. I (índices ímpares) é o mesmo hexágono girado de 30°, com área 3√3/2. Os apótemas de ambos valem √3/2.\n- P ∩ I é um dodecágono regular de apótema √3/2 (12 semiplanos com normais a cada 30°, todos à mesma distância). Sua área é 12·(3/4)·tan15° = 18 − 9√3.\n- A(P ∪ I) = 3√3 − (18 − 9√3) = 12√3 − 18.\n- Conferido pela decomposição em 12 triângulos de área (7√3 − 12)/4 e por malha numérica (≈ 2,786).",
+    "pitfalls": [
+      "Indexação e rotação: z_0 = 1 tem índice par, então P tem vértices em 0°, 60°, …, e I (índices ímpares) tem vértices em 30°, 90°, …. Os dois hexágonos são o mesmo rotacionado de 30°, não coincidem. Supor coincidência leva a 3√3/2 (errado).",
+      "A resposta não depende de começar os índices em 0 ou em 1: a troca de rótulos troca P e I, e a união é a mesma.",
+      "Circunraio versus apótema: o hexágono tem R = 1 e apótema √3/2. Usar apótema 1, lado ou R como apótema produz resultados errados. Lembre que a_P = R·cos30°.",
+      "A interseção não é hexágono nem octógono. Como os normais estão a cada 30° e todos a distância √3/2, é um dodecágono regular. Calcular a interseção como se fosse hexágono (mesma orientação) ou usar só 6 semiplanos conduz a erro.",
+      "Hipótese que justifica o dodecágono regular: os dois hexágonos têm o mesmo circunraio (1), logo os 12 semiplanos são todos ativos e equidistantes da origem. Se os apótemas fossem diferentes, a figura seria irregular e a fórmula não valeria.",
+      "Área do dodecágono: 12·a²·tan15° com tan15° = 2 − √3. Não usar tan30° nem confundir semiângulo 15° com ângulo central 30°. Conferência: área = 3R₁₂² com R₁₂ = a/cos15°.",
+      "Inclusão-exclusão: A(∪) = A_P + A_I − A_∩. A soma 2·(3√3/2) = 3√3 ≈ 5,196 é a soma das áreas, não a união, e é um erro frequente.",
+      "Álgebra com radicais: a² = (√3/2)² = 3/4 (não 3/2 nem √3/2). Simplifique 3√3 − 18 + 9√3 = 12√3 − 18.",
+      "Sanidade: 2,598 < A < 5,196 e A < π (união dentro do disco unitário). Resposta numérica ≈ 2,78.",
+      "\"Região coberta\" significa a região preenchida, não o perímetro nem o contorno da poligonal. A área pedida é de regiões do plano, sem unidade explícita no enunciado."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "$12\\sqrt{3}-18 \\approx 2{,}78$ unidades de área (circunferência de raio 1). Os hexágonos $\\mathcal{P}$ e $\\mathcal{I}$ têm área $\\frac{3\\sqrt{3}}{2}$ cada. A interseção é um dodecágono regular de apótema $\\frac{\\sqrt{3}}{2}$, com área $18-9\\sqrt{3}$. Pela inclusão-exclusão, a união tem área $12\\sqrt{3}-18$.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Conferência 'Outro método': a meia-base é tratada como se a base fosse vertical, com 'a base mede 2(√3 − 3/2)' sem justificativa. A base está sobre a reta x·û30° = √3/2 (oblíqua), e seus extremos são simétricos em relação à bissetriz de 30°, não ao eixo x. O valor está certo (2√3 − 3 = √3·tan15°), mas o argumento escrito não justifica o fator 2. Correção: observar que o extremo (√3/2, √3 − 3/2) está a 15°, logo a meia-base é |P1|·sen15° = √3 − 3/2."
+          },
+          {
+            "severity": "minor",
+            "description": "A conferência numérica ('Recortando os polígonos numericamente, obtém-se o mesmo valor') afirma uma verificação sem mostrar método nem resultado. Eu refiz a conta com malha 1000×1000: união ≈ 2,78456 e interseção ≈ 2,41150, o que confirma os valores exatos. Mas o texto da resolução não traz isso. Correção: apresentar o valor obtido ou remover a afirmação."
+          },
+          {
+            "severity": "minor",
+            "description": "Etapa 4, passagem de 'D tem lados sobre as 12 retas' para 'D = ∩ dos semiplanos' e para 'V_{k−1}V_k ⊥ û30°k' é apenas indicada ('por simetria', sem nomear o fato). Falta uma frase: D ⊂ cada semiplano porque todos os V_k estão na interseção e ela é convexa; a igualdade vale porque um polígono convexo é a interseção dos semiplanos de seus lados. Não invalida nada, mas a prova fica terse para gabarito."
+          },
+          {
+            "severity": "minor",
+            "description": "Armadilha de indexação/rotação tratada só parcialmente: a resolução diz que I é P 'rotacionado de 30°', mas não afirma explicitamente que P ≠ I (que a suposição de coincidência daria 3√3/2 para a união) nem que a resposta não depende de começar os índices em 0 ou em 1."
+          },
+          {
+            "severity": "minor",
+            "description": "Racionalização omitida: 'd² = 3/(2+√3) = 3(2−√3)' pula o passo de multiplicar por (2−√3)/(2−√3). Trivial, mas para gabarito comentado deveria aparecer."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase final 'unidades de área do plano de Argand-Gauss, com raio da circunferência igual a 1' mistura unidade com hipótese geométrica. A área é 12√3 − 18 em unidades de área do plano; o raio 1 já é dado pela construção. Só clareza, sem erro."
+          }
+        ],
+        "summary": "A resposta final 12√3 − 18 ≈ 2,7846 está correta e coincide com a referência. Confirmei com cálculo exato (3d² = 9(2−√3), base da ponta = √3·tan15°), com malha numérica e com a decomposição em 6 pontas de área (7√3−12)/4. O enunciado no PDF confere com a transcrição.\n\nA linha principal é completa e rigorosa: raízes em módulo 1 e 30°; P e I hexágonos com R = 1 e apótema √3/2 (a ≠ R, tratado corretamente); normais de P em 30°+60°j e de I em 60°j, dando 12 semiplanos à mesma distância; prova explícita de que os V_k = d·û(15°+30°k) estão em P∩I e são vértices do dodecágono; área 3d² = 9(2−√3); inclusão-exclusão correta. As armadilhas principais foram tratadas: interseção é dodecágono e não hexágono, área do dodecágono sem confusão tan30°/tan15°, soma das áreas versus união, álgebra com radicais e sanidade (2,598 < 2,785 < 5,196 < π).\n\nNão há erro que afete o resultado. As falhas são de rigor na conferência alternativa (fator 2 da base sem justificativa), uma verificação numérica afirmada e não mostrada, uma passagem terse na prova de D = P∩I e algumas armadilhas tratadas só de passagem. Nota 8,5: próxima de gabarito publicável, mas não 9 por causa desses pontos."
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.5,
+      "final_answer": "$A(\\mathcal P\\cup\\mathcal I)=12\\sqrt{3}-18\\approx 2{,}78$ unidades de área. Cada hexágono tem área $\\frac{3\\sqrt3}{2}$, e a interseção é um dodecágono regular de área $9(2-\\sqrt3)$. Pela inclusão-exclusão, a união vale $3\\sqrt3-9(2-\\sqrt3)=12\\sqrt3-18$.",
+      "review": {
+        "score": 9.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Na conferência 'pelas pontas' (item 6), afirma-se que I\\P são exatamente 6 pontas, uma sobre cada lado de P, sem justificar que não há sobreposição nem resto. Faltam dois fatos: (i) I∩{x·û_{30°+60°j}>a} contém apenas um vértice de I, e (ii) dois cones consecutivos se intersectam só fora de I, porque x·û_60 ≥ 1 > a no cone. Também não se verifica explicitamente que P1 e P2 caem dentro do lado de P (está correto: o parâmetro é t≈0,268). Isso é conferência, não prova principal, então é uma lacuna menor.",
+            "fix": "Acrescentar uma frase sobre por que a ponta é exatamente o triângulo TP1P2 (apenas o vértice T de I ultrapassa a reta) e por que as pontas são disjuntas. Mencionar que P1 pertence ao segmento do lado de P."
+          },
+          {
+            "severity": "minor",
+            "description": "Item 5 diz 'Os conjuntos são convexos e mensuráveis', mas a inclusão-exclusão só exige mensurabilidade, e a convexidade é irrelevante. Essa frase é redundante e não justifica a mensurabilidade (conjuntos compactos convexos, por exemplo).",
+            "fix": "Trocar por 'P e I são compactos, logo mensuráveis, e a inclusão-exclusão se aplica'."
+          },
+          {
+            "severity": "minor",
+            "description": "Item 3(a): a frase 'reduzido módulo 360°, seu valor absoluto fica em [15°,165°]' omite a convenção do representante em (−180°,180°]. O argumento está correto, mas a passagem fica implícita.",
+            "fix": "Explicitar que o ângulo é reduzido a (−180°,180°] e que múltiplos ímpares de 15° nunca são 0° ou 180°."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação numérica ('Sutherland–Hodgman ... 2,4115427 e 2,7846097') é só descrita, sem método reproduzível nem código. Os valores estão corretos (conferi: 2,41154273 e 2,78460969), mas o leitor não tem como refazer a checagem.",
+            "fix": "Indicar brevemente o procedimento (vértices, recorte, tamanho da malha) ou tratá-la explicitamente como checagem auxiliar, não como prova."
+          },
+          {
+            "severity": "minor",
+            "description": "Armadilha 'hipótese que justifica o dodecágono regular': a resolução prova a regularidade via (b) (vértices V_k equiespaçados em círculo de raio d), mas não diz explicitamente que a hipótese decisiva é o mesmo circunraio (R = 1 nos dois hexágonos) e que todas as 12 retas estão à mesma distância a. Também não comenta o que ocorreria com apótemas diferentes.",
+            "fix": "Acrescentar uma observação de 1 a 2 linhas após o item 3 deixando explícito que a regularidade decorre de todos os semiplanos terem apótema igual a √3/2."
+          },
+          {
+            "severity": "minor",
+            "description": "A observação de independência da indexação (1..12 versus 0..11) é correta, mas redundante, pois o enunciado fixa z_0..z_11. Não é erro. Também não há menção explícita à distinção 'região coberta' versus 'contorno', embora a resposta trate corretamente a área da região.",
+            "fix": "Opcional: encurtar a observação ou remover."
+          }
+        ],
+        "summary": "Parecer: a resposta final está correta e coincide com a referência: A(P∪I) = 12√3 − 18 = 6(2√3 − 3) ≈ 2,7846. Verifiquei o enunciado no PDF (confere com a transcrição). Conferi por cálculo independente: o recorte exato (Sutherland–Hodgman) dá A(P∩I) = 2,41154273 = 9(2−√3) e A(P∪I) = 2,78460969 = 12√3−18; uma malha 1200×1200 com pertinência direta às raízes dá 2,7860 e 2,4127; a ponta I∖P vale (7√3−12)/4 ≈ 0,0310889; P1 está na reta x·û30 = a com argumento 15° e |P1P2| = 2√3−3; d² = 3(2−√3); cos²15° = (2+√3)/4. Não encontrei nenhum erro de conta nem de hipótese. Todos os passos principais estão justificados: as raízes e os hexágonos (P ≠ I, ambos R = 1, área 3√3/2); a representação por 12 semiplanos com normais de 30° em 30°, todos a distância √3/2; a prova em (a)–(c) de que a interseção é o dodecágono regular D com circunraio d; a área por 12 triângulos com ângulo central 30° e pela fórmula n·a²·tan(π/n); a inclusão-exclusão; e a decomposição independente pelas pontas. As armadilhas da lista foram tratadas: troca de P e I e de índice inicial, R versus apótema, interseção que não é hexágono, tan15° e não tan30°, soma das áreas versus união, aritmética com radicais, cotas (2,598 < A < 5,196 e A < π). As lacunas são pequenas: a conferência pelas pontas não prova disjunção e exaustão (correta, mas afirmada), a justificativa da convexidade/mensurabilidade é redundante, e a checagem numérica não é reproduzível. Uma resolução com este nível de justificativa e checagens cruzadas poderia sair como gabarito comentado, por isso a nota é 9,5.\""
+      }
+    }
+  ]
+}

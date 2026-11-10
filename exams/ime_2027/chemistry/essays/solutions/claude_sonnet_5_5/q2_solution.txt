@@ -1,0 +1,99 @@
+\section*{Questão 2}
+
+\section*{Solução}
+
+\textbf{Convenções e hipóteses.} Gás ideal, $n=1$ mol, sistema fechado. $W$ é o trabalho realizado \emph{sobre} o gás e a primeira lei é $\Delta U=Q+W$. Para um gás ideal $U=U(T)$ (só depende da temperatura), logo $\Delta U=\int C_V\,dT$ vale para qualquer processo, reversível ou não, e $\Delta U=0$ numa isoterma. Os estados são percorridos na ordem $1\to2\to3\to4\to1$.
+
+\textbf{Temperaturas dos estados.} A etapa I é isotérmica: $T_2=T_1$. A etapa III começa no estado 3 e é isotérmica: $T_4=T_3$. Na etapa II (compressão adiabática, $V_3<V_2$) tem-se $Q_2=0$ e $\Delta U_2=W_2>0$ (o gás é comprimido), logo $T_3>T_1$. Na etapa IV (expansão adiabática, $V_1>V_4$) tem-se $\Delta U_4=W_4<0$ e a temperatura cai de $T_3$ para $T_1$.
+
+\medskip\noindent\textbf{a) Gráfico $P\times V$.}
+
+Numa isoterma, $PV=RT$ (hipérbole); a isoterma de $T_3$ fica acima da de $T_1$.
+
+\begin{itemize}
+\item \textbf{I} (lenta, $T_1$): percorre a isoterma $T_1$ de $1\,(V_1,P_1)$ até $2\,(V_2<V_1,\;P_2=P_1V_1/V_2>P_1)$.
+\item \textbf{II} (rápida, adiabática): de $2$ até $3\,(V_3<V_2,\;P_3>P_2)$, passando para a isoterma de $T_3>T_1$ (sobe de forma muito inclinada).
+\item \textbf{III} (lenta, $T_3$): percorre a isoterma $T_3$ de $3$ até $4\,(V_4>V_3,\;P_4<P_3)$.
+\item \textbf{IV} (rápida, adiabática): de $4$ até $1$, com $V_1>V_4$ e $P_1<P_4$ (pois $P_4V_4=RT_3>RT_1=P_1V_1$ e $V_4<V_1$).
+\end{itemize}
+
+As etapas II e IV são rápidas (irreversíveis): os estados intermediários não são de equilíbrio e não existe curva $P(V)$ bem definida; por isso são traçadas \emph{tracejadas}, apenas ligando os estados extremos (e não são adiabáticas reversíveis $PV^{\gamma}=\text{const}$).
+
+\begin{center}
+\begin{tikzpicture}[x=8cm,y=1.2cm,>=stealth,font=\small]
+  % eixos
+  \draw[->] (0,0) -- (1.2,0) node[right] {$V$};
+  \draw[->] (0,0) -- (0,6.3) node[above] {$P$};
+  % isotermas de fundo (T1 e T3)
+  \draw[gray!60,thin,domain=0.4:1.13,samples=50,smooth] plot (\x,{1/\x});
+  \draw[gray!60,thin,domain=0.26:1.13,samples=60,smooth] plot (\x,{1.5/\x});
+  \node[gray!60!black,above right] at (1.13,1.33) {$T_3$};
+  \node[gray!60!black,below right] at (1.13,0.88) {$T_1$};
+  % etapa I (isoterma T1) e etapa III (isoterma T3)
+  \draw[very thick,domain=1:0.4,samples=40,smooth] plot (\x,{1/\x});
+  \draw[very thick,domain=0.26:0.48,samples=40,smooth] plot (\x,{1.5/\x});
+  % etapas II e IV (tracejadas, forma apenas ilustrativa)
+  \draw[very thick,dashed,domain=0.4:0.26,samples=20,smooth] plot (\x,{2.5*exp(-1.94*ln(\x/0.4))});
+  \draw[very thick,dashed,domain=0.48:1,samples=30,smooth] plot (\x,{3.125*exp(-1.552*ln(\x/0.48))});
+  % setas de sentido (no meio de cada etapa)
+  \draw[very thick,->] (0.66,1.515) -- (0.64,1.5625);
+  \draw[very thick,->] (0.345,4.348) -- (0.355,4.225);
+  \draw[very thick,->] (0.317,3.95) -- (0.309,4.12);
+  \draw[very thick,->] (0.74,1.595) -- (0.76,1.531);
+  % projeções nos eixos
+  \draw[dotted] (1,0) -- (1,1) -- (0,1);
+  \draw[dotted] (0.4,0) -- (0.4,2.5) -- (0,2.5);
+  \draw[dotted] (0.26,0) -- (0.26,5.77) -- (0,5.77);
+  \draw[dotted] (0.48,0) -- (0.48,3.125) -- (0,3.125);
+  % estados
+  \fill (1,1) circle (1.6pt) node[above right] {$1$};
+  \fill (0.4,2.5) circle (1.6pt) node[below left] {$2$};
+  \fill (0.26,5.77) circle (1.6pt) node[above right] {$3$};
+  \fill (0.48,3.125) circle (1.6pt) node[above right] {$4$};
+  % rótulos das etapas
+  \node[below left] at (0.70,1.40) {\textbf{I}};
+  \node[left] at (0.305,3.5) {\textbf{II}};
+  \node[above right] at (0.39,4.0) {\textbf{III}};
+  \node at (0.84,1.55) {\textbf{IV}};
+  % marcas nos eixos
+  \node[below] at (1,0) {$V_1$};
+  \node[below] at (0.48,0) {$V_4$};
+  \node[below] at (0.4,0) {$V_2$};
+  \node[below] at (0.26,0) {$V_3$};
+  \node[left] at (0,1) {$P_1$};
+  \node[left] at (0,2.5) {$P_2$};
+  \node[left] at (0,3.125) {$P_4$};
+  \node[left] at (0,5.77) {$P_3$};
+\end{tikzpicture}
+\end{center}
+\noindent\emph{(Esboço qualitativo, fora de escala; as setas indicam o sentido do percurso.)}
+
+\medskip\noindent\textbf{b) Trabalho total.}
+
+\[
+W_{tot}=W_1+W_2+W_3+W_4 .
+\]
+
+As etapas II e IV são adiabáticas ($Q_2=Q_4=0$) e, por serem rápidas, irreversíveis: o trabalho nelas \emph{não} é $-\int P\,dV$ do gás, nem vale $PV^{\gamma}=\text{const}$. Mas a primeira lei dispensa o conhecimento do caminho:
+\[
+W_2=\Delta U_2=U(T_3)-U(T_2)=U(T_3)-U(T_1)\qquad(T_2=T_1),
+\]
+\[
+W_4=\Delta U_4=U(T_1)-U(T_4)=U(T_1)-U(T_3)\qquad(T_4=T_3).
+\]
+Somando, $W_2+W_4=0$ (com $C_V$ constante, $W_2=C_V(T_3-T_1)=-W_4$). Portanto
+\[
+\boxed{W_{tot}=W_1+W_3}
+\]
+O trabalho gasto na compressão rápida é exatamente devolvido na expansão rápida, pois ambas ligam as mesmas temperaturas $T_1$ e $T_3$ e $U$ é função de estado. Como o ciclo fecha, $\Delta U_{ciclo}=0$ e $Q_{tot}=-W_{tot}=Q_1+Q_3$, coerente com $Q_2=Q_4=0$.
+
+\textbf{Forma explícita.} Nas etapas lentas (quase estáticas), $P_{ext}\approx P=RT/V$:
+\[
+W_1=RT_1\ln\frac{V_1}{V_2}>0,\qquad W_3=-RT_3\ln\frac{V_4}{V_3}<0,\qquad
+W_{tot}=R\left[T_1\ln\frac{V_1}{V_2}-T_3\ln\frac{V_4}{V_3}\right].
+\]
+
+\textbf{Verificação numérica.} Gás monoatômico ($C_V=\tfrac32R$), $V_2=V_1/3$, etapa II contra $P_{ext}=P_3=5P_1$ e etapa IV contra $P_{ext}=P_1$. A primeira lei na etapa II, $\tfrac32R(T_3-T_1)=P_3(V_2-V_3)$ com $P_3V_3=RT_3$, dá $T_3=\tfrac{19}{15}T_1$ e $V_3=\tfrac{19}{75}V_1$; na etapa IV, $\tfrac32R(T_1-T_3)=-P_1(V_1-V_4)$ dá $V_4=0{,}6\,V_1$. Em unidades de $RT_1=P_1V_1$: $W_2=P_3(V_2-V_3)=+0{,}40$ e $W_4=-P_1(V_1-V_4)=-0{,}40$, de fato iguais a $\Delta U=\tfrac32R\,(\pm\tfrac{4}{15}T_1)=\pm0{,}40\,RT_1$. Logo $W_2+W_4=0$, como previsto.
+
+\medskip
+ANSWER: a) ciclo formado por duas isotermas (etapa I a $T_1$ e etapa III a $T_3>T_1$) ligadas por dois trechos rápidos tracejados (II e IV); b) $W_2=\Delta U_2=U(T_3)-U(T_1)$ e $W_4=\Delta U_4=U(T_1)-U(T_3)$, logo $W_2+W_4=0$ e $W_{tot}=W_1+W_3$.

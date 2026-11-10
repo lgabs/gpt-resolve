@@ -1,0 +1,57 @@
+\section*{Questão 1}
+
+\section*{Solução}
+
+\textbf{Modelo.} Como $R$ é muito maior que as dimensões do trem, todas as rodas descrevem praticamente o mesmo raio. Por isso o trem pode ser tratado como partícula (não são dados a altura do centro de massa nem a bitola, então não há equação de torque a usar). Com velocidade constante, a única aceleração é a centrípeta, $a_c=v^2/R$, horizontal e apontando para o centro da curva. Não há força longitudinal: velocidade constante e resistências desprezadas. Assim, o atrito de cada roda atua no plano transversal, ao longo da geratriz do cone.
+
+\textbf{Geometria do contato.} Pela figura, cada roda tem raio maior do lado interno, junto ao eixo. Logo, no ponto de apoio a superfície cônica faz ângulo $\theta$ com a horizontal, e a normal que o trilho exerce sobre a roda faz ângulo $\theta$ com a vertical, inclinada para o centro do trem. Na roda externa à curva (índice 1), essa normal aponta para o centro da curva. Na roda interna (índice 2), ela aponta para fora da curva. Somam-se as forças de todas as rodas de um mesmo lado.
+
+Seja $\tan\varphi=\mu$. Como $|f_i|\le \mu N_i$, a força total de contato $\vec F_i=\vec N_i+\vec f_i$ forma com a normal um ângulo de no máximo $\varphi$ (cone de atrito). Medindo ângulos a partir da vertical, positivos para o centro da curva:
+\[
+\alpha_1\in[\theta-\varphi,\;\theta+\varphi],\qquad \alpha_2\in[-\theta-\varphi,\;-\theta+\varphi].
+\]
+
+\textbf{a)} Segunda lei de Newton, com $X_i$ e $Y_i$ as componentes horizontal (centrípeta) e vertical de $\vec F_i$:
+\[
+X_1+X_2=\frac{Mv^2}{R},\qquad Y_1+Y_2=Mg .
+\]
+Suponha $\theta+\varphi<90^\circ$. Então todos os $\alpha_i$ estão em $(-90^\circ,90^\circ)$, logo $Y_i\ge 0$, e
+\[
+X_i=Y_i\tan\alpha_i\le Y_i\tan(\theta+\varphi).
+\]
+Somando as duas rodas:
+\[
+\frac{Mv^2}{R}\le Mg\tan(\theta+\varphi).
+\]
+A igualdade exige que toda a força venha da roda externa, no limite de escorregamento ($f_1=\mu N_1$, dirigido para baixo e para o centro, contra a tendência da roda de "subir" no trilho). Isso significa $N_2=0$: a roda interna está na iminência de perder o contato. Para $R$ menor, não existe distribuição de forças com $N_2\ge 0$ e o trem descarrila. Portanto
+\[
+R_{\min}=\frac{v^2}{g\tan(\theta+\varphi)}=\frac{v^2\,(1-\mu\tan\theta)}{g\,(\tan\theta+\mu)}=\frac{v^2(\cos\theta-\mu\sin\theta)}{g(\sin\theta+\mu\cos\theta)} .
+\]
+Isso vale para $\mu\tan\theta<1$. Se $\mu\tan\theta\ge 1$ (ou seja, $\theta+\varphi\ge 90^\circ$), nesse modelo nenhum raio faz as rodas perderem o contato e não há mínimo positivo.
+
+Conferência pelo limiar $N_2=0$: as equações $N_1\sin\theta+\mu N_1\cos\theta=Mv^2/R$ e $N_1\cos\theta-\mu N_1\sin\theta=Mg$ dão a mesma razão $v^2/(Rg)=\tan(\theta+\varphi)$.
+
+\textbf{b)} Sem atrito ($\mu=0$), cada força é puramente normal:
+\[
+(N_1+N_2)\cos\theta=Mg,\qquad (N_1-N_2)\sin\theta=\frac{Mv^2}{R}.
+\]
+Então
+\[
+N_2=\frac{M}{2}\left(\frac{g}{\cos\theta}-\frac{v^2}{R\sin\theta}\right)\ge 0
+\;\Longrightarrow\;
+R_{\min}=\frac{v^2}{g\tan\theta},
+\]
+que coincide com o item (a) para $\mu=0$. É o mesmo resultado de uma curva sem atrito com inclinação $\theta$.
+
+\textbf{c)} Rodas cilíndricas ($\theta=0$): as normais são verticais, com $N_1+N_2=Mg$, e só o atrito lateral fornece a força centrípeta:
+\[
+\frac{Mv^2}{R}=f_1+f_2\le \mu(N_1+N_2)=\mu Mg
+\;\Longrightarrow\;
+R_{\min}=\frac{v^2}{\mu g}.
+\]
+Para $R$ menor, as rodas escorregam lateralmente para fora dos trilhos. O resultado coincide com o item (a) para $\theta=0$.
+
+\textbf{Verificações.} Todas as respostas têm a forma $v^2/g$, que tem dimensão de comprimento (m). Como $\tan(\theta+\varphi)>\tan\varphi$ e $\tan(\theta+\varphi)>\tan\theta$, o raio mínimo de (a) é menor que os de (b) e (c). Isso confirma que a conicidade das rodas melhora a aderência em curvas.
+
+\medskip
+ANSWER: a) $R_{\min}=\dfrac{v^2(1-\mu\tan\theta)}{g(\tan\theta+\mu)}$ (para $\mu\tan\theta<1$; se $\mu\tan\theta\ge1$, não há mínimo); b) $R_{\min}=\dfrac{v^2}{g\tan\theta}$; c) $R_{\min}=\dfrac{v^2}{\mu g}$.

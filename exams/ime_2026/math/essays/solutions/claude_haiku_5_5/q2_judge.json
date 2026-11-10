@@ -1,0 +1,63 @@
+{
+  "question": 2,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 1,
+  "score": 9.0,
+  "final_answer": "S = {-23/2, -7/2}, ou seja, x = -11,5 ou x = -3,5. Com w = x² + 7x e s = 2x + 7, a equação vira s³(s + 16) = 0; a fatoração completa é P(x) = (2x + 7)³(2x + 23)/16, com todas as raízes reais (−7/2 tripla, −23/2 simples).",
+  "judge_reference": {
+    "reference_solution": "QUESTAO 2 (IME 2026, Matematica, valor 1,0) - resolucao de referencia\n\nEnunciado (conferido na prova, p. 1): calcular as solucoes reais de x^4 + (2x+7)^3 + 14x^3 + (147/2)x^2 + (7^3/2)x = -7^4/16.\n\nItem 1 - Passar o termo constante para o primeiro membro.\nComo -7^4/16 = -2401/16, a equacao equivale a\nx^4 + 14x^3 + (147/2)x^2 + (343/2)x + 2401/16 + (2x+7)^3 = 0.\n\nItem 2 - Reconhecer um binomio de quarto grau.\n(x + 7/2)^4 = x^4 + 4(7/2)x^3 + 6(7/2)^2 x^2 + 4(7/2)^3 x + (7/2)^4\n            = x^4 + 14x^3 + (147/2)x^2 + (343/2)x + 2401/16.\nConferencia: 4(7/2) = 14; 6(49/4) = 147/2; 4(343/8) = 343/2; (7/2)^4 = 2401/16. Todos batem com os termos do item 1.\nLogo o primeiro membro e exatamente (x + 7/2)^4 + (2x+7)^3.\n\nItem 3 - Substituir t = 2x + 7.\nComo x + 7/2 = t/2, tem-se (x + 7/2)^4 = t^4/16. A equacao vira\nt^4/16 + t^3 = 0  <=>  t^3 (t/16 + 1) = 0  <=>  t^3 (t + 16) = 0.\nEquivalentemente, 16 vezes o primeiro membro = (2x+7)^3 (2x+23).\nVerificacao por expansao exata (feita com aritmetica de fracoes): (2x+7)^3 (2x+23) = 16x^4 + 352x^3 + 2520x^2 + 7448x + 7889, e 16 * [x^4 + 22x^3 + (315/2)x^2 + (931/2)x + 7889/16] tem exatamente os mesmos coeficientes. A fatoracao esta correta.\n\nItem 4 - Resolver.\nt^3 = 0 => t = 0 (raiz tripla) => 2x + 7 = 0 => x = -7/2.\nt + 16 = 0 => t = -16 => 2x + 7 = -16 => x = -23/2.\n\nItem 5 - Conjunto solucao real.\nTodas as raizes sao reais. Como polinomio de grau 4 (em x), as raizes sao -7/2 (multiplicidade 3) e -23/2 (multiplicidade 1). Como conjunto, S = {-23/2, -7/2}. Nao ha raizes complexas nao reais, logo o conjunto em C coincide com S.\n\nItem 6 - Verificacao direta na equacao original.\nx = -7/2: x^4 = 2401/16; (2x+7)^3 = 0; 14x^3 = -2401/4; (147/2)x^2 = 7203/8; (343/2)x = -2401/4.\nSoma = (2401 - 19208 + 14406)/16 = -2401/16 = -7^4/16. OK.\nx = -23/2: 2x+7 = -16 e x + 7/2 = -8, logo (x+7/2)^4 = 4096 e (2x+7)^3 = -4096. Soma = 0, ou seja, o primeiro membro + 2401/16 = 0. OK.\n\nResposta: as solucoes reais sao x = -23/2 e x = -7/2 (esta ultima com multiplicidade 3 na fatoracao).",
+    "final_answer": "Solucoes reais da equacao: S = {-23/2, -7/2}.\n\n- x = -7/2 (raiz de multiplicidade 3, pois 2x+7 = 0 aparece cubed).\n- x = -23/2 (raiz simples, pois 2x+23 = 0).\n\nFatoracao-chave: x^4 + (2x+7)^3 + 14x^3 + (147/2)x^2 + (343/2)x + 2401/16 = (x+7/2)^4 + (2x+7)^3 = (2x+7)^3 (2x+23)/16.\nTodas as raizes sao reais; nao ha solucoes complexas nao reais. Se a pergunta fosse o numero de solucoes contando multiplicidade, a resposta seria 4; como conjunto de solucoes reais, sao 2.",
+    "pitfalls": [
+      "Expansao desnecessaria e erro de conta: expandir (2x+7)^3 = 8x^3 + 84x^2 + 294x + 343 e somar tudo produz 16x^4 + 352x^3 + 2520x^2 + 7448x + 7889 = 0 (ao multiplicar por 16). Quem erra um coeficiente nao encontra a fatoracao. O caminho limpo e reconhecer (x + 7/2)^4 = x^4 + 14x^3 + (147/2)x^2 + (343/2)x + 2401/16.",
+      "Sinal do termo constante: -7^4/16 = -2401/16 passa para o primeiro membro como +2401/16. Esquecer esse termo impede o quadrado perfeito; tratar -2401/16 como +2401/16 no lado errado tambem falha.",
+      "Divisao por (2x+7)^3 ou (2x+7): isso elimina x = -7/2 e perde uma das duas solucoes. Dividir por (2x+7)^3 so e legitimo depois de listar explicitamente a raiz 2x+7 = 0, que vale na equacao original (ambos os lados batem em -7^4/16).",
+      "Multiplicidade versus conjunto: a raiz x = -7/2 e tripla no polinomio. Responder 'quatro solucoes' ao pedir solucoes reais esta errado se o enunciado pede o conjunto; a resposta correta como conjunto tem 2 elementos. Se o enunciado perguntasse quantas raizes contando multiplicidade, a resposta seria 4. Vale deixar isso explicito na resposta.",
+      "Erro na substituicao t = 2x+7: de x = (t-7)/2 decorre 2x+23 = t+16, nao t+9 nem t-16. Confundir o sinal leva a x = 23/2 ou x = -9/2 em vez de -23/2.",
+      "Interpretacao do enunciado: '7^3/2 x' significa (7^3/2)*x = (343/2)x, e '147/2 x^2' significa (147/2)x^2. Ler 7^3/(2x) ou 147x^2/2 com parenteses errados muda o polinomio e a fatoracao deixa de existir. A transcricao confere com a prova: (2x+7)^3 esta entre parenteses.",
+      "Armadilha de metodo: tentar Ferrari, teste de raizes racionais sem substituicao, ou resolucao numerica sem fatorar produz trabalho longo e facilita erro. A teste de raizes racionais funciona (divisores de 7889 = 7^3 * 23), mas so depois de saber que -7 e raiz; a fatoracao direta e mais segura.",
+      "Verificacao: substituir as raizes na equacao original com fracoes exatas (nao com decimais) e confirmar -7^4/16. Sem essa checagem e facil aceitar uma raiz errada ou esquecer uma raiz.",
+      "Nao inventar solucoes complexas: como todas as raizes sao reais, as solucoes em C coincidem com as reais. Afirmar a existencia de raizes complexas nao reais e erro."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9.0,
+      "final_answer": "S = {-23/2, -7/2}, ou seja, x = -11,5 ou x = -3,5. Com w = x² + 7x e s = 2x + 7, a equação vira s³(s + 16) = 0; a fatoração completa é P(x) = (2x + 7)³(2x + 23)/16, com todas as raízes reais (−7/2 tripla, −23/2 simples).",
+      "review": {
+        "score": 9,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Passo 4: a frase 'Como s é real e um produto de reais é nulo se, e somente se, um fator é nulo' usa a realidade de s como justificativa para a lei do anulamento do produto, que vale em qualquer corpo (inclusive C). A realidade de s só importa para o escopo do problema. Sugestão: escrever 's³(s+16)=0 ⇔ s=0 ou s=−16 (vale em C); como x é real, s = 2x+7 é real, então as raízes são reais'."
+          },
+          {
+            "severity": "minor",
+            "description": "A leitura da notação do enunciado não é explicitada. A resolução usa corretamente 7³/2·x = (343/2)x e (147/2)x², mas não diz isso. Uma linha no Passo 1 ('lemos 7³/2·x como (343/2)x') evitaria dúvida sobre a leitura de parênteses, que é uma armadilha listada no gabarito."
+          },
+          {
+            "severity": "minor",
+            "description": "Verificação em x = −23/2: a conferência dá a soma final 279841−65536−340676+155526−31556 sobre 16, sem mostrar cada parcela (23⁴/16, (−16)³, 14x³, (147/2)x², (343/2)x). O leitor precisa refazer tudo para conferir. Sugestão: listar os cinco termos com seus valores. Na verificação em −7/2, os termos também não estão rotulados (x⁴, 14x³, (147/2)x², (343/2)x)."
+          },
+          {
+            "severity": "minor",
+            "description": "Multiplicidade: a resposta diz corretamente que −7/2 é tripla em P mas aparece uma vez no conjunto solução. Não diz explicitamente que, se o enunciado pedisse o número de raízes contando multiplicidade, a resposta seria 4. Vale acrescentar essa frase, como sugere a armadilha do gabarito."
+          },
+          {
+            "severity": "minor",
+            "description": "A conclusão ('a fatoração já esgota suas raízes, todas reais') depende da fatoração completa P(x) = (2x+7)³(2x+23)/16, que só aparece explicitamente no Passo 6 (conferência). Os Passos 3–4 já implicam a forma s³(s+16)/16, mas ela nunca é escrita como identidade final. Sugestão: declarar P(x) = s³(s+16)/16 ao fim do Passo 4 e usar o Passo 6 apenas como conferência."
+          },
+          {
+            "severity": "minor",
+            "description": "Clareza: a escolha w = x²+7x não é motivada (por exemplo, é o agrupamento que deixa x⁴+14x³ como w²). Uma frase de motivação tornaria a solução mais didática, sem afetar o rigor."
+          }
+        ],
+        "summary": "Resposta final correta e igual à referência: S = {−23/2, −7/2}. Refiz a conta com frações exatas: o polinômio é P(x) = x⁴+22x³+(315/2)x²+(931/2)x+7889/16 = (2x+7)³(2x+23)/16; as raízes são −7/2 (tripla) e −23/2 (simples); Girard (soma −22, produto 7889/16) e a substituição direta na equação original conferem. Cadeia de passos verificada e sem erros: agrupamento w = x²+7x e 49+49/2 = 147/2; s = 2x+7 com s² = 4w+49; (s²−49)(s²+49)/16 = (s⁴−7⁴)/16; s³(s+16)=0; retorno x = (s−7)/2 com −23/2 correto. Armadilhas tratadas: sinal do termo constante (+7⁴/16 no primeiro membro), nenhuma divisão por (2x+7), multiplicidade explicitada, sem expansão com erro, verificação com frações, nenhuma raiz complexa inventada. Os problemas encontrados são todos menores (justificativa desnecessária sobre realidade de s, leitura da notação não explicitada, verificação de −23/2 sem parcelas, falta a frase sobre contagem com multiplicidade, fatoração final só implícita). Nenhum afeta a correção. Nota 9: resolução que um professor publicaria como gabarito comentado, após pequenos ajustes de redação.\""
+      }
+    }
+  ]
+}

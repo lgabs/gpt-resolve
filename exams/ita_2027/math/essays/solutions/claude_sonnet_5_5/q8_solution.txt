@@ -1,0 +1,61 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Modelagem.} Em coordenadas, tome $A=(0,0)$, $B=(10,0)$, $C=(10,6)$, $D=(0,6)$. "Inscrito" significa um vértice de $EFGH$ em cada lado de $ABCD$; como $E\in\overline{AB}$ e $F\in\overline{BC}$ são vértices consecutivos, $G\in\overline{CD}$ e $H\in\overline{DA}$. Escreva
+\[
+E=(x,0),\quad F=(10,y),\quad H=(0,h),\qquad 0<x<10,\ 0<y<6,\ 0<h<6 .
+\]
+
+Como $EFGH$ é paralelogramo, $G=F+H-E=(10-x,\;y+h)$. Como $G\in\overline{CD}$ (reta $y=6$), temos $y+h=6$, isto é, $h=6-y$ e $G=(10-x,6)$.
+
+Como o ângulo em $E$ é reto, $\overrightarrow{EF}\cdot\overrightarrow{EH}=0$, com $\overrightarrow{EF}=(10-x,\,y)$ e $\overrightarrow{EH}=(-x,\,h)$:
+\[
+-x(10-x)+y\,h=0 \;\Longrightarrow\; y(6-y)=x(10-x). \tag{1}
+\]
+Reciprocamente, dados $x,y$ nos intervalos acima satisfazendo (1), o paralelogramo construído tem um ângulo reto, logo é um retângulo inscrito com os vértices nos lados indicados.
+
+\textbf{a)} Para $0<y<6$, $y(6-y)=9-(y-3)^2$ assume todos os valores em $(0,9]$ (e só eles). Logo (1) tem solução $y\in(0,6)$ se, e somente se, $0<x(10-x)\le 9$. Como $x(10-x)>0$ para $0<x<10$, resta
+\[
+x^2-10x+9\ge 0 \iff (x-1)(x-9)\ge 0 \iff x\le 1 \ \text{ou}\ x\ge 9 .
+\]
+Nesse caso $y=3\pm\sqrt{(x-1)(x-9)}$, e $\sqrt{(x-1)(x-9)}=\sqrt{9-x(10-x)}<3$, de modo que $y\in(0,6)$.
+
+Portanto
+\[
+\boxed{\,0<x\le 1\quad\text{ou}\quad 9\le x<10\,}.
+\]
+(Verificação: para $x=5$ teríamos $y(6-y)=25>9$, impossível; para $x=1$, $y=3$ e $EFGH$ existe.)
+
+\textbf{b)} Os quatro triângulos retângulos dos cantos têm catetos:
+\[
+AEH:\ x,\,h;\qquad BEF:\ 10-x,\,y;\qquad CFG:\ 6-y,\,x;\qquad DGH:\ 10-x,\,6-h=y .
+\]
+Com $h=6-y$, a soma de suas áreas é
+\[
+\tfrac12\big[x(6-y)+(10-x)y+(6-y)x+(10-x)y\big]=x(6-y)+(10-x)y=6x+10y-2xy .
+\]
+Logo
+\[
+[EFGH]=60-6x-10y+2xy .
+\]
+Impondo $[EFGH]=30$:
+\[
+6x+10y-2xy=30 \iff xy-3x-5y+15=0 \iff (x-5)(y-3)=0 .
+\]
+\begin{itemize}
+\item $x=5$ é impossível, pois $5\in(1,9)$ contradiz o item (a).
+\item Logo $y=3$, e (1) fornece $x(10-x)=9$, ou seja, $x=1$ ou $x=9$ (ambos permitidos por (a)). Então $h=6-y=3$.
+\end{itemize}
+
+Para $x=1$, $y=3$, $h=3$:
+\[
+EF=\sqrt{(10-1)^2+3^2}=\sqrt{90}=3\sqrt{10},\qquad EH=\sqrt{1^2+3^2}=\sqrt{10}.
+\]
+Para $x=9$ os papéis se invertem: $EF=\sqrt{1+9}=\sqrt{10}$ e $EH=\sqrt{81+9}=3\sqrt{10}$ (é o retângulo simétrico do anterior).
+
+Conferência: $3\sqrt{10}\cdot\sqrt{10}=30$. Além disso, para $x=1$: $E=(1,0)$, $F=(10,3)$, $G=(9,6)$, $H=(0,3)$, com $\overrightarrow{EF}\cdot\overrightarrow{FG}=(9,3)\cdot(-1,3)=0$, confirmando o ângulo reto.
+
+Os lados de $EFGH$ medem $\sqrt{10}$ e $3\sqrt{10}$ (nos casos $x=1$ ou $x=9$).
+
+ANSWER: a) $0<x\le 1$ ou $9\le x<10$; b) os lados medem $\sqrt{10}$ e $3\sqrt{10}$.

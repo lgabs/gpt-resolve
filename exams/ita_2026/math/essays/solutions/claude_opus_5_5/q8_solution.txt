@@ -1,0 +1,37 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Modelagem.} Pela convenção da prova, $\mathbb{N}=\{1,2,3,\dots\}$. Procuramos as ternas $(a,b,c)$ com
+\[
+a,b,c\in\mathbb{N},\qquad a<b<c,\qquad a+b+c=100 .
+\]
+Cada conjunto $\{a,b,c\}$ de três naturais \emph{distintos} com soma $100$ pode ser ordenado de forma crescente de uma única maneira. Logo, a resposta é o número desses conjuntos.
+
+\textbf{1) Soluções ordenadas em inteiros positivos.} Pelo método de barras e bolinhas (escolhemos $2$ dos $99$ espaços entre $100$ unidades enfileiradas), o número de soluções de $a+b+c=100$ com $a,b,c\geq 1$ é
+\[
+\binom{99}{2}=\frac{99\cdot 98}{2}=4851 .
+\]
+
+\textbf{2) Retirando as soluções com termos repetidos.}
+\begin{itemize}
+\item Três termos iguais: $3a=100$ não tem solução inteira, pois $3\nmid 100$.
+\item Exatamente dois iguais, por exemplo $a=b\neq c$: $2a+c=100$ com $c=100-2a\geq 1$ dá $a\in\{1,2,\dots,49\}$, ou seja, $49$ soluções. Em nenhuma delas $c=a$, porque isso daria $3a=100$. O termo diferente pode ocupar qualquer uma das $3$ posições, o que dá $3\cdot 49=147$ soluções ordenadas.
+\end{itemize}
+Restam, portanto, $4851-147=4704$ soluções ordenadas com os três termos distintos.
+
+\textbf{3) Passando para sequências crescentes.} Cada conjunto de três números distintos aparece em $3!=6$ ordens, e exatamente uma delas é crescente. Assim,
+\[
+N=\frac{4704}{6}=784 .
+\]
+
+\textbf{Conferência por contagem direta.} Fixado $a$, temos $b+c=100-a$ com $a<b<c$. Então $b$ varia de $a+1$ até $\left\lfloor \frac{99-a}{2}\right\rfloor$, o que dá $\left\lfloor \frac{99-a}{2}\right\rfloor-a$ valores. Essa quantidade é positiva se, e somente se, $3a+3\leq 100$, isto é, $1\leq a\leq 32$.
+\begin{itemize}
+\item $a=2k-1$, com $k=1,\dots,16$: são $\frac{99-a}{2}-a=51-3k$ valores, e $\displaystyle\sum_{k=1}^{16}(51-3k)=816-408=408$.
+\item $a=2k$, com $k=1,\dots,16$: são $(49-k)-2k=49-3k$ valores, e $\displaystyle\sum_{k=1}^{16}(49-3k)=784-408=376$.
+\end{itemize}
+O total é $408+376=784$, o que confirma o resultado. Os casos extremos também estão corretos: para $a=1$ há $47$ sequências, de $(1,2,97)$ a $(1,48,51)$; para $a=32$ há apenas $(32,33,35)$.
+
+\textbf{Resposta:} é possível construir $784$ sequências.
+
+ANSWER: 784

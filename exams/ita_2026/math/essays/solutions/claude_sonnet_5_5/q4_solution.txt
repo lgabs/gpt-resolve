@@ -1,0 +1,46 @@
+\section*{Questão 4}
+
+\section*{Solução}
+
+\textbf{Modelagem.} Numere os círculos concêntricos por $k=0,1,\ldots,32$, sendo o de índice $k$ de raio $r_k=\alpha+k$ (são $33$ círculos, de raios $\alpha,\alpha+1,\ldots,\alpha+32$). O círculo central ($k=0$) é vermelho. O anel de índice $k\ge 1$ é a região entre os raios $r_{k-1}$ e $r_k$, e as cores alternam: o anel de índice $k$ é vermelho se $k$ é par e branco se $k$ é ímpar. O último anel ($k=32$) é, portanto, vermelho.
+
+\medskip
+\textbf{Área de cada parte vermelha.}
+\begin{itemize}
+\item Círculo central: $\pi\alpha^2$.
+\item Anel de índice $k$ (par):
+\[
+A_k=\pi\left[(\alpha+k)^2-(\alpha+k-1)^2\right]=\pi\,(2\alpha+2k-1).
+\]
+\end{itemize}
+
+Os anéis vermelhos têm $k=2j$, com $j=1,2,\ldots,16$. Logo $A_{2j}=\pi(2\alpha+4j-1)$.
+
+\medskip
+\textbf{Soma.}
+\[
+\sum_{j=1}^{16}(2\alpha+4j-1)=16(2\alpha-1)+4\cdot\frac{16\cdot 17}{2}=32\alpha-16+544=32\alpha+528 .
+\]
+
+Portanto, a área vermelha total é
+\[
+A_{\text{verm}}=\pi\alpha^2+\pi(32\alpha+528)=\pi\left(\alpha^2+32\alpha+528\right).
+\]
+
+\medskip
+\textbf{Verificação.}
+\begin{itemize}
+\item Anéis brancos: $k=2j-1$, $j=1,\ldots,16$, de modo que
+$\sum_{j=1}^{16}(2\alpha+4j-3)=32\alpha+544-48=32\alpha+496$, ou seja, $A_{\text{branca}}=\pi(32\alpha+496)$.
+\item A área total do alvo é $\pi(\alpha+32)^2=\pi(\alpha^2+64\alpha+1024)$. Somando as áreas:
+$\pi(\alpha^2+32\alpha+528)+\pi(32\alpha+496)=\pi(\alpha^2+64\alpha+1024)$, o que confere.
+\item Caso particular $\alpha=0$ (sem círculo central): a área vermelha é $\sum_{j=1}^{16}\pi(4j-1)=528\pi$, igual ao valor da fórmula.
+\end{itemize}
+
+As unidades são unidades de área (comprimento ao quadrado), compatíveis com $\pi\alpha^2$. O resultado vale para qualquer $\alpha>0$.
+
+\[
+\boxed{A_{\text{verm}}=\pi\left(\alpha^{2}+32\alpha+528\right)}
+\]
+
+ANSWER: $A_{\text{verm}}=\pi\left(\alpha^{2}+32\alpha+528\right)$ unidades de área

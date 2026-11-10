@@ -1,0 +1,136 @@
+{
+  "question": 3,
+  "judged": true,
+  "approved": false,
+  "pass_score": 9.0,
+  "best_round": 3,
+  "score": 8.5,
+  "final_answer": "a) $d=\\sqrt{R^2+\\dfrac{2hR}{g}\\sqrt{\\mu_e^2g^2-\\alpha^2R^2}}$ (para $\\mu_eg>\\alpha R$; se $\\mu_eg\\le\\alpha R$, $d=R$). b) $t^\\ast=t_1+\\dfrac{\\omega_1R}{\\mu_cg}=\\dfrac{\\left(\\mu_e^2g^2-\\alpha^2R^2\\right)^{1/4}\\left(\\mu_cg+\\alpha R\\right)}{\\alpha\\,\\mu_c\\,g\\,\\sqrt R}$, com $t_1=\\dfrac{\\left(\\mu_e^2g^2-\\alpha^2R^2\\right)^{1/4}}{\\alpha\\sqrt R}$, válido para $\\omega_1R>\\mu_c\\sqrt{2gh}$; caso contrário $t^\\ast=t_1+\\sqrt{2h/g}$; se $\\mu_eg\\le\\alpha R$, $t^\\ast=\\sqrt{2h/g}$. Hipótese: atrito cinético massa–carrossel $\\mu_k<\\mu_e$ (não dado). Choque sem quique com atrito de Coulomb durante o impacto.",
+  "judge_reference": {
+    "reference_solution": "**Referencial e condições iniciais**\n- Origem O no solo, sob o eixo do carrossel (x = y = 0). O disco está em z = h.\n- Massa inicial em P₀ = (0, R, h), sobre o eixo y (x = 0).\n- Suponho α ∥ +z (rotação anti-horária vista de cima). O sentido só troca o sinal de x; os módulos não mudam.\n- Com ω(0) = 0: ω(t) = αt e φ(t) = ½αt², medido a partir de +x, com φ(0) = π/2.\n- Enquanto a massa está no disco: N = mg (disco horizontal, sem aceleração vertical) e o atrito estático f é o único responsável pelas acelerações no plano.\n\n**Item a) Distância entre o ponto de contato com o solo e O**\n\n1. No rim, a aceleração (referencial do solo) tem componente tangencial a_t = αR e componente centrípeta a_c = ω²R = α²t²R. Logo |a| = αR√(1 + α²t⁴).\n2. Sem deslizamento, f = m|a| ≤ μ_e mg, ou seja α²R²(1 + α²t⁴) ≤ μ_e²g².\n3. O deslizamento começa em t₁, quando vale a igualdade: α⁴R²t₁⁴ = μ_e²g² − α²R². Portanto\n   t₁ = (μ_e²g² − α²R²)^{1/4} / (α√R),   com   α²t₁² = √(μ_e²g² − α²R²)/R.\n   Validade: μ_e g > αR. Se μ_e g < αR, o atrito não sustenta nem o instante inicial; no limite μ_e g = αR, t₁ = 0.\n4. Em t₁ a massa está na borda e só tem velocidade tangencial: v₁ = ω(t₁)R = αRt₁, sem componente radial. A trajetória tangente fica fora do disco (r² = R² + v₁²τ² > R²), então a massa abandona o carrossel. Daí em diante é projétil, sem atrito com o disco.\n5. Queda: t_q = √(2h/g). No plano horizontal o deslocamento é retilíneo e tangente ao rim, de tamanho s = v₁t_q = αRt₁√(2h/g).\n6. Como s ⟂ R no ponto de saída, pitágoras dá a distância ao eixo, que é a distância a O:\n   d² = R² + s² = R² + (2hR/g)·√(μ_e²g² − α²R²).\n   Resposta: d = √[R² + (2hR/g)√(μ_e²g² − α²R²)].\n7. Coordenadas do ponto de contato (opcional): com β = ½αt₁² = √(μ_e²g² − α²R²)/(2αR),\n   x_c = −R sen β − s cos β,  y_c = R cos β − s sen β. Verifica-se x_c² + y_c² = d².\n\n**Item b) Instante em que a massa para**\n\n1. Ao tocar o solo: componente vertical v_z = g t_q = √(2gh), para baixo. Componente horizontal v₁ = αRt₁, que no voo não muda.\n2. Sem quique significa e = 0 na normal: a componente vertical vai a zero. O impulso normal é J_N = m√(2gh).\n3. A massa desliza no ponto de contato (v₁ ≠ 0), então atua atrito cinético com impulso J_f = μ_c J_N = μ_c m√(2gh), oposto a v₁. Após o impacto:\n   v₁′ = v₁ − μ_c√(2gh).\n4. No solo, a desaceleração é μ_c g. O tempo de deslizamento é t_d = v₁′/(μ_c g) = αRt₁/(μ_c g) − √(2h/g).\n5. Instante de parada, contado a partir de t = 0:\n   T = t₁ + t_q + t_d = t₁ + αRt₁/(μ_c g) = t₁ (1 + αR/(μ_c g)).\n   Substituindo t₁:\n   T = [(μ_e²g² − α²R²)^{1/4} / (α√R)] · (μ_c g + αR)/(μ_c g).\n6. Validade: é preciso v₁′ ≥ 0, ou seja αRt₁ ≥ μ_c√(2gh). Se isso falhar, o atrito no impacto para a massa. Nesse caso T = t₁ + √(2h/g). Também vale para t₁ = 0, quando a massa cai sem velocidade horizontal.\n7. Alternativa: se o gabarito ignorar o impulso de atrito no impacto (v₁ mantido até o contato e desaceleração μ_c g só depois do quique), obtém-se T′ = t₁ + √(2h/g) + αRt₁/(μ_c g) = T + √(2h/g). A diferença é exatamente t_q.\n\n**Verificação numérica** (script em .work/q3/judge_blind/check_q3.py)\n- Com α = 1 s⁻², R = 1 m, g = 10 m/s², μ_e = 0,5, μ_c = 0,2, h = 1,25 m:\n  - t₁ = 2,213 s, com |a(t₁)| = 5,0 = μ_e g.\n  - d = 1,4916 m, igual pelas duas fórmulas.\n  - v₁ = 2,213 m/s ≥ μ_c√(2gh) = 1,0 m/s, então há deslizamento após o impacto.\n  - T = 3,320 s, igual a t₁(1 + αR/(μ_c g)). A versão sem impulso de atrito daria T′ = 3,820 s.\n- Análise dimensional: (μ_e²g² − α²R²)^{1/4}/(α√R) tem unidade de tempo; (2hR/g)√(…) tem unidade de m².",
+    "final_answer": "Referência própria da Questão 3 (sem alternativas de múltipla escolha).\n\na) Deslizamento da massa sobre o carrossel no instante t₁ = (μ_e²g² − α²R²)^{1/4} / (α√R), válido para μ_e g ≥ αR. A massa deixa o disco com velocidade tangencial v₁ = αRt₁ e cai em projétil. A distância até a origem O é\n   d = √[R² + (2hR/g)·√(μ_e²g² − α²R²)]  (equivalentemente d = √[R² + (2h/g)·v₁²]).\n\nb) Instante de parada (contado de t = 0), supondo que a massa continua deslizando após o impacto, ou seja αRt₁ ≥ μ_c√(2gh):\n   T = t₁(1 + αR/(μ_c g)) = [(μ_e²g² − α²R²)^{1/4} / (α√R)]·(μ_c g + αR)/(μ_c g).\n   Se αRt₁ < μ_c√(2gh), a massa para no impacto: T = t₁ + √(2h/g).\n   Se o gabarito ignorar o impulso de atrito durante o impacto, a resposta será T′ = T + √(2h/g). Esta é a ambiguidade principal da questão; a versão acima é a que segue o modelo de impacto com atrito de Coulomb e e = 0.",
+    "pitfalls": [
+      "Aceleração no rim: a massa tem componente tangencial αR além da centrípeta α²t²R. Erro comum: usar só ω²R = μ_e g, o que dá t = √(μ_e g/R)/α e está errado.",
+      "Atrito estático máximo: a normal é mg, pois o disco é horizontal e a aceleração é só no plano. A condição de iminência é α²R²(1 + α²t⁴) = μ_e²g², não αR = μ_e g nem ω²R = μ_e g.",
+      "Validade: a expressão exige μ_e g > αR. Se μ_e g < αR, a massa escorrega já em t = 0 (t₁ = 0). O caso t₁ = 0 não é tratado pelas mesmas fórmulas de deslizamento sobre o disco, porque o atrito cinético disco–massa não é dado.",
+      "Ao abandonar o carrossel, a velocidade é tangencial (ωR), sem componente radial. A massa não cai em linha reta sob a borda: o ponto de contato fica deslocado tangencialmente, então d ≠ R e d ≠ √(R² + h²).",
+      "Distância à origem: O está no eixo, no solo. Como s ⟂ R, d = √(R² + s²), não R + s. Também não é a distância à posição inicial da massa.",
+      "Tempo de queda: t_q = √(2h/g), com h a altura do disco (z = h) e a massa partindo com z = h.",
+      "Impacto sem quique (e = 0): a componente vertical zera, mas a horizontal não. O atrito cinético durante o contato reduz a velocidade horizontal em μ_c√(2gh). Desprezar esse impulso dá T′ = T + √(2h/g), e a diferença é exatamente t_q. É a principal ambiguidade do item b.",
+      "Checagem de consistência: para αRt₁ ≥ μ_c√(2gh) o tempo de queda se cancela e T = t₁(1 + αR/(μ_c g)). Se αRt₁ < μ_c√(2gh), a massa para no impacto e T = t₁ + √(2h/g). Quem aplica a fórmula de deslize sem testar essa condição erra o caso em que a massa para no contato.",
+      "Tempo total: o instante pedido é contado a partir de t = 0 (início da rotação), somando t₁ + t_q + t_d. Contar só o tempo de deslizamento no solo é erro.",
+      "Sinal e sentido: α ∥ +z (anti-horário) faz a massa ir para x < 0 no início. Mudar o sentido troca o sinal de x e não altera os módulos de d e T.",
+      "Atrito com o solo usa μ_c, sem atrito horizontal durante o voo. O μ_c do solo não entra no tempo de queda nem no deslocamento tangencial.",
+      "Unidades: (μ_e²g² − α²R²)^{1/4}/(α√R) tem unidade de tempo, e (2hR/g)·√(μ_e²g² − α²R²) tem unidade de m². Vale conferir as unidades antes de fechar."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) d = √(R² + (2hR/g)·√(μ_e²g² − α²R²)), válido para μ_e g > αR (equivalentemente d = R√(1 + (2h/g)·ω₁²), com ω₁² = √(μ_e²g²/R² − α²)).\nb) t* = t₁ + ω₁R/(μ_c g) = (μ_e²g² − α²R²)^{1/4}(μ_c g + αR)/(α μ_c g √R), onde t₁ = ω₁/α é o instante em que a massa se desprende do carrossel e ω₁ = (μ_e²g²/R² − α²)^{1/4}. Esse resultado considera o atrito cinético também durante o choque; desprezando-o, o tempo seria maior em √(2h/g). Vale para μ_c < ω₁R/√(2gh), condição de deslizamento após o impacto.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Caso μ_e·g < αR (massa deixa a borda já em t=0 com v=0) é apenas mencionado em uma frase. Deveria dar o resultado: d = R e T = √(2h/g) (queda vertical sem velocidade horizontal, sem deslizamento no solo), e dizer explicitamente que as fórmulas gerais não se aplicam nesse caso."
+          },
+          {
+            "severity": "minor",
+            "description": "Caso αR·t₁ < μ_c·√(2gh) (a massa para já no choque) não é resolvido. A condição t_s > 0 é declarada, mas o resultado da outra região não aparece. Deveria constar T = t₁ + √(2h/g) para completar o item b."
+          },
+          {
+            "severity": "minor",
+            "description": "A afirmação de que, após t₁, a massa 'desliza para fora' e abandona a borda não é justificada. Deveria argumentar que o atrito cinético é tangente à velocidade relativa (sem componente radial), de modo que a centrífuga não equilibrada faz r crescer. Ou comparar a componente radial disponível com ω²R."
+          },
+          {
+            "severity": "minor",
+            "description": "A equação de impulso '0 − m v₀ = −μ_c∫N dt' é descrita como 'de t₁ até a parada', mas a integral começa no impacto. Deveria dizer explicitamente que no voo não há força horizontal e que se assume escorregamento durante todo o choque (μ_c·m·v_z < m·v₀), que é a própria condição de validade."
+          },
+          {
+            "severity": "minor",
+            "description": "A armadilha do sentido de rotação/sinal de x não é comentada. Uma frase bastaria: mudar o sentido de α só troca o sinal de x e não altera d nem T."
+          },
+          {
+            "severity": "minor",
+            "description": "A alternativa T′ = T + √(2h/g) é apresentada como 'aproximação frequente', sem dizer que ela descarta um impulso de atrito real sob o modelo de Coulomb com e = 0. Deveria afirmar que T é a resposta consistente com o modelo e que T′ é um erro de modelagem, não só uma convenção. Verificação dimensional também só é afirmada, sem mostrar as unidades."
+          }
+        ],
+        "summary": "A resposta final do candidato coincide com a da referência nos dois itens e, pelas minhas contas e simulações, está correta no modelo padrão (Coulomb, e = 0). (a) d = √[R² + (2hR/g)√(μ_e²g² − α²R²)], com t₁ = (μ_e²g² − α²R²)^{1/4}/(α√R) e v₀ = ω₁R tangencial; a distância é de fato √(R² + s²) porque s ⟂ R. (b) T = t₁ + ω₁R/(μ_c g) = (μ_e²g² − α²R²)^{1/4}(μ_c g + αR)/(α μ_c g √R). Isso inclui o impulso de atrito no choque (μ_c·m·v_z), que verifiquei por simulação de contato de duração finita, convergindo para μ_c·m·v_z. Numericamente: para g=10, R=2, h=1,5, α=0,5, μ_e=0,5, μ_c=0,2, obtive ω₁=1,5651, t₁=3,1302, d=2,6343 e T=4,6953 s, todos iguais aos do candidato. A versão sem impulso de atrito daria T′=5,2430 s. As armadilhas principais foram tratadas: aceleração com componente tangencial αR, normal = mg, validade μ_e g > αR, velocidade de abandono tangencial, Pitágoras (não R+s), t_q, impacto com e=0 e atrito, e tempo contado de t = 0. Faltaram os casos de borda (massa para no impacto; μ_e g < αR) e a justificativa de que a massa sai pela borda após t₁. Nenhum erro de conta ou unidade. Nota 8,5: resolução forte, que um professor publicaria com pequenos acréscimos, mas ainda não completa como gabarito comentado. A ambiguidade do gabarito oficial (com ou sem impulso de atrito no choque) não pode ser resolvida pelo enunciado; a versão do candidato é a fisicamente consistente."
+      }
+    },
+    {
+      "round": 2,
+      "score": 7.5,
+      "final_answer": "a) $d=\\sqrt{R^2+\\dfrac{2hR}{g}\\sqrt{\\mu_e^2g^2-\\alpha^2R^2}}$, válido para $\\mu_e g>\\alpha R$ (se $\\mu_e g\\le\\alpha R$, $d=R$). Aqui $t_1=\\dfrac{(\\mu_e^2g^2-\\alpha^2R^2)^{1/4}}{\\alpha\\sqrt R}$ é o instante em que a massa abandona a borda, com $v_0=\\omega_1R$ tangencial.\nb) $t^\\ast=t_1+\\dfrac{\\omega_1R}{\\mu_c g}=\\dfrac{(\\mu_e^2g^2-\\alpha^2R^2)^{1/4}(\\mu_c g+\\alpha R)}{\\alpha\\,\\mu_c\\,g\\,\\sqrt R}$, válido para $\\omega_1R>\\mu_c\\sqrt{2gh}$, com o impulso de atrito no choque incluído. Se $\\omega_1R\\le\\mu_c\\sqrt{2gh}$, $t^\\ast=t_1+\\sqrt{2h/g}$. Se $\\mu_e g\\le\\alpha R$, $t^\\ast=\\sqrt{2h/g}$. Exemplo ($g=10$, $R=2$, $h=1{,}5$, $\\alpha=\\mu_e=0{,}5$, $\\mu_c=0{,}2$): $d\\approx2{,}634$ m e $t^\\ast\\approx4{,}695$ s.",
+      "review": {
+        "score": 7.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "major",
+            "description": "Justificativa errada do abandono do disco. O candidato afirma que, no início do deslizamento, a velocidade relativa é tangencial e que o atrito cinético não tem componente radial (F_r = 0, logo r̈ = Rω²). Isso é falso. A velocidade relativa nasce na direção −a, que tem componente radial para fora, e o atrito cinético aponta na direção de a, com componente radial para dentro de (μ_k/μ_e)·mω₁²R. Simulei o caso α=0,5, R=2, μ_e=0,5, μ_k=0,3: a componente radial do atrito no onset é −2,94 m/s² (por unidade de massa), contra ω₁²R = 4,90 m/s² exigidos. A massa sai porque r̈ = Rω²(1 − μ_k/μ_e) > 0, o que exige μ_k < μ_e. O conclusão (abandono em t₁, velocidade tangencial v₀ = ω₁R) está certa, mas a prova deve ser refeita com essa desigualdade. Também deve declarar que o coeficiente disco–massa não é dado e que a conclusão só depende de μ_k < μ_e. Correção: substituir a frase sobre atrito tangencial pelo cálculo de r̈ e declarar a hipótese μ_k < μ_e."
+          },
+          {
+            "severity": "minor",
+            "description": "Item a) não declara que 'ponto de contato com o solo' significa o primeiro contato (ponto de queda), nem que o deslizamento posterior do item b) não entra em d. A resposta está certa, mas a interpretação deveria estar escrita."
+          },
+          {
+            "severity": "minor",
+            "description": "Modelagem do impacto afirmada de forma categórica demais. Tratar o atrito durante o choque (impulso μ_c·m·v_z) é o modelo rigoroso sob Coulomb com e=0, e a conta está correta. Porém o enunciado não diz isso explicitamente. Chamar a versão sem impulso de atrito de 'erro de modelagem, não convenção' é overclaim. O correto é declarar a hipótese, apresentar T′ = T + √(2h/g) como a leitura alternativa e justificar a escolha pelo modelo de Coulomb."
+          },
+          {
+            "severity": "minor",
+            "description": "Caso μ_e·g < αR: a afirmação de que a massa 'sai pela borda com velocidade nula' e cai com d = R não tem argumento quantitativo. Basta mostrar que a trajetória tangente de partida nula desvia de R em ~ (μ_k g t²/2)²/(2R) > 0, e que a velocidade de saída tende a zero. Esse caso também depende de μ_k, o que não foi dito."
+          },
+          {
+            "severity": "minor",
+            "description": "No limite α→0, a frase 'a massa nunca desliza' é imprecisa. O correto é t₁ → ∞, isto é, o deslizamento só ocorre após tempo arbitrariamente longo. A redação deve ser corrigida."
+          }
+        ],
+        "summary": "As respostas finais do candidato coincidem com a referência e estão corretas sob o modelo padrão (atrito de Coulomb no choque, e = 0). a) d = √[R² + (2hR/g)√(μ_e²g² − α²R²)]. b) T = t₁ + ω₁R/(μ_c g) = (μ_e²g² − α²R²)^{1/4}(μ_c g + αR)/(α μ_c g √R), com parada no impacto se ω₁R ≤ μ_c√(2gh). Conferi as contas em Python. No exemplo do candidato (g=10, R=2, h=1,5, α=0,5, μ_e=0,5, μ_c=0,2): t₁=3,130 s, d=2,634 m, T=4,695 s e T′=5,243 s, tudo batendo. No exemplo da referência: d=1,4916 m e T=3,320 s, também batendo. A simulação do disco confirma t₁ e a velocidade de saída v₀ = ω₁R. A passagem mais fraca é o abandono do disco: a justificativa dada (atrito tangencial, F_r = 0) está errada, embora a conclusão valha para μ_k < μ_e. A nota fica em 7,5: resultado e estrutura são fortes, cobrem as armadilhas e têm verificações, mas um passo central está mal justificado e algumas afirmações são categóricas demais."
+      }
+    },
+    {
+      "round": 3,
+      "score": 8.5,
+      "final_answer": "a) $d=\\sqrt{R^2+\\dfrac{2hR}{g}\\sqrt{\\mu_e^2g^2-\\alpha^2R^2}}$ (para $\\mu_eg>\\alpha R$; se $\\mu_eg\\le\\alpha R$, $d=R$). b) $t^\\ast=t_1+\\dfrac{\\omega_1R}{\\mu_cg}=\\dfrac{\\left(\\mu_e^2g^2-\\alpha^2R^2\\right)^{1/4}\\left(\\mu_cg+\\alpha R\\right)}{\\alpha\\,\\mu_c\\,g\\,\\sqrt R}$, com $t_1=\\dfrac{\\left(\\mu_e^2g^2-\\alpha^2R^2\\right)^{1/4}}{\\alpha\\sqrt R}$, válido para $\\omega_1R>\\mu_c\\sqrt{2gh}$; caso contrário $t^\\ast=t_1+\\sqrt{2h/g}$; se $\\mu_eg\\le\\alpha R$, $t^\\ast=\\sqrt{2h/g}$. Hipótese: atrito cinético massa–carrossel $\\mu_k<\\mu_e$ (não dado). Choque sem quique com atrito de Coulomb durante o impacto.",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A resolução introduz μ_k (atrito cinético massa–carrossel), que não é dado no enunciado, e usa μ_k < μ_e como hipótese para a saída da borda. A justificativa \"Se μ_k ≥ μ_e, a massa não deixaria a borda, contrariando o enunciado\" é excessiva: o enunciado não diz isso. O que o enunciado pressupõe é o abandono da borda (a) pede d). O correto é dizer que a hipótese μ_k ≤ μ_e é o padrão físico, que o abandono é pressuposto pelo item a) e que d e T não dependem de μ_k dentro desse regime. Reescrever a justificativa nesses termos."
+          },
+          {
+            "severity": "minor",
+            "description": "O caso μ_e g ≤ αR é correto (conferido por simulação: a massa sai da borda em t ≈ 0 com velocidade ≈ 0, logo d = R e t* = √(2h/g)), mas a argumentação é frouxa. Descreve um 'deslizamento' de duração nula e usa 'velocidade μ_k g t → 0' como limite. Deveria afirmar diretamente que ρ(t) > R para todo t > 0 implica saída imediata sem velocidade horizontal, portanto d = R exatamente e não há deslizamento no solo."
+          },
+          {
+            "severity": "minor",
+            "description": "O modelo de impacto (e = 0 com atrito de Coulomb durante o choque, impulso de atrito μ_c m v_z) é fisicamente correto, mas não é nomeado. Deveria citar a regra de Routh (Δv_t = −μ(1+e)Δv_n, que com e = 0 dá −μ_c v_z) como justificativa. A frase 'desprezá-lo equivaleria a atrito nulo durante o choque, o que contradiz o deslizamento' deveria ser precisada. A escolha entre T e T′ é a principal ambiguidade do item b; a resolução a expõe e escolhe, o que está bem."
+          },
+          {
+            "severity": "minor",
+            "description": "'Ponto de contato com o solo' é interpretado como o ponto do primeiro contato (queda). A leitura alternativa, o ponto onde a massa para após o deslizamento, não é discutida. A escolha é explicitada e é a mais natural, mas uma frase justificando-a, ou o cálculo da posição final, fecharia o item."
+          },
+          {
+            "severity": "minor",
+            "description": "A verificação de auto-consistência do atrito cinético (|a_D| ≥ μ_e g > μ_k g para t ≥ t₁) usa implicitamente que |a_D| = R√(α²+ω⁴) é crescente em t. Isso deveria ser dito; é imediato, mas faltou."
+          },
+          {
+            "severity": "minor",
+            "description": "A expressão μ_eg > αR é tratada como real 'para μ_eg > αR', mas vale também com igualdade (t₁ = 0). Além disso, o texto é longo e repetitivo: a seção de 'Modelagem do choque' e as 'Verificações' repetem o que já foi dito. Para um gabarito comentado, convém enxugar e separar hipóteses, resultado e casos-limite."
+          }
+        ],
+        "summary": "Conferi o enunciado no PDF (confere com a transcrição) e refiz as contas em python, incluindo uma simulação no referencial do solo. Os dois resultados finais coincidem em todos os itens. (a) d = √[R² + (2hR/g)√(μ_e²g² − α²R²)] está correto, e o caso t₁ = 0 está resolvido. (b) T = t₁(1 + αR/(μ_c g)), válido para αRt₁ > μ_c√(2gh), também está correto. Para o caso μ_e g > αR, a resolução é fisicamente correta e mais rigorosa que a referência, pois prova a saída da borda (r̈ = ω₁²R(1 − μ_k/μ_e) > 0) e a velocidade tangencial de abandono ω₁R, o que a simulação confirma. A aceleração no rim (tangencial αR mais centrípeta), N = mg e a distância à origem por Pitágoras são tratados corretamente. Cada armadilha do gabarito de referência aparece tratada. Os valores numéricos (t₁ ≈ 3,130 s, d ≈ 2,634 m, t* ≈ 4,695 s, T′ ≈ 5,243 s) conferem. O atrito de impacto (μ_c m v_z) é a escolha fisicamente correta sob e = 0. A resolução expõe a ambiguidade com T′ = T + √(2h/g) e a descarta com argumento. Os problemas são de rigor e apresentação, não de resultado: μ_k fora do enunciado, argumento por limite frouxo no caso μ_e g ≤ αR, falta de nomeação da regra de Routh, interpretação do 'ponto de contato' sem discutir a alternativa, e texto longo. Não encontrei erro crítico nem grave. A nota fica em 8,5 e não em 9, porque a justificativa ainda tem pontos a enxugar para um gabarito comentado publicável.\""
+      }
+    }
+  ]
+}

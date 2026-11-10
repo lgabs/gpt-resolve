@@ -1,0 +1,56 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+\textbf{Notação e domínio.} Seja
+\[
+f(t)=t+\ln\left(t+\sqrt{t^2+1}\right), \qquad t\in\mathbb{R}.
+\]
+Como $\sqrt{t^2+1}>|t|\geq -t$, o argumento do logaritmo é sempre positivo, logo $f$ está definida em todo $\mathbb{R}$. Além disso, $f(0)=0+\ln 1=0$. Usa-se aqui o logaritmo natural; se "log" for decimal, o raciocínio é idêntico, pois a base $b>1$ apenas multiplica a parcela logarítmica por uma constante positiva (ver Passo 2).
+
+\textbf{Passo 1 (reescrita do sistema).} Com essa notação, o sistema é equivalente a
+\[
+y=f(x), \qquad z=f(y), \qquad x=f(z).
+\]
+
+\textbf{Passo 2 (derivada de $f$).} Seja $u(t)=t+\sqrt{t^2+1}>0$. Então $u'(t)=1+\dfrac{t}{\sqrt{t^2+1}}=\dfrac{u(t)}{\sqrt{t^2+1}}$, logo
+\[
+f'(t)=1+\frac{u'(t)}{u(t)}=1+\frac{1}{\sqrt{t^2+1}}>1 \qquad \text{para todo } t\in\mathbb{R}.
+\]
+Em particular, $f$ é estritamente crescente. (Com base decimal, a derivada seria $1+\dfrac{1}{\ln 10\,\sqrt{t^2+1}}$, que também é maior que $1$.)
+
+\textbf{Passo 3 (redução a uma equação em $x$).} Seja $F(t)=f(f(f(t)))-t$. Afirmo que $(x,y,z)$ é solução do sistema se e somente se $F(x)=0$, $y=f(x)$ e $z=f(f(x))$.
+\begin{itemize}
+\item[(i)] Se $(x,y,z)$ é solução, então $y=f(x)$, $z=f(y)=f(f(x))$ e $x=f(z)=f(f(f(x)))$; logo $F(x)=0$.
+\item[(ii)] Reciprocamente, se $F(x)=0$ e definimos $y=f(x)$ e $z=f(y)$, as duas primeiras equações valem por construção, e a terceira vale porque $f(z)=f(f(f(x)))=x$.
+\end{itemize}
+Assim, as soluções do sistema estão em correspondência biunívoca com as raízes reais de $F$, via $x\mapsto\big(x,\,f(x),\,f(f(x))\big)$. Basta mostrar que $F$ tem exatamente uma raiz real.
+
+\textbf{Passo 4 (unicidade).} Pela regra da cadeia e pelo Passo 2,
+\[
+F'(t)=f'\big(f(f(t))\big)\cdot f'\big(f(t)\big)\cdot f'(t)-1.
+\]
+Cada um dos três fatores é maior que $1$; logo o produto é maior que $1$ e $F'(t)>0$ para todo $t\in\mathbb{R}$. Se $a<b$ fossem raízes de $F$, o Teorema do Valor Médio daria $c\in(a,b)$ com
+\[
+0=F(b)-F(a)=F'(c)\,(b-a)>0,
+\]
+um absurdo. Logo $F$ tem no máximo uma raiz real.
+
+\textbf{Passo 5 (existência e cálculo).} Como $f(0)=0$, temos $f(f(f(0)))=0$, isto é, $F(0)=0$. Portanto $x=0$ é raiz de $F$ e, pelo Passo 4, é a única. Pelo Passo 3,
+\[
+x=0, \qquad y=f(0)=0, \qquad z=f(f(0))=0.
+\]
+
+\textbf{Verificação.} Para $x=y=z=0$, cada equação se reduz a $0+\ln\left(0+\sqrt{1}\right)=\ln 1=0$, ou seja, a $0=0$.
+
+\textbf{Conferências adicionais.}
+\begin{itemize}
+\item \textit{Sinais:} para $t>0$ temos $u(t)>1$ e para $t<0$ temos $u(t)<1$; logo $\ln u(t)$ e $t$ têm o mesmo sinal, e $f(t)$ também. Numericamente, $F(1)\approx 4{,}17>0$ e $F(-1)\approx -4{,}17<0$, em concordância com $F$ crescente e com a raiz única em $0$.
+\item \textit{Unidades:} todas as grandezas são adimensionais (números puros), não havendo unidade a conferir.
+\item \textit{Base do logaritmo:} o resultado não depende da base $b>1$, pois $f_b(0)=0$ e $f_b'>1$ em qualquer caso; com base decimal, a verificação numérica também dá $F(0)=0$ como única raiz.
+\item \textit{Método alternativo (sem derivadas):} $f$ é estritamente crescente. Se $x>y$, então $f(x)>f(y)$, isto é, $y>z$; daí $f(y)>f(z)$, isto é, $z>x$, e então $x>y>z>x$, absurdo. Analogamente, $x<y$ leva a $x<y<z<x$, absurdo. Logo $x=y$, e então $z=f(y)=f(x)=y$, de modo que $x=y=z=t$ com $t=f(t)$, ou seja, $\ln u(t)=0$, isto é, $u(t)=1$. Como $u(t)\big(\sqrt{t^2+1}-t\big)=1$, obtemos $\sqrt{t^2+1}-t=1$; somando com $\sqrt{t^2+1}+t=1$ resulta $\sqrt{t^2+1}=1$, logo $t=0$.
+\end{itemize}
+
+Portanto, o sistema admite uma única solução real, $(x,y,z)=(0,0,0)$.
+
+ANSWER: $(x,y,z)=(0,0,0)$, a única solução real do sistema.

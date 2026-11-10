@@ -1,0 +1,58 @@
+\section*{Questão 8}
+
+\section*{Solução}
+
+Uma sequência estritamente crescente $(a,b,c)$ de números naturais é determinada pelo conjunto $\{a,b,c\}$, pois a ordem é imposta pelo crescimento. Reciprocamente, todo conjunto de três naturais distintos gera exatamente uma sequência estritamente crescente. Assim, o problema é contar as ternas $(a,b,c)$ tais que
+\[
+1 \le a < b < c, \qquad a+b+c = 100,
+\]
+usando $\mathbb{N}=\{1,2,3,\ldots\}$, conforme a convenção da prova (logo $a \ge 1$).
+
+\textbf{Passo 1 (eliminar as desigualdades).} Como $a$, $b$, $c$ são inteiros, $a<b<c$ equivale a $b \ge a+1$ e $c \ge b+1$. Defina os inteiros não negativos
+\[
+x = a-1 \ge 0, \qquad y = b-a-1 \ge 0, \qquad z = c-b-1 \ge 0.
+\]
+A transformação é invertível:
+\[
+a = x+1, \qquad b = x+y+2, \qquad c = x+y+z+3,
+\]
+e, para quaisquer $x,y,z \in \mathbb{N}_0=\{0,1,2,\ldots\}$, esses valores satisfazem $1 \le a < b < c$. Logo há correspondência biunívoca entre as ternas procuradas e as ternas $(x,y,z) \in \mathbb{N}_0^3$. Somando,
+\[
+a+b+c = (x+1)+(x+y+2)+(x+y+z+3) = 3x+2y+z+6,
+\]
+e a condição $a+b+c=100$ torna-se
+\[
+3x+2y+z = 94, \qquad x,y,z \in \mathbb{N}_0. \tag{1}
+\]
+
+\textbf{Passo 2 (contar as soluções de (1)).} Fixado $x$, a equação fica $2y+z = 94-3x$. Para haver soluções em $\mathbb{N}_0$ é necessário $94-3x \ge 0$, ou seja, $x \le 31$ (pois $x$ é inteiro e $3x \le 94$). Para cada $y$ com $0 \le y \le \frac{94-3x}{2}$, o valor $z = 94-3x-2y$ é automaticamente inteiro e não negativo. Logo $y$ assume $\left\lfloor \frac{94-3x}{2} \right\rfloor + 1$ valores, e
+\[
+N = \sum_{x=0}^{31} \left( \left\lfloor \frac{94-3x}{2} \right\rfloor + 1 \right).
+\]
+
+\textbf{Passo 3 (separar $x$ em pares e ímpares).}
+\begin{itemize}
+\item Se $x = 2k$ com $k=0,1,\ldots,15$, então $94-6k$ é par e o termo vale $\frac{94-6k}{2}+1 = 48-3k$.
+\item Se $x = 2k+1$ com $k=0,1,\ldots,15$ (note $2\cdot 15+1 = 31$), então $91-6k$ é ímpar, $\left\lfloor \frac{91-6k}{2} \right\rfloor = \frac{90-6k}{2} = 45-3k$, e o termo vale $46-3k$.
+\end{itemize}
+Como $\sum_{k=0}^{15} k = \frac{15\cdot 16}{2} = 120$,
+\[
+\sum_{k=0}^{15} (48-3k) = 16\cdot 48 - 3\cdot 120 = 768 - 360 = 408,
+\]
+\[
+\sum_{k=0}^{15} (46-3k) = 16\cdot 46 - 3\cdot 120 = 736 - 360 = 376.
+\]
+Portanto $N = 408 + 376 = 784$.
+
+\textbf{Conferências.}
+\begin{enumerate}
+\item \emph{Por simetria.} Há $\binom{99}{2} = 4851$ ternas ordenadas $(a,b,c)$ de naturais com soma $100$. Com dois termos iguais: $a=b$ exige $c = 100-2a \ge 1$, ou seja, $a \in \{1,\ldots,49\}$, são $49$ ternas; o mesmo vale para $a=c$ e $b=c$. Não há ternas com os três termos iguais, pois $3 \nmid 100$, e dois empates implicam três iguais, logo não há interseções. Restam $4851 - 3\cdot 49 = 4704$ ternas com termos distintos, que se agrupam em conjuntos de $3! = 6$ permutações. Então $\frac{4704}{6} = 784$. \checkmark
+\item \emph{Fórmula conhecida.} O número de partições de $n$ em três partes distintas duas a duas é o inteiro mais próximo de $\frac{(n-3)^2}{12}$. Para $n=100$: $\frac{97^2}{12} = \frac{9409}{12} \approx 784{,}08$, logo $784$. \checkmark
+\item \emph{Pelo menor termo.} Para $a$ fixo, $b+c = 100-a$ com $a<b<c$ dá $\left\lfloor \frac{99-a}{2} \right\rfloor - a$ valores de $b$, positivos apenas para $a \le 32$. Os valores são $48, 46, 45, 43, \ldots, 3, 1$ (de $a=1$ a $a=32$). Agrupando $a=2j+1$ com $a=2j+2$, obtém-se uma progressão aritmética de $16$ termos, $94, 88, \ldots, 4$, cuja soma é $16\cdot\frac{94+4}{2} = 784$. \checkmark
+\end{enumerate}
+
+\textbf{Observação.} Se o zero fosse admitido (o que a convenção da prova não faz), haveria $49$ sequências extras com $a=0$ ($0<b<c$, $b+c=100$, $b \in \{1,\ldots,49\}$), totalizando $833$. Com $\mathbb{N}=\{1,2,3,\ldots\}$, a resposta é $784$.
+
+Portanto, é possível construir $784$ sequências estritamente crescentes de três números naturais cuja soma é $100$.
+
+ANSWER: 784 sequências

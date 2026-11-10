@@ -1,0 +1,88 @@
+{
+  "question": 6,
+  "judged": true,
+  "approved": true,
+  "pass_score": 9.0,
+  "best_round": 2,
+  "score": 9.3,
+  "final_answer": "a) q = 3Cε/4; b) compressão x = 2d/3 (distância final d/3); c) k = 27Cε²/(64d²) = 27ε₀a²ε²/(64d³)",
+  "judge_reference": {
+    "reference_solution": "**Convenções.** C = ε₀A/d é a capacitância das placas na posição inicial (distância d), igual à do capacitor do circuito. Logo ε₀A = C·d. Isso permite expressar tudo em função de C, ε e d. Considero o voltímetro ideal, fios e placas de massa desprezível para o problema horizontal, e efeitos de borda desprezíveis (d ≪ a).\n\n**Situação em t₂.** Com S₁ fechada por tempo suficiente, o capacitor tem V = ε e carga Q₀ = Cε. Em t₂, S₁ abre e S₂ fecha. O capacitor passa a ficar ligado às duas placas neutras: o terminal superior a uma placa e o inferior à outra. A carga total do conjunto (capacitor + placas) se conserva, Q₀ = Cε, porque S₁ está aberta e o voltímetro é ideal. As placas, neutras no total, ficam com +q e −q. Elas se atraem e comprimem a mola. A distância cai de d para d′ < d e a capacitância das placas sobe para C′ = ε₀A/d′ > C.\n\n**Estado em t₃.** O capacitor e as placas estão em paralelo, com a mesma tensão V₃ = ε/4. O enunciado diz \"um quarto daquela em t₂\", e em t₂ a tensão é ε (capacitor completamente carregado).\n\n**a) Carga livre que fluiu do capacitor para as placas**\n- Carga que restou no capacitor: Q_cap = C·V₃ = Cε/4.\n- Conservação de carga: q = Q₀ − Q_cap = Cε − Cε/4.\n\n**q = 3Cε/4** (+q numa placa e −q na outra; corresponde a 3/4 da carga inicial).\n\n**b) Deformação da mola**\n- Nas placas, q = C′·V₃, então C′ = (3Cε/4)/(ε/4) = 3C.\n- Como C′ = ε₀A/d′ e C = ε₀A/d, temos d′ = d/3.\n- A mola estava no comprimento natural em d. A deformação é, portanto, de compressão: x = d − d′.\n\n**x = 2d/3** (compressão; cada placa anda d/3 se o movimento for simétrico). Como d′ = d/3 ≪ a, o modelo de placas planas continua válido.\n\n**c) Constante elástica**\n- A força elétrica sobre uma placa é a carga dela vezes o campo da outra placa. Esse campo é E = σ/(2ε₀) = q/(2ε₀A).\n- Então F_el = q²/(2ε₀A) = q²/(2Cd).\n- Com q = 3Cε/4: F_el = (9C²ε²/16)/(2Cd) = 9Cε²/(32d).\n- Esse valor não depende da distância d′, porque a carga q é fixa em t₃.\n- Equilíbrio de cada placa (mola comprimida x empurra com kx): kx = F_el.\n- Logo k = [9Cε²/(32d)] / (2d/3).\n\n**k = 27·C·ε² / (64·d²)** = 27ε₀a²ε²/(64d³).\n\nDimensão: Cε² é energia, e energia/d² dá N/m, como esperado.\n\n**Conferências.**\n1. Pela tensão: F = ½V₃²·|dC/dd′| = ½V₃²·ε₀A/d′² = ½(ε²/16)(Cd)(9/d²) = 9Cε²/(32d), igual ao valor acima.\n2. Balanço de energia: a energia inicial é Cε²/2. Em t₃ há ½CV₃² + ½C′V₃² + ½kx² = (1/32 + 3/32 + 3/32)Cε² = 7Cε²/32. A diferença, 9Cε²/32 > 0, foi dissipada no resistor dos fios e no amortecimento das oscilações. A energia, portanto, não se conserva, e por isso o problema se resolve com conservação de carga e equilíbrio de forças.\n3. Os números foram verificados em Python com frações exatas (unidades C = ε = d = 1): q = 3/4, C′/C = 3, x/d = 2/3, k = 27/64.\n\n**Observação física (não altera as respostas).** Com u = x/d, a energia total (carga total fixa) é U(u) = (Cε)²(1−u)/[2C(2−u)] + ½kd²u². A condição de equilíbrio é u(2−u)² = Cε²/(2kd²). O lado esquerdo tem máximo 32/27 exatamente em u = 2/3. Assim, o equilíbrio pedido é o limiar crítico (U″ = 0, \"pull-in\"): marginalmente estável, alcançável com amortecimento forte. Isso não muda os valores de a), b) e c).",
+    "final_answer": "a) q = 3Cε/4.\nb) Compressão de x = 2d/3 (distância final d/3).\nc) k = 27·C·ε²/(64·d²) = 27ε₀a²ε²/(64d³).\n\nResultados intermediários: V₃ = ε/4, C′ = 3C, F_el = 9Cε²/(32d).",
+    "pitfalls": [
+      "Tensão de referência: o enunciado fala em 'um quarto daquela em t₂', e em t₂ a tensão é ε (capacitor carregado), logo V₃ = ε/4. Tomar ε/2 (tensão logo após a redistribuição com d fixo) dá V₃ = ε/8, q = 7Cε/8, x = 6d/7, k = 343Cε²/(768d²). Esse equilíbrio seria instável (U″ < 0), o que reforça a leitura com ε/4.",
+      "Erro de partida: supor que a carga se divide igualmente (q = Cε/2, tensão ε/2) usando a capacitância inicial C para as placas. Em t₃ as placas se aproximaram e a capacitância mudou para C′ = 3C. O capacitor mantém Cε/4 e só 3/4 da carga flui para as placas.",
+      "Conservação de carga, não de energia: Cε²/2 vira 7Cε²/32 em t₃, e 9Cε²/32 é dissipado no resistor dos fios e no amortecimento. Usar conservação de energia dá resultado errado.",
+      "Sentido da deformação: as placas têm cargas opostas e se atraem, então a mola é COMPRIMIDA. A deformação é x = d − d′ = 2d/3, não d′ = d/3 (distância final) nem d/3 (deslocamento de cada placa). Cada placa sente kx, e não k·x/2.",
+      "Força eletrostática: F = q²/(2ε₀A), com fator ½ porque o campo que age numa placa é o da outra (σ/2ε₀). Usar E = σ/ε₀ (campo total entre as placas) dobra a força e o k (27Cε²/(32d²)). Com carga fixa, F não depende de d′. Ao escrever ε₀A = C·d, lembrar que C é a capacitância INICIAL (distância d), e não C′.",
+      "Item a): pedir a carga que fluiu (3Cε/4), e não a carga que ficou no capacitor (Cε/4) nem Cε. Cada placa fica com módulo q, +q numa e −q na outra, já que as placas eram neutras.",
+      "Hipóteses: voltímetro ideal, fios sem massa ou efeito pendular relevante (não há dados de massa ou comprimento dos fios; o sen θ ≈ θ das instruções gerais não é usado aqui), placas paralelas e efeitos de borda desprezíveis (d′ = d/3 ≪ a). Gravidade e tensão dos fios não entram no equilíbrio horizontal.",
+      "Estabilidade: com V₃ = ε/4 (u = 2/3) o equilíbrio é exatamente o ponto crítico de pull-in (U″ = 0, u(2−u)² = 32/27 no máximo). Não afirmar 'equilíbrio estável robusto'. Ele só é atingido de forma assintótica, com amortecimento forte, e o enunciado o assume dado.",
+      "Resposta em função de C, ε e d (dados do problema). Também vale 27ε₀a²ε²/(64d³), com C = ε₀a²/d. Checar a dimensão: Cε² é energia, e energia/d² dá N/m."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8.5,
+      "final_answer": "a) q = 3Cε/4; b) compressão de 2d/3 (a separação passa a d/3); c) k = 27 C ε² /(64 d²) = 27 ε0 a² ε² /(64 d³).",
+      "review": {
+        "score": 8.5,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "A \"Conferência\" por caso limite está errada. O texto diz que, com ε→0, k→0 e a mola não é comprimida. Dada a condição V₃ = ε/4, a deformação x = 2d/3 não depende de ε, então a mola continua comprimida mesmo com k→0. Esse teste não valida nada e traz uma afirmação falsa. Deveria ser trocado por uma conferência real, como o balanço de energia, que mostra Cε²/2 → 7Cε²/32 e dissipação de 9Cε²/32 > 0, ou a verificação de que a razão de capacitâncias C′/C = 3 é consistente."
+          },
+          {
+            "severity": "minor",
+            "description": "A leitura do enunciado \"um quarto daquela em t₂\" é usada sem discussão. A solução afirma V₃ = ε/4 e não explica por que a referência é a tensão ε do capacitor carregado em t₂, e não a tensão logo após a redistribuição com d fixo (ε/2, que daria V₃ = ε/8). Uma frase justificando a escolha, ou descartando a alternativa, faria falta num gabarito comentado."
+          },
+          {
+            "severity": "minor",
+            "description": "A hipótese \"peso e tensão dos fios são verticais\" é imprecisa. Quando as placas se deslocam, os fios saem da vertical, e se houvesse massa o efeito pendular daria componente horizontal (é onde entraria o sen θ ≈ θ das instruções). O correto é declarar que o efeito pendular é desprezado por não haver dados de massa nem de comprimento dos fios, e que isso é uma hipótese, não um fato. O resultado não muda."
+          },
+          {
+            "severity": "minor",
+            "description": "A conservação de carga é escrita só para o nó superior (placa de cima do capacitor, fio e uma placa). O sinal −q da outra placa é afirmado sem derivar a conservação do nó inferior (−Cε = −CV₃ + q₂). Também não há comentário de que a energia não se conserva (9Cε²/32 é dissipado), o que explica por que o método é carga + equilíbrio de forças e não energia."
+          },
+          {
+            "severity": "minor",
+            "description": "A observação final de estabilidade está correta nos números. Conferi que F_líq(d/3) = 0 e dF_líq/ds = 0 em s = d/3, ou seja, equilíbrio marginal (U″ = 0). Mas há duas imprecisões. A analogia com a \"regra do terço do eletrômetro\" é solta: o caso aqui é carga total fixa com um capacitor em paralelo, não controle de tensão. E a afirmação de que o sistema chega ao ponto \"pelo lado estável com dissipação\" omite que isso exige amortecimento forte (superamortecido). Com pouca dissipação a placa ultrapassa d/3 e colapsa."
+          }
+        ],
+        "summary": "As respostas finais do candidato coincidem com a referência nos três itens: a) q = 3Cε/4; b) compressão x = 2d/3, com distância final d′ = d/3; c) k = 27Cε²/(64d²) = 27ε₀a²ε²/(64d³). Refiz as contas com frações exatas em Python (q = 3/4, C′ = 3C, d′ = d/3, F = 9/32, k = 27/64) e conferi o enunciado no PDF original. Tudo bate. Também conferi a expressão F_líq(s) = k(d−s) − Cdε²/[2(s+d)²] usada na observação final. Ela se anula, junto com sua derivada, em s = d/3, então o equilíbrio é marginal, como o candidato diz. A solução cobre as armadilhas principais: usa conservação de carga e não de energia, toma V₃ = ε/4, usa C′ = 3C e não C, aplica o fator ½ na força (σ/2ε₀), trata a deformação como compressão x = d − d′ com kx por placa, e pede a carga que fluiu (3Cε/4) e não a que ficou no capacitor. Traz também uma conferência independente da força por F = ε₀AV²/(2d′²) e a dimensão de k. Os pontos fracos são todos pequenos: um teste de caso limite (ε→0) que afirma algo falso, a falta de discussão explícita da leitura \\\"um quarto de t₂\\\" e do ε/2 alternativo, a hipótese imprecisa sobre os fios verticais, e a ausência do balanço de energia (que mostraria a dissipação). Resolução correta, concisa e rigorosa no essencial, mas com essas falhas de acabamento fica um pouco abaixo do nível de gabarito publicável sem edição (8,5).\""
+      }
+    },
+    {
+      "round": 2,
+      "score": 9.3,
+      "final_answer": "a) q = 3Cε/4; b) compressão x = 2d/3 (distância final d/3); c) k = 27Cε²/(64d²) = 27ε₀a²ε²/(64d³)",
+      "review": {
+        "score": 9.3,
+        "answer_correct": true,
+        "agrees_with_reference": true,
+        "issues": [
+          {
+            "severity": "minor",
+            "description": "Inconsistência na lista de hipóteses: o candidato diz \"fios ideais\", mas depois atribui a dissipação de 9/32·Cε² ao \"efeito Joule nos fios\" (e ao amortecimento mecânico). Deveria dizer \"fios flexíveis, sem massa e com resistência apenas suficiente para dissipar (ou resistência do circuito R)\", ou ao menos separar \"ideal para a estática\" de \"dissipativo na dinâmica\"."
+          },
+          {
+            "severity": "minor",
+            "description": "No item c), a igualdade kx = F_e para cada placa é afirmada sem dizer explicitamente que a mola exerce a mesma força kx nas duas placas (3ª lei) e que cada placa está em equilíbrio individual. A omissão não afeta o resultado, mas um gabarito comentado deveria deixar isso explícito (cada placa sente kx, e não k·x/2, e x é a compressão total 2d/3, não o deslocamento de cada placa)."
+          },
+          {
+            "severity": "minor",
+            "description": "A frase \"em geral, um equilíbrio estável exige s>d/3, isto é, V3>ε/4\" é válida para equilíbrios em geral (variando k), mas está um pouco solta no texto. Poderia dizer que se trata do limiar crítico (pull-in, U''=0) e que o equilíbrio pedido é marginal. A fatoração F_liq = −Cε²(3s−d)²(3s+5d)/[64d²(s+d)²] foi conferida à mão e está correta, o que sustenta a afirmação de semiestabilidade."
+          },
+          {
+            "severity": "minor",
+            "description": "A escolha de V3 = ε/4 (tensão em t2 = ε) é bem justificada, e a alternativa ε/8 é descartada por instabilidade. Falta apenas citar explicitamente o argumento de que ε/2 (redistribuição com d fixo) não é a tensão \"em t2\" do enunciado, o que o candidato faz de passagem. Também não explicita que o dado sen θ ≈ θ é deixado de lado por falta de dados (massa e comprimento do fio). Ele cita isso na hipótese inicial, então é só um detalhe de ênfase."
+          }
+        ],
+        "summary": "As respostas finais do candidato coincidem item a item com a minha referência e com a minha recomputação: a) q = 3Cε/4; b) compressão x = 2d/3 (distância final d/3, C' = 3C); c) k = 27Cε²/(64d²) = 27ε₀a²ε²/(64d³). Conferi com frações exatas em Python (q=3/4, C'=3, d'=1/3, x=2/3, F=9/32, k=27/64) e conferi à mão a fatoração da força líquida, 27(1−s)(1+s)²−32 = −(3s−1)²(3s+5), que está correta. O balanço de energia (1/32+3/32+3/32 = 7/32, com 9/32 dissipado) também está correto. O enunciado transcrito confere com o PDF original. A resolução trata bem todas as armadilhas: a tensão de referência (ε em t2, logo V3 = ε/4, e não ε/2 nem ε/8); a conservação de carga em cada conjunto isolado (placa superior + fio, placa inferior + fio), com q = C(ε−V3); a capacitância das placas mudando para 3C; o fator ½ na força (σ/2ε₀), verificado de duas formas; a mola comprimida em 2d/3, e não d/3; a não conservação de energia; e a estabilidade, com o equilíbrio identificado como o limiar crítico (raiz dupla em s = d/3) alcançável só com forte amortecimento. As hipóteses (voltímetro ideal, sem efeito pendular, efeitos de borda desprezíveis) estão explícitas. Os defeitos são apenas pequenos: o \\\"fios ideais\\\" convive com dissipação Joule nos fios, e a igualdade de forças por placa poderia ser mais explícita. Resolução correta, completa e rigorosa, no nível de um gabarito comentado."
+      }
+    }
+  ]
+}
